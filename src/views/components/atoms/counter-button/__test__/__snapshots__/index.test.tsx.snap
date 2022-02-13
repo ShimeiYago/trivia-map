@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shallow Snapshot Tests basic 1`] = `
+<button
+  className="button"
+/>
+`;
+
+exports[`Shallow Snapshot Tests with props 1`] = `
+<button
+  aria-label="label"
+  className="asyncButton"
+  disabled={true}
+  onClick={[MockFunction]}
+>
+  button
+</button>
+`;

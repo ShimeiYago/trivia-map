@@ -1,0 +1,94 @@
+{
+  "name": "trivia-map",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@emotion/react": "^11.7.1",
+    "@emotion/styled": "^11.6.0",
+    "@mui/material": "^5.4.1",
+    "@reduxjs/toolkit": "^1.7.1",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.5.0",
+    "@testing-library/user-event": "^7.2.1",
+    "@types/jest": "^24.9.1",
+    "@types/node": "^12.20.42",
+    "@types/react": "^16.14.21",
+    "@types/react-dom": "^16.9.14",
+    "@types/react-redux": "^7.1.22",
+    "axios": "^0.25.0",
+    "leaflet": "^1.7.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-leaflet": "^3.2.5",
+    "react-redux": "^7.2.6",
+    "react-scripts": "5.0.0",
+    "typescript": "~4.1.5"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "start:mock": "REACT_APP_MOCK=normal react-scripts start",
+    "start:mock:error": "REACT_APP_MOCK=error react-scripts start",
+    "start:mock:delay": "REACT_APP_MOCK=normal REACT_APP_MOCK_DELAY_TIME=2000 react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --watchAll",
+    "test:cover": "react-scripts test --coverage --watchAll",
+    "eject": "react-scripts eject",
+    "lint": "eslint '*/**/*.{js,ts,tsx}' --fix"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@types/enzyme": "^3.10.11",
+    "@types/leaflet": "^1.7.9",
+    "@types/react-leaflet": "^2.8.2",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.6",
+    "enzyme": "^3.11.0",
+    "enzyme-to-json": "^3.6.2",
+    "eslint": "^8.8.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.3",
+    "prettier": "^2.5.1"
+  },
+  "jest": {
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    },
+    "collectCoverageFrom": [
+      "src/**/*.{ts,tsx}",
+      "!src/index.tsx",
+      "!src/react-app-env.d.ts",
+      "!src/serviceWorker.ts",
+      "!src/views/pages/*/index.{ts,tsx}",
+      "!src/views/components/organisms/*/index.{ts,tsx}",
+      "!src/store/index.ts"
+    ],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
+  },
+  "lint-staged": {
+    "*.{ts,js,tsx}": [
+      "eslint --fix --max-warnings=0"
+    ]
+  }
+}

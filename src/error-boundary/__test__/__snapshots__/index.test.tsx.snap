@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shallow Snapshot Tests basic 1`] = `<Something />`;
+
+exports[`Shallow Snapshot Tests with thrown error 1`] = `
+<Fragment>
+  <h1>
+    Something went wrong
+  </h1>
+  <pre>
+    test
+  </pre>
+</Fragment>
+`;

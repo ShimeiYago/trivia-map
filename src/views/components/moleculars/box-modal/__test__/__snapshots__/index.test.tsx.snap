@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shallow Snapshot Tests basic 1`] = `
+<ForwardRef(Modal)
+  onClose={[MockFunction]}
+  open={true}
+>
+  <ForwardRef(Box)
+    sx={
+      Object {
+        "bgcolor": "background.paper",
+        "border": "2px solid #000",
+        "boxShadow": 24,
+        "left": "50%",
+        "p": 4,
+        "position": "absolute",
+        "top": "50%",
+        "transform": "translate(-50%, -50%)",
+        "width": 400,
+      }
+    }
+  >
+    Test
+  </ForwardRef(Box)>
+</ForwardRef(Modal)>
+`;

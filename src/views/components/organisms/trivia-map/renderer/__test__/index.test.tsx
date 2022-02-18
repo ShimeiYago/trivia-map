@@ -12,6 +12,7 @@ const basicProps: Props = {
   ],
   loadingMarkers: false,
   fetchMarkers: jest.fn(),
+  fetchArticle: jest.fn(),
 };
 
 let shallowWrapper: ShallowWrapper<Props, State, Renderer>;
@@ -63,10 +64,8 @@ describe('handleClickPostTitle', () => {
     const instance = shallowWrapper.instance();
 
     expect(instance.state.openArticleModal).toBe(false);
-    expect(instance.state.selectedPostId).toBe(undefined);
     instance['handleClickPostTitle']('postId-000')();
     expect(instance.state.openArticleModal).toBe(true);
-    expect(instance.state.selectedPostId).toBe('postId-000');
   });
 });
 

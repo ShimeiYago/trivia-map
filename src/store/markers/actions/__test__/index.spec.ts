@@ -22,21 +22,27 @@ describe('fetchMarkers', () => {
   it('call requestStart at first', async () => {
     getRemoteMarkersSpy.mockResolvedValue(mockResponse);
 
-    await fetchMarkers()(dispatch);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const appThunk = fetchMarkers() as any;
+    await appThunk(dispatch);
     expect(dispatch.mock.calls[0][0].type).toBe('markers/requestStart');
   });
 
   it('call fetchSuccess if API successed', async () => {
     getRemoteMarkersSpy.mockResolvedValue(mockResponse);
 
-    await fetchMarkers()(dispatch);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const appThunk = fetchMarkers() as any;
+    await appThunk(dispatch);
     expect(dispatch.mock.calls[1][0].type).toBe('markers/fetchSuccess');
   });
 
   it('call requestFailure if API failed', async () => {
     getRemoteMarkersSpy.mockRejectedValue(new Error());
 
-    await fetchMarkers()(dispatch);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const appThunk = fetchMarkers() as any;
+    await appThunk(dispatch);
     expect(dispatch.mock.calls[1][0].type).toBe('markers/requestFailure');
   });
 });

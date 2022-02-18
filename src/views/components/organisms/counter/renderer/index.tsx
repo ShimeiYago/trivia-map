@@ -62,7 +62,7 @@ export class Renderer extends React.Component<Props, State> {
           </CounterButton>
           <CounterButton
             variant="async"
-            onClick={() => postCount(count)}
+            onClick={() => postCount()}
             disabled={this.props.loading}
           >
             Post
@@ -87,7 +87,7 @@ export type Props = {
   incrementByAmount: (incrementValue: number) => void;
   incrementIfOdd: (incrementValue: number) => void;
   fetchCount: () => void;
-  postCount: (postValue: number) => void;
+  postCount: () => void;
 };
 
 export type State = {

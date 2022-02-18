@@ -16,7 +16,7 @@ describe('getRemoteArticle', () => {
   it('handle error response', async () => {
     process.env.REACT_APP_MOCK = 'error';
 
-    const expectedApiError: ApiError = {
+    const expectedApiError: ApiError<unknown> = {
       status: 500,
       data: {},
       errorMsg: 'Intentional API Error with mock',

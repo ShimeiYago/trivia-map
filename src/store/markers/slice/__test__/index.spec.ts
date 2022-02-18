@@ -3,7 +3,7 @@ import { Marker, MarkersState } from '../../model';
 
 const { fetchSuccess, requestFailure, requestStart } = markersSlice.actions;
 
-describe('counter reducer', () => {
+describe('markers reducer', () => {
   const initialState: MarkersState = {
     list: [],
     loading: false,

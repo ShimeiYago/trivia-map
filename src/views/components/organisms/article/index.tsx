@@ -1,39 +1,17 @@
-import React from 'react';
-import { Renderer, Props as RendererProps } from './renderer';
-import { getRemoteArticle } from 'api/articles-api';
+import { Props, Renderer } from './renderer';
+import { useAppSelector } from 'store';
+import {
+  selectReadingArticleContent,
+  selectReadingArticleLoadingState,
+  selectReadingArticleTitle,
+} from 'store/reading-article/selector';
 
-export class Article extends React.Component<Props, State> {
-  state: State = {
-    title: '',
-    content: '',
+export function Article() {
+  const props: Props = {
+    title: useAppSelector(selectReadingArticleTitle),
+    content: useAppSelector(selectReadingArticleContent),
+    loadingState: useAppSelector(selectReadingArticleLoadingState),
   };
 
-  async componentDidMount() {
-    if (this.props.postId === undefined) {
-      return;
-    }
-    const response = await getRemoteArticle(this.props.postId);
-    this.setState({
-      title: response.title,
-      content: response.content,
-    });
-  }
-
-  render() {
-    const rendererProps: RendererProps = {
-      title: this.state.title,
-      content: this.state.content,
-    };
-
-    return <Renderer {...rendererProps} />;
-  }
+  return <Renderer {...props} />;
 }
-
-type Props = {
-  postId?: string;
-};
-
-type State = {
-  title: string;
-  content: string;
-};

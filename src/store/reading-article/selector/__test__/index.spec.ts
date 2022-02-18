@@ -18,7 +18,7 @@ describe('readingArticle selector', () => {
     } as ReadingArticleState,
   };
 
-  it('selectReadingArticleId should return marker readingArticle id', () => {
+  it('selectReadingArticleId should return readingArticle id', () => {
     expect(selectReadingArticleId(rootState)).toEqual('post-id');
   });
 

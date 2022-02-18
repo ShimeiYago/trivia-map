@@ -19,3 +19,15 @@ exports[`Shallow Snapshot Tests basic 1`] = `
   </ForwardRef(Typography)>
 </Fragment>
 `;
+
+exports[`Shallow Snapshot Tests loading 1`] = `
+<ForwardRef(Typography)>
+  Loading...
+</ForwardRef(Typography)>
+`;
+
+exports[`Shallow Snapshot Tests with error 1`] = `
+<ForwardRef(Typography)>
+  Something Error!
+</ForwardRef(Typography)>
+`;

@@ -1,4 +1,4 @@
-import { BASE_URL } from '../base-url';
+import { BASE_URL } from '../constants';
 import { AxiosError, AxiosResponse } from 'axios';
 import { handleAxiosError } from '../utils/handle-axios-error';
 import { getAxiosInstance } from 'api/utils/get-axios-instance';
@@ -35,7 +35,7 @@ export async function postRemoteCount(
     return res.data;
   } catch (error) {
     const axiosError = error as AxiosError;
-    throw handleAxiosError(axiosError);
+    throw handleAxiosError<{ b: string }>(axiosError);
   }
 }
 

@@ -1,9 +1,9 @@
 import { AxiosError } from 'axios';
 
-export function handleAxiosError(axiosError: AxiosError): ApiError {
+export function handleAxiosError<Data>(axiosError: AxiosError): ApiError<Data> {
   if (axiosError.response) {
     // when API is active but response includes error
-    const error: ApiError = {
+    const error: ApiError<Data> = {
       status: axiosError.response.status,
       data: axiosError.response.data,
       errorMsg: axiosError.message,
@@ -11,17 +11,16 @@ export function handleAxiosError(axiosError: AxiosError): ApiError {
     return error;
   } else {
     // when API is not active
-    const error: ApiError = {
+    const error: ApiError<Data> = {
       status: 500,
-      data: {},
       errorMsg: axiosError.message,
     };
     return error;
   }
 }
 
-export type ApiError = {
+export type ApiError<Data> = {
   status: number;
-  data: unknown;
+  data?: Data;
   errorMsg: string;
 };

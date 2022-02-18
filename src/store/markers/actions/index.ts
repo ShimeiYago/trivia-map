@@ -1,5 +1,5 @@
 import { markersSlice } from './../slice/index';
-import { AppDispatch } from 'store';
+import { AppThunk } from 'store';
 import { getRemoteMarkers } from 'api/markers-api';
 import { ApiError } from 'api/utils/handle-axios-error';
 
@@ -8,14 +8,14 @@ export const { fetchSuccess, requestFailure, requestStart } =
   markersSlice.actions;
 
 // fetchMarkers action
-export const fetchMarkers = () => async (dispatch: AppDispatch) => {
+export const fetchMarkers = (): AppThunk => async (dispatch) => {
   dispatch(requestStart());
 
   try {
     const res = await getRemoteMarkers();
     dispatch(fetchSuccess(res));
   } catch (error) {
-    const apiError = error as ApiError;
+    const apiError = error as ApiError<unknown>;
     dispatch(requestFailure(apiError.errorMsg));
   }
 };

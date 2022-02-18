@@ -6,6 +6,7 @@ let wrapper: ShallowWrapper<Props, unknown, Renderer>;
 const basicProps: Props = {
   title: 'title',
   content: 'content',
+  loadingState: 'ready',
 };
 
 describe('Shallow Snapshot Tests', () => {
@@ -14,6 +15,16 @@ describe('Shallow Snapshot Tests', () => {
   });
 
   it('basic', () => {
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('loading', () => {
+    wrapper.setProps({ loadingState: 'loading' });
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('with error', () => {
+    wrapper.setProps({ loadingState: 'error' });
     expect(wrapper).toMatchSnapshot();
   });
 });

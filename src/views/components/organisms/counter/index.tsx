@@ -30,7 +30,7 @@ export function Counter() {
     incrementIfOdd: (incrementValue: number) =>
       dispatch(incrementIfOdd(incrementValue)),
     fetchCount: () => dispatch(fetchCount()),
-    postCount: (postValue: number) => dispatch(postCount(postValue)),
+    postCount: () => dispatch(postCount()),
   };
 
   return <Renderer {...props} />;

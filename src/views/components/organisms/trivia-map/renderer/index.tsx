@@ -48,7 +48,7 @@ export class Renderer extends React.Component<Props, State> {
           open={this.state.openArticleModal}
           onClose={this.handleCloseArticleModal}
         >
-          <Article postId={this.state.selectedPostId} />
+          <Article />
         </BoxModal>
       </>
     );
@@ -109,8 +109,8 @@ export class Renderer extends React.Component<Props, State> {
     return () => {
       this.setState({
         openArticleModal: true,
-        selectedPostId: postId,
       });
+      this.props.fetchArticle(postId);
     };
   };
 
@@ -126,10 +126,10 @@ export type Props = {
   loadingMarkers: boolean;
 
   fetchMarkers: () => void;
+  fetchArticle: (postId: string) => void;
 };
 
 export type State = {
   currentPosition?: LatLng;
   openArticleModal: boolean;
-  selectedPostId?: string;
 };

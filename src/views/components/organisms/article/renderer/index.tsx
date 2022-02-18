@@ -1,8 +1,20 @@
 import React from 'react';
 import { Typography } from '@mui/material';
+import { LoadingState } from 'types/loading-state';
 
 export class Renderer extends React.Component<Props> {
   render() {
+    if (
+      this.props.loadingState === 'waiting' ||
+      this.props.loadingState === 'loading'
+    ) {
+      return <Typography>Loading...</Typography>;
+    }
+
+    if (this.props.loadingState === 'error') {
+      return <Typography>Something Error!</Typography>;
+    }
+
     return (
       <>
         <Typography variant="h6" component="h2">
@@ -17,4 +29,5 @@ export class Renderer extends React.Component<Props> {
 export type Props = {
   title: string;
   content: string;
+  loadingState: LoadingState;
 };

@@ -3,6 +3,7 @@ import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import { counterReducer } from './counter/slice';
 import { markersReducer } from './markers/slice';
 import { readingArticleReducer } from './reading-article/slice';
+import { articleFormReducer } from './article-form/slice';
 
 // store
 export const store = configureStore({
@@ -10,6 +11,7 @@ export const store = configureStore({
     counter: counterReducer,
     markers: markersReducer,
     readingArticle: readingArticleReducer,
+    articleForm: articleFormReducer,
   },
 });
 

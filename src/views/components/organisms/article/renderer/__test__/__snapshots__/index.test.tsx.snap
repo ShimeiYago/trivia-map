@@ -26,6 +26,31 @@ exports[`Shallow Snapshot Tests loading 1`] = `
 </ForwardRef(Typography)>
 `;
 
+exports[`Shallow Snapshot Tests with edit button 1`] = `
+<Fragment>
+  <ForwardRef(Typography)
+    component="h2"
+    variant="h6"
+  >
+    title
+  </ForwardRef(Typography)>
+  <ForwardRef(Typography)
+    sx={
+      Object {
+        "mt": 2,
+      }
+    }
+  >
+    content
+  </ForwardRef(Typography)>
+  <ForwardRef(Button)
+    onClick={[MockFunction]}
+  >
+    編集
+  </ForwardRef(Button)>
+</Fragment>
+`;
+
 exports[`Shallow Snapshot Tests with error 1`] = `
 <ForwardRef(Typography)>
   Something Error!

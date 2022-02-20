@@ -17,7 +17,7 @@ export const readingArticleSlice = createSlice({
     },
 
     fetchSuccess(state, action: PayloadAction<GetArticleResponse>) {
-      state.loadingState = 'ready';
+      state.loadingState = 'success';
       state.title = action.payload.title;
       state.content = action.payload.content;
     },

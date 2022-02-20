@@ -7,7 +7,7 @@ import { getRemoteArticle } from 'api/articles-api';
 export const { fetchStart, fetchSuccess, fetchFailure } =
   readingArticleSlice.actions;
 
-// fetchMarkers action
+// fetchReadingArticle action
 export const fetchReadingArticle =
   (postId: string): AppThunk =>
   async (dispatch) => {

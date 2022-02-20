@@ -6,7 +6,8 @@ let wrapper: ShallowWrapper<Props, unknown, Renderer>;
 const basicProps: Props = {
   title: 'title',
   content: 'content',
-  loadingState: 'ready',
+  loadingState: 'success',
+  fetchArticle: jest.fn(),
 };
 
 describe('Shallow Snapshot Tests', () => {
@@ -25,6 +26,11 @@ describe('Shallow Snapshot Tests', () => {
 
   it('with error', () => {
     wrapper.setProps({ loadingState: 'error' });
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('with edit button', () => {
+    wrapper.setProps({ onClickEdit: jest.fn() });
     expect(wrapper).toMatchSnapshot();
   });
 });

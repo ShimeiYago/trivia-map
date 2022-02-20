@@ -12,7 +12,6 @@ const basicProps: Props = {
   ],
   loadingMarkers: false,
   fetchMarkers: jest.fn(),
-  fetchArticle: jest.fn(),
 };
 
 let shallowWrapper: ShallowWrapper<Props, State, Renderer>;
@@ -28,6 +27,11 @@ describe('Shallow Snapshot Tests', () => {
 
   it('when currentPosition state is setted', () => {
     shallowWrapper.setState({ currentPosition: new LatLng(1, 1) });
+    expect(shallowWrapper).toMatchSnapshot();
+  });
+
+  it('with onClickPostTitle props', () => {
+    shallowWrapper.setProps({ onClickPostTitle: jest.fn() });
     expect(shallowWrapper).toMatchSnapshot();
   });
 });
@@ -55,29 +59,5 @@ describe('handleMapClick', () => {
     expect(instance.state.currentPosition).toBe(undefined);
     instance['handleMapClick'](mouseClickEvent);
     expect(instance.state.currentPosition).toEqual(new LatLng(0, 0));
-  });
-});
-
-describe('handleClickPostTitle', () => {
-  it('should set openArticleModal and selectedPostId states', () => {
-    shallowWrapper = shallow(<Renderer {...basicProps} />);
-    const instance = shallowWrapper.instance();
-
-    expect(instance.state.openArticleModal).toBe(false);
-    instance['handleClickPostTitle']('postId-000')();
-    expect(instance.state.openArticleModal).toBe(true);
-  });
-});
-
-describe('handleCloseArticleModal', () => {
-  it('should close atricle modal', () => {
-    shallowWrapper = shallow(<Renderer {...basicProps} />);
-    const instance = shallowWrapper.instance();
-
-    instance.setState({
-      openArticleModal: true,
-    });
-    instance['handleCloseArticleModal']();
-    expect(instance.state.openArticleModal).toBe(false);
   });
 });

@@ -1,1 +1,1 @@
-export type LoadingState = 'waiting' | 'loading' | 'ready' | 'error';
+export type LoadingState = 'waiting' | 'loading' | 'success' | 'error';

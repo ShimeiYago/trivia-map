@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shallow Snapshot Tests basic 1`] = `
+<ForwardRef(Container)
+  maxWidth="sm"
+  sx={
+    Object {
+      "pt": 5,
+    }
+  }
+>
+  <ForwardRef(Stack)
+    spacing={3}
+  >
+    <ForwardRef(Typography)
+      align="center"
+      component="h2"
+      variant="h4"
+    >
+      新しいトリビアを追加
+    </ForwardRef(Typography)>
+    <ForwardRef(TextField)
+      disabled={false}
+      error={false}
+      label="タイトル"
+      onChange={[Function]}
+      value=""
+      variant="standard"
+    />
+    <ForwardRef(TextField)
+      disabled={false}
+      error={false}
+      label="説明文"
+      multiline={true}
+      onChange={[Function]}
+      rows={4}
+      value=""
+    />
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "border": 1,
+          "borderColor": "grey.500",
+          "borderRadius": 3,
+          "padding": 2,
+        }
+      }
+    >
+      {"lat":0,"lng":0}
+    </ForwardRef(Box)>
+    <ForwardRef(LoadingButton)
+      disabled={false}
+      loading={false}
+      onClick={[Function]}
+      variant="outlined"
+    >
+      保存して公開
+    </ForwardRef(LoadingButton)>
+  </ForwardRef(Stack)>
+</ForwardRef(Container)>
+`;

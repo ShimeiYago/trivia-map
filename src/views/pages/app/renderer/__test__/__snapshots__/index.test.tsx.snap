@@ -1,3 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Shallow Snapshot Tests basic 1`] = `<TriviaMap />`;
+exports[`Shallow Snapshot Tests basic 1`] = `
+<Fragment>
+  <TriviaMap
+    onClickPostTitle={[Function]}
+  />
+  <BoxModal
+    onClose={[Function]}
+    open={false}
+  />
+  <BoxModal
+    onClose={[Function]}
+    open={false}
+  >
+    <ArticleForm />
+  </BoxModal>
+  <FloatingButton
+    color="primary"
+    disabled={false}
+    icon="add"
+    onClick={[Function]}
+  />
+</Fragment>
+`;

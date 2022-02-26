@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shallow Snapshot Tests basic 1`] = `
+<ForwardRef(Fab)
+  color="primary"
+  disabled={false}
+  sx={
+    Object {
+      "bottom": 20,
+      "left": "auto",
+      "margin": 0,
+      "position": "fixed",
+      "right": 20,
+      "top": "auto",
+      "zIndex": 1000,
+    }
+  }
+>
+  <Memo(ForwardRef(AddIcon)) />
+</ForwardRef(Fab)>
+`;
+
+exports[`Shallow Snapshot Tests edit icon 1`] = `
+<ForwardRef(Fab)
+  color="primary"
+  disabled={false}
+  sx={
+    Object {
+      "bottom": 20,
+      "left": "auto",
+      "margin": 0,
+      "position": "fixed",
+      "right": 20,
+      "top": "auto",
+      "zIndex": 1000,
+    }
+  }
+>
+  <Memo(ForwardRef(EditIcon)) />
+</ForwardRef(Fab)>
+`;

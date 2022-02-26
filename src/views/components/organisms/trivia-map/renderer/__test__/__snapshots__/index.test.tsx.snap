@@ -1,137 +1,165 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Shallow Snapshot Tests basic 1`] = `
-<Fragment>
-  <MapContainer
-    center={
+<MapContainer
+  center={
+    Object {
+      "lat": 0,
+      "lng": 0,
+    }
+  }
+  maxBounds={
+    Array [
+      Array [
+        300,
+        -300,
+      ],
+      Array [
+        -300,
+        300,
+      ],
+    ]
+  }
+  maxZoom={4}
+  minZoom={1}
+  whenCreated={[Function]}
+  zoom={1}
+>
+  <ForwardRef(LeafComponent)
+    attribution="<a href='https://www.tokyodisneyresort.jp/tds/map.html' target='_blank'>【公式】マップ | 東京ディズニーシー</a>"
+    noWrap={true}
+    url="/tds-map-tiles/{z}/{x}/{y}.png"
+  />
+  <MapMarker
+    key="000"
+    popup={
+      <ForwardRef(Typography)>
+        title
+      </ForwardRef(Typography)>
+    }
+    position={
       Object {
         "lat": 0,
         "lng": 0,
       }
     }
-    maxBounds={
-      Array [
-        Array [
-          300,
-          -300,
-        ],
-        Array [
-          -300,
-          300,
-        ],
-      ]
-    }
-    maxZoom={4}
-    minZoom={1}
-    whenCreated={[Function]}
-    zoom={1}
-  >
-    <ForwardRef(LeafComponent)
-      attribution="<a href='https://www.tokyodisneyresort.jp/tds/map.html' target='_blank'>【公式】マップ | 東京ディズニーシー</a>"
-      noWrap={true}
-      url="/tds-map-tiles/{z}/{x}/{y}.png"
-    />
-    <MapMarker
-      key="000"
-      popup={
-        <ForwardRef(Button)
-          onClick={[Function]}
-          variant="text"
-        >
-          title
-        </ForwardRef(Button)>
-      }
-      position={
-        Object {
-          "lat": 0,
-          "lng": 0,
-        }
-      }
-      type="default"
-    />
-  </MapContainer>
-  <BoxModal
-    onClose={[Function]}
-    open={false}
-  >
-    <Article />
-  </BoxModal>
-</Fragment>
+    type="default"
+  />
+</MapContainer>
 `;
 
 exports[`Shallow Snapshot Tests when currentPosition state is setted 1`] = `
-<Fragment>
-  <MapContainer
-    center={
+<MapContainer
+  center={
+    Object {
+      "lat": 0,
+      "lng": 0,
+    }
+  }
+  maxBounds={
+    Array [
+      Array [
+        300,
+        -300,
+      ],
+      Array [
+        -300,
+        300,
+      ],
+    ]
+  }
+  maxZoom={4}
+  minZoom={1}
+  whenCreated={[Function]}
+  zoom={1}
+>
+  <ForwardRef(LeafComponent)
+    attribution="<a href='https://www.tokyodisneyresort.jp/tds/map.html' target='_blank'>【公式】マップ | 東京ディズニーシー</a>"
+    noWrap={true}
+    url="/tds-map-tiles/{z}/{x}/{y}.png"
+  />
+  <MapMarker
+    key="000"
+    popup={
+      <ForwardRef(Typography)>
+        title
+      </ForwardRef(Typography)>
+    }
+    position={
       Object {
         "lat": 0,
         "lng": 0,
       }
     }
-    maxBounds={
-      Array [
-        Array [
-          300,
-          -300,
-        ],
-        Array [
-          -300,
-          300,
-        ],
-      ]
+    type="default"
+  />
+  <MapMarker
+    popup={
+      <React.Fragment>
+        lat: 
+        1
+        <br />
+        lng: 
+        1
+      </React.Fragment>
     }
-    maxZoom={4}
-    minZoom={1}
-    whenCreated={[Function]}
-    zoom={1}
-  >
-    <ForwardRef(LeafComponent)
-      attribution="<a href='https://www.tokyodisneyresort.jp/tds/map.html' target='_blank'>【公式】マップ | 東京ディズニーシー</a>"
-      noWrap={true}
-      url="/tds-map-tiles/{z}/{x}/{y}.png"
-    />
-    <MapMarker
-      key="000"
-      popup={
-        <ForwardRef(Button)
-          onClick={[Function]}
-          variant="text"
-        >
-          title
-        </ForwardRef(Button)>
+    position={
+      Object {
+        "lat": 1,
+        "lng": 1,
       }
-      position={
-        Object {
-          "lat": 0,
-          "lng": 0,
-        }
+    }
+    type="red"
+  />
+</MapContainer>
+`;
+
+exports[`Shallow Snapshot Tests with onClickPostTitle props 1`] = `
+<MapContainer
+  center={
+    Object {
+      "lat": 0,
+      "lng": 0,
+    }
+  }
+  maxBounds={
+    Array [
+      Array [
+        300,
+        -300,
+      ],
+      Array [
+        -300,
+        300,
+      ],
+    ]
+  }
+  maxZoom={4}
+  minZoom={1}
+  whenCreated={[Function]}
+  zoom={1}
+>
+  <ForwardRef(LeafComponent)
+    attribution="<a href='https://www.tokyodisneyresort.jp/tds/map.html' target='_blank'>【公式】マップ | 東京ディズニーシー</a>"
+    noWrap={true}
+    url="/tds-map-tiles/{z}/{x}/{y}.png"
+  />
+  <MapMarker
+    key="000"
+    popup={
+      <ForwardRef(Button)
+        variant="text"
+      >
+        title
+      </ForwardRef(Button)>
+    }
+    position={
+      Object {
+        "lat": 0,
+        "lng": 0,
       }
-      type="default"
-    />
-    <MapMarker
-      popup={
-        <React.Fragment>
-          lat: 
-          1
-          <br />
-          lng: 
-          1
-        </React.Fragment>
-      }
-      position={
-        Object {
-          "lat": 1,
-          "lng": 1,
-        }
-      }
-      type="red"
-    />
-  </MapContainer>
-  <BoxModal
-    onClose={[Function]}
-    open={false}
-  >
-    <Article />
-  </BoxModal>
-</Fragment>
+    }
+    type="default"
+  />
+</MapContainer>
 `;

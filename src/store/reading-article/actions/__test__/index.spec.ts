@@ -1,9 +1,9 @@
 import { fetchReadingArticle } from '..';
-import * as MarkersApiModule from 'api/articles-api';
+import * as ArticleApiModule from 'api/articles-api';
 import { GetArticleResponse } from 'api/articles-api';
 
 const dispatch = jest.fn();
-let getRemoteMarkersSpy: jest.SpyInstance;
+let getRemoteArticleSpy: jest.SpyInstance;
 
 const mockResponse: GetArticleResponse = {
   title: 'title',
@@ -13,11 +13,11 @@ const mockResponse: GetArticleResponse = {
 describe('fetchReadingArticle', () => {
   beforeEach(async () => {
     jest.resetAllMocks();
-    getRemoteMarkersSpy = jest.spyOn(MarkersApiModule, 'getRemoteArticle');
+    getRemoteArticleSpy = jest.spyOn(ArticleApiModule, 'getRemoteArticle');
   });
 
   it('call fetchStart at first', async () => {
-    getRemoteMarkersSpy.mockResolvedValue(mockResponse);
+    getRemoteArticleSpy.mockResolvedValue(mockResponse);
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const appThunk = fetchReadingArticle('postId-000') as any;
@@ -27,7 +27,7 @@ describe('fetchReadingArticle', () => {
   });
 
   it('call fetchSuccess if API successed', async () => {
-    getRemoteMarkersSpy.mockResolvedValue(mockResponse);
+    getRemoteArticleSpy.mockResolvedValue(mockResponse);
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const appThunk = fetchReadingArticle('postId-000') as any;
@@ -37,7 +37,7 @@ describe('fetchReadingArticle', () => {
   });
 
   it('call fetchFailure if API failed', async () => {
-    getRemoteMarkersSpy.mockRejectedValue(new Error());
+    getRemoteArticleSpy.mockRejectedValue(new Error());
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const appThunk = fetchReadingArticle('postId-000') as any;

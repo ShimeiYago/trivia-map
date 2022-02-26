@@ -40,7 +40,7 @@ describe('readingArticle reducer', () => {
       content: 'content',
     };
     const actual = readingArticleReducer(loadingState, fetchSuccess(article));
-    expect(actual.loadingState).toEqual('ready');
+    expect(actual.loadingState).toEqual('success');
     expect(actual.title).toEqual('title');
     expect(actual.content).toEqual('content');
   });

@@ -5,16 +5,13 @@ import { LatLng, LeafletMouseEvent, Map as LeafletMap } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import './index.css';
 import { Marker } from 'store/markers/model';
-import { Button } from '@mui/material';
-import { BoxModal } from 'views/components/moleculars/box-modal';
-import { Article } from 'views/components/organisms/article';
+import { Button, Typography } from '@mui/material';
+
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.handleMapCreated = this.handleMapCreated.bind(this);
-    this.state = {
-      openArticleModal: false,
-    };
+    this.state = { currentPosition: undefined };
   }
 
   componentDidMount() {
@@ -23,34 +20,25 @@ export class Renderer extends React.Component<Props, State> {
 
   render() {
     return (
-      <>
-        <MapContainer
-          center={new LatLng(0, 0)}
-          zoom={1}
-          minZoom={1}
-          maxZoom={4}
-          maxBounds={[
-            [300, -300],
-            [-300, 300],
-          ]}
-          whenCreated={this.handleMapCreated}
-        >
-          <TileLayer
-            attribution="<a href='https://www.tokyodisneyresort.jp/tds/map.html' target='_blank'>【公式】マップ | 東京ディズニーシー</a>"
-            url="/tds-map-tiles/{z}/{x}/{y}.png"
-            noWrap
-          />
-          {this.renderPostMarkers()}
-          {this.renderCurrentPositionMarker()}
-        </MapContainer>
-
-        <BoxModal
-          open={this.state.openArticleModal}
-          onClose={this.handleCloseArticleModal}
-        >
-          <Article />
-        </BoxModal>
-      </>
+      <MapContainer
+        center={new LatLng(0, 0)}
+        zoom={1}
+        minZoom={1}
+        maxZoom={4}
+        maxBounds={[
+          [300, -300],
+          [-300, 300],
+        ]}
+        whenCreated={this.handleMapCreated}
+      >
+        <TileLayer
+          attribution="<a href='https://www.tokyodisneyresort.jp/tds/map.html' target='_blank'>【公式】マップ | 東京ディズニーシー</a>"
+          url="/tds-map-tiles/{z}/{x}/{y}.png"
+          noWrap
+        />
+        {this.renderPostMarkers()}
+        {this.renderCurrentPositionMarker()}
+      </MapContainer>
     );
   }
 
@@ -84,16 +72,16 @@ export class Renderer extends React.Component<Props, State> {
 
   protected renderPostMarkers() {
     return this.props.markerList.map((marker) => {
-      const popup = (
+      const popup = this.props.onClickPostTitle ? (
         <Button
           variant="text"
-          onClick={this.handleClickPostTitle(marker.postId)}
+          onClick={this.props.onClickPostTitle(marker.postId)}
         >
           {marker.title}
         </Button>
+      ) : (
+        <Typography>{marker.title}</Typography>
       );
-
-      new LatLng(marker.position.lat, marker.position.lng);
 
       return (
         <MapMarker
@@ -104,21 +92,6 @@ export class Renderer extends React.Component<Props, State> {
       );
     });
   }
-
-  protected handleClickPostTitle = (postId: string) => {
-    return () => {
-      this.setState({
-        openArticleModal: true,
-      });
-      this.props.fetchArticle(postId);
-    };
-  };
-
-  protected handleCloseArticleModal = () => {
-    this.setState({
-      openArticleModal: false,
-    });
-  };
 }
 
 export type Props = {
@@ -126,10 +99,9 @@ export type Props = {
   loadingMarkers: boolean;
 
   fetchMarkers: () => void;
-  fetchArticle: (postId: string) => void;
+  onClickPostTitle?: (postId: string) => () => void;
 };
 
 export type State = {
   currentPosition?: LatLng;
-  openArticleModal: boolean;
 };

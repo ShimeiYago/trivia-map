@@ -6,6 +6,7 @@ import axios, {
   AxiosRequestConfig,
   AxiosResponse,
 } from 'axios';
+import { sleep } from 'utils/sleep';
 
 /**
  * This returns the AxiosInstance for API request.
@@ -63,8 +64,4 @@ function getMockAdapter(
       }
     });
   };
-}
-
-async function sleep(time: number) {
-  await new Promise((resolve) => setTimeout(resolve, time));
 }

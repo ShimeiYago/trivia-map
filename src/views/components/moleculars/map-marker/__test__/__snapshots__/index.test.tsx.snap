@@ -2,6 +2,13 @@
 
 exports[`Shallow Snapshot Tests basic 1`] = `
 <ForwardRef(ContainerComponent)
+  draggable={false}
+  eventHandlers={
+    Object {
+      "dragend": [Function],
+      "dragstart": [Function],
+    }
+  }
   icon={
     NewClass {
       "_initHooksCalled": true,
@@ -20,6 +27,10 @@ exports[`Shallow Snapshot Tests basic 1`] = `
           -36,
         ],
         "shadowUrl": "marker-shadow.png",
+        "tooltipAnchor": Array [
+          0,
+          -36,
+        ],
       },
     }
   }
@@ -34,6 +45,13 @@ exports[`Shallow Snapshot Tests basic 1`] = `
 
 exports[`Shallow Snapshot Tests variant red 1`] = `
 <ForwardRef(ContainerComponent)
+  draggable={false}
+  eventHandlers={
+    Object {
+      "dragend": [Function],
+      "dragstart": [Function],
+    }
+  }
   icon={
     NewClass {
       "_initHooksCalled": true,
@@ -52,6 +70,10 @@ exports[`Shallow Snapshot Tests variant red 1`] = `
           -36,
         ],
         "shadowUrl": "marker-shadow.png",
+        "tooltipAnchor": Array [
+          0,
+          -36,
+        ],
       },
     }
   }
@@ -66,6 +88,13 @@ exports[`Shallow Snapshot Tests variant red 1`] = `
 
 exports[`Shallow Snapshot Tests with popup 1`] = `
 <ForwardRef(ContainerComponent)
+  draggable={false}
+  eventHandlers={
+    Object {
+      "dragend": [Function],
+      "dragstart": [Function],
+    }
+  }
   icon={
     NewClass {
       "_initHooksCalled": true,
@@ -84,6 +113,10 @@ exports[`Shallow Snapshot Tests with popup 1`] = `
           -36,
         ],
         "shadowUrl": "marker-shadow.png",
+        "tooltipAnchor": Array [
+          0,
+          -36,
+        ],
       },
     }
   }
@@ -102,6 +135,13 @@ exports[`Shallow Snapshot Tests with popup 1`] = `
 
 exports[`Shallow Snapshot Tests with tooltip 1`] = `
 <ForwardRef(ContainerComponent)
+  draggable={false}
+  eventHandlers={
+    Object {
+      "dragend": [Function],
+      "dragstart": [Function],
+    }
+  }
   icon={
     NewClass {
       "_initHooksCalled": true,
@@ -120,6 +160,10 @@ exports[`Shallow Snapshot Tests with tooltip 1`] = `
           -36,
         ],
         "shadowUrl": "marker-shadow.png",
+        "tooltipAnchor": Array [
+          0,
+          -36,
+        ],
       },
     }
   }

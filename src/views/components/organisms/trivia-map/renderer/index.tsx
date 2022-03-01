@@ -1,17 +1,27 @@
 import React from 'react';
 import { MapContainer, TileLayer } from 'react-leaflet';
-import { MapMarker } from 'views/components/atoms/map-marker';
+import { MapMarker } from 'views/components/moleculars/map-marker';
 import { LatLng, LeafletMouseEvent, Map as LeafletMap } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import './index.css';
 import { Marker } from 'store/markers/model';
-import { Button, Typography } from '@mui/material';
+import { Box, Button, Grid, Typography } from '@mui/material';
+import { Position } from 'types/position';
+import { sleep } from 'utils/sleep';
 
 export class Renderer extends React.Component<Props, State> {
+  readonly defaultProps = {
+    newMarkerMode: false,
+  };
+
   constructor(props: Props) {
     super(props);
     this.handleMapCreated = this.handleMapCreated.bind(this);
-    this.state = { currentPosition: undefined };
+    this.state = {
+      currentPosition: undefined,
+      isMarkerClickable: props.newMarkerMode,
+      showNewMarkerTooltip: true,
+    };
   }
 
   componentDidMount() {
@@ -47,28 +57,15 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   protected handleMapClick = (e: LeafletMouseEvent) => {
-    this.setState({
-      currentPosition: e.latlng,
-    });
-  };
-
-  protected renderCurrentPositionMarker() {
-    const { currentPosition } = this.state;
-
-    if (currentPosition === undefined) {
-      return null;
+    if (!this.state.isMarkerClickable) {
+      return;
     }
 
-    const popup = (
-      <>
-        lat: {currentPosition.lat}
-        <br />
-        lng: {currentPosition.lng}
-      </>
-    );
-
-    return <MapMarker position={currentPosition} popup={popup} variant="red" />;
-  }
+    this.setState({
+      currentPosition: e.latlng,
+      isMarkerClickable: false,
+    });
+  };
 
   protected renderPostMarkers() {
     return this.props.markerList.map((marker) => {
@@ -86,22 +83,112 @@ export class Renderer extends React.Component<Props, State> {
       return (
         <MapMarker
           position={new LatLng(marker.position.lat, marker.position.lng)}
-          popup={popup}
+          popup={!this.props.newMarkerMode && popup}
           key={marker.postId}
         />
       );
     });
   }
+
+  protected renderCurrentPositionMarker() {
+    const { currentPosition, showNewMarkerTooltip } = this.state;
+
+    if (currentPosition === undefined) {
+      return null;
+    }
+
+    const tooltip = (
+      <Box sx={{ p: 1 }}>
+        <Typography
+          align="center"
+          variant="h6"
+          component="p"
+          sx={{ fontWeight: 'bold' }}
+        >
+          この位置でよろしいですか？
+        </Typography>
+        <Typography variant="subtitle2" component="p">
+          ※このマーカーは掴んで移動することができます。
+        </Typography>
+        <Typography variant="subtitle2" component="p">
+          ※あとで変更することができます。
+        </Typography>
+
+        <Grid
+          container
+          spacing={2}
+          justifyContent="center"
+          sx={{ textAlign: 'center' }}
+        >
+          <Grid item xs={6}>
+            <Button onClick={this.handleClickCancelNewMarker}>
+              キャンセル
+            </Button>
+          </Grid>
+          <Grid item xs={6}>
+            <Button onClick={this.handleClickConfirmNewMarker}>確定</Button>
+          </Grid>
+        </Grid>
+      </Box>
+    );
+
+    return (
+      <MapMarker
+        position={new LatLng(currentPosition.lat, currentPosition.lng)}
+        permanentTooltip={showNewMarkerTooltip && tooltip}
+        variant="red"
+        dragable
+        onDragStart={this.handleDragStartNewMarker}
+        onDragEnd={this.handleDragEndNewMarker}
+      />
+    );
+  }
+
+  protected handleClickCancelNewMarker = async () => {
+    this.setState({
+      currentPosition: undefined,
+    });
+    await sleep(100);
+    this.setState({
+      isMarkerClickable: true,
+    });
+  };
+
+  protected handleClickConfirmNewMarker = () => {
+    if (!this.state.currentPosition) {
+      return;
+    }
+    this.props.onConfirmNewPosition(this.state.currentPosition);
+    this.handleClickCancelNewMarker();
+  };
+
+  protected handleDragStartNewMarker = () => {
+    this.setState({
+      showNewMarkerTooltip: false,
+    });
+  };
+
+  protected handleDragEndNewMarker = (position: LatLng) => {
+    this.setState({
+      currentPosition: position,
+      showNewMarkerTooltip: true,
+    });
+  };
 }
 
 export type Props = {
   markerList: Marker[];
   loadingMarkers: boolean;
+  newMarkerMode: boolean;
 
   fetchMarkers: () => void;
   onClickPostTitle?: (postId: string) => () => void;
+  onSelectNewPosition?: (position: Position) => void;
+  onConfirmNewPosition: (position: Position) => void;
 };
 
 export type State = {
-  currentPosition?: LatLng;
+  currentPosition?: Position;
+  isMarkerClickable: boolean;
+  showNewMarkerTooltip: boolean;
 };

@@ -12,6 +12,8 @@ const basicProps: Props = {
   ],
   loadingMarkers: false,
   fetchMarkers: jest.fn(),
+  newMarkerMode: false,
+  onConfirmNewPosition: jest.fn(),
 };
 
 let shallowWrapper: ShallowWrapper<Props, State, Renderer>;
@@ -48,16 +50,94 @@ describe('handleMapCreated', () => {
 });
 
 describe('handleMapClick', () => {
-  it('should change currentPosition state', () => {
+  beforeEach(() => {
     shallowWrapper = shallow(<Renderer {...basicProps} />);
+  });
+
+  it('should change currentPosition state', () => {
+    shallowWrapper.setState({ isMarkerClickable: true });
+
     const instance = shallowWrapper.instance();
 
     const mouseClickEvent = {
-      latlng: { lat: 0, lng: 0 },
+      latlng: { lat: 1, lng: 1 },
     } as LeafletMouseEvent;
 
     expect(instance.state.currentPosition).toBe(undefined);
     instance['handleMapClick'](mouseClickEvent);
-    expect(instance.state.currentPosition).toEqual(new LatLng(0, 0));
+    expect(instance.state.currentPosition).toEqual({ lat: 1, lng: 1 });
+  });
+
+  it('should not change currentPosition state if isMarkerClickable state is false', () => {
+    shallowWrapper.setState({ isMarkerClickable: false });
+
+    const instance = shallowWrapper.instance();
+
+    const mouseClickEvent = {
+      latlng: { lat: 1, lng: 1 },
+    } as LeafletMouseEvent;
+
+    expect(instance.state.currentPosition).toBe(undefined);
+    instance['handleMapClick'](mouseClickEvent);
+    expect(instance.state.currentPosition).toEqual(undefined);
+  });
+});
+
+describe('handleClickCancelNewMarker', () => {
+  it('should change target states', async () => {
+    shallowWrapper = shallow(<Renderer {...basicProps} />);
+    shallowWrapper.setState({
+      currentPosition: { lat: 0, lng: 0 },
+      isMarkerClickable: false,
+    });
+    const instance = shallowWrapper.instance();
+
+    await instance['handleClickCancelNewMarker']();
+    expect(instance.state.currentPosition).toEqual(undefined);
+    expect(instance.state.isMarkerClickable).toEqual(true);
+  });
+});
+
+describe('handleClickConfirmNewMarker', () => {
+  beforeEach(() => {
+    shallowWrapper = shallow(<Renderer {...basicProps} />);
+  });
+
+  it('should call onConfirmNewPosition prop', () => {
+    shallowWrapper.setState({ currentPosition: { lat: 0, lng: 0 } });
+    const instance = shallowWrapper.instance();
+
+    instance['handleClickConfirmNewMarker']();
+    expect(instance.props.onConfirmNewPosition).toHaveBeenCalled();
+  });
+
+  it('should not call onConfirmNewPosition prop if currentPosition state is not setted', () => {
+    shallowWrapper.setState({ currentPosition: undefined });
+    const instance = shallowWrapper.instance();
+
+    instance['handleClickConfirmNewMarker']();
+    expect(instance.props.onConfirmNewPosition).not.toHaveBeenCalled();
+  });
+});
+
+describe('handleDragStartNewMarker', () => {
+  it('should change currentPosition', () => {
+    shallowWrapper = shallow(<Renderer {...basicProps} />);
+    const instance = shallowWrapper.instance();
+
+    instance['handleDragStartNewMarker']();
+    expect(instance.state.showNewMarkerTooltip).toEqual(false);
+  });
+});
+
+describe('handleDragEndNewMarker', () => {
+  it('should change currentPosition', () => {
+    shallowWrapper = shallow(<Renderer {...basicProps} />);
+    const instance = shallowWrapper.instance();
+
+    const newPosition = new LatLng(1, 1);
+
+    instance['handleDragEndNewMarker'](newPosition);
+    expect(instance.state.currentPosition).toEqual({ lat: 1, lng: 1 });
   });
 });

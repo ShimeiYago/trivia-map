@@ -32,7 +32,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
 />
 `;
 
-exports[`Shallow Snapshot Tests type red 1`] = `
+exports[`Shallow Snapshot Tests variant red 1`] = `
 <ForwardRef(ContainerComponent)
   icon={
     NewClass {
@@ -96,6 +96,46 @@ exports[`Shallow Snapshot Tests with popup 1`] = `
 >
   <ForwardRef(OverlayComponent)>
     popup-text
+  </ForwardRef(OverlayComponent)>
+</ForwardRef(ContainerComponent)>
+`;
+
+exports[`Shallow Snapshot Tests with tooltip 1`] = `
+<ForwardRef(ContainerComponent)
+  icon={
+    NewClass {
+      "_initHooksCalled": true,
+      "options": Object {
+        "iconAnchor": Array [
+          12.5,
+          41,
+        ],
+        "iconSize": Array [
+          25,
+          41,
+        ],
+        "iconUrl": "default.png",
+        "popupAnchor": Array [
+          0,
+          -36,
+        ],
+        "shadowUrl": "marker-shadow.png",
+      },
+    }
+  }
+  position={
+    Object {
+      "lat": 0,
+      "lng": 0,
+    }
+  }
+>
+  <ForwardRef(OverlayComponent)
+    direction="top"
+    interactive={true}
+    permanent={true}
+  >
+    tooltip-text
   </ForwardRef(OverlayComponent)>
 </ForwardRef(ContainerComponent)>
 `;

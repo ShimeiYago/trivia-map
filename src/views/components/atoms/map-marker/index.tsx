@@ -1,17 +1,17 @@
 import React, { ReactNode } from 'react';
-import { Marker, Popup } from 'react-leaflet';
+import { Marker, Popup, Tooltip } from 'react-leaflet';
 import { LatLng } from 'leaflet';
 import { defaultIcon, redIcon } from './icons';
 
 export class MapMarker extends React.Component<Props> {
   static defaultProps = {
-    type: 'default',
+    variant: 'default',
   };
 
   render() {
     let icon;
-    switch (this.props.type) {
-      case 'default':
+    switch (this.props.variant) {
+      case 'blue':
         icon = defaultIcon;
         break;
       case 'red':
@@ -21,8 +21,15 @@ export class MapMarker extends React.Component<Props> {
 
     const popup = this.props.popup ? <Popup>{this.props.popup}</Popup> : null;
 
+    const tooltip = this.props.permanentTooltip ? (
+      <Tooltip permanent interactive direction="top">
+        {this.props.permanentTooltip}
+      </Tooltip>
+    ) : null;
+
     return (
       <Marker position={this.props.position} icon={icon}>
+        {tooltip}
         {popup}
       </Marker>
     );
@@ -31,6 +38,7 @@ export class MapMarker extends React.Component<Props> {
 
 export type Props = {
   position: LatLng;
-  type: 'default' | 'red';
+  variant: 'blue' | 'red';
   popup?: ReactNode;
+  permanentTooltip?: ReactNode;
 };

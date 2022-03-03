@@ -43,7 +43,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
         "lng": 0,
       }
     }
-    type="default"
+    variant="default"
   />
 </MapContainer>
 `;
@@ -91,7 +91,7 @@ exports[`Shallow Snapshot Tests when currentPosition state is setted 1`] = `
         "lng": 0,
       }
     }
-    type="default"
+    variant="default"
   />
   <MapMarker
     popup={
@@ -109,7 +109,7 @@ exports[`Shallow Snapshot Tests when currentPosition state is setted 1`] = `
         "lng": 1,
       }
     }
-    type="red"
+    variant="red"
   />
 </MapContainer>
 `;
@@ -159,7 +159,7 @@ exports[`Shallow Snapshot Tests with onClickPostTitle props 1`] = `
         "lng": 0,
       }
     }
-    type="default"
+    variant="default"
   />
 </MapContainer>
 `;

@@ -7,7 +7,7 @@ let wrapper: ShallowWrapper<Props, unknown, MapMarker>;
 
 const basicProps: Props = {
   position: new LatLng(0, 0),
-  type: 'default',
+  variant: 'blue',
 };
 
 describe('Shallow Snapshot Tests', () => {
@@ -26,9 +26,16 @@ describe('Shallow Snapshot Tests', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('type red', () => {
+  it('with tooltip', () => {
     wrapper.setProps({
-      type: 'red',
+      permanentTooltip: 'tooltip-text',
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('variant red', () => {
+    wrapper.setProps({
+      variant: 'red',
     });
     expect(wrapper).toMatchSnapshot();
   });

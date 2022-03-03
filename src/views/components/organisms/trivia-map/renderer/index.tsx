@@ -67,7 +67,7 @@ export class Renderer extends React.Component<Props, State> {
       </>
     );
 
-    return <MapMarker position={currentPosition} popup={popup} type="red" />;
+    return <MapMarker position={currentPosition} popup={popup} variant="red" />;
   }
 
   protected renderPostMarkers() {

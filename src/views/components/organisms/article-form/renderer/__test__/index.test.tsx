@@ -9,6 +9,7 @@ const basicProps: Props = {
   position: { lat: 0, lng: 0 },
   submittingState: 'waiting',
   fetchingState: 'waiting',
+  resume: false,
 
   updateTitle: jest.fn(),
   updateContent: jest.fn(),
@@ -26,6 +27,17 @@ describe('Shallow Snapshot Tests', () => {
 
   it('basic', () => {
     expect(wrapper).toMatchSnapshot();
+  });
+});
+
+describe('componentWillMount', () => {
+  it('should not call initialize prop with resume mode', () => {
+    wrapper = shallow(<Renderer {...basicProps} />);
+    wrapper.setProps({ resume: true });
+    const instance = wrapper.instance();
+    instance.componentWillMount();
+
+    expect(basicProps.initialize).toBeCalled();
   });
 });
 

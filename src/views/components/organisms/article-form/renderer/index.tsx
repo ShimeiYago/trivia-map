@@ -7,13 +7,14 @@ import { LoadingButton } from '@mui/lab';
 import { positionBoxStyle } from './styles';
 
 export class Renderer extends React.Component<Props> {
-  constructor(props: Props) {
-    super(props);
-    this.props.initialize();
+  componentWillMount() {
+    if (!this.props.resume) {
+      this.props.initialize();
+    }
   }
 
   componentDidMount() {
-    if (this.props.postId) {
+    if (this.props.postId && !this.props.resume) {
       this.props.fetchArticle(this.props.postId);
     }
 
@@ -105,6 +106,7 @@ export type Props = {
   submittingState: LoadingState;
   fetchingState: LoadingState;
   formError?: FormError;
+  resume: boolean;
 
   updateTitle: (title: string) => void;
   updateContent: (content: string) => void;

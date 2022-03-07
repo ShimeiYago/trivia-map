@@ -24,6 +24,7 @@ export function ArticleForm(ownProps: OwnProps) {
 
   const props: Props = {
     postId: ownProps.postId,
+    resume: !!ownProps.resume,
     title: useAppSelector(selectArticleFormTitle),
     content: useAppSelector(selectArticleFormContent),
     position: useAppSelector(selectArticleFormPosition),
@@ -45,4 +46,5 @@ export function ArticleForm(ownProps: OwnProps) {
 
 type OwnProps = {
   postId?: string;
+  resume?: boolean;
 };

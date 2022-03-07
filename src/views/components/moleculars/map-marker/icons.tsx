@@ -14,6 +14,7 @@ const iconOptions: L.IconOptions = {
   iconSize: [iconWidth, iconHeight],
   iconAnchor: [iconWidth / 2, iconHeight],
   popupAnchor: [0, -iconHeight + 5],
+  tooltipAnchor: [0, -iconHeight + 5],
 };
 
 // export const presetIcon = L.icon(iconOptions);

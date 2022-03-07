@@ -15,7 +15,7 @@ export class Renderer extends React.Component<unknown, State> {
     const { readingArticleId, edittingArticleId } = this.state;
     return (
       <>
-        <TriviaMap onClickPostTitle={this.handleClickPostTitle} />
+        <TriviaMap onClickPostTitle={this.handleClickPostTitle} newMarkerMode />
 
         <BoxModal
           open={this.state.openingModal === 'article'}

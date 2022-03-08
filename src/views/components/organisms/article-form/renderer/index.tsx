@@ -17,10 +17,6 @@ export class Renderer extends React.Component<Props> {
     if (this.props.postId && !this.props.resume) {
       this.props.fetchArticle(this.props.postId);
     }
-
-    // TODO: select position on map
-    const position: Position = { lat: 0, lng: 0 };
-    this.props.updatePosition(position);
   }
 
   render() {
@@ -32,6 +28,7 @@ export class Renderer extends React.Component<Props> {
       submittingState,
       fetchingState,
       formError,
+      handleClickSelectPosition,
     } = this.props;
 
     const newMode = !postId;
@@ -68,7 +65,9 @@ export class Renderer extends React.Component<Props> {
             error={!!formError?.fieldErrors?.content}
           />
 
-          <Box sx={positionBoxStyle}>{JSON.stringify(position)}</Box>
+          <Box sx={positionBoxStyle} onClick={handleClickSelectPosition}>
+            {JSON.stringify(position)}
+          </Box>
 
           <LoadingButton
             loading={submittingState === 'loading'}
@@ -115,4 +114,5 @@ export type Props = {
   submitEdittedArticle: () => void;
   fetchArticle: (postId: string) => void;
   initialize: () => void;
+  handleClickSelectPosition?: () => void;
 };

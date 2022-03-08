@@ -39,6 +39,7 @@ export function ArticleForm(ownProps: OwnProps) {
     submitEdittedArticle: () => dispatch(submitEdittedArticle()),
     fetchArticle: (postId: string) => dispatch(fetchArticle(postId)),
     initialize: () => dispatch(initialize()),
+    handleClickSelectPosition: ownProps.onClickSelectPosition,
   };
 
   return <Renderer {...props} />;
@@ -47,4 +48,5 @@ export function ArticleForm(ownProps: OwnProps) {
 type OwnProps = {
   postId?: string;
   resume?: boolean;
+  onClickSelectPosition?: () => void;
 };

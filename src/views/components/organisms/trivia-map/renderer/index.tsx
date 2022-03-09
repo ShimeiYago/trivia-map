@@ -10,7 +10,7 @@ import { Position } from 'types/position';
 import { sleep } from 'utils/sleep';
 
 export class Renderer extends React.Component<Props, State> {
-  readonly defaultProps = {
+  static readonly defaultProps = {
     newMarkerMode: false,
   };
 

@@ -7,8 +7,9 @@ import { LoadingButton } from '@mui/lab';
 import { positionBoxStyle } from './styles';
 
 export class Renderer extends React.Component<Props> {
-  componentWillMount() {
-    if (!this.props.resume) {
+  constructor(props: Props) {
+    super(props);
+    if (!props.resume) {
       this.props.initialize();
     }
   }

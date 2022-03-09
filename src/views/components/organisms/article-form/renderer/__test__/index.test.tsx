@@ -30,14 +30,10 @@ describe('Shallow Snapshot Tests', () => {
   });
 });
 
-describe('componentWillMount', () => {
+describe('constructor', () => {
   it('should not call initialize prop with resume mode', () => {
-    wrapper = shallow(<Renderer {...basicProps} />);
-    wrapper.setProps({ resume: true });
-    const instance = wrapper.instance();
-    instance.componentWillMount();
-
-    expect(basicProps.initialize).toBeCalled();
+    wrapper = shallow(<Renderer {...basicProps} resume />);
+    expect(basicProps.initialize).not.toBeCalled();
   });
 });
 

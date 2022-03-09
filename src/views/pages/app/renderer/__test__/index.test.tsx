@@ -62,3 +62,24 @@ describe('handleCloseModal', () => {
     expect(instance.state.openingModal).toBe('none');
   });
 });
+
+describe('startToSelectPosition', () => {
+  it('should set states', () => {
+    shallowWrapper = shallow(<Renderer />);
+    const instance = shallowWrapper.instance();
+    instance['startToSelectPosition']();
+    expect(instance.state.openingModal).toBe('none');
+    expect(instance.state.newMarkerMode).toBe(true);
+  });
+});
+
+describe('endToSelectPosition', () => {
+  it('should set states', () => {
+    shallowWrapper = shallow(<Renderer />);
+    const instance = shallowWrapper.instance();
+    instance['endToSelectPosition']();
+    expect(instance.state.openingModal).toBe('form');
+    expect(instance.state.newMarkerMode).toBe(false);
+    expect(instance.state.isFormResumed).toBe(true);
+  });
+});

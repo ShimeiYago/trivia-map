@@ -9,17 +9,15 @@ import { positionBoxStyle } from './styles';
 export class Renderer extends React.Component<Props> {
   constructor(props: Props) {
     super(props);
-    this.props.initialize();
+    if (!props.resume) {
+      this.props.initialize();
+    }
   }
 
   componentDidMount() {
-    if (this.props.postId) {
+    if (this.props.postId && !this.props.resume) {
       this.props.fetchArticle(this.props.postId);
     }
-
-    // TODO: select position on map
-    const position: Position = { lat: 0, lng: 0 };
-    this.props.updatePosition(position);
   }
 
   render() {
@@ -31,6 +29,7 @@ export class Renderer extends React.Component<Props> {
       submittingState,
       fetchingState,
       formError,
+      handleClickSelectPosition,
     } = this.props;
 
     const newMode = !postId;
@@ -67,7 +66,9 @@ export class Renderer extends React.Component<Props> {
             error={!!formError?.fieldErrors?.content}
           />
 
-          <Box sx={positionBoxStyle}>{JSON.stringify(position)}</Box>
+          <Box sx={positionBoxStyle} onClick={handleClickSelectPosition}>
+            {JSON.stringify(position)}
+          </Box>
 
           <LoadingButton
             loading={submittingState === 'loading'}
@@ -105,6 +106,7 @@ export type Props = {
   submittingState: LoadingState;
   fetchingState: LoadingState;
   formError?: FormError;
+  resume: boolean;
 
   updateTitle: (title: string) => void;
   updateContent: (content: string) => void;
@@ -113,4 +115,5 @@ export type Props = {
   submitEdittedArticle: () => void;
   fetchArticle: (postId: string) => void;
   initialize: () => void;
+  handleClickSelectPosition?: () => void;
 };

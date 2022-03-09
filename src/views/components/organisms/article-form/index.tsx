@@ -24,6 +24,7 @@ export function ArticleForm(ownProps: OwnProps) {
 
   const props: Props = {
     postId: ownProps.postId,
+    resume: !!ownProps.resume,
     title: useAppSelector(selectArticleFormTitle),
     content: useAppSelector(selectArticleFormContent),
     position: useAppSelector(selectArticleFormPosition),
@@ -38,6 +39,7 @@ export function ArticleForm(ownProps: OwnProps) {
     submitEdittedArticle: () => dispatch(submitEdittedArticle()),
     fetchArticle: (postId: string) => dispatch(fetchArticle(postId)),
     initialize: () => dispatch(initialize()),
+    handleClickSelectPosition: ownProps.onClickSelectPosition,
   };
 
   return <Renderer {...props} />;
@@ -45,4 +47,6 @@ export function ArticleForm(ownProps: OwnProps) {
 
 type OwnProps = {
   postId?: string;
+  resume?: boolean;
+  onClickSelectPosition?: () => void;
 };

@@ -10,7 +10,7 @@ import { Position } from 'types/position';
 import { sleep } from 'utils/sleep';
 
 export class Renderer extends React.Component<Props, State> {
-  readonly defaultProps = {
+  static readonly defaultProps = {
     newMarkerMode: false,
   };
 
@@ -26,6 +26,14 @@ export class Renderer extends React.Component<Props, State> {
 
   componentDidMount() {
     this.props.fetchMarkers();
+  }
+
+  componentDidUpdate(prevProps: Props) {
+    if (prevProps.newMarkerMode !== this.props.newMarkerMode) {
+      this.setState({
+        isMarkerClickable: this.props.newMarkerMode,
+      });
+    }
   }
 
   render() {
@@ -62,7 +70,7 @@ export class Renderer extends React.Component<Props, State> {
     }
 
     this.setState({
-      currentPosition: e.latlng,
+      currentPosition: { lat: e.latlng.lat, lng: e.latlng.lng },
       isMarkerClickable: false,
     });
   };
@@ -158,8 +166,12 @@ export class Renderer extends React.Component<Props, State> {
     if (!this.state.currentPosition) {
       return;
     }
-    this.props.onConfirmNewPosition(this.state.currentPosition);
+    this.props.updatePosition(this.state.currentPosition);
     this.handleClickCancelNewMarker();
+
+    if (this.props.onConfirmNewPosition) {
+      this.props.onConfirmNewPosition();
+    }
   };
 
   protected handleDragStartNewMarker = () => {
@@ -170,7 +182,7 @@ export class Renderer extends React.Component<Props, State> {
 
   protected handleDragEndNewMarker = (position: LatLng) => {
     this.setState({
-      currentPosition: position,
+      currentPosition: { lat: position.lat, lng: position.lng },
       showNewMarkerTooltip: true,
     });
   };
@@ -183,8 +195,8 @@ export type Props = {
 
   fetchMarkers: () => void;
   onClickPostTitle?: (postId: string) => () => void;
-  onSelectNewPosition?: (position: Position) => void;
-  onConfirmNewPosition: (position: Position) => void;
+  updatePosition: (position: Position) => void;
+  onConfirmNewPosition?: () => void;
 };
 
 export type State = {

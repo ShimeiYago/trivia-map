@@ -14,6 +14,7 @@ const basicProps: Props = {
   fetchMarkers: jest.fn(),
   newMarkerMode: false,
   onConfirmNewPosition: jest.fn(),
+  updatePosition: jest.fn(),
 };
 
 let shallowWrapper: ShallowWrapper<Props, State, Renderer>;
@@ -46,6 +47,20 @@ describe('handleMapCreated', () => {
     const map = { on: jest.fn() };
     instance['handleMapCreated'](map as unknown as LeafletMap);
     expect(map.on).toHaveBeenCalled();
+  });
+});
+
+describe('componentDidUpdate', () => {
+  it('should change isMarkerClickable when newMarkerMode is changed', () => {
+    shallowWrapper = shallow(<Renderer {...basicProps} />);
+    shallowWrapper.setProps({ newMarkerMode: true });
+    const instance = shallowWrapper.instance();
+
+    instance['componentDidUpdate']({
+      ...basicProps,
+      newMarkerMode: false,
+    });
+    expect(instance.state.isMarkerClickable).toBe(true);
   });
 });
 
@@ -117,6 +132,14 @@ describe('handleClickConfirmNewMarker', () => {
 
     instance['handleClickConfirmNewMarker']();
     expect(instance.props.onConfirmNewPosition).not.toHaveBeenCalled();
+  });
+
+  it('should not call onConfirmNewPosition prop if onConfirmNewPosition is not setted', () => {
+    shallowWrapper.setState({ currentPosition: { lat: 0, lng: 0 } });
+    shallowWrapper.setProps({ onConfirmNewPosition: undefined });
+    const instance = shallowWrapper.instance();
+
+    instance['handleClickConfirmNewMarker']();
   });
 });
 

@@ -8,14 +8,22 @@ import { TriviaMap } from 'views/components/organisms/trivia-map';
 export class Renderer extends React.Component<unknown, State> {
   constructor(props: unknown) {
     super(props);
-    this.state = { openingModal: 'none' };
+    this.state = {
+      openingModal: 'none',
+      isFormResumed: false,
+      newMarkerMode: false,
+    };
   }
 
   render() {
-    const { readingArticleId, edittingArticleId } = this.state;
+    const { readingArticleId, edittingArticleId, isFormResumed } = this.state;
     return (
       <>
-        <TriviaMap onClickPostTitle={this.handleClickPostTitle} newMarkerMode />
+        <TriviaMap
+          onClickPostTitle={this.handleClickPostTitle}
+          newMarkerMode={this.state.newMarkerMode}
+          onConfirmNewPosition={this.endToSelectPosition}
+        />
 
         <BoxModal
           open={this.state.openingModal === 'article'}
@@ -33,7 +41,11 @@ export class Renderer extends React.Component<unknown, State> {
           open={this.state.openingModal === 'form'}
           onClose={this.handleCloseModal}
         >
-          <ArticleForm postId={edittingArticleId} />
+          <ArticleForm
+            postId={edittingArticleId}
+            onClickSelectPosition={this.startToSelectPosition}
+            resume={isFormResumed}
+          />
         </BoxModal>
 
         <FloatingButton onClick={this.handleClickAddButton} />
@@ -65,6 +77,22 @@ export class Renderer extends React.Component<unknown, State> {
   protected handleCloseModal = () => {
     this.setState({
       openingModal: 'none',
+      isFormResumed: false,
+    });
+  };
+
+  protected startToSelectPosition = () => {
+    this.setState({
+      openingModal: 'none',
+      newMarkerMode: true,
+    });
+  };
+
+  protected endToSelectPosition = () => {
+    this.setState({
+      openingModal: 'form',
+      newMarkerMode: false,
+      isFormResumed: true,
     });
   };
 }
@@ -73,4 +101,6 @@ export type State = {
   openingModal: 'none' | 'article' | 'form';
   readingArticleId?: string;
   edittingArticleId?: string;
+  newMarkerMode: boolean;
+  isFormResumed: boolean;
 };

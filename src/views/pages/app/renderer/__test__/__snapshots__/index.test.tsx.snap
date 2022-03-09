@@ -3,8 +3,9 @@
 exports[`Shallow Snapshot Tests basic 1`] = `
 <Fragment>
   <TriviaMap
-    newMarkerMode={true}
+    newMarkerMode={false}
     onClickPostTitle={[Function]}
+    onConfirmNewPosition={[Function]}
   />
   <BoxModal
     onClose={[Function]}
@@ -14,7 +15,10 @@ exports[`Shallow Snapshot Tests basic 1`] = `
     onClose={[Function]}
     open={false}
   >
-    <ArticleForm />
+    <ArticleForm
+      onClickSelectPosition={[Function]}
+      resume={false}
+    />
   </BoxModal>
   <FloatingButton
     color="primary"

@@ -51,8 +51,11 @@ describe('handleMapCreated', () => {
 });
 
 describe('componentDidUpdate', () => {
-  it('should change isMarkerClickable when newMarkerMode is changed', () => {
+  beforeEach(() => {
     shallowWrapper = shallow(<Renderer {...basicProps} />);
+  });
+
+  it('should change isMarkerClickable when newMarkerMode is changed', () => {
     shallowWrapper.setProps({ newMarkerMode: true });
     const instance = shallowWrapper.instance();
 
@@ -61,6 +64,17 @@ describe('componentDidUpdate', () => {
       newMarkerMode: false,
     });
     expect(instance.state.isMarkerClickable).toBe(true);
+  });
+
+  it('should change currentPosition when newMarkerMode is changed', () => {
+    shallowWrapper.setProps({ newMarkerMode: false });
+    const instance = shallowWrapper.instance();
+
+    instance['componentDidUpdate']({
+      ...basicProps,
+      newMarkerMode: true,
+    });
+    expect(instance.state.currentPosition).toBe(undefined);
   });
 });
 

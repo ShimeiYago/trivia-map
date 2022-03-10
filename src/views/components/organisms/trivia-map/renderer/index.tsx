@@ -18,7 +18,7 @@ export class Renderer extends React.Component<Props, State> {
     super(props);
     this.handleMapCreated = this.handleMapCreated.bind(this);
     this.state = {
-      currentPosition: props.articleFormPosition,
+      currentPosition: undefined,
       isMarkerClickable: props.newMarkerMode,
       showNewMarkerTooltip: true,
     };
@@ -32,7 +32,9 @@ export class Renderer extends React.Component<Props, State> {
     if (prevProps.newMarkerMode !== this.props.newMarkerMode) {
       this.setState({
         isMarkerClickable: this.props.newMarkerMode,
-        currentPosition: this.props.articleFormPosition,
+        currentPosition: this.props.newMarkerMode
+          ? this.props.articleFormPosition
+          : undefined,
       });
     }
   }
@@ -168,7 +170,10 @@ export class Renderer extends React.Component<Props, State> {
       return;
     }
     this.props.updatePosition(this.state.currentPosition);
-    this.handleClickCancelNewMarker();
+
+    this.setState({
+      currentPosition: undefined,
+    });
 
     if (this.props.onConfirmNewPosition) {
       this.props.onConfirmNewPosition();

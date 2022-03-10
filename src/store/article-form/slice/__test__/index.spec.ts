@@ -29,7 +29,6 @@ describe('articleForm reducer', () => {
     expect(articleFormReducer(undefined, { type: 'unknown' })).toEqual({
       title: '',
       content: '',
-      position: { lat: 0, lng: 0 },
       submittingState: 'waiting',
       fetchingState: 'waiting',
     });

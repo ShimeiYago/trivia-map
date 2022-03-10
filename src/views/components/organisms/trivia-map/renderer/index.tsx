@@ -18,7 +18,7 @@ export class Renderer extends React.Component<Props, State> {
     super(props);
     this.handleMapCreated = this.handleMapCreated.bind(this);
     this.state = {
-      currentPosition: undefined,
+      currentPosition: props.articleFormPosition,
       isMarkerClickable: props.newMarkerMode,
       showNewMarkerTooltip: true,
     };
@@ -32,6 +32,7 @@ export class Renderer extends React.Component<Props, State> {
     if (prevProps.newMarkerMode !== this.props.newMarkerMode) {
       this.setState({
         isMarkerClickable: this.props.newMarkerMode,
+        currentPosition: this.props.articleFormPosition,
       });
     }
   }
@@ -156,7 +157,7 @@ export class Renderer extends React.Component<Props, State> {
     this.setState({
       currentPosition: undefined,
     });
-    await sleep(100);
+    await sleep(500);
     this.setState({
       isMarkerClickable: true,
     });
@@ -192,6 +193,7 @@ export type Props = {
   markerList: Marker[];
   loadingMarkers: boolean;
   newMarkerMode: boolean;
+  articleFormPosition?: Position;
 
   fetchMarkers: () => void;
   onClickPostTitle?: (postId: string) => () => void;

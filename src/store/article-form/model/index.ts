@@ -5,7 +5,7 @@ export interface ArticleFormState {
   postId?: string;
   title: string;
   content: string;
-  position: Position;
+  position?: Position;
   submittingState: LoadingState;
   fetchingState: LoadingState;
   formError?: FormError;
@@ -14,7 +14,6 @@ export interface ArticleFormState {
 export const initialState: ArticleFormState = {
   title: '',
   content: '',
-  position: { lat: 0, lng: 0 },
   submittingState: 'waiting',
   fetchingState: 'waiting',
 };

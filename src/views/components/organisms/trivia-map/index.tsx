@@ -4,6 +4,7 @@ import { selectMarkerList, selectMarkersLoading } from 'store/markers/selector';
 import { fetchMarkers } from 'store/markers/actions';
 import { updatePosition } from 'store/article-form/actions';
 import { Position } from 'types/position';
+import { selectArticleFormPosition } from 'store/article-form/selector';
 
 export function TriviaMap(ownProps: OwnProps) {
   const dispatch = useAppDispatch();
@@ -12,6 +13,7 @@ export function TriviaMap(ownProps: OwnProps) {
     markerList: useAppSelector(selectMarkerList),
     loadingMarkers: useAppSelector(selectMarkersLoading),
     newMarkerMode: !!ownProps.newMarkerMode,
+    articleFormPosition: useAppSelector(selectArticleFormPosition),
 
     fetchMarkers: () => dispatch(fetchMarkers()),
     onClickPostTitle: ownProps.onClickPostTitle,

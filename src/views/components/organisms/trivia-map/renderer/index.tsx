@@ -32,6 +32,9 @@ export class Renderer extends React.Component<Props, State> {
     if (prevProps.newMarkerMode !== this.props.newMarkerMode) {
       this.setState({
         isMarkerClickable: this.props.newMarkerMode,
+        currentPosition: this.props.newMarkerMode
+          ? this.props.articleFormPosition
+          : undefined,
       });
     }
   }
@@ -156,7 +159,7 @@ export class Renderer extends React.Component<Props, State> {
     this.setState({
       currentPosition: undefined,
     });
-    await sleep(100);
+    await sleep(500);
     this.setState({
       isMarkerClickable: true,
     });
@@ -167,7 +170,10 @@ export class Renderer extends React.Component<Props, State> {
       return;
     }
     this.props.updatePosition(this.state.currentPosition);
-    this.handleClickCancelNewMarker();
+
+    this.setState({
+      currentPosition: undefined,
+    });
 
     if (this.props.onConfirmNewPosition) {
       this.props.onConfirmNewPosition();
@@ -192,6 +198,7 @@ export type Props = {
   markerList: Marker[];
   loadingMarkers: boolean;
   newMarkerMode: boolean;
+  articleFormPosition?: Position;
 
   fetchMarkers: () => void;
   onClickPostTitle?: (postId: string) => () => void;

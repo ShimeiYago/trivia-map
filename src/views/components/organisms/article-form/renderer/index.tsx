@@ -102,7 +102,7 @@ export type Props = {
   postId?: string;
   title: string;
   content: string;
-  position: Position;
+  position?: Position;
   submittingState: LoadingState;
   fetchingState: LoadingState;
   formError?: FormError;

@@ -28,7 +28,7 @@ export async function getRemoteArticle(
 export async function postRemoteArticle(
   title: string,
   content: string,
-  position: Position,
+  position?: Position,
 ): Promise<PostArticleResponse> {
   const axiosInstance = getAxiosInstance({}, mockPostArticleResponse);
 
@@ -55,7 +55,7 @@ export async function putRemoteArticle(
   postId: string,
   title: string,
   content: string,
-  position: Position,
+  position?: Position,
 ): Promise<PostArticleResponse> {
   const axiosInstance = getAxiosInstance({}, mockPostArticleResponse);
 
@@ -86,7 +86,7 @@ export type GetArticleResponse = {
 export type PostArticleRequest = {
   title: string;
   content: string;
-  position: Position;
+  position?: Position;
 };
 
 export type PostArticleResponse = {

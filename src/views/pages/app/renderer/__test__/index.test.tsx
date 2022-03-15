@@ -54,6 +54,16 @@ describe('handleClickPostEdit', () => {
   });
 });
 
+describe('handleOpenEditForm', () => {
+  it('should open edit form modal', () => {
+    shallowWrapper = shallow(<Renderer {...props} />);
+    const instance = shallowWrapper.instance();
+
+    instance['handleOpenEditForm']();
+    expect(instance.state.openingModal).toBe('form');
+  });
+});
+
 describe('handleCloseModal', () => {
   it('should close modal', () => {
     shallowWrapper = shallow(<Renderer {...props} />);

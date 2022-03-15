@@ -5,18 +5,17 @@ import { Article } from 'views/components/organisms/article';
 import { ArticleForm } from 'views/components/organisms/article-form';
 import { TriviaMap } from 'views/components/organisms/trivia-map';
 
-export class Renderer extends React.Component<unknown, State> {
-  constructor(props: unknown) {
+export class Renderer extends React.Component<Props, State> {
+  constructor(props: Props) {
     super(props);
     this.state = {
       openingModal: 'none',
-      isFormResumed: false,
       newMarkerMode: false,
     };
   }
 
   render() {
-    const { readingArticleId, edittingArticleId, isFormResumed } = this.state;
+    const { readingArticleId, edittingArticleId } = this.state;
     return (
       <>
         <TriviaMap
@@ -44,7 +43,6 @@ export class Renderer extends React.Component<unknown, State> {
           <ArticleForm
             postId={edittingArticleId}
             onClickSelectPosition={this.startToSelectPosition}
-            resume={isFormResumed}
           />
         </BoxModal>
 
@@ -77,7 +75,6 @@ export class Renderer extends React.Component<unknown, State> {
   protected handleCloseModal = () => {
     this.setState({
       openingModal: 'none',
-      isFormResumed: false,
     });
   };
 
@@ -92,15 +89,17 @@ export class Renderer extends React.Component<unknown, State> {
     this.setState({
       openingModal: 'form',
       newMarkerMode: false,
-      isFormResumed: true,
     });
   };
 }
+
+export type Props = {
+  isFormEditting: boolean;
+};
 
 export type State = {
   openingModal: 'none' | 'article' | 'form';
   readingArticleId?: string;
   edittingArticleId?: string;
   newMarkerMode: boolean;
-  isFormResumed: boolean;
 };

@@ -9,15 +9,17 @@ import { positionBoxStyle } from './styles';
 export class Renderer extends React.Component<Props> {
   constructor(props: Props) {
     super(props);
-    if (!props.resume) {
+    if (!props.isFormEditting) {
       this.props.initialize();
     }
   }
 
   componentDidMount() {
-    if (this.props.postId && !this.props.resume) {
+    if (this.props.postId && !this.props.isFormEditting) {
       this.props.fetchArticle(this.props.postId);
     }
+
+    this.props.updateIsEditting(true);
   }
 
   render() {
@@ -106,7 +108,7 @@ export type Props = {
   submittingState: LoadingState;
   fetchingState: LoadingState;
   formError?: FormError;
-  resume: boolean;
+  isFormEditting: boolean;
 
   updateTitle: (title: string) => void;
   updateContent: (content: string) => void;
@@ -116,4 +118,5 @@ export type Props = {
   fetchArticle: (postId: string) => void;
   initialize: () => void;
   handleClickSelectPosition?: () => void;
+  updateIsEditting: (isEditting: boolean) => void;
 };

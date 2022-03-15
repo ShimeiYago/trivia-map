@@ -57,6 +57,7 @@ export const articleFormSlice = createSlice({
       state.submittingState = initialState.submittingState;
       state.fetchingState = initialState.fetchingState;
       state.formError = initialState.formError;
+      state.isEditting = initialState.isEditting;
     },
 
     updateIsEditting(state, action: PayloadAction<boolean>) {

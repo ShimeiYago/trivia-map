@@ -4,6 +4,7 @@ import { SwipeableEdgeDrawer, Props } from '..';
 let wrapper: ShallowWrapper<Props, unknown, SwipeableEdgeDrawer>;
 
 const basicProps: Props = {
+  show: true,
   open: true,
   onOpen: jest.fn(),
   onClose: jest.fn(),
@@ -19,6 +20,11 @@ describe('Shallow Snapshot Tests', () => {
   });
 
   it('basic', () => {
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('with show false', () => {
+    wrapper.setProps({ show: false });
     expect(wrapper).toMatchSnapshot();
   });
 });

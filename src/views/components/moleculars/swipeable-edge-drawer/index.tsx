@@ -7,10 +7,12 @@ export class SwipeableEdgeDrawer extends React.Component<Props> {
   static readonly defaultProps = {
     bleedingHeight: 56,
     heightRatio: 50,
+    show: false,
   };
 
   render() {
     const {
+      show,
       open,
       onOpen,
       onClose,
@@ -19,6 +21,11 @@ export class SwipeableEdgeDrawer extends React.Component<Props> {
       labelText,
       heightRatio,
     } = this.props;
+
+    if (!show) {
+      return null;
+    }
+
     return (
       <>
         <Global
@@ -60,6 +67,7 @@ export class SwipeableEdgeDrawer extends React.Component<Props> {
 }
 
 export type Props = {
+  show: boolean;
   open: boolean;
   onOpen: () => void;
   onClose: () => void;

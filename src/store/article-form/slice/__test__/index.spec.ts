@@ -12,6 +12,7 @@ const {
   fetchFailure,
   fetchSuccess,
   initialize,
+  updateIsEditting,
 } = articleFormSlice.actions;
 
 describe('articleForm reducer', () => {
@@ -31,6 +32,7 @@ describe('articleForm reducer', () => {
       content: '',
       submittingState: 'waiting',
       fetchingState: 'waiting',
+      isEditting: false,
     });
   });
 
@@ -103,5 +105,13 @@ describe('articleForm reducer', () => {
   it('should handle initialize', () => {
     const actual = articleFormReducer(fetchingLoadingState, initialize());
     expect(actual).toEqual(initialState);
+  });
+
+  it('should handle updateIsEditting', () => {
+    const actual = articleFormReducer(
+      fetchingLoadingState,
+      updateIsEditting(true),
+    );
+    expect(actual.isEditting).toEqual(true);
   });
 });

@@ -26,6 +26,7 @@ export const {
   fetchSuccess,
   fetchFailure,
   initialize,
+  updateIsEditting,
 } = articleFormSlice.actions;
 
 // submitNewArticle action

@@ -7,6 +7,7 @@ import {
   selectArticleFormPosition,
   selectArticleFormSubmittingState,
   selectArticleFormTitle,
+  selectArticleFormIsEditting,
 } from 'store/article-form/selector';
 import {
   fetchArticle,
@@ -16,6 +17,7 @@ import {
   updatePosition,
   updateTitle,
   updateContent,
+  updateIsEditting,
 } from 'store/article-form/actions';
 import { Position } from 'types/position';
 
@@ -24,13 +26,13 @@ export function ArticleForm(ownProps: OwnProps) {
 
   const props: Props = {
     postId: ownProps.postId,
-    resume: !!ownProps.resume,
     title: useAppSelector(selectArticleFormTitle),
     content: useAppSelector(selectArticleFormContent),
     position: useAppSelector(selectArticleFormPosition),
     submittingState: useAppSelector(selectArticleFormSubmittingState),
     fetchingState: useAppSelector(selectArticleFormFetchingState),
     formError: useAppSelector(selectArticleFormFormError),
+    isFormEditting: useAppSelector(selectArticleFormIsEditting),
 
     updateTitle: (title: string) => dispatch(updateTitle(title)),
     updateContent: (content: string) => dispatch(updateContent(content)),
@@ -40,6 +42,8 @@ export function ArticleForm(ownProps: OwnProps) {
     fetchArticle: (postId: string) => dispatch(fetchArticle(postId)),
     initialize: () => dispatch(initialize()),
     handleClickSelectPosition: ownProps.onClickSelectPosition,
+    updateIsEditting: (isEditting: boolean) =>
+      dispatch(updateIsEditting(isEditting)),
   };
 
   return <Renderer {...props} />;
@@ -47,6 +51,5 @@ export function ArticleForm(ownProps: OwnProps) {
 
 type OwnProps = {
   postId?: string;
-  resume?: boolean;
   onClickSelectPosition?: () => void;
 };

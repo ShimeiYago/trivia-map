@@ -17,7 +17,6 @@ exports[`Shallow Snapshot Tests basic 1`] = `
   >
     <ArticleForm
       onClickSelectPosition={[Function]}
-      resume={false}
     />
   </BoxModal>
   <FloatingButton

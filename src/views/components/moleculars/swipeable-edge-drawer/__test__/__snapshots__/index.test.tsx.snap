@@ -80,3 +80,5 @@ exports[`Shallow Snapshot Tests basic 1`] = `
   </ForwardRef(SwipeableDrawer)>
 </Fragment>
 `;
+
+exports[`Shallow Snapshot Tests with show false 1`] = `""`;

@@ -1,11 +1,15 @@
 import { shallow, ShallowWrapper } from 'enzyme';
-import { Renderer, State } from '..';
+import { Renderer, State, Props } from '..';
 
-let shallowWrapper: ShallowWrapper<unknown, State, Renderer>;
+let shallowWrapper: ShallowWrapper<Props, State, Renderer>;
+
+const props: Props = {
+  isFormEditting: false,
+};
 
 describe('Shallow Snapshot Tests', () => {
   beforeEach(() => {
-    shallowWrapper = shallow(<Renderer />);
+    shallowWrapper = shallow(<Renderer {...props} />);
   });
 
   it('basic', () => {
@@ -15,7 +19,7 @@ describe('Shallow Snapshot Tests', () => {
 
 describe('handleClickAddButton', () => {
   it('should set openingModal and edittingArticleId states', () => {
-    shallowWrapper = shallow(<Renderer />);
+    shallowWrapper = shallow(<Renderer {...props} />);
     const instance = shallowWrapper.instance();
 
     instance['handleClickAddButton']();
@@ -26,7 +30,7 @@ describe('handleClickAddButton', () => {
 
 describe('handleClickPostTitle', () => {
   it('should set openingModal and readingArticleId states', () => {
-    shallowWrapper = shallow(<Renderer />);
+    shallowWrapper = shallow(<Renderer {...props} />);
     const instance = shallowWrapper.instance();
 
     instance['handleClickPostTitle']('postId-000')();
@@ -37,7 +41,7 @@ describe('handleClickPostTitle', () => {
 
 describe('handleClickPostEdit', () => {
   it('should set openingModal and edittingArticleId states', () => {
-    shallowWrapper = shallow(<Renderer />);
+    shallowWrapper = shallow(<Renderer {...props} />);
     const instance = shallowWrapper.instance();
 
     instance.setState({
@@ -50,9 +54,19 @@ describe('handleClickPostEdit', () => {
   });
 });
 
+describe('handleOpenEditForm', () => {
+  it('should open edit form modal', () => {
+    shallowWrapper = shallow(<Renderer {...props} />);
+    const instance = shallowWrapper.instance();
+
+    instance['handleOpenEditForm']();
+    expect(instance.state.openingModal).toBe('form');
+  });
+});
+
 describe('handleCloseModal', () => {
   it('should close modal', () => {
-    shallowWrapper = shallow(<Renderer />);
+    shallowWrapper = shallow(<Renderer {...props} />);
     const instance = shallowWrapper.instance();
 
     instance.setState({
@@ -65,7 +79,7 @@ describe('handleCloseModal', () => {
 
 describe('startToSelectPosition', () => {
   it('should set states', () => {
-    shallowWrapper = shallow(<Renderer />);
+    shallowWrapper = shallow(<Renderer {...props} />);
     const instance = shallowWrapper.instance();
     instance['startToSelectPosition']();
     expect(instance.state.openingModal).toBe('none');
@@ -75,11 +89,10 @@ describe('startToSelectPosition', () => {
 
 describe('endToSelectPosition', () => {
   it('should set states', () => {
-    shallowWrapper = shallow(<Renderer />);
+    shallowWrapper = shallow(<Renderer {...props} />);
     const instance = shallowWrapper.instance();
     instance['endToSelectPosition']();
     expect(instance.state.openingModal).toBe('form');
     expect(instance.state.newMarkerMode).toBe(false);
-    expect(instance.state.isFormResumed).toBe(true);
   });
 });

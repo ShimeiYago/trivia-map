@@ -9,6 +9,7 @@ export interface ArticleFormState {
   submittingState: LoadingState;
   fetchingState: LoadingState;
   formError?: FormError;
+  isEditting: boolean;
 }
 
 export const initialState: ArticleFormState = {
@@ -16,6 +17,7 @@ export const initialState: ArticleFormState = {
   content: '',
   submittingState: 'waiting',
   fetchingState: 'waiting',
+  isEditting: false,
 };
 
 export type FormError = {

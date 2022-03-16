@@ -1,22 +1,22 @@
 import React from 'react';
 import { FloatingButton } from 'views/components/atoms/floating-button';
 import { BoxModal } from 'views/components/moleculars/box-modal';
+import { SwipeableEdgeDrawer } from 'views/components/moleculars/swipeable-edge-drawer';
 import { Article } from 'views/components/organisms/article';
 import { ArticleForm } from 'views/components/organisms/article-form';
 import { TriviaMap } from 'views/components/organisms/trivia-map';
 
-export class Renderer extends React.Component<unknown, State> {
-  constructor(props: unknown) {
+export class Renderer extends React.Component<Props, State> {
+  constructor(props: Props) {
     super(props);
     this.state = {
       openingModal: 'none',
-      isFormResumed: false,
       newMarkerMode: false,
     };
   }
 
   render() {
-    const { readingArticleId, edittingArticleId, isFormResumed } = this.state;
+    const { readingArticleId, edittingArticleId } = this.state;
     return (
       <>
         <TriviaMap
@@ -37,16 +37,19 @@ export class Renderer extends React.Component<unknown, State> {
           ) : null}
         </BoxModal>
 
-        <BoxModal
+        <SwipeableEdgeDrawer
+          show={this.props.isFormEditting || this.state.openingModal === 'form'}
           open={this.state.openingModal === 'form'}
+          onOpen={this.handleOpenEditForm}
           onClose={this.handleCloseModal}
+          labelText="編集中"
+          heightRatio={80}
         >
           <ArticleForm
             postId={edittingArticleId}
             onClickSelectPosition={this.startToSelectPosition}
-            resume={isFormResumed}
           />
-        </BoxModal>
+        </SwipeableEdgeDrawer>
 
         <FloatingButton onClick={this.handleClickAddButton} />
       </>
@@ -74,10 +77,14 @@ export class Renderer extends React.Component<unknown, State> {
       edittingArticleId: this.state.readingArticleId,
     });
 
+  protected handleOpenEditForm = () =>
+    this.setState({
+      openingModal: 'form',
+    });
+
   protected handleCloseModal = () => {
     this.setState({
       openingModal: 'none',
-      isFormResumed: false,
     });
   };
 
@@ -92,15 +99,17 @@ export class Renderer extends React.Component<unknown, State> {
     this.setState({
       openingModal: 'form',
       newMarkerMode: false,
-      isFormResumed: true,
     });
   };
 }
+
+export type Props = {
+  isFormEditting: boolean;
+};
 
 export type State = {
   openingModal: 'none' | 'article' | 'form';
   readingArticleId?: string;
   edittingArticleId?: string;
   newMarkerMode: boolean;
-  isFormResumed: boolean;
 };

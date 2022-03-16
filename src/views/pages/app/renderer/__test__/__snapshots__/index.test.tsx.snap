@@ -11,15 +11,19 @@ exports[`Shallow Snapshot Tests basic 1`] = `
     onClose={[Function]}
     open={false}
   />
-  <BoxModal
+  <SwipeableEdgeDrawer
+    bleedingHeight={56}
+    heightRatio={80}
+    labelText="編集中"
     onClose={[Function]}
+    onOpen={[Function]}
     open={false}
+    show={false}
   >
     <ArticleForm
       onClickSelectPosition={[Function]}
-      resume={false}
     />
-  </BoxModal>
+  </SwipeableEdgeDrawer>
   <FloatingButton
     color="primary"
     disabled={false}

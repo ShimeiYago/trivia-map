@@ -6,6 +6,7 @@ import {
   selectArticleFormPosition,
   selectArticleFormFetchingState,
   selectArticleFormFormError,
+  selectArticleFormIsEditting,
 } from '..';
 import { ArticleFormState, FormError } from '../../model';
 
@@ -23,6 +24,7 @@ describe('readingArticle selector', () => {
       submittingState: 'success',
       fetchingState: 'success',
       formError: formError,
+      isEditting: false,
     } as ArticleFormState,
   };
 
@@ -52,5 +54,9 @@ describe('readingArticle selector', () => {
 
   it('selectArticleFormFormError should return articleForm formError', () => {
     expect(selectArticleFormFormError(rootState)).toEqual(formError);
+  });
+
+  it('selectArticleFormIsEditting should return articleForm isEditting state', () => {
+    expect(selectArticleFormIsEditting(rootState)).toEqual(false);
   });
 });

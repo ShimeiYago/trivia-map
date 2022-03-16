@@ -9,7 +9,7 @@ const basicProps: Props = {
   position: { lat: 0, lng: 0 },
   submittingState: 'waiting',
   fetchingState: 'waiting',
-  resume: false,
+  isFormEditting: false,
 
   updateTitle: jest.fn(),
   updateContent: jest.fn(),
@@ -18,6 +18,7 @@ const basicProps: Props = {
   submitEdittedArticle: jest.fn(),
   fetchArticle: jest.fn(),
   initialize: jest.fn(),
+  updateIsEditting: jest.fn(),
 };
 
 describe('Shallow Snapshot Tests', () => {
@@ -31,8 +32,8 @@ describe('Shallow Snapshot Tests', () => {
 });
 
 describe('constructor', () => {
-  it('should not call initialize prop with resume mode', () => {
-    wrapper = shallow(<Renderer {...basicProps} resume />);
+  it('should not call initialize prop with isEditting mode', () => {
+    wrapper = shallow(<Renderer {...basicProps} isFormEditting />);
     expect(basicProps.initialize).not.toBeCalled();
   });
 });

@@ -1,16 +1,20 @@
 import React, { ReactNode } from 'react';
-import { Marker, Popup, Tooltip } from 'react-leaflet';
+import { Marker } from 'react-leaflet';
 import {
   LatLng,
   LeafletEventHandlerFnMap,
   Marker as MarkerType,
+  Map as LeafletMap,
 } from 'leaflet';
+
 import { defaultIcon, redIcon } from './icons';
+import { CustomMarker } from './helpers/custom-marker';
 
 export class MapMarker extends React.Component<Props> {
-  static defaultProps = {
+  static defaultProps: Pick<Props, 'variant' | 'draggable' | 'autoOpen'> = {
     variant: 'blue',
-    dragable: false,
+    draggable: false,
+    autoOpen: false,
   };
 
   markerRef: React.RefObject<MarkerType>;
@@ -31,25 +35,29 @@ export class MapMarker extends React.Component<Props> {
         break;
     }
 
-    const popup = this.props.popup ? <Popup>{this.props.popup}</Popup> : null;
-
-    const tooltip = this.props.permanentTooltip ? (
-      <Tooltip permanent interactive direction="top">
-        {this.props.permanentTooltip}
-      </Tooltip>
-    ) : null;
+    if (!this.props.popup) {
+      return (
+        <Marker
+          position={this.props.position}
+          icon={icon}
+          draggable={this.props.draggable}
+          ref={this.markerRef}
+          eventHandlers={this.eventHandlers}
+        />
+      );
+    }
 
     return (
-      <Marker
+      <CustomMarker
+        map={this.props.map}
         position={this.props.position}
         icon={icon}
-        draggable={this.props.dragable}
+        draggable={this.props.draggable}
         ref={this.markerRef}
         eventHandlers={this.eventHandlers}
-      >
-        {tooltip}
-        {popup}
-      </Marker>
+        popup={this.props.popup}
+        autoOpen={this.props.autoOpen}
+      />
     );
   }
 
@@ -72,8 +80,9 @@ export type Props = {
   position: LatLng;
   variant: 'blue' | 'red';
   popup?: ReactNode;
-  permanentTooltip?: ReactNode;
-  dragable?: boolean;
+  autoOpen: boolean;
+  map: LeafletMap;
+  draggable?: boolean;
   onDragStart?: () => void;
   onDragEnd?: (position: LatLng) => void;
 };

@@ -31,8 +31,10 @@ exports[`Shallow Snapshot Tests basic 1`] = `
     url="/tds-map-tiles/{z}/{x}/{y}.png"
   />
   <MapMarker
-    dragable={false}
+    autoOpen={false}
+    draggable={false}
     key="000"
+    map={Object {}}
     popup={
       <ForwardRef(Typography)>
         title
@@ -80,8 +82,10 @@ exports[`Shallow Snapshot Tests when currentPosition state is setted 1`] = `
     url="/tds-map-tiles/{z}/{x}/{y}.png"
   />
   <MapMarker
-    dragable={false}
+    autoOpen={false}
+    draggable={false}
     key="000"
+    map={Object {}}
     popup={
       <ForwardRef(Typography)>
         title
@@ -96,10 +100,12 @@ exports[`Shallow Snapshot Tests when currentPosition state is setted 1`] = `
     variant="blue"
   />
   <MapMarker
-    dragable={true}
+    autoOpen={true}
+    draggable={true}
+    map={Object {}}
     onDragEnd={[Function]}
     onDragStart={[Function]}
-    permanentTooltip={
+    popup={
       <ForwardRef(Box)
         sx={
           Object {
@@ -206,8 +212,10 @@ exports[`Shallow Snapshot Tests with onClickPostTitle props 1`] = `
     url="/tds-map-tiles/{z}/{x}/{y}.png"
   />
   <MapMarker
-    dragable={false}
+    autoOpen={false}
+    draggable={false}
     key="000"
+    map={Object {}}
     popup={
       <ForwardRef(Button)
         variant="text"

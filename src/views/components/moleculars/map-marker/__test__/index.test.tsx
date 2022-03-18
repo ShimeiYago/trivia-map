@@ -1,12 +1,14 @@
 import { shallow, ShallowWrapper } from 'enzyme';
 import { MapMarker, Props } from '..';
-import { LatLng } from 'leaflet';
+import { LatLng, Map as LeafletMap } from 'leaflet';
 
 let wrapper: ShallowWrapper<Props, unknown, MapMarker>;
 
 const basicProps: Props = {
   position: new LatLng(0, 0),
   variant: 'blue',
+  autoOpen: false,
+  map: {} as LeafletMap,
 };
 
 describe('Shallow Snapshot Tests', () => {
@@ -21,13 +23,6 @@ describe('Shallow Snapshot Tests', () => {
   it('with popup', () => {
     wrapper.setProps({
       popup: 'popup-text',
-    });
-    expect(wrapper).toMatchSnapshot();
-  });
-
-  it('with tooltip', () => {
-    wrapper.setProps({
-      permanentTooltip: 'tooltip-text',
     });
     expect(wrapper).toMatchSnapshot();
   });

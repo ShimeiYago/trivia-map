@@ -20,7 +20,7 @@ export class Renderer extends React.Component<Props, State> {
     this.state = {
       currentPosition: undefined,
       isMarkerClickable: props.newMarkerMode,
-      showNewMarkerTooltip: true,
+      openNewMarkerPopup: true,
     };
   }
 
@@ -65,6 +65,9 @@ export class Renderer extends React.Component<Props, State> {
 
   protected handleMapCreated(map: LeafletMap) {
     map.on('click', this.handleMapClick);
+    this.setState({
+      map: map,
+    });
   }
 
   protected handleMapClick = (e: LeafletMouseEvent) => {
@@ -92,23 +95,26 @@ export class Renderer extends React.Component<Props, State> {
       );
 
       return (
-        <MapMarker
-          position={new LatLng(marker.position.lat, marker.position.lng)}
-          popup={!this.props.newMarkerMode && popup}
-          key={marker.postId}
-        />
+        this.state.map && (
+          <MapMarker
+            map={this.state.map}
+            position={new LatLng(marker.position.lat, marker.position.lng)}
+            popup={!this.props.newMarkerMode && popup}
+            key={marker.postId}
+          />
+        )
       );
     });
   }
 
   protected renderCurrentPositionMarker() {
-    const { currentPosition, showNewMarkerTooltip } = this.state;
+    const { currentPosition, openNewMarkerPopup } = this.state;
 
     if (currentPosition === undefined) {
       return null;
     }
 
-    const tooltip = (
+    const popup = (
       <Box sx={{ p: 1 }}>
         <Typography
           align="center"
@@ -144,14 +150,18 @@ export class Renderer extends React.Component<Props, State> {
     );
 
     return (
-      <MapMarker
-        position={new LatLng(currentPosition.lat, currentPosition.lng)}
-        permanentTooltip={showNewMarkerTooltip && tooltip}
-        variant="red"
-        dragable
-        onDragStart={this.handleDragStartNewMarker}
-        onDragEnd={this.handleDragEndNewMarker}
-      />
+      this.state.map && (
+        <MapMarker
+          map={this.state.map}
+          position={new LatLng(currentPosition.lat, currentPosition.lng)}
+          popup={popup}
+          autoOpen={openNewMarkerPopup}
+          variant="red"
+          draggable
+          onDragStart={this.handleDragStartNewMarker}
+          onDragEnd={this.handleDragEndNewMarker}
+        />
+      )
     );
   }
 
@@ -182,14 +192,14 @@ export class Renderer extends React.Component<Props, State> {
 
   protected handleDragStartNewMarker = () => {
     this.setState({
-      showNewMarkerTooltip: false,
+      openNewMarkerPopup: false,
     });
   };
 
   protected handleDragEndNewMarker = (position: LatLng) => {
     this.setState({
       currentPosition: { lat: position.lat, lng: position.lng },
-      showNewMarkerTooltip: true,
+      openNewMarkerPopup: true,
     });
   };
 }
@@ -209,5 +219,6 @@ export type Props = {
 export type State = {
   currentPosition?: Position;
   isMarkerClickable: boolean;
-  showNewMarkerTooltip: boolean;
+  openNewMarkerPopup: boolean;
+  map?: LeafletMap;
 };

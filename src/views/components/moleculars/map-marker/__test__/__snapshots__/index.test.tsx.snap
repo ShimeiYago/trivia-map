@@ -87,7 +87,8 @@ exports[`Shallow Snapshot Tests variant red 1`] = `
 `;
 
 exports[`Shallow Snapshot Tests with popup 1`] = `
-<ForwardRef(ContainerComponent)
+<ForwardRef
+  autoOpen={false}
   draggable={false}
   eventHandlers={
     Object {
@@ -120,66 +121,13 @@ exports[`Shallow Snapshot Tests with popup 1`] = `
       },
     }
   }
+  map={Object {}}
+  popup="popup-text"
   position={
     Object {
       "lat": 0,
       "lng": 0,
     }
   }
->
-  <ForwardRef(OverlayComponent)>
-    popup-text
-  </ForwardRef(OverlayComponent)>
-</ForwardRef(ContainerComponent)>
-`;
-
-exports[`Shallow Snapshot Tests with tooltip 1`] = `
-<ForwardRef(ContainerComponent)
-  draggable={false}
-  eventHandlers={
-    Object {
-      "dragend": [Function],
-      "dragstart": [Function],
-    }
-  }
-  icon={
-    NewClass {
-      "_initHooksCalled": true,
-      "options": Object {
-        "iconAnchor": Array [
-          12.5,
-          41,
-        ],
-        "iconSize": Array [
-          25,
-          41,
-        ],
-        "iconUrl": "default.png",
-        "popupAnchor": Array [
-          0,
-          -36,
-        ],
-        "shadowUrl": "marker-shadow.png",
-        "tooltipAnchor": Array [
-          0,
-          -36,
-        ],
-      },
-    }
-  }
-  position={
-    Object {
-      "lat": 0,
-      "lng": 0,
-    }
-  }
->
-  <ForwardRef(OverlayComponent)
-    direction="top"
-    interactive={true}
-    permanent={true}
-  >
-    tooltip-text
-  </ForwardRef(OverlayComponent)>
-</ForwardRef(ContainerComponent)>
+/>
 `;

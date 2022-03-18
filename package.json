@@ -82,7 +82,8 @@
       "!src/serviceWorker.ts",
       "!src/views/pages/*/index.{ts,tsx}",
       "!src/views/components/organisms/*/index.{ts,tsx}",
-      "!src/store/index.ts"
+      "!src/store/index.ts",
+      "!src/views/components/moleculars/map-marker/helpers/custom-marker.tsx"
     ],
     "snapshotSerializers": [
       "enzyme-to-json/serializer"

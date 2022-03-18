@@ -22,6 +22,7 @@ let shallowWrapper: ShallowWrapper<Props, State, Renderer>;
 describe('Shallow Snapshot Tests', () => {
   beforeEach(() => {
     shallowWrapper = shallow(<Renderer {...basicProps} />);
+    shallowWrapper.setState({ map: {} as LeafletMap });
   });
 
   it('basic', () => {
@@ -163,7 +164,7 @@ describe('handleDragStartNewMarker', () => {
     const instance = shallowWrapper.instance();
 
     instance['handleDragStartNewMarker']();
-    expect(instance.state.showNewMarkerTooltip).toEqual(false);
+    expect(instance.state.openNewMarkerPopup).toEqual(false);
   });
 });
 

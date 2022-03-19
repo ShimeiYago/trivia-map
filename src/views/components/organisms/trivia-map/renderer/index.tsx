@@ -7,7 +7,6 @@ import './index.css';
 import { Marker } from 'store/markers/model';
 import { Box, Button, Grid, Typography } from '@mui/material';
 import { Position } from 'types/position';
-import { sleep } from 'utils/sleep';
 
 export class Renderer extends React.Component<Props, State> {
   static readonly defaultProps = {
@@ -19,7 +18,6 @@ export class Renderer extends React.Component<Props, State> {
     this.handleMapCreated = this.handleMapCreated.bind(this);
     this.state = {
       currentPosition: undefined,
-      isMarkerClickable: props.newMarkerMode,
       openNewMarkerPopup: true,
     };
   }
@@ -31,7 +29,6 @@ export class Renderer extends React.Component<Props, State> {
   componentDidUpdate(prevProps: Props) {
     if (prevProps.newMarkerMode !== this.props.newMarkerMode) {
       this.setState({
-        isMarkerClickable: this.props.newMarkerMode,
         currentPosition: this.props.newMarkerMode
           ? this.props.articleFormPosition
           : undefined,
@@ -71,13 +68,12 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   protected handleMapClick = (e: LeafletMouseEvent) => {
-    if (!this.state.isMarkerClickable) {
+    if (!this.props.newMarkerMode) {
       return;
     }
 
     this.setState({
       currentPosition: { lat: e.latlng.lat, lng: e.latlng.lng },
-      isMarkerClickable: false,
     });
   };
 
@@ -169,10 +165,6 @@ export class Renderer extends React.Component<Props, State> {
     this.setState({
       currentPosition: undefined,
     });
-    await sleep(500);
-    this.setState({
-      isMarkerClickable: true,
-    });
   };
 
   protected handleClickConfirmNewMarker = () => {
@@ -218,7 +210,6 @@ export type Props = {
 
 export type State = {
   currentPosition?: Position;
-  isMarkerClickable: boolean;
   openNewMarkerPopup: boolean;
   map?: LeafletMap;
 };

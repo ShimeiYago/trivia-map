@@ -56,17 +56,6 @@ describe('componentDidUpdate', () => {
     shallowWrapper = shallow(<Renderer {...basicProps} />);
   });
 
-  it('should change isMarkerClickable when newMarkerMode is changed', () => {
-    shallowWrapper.setProps({ newMarkerMode: true });
-    const instance = shallowWrapper.instance();
-
-    instance['componentDidUpdate']({
-      ...basicProps,
-      newMarkerMode: false,
-    });
-    expect(instance.state.isMarkerClickable).toBe(true);
-  });
-
   it('should change currentPosition when newMarkerMode is changed', () => {
     shallowWrapper.setProps({ newMarkerMode: false });
     const instance = shallowWrapper.instance();
@@ -84,8 +73,8 @@ describe('handleMapClick', () => {
     shallowWrapper = shallow(<Renderer {...basicProps} />);
   });
 
-  it('should change currentPosition state', () => {
-    shallowWrapper.setState({ isMarkerClickable: true });
+  it('should change currentPosition state with newMarkerMode', () => {
+    shallowWrapper.setProps({ newMarkerMode: true });
 
     const instance = shallowWrapper.instance();
 
@@ -98,9 +87,7 @@ describe('handleMapClick', () => {
     expect(instance.state.currentPosition).toEqual({ lat: 1, lng: 1 });
   });
 
-  it('should not change currentPosition state if isMarkerClickable state is false', () => {
-    shallowWrapper.setState({ isMarkerClickable: false });
-
+  it('should not change currentPosition state if not newMarkerMode', () => {
     const instance = shallowWrapper.instance();
 
     const mouseClickEvent = {
@@ -118,13 +105,11 @@ describe('handleClickCancelNewMarker', () => {
     shallowWrapper = shallow(<Renderer {...basicProps} />);
     shallowWrapper.setState({
       currentPosition: { lat: 0, lng: 0 },
-      isMarkerClickable: false,
     });
     const instance = shallowWrapper.instance();
 
     await instance['handleClickCancelNewMarker']();
     expect(instance.state.currentPosition).toEqual(undefined);
-    expect(instance.state.isMarkerClickable).toEqual(true);
   });
 });
 

@@ -32,3 +32,41 @@ exports[`Shallow Snapshot Tests basic 1`] = `
   />
 </Fragment>
 `;
+
+exports[`Shallow Snapshot Tests pc view 1`] = `
+<Fragment>
+  <TriviaMap
+    endToSelectPosition={[Function]}
+    newMarkerMode={false}
+    onClickPostTitle={[Function]}
+  />
+  <BoxModal
+    onClose={[Function]}
+    open={false}
+  />
+  <ForwardRef(Drawer)
+    anchor="right"
+    open={true}
+    sx={
+      Object {
+        "& .MuiDrawer-paper": Object {
+          "width": 500,
+        },
+        "flexShrink": 0,
+        "width": 500,
+      }
+    }
+    variant="persistent"
+  >
+    <ArticleForm
+      onClickSelectPosition={[Function]}
+    />
+  </ForwardRef(Drawer)>
+  <FloatingButton
+    color="primary"
+    disabled={false}
+    icon="add"
+    onClick={[Function]}
+  />
+</Fragment>
+`;

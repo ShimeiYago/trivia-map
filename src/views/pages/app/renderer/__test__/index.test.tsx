@@ -5,6 +5,7 @@ let shallowWrapper: ShallowWrapper<Props, State, Renderer>;
 
 const props: Props = {
   isFormEditting: false,
+  isMobile: true,
 };
 
 describe('Shallow Snapshot Tests', () => {
@@ -13,6 +14,16 @@ describe('Shallow Snapshot Tests', () => {
   });
 
   it('basic', () => {
+    expect(shallowWrapper).toMatchSnapshot();
+  });
+
+  it('pc view', () => {
+    shallowWrapper.setProps({
+      isMobile: false,
+    });
+    shallowWrapper.setState({
+      openingModal: 'form',
+    });
     expect(shallowWrapper).toMatchSnapshot();
   });
 });

@@ -1,3 +1,4 @@
+import { Drawer } from '@mui/material';
 import React from 'react';
 import { FloatingButton } from 'views/components/atoms/floating-button';
 import { BoxModal } from 'views/components/moleculars/box-modal';
@@ -5,6 +6,7 @@ import { SwipeableEdgeDrawer } from 'views/components/moleculars/swipeable-edge-
 import { Article } from 'views/components/organisms/article';
 import { ArticleForm } from 'views/components/organisms/article-form';
 import { TriviaMap } from 'views/components/organisms/trivia-map';
+import { rightDrawerStyle } from './styles';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -16,7 +18,7 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   render() {
-    const { readingArticleId, edittingArticleId, openingModal } = this.state;
+    const { readingArticleId, openingModal } = this.state;
     const { isFormEditting } = this.props;
     return (
       <>
@@ -38,19 +40,7 @@ export class Renderer extends React.Component<Props, State> {
           ) : null}
         </BoxModal>
 
-        <SwipeableEdgeDrawer
-          show={isFormEditting || openingModal === 'form'}
-          open={openingModal === 'form'}
-          onOpen={this.handleOpenEditForm}
-          onClose={this.handleCloseModal}
-          labelText="編集中"
-          heightRatio={80}
-        >
-          <ArticleForm
-            postId={edittingArticleId}
-            onClickSelectPosition={this.startToSelectPosition}
-          />
-        </SwipeableEdgeDrawer>
+        {this.renderEditForm()}
 
         {!isFormEditting && (
           <FloatingButton onClick={this.handleClickAddButton} />
@@ -104,10 +94,46 @@ export class Renderer extends React.Component<Props, State> {
       newMarkerMode: false,
     });
   };
+
+  protected renderEditForm = () => {
+    const { edittingArticleId, openingModal } = this.state;
+    const { isFormEditting, isMobile } = this.props;
+
+    return isMobile ? (
+      <SwipeableEdgeDrawer
+        show={isFormEditting || openingModal === 'form'}
+        open={openingModal === 'form'}
+        onOpen={this.handleOpenEditForm}
+        onClose={this.handleCloseModal}
+        labelText="編集中"
+        heightRatio={80}
+      >
+        <ArticleForm
+          postId={edittingArticleId}
+          onClickSelectPosition={this.startToSelectPosition}
+        />
+      </SwipeableEdgeDrawer>
+    ) : (
+      <Drawer
+        sx={rightDrawerStyle}
+        variant="persistent"
+        anchor="right"
+        open={openingModal === 'form'}
+      >
+        {openingModal === 'form' && (
+          <ArticleForm
+            postId={edittingArticleId}
+            onClickSelectPosition={this.startToSelectPosition}
+          />
+        )}
+      </Drawer>
+    );
+  };
 }
 
 export type Props = {
   isFormEditting: boolean;
+  isMobile: boolean;
 };
 
 export type State = {

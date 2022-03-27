@@ -16,7 +16,8 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   render() {
-    const { readingArticleId, edittingArticleId } = this.state;
+    const { readingArticleId, edittingArticleId, openingModal } = this.state;
+    const { isFormEditting } = this.props;
     return (
       <>
         <TriviaMap
@@ -26,7 +27,7 @@ export class Renderer extends React.Component<Props, State> {
         />
 
         <BoxModal
-          open={this.state.openingModal === 'article'}
+          open={openingModal === 'article'}
           onClose={this.handleCloseModal}
         >
           {readingArticleId ? (
@@ -38,8 +39,8 @@ export class Renderer extends React.Component<Props, State> {
         </BoxModal>
 
         <SwipeableEdgeDrawer
-          show={this.props.isFormEditting || this.state.openingModal === 'form'}
-          open={this.state.openingModal === 'form'}
+          show={isFormEditting || openingModal === 'form'}
+          open={openingModal === 'form'}
           onOpen={this.handleOpenEditForm}
           onClose={this.handleCloseModal}
           labelText="編集中"
@@ -51,7 +52,9 @@ export class Renderer extends React.Component<Props, State> {
           />
         </SwipeableEdgeDrawer>
 
-        <FloatingButton onClick={this.handleClickAddButton} />
+        {!isFormEditting && (
+          <FloatingButton onClick={this.handleClickAddButton} />
+        )}
       </>
     );
   }

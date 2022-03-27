@@ -74,6 +74,10 @@ export class Renderer extends React.Component<Props, State> {
 
     this.setState({
       currentPosition: { lat: e.latlng.lat, lng: e.latlng.lng },
+      openNewMarkerPopup: false,
+    });
+    this.setState({
+      openNewMarkerPopup: true,
     });
   };
 

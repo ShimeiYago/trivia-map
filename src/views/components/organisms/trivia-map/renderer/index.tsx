@@ -74,6 +74,10 @@ export class Renderer extends React.Component<Props, State> {
 
     this.setState({
       currentPosition: { lat: e.latlng.lat, lng: e.latlng.lng },
+      openNewMarkerPopup: false,
+    });
+    this.setState({
+      openNewMarkerPopup: true,
     });
   };
 
@@ -165,6 +169,10 @@ export class Renderer extends React.Component<Props, State> {
     this.setState({
       currentPosition: undefined,
     });
+
+    if (this.props.endToSelectPosition) {
+      this.props.endToSelectPosition();
+    }
   };
 
   protected handleClickConfirmNewMarker = () => {
@@ -177,8 +185,8 @@ export class Renderer extends React.Component<Props, State> {
       currentPosition: undefined,
     });
 
-    if (this.props.onConfirmNewPosition) {
-      this.props.onConfirmNewPosition();
+    if (this.props.endToSelectPosition) {
+      this.props.endToSelectPosition();
     }
   };
 
@@ -205,7 +213,7 @@ export type Props = {
   fetchMarkers: () => void;
   onClickPostTitle?: (postId: string) => () => void;
   updatePosition: (position: Position) => void;
-  onConfirmNewPosition?: () => void;
+  endToSelectPosition?: () => void;
 };
 
 export type State = {

@@ -13,7 +13,7 @@ const basicProps: Props = {
   loadingMarkers: false,
   fetchMarkers: jest.fn(),
   newMarkerMode: false,
-  onConfirmNewPosition: jest.fn(),
+  endToSelectPosition: jest.fn(),
   updatePosition: jest.fn(),
 };
 
@@ -101,8 +101,11 @@ describe('handleMapClick', () => {
 });
 
 describe('handleClickCancelNewMarker', () => {
-  it('should change target states', async () => {
+  beforeEach(() => {
     shallowWrapper = shallow(<Renderer {...basicProps} />);
+  });
+
+  it('should change target states', async () => {
     shallowWrapper.setState({
       currentPosition: { lat: 0, lng: 0 },
     });
@@ -111,6 +114,14 @@ describe('handleClickCancelNewMarker', () => {
     await instance['handleClickCancelNewMarker']();
     expect(instance.state.currentPosition).toEqual(undefined);
   });
+
+  it('should not call endToSelectPosition prop if endToSelectPosition is not setted', () => {
+    shallowWrapper.setState({ currentPosition: { lat: 0, lng: 0 } });
+    shallowWrapper.setProps({ endToSelectPosition: undefined });
+    const instance = shallowWrapper.instance();
+
+    instance['handleClickCancelNewMarker']();
+  });
 });
 
 describe('handleClickConfirmNewMarker', () => {
@@ -118,25 +129,25 @@ describe('handleClickConfirmNewMarker', () => {
     shallowWrapper = shallow(<Renderer {...basicProps} />);
   });
 
-  it('should call onConfirmNewPosition prop', () => {
+  it('should call endToSelectPosition prop', () => {
     shallowWrapper.setState({ currentPosition: { lat: 0, lng: 0 } });
     const instance = shallowWrapper.instance();
 
     instance['handleClickConfirmNewMarker']();
-    expect(instance.props.onConfirmNewPosition).toHaveBeenCalled();
+    expect(instance.props.endToSelectPosition).toHaveBeenCalled();
   });
 
-  it('should not call onConfirmNewPosition prop if currentPosition state is not setted', () => {
+  it('should not call endToSelectPosition prop if currentPosition state is not setted', () => {
     shallowWrapper.setState({ currentPosition: undefined });
     const instance = shallowWrapper.instance();
 
     instance['handleClickConfirmNewMarker']();
-    expect(instance.props.onConfirmNewPosition).not.toHaveBeenCalled();
+    expect(instance.props.endToSelectPosition).not.toHaveBeenCalled();
   });
 
-  it('should not call onConfirmNewPosition prop if onConfirmNewPosition is not setted', () => {
+  it('should not call endToSelectPosition prop if endToSelectPosition is not setted', () => {
     shallowWrapper.setState({ currentPosition: { lat: 0, lng: 0 } });
-    shallowWrapper.setProps({ onConfirmNewPosition: undefined });
+    shallowWrapper.setProps({ endToSelectPosition: undefined });
     const instance = shallowWrapper.instance();
 
     instance['handleClickConfirmNewMarker']();

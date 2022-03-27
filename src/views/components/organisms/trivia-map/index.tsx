@@ -18,7 +18,7 @@ export function TriviaMap(ownProps: OwnProps) {
     fetchMarkers: () => dispatch(fetchMarkers()),
     onClickPostTitle: ownProps.onClickPostTitle,
     updatePosition: (position: Position) => dispatch(updatePosition(position)),
-    onConfirmNewPosition: ownProps.onConfirmNewPosition,
+    endToSelectPosition: ownProps.endToSelectPosition,
   };
 
   return <Renderer {...props} />;
@@ -27,5 +27,5 @@ export function TriviaMap(ownProps: OwnProps) {
 type OwnProps = {
   onClickPostTitle?: (postId: string) => () => void;
   newMarkerMode?: boolean;
-  onConfirmNewPosition?: () => void;
+  endToSelectPosition?: () => void;
 };

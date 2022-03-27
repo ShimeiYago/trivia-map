@@ -22,7 +22,7 @@ export class Renderer extends React.Component<Props, State> {
         <TriviaMap
           onClickPostTitle={this.handleClickPostTitle}
           newMarkerMode={this.state.newMarkerMode}
-          onConfirmNewPosition={this.endToSelectPosition}
+          endToSelectPosition={this.endToSelectPosition}
         />
 
         <BoxModal

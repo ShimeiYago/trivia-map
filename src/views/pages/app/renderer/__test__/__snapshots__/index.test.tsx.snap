@@ -3,9 +3,9 @@
 exports[`Shallow Snapshot Tests basic 1`] = `
 <Fragment>
   <TriviaMap
+    endToSelectPosition={[Function]}
     newMarkerMode={false}
     onClickPostTitle={[Function]}
-    onConfirmNewPosition={[Function]}
   />
   <BoxModal
     onClose={[Function]}

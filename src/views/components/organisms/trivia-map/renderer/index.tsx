@@ -29,9 +29,7 @@ export class Renderer extends React.Component<Props, State> {
   componentDidUpdate(prevProps: Props) {
     if (prevProps.newMarkerMode !== this.props.newMarkerMode) {
       this.setState({
-        currentPosition: this.props.newMarkerMode
-          ? this.props.articleFormPosition
-          : undefined,
+        currentPosition: this.props.articleFormPosition,
       });
     }
   }
@@ -109,6 +107,7 @@ export class Renderer extends React.Component<Props, State> {
 
   protected renderCurrentPositionMarker() {
     const { currentPosition, openNewMarkerPopup } = this.state;
+    const { newMarkerMode } = this.props;
 
     if (currentPosition === undefined) {
       return null;
@@ -154,10 +153,10 @@ export class Renderer extends React.Component<Props, State> {
         <MapMarker
           map={this.state.map}
           position={new LatLng(currentPosition.lat, currentPosition.lng)}
-          popup={popup}
-          autoOpen={openNewMarkerPopup}
+          popup={newMarkerMode && popup}
+          autoOpen={newMarkerMode && openNewMarkerPopup}
           variant="red"
-          draggable
+          draggable={newMarkerMode}
           onDragStart={this.handleDragStartNewMarker}
           onDragEnd={this.handleDragEndNewMarker}
         />

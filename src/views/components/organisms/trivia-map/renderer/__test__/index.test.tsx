@@ -31,6 +31,7 @@ describe('Shallow Snapshot Tests', () => {
 
   it('when currentPosition state is setted', () => {
     shallowWrapper.setState({ currentPosition: new LatLng(1, 1) });
+    shallowWrapper.setProps({ newMarkerMode: true });
     expect(shallowWrapper).toMatchSnapshot();
   });
 

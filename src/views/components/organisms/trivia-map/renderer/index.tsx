@@ -17,7 +17,7 @@ export class Renderer extends React.Component<Props, State> {
     super(props);
     this.handleMapCreated = this.handleMapCreated.bind(this);
     this.state = {
-      currentPosition: undefined,
+      currentPosition: props.articleFormPosition,
       openNewMarkerPopup: true,
     };
   }
@@ -27,7 +27,10 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   componentDidUpdate(prevProps: Props) {
-    if (prevProps.newMarkerMode !== this.props.newMarkerMode) {
+    if (
+      prevProps.articleFormPosition !== this.props.articleFormPosition ||
+      prevProps.newMarkerMode !== this.props.newMarkerMode
+    ) {
       this.setState({
         currentPosition: this.props.articleFormPosition,
       });
@@ -173,10 +176,6 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   protected handleClickCancelNewMarker = async () => {
-    this.setState({
-      currentPosition: undefined,
-    });
-
     if (this.props.endToSelectPosition) {
       this.props.endToSelectPosition();
     }

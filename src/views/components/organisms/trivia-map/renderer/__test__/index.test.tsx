@@ -114,14 +114,14 @@ describe('handleClickCancelNewMarker', () => {
     shallowWrapper = shallow(<Renderer {...basicProps} />);
   });
 
-  it('should change target states', async () => {
+  it('should call endToSelectPosition', async () => {
     shallowWrapper.setState({
       currentPosition: { lat: 0, lng: 0 },
     });
     const instance = shallowWrapper.instance();
 
     await instance['handleClickCancelNewMarker']();
-    expect(instance.state.currentPosition).toEqual(undefined);
+    expect(instance.props.endToSelectPosition).toHaveBeenCalled();
   });
 
   it('should not call endToSelectPosition prop if endToSelectPosition is not setted', () => {

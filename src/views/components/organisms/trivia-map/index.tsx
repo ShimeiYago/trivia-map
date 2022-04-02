@@ -10,12 +10,17 @@ export function TriviaMap(ownProps: OwnProps) {
   const dispatch = useAppDispatch();
 
   const props: Props = {
-    markerList: useAppSelector(selectMarkerList),
+    markerList: !ownProps.doNotShowPosts
+      ? useAppSelector(selectMarkerList)
+      : [],
     loadingMarkers: useAppSelector(selectMarkersLoading),
     newMarkerMode: !!ownProps.newMarkerMode,
     articleFormPosition: useAppSelector(selectArticleFormPosition),
     width: ownProps.width,
     height: ownProps.height,
+    initZoom: ownProps.initZoom,
+    initCenter: ownProps.initCenter,
+    disabled: ownProps.disabled,
 
     fetchMarkers: () => dispatch(fetchMarkers()),
     onClickPostTitle: ownProps.onClickPostTitle,
@@ -32,4 +37,8 @@ type OwnProps = {
   endToSelectPosition?: () => void;
   width?: number;
   height?: number;
+  initZoom?: number;
+  initCenter?: Position;
+  disabled?: boolean;
+  doNotShowPosts?: boolean;
 };

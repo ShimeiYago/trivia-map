@@ -34,7 +34,73 @@ exports[`Shallow Snapshot Tests basic 1`] = `
     zoom={1}
   >
     <ForwardRef(LeafComponent)
-      attribution="<a href='https://www.tokyodisneyresort.jp/tds/map.html' target='_blank'>【公式】マップ | 東京ディズニーシー</a>"
+      noWrap={true}
+      url="/tds-map-tiles/{z}/{x}/{y}.png"
+    />
+    <MapMarker
+      autoOpen={false}
+      draggable={false}
+      key="000"
+      map={Object {}}
+      popup={
+        <ForwardRef(Typography)>
+          title
+        </ForwardRef(Typography)>
+      }
+      position={
+        Object {
+          "lat": 0,
+          "lng": 0,
+        }
+      }
+      variant="blue"
+    />
+  </MapContainer>
+</ForwardRef(Box)>
+`;
+
+exports[`Shallow Snapshot Tests disabled map 1`] = `
+<ForwardRef(Box)
+  sx={
+    Object {
+      "height": "100vh",
+      "width": "100%",
+    }
+  }
+>
+  <MapContainer
+    boxZoom={false}
+    center={
+      Object {
+        "lat": 0,
+        "lng": 0,
+      }
+    }
+    doubleClickZoom={false}
+    dragging={false}
+    keyboard={false}
+    maxBounds={
+      Array [
+        Array [
+          300,
+          -300,
+        ],
+        Array [
+          -300,
+          300,
+        ],
+      ]
+    }
+    maxZoom={4}
+    minZoom={1}
+    scrollWheelZoom={false}
+    tap={false}
+    touchZoom={false}
+    whenCreated={[Function]}
+    zoom={1}
+    zoomControl={false}
+  >
+    <ForwardRef(LeafComponent)
       noWrap={true}
       url="/tds-map-tiles/{z}/{x}/{y}.png"
     />
@@ -94,7 +160,6 @@ exports[`Shallow Snapshot Tests when currentPosition state is setted 1`] = `
     zoom={1}
   >
     <ForwardRef(LeafComponent)
-      attribution="<a href='https://www.tokyodisneyresort.jp/tds/map.html' target='_blank'>【公式】マップ | 東京ディズニーシー</a>"
       noWrap={true}
       url="/tds-map-tiles/{z}/{x}/{y}.png"
     />
@@ -104,6 +169,65 @@ exports[`Shallow Snapshot Tests when currentPosition state is setted 1`] = `
       key="000"
       map={Object {}}
       popup={false}
+      position={
+        Object {
+          "lat": 0,
+          "lng": 0,
+        }
+      }
+      variant="blue"
+    />
+  </MapContainer>
+</ForwardRef(Box)>
+`;
+
+exports[`Shallow Snapshot Tests with initCenter prop 1`] = `
+<ForwardRef(Box)
+  sx={
+    Object {
+      "height": "100vh",
+      "width": "100%",
+    }
+  }
+>
+  <MapContainer
+    center={
+      Object {
+        "lat": 1,
+        "lng": 1,
+      }
+    }
+    maxBounds={
+      Array [
+        Array [
+          300,
+          -300,
+        ],
+        Array [
+          -300,
+          300,
+        ],
+      ]
+    }
+    maxZoom={4}
+    minZoom={1}
+    whenCreated={[Function]}
+    zoom={1}
+  >
+    <ForwardRef(LeafComponent)
+      noWrap={true}
+      url="/tds-map-tiles/{z}/{x}/{y}.png"
+    />
+    <MapMarker
+      autoOpen={false}
+      draggable={false}
+      key="000"
+      map={Object {}}
+      popup={
+        <ForwardRef(Typography)>
+          title
+        </ForwardRef(Typography)>
+      }
       position={
         Object {
           "lat": 0,
@@ -150,7 +274,6 @@ exports[`Shallow Snapshot Tests with onClickPostTitle props 1`] = `
     zoom={1}
   >
     <ForwardRef(LeafComponent)
-      attribution="<a href='https://www.tokyodisneyresort.jp/tds/map.html' target='_blank'>【公式】マップ | 東京ディズニーシー</a>"
       noWrap={true}
       url="/tds-map-tiles/{z}/{x}/{y}.png"
     />
@@ -212,7 +335,6 @@ exports[`Shallow Snapshot Tests with width and height props 1`] = `
     zoom={1}
   >
     <ForwardRef(LeafComponent)
-      attribution="<a href='https://www.tokyodisneyresort.jp/tds/map.html' target='_blank'>【公式】マップ | 東京ディズニーシー</a>"
       noWrap={true}
       url="/tds-map-tiles/{z}/{x}/{y}.png"
     />

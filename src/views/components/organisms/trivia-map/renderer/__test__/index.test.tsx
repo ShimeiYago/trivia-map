@@ -10,6 +10,7 @@ const basicProps: Props = {
       title: 'title',
     },
   ],
+  initZoom: 1,
   loadingMarkers: false,
   fetchMarkers: jest.fn(),
   newMarkerMode: false,
@@ -44,6 +45,20 @@ describe('Shallow Snapshot Tests', () => {
     shallowWrapper.setProps({
       width: 100,
       height: 100,
+    });
+    expect(shallowWrapper).toMatchSnapshot();
+  });
+
+  it('with initCenter prop', () => {
+    shallowWrapper.setProps({
+      initCenter: { lat: 1, lng: 1 },
+    });
+    expect(shallowWrapper).toMatchSnapshot();
+  });
+
+  it('disabled map', () => {
+    shallowWrapper.setProps({
+      disabled: true,
     });
     expect(shallowWrapper).toMatchSnapshot();
   });

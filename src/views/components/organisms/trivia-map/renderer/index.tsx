@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapContainer, TileLayer } from 'react-leaflet';
+import { MapContainer, MapContainerProps, TileLayer } from 'react-leaflet';
 import { MapMarker } from 'views/components/moleculars/map-marker';
 import { LatLng, LeafletMouseEvent, Map as LeafletMap } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -9,8 +9,9 @@ import { Box, Button, Grid, SxProps, Typography } from '@mui/material';
 import { Position } from 'types/position';
 
 export class Renderer extends React.Component<Props, State> {
-  static readonly defaultProps = {
+  static readonly defaultProps: Pick<Props, 'newMarkerMode' | 'initZoom'> = {
     newMarkerMode: false,
+    initZoom: 1,
   };
 
   constructor(props: Props) {
@@ -38,17 +39,32 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   render() {
-    const { width, height } = this.props;
+    const { width, height, initZoom, initCenter, disabled } = this.props;
     const mapWrapper: SxProps = {
       width: width ?? '100%',
       height: height ?? '100vh',
     };
 
+    const center = initCenter
+      ? new LatLng(initCenter.lat, initCenter.lng)
+      : new LatLng(0, 0);
+
+    const disabledProps: MapContainerProps = {
+      zoomControl: false,
+      dragging: false,
+      keyboard: false,
+      touchZoom: false,
+      doubleClickZoom: false,
+      scrollWheelZoom: false,
+      boxZoom: false,
+      tap: false,
+    };
+
     return (
       <Box sx={mapWrapper}>
         <MapContainer
-          center={new LatLng(0, 0)}
-          zoom={1}
+          center={center}
+          zoom={initZoom}
           minZoom={1}
           maxZoom={4}
           maxBounds={[
@@ -56,12 +72,9 @@ export class Renderer extends React.Component<Props, State> {
             [-300, 300],
           ]}
           whenCreated={this.handleMapCreated}
+          {...(disabled ? disabledProps : {})}
         >
-          <TileLayer
-            attribution="<a href='https://www.tokyodisneyresort.jp/tds/map.html' target='_blank'>【公式】マップ | 東京ディズニーシー</a>"
-            url="/tds-map-tiles/{z}/{x}/{y}.png"
-            noWrap
-          />
+          <TileLayer url="/tds-map-tiles/{z}/{x}/{y}.png" noWrap />
           {this.renderPostMarkers()}
           {this.renderCurrentPositionMarker()}
         </MapContainer>
@@ -217,6 +230,9 @@ export type Props = {
   articleFormPosition?: Position;
   width?: number;
   height?: number;
+  initZoom?: number;
+  initCenter?: Position;
+  disabled?: boolean;
 
   fetchMarkers: () => void;
   onClickPostTitle?: (postId: string) => () => void;

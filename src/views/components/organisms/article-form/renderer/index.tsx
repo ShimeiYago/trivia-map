@@ -4,13 +4,9 @@ import { LoadingState } from 'types/loading-state';
 import { Position } from 'types/position';
 import { FormError } from 'store/article-form/model';
 import { LoadingButton } from '@mui/lab';
-import {
-  boxField,
-  miniMapLayer,
-  miniMapTextBox,
-  miniMapWrapper,
-} from './styles';
+import { miniMapLayer, miniMapTextBox, miniMapWrapper } from './styles';
 import { TriviaMap } from '../../trivia-map';
+import { BoxField } from 'views/components/atoms/box-field';
 
 export class Renderer extends React.Component<Props> {
   constructor(props: Props) {
@@ -74,7 +70,10 @@ export class Renderer extends React.Component<Props> {
             error={!!formError?.fieldErrors?.content}
           />
 
-          <Box sx={boxField} onClick={handleClickSelectPosition}>
+          <BoxField
+            onClick={handleClickSelectPosition}
+            error={!!formError?.fieldErrors?.position}
+          >
             <Box sx={miniMapWrapper}>
               <TriviaMap
                 height={300}
@@ -96,7 +95,7 @@ export class Renderer extends React.Component<Props> {
                 </Typography>
               </Box>
             </Box>
-          </Box>
+          </BoxField>
 
           <LoadingButton
             loading={submittingState === 'loading'}

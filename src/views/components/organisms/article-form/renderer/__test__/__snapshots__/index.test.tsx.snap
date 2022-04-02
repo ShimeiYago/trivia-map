@@ -39,14 +39,190 @@ exports[`Shallow Snapshot Tests basic 1`] = `
     <ForwardRef(Box)
       sx={
         Object {
+          "&:hover": Object {
+            "borderColor": "black",
+          },
           "border": 1,
           "borderColor": "grey.500",
           "borderRadius": 3,
-          "padding": 2,
+          "cursor": "pointer",
+          "padding": 1,
         }
       }
     >
-      {"lat":0,"lng":0}
+      <ForwardRef(Box)
+        sx={
+          Object {
+            "position": "relative",
+          }
+        }
+      >
+        <TriviaMap
+          disabled={true}
+          doNotShowPosts={true}
+          height={300}
+          initCenter={
+            Object {
+              "lat": 0,
+              "lng": 0,
+            }
+          }
+          initZoom={3}
+        />
+        <ForwardRef(Box)
+          sx={
+            Object {
+              "backgroundColor": "rgba(0,0,0,0.5)",
+              "height": "100%",
+              "left": 0,
+              "position": "absolute",
+              "top": 0,
+              "width": "100%",
+              "zIndex": 2000,
+            }
+          }
+        />
+        <ForwardRef(Box)
+          sx={
+            Object {
+              "fontWeight": "bold",
+              "left": "50%",
+              "position": "absolute",
+              "top": "70%",
+              "transform": "translate(-50%,-50%)",
+              "width": "90%",
+              "zIndex": 2000,
+            }
+          }
+        >
+          <ForwardRef(Typography)
+            color="white"
+            component="div"
+            fontSize="14"
+            textAlign="center"
+            variant="inherit"
+          >
+            この位置が選択されています。
+            <br />
+            位置を選び直す場合はここをタップしてください。
+          </ForwardRef(Typography)>
+        </ForwardRef(Box)>
+      </ForwardRef(Box)>
+    </ForwardRef(Box)>
+    <ForwardRef(LoadingButton)
+      disabled={false}
+      loading={false}
+      onClick={[Function]}
+      variant="outlined"
+    >
+      保存して公開
+    </ForwardRef(LoadingButton)>
+  </ForwardRef(Stack)>
+</ForwardRef(Container)>
+`;
+
+exports[`Shallow Snapshot Tests position is not selected yet 1`] = `
+<ForwardRef(Container)
+  maxWidth="sm"
+  sx={
+    Object {
+      "pt": 5,
+    }
+  }
+>
+  <ForwardRef(Stack)
+    spacing={3}
+  >
+    <ForwardRef(Typography)
+      align="center"
+      component="h2"
+      variant="h4"
+    >
+      新しいトリビアを追加
+    </ForwardRef(Typography)>
+    <ForwardRef(TextField)
+      disabled={false}
+      error={false}
+      label="タイトル"
+      onChange={[Function]}
+      value=""
+      variant="standard"
+    />
+    <ForwardRef(TextField)
+      disabled={false}
+      error={false}
+      label="説明文"
+      multiline={true}
+      onChange={[Function]}
+      rows={4}
+      value=""
+    />
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "&:hover": Object {
+            "borderColor": "black",
+          },
+          "border": 1,
+          "borderColor": "grey.500",
+          "borderRadius": 3,
+          "cursor": "pointer",
+          "padding": 1,
+        }
+      }
+    >
+      <ForwardRef(Box)
+        sx={
+          Object {
+            "position": "relative",
+          }
+        }
+      >
+        <TriviaMap
+          disabled={true}
+          doNotShowPosts={true}
+          height={300}
+          initZoom={3}
+        />
+        <ForwardRef(Box)
+          sx={
+            Object {
+              "backgroundColor": "rgba(0,0,0,0.5)",
+              "height": "100%",
+              "left": 0,
+              "position": "absolute",
+              "top": 0,
+              "width": "100%",
+              "zIndex": 2000,
+            }
+          }
+        />
+        <ForwardRef(Box)
+          sx={
+            Object {
+              "fontWeight": "bold",
+              "left": "50%",
+              "position": "absolute",
+              "top": "70%",
+              "transform": "translate(-50%,-50%)",
+              "width": "90%",
+              "zIndex": 2000,
+            }
+          }
+        >
+          <ForwardRef(Typography)
+            color="white"
+            component="div"
+            fontSize="14"
+            textAlign="center"
+            variant="inherit"
+          >
+            位置が選択されていません。
+            <br />
+            ここをタップして位置を選択してください。
+          </ForwardRef(Typography)>
+        </ForwardRef(Box)>
+      </ForwardRef(Box)>
     </ForwardRef(Box)>
     <ForwardRef(LoadingButton)
       disabled={false}

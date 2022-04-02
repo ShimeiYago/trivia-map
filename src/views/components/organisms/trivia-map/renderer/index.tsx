@@ -5,7 +5,7 @@ import { LatLng, LeafletMouseEvent, Map as LeafletMap } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import './index.css';
 import { Marker } from 'store/markers/model';
-import { Box, Button, Grid, Typography } from '@mui/material';
+import { Box, Button, Grid, SxProps, Typography } from '@mui/material';
 import { Position } from 'types/position';
 
 export class Renderer extends React.Component<Props, State> {
@@ -35,26 +35,34 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   render() {
+    const { width, height } = this.props;
+    const mapWrapper: SxProps = {
+      width: width ?? '100%',
+      height: height ?? '100vh',
+    };
+
     return (
-      <MapContainer
-        center={new LatLng(0, 0)}
-        zoom={1}
-        minZoom={1}
-        maxZoom={4}
-        maxBounds={[
-          [300, -300],
-          [-300, 300],
-        ]}
-        whenCreated={this.handleMapCreated}
-      >
-        <TileLayer
-          attribution="<a href='https://www.tokyodisneyresort.jp/tds/map.html' target='_blank'>【公式】マップ | 東京ディズニーシー</a>"
-          url="/tds-map-tiles/{z}/{x}/{y}.png"
-          noWrap
-        />
-        {this.renderPostMarkers()}
-        {this.renderCurrentPositionMarker()}
-      </MapContainer>
+      <Box sx={mapWrapper}>
+        <MapContainer
+          center={new LatLng(0, 0)}
+          zoom={1}
+          minZoom={1}
+          maxZoom={4}
+          maxBounds={[
+            [300, -300],
+            [-300, 300],
+          ]}
+          whenCreated={this.handleMapCreated}
+        >
+          <TileLayer
+            attribution="<a href='https://www.tokyodisneyresort.jp/tds/map.html' target='_blank'>【公式】マップ | 東京ディズニーシー</a>"
+            url="/tds-map-tiles/{z}/{x}/{y}.png"
+            noWrap
+          />
+          {this.renderPostMarkers()}
+          {this.renderCurrentPositionMarker()}
+        </MapContainer>
+      </Box>
     );
   }
 
@@ -208,6 +216,8 @@ export type Props = {
   loadingMarkers: boolean;
   newMarkerMode: boolean;
   articleFormPosition?: Position;
+  width?: number;
+  height?: number;
 
   fetchMarkers: () => void;
   onClickPostTitle?: (postId: string) => () => void;

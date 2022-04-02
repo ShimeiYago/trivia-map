@@ -36,19 +36,8 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       rows={4}
       value=""
     />
-    <ForwardRef(Box)
-      sx={
-        Object {
-          "&:hover": Object {
-            "borderColor": "black",
-          },
-          "border": 1,
-          "borderColor": "grey.500",
-          "borderRadius": 3,
-          "cursor": "pointer",
-          "padding": 1,
-        }
-      }
+    <BoxField
+      error={false}
     >
       <ForwardRef(Box)
         sx={
@@ -108,7 +97,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
           </ForwardRef(Typography)>
         </ForwardRef(Box)>
       </ForwardRef(Box)>
-    </ForwardRef(Box)>
+    </BoxField>
     <ForwardRef(LoadingButton)
       disabled={false}
       loading={false}
@@ -157,19 +146,8 @@ exports[`Shallow Snapshot Tests position is not selected yet 1`] = `
       rows={4}
       value=""
     />
-    <ForwardRef(Box)
-      sx={
-        Object {
-          "&:hover": Object {
-            "borderColor": "black",
-          },
-          "border": 1,
-          "borderColor": "grey.500",
-          "borderRadius": 3,
-          "cursor": "pointer",
-          "padding": 1,
-        }
-      }
+    <BoxField
+      error={false}
     >
       <ForwardRef(Box)
         sx={
@@ -223,7 +201,7 @@ exports[`Shallow Snapshot Tests position is not selected yet 1`] = `
           </ForwardRef(Typography)>
         </ForwardRef(Box)>
       </ForwardRef(Box)>
-    </ForwardRef(Box)>
+    </BoxField>
     <ForwardRef(LoadingButton)
       disabled={false}
       loading={false}

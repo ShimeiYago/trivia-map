@@ -1,16 +1,5 @@
 import { SxProps } from '@mui/material';
 
-export const boxField: SxProps = {
-  border: 1,
-  borderColor: 'grey.500',
-  borderRadius: 3,
-  cursor: 'pointer',
-  padding: 1,
-  '&:hover': {
-    borderColor: 'black',
-  },
-};
-
 export const miniMapWrapper: SxProps = {
   position: 'relative',
 };

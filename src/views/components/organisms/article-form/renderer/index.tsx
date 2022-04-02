@@ -4,7 +4,13 @@ import { LoadingState } from 'types/loading-state';
 import { Position } from 'types/position';
 import { FormError } from 'store/article-form/model';
 import { LoadingButton } from '@mui/lab';
-import { positionBoxStyle } from './styles';
+import {
+  boxField,
+  miniMapLayer,
+  miniMapTextBox,
+  miniMapWrapper,
+} from './styles';
+import { TriviaMap } from '../../trivia-map';
 
 export class Renderer extends React.Component<Props> {
   constructor(props: Props) {
@@ -68,8 +74,28 @@ export class Renderer extends React.Component<Props> {
             error={!!formError?.fieldErrors?.content}
           />
 
-          <Box sx={positionBoxStyle} onClick={handleClickSelectPosition}>
-            {JSON.stringify(position)}
+          <Box sx={boxField} onClick={handleClickSelectPosition}>
+            <Box sx={miniMapWrapper}>
+              <TriviaMap
+                height={300}
+                initZoom={3}
+                initCenter={position}
+                disabled
+                doNotShowPosts
+              />
+              <Box sx={miniMapLayer}></Box>
+              <Box sx={miniMapTextBox}>
+                <Typography
+                  color="white"
+                  textAlign="center"
+                  component="div"
+                  fontSize="14"
+                  variant="inherit"
+                >
+                  {this.getMiniMapText()}
+                </Typography>
+              </Box>
+            </Box>
           </Box>
 
           <LoadingButton
@@ -98,6 +124,26 @@ export class Renderer extends React.Component<Props> {
       return this.props.submitNewArticle();
     }
   };
+
+  protected getMiniMapText() {
+    if (this.props.position) {
+      return (
+        <>
+          この位置が選択されています。
+          <br />
+          位置を選び直す場合はここをタップしてください。
+        </>
+      );
+    }
+
+    return (
+      <>
+        位置が選択されていません。
+        <br />
+        ここをタップして位置を選択してください。
+      </>
+    );
+  }
 }
 
 export type Props = {

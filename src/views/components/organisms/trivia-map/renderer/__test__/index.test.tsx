@@ -39,6 +39,14 @@ describe('Shallow Snapshot Tests', () => {
     shallowWrapper.setProps({ onClickPostTitle: jest.fn() });
     expect(shallowWrapper).toMatchSnapshot();
   });
+
+  it('with width and height props', () => {
+    shallowWrapper.setProps({
+      width: 100,
+      height: 100,
+    });
+    expect(shallowWrapper).toMatchSnapshot();
+  });
 });
 
 describe('handleMapCreated', () => {

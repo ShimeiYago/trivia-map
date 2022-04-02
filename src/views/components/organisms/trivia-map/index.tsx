@@ -14,6 +14,8 @@ export function TriviaMap(ownProps: OwnProps) {
     loadingMarkers: useAppSelector(selectMarkersLoading),
     newMarkerMode: !!ownProps.newMarkerMode,
     articleFormPosition: useAppSelector(selectArticleFormPosition),
+    width: ownProps.width,
+    height: ownProps.height,
 
     fetchMarkers: () => dispatch(fetchMarkers()),
     onClickPostTitle: ownProps.onClickPostTitle,
@@ -28,4 +30,6 @@ type OwnProps = {
   onClickPostTitle?: (postId: string) => () => void;
   newMarkerMode?: boolean;
   endToSelectPosition?: () => void;
+  width?: number;
+  height?: number;
 };

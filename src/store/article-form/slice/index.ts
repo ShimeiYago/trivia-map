@@ -47,6 +47,7 @@ export const articleFormSlice = createSlice({
       state.fetchingState = 'success';
       state.title = action.payload.title;
       state.content = action.payload.content;
+      state.position = action.payload.position;
     },
 
     initialize(state) {

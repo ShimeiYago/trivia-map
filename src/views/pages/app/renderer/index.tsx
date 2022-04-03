@@ -68,6 +68,7 @@ export class Renderer extends React.Component<Props, State> {
   protected handleClickPostEdit = () =>
     this.setState({
       openFormModal: true,
+      openArticleModal: false,
       edittingArticleId: this.state.readingArticleId,
     });
 

@@ -135,6 +135,9 @@ exports[`Shallow Snapshot Tests when currentPosition state is setted 1`] = `
     }
   }
 >
+  <GuideDialog>
+    マップ上の好きな位置をタップしてください。
+  </GuideDialog>
   <MapContainer
     center={
       Object {

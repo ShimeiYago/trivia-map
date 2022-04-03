@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shallow Snapshot Tests basic 1`] = `
+<ForwardRef(Box)
+  sx={
+    Object {
+      "backgroundColor": "rgba(0,0,0,0.7)",
+      "borderRadius": 2,
+      "display": "inline-block",
+      "fontWeight": "bold",
+      "left": "50%",
+      "p": 2,
+      "position": "absolute",
+      "top": "10%",
+      "transform": "translate(-50%,-50%)",
+      "width": "80%",
+      "zIndex": 2000,
+    }
+  }
+>
+  <ForwardRef(Typography)
+    align="center"
+    color="white"
+    variant="inherit"
+  >
+    message
+  </ForwardRef(Typography)>
+</ForwardRef(Box)>
+`;

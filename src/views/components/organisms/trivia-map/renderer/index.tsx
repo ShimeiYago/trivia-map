@@ -7,6 +7,7 @@ import './index.css';
 import { Marker } from 'store/markers/model';
 import { Box, Button, Grid, SxProps, Typography } from '@mui/material';
 import { Position } from 'types/position';
+import { GuideDialog } from 'views/components/atoms/guide-dialog';
 
 export class Renderer extends React.Component<Props, State> {
   static readonly defaultProps: Pick<Props, 'newMarkerMode' | 'initZoom'> = {
@@ -19,7 +20,8 @@ export class Renderer extends React.Component<Props, State> {
     this.handleMapCreated = this.handleMapCreated.bind(this);
     this.state = {
       currentPosition: props.articleFormPosition,
-      openNewMarkerPopup: true,
+      openableNewMarkerPopup: true,
+      isNewPositionSelected: false,
     };
   }
 
@@ -57,11 +59,12 @@ export class Renderer extends React.Component<Props, State> {
       doubleClickZoom: false,
       scrollWheelZoom: false,
       boxZoom: false,
-      tap: false,
     };
 
     return (
       <Box sx={mapWrapper}>
+        {this.renderGuideDialog()}
+
         <MapContainer
           center={center}
           zoom={initZoom}
@@ -72,6 +75,7 @@ export class Renderer extends React.Component<Props, State> {
             [-300, 300],
           ]}
           whenCreated={this.handleMapCreated}
+          tap={false}
           {...(disabled ? disabledProps : {})}
         >
           <TileLayer url="/tds-map-tiles/{z}/{x}/{y}.png" noWrap />
@@ -96,10 +100,11 @@ export class Renderer extends React.Component<Props, State> {
 
     this.setState({
       currentPosition: { lat: e.latlng.lat, lng: e.latlng.lng },
-      openNewMarkerPopup: false,
+      openableNewMarkerPopup: false,
+      isNewPositionSelected: true,
     });
     this.setState({
-      openNewMarkerPopup: true,
+      openableNewMarkerPopup: true,
     });
   };
 
@@ -130,7 +135,7 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   protected renderCurrentPositionMarker() {
-    const { currentPosition, openNewMarkerPopup } = this.state;
+    const { currentPosition, openableNewMarkerPopup } = this.state;
     const { newMarkerMode } = this.props;
 
     if (currentPosition === undefined) {
@@ -178,7 +183,7 @@ export class Renderer extends React.Component<Props, State> {
           map={this.state.map}
           position={new LatLng(currentPosition.lat, currentPosition.lng)}
           popup={newMarkerMode && popup}
-          autoOpen={newMarkerMode && openNewMarkerPopup}
+          autoOpen={newMarkerMode && openableNewMarkerPopup}
           variant="red"
           draggable={newMarkerMode}
           onDragStart={this.handleDragStartNewMarker}
@@ -189,6 +194,10 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   protected handleClickCancelNewMarker = async () => {
+    this.setState({
+      isNewPositionSelected: !!this.props.articleFormPosition,
+    });
+
     if (this.props.endToSelectPosition) {
       this.props.endToSelectPosition();
     }
@@ -211,16 +220,26 @@ export class Renderer extends React.Component<Props, State> {
 
   protected handleDragStartNewMarker = () => {
     this.setState({
-      openNewMarkerPopup: false,
+      openableNewMarkerPopup: false,
     });
   };
 
   protected handleDragEndNewMarker = (position: LatLng) => {
     this.setState({
       currentPosition: { lat: position.lat, lng: position.lng },
-      openNewMarkerPopup: true,
+      openableNewMarkerPopup: true,
     });
   };
+
+  protected renderGuideDialog() {
+    if (!this.props.newMarkerMode || this.state.isNewPositionSelected) {
+      return null;
+    }
+
+    return (
+      <GuideDialog>マップ上の好きな位置をタップしてください。</GuideDialog>
+    );
+  }
 }
 
 export type Props = {
@@ -242,6 +261,7 @@ export type Props = {
 
 export type State = {
   currentPosition?: Position;
-  openNewMarkerPopup: boolean;
+  openableNewMarkerPopup: boolean;
   map?: LeafletMap;
+  isNewPositionSelected: boolean;
 };

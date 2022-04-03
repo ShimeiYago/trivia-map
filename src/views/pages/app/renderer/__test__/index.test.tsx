@@ -22,7 +22,7 @@ describe('Shallow Snapshot Tests', () => {
       isMobile: false,
     });
     shallowWrapper.setState({
-      openingModal: 'form',
+      openFormModal: true,
     });
     expect(shallowWrapper).toMatchSnapshot();
   });
@@ -34,7 +34,7 @@ describe('handleClickAddButton', () => {
     const instance = shallowWrapper.instance();
 
     instance['handleClickAddButton']();
-    expect(instance.state.openingModal).toBe('form');
+    expect(instance.state.openFormModal).toBeTruthy;
     expect(instance.state.readingArticleId).toBe(undefined);
   });
 });
@@ -45,7 +45,7 @@ describe('handleClickPostTitle', () => {
     const instance = shallowWrapper.instance();
 
     instance['handleClickPostTitle']('postId-000')();
-    expect(instance.state.openingModal).toBe('article');
+    expect(instance.state.openArticleModal).toBeTruthy;
     expect(instance.state.readingArticleId).toBe('postId-000');
   });
 });
@@ -60,7 +60,7 @@ describe('handleClickPostEdit', () => {
     });
 
     instance['handleClickPostEdit']();
-    expect(instance.state.openingModal).toBe('form');
+    expect(instance.state.openFormModal).toBeTruthy;
     expect(instance.state.edittingArticleId).toBe('postId-000');
   });
 });
@@ -71,20 +71,33 @@ describe('handleOpenEditForm', () => {
     const instance = shallowWrapper.instance();
 
     instance['handleOpenEditForm']();
-    expect(instance.state.openingModal).toBe('form');
+    expect(instance.state.openFormModal).toBeTruthy;
   });
 });
 
 describe('handleCloseModal', () => {
-  it('should close modal', () => {
+  beforeEach(() => {
     shallowWrapper = shallow(<Renderer {...props} />);
+  });
+
+  it('should close article modal', () => {
     const instance = shallowWrapper.instance();
 
     instance.setState({
-      openingModal: 'article',
+      openArticleModal: true,
     });
-    instance['handleCloseModal']();
-    expect(instance.state.openingModal).toBe('none');
+    instance['handleCloseModal']('article')();
+    expect(instance.state.openArticleModal).toBeFalsy;
+  });
+
+  it('should close form modal', () => {
+    const instance = shallowWrapper.instance();
+
+    instance.setState({
+      openFormModal: true,
+    });
+    instance['handleCloseModal']('form')();
+    expect(instance.state.openFormModal).toBeFalsy;
   });
 });
 
@@ -93,7 +106,7 @@ describe('startToSelectPosition', () => {
     shallowWrapper = shallow(<Renderer {...props} />);
     const instance = shallowWrapper.instance();
     instance['startToSelectPosition']();
-    expect(instance.state.openingModal).toBe('none');
+    expect(instance.state.openFormModal).toBeFalsy;
     expect(instance.state.newMarkerMode).toBe(true);
   });
 });
@@ -103,7 +116,7 @@ describe('endToSelectPosition', () => {
     shallowWrapper = shallow(<Renderer {...props} />);
     const instance = shallowWrapper.instance();
     instance['endToSelectPosition']();
-    expect(instance.state.openingModal).toBe('form');
+    expect(instance.state.openFormModal).toBeTruthy;
     expect(instance.state.newMarkerMode).toBe(false);
   });
 });

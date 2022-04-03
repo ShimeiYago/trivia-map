@@ -12,13 +12,14 @@ export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      openingModal: 'none',
+      openArticleModal: false,
+      openFormModal: false,
       newMarkerMode: false,
     };
   }
 
   render() {
-    const { readingArticleId, openingModal } = this.state;
+    const { readingArticleId, openArticleModal } = this.state;
     const { isFormEditting } = this.props;
     return (
       <>
@@ -29,8 +30,8 @@ export class Renderer extends React.Component<Props, State> {
         />
 
         <BoxModal
-          open={openingModal === 'article'}
-          onClose={this.handleCloseModal}
+          open={openArticleModal}
+          onClose={this.handleCloseModal('article')}
         >
           {readingArticleId ? (
             <Article
@@ -51,14 +52,14 @@ export class Renderer extends React.Component<Props, State> {
 
   protected handleClickAddButton = () =>
     this.setState({
-      openingModal: 'form',
+      openFormModal: true,
       edittingArticleId: undefined,
     });
 
   protected handleClickPostTitle = (postId: string) => {
     return () => {
       this.setState({
-        openingModal: 'article',
+        openArticleModal: true,
         readingArticleId: postId,
       });
     };
@@ -66,49 +67,60 @@ export class Renderer extends React.Component<Props, State> {
 
   protected handleClickPostEdit = () =>
     this.setState({
-      openingModal: 'form',
+      openFormModal: true,
       edittingArticleId: this.state.readingArticleId,
     });
 
   protected handleOpenEditForm = () =>
     this.setState({
-      openingModal: 'form',
+      openFormModal: true,
     });
 
-  protected handleCloseModal = () => {
-    this.setState({
-      openingModal: 'none',
-    });
-  };
+  protected handleCloseModal(target: 'article' | 'form') {
+    switch (target) {
+      case 'article':
+        return () => {
+          this.setState({
+            openArticleModal: false,
+          });
+        };
+      case 'form':
+        return () => {
+          this.setState({
+            openFormModal: false,
+          });
+        };
+    }
+  }
 
   protected startToSelectPosition = () => {
     this.setState({
-      openingModal: 'none',
+      openFormModal: false,
       newMarkerMode: true,
     });
   };
 
   protected endToSelectPosition = () => {
     this.setState({
-      openingModal: 'form',
+      openFormModal: true,
       newMarkerMode: false,
     });
   };
 
   protected renderEditForm = () => {
-    const { edittingArticleId, openingModal } = this.state;
+    const { edittingArticleId, openFormModal } = this.state;
     const { isFormEditting, isMobile } = this.props;
 
     return isMobile ? (
       <SwipeableEdgeDrawer
-        show={isFormEditting || openingModal === 'form'}
-        open={openingModal === 'form'}
+        show={isFormEditting || openFormModal}
+        open={openFormModal}
         onOpen={this.handleOpenEditForm}
-        onClose={this.handleCloseModal}
+        onClose={this.handleCloseModal('form')}
         labelText="編集中"
         heightRatio={80}
       >
-        {openingModal === 'form' && (
+        {openFormModal && (
           <ArticleForm
             postId={edittingArticleId}
             onClickSelectPosition={this.startToSelectPosition}
@@ -120,9 +132,9 @@ export class Renderer extends React.Component<Props, State> {
         sx={rightDrawerStyle}
         variant="persistent"
         anchor="right"
-        open={openingModal === 'form'}
+        open={openFormModal}
       >
-        {openingModal === 'form' && (
+        {openFormModal && (
           <ArticleForm
             postId={edittingArticleId}
             onClickSelectPosition={this.startToSelectPosition}
@@ -139,7 +151,8 @@ export type Props = {
 };
 
 export type State = {
-  openingModal: 'none' | 'article' | 'form';
+  openArticleModal: boolean;
+  openFormModal: boolean;
   readingArticleId?: string;
   edittingArticleId?: string;
   newMarkerMode: boolean;

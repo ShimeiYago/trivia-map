@@ -42,6 +42,7 @@ export const submitNewArticle = (): AppThunk => async (dispatch, getState) => {
   try {
     const res = await postRemoteArticle(title, content, position);
     dispatch(submitSuccess(res.postId));
+    dispatch(initialize());
   } catch (error) {
     const apiError = error as ApiError<FormError>;
     if (apiError.status === 422 && apiError.data) {

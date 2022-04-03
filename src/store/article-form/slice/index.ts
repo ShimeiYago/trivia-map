@@ -31,6 +31,7 @@ export const articleFormSlice = createSlice({
     submitSuccess(state, action: PayloadAction<string>) {
       state.submittingState = 'success';
       state.postId = action.payload;
+      state.isEditting = false;
     },
 
     fetchStart(state, action: PayloadAction<string>) {

@@ -95,11 +95,13 @@ describe('articleForm reducer', () => {
     const res = {
       title: 'title',
       content: 'content',
+      position: { lat: 0, lng: 0 },
     };
     const actual = articleFormReducer(fetchingLoadingState, fetchSuccess(res));
     expect(actual.fetchingState).toEqual('success');
     expect(actual.title).toEqual(res.title);
     expect(actual.content).toEqual(res.content);
+    expect(actual.position).toEqual(res.position);
   });
 
   it('should handle initialize', () => {

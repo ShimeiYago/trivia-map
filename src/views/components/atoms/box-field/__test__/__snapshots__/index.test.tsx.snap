@@ -1,0 +1,115 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shallow Snapshot Tests basic 1`] = `
+<div>
+  <ForwardRef(Box)
+    onClick={[MockFunction]}
+    sx={
+      Object {
+        "&:hover": Object {
+          "borderColor": "black",
+        },
+        "border": 1,
+        "borderColor": "#c4c4c4",
+        "borderRadius": 3,
+        "cursor": "pointer",
+        "padding": 1,
+      }
+    }
+  >
+    test
+  </ForwardRef(Box)>
+</div>
+`;
+
+exports[`Shallow Snapshot Tests with error & helperText 1`] = `
+<div>
+  <ForwardRef(Box)
+    onClick={[MockFunction]}
+    sx={
+      Object {
+        "&:hover": Object {
+          "borderColor": "#d32f2f",
+        },
+        "border": 1,
+        "borderColor": "#d32f2f",
+        "borderRadius": 3,
+        "cursor": "pointer",
+        "padding": 1,
+      }
+    }
+  >
+    test
+  </ForwardRef(Box)>
+  <ForwardRef(Typography)
+    sx={
+      Object {
+        "color": "#d32f2f",
+        "fontSize": "0.75rem",
+        "ml": "14px",
+        "mr": "14px",
+        "mt": "3px",
+      }
+    }
+  >
+    text
+  </ForwardRef(Typography)>
+</div>
+`;
+
+exports[`Shallow Snapshot Tests with error 1`] = `
+<div>
+  <ForwardRef(Box)
+    onClick={[MockFunction]}
+    sx={
+      Object {
+        "&:hover": Object {
+          "borderColor": "#d32f2f",
+        },
+        "border": 1,
+        "borderColor": "#d32f2f",
+        "borderRadius": 3,
+        "cursor": "pointer",
+        "padding": 1,
+      }
+    }
+  >
+    test
+  </ForwardRef(Box)>
+</div>
+`;
+
+exports[`Shallow Snapshot Tests with helperText 1`] = `
+<div>
+  <ForwardRef(Box)
+    onClick={[MockFunction]}
+    sx={
+      Object {
+        "&:hover": Object {
+          "borderColor": "black",
+        },
+        "border": 1,
+        "borderColor": "#c4c4c4",
+        "borderRadius": 3,
+        "cursor": "pointer",
+        "padding": 1,
+      }
+    }
+  >
+    test
+  </ForwardRef(Box)>
+  <ForwardRef(Typography)
+    sx={
+      Object {
+        "color": "#747474",
+        "fontSize": "0.75rem",
+        "ml": "14px",
+        "mr": "14px",
+        "mt": "3px",
+      }
+    }
+  >
+    text
+  </ForwardRef(Typography)>
+</div>
+`;

@@ -19,11 +19,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
     onOpen={[Function]}
     open={false}
     show={false}
-  >
-    <ArticleForm
-      onClickSelectPosition={[Function]}
-    />
-  </SwipeableEdgeDrawer>
+  />
   <FloatingButton
     color="primary"
     disabled={false}

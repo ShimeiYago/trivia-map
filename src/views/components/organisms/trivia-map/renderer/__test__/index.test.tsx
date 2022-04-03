@@ -10,6 +10,7 @@ const basicProps: Props = {
       title: 'title',
     },
   ],
+  initZoom: 1,
   loadingMarkers: false,
   fetchMarkers: jest.fn(),
   newMarkerMode: false,
@@ -31,11 +32,34 @@ describe('Shallow Snapshot Tests', () => {
 
   it('when currentPosition state is setted', () => {
     shallowWrapper.setState({ currentPosition: new LatLng(1, 1) });
+    shallowWrapper.setProps({ newMarkerMode: true });
     expect(shallowWrapper).toMatchSnapshot();
   });
 
   it('with onClickPostTitle props', () => {
     shallowWrapper.setProps({ onClickPostTitle: jest.fn() });
+    expect(shallowWrapper).toMatchSnapshot();
+  });
+
+  it('with width and height props', () => {
+    shallowWrapper.setProps({
+      width: 100,
+      height: 100,
+    });
+    expect(shallowWrapper).toMatchSnapshot();
+  });
+
+  it('with initCenter prop', () => {
+    shallowWrapper.setProps({
+      initCenter: { lat: 1, lng: 1 },
+    });
+    expect(shallowWrapper).toMatchSnapshot();
+  });
+
+  it('disabled map', () => {
+    shallowWrapper.setProps({
+      disabled: true,
+    });
     expect(shallowWrapper).toMatchSnapshot();
   });
 });
@@ -105,14 +129,14 @@ describe('handleClickCancelNewMarker', () => {
     shallowWrapper = shallow(<Renderer {...basicProps} />);
   });
 
-  it('should change target states', async () => {
+  it('should call endToSelectPosition', async () => {
     shallowWrapper.setState({
       currentPosition: { lat: 0, lng: 0 },
     });
     const instance = shallowWrapper.instance();
 
     await instance['handleClickCancelNewMarker']();
-    expect(instance.state.currentPosition).toEqual(undefined);
+    expect(instance.props.endToSelectPosition).toHaveBeenCalled();
   });
 
   it('should not call endToSelectPosition prop if endToSelectPosition is not setted', () => {

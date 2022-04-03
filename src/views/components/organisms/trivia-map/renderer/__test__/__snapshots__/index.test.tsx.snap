@@ -1,235 +1,361 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Shallow Snapshot Tests basic 1`] = `
-<MapContainer
-  center={
+<ForwardRef(Box)
+  sx={
     Object {
-      "lat": 0,
-      "lng": 0,
+      "height": "100vh",
+      "width": "100%",
     }
   }
-  maxBounds={
-    Array [
-      Array [
-        300,
-        -300,
-      ],
-      Array [
-        -300,
-        300,
-      ],
-    ]
-  }
-  maxZoom={4}
-  minZoom={1}
-  whenCreated={[Function]}
-  zoom={1}
 >
-  <ForwardRef(LeafComponent)
-    attribution="<a href='https://www.tokyodisneyresort.jp/tds/map.html' target='_blank'>【公式】マップ | 東京ディズニーシー</a>"
-    noWrap={true}
-    url="/tds-map-tiles/{z}/{x}/{y}.png"
-  />
-  <MapMarker
-    autoOpen={false}
-    draggable={false}
-    key="000"
-    map={Object {}}
-    popup={
-      <ForwardRef(Typography)>
-        title
-      </ForwardRef(Typography)>
-    }
-    position={
+  <MapContainer
+    center={
       Object {
         "lat": 0,
         "lng": 0,
       }
     }
-    variant="blue"
-  />
-</MapContainer>
+    maxBounds={
+      Array [
+        Array [
+          300,
+          -300,
+        ],
+        Array [
+          -300,
+          300,
+        ],
+      ]
+    }
+    maxZoom={4}
+    minZoom={1}
+    whenCreated={[Function]}
+    zoom={1}
+  >
+    <ForwardRef(LeafComponent)
+      noWrap={true}
+      url="/tds-map-tiles/{z}/{x}/{y}.png"
+    />
+    <MapMarker
+      autoOpen={false}
+      draggable={false}
+      key="000"
+      map={Object {}}
+      popup={
+        <ForwardRef(Typography)>
+          title
+        </ForwardRef(Typography)>
+      }
+      position={
+        Object {
+          "lat": 0,
+          "lng": 0,
+        }
+      }
+      variant="blue"
+    />
+  </MapContainer>
+</ForwardRef(Box)>
+`;
+
+exports[`Shallow Snapshot Tests disabled map 1`] = `
+<ForwardRef(Box)
+  sx={
+    Object {
+      "height": "100vh",
+      "width": "100%",
+    }
+  }
+>
+  <MapContainer
+    boxZoom={false}
+    center={
+      Object {
+        "lat": 0,
+        "lng": 0,
+      }
+    }
+    doubleClickZoom={false}
+    dragging={false}
+    keyboard={false}
+    maxBounds={
+      Array [
+        Array [
+          300,
+          -300,
+        ],
+        Array [
+          -300,
+          300,
+        ],
+      ]
+    }
+    maxZoom={4}
+    minZoom={1}
+    scrollWheelZoom={false}
+    tap={false}
+    touchZoom={false}
+    whenCreated={[Function]}
+    zoom={1}
+    zoomControl={false}
+  >
+    <ForwardRef(LeafComponent)
+      noWrap={true}
+      url="/tds-map-tiles/{z}/{x}/{y}.png"
+    />
+    <MapMarker
+      autoOpen={false}
+      draggable={false}
+      key="000"
+      map={Object {}}
+      popup={
+        <ForwardRef(Typography)>
+          title
+        </ForwardRef(Typography)>
+      }
+      position={
+        Object {
+          "lat": 0,
+          "lng": 0,
+        }
+      }
+      variant="blue"
+    />
+  </MapContainer>
+</ForwardRef(Box)>
 `;
 
 exports[`Shallow Snapshot Tests when currentPosition state is setted 1`] = `
-<MapContainer
-  center={
+<ForwardRef(Box)
+  sx={
     Object {
-      "lat": 0,
-      "lng": 0,
+      "height": "100vh",
+      "width": "100%",
     }
   }
-  maxBounds={
-    Array [
-      Array [
-        300,
-        -300,
-      ],
-      Array [
-        -300,
-        300,
-      ],
-    ]
-  }
-  maxZoom={4}
-  minZoom={1}
-  whenCreated={[Function]}
-  zoom={1}
 >
-  <ForwardRef(LeafComponent)
-    attribution="<a href='https://www.tokyodisneyresort.jp/tds/map.html' target='_blank'>【公式】マップ | 東京ディズニーシー</a>"
-    noWrap={true}
-    url="/tds-map-tiles/{z}/{x}/{y}.png"
-  />
-  <MapMarker
-    autoOpen={false}
-    draggable={false}
-    key="000"
-    map={Object {}}
-    popup={
-      <ForwardRef(Typography)>
-        title
-      </ForwardRef(Typography)>
-    }
-    position={
+  <MapContainer
+    center={
       Object {
         "lat": 0,
         "lng": 0,
       }
     }
-    variant="blue"
-  />
-  <MapMarker
-    autoOpen={true}
-    draggable={true}
-    map={Object {}}
-    onDragEnd={[Function]}
-    onDragStart={[Function]}
-    popup={
-      <ForwardRef(Box)
-        sx={
-          Object {
-            "p": 1,
-          }
-        }
-      >
-        <ForwardRef(Typography)
-          align="center"
-          component="p"
-          sx={
-            Object {
-              "fontWeight": "bold",
-            }
-          }
-          variant="h6"
-        >
-          この位置でよろしいですか？
-        </ForwardRef(Typography)>
-        <ForwardRef(Typography)
-          component="p"
-          variant="subtitle2"
-        >
-          ※このマーカーは掴んで移動することができます。
-        </ForwardRef(Typography)>
-        <ForwardRef(Typography)
-          component="p"
-          variant="subtitle2"
-        >
-          ※あとで変更することができます。
-        </ForwardRef(Typography)>
-        <ForwardRef(Grid)
-          container={true}
-          justifyContent="center"
-          spacing={2}
-          sx={
-            Object {
-              "textAlign": "center",
-            }
-          }
-        >
-          <ForwardRef(Grid)
-            item={true}
-            xs={6}
-          >
-            <ForwardRef(Button)
-              onClick={[Function]}
-            >
-              キャンセル
-            </ForwardRef(Button)>
-          </ForwardRef(Grid)>
-          <ForwardRef(Grid)
-            item={true}
-            xs={6}
-          >
-            <ForwardRef(Button)
-              onClick={[Function]}
-            >
-              確定
-            </ForwardRef(Button)>
-          </ForwardRef(Grid)>
-        </ForwardRef(Grid)>
-      </ForwardRef(Box)>
+    maxBounds={
+      Array [
+        Array [
+          300,
+          -300,
+        ],
+        Array [
+          -300,
+          300,
+        ],
+      ]
     }
-    position={
+    maxZoom={4}
+    minZoom={1}
+    whenCreated={[Function]}
+    zoom={1}
+  >
+    <ForwardRef(LeafComponent)
+      noWrap={true}
+      url="/tds-map-tiles/{z}/{x}/{y}.png"
+    />
+    <MapMarker
+      autoOpen={false}
+      draggable={false}
+      key="000"
+      map={Object {}}
+      popup={false}
+      position={
+        Object {
+          "lat": 0,
+          "lng": 0,
+        }
+      }
+      variant="blue"
+    />
+  </MapContainer>
+</ForwardRef(Box)>
+`;
+
+exports[`Shallow Snapshot Tests with initCenter prop 1`] = `
+<ForwardRef(Box)
+  sx={
+    Object {
+      "height": "100vh",
+      "width": "100%",
+    }
+  }
+>
+  <MapContainer
+    center={
       Object {
         "lat": 1,
         "lng": 1,
       }
     }
-    variant="red"
-  />
-</MapContainer>
+    maxBounds={
+      Array [
+        Array [
+          300,
+          -300,
+        ],
+        Array [
+          -300,
+          300,
+        ],
+      ]
+    }
+    maxZoom={4}
+    minZoom={1}
+    whenCreated={[Function]}
+    zoom={1}
+  >
+    <ForwardRef(LeafComponent)
+      noWrap={true}
+      url="/tds-map-tiles/{z}/{x}/{y}.png"
+    />
+    <MapMarker
+      autoOpen={false}
+      draggable={false}
+      key="000"
+      map={Object {}}
+      popup={
+        <ForwardRef(Typography)>
+          title
+        </ForwardRef(Typography)>
+      }
+      position={
+        Object {
+          "lat": 0,
+          "lng": 0,
+        }
+      }
+      variant="blue"
+    />
+  </MapContainer>
+</ForwardRef(Box)>
 `;
 
 exports[`Shallow Snapshot Tests with onClickPostTitle props 1`] = `
-<MapContainer
-  center={
+<ForwardRef(Box)
+  sx={
     Object {
-      "lat": 0,
-      "lng": 0,
+      "height": "100vh",
+      "width": "100%",
     }
   }
-  maxBounds={
-    Array [
-      Array [
-        300,
-        -300,
-      ],
-      Array [
-        -300,
-        300,
-      ],
-    ]
-  }
-  maxZoom={4}
-  minZoom={1}
-  whenCreated={[Function]}
-  zoom={1}
 >
-  <ForwardRef(LeafComponent)
-    attribution="<a href='https://www.tokyodisneyresort.jp/tds/map.html' target='_blank'>【公式】マップ | 東京ディズニーシー</a>"
-    noWrap={true}
-    url="/tds-map-tiles/{z}/{x}/{y}.png"
-  />
-  <MapMarker
-    autoOpen={false}
-    draggable={false}
-    key="000"
-    map={Object {}}
-    popup={
-      <ForwardRef(Button)
-        variant="text"
-      >
-        title
-      </ForwardRef(Button)>
-    }
-    position={
+  <MapContainer
+    center={
       Object {
         "lat": 0,
         "lng": 0,
       }
     }
-    variant="blue"
-  />
-</MapContainer>
+    maxBounds={
+      Array [
+        Array [
+          300,
+          -300,
+        ],
+        Array [
+          -300,
+          300,
+        ],
+      ]
+    }
+    maxZoom={4}
+    minZoom={1}
+    whenCreated={[Function]}
+    zoom={1}
+  >
+    <ForwardRef(LeafComponent)
+      noWrap={true}
+      url="/tds-map-tiles/{z}/{x}/{y}.png"
+    />
+    <MapMarker
+      autoOpen={false}
+      draggable={false}
+      key="000"
+      map={Object {}}
+      popup={
+        <ForwardRef(Button)
+          variant="text"
+        >
+          title
+        </ForwardRef(Button)>
+      }
+      position={
+        Object {
+          "lat": 0,
+          "lng": 0,
+        }
+      }
+      variant="blue"
+    />
+  </MapContainer>
+</ForwardRef(Box)>
+`;
+
+exports[`Shallow Snapshot Tests with width and height props 1`] = `
+<ForwardRef(Box)
+  sx={
+    Object {
+      "height": 100,
+      "width": 100,
+    }
+  }
+>
+  <MapContainer
+    center={
+      Object {
+        "lat": 0,
+        "lng": 0,
+      }
+    }
+    maxBounds={
+      Array [
+        Array [
+          300,
+          -300,
+        ],
+        Array [
+          -300,
+          300,
+        ],
+      ]
+    }
+    maxZoom={4}
+    minZoom={1}
+    whenCreated={[Function]}
+    zoom={1}
+  >
+    <ForwardRef(LeafComponent)
+      noWrap={true}
+      url="/tds-map-tiles/{z}/{x}/{y}.png"
+    />
+    <MapMarker
+      autoOpen={false}
+      draggable={false}
+      key="000"
+      map={Object {}}
+      popup={
+        <ForwardRef(Typography)>
+          title
+        </ForwardRef(Typography)>
+      }
+      position={
+        Object {
+          "lat": 0,
+          "lng": 0,
+        }
+      }
+      variant="blue"
+    />
+  </MapContainer>
+</ForwardRef(Box)>
 `;

@@ -1,23 +1,24 @@
 import React from 'react';
-import { MapContainer, TileLayer } from 'react-leaflet';
+import { MapContainer, MapContainerProps, TileLayer } from 'react-leaflet';
 import { MapMarker } from 'views/components/moleculars/map-marker';
 import { LatLng, LeafletMouseEvent, Map as LeafletMap } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import './index.css';
 import { Marker } from 'store/markers/model';
-import { Box, Button, Grid, Typography } from '@mui/material';
+import { Box, Button, Grid, SxProps, Typography } from '@mui/material';
 import { Position } from 'types/position';
 
 export class Renderer extends React.Component<Props, State> {
-  static readonly defaultProps = {
+  static readonly defaultProps: Pick<Props, 'newMarkerMode' | 'initZoom'> = {
     newMarkerMode: false,
+    initZoom: 1,
   };
 
   constructor(props: Props) {
     super(props);
     this.handleMapCreated = this.handleMapCreated.bind(this);
     this.state = {
-      currentPosition: undefined,
+      currentPosition: props.articleFormPosition,
       openNewMarkerPopup: true,
     };
   }
@@ -27,36 +28,57 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   componentDidUpdate(prevProps: Props) {
-    if (prevProps.newMarkerMode !== this.props.newMarkerMode) {
+    if (
+      prevProps.articleFormPosition !== this.props.articleFormPosition ||
+      prevProps.newMarkerMode !== this.props.newMarkerMode
+    ) {
       this.setState({
-        currentPosition: this.props.newMarkerMode
-          ? this.props.articleFormPosition
-          : undefined,
+        currentPosition: this.props.articleFormPosition,
       });
     }
   }
 
   render() {
+    const { width, height, initZoom, initCenter, disabled } = this.props;
+    const mapWrapper: SxProps = {
+      width: width ?? '100%',
+      height: height ?? '100vh',
+    };
+
+    const center = initCenter
+      ? new LatLng(initCenter.lat, initCenter.lng)
+      : new LatLng(0, 0);
+
+    const disabledProps: MapContainerProps = {
+      zoomControl: false,
+      dragging: false,
+      keyboard: false,
+      touchZoom: false,
+      doubleClickZoom: false,
+      scrollWheelZoom: false,
+      boxZoom: false,
+      tap: false,
+    };
+
     return (
-      <MapContainer
-        center={new LatLng(0, 0)}
-        zoom={1}
-        minZoom={1}
-        maxZoom={4}
-        maxBounds={[
-          [300, -300],
-          [-300, 300],
-        ]}
-        whenCreated={this.handleMapCreated}
-      >
-        <TileLayer
-          attribution="<a href='https://www.tokyodisneyresort.jp/tds/map.html' target='_blank'>【公式】マップ | 東京ディズニーシー</a>"
-          url="/tds-map-tiles/{z}/{x}/{y}.png"
-          noWrap
-        />
-        {this.renderPostMarkers()}
-        {this.renderCurrentPositionMarker()}
-      </MapContainer>
+      <Box sx={mapWrapper}>
+        <MapContainer
+          center={center}
+          zoom={initZoom}
+          minZoom={1}
+          maxZoom={4}
+          maxBounds={[
+            [300, -300],
+            [-300, 300],
+          ]}
+          whenCreated={this.handleMapCreated}
+          {...(disabled ? disabledProps : {})}
+        >
+          <TileLayer url="/tds-map-tiles/{z}/{x}/{y}.png" noWrap />
+          {this.renderPostMarkers()}
+          {this.renderCurrentPositionMarker()}
+        </MapContainer>
+      </Box>
     );
   }
 
@@ -109,6 +131,7 @@ export class Renderer extends React.Component<Props, State> {
 
   protected renderCurrentPositionMarker() {
     const { currentPosition, openNewMarkerPopup } = this.state;
+    const { newMarkerMode } = this.props;
 
     if (currentPosition === undefined) {
       return null;
@@ -154,10 +177,10 @@ export class Renderer extends React.Component<Props, State> {
         <MapMarker
           map={this.state.map}
           position={new LatLng(currentPosition.lat, currentPosition.lng)}
-          popup={popup}
-          autoOpen={openNewMarkerPopup}
+          popup={newMarkerMode && popup}
+          autoOpen={newMarkerMode && openNewMarkerPopup}
           variant="red"
-          draggable
+          draggable={newMarkerMode}
           onDragStart={this.handleDragStartNewMarker}
           onDragEnd={this.handleDragEndNewMarker}
         />
@@ -166,10 +189,6 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   protected handleClickCancelNewMarker = async () => {
-    this.setState({
-      currentPosition: undefined,
-    });
-
     if (this.props.endToSelectPosition) {
       this.props.endToSelectPosition();
     }
@@ -209,6 +228,11 @@ export type Props = {
   loadingMarkers: boolean;
   newMarkerMode: boolean;
   articleFormPosition?: Position;
+  width?: number;
+  height?: number;
+  initZoom?: number;
+  initCenter?: Position;
+  disabled?: boolean;
 
   fetchMarkers: () => void;
   onClickPostTitle?: (postId: string) => () => void;

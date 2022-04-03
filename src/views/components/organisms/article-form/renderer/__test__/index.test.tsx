@@ -29,6 +29,11 @@ describe('Shallow Snapshot Tests', () => {
   it('basic', () => {
     expect(wrapper).toMatchSnapshot();
   });
+
+  it('position is not selected yet', () => {
+    wrapper.setProps({ position: undefined });
+    expect(wrapper).toMatchSnapshot();
+  });
 });
 
 describe('constructor', () => {

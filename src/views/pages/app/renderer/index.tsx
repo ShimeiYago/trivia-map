@@ -1,5 +1,6 @@
-import { Drawer } from '@mui/material';
+import { Alert, Drawer, Snackbar } from '@mui/material';
 import React from 'react';
+import { LoadingState } from 'types/loading-state';
 import { FloatingButton } from 'views/components/atoms/floating-button';
 import { BoxModal } from 'views/components/moleculars/box-modal';
 import { SwipeableEdgeDrawer } from 'views/components/moleculars/swipeable-edge-drawer';
@@ -15,7 +16,21 @@ export class Renderer extends React.Component<Props, State> {
       openArticleModal: false,
       openFormModal: false,
       newMarkerMode: false,
+      showMessage: false,
     };
+  }
+
+  componentDidUpdate(prevProps: Props) {
+    if (
+      prevProps.articleFormSubmittingState !==
+        this.props.articleFormSubmittingState &&
+      this.props.articleFormSubmittingState === 'success'
+    ) {
+      this.setState({
+        openFormModal: false,
+        showMessage: true,
+      });
+    }
   }
 
   render() {
@@ -46,6 +61,8 @@ export class Renderer extends React.Component<Props, State> {
         {!isFormEditting && (
           <FloatingButton onClick={this.handleClickAddButton} />
         )}
+
+        {this.renderMessage()}
       </>
     );
   }
@@ -142,11 +159,36 @@ export class Renderer extends React.Component<Props, State> {
       </Drawer>
     );
   };
+
+  protected renderMessage() {
+    return (
+      <Snackbar
+        open={this.state.showMessage}
+        autoHideDuration={6000}
+        onClose={this.handleCloseMessage}
+      >
+        <Alert
+          onClose={this.handleCloseMessage}
+          severity="success"
+          variant="filled"
+          sx={{ width: '100%' }}
+        >
+          投稿が完了しました！
+        </Alert>
+      </Snackbar>
+    );
+  }
+
+  protected handleCloseMessage = () =>
+    this.setState({
+      showMessage: false,
+    });
 }
 
 export type Props = {
   isFormEditting: boolean;
   isMobile: boolean;
+  articleFormSubmittingState: LoadingState;
 };
 
 export type State = {
@@ -155,4 +197,5 @@ export type State = {
   readingArticleId?: string;
   edittingArticleId?: string;
   newMarkerMode: boolean;
+  showMessage: boolean;
 };

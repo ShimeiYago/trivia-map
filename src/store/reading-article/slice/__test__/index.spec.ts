@@ -38,6 +38,7 @@ describe('readingArticle reducer', () => {
     const article = {
       title: 'title',
       content: 'content',
+      position: { lat: 0, lng: 0 },
     };
     const actual = readingArticleReducer(loadingState, fetchSuccess(article));
     expect(actual.loadingState).toEqual('success');

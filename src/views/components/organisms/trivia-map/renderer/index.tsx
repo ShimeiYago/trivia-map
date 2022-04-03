@@ -21,7 +21,6 @@ export class Renderer extends React.Component<Props, State> {
     this.state = {
       currentPosition: props.articleFormPosition,
       openableNewMarkerPopup: true,
-      isNewPositionSelected: false,
     };
   }
 
@@ -37,6 +36,13 @@ export class Renderer extends React.Component<Props, State> {
       this.setState({
         currentPosition: this.props.articleFormPosition,
       });
+    }
+
+    if (
+      this.props.initCenter &&
+      prevProps.initCenter !== this.props.initCenter
+    ) {
+      this.state.map?.setView(this.props.initCenter);
     }
   }
 
@@ -59,7 +65,6 @@ export class Renderer extends React.Component<Props, State> {
       doubleClickZoom: false,
       scrollWheelZoom: false,
       boxZoom: false,
-      tap: false,
     };
 
     return (
@@ -76,6 +81,7 @@ export class Renderer extends React.Component<Props, State> {
             [-300, 300],
           ]}
           whenCreated={this.handleMapCreated}
+          tap={false}
           {...(disabled ? disabledProps : {})}
         >
           <TileLayer url="/tds-map-tiles/{z}/{x}/{y}.png" noWrap />
@@ -101,7 +107,6 @@ export class Renderer extends React.Component<Props, State> {
     this.setState({
       currentPosition: { lat: e.latlng.lat, lng: e.latlng.lng },
       openableNewMarkerPopup: false,
-      isNewPositionSelected: true,
     });
     this.setState({
       openableNewMarkerPopup: true,
@@ -194,10 +199,6 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   protected handleClickCancelNewMarker = async () => {
-    this.setState({
-      isNewPositionSelected: !!this.props.articleFormPosition,
-    });
-
     if (this.props.endToSelectPosition) {
       this.props.endToSelectPosition();
     }
@@ -232,7 +233,7 @@ export class Renderer extends React.Component<Props, State> {
   };
 
   protected renderGuideDialog() {
-    if (!this.props.newMarkerMode || this.state.isNewPositionSelected) {
+    if (!this.props.newMarkerMode || this.state.currentPosition) {
       return null;
     }
 
@@ -263,5 +264,4 @@ export type State = {
   currentPosition?: Position;
   openableNewMarkerPopup: boolean;
   map?: LeafletMap;
-  isNewPositionSelected: boolean;
 };

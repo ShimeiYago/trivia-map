@@ -30,6 +30,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
     }
     maxZoom={4}
     minZoom={1}
+    tap={false}
     whenCreated={[Function]}
     zoom={1}
   >
@@ -41,7 +42,11 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       autoOpen={false}
       draggable={false}
       key="000"
-      map={Object {}}
+      map={
+        Object {
+          "setView": [MockFunction],
+        }
+      }
       popup={
         <ForwardRef(Typography)>
           title
@@ -108,7 +113,11 @@ exports[`Shallow Snapshot Tests disabled map 1`] = `
       autoOpen={false}
       draggable={false}
       key="000"
-      map={Object {}}
+      map={
+        Object {
+          "setView": [MockFunction],
+        }
+      }
       popup={
         <ForwardRef(Typography)>
           title
@@ -159,6 +168,7 @@ exports[`Shallow Snapshot Tests when currentPosition state is setted 1`] = `
     }
     maxZoom={4}
     minZoom={1}
+    tap={false}
     whenCreated={[Function]}
     zoom={1}
   >
@@ -170,7 +180,11 @@ exports[`Shallow Snapshot Tests when currentPosition state is setted 1`] = `
       autoOpen={false}
       draggable={false}
       key="000"
-      map={Object {}}
+      map={
+        Object {
+          "setView": [MockFunction],
+        }
+      }
       popup={false}
       position={
         Object {
@@ -214,6 +228,7 @@ exports[`Shallow Snapshot Tests with initCenter prop 1`] = `
     }
     maxZoom={4}
     minZoom={1}
+    tap={false}
     whenCreated={[Function]}
     zoom={1}
   >
@@ -225,7 +240,26 @@ exports[`Shallow Snapshot Tests with initCenter prop 1`] = `
       autoOpen={false}
       draggable={false}
       key="000"
-      map={Object {}}
+      map={
+        Object {
+          "setView": [MockFunction] {
+            "calls": Array [
+              Array [
+                Object {
+                  "lat": 1,
+                  "lng": 1,
+                },
+              ],
+            ],
+            "results": Array [
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+            ],
+          },
+        }
+      }
       popup={
         <ForwardRef(Typography)>
           title
@@ -273,6 +307,7 @@ exports[`Shallow Snapshot Tests with onClickPostTitle props 1`] = `
     }
     maxZoom={4}
     minZoom={1}
+    tap={false}
     whenCreated={[Function]}
     zoom={1}
   >
@@ -284,7 +319,11 @@ exports[`Shallow Snapshot Tests with onClickPostTitle props 1`] = `
       autoOpen={false}
       draggable={false}
       key="000"
-      map={Object {}}
+      map={
+        Object {
+          "setView": [MockFunction],
+        }
+      }
       popup={
         <ForwardRef(Button)
           variant="text"
@@ -334,6 +373,7 @@ exports[`Shallow Snapshot Tests with width and height props 1`] = `
     }
     maxZoom={4}
     minZoom={1}
+    tap={false}
     whenCreated={[Function]}
     zoom={1}
   >
@@ -345,7 +385,11 @@ exports[`Shallow Snapshot Tests with width and height props 1`] = `
       autoOpen={false}
       draggable={false}
       key="000"
-      map={Object {}}
+      map={
+        Object {
+          "setView": [MockFunction],
+        }
+      }
       popup={
         <ForwardRef(Typography)>
           title

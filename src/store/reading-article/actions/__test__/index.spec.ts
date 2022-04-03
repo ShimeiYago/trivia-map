@@ -8,6 +8,7 @@ let getRemoteArticleSpy: jest.SpyInstance;
 const mockResponse: GetArticleResponse = {
   title: 'title',
   content: 'content',
+  position: { lat: 0, lng: 0 },
 };
 
 describe('fetchReadingArticle', () => {

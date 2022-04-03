@@ -22,13 +22,18 @@ describe('Shallow Snapshot Tests', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('with error', () => {
-    wrapper.setProps({ error: true });
+  it('with status valid', () => {
+    wrapper.setProps({ status: 'valid' });
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('with status error', () => {
+    wrapper.setProps({ status: 'error' });
     expect(wrapper).toMatchSnapshot();
   });
 
   it('with error & helperText', () => {
-    wrapper.setProps({ error: true, helperText: 'text' });
+    wrapper.setProps({ status: 'error', helperText: 'text' });
     expect(wrapper).toMatchSnapshot();
   });
 });

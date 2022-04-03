@@ -1,27 +1,42 @@
 import { SxProps } from '@mui/material';
+import { FieldStatus } from '.';
 
 const red = '#d32f2f';
 const grey = '#c4c4c4';
+const blue = '#2196f3';
 
-export function wrapper(error: boolean): SxProps {
+export function wrapper(status?: FieldStatus): SxProps {
+  let statusColor;
+  switch (status) {
+    case 'error':
+      statusColor = red;
+      break;
+    case 'valid':
+      statusColor = blue;
+      break;
+    default:
+      statusColor = grey;
+  }
+
   return {
     border: 1,
-    borderColor: error ? red : grey,
+    borderColor: statusColor,
+    backgroundColor: statusColor,
     borderRadius: 3,
     cursor: 'pointer',
     padding: 1,
     '&:hover': {
-      borderColor: error ? red : 'black',
+      borderColor: status === 'normal' ? 'black' : statusColor,
     },
   };
 }
 
-export function helperTextStyle(error: boolean): SxProps {
+export function helperTextStyle(status?: FieldStatus): SxProps {
   return {
     mt: '3px',
     ml: '14px',
     mr: '14px',
-    color: error ? red : '#747474',
+    color: status === 'error' ? red : '#747474',
     fontSize: '0.75rem',
   };
 }

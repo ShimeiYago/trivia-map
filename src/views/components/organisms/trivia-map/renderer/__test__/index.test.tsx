@@ -184,7 +184,7 @@ describe('handleDragStartNewMarker', () => {
     const instance = shallowWrapper.instance();
 
     instance['handleDragStartNewMarker']();
-    expect(instance.state.openNewMarkerPopup).toEqual(false);
+    expect(instance.state.openableNewMarkerPopup).toEqual(false);
   });
 });
 

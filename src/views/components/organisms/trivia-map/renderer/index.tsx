@@ -59,7 +59,6 @@ export class Renderer extends React.Component<Props, State> {
       doubleClickZoom: false,
       scrollWheelZoom: false,
       boxZoom: false,
-      tap: false,
     };
 
     return (
@@ -76,6 +75,7 @@ export class Renderer extends React.Component<Props, State> {
             [-300, 300],
           ]}
           whenCreated={this.handleMapCreated}
+          tap={false}
           {...(disabled ? disabledProps : {})}
         >
           <TileLayer url="/tds-map-tiles/{z}/{x}/{y}.png" noWrap />

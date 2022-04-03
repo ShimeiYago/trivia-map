@@ -43,6 +43,12 @@ export class Renderer extends React.Component<Props> {
       fetchingState === 'loading' ||
       fetchingState === 'error';
 
+    const miniMapFieldStatus = !!formError?.fieldErrors?.position
+      ? 'error'
+      : position
+      ? 'valid'
+      : 'normal';
+
     // TODO: show validaiton error meseages on textfield
     return (
       <Container maxWidth="sm" sx={{ pt: 5 }}>
@@ -71,8 +77,8 @@ export class Renderer extends React.Component<Props> {
           />
 
           <BoxField
+            status={miniMapFieldStatus}
             onClick={handleClickSelectPosition}
-            error={!!formError?.fieldErrors?.position}
           >
             <Box sx={miniMapWrapper}>
               <TriviaMap

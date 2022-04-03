@@ -34,6 +34,16 @@ describe('Shallow Snapshot Tests', () => {
     wrapper.setProps({ position: undefined });
     expect(wrapper).toMatchSnapshot();
   });
+
+  it('with validation error', () => {
+    wrapper.setProps({
+      formError: {
+        headerErrors: ['position has an error'],
+        fieldErrors: { position: ['position is not selected'] },
+      },
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
 });
 
 describe('constructor', () => {

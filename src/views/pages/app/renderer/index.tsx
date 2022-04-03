@@ -121,12 +121,10 @@ export class Renderer extends React.Component<Props, State> {
         labelText="編集中"
         heightRatio={80}
       >
-        {openFormModal && (
-          <ArticleForm
-            postId={edittingArticleId}
-            onClickSelectPosition={this.startToSelectPosition}
-          />
-        )}
+        <ArticleForm
+          postId={edittingArticleId}
+          onClickSelectPosition={this.startToSelectPosition}
+        />
       </SwipeableEdgeDrawer>
     ) : (
       <Drawer

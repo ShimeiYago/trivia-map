@@ -1,5 +1,13 @@
 import React from 'react';
-import { Box, Container, Stack, TextField, Typography } from '@mui/material';
+import {
+  Alert,
+  AlertTitle,
+  Box,
+  Container,
+  Stack,
+  TextField,
+  Typography,
+} from '@mui/material';
 import { LoadingState } from 'types/loading-state';
 import { Position } from 'types/position';
 import { FormError } from 'store/article-form/model';
@@ -9,11 +17,14 @@ import { TriviaMap } from '../../trivia-map';
 import { BoxField } from 'views/components/atoms/box-field';
 
 export class Renderer extends React.Component<Props> {
+  messageRef: React.RefObject<HTMLDivElement>;
+
   constructor(props: Props) {
     super(props);
     if (!props.isFormEditting) {
       this.props.initialize();
     }
+    this.messageRef = React.createRef();
   }
 
   componentDidMount() {
@@ -22,6 +33,18 @@ export class Renderer extends React.Component<Props> {
     }
 
     this.props.updateIsEditting(true);
+  }
+
+  componentDidUpdate(prevProps: Props) {
+    if (
+      prevProps.submittingState !== this.props.submittingState &&
+      this.props.submittingState === 'error'
+    ) {
+      this.messageRef.current?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    }
   }
 
   render() {
@@ -56,6 +79,8 @@ export class Renderer extends React.Component<Props> {
           <Typography component="h2" align="center" variant="h4">
             {newMode ? '新しいトリビアを追加' : 'トリビアを編集'}
           </Typography>
+
+          {this.renderHeaderError()}
 
           <TextField
             label="タイトル"
@@ -147,6 +172,23 @@ export class Renderer extends React.Component<Props> {
         <br />
         ここをタップして位置を選択してください。
       </>
+    );
+  }
+
+  protected renderHeaderError() {
+    const { formError } = this.props;
+
+    if (!formError?.headerErrors) {
+      return null;
+    }
+
+    return (
+      <Alert severity="error" ref={this.messageRef}>
+        <AlertTitle>エラーが発生しました。</AlertTitle>
+        {formError.headerErrors.map((msg: string, index: number) => (
+          <li key={`headerErrors-${index}`}>{msg}</li>
+        ))}
+      </Alert>
     );
   }
 }

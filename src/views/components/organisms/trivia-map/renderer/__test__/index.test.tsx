@@ -23,7 +23,9 @@ let shallowWrapper: ShallowWrapper<Props, State, Renderer>;
 describe('Shallow Snapshot Tests', () => {
   beforeEach(() => {
     shallowWrapper = shallow(<Renderer {...basicProps} />);
-    shallowWrapper.setState({ map: {} as LeafletMap });
+    shallowWrapper.setState({
+      map: { setView: jest.fn() } as unknown as LeafletMap,
+    });
   });
 
   it('basic', () => {

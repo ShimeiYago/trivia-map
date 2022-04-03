@@ -81,6 +81,7 @@ export async function putRemoteArticle(
 export type GetArticleResponse = {
   title: string;
   content: string;
+  position: Position;
 };
 
 export type PostArticleRequest = {

@@ -8,11 +8,14 @@ export class BoxField extends React.Component<Props> {
   };
 
   render() {
-    const { children, status, helperText, onClick } = this.props;
+    const { children, status, helperText, onClick, disabled } = this.props;
 
     return (
       <div>
-        <Box sx={wrapper(status)} onClick={onClick}>
+        <Box
+          sx={wrapper(status, disabled)}
+          onClick={disabled ? undefined : onClick}
+        >
           {children}
         </Box>
         {helperText && (
@@ -28,6 +31,7 @@ export type Props = {
   status?: FieldStatus;
   helperText?: React.ReactNode;
   onClick?: () => void;
+  disabled?: boolean;
 };
 
 export type FieldStatus = 'normal' | 'valid' | 'error';

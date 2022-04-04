@@ -23,15 +23,31 @@ exports[`Shallow Snapshot Tests basic 1`] = `
 </div>
 `;
 
+exports[`Shallow Snapshot Tests disabled 1`] = `
+<div>
+  <ForwardRef(Box)
+    sx={
+      Object {
+        "backgroundColor": "#c4c4c4",
+        "border": 1,
+        "borderColor": "#c4c4c4",
+        "borderRadius": 3,
+        "cursor": "default",
+        "padding": 1,
+      }
+    }
+  >
+    test
+  </ForwardRef(Box)>
+</div>
+`;
+
 exports[`Shallow Snapshot Tests with error & helperText 1`] = `
 <div>
   <ForwardRef(Box)
     onClick={[MockFunction]}
     sx={
       Object {
-        "&:hover": Object {
-          "borderColor": "#d32f2f",
-        },
         "backgroundColor": "#d32f2f",
         "border": 1,
         "borderColor": "#d32f2f",
@@ -101,9 +117,6 @@ exports[`Shallow Snapshot Tests with status error 1`] = `
     onClick={[MockFunction]}
     sx={
       Object {
-        "&:hover": Object {
-          "borderColor": "#d32f2f",
-        },
         "backgroundColor": "#d32f2f",
         "border": 1,
         "borderColor": "#d32f2f",
@@ -124,9 +137,6 @@ exports[`Shallow Snapshot Tests with status valid 1`] = `
     onClick={[MockFunction]}
     sx={
       Object {
-        "&:hover": Object {
-          "borderColor": "#2196f3",
-        },
         "backgroundColor": "#2196f3",
         "border": 1,
         "borderColor": "#2196f3",

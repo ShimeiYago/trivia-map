@@ -3,6 +3,7 @@ import {
   Alert,
   AlertTitle,
   Box,
+  CircularProgress,
   Container,
   Stack,
   TextField,
@@ -62,9 +63,7 @@ export class Renderer extends React.Component<Props> {
     const newMode = !postId;
 
     const disabled =
-      submittingState === 'loading' ||
-      fetchingState === 'loading' ||
-      fetchingState === 'error';
+      submittingState === 'loading' || fetchingState === 'loading';
 
     const miniMapFieldStatus = !!formError?.fieldErrors?.position
       ? 'error'
@@ -79,6 +78,12 @@ export class Renderer extends React.Component<Props> {
           <Typography component="h2" align="center" variant="h4">
             {newMode ? '新しいトリビアを追加' : 'トリビアを編集'}
           </Typography>
+
+          {fetchingState === 'loading' && (
+            <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+              <CircularProgress />
+            </Box>
+          )}
 
           {this.renderHeaderError()}
 
@@ -104,6 +109,7 @@ export class Renderer extends React.Component<Props> {
           <BoxField
             status={miniMapFieldStatus}
             onClick={handleClickSelectPosition}
+            disabled={disabled}
           >
             <Box sx={miniMapWrapper}>
               <TriviaMap
@@ -115,15 +121,17 @@ export class Renderer extends React.Component<Props> {
               />
               <Box sx={miniMapLayer}></Box>
               <Box sx={miniMapTextBox}>
-                <Typography
-                  color="white"
-                  textAlign="center"
-                  component="div"
-                  fontSize="14"
-                  variant="inherit"
-                >
-                  {this.getMiniMapText()}
-                </Typography>
+                {!disabled && (
+                  <Typography
+                    color="white"
+                    textAlign="center"
+                    component="div"
+                    fontSize="14"
+                    variant="inherit"
+                  >
+                    {this.getMiniMapText()}
+                  </Typography>
+                )}
               </Box>
             </Box>
           </BoxField>

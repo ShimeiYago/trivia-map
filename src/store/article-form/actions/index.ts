@@ -49,6 +49,7 @@ export const submitNewArticle = (): AppThunk => async (dispatch, getState) => {
       // validation Error
       formError = apiError.data;
     } else {
+      // TODO: set japanese messages depending to status
       formError = {
         headerErrors: [apiError.errorMsg],
       };
@@ -76,12 +77,14 @@ export const submitEdittedArticle =
     try {
       const res = await putRemoteArticle(postId, title, content, position);
       dispatch(submitSuccess(res.postId));
+      // TODO: initialize
     } catch (error) {
       const apiError = error as ApiError<FormError>;
       if (apiError.status === 422 && apiError.data) {
         // validation Error
         formError = apiError.data;
       } else {
+        // TODO: set japanese messages depending to status
         formError = {
           headerErrors: [apiError.errorMsg],
         };

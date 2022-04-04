@@ -21,9 +21,16 @@ exports[`Shallow Snapshot Tests basic 1`] = `
 `;
 
 exports[`Shallow Snapshot Tests loading 1`] = `
-<ForwardRef(Typography)>
-  Loading...
-</ForwardRef(Typography)>
+<ForwardRef(Box)
+  sx={
+    Object {
+      "display": "flex",
+      "justifyContent": "center",
+    }
+  }
+>
+  <ForwardRef(CircularProgress) />
+</ForwardRef(Box)>
 `;
 
 exports[`Shallow Snapshot Tests with edit button 1`] = `

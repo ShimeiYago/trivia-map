@@ -37,6 +37,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       value=""
     />
     <BoxField
+      disabled={false}
       status="valid"
     >
       <ForwardRef(Box)
@@ -110,6 +111,115 @@ exports[`Shallow Snapshot Tests basic 1`] = `
 </ForwardRef(Container)>
 `;
 
+exports[`Shallow Snapshot Tests loading 1`] = `
+<ForwardRef(Container)
+  maxWidth="sm"
+  sx={
+    Object {
+      "pt": 5,
+    }
+  }
+>
+  <ForwardRef(Stack)
+    spacing={3}
+  >
+    <ForwardRef(Typography)
+      align="center"
+      component="h2"
+      variant="h4"
+    >
+      新しいトリビアを追加
+    </ForwardRef(Typography)>
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "display": "flex",
+          "justifyContent": "center",
+        }
+      }
+    >
+      <ForwardRef(CircularProgress) />
+    </ForwardRef(Box)>
+    <ForwardRef(TextField)
+      disabled={true}
+      error={false}
+      label="タイトル"
+      onChange={[Function]}
+      value=""
+      variant="standard"
+    />
+    <ForwardRef(TextField)
+      disabled={true}
+      error={false}
+      label="説明文"
+      multiline={true}
+      onChange={[Function]}
+      rows={4}
+      value=""
+    />
+    <BoxField
+      disabled={true}
+      status="valid"
+    >
+      <ForwardRef(Box)
+        sx={
+          Object {
+            "position": "relative",
+          }
+        }
+      >
+        <TriviaMap
+          disabled={true}
+          doNotShowPosts={true}
+          height={300}
+          initCenter={
+            Object {
+              "lat": 0,
+              "lng": 0,
+            }
+          }
+          initZoom={3}
+        />
+        <ForwardRef(Box)
+          sx={
+            Object {
+              "backgroundColor": "rgba(0,0,0,0.5)",
+              "height": "100%",
+              "left": 0,
+              "position": "absolute",
+              "top": 0,
+              "width": "100%",
+              "zIndex": 2000,
+            }
+          }
+        />
+        <ForwardRef(Box)
+          sx={
+            Object {
+              "fontWeight": "bold",
+              "left": "50%",
+              "position": "absolute",
+              "top": "70%",
+              "transform": "translate(-50%,-50%)",
+              "width": "90%",
+              "zIndex": 2000,
+            }
+          }
+        />
+      </ForwardRef(Box)>
+    </BoxField>
+    <ForwardRef(LoadingButton)
+      disabled={true}
+      loading={false}
+      onClick={[Function]}
+      variant="outlined"
+    >
+      保存して公開
+    </ForwardRef(LoadingButton)>
+  </ForwardRef(Stack)>
+</ForwardRef(Container)>
+`;
+
 exports[`Shallow Snapshot Tests position is not selected yet 1`] = `
 <ForwardRef(Container)
   maxWidth="sm"
@@ -147,6 +257,7 @@ exports[`Shallow Snapshot Tests position is not selected yet 1`] = `
       value=""
     />
     <BoxField
+      disabled={false}
       status="normal"
     >
       <ForwardRef(Box)
@@ -263,6 +374,7 @@ exports[`Shallow Snapshot Tests with validation error 1`] = `
       value=""
     />
     <BoxField
+      disabled={false}
       status="error"
     >
       <ForwardRef(Box)

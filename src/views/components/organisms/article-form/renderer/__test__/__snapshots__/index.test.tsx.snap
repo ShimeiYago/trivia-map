@@ -233,6 +233,18 @@ exports[`Shallow Snapshot Tests with validation error 1`] = `
     >
       新しいトリビアを追加
     </ForwardRef(Typography)>
+    <ForwardRef(Alert)
+      severity="error"
+    >
+      <ForwardRef(AlertTitle)>
+        エラーが発生しました。
+      </ForwardRef(AlertTitle)>
+      <li
+        key="headerErrors-0"
+      >
+        position has an error
+      </li>
+    </ForwardRef(Alert)>
     <ForwardRef(TextField)
       disabled={false}
       error={false}

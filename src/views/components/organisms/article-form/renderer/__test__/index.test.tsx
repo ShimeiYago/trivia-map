@@ -64,6 +64,25 @@ describe('componentDidMount', () => {
   });
 });
 
+describe('componentDidUpdate', () => {
+  it('should call scrollIntoView', () => {
+    wrapper = shallow(<Renderer {...basicProps} />);
+    wrapper.setProps({ submittingState: 'error' });
+    const instance = wrapper.instance();
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const messageRef: React.RefObject<any> = {
+      current: {
+        scrollIntoView: jest.fn(),
+      },
+    };
+    instance.messageRef = messageRef;
+
+    instance.componentDidUpdate(basicProps);
+    expect(messageRef.current.scrollIntoView).toBeCalled();
+  });
+});
+
 describe('handleChangeTitle', () => {
   it('call updateTitle', () => {
     wrapper = shallow(<Renderer {...basicProps} />);

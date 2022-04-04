@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Typography } from '@mui/material';
+import { Box, Button, CircularProgress, Typography } from '@mui/material';
 import { LoadingState } from 'types/loading-state';
 
 export class Renderer extends React.Component<Props> {
@@ -12,7 +12,11 @@ export class Renderer extends React.Component<Props> {
       this.props.loadingState === 'waiting' ||
       this.props.loadingState === 'loading'
     ) {
-      return <Typography>Loading...</Typography>;
+      return (
+        <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+          <CircularProgress />
+        </Box>
+      );
     }
 
     if (this.props.loadingState === 'error') {

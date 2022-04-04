@@ -44,6 +44,13 @@ describe('Shallow Snapshot Tests', () => {
     });
     expect(wrapper).toMatchSnapshot();
   });
+
+  it('loading', () => {
+    wrapper.setProps({
+      fetchingState: 'loading',
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
 });
 
 describe('constructor', () => {

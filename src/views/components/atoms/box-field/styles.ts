@@ -5,7 +5,7 @@ const red = '#d32f2f';
 const grey = '#c4c4c4';
 const blue = '#2196f3';
 
-export function wrapper(status?: FieldStatus): SxProps {
+export function wrapper(status?: FieldStatus, disabled?: boolean): SxProps {
   let statusColor;
   switch (status) {
     case 'error':
@@ -18,16 +18,23 @@ export function wrapper(status?: FieldStatus): SxProps {
       statusColor = grey;
   }
 
+  const hoverStyle: SxProps =
+    status === 'normal' && !disabled
+      ? {
+          '&:hover': {
+            borderColor: 'black',
+          },
+        }
+      : {};
+
   return {
     border: 1,
     borderColor: statusColor,
     backgroundColor: statusColor,
     borderRadius: 3,
-    cursor: 'pointer',
+    cursor: disabled ? 'default' : 'pointer',
     padding: 1,
-    '&:hover': {
-      borderColor: status === 'normal' ? 'black' : statusColor,
-    },
+    ...hoverStyle,
   };
 }
 

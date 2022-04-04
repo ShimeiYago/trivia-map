@@ -36,4 +36,9 @@ describe('Shallow Snapshot Tests', () => {
     wrapper.setProps({ status: 'error', helperText: 'text' });
     expect(wrapper).toMatchSnapshot();
   });
+
+  it('disabled', () => {
+    wrapper.setProps({ disabled: true });
+    expect(wrapper).toMatchSnapshot();
+  });
 });

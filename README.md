@@ -81,30 +81,5 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 For production release, please set API base URL in `.env.production.local`.
 
-## Expected API Interface
-
-### (GET) `{domain}/counter`
-**Response**
-```
-{
-  "counter": 0
-}
-```
-
-### (POST) `{domain}/counter`
-**Resquest**
-```
-{
-  "counter": 1
-}
-```
-
-**Response**
-```
-{
-  "counter": 1
-}
-```
-
 ## Author
 [ShimeiYago](https://github.com/ShimeiYago)

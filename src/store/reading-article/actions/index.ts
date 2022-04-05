@@ -19,6 +19,6 @@ export const fetchReadingArticle =
     } catch (error) {
       const apiError = error as ApiError<unknown>;
       dispatch(fetchFailure(apiError.errorMsg));
-      // TODO: edirect to error page
+      // TODO: close modal & show global error message depending on status
     }
   };

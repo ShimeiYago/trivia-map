@@ -7,7 +7,7 @@ import './index.css';
 import { Marker } from 'store/markers/model';
 import { Box, Button, Grid, SxProps, Typography } from '@mui/material';
 import { Position } from 'types/position';
-import { GuideDialog } from 'views/components/atoms/guide-dialog';
+import { DialogScreen } from 'views/components/atoms/dialog-screen';
 
 export class Renderer extends React.Component<Props, State> {
   static readonly defaultProps: Pick<Props, 'newMarkerMode' | 'initZoom'> = {
@@ -238,7 +238,16 @@ export class Renderer extends React.Component<Props, State> {
     }
 
     return (
-      <GuideDialog>マップ上の好きな位置をタップしてください。</GuideDialog>
+      <DialogScreen theme="black" position="top">
+        <Typography
+          color="white"
+          align="center"
+          variant="inherit"
+          sx={{ fontWeight: 'bold' }}
+        >
+          マップ上の好きな位置をタップしてください。
+        </Typography>
+      </DialogScreen>
     );
   }
 }

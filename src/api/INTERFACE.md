@@ -1,12 +1,64 @@
 # API Interface
 
+## Markers API
+### (GET) `/markers?page=${pageIndex}`
+**- (200) Success Response Body**
+
+if end of pages, `nextPageIndex` is null.
+
+```
+{
+  nextPageIndex: 2,
+  markers: [
+    {
+      postId: '000',
+      position: {
+        lat: 22.27,
+        lng: 29.268,
+      },
+      title: 'ノーチラス号',
+    },
+    {
+      postId: '001',
+      position: {
+        lat: 30.524,
+        lng: 15.908,
+      },
+      title: '削岩機',
+    },
+  ]
+}
+```
+
+**- (401) Error Response Body**
+```
+{
+  "error": "Unauthorized."
+}
+```
+
+**- (400) Error Response Body**
+```
+{
+  "error": "Bad Request."
+}
+```
+
+**- (500) Error Response Body**
+```
+{
+  "error": "Internal server error."
+}
+```
+
+
 ## Articles API
 ### (GET) `/articles/${postId}`
 **- (200) Success Response Body**
 ```
 {
   "title": "title,
-  "contents": "title",
+  "contents": "contents",
   "position": { lat: 1.1, lng: 1.5 }
 }
 ```
@@ -37,7 +89,7 @@
 ```
 {
   "title": "title,
-  "contents": "title",
+  "contents": "contents",
   "position": { lat: 1.1, lng: 1.5 }
 }
 ```

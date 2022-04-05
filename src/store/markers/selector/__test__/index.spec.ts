@@ -3,6 +3,7 @@ import {
   selectMarkersErrorMsg,
   selectMarkersLoading,
   selectMarkerList,
+  selectMarkersTotalPages,
 } from '..';
 import { MarkersState } from '../../model';
 
@@ -18,6 +19,7 @@ describe('markers selector', () => {
       ],
       loading: false,
       errorMsg: 'error',
+      totalPages: 2,
     } as MarkersState,
   };
 
@@ -37,5 +39,9 @@ describe('markers selector', () => {
 
   it('selectMarkersErrorMsg should return markers error message', () => {
     expect(selectMarkersErrorMsg(rootState)).toEqual('error');
+  });
+
+  it('selectMarkersErrorMsg should return markers totalPages', () => {
+    expect(selectMarkersTotalPages(rootState)).toEqual(2);
   });
 });

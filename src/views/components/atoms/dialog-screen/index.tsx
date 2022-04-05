@@ -7,6 +7,7 @@ export class DialogScreen extends React.Component<Props> {
     const { children, theme, position } = this.props;
 
     return (
+      // Feed in & out
       <Box sx={style(theme, position)}>
         <Typography color="white" align="center" variant="inherit">
           {children}

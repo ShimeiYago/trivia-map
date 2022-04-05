@@ -6,6 +6,7 @@ import { BoxModal } from 'views/components/moleculars/box-modal';
 import { SwipeableEdgeDrawer } from 'views/components/moleculars/swipeable-edge-drawer';
 import { Article } from 'views/components/organisms/article';
 import { ArticleForm } from 'views/components/organisms/article-form';
+import { LoadingProgressBar } from 'views/components/organisms/loading-progress-bar';
 import { TriviaMap } from 'views/components/organisms/trivia-map';
 import { rightDrawerStyle } from './styles';
 
@@ -43,6 +44,8 @@ export class Renderer extends React.Component<Props, State> {
           newMarkerMode={this.state.newMarkerMode}
           endToSelectPosition={this.endToSelectPosition}
         />
+
+        <LoadingProgressBar />
 
         <BoxModal
           open={openArticleModal}

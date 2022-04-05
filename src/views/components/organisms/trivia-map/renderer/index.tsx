@@ -25,6 +25,7 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   componentDidMount() {
+    // TODO: should call only if main map
     this.props.fetchMarkers();
   }
 

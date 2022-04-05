@@ -7,5 +7,7 @@ export const selectMarkersLoading = (state: MarkersRootState) =>
   state.markers.loading;
 export const selectMarkersErrorMsg = (state: MarkersRootState) =>
   state.markers.errorMsg;
+export const selectMarkersCurrentPageToLoad = (state: MarkersRootState) =>
+  state.markers.currentPageToLoad;
 export const selectMarkersTotalPages = (state: MarkersRootState) =>
   state.markers.totalPages;

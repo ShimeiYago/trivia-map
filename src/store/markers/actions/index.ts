@@ -15,6 +15,7 @@ export const {
   requestStart,
   updateList,
   updateTotalPages,
+  updateCurrentPageToLoad,
 } = markersSlice.actions;
 
 // fetchMarkers action
@@ -32,6 +33,7 @@ export const fetchMarkers = (): AppThunk => async (dispatch) => {
       }
 
       dispatch(appendMarkers(res.markers));
+      dispatch(updateCurrentPageToLoad(pageIndex));
 
       prevPageIndex = pageIndex;
       pageIndex = res.nextPageIndex;

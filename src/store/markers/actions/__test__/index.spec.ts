@@ -55,6 +55,7 @@ const getState = () => ({
   },
 });
 
+// TODO: This tests are meaningless.
 describe('fetchMarkers', () => {
   beforeEach(async () => {
     jest.resetAllMocks();
@@ -81,8 +82,7 @@ describe('fetchMarkers', () => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const appThunk = fetchMarkers() as any;
     await appThunk(dispatch);
-    // console.log(dispatch.mock);
-    expect(dispatch.mock.calls[4][0].type).toBe('markers/fetchSuccess');
+    expect(dispatch.mock.calls[6][0].type).toBe('markers/fetchSuccess');
   });
 
   it('call requestFailure if API failed', async () => {

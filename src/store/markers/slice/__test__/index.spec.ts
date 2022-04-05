@@ -1,7 +1,13 @@
 import { markersReducer, markersSlice } from '..';
 import { Marker, MarkersState } from '../../model';
 
-const { fetchSuccess, requestFailure, requestStart } = markersSlice.actions;
+const {
+  fetchSuccess,
+  requestFailure,
+  requestStart,
+  updateList,
+  updateTotalPages,
+} = markersSlice.actions;
 
 describe('markers reducer', () => {
   const initialState: MarkersState = {
@@ -30,6 +36,11 @@ describe('markers reducer', () => {
   });
 
   it('should handle fetchSuccess', () => {
+    const actual = markersReducer(loadingState, fetchSuccess());
+    expect(actual.loading).toEqual(false);
+  });
+
+  it('should handle updateList', () => {
     const markers: Marker[] = [
       {
         postId: '000',
@@ -37,8 +48,12 @@ describe('markers reducer', () => {
         title: 'title',
       },
     ];
-    const actual = markersReducer(loadingState, fetchSuccess(markers));
-    expect(actual.loading).toEqual(false);
+    const actual = markersReducer(loadingState, updateList(markers));
     expect(actual.list).toEqual(markers);
+  });
+
+  it('should handle updateTotalPages', () => {
+    const actual = markersReducer(loadingState, updateTotalPages(2));
+    expect(actual.totalPages).toEqual(2);
   });
 });

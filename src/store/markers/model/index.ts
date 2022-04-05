@@ -10,6 +10,7 @@ export interface MarkersState {
   list: Marker[];
   loading: boolean;
   errorMsg: string | null;
+  totalPages?: number;
 }
 
 export const initialState: MarkersState = {

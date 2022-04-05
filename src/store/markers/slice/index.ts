@@ -23,6 +23,10 @@ export const markersSlice = createSlice({
       state.list = action.payload;
     },
 
+    updateCurrentPageToLoad(state, action: PayloadAction<number>) {
+      state.currentPageToLoad = action.payload;
+    },
+
     updateTotalPages(state, action: PayloadAction<number>) {
       state.totalPages = action.payload;
     },

@@ -1,3 +1,4 @@
+import { updateCurrentPageToLoad } from 'store/markers/actions';
 import { markersReducer, markersSlice } from '..';
 import { Marker, MarkersState } from '../../model';
 
@@ -14,6 +15,7 @@ describe('markers reducer', () => {
     list: [],
     loading: false,
     errorMsg: null,
+    currentPageToLoad: 0,
   };
   const loadingState = Object.assign(initialState, { loading: true });
 
@@ -22,6 +24,7 @@ describe('markers reducer', () => {
       list: [],
       loading: false,
       errorMsg: null,
+      currentPageToLoad: 0,
     });
   });
   it('should handle requestStart', () => {
@@ -55,5 +58,10 @@ describe('markers reducer', () => {
   it('should handle updateTotalPages', () => {
     const actual = markersReducer(loadingState, updateTotalPages(2));
     expect(actual.totalPages).toEqual(2);
+  });
+
+  it('should handle updateCurrentPageToLoad', () => {
+    const actual = markersReducer(loadingState, updateCurrentPageToLoad(1));
+    expect(actual.currentPageToLoad).toEqual(1);
   });
 });

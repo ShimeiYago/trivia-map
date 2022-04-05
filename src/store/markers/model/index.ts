@@ -8,8 +8,9 @@ export type Marker = {
 
 export interface MarkersState {
   list: Marker[];
-  loading: boolean;
+  loading: boolean; // TODO: should use Status
   errorMsg: string | null;
+  currentPageToLoad: number;
   totalPages?: number;
 }
 
@@ -17,4 +18,5 @@ export const initialState: MarkersState = {
   list: [],
   loading: false,
   errorMsg: null,
+  currentPageToLoad: 0,
 };

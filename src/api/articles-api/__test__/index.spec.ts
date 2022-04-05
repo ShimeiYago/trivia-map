@@ -1,6 +1,8 @@
 import { Position } from 'types/position';
 import { ApiError } from 'api/utils/handle-axios-error';
-import { getRemoteArticle, postRemoteArticle, putRemoteArticle } from '..';
+import { getRemoteArticle } from '../get-remote-article';
+import { postRemoteArticle } from '../post-remote-article';
+import { putRemoteArticle } from '../put-remote-article';
 
 const newPosition: Position = { lat: 0, lng: 0 };
 

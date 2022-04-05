@@ -1,7 +1,7 @@
 import { readingArticleSlice } from '../slice';
 import { AppThunk } from 'store';
 import { ApiError } from 'api/utils/handle-axios-error';
-import { getRemoteArticle } from 'api/articles-api';
+import { getRemoteArticle } from 'api/articles-api/get-remote-article';
 
 // basic actions
 export const { fetchStart, fetchSuccess, fetchFailure } =

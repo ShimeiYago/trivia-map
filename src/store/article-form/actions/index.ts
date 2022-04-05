@@ -1,11 +1,9 @@
 import { articleFormSlice } from '../slice';
 import { AppThunk } from 'store';
 import { ApiError } from 'api/utils/handle-axios-error';
-import {
-  getRemoteArticle,
-  postRemoteArticle,
-  putRemoteArticle,
-} from 'api/articles-api';
+import { getRemoteArticle } from 'api/articles-api/get-remote-article';
+import { postRemoteArticle } from 'api/articles-api/post-remote-article';
+import { putRemoteArticle } from 'api/articles-api/put-remote-article';
 import { FormError } from '../model';
 import {
   selectArticleFormTitle,

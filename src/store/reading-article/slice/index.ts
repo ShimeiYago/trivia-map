@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { initialState } from '../model';
-import { GetArticleResponse } from 'api/articles-api';
+import { GetArticleResponse } from 'api/articles-api/get-remote-article';
 
 export const readingArticleSlice = createSlice({
   name: 'readingArticle',

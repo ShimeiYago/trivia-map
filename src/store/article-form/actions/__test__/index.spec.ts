@@ -1,7 +1,8 @@
 import { ApiError } from 'api/utils/handle-axios-error';
 import { submitNewArticle, submitEdittedArticle, fetchArticle } from '..';
-import * as ArticleApiModule from 'api/articles-api';
-import { GetArticleResponse, PostArticleResponse } from 'api/articles-api';
+import * as GetArticleApiModule from 'api/articles-api/get-remote-article';
+import * as PostArticleApiModule from 'api/articles-api/post-remote-article';
+import * as PutArticleApiModule from 'api/articles-api/put-remote-article';
 import { FormError } from './../../model';
 
 const dispatch = jest.fn();
@@ -21,7 +22,7 @@ const apiError: ApiError<FormError> = {
   errorMsg: 'validation error',
 };
 
-const mockPostPutResponse: PostArticleResponse = {
+const mockPostPutResponse: PostArticleApiModule.PostArticleResponse = {
   postId: 'postId-000',
 };
 
@@ -37,7 +38,10 @@ const getState = () => ({
 describe('submitNewArticle', () => {
   beforeEach(async () => {
     jest.resetAllMocks();
-    postRemoteArticleSpy = jest.spyOn(ArticleApiModule, 'postRemoteArticle');
+    postRemoteArticleSpy = jest.spyOn(
+      PostArticleApiModule,
+      'postRemoteArticle',
+    );
   });
 
   it('call submitStart at first', async () => {
@@ -85,7 +89,7 @@ describe('submitNewArticle', () => {
 describe('submitEdittedArticle', () => {
   beforeEach(async () => {
     jest.resetAllMocks();
-    putRemoteArticleSpy = jest.spyOn(ArticleApiModule, 'putRemoteArticle');
+    putRemoteArticleSpy = jest.spyOn(PutArticleApiModule, 'putRemoteArticle');
   });
 
   it('call submitStart at first', async () => {
@@ -145,7 +149,7 @@ describe('submitEdittedArticle', () => {
   });
 });
 
-const mockGetResponse: GetArticleResponse = {
+const mockGetResponse: GetArticleApiModule.GetArticleResponse = {
   title: 'title',
   content: 'content',
   position: { lat: 0, lng: 0 },
@@ -154,7 +158,7 @@ const mockGetResponse: GetArticleResponse = {
 describe('fetchArticle', () => {
   beforeEach(async () => {
     jest.resetAllMocks();
-    getRemoteArticleSpy = jest.spyOn(ArticleApiModule, 'getRemoteArticle');
+    getRemoteArticleSpy = jest.spyOn(GetArticleApiModule, 'getRemoteArticle');
   });
 
   it('call fetchStart at first', async () => {

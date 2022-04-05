@@ -1,11 +1,10 @@
 import { fetchReadingArticle } from '..';
-import * as ArticleApiModule from 'api/articles-api';
-import { GetArticleResponse } from 'api/articles-api';
+import * as GetArticleApiModule from 'api/articles-api/get-remote-article';
 
 const dispatch = jest.fn();
 let getRemoteArticleSpy: jest.SpyInstance;
 
-const mockResponse: GetArticleResponse = {
+const mockResponse: GetArticleApiModule.GetArticleResponse = {
   title: 'title',
   content: 'content',
   position: { lat: 0, lng: 0 },
@@ -14,7 +13,7 @@ const mockResponse: GetArticleResponse = {
 describe('fetchReadingArticle', () => {
   beforeEach(async () => {
     jest.resetAllMocks();
-    getRemoteArticleSpy = jest.spyOn(ArticleApiModule, 'getRemoteArticle');
+    getRemoteArticleSpy = jest.spyOn(GetArticleApiModule, 'getRemoteArticle');
   });
 
   it('call fetchStart at first', async () => {

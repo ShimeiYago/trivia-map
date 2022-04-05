@@ -2,12 +2,12 @@ import React from 'react';
 import { Box, Typography } from '@mui/material';
 import { style } from './styles';
 
-export class GuideDialog extends React.Component<Props> {
+export class DialogScreen extends React.Component<Props> {
   render() {
-    const { children } = this.props;
+    const { children, theme, position } = this.props;
 
     return (
-      <Box sx={style}>
+      <Box sx={style(theme, position)}>
         <Typography color="white" align="center" variant="inherit">
           {children}
         </Typography>
@@ -18,4 +18,6 @@ export class GuideDialog extends React.Component<Props> {
 
 export type Props = {
   children?: React.ReactNode;
+  theme: 'black' | 'white';
+  position: 'top' | 'bottom';
 };

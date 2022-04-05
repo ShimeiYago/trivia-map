@@ -34,7 +34,7 @@ export async function postRemoteArticle(
 export type PostArticleRequest = {
   title: string;
   content: string;
-  position?: Position;
+  position?: Position; // Prohibit optional
 };
 
 export type PostArticleResponse = {

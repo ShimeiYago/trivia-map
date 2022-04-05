@@ -47,7 +47,7 @@ export const submitNewArticle = (): AppThunk => async (dispatch, getState) => {
       // validation Error
       formError = apiError.data;
     } else {
-      // TODO: set japanese messages depending to status
+      // TODO: set japanese messages depending on status
       formError = {
         headerErrors: [apiError.errorMsg],
       };
@@ -102,6 +102,8 @@ export const fetchArticle =
       dispatch(fetchSuccess(res));
     } catch (error) {
       const apiError = error as ApiError<unknown>;
+
+      // TODO: close modal & show global error message
       const formError: FormError = {
         headerErrors: [apiError.errorMsg],
       };

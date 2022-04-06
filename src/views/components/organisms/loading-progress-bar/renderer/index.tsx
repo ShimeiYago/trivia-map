@@ -1,5 +1,6 @@
 import { LinearProgress } from '@mui/material';
 import React from 'react';
+import { LoadingState } from 'types/loading-state';
 import { sleep } from 'utils/sleep';
 import { DialogScreen } from 'views/components/atoms/dialog-screen';
 
@@ -12,17 +13,24 @@ export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      showLoadingProgressBar: props.markersLoading,
+      showLoadingProgressBar: props.markersFetchingState === 'loading',
     };
   }
 
   componentDidUpdate(prevProps: Props) {
-    if (!prevProps.markersLoading && this.props.markersLoading) {
+    const { markersFetchingState } = this.props;
+    if (
+      prevProps.markersFetchingState !== markersFetchingState &&
+      markersFetchingState === 'loading'
+    ) {
       this.setState({
         showLoadingProgressBar: true,
       });
     }
-    if (prevProps.markersLoading && !this.props.markersLoading) {
+    if (
+      prevProps.markersFetchingState === 'loading' &&
+      prevProps.markersFetchingState !== markersFetchingState
+    ) {
       this.closeLoadingProgressBar();
     }
   }
@@ -58,7 +66,7 @@ export class Renderer extends React.Component<Props, State> {
 export type Props = {
   markersCurrentPageToLoad: number;
   markersTotalPages?: number;
-  markersLoading: boolean;
+  markersFetchingState: LoadingState;
 };
 
 export type State = {

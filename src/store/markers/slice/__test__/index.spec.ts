@@ -13,7 +13,7 @@ const {
 describe('markers reducer', () => {
   const initialState: MarkersState = {
     list: [],
-    loading: false,
+    fetchingState: 'waiting',
     errorMsg: null,
     currentPageToLoad: 0,
   };
@@ -22,25 +22,25 @@ describe('markers reducer', () => {
   it('should handle initial state', () => {
     expect(markersReducer(undefined, { type: 'unknown' })).toEqual({
       list: [],
-      loading: false,
+      fetchingState: 'waiting',
       errorMsg: null,
       currentPageToLoad: 0,
     });
   });
   it('should handle requestStart', () => {
     const actual = markersReducer(initialState, requestStart());
-    expect(actual.loading).toEqual(true);
+    expect(actual.fetchingState).toEqual('loading');
   });
 
   it('should handle requestFailure', () => {
     const actual = markersReducer(loadingState, requestFailure('error'));
-    expect(actual.loading).toEqual(false);
+    expect(actual.fetchingState).toEqual('error');
     expect(actual.errorMsg).toEqual('error');
   });
 
   it('should handle fetchSuccess', () => {
     const actual = markersReducer(loadingState, fetchSuccess());
-    expect(actual.loading).toEqual(false);
+    expect(actual.fetchingState).toEqual('success');
   });
 
   it('should handle updateList', () => {

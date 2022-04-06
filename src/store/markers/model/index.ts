@@ -1,3 +1,4 @@
+import { LoadingState } from 'types/loading-state';
 import { Position } from 'types/position';
 
 export type Marker = {
@@ -8,7 +9,7 @@ export type Marker = {
 
 export interface MarkersState {
   list: Marker[];
-  loading: boolean; // TODO: should use Status
+  fetchingState: LoadingState;
   errorMsg: string | null;
   currentPageToLoad: number;
   totalPages?: number;
@@ -16,7 +17,7 @@ export interface MarkersState {
 
 export const initialState: MarkersState = {
   list: [],
-  loading: false,
+  fetchingState: 'waiting',
   errorMsg: null,
   currentPageToLoad: 0,
 };

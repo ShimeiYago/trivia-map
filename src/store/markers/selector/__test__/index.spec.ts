@@ -1,7 +1,7 @@
 import { LatLng } from 'leaflet';
 import {
   selectMarkersErrorMsg,
-  selectMarkersLoading,
+  selectMarkersFetchingState,
   selectMarkerList,
   selectMarkersTotalPages,
   selectMarkersCurrentPageToLoad,
@@ -18,7 +18,7 @@ describe('markers selector', () => {
           title: 'title',
         },
       ],
-      loading: false,
+      fetchingState: 'waiting',
       errorMsg: 'error',
       totalPages: 2,
       currentPageToLoad: 1,
@@ -36,7 +36,7 @@ describe('markers selector', () => {
   });
 
   it('selectMarkersLoading should return markers loading state', () => {
-    expect(selectMarkersLoading(rootState)).toEqual(false);
+    expect(selectMarkersFetchingState(rootState)).toEqual('waiting');
   });
 
   it('selectMarkersErrorMsg should return markers error message', () => {

@@ -117,7 +117,7 @@ export class Renderer extends React.Component<Props> {
                 initZoom={3}
                 initCenter={position}
                 disabled
-                doNotShowPosts
+                doNotLoadMarkers
               />
               <Box sx={miniMapLayer}></Box>
               <Box sx={miniMapTextBox}>

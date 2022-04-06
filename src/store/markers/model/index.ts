@@ -10,7 +10,7 @@ export type Marker = {
 export interface MarkersState {
   list: Marker[];
   fetchingState: LoadingState;
-  errorMsg: string | null;
+  errorMsg?: string;
   currentPageToLoad: number;
   totalPages?: number;
 }
@@ -18,6 +18,5 @@ export interface MarkersState {
 export const initialState: MarkersState = {
   list: [],
   fetchingState: 'waiting',
-  errorMsg: null,
   currentPageToLoad: 0,
 };

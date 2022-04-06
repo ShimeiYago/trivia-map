@@ -25,8 +25,9 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   componentDidMount() {
-    // TODO: should call only if main map
-    this.props.fetchMarkers();
+    if (!this.props.doNotLoadMarkers) {
+      this.props.fetchMarkers();
+    }
   }
 
   componentDidUpdate(prevProps: Props) {
@@ -262,6 +263,7 @@ export type Props = {
   initZoom?: number;
   initCenter?: Position;
   disabled?: boolean;
+  doNotLoadMarkers?: boolean;
 
   fetchMarkers: () => void;
   onClickPostTitle?: (postId: string) => () => void;

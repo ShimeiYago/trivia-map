@@ -41,6 +41,8 @@ export const fetchMarkers = (): AppThunk => async (dispatch) => {
     dispatch(fetchSuccess());
   } catch (error) {
     const apiError = error as ApiError<unknown>;
+
+    // TODO: set japanese error messages depending on status
     dispatch(requestFailure(apiError.errorMsg));
   }
 };

@@ -6,7 +6,7 @@ let shallowWrapper: ShallowWrapper<Props, State, Renderer>;
 const props: Props = {
   markersCurrentPageToLoad: 1,
   markersTotalPages: 5,
-  markersLoading: false,
+  markersFetchingState: 'waiting',
 };
 
 describe('Shallow Snapshot Tests', () => {
@@ -19,14 +19,14 @@ describe('Shallow Snapshot Tests', () => {
   });
 
   it('on loading', () => {
-    shallowWrapper.setProps({ markersLoading: true });
+    shallowWrapper.setProps({ markersFetchingState: 'loading' });
     expect(shallowWrapper).toMatchSnapshot();
   });
 
   it('init of loading', () => {
     shallowWrapper.setProps({
       markersTotalPages: undefined,
-      markersLoading: true,
+      markersFetchingState: 'loading',
     });
     expect(shallowWrapper).toMatchSnapshot();
   });
@@ -37,18 +37,18 @@ describe('componentDidUpdate', () => {
     shallowWrapper = shallow(<Renderer {...props} />);
   });
 
-  it('should show loading progress bar if markersLoading changes false -> true', () => {
+  it('should show loading progress bar if markersLoading changes to loading', () => {
     const prevProps: Props = props;
-    shallowWrapper.setProps({ markersLoading: true });
+    shallowWrapper.setProps({ markersFetchingState: 'loading' });
     const instance = shallowWrapper.instance();
 
     instance.componentDidUpdate(prevProps);
     expect(instance.state.showLoadingProgressBar).toBeTruthy();
   });
 
-  it('do not close loading progress bar soon even if markersLoading changes true -> false', () => {
-    const prevProps: Props = { ...props, markersLoading: true };
-    shallowWrapper.setProps({ markersLoading: false });
+  it('do not close loading progress bar soon even if markersLoading changes from loading', () => {
+    const prevProps: Props = { ...props, markersFetchingState: 'loading' };
+    shallowWrapper.setProps({ markersFetchingState: 'success' });
     shallowWrapper.setState({ showLoadingProgressBar: true });
     const instance = shallowWrapper.instance();
 

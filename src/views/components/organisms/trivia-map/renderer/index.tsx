@@ -255,7 +255,6 @@ export class Renderer extends React.Component<Props, State> {
 
 export type Props = {
   markerList: Marker[];
-  loadingMarkers: boolean;
   newMarkerMode: boolean;
   articleFormPosition?: Position;
   width?: number;

@@ -6,17 +6,17 @@ export const markersSlice = createSlice({
   initialState,
   reducers: {
     requestStart(state) {
-      state.loading = true;
+      state.fetchingState = 'loading';
       state.errorMsg = null;
     },
 
     requestFailure(state, action: PayloadAction<string>) {
-      state.loading = false;
+      state.fetchingState = 'error';
       state.errorMsg = action.payload;
     },
 
     fetchSuccess(state) {
-      state.loading = false;
+      state.fetchingState = 'success';
     },
 
     updateList(state, action: PayloadAction<Marker[]>) {

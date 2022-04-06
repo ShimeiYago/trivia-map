@@ -77,6 +77,21 @@ describe('handleMapCreated', () => {
   });
 });
 
+describe('componentDidMount', () => {
+  beforeEach(() => {
+    shallowWrapper = shallow(<Renderer {...basicProps} />);
+    shallowWrapper.setProps({ fetchMarkers: jest.fn() });
+  });
+
+  it('should not call fetchMarkers with doNotLoadMarkers prop', () => {
+    shallowWrapper.setProps({ doNotLoadMarkers: true });
+    const instance = shallowWrapper.instance();
+
+    instance['componentDidMount']();
+    expect(instance.props.fetchMarkers).not.toBeCalled();
+  });
+});
+
 describe('componentDidUpdate', () => {
   beforeEach(() => {
     shallowWrapper = shallow(<Renderer {...basicProps} />);

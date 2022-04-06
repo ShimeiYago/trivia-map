@@ -1,8 +1,14 @@
-import { Box, LinearProgress, Typography } from '@mui/material';
+import {
+  Box,
+  CircularProgress,
+  LinearProgress,
+  Typography,
+} from '@mui/material';
 import React from 'react';
 import { LoadingState } from 'types/loading-state';
 import { sleep } from 'utils/sleep';
 import { DialogScreen } from 'views/components/atoms/dialog-screen';
+import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 
 export class Renderer extends React.Component<Props, State> {
   closeTimeMs = 1000;
@@ -81,18 +87,31 @@ export class Renderer extends React.Component<Props, State> {
   };
 
   protected renderDescriptionMessage = () => {
-    if (this.props.markersFetchingState === 'error') {
-      return (
-        <Typography variant="body1" color="red">
+    const { markersFetchingState } = this.props;
+
+    const icon =
+      markersFetchingState === 'error' ? (
+        <ErrorOutlineIcon color="error" />
+      ) : (
+        <CircularProgress size={20} />
+      );
+
+    const message =
+      markersFetchingState === 'error' ? (
+        <Typography variant="body1" color="error">
           {this.props.markersErrorMsg}
         </Typography>
+      ) : (
+        <Typography variant="body1" color="text.primary">
+          データを読み込んでいます...
+        </Typography>
       );
-    }
 
     return (
-      <Typography variant="body1" color="text.primary">
-        データを読み込んでいます...
-      </Typography>
+      <Box sx={{ display: 'flex', justifyContent: 'flex-start' }}>
+        <Box sx={{ width: '30px' }}>{icon}</Box>
+        <Box>{message}</Box>
+      </Box>
     );
   };
 }

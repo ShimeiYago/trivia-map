@@ -7,12 +7,34 @@ exports[`Shallow Snapshot Tests init of loading 1`] = `
   position="bottom"
   theme="white"
 >
-  <ForwardRef(Typography)
-    color="text.primary"
-    variant="body1"
+  <ForwardRef(Box)
+    sx={
+      Object {
+        "display": "flex",
+        "justifyContent": "flex-start",
+      }
+    }
   >
-    データを読み込んでいます...
-  </ForwardRef(Typography)>
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "width": "30px",
+        }
+      }
+    >
+      <ForwardRef(CircularProgress)
+        size={20}
+      />
+    </ForwardRef(Box)>
+    <ForwardRef(Box)>
+      <ForwardRef(Typography)
+        color="text.primary"
+        variant="body1"
+      >
+        データを読み込んでいます...
+      </ForwardRef(Typography)>
+    </ForwardRef(Box)>
+  </ForwardRef(Box)>
   <ForwardRef(Box)
     sx={
       Object {
@@ -58,12 +80,34 @@ exports[`Shallow Snapshot Tests on loading 1`] = `
   position="bottom"
   theme="white"
 >
-  <ForwardRef(Typography)
-    color="text.primary"
-    variant="body1"
+  <ForwardRef(Box)
+    sx={
+      Object {
+        "display": "flex",
+        "justifyContent": "flex-start",
+      }
+    }
   >
-    データを読み込んでいます...
-  </ForwardRef(Typography)>
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "width": "30px",
+        }
+      }
+    >
+      <ForwardRef(CircularProgress)
+        size={20}
+      />
+    </ForwardRef(Box)>
+    <ForwardRef(Box)>
+      <ForwardRef(Typography)
+        color="text.primary"
+        variant="body1"
+      >
+        データを読み込んでいます...
+      </ForwardRef(Typography)>
+    </ForwardRef(Box)>
+  </ForwardRef(Box)>
   <ForwardRef(Box)
     sx={
       Object {
@@ -109,12 +153,34 @@ exports[`Shallow Snapshot Tests with error 1`] = `
   position="bottom"
   theme="white"
 >
-  <ForwardRef(Typography)
-    color="red"
-    variant="body1"
+  <ForwardRef(Box)
+    sx={
+      Object {
+        "display": "flex",
+        "justifyContent": "flex-start",
+      }
+    }
   >
-    loading error
-  </ForwardRef(Typography)>
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "width": "30px",
+        }
+      }
+    >
+      <Memo(ForwardRef(ErrorOutlineIcon))
+        color="error"
+      />
+    </ForwardRef(Box)>
+    <ForwardRef(Box)>
+      <ForwardRef(Typography)
+        color="error"
+        variant="body1"
+      >
+        loading error
+      </ForwardRef(Typography)>
+    </ForwardRef(Box)>
+  </ForwardRef(Box)>
   <ForwardRef(Box)
     sx={
       Object {

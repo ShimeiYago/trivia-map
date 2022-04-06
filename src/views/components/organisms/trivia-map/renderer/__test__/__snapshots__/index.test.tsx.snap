@@ -150,7 +150,6 @@ exports[`Shallow Snapshot Tests when currentPosition state is setted 1`] = `
   >
     <ForwardRef(Typography)
       align="center"
-      color="white"
       sx={
         Object {
           "fontWeight": "bold",

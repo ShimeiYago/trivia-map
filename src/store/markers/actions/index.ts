@@ -29,7 +29,7 @@ export const fetchMarkers = (): AppThunk => async (dispatch) => {
       const res: GetMarkersResponse = await getRemoteMarkers(pageIndex);
 
       if (prevPageIndex === 0) {
-        dispatch(updateTotalPages(res.totalPage));
+        dispatch(updateTotalPages(res.totalPages));
       }
 
       dispatch(appendMarkers(res.markers));

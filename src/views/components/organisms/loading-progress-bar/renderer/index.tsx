@@ -3,6 +3,9 @@ import React from 'react';
 import { sleep } from 'utils/sleep';
 import { DialogScreen } from 'views/components/atoms/dialog-screen';
 
+// TODO: error case
+// TODO: show texts
+
 export class Renderer extends React.Component<Props, State> {
   closeTimeMs = 1000;
 

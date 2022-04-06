@@ -28,7 +28,7 @@ export type MarkerTypeAPI = {
 };
 
 export type GetMarkersResponse = {
-  totalPage: number;
+  totalPages: number;
   nextPageIndex: number | null;
   markers: MarkerTypeAPI[];
 };

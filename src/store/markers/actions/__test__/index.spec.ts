@@ -19,7 +19,7 @@ class MockResponseForPagiNation {
   }
 
   protected mockResponsePage1: GetMarkersResponse = {
-    totalPage: 2,
+    totalPages: 2,
     nextPageIndex: 2,
     markers: [
       {
@@ -31,7 +31,7 @@ class MockResponseForPagiNation {
   };
 
   protected mockResponsePage2: GetMarkersResponse = {
-    totalPage: 2,
+    totalPages: 2,
     nextPageIndex: null,
     markers: [
       {

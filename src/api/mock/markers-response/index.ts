@@ -14,7 +14,7 @@ export function mockGetMarkersResponse(pageIndex: number): GetMarkersResponse {
 }
 
 const mockGetMarkersResponsePage1 = {
-  totalPage: 3,
+  totalPages: 3,
   nextPageIndex: 2,
   markers: [
     {
@@ -37,7 +37,7 @@ const mockGetMarkersResponsePage1 = {
 };
 
 const mockGetMarkersResponsePage2 = {
-  totalPage: 3,
+  totalPages: 3,
   nextPageIndex: 3,
   markers: [
     {
@@ -60,7 +60,7 @@ const mockGetMarkersResponsePage2 = {
 };
 
 const mockGetMarkersResponsePage3 = {
-  totalPage: 3,
+  totalPages: 3,
   nextPageIndex: null,
   markers: [
     {
@@ -75,7 +75,7 @@ const mockGetMarkersResponsePage3 = {
 };
 
 const mockGetMarkersResponsePageLast = {
-  totalPage: 100,
+  totalPages: 100,
   nextPageIndex: null,
   markers: [
     {

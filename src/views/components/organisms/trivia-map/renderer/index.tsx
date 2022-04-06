@@ -241,7 +241,6 @@ export class Renderer extends React.Component<Props, State> {
     return (
       <DialogScreen theme="black" position="top">
         <Typography
-          color="white"
           align="center"
           variant="inherit"
           sx={{ fontWeight: 'bold' }}

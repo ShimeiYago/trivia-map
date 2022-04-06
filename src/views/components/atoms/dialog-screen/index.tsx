@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Typography } from '@mui/material';
+import { Box } from '@mui/material';
 import { style } from './styles';
 
 export class DialogScreen extends React.Component<Props> {
@@ -7,12 +7,8 @@ export class DialogScreen extends React.Component<Props> {
     const { children, theme, position } = this.props;
 
     return (
-      // Feed in & out
-      <Box sx={style(theme, position)}>
-        <Typography color="white" align="center" variant="inherit">
-          {children}
-        </Typography>
-      </Box>
+      // TODO: Feed in & out
+      <Box sx={style(theme, position)}>{children}</Box>
     );
   }
 }

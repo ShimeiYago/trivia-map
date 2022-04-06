@@ -13,5 +13,6 @@ export const style = (theme: string, position: string): SxProps => {
     zIndex: 2000,
     p: 2,
     borderRadius: 2,
+    color: theme === 'black' ? 'white' : 'black',
   };
 };

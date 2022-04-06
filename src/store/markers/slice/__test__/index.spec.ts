@@ -14,7 +14,6 @@ describe('markers reducer', () => {
   const initialState: MarkersState = {
     list: [],
     fetchingState: 'waiting',
-    errorMsg: null,
     currentPageToLoad: 0,
   };
   const loadingState = Object.assign(initialState, { loading: true });
@@ -23,7 +22,6 @@ describe('markers reducer', () => {
     expect(markersReducer(undefined, { type: 'unknown' })).toEqual({
       list: [],
       fetchingState: 'waiting',
-      errorMsg: null,
       currentPageToLoad: 0,
     });
   });

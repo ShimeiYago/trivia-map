@@ -1,11 +1,8 @@
-import { LinearProgress } from '@mui/material';
+import { Box, LinearProgress, Typography } from '@mui/material';
 import React from 'react';
 import { LoadingState } from 'types/loading-state';
 import { sleep } from 'utils/sleep';
 import { DialogScreen } from 'views/components/atoms/dialog-screen';
-
-// TODO: error case
-// TODO: show texts
 
 export class Renderer extends React.Component<Props, State> {
   closeTimeMs = 1000;
@@ -29,7 +26,7 @@ export class Renderer extends React.Component<Props, State> {
     }
     if (
       prevProps.markersFetchingState === 'loading' &&
-      prevProps.markersFetchingState !== markersFetchingState
+      markersFetchingState === 'success'
     ) {
       this.closeLoadingProgressBar();
     }
@@ -50,7 +47,8 @@ export class Renderer extends React.Component<Props, State> {
 
     return (
       <DialogScreen theme="white" position="bottom">
-        <LinearProgress variant="buffer" value={progressValue} />
+        {this.renderDescriptionMessage()}
+        {this.renderLinearProgressWithLabel(progressValue)}
       </DialogScreen>
     );
   }
@@ -61,12 +59,49 @@ export class Renderer extends React.Component<Props, State> {
       showLoadingProgressBar: false,
     });
   }
+
+  protected renderLinearProgressWithLabel = (progressValue: number) => {
+    const { markersFetchingState } = this.props;
+    return (
+      <Box sx={{ display: 'flex', alignItems: 'center' }}>
+        <Box sx={{ width: '100%', mr: 1 }}>
+          <LinearProgress
+            variant="determinate"
+            value={progressValue}
+            color={markersFetchingState === 'error' ? 'error' : 'primary'}
+          />
+        </Box>
+        <Box sx={{ minWidth: 35 }}>
+          <Typography variant="body2" color="text.secondary">
+            {`${progressValue}%`}
+          </Typography>
+        </Box>
+      </Box>
+    );
+  };
+
+  protected renderDescriptionMessage = () => {
+    if (this.props.markersFetchingState === 'error') {
+      return (
+        <Typography variant="body1" color="red">
+          {this.props.markersErrorMsg}
+        </Typography>
+      );
+    }
+
+    return (
+      <Typography variant="body1" color="text.primary">
+        データを読み込んでいます...
+      </Typography>
+    );
+  };
 }
 
 export type Props = {
   markersCurrentPageToLoad: number;
   markersTotalPages?: number;
   markersFetchingState: LoadingState;
+  markersErrorMsg?: string;
 };
 
 export type State = {

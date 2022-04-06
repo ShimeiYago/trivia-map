@@ -2,13 +2,13 @@ import { useAppSelector } from 'store';
 import { Renderer, Props } from './renderer';
 import {
   selectMarkersCurrentPageToLoad,
-  selectMarkersLoading,
+  selectMarkersFetchingState,
   selectMarkersTotalPages,
 } from 'store/markers/selector';
 
 export function LoadingProgressBar() {
   const props: Props = {
-    markersLoading: useAppSelector(selectMarkersLoading),
+    markersFetchingState: useAppSelector(selectMarkersFetchingState),
     markersCurrentPageToLoad: useAppSelector(selectMarkersCurrentPageToLoad),
     markersTotalPages: useAppSelector(selectMarkersTotalPages),
   };

@@ -11,7 +11,6 @@ const basicProps: Props = {
     },
   ],
   initZoom: 1,
-  loadingMarkers: false,
   fetchMarkers: jest.fn(),
   newMarkerMode: false,
   endToSelectPosition: jest.fn(),

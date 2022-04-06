@@ -1,7 +1,7 @@
 import { readingArticleSlice } from '../slice';
 import { AppThunk } from 'store';
 import { ApiError } from 'api/utils/handle-axios-error';
-import { getRemoteArticle } from 'api/articles-api';
+import { getRemoteArticle } from 'api/articles-api/get-remote-article';
 
 // basic actions
 export const { fetchStart, fetchSuccess, fetchFailure } =
@@ -19,6 +19,6 @@ export const fetchReadingArticle =
     } catch (error) {
       const apiError = error as ApiError<unknown>;
       dispatch(fetchFailure(apiError.errorMsg));
-      // TODO: edirect to error page
+      // TODO: close modal & show global error message depending on status
     }
   };

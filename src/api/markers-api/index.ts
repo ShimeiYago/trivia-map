@@ -5,12 +5,14 @@ import { getAxiosInstance } from 'api/utils/get-axios-instance';
 import { mockGetMarkersResponse } from './../mock/markers-response';
 import { Position } from 'types/position';
 
-export async function getRemoteMarkers(): Promise<GetMarkersResponse> {
-  const axiosInstance = getAxiosInstance({}, mockGetMarkersResponse);
+export async function getRemoteMarkers(
+  pageIndex: number,
+): Promise<GetMarkersResponse> {
+  const axiosInstance = getAxiosInstance({}, mockGetMarkersResponse(pageIndex));
 
   try {
     const res: AxiosResponse<GetMarkersResponse> = await axiosInstance.get(
-      `${BASE_URL}/markers`,
+      `${BASE_URL}/markers?page=${pageIndex}`,
     );
     return res.data;
   } catch (error) {
@@ -19,10 +21,14 @@ export async function getRemoteMarkers(): Promise<GetMarkersResponse> {
   }
 }
 
-type Marker = {
+export type MarkerTypeAPI = {
   postId: string;
   position: Position;
   title: string;
 };
 
-export type GetMarkersResponse = Marker[];
+export type GetMarkersResponse = {
+  totalPages: number;
+  nextPageIndex: number | null;
+  markers: MarkerTypeAPI[];
+};

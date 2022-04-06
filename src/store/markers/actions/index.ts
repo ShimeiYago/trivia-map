@@ -1,21 +1,54 @@
+import { selectMarkerList } from 'store/markers/selector';
 import { markersSlice } from './../slice/index';
 import { AppThunk } from 'store';
-import { getRemoteMarkers } from 'api/markers-api';
+import {
+  GetMarkersResponse,
+  getRemoteMarkers,
+  MarkerTypeAPI,
+} from 'api/markers-api';
 import { ApiError } from 'api/utils/handle-axios-error';
 
 // basic actions
-export const { fetchSuccess, requestFailure, requestStart } =
-  markersSlice.actions;
+export const {
+  fetchSuccess,
+  requestFailure,
+  requestStart,
+  updateList,
+  updateTotalPages,
+  updateCurrentPageToLoad,
+} = markersSlice.actions;
 
 // fetchMarkers action
 export const fetchMarkers = (): AppThunk => async (dispatch) => {
   dispatch(requestStart());
 
   try {
-    const res = await getRemoteMarkers();
-    dispatch(fetchSuccess(res));
+    let pageIndex: number | null = 1;
+    let prevPageIndex = 0;
+    while (pageIndex && prevPageIndex < pageIndex) {
+      const res: GetMarkersResponse = await getRemoteMarkers(pageIndex);
+
+      if (prevPageIndex === 0) {
+        dispatch(updateTotalPages(res.totalPages));
+      }
+
+      dispatch(appendMarkers(res.markers));
+      dispatch(updateCurrentPageToLoad(pageIndex));
+
+      prevPageIndex = pageIndex;
+      pageIndex = res.nextPageIndex;
+    }
+    dispatch(fetchSuccess());
   } catch (error) {
     const apiError = error as ApiError<unknown>;
     dispatch(requestFailure(apiError.errorMsg));
   }
 };
+
+// appendMarkers action
+export const appendMarkers =
+  (newList: MarkerTypeAPI[]): AppThunk =>
+  (dispatch, getState) => {
+    const markers = [...selectMarkerList(getState()), ...newList];
+    dispatch(updateList(markers));
+  };

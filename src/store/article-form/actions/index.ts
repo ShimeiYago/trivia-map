@@ -1,11 +1,9 @@
 import { articleFormSlice } from '../slice';
 import { AppThunk } from 'store';
 import { ApiError } from 'api/utils/handle-axios-error';
-import {
-  getRemoteArticle,
-  postRemoteArticle,
-  putRemoteArticle,
-} from 'api/articles-api';
+import { getRemoteArticle } from 'api/articles-api/get-remote-article';
+import { postRemoteArticle } from 'api/articles-api/post-remote-article';
+import { putRemoteArticle } from 'api/articles-api/put-remote-article';
 import { FormError } from '../model';
 import {
   selectArticleFormTitle,
@@ -49,7 +47,7 @@ export const submitNewArticle = (): AppThunk => async (dispatch, getState) => {
       // validation Error
       formError = apiError.data;
     } else {
-      // TODO: set japanese messages depending to status
+      // TODO: set japanese messages depending on status
       formError = {
         headerErrors: [apiError.errorMsg],
       };
@@ -104,6 +102,8 @@ export const fetchArticle =
       dispatch(fetchSuccess(res));
     } catch (error) {
       const apiError = error as ApiError<unknown>;
+
+      // TODO: close modal & show global error message
       const formError: FormError = {
         headerErrors: [apiError.errorMsg],
       };

@@ -15,9 +15,20 @@ export const markersSlice = createSlice({
       state.errorMsg = action.payload;
     },
 
-    fetchSuccess(state, action: PayloadAction<Marker[]>) {
+    fetchSuccess(state) {
       state.loading = false;
+    },
+
+    updateList(state, action: PayloadAction<Marker[]>) {
       state.list = action.payload;
+    },
+
+    updateCurrentPageToLoad(state, action: PayloadAction<number>) {
+      state.currentPageToLoad = action.payload;
+    },
+
+    updateTotalPages(state, action: PayloadAction<number>) {
+      state.totalPages = action.payload;
     },
   },
 });

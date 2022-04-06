@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shallow Snapshot Tests basic 1`] = `""`;
+
+exports[`Shallow Snapshot Tests init of loading 1`] = `
+<DialogScreen
+  position="bottom"
+  theme="white"
+>
+  <ForwardRef(LinearProgress)
+    value={0}
+    variant="buffer"
+  />
+</DialogScreen>
+`;
+
+exports[`Shallow Snapshot Tests on loading 1`] = `
+<DialogScreen
+  position="bottom"
+  theme="white"
+>
+  <ForwardRef(LinearProgress)
+    value={20}
+    variant="buffer"
+  />
+</DialogScreen>
+`;

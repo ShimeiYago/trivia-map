@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shallow Snapshot Tests basic 1`] = `
+<ForwardRef(Box)
+  sx={
+    Object {
+      "backgroundColor": "rgba(0,0,0,0.7)",
+      "borderRadius": 2,
+      "color": "white",
+      "display": "inline-block",
+      "left": "50%",
+      "p": 2,
+      "position": "absolute",
+      "top": "10%",
+      "transform": "translate(-50%,-50%)",
+      "width": "80%",
+      "zIndex": 2000,
+    }
+  }
+>
+  message
+</ForwardRef(Box)>
+`;
+
+exports[`Shallow Snapshot Tests position bottom 1`] = `
+<ForwardRef(Box)
+  sx={
+    Object {
+      "backgroundColor": "rgba(0,0,0,0.7)",
+      "borderRadius": 2,
+      "color": "white",
+      "display": "inline-block",
+      "left": "50%",
+      "p": 2,
+      "position": "absolute",
+      "top": "90%",
+      "transform": "translate(-50%,-50%)",
+      "width": "80%",
+      "zIndex": 2000,
+    }
+  }
+>
+  message
+</ForwardRef(Box)>
+`;
+
+exports[`Shallow Snapshot Tests white theme 1`] = `
+<ForwardRef(Box)
+  sx={
+    Object {
+      "backgroundColor": "rgba(255,255,255,0.7)",
+      "borderRadius": 2,
+      "color": "black",
+      "display": "inline-block",
+      "left": "50%",
+      "p": 2,
+      "position": "absolute",
+      "top": "10%",
+      "transform": "translate(-50%,-50%)",
+      "width": "80%",
+      "zIndex": 2000,
+    }
+  }
+>
+  message
+</ForwardRef(Box)>
+`;

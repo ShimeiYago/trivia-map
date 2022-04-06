@@ -1,4 +1,4 @@
-import { GetArticleResponse } from './../../../api/articles-api/index';
+import { GetArticleResponse } from '../../../api/articles-api/get-remote-article';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { FormError, initialState } from '../model';
 import { Position } from 'types/position';

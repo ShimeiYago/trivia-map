@@ -1,4 +1,5 @@
-import { GetArticleResponse, PostArticleResponse } from 'api/articles-api';
+import { GetArticleResponse } from 'api/articles-api/get-remote-article';
+import { PostArticleResponse } from 'api/articles-api/post-remote-article';
 
 export const mockGetArticleResponse: GetArticleResponse = {
   title: 'ノーチラス号',

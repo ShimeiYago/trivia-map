@@ -11,6 +11,7 @@ const basicProps: Props = {
     },
   ],
   initZoom: 1,
+  markersFetchingState: 'success',
   fetchMarkers: jest.fn(),
   newMarkerMode: false,
   endToSelectPosition: jest.fn(),
@@ -82,12 +83,12 @@ describe('componentDidMount', () => {
     shallowWrapper.setProps({ fetchMarkers: jest.fn() });
   });
 
-  it('should not call fetchMarkers with doNotLoadMarkers prop', () => {
-    shallowWrapper.setProps({ doNotLoadMarkers: true });
+  it('should call fetchMarkers if markersFetchingState is waiting', () => {
+    shallowWrapper.setProps({ markersFetchingState: 'waiting' });
     const instance = shallowWrapper.instance();
 
     instance['componentDidMount']();
-    expect(instance.props.fetchMarkers).not.toBeCalled();
+    expect(instance.props.fetchMarkers).toBeCalled();
   });
 });
 

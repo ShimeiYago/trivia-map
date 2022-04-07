@@ -81,7 +81,7 @@ export const submitEdittedArticle =
     try {
       const res = await putRemoteArticle(postId, title, content, position);
       dispatch(submitSuccess(res.postId));
-      // TODO: initialize
+      dispatch(initialize());
     } catch (error) {
       const apiError = error as ApiError<ValidationError>;
       if (apiError.status === 422 && apiError.data) {

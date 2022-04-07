@@ -10,7 +10,6 @@ import { LoadingProgressBar } from 'views/components/organisms/loading-progress-
 import { TriviaMap } from 'views/components/organisms/trivia-map';
 import { rightDrawerStyle } from './styles';
 
-// TODO: define z-index correctly
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);

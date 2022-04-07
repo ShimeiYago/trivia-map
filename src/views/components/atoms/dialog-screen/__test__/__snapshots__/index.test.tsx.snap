@@ -4,7 +4,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
 <ForwardRef(Box)
   sx={
     Object {
-      "backgroundColor": "rgba(0,0,0,0.7)",
+      "backgroundColor": "rgba(0,0,0,0.8)",
       "borderRadius": 2,
       "color": "white",
       "display": "inline-block",
@@ -14,7 +14,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       "top": "10%",
       "transform": "translate(-50%,-50%)",
       "width": "80%",
-      "zIndex": 2000,
+      "zIndex": 1000,
     }
   }
 >
@@ -26,7 +26,7 @@ exports[`Shallow Snapshot Tests position bottom 1`] = `
 <ForwardRef(Box)
   sx={
     Object {
-      "backgroundColor": "rgba(0,0,0,0.7)",
+      "backgroundColor": "rgba(0,0,0,0.8)",
       "borderRadius": 2,
       "color": "white",
       "display": "inline-block",
@@ -36,7 +36,29 @@ exports[`Shallow Snapshot Tests position bottom 1`] = `
       "top": "90%",
       "transform": "translate(-50%,-50%)",
       "width": "80%",
-      "zIndex": 2000,
+      "zIndex": 1000,
+    }
+  }
+>
+  message
+</ForwardRef(Box)>
+`;
+
+exports[`Shallow Snapshot Tests position freely 1`] = `
+<ForwardRef(Box)
+  sx={
+    Object {
+      "backgroundColor": "rgba(0,0,0,0.8)",
+      "borderRadius": 2,
+      "color": "white",
+      "display": "inline-block",
+      "left": "50%",
+      "p": 2,
+      "position": "absolute",
+      "top": "50%",
+      "transform": "translate(-50%,-50%)",
+      "width": "80%",
+      "zIndex": 1000,
     }
   }
 >
@@ -48,7 +70,7 @@ exports[`Shallow Snapshot Tests white theme 1`] = `
 <ForwardRef(Box)
   sx={
     Object {
-      "backgroundColor": "rgba(255,255,255,0.7)",
+      "backgroundColor": "rgba(255,255,255,0.8)",
       "borderRadius": 2,
       "color": "black",
       "display": "inline-block",
@@ -58,7 +80,7 @@ exports[`Shallow Snapshot Tests white theme 1`] = `
       "top": "10%",
       "transform": "translate(-50%,-50%)",
       "width": "80%",
-      "zIndex": 2000,
+      "zIndex": 1000,
     }
   }
 >

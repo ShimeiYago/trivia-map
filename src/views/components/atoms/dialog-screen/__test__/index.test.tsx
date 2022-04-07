@@ -27,4 +27,9 @@ describe('Shallow Snapshot Tests', () => {
     wrapper.setProps({ position: 'bottom' });
     expect(wrapper).toMatchSnapshot();
   });
+
+  it('position freely', () => {
+    wrapper.setProps({ position: 50 });
+    expect(wrapper).toMatchSnapshot();
+  });
 });

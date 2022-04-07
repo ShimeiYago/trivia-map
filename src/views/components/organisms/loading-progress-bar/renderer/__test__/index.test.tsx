@@ -7,6 +7,7 @@ const props: Props = {
   markersCurrentPageToLoad: 1,
   markersTotalPages: 5,
   markersFetchingState: 'waiting',
+  isMobile: false,
 };
 
 describe('Shallow Snapshot Tests', () => {
@@ -35,6 +36,16 @@ describe('Shallow Snapshot Tests', () => {
     shallowWrapper.setProps({
       markersFetchingState: 'error',
       markersErrorMsg: 'loading error',
+    });
+    shallowWrapper.setState({
+      showLoadingProgressBar: true,
+    });
+    expect(shallowWrapper).toMatchSnapshot();
+  });
+
+  it('mobile view', () => {
+    shallowWrapper.setProps({
+      isMobile: true,
     });
     shallowWrapper.setState({
       showLoadingProgressBar: true,

@@ -49,7 +49,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       >
         <TriviaMap
           disabled={true}
-          doNotLoadMarkers={true}
+          doNotShowMarkers={true}
           height={300}
           initCenter={
             Object {
@@ -170,7 +170,7 @@ exports[`Shallow Snapshot Tests loading 1`] = `
       >
         <TriviaMap
           disabled={true}
-          doNotLoadMarkers={true}
+          doNotShowMarkers={true}
           height={300}
           initCenter={
             Object {
@@ -269,7 +269,7 @@ exports[`Shallow Snapshot Tests position is not selected yet 1`] = `
       >
         <TriviaMap
           disabled={true}
-          doNotLoadMarkers={true}
+          doNotShowMarkers={true}
           height={300}
           initZoom={3}
         />
@@ -386,7 +386,7 @@ exports[`Shallow Snapshot Tests with validation error 1`] = `
       >
         <TriviaMap
           disabled={true}
-          doNotLoadMarkers={true}
+          doNotShowMarkers={true}
           height={300}
           initCenter={
             Object {

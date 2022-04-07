@@ -21,7 +21,7 @@ export const articleFormSlice = createSlice({
 
     submitStart(state) {
       state.submittingState = 'loading';
-      // TODO: reset error message
+      state.formError = undefined;
     },
 
     submitFailure(state, action: PayloadAction<FormError>) {
@@ -38,7 +38,7 @@ export const articleFormSlice = createSlice({
     fetchStart(state, action: PayloadAction<string>) {
       state.fetchingState = 'loading';
       state.postId = action.payload;
-      // TODO: reset error message
+      state.formError = undefined;
     },
 
     fetchFailure(state, action: PayloadAction<FormError>) {

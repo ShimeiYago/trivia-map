@@ -1,3 +1,4 @@
+import { globalAPIErrorMessage } from 'constant-words/global-api-error-message';
 import { selectMarkerList } from 'store/markers/selector';
 import { markersSlice } from './../slice/index';
 import { AppThunk } from 'store';
@@ -42,8 +43,8 @@ export const fetchMarkers = (): AppThunk => async (dispatch) => {
   } catch (error) {
     const apiError = error as ApiError<unknown>;
 
-    // TODO: set japanese error messages depending on status
-    dispatch(requestFailure(apiError.errorMsg));
+    const errorMsg = globalAPIErrorMessage(apiError.status, 'get');
+    dispatch(requestFailure(errorMsg));
   }
 };
 

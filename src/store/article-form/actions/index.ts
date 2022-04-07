@@ -2,7 +2,10 @@ import { articleFormSlice } from '../slice';
 import { AppThunk } from 'store';
 import { ApiError } from 'api/utils/handle-axios-error';
 import { getRemoteArticle } from 'api/articles-api/get-remote-article';
-import { postRemoteArticle } from 'api/articles-api/post-remote-article';
+import {
+  postRemoteArticle,
+  ValidationError,
+} from 'api/articles-api/post-remote-article';
 import { putRemoteArticle } from 'api/articles-api/put-remote-article';
 import { FormError } from '../model';
 import {
@@ -11,6 +14,7 @@ import {
   selectArticleFormPosition,
   selectArticleFormId,
 } from '../selector';
+import { globalAPIErrorMessage } from 'constant-words/global-api-error-message';
 
 // basic actions
 export const {
@@ -42,14 +46,16 @@ export const submitNewArticle = (): AppThunk => async (dispatch, getState) => {
     dispatch(submitSuccess(res.postId));
     dispatch(initialize());
   } catch (error) {
-    const apiError = error as ApiError<FormError>;
+    const apiError = error as ApiError<ValidationError>;
     if (apiError.status === 422 && apiError.data) {
       // validation Error
-      formError = apiError.data;
-    } else {
-      // TODO: set japanese messages depending on status
       formError = {
-        headerErrors: [apiError.errorMsg],
+        errorTitle: '入力内容に誤りがあります。',
+        ...apiError.data,
+      };
+    } else {
+      formError = {
+        errorTitle: globalAPIErrorMessage(apiError.status, 'submit'),
       };
     }
     dispatch(submitFailure(formError));
@@ -77,14 +83,16 @@ export const submitEdittedArticle =
       dispatch(submitSuccess(res.postId));
       // TODO: initialize
     } catch (error) {
-      const apiError = error as ApiError<FormError>;
+      const apiError = error as ApiError<ValidationError>;
       if (apiError.status === 422 && apiError.data) {
         // validation Error
-        formError = apiError.data;
-      } else {
-        // TODO: set japanese messages depending to status
         formError = {
-          headerErrors: [apiError.errorMsg],
+          errorTitle: '入力内容に誤りがあります。',
+          ...apiError.data,
+        };
+      } else {
+        formError = {
+          errorTitle: globalAPIErrorMessage(apiError.status, 'submit'),
         };
       }
       dispatch(submitFailure(formError));
@@ -105,7 +113,7 @@ export const fetchArticle =
 
       // TODO: close modal & show global error message
       const formError: FormError = {
-        headerErrors: [apiError.errorMsg],
+        errorTitle: globalAPIErrorMessage(apiError.status, 'get'),
       };
       dispatch(fetchFailure(formError));
     }

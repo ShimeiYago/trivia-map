@@ -348,7 +348,7 @@ exports[`Shallow Snapshot Tests with validation error 1`] = `
       severity="error"
     >
       <ForwardRef(AlertTitle)>
-        エラーが発生しました。
+        Inputted contents have errors.
       </ForwardRef(AlertTitle)>
       <li
         key="headerErrors-0"

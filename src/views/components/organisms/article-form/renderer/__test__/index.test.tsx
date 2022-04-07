@@ -38,6 +38,7 @@ describe('Shallow Snapshot Tests', () => {
   it('with validation error', () => {
     wrapper.setProps({
       formError: {
+        errorTitle: 'Inputted contents have errors.',
         headerErrors: ['position has an error'],
         fieldErrors: { position: ['position is not selected'] },
       },

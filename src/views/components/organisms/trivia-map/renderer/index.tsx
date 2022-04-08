@@ -26,7 +26,10 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   componentDidMount() {
-    if (this.props.markersFetchingState === 'waiting') {
+    if (
+      this.props.markersFetchingState === 'waiting' &&
+      !this.props.doNotShowMarkers
+    ) {
       this.props.fetchMarkers();
     }
   }
@@ -264,6 +267,7 @@ export type Props = {
   initCenter?: Position;
   disabled?: boolean;
   markersFetchingState: LoadingState;
+  doNotShowMarkers?: boolean;
 
   fetchMarkers: () => void;
   onClickPostTitle?: (postId: string) => () => void;

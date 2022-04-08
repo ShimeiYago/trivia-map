@@ -11,6 +11,7 @@ import {
 import { ArticleFormState, FormError } from '../../model';
 
 const formError: FormError = {
+  errorTitle: 'Inputted contents is invalid.',
   headerErrors: ['A error is in title.'],
 };
 

@@ -16,5 +16,5 @@ export class DialogScreen extends React.Component<Props> {
 export type Props = {
   children?: React.ReactNode;
   theme: 'black' | 'white';
-  position: 'top' | 'bottom';
+  position: 'top' | 'bottom' | number; // 'top', 'bottom', or ratio from top
 };

@@ -117,7 +117,7 @@ export class Renderer extends React.Component<Props> {
                 initZoom={3}
                 initCenter={position}
                 disabled
-                doNotLoadMarkers
+                doNotShowMarkers
               />
               <Box sx={miniMapLayer}></Box>
               <Box sx={miniMapTextBox}>
@@ -186,14 +186,14 @@ export class Renderer extends React.Component<Props> {
   protected renderHeaderError() {
     const { formError } = this.props;
 
-    if (!formError?.headerErrors) {
+    if (!formError) {
       return null;
     }
 
     return (
       <Alert severity="error" ref={this.messageRef}>
-        <AlertTitle>エラーが発生しました。</AlertTitle>
-        {formError.headerErrors.map((msg: string, index: number) => (
+        <AlertTitle>{formError.errorTitle}</AlertTitle>
+        {formError.headerErrors?.map((msg: string, index: number) => (
           <li key={`headerErrors-${index}`}>{msg}</li>
         ))}
       </Alert>

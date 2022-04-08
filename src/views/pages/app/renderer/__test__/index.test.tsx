@@ -6,7 +6,6 @@ let shallowWrapper: ShallowWrapper<Props, State, Renderer>;
 const props: Props = {
   isFormEditting: false,
   isMobile: true,
-  articleFormSubmittingState: 'waiting',
 };
 
 describe('Shallow Snapshot Tests', () => {
@@ -26,17 +25,6 @@ describe('Shallow Snapshot Tests', () => {
       openFormModal: true,
     });
     expect(shallowWrapper).toMatchSnapshot();
-  });
-});
-
-describe('componentDidUpdate', () => {
-  it('should change states when post succeed', () => {
-    shallowWrapper = shallow(<Renderer {...props} />);
-    shallowWrapper.setProps({ articleFormSubmittingState: 'success' });
-    const instance = shallowWrapper.instance();
-
-    instance.componentDidUpdate(props);
-    expect(instance.state.showMessage).toBeTruthy();
   });
 });
 
@@ -130,16 +118,5 @@ describe('endToSelectPosition', () => {
     instance['endToSelectPosition']();
     expect(instance.state.openFormModal).toBeTruthy;
     expect(instance.state.newMarkerMode).toBe(false);
-  });
-});
-
-describe('handleCloseMessage', () => {
-  it('should change showMessage state', () => {
-    shallowWrapper = shallow(<Renderer {...props} />);
-    shallowWrapper.setState({ showMessage: true });
-    const instance = shallowWrapper.instance();
-
-    instance['handleCloseMessage']();
-    expect(instance.state.showMessage).toBeFalsy();
   });
 });

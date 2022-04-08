@@ -25,3 +25,7 @@ export const selectArticleFormFormError = (state: ArticleFormRootState) =>
 
 export const selectArticleFormIsEditting = (state: ArticleFormRootState) =>
   state.articleForm.isEditting;
+
+export const selectArticleFormFetchingErrorMsg = (
+  state: ArticleFormRootState,
+) => state.articleForm.fetchingErrorMsg;

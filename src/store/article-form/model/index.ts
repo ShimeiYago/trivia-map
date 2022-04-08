@@ -9,6 +9,7 @@ export interface ArticleFormState {
   submittingState: LoadingState;
   fetchingState: LoadingState;
   formError?: FormError;
+  fetchingErrorMsg?: string;
   isEditting: boolean;
 }
 

@@ -86,10 +86,10 @@ describe('articleForm reducer', () => {
   it('should handle fetchFailure', () => {
     const actual = articleFormReducer(
       fetchingLoadingState,
-      fetchFailure(formError),
+      fetchFailure('fetch error'),
     );
     expect(actual.fetchingState).toEqual('error');
-    expect(actual.formError).toEqual(formError);
+    expect(actual.fetchingErrorMsg).toEqual('fetch error');
   });
 
   it('should handle fetchSuccess', () => {

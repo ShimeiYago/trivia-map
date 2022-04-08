@@ -111,10 +111,7 @@ export const fetchArticle =
     } catch (error) {
       const apiError = error as ApiError<unknown>;
 
-      // TODO: close modal & show global error message
-      const formError: FormError = {
-        errorTitle: globalAPIErrorMessage(apiError.status, 'get'),
-      };
-      dispatch(fetchFailure(formError));
+      const errorMsg = globalAPIErrorMessage(apiError.status, 'get');
+      dispatch(fetchFailure(errorMsg));
     }
   };

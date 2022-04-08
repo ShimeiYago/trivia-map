@@ -39,7 +39,8 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   render() {
-    const { markersCurrentPageToLoad, markersTotalPages } = this.props;
+    const { markersCurrentPageToLoad, markersTotalPages, isMobile } =
+      this.props;
 
     if (!this.state.showLoadingProgressBar) {
       return null;
@@ -52,7 +53,7 @@ export class Renderer extends React.Component<Props, State> {
       : 0;
 
     return (
-      <DialogScreen theme="white" position="bottom">
+      <DialogScreen theme="white" position={isMobile ? 75 : 'bottom'}>
         {this.renderDescriptionMessage()}
         {this.renderLinearProgressWithLabel(progressValue)}
       </DialogScreen>
@@ -121,6 +122,7 @@ export type Props = {
   markersTotalPages?: number;
   markersFetchingState: LoadingState;
   markersErrorMsg?: string;
+  isMobile: boolean;
 };
 
 export type State = {

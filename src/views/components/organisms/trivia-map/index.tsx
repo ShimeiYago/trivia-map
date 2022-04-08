@@ -1,6 +1,9 @@
 import { Props, Renderer } from './renderer';
 import { useAppDispatch, useAppSelector } from 'store';
-import { selectMarkerList } from 'store/markers/selector';
+import {
+  selectMarkerList,
+  selectMarkersFetchingState,
+} from 'store/markers/selector';
 import { fetchMarkers } from 'store/markers/actions';
 import { updatePosition } from 'store/article-form/actions';
 import { Position } from 'types/position';
@@ -18,7 +21,8 @@ export function TriviaMap(ownProps: OwnProps) {
     initZoom: ownProps.initZoom,
     initCenter: ownProps.initCenter,
     disabled: ownProps.disabled,
-    doNotLoadMarkers: ownProps.doNotLoadMarkers,
+    markersFetchingState: useAppSelector(selectMarkersFetchingState),
+    doNotShowMarkers: ownProps.doNotShowMarkers,
 
     fetchMarkers: () => dispatch(fetchMarkers()),
     onClickPostTitle: ownProps.onClickPostTitle,
@@ -38,5 +42,5 @@ type OwnProps = {
   initZoom?: number;
   initCenter?: Position;
   disabled?: boolean;
-  doNotLoadMarkers?: boolean;
+  doNotShowMarkers?: boolean;
 };

@@ -23,6 +23,7 @@ describe('articleForm reducer', () => {
   fetchingLoadingState.fetchingState = 'loading';
 
   const formError: FormError = {
+    errorTitle: 'Inputted contents is invalid.',
     headerErrors: ['A error is in title.'],
   };
 

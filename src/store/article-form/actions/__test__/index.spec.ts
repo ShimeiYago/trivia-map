@@ -3,7 +3,6 @@ import { submitNewArticle, submitEdittedArticle, fetchArticle } from '..';
 import * as GetArticleApiModule from 'api/articles-api/get-remote-article';
 import * as PostArticleApiModule from 'api/articles-api/post-remote-article';
 import * as PutArticleApiModule from 'api/articles-api/put-remote-article';
-import { FormError } from './../../model';
 
 const dispatch = jest.fn();
 let getRemoteArticleSpy: jest.SpyInstance;
@@ -16,7 +15,7 @@ const formError = {
     title: ['title is too long'],
   },
 };
-const apiError: ApiError<FormError> = {
+const apiError: ApiError<PostArticleApiModule.ValidationError> = {
   status: 422,
   data: formError,
   errorMsg: 'validation error',
@@ -82,7 +81,12 @@ describe('submitNewArticle', () => {
     await appThunk(dispatch, getState, {});
 
     expect(dispatch.mock.calls[1][0].type).toBe('articleForm/submitFailure');
-    expect(dispatch.mock.calls[1][0].payload).toBe(formError);
+    expect(dispatch.mock.calls[1][0].payload.headerErrors).toBe(
+      formError.headerErrors,
+    );
+    expect(dispatch.mock.calls[1][0].payload.fieldErrors).toBe(
+      formError.fieldErrors,
+    );
   });
 });
 
@@ -129,7 +133,12 @@ describe('submitEdittedArticle', () => {
     const appThunk = submitEdittedArticle() as any;
     await appThunk(dispatch, getState, {});
 
-    expect(dispatch.mock.calls[1][0].payload).toBe(formError);
+    expect(dispatch.mock.calls[1][0].payload.headerErrors).toBe(
+      formError.headerErrors,
+    );
+    expect(dispatch.mock.calls[1][0].payload.fieldErrors).toBe(
+      formError.fieldErrors,
+    );
   });
 
   it('throw error if post id is not setted', async () => {

@@ -8,6 +8,7 @@ import { Marker } from 'store/markers/model';
 import { Box, Button, Grid, SxProps, Typography } from '@mui/material';
 import { Position } from 'types/position';
 import { DialogScreen } from 'views/components/atoms/dialog-screen';
+import { LoadingState } from 'types/loading-state';
 
 export class Renderer extends React.Component<Props, State> {
   static readonly defaultProps: Pick<Props, 'newMarkerMode' | 'initZoom'> = {
@@ -25,7 +26,10 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   componentDidMount() {
-    if (!this.props.doNotLoadMarkers) {
+    if (
+      this.props.markersFetchingState === 'waiting' &&
+      !this.props.doNotShowMarkers
+    ) {
       this.props.fetchMarkers();
     }
   }
@@ -262,7 +266,8 @@ export type Props = {
   initZoom?: number;
   initCenter?: Position;
   disabled?: boolean;
-  doNotLoadMarkers?: boolean;
+  markersFetchingState: LoadingState;
+  doNotShowMarkers?: boolean;
 
   fetchMarkers: () => void;
   onClickPostTitle?: (postId: string) => () => void;

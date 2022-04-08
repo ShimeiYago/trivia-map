@@ -21,7 +21,8 @@ export const initialState: ArticleFormState = {
 };
 
 export type FormError = {
-  headerErrors: string[];
+  errorTitle: string;
+  headerErrors?: string[];
   fieldErrors?: {
     title?: string[];
     content?: string[];

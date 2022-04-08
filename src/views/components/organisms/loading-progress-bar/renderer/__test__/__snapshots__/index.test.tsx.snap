@@ -75,6 +75,79 @@ exports[`Shallow Snapshot Tests init of loading 1`] = `
 </DialogScreen>
 `;
 
+exports[`Shallow Snapshot Tests mobile view 1`] = `
+<DialogScreen
+  position={75}
+  theme="white"
+>
+  <ForwardRef(Box)
+    sx={
+      Object {
+        "display": "flex",
+        "justifyContent": "flex-start",
+      }
+    }
+  >
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "width": "30px",
+        }
+      }
+    >
+      <ForwardRef(CircularProgress)
+        size={20}
+      />
+    </ForwardRef(Box)>
+    <ForwardRef(Box)>
+      <ForwardRef(Typography)
+        color="text.primary"
+        variant="body1"
+      >
+        データを読み込んでいます...
+      </ForwardRef(Typography)>
+    </ForwardRef(Box)>
+  </ForwardRef(Box)>
+  <ForwardRef(Box)
+    sx={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+      }
+    }
+  >
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "mr": 1,
+          "width": "100%",
+        }
+      }
+    >
+      <ForwardRef(LinearProgress)
+        color="primary"
+        value={20}
+        variant="determinate"
+      />
+    </ForwardRef(Box)>
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "minWidth": 35,
+        }
+      }
+    >
+      <ForwardRef(Typography)
+        color="text.secondary"
+        variant="body2"
+      >
+        20%
+      </ForwardRef(Typography)>
+    </ForwardRef(Box)>
+  </ForwardRef(Box)>
+</DialogScreen>
+`;
+
 exports[`Shallow Snapshot Tests on loading 1`] = `
 <DialogScreen
   position="bottom"

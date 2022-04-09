@@ -109,28 +109,6 @@ exports[`Shallow Snapshot Tests disabled map 1`] = `
       noWrap={true}
       url="/tds-map-tiles/{z}/{x}/{y}.png"
     />
-    <MapMarker
-      autoOpen={false}
-      draggable={false}
-      key="000"
-      map={
-        Object {
-          "setView": [MockFunction],
-        }
-      }
-      popup={
-        <ForwardRef(Typography)>
-          title
-        </ForwardRef(Typography)>
-      }
-      position={
-        Object {
-          "lat": 0,
-          "lng": 0,
-        }
-      }
-      variant="blue"
-    />
   </MapContainer>
 </ForwardRef(Box)>
 `;

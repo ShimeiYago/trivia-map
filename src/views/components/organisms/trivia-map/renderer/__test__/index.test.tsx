@@ -61,6 +61,7 @@ describe('Shallow Snapshot Tests', () => {
   it('disabled map', () => {
     shallowWrapper.setProps({
       disabled: true,
+      doNotShowMarkers: true,
     });
     expect(shallowWrapper).toMatchSnapshot();
   });

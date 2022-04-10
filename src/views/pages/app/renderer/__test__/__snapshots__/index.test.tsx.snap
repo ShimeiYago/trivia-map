@@ -31,24 +31,10 @@ exports[`Shallow Snapshot Tests basic 1`] = `
     icon="add"
     onClick={[Function]}
   />
-  <ForwardRef(Snackbar)
-    autoHideDuration={6000}
-    onClose={[Function]}
-    open={false}
-  >
-    <ForwardRef(Alert)
-      onClose={[Function]}
-      severity="success"
-      sx={
-        Object {
-          "width": "100%",
-        }
-      }
-      variant="filled"
-    >
-      投稿が完了しました！
-    </ForwardRef(Alert)>
-  </ForwardRef(Snackbar)>
+  <GlobalMessage
+    closeArticleModal={[Function]}
+    closeFormModal={[Function]}
+  />
 </Fragment>
 `;
 
@@ -88,23 +74,9 @@ exports[`Shallow Snapshot Tests pc view 1`] = `
     icon="add"
     onClick={[Function]}
   />
-  <ForwardRef(Snackbar)
-    autoHideDuration={6000}
-    onClose={[Function]}
-    open={false}
-  >
-    <ForwardRef(Alert)
-      onClose={[Function]}
-      severity="success"
-      sx={
-        Object {
-          "width": "100%",
-        }
-      }
-      variant="filled"
-    >
-      投稿が完了しました！
-    </ForwardRef(Alert)>
-  </ForwardRef(Snackbar)>
+  <GlobalMessage
+    closeArticleModal={[Function]}
+    closeFormModal={[Function]}
+  />
 </Fragment>
 `;

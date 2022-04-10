@@ -40,7 +40,7 @@ describe('Shallow Snapshot Tests', () => {
       formError: {
         errorTitle: 'Inputted contents have errors.',
         headerErrors: ['position has an error'],
-        fieldErrors: { position: ['position is not selected'] },
+        fieldErrors: { position: 'position is not selected' },
       },
     });
     expect(wrapper).toMatchSnapshot();

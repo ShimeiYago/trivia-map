@@ -44,8 +44,8 @@ export type PostArticleResponse = {
 export type ValidationError = {
   headerErrors: string[];
   fieldErrors?: {
-    title?: string[];
-    content?: string[];
-    position?: string[];
+    title?: string;
+    content?: string;
+    position?: string;
   };
 };

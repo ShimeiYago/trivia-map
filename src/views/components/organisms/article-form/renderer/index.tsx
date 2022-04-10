@@ -71,7 +71,6 @@ export class Renderer extends React.Component<Props> {
       ? 'valid'
       : 'normal';
 
-    // TODO: show validaiton error meseages on textfield
     return (
       <Container maxWidth="sm" sx={{ pt: 5 }}>
         <Stack spacing={3}>
@@ -94,6 +93,7 @@ export class Renderer extends React.Component<Props> {
             onChange={this.handleChangeTitle}
             disabled={disabled}
             error={!!formError?.fieldErrors?.title}
+            helperText={formError?.fieldErrors?.title}
           />
 
           <TextField
@@ -104,12 +104,14 @@ export class Renderer extends React.Component<Props> {
             onChange={this.handleChangeContent}
             disabled={disabled}
             error={!!formError?.fieldErrors?.content}
+            helperText={formError?.fieldErrors?.content}
           />
 
           <BoxField
             status={miniMapFieldStatus}
             onClick={handleClickSelectPosition}
             disabled={disabled}
+            helperText={formError?.fieldErrors?.position}
           >
             <Box sx={miniMapWrapper}>
               <TriviaMap

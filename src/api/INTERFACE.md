@@ -107,7 +107,7 @@ if end of pages, `nextPageIndex` is null.
 {
   "headerErrors": ["タイトルは必須です。"],
   "fieldErrors": {
-    title: ["タイトルを入力してください。"]
+    title: "タイトルを入力してください。"
   }
 }
 ```

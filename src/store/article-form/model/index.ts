@@ -25,8 +25,8 @@ export type FormError = {
   errorTitle: string;
   headerErrors?: string[];
   fieldErrors?: {
-    title?: string[];
-    content?: string[];
-    position?: string[];
+    title?: string;
+    content?: string;
+    position?: string;
   };
 };

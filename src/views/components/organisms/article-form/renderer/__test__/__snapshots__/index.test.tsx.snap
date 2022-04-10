@@ -375,6 +375,7 @@ exports[`Shallow Snapshot Tests with validation error 1`] = `
     />
     <BoxField
       disabled={false}
+      helperText="position is not selected"
       status="error"
     >
       <ForwardRef(Box)

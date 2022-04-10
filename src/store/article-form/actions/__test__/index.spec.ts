@@ -12,7 +12,7 @@ let putRemoteArticleSpy: jest.SpyInstance;
 const formError = {
   headerErrors: ['an error in title'],
   fieldErrors: {
-    title: ['title is too long'],
+    title: 'title is too long',
   },
 };
 const apiError: ApiError<PostArticleApiModule.ValidationError> = {

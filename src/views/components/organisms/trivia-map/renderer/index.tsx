@@ -120,6 +120,10 @@ export class Renderer extends React.Component<Props, State> {
   };
 
   protected renderPostMarkers() {
+    if (this.props.doNotShowMarkers) {
+      return null;
+    }
+
     return this.props.markerList.map((marker) => {
       const popup = this.props.onClickPostTitle ? (
         <Button

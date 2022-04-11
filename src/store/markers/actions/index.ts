@@ -1,4 +1,4 @@
-import { globalAPIErrorMessage } from 'constant-words/global-api-error-message';
+import { globalAPIErrorMessage } from 'constant/global-api-error-message';
 import { selectMarkerList } from 'store/markers/selector';
 import { markersSlice } from './../slice/index';
 import { AppThunk } from 'store';

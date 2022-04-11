@@ -1,4 +1,4 @@
-import { globalAPIErrorMessage } from 'constant-words/global-api-error-message';
+import { globalAPIErrorMessage } from 'constant/global-api-error-message';
 
 describe('globalAPIErrorMessage with get mode', () => {
   it('return message for 401', () => {

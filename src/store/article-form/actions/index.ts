@@ -14,7 +14,7 @@ import {
   selectArticleFormPosition,
   selectArticleFormId,
 } from '../selector';
-import { globalAPIErrorMessage } from 'constant-words/global-api-error-message';
+import { globalAPIErrorMessage } from 'constant/global-api-error-message';
 
 // basic actions
 export const {

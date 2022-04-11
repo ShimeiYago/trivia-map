@@ -1,3 +1,4 @@
+import { DeleteArticleResponse } from 'api/articles-api/delete-remote-article';
 import { GetArticleResponse } from 'api/articles-api/get-remote-article';
 import { PostArticleResponse } from 'api/articles-api/post-remote-article';
 
@@ -11,5 +12,9 @@ export const mockGetArticleResponse: GetArticleResponse = {
 };
 
 export const mockPostArticleResponse: PostArticleResponse = {
+  postId: '100',
+};
+
+export const mockDeleteArticleResponse: DeleteArticleResponse = {
   postId: '100',
 };

@@ -2,7 +2,7 @@ import { readingArticleSlice } from '../slice';
 import { AppThunk } from 'store';
 import { ApiError } from 'api/utils/handle-axios-error';
 import { getRemoteArticle } from 'api/articles-api/get-remote-article';
-import { globalAPIErrorMessage } from 'constant-words/global-api-error-message';
+import { globalAPIErrorMessage } from 'constant/global-api-error-message';
 
 // basic actions
 export const { fetchStart, fetchSuccess, fetchFailure } =

@@ -165,5 +165,31 @@ Same as "POST"
 
 Same as "POST"
 
-## Author
-[ShimeiYago](https://github.com/ShimeiYago)
+### (DELETE) `/articles/${postId}`
+**- (200) Success Response Body**
+```
+{
+  "postId": "100"
+}
+```
+
+**- (404) Error Response Body**
+```
+{
+  "error": "The article does not exist."
+}
+```
+
+**- (400) Error Response Body**
+```
+{
+  "error": "Bad Request."
+}
+```
+
+**- (500) Error Response Body**
+```
+{
+  "error": "Internal server error."
+}
+```

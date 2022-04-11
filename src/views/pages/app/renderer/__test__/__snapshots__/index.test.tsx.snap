@@ -2,12 +2,26 @@
 
 exports[`Shallow Snapshot Tests basic 1`] = `
 <Fragment>
-  <TriviaMap
-    endToSelectPosition={[Function]}
-    newMarkerMode={false}
-    onClickPostTitle={[Function]}
-  />
-  <LoadingProgressBar />
+  <ForwardRef(Box)
+    sx={
+      Object {
+        "position": "relative",
+      }
+    }
+  >
+    <TriviaMap
+      endToSelectPosition={[Function]}
+      newMarkerMode={false}
+      onClickPostTitle={[Function]}
+    />
+    <FloatingButton
+      color="primary"
+      disabled={false}
+      icon="add"
+      onClick={[Function]}
+    />
+    <LoadingProgressBar />
+  </ForwardRef(Box)>
   <BoxModal
     onClose={[Function]}
     open={false}
@@ -25,12 +39,6 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       onClickSelectPosition={[Function]}
     />
   </SwipeableEdgeDrawer>
-  <FloatingButton
-    color="primary"
-    disabled={false}
-    icon="add"
-    onClick={[Function]}
-  />
   <GlobalMessage
     closeArticleModal={[Function]}
     closeFormModal={[Function]}
@@ -40,12 +48,27 @@ exports[`Shallow Snapshot Tests basic 1`] = `
 
 exports[`Shallow Snapshot Tests pc view 1`] = `
 <Fragment>
-  <TriviaMap
-    endToSelectPosition={[Function]}
-    newMarkerMode={false}
-    onClickPostTitle={[Function]}
-  />
-  <LoadingProgressBar />
+  <ForwardRef(Box)
+    sx={
+      Object {
+        "position": "relative",
+        "width": "calc(100% - 500px)",
+      }
+    }
+  >
+    <TriviaMap
+      endToSelectPosition={[Function]}
+      newMarkerMode={false}
+      onClickPostTitle={[Function]}
+    />
+    <FloatingButton
+      color="primary"
+      disabled={false}
+      icon="add"
+      onClick={[Function]}
+    />
+    <LoadingProgressBar />
+  </ForwardRef(Box)>
   <BoxModal
     onClose={[Function]}
     open={false}
@@ -68,12 +91,6 @@ exports[`Shallow Snapshot Tests pc view 1`] = `
       onClickSelectPosition={[Function]}
     />
   </ForwardRef(Drawer)>
-  <FloatingButton
-    color="primary"
-    disabled={false}
-    icon="add"
-    onClick={[Function]}
-  />
   <GlobalMessage
     closeArticleModal={[Function]}
     closeFormModal={[Function]}

@@ -1,10 +1,19 @@
 import { SxProps } from '@mui/material';
 
-const DrawerWidth = 500;
+const drawerWidth = 500;
 export const rightDrawerStyle: SxProps = {
-  width: DrawerWidth,
+  width: drawerWidth,
   flexShrink: 0,
   '& .MuiDrawer-paper': {
-    width: DrawerWidth,
+    width: drawerWidth,
   },
 };
+
+export function mapWrapper(shrink: boolean): SxProps {
+  return {
+    position: 'relative',
+    ...(shrink && {
+      width: `calc(100% - ${drawerWidth}px)`,
+    }),
+  };
+}

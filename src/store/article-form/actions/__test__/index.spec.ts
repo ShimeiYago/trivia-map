@@ -63,6 +63,27 @@ describe('submitNewArticle', () => {
     expect(dispatch.mock.calls[1][0].type).toBe('articleForm/submitSuccess');
   });
 
+  it('call submitSuccess if API successed if position is undefined', async () => {
+    postRemoteArticleSpy.mockResolvedValue({
+      ...mockPostPutResponse,
+    });
+
+    const getStateWithoutPosition = () => ({
+      articleForm: {
+        postId: '000',
+        title: 'title',
+        content: 'content',
+        position: undefined,
+      },
+    });
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const appThunk = submitNewArticle() as any;
+    await appThunk(dispatch, getStateWithoutPosition, {});
+
+    expect(dispatch.mock.calls[1][0].type).toBe('articleForm/submitSuccess');
+  });
+
   it('call submitFailure if API failed', async () => {
     postRemoteArticleSpy.mockRejectedValue(new Error());
 

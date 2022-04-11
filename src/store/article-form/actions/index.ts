@@ -1,3 +1,4 @@
+import { MarkerTypeAPI } from './../../../api/markers-api/index';
 import { articleFormSlice } from '../slice';
 import { AppThunk } from 'store';
 import { ApiError } from 'api/utils/handle-axios-error';
@@ -15,6 +16,7 @@ import {
   selectArticleFormId,
 } from '../selector';
 import { globalAPIErrorMessage } from 'constant/global-api-error-message';
+import { appendMarkers } from 'store/markers/actions';
 
 // basic actions
 export const {
@@ -39,14 +41,21 @@ export const submitNewArticle = (): AppThunk => async (dispatch, getState) => {
   const content = selectArticleFormContent(getState());
   const position = selectArticleFormPosition(getState());
 
-  let formError: FormError;
-
   try {
     const res = await postRemoteArticle(title, content, position);
     dispatch(submitSuccess(res.postId));
     dispatch(initialize());
+
+    const marker: MarkerTypeAPI = {
+      postId: res.postId,
+      position: position ?? { lat: 0, lng: 0 },
+      title: title,
+    };
+    dispatch(appendMarkers([marker]));
   } catch (error) {
     const apiError = error as ApiError<ValidationError>;
+
+    let formError: FormError;
     if (apiError.status === 422 && apiError.data) {
       // validation Error
       formError = {

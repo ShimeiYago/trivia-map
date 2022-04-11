@@ -1,4 +1,4 @@
-import { Drawer } from '@mui/material';
+import { Box, Drawer } from '@mui/material';
 import React from 'react';
 import { FloatingButton } from 'views/components/atoms/floating-button';
 import { BoxModal } from 'views/components/moleculars/box-modal';
@@ -8,7 +8,7 @@ import { ArticleForm } from 'views/components/organisms/article-form';
 import { GlobalMessage } from 'views/components/organisms/global-messge';
 import { LoadingProgressBar } from 'views/components/organisms/loading-progress-bar';
 import { TriviaMap } from 'views/components/organisms/trivia-map';
-import { rightDrawerStyle } from './styles';
+import { rightDrawerStyle, mapWrapper } from './styles';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -21,17 +21,23 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   render() {
-    const { readingArticleId, openArticleModal } = this.state;
-    const { isFormEditting } = this.props;
+    const { readingArticleId, openArticleModal, openFormModal } = this.state;
+    const { isFormEditting, isMobile } = this.props;
     return (
       <>
-        <TriviaMap
-          onClickPostTitle={this.handleClickPostTitle}
-          newMarkerMode={this.state.newMarkerMode}
-          endToSelectPosition={this.endToSelectPosition}
-        />
+        <Box sx={mapWrapper(openFormModal && !isMobile)}>
+          <TriviaMap
+            onClickPostTitle={this.handleClickPostTitle}
+            newMarkerMode={this.state.newMarkerMode}
+            endToSelectPosition={this.endToSelectPosition}
+          />
 
-        <LoadingProgressBar />
+          {!isFormEditting && (
+            <FloatingButton onClick={this.handleClickAddButton} />
+          )}
+
+          <LoadingProgressBar />
+        </Box>
 
         <BoxModal
           open={openArticleModal}
@@ -46,10 +52,6 @@ export class Renderer extends React.Component<Props, State> {
         </BoxModal>
 
         {this.renderEditForm()}
-
-        {!isFormEditting && (
-          <FloatingButton onClick={this.handleClickAddButton} />
-        )}
 
         <GlobalMessage
           closeArticleModal={this.handleCloseModal('article')}

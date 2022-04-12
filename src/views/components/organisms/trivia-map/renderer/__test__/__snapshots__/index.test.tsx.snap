@@ -41,7 +41,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
     <MapMarker
       autoOpen={false}
       draggable={false}
-      key="000"
+      key="post-marker-000"
       map={
         Object {
           "setView": [MockFunction],
@@ -170,7 +170,7 @@ exports[`Shallow Snapshot Tests when currentPosition state is setted 1`] = `
     <MapMarker
       autoOpen={false}
       draggable={false}
-      key="000"
+      key="post-marker-000"
       map={
         Object {
           "setView": [MockFunction],
@@ -230,7 +230,7 @@ exports[`Shallow Snapshot Tests with initCenter prop 1`] = `
     <MapMarker
       autoOpen={false}
       draggable={false}
-      key="000"
+      key="post-marker-000"
       map={
         Object {
           "setView": [MockFunction] {
@@ -309,7 +309,7 @@ exports[`Shallow Snapshot Tests with onClickPostTitle props 1`] = `
     <MapMarker
       autoOpen={false}
       draggable={false}
-      key="000"
+      key="post-marker-000"
       map={
         Object {
           "setView": [MockFunction],
@@ -375,7 +375,7 @@ exports[`Shallow Snapshot Tests with width and height props 1`] = `
     <MapMarker
       autoOpen={false}
       draggable={false}
-      key="000"
+      key="post-marker-000"
       map={
         Object {
           "setView": [MockFunction],

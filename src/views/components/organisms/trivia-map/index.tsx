@@ -1,7 +1,7 @@
 import { Props, Renderer } from './renderer';
 import { useAppDispatch, useAppSelector } from 'store';
 import {
-  selectMarkerList,
+  selectMarkersDict,
   selectMarkersFetchingState,
 } from 'store/markers/selector';
 import { fetchMarkers } from 'store/markers/actions';
@@ -13,7 +13,7 @@ export function TriviaMap(ownProps: OwnProps) {
   const dispatch = useAppDispatch();
 
   const props: Props = {
-    markerList: useAppSelector(selectMarkerList),
+    markers: useAppSelector(selectMarkersDict),
     newMarkerMode: !!ownProps.newMarkerMode,
     articleFormPosition: useAppSelector(selectArticleFormPosition),
     width: ownProps.width,

@@ -1,18 +1,19 @@
+import { MarkerDict } from './../../model/index';
 import { updateCurrentPageToLoad } from 'store/markers/actions';
 import { markersReducer, markersSlice } from '..';
-import { Marker, MarkersState } from '../../model';
+import { MarkersState } from '../../model';
 
 const {
   fetchSuccess,
   requestFailure,
   requestStart,
-  updateList,
+  updateMarkers,
   updateTotalPages,
 } = markersSlice.actions;
 
 describe('markers reducer', () => {
   const initialState: MarkersState = {
-    list: [],
+    markers: {},
     fetchingState: 'waiting',
     currentPageToLoad: 0,
   };
@@ -20,7 +21,7 @@ describe('markers reducer', () => {
 
   it('should handle initial state', () => {
     expect(markersReducer(undefined, { type: 'unknown' })).toEqual({
-      list: [],
+      markers: {},
       fetchingState: 'waiting',
       currentPageToLoad: 0,
     });
@@ -41,16 +42,15 @@ describe('markers reducer', () => {
     expect(actual.fetchingState).toEqual('success');
   });
 
-  it('should handle updateList', () => {
-    const markers: Marker[] = [
-      {
-        postId: '000',
+  it('should handle updateMarkers', () => {
+    const markers: MarkerDict = {
+      '000': {
         position: { lat: 0, lng: 0 },
         title: 'title',
       },
-    ];
-    const actual = markersReducer(loadingState, updateList(markers));
-    expect(actual.list).toEqual(markers);
+    };
+    const actual = markersReducer(loadingState, updateMarkers(markers));
+    expect(actual.markers).toEqual(markers);
   });
 
   it('should handle updateTotalPages', () => {

@@ -49,7 +49,7 @@ let mockResponseForPagiNation: MockResponseForPagiNation;
 
 const getState = () => ({
   markers: {
-    list: [],
+    markers: {},
     loading: false,
     errorMsg: null,
   },
@@ -97,9 +97,16 @@ describe('fetchMarkers', () => {
 
 describe('appendMarkers', () => {
   it('call updateList', async () => {
+    const newist = [
+      {
+        postId: '000',
+        title: 'title',
+        position: { lat: 0, lng: 0 },
+      },
+    ];
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const appThunk = appendMarkers([]) as any;
+    const appThunk = appendMarkers(newist) as any;
     await appThunk(dispatch, getState);
-    expect(dispatch.mock.calls[0][0].type).toBe('markers/updateList');
+    expect(dispatch.mock.calls[0][0].type).toBe('markers/updateMarkers');
   });
 });

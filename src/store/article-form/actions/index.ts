@@ -88,9 +88,16 @@ export const submitEdittedArticle =
     let formError: FormError;
 
     try {
-      const res = await putRemoteArticle(postId, title, content, position);
-      dispatch(submitSuccess(res.postId));
+      await putRemoteArticle(postId, title, content, position);
+      dispatch(submitSuccess(postId));
       dispatch(initialize());
+
+      const marker: MarkerTypeAPI = {
+        postId: postId,
+        position: position ?? { lat: 0, lng: 0 },
+        title: title,
+      };
+      dispatch(appendMarkers([marker]));
     } catch (error) {
       const apiError = error as ApiError<ValidationError>;
       if (apiError.status === 422 && apiError.data) {

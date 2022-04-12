@@ -113,6 +113,48 @@ exports[`Shallow Snapshot Tests disabled map 1`] = `
 </ForwardRef(Box)>
 `;
 
+exports[`Shallow Snapshot Tests hide marker 1`] = `
+<ForwardRef(Box)
+  sx={
+    Object {
+      "height": "100vh",
+      "width": "100%",
+    }
+  }
+>
+  <MapContainer
+    center={
+      Object {
+        "lat": 0,
+        "lng": 0,
+      }
+    }
+    maxBounds={
+      Array [
+        Array [
+          300,
+          -300,
+        ],
+        Array [
+          -300,
+          300,
+        ],
+      ]
+    }
+    maxZoom={4}
+    minZoom={1}
+    tap={false}
+    whenCreated={[Function]}
+    zoom={1}
+  >
+    <ForwardRef(LeafComponent)
+      noWrap={true}
+      url="/tds-map-tiles/{z}/{x}/{y}.png"
+    />
+  </MapContainer>
+</ForwardRef(Box)>
+`;
+
 exports[`Shallow Snapshot Tests when currentPosition state is setted 1`] = `
 <ForwardRef(Box)
   sx={

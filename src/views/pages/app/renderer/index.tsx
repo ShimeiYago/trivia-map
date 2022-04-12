@@ -21,7 +21,12 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   render() {
-    const { readingArticleId, openArticleModal, openFormModal } = this.state;
+    const {
+      readingArticleId,
+      openArticleModal,
+      openFormModal,
+      edittingArticleId,
+    } = this.state;
     const { isFormEditting, isMobile } = this.props;
     return (
       <>
@@ -30,6 +35,7 @@ export class Renderer extends React.Component<Props, State> {
             onClickPostTitle={this.handleClickPostTitle}
             newMarkerMode={this.state.newMarkerMode}
             endToSelectPosition={this.endToSelectPosition}
+            hiddenMarkerIds={edittingArticleId ? [edittingArticleId] : []}
           />
 
           {!isFormEditting && (
@@ -100,12 +106,14 @@ export class Renderer extends React.Component<Props, State> {
         return () => {
           this.setState({
             openArticleModal: false,
+            readingArticleId: undefined,
           });
         };
       case 'form':
         return () => {
           this.setState({
             openFormModal: false,
+            edittingArticleId: undefined,
           });
         };
     }

@@ -4,6 +4,7 @@ import {
   selectMarkersDict,
   selectMarkersTotalPages,
   selectMarkersCurrentPageToLoad,
+  selectMarkersDeletingState,
 } from '..';
 import { MarkersState } from '../../model';
 
@@ -20,6 +21,7 @@ describe('markers selector', () => {
       errorMsg: 'error',
       totalPages: 2,
       currentPageToLoad: 1,
+      deletingState: 'waiting',
     } as MarkersState,
   };
 
@@ -32,7 +34,7 @@ describe('markers selector', () => {
     });
   });
 
-  it('selectMarkersLoading should return markers loading state', () => {
+  it('selectMarkersFetchingState should return markers fetching state', () => {
     expect(selectMarkersFetchingState(rootState)).toEqual('waiting');
   });
 
@@ -46,5 +48,9 @@ describe('markers selector', () => {
 
   it('selectMarkersTotalPages should return markers totalPages', () => {
     expect(selectMarkersTotalPages(rootState)).toEqual(2);
+  });
+
+  it('selectMarkersDeletingState should return markers deleting state', () => {
+    expect(selectMarkersDeletingState(rootState)).toEqual('waiting');
   });
 });

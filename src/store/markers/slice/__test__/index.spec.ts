@@ -9,6 +9,9 @@ const {
   requestStart,
   updateMarkers,
   updateTotalPages,
+  deleteStart,
+  deleteFailure,
+  deleteSuccess,
 } = markersSlice.actions;
 
 describe('markers reducer', () => {
@@ -16,6 +19,7 @@ describe('markers reducer', () => {
     markers: {},
     fetchingState: 'waiting',
     currentPageToLoad: 0,
+    deletingState: 'waiting',
   };
   const loadingState = Object.assign(initialState, { loading: true });
 
@@ -24,6 +28,7 @@ describe('markers reducer', () => {
       markers: {},
       fetchingState: 'waiting',
       currentPageToLoad: 0,
+      deletingState: 'waiting',
     });
   });
   it('should handle requestStart', () => {
@@ -61,5 +66,21 @@ describe('markers reducer', () => {
   it('should handle updateCurrentPageToLoad', () => {
     const actual = markersReducer(loadingState, updateCurrentPageToLoad(1));
     expect(actual.currentPageToLoad).toEqual(1);
+  });
+
+  it('should handle deleteStart', () => {
+    const actual = markersReducer(initialState, deleteStart());
+    expect(actual.deletingState).toEqual('loading');
+  });
+
+  it('should handle deleteFailure', () => {
+    const actual = markersReducer(loadingState, deleteFailure('error'));
+    expect(actual.deletingState).toEqual('error');
+    expect(actual.errorMsg).toEqual('error');
+  });
+
+  it('should handle deleteSuccess', () => {
+    const actual = markersReducer(loadingState, deleteSuccess());
+    expect(actual.deletingState).toEqual('success');
   });
 });

@@ -9,6 +9,7 @@ import {
   MarkerTypeAPI,
 } from 'api/markers-api';
 import { ApiError } from 'api/utils/handle-axios-error';
+import { deleteRemoteArticle } from 'api/articles-api/delete-remote-article';
 
 // basic actions
 export const {
@@ -18,6 +19,9 @@ export const {
   updateMarkers,
   updateTotalPages,
   updateCurrentPageToLoad,
+  deleteStart,
+  deleteSuccess,
+  deleteFailure,
 } = markersSlice.actions;
 
 // fetchMarkers action
@@ -42,6 +46,7 @@ export const fetchMarkers = (): AppThunk => async (dispatch) => {
     }
     dispatch(fetchSuccess());
   } catch (error) {
+    // TODO: take log of error
     const apiError = error as ApiError<unknown>;
 
     const errorMsg = globalAPIErrorMessage(apiError.status, 'get');
@@ -61,4 +66,31 @@ export const appendMarkers =
     );
 
     dispatch(updateMarkers(newMarkers));
+  };
+
+// removeMarkerFromDict action
+export const removeMarkerInDict =
+  (postId: string): AppThunk =>
+  (dispatch, getState) => {
+    const newMarkers: MarkerDict = { ...selectMarkersDict(getState()) };
+    delete newMarkers[postId];
+    dispatch(updateMarkers(newMarkers));
+  };
+
+// deleteArticle action
+export const deleteArticle =
+  (postId: string): AppThunk =>
+  async (dispatch) => {
+    dispatch(deleteStart());
+    try {
+      await deleteRemoteArticle(postId);
+      dispatch(removeMarkerInDict(postId));
+      dispatch(deleteSuccess());
+    } catch (error) {
+      // TODO: take log of error
+      const apiError = error as ApiError<unknown>;
+
+      const errorMsg = globalAPIErrorMessage(apiError.status, 'get');
+      dispatch(deleteFailure(errorMsg));
+    }
   };

@@ -19,10 +19,12 @@ export interface MarkersState {
   errorMsg?: string;
   currentPageToLoad: number;
   totalPages?: number;
+  deletingState: LoadingState;
 }
 
 export const initialState: MarkersState = {
   markers: {},
   fetchingState: 'waiting',
   currentPageToLoad: 0,
+  deletingState: 'waiting',
 };

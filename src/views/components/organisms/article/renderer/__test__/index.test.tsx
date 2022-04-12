@@ -33,4 +33,9 @@ describe('Shallow Snapshot Tests', () => {
     wrapper.setProps({ onClickEdit: jest.fn() });
     expect(wrapper).toMatchSnapshot();
   });
+
+  it('with delete button', () => {
+    wrapper.setProps({ onClickDelete: jest.fn() });
+    expect(wrapper).toMatchSnapshot();
+  });
 });

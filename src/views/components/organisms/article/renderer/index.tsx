@@ -33,6 +33,10 @@ export class Renderer extends React.Component<Props> {
         {this.props.onClickEdit && (
           <Button onClick={this.props.onClickEdit}>編集</Button>
         )}
+
+        {this.props.onClickDelete && (
+          <Button onClick={this.props.onClickDelete}>削除</Button>
+        )}
       </>
     );
   }
@@ -45,4 +49,5 @@ export type Props = {
 
   fetchArticle: () => void;
   onClickEdit?: () => void;
+  onClickDelete?: () => void;
 };

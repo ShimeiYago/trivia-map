@@ -14,8 +14,8 @@ import { deleteRemoteArticle } from 'api/articles-api/delete-remote-article';
 // basic actions
 export const {
   fetchSuccess,
-  requestFailure,
-  requestStart,
+  fetchFailure,
+  fetchStart,
   updateMarkers,
   updateTotalPages,
   updateCurrentPageToLoad,
@@ -26,7 +26,7 @@ export const {
 
 // fetchMarkers action
 export const fetchMarkers = (): AppThunk => async (dispatch) => {
-  dispatch(requestStart());
+  dispatch(fetchStart());
 
   try {
     let pageIndex: number | null = 1;
@@ -50,7 +50,7 @@ export const fetchMarkers = (): AppThunk => async (dispatch) => {
     const apiError = error as ApiError<unknown>;
 
     const errorMsg = globalAPIErrorMessage(apiError.status, 'get');
-    dispatch(requestFailure(errorMsg));
+    dispatch(fetchFailure(errorMsg));
   }
 };
 

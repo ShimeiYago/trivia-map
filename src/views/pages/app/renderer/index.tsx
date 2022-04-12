@@ -87,10 +87,6 @@ export class Renderer extends React.Component<Props, State> {
   protected handleClickPostDelete = () => {
     const { readingArticleId } = this.state;
     readingArticleId && this.props.deleteArticle(readingArticleId);
-
-    this.setState({
-      openArticleModal: false,
-    });
   };
 
   protected handleOpenEditForm = () =>

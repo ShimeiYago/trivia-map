@@ -76,7 +76,6 @@ describe('handleClickPostDelete', () => {
     });
 
     instance['handleClickPostDelete']();
-    expect(instance.state.openArticleModal).toBeFalsy;
     expect(instance.props.deleteArticle).toBeCalled();
   });
 });

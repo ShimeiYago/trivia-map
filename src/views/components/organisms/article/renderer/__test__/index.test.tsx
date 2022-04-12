@@ -6,7 +6,8 @@ let wrapper: ShallowWrapper<Props, unknown, Renderer>;
 const basicProps: Props = {
   title: 'title',
   content: 'content',
-  loadingState: 'success',
+  articleLoadingState: 'success',
+  markerDeletingState: 'waiting',
   fetchArticle: jest.fn(),
 };
 
@@ -20,12 +21,7 @@ describe('Shallow Snapshot Tests', () => {
   });
 
   it('loading', () => {
-    wrapper.setProps({ loadingState: 'loading' });
-    expect(wrapper).toMatchSnapshot();
-  });
-
-  it('with error', () => {
-    wrapper.setProps({ loadingState: 'error' });
+    wrapper.setProps({ articleLoadingState: 'loading' });
     expect(wrapper).toMatchSnapshot();
   });
 
@@ -36,6 +32,14 @@ describe('Shallow Snapshot Tests', () => {
 
   it('with delete button', () => {
     wrapper.setProps({ onClickDelete: jest.fn() });
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('with loading delete button', () => {
+    wrapper.setProps({
+      onClickDelete: jest.fn(),
+      markerDeletingState: 'loading',
+    });
     expect(wrapper).toMatchSnapshot();
   });
 });

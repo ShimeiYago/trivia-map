@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { initialState, Marker } from '../model';
+import { initialState, MarkerDict } from '../model';
 
 export const markersSlice = createSlice({
   name: 'markers',
@@ -19,8 +19,8 @@ export const markersSlice = createSlice({
       state.fetchingState = 'success';
     },
 
-    updateList(state, action: PayloadAction<Marker[]>) {
-      state.list = action.payload;
+    updateMarkers(state, action: PayloadAction<MarkerDict>) {
+      state.markers = action.payload;
     },
 
     updateCurrentPageToLoad(state, action: PayloadAction<number>) {

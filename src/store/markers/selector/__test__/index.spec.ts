@@ -1,8 +1,7 @@
-import { LatLng } from 'leaflet';
 import {
   selectMarkersErrorMsg,
   selectMarkersFetchingState,
-  selectMarkerList,
+  selectMarkersDict,
   selectMarkersTotalPages,
   selectMarkersCurrentPageToLoad,
 } from '..';
@@ -11,13 +10,12 @@ import { MarkersState } from '../../model';
 describe('markers selector', () => {
   const rootState = {
     markers: {
-      list: [
-        {
-          postId: '000',
-          position: new LatLng(0, 0),
+      markers: {
+        '000': {
+          position: { lat: 0, lng: 0 },
           title: 'title',
         },
-      ],
+      },
       fetchingState: 'waiting',
       errorMsg: 'error',
       totalPages: 2,
@@ -26,13 +24,12 @@ describe('markers selector', () => {
   };
 
   it('selectMarkerList should return marker list', () => {
-    expect(selectMarkerList(rootState)).toEqual([
-      {
-        postId: '000',
-        position: new LatLng(0, 0),
+    expect(selectMarkersDict(rootState)).toEqual({
+      '000': {
+        position: { lat: 0, lng: 0 },
         title: 'title',
       },
-    ]);
+    });
   });
 
   it('selectMarkersLoading should return markers loading state', () => {

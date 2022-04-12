@@ -1,5 +1,6 @@
+import { MarkerDict } from './../model/index';
 import { globalAPIErrorMessage } from 'constant/global-api-error-message';
-import { selectMarkerList } from 'store/markers/selector';
+import { selectMarkersDict } from 'store/markers/selector';
 import { markersSlice } from './../slice/index';
 import { AppThunk } from 'store';
 import {
@@ -14,7 +15,7 @@ export const {
   fetchSuccess,
   requestFailure,
   requestStart,
-  updateList,
+  updateMarkers,
   updateTotalPages,
   updateCurrentPageToLoad,
 } = markersSlice.actions;
@@ -52,6 +53,12 @@ export const fetchMarkers = (): AppThunk => async (dispatch) => {
 export const appendMarkers =
   (newList: MarkerTypeAPI[]): AppThunk =>
   (dispatch, getState) => {
-    const markers = [...selectMarkerList(getState()), ...newList];
-    dispatch(updateList(markers));
+    const newMarkers: MarkerDict = Object.assign(
+      { ...selectMarkersDict(getState()) },
+      ...newList.map((marker) => ({
+        [marker.postId]: { title: marker.title, position: marker.position },
+      })),
+    );
+
+    dispatch(updateMarkers(newMarkers));
   };

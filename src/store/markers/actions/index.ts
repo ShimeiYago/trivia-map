@@ -90,7 +90,7 @@ export const deleteArticle =
       // TODO: take log of error
       const apiError = error as ApiError<unknown>;
 
-      const errorMsg = globalAPIErrorMessage(apiError.status, 'get');
+      const errorMsg = globalAPIErrorMessage(apiError.status, 'delete');
       dispatch(deleteFailure(errorMsg));
     }
   };

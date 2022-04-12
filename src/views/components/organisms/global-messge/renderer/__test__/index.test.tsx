@@ -9,6 +9,7 @@ const props: Props = {
   readingArticleLoadingState: 'waiting',
   closeArticleModal: jest.fn(),
   closeFormModal: jest.fn(),
+  markersDeletingState: 'waiting',
 };
 
 describe('Shallow Snapshot Tests', () => {
@@ -22,8 +23,11 @@ describe('Shallow Snapshot Tests', () => {
 });
 
 describe('componentDidUpdate', () => {
-  it('should change states to show post success message', () => {
+  beforeEach(() => {
     shallowWrapper = shallow(<Renderer {...props} />);
+  });
+
+  it('should change states to show post success message', () => {
     shallowWrapper.setProps({
       articleFormSubmittingState: 'success',
     });
@@ -37,7 +41,6 @@ describe('componentDidUpdate', () => {
   });
 
   it('should change states to show fetching article error message', () => {
-    shallowWrapper = shallow(<Renderer {...props} />);
     shallowWrapper.setProps({
       readingArticleLoadingState: 'error',
       readingArticleErrorMsg: 'fetch error',
@@ -52,7 +55,6 @@ describe('componentDidUpdate', () => {
   });
 
   it('should change states to show fetching article empty error message', () => {
-    shallowWrapper = shallow(<Renderer {...props} />);
     shallowWrapper.setProps({
       readingArticleLoadingState: 'error',
     });
@@ -66,7 +68,6 @@ describe('componentDidUpdate', () => {
   });
 
   it('should change states to show fetching form error message', () => {
-    shallowWrapper = shallow(<Renderer {...props} />);
     shallowWrapper.setProps({
       articleFormFetchingState: 'error',
       articleFormFetchingErrorMsg: 'fetch error',
@@ -81,7 +82,6 @@ describe('componentDidUpdate', () => {
   });
 
   it('should change states to show fetching empty form error message', () => {
-    shallowWrapper = shallow(<Renderer {...props} />);
     shallowWrapper.setProps({
       articleFormFetchingState: 'error',
     });
@@ -90,6 +90,46 @@ describe('componentDidUpdate', () => {
     instance.componentDidUpdate({
       ...props,
       articleFormFetchingState: 'loading',
+    });
+    expect(instance.state.message).toBe('');
+  });
+
+  it('should change states to show deleting marker success message', () => {
+    shallowWrapper.setProps({
+      markersDeletingState: 'success',
+    });
+    const instance = shallowWrapper.instance();
+
+    instance.componentDidUpdate({
+      ...props,
+      markersDeletingState: 'success',
+    });
+    expect(instance.state.message).toBe('投稿を削除しました。');
+  });
+
+  it('should change states to show deleting marker error message', () => {
+    shallowWrapper.setProps({
+      markersDeletingState: 'error',
+      markersErrorMsg: 'delete error',
+    });
+    const instance = shallowWrapper.instance();
+
+    instance.componentDidUpdate({
+      ...props,
+      markersDeletingState: 'loading',
+    });
+    expect(instance.state.message).toBe('delete error');
+  });
+
+  it('should change states to show deleting empty error message', () => {
+    shallowWrapper.setProps({
+      markersDeletingState: 'error',
+    });
+    const instance = shallowWrapper.instance();
+
+    instance.componentDidUpdate({
+      ...props,
+      markersDeletingState: 'loading',
     });
     expect(instance.state.message).toBe('');
   });

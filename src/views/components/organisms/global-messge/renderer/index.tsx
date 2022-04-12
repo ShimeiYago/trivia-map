@@ -19,6 +19,8 @@ export class Renderer extends React.Component<Props, State> {
       articleFormFetchingErrorMsg,
       readingArticleLoadingState,
       readingArticleErrorMsg,
+      markersDeletingState,
+      markersErrorMsg,
       closeArticleModal,
       closeFormModal,
     } = this.props;
@@ -58,6 +60,30 @@ export class Renderer extends React.Component<Props, State> {
       });
       closeArticleModal();
     }
+
+    if (
+      prevProps.markersDeletingState !== markersDeletingState &&
+      markersDeletingState === 'success'
+    ) {
+      this.setState({
+        show: true,
+        message: '投稿を削除しました。',
+        type: 'success',
+      });
+      closeArticleModal();
+    }
+
+    if (
+      prevProps.markersDeletingState !== markersDeletingState &&
+      markersDeletingState === 'error'
+    ) {
+      this.setState({
+        show: true,
+        message: markersErrorMsg ?? '',
+        type: 'error',
+      });
+      closeArticleModal();
+    }
   }
 
   render() {
@@ -91,6 +117,8 @@ export type Props = {
   articleFormSubmittingState: LoadingState;
   readingArticleLoadingState: LoadingState;
   readingArticleErrorMsg?: string;
+  markersDeletingState: LoadingState;
+  markersErrorMsg?: string;
 
   closeArticleModal: () => void;
   closeFormModal: () => void;

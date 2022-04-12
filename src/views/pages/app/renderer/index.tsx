@@ -5,6 +5,7 @@ import { BoxModal } from 'views/components/moleculars/box-modal';
 import { SwipeableEdgeDrawer } from 'views/components/moleculars/swipeable-edge-drawer';
 import { Article } from 'views/components/organisms/article';
 import { ArticleForm } from 'views/components/organisms/article-form';
+import { DeletingConfirmModal } from 'views/components/organisms/deleting-confirm-modal';
 import { GlobalMessage } from 'views/components/organisms/global-messge';
 import { LoadingProgressBar } from 'views/components/organisms/loading-progress-bar';
 import { TriviaMap } from 'views/components/organisms/trivia-map';
@@ -17,6 +18,7 @@ export class Renderer extends React.Component<Props, State> {
       openArticleModal: false,
       openFormModal: false,
       newMarkerMode: false,
+      openDialogToConfirmDeleting: false,
     };
   }
 
@@ -26,6 +28,7 @@ export class Renderer extends React.Component<Props, State> {
       openArticleModal,
       openFormModal,
       edittingArticleId,
+      openDialogToConfirmDeleting,
     } = this.state;
     const { isFormEditting, isMobile } = this.props;
     return (
@@ -57,6 +60,12 @@ export class Renderer extends React.Component<Props, State> {
             />
           ) : null}
         </BoxModal>
+
+        <DeletingConfirmModal
+          open={openDialogToConfirmDeleting}
+          onClickCancel={this.handleCancelToDeleteMarker}
+          onClickConfirm={this.handleConfirmToDelete}
+        />
 
         {this.renderEditForm()}
 
@@ -91,8 +100,24 @@ export class Renderer extends React.Component<Props, State> {
     });
 
   protected handleClickPostDelete = () => {
+    this.setState({
+      openDialogToConfirmDeleting: true,
+    });
+  };
+
+  protected handleCancelToDeleteMarker = () => {
+    this.setState({
+      openDialogToConfirmDeleting: false,
+    });
+  };
+
+  protected handleConfirmToDelete = () => {
     const { readingArticleId } = this.state;
     readingArticleId && this.props.deleteArticle(readingArticleId);
+
+    this.setState({
+      openDialogToConfirmDeleting: false,
+    });
   };
 
   protected handleOpenEditForm = () =>
@@ -181,4 +206,5 @@ export type State = {
   readingArticleId?: string;
   edittingArticleId?: string;
   newMarkerMode: boolean;
+  openDialogToConfirmDeleting: boolean;
 };

@@ -6,7 +6,6 @@ import {
   selectReadingArticleTitle,
 } from 'store/reading-article/selector';
 import { fetchReadingArticle } from 'store/reading-article/actions';
-import { selectMarkersDeletingState } from 'store/markers/selector';
 
 export function Article(ownProps: OwnProps) {
   const dispatch = useAppDispatch();
@@ -15,7 +14,6 @@ export function Article(ownProps: OwnProps) {
     title: useAppSelector(selectReadingArticleTitle),
     content: useAppSelector(selectReadingArticleContent),
     articleLoadingState: useAppSelector(selectReadingArticleLoadingState),
-    markerDeletingState: useAppSelector(selectMarkersDeletingState),
 
     fetchArticle: () => dispatch(fetchReadingArticle(ownProps.postId)),
     onClickEdit: ownProps.onClickEdit,

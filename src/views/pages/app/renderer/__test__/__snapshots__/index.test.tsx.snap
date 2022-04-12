@@ -27,6 +27,11 @@ exports[`Shallow Snapshot Tests basic 1`] = `
     onClose={[Function]}
     open={false}
   />
+  <DeletingConfirmModal
+    onClickCancel={[Function]}
+    onClickConfirm={[Function]}
+    open={false}
+  />
   <SwipeableEdgeDrawer
     bleedingHeight={56}
     heightRatio={80}
@@ -73,6 +78,11 @@ exports[`Shallow Snapshot Tests pc view 1`] = `
   </ForwardRef(Box)>
   <BoxModal
     onClose={[Function]}
+    open={false}
+  />
+  <DeletingConfirmModal
+    onClickCancel={[Function]}
+    onClickConfirm={[Function]}
     open={false}
   />
   <ForwardRef(Drawer)

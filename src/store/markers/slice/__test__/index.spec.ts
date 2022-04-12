@@ -5,8 +5,8 @@ import { MarkersState } from '../../model';
 
 const {
   fetchSuccess,
-  requestFailure,
-  requestStart,
+  fetchFailure,
+  fetchStart,
   updateMarkers,
   updateTotalPages,
   deleteStart,
@@ -31,13 +31,13 @@ describe('markers reducer', () => {
       deletingState: 'waiting',
     });
   });
-  it('should handle requestStart', () => {
-    const actual = markersReducer(initialState, requestStart());
+  it('should handle fetchStart', () => {
+    const actual = markersReducer(initialState, fetchStart());
     expect(actual.fetchingState).toEqual('loading');
   });
 
-  it('should handle requestFailure', () => {
-    const actual = markersReducer(loadingState, requestFailure('error'));
+  it('should handle fetchFailure', () => {
+    const actual = markersReducer(loadingState, fetchFailure('error'));
     expect(actual.fetchingState).toEqual('error');
     expect(actual.errorMsg).toEqual('error');
   });

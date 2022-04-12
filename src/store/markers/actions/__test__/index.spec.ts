@@ -74,7 +74,7 @@ describe('fetchMarkers', () => {
     mockResponseForPagiNation = new MockResponseForPagiNation();
   });
 
-  it('call requestStart at first', async () => {
+  it('call fetchStart at first', async () => {
     getRemoteMarkersSpy.mockResolvedValue(
       mockResponseForPagiNation.getMockResponse(),
     );
@@ -82,7 +82,7 @@ describe('fetchMarkers', () => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const appThunk = fetchMarkers() as any;
     await appThunk(dispatch);
-    expect(dispatch.mock.calls[0][0].type).toBe('markers/requestStart');
+    expect(dispatch.mock.calls[0][0].type).toBe('markers/fetchStart');
   });
 
   it('call fetchSuccess if API successed', async () => {
@@ -96,13 +96,13 @@ describe('fetchMarkers', () => {
     expect(dispatch.mock.calls[6][0].type).toBe('markers/fetchSuccess');
   });
 
-  it('call requestFailure if API failed', async () => {
+  it('call fetchFailure if API failed', async () => {
     getRemoteMarkersSpy.mockRejectedValue(new Error());
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const appThunk = fetchMarkers() as any;
     await appThunk(dispatch, getState);
-    expect(dispatch.mock.calls[1][0].type).toBe('markers/requestFailure');
+    expect(dispatch.mock.calls[1][0].type).toBe('markers/fetchFailure');
   });
 });
 
@@ -162,7 +162,7 @@ describe('deleteArticle', () => {
     expect(dispatch.mock.calls[2][0].type).toBe('markers/deleteSuccess');
   });
 
-  it('call requestFailure if API failed', async () => {
+  it('call fetchFailure if API failed', async () => {
     deleteRemoteArticleSpy.mockRejectedValue(new Error());
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any

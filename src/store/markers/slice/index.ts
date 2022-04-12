@@ -5,12 +5,12 @@ export const markersSlice = createSlice({
   name: 'markers',
   initialState,
   reducers: {
-    requestStart(state) {
+    fetchStart(state) {
       state.fetchingState = 'loading';
       state.errorMsg = undefined;
     },
 
-    requestFailure(state, action: PayloadAction<string>) {
+    fetchFailure(state, action: PayloadAction<string>) {
       state.fetchingState = 'error';
       state.errorMsg = action.payload;
     },

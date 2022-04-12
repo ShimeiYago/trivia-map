@@ -12,3 +12,5 @@ export const selectMarkersCurrentPageToLoad = (state: MarkersRootState) =>
   state.markers.currentPageToLoad;
 export const selectMarkersTotalPages = (state: MarkersRootState) =>
   state.markers.totalPages;
+export const selectMarkersDeletingState = (state: MarkersRootState) =>
+  state.markers.deletingState;

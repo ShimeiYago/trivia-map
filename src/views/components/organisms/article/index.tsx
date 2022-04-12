@@ -17,6 +17,7 @@ export function Article(ownProps: OwnProps) {
 
     fetchArticle: () => dispatch(fetchReadingArticle(ownProps.postId)),
     onClickEdit: ownProps.onClickEdit,
+    onClickDelete: ownProps.onClickDelete,
   };
 
   return <Renderer {...props} />;
@@ -25,4 +26,5 @@ export function Article(ownProps: OwnProps) {
 type OwnProps = {
   postId: string;
   onClickEdit?: () => void;
+  onClickDelete?: () => void;
 };

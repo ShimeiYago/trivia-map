@@ -30,6 +30,20 @@ export const markersSlice = createSlice({
     updateTotalPages(state, action: PayloadAction<number>) {
       state.totalPages = action.payload;
     },
+
+    deleteStart(state) {
+      state.deletingState = 'loading';
+      state.errorMsg = undefined;
+    },
+
+    deleteFailure(state, action: PayloadAction<string>) {
+      state.deletingState = 'error';
+      state.errorMsg = action.payload;
+    },
+
+    deleteSuccess(state) {
+      state.deletingState = 'success';
+    },
   },
 });
 

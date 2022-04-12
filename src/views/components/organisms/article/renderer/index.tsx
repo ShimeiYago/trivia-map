@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box, Button, CircularProgress, Typography } from '@mui/material';
 import { LoadingState } from 'types/loading-state';
+import { LoadingButton } from '@mui/lab';
 
 export class Renderer extends React.Component<Props> {
   componentDidMount() {
@@ -9,18 +10,14 @@ export class Renderer extends React.Component<Props> {
 
   render() {
     if (
-      this.props.loadingState === 'waiting' ||
-      this.props.loadingState === 'loading'
+      this.props.articleLoadingState === 'waiting' ||
+      this.props.articleLoadingState === 'loading'
     ) {
       return (
         <Box sx={{ display: 'flex', justifyContent: 'center' }}>
           <CircularProgress />
         </Box>
       );
-    }
-
-    if (this.props.loadingState === 'error') {
-      return <Typography>Something Error!</Typography>;
     }
 
     return (
@@ -33,6 +30,16 @@ export class Renderer extends React.Component<Props> {
         {this.props.onClickEdit && (
           <Button onClick={this.props.onClickEdit}>編集</Button>
         )}
+
+        {this.props.onClickDelete && (
+          <LoadingButton
+            loading={this.props.markerDeletingState === 'loading'}
+            variant="outlined"
+            onClick={this.props.onClickDelete}
+          >
+            削除
+          </LoadingButton>
+        )}
       </>
     );
   }
@@ -41,8 +48,10 @@ export class Renderer extends React.Component<Props> {
 export type Props = {
   title: string;
   content: string;
-  loadingState: LoadingState;
+  articleLoadingState: LoadingState;
+  markerDeletingState: LoadingState;
 
   fetchArticle: () => void;
   onClickEdit?: () => void;
+  onClickDelete?: () => void;
 };

@@ -4,7 +4,7 @@ import { MapMarker } from 'views/components/moleculars/map-marker';
 import { LatLng, LeafletMouseEvent, Map as LeafletMap } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import './index.css';
-import { Marker } from 'store/markers/model';
+import { MarkerDict } from 'store/markers/model';
 import { Box, Button, Grid, SxProps, Typography } from '@mui/material';
 import { Position } from 'types/position';
 import { DialogScreen } from 'views/components/atoms/dialog-screen';
@@ -120,16 +120,17 @@ export class Renderer extends React.Component<Props, State> {
   };
 
   protected renderPostMarkers() {
-    if (this.props.doNotShowMarkers) {
+    const { markers, doNotShowMarkers, onClickPostTitle, newMarkerMode } =
+      this.props;
+    if (doNotShowMarkers) {
       return null;
     }
 
-    return this.props.markerList.map((marker) => {
-      const popup = this.props.onClickPostTitle ? (
-        <Button
-          variant="text"
-          onClick={this.props.onClickPostTitle(marker.postId)}
-        >
+    return Object.keys(markers).map((postId) => {
+      const marker = markers[postId];
+
+      const popup = onClickPostTitle ? (
+        <Button variant="text" onClick={onClickPostTitle(postId)}>
           {marker.title}
         </Button>
       ) : (
@@ -141,8 +142,8 @@ export class Renderer extends React.Component<Props, State> {
           <MapMarker
             map={this.state.map}
             position={new LatLng(marker.position.lat, marker.position.lng)}
-            popup={!this.props.newMarkerMode && popup}
-            key={marker.postId}
+            popup={!newMarkerMode && popup}
+            key={`post-marker-${postId}`}
           />
         )
       );
@@ -262,7 +263,7 @@ export class Renderer extends React.Component<Props, State> {
 }
 
 export type Props = {
-  markerList: Marker[];
+  markers: MarkerDict;
   newMarkerMode: boolean;
   articleFormPosition?: Position;
   width?: number;

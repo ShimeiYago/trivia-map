@@ -6,6 +6,7 @@ let shallowWrapper: ShallowWrapper<Props, State, Renderer>;
 const props: Props = {
   isFormEditting: false,
   isMobile: true,
+  deleteArticle: jest.fn(),
 };
 
 describe('Shallow Snapshot Tests', () => {
@@ -62,6 +63,20 @@ describe('handleClickPostEdit', () => {
     instance['handleClickPostEdit']();
     expect(instance.state.openFormModal).toBeTruthy;
     expect(instance.state.edittingArticleId).toBe('postId-000');
+  });
+});
+
+describe('handleClickPostDelete', () => {
+  it('should set openArticleModal state and call deleteArticle', () => {
+    shallowWrapper = shallow(<Renderer {...props} />);
+    const instance = shallowWrapper.instance();
+
+    instance.setState({
+      readingArticleId: 'postId-000',
+    });
+
+    instance['handleClickPostDelete']();
+    expect(instance.props.deleteArticle).toBeCalled();
   });
 });
 

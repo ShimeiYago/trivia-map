@@ -67,7 +67,17 @@ describe('handleClickPostEdit', () => {
 });
 
 describe('handleClickPostDelete', () => {
-  it('should set openArticleModal state and call deleteArticle', () => {
+  it('should set openDialogToConfirmDeleting state', () => {
+    shallowWrapper = shallow(<Renderer {...props} />);
+    const instance = shallowWrapper.instance();
+
+    instance['handleClickPostDelete']();
+    expect(instance.state.openDialogToConfirmDeleting).toBeTruthy();
+  });
+});
+
+describe('handleConfirmToDelete', () => {
+  it('should call deleteArticle', () => {
     shallowWrapper = shallow(<Renderer {...props} />);
     const instance = shallowWrapper.instance();
 
@@ -75,8 +85,22 @@ describe('handleClickPostDelete', () => {
       readingArticleId: 'postId-000',
     });
 
-    instance['handleClickPostDelete']();
+    instance['handleConfirmToDelete']();
     expect(instance.props.deleteArticle).toBeCalled();
+  });
+});
+
+describe('handleCancelToDeleteMarker', () => {
+  it('should set openDialogToConfirmDeleting state', () => {
+    shallowWrapper = shallow(<Renderer {...props} />);
+    const instance = shallowWrapper.instance();
+
+    instance.setState({
+      openDialogToConfirmDeleting: true,
+    });
+
+    instance['handleCancelToDeleteMarker']();
+    expect(instance.state.openDialogToConfirmDeleting).toBeFalsy();
   });
 });
 

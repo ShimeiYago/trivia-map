@@ -1,6 +1,6 @@
 export function globalAPIErrorMessage(
   status: number,
-  method: 'get' | 'submit',
+  method: 'get' | 'submit' | 'delete',
 ): string {
   const prefix =
     method === 'get'

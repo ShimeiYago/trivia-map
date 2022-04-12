@@ -47,6 +47,7 @@ export class Renderer extends React.Component<Props, State> {
             <Article
               postId={readingArticleId}
               onClickEdit={this.handleClickPostEdit}
+              onClickDelete={this.handleClickPostDelete}
             />
           ) : null}
         </BoxModal>
@@ -82,6 +83,11 @@ export class Renderer extends React.Component<Props, State> {
       openArticleModal: false,
       edittingArticleId: this.state.readingArticleId,
     });
+
+  protected handleClickPostDelete = () => {
+    const { readingArticleId } = this.state;
+    readingArticleId && this.props.deleteArticle(readingArticleId);
+  };
 
   protected handleOpenEditForm = () =>
     this.setState({
@@ -158,6 +164,7 @@ export class Renderer extends React.Component<Props, State> {
 export type Props = {
   isFormEditting: boolean;
   isMobile: boolean;
+  deleteArticle: (postId: string) => void;
 };
 
 export type State = {

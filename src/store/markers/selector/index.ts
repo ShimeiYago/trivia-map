@@ -2,7 +2,8 @@ import { RootState } from 'store';
 
 type MarkersRootState = Pick<RootState, 'markers'>;
 
-export const selectMarkerList = (state: MarkersRootState) => state.markers.list;
+export const selectMarkersDict = (state: MarkersRootState) =>
+  state.markers.markers;
 export const selectMarkersFetchingState = (state: MarkersRootState) =>
   state.markers.fetchingState;
 export const selectMarkersErrorMsg = (state: MarkersRootState) =>
@@ -11,3 +12,5 @@ export const selectMarkersCurrentPageToLoad = (state: MarkersRootState) =>
   state.markers.currentPageToLoad;
 export const selectMarkersTotalPages = (state: MarkersRootState) =>
   state.markers.totalPages;
+export const selectMarkersDeletingState = (state: MarkersRootState) =>
+  state.markers.deletingState;

@@ -3,13 +3,12 @@ import { LatLng, LeafletMouseEvent, Map as LeafletMap } from 'leaflet';
 import { Renderer, Props, State } from '..';
 
 const basicProps: Props = {
-  markerList: [
-    {
-      postId: '000',
-      position: new LatLng(0, 0),
+  markers: {
+    '000': {
+      position: { lat: 0, lng: 0 },
       title: 'title',
     },
-  ],
+  },
   initZoom: 1,
   markersFetchingState: 'success',
   fetchMarkers: jest.fn(),

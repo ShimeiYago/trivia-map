@@ -9,6 +9,16 @@ const props: Props = {
   deleteArticle: jest.fn(),
 };
 
+const mockAddEventListener = jest
+  .spyOn(window, 'addEventListener')
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  .mockImplementation(() => {});
+
+const mockRemoveEventListener = jest
+  .spyOn(window, 'removeEventListener')
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  .mockImplementation(() => {});
+
 describe('Shallow Snapshot Tests', () => {
   beforeEach(() => {
     shallowWrapper = shallow(<Renderer {...props} />);
@@ -37,6 +47,61 @@ describe('handleClickAddButton', () => {
     instance['handleClickAddButton']();
     expect(instance.state.openFormModal).toBeTruthy;
     expect(instance.state.readingArticleId).toBe(undefined);
+  });
+});
+
+describe('componentDidUpdate', () => {
+  beforeEach(() => {
+    shallowWrapper = shallow(<Renderer {...props} />);
+    jest.resetAllMocks();
+  });
+
+  it('should add beforeunload eventListener when form open', () => {
+    shallowWrapper.setState({
+      openFormModal: true,
+    });
+    const instance = shallowWrapper.instance();
+
+    instance.componentDidUpdate(props, { openFormModal: false } as State);
+    expect(mockAddEventListener).toHaveBeenCalled();
+  });
+
+  it('should remove beforeunload eventListener when form close', () => {
+    shallowWrapper.setState({
+      openFormModal: false,
+    });
+    const instance = shallowWrapper.instance();
+
+    instance.componentDidUpdate(props, { openFormModal: true } as State);
+    expect(mockRemoveEventListener).toHaveBeenCalled();
+  });
+});
+
+describe('handleBeforeUnload', () => {
+  it('should add beforeunload eventListener when form open', () => {
+    shallowWrapper = shallow(<Renderer {...props} />);
+    const instance = shallowWrapper.instance();
+
+    const event = {
+      preventDefault: jest.fn(),
+      returnValue: '',
+    } as unknown as BeforeUnloadEvent;
+
+    instance['handleBeforeUnload'](event);
+
+    expect(event.returnValue).toBe(
+      '未保存のデータがありますが、本当に閉じてもよろしいですか？',
+    );
+  });
+
+  it('should remove beforeunload eventListener when form close', () => {
+    shallowWrapper.setState({
+      openFormModal: false,
+    });
+    const instance = shallowWrapper.instance();
+
+    instance.componentDidUpdate(props, { openFormModal: true } as State);
+    expect(mockRemoveEventListener).toHaveBeenCalled();
   });
 });
 

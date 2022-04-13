@@ -32,6 +32,21 @@ export class Renderer extends React.Component<Props, State> {
     };
   }
 
+  componentDidUpdate(_: Props, prevState: State) {
+    if (!prevState.openFormModal && this.state.openFormModal) {
+      window.addEventListener('beforeunload', this.handleBeforeUnload);
+    }
+    if (prevState.openFormModal && !this.state.openFormModal) {
+      window.removeEventListener('beforeunload', this.handleBeforeUnload);
+    }
+  }
+
+  protected handleBeforeUnload(e: BeforeUnloadEvent) {
+    e.preventDefault();
+    e.returnValue =
+      '未保存のデータがありますが、本当に閉じてもよろしいですか？';
+  }
+
   render() {
     const {
       readingArticleId,

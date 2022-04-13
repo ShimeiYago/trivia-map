@@ -1,4 +1,13 @@
-import { Box, Drawer } from '@mui/material';
+import {
+  Box,
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  Drawer,
+} from '@mui/material';
 import React from 'react';
 import { FloatingButton } from 'views/components/atoms/floating-button';
 import { BoxModal } from 'views/components/moleculars/box-modal';
@@ -19,6 +28,7 @@ export class Renderer extends React.Component<Props, State> {
       openFormModal: false,
       newMarkerMode: false,
       openDialogToConfirmDeleting: false,
+      openDoubleEditAlartDialog: false,
     };
   }
 
@@ -73,6 +83,8 @@ export class Renderer extends React.Component<Props, State> {
           closeArticleModal={this.handleCloseModal('article')}
           closeFormModal={this.handleCloseModal('form')}
         />
+
+        {this.renderDoubleEditAlartDialog()}
       </>
     );
   }
@@ -92,12 +104,18 @@ export class Renderer extends React.Component<Props, State> {
     };
   };
 
-  protected handleClickPostEdit = () =>
-    this.setState({
+  protected handleClickPostEdit = () => {
+    if (this.state.openFormModal) {
+      return this.setState({
+        openDoubleEditAlartDialog: true,
+      });
+    }
+    return this.setState({
       openFormModal: true,
       openArticleModal: false,
       edittingArticleId: this.state.readingArticleId,
     });
+  };
 
   protected handleClickPostDelete = () => {
     this.setState({
@@ -192,6 +210,36 @@ export class Renderer extends React.Component<Props, State> {
       </Drawer>
     );
   };
+
+  protected renderDoubleEditAlartDialog() {
+    return (
+      <Dialog
+        open={this.state.openDoubleEditAlartDialog}
+        onClose={this.handleCloseDoubleEditAlartDialog}
+      >
+        <DialogTitle>既に他の投稿が編集中です。</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            現在編集中の投稿を「下書き保存」、「保存して公開」、または「編集を破棄」してからもう一度お試しください。
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button
+            onClick={this.handleCloseDoubleEditAlartDialog}
+            variant="outlined"
+          >
+            閉じる
+          </Button>
+        </DialogActions>
+      </Dialog>
+    );
+  }
+
+  protected handleCloseDoubleEditAlartDialog = () => {
+    this.setState({
+      openDoubleEditAlartDialog: false,
+    });
+  };
 }
 
 export type Props = {
@@ -207,4 +255,5 @@ export type State = {
   edittingArticleId?: string;
   newMarkerMode: boolean;
   openDialogToConfirmDeleting: boolean;
+  openDoubleEditAlartDialog: boolean;
 };

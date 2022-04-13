@@ -52,8 +52,19 @@ describe('handleClickPostTitle', () => {
 });
 
 describe('handleClickPostEdit', () => {
-  it('should set openingModal and edittingArticleId states', () => {
+  beforeEach(() => {
     shallowWrapper = shallow(<Renderer {...props} />);
+  });
+
+  it('should open dialog when form modal is opening', () => {
+    shallowWrapper.setState({ openFormModal: true });
+    const instance = shallowWrapper.instance();
+
+    instance['handleClickPostEdit']();
+    expect(instance.state.openDoubleEditAlartDialog).toBeTruthy;
+  });
+
+  it('should set openingModal and edittingArticleId states', () => {
     const instance = shallowWrapper.instance();
 
     instance.setState({
@@ -157,5 +168,16 @@ describe('endToSelectPosition', () => {
     instance['endToSelectPosition']();
     expect(instance.state.openFormModal).toBeTruthy;
     expect(instance.state.newMarkerMode).toBe(false);
+  });
+});
+
+describe('handleCloseDoubleEditAlartDialog', () => {
+  it('should close modal', () => {
+    shallowWrapper = shallow(<Renderer {...props} />);
+    shallowWrapper.setState({ openDoubleEditAlartDialog: true });
+    const instance = shallowWrapper.instance();
+
+    instance['handleCloseDoubleEditAlartDialog']();
+    expect(instance.state.openDoubleEditAlartDialog).toBeFalsy();
   });
 });

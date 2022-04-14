@@ -11,9 +11,7 @@ const basicProps: Props = {
   fetchingState: 'waiting',
   isFormEditting: false,
 
-  updateTitle: jest.fn(),
-  updateContent: jest.fn(),
-  updatePosition: jest.fn(),
+  updateFormField: jest.fn(),
   submitNewArticle: jest.fn(),
   submitEdittedArticle: jest.fn(),
   fetchArticle: jest.fn(),
@@ -101,7 +99,7 @@ describe('handleChangeTitle', () => {
       changeTitleEvent as React.ChangeEvent<HTMLInputElement>,
     );
 
-    expect(basicProps.updateTitle).toBeCalled();
+    expect(basicProps.updateFormField).toBeCalled();
   });
 });
 
@@ -115,7 +113,7 @@ describe('handleChangeContent', () => {
       changeContentEvent as React.ChangeEvent<HTMLInputElement>,
     );
 
-    expect(basicProps.updateContent).toBeCalled();
+    expect(basicProps.updateFormField).toBeCalled();
   });
 });
 

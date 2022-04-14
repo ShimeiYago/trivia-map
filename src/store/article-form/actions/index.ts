@@ -138,10 +138,12 @@ export const fetchArticle =
 export const updateFormField =
   (param: UpdateFormFieldParam): AppThunk =>
   async (dispatch) => {
-    if (param.title) {
+    // have to pass case param.title=''
+    if (param.title !== undefined) {
       dispatch(updateTitle(param.title));
     }
-    if (param.content) {
+    // have to pass case param.content=''
+    if (param.content !== undefined) {
       dispatch(updateContent(param.content));
     }
     if (param.position) {
@@ -151,7 +153,7 @@ export const updateFormField =
     dispatch(updateIsFormChangedFromLastSaved());
   };
 
-type UpdateFormFieldParam = {
+export type UpdateFormFieldParam = {
   title?: string;
   content?: string;
   position?: Position;

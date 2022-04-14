@@ -8,6 +8,10 @@ import {
   selectArticleFormFormError,
   selectArticleFormIsEditting,
   selectArticleFormFetchingErrorMsg,
+  selectArticleFormLastSavedTitle,
+  selectArticleFormLastSavedContent,
+  selectArticleFormLastSavedPosition,
+  selectArticleFormIsFormChangedFromLastSaved,
 } from '..';
 import { ArticleFormState, FormError } from '../../model';
 
@@ -21,13 +25,17 @@ describe('readingArticle selector', () => {
     articleForm: {
       postId: 'post-id',
       title: 'title',
+      lastSavedTitle: 'title',
       content: 'content',
+      lastSavedContent: 'content',
       position: { lat: 1, lng: 1 },
+      lastSavedPosition: { lat: 1, lng: 1 },
       submittingState: 'success',
       fetchingState: 'success',
       formError: formError,
       isEditting: false,
       fetchingErrorMsg: 'fetch error',
+      isFormChangedFromLastSaved: false,
     } as ArticleFormState,
   };
 
@@ -39,12 +47,27 @@ describe('readingArticle selector', () => {
     expect(selectArticleFormTitle(rootState)).toEqual('title');
   });
 
+  it('selectArticleFormLastSavedTitle should return articleForm title', () => {
+    expect(selectArticleFormLastSavedTitle(rootState)).toEqual('title');
+  });
+
   it('selectArticleFormContent should return articleForm content', () => {
     expect(selectArticleFormContent(rootState)).toEqual('content');
   });
 
+  it('selectArticleFormLastSavedContent should return articleForm content', () => {
+    expect(selectArticleFormLastSavedContent(rootState)).toEqual('content');
+  });
+
   it('selectArticleFormPosition should return articleForm position', () => {
     expect(selectArticleFormPosition(rootState)).toEqual({ lat: 1, lng: 1 });
+  });
+
+  it('selectArticleFormLastSavedPosition should return articleForm submittingState', () => {
+    expect(selectArticleFormLastSavedPosition(rootState)).toEqual({
+      lat: 1,
+      lng: 1,
+    });
   });
 
   it('selectArticleFormSubmittingState should return articleForm submittingState', () => {
@@ -65,5 +88,11 @@ describe('readingArticle selector', () => {
 
   it('selectArticleFormFetchingErrorMsg should return articleForm fetchingErrorMsg state', () => {
     expect(selectArticleFormFetchingErrorMsg(rootState)).toEqual('fetch error');
+  });
+
+  it('selectArticleFormIsFormChangedFromLastSaved should return articleForm isFormChangedFromLastSaved state', () => {
+    expect(selectArticleFormIsFormChangedFromLastSaved(rootState)).toEqual(
+      false,
+    );
   });
 });

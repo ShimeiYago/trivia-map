@@ -11,14 +11,21 @@ export interface ArticleFormState {
   formError?: FormError;
   fetchingErrorMsg?: string;
   isEditting: boolean;
+  lastSavedTitle: string;
+  lastSavedContent: string;
+  lastSavedPosition?: Position;
+  isFormChangedFromLastSaved: boolean;
 }
 
 export const initialState: ArticleFormState = {
   title: '',
+  lastSavedTitle: '',
   content: '',
+  lastSavedContent: '',
   submittingState: 'waiting',
   fetchingState: 'waiting',
   isEditting: false,
+  isFormChangedFromLastSaved: false,
 };
 
 export type FormError = {

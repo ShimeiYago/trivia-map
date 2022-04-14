@@ -63,10 +63,29 @@ export const articleFormSlice = createSlice({
       state.formError = initialState.formError;
       state.isEditting = initialState.isEditting;
       state.fetchingErrorMsg = initialState.fetchingErrorMsg;
+      state.lastSavedTitle = initialState.lastSavedTitle;
+      state.lastSavedContent = initialState.lastSavedContent;
+      state.lastSavedPosition = initialState.lastSavedPosition;
     },
 
     updateIsEditting(state, action: PayloadAction<boolean>) {
       state.isEditting = action.payload;
+    },
+
+    updateLastSavedValues(state) {
+      state.lastSavedTitle = state.title;
+      state.lastSavedContent = state.content;
+      state.lastSavedPosition = state.position;
+      state.isFormChangedFromLastSaved = false;
+    },
+
+    updateIsFormChangedFromLastSaved(state) {
+      state.isFormChangedFromLastSaved = !(
+        state.lastSavedTitle === state.title &&
+        state.lastSavedContent === state.content &&
+        state.lastSavedPosition?.lat === state.position?.lat &&
+        state.lastSavedPosition?.lng === state.position?.lng
+      );
     },
   },
 });

@@ -17,6 +17,7 @@ import {
 } from '../selector';
 import { globalAPIErrorMessage } from 'constant/global-api-error-message';
 import { appendMarkers } from 'store/markers/actions';
+import { Position } from 'types/position';
 
 // basic actions
 export const {
@@ -31,6 +32,7 @@ export const {
   fetchFailure,
   initialize,
   updateIsEditting,
+  updateIsFormChangedFromLastSaved,
 } = articleFormSlice.actions;
 
 // submitNewArticle action
@@ -131,3 +133,26 @@ export const fetchArticle =
       dispatch(fetchFailure(errorMsg));
     }
   };
+
+// updateFormField action
+export const updateFormField =
+  (param: UpdateFormFieldParam): AppThunk =>
+  async (dispatch) => {
+    if (param.title) {
+      dispatch(updateTitle(param.title));
+    }
+    if (param.content) {
+      dispatch(updateContent(param.content));
+    }
+    if (param.position) {
+      dispatch(updatePosition(param.position));
+    }
+
+    dispatch(updateIsFormChangedFromLastSaved());
+  };
+
+type UpdateFormFieldParam = {
+  title?: string;
+  content?: string;
+  position?: Position;
+};

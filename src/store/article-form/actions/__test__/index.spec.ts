@@ -1,5 +1,10 @@
 import { ApiError } from 'api/utils/handle-axios-error';
-import { submitNewArticle, submitEdittedArticle, fetchArticle } from '..';
+import {
+  submitNewArticle,
+  submitEdittedArticle,
+  fetchArticle,
+  updateFormField,
+} from '..';
 import * as GetArticleApiModule from 'api/articles-api/get-remote-article';
 import * as PostArticleApiModule from 'api/articles-api/post-remote-article';
 import * as PutArticleApiModule from 'api/articles-api/put-remote-article';
@@ -205,7 +210,7 @@ const mockGetResponse: GetArticleApiModule.GetArticleResponse = {
 };
 
 describe('fetchArticle', () => {
-  beforeEach(async () => {
+  beforeEach(() => {
     jest.resetAllMocks();
     getRemoteArticleSpy = jest.spyOn(GetArticleApiModule, 'getRemoteArticle');
   });
@@ -238,5 +243,43 @@ describe('fetchArticle', () => {
     await appThunk(dispatch);
 
     expect(dispatch.mock.calls[1][0].type).toBe('articleForm/fetchFailure');
+  });
+});
+
+describe('updateFormField', () => {
+  it('should call updateTitle actions', async () => {
+    const param = {
+      title: 'title',
+    };
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const appThunk = updateFormField(param) as any;
+    await appThunk(dispatch);
+
+    expect(dispatch.mock.calls[0][0].type).toBe('articleForm/updateTitle');
+  });
+
+  it('should call updateContent actions', async () => {
+    const param = {
+      content: 'content',
+    };
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const appThunk = updateFormField(param) as any;
+    await appThunk(dispatch);
+
+    expect(dispatch.mock.calls[0][0].type).toBe('articleForm/updateContent');
+  });
+
+  it('should call updatePosition actions', async () => {
+    const param = {
+      position: { lat: 0, lng: 0 },
+    };
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const appThunk = updateFormField(param) as any;
+    await appThunk(dispatch);
+
+    expect(dispatch.mock.calls[0][0].type).toBe('articleForm/updatePosition');
   });
 });

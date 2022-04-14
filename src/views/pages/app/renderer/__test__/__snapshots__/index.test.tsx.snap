@@ -11,6 +11,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
   >
     <TriviaMap
       endToSelectPosition={[Function]}
+      hiddenMarkerIds={Array []}
       newMarkerMode={false}
       onClickPostTitle={[Function]}
     />
@@ -24,6 +25,11 @@ exports[`Shallow Snapshot Tests basic 1`] = `
   </ForwardRef(Box)>
   <BoxModal
     onClose={[Function]}
+    open={false}
+  />
+  <DeletingConfirmModal
+    onClickCancel={[Function]}
+    onClickConfirm={[Function]}
     open={false}
   />
   <SwipeableEdgeDrawer
@@ -43,6 +49,27 @@ exports[`Shallow Snapshot Tests basic 1`] = `
     closeArticleModal={[Function]}
     closeFormModal={[Function]}
   />
+  <ForwardRef(Dialog)
+    onClose={[Function]}
+    open={false}
+  >
+    <ForwardRef(DialogTitle)>
+      既に他の投稿が編集中です。
+    </ForwardRef(DialogTitle)>
+    <ForwardRef(DialogContent)>
+      <ForwardRef(DialogContentText)>
+        現在編集中の投稿を「下書き保存」、「保存して公開」、または「編集を破棄」してからもう一度お試しください。
+      </ForwardRef(DialogContentText)>
+    </ForwardRef(DialogContent)>
+    <ForwardRef(DialogActions)>
+      <ForwardRef(Button)
+        onClick={[Function]}
+        variant="outlined"
+      >
+        閉じる
+      </ForwardRef(Button)>
+    </ForwardRef(DialogActions)>
+  </ForwardRef(Dialog)>
 </Fragment>
 `;
 
@@ -58,6 +85,7 @@ exports[`Shallow Snapshot Tests pc view 1`] = `
   >
     <TriviaMap
       endToSelectPosition={[Function]}
+      hiddenMarkerIds={Array []}
       newMarkerMode={false}
       onClickPostTitle={[Function]}
     />
@@ -71,6 +99,11 @@ exports[`Shallow Snapshot Tests pc view 1`] = `
   </ForwardRef(Box)>
   <BoxModal
     onClose={[Function]}
+    open={false}
+  />
+  <DeletingConfirmModal
+    onClickCancel={[Function]}
+    onClickConfirm={[Function]}
     open={false}
   />
   <ForwardRef(Drawer)
@@ -95,5 +128,26 @@ exports[`Shallow Snapshot Tests pc view 1`] = `
     closeArticleModal={[Function]}
     closeFormModal={[Function]}
   />
+  <ForwardRef(Dialog)
+    onClose={[Function]}
+    open={false}
+  >
+    <ForwardRef(DialogTitle)>
+      既に他の投稿が編集中です。
+    </ForwardRef(DialogTitle)>
+    <ForwardRef(DialogContent)>
+      <ForwardRef(DialogContentText)>
+        現在編集中の投稿を「下書き保存」、「保存して公開」、または「編集を破棄」してからもう一度お試しください。
+      </ForwardRef(DialogContentText)>
+    </ForwardRef(DialogContent)>
+    <ForwardRef(DialogActions)>
+      <ForwardRef(Button)
+        onClick={[Function]}
+        variant="outlined"
+      >
+        閉じる
+      </ForwardRef(Button)>
+    </ForwardRef(DialogActions)>
+  </ForwardRef(Dialog)>
 </Fragment>
 `;

@@ -127,6 +127,10 @@ export class Renderer extends React.Component<Props, State> {
     }
 
     return Object.keys(markers).map((postId) => {
+      if (this.props.hiddenMarkerIds.includes(postId)) {
+        return null;
+      }
+
       const marker = markers[postId];
 
       const popup = onClickPostTitle ? (
@@ -273,6 +277,7 @@ export type Props = {
   disabled?: boolean;
   markersFetchingState: LoadingState;
   doNotShowMarkers?: boolean;
+  hiddenMarkerIds: string[];
 
   fetchMarkers: () => void;
   onClickPostTitle?: (postId: string) => () => void;

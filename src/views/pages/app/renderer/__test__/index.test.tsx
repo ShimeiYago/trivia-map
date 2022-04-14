@@ -7,6 +7,7 @@ const props: Props = {
   isFormEditting: false,
   isMobile: true,
   deleteArticle: jest.fn(),
+  isFormChangedFromLastSaved: false,
 };
 
 const mockAddEventListener = jest
@@ -56,23 +57,23 @@ describe('componentDidUpdate', () => {
     jest.resetAllMocks();
   });
 
-  it('should add beforeunload eventListener when form open', () => {
-    shallowWrapper.setState({
-      openFormModal: true,
+  it('should add beforeunload eventListener when form changed', () => {
+    shallowWrapper.setProps({
+      isFormChangedFromLastSaved: true,
     });
     const instance = shallowWrapper.instance();
 
-    instance.componentDidUpdate(props, { openFormModal: false } as State);
+    instance.componentDidUpdate({ isFormChangedFromLastSaved: false } as Props);
     expect(mockAddEventListener).toHaveBeenCalled();
   });
 
-  it('should remove beforeunload eventListener when form close', () => {
-    shallowWrapper.setState({
-      openFormModal: false,
+  it('should remove beforeunload eventListener when form did not changed', () => {
+    shallowWrapper.setProps({
+      isFormChangedFromLastSaved: false,
     });
     const instance = shallowWrapper.instance();
 
-    instance.componentDidUpdate(props, { openFormModal: true } as State);
+    instance.componentDidUpdate({ isFormChangedFromLastSaved: true } as Props);
     expect(mockRemoveEventListener).toHaveBeenCalled();
   });
 });
@@ -92,16 +93,6 @@ describe('handleBeforeUnload', () => {
     expect(event.returnValue).toBe(
       '未保存のデータがありますが、本当に閉じてもよろしいですか？',
     );
-  });
-
-  it('should remove beforeunload eventListener when form close', () => {
-    shallowWrapper.setState({
-      openFormModal: false,
-    });
-    const instance = shallowWrapper.instance();
-
-    instance.componentDidUpdate(props, { openFormModal: true } as State);
-    expect(mockRemoveEventListener).toHaveBeenCalled();
   });
 });
 

@@ -66,6 +66,8 @@ export const articleFormSlice = createSlice({
       state.lastSavedTitle = initialState.lastSavedTitle;
       state.lastSavedContent = initialState.lastSavedContent;
       state.lastSavedPosition = initialState.lastSavedPosition;
+      state.isFormChangedFromLastSaved =
+        initialState.isFormChangedFromLastSaved;
     },
 
     updateIsEditting(state, action: PayloadAction<boolean>) {

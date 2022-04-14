@@ -33,6 +33,7 @@ export const {
   initialize,
   updateIsEditting,
   updateIsFormChangedFromLastSaved,
+  updateLastSavedValues,
 } = articleFormSlice.actions;
 
 // submitNewArticle action
@@ -126,6 +127,7 @@ export const fetchArticle =
     try {
       const res = await getRemoteArticle(postId);
       dispatch(fetchSuccess(res));
+      dispatch(updateLastSavedValues());
     } catch (error) {
       const apiError = error as ApiError<unknown>;
 

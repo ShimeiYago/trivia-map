@@ -32,11 +32,17 @@ export class Renderer extends React.Component<Props, State> {
     };
   }
 
-  componentDidUpdate(_: Props, prevState: State) {
-    if (!prevState.openFormModal && this.state.openFormModal) {
+  componentDidUpdate(prevProps: Props) {
+    if (
+      !prevProps.isFormChangedFromLastSaved &&
+      this.props.isFormChangedFromLastSaved
+    ) {
       window.addEventListener('beforeunload', this.handleBeforeUnload);
     }
-    if (prevState.openFormModal && !this.state.openFormModal) {
+    if (
+      prevProps.isFormChangedFromLastSaved &&
+      !this.props.isFormChangedFromLastSaved
+    ) {
       window.removeEventListener('beforeunload', this.handleBeforeUnload);
     }
   }
@@ -261,6 +267,7 @@ export type Props = {
   isFormEditting: boolean;
   isMobile: boolean;
   deleteArticle: (postId: string) => void;
+  isFormChangedFromLastSaved: boolean;
 };
 
 export type State = {

@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shallow Snapshot Tests basic 1`] = `
+<ForwardRef(Dialog)
+  open={true}
+>
+  <ForwardRef(DialogTitle)>
+    この投稿を削除してもよろしいですか？
+  </ForwardRef(DialogTitle)>
+  <ForwardRef(DialogActions)>
+    <ForwardRef(Button)
+      onClick={[MockFunction]}
+      variant="outlined"
+    >
+      キャンセル
+    </ForwardRef(Button)>
+    <ForwardRef(LoadingButton)
+      autoFocus={true}
+      loading={false}
+      onClick={[MockFunction]}
+      variant="contained"
+    >
+      OK
+    </ForwardRef(LoadingButton)>
+  </ForwardRef(DialogActions)>
+</ForwardRef(Dialog)>
+`;
+
+exports[`Shallow Snapshot Tests loading 1`] = `
+<ForwardRef(Dialog)
+  open={true}
+>
+  <ForwardRef(DialogTitle)>
+    この投稿を削除してもよろしいですか？
+  </ForwardRef(DialogTitle)>
+  <ForwardRef(DialogActions)>
+    <ForwardRef(Button)
+      onClick={[MockFunction]}
+      variant="outlined"
+    >
+      キャンセル
+    </ForwardRef(Button)>
+    <ForwardRef(LoadingButton)
+      autoFocus={true}
+      loading={true}
+      onClick={[MockFunction]}
+      variant="contained"
+    >
+      OK
+    </ForwardRef(LoadingButton)>
+  </ForwardRef(DialogActions)>
+</ForwardRef(Dialog)>
+`;

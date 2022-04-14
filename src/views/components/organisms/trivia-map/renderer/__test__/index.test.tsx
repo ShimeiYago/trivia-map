@@ -15,6 +15,7 @@ const basicProps: Props = {
   newMarkerMode: false,
   endToSelectPosition: jest.fn(),
   updatePosition: jest.fn(),
+  hiddenMarkerIds: [],
 };
 
 let shallowWrapper: ShallowWrapper<Props, State, Renderer>;
@@ -61,6 +62,13 @@ describe('Shallow Snapshot Tests', () => {
     shallowWrapper.setProps({
       disabled: true,
       doNotShowMarkers: true,
+    });
+    expect(shallowWrapper).toMatchSnapshot();
+  });
+
+  it('hide marker', () => {
+    shallowWrapper.setProps({
+      hiddenMarkerIds: ['000'],
     });
     expect(shallowWrapper).toMatchSnapshot();
   });

@@ -50,13 +50,11 @@ exports[`Shallow Snapshot Tests with delete button 1`] = `
   >
     content
   </ForwardRef(Typography)>
-  <ForwardRef(LoadingButton)
-    loading={false}
+  <ForwardRef(Button)
     onClick={[MockFunction]}
-    variant="outlined"
   >
     削除
-  </ForwardRef(LoadingButton)>
+  </ForwardRef(Button)>
 </Fragment>
 `;
 
@@ -82,32 +80,5 @@ exports[`Shallow Snapshot Tests with edit button 1`] = `
   >
     編集
   </ForwardRef(Button)>
-</Fragment>
-`;
-
-exports[`Shallow Snapshot Tests with loading delete button 1`] = `
-<Fragment>
-  <ForwardRef(Typography)
-    component="h2"
-    variant="h6"
-  >
-    title
-  </ForwardRef(Typography)>
-  <ForwardRef(Typography)
-    sx={
-      Object {
-        "mt": 2,
-      }
-    }
-  >
-    content
-  </ForwardRef(Typography)>
-  <ForwardRef(LoadingButton)
-    loading={true}
-    onClick={[MockFunction]}
-    variant="outlined"
-  >
-    削除
-  </ForwardRef(LoadingButton)>
 </Fragment>
 `;

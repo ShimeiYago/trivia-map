@@ -23,6 +23,7 @@ export function TriviaMap(ownProps: OwnProps) {
     disabled: ownProps.disabled,
     markersFetchingState: useAppSelector(selectMarkersFetchingState),
     doNotShowMarkers: ownProps.doNotShowMarkers,
+    hiddenMarkerIds: ownProps.hiddenMarkerIds ?? [],
 
     fetchMarkers: () => dispatch(fetchMarkers()),
     onClickPostTitle: ownProps.onClickPostTitle,
@@ -43,4 +44,5 @@ type OwnProps = {
   initCenter?: Position;
   disabled?: boolean;
   doNotShowMarkers?: boolean;
+  hiddenMarkerIds?: string[];
 };

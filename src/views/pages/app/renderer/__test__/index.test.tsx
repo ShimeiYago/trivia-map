@@ -9,6 +9,16 @@ const props: Props = {
   deleteArticle: jest.fn(),
 };
 
+const mockAddEventListener = jest
+  .spyOn(window, 'addEventListener')
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  .mockImplementation(() => {});
+
+const mockRemoveEventListener = jest
+  .spyOn(window, 'removeEventListener')
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  .mockImplementation(() => {});
+
 describe('Shallow Snapshot Tests', () => {
   beforeEach(() => {
     shallowWrapper = shallow(<Renderer {...props} />);
@@ -40,6 +50,61 @@ describe('handleClickAddButton', () => {
   });
 });
 
+describe('componentDidUpdate', () => {
+  beforeEach(() => {
+    shallowWrapper = shallow(<Renderer {...props} />);
+    jest.resetAllMocks();
+  });
+
+  it('should add beforeunload eventListener when form open', () => {
+    shallowWrapper.setState({
+      openFormModal: true,
+    });
+    const instance = shallowWrapper.instance();
+
+    instance.componentDidUpdate(props, { openFormModal: false } as State);
+    expect(mockAddEventListener).toHaveBeenCalled();
+  });
+
+  it('should remove beforeunload eventListener when form close', () => {
+    shallowWrapper.setState({
+      openFormModal: false,
+    });
+    const instance = shallowWrapper.instance();
+
+    instance.componentDidUpdate(props, { openFormModal: true } as State);
+    expect(mockRemoveEventListener).toHaveBeenCalled();
+  });
+});
+
+describe('handleBeforeUnload', () => {
+  it('should add beforeunload eventListener when form open', () => {
+    shallowWrapper = shallow(<Renderer {...props} />);
+    const instance = shallowWrapper.instance();
+
+    const event = {
+      preventDefault: jest.fn(),
+      returnValue: '',
+    } as unknown as BeforeUnloadEvent;
+
+    instance['handleBeforeUnload'](event);
+
+    expect(event.returnValue).toBe(
+      '未保存のデータがありますが、本当に閉じてもよろしいですか？',
+    );
+  });
+
+  it('should remove beforeunload eventListener when form close', () => {
+    shallowWrapper.setState({
+      openFormModal: false,
+    });
+    const instance = shallowWrapper.instance();
+
+    instance.componentDidUpdate(props, { openFormModal: true } as State);
+    expect(mockRemoveEventListener).toHaveBeenCalled();
+  });
+});
+
 describe('handleClickPostTitle', () => {
   it('should set openingModal and readingArticleId states', () => {
     shallowWrapper = shallow(<Renderer {...props} />);
@@ -52,8 +117,19 @@ describe('handleClickPostTitle', () => {
 });
 
 describe('handleClickPostEdit', () => {
-  it('should set openingModal and edittingArticleId states', () => {
+  beforeEach(() => {
     shallowWrapper = shallow(<Renderer {...props} />);
+  });
+
+  it('should open dialog when form modal is opening', () => {
+    shallowWrapper.setState({ openFormModal: true });
+    const instance = shallowWrapper.instance();
+
+    instance['handleClickPostEdit']();
+    expect(instance.state.openDoubleEditAlartDialog).toBeTruthy;
+  });
+
+  it('should set openingModal and edittingArticleId states', () => {
     const instance = shallowWrapper.instance();
 
     instance.setState({
@@ -67,7 +143,17 @@ describe('handleClickPostEdit', () => {
 });
 
 describe('handleClickPostDelete', () => {
-  it('should set openArticleModal state and call deleteArticle', () => {
+  it('should set openDialogToConfirmDeleting state', () => {
+    shallowWrapper = shallow(<Renderer {...props} />);
+    const instance = shallowWrapper.instance();
+
+    instance['handleClickPostDelete']();
+    expect(instance.state.openDialogToConfirmDeleting).toBeTruthy();
+  });
+});
+
+describe('handleConfirmToDelete', () => {
+  it('should call deleteArticle', () => {
     shallowWrapper = shallow(<Renderer {...props} />);
     const instance = shallowWrapper.instance();
 
@@ -75,8 +161,22 @@ describe('handleClickPostDelete', () => {
       readingArticleId: 'postId-000',
     });
 
-    instance['handleClickPostDelete']();
+    instance['handleConfirmToDelete']();
     expect(instance.props.deleteArticle).toBeCalled();
+  });
+});
+
+describe('handleCancelToDeleteMarker', () => {
+  it('should set openDialogToConfirmDeleting state', () => {
+    shallowWrapper = shallow(<Renderer {...props} />);
+    const instance = shallowWrapper.instance();
+
+    instance.setState({
+      openDialogToConfirmDeleting: true,
+    });
+
+    instance['handleCancelToDeleteMarker']();
+    expect(instance.state.openDialogToConfirmDeleting).toBeFalsy();
   });
 });
 
@@ -133,5 +233,16 @@ describe('endToSelectPosition', () => {
     instance['endToSelectPosition']();
     expect(instance.state.openFormModal).toBeTruthy;
     expect(instance.state.newMarkerMode).toBe(false);
+  });
+});
+
+describe('handleCloseDoubleEditAlartDialog', () => {
+  it('should close modal', () => {
+    shallowWrapper = shallow(<Renderer {...props} />);
+    shallowWrapper.setState({ openDoubleEditAlartDialog: true });
+    const instance = shallowWrapper.instance();
+
+    instance['handleCloseDoubleEditAlartDialog']();
+    expect(instance.state.openDoubleEditAlartDialog).toBeFalsy();
   });
 });

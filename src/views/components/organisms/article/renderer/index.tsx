@@ -1,7 +1,6 @@
 import React from 'react';
 import { Box, Button, CircularProgress, Typography } from '@mui/material';
 import { LoadingState } from 'types/loading-state';
-import { LoadingButton } from '@mui/lab';
 
 export class Renderer extends React.Component<Props> {
   componentDidMount() {
@@ -32,13 +31,7 @@ export class Renderer extends React.Component<Props> {
         )}
 
         {this.props.onClickDelete && (
-          <LoadingButton
-            loading={this.props.markerDeletingState === 'loading'}
-            variant="outlined"
-            onClick={this.props.onClickDelete}
-          >
-            削除
-          </LoadingButton>
+          <Button onClick={this.props.onClickDelete}>削除</Button>
         )}
       </>
     );
@@ -49,7 +42,6 @@ export type Props = {
   title: string;
   content: string;
   articleLoadingState: LoadingState;
-  markerDeletingState: LoadingState;
 
   fetchArticle: () => void;
   onClickEdit?: () => void;

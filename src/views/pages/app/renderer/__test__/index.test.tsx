@@ -113,7 +113,7 @@ describe('handleClickPostEdit', () => {
   });
 
   it('should open dialog when form modal is opening', () => {
-    shallowWrapper.setState({ openFormModal: true });
+    shallowWrapper.setProps({ isFormChangedFromLastSaved: true });
     const instance = shallowWrapper.instance();
 
     instance['handleClickPostEdit']();

@@ -71,8 +71,11 @@ describe('componentDidMount', () => {
 });
 
 describe('componentDidUpdate', () => {
-  it('should call scrollIntoView', () => {
+  beforeEach(() => {
     wrapper = shallow(<Renderer {...basicProps} />);
+  });
+
+  it('should call scrollIntoView', () => {
     wrapper.setProps({ submittingState: 'error' });
     const instance = wrapper.instance();
 
@@ -86,6 +89,23 @@ describe('componentDidUpdate', () => {
 
     instance.componentDidUpdate(basicProps);
     expect(messageRef.current.scrollIntoView).toBeCalled();
+  });
+
+  it('should call fetchArticle if postId exists', () => {
+    wrapper.setProps({ postId: 'postId-000' });
+    const instance = wrapper.instance();
+    instance.componentDidUpdate(basicProps);
+
+    expect(basicProps.fetchArticle).toBeCalled();
+  });
+});
+
+describe('componentWillUnmount', () => {
+  it('fetchArticle if postId exists', () => {
+    wrapper = shallow(<Renderer {...basicProps} />);
+    wrapper.setProps({ postId: 'postId-000' });
+    wrapper.unmount();
+    expect(basicProps.initialize).toBeCalled();
   });
 });
 

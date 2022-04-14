@@ -126,7 +126,7 @@ export class Renderer extends React.Component<Props, State> {
   };
 
   protected handleClickPostEdit = () => {
-    if (this.state.openFormModal) {
+    if (this.props.isFormChangedFromLastSaved) {
       return this.setState({
         openDoubleEditAlartDialog: true,
       });
@@ -238,7 +238,7 @@ export class Renderer extends React.Component<Props, State> {
         open={this.state.openDoubleEditAlartDialog}
         onClose={this.handleCloseDoubleEditAlartDialog}
       >
-        <DialogTitle>既に他の投稿が編集中です。</DialogTitle>
+        <DialogTitle>入力内容の変更が保存されていません。</DialogTitle>
         <DialogContent>
           <DialogContentText>
             現在編集中の投稿を「下書き保存」、「保存して公開」、または「編集を破棄」してからもう一度お試しください。

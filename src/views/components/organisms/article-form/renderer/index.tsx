@@ -47,6 +47,15 @@ export class Renderer extends React.Component<Props> {
         block: 'start',
       });
     }
+
+    if (this.props.postId && prevProps.postId !== this.props.postId) {
+      this.props.initialize();
+      this.props.fetchArticle(this.props.postId);
+    }
+  }
+
+  componentWillUnmount() {
+    this.props.initialize();
   }
 
   render() {

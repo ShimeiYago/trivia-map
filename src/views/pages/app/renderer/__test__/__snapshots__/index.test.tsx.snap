@@ -54,7 +54,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
     open={false}
   >
     <ForwardRef(DialogTitle)>
-      既に他の投稿が編集中です。
+      入力内容の変更が保存されていません。
     </ForwardRef(DialogTitle)>
     <ForwardRef(DialogContent)>
       <ForwardRef(DialogContentText)>
@@ -133,7 +133,7 @@ exports[`Shallow Snapshot Tests pc view 1`] = `
     open={false}
   >
     <ForwardRef(DialogTitle)>
-      既に他の投稿が編集中です。
+      入力内容の変更が保存されていません。
     </ForwardRef(DialogTitle)>
     <ForwardRef(DialogContent)>
       <ForwardRef(DialogContentText)>

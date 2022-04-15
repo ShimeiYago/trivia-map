@@ -13,6 +13,8 @@ const {
   fetchSuccess,
   initialize,
   updateIsEditting,
+  updateLastSavedValues,
+  updateIsFormChangedFromLastSaved,
 } = articleFormSlice.actions;
 
 describe('articleForm reducer', () => {
@@ -31,9 +33,12 @@ describe('articleForm reducer', () => {
     expect(articleFormReducer(undefined, { type: 'unknown' })).toEqual({
       title: '',
       content: '',
+      lastSavedTitle: '',
+      lastSavedContent: '',
       submittingState: 'waiting',
       fetchingState: 'waiting',
       isEditting: false,
+      isFormChangedFromLastSaved: false,
     });
   });
 
@@ -116,5 +121,25 @@ describe('articleForm reducer', () => {
       updateIsEditting(true),
     );
     expect(actual.isEditting).toEqual(true);
+  });
+
+  it('should handle updateLastSavedValues', () => {
+    const edittedState = JSON.parse(JSON.stringify(initialState));
+    edittedState.title = 'new title';
+    edittedState.content = 'new content';
+    edittedState.position = { lat: 0, lng: 0 };
+
+    const actual = articleFormReducer(edittedState, updateLastSavedValues());
+    expect(actual.lastSavedTitle).toEqual('new title');
+    expect(actual.lastSavedContent).toEqual('new content');
+    expect(actual.lastSavedPosition).toEqual({ lat: 0, lng: 0 });
+  });
+
+  it('should handle updateIsFormChangedFromLastSaved', () => {
+    const actual = articleFormReducer(
+      initialState,
+      updateIsFormChangedFromLastSaved(),
+    );
+    expect(actual.isFormChangedFromLastSaved).toBeFalsy;
   });
 });

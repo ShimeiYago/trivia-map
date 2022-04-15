@@ -17,6 +17,7 @@ import {
 } from '../selector';
 import { globalAPIErrorMessage } from 'constant/global-api-error-message';
 import { appendMarkers } from 'store/markers/actions';
+import { Position } from 'types/position';
 
 // basic actions
 export const {
@@ -31,6 +32,8 @@ export const {
   fetchFailure,
   initialize,
   updateIsEditting,
+  updateIsFormChangedFromLastSaved,
+  updateLastSavedValues,
 } = articleFormSlice.actions;
 
 // submitNewArticle action
@@ -124,6 +127,7 @@ export const fetchArticle =
     try {
       const res = await getRemoteArticle(postId);
       dispatch(fetchSuccess(res));
+      dispatch(updateLastSavedValues());
     } catch (error) {
       const apiError = error as ApiError<unknown>;
 
@@ -131,3 +135,28 @@ export const fetchArticle =
       dispatch(fetchFailure(errorMsg));
     }
   };
+
+// updateFormField action
+export const updateFormField =
+  (param: UpdateFormFieldParam): AppThunk =>
+  async (dispatch) => {
+    // have to pass case param.title=''
+    if (param.title !== undefined) {
+      dispatch(updateTitle(param.title));
+    }
+    // have to pass case param.content=''
+    if (param.content !== undefined) {
+      dispatch(updateContent(param.content));
+    }
+    if (param.position) {
+      dispatch(updatePosition(param.position));
+    }
+
+    dispatch(updateIsFormChangedFromLastSaved());
+  };
+
+export type UpdateFormFieldParam = {
+  title?: string;
+  content?: string;
+  position?: Position;
+};

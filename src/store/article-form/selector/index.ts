@@ -29,3 +29,18 @@ export const selectArticleFormIsEditting = (state: ArticleFormRootState) =>
 export const selectArticleFormFetchingErrorMsg = (
   state: ArticleFormRootState,
 ) => state.articleForm.fetchingErrorMsg;
+
+export const selectArticleFormLastSavedTitle = (state: ArticleFormRootState) =>
+  state.articleForm.lastSavedTitle;
+
+export const selectArticleFormLastSavedContent = (
+  state: ArticleFormRootState,
+) => state.articleForm.lastSavedContent;
+
+export const selectArticleFormLastSavedPosition = (
+  state: ArticleFormRootState,
+) => state.articleForm.lastSavedPosition;
+
+export const selectArticleFormIsFormChangedFromLastSaved = (
+  state: ArticleFormRootState,
+) => state.articleForm.isFormChangedFromLastSaved;

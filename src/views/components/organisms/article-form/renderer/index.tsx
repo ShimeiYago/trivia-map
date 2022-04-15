@@ -78,7 +78,7 @@ export class Renderer extends React.Component<Props> {
       : 'normal';
 
     return (
-      <Container maxWidth="sm" sx={{ pt: 5 }}>
+      <Container maxWidth="sm" sx={{ p: 3 }}>
         <Stack spacing={3}>
           <Typography component="h2" align="center" variant="h4">
             {newMode ? '新しいトリビアを追加' : 'トリビアを編集'}

@@ -17,8 +17,6 @@ export function headStyle(bleedingHeight: number): SxProps {
 }
 
 export const contentStyle: SxProps = {
-  px: 2,
-  pb: 2,
   height: '100%',
   overflow: 'auto',
   backgroundColor,

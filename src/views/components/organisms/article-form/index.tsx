@@ -14,12 +14,10 @@ import {
   initialize,
   submitEdittedArticle,
   submitNewArticle,
-  updatePosition,
-  updateTitle,
-  updateContent,
   updateIsEditting,
+  updateFormField,
+  UpdateFormFieldParam,
 } from 'store/article-form/actions';
-import { Position } from 'types/position';
 
 export function ArticleForm(ownProps: OwnProps) {
   const dispatch = useAppDispatch();
@@ -34,9 +32,8 @@ export function ArticleForm(ownProps: OwnProps) {
     formError: useAppSelector(selectArticleFormFormError),
     isFormEditting: useAppSelector(selectArticleFormIsEditting),
 
-    updateTitle: (title: string) => dispatch(updateTitle(title)),
-    updateContent: (content: string) => dispatch(updateContent(content)),
-    updatePosition: (position: Position) => dispatch(updatePosition(position)),
+    updateFormField: (param: UpdateFormFieldParam) =>
+      dispatch(updateFormField(param)),
     submitNewArticle: () => dispatch(submitNewArticle()),
     submitEdittedArticle: () => dispatch(submitEdittedArticle()),
     fetchArticle: (postId: string) => dispatch(fetchArticle(postId)),

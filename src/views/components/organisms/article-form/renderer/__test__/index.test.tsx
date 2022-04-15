@@ -100,15 +100,6 @@ describe('componentDidUpdate', () => {
   });
 });
 
-describe('componentWillUnmount', () => {
-  it('fetchArticle if postId exists', () => {
-    wrapper = shallow(<Renderer {...basicProps} />);
-    wrapper.setProps({ postId: 'postId-000' });
-    wrapper.unmount();
-    expect(basicProps.initialize).toBeCalled();
-  });
-});
-
 describe('handleChangeTitle', () => {
   it('call updateTitle', () => {
     wrapper = shallow(<Renderer {...basicProps} />);

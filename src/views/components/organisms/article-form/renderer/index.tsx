@@ -54,10 +54,6 @@ export class Renderer extends React.Component<Props> {
     }
   }
 
-  componentWillUnmount() {
-    this.props.initialize();
-  }
-
   render() {
     const {
       postId,

@@ -226,6 +226,7 @@ export class Renderer extends React.Component<Props, State> {
           <ArticleForm
             postId={edittingArticleId}
             onClickSelectPosition={this.startToSelectPosition}
+            onClose={this.handleCloseModal('form')}
           />
         )}
       </Drawer>

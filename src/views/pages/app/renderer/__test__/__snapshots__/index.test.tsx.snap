@@ -122,6 +122,7 @@ exports[`Shallow Snapshot Tests pc view 1`] = `
   >
     <ArticleForm
       onClickSelectPosition={[Function]}
+      onClose={[Function]}
     />
   </ForwardRef(Drawer)>
   <GlobalMessage

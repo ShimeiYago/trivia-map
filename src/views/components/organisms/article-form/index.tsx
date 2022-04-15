@@ -41,6 +41,7 @@ export function ArticleForm(ownProps: OwnProps) {
     handleClickSelectPosition: ownProps.onClickSelectPosition,
     updateIsEditting: (isEditting: boolean) =>
       dispatch(updateIsEditting(isEditting)),
+    onClose: ownProps.onClose,
   };
 
   return <Renderer {...props} />;
@@ -49,4 +50,5 @@ export function ArticleForm(ownProps: OwnProps) {
 type OwnProps = {
   postId?: string;
   onClickSelectPosition?: () => void;
+  onClose?: () => void;
 };

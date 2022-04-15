@@ -101,11 +101,21 @@ describe('componentDidUpdate', () => {
 });
 
 describe('componentWillUnmount', () => {
-  it('fetchArticle if postId exists', () => {
+  beforeEach(() => {
     wrapper = shallow(<Renderer {...basicProps} />);
-    wrapper.setProps({ postId: 'postId-000' });
-    wrapper.unmount();
-    expect(basicProps.initialize).toBeCalled();
+  });
+
+  it('should not call initialize if isFormEditting', () => {
+    wrapper.setProps({ isFormEditting: true });
+    const instance = wrapper.instance();
+    instance.componentWillUnmount();
+    expect(instance.props.initialize).toBeCalledTimes(1);
+  });
+
+  it('should call initialize if not isFormEditting', () => {
+    const instance = wrapper.instance();
+    instance.componentWillUnmount();
+    expect(instance.props.initialize).toBeCalledTimes(2);
   });
 });
 

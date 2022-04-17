@@ -5,7 +5,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
   maxWidth="sm"
   sx={
     Object {
-      "p": 3,
+      "pt": 5,
     }
   }
 >
@@ -116,7 +116,7 @@ exports[`Shallow Snapshot Tests loading 1`] = `
   maxWidth="sm"
   sx={
     Object {
-      "p": 3,
+      "pt": 5,
     }
   }
 >
@@ -225,7 +225,7 @@ exports[`Shallow Snapshot Tests position is not selected yet 1`] = `
   maxWidth="sm"
   sx={
     Object {
-      "p": 3,
+      "pt": 5,
     }
   }
 >
@@ -330,7 +330,7 @@ exports[`Shallow Snapshot Tests with validation error 1`] = `
   maxWidth="sm"
   sx={
     Object {
-      "p": 3,
+      "pt": 5,
     }
   }
 >

@@ -70,6 +70,8 @@ exports[`Shallow Snapshot Tests basic 1`] = `
           "backgroundColor": "#fff",
           "height": "100%",
           "overflow": "auto",
+          "pb": 2,
+          "px": 2,
         }
       }
     >

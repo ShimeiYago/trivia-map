@@ -23,7 +23,7 @@ export class Renderer extends React.Component<Props, State> {
   render() {
     return (
       <>
-        <Box sx={{ p: 1 }}>
+        <Box sx={{ p: this.props.padding }}>
           <IconButton aria-label="close" onClick={this.handleClick}>
             <CloseIcon />
           </IconButton>
@@ -88,6 +88,7 @@ export type Props = {
   isFormChangedFromLastSaved: boolean;
   submittingState: LoadingState;
   isFormEditting: boolean;
+  padding?: number;
 
   onClose: () => void;
   submitEdittedArticle: () => void;

@@ -14,6 +14,7 @@ import { BoxModal } from 'views/components/moleculars/box-modal';
 import { SwipeableEdgeDrawer } from 'views/components/moleculars/swipeable-edge-drawer';
 import { Article } from 'views/components/organisms/article';
 import { ArticleForm } from 'views/components/organisms/article-form';
+import { CloseFormButton } from 'views/components/organisms/close-form-button';
 import { DeletingConfirmModal } from 'views/components/organisms/deleting-confirm-modal';
 import { GlobalMessage } from 'views/components/organisms/global-messge';
 import { LoadingProgressBar } from 'views/components/organisms/loading-progress-bar';
@@ -201,13 +202,18 @@ export class Renderer extends React.Component<Props, State> {
     const { edittingArticleId, openFormModal } = this.state;
     const { isFormEditting, isMobile } = this.props;
 
+    const closeButton = (
+      <CloseFormButton onClose={this.handleCloseModal('form')} />
+    );
+
     return isMobile ? (
       <SwipeableEdgeDrawer
         show={isFormEditting || openFormModal}
         open={openFormModal}
         onOpen={this.handleOpenEditForm}
         onClose={this.handleCloseModal('form')}
-        labelText="編集中"
+        edgeLabel={closeButton}
+        edgeLabelWhenClosed="編集中"
         heightRatio={80}
       >
         <ArticleForm
@@ -226,6 +232,7 @@ export class Renderer extends React.Component<Props, State> {
           <ArticleForm
             postId={edittingArticleId}
             onClickSelectPosition={this.startToSelectPosition}
+            onClose={this.handleCloseModal('form')}
           />
         )}
       </Drawer>

@@ -1,450 +1,575 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Shallow Snapshot Tests basic 1`] = `
-<ForwardRef(Container)
-  maxWidth="sm"
-  sx={
-    Object {
-      "p": 3,
+<Fragment>
+  <ForwardRef(Container)
+    maxWidth="sm"
+    sx={
+      Object {
+        "p": 3,
+      }
     }
-  }
->
-  <ForwardRef(Stack)
-    spacing={3}
   >
-    <ForwardRef(Typography)
-      align="center"
-      component="h2"
-      variant="h4"
+    <ForwardRef(Stack)
+      spacing={3}
     >
-      新しいトリビアを追加
-    </ForwardRef(Typography)>
-    <ForwardRef(TextField)
-      disabled={false}
-      error={false}
-      label="タイトル"
-      onChange={[Function]}
-      value=""
-      variant="standard"
-    />
-    <ForwardRef(TextField)
-      disabled={false}
-      error={false}
-      label="説明文"
-      multiline={true}
-      onChange={[Function]}
-      rows={4}
-      value=""
-    />
-    <BoxField
-      disabled={false}
-      status="valid"
-    >
-      <ForwardRef(Box)
-        sx={
-          Object {
-            "position": "relative",
-          }
-        }
+      <ForwardRef(Typography)
+        align="center"
+        component="h2"
+        variant="h4"
       >
-        <TriviaMap
-          disabled={true}
-          doNotShowMarkers={true}
-          height={300}
-          initCenter={
-            Object {
-              "lat": 0,
-              "lng": 0,
-            }
-          }
-          initZoom={3}
-        />
+        新しいトリビアを追加
+      </ForwardRef(Typography)>
+      <ForwardRef(TextField)
+        disabled={false}
+        error={false}
+        label="タイトル"
+        onChange={[Function]}
+        value=""
+        variant="standard"
+      />
+      <ForwardRef(TextField)
+        disabled={false}
+        error={false}
+        label="説明文"
+        multiline={true}
+        onChange={[Function]}
+        rows={4}
+        value=""
+      />
+      <BoxField
+        disabled={false}
+        status="valid"
+      >
         <ForwardRef(Box)
           sx={
             Object {
-              "backgroundColor": "rgba(0,0,0,0.5)",
-              "height": "100%",
-              "left": 0,
-              "position": "absolute",
-              "top": 0,
-              "width": "100%",
-              "zIndex": 2000,
-            }
-          }
-        />
-        <ForwardRef(Box)
-          sx={
-            Object {
-              "fontWeight": "bold",
-              "left": "50%",
-              "position": "absolute",
-              "top": "70%",
-              "transform": "translate(-50%,-50%)",
-              "width": "90%",
-              "zIndex": 2000,
+              "position": "relative",
             }
           }
         >
-          <ForwardRef(Typography)
-            color="white"
-            component="div"
-            fontSize="14"
-            textAlign="center"
-            variant="inherit"
+          <TriviaMap
+            disabled={true}
+            doNotShowMarkers={true}
+            height={300}
+            initCenter={
+              Object {
+                "lat": 0,
+                "lng": 0,
+              }
+            }
+            initZoom={3}
+          />
+          <ForwardRef(Box)
+            sx={
+              Object {
+                "backgroundColor": "rgba(0,0,0,0.5)",
+                "height": "100%",
+                "left": 0,
+                "position": "absolute",
+                "top": 0,
+                "width": "100%",
+                "zIndex": 2000,
+              }
+            }
+          />
+          <ForwardRef(Box)
+            sx={
+              Object {
+                "fontWeight": "bold",
+                "left": "50%",
+                "position": "absolute",
+                "top": "70%",
+                "transform": "translate(-50%,-50%)",
+                "width": "90%",
+                "zIndex": 2000,
+              }
+            }
           >
-            この位置が選択されています。
-            <br />
-            位置を選び直す場合はここをタップしてください。
-          </ForwardRef(Typography)>
+            <ForwardRef(Typography)
+              color="white"
+              component="div"
+              fontSize="14"
+              textAlign="center"
+              variant="inherit"
+            >
+              この位置が選択されています。
+              <br />
+              位置を選び直す場合はここをタップしてください。
+            </ForwardRef(Typography)>
+          </ForwardRef(Box)>
         </ForwardRef(Box)>
-      </ForwardRef(Box)>
-    </BoxField>
-    <ForwardRef(LoadingButton)
-      disabled={false}
-      loading={false}
-      onClick={[Function]}
-      variant="outlined"
-    >
-      保存して公開
-    </ForwardRef(LoadingButton)>
-  </ForwardRef(Stack)>
-</ForwardRef(Container)>
+      </BoxField>
+      <ForwardRef(LoadingButton)
+        disabled={false}
+        loading={false}
+        onClick={[Function]}
+        variant="outlined"
+      >
+        保存して公開
+      </ForwardRef(LoadingButton)>
+    </ForwardRef(Stack)>
+  </ForwardRef(Container)>
+</Fragment>
 `;
 
 exports[`Shallow Snapshot Tests loading 1`] = `
-<ForwardRef(Container)
-  maxWidth="sm"
-  sx={
-    Object {
-      "p": 3,
-    }
-  }
->
-  <ForwardRef(Stack)
-    spacing={3}
-  >
-    <ForwardRef(Typography)
-      align="center"
-      component="h2"
-      variant="h4"
-    >
-      新しいトリビアを追加
-    </ForwardRef(Typography)>
-    <ForwardRef(Box)
-      sx={
-        Object {
-          "display": "flex",
-          "justifyContent": "center",
-        }
+<Fragment>
+  <ForwardRef(Container)
+    maxWidth="sm"
+    sx={
+      Object {
+        "p": 3,
       }
+    }
+  >
+    <ForwardRef(Stack)
+      spacing={3}
     >
-      <ForwardRef(CircularProgress) />
-    </ForwardRef(Box)>
-    <ForwardRef(TextField)
-      disabled={true}
-      error={false}
-      label="タイトル"
-      onChange={[Function]}
-      value=""
-      variant="standard"
-    />
-    <ForwardRef(TextField)
-      disabled={true}
-      error={false}
-      label="説明文"
-      multiline={true}
-      onChange={[Function]}
-      rows={4}
-      value=""
-    />
-    <BoxField
-      disabled={true}
-      status="valid"
-    >
+      <ForwardRef(Typography)
+        align="center"
+        component="h2"
+        variant="h4"
+      >
+        新しいトリビアを追加
+      </ForwardRef(Typography)>
       <ForwardRef(Box)
         sx={
           Object {
-            "position": "relative",
+            "display": "flex",
+            "justifyContent": "center",
           }
         }
       >
-        <TriviaMap
-          disabled={true}
-          doNotShowMarkers={true}
-          height={300}
-          initCenter={
-            Object {
-              "lat": 0,
-              "lng": 0,
-            }
-          }
-          initZoom={3}
-        />
-        <ForwardRef(Box)
-          sx={
-            Object {
-              "backgroundColor": "rgba(0,0,0,0.5)",
-              "height": "100%",
-              "left": 0,
-              "position": "absolute",
-              "top": 0,
-              "width": "100%",
-              "zIndex": 2000,
-            }
-          }
-        />
-        <ForwardRef(Box)
-          sx={
-            Object {
-              "fontWeight": "bold",
-              "left": "50%",
-              "position": "absolute",
-              "top": "70%",
-              "transform": "translate(-50%,-50%)",
-              "width": "90%",
-              "zIndex": 2000,
-            }
-          }
-        />
+        <ForwardRef(CircularProgress) />
       </ForwardRef(Box)>
-    </BoxField>
-    <ForwardRef(LoadingButton)
-      disabled={true}
-      loading={false}
-      onClick={[Function]}
-      variant="outlined"
-    >
-      保存して公開
-    </ForwardRef(LoadingButton)>
-  </ForwardRef(Stack)>
-</ForwardRef(Container)>
+      <ForwardRef(TextField)
+        disabled={true}
+        error={false}
+        label="タイトル"
+        onChange={[Function]}
+        value=""
+        variant="standard"
+      />
+      <ForwardRef(TextField)
+        disabled={true}
+        error={false}
+        label="説明文"
+        multiline={true}
+        onChange={[Function]}
+        rows={4}
+        value=""
+      />
+      <BoxField
+        disabled={true}
+        status="valid"
+      >
+        <ForwardRef(Box)
+          sx={
+            Object {
+              "position": "relative",
+            }
+          }
+        >
+          <TriviaMap
+            disabled={true}
+            doNotShowMarkers={true}
+            height={300}
+            initCenter={
+              Object {
+                "lat": 0,
+                "lng": 0,
+              }
+            }
+            initZoom={3}
+          />
+          <ForwardRef(Box)
+            sx={
+              Object {
+                "backgroundColor": "rgba(0,0,0,0.5)",
+                "height": "100%",
+                "left": 0,
+                "position": "absolute",
+                "top": 0,
+                "width": "100%",
+                "zIndex": 2000,
+              }
+            }
+          />
+          <ForwardRef(Box)
+            sx={
+              Object {
+                "fontWeight": "bold",
+                "left": "50%",
+                "position": "absolute",
+                "top": "70%",
+                "transform": "translate(-50%,-50%)",
+                "width": "90%",
+                "zIndex": 2000,
+              }
+            }
+          />
+        </ForwardRef(Box)>
+      </BoxField>
+      <ForwardRef(LoadingButton)
+        disabled={true}
+        loading={false}
+        onClick={[Function]}
+        variant="outlined"
+      >
+        保存して公開
+      </ForwardRef(LoadingButton)>
+    </ForwardRef(Stack)>
+  </ForwardRef(Container)>
+</Fragment>
 `;
 
 exports[`Shallow Snapshot Tests position is not selected yet 1`] = `
-<ForwardRef(Container)
-  maxWidth="sm"
-  sx={
-    Object {
-      "p": 3,
+<Fragment>
+  <ForwardRef(Container)
+    maxWidth="sm"
+    sx={
+      Object {
+        "p": 3,
+      }
     }
-  }
->
-  <ForwardRef(Stack)
-    spacing={3}
   >
-    <ForwardRef(Typography)
-      align="center"
-      component="h2"
-      variant="h4"
+    <ForwardRef(Stack)
+      spacing={3}
     >
-      新しいトリビアを追加
-    </ForwardRef(Typography)>
-    <ForwardRef(TextField)
-      disabled={false}
-      error={false}
-      label="タイトル"
-      onChange={[Function]}
-      value=""
-      variant="standard"
-    />
-    <ForwardRef(TextField)
-      disabled={false}
-      error={false}
-      label="説明文"
-      multiline={true}
-      onChange={[Function]}
-      rows={4}
-      value=""
-    />
-    <BoxField
-      disabled={false}
-      status="normal"
-    >
-      <ForwardRef(Box)
-        sx={
-          Object {
-            "position": "relative",
-          }
-        }
+      <ForwardRef(Typography)
+        align="center"
+        component="h2"
+        variant="h4"
       >
-        <TriviaMap
-          disabled={true}
-          doNotShowMarkers={true}
-          height={300}
-          initZoom={3}
-        />
+        新しいトリビアを追加
+      </ForwardRef(Typography)>
+      <ForwardRef(TextField)
+        disabled={false}
+        error={false}
+        label="タイトル"
+        onChange={[Function]}
+        value=""
+        variant="standard"
+      />
+      <ForwardRef(TextField)
+        disabled={false}
+        error={false}
+        label="説明文"
+        multiline={true}
+        onChange={[Function]}
+        rows={4}
+        value=""
+      />
+      <BoxField
+        disabled={false}
+        status="normal"
+      >
         <ForwardRef(Box)
           sx={
             Object {
-              "backgroundColor": "rgba(0,0,0,0.5)",
-              "height": "100%",
-              "left": 0,
-              "position": "absolute",
-              "top": 0,
-              "width": "100%",
-              "zIndex": 2000,
-            }
-          }
-        />
-        <ForwardRef(Box)
-          sx={
-            Object {
-              "fontWeight": "bold",
-              "left": "50%",
-              "position": "absolute",
-              "top": "70%",
-              "transform": "translate(-50%,-50%)",
-              "width": "90%",
-              "zIndex": 2000,
+              "position": "relative",
             }
           }
         >
-          <ForwardRef(Typography)
-            color="white"
-            component="div"
-            fontSize="14"
-            textAlign="center"
-            variant="inherit"
+          <TriviaMap
+            disabled={true}
+            doNotShowMarkers={true}
+            height={300}
+            initZoom={3}
+          />
+          <ForwardRef(Box)
+            sx={
+              Object {
+                "backgroundColor": "rgba(0,0,0,0.5)",
+                "height": "100%",
+                "left": 0,
+                "position": "absolute",
+                "top": 0,
+                "width": "100%",
+                "zIndex": 2000,
+              }
+            }
+          />
+          <ForwardRef(Box)
+            sx={
+              Object {
+                "fontWeight": "bold",
+                "left": "50%",
+                "position": "absolute",
+                "top": "70%",
+                "transform": "translate(-50%,-50%)",
+                "width": "90%",
+                "zIndex": 2000,
+              }
+            }
           >
-            位置が選択されていません。
-            <br />
-            ここをタップして位置を選択してください。
-          </ForwardRef(Typography)>
+            <ForwardRef(Typography)
+              color="white"
+              component="div"
+              fontSize="14"
+              textAlign="center"
+              variant="inherit"
+            >
+              位置が選択されていません。
+              <br />
+              ここをタップして位置を選択してください。
+            </ForwardRef(Typography)>
+          </ForwardRef(Box)>
         </ForwardRef(Box)>
-      </ForwardRef(Box)>
-    </BoxField>
-    <ForwardRef(LoadingButton)
-      disabled={false}
-      loading={false}
-      onClick={[Function]}
-      variant="outlined"
+      </BoxField>
+      <ForwardRef(LoadingButton)
+        disabled={false}
+        loading={false}
+        onClick={[Function]}
+        variant="outlined"
+      >
+        保存して公開
+      </ForwardRef(LoadingButton)>
+    </ForwardRef(Stack)>
+  </ForwardRef(Container)>
+</Fragment>
+`;
+
+exports[`Shallow Snapshot Tests with close button 1`] = `
+<Fragment>
+  <CloseFormButton
+    onClose={[MockFunction]}
+    padding={1}
+  />
+  <ForwardRef(Container)
+    maxWidth="sm"
+    sx={
+      Object {
+        "p": 3,
+      }
+    }
+  >
+    <ForwardRef(Stack)
+      spacing={3}
     >
-      保存して公開
-    </ForwardRef(LoadingButton)>
-  </ForwardRef(Stack)>
-</ForwardRef(Container)>
+      <ForwardRef(Typography)
+        align="center"
+        component="h2"
+        variant="h4"
+      >
+        新しいトリビアを追加
+      </ForwardRef(Typography)>
+      <ForwardRef(TextField)
+        disabled={false}
+        error={false}
+        label="タイトル"
+        onChange={[Function]}
+        value=""
+        variant="standard"
+      />
+      <ForwardRef(TextField)
+        disabled={false}
+        error={false}
+        label="説明文"
+        multiline={true}
+        onChange={[Function]}
+        rows={4}
+        value=""
+      />
+      <BoxField
+        disabled={false}
+        status="valid"
+      >
+        <ForwardRef(Box)
+          sx={
+            Object {
+              "position": "relative",
+            }
+          }
+        >
+          <TriviaMap
+            disabled={true}
+            doNotShowMarkers={true}
+            height={300}
+            initCenter={
+              Object {
+                "lat": 0,
+                "lng": 0,
+              }
+            }
+            initZoom={3}
+          />
+          <ForwardRef(Box)
+            sx={
+              Object {
+                "backgroundColor": "rgba(0,0,0,0.5)",
+                "height": "100%",
+                "left": 0,
+                "position": "absolute",
+                "top": 0,
+                "width": "100%",
+                "zIndex": 2000,
+              }
+            }
+          />
+          <ForwardRef(Box)
+            sx={
+              Object {
+                "fontWeight": "bold",
+                "left": "50%",
+                "position": "absolute",
+                "top": "70%",
+                "transform": "translate(-50%,-50%)",
+                "width": "90%",
+                "zIndex": 2000,
+              }
+            }
+          >
+            <ForwardRef(Typography)
+              color="white"
+              component="div"
+              fontSize="14"
+              textAlign="center"
+              variant="inherit"
+            >
+              この位置が選択されています。
+              <br />
+              位置を選び直す場合はここをタップしてください。
+            </ForwardRef(Typography)>
+          </ForwardRef(Box)>
+        </ForwardRef(Box)>
+      </BoxField>
+      <ForwardRef(LoadingButton)
+        disabled={false}
+        loading={false}
+        onClick={[Function]}
+        variant="outlined"
+      >
+        保存して公開
+      </ForwardRef(LoadingButton)>
+    </ForwardRef(Stack)>
+  </ForwardRef(Container)>
+</Fragment>
 `;
 
 exports[`Shallow Snapshot Tests with validation error 1`] = `
-<ForwardRef(Container)
-  maxWidth="sm"
-  sx={
-    Object {
-      "p": 3,
+<Fragment>
+  <ForwardRef(Container)
+    maxWidth="sm"
+    sx={
+      Object {
+        "p": 3,
+      }
     }
-  }
->
-  <ForwardRef(Stack)
-    spacing={3}
   >
-    <ForwardRef(Typography)
-      align="center"
-      component="h2"
-      variant="h4"
+    <ForwardRef(Stack)
+      spacing={3}
     >
-      新しいトリビアを追加
-    </ForwardRef(Typography)>
-    <ForwardRef(Alert)
-      severity="error"
-    >
-      <ForwardRef(AlertTitle)>
-        Inputted contents have errors.
-      </ForwardRef(AlertTitle)>
-      <li
-        key="headerErrors-0"
+      <ForwardRef(Typography)
+        align="center"
+        component="h2"
+        variant="h4"
       >
-        position has an error
-      </li>
-    </ForwardRef(Alert)>
-    <ForwardRef(TextField)
-      disabled={false}
-      error={false}
-      label="タイトル"
-      onChange={[Function]}
-      value=""
-      variant="standard"
-    />
-    <ForwardRef(TextField)
-      disabled={false}
-      error={false}
-      label="説明文"
-      multiline={true}
-      onChange={[Function]}
-      rows={4}
-      value=""
-    />
-    <BoxField
-      disabled={false}
-      helperText="position is not selected"
-      status="error"
-    >
-      <ForwardRef(Box)
-        sx={
-          Object {
-            "position": "relative",
-          }
-        }
+        新しいトリビアを追加
+      </ForwardRef(Typography)>
+      <ForwardRef(Alert)
+        severity="error"
       >
-        <TriviaMap
-          disabled={true}
-          doNotShowMarkers={true}
-          height={300}
-          initCenter={
-            Object {
-              "lat": 0,
-              "lng": 0,
-            }
-          }
-          initZoom={3}
-        />
+        <ForwardRef(AlertTitle)>
+          Inputted contents have errors.
+        </ForwardRef(AlertTitle)>
+        <li
+          key="headerErrors-0"
+        >
+          position has an error
+        </li>
+      </ForwardRef(Alert)>
+      <ForwardRef(TextField)
+        disabled={false}
+        error={false}
+        label="タイトル"
+        onChange={[Function]}
+        value=""
+        variant="standard"
+      />
+      <ForwardRef(TextField)
+        disabled={false}
+        error={false}
+        label="説明文"
+        multiline={true}
+        onChange={[Function]}
+        rows={4}
+        value=""
+      />
+      <BoxField
+        disabled={false}
+        helperText="position is not selected"
+        status="error"
+      >
         <ForwardRef(Box)
           sx={
             Object {
-              "backgroundColor": "rgba(0,0,0,0.5)",
-              "height": "100%",
-              "left": 0,
-              "position": "absolute",
-              "top": 0,
-              "width": "100%",
-              "zIndex": 2000,
-            }
-          }
-        />
-        <ForwardRef(Box)
-          sx={
-            Object {
-              "fontWeight": "bold",
-              "left": "50%",
-              "position": "absolute",
-              "top": "70%",
-              "transform": "translate(-50%,-50%)",
-              "width": "90%",
-              "zIndex": 2000,
+              "position": "relative",
             }
           }
         >
-          <ForwardRef(Typography)
-            color="white"
-            component="div"
-            fontSize="14"
-            textAlign="center"
-            variant="inherit"
+          <TriviaMap
+            disabled={true}
+            doNotShowMarkers={true}
+            height={300}
+            initCenter={
+              Object {
+                "lat": 0,
+                "lng": 0,
+              }
+            }
+            initZoom={3}
+          />
+          <ForwardRef(Box)
+            sx={
+              Object {
+                "backgroundColor": "rgba(0,0,0,0.5)",
+                "height": "100%",
+                "left": 0,
+                "position": "absolute",
+                "top": 0,
+                "width": "100%",
+                "zIndex": 2000,
+              }
+            }
+          />
+          <ForwardRef(Box)
+            sx={
+              Object {
+                "fontWeight": "bold",
+                "left": "50%",
+                "position": "absolute",
+                "top": "70%",
+                "transform": "translate(-50%,-50%)",
+                "width": "90%",
+                "zIndex": 2000,
+              }
+            }
           >
-            この位置が選択されています。
-            <br />
-            位置を選び直す場合はここをタップしてください。
-          </ForwardRef(Typography)>
+            <ForwardRef(Typography)
+              color="white"
+              component="div"
+              fontSize="14"
+              textAlign="center"
+              variant="inherit"
+            >
+              この位置が選択されています。
+              <br />
+              位置を選び直す場合はここをタップしてください。
+            </ForwardRef(Typography)>
+          </ForwardRef(Box)>
         </ForwardRef(Box)>
-      </ForwardRef(Box)>
-    </BoxField>
-    <ForwardRef(LoadingButton)
-      disabled={false}
-      loading={false}
-      onClick={[Function]}
-      variant="outlined"
-    >
-      保存して公開
-    </ForwardRef(LoadingButton)>
-  </ForwardRef(Stack)>
-</ForwardRef(Container)>
+      </BoxField>
+      <ForwardRef(LoadingButton)
+        disabled={false}
+        loading={false}
+        onClick={[Function]}
+        variant="outlined"
+      >
+        保存して公開
+      </ForwardRef(LoadingButton)>
+    </ForwardRef(Stack)>
+  </ForwardRef(Container)>
+</Fragment>
 `;

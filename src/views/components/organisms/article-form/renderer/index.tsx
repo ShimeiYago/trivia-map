@@ -17,6 +17,7 @@ import { miniMapLayer, miniMapTextBox, miniMapWrapper } from './styles';
 import { TriviaMap } from '../../trivia-map';
 import { BoxField } from 'views/components/atoms/box-field';
 import { UpdateFormFieldParam } from 'store/article-form/actions';
+import { CloseFormButton } from '../../close-form-button';
 
 export class Renderer extends React.Component<Props> {
   messageRef: React.RefObject<HTMLDivElement>;
@@ -84,83 +85,93 @@ export class Renderer extends React.Component<Props> {
       : 'normal';
 
     return (
-      <Container maxWidth="sm" sx={{ p: 3 }}>
-        <Stack spacing={3}>
-          <Typography component="h2" align="center" variant="h4">
-            {newMode ? '新しいトリビアを追加' : 'トリビアを編集'}
-          </Typography>
+      <>
+        {this.renderCloseButton()}
+        <Container maxWidth="sm" sx={{ p: 3 }}>
+          <Stack spacing={3}>
+            <Typography component="h2" align="center" variant="h4">
+              {newMode ? '新しいトリビアを追加' : 'トリビアを編集'}
+            </Typography>
 
-          {fetchingState === 'loading' && (
-            <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-              <CircularProgress />
-            </Box>
-          )}
-
-          {this.renderHeaderError()}
-
-          <TextField
-            label="タイトル"
-            variant="standard"
-            value={title}
-            onChange={this.handleChangeTitle}
-            disabled={disabled}
-            error={!!formError?.fieldErrors?.title}
-            helperText={formError?.fieldErrors?.title}
-          />
-
-          <TextField
-            label="説明文"
-            multiline
-            rows={4}
-            value={content}
-            onChange={this.handleChangeContent}
-            disabled={disabled}
-            error={!!formError?.fieldErrors?.content}
-            helperText={formError?.fieldErrors?.content}
-          />
-
-          <BoxField
-            status={miniMapFieldStatus}
-            onClick={handleClickSelectPosition}
-            disabled={disabled}
-            helperText={formError?.fieldErrors?.position}
-          >
-            <Box sx={miniMapWrapper}>
-              <TriviaMap
-                height={300}
-                initZoom={3}
-                initCenter={position}
-                disabled
-                doNotShowMarkers
-              />
-              <Box sx={miniMapLayer}></Box>
-              <Box sx={miniMapTextBox}>
-                {!disabled && (
-                  <Typography
-                    color="white"
-                    textAlign="center"
-                    component="div"
-                    fontSize="14"
-                    variant="inherit"
-                  >
-                    {this.getMiniMapText()}
-                  </Typography>
-                )}
+            {fetchingState === 'loading' && (
+              <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                <CircularProgress />
               </Box>
-            </Box>
-          </BoxField>
+            )}
 
-          <LoadingButton
-            loading={submittingState === 'loading'}
-            variant="outlined"
-            disabled={disabled}
-            onClick={this.handleSubmitButton}
-          >
-            保存して公開
-          </LoadingButton>
-        </Stack>
-      </Container>
+            {this.renderHeaderError()}
+
+            <TextField
+              label="タイトル"
+              variant="standard"
+              value={title}
+              onChange={this.handleChangeTitle}
+              disabled={disabled}
+              error={!!formError?.fieldErrors?.title}
+              helperText={formError?.fieldErrors?.title}
+            />
+
+            <TextField
+              label="説明文"
+              multiline
+              rows={4}
+              value={content}
+              onChange={this.handleChangeContent}
+              disabled={disabled}
+              error={!!formError?.fieldErrors?.content}
+              helperText={formError?.fieldErrors?.content}
+            />
+
+            <BoxField
+              status={miniMapFieldStatus}
+              onClick={handleClickSelectPosition}
+              disabled={disabled}
+              helperText={formError?.fieldErrors?.position}
+            >
+              <Box sx={miniMapWrapper}>
+                <TriviaMap
+                  height={300}
+                  initZoom={3}
+                  initCenter={position}
+                  disabled
+                  doNotShowMarkers
+                />
+                <Box sx={miniMapLayer}></Box>
+                <Box sx={miniMapTextBox}>
+                  {!disabled && (
+                    <Typography
+                      color="white"
+                      textAlign="center"
+                      component="div"
+                      fontSize="14"
+                      variant="inherit"
+                    >
+                      {this.getMiniMapText()}
+                    </Typography>
+                  )}
+                </Box>
+              </Box>
+            </BoxField>
+
+            <LoadingButton
+              loading={submittingState === 'loading'}
+              variant="outlined"
+              disabled={disabled}
+              onClick={this.handleSubmitButton}
+            >
+              保存して公開
+            </LoadingButton>
+          </Stack>
+        </Container>
+      </>
     );
+  }
+
+  protected renderCloseButton() {
+    if (!this.props.onClose) {
+      return null;
+    }
+    return <CloseFormButton onClose={this.props.onClose} padding={1} />;
   }
 
   protected handleChangeTitle = (e: React.ChangeEvent<HTMLInputElement>) =>
@@ -232,4 +243,5 @@ export type Props = {
   initialize: () => void;
   handleClickSelectPosition?: () => void;
   updateIsEditting: (isEditting: boolean) => void;
+  onClose?: () => void;
 };

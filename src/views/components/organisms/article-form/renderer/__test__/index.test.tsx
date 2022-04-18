@@ -50,6 +50,13 @@ describe('Shallow Snapshot Tests', () => {
     });
     expect(wrapper).toMatchSnapshot();
   });
+
+  it('with close button', () => {
+    wrapper.setProps({
+      onClose: jest.fn(),
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
 });
 
 describe('constructor', () => {

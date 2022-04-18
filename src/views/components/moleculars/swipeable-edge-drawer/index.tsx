@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { Box, SwipeableDrawer, Typography } from '@mui/material';
-import { contentStyle, headStyle, pullerStyle } from './styles';
+import { contentStyle, edgeLabelStyle, headStyle, pullerStyle } from './styles';
 import { Global } from '@emotion/react';
 
 export class SwipeableEdgeDrawer extends React.Component<Props> {
@@ -18,13 +18,16 @@ export class SwipeableEdgeDrawer extends React.Component<Props> {
       onClose,
       bleedingHeight,
       children,
-      labelText,
+      edgeLabel,
+      edgeLabelWhenClosed,
       heightRatio,
     } = this.props;
 
     if (!show) {
       return null;
     }
+
+    const edge = edgeLabelWhenClosed && !open ? edgeLabelWhenClosed : edgeLabel;
 
     return (
       <>
@@ -49,11 +52,7 @@ export class SwipeableEdgeDrawer extends React.Component<Props> {
         >
           <Box sx={headStyle(bleedingHeight)}>
             {this.renderPuller()}
-            <Typography
-              sx={{ p: 2, color: 'text.secondary', backgroundColor: '#fff' }}
-            >
-              {labelText}
-            </Typography>
+            <Typography sx={edgeLabelStyle}>{edge}</Typography>
           </Box>
           <Box sx={contentStyle}>{children}</Box>
         </SwipeableDrawer>
@@ -74,5 +73,6 @@ export type Props = {
   bleedingHeight: number;
   heightRatio: number;
   children: ReactNode;
-  labelText: string;
+  edgeLabel: ReactNode;
+  edgeLabelWhenClosed?: ReactNode;
 };

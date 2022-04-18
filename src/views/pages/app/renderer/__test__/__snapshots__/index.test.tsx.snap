@@ -34,8 +34,13 @@ exports[`Shallow Snapshot Tests basic 1`] = `
   />
   <SwipeableEdgeDrawer
     bleedingHeight={56}
+    edgeLabel={
+      <CloseFormButton
+        onClose={[Function]}
+      />
+    }
+    edgeLabelWhenClosed="編集中"
     heightRatio={80}
-    labelText="編集中"
     onClose={[Function]}
     onOpen={[Function]}
     open={false}
@@ -122,6 +127,7 @@ exports[`Shallow Snapshot Tests pc view 1`] = `
   >
     <ArticleForm
       onClickSelectPosition={[Function]}
+      onClose={[Function]}
     />
   </ForwardRef(Drawer)>
   <GlobalMessage

@@ -207,7 +207,7 @@ export class Renderer extends React.Component<Props, State> {
         open={openFormModal}
         onOpen={this.handleOpenEditForm}
         onClose={this.handleCloseModal('form')}
-        labelText="編集中"
+        edgeLabel="編集中"
         heightRatio={80}
       >
         <ArticleForm

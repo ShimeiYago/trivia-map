@@ -10,7 +10,7 @@ const basicProps: Props = {
   onClose: jest.fn(),
   children: 'Test',
   bleedingHeight: 56,
-  labelText: 'label',
+  edgeLabel: 'label',
   heightRatio: 50,
 };
 
@@ -25,6 +25,14 @@ describe('Shallow Snapshot Tests', () => {
 
   it('with show false', () => {
     wrapper.setProps({ show: false });
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('with closed label', () => {
+    wrapper.setProps({
+      edgeLabelWhenClosed: 'label-closed',
+      open: false,
+    });
     expect(wrapper).toMatchSnapshot();
   });
 });

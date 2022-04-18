@@ -22,6 +22,7 @@ export function CloseFormButton(ownProps: OwnProps) {
     ),
     isFormEditting: useAppSelector(selectArticleFormIsEditting),
     submittingState: useAppSelector(selectArticleFormSubmittingState),
+    padding: ownProps.padding,
     onClose: ownProps.onClose,
     submitNewArticle: () => dispatch(submitNewArticle()),
     submitEdittedArticle: () => dispatch(submitEdittedArticle()),
@@ -32,5 +33,6 @@ export function CloseFormButton(ownProps: OwnProps) {
 }
 
 type OwnProps = {
+  padding?: number;
   onClose: () => void;
 };

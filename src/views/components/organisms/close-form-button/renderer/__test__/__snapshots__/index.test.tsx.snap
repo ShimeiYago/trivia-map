@@ -5,7 +5,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
   <ForwardRef(Box)
     sx={
       Object {
-        "p": 1,
+        "p": undefined,
       }
     }
   >
@@ -45,7 +45,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
 </Fragment>
 `;
 
-exports[`Shallow Snapshot Tests loading 1`] = `
+exports[`Shallow Snapshot Tests with padding 1`] = `
 <Fragment>
   <ForwardRef(Box)
     sx={

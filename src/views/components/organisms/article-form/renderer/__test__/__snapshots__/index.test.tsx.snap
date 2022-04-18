@@ -335,6 +335,7 @@ exports[`Shallow Snapshot Tests with close button 1`] = `
 <Fragment>
   <CloseFormButton
     onClose={[MockFunction]}
+    padding={1}
   />
   <ForwardRef(Container)
     maxWidth="sm"

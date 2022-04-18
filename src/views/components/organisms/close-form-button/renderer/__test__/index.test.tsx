@@ -26,7 +26,10 @@ describe('Shallow Snapshot Tests', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('loading', () => {
+  it('with padding', () => {
+    wrapper.setProps({
+      padding: 1,
+    });
     expect(wrapper).toMatchSnapshot();
   });
 });

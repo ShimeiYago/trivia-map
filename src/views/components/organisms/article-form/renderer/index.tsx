@@ -171,7 +171,7 @@ export class Renderer extends React.Component<Props> {
     if (!this.props.onClose) {
       return null;
     }
-    return <CloseFormButton onClose={this.props.onClose} />;
+    return <CloseFormButton onClose={this.props.onClose} padding={1} />;
   }
 
   protected handleChangeTitle = (e: React.ChangeEvent<HTMLInputElement>) =>

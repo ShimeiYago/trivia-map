@@ -31,3 +31,9 @@ export const pullerStyle: SxProps = {
   top: 8,
   left: 'calc(50% - 15px)',
 };
+
+export const edgeLabelStyle: SxProps = {
+  p: 2,
+  color: 'text.secondary',
+  backgroundColor: '#fff',
+};

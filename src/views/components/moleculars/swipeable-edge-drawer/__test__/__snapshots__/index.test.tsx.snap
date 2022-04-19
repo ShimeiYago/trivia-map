@@ -53,6 +53,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
         }
       />
       <ForwardRef(Typography)
+        component="div"
         sx={
           Object {
             "backgroundColor": "#fff",
@@ -132,6 +133,7 @@ exports[`Shallow Snapshot Tests with closed label 1`] = `
         }
       />
       <ForwardRef(Typography)
+        component="div"
         sx={
           Object {
             "backgroundColor": "#fff",

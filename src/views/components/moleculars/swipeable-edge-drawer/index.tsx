@@ -52,7 +52,9 @@ export class SwipeableEdgeDrawer extends React.Component<Props> {
         >
           <Box sx={headStyle(bleedingHeight)}>
             {this.renderPuller()}
-            <Typography sx={edgeLabelStyle}>{edge}</Typography>
+            <Typography component="div" sx={edgeLabelStyle}>
+              {edge}
+            </Typography>
           </Box>
           <Box sx={contentStyle}>{children}</Box>
         </SwipeableDrawer>

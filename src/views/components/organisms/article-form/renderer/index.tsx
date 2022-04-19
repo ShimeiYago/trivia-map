@@ -20,14 +20,14 @@ import { UpdateFormFieldParam } from 'store/article-form/actions';
 import { CloseFormButton } from '../../close-form-button';
 
 export class Renderer extends React.Component<Props> {
-  messageRef: React.RefObject<HTMLDivElement>;
+  headerRef: React.RefObject<HTMLDivElement>;
 
   constructor(props: Props) {
     super(props);
     if (!props.isFormEditting) {
       this.props.initialize();
     }
-    this.messageRef = React.createRef();
+    this.headerRef = React.createRef();
   }
 
   componentDidMount() {
@@ -43,8 +43,7 @@ export class Renderer extends React.Component<Props> {
       prevProps.submittingState !== this.props.submittingState &&
       this.props.submittingState === 'error'
     ) {
-      this.messageRef.current?.scrollIntoView({
-        behavior: 'smooth',
+      this.headerRef.current?.scrollIntoView({
         block: 'start',
       });
     }
@@ -89,7 +88,12 @@ export class Renderer extends React.Component<Props> {
         {this.renderCloseButton()}
         <Container maxWidth="sm" sx={{ p: 3 }}>
           <Stack spacing={3}>
-            <Typography component="h2" align="center" variant="h4">
+            <Typography
+              component="h2"
+              align="center"
+              variant="h4"
+              ref={this.headerRef}
+            >
               {newMode ? '新しいトリビアを追加' : 'トリビアを編集'}
             </Typography>
 
@@ -216,7 +220,7 @@ export class Renderer extends React.Component<Props> {
     }
 
     return (
-      <Alert severity="error" ref={this.messageRef}>
+      <Alert severity="error">
         <AlertTitle>{formError.errorTitle}</AlertTitle>
         {formError.headerErrors?.map((msg: string, index: number) => (
           <li key={`headerErrors-${index}`}>{msg}</li>

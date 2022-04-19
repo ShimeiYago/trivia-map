@@ -87,15 +87,15 @@ describe('componentDidUpdate', () => {
     const instance = wrapper.instance();
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const messageRef: React.RefObject<any> = {
+    const headerRef: React.RefObject<any> = {
       current: {
         scrollIntoView: jest.fn(),
       },
     };
-    instance.messageRef = messageRef;
+    instance.headerRef = headerRef;
 
     instance.componentDidUpdate(basicProps);
-    expect(messageRef.current.scrollIntoView).toBeCalled();
+    expect(headerRef.current.scrollIntoView).toBeCalled();
   });
 
   it('should call fetchArticle if postId exists', () => {

@@ -6,6 +6,7 @@ let wrapper: ShallowWrapper<Props, unknown, Renderer>;
 const basicProps: Props = {
   title: '',
   content: '',
+  imageDataUrl: null,
   position: { lat: 0, lng: 0 },
   submittingState: 'waiting',
   fetchingState: 'waiting',
@@ -54,6 +55,13 @@ describe('Shallow Snapshot Tests', () => {
   it('with close button', () => {
     wrapper.setProps({
       onClose: jest.fn(),
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('with image', () => {
+    wrapper.setProps({
+      imageDataUrl: 'https://image-data.jpg',
     });
     expect(wrapper).toMatchSnapshot();
   });
@@ -194,7 +202,9 @@ describe('handleFileInputChange', () => {
     const instance = wrapper.instance();
     await instance['handleFileInputChange'](event);
 
-    expect(instance.state.imageData).not.toBe(null);
+    expect(instance.props.updateFormField).not.toBeCalledWith({
+      imageDataUrl: null,
+    });
   });
 
   it('do not set imageData with no image', async () => {
@@ -206,6 +216,8 @@ describe('handleFileInputChange', () => {
     const instance = wrapper.instance();
     await instance['handleFileInputChange'](event);
 
-    expect(instance.state.imageData).toBe(null);
+    expect(instance.props.updateFormField).toBeCalledWith({
+      imageDataUrl: null,
+    });
   });
 });

@@ -49,9 +49,15 @@ export class Renderer extends React.Component<Props, State> {
     this.props.onClose();
   };
 
+  protected cancelToClose = () => {
+    this.setState({
+      openDialog: false,
+    });
+  };
+
   protected renderDialog() {
     return (
-      <Dialog open={this.state.openDialog}>
+      <Dialog open={this.state.openDialog} onClose={this.cancelToClose}>
         <DialogTitle>投稿を保存しますか？</DialogTitle>
         <DialogContent>
           （未確定）下書き保存すれば、後から再編集して投稿できます。

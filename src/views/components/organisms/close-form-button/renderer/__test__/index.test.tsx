@@ -55,6 +55,19 @@ describe('handleClick', () => {
   });
 });
 
+describe('cancelToClose', () => {
+  beforeEach(() => {
+    wrapper = shallow(<Renderer {...basicProps} />);
+    wrapper.setState({ openDialog: true });
+  });
+
+  it('should close dialog', () => {
+    const instance = wrapper.instance();
+    instance['cancelToClose']();
+    expect(instance.state.openDialog).toBeFalsy();
+  });
+});
+
 describe('handleSave', () => {
   beforeEach(() => {
     wrapper = shallow(<Renderer {...basicProps} />);

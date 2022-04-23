@@ -6,6 +6,7 @@ export interface ArticleFormState {
   title: string;
   content: string;
   position?: Position;
+  imageDataUrl?: string;
   submittingState: LoadingState;
   fetchingState: LoadingState;
   formError?: FormError;
@@ -14,6 +15,7 @@ export interface ArticleFormState {
   lastSavedTitle: string;
   lastSavedContent: string;
   lastSavedPosition?: Position;
+  lastSavedImageDataUrl?: string;
   isFormChangedFromLastSaved: boolean;
 }
 
@@ -35,5 +37,6 @@ export type FormError = {
     title?: string;
     content?: string;
     position?: string;
+    imageDataUrl?: string;
   };
 };

@@ -7,6 +7,7 @@ let getRemoteArticleSpy: jest.SpyInstance;
 const mockResponse: GetArticleApiModule.GetArticleResponse = {
   title: 'title',
   content: 'content',
+  imageDataUrl: 'https://image-data.jpg',
   position: { lat: 0, lng: 0 },
 };
 

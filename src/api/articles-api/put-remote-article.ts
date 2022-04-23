@@ -14,6 +14,7 @@ export async function putRemoteArticle(
   postId: string,
   title: string,
   content: string,
+  imageDataUrl: string | null,
   position?: Position,
 ): Promise<PostArticleResponse> {
   const axiosInstance = getAxiosInstance({}, mockPostArticleResponse);
@@ -22,6 +23,7 @@ export async function putRemoteArticle(
     title: title,
     content: content,
     position: position,
+    imageDataUrl: imageDataUrl,
   };
 
   try {

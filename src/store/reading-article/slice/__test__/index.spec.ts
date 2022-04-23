@@ -38,6 +38,7 @@ describe('readingArticle reducer', () => {
     const article = {
       title: 'title',
       content: 'content',
+      imageDataUrl: 'https://image-data.jpg',
       position: { lat: 0, lng: 0 },
     };
     const actual = readingArticleReducer(loadingState, fetchSuccess(article));

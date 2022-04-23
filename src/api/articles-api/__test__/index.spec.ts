@@ -45,7 +45,12 @@ describe('postRemoteArticle', () => {
   it('handle nomal response', async () => {
     process.env.REACT_APP_MOCK = 'normal';
 
-    const response = await postRemoteArticle('title', 'content', newPosition);
+    const response = await postRemoteArticle(
+      'title',
+      'content',
+      'https://image-data.jpg',
+      newPosition,
+    );
     expect(response.postId).toBe('100');
   });
 
@@ -58,7 +63,12 @@ describe('postRemoteArticle', () => {
       errorMsg: 'Intentional API Error with mock',
     };
     await expect(
-      postRemoteArticle('title', 'content', newPosition),
+      postRemoteArticle(
+        'title',
+        'content',
+        'https://image-data.jpg',
+        newPosition,
+      ),
     ).rejects.toEqual(expectedApiError);
   });
 });
@@ -78,6 +88,7 @@ describe('putRemoteArticle', () => {
       '100',
       'title',
       'content',
+      'https://image-data.jpg',
       newPosition,
     );
     expect(response.postId).toBe('100');
@@ -92,7 +103,13 @@ describe('putRemoteArticle', () => {
       errorMsg: 'Intentional API Error with mock',
     };
     await expect(
-      putRemoteArticle('100', 'title', 'content', newPosition),
+      putRemoteArticle(
+        '100',
+        'title',
+        'content',
+        'https://image-data.jpg',
+        newPosition,
+      ),
     ).rejects.toEqual(expectedApiError);
   });
 });

@@ -36,6 +36,7 @@ const getState = () => ({
     title: 'title',
     content: 'content',
     position: { lat: 0, lng: 0 },
+    imageDataUrl: 'https://image-data.jpg',
   },
 });
 
@@ -206,6 +207,7 @@ describe('submitEdittedArticle', () => {
 const mockGetResponse: GetArticleApiModule.GetArticleResponse = {
   title: 'title',
   content: 'content',
+  imageDataUrl: 'https://image-data.jpg',
   position: { lat: 0, lng: 0 },
 };
 
@@ -281,5 +283,19 @@ describe('updateFormField', () => {
     await appThunk(dispatch);
 
     expect(dispatch.mock.calls[0][0].type).toBe('articleForm/updatePosition');
+  });
+
+  it('should call updateImageDataUrl actions', async () => {
+    const param = {
+      imageDataUrl: 'https://image-data.jpg',
+    };
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const appThunk = updateFormField(param) as any;
+    await appThunk(dispatch);
+
+    expect(dispatch.mock.calls[0][0].type).toBe(
+      'articleForm/updateImageDataUrl',
+    );
   });
 });

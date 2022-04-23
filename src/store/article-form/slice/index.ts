@@ -19,6 +19,10 @@ export const articleFormSlice = createSlice({
       state.position = action.payload;
     },
 
+    updateImageDataUrl(state, action: PayloadAction<string | null>) {
+      state.imageDataUrl = action.payload;
+    },
+
     submitStart(state) {
       state.submittingState = 'loading';
       state.formError = undefined;
@@ -51,6 +55,7 @@ export const articleFormSlice = createSlice({
       state.title = action.payload.title;
       state.content = action.payload.content;
       state.position = action.payload.position;
+      state.imageDataUrl = action.payload.imageDataUrl;
     },
 
     initialize(state) {
@@ -58,6 +63,7 @@ export const articleFormSlice = createSlice({
       state.title = initialState.title;
       state.content = initialState.content;
       state.position = initialState.position;
+      state.imageDataUrl = initialState.imageDataUrl;
       state.submittingState = initialState.submittingState;
       state.fetchingState = initialState.fetchingState;
       state.formError = initialState.formError;
@@ -66,6 +72,7 @@ export const articleFormSlice = createSlice({
       state.lastSavedTitle = initialState.lastSavedTitle;
       state.lastSavedContent = initialState.lastSavedContent;
       state.lastSavedPosition = initialState.lastSavedPosition;
+      state.lastSavedImageDataUrl = initialState.lastSavedImageDataUrl;
       state.isFormChangedFromLastSaved =
         initialState.isFormChangedFromLastSaved;
     },
@@ -78,6 +85,7 @@ export const articleFormSlice = createSlice({
       state.lastSavedTitle = state.title;
       state.lastSavedContent = state.content;
       state.lastSavedPosition = state.position;
+      state.lastSavedImageDataUrl = state.imageDataUrl;
       state.isFormChangedFromLastSaved = false;
     },
 
@@ -86,7 +94,8 @@ export const articleFormSlice = createSlice({
         state.lastSavedTitle === state.title &&
         state.lastSavedContent === state.content &&
         state.lastSavedPosition?.lat === state.position?.lat &&
-        state.lastSavedPosition?.lng === state.position?.lng
+        state.lastSavedPosition?.lng === state.position?.lng &&
+        state.lastSavedImageDataUrl === state.imageDataUrl
       );
     },
   },

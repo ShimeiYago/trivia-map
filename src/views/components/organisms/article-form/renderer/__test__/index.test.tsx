@@ -175,3 +175,37 @@ describe('handleSubmitButton', () => {
     expect(basicProps.submitEdittedArticle).toBeCalled();
   });
 });
+
+describe('handleFileInputChange', () => {
+  beforeEach(() => {
+    wrapper = shallow(<Renderer {...basicProps} />);
+  });
+
+  it('set imageData when image is uploaded', async () => {
+    const blob = new Blob(['image-data']);
+    const file = new File([blob], 'test.jpeg', {
+      type: 'image/jpeg',
+    });
+    const event = {
+      target: {
+        files: [file],
+      },
+    } as unknown as React.ChangeEvent<HTMLInputElement>;
+    const instance = wrapper.instance();
+    await instance['handleFileInputChange'](event);
+
+    expect(instance.state.imageData).not.toBe(null);
+  });
+
+  it('do not set imageData with no image', async () => {
+    const event = {
+      target: {
+        files: [],
+      },
+    } as unknown as React.ChangeEvent<HTMLInputElement>;
+    const instance = wrapper.instance();
+    await instance['handleFileInputChange'](event);
+
+    expect(instance.state.imageData).toBe(null);
+  });
+});

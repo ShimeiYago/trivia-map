@@ -20,6 +20,11 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       >
         新しいトリビアを追加
       </ForwardRef(Typography)>
+      <input
+        accept="image/*"
+        onChange={[Function]}
+        type="file"
+      />
       <ForwardRef(TextField)
         disabled={false}
         error={false}
@@ -143,6 +148,11 @@ exports[`Shallow Snapshot Tests loading 1`] = `
       >
         <ForwardRef(CircularProgress) />
       </ForwardRef(Box)>
+      <input
+        accept="image/*"
+        onChange={[Function]}
+        type="file"
+      />
       <ForwardRef(TextField)
         disabled={true}
         error={false}
@@ -244,6 +254,11 @@ exports[`Shallow Snapshot Tests position is not selected yet 1`] = `
       >
         新しいトリビアを追加
       </ForwardRef(Typography)>
+      <input
+        accept="image/*"
+        onChange={[Function]}
+        type="file"
+      />
       <ForwardRef(TextField)
         disabled={false}
         error={false}
@@ -355,6 +370,11 @@ exports[`Shallow Snapshot Tests with close button 1`] = `
       >
         新しいトリビアを追加
       </ForwardRef(Typography)>
+      <input
+        accept="image/*"
+        onChange={[Function]}
+        type="file"
+      />
       <ForwardRef(TextField)
         disabled={false}
         error={false}
@@ -480,6 +500,11 @@ exports[`Shallow Snapshot Tests with validation error 1`] = `
           position has an error
         </li>
       </ForwardRef(Alert)>
+      <input
+        accept="image/*"
+        onChange={[Function]}
+        type="file"
+      />
       <ForwardRef(TextField)
         disabled={false}
         error={false}

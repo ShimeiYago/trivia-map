@@ -19,7 +19,7 @@ import { BoxField } from 'views/components/atoms/box-field';
 import { UpdateFormFieldParam } from 'store/article-form/actions';
 import { CloseFormButton } from '../../close-form-button';
 
-export class Renderer extends React.Component<Props> {
+export class Renderer extends React.Component<Props, State> {
   headerRef: React.RefObject<HTMLDivElement>;
 
   constructor(props: Props) {
@@ -28,6 +28,9 @@ export class Renderer extends React.Component<Props> {
       this.props.initialize();
     }
     this.headerRef = React.createRef();
+    this.state = {
+      imageData: null,
+    };
   }
 
   componentDidMount() {
@@ -104,6 +107,14 @@ export class Renderer extends React.Component<Props> {
             )}
 
             {this.renderHeaderError()}
+
+            <input
+              type="file"
+              accept="image/*"
+              onChange={this.handleFileInputChange}
+            />
+
+            {this.state.imageData && <img src={this.state.imageData} />}
 
             <TextField
               label="タイトル"
@@ -228,6 +239,22 @@ export class Renderer extends React.Component<Props> {
       </Alert>
     );
   }
+
+  protected handleFileInputChange = async (
+    e: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    const files = e.target.files;
+    if (files && files.length > 0) {
+      const file = files[0];
+
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      await new Promise<void>((resolve) => (reader.onload = () => resolve()));
+      this.setState({ imageData: reader.result as string });
+    } else {
+      this.setState({ imageData: null });
+    }
+  };
 }
 
 export type Props = {
@@ -248,4 +275,8 @@ export type Props = {
   handleClickSelectPosition?: () => void;
   updateIsEditting: (isEditting: boolean) => void;
   onClose?: () => void;
+};
+
+export type State = {
+  imageData: string | null;
 };

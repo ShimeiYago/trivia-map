@@ -16,6 +16,7 @@ import { LoadingButton } from '@mui/lab';
 import { miniMapLayer, miniMapTextBox, miniMapWrapper } from './styles';
 import { TriviaMap } from '../../trivia-map';
 import { BoxField } from 'views/components/atoms/box-field';
+import { Image } from 'views/components/atoms/image';
 import { UpdateFormFieldParam } from 'store/article-form/actions';
 import { CloseFormButton } from '../../close-form-button';
 
@@ -108,14 +109,6 @@ export class Renderer extends React.Component<Props, State> {
 
             {this.renderHeaderError()}
 
-            <input
-              type="file"
-              accept="image/*"
-              onChange={this.handleFileInputChange}
-            />
-
-            {this.state.imageData && <img src={this.state.imageData} />}
-
             <TextField
               label="タイトル"
               variant="standard"
@@ -125,6 +118,21 @@ export class Renderer extends React.Component<Props, State> {
               error={!!formError?.fieldErrors?.title}
               helperText={formError?.fieldErrors?.title}
             />
+
+            <input
+              type="file"
+              accept="image/*"
+              onChange={this.handleFileInputChange}
+            />
+
+            {this.state.imageData && (
+              <Image
+                src={this.state.imageData}
+                width="full"
+                height="200px"
+                objectFit="cover"
+              />
+            )}
 
             <TextField
               label="説明文"

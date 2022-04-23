@@ -9,6 +9,8 @@ export const mockGetArticleResponse: GetArticleResponse = {
     lat: 22.27,
     lng: 29.268,
   },
+  imageDataUrl:
+    'https://www.disneyparkstory.com/wp-content/uploads/2017/02/CIMG9800.jpg',
 };
 
 export const mockPostArticleResponse: PostArticleResponse = {

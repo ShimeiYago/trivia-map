@@ -8,8 +8,8 @@ import { Position } from 'types/position';
 export async function postRemoteArticle(
   title: string,
   content: string,
+  imageDataUrl: string | null,
   position?: Position,
-  imageDataUrl?: string,
 ): Promise<PostArticleResponse> {
   const axiosInstance = getAxiosInstance({}, mockPostArticleResponse);
 
@@ -36,8 +36,8 @@ export async function postRemoteArticle(
 export type PostArticleRequest = {
   title: string;
   content: string;
+  imageDataUrl: string | null;
   position?: Position;
-  imageDataUrl?: string;
 };
 
 export type PostArticleResponse = {

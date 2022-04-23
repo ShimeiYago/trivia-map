@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shallow Snapshot Tests basic 1`] = `
+<img
+  alt="alt-text"
+  className="image"
+  onClick={[MockFunction]}
+  src="image-data"
+/>
+`;
+
+exports[`Shallow Snapshot Tests height 1`] = `
+<img
+  alt="alt-text"
+  className="image height-full"
+  onClick={[MockFunction]}
+  src="image-data"
+/>
+`;
+
+exports[`Shallow Snapshot Tests objectFit cover 1`] = `
+<img
+  alt="alt-text"
+  className="image cover"
+  onClick={[MockFunction]}
+  src="image-data"
+/>
+`;
+
+exports[`Shallow Snapshot Tests width 1`] = `
+<img
+  alt="alt-text"
+  className="image width-full"
+  onClick={[MockFunction]}
+  src="image-data"
+/>
+`;

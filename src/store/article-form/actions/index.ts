@@ -1,4 +1,3 @@
-import { selectArticleFormImageDataUrl } from './../selector/index';
 import { MarkerTypeAPI } from './../../../api/markers-api/index';
 import { articleFormSlice } from '../slice';
 import { AppThunk } from 'store';
@@ -15,6 +14,7 @@ import {
   selectArticleFormContent,
   selectArticleFormPosition,
   selectArticleFormId,
+  selectArticleFormImageDataUrl,
 } from '../selector';
 import { globalAPIErrorMessage } from 'constant/global-api-error-message';
 import { appendMarkers } from 'store/markers/actions';

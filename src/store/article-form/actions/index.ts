@@ -1,3 +1,4 @@
+import { selectArticleFormImageDataUrl } from './../selector/index';
 import { MarkerTypeAPI } from './../../../api/markers-api/index';
 import { articleFormSlice } from '../slice';
 import { AppThunk } from 'store';
@@ -34,6 +35,7 @@ export const {
   updateIsEditting,
   updateIsFormChangedFromLastSaved,
   updateLastSavedValues,
+  updateImageDataUrl,
 } = articleFormSlice.actions;
 
 // submitNewArticle action
@@ -43,9 +45,10 @@ export const submitNewArticle = (): AppThunk => async (dispatch, getState) => {
   const title = selectArticleFormTitle(getState());
   const content = selectArticleFormContent(getState());
   const position = selectArticleFormPosition(getState());
+  const imageDataUrl = selectArticleFormImageDataUrl(getState());
 
   try {
-    const res = await postRemoteArticle(title, content, position);
+    const res = await postRemoteArticle(title, content, position, imageDataUrl);
     dispatch(submitSuccess(res.postId));
     dispatch(initialize());
 
@@ -83,6 +86,7 @@ export const submitEdittedArticle =
     const title = selectArticleFormTitle(getState());
     const content = selectArticleFormContent(getState());
     const position = selectArticleFormPosition(getState());
+    const imageDataUrl = selectArticleFormImageDataUrl(getState());
 
     if (!postId) {
       throw new Error('post ID is not setted.');
@@ -91,7 +95,7 @@ export const submitEdittedArticle =
     let formError: FormError;
 
     try {
-      await putRemoteArticle(postId, title, content, position);
+      await putRemoteArticle(postId, title, content, position, imageDataUrl);
       dispatch(submitSuccess(postId));
       dispatch(initialize());
 
@@ -151,6 +155,9 @@ export const updateFormField =
     if (param.position) {
       dispatch(updatePosition(param.position));
     }
+    if (param.imageDataUrl !== undefined) {
+      dispatch(updateImageDataUrl(param.imageDataUrl ?? undefined));
+    }
 
     dispatch(updateIsFormChangedFromLastSaved());
   };
@@ -159,4 +166,5 @@ export type UpdateFormFieldParam = {
   title?: string;
   content?: string;
   position?: Position;
+  imageDataUrl?: string | null;
 };

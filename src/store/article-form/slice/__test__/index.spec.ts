@@ -15,6 +15,7 @@ const {
   updateIsEditting,
   updateLastSavedValues,
   updateIsFormChangedFromLastSaved,
+  updateImageDataUrl,
 } = articleFormSlice.actions;
 
 describe('articleForm reducer', () => {
@@ -60,6 +61,14 @@ describe('articleForm reducer', () => {
     expect(actual.position).toEqual({ lat: 1, lng: 1 });
   });
 
+  it('should handle updateImageDataUrl', () => {
+    const actual = articleFormReducer(
+      initialState,
+      updateImageDataUrl('https://image-data.jpg'),
+    );
+    expect(actual.imageDataUrl).toEqual('https://image-data.jpg');
+  });
+
   it('should handle submitStart', () => {
     const actual = articleFormReducer(initialState, submitStart());
     expect(actual.submittingState).toEqual('loading');
@@ -102,12 +111,14 @@ describe('articleForm reducer', () => {
       title: 'title',
       content: 'content',
       position: { lat: 0, lng: 0 },
+      imageDataUrl: 'https://image-data.jpg',
     };
     const actual = articleFormReducer(fetchingLoadingState, fetchSuccess(res));
     expect(actual.fetchingState).toEqual('success');
     expect(actual.title).toEqual(res.title);
     expect(actual.content).toEqual(res.content);
     expect(actual.position).toEqual(res.position);
+    expect(actual.imageDataUrl).toEqual(res.imageDataUrl);
   });
 
   it('should handle initialize', () => {
@@ -128,11 +139,13 @@ describe('articleForm reducer', () => {
     edittedState.title = 'new title';
     edittedState.content = 'new content';
     edittedState.position = { lat: 0, lng: 0 };
+    edittedState.imageDataUrl = 'https://image-data.jpg';
 
     const actual = articleFormReducer(edittedState, updateLastSavedValues());
     expect(actual.lastSavedTitle).toEqual('new title');
     expect(actual.lastSavedContent).toEqual('new content');
     expect(actual.lastSavedPosition).toEqual({ lat: 0, lng: 0 });
+    expect(actual.lastSavedImageDataUrl).toEqual('https://image-data.jpg');
   });
 
   it('should handle updateIsFormChangedFromLastSaved', () => {

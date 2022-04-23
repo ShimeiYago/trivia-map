@@ -20,7 +20,7 @@ import { Image } from 'views/components/atoms/image';
 import { UpdateFormFieldParam } from 'store/article-form/actions';
 import { CloseFormButton } from '../../close-form-button';
 
-export class Renderer extends React.Component<Props, State> {
+export class Renderer extends React.Component<Props> {
   headerRef: React.RefObject<HTMLDivElement>;
 
   constructor(props: Props) {
@@ -29,9 +29,6 @@ export class Renderer extends React.Component<Props, State> {
       this.props.initialize();
     }
     this.headerRef = React.createRef();
-    this.state = {
-      imageData: null,
-    };
   }
 
   componentDidMount() {
@@ -125,9 +122,9 @@ export class Renderer extends React.Component<Props, State> {
               onChange={this.handleFileInputChange}
             />
 
-            {this.state.imageData && (
+            {this.props.imageDataUrl && (
               <Image
-                src={this.state.imageData}
+                src={this.props.imageDataUrl}
                 width="full"
                 height="200px"
                 objectFit="cover"
@@ -258,9 +255,9 @@ export class Renderer extends React.Component<Props, State> {
       const reader = new FileReader();
       reader.readAsDataURL(file);
       await new Promise<void>((resolve) => (reader.onload = () => resolve()));
-      this.setState({ imageData: reader.result as string });
+      this.props.updateFormField({ imageDataUrl: reader.result as string });
     } else {
-      this.setState({ imageData: null });
+      this.props.updateFormField({ imageDataUrl: null });
     }
   };
 }
@@ -269,6 +266,7 @@ export type Props = {
   postId?: string;
   title: string;
   content: string;
+  imageDataUrl: string | null;
   position?: Position;
   submittingState: LoadingState;
   fetchingState: LoadingState;
@@ -283,8 +281,4 @@ export type Props = {
   handleClickSelectPosition?: () => void;
   updateIsEditting: (isEditting: boolean) => void;
   onClose?: () => void;
-};
-
-export type State = {
-  imageData: string | null;
 };

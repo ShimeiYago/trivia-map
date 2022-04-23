@@ -468,6 +468,130 @@ exports[`Shallow Snapshot Tests with close button 1`] = `
 </Fragment>
 `;
 
+exports[`Shallow Snapshot Tests with image 1`] = `
+<Fragment>
+  <ForwardRef(Container)
+    maxWidth="sm"
+    sx={
+      Object {
+        "p": 3,
+      }
+    }
+  >
+    <ForwardRef(Stack)
+      spacing={3}
+    >
+      <ForwardRef(Typography)
+        align="center"
+        component="h2"
+        variant="h4"
+      >
+        新しいトリビアを追加
+      </ForwardRef(Typography)>
+      <ForwardRef(TextField)
+        disabled={false}
+        error={false}
+        label="タイトル"
+        onChange={[Function]}
+        value=""
+        variant="standard"
+      />
+      <input
+        accept="image/*"
+        onChange={[Function]}
+        type="file"
+      />
+      <Image
+        height="200px"
+        objectFit="cover"
+        src="https://image-data.jpg"
+        width="full"
+      />
+      <ForwardRef(TextField)
+        disabled={false}
+        error={false}
+        label="説明文"
+        multiline={true}
+        onChange={[Function]}
+        rows={4}
+        value=""
+      />
+      <BoxField
+        disabled={false}
+        status="valid"
+      >
+        <ForwardRef(Box)
+          sx={
+            Object {
+              "position": "relative",
+            }
+          }
+        >
+          <TriviaMap
+            disabled={true}
+            doNotShowMarkers={true}
+            height={300}
+            initCenter={
+              Object {
+                "lat": 0,
+                "lng": 0,
+              }
+            }
+            initZoom={3}
+          />
+          <ForwardRef(Box)
+            sx={
+              Object {
+                "backgroundColor": "rgba(0,0,0,0.5)",
+                "height": "100%",
+                "left": 0,
+                "position": "absolute",
+                "top": 0,
+                "width": "100%",
+                "zIndex": 2000,
+              }
+            }
+          />
+          <ForwardRef(Box)
+            sx={
+              Object {
+                "fontWeight": "bold",
+                "left": "50%",
+                "position": "absolute",
+                "top": "70%",
+                "transform": "translate(-50%,-50%)",
+                "width": "90%",
+                "zIndex": 2000,
+              }
+            }
+          >
+            <ForwardRef(Typography)
+              color="white"
+              component="div"
+              fontSize="14"
+              textAlign="center"
+              variant="inherit"
+            >
+              この位置が選択されています。
+              <br />
+              位置を選び直す場合はここをタップしてください。
+            </ForwardRef(Typography)>
+          </ForwardRef(Box)>
+        </ForwardRef(Box)>
+      </BoxField>
+      <ForwardRef(LoadingButton)
+        disabled={false}
+        loading={false}
+        onClick={[Function]}
+        variant="outlined"
+      >
+        保存して公開
+      </ForwardRef(LoadingButton)>
+    </ForwardRef(Stack)>
+  </ForwardRef(Container)>
+</Fragment>
+`;
+
 exports[`Shallow Snapshot Tests with validation error 1`] = `
 <Fragment>
   <ForwardRef(Container)

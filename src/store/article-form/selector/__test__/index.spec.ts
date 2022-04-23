@@ -12,6 +12,8 @@ import {
   selectArticleFormLastSavedContent,
   selectArticleFormLastSavedPosition,
   selectArticleFormIsFormChangedFromLastSaved,
+  selectArticleFormImageDataUrl,
+  selectArticleFormLastSavedImageDataUrl,
 } from '..';
 import { ArticleFormState, FormError } from '../../model';
 
@@ -30,6 +32,8 @@ describe('readingArticle selector', () => {
       lastSavedContent: 'content',
       position: { lat: 1, lng: 1 },
       lastSavedPosition: { lat: 1, lng: 1 },
+      imageDataUrl: 'https://image-data.jpg',
+      lastSavedImageDataUrl: 'https://image-data.jpg',
       submittingState: 'success',
       fetchingState: 'success',
       formError: formError,
@@ -68,6 +72,18 @@ describe('readingArticle selector', () => {
       lat: 1,
       lng: 1,
     });
+  });
+
+  it('selectArticleFormImageDataUrl should return articleForm imageDataUrl', () => {
+    expect(selectArticleFormImageDataUrl(rootState)).toEqual(
+      'https://image-data.jpg',
+    );
+  });
+
+  it('selectArticleFormLastSavedImageDataUrl should return articleForm imageDataUrl', () => {
+    expect(selectArticleFormLastSavedImageDataUrl(rootState)).toEqual(
+      'https://image-data.jpg',
+    );
   });
 
   it('selectArticleFormSubmittingState should return articleForm submittingState', () => {

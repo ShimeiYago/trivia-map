@@ -26,5 +26,5 @@ export type GetArticleResponse = {
   title: string;
   content: string;
   position: Position;
-  imageDataUrl?: string;
+  imageDataUrl: string | null;
 };

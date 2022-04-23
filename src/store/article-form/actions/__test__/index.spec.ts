@@ -207,6 +207,7 @@ describe('submitEdittedArticle', () => {
 const mockGetResponse: GetArticleApiModule.GetArticleResponse = {
   title: 'title',
   content: 'content',
+  imageDataUrl: 'https://image-data.jpg',
   position: { lat: 0, lng: 0 },
 };
 
@@ -287,20 +288,6 @@ describe('updateFormField', () => {
   it('should call updateImageDataUrl actions', async () => {
     const param = {
       imageDataUrl: 'https://image-data.jpg',
-    };
-
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const appThunk = updateFormField(param) as any;
-    await appThunk(dispatch);
-
-    expect(dispatch.mock.calls[0][0].type).toBe(
-      'articleForm/updateImageDataUrl',
-    );
-  });
-
-  it('should call updateImageDataUrl actions with null', async () => {
-    const param = {
-      imageDataUrl: null,
     };
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any

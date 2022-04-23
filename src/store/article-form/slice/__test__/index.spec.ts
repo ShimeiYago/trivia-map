@@ -34,8 +34,10 @@ describe('articleForm reducer', () => {
     expect(articleFormReducer(undefined, { type: 'unknown' })).toEqual({
       title: '',
       content: '',
+      imageDataUrl: null,
       lastSavedTitle: '',
       lastSavedContent: '',
+      lastSavedImageDataUrl: null,
       submittingState: 'waiting',
       fetchingState: 'waiting',
       isEditting: false,

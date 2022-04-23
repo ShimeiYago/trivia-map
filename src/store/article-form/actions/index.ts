@@ -48,7 +48,7 @@ export const submitNewArticle = (): AppThunk => async (dispatch, getState) => {
   const imageDataUrl = selectArticleFormImageDataUrl(getState());
 
   try {
-    const res = await postRemoteArticle(title, content, position, imageDataUrl);
+    const res = await postRemoteArticle(title, content, imageDataUrl, position);
     dispatch(submitSuccess(res.postId));
     dispatch(initialize());
 
@@ -95,7 +95,7 @@ export const submitEdittedArticle =
     let formError: FormError;
 
     try {
-      await putRemoteArticle(postId, title, content, position, imageDataUrl);
+      await putRemoteArticle(postId, title, content, imageDataUrl, position);
       dispatch(submitSuccess(postId));
       dispatch(initialize());
 
@@ -156,7 +156,7 @@ export const updateFormField =
       dispatch(updatePosition(param.position));
     }
     if (param.imageDataUrl !== undefined) {
-      dispatch(updateImageDataUrl(param.imageDataUrl ?? undefined));
+      dispatch(updateImageDataUrl(param.imageDataUrl));
     }
 
     dispatch(updateIsFormChangedFromLastSaved());

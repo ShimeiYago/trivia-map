@@ -19,7 +19,7 @@ export const articleFormSlice = createSlice({
       state.position = action.payload;
     },
 
-    updateImageDataUrl(state, action: PayloadAction<string | undefined>) {
+    updateImageDataUrl(state, action: PayloadAction<string | null>) {
       state.imageDataUrl = action.payload;
     },
 

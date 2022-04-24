@@ -19,6 +19,7 @@ import { BoxField } from 'views/components/atoms/box-field';
 import { Image } from 'views/components/atoms/image';
 import { UpdateFormFieldParam } from 'store/article-form/actions';
 import { CloseFormButton } from '../../close-form-button';
+import { ImageField } from 'views/components/moleculars/image-field';
 
 export class Renderer extends React.Component<Props> {
   headerRef: React.RefObject<HTMLDivElement>;
@@ -116,19 +117,15 @@ export class Renderer extends React.Component<Props> {
               helperText={formError?.fieldErrors?.title}
             />
 
-            <input
-              type="file"
-              accept="image/*"
-              onChange={this.handleFileInputChange}
-            />
-
-            {this.props.imageDataUrl && (
+            {this.props.imageDataUrl ? (
               <Image
                 src={this.props.imageDataUrl}
                 width="full"
                 height="200px"
                 objectFit="cover"
               />
+            ) : (
+              <ImageField onChange={this.handleFileInputChange} />
             )}
 
             <TextField

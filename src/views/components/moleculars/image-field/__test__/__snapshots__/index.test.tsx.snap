@@ -1,0 +1,127 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shallow Snapshot Tests basic 1`] = `
+<div>
+  <label
+    className="label label-active"
+  >
+    <input
+      accept="image/*"
+      className="input-image"
+      onChange={[MockFunction]}
+      type="file"
+    />
+    <div
+      className="content"
+    >
+      <ForwardRef(Typography)>
+        <Memo(ForwardRef(AddAPhotoIcon))
+          fontSize="large"
+        />
+      </ForwardRef(Typography)>
+      <ForwardRef(Typography)>
+        写真を追加
+      </ForwardRef(Typography)>
+    </div>
+  </label>
+</div>
+`;
+
+exports[`Shallow Snapshot Tests disabled 1`] = `
+<div>
+  <label
+    className="label"
+  />
+</div>
+`;
+
+exports[`Shallow Snapshot Tests with error & helperText 1`] = `
+<div>
+  <label
+    className="label label-active"
+  >
+    <input
+      accept="image/*"
+      className="input-image"
+      onChange={[MockFunction]}
+      type="file"
+    />
+    <div
+      className="content"
+    >
+      <ForwardRef(Typography)>
+        <Memo(ForwardRef(AddAPhotoIcon))
+          fontSize="large"
+        />
+      </ForwardRef(Typography)>
+      <ForwardRef(Typography)>
+        写真を追加
+      </ForwardRef(Typography)>
+    </div>
+  </label>
+  <ForwardRef(Typography)
+    className="helper-text helper-text-error"
+  >
+    text
+  </ForwardRef(Typography)>
+</div>
+`;
+
+exports[`Shallow Snapshot Tests with error 1`] = `
+<div>
+  <label
+    className="label label-active"
+  >
+    <input
+      accept="image/*"
+      className="input-image"
+      onChange={[MockFunction]}
+      type="file"
+    />
+    <div
+      className="content"
+    >
+      <ForwardRef(Typography)>
+        <Memo(ForwardRef(AddAPhotoIcon))
+          fontSize="large"
+        />
+      </ForwardRef(Typography)>
+      <ForwardRef(Typography)>
+        写真を追加
+      </ForwardRef(Typography)>
+    </div>
+  </label>
+</div>
+`;
+
+exports[`Shallow Snapshot Tests with helperText 1`] = `
+<div>
+  <label
+    className="label label-active"
+  >
+    <input
+      accept="image/*"
+      className="input-image"
+      onChange={[MockFunction]}
+      type="file"
+    />
+    <div
+      className="content"
+    >
+      <ForwardRef(Typography)>
+        <Memo(ForwardRef(AddAPhotoIcon))
+          fontSize="large"
+        />
+      </ForwardRef(Typography)>
+      <ForwardRef(Typography)>
+        写真を追加
+      </ForwardRef(Typography)>
+    </div>
+  </label>
+  <ForwardRef(Typography)
+    className="helper-text"
+  >
+    text
+  </ForwardRef(Typography)>
+</div>
+`;

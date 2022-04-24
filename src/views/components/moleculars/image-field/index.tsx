@@ -29,7 +29,7 @@ export class ImageField extends React.Component<Props> {
               <Typography>
                 <AddAPhotoIcon fontSize="large" />
               </Typography>
-              <Typography>写真を追加</Typography>
+              <Typography>タップして写真を追加</Typography>
             </div>
           )}
         </label>

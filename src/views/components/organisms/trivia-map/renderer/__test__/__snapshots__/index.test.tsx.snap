@@ -4,7 +4,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
 <ForwardRef(Box)
   sx={
     Object {
-      "height": "100vh",
+      "height": "100%",
       "width": "100%",
     }
   }
@@ -68,7 +68,7 @@ exports[`Shallow Snapshot Tests disabled map 1`] = `
 <ForwardRef(Box)
   sx={
     Object {
-      "height": "100vh",
+      "height": "100%",
       "width": "100%",
     }
   }
@@ -117,7 +117,7 @@ exports[`Shallow Snapshot Tests hide marker 1`] = `
 <ForwardRef(Box)
   sx={
     Object {
-      "height": "100vh",
+      "height": "100%",
       "width": "100%",
     }
   }
@@ -159,7 +159,7 @@ exports[`Shallow Snapshot Tests when currentPosition state is setted 1`] = `
 <ForwardRef(Box)
   sx={
     Object {
-      "height": "100vh",
+      "height": "100%",
       "width": "100%",
     }
   }
@@ -235,7 +235,7 @@ exports[`Shallow Snapshot Tests with initCenter prop 1`] = `
 <ForwardRef(Box)
   sx={
     Object {
-      "height": "100vh",
+      "height": "100%",
       "width": "100%",
     }
   }
@@ -314,7 +314,7 @@ exports[`Shallow Snapshot Tests with onClickPostTitle props 1`] = `
 <ForwardRef(Box)
   sx={
     Object {
-      "height": "100vh",
+      "height": "100%",
       "width": "100%",
     }
   }

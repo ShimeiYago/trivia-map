@@ -5,10 +5,14 @@ exports[`Shallow Snapshot Tests basic 1`] = `
   <ForwardRef(Box)
     sx={
       Object {
+        "height": "calc(100vh - 56px)",
         "position": "relative",
       }
     }
   >
+    <GlobalMenu
+      barPosition="static"
+    />
     <TriviaMap
       endToSelectPosition={[Function]}
       hiddenMarkerIds={Array []}
@@ -83,11 +87,15 @@ exports[`Shallow Snapshot Tests pc view 1`] = `
   <ForwardRef(Box)
     sx={
       Object {
+        "height": "calc(100vh - 64px)",
         "position": "relative",
         "width": "calc(100% - 500px)",
       }
     }
   >
+    <GlobalMenu
+      barPosition="static"
+    />
     <TriviaMap
       endToSelectPosition={[Function]}
       hiddenMarkerIds={Array []}

@@ -20,7 +20,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
         />
       </ForwardRef(Typography)>
       <ForwardRef(Typography)>
-        写真を追加
+        タップして写真を追加
       </ForwardRef(Typography)>
     </div>
   </label>
@@ -55,7 +55,7 @@ exports[`Shallow Snapshot Tests with error & helperText 1`] = `
         />
       </ForwardRef(Typography)>
       <ForwardRef(Typography)>
-        写真を追加
+        タップして写真を追加
       </ForwardRef(Typography)>
     </div>
   </label>
@@ -87,7 +87,7 @@ exports[`Shallow Snapshot Tests with error 1`] = `
         />
       </ForwardRef(Typography)>
       <ForwardRef(Typography)>
-        写真を追加
+        タップして写真を追加
       </ForwardRef(Typography)>
     </div>
   </label>
@@ -114,7 +114,7 @@ exports[`Shallow Snapshot Tests with helperText 1`] = `
         />
       </ForwardRef(Typography)>
       <ForwardRef(Typography)>
-        写真を追加
+        タップして写真を追加
       </ForwardRef(Typography)>
     </div>
   </label>

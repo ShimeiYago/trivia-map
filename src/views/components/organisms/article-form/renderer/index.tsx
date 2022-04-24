@@ -13,7 +13,12 @@ import { LoadingState } from 'types/loading-state';
 import { Position } from 'types/position';
 import { FormError } from 'store/article-form/model';
 import { LoadingButton } from '@mui/lab';
-import { miniMapLayer, miniMapTextBox, miniMapWrapper } from './styles';
+import {
+  closeButton,
+  miniMapLayer,
+  miniMapTextBox,
+  miniMapWrapper,
+} from './styles';
 import { TriviaMap } from '../../trivia-map';
 import { BoxField } from 'views/components/moleculars/box-field';
 import { UpdateFormFieldParam } from 'store/article-form/actions';
@@ -190,7 +195,11 @@ export class Renderer extends React.Component<Props> {
     if (!this.props.onClose) {
       return null;
     }
-    return <CloseFormButton onClose={this.props.onClose} padding={1} />;
+    return (
+      <Box sx={closeButton}>
+        <CloseFormButton onClose={this.props.onClose} padding={1} />
+      </Box>
+    );
   }
 
   protected handleChangeTitle = (e: React.ChangeEvent<HTMLInputElement>) =>

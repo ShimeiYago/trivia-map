@@ -1,0 +1,38 @@
+.input-image {
+  display: none;
+}
+
+.label {
+  display: block;
+  border: 2px #c4c4c4 dashed;
+  border-radius: 8px;
+  width: 100%;
+  height: 200px;
+  position: relative;
+}
+.label-active {
+  cursor: pointer;
+}
+.label-active:hover {
+  border-color: #5a5a5a;
+}
+
+.content {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  text-align: center;
+  width: 100%;
+  color: #5a5a5a;
+}
+
+.helper-text {
+  margin: 3px 14px 0;
+  color: #747474;
+  font-size: 0.75rem;
+}
+
+.helper-text-error {
+  color: #d32f2f;
+}

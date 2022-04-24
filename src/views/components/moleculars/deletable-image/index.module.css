@@ -1,14 +1,19 @@
-.image {
-  border-style: none;
-  vertical-align: middle;
+.wrapper {
+  position: relative;
 }
 
-.cover {
-  object-fit: cover;
+.delete-button {
+  position: absolute;
+  left: 4px;
+  top: 4px;
+  display: block;
+  background: rgba(0,0,0,0.8);
+  border-radius: 20px;
+  box-sizing: border-box;
+  color: #fff;
 }
-
-.border-radius {
-  border-radius: 8px;
+.delete-button:hover {
+  background: rgba(0,0,0,0.5);
 }
 
 .width-full {

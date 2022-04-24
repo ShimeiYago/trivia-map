@@ -28,10 +28,8 @@ exports[`Shallow Snapshot Tests basic 1`] = `
         value=""
         variant="standard"
       />
-      <input
-        accept="image/*"
+      <ImageField
         onChange={[Function]}
-        type="file"
       />
       <ForwardRef(TextField)
         disabled={false}
@@ -156,10 +154,8 @@ exports[`Shallow Snapshot Tests loading 1`] = `
         value=""
         variant="standard"
       />
-      <input
-        accept="image/*"
+      <ImageField
         onChange={[Function]}
-        type="file"
       />
       <ForwardRef(TextField)
         disabled={true}
@@ -262,10 +258,8 @@ exports[`Shallow Snapshot Tests position is not selected yet 1`] = `
         value=""
         variant="standard"
       />
-      <input
-        accept="image/*"
+      <ImageField
         onChange={[Function]}
-        type="file"
       />
       <ForwardRef(TextField)
         disabled={false}
@@ -378,10 +372,8 @@ exports[`Shallow Snapshot Tests with close button 1`] = `
         value=""
         variant="standard"
       />
-      <input
-        accept="image/*"
+      <ImageField
         onChange={[Function]}
-        type="file"
       />
       <ForwardRef(TextField)
         disabled={false}
@@ -496,14 +488,11 @@ exports[`Shallow Snapshot Tests with image 1`] = `
         value=""
         variant="standard"
       />
-      <input
-        accept="image/*"
-        onChange={[Function]}
-        type="file"
-      />
-      <Image
+      <DeletableImage
+        borderRadius={true}
         height="200px"
         objectFit="cover"
+        onDelete={[Function]}
         src="https://image-data.jpg"
         width="full"
       />
@@ -632,10 +621,8 @@ exports[`Shallow Snapshot Tests with validation error 1`] = `
         value=""
         variant="standard"
       />
-      <input
-        accept="image/*"
+      <ImageField
         onChange={[Function]}
-        type="file"
       />
       <ForwardRef(TextField)
         disabled={false}

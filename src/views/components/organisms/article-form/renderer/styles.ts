@@ -1,5 +1,12 @@
 import { SxProps } from '@mui/material';
 
+export const closeButton: SxProps = {
+  position: 'fixed',
+  backgroundColor: 'white',
+  display: 'block',
+  zIndex: 2,
+};
+
 export const miniMapWrapper: SxProps = {
   position: 'relative',
 };

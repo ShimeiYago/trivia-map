@@ -342,10 +342,21 @@ exports[`Shallow Snapshot Tests position is not selected yet 1`] = `
 
 exports[`Shallow Snapshot Tests with close button 1`] = `
 <Fragment>
-  <CloseFormButton
-    onClose={[MockFunction]}
-    padding={1}
-  />
+  <ForwardRef(Box)
+    sx={
+      Object {
+        "backgroundColor": "white",
+        "display": "block",
+        "position": "fixed",
+        "zIndex": 2,
+      }
+    }
+  >
+    <CloseFormButton
+      onClose={[MockFunction]}
+      padding={1}
+    />
+  </ForwardRef(Box)>
   <ForwardRef(Container)
     maxWidth="sm"
     sx={

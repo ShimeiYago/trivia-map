@@ -14,7 +14,8 @@ import { Position } from 'types/position';
 import { FormError } from 'store/article-form/model';
 import { LoadingButton } from '@mui/lab';
 import {
-  closeButton,
+  formContainer,
+  formHeader,
   miniMapLayer,
   miniMapTextBox,
   miniMapWrapper,
@@ -92,8 +93,8 @@ export class Renderer extends React.Component<Props> {
 
     return (
       <>
-        {this.renderCloseButton()}
-        <Container maxWidth="sm" sx={{ p: 3 }}>
+        {this.renderHeader()}
+        <Container maxWidth="sm" sx={formContainer}>
           <Stack spacing={3}>
             <Typography
               component="h2"
@@ -191,13 +192,13 @@ export class Renderer extends React.Component<Props> {
     );
   }
 
-  protected renderCloseButton() {
+  protected renderHeader() {
     if (!this.props.onClose) {
       return null;
     }
     return (
-      <Box sx={closeButton}>
-        <CloseFormButton onClose={this.props.onClose} padding={1} />
+      <Box sx={formHeader}>
+        <CloseFormButton onClose={this.props.onClose} />
       </Box>
     );
   }

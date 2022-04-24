@@ -3,13 +3,15 @@ import styles from './index.module.css';
 
 export class Image extends React.Component<Props> {
   render() {
-    const { src, alt, width, height, objectFit, onClick } = this.props;
+    const { src, alt, width, height, objectFit, borderRadius, onClick } =
+      this.props;
 
     const classNames: string[] = [styles.image];
 
     if (objectFit === 'cover') classNames.push(styles.cover);
     if (width) classNames.push(styles[`width-${width}`]);
     if (height) classNames.push(styles[`height-${height}`]);
+    if (borderRadius) classNames.push(styles['border-radius']);
 
     return (
       <img
@@ -28,6 +30,7 @@ export type Props = {
   width?: Sizes;
   height?: Sizes;
   objectFit?: 'cover';
+  borderRadius?: boolean;
   onClick?: () => void;
 };
 

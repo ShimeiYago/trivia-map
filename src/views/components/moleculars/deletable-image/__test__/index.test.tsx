@@ -1,17 +1,18 @@
 import { shallow, ShallowWrapper } from 'enzyme';
-import { Image, Props } from '..';
+import { DeletableImage, Props } from '..';
 
-let wrapper: ShallowWrapper<Props, unknown, Image>;
+let wrapper: ShallowWrapper<Props, unknown, DeletableImage>;
 
 const props: Props = {
   src: 'image-data',
   alt: 'alt-text',
   onClick: jest.fn(),
+  onDelete: jest.fn(),
 };
 
 describe('Shallow Snapshot Tests', () => {
   beforeEach(() => {
-    wrapper = shallow(<Image {...props} />);
+    wrapper = shallow(<DeletableImage {...props} />);
   });
 
   it('basic', () => {
@@ -28,20 +29,6 @@ describe('Shallow Snapshot Tests', () => {
   it('height', () => {
     wrapper.setProps({
       height: 'full',
-    });
-    expect(wrapper).toMatchSnapshot();
-  });
-
-  it('objectFit cover', () => {
-    wrapper.setProps({
-      objectFit: 'cover',
-    });
-    expect(wrapper).toMatchSnapshot();
-  });
-
-  it('border radius', () => {
-    wrapper.setProps({
-      borderRadius: true,
     });
     expect(wrapper).toMatchSnapshot();
   });

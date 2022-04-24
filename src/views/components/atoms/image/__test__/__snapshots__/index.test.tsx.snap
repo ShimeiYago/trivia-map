@@ -9,6 +9,15 @@ exports[`Shallow Snapshot Tests basic 1`] = `
 />
 `;
 
+exports[`Shallow Snapshot Tests border radius 1`] = `
+<img
+  alt="alt-text"
+  className="image border-radius"
+  onClick={[MockFunction]}
+  src="image-data"
+/>
+`;
+
 exports[`Shallow Snapshot Tests height 1`] = `
 <img
   alt="alt-text"

@@ -488,9 +488,11 @@ exports[`Shallow Snapshot Tests with image 1`] = `
         value=""
         variant="standard"
       />
-      <Image
+      <DeletableImage
+        borderRadius={true}
         height="200px"
         objectFit="cover"
+        onDelete={[Function]}
         src="https://image-data.jpg"
         width="full"
       />

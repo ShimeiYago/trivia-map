@@ -15,7 +15,7 @@ import { FormError } from 'store/article-form/model';
 import { LoadingButton } from '@mui/lab';
 import { miniMapLayer, miniMapTextBox, miniMapWrapper } from './styles';
 import { TriviaMap } from '../../trivia-map';
-import { BoxField } from 'views/components/atoms/box-field';
+import { BoxField } from 'views/components/moleculars/box-field';
 import { Image } from 'views/components/atoms/image';
 import { UpdateFormFieldParam } from 'store/article-form/actions';
 import { CloseFormButton } from '../../close-form-button';

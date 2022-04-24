@@ -16,10 +16,10 @@ import { LoadingButton } from '@mui/lab';
 import { miniMapLayer, miniMapTextBox, miniMapWrapper } from './styles';
 import { TriviaMap } from '../../trivia-map';
 import { BoxField } from 'views/components/moleculars/box-field';
-import { Image } from 'views/components/atoms/image';
 import { UpdateFormFieldParam } from 'store/article-form/actions';
 import { CloseFormButton } from '../../close-form-button';
 import { ImageField } from 'views/components/moleculars/image-field';
+import { DeletableImage } from 'views/components/moleculars/deletable-image';
 
 export class Renderer extends React.Component<Props> {
   headerRef: React.RefObject<HTMLDivElement>;
@@ -118,11 +118,13 @@ export class Renderer extends React.Component<Props> {
             />
 
             {this.props.imageDataUrl ? (
-              <Image
+              <DeletableImage
                 src={this.props.imageDataUrl}
                 width="full"
                 height="200px"
                 objectFit="cover"
+                borderRadius
+                onDelete={this.handleDeleteImage}
               />
             ) : (
               <ImageField onChange={this.handleFileInputChange} />
@@ -256,6 +258,10 @@ export class Renderer extends React.Component<Props> {
     } else {
       this.props.updateFormField({ imageDataUrl: null });
     }
+  };
+
+  protected handleDeleteImage = () => {
+    this.props.updateFormField({ imageDataUrl: null });
   };
 }
 

@@ -221,3 +221,18 @@ describe('handleFileInputChange', () => {
     });
   });
 });
+
+describe('handleDeleteImage', () => {
+  beforeEach(() => {
+    wrapper = shallow(<Renderer {...basicProps} />);
+  });
+
+  it('should set null as imageDataUrl', () => {
+    const instance = wrapper.instance();
+    instance['handleDeleteImage']();
+
+    expect(instance.props.updateFormField).toBeCalledWith({
+      imageDataUrl: null,
+    });
+  });
+});

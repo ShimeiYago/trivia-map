@@ -25,13 +25,6 @@ describe('Shallow Snapshot Tests', () => {
   it('basic', () => {
     expect(wrapper).toMatchSnapshot();
   });
-
-  it('with padding', () => {
-    wrapper.setProps({
-      padding: 1,
-    });
-    expect(wrapper).toMatchSnapshot();
-  });
 });
 
 describe('handleClick', () => {

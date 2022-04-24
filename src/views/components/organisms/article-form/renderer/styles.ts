@@ -1,10 +1,16 @@
 import { SxProps } from '@mui/material';
 
-export const closeButton: SxProps = {
-  position: 'fixed',
+export const formHeader: SxProps = {
+  width: '100%',
   backgroundColor: 'white',
   display: 'block',
-  zIndex: 2,
+  pl: 1,
+  pt: 1,
+};
+
+export const formContainer: SxProps = {
+  p: 3,
+  overflow: 'scroll',
 };
 
 export const miniMapWrapper: SxProps = {

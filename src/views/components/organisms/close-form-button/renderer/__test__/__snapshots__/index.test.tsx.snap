@@ -2,62 +2,15 @@
 
 exports[`Shallow Snapshot Tests basic 1`] = `
 <Fragment>
-  <ForwardRef(Box)
-    sx={
-      Object {
-        "p": undefined,
-      }
-    }
-  >
+  <ForwardRef(Box)>
     <ForwardRef(IconButton)
       aria-label="close"
       onClick={[Function]}
-    >
-      <Memo(ForwardRef(CloseIcon)) />
-    </ForwardRef(IconButton)>
-  </ForwardRef(Box)>
-  <ForwardRef(Dialog)
-    onClose={[Function]}
-    open={true}
-  >
-    <ForwardRef(DialogTitle)>
-      投稿を保存しますか？
-    </ForwardRef(DialogTitle)>
-    <ForwardRef(DialogContent)>
-      （未確定）下書き保存すれば、後から再編集して投稿できます。
-    </ForwardRef(DialogContent)>
-    <ForwardRef(DialogActions)>
-      <ForwardRef(Button)
-        onClick={[Function]}
-        variant="outlined"
-      >
-        破棄
-      </ForwardRef(Button)>
-      <ForwardRef(LoadingButton)
-        autoFocus={true}
-        loading={false}
-        onClick={[Function]}
-        variant="contained"
-      >
-        保存
-      </ForwardRef(LoadingButton)>
-    </ForwardRef(DialogActions)>
-  </ForwardRef(Dialog)>
-</Fragment>
-`;
-
-exports[`Shallow Snapshot Tests with padding 1`] = `
-<Fragment>
-  <ForwardRef(Box)
-    sx={
-      Object {
-        "p": 1,
+      sx={
+        Object {
+          "p": 1,
+        }
       }
-    }
-  >
-    <ForwardRef(IconButton)
-      aria-label="close"
-      onClick={[Function]}
     >
       <Memo(ForwardRef(CloseIcon)) />
     </ForwardRef(IconButton)>

@@ -56,7 +56,7 @@ export class Renderer extends React.Component<Props, State> {
     const { width, height, initZoom, initCenter, disabled } = this.props;
     const mapWrapper: SxProps = {
       width: width ?? '100%',
-      height: height ?? '100vh',
+      height: height ?? '100%',
     };
 
     const center = initCenter

@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   Box,
   Button,
@@ -8,7 +9,6 @@ import {
   DialogTitle,
   Drawer,
 } from '@mui/material';
-import React from 'react';
 import { FloatingButton } from 'views/components/atoms/floating-button';
 import { BoxModal } from 'views/components/moleculars/box-modal';
 import { SwipeableEdgeDrawer } from 'views/components/moleculars/swipeable-edge-drawer';
@@ -20,6 +20,7 @@ import { GlobalMessage } from 'views/components/organisms/global-messge';
 import { LoadingProgressBar } from 'views/components/organisms/loading-progress-bar';
 import { TriviaMap } from 'views/components/organisms/trivia-map';
 import { rightDrawerStyle, mapWrapper } from './styles';
+import { GlobalMenu } from 'views/components/organisms/global-menu';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -65,7 +66,8 @@ export class Renderer extends React.Component<Props, State> {
     const { isFormEditting, isMobile } = this.props;
     return (
       <>
-        <Box sx={mapWrapper(openFormModal && !isMobile)}>
+        <Box sx={mapWrapper(openFormModal && !isMobile, isMobile)}>
+          <GlobalMenu barPosition="static" />
           <TriviaMap
             onClickPostTitle={this.handleClickPostTitle}
             newMarkerMode={this.state.newMarkerMode}

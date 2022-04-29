@@ -7,7 +7,7 @@ import { Renderer, Props } from './renderer';
 import { isMobile } from 'react-device-detect';
 import { deleteArticle } from 'store/markers/actions';
 
-export function App() {
+export function MapPage() {
   const dispatch = useAppDispatch();
 
   const props: Props = {

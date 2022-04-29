@@ -1,11 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import { App } from 'views/pages/app';
 import { store } from 'store';
 import { Provider } from 'react-redux';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
 import { ErrorBoundary } from 'error-boundary';
+import { MapPage } from 'views/pages/map-page';
+import { Article } from 'views/pages/article';
 
 // Deactivate all console.log on production
 // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -13,11 +15,17 @@ process.env.NODE_ENV === 'production' && (console.log = () => {});
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <ErrorBoundary>
-        <App />
-      </ErrorBoundary>
-    </Provider>
+    <ErrorBoundary>
+      <Provider store={store}>
+        <BrowserRouter>
+          <Routes>
+            <Route index element={<MapPage />} />
+            <Route path="/posts/:postId" element={<Article />} />
+            <Route path="*" element={<div>404 not found (TODO)</div>} />
+          </Routes>
+        </BrowserRouter>
+      </Provider>
+    </ErrorBoundary>
   </React.StrictMode>,
   document.getElementById('root'),
 );

@@ -18,6 +18,7 @@ if end of pages, `nextPageIndex` is null.
         lng: 29.268,
       },
       title: 'ノーチラス号',
+      thumbnailImgUrl: "https://www.disneyparkstory.com/wp-content/uploads/2017/02/CIMG9800-150x150.jpg"
     },
     {
       postId: '001',
@@ -25,7 +26,7 @@ if end of pages, `nextPageIndex` is null.
         lat: 30.524,
         lng: 15.908,
       },
-      title: '削岩機',
+      title: '削岩機'
     },
   ]
 }

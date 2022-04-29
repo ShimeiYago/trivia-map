@@ -25,6 +25,7 @@ export type MarkerTypeAPI = {
   postId: string;
   position: Position;
   title: string;
+  thumbnailImgUrl?: string;
 };
 
 export type GetMarkersResponse = {

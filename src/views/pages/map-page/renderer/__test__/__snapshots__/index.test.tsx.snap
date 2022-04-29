@@ -17,7 +17,6 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       endToSelectPosition={[Function]}
       hiddenMarkerIds={Array []}
       newMarkerMode={false}
-      onClickPostTitle={[Function]}
     />
     <FloatingButton
       color="primary"
@@ -100,7 +99,6 @@ exports[`Shallow Snapshot Tests pc view 1`] = `
       endToSelectPosition={[Function]}
       hiddenMarkerIds={Array []}
       newMarkerMode={false}
-      onClickPostTitle={[Function]}
     />
     <FloatingButton
       color="primary"

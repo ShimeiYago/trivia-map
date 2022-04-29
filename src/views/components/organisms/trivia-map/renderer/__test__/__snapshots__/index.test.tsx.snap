@@ -38,27 +38,25 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       noWrap={true}
       url="/tds-map-tiles/{z}/{x}/{y}.png"
     />
-    <MapMarker
-      autoOpen={false}
-      draggable={false}
-      key="post-marker-000"
+    <PostMarkers
+      hiddenMarkerIds={Array []}
       map={
         Object {
           "setView": [MockFunction],
         }
       }
-      popup={
-        <ForwardRef(Typography)>
-          title
-        </ForwardRef(Typography)>
-      }
-      position={
+      markers={
         Object {
-          "lat": 0,
-          "lng": 0,
+          "000": Object {
+            "position": Object {
+              "lat": 0,
+              "lng": 0,
+            },
+            "title": "title",
+          },
         }
       }
-      variant="blue"
+      popupDisabled={false}
     />
   </MapContainer>
 </ForwardRef(Box)>
@@ -104,48 +102,6 @@ exports[`Shallow Snapshot Tests disabled map 1`] = `
     whenCreated={[Function]}
     zoom={1}
     zoomControl={false}
-  >
-    <ForwardRef(LeafComponent)
-      noWrap={true}
-      url="/tds-map-tiles/{z}/{x}/{y}.png"
-    />
-  </MapContainer>
-</ForwardRef(Box)>
-`;
-
-exports[`Shallow Snapshot Tests hide marker 1`] = `
-<ForwardRef(Box)
-  sx={
-    Object {
-      "height": "100%",
-      "width": "100%",
-    }
-  }
->
-  <MapContainer
-    center={
-      Object {
-        "lat": 0,
-        "lng": 0,
-      }
-    }
-    maxBounds={
-      Array [
-        Array [
-          300,
-          -300,
-        ],
-        Array [
-          -300,
-          300,
-        ],
-      ]
-    }
-    maxZoom={4}
-    minZoom={1}
-    tap={false}
-    whenCreated={[Function]}
-    zoom={1}
   >
     <ForwardRef(LeafComponent)
       noWrap={true}
@@ -209,23 +165,25 @@ exports[`Shallow Snapshot Tests when currentPosition state is setted 1`] = `
       noWrap={true}
       url="/tds-map-tiles/{z}/{x}/{y}.png"
     />
-    <MapMarker
-      autoOpen={false}
-      draggable={false}
-      key="post-marker-000"
+    <PostMarkers
+      hiddenMarkerIds={Array []}
       map={
         Object {
           "setView": [MockFunction],
         }
       }
-      popup={false}
-      position={
+      markers={
         Object {
-          "lat": 0,
-          "lng": 0,
+          "000": Object {
+            "position": Object {
+              "lat": 0,
+              "lng": 0,
+            },
+            "title": "title",
+          },
         }
       }
-      variant="blue"
+      popupDisabled={true}
     />
   </MapContainer>
 </ForwardRef(Box)>
@@ -269,10 +227,8 @@ exports[`Shallow Snapshot Tests with initCenter prop 1`] = `
       noWrap={true}
       url="/tds-map-tiles/{z}/{x}/{y}.png"
     />
-    <MapMarker
-      autoOpen={false}
-      draggable={false}
-      key="post-marker-000"
+    <PostMarkers
+      hiddenMarkerIds={Array []}
       map={
         Object {
           "setView": [MockFunction] {
@@ -293,84 +249,18 @@ exports[`Shallow Snapshot Tests with initCenter prop 1`] = `
           },
         }
       }
-      popup={
-        <ForwardRef(Typography)>
-          title
-        </ForwardRef(Typography)>
-      }
-      position={
+      markers={
         Object {
-          "lat": 0,
-          "lng": 0,
+          "000": Object {
+            "position": Object {
+              "lat": 0,
+              "lng": 0,
+            },
+            "title": "title",
+          },
         }
       }
-      variant="blue"
-    />
-  </MapContainer>
-</ForwardRef(Box)>
-`;
-
-exports[`Shallow Snapshot Tests with onClickPostTitle props 1`] = `
-<ForwardRef(Box)
-  sx={
-    Object {
-      "height": "100%",
-      "width": "100%",
-    }
-  }
->
-  <MapContainer
-    center={
-      Object {
-        "lat": 0,
-        "lng": 0,
-      }
-    }
-    maxBounds={
-      Array [
-        Array [
-          300,
-          -300,
-        ],
-        Array [
-          -300,
-          300,
-        ],
-      ]
-    }
-    maxZoom={4}
-    minZoom={1}
-    tap={false}
-    whenCreated={[Function]}
-    zoom={1}
-  >
-    <ForwardRef(LeafComponent)
-      noWrap={true}
-      url="/tds-map-tiles/{z}/{x}/{y}.png"
-    />
-    <MapMarker
-      autoOpen={false}
-      draggable={false}
-      key="post-marker-000"
-      map={
-        Object {
-          "setView": [MockFunction],
-        }
-      }
-      popup={
-        <ForwardRef(Button)
-          variant="text"
-        >
-          title
-        </ForwardRef(Button)>
-      }
-      position={
-        Object {
-          "lat": 0,
-          "lng": 0,
-        }
-      }
-      variant="blue"
+      popupDisabled={false}
     />
   </MapContainer>
 </ForwardRef(Box)>
@@ -414,27 +304,25 @@ exports[`Shallow Snapshot Tests with width and height props 1`] = `
       noWrap={true}
       url="/tds-map-tiles/{z}/{x}/{y}.png"
     />
-    <MapMarker
-      autoOpen={false}
-      draggable={false}
-      key="post-marker-000"
+    <PostMarkers
+      hiddenMarkerIds={Array []}
       map={
         Object {
           "setView": [MockFunction],
         }
       }
-      popup={
-        <ForwardRef(Typography)>
-          title
-        </ForwardRef(Typography)>
-      }
-      position={
+      markers={
         Object {
-          "lat": 0,
-          "lng": 0,
+          "000": Object {
+            "position": Object {
+              "lat": 0,
+              "lng": 0,
+            },
+            "title": "title",
+          },
         }
       }
-      variant="blue"
+      popupDisabled={false}
     />
   </MapContainer>
 </ForwardRef(Box)>

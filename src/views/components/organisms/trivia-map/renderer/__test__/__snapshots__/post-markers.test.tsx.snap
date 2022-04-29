@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shallow Snapshot Tests basic 1`] = `
+<Fragment>
+  <MapMarker
+    autoOpen={false}
+    draggable={false}
+    key="post-marker-001"
+    map={
+      Object {
+        "setView": [MockFunction],
+      }
+    }
+    popup={
+      <ForwardRef(Typography)>
+        title2
+      </ForwardRef(Typography)>
+    }
+    position={
+      Object {
+        "lat": 0,
+        "lng": 0,
+      }
+    }
+    variant="blue"
+  />
+</Fragment>
+`;

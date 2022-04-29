@@ -69,7 +69,6 @@ export class Renderer extends React.Component<Props, State> {
         <Box sx={mapWrapper(openFormModal && !isMobile, isMobile)}>
           <GlobalMenu barPosition="static" />
           <TriviaMap
-            onClickPostTitle={this.handleClickPostTitle}
             newMarkerMode={this.state.newMarkerMode}
             endToSelectPosition={this.endToSelectPosition}
             hiddenMarkerIds={edittingArticleId ? [edittingArticleId] : []}

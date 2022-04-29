@@ -24,6 +24,8 @@ const mockGetMarkersResponsePage1 = {
         lng: 29.268,
       },
       title: 'ノーチラス号',
+      thumbnailImgUrl:
+        'https://www.disneyparkstory.com/wp-content/uploads/2017/02/CIMG9800-150x150.jpg',
     },
     {
       postId: '001',

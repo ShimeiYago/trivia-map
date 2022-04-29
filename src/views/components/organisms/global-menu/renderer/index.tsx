@@ -56,7 +56,7 @@ export class Renderer extends React.Component<Props, State> {
           onOpen={this.toggleLeftMenu(true)}
           onClose={this.toggleLeftMenu(false)}
         >
-          <Box sx={{ width: 250, height: '100%' }}>{leftNaviContents}</Box>
+          <Box sx={{ width: 250 }}>{leftNaviContents}</Box>
         </SwipeableDrawer>
       </>
     );

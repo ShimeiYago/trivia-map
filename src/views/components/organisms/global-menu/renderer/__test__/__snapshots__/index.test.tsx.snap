@@ -54,7 +54,6 @@ exports[`Shallow Snapshot Tests basic 1`] = `
     <ForwardRef(Box)
       sx={
         Object {
-          "height": "100%",
           "width": 250,
         }
       }
@@ -200,7 +199,6 @@ exports[`Shallow Snapshot Tests static position 1`] = `
     <ForwardRef(Box)
       sx={
         Object {
-          "height": "100%",
           "width": 250,
         }
       }

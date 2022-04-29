@@ -29,7 +29,6 @@ export function GlobalMessage(ownProps: OwnProps) {
     readingArticleErrorMsg: useAppSelector(selectReadingArticleErrorMsg),
     markersDeletingState: useAppSelector(selectMarkersDeletingState),
     markersErrorMsg: useAppSelector(selectMarkersErrorMsg),
-    closeArticleModal: ownProps.closeArticleModal,
     closeFormModal: ownProps.closeFormModal,
   };
 
@@ -37,6 +36,5 @@ export function GlobalMessage(ownProps: OwnProps) {
 }
 
 type OwnProps = {
-  closeArticleModal: () => void;
   closeFormModal: () => void;
 };

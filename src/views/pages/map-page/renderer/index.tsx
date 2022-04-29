@@ -10,9 +10,7 @@ import {
   Drawer,
 } from '@mui/material';
 import { FloatingButton } from 'views/components/atoms/floating-button';
-import { BoxModal } from 'views/components/moleculars/box-modal';
 import { SwipeableEdgeDrawer } from 'views/components/moleculars/swipeable-edge-drawer';
-import { Article } from 'views/components/organisms/article';
 import { ArticleForm } from 'views/components/organisms/article-form';
 import { CloseFormButton } from 'views/components/organisms/close-form-button';
 import { DeletingConfirmModal } from 'views/components/organisms/deleting-confirm-modal';
@@ -26,7 +24,6 @@ export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      openArticleModal: false,
       openFormModal: false,
       newMarkerMode: false,
       openDialogToConfirmDeleting: false,
@@ -56,13 +53,8 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   render() {
-    const {
-      readingArticleId,
-      openArticleModal,
-      openFormModal,
-      edittingArticleId,
-      openDialogToConfirmDeleting,
-    } = this.state;
+    const { openFormModal, edittingArticleId, openDialogToConfirmDeleting } =
+      this.state;
     const { isFormEditting, isMobile } = this.props;
     return (
       <>
@@ -81,19 +73,6 @@ export class Renderer extends React.Component<Props, State> {
           <LoadingProgressBar />
         </Box>
 
-        <BoxModal
-          open={openArticleModal}
-          onClose={this.handleCloseModal('article')}
-        >
-          {readingArticleId ? (
-            <Article
-              postId={readingArticleId}
-              onClickEdit={this.handleClickPostEdit}
-              onClickDelete={this.handleClickPostDelete}
-            />
-          ) : null}
-        </BoxModal>
-
         <DeletingConfirmModal
           open={openDialogToConfirmDeleting}
           onClickCancel={this.handleCancelToDeleteMarker}
@@ -102,10 +81,7 @@ export class Renderer extends React.Component<Props, State> {
 
         {this.renderEditForm()}
 
-        <GlobalMessage
-          closeArticleModal={this.handleCloseModal('article')}
-          closeFormModal={this.handleCloseModal('form')}
-        />
+        <GlobalMessage closeFormModal={this.handleCloseFormModal} />
 
         {this.renderDoubleEditAlartDialog()}
       </>
@@ -118,15 +94,6 @@ export class Renderer extends React.Component<Props, State> {
       edittingArticleId: undefined,
     });
 
-  protected handleClickPostTitle = (postId: string) => {
-    return () => {
-      this.setState({
-        openArticleModal: true,
-        readingArticleId: postId,
-      });
-    };
-  };
-
   protected handleClickPostEdit = () => {
     if (this.props.isFormChangedFromLastSaved) {
       return this.setState({
@@ -135,7 +102,6 @@ export class Renderer extends React.Component<Props, State> {
     }
     return this.setState({
       openFormModal: true,
-      openArticleModal: false,
       edittingArticleId: this.state.readingArticleId,
     });
   };
@@ -166,24 +132,12 @@ export class Renderer extends React.Component<Props, State> {
       openFormModal: true,
     });
 
-  protected handleCloseModal(target: 'article' | 'form') {
-    switch (target) {
-      case 'article':
-        return () => {
-          this.setState({
-            openArticleModal: false,
-            readingArticleId: undefined,
-          });
-        };
-      case 'form':
-        return () => {
-          this.setState({
-            openFormModal: false,
-            edittingArticleId: undefined,
-          });
-        };
-    }
-  }
+  protected handleCloseFormModal = () => {
+    this.setState({
+      openFormModal: false,
+      edittingArticleId: undefined,
+    });
+  };
 
   protected startToSelectPosition = () => {
     this.setState({
@@ -203,16 +157,14 @@ export class Renderer extends React.Component<Props, State> {
     const { edittingArticleId, openFormModal } = this.state;
     const { isFormEditting, isMobile } = this.props;
 
-    const closeButton = (
-      <CloseFormButton onClose={this.handleCloseModal('form')} />
-    );
+    const closeButton = <CloseFormButton onClose={this.handleCloseFormModal} />;
 
     return isMobile ? (
       <SwipeableEdgeDrawer
         show={isFormEditting || openFormModal}
         open={openFormModal}
         onOpen={this.handleOpenEditForm}
-        onClose={this.handleCloseModal('form')}
+        onClose={this.handleCloseFormModal}
         edgeLabel={closeButton}
         edgeLabelWhenClosed="編集中"
         heightRatio={80}
@@ -233,7 +185,7 @@ export class Renderer extends React.Component<Props, State> {
           <ArticleForm
             postId={edittingArticleId}
             onClickSelectPosition={this.startToSelectPosition}
-            onClose={this.handleCloseModal('form')}
+            onClose={this.handleCloseFormModal}
           />
         )}
       </Drawer>
@@ -279,7 +231,6 @@ export type Props = {
 };
 
 export type State = {
-  openArticleModal: boolean;
   openFormModal: boolean;
   readingArticleId?: string;
   edittingArticleId?: string;

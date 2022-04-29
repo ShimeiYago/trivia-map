@@ -21,7 +21,6 @@ export class Renderer extends React.Component<Props, State> {
       readingArticleErrorMsg,
       markersDeletingState,
       markersErrorMsg,
-      closeArticleModal,
       closeFormModal,
     } = this.props;
 
@@ -58,7 +57,6 @@ export class Renderer extends React.Component<Props, State> {
         message: readingArticleErrorMsg ?? '',
         type: 'error',
       });
-      closeArticleModal();
     }
 
     if (
@@ -70,7 +68,6 @@ export class Renderer extends React.Component<Props, State> {
         message: '投稿を削除しました。',
         type: 'success',
       });
-      closeArticleModal();
     }
 
     if (
@@ -82,7 +79,6 @@ export class Renderer extends React.Component<Props, State> {
         message: markersErrorMsg ?? '',
         type: 'error',
       });
-      closeArticleModal();
     }
   }
 
@@ -120,7 +116,6 @@ export type Props = {
   markersDeletingState: LoadingState;
   markersErrorMsg?: string;
 
-  closeArticleModal: () => void;
   closeFormModal: () => void;
 };
 

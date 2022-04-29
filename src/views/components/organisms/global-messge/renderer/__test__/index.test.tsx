@@ -7,7 +7,6 @@ const props: Props = {
   articleFormFetchingState: 'waiting',
   articleFormSubmittingState: 'waiting',
   readingArticleLoadingState: 'waiting',
-  closeArticleModal: jest.fn(),
   closeFormModal: jest.fn(),
   markersDeletingState: 'waiting',
 };

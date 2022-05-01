@@ -32,6 +32,7 @@ class MockResponseForPagiNation {
         postId: '000',
         position: { lat: 0, lng: 0 },
         title: 'title',
+        thumbnailImgUrl: 'https://img.jpg',
       },
     ],
   };

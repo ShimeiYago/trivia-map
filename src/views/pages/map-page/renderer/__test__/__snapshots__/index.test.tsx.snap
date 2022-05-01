@@ -5,7 +5,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
   <ForwardRef(Box)
     sx={
       Object {
-        "height": "calc(100vh - 56px)",
+        "height": "calc(100vh - 58px)",
         "position": "relative",
       }
     }
@@ -17,7 +17,6 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       endToSelectPosition={[Function]}
       hiddenMarkerIds={Array []}
       newMarkerMode={false}
-      onClickPostTitle={[Function]}
     />
     <FloatingButton
       color="primary"
@@ -27,10 +26,6 @@ exports[`Shallow Snapshot Tests basic 1`] = `
     />
     <LoadingProgressBar />
   </ForwardRef(Box)>
-  <BoxModal
-    onClose={[Function]}
-    open={false}
-  />
   <DeletingConfirmModal
     onClickCancel={[Function]}
     onClickConfirm={[Function]}
@@ -55,7 +50,6 @@ exports[`Shallow Snapshot Tests basic 1`] = `
     />
   </SwipeableEdgeDrawer>
   <GlobalMessage
-    closeArticleModal={[Function]}
     closeFormModal={[Function]}
   />
   <ForwardRef(Dialog)
@@ -87,7 +81,7 @@ exports[`Shallow Snapshot Tests pc view 1`] = `
   <ForwardRef(Box)
     sx={
       Object {
-        "height": "calc(100vh - 64px)",
+        "height": "calc(100vh - 66px)",
         "position": "relative",
         "width": "calc(100% - 500px)",
       }
@@ -100,7 +94,6 @@ exports[`Shallow Snapshot Tests pc view 1`] = `
       endToSelectPosition={[Function]}
       hiddenMarkerIds={Array []}
       newMarkerMode={false}
-      onClickPostTitle={[Function]}
     />
     <FloatingButton
       color="primary"
@@ -110,10 +103,6 @@ exports[`Shallow Snapshot Tests pc view 1`] = `
     />
     <LoadingProgressBar />
   </ForwardRef(Box)>
-  <BoxModal
-    onClose={[Function]}
-    open={false}
-  />
   <DeletingConfirmModal
     onClickCancel={[Function]}
     onClickConfirm={[Function]}
@@ -139,7 +128,6 @@ exports[`Shallow Snapshot Tests pc view 1`] = `
     />
   </ForwardRef(Drawer)>
   <GlobalMessage
-    closeArticleModal={[Function]}
     closeFormModal={[Function]}
   />
   <ForwardRef(Dialog)

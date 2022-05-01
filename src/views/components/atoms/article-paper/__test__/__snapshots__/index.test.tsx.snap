@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shallow Snapshot Tests main 1`] = `
+<ForwardRef(Paper)
+  elevation={2}
+  square={true}
+  sx={
+    Object {
+      "paddingX": 3,
+      "paddingY": 3,
+    }
+  }
+>
+  article
+</ForwardRef(Paper)>
+`;
+
+exports[`Shallow Snapshot Tests navi 1`] = `
+<ForwardRef(Paper)
+  elevation={2}
+  square={true}
+  sx={
+    Object {
+      "paddingX": 2,
+      "paddingY": 1,
+    }
+  }
+>
+  article
+</ForwardRef(Paper)>
+`;

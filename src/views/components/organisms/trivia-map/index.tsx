@@ -26,7 +26,6 @@ export function TriviaMap(ownProps: OwnProps) {
     hiddenMarkerIds: ownProps.hiddenMarkerIds ?? [],
 
     fetchMarkers: () => dispatch(fetchMarkers()),
-    onClickPostTitle: ownProps.onClickPostTitle,
     updatePosition: (position: Position) =>
       dispatch(updateFormField({ position: position })),
     endToSelectPosition: ownProps.endToSelectPosition,
@@ -36,7 +35,6 @@ export function TriviaMap(ownProps: OwnProps) {
 }
 
 type OwnProps = {
-  onClickPostTitle?: (postId: string) => () => void;
   newMarkerMode?: boolean;
   endToSelectPosition?: () => void;
   width?: number;

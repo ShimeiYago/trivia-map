@@ -96,17 +96,6 @@ describe('handleBeforeUnload', () => {
   });
 });
 
-describe('handleClickPostTitle', () => {
-  it('should set openingModal and readingArticleId states', () => {
-    shallowWrapper = shallow(<Renderer {...props} />);
-    const instance = shallowWrapper.instance();
-
-    instance['handleClickPostTitle']('postId-000')();
-    expect(instance.state.openArticleModal).toBeTruthy;
-    expect(instance.state.readingArticleId).toBe('postId-000');
-  });
-});
-
 describe('handleClickPostEdit', () => {
   beforeEach(() => {
     shallowWrapper = shallow(<Renderer {...props} />);
@@ -181,19 +170,9 @@ describe('handleOpenEditForm', () => {
   });
 });
 
-describe('handleCloseModal', () => {
+describe('handleCloseFormModal', () => {
   beforeEach(() => {
     shallowWrapper = shallow(<Renderer {...props} />);
-  });
-
-  it('should close article modal', () => {
-    const instance = shallowWrapper.instance();
-
-    instance.setState({
-      openArticleModal: true,
-    });
-    instance['handleCloseModal']('article')();
-    expect(instance.state.openArticleModal).toBeFalsy;
   });
 
   it('should close form modal', () => {
@@ -202,7 +181,7 @@ describe('handleCloseModal', () => {
     instance.setState({
       openFormModal: true,
     });
-    instance['handleCloseModal']('form')();
+    instance['handleCloseFormModal']();
     expect(instance.state.openFormModal).toBeFalsy;
   });
 });

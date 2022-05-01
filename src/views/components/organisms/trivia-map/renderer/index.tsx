@@ -9,6 +9,7 @@ import { Box, Button, Grid, SxProps, Typography } from '@mui/material';
 import { Position } from 'types/position';
 import { DialogScreen } from 'views/components/atoms/dialog-screen';
 import { LoadingState } from 'types/loading-state';
+import { PostMarkers } from './helpers/post-markers';
 
 export class Renderer extends React.Component<Props, State> {
   static readonly defaultProps: Pick<Props, 'newMarkerMode' | 'initZoom'> = {
@@ -120,38 +121,20 @@ export class Renderer extends React.Component<Props, State> {
   };
 
   protected renderPostMarkers() {
-    const { markers, doNotShowMarkers, onClickPostTitle, newMarkerMode } =
+    const { markers, doNotShowMarkers, newMarkerMode, hiddenMarkerIds } =
       this.props;
-    if (doNotShowMarkers) {
+    if (doNotShowMarkers || !this.state.map) {
       return null;
     }
 
-    return Object.keys(markers).map((postId) => {
-      if (this.props.hiddenMarkerIds.includes(postId)) {
-        return null;
-      }
-
-      const marker = markers[postId];
-
-      const popup = onClickPostTitle ? (
-        <Button variant="text" onClick={onClickPostTitle(postId)}>
-          {marker.title}
-        </Button>
-      ) : (
-        <Typography>{marker.title}</Typography>
-      );
-
-      return (
-        this.state.map && (
-          <MapMarker
-            map={this.state.map}
-            position={new LatLng(marker.position.lat, marker.position.lng)}
-            popup={!newMarkerMode && popup}
-            key={`post-marker-${postId}`}
-          />
-        )
-      );
-    });
+    return (
+      <PostMarkers
+        map={this.state.map}
+        markers={markers}
+        popupDisabled={newMarkerMode}
+        hiddenMarkerIds={hiddenMarkerIds}
+      />
+    );
   }
 
   protected renderCurrentPositionMarker() {
@@ -280,7 +263,6 @@ export type Props = {
   hiddenMarkerIds: string[];
 
   fetchMarkers: () => void;
-  onClickPostTitle?: (postId: string) => () => void;
   updatePosition: (position: Position) => void;
   endToSelectPosition?: () => void;
 };

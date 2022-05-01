@@ -1,8 +1,8 @@
 import { SxProps } from '@mui/material';
 
 const drawerWidth = 500;
-const appBarDefaultHeightPC = '64px';
-const appBarDefaultHeightMobile = '56px';
+const appBarDefaultHeightPC = '66px';
+const appBarDefaultHeightMobile = '58px';
 
 export const rightDrawerStyle: SxProps = {
   width: drawerWidth,

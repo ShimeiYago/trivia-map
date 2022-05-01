@@ -38,11 +38,6 @@ describe('Shallow Snapshot Tests', () => {
     expect(shallowWrapper).toMatchSnapshot();
   });
 
-  it('with onClickPostTitle props', () => {
-    shallowWrapper.setProps({ onClickPostTitle: jest.fn() });
-    expect(shallowWrapper).toMatchSnapshot();
-  });
-
   it('with width and height props', () => {
     shallowWrapper.setProps({
       width: 100,
@@ -62,13 +57,6 @@ describe('Shallow Snapshot Tests', () => {
     shallowWrapper.setProps({
       disabled: true,
       doNotShowMarkers: true,
-    });
-    expect(shallowWrapper).toMatchSnapshot();
-  });
-
-  it('hide marker', () => {
-    shallowWrapper.setProps({
-      hiddenMarkerIds: ['000'],
     });
     expect(shallowWrapper).toMatchSnapshot();
   });

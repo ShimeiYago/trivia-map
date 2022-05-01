@@ -9,6 +9,8 @@ const basicProps: Props = {
   articleLoadingState: 'success',
   fetchArticle: jest.fn(),
   isMobile: false,
+  position: { lat: 0, lng: 0 },
+  imageUrl: null,
 };
 
 describe('Shallow Snapshot Tests', () => {
@@ -27,6 +29,11 @@ describe('Shallow Snapshot Tests', () => {
 
   it('mobile view', () => {
     wrapper.setProps({ isMobile: true });
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('with image', () => {
+    wrapper.setProps({ imageUrl: 'image.jpg' });
     expect(wrapper).toMatchSnapshot();
   });
 });

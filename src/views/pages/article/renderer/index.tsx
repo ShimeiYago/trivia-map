@@ -12,17 +12,7 @@ export class Renderer extends React.Component<Props> {
   }
 
   render() {
-    const { articleLoadingState, isMobile } = this.props;
-    if (
-      articleLoadingState === 'waiting' ||
-      articleLoadingState === 'loading'
-    ) {
-      return (
-        <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-          <CircularProgress />
-        </Box>
-      );
-    }
+    const { isMobile } = this.props;
 
     return (
       <Box sx={wrapper}>
@@ -49,6 +39,19 @@ export class Renderer extends React.Component<Props> {
   }
 
   protected renderMainArticle = () => {
+    const { articleLoadingState } = this.props;
+
+    if (
+      articleLoadingState === 'waiting' ||
+      articleLoadingState === 'loading'
+    ) {
+      return (
+        <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+          <CircularProgress />
+        </Box>
+      );
+    }
+
     return (
       <>
         <Typography variant="h4" component="h2" align="center">

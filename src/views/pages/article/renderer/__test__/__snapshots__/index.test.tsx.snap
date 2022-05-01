@@ -82,12 +82,71 @@ exports[`Shallow Snapshot Tests loading 1`] = `
 <ForwardRef(Box)
   sx={
     Object {
-      "display": "flex",
-      "justifyContent": "center",
+      "backgroundColor": "#f4f5f7",
+      "height": "100vh",
     }
   }
 >
-  <ForwardRef(CircularProgress) />
+  <GlobalMenu
+    barPosition="static"
+  />
+  <ForwardRef(Box)
+    sx={
+      Object {
+        "marginTop": 5,
+        "marginX": 10,
+      }
+    }
+  >
+    <ForwardRef(Grid)
+      container={true}
+      spacing={4}
+    >
+      <ForwardRef(Grid)
+        item={true}
+        xs={12}
+      >
+        <ArticlePaper
+          variant="navi"
+        >
+          <Link
+            to="/"
+          >
+            マップへ戻る
+          </Link>
+        </ArticlePaper>
+      </ForwardRef(Grid)>
+      <ForwardRef(Grid)
+        item={true}
+        xs={8}
+      >
+        <ArticlePaper
+          variant="main"
+        >
+          <ForwardRef(Box)
+            sx={
+              Object {
+                "display": "flex",
+                "justifyContent": "center",
+              }
+            }
+          >
+            <ForwardRef(CircularProgress) />
+          </ForwardRef(Box)>
+        </ArticlePaper>
+      </ForwardRef(Grid)>
+      <ForwardRef(Grid)
+        item={true}
+        xs={4}
+      >
+        <ArticlePaper
+          variant="side"
+        >
+          サイドバー
+        </ArticlePaper>
+      </ForwardRef(Grid)>
+    </ForwardRef(Grid)>
+  </ForwardRef(Box)>
 </ForwardRef(Box)>
 `;
 

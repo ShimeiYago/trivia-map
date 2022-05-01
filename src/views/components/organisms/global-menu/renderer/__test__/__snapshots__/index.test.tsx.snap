@@ -7,6 +7,8 @@ exports[`Shallow Snapshot Tests basic 1`] = `
     sx={
       Object {
         "borderBottom": "2px solid rgba(255, 255, 255, 0.7)",
+        "ml": undefined,
+        "width": undefined,
       }
     }
   >
@@ -36,9 +38,6 @@ exports[`Shallow Snapshot Tests basic 1`] = `
         Persistent drawer
       </ForwardRef(Typography)>
       <ForwardRef(IconButton)
-        aria-controls="menu-appbar"
-        aria-haspopup="true"
-        aria-label="account of current user"
         color="inherit"
         size="large"
       >
@@ -142,6 +141,156 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       </ForwardRef(List)>
     </ForwardRef(Box)>
   </ForwardRef(SwipeableDrawer)>
+  <ForwardRef(Box)
+    sx={
+      Object {
+        "ml": undefined,
+        "width": undefined,
+      }
+    }
+  >
+    contents
+  </ForwardRef(Box)>
+</Fragment>
+`;
+
+exports[`Shallow Snapshot Tests permanent left navi 1`] = `
+<Fragment>
+  <ForwardRef(AppBar)
+    position="fixed"
+    sx={
+      Object {
+        "borderBottom": "2px solid rgba(255, 255, 255, 0.7)",
+        "ml": "250px",
+        "width": "calc(100% - 250px)",
+      }
+    }
+  >
+    <ForwardRef(Toolbar)>
+      <ForwardRef(Typography)
+        component="div"
+        sx={
+          Object {
+            "flexGrow": 1,
+          }
+        }
+        variant="h6"
+      >
+        Persistent drawer
+      </ForwardRef(Typography)>
+      <ForwardRef(IconButton)
+        color="inherit"
+        size="large"
+      >
+        <Memo(ForwardRef(AccountCircleIcon)) />
+      </ForwardRef(IconButton)>
+    </ForwardRef(Toolbar)>
+  </ForwardRef(AppBar)>
+  <ForwardRef(Drawer)
+    open={true}
+    variant="permanent"
+  >
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "width": 250,
+        }
+      }
+    >
+      <ForwardRef(List)>
+        <ForwardRef(ListItem)
+          button={true}
+          key="Inbox"
+        >
+          <ForwardRef(ListItemIcon)>
+            <Memo(ForwardRef(MoveToInboxIcon)) />
+          </ForwardRef(ListItemIcon)>
+          <ForwardRef(ListItemText)
+            primary="Inbox"
+          />
+        </ForwardRef(ListItem)>
+        <ForwardRef(ListItem)
+          button={true}
+          key="Starred"
+        >
+          <ForwardRef(ListItemIcon)>
+            <Memo(ForwardRef(MailIcon)) />
+          </ForwardRef(ListItemIcon)>
+          <ForwardRef(ListItemText)
+            primary="Starred"
+          />
+        </ForwardRef(ListItem)>
+        <ForwardRef(ListItem)
+          button={true}
+          key="Send email"
+        >
+          <ForwardRef(ListItemIcon)>
+            <Memo(ForwardRef(MoveToInboxIcon)) />
+          </ForwardRef(ListItemIcon)>
+          <ForwardRef(ListItemText)
+            primary="Send email"
+          />
+        </ForwardRef(ListItem)>
+        <ForwardRef(ListItem)
+          button={true}
+          key="Drafts"
+        >
+          <ForwardRef(ListItemIcon)>
+            <Memo(ForwardRef(MailIcon)) />
+          </ForwardRef(ListItemIcon)>
+          <ForwardRef(ListItemText)
+            primary="Drafts"
+          />
+        </ForwardRef(ListItem)>
+      </ForwardRef(List)>
+      <ForwardRef(Divider) />
+      <ForwardRef(List)>
+        <ForwardRef(ListItem)
+          button={true}
+          key="All mail"
+        >
+          <ForwardRef(ListItemIcon)>
+            <Memo(ForwardRef(MoveToInboxIcon)) />
+          </ForwardRef(ListItemIcon)>
+          <ForwardRef(ListItemText)
+            primary="All mail"
+          />
+        </ForwardRef(ListItem)>
+        <ForwardRef(ListItem)
+          button={true}
+          key="Trash"
+        >
+          <ForwardRef(ListItemIcon)>
+            <Memo(ForwardRef(MailIcon)) />
+          </ForwardRef(ListItemIcon)>
+          <ForwardRef(ListItemText)
+            primary="Trash"
+          />
+        </ForwardRef(ListItem)>
+        <ForwardRef(ListItem)
+          button={true}
+          key="Spam"
+        >
+          <ForwardRef(ListItemIcon)>
+            <Memo(ForwardRef(MoveToInboxIcon)) />
+          </ForwardRef(ListItemIcon)>
+          <ForwardRef(ListItemText)
+            primary="Spam"
+          />
+        </ForwardRef(ListItem)>
+      </ForwardRef(List)>
+    </ForwardRef(Box)>
+  </ForwardRef(Drawer)>
+  <ForwardRef(Box)
+    sx={
+      Object {
+        "ml": "250px",
+        "width": "calc(100% - 250px)",
+      }
+    }
+  >
+    contents
+  </ForwardRef(Box)>
 </Fragment>
 `;
 
@@ -152,6 +301,8 @@ exports[`Shallow Snapshot Tests static position 1`] = `
     sx={
       Object {
         "borderBottom": "2px solid rgba(255, 255, 255, 0.7)",
+        "ml": undefined,
+        "width": undefined,
       }
     }
   >
@@ -181,9 +332,6 @@ exports[`Shallow Snapshot Tests static position 1`] = `
         Persistent drawer
       </ForwardRef(Typography)>
       <ForwardRef(IconButton)
-        aria-controls="menu-appbar"
-        aria-haspopup="true"
-        aria-label="account of current user"
         color="inherit"
         size="large"
       >
@@ -287,5 +435,15 @@ exports[`Shallow Snapshot Tests static position 1`] = `
       </ForwardRef(List)>
     </ForwardRef(Box)>
   </ForwardRef(SwipeableDrawer)>
+  <ForwardRef(Box)
+    sx={
+      Object {
+        "ml": undefined,
+        "width": undefined,
+      }
+    }
+  >
+    contents
+  </ForwardRef(Box)>
 </Fragment>
 `;

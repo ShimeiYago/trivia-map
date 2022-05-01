@@ -24,24 +24,27 @@ export class Renderer extends React.Component<Props> {
 
     return (
       <Box sx={wrapper}>
-        <GlobalMenu barPosition="static" />
-        <Box sx={contentWrapper(isMobile)}>
-          <Grid container spacing={isMobile ? 2 : 4}>
-            <Grid item xs={12}>
-              <ArticlePaper variant="navi">
-                {this.renderLocalNavi()}
-              </ArticlePaper>
+        <GlobalMenu topBarPosition="static" permanentLeftNavi={!isMobile}>
+          <Box sx={contentWrapper(isMobile)}>
+            <Grid container spacing={isMobile ? 2 : 4}>
+              <Grid item xs={12}>
+                <ArticlePaper variant="navi">
+                  {this.renderLocalNavi()}
+                </ArticlePaper>
+              </Grid>
+              <Grid item xs={isMobile ? 12 : 8}>
+                <ArticlePaper variant="main">
+                  {this.renderMainArticle()}
+                </ArticlePaper>
+              </Grid>
+              <Grid item xs={isMobile ? 12 : 4}>
+                <ArticlePaper variant="side">
+                  {this.renderSideBar()}
+                </ArticlePaper>
+              </Grid>
             </Grid>
-            <Grid item xs={isMobile ? 12 : 8}>
-              <ArticlePaper variant="main">
-                {this.renderMainArticle()}
-              </ArticlePaper>
-            </Grid>
-            <Grid item xs={isMobile ? 12 : 4}>
-              <ArticlePaper variant="side">{this.renderSideBar()}</ArticlePaper>
-            </Grid>
-          </Grid>
-        </Box>
+          </Box>
+        </GlobalMenu>
       </Box>
     );
   }

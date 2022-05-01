@@ -9,102 +9,104 @@ exports[`Shallow Snapshot Tests basic 1`] = `
   }
 >
   <GlobalMenu
-    barPosition="static"
-  />
-  <ForwardRef(Box)
-    sx={
-      Object {
-        "marginTop": 5,
-        "marginX": 10,
-      }
-    }
+    permanentLeftNavi={true}
+    topBarPosition="static"
   >
-    <ForwardRef(Grid)
-      container={true}
-      spacing={4}
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "marginTop": 5,
+          "marginX": 10,
+        }
+      }
     >
       <ForwardRef(Grid)
-        item={true}
-        xs={12}
+        container={true}
+        spacing={4}
       >
-        <ArticlePaper
-          variant="navi"
+        <ForwardRef(Grid)
+          item={true}
+          xs={12}
         >
-          <Link
-            to="/"
+          <ArticlePaper
+            variant="navi"
           >
-            マップへ戻る
-          </Link>
-        </ArticlePaper>
-      </ForwardRef(Grid)>
-      <ForwardRef(Grid)
-        item={true}
-        xs={8}
-      >
-        <ArticlePaper
-          variant="main"
+            <Link
+              to="/"
+            >
+              マップへ戻る
+            </Link>
+          </ArticlePaper>
+        </ForwardRef(Grid)>
+        <ForwardRef(Grid)
+          item={true}
+          xs={8}
         >
-          <ForwardRef(Stack)
-            spacing={2}
+          <ArticlePaper
+            variant="main"
           >
-            <ForwardRef(Typography)
-              align="center"
-              component="h2"
-              variant="h4"
+            <ForwardRef(Stack)
+              spacing={2}
             >
-              title
-            </ForwardRef(Typography)>
-            <ForwardRef(Typography)>
-              content
-            </ForwardRef(Typography)>
-            <ForwardRef(Box)
-              sx={
-                Object {
-                  "position": "relative",
-                }
-              }
-            >
-              <TriviaMap
-                disabled={true}
-                doNotShowMarkers={true}
-                height={400}
-                initCenter={
-                  Object {
-                    "lat": 0,
-                    "lng": 0,
-                  }
-                }
-                initZoom={3}
-              />
+              <ForwardRef(Typography)
+                align="center"
+                component="h2"
+                variant="h4"
+              >
+                title
+              </ForwardRef(Typography)>
+              <ForwardRef(Typography)>
+                content
+              </ForwardRef(Typography)>
               <ForwardRef(Box)
                 sx={
                   Object {
-                    "backgroundColor": "rgba(0,0,0,0.5)",
-                    "height": "100%",
-                    "left": 0,
-                    "position": "absolute",
-                    "top": 0,
-                    "width": "100%",
-                    "zIndex": 2000,
+                    "position": "relative",
                   }
                 }
-              />
-            </ForwardRef(Box)>
-          </ForwardRef(Stack)>
-        </ArticlePaper>
-      </ForwardRef(Grid)>
-      <ForwardRef(Grid)
-        item={true}
-        xs={4}
-      >
-        <ArticlePaper
-          variant="side"
+              >
+                <TriviaMap
+                  disabled={true}
+                  doNotShowMarkers={true}
+                  height={400}
+                  initCenter={
+                    Object {
+                      "lat": 0,
+                      "lng": 0,
+                    }
+                  }
+                  initZoom={3}
+                />
+                <ForwardRef(Box)
+                  sx={
+                    Object {
+                      "backgroundColor": "rgba(0,0,0,0.5)",
+                      "height": "100%",
+                      "left": 0,
+                      "position": "absolute",
+                      "top": 0,
+                      "width": "100%",
+                      "zIndex": 2000,
+                    }
+                  }
+                />
+              </ForwardRef(Box)>
+            </ForwardRef(Stack)>
+          </ArticlePaper>
+        </ForwardRef(Grid)>
+        <ForwardRef(Grid)
+          item={true}
+          xs={4}
         >
-          サイドバー
-        </ArticlePaper>
+          <ArticlePaper
+            variant="side"
+          >
+            サイドバー
+          </ArticlePaper>
+        </ForwardRef(Grid)>
       </ForwardRef(Grid)>
-    </ForwardRef(Grid)>
-  </ForwardRef(Box)>
+    </ForwardRef(Box)>
+  </GlobalMenu>
 </ForwardRef(Box)>
 `;
 
@@ -117,65 +119,67 @@ exports[`Shallow Snapshot Tests loading 1`] = `
   }
 >
   <GlobalMenu
-    barPosition="static"
-  />
-  <ForwardRef(Box)
-    sx={
-      Object {
-        "marginTop": 5,
-        "marginX": 10,
-      }
-    }
+    permanentLeftNavi={true}
+    topBarPosition="static"
   >
-    <ForwardRef(Grid)
-      container={true}
-      spacing={4}
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "marginTop": 5,
+          "marginX": 10,
+        }
+      }
     >
       <ForwardRef(Grid)
-        item={true}
-        xs={12}
+        container={true}
+        spacing={4}
       >
-        <ArticlePaper
-          variant="navi"
+        <ForwardRef(Grid)
+          item={true}
+          xs={12}
         >
-          <Link
-            to="/"
+          <ArticlePaper
+            variant="navi"
           >
-            マップへ戻る
-          </Link>
-        </ArticlePaper>
-      </ForwardRef(Grid)>
-      <ForwardRef(Grid)
-        item={true}
-        xs={8}
-      >
-        <ArticlePaper
-          variant="main"
+            <Link
+              to="/"
+            >
+              マップへ戻る
+            </Link>
+          </ArticlePaper>
+        </ForwardRef(Grid)>
+        <ForwardRef(Grid)
+          item={true}
+          xs={8}
         >
-          <ForwardRef(Box)
-            sx={
-              Object {
-                "display": "flex",
-                "justifyContent": "center",
+          <ArticlePaper
+            variant="main"
+          >
+            <ForwardRef(Box)
+              sx={
+                Object {
+                  "display": "flex",
+                  "justifyContent": "center",
+                }
               }
-            }
-          >
-            <ForwardRef(CircularProgress) />
-          </ForwardRef(Box)>
-        </ArticlePaper>
-      </ForwardRef(Grid)>
-      <ForwardRef(Grid)
-        item={true}
-        xs={4}
-      >
-        <ArticlePaper
-          variant="side"
+            >
+              <ForwardRef(CircularProgress) />
+            </ForwardRef(Box)>
+          </ArticlePaper>
+        </ForwardRef(Grid)>
+        <ForwardRef(Grid)
+          item={true}
+          xs={4}
         >
-          サイドバー
-        </ArticlePaper>
+          <ArticlePaper
+            variant="side"
+          >
+            サイドバー
+          </ArticlePaper>
+        </ForwardRef(Grid)>
       </ForwardRef(Grid)>
-    </ForwardRef(Grid)>
-  </ForwardRef(Box)>
+    </ForwardRef(Box)>
+  </GlobalMenu>
 </ForwardRef(Box)>
 `;
 
@@ -188,102 +192,104 @@ exports[`Shallow Snapshot Tests mobile view 1`] = `
   }
 >
   <GlobalMenu
-    barPosition="static"
-  />
-  <ForwardRef(Box)
-    sx={
-      Object {
-        "marginTop": 1,
-        "marginX": 0,
-      }
-    }
+    permanentLeftNavi={false}
+    topBarPosition="static"
   >
-    <ForwardRef(Grid)
-      container={true}
-      spacing={2}
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "marginTop": 1,
+          "marginX": 0,
+        }
+      }
     >
       <ForwardRef(Grid)
-        item={true}
-        xs={12}
+        container={true}
+        spacing={2}
       >
-        <ArticlePaper
-          variant="navi"
+        <ForwardRef(Grid)
+          item={true}
+          xs={12}
         >
-          <Link
-            to="/"
+          <ArticlePaper
+            variant="navi"
           >
-            マップへ戻る
-          </Link>
-        </ArticlePaper>
-      </ForwardRef(Grid)>
-      <ForwardRef(Grid)
-        item={true}
-        xs={12}
-      >
-        <ArticlePaper
-          variant="main"
+            <Link
+              to="/"
+            >
+              マップへ戻る
+            </Link>
+          </ArticlePaper>
+        </ForwardRef(Grid)>
+        <ForwardRef(Grid)
+          item={true}
+          xs={12}
         >
-          <ForwardRef(Stack)
-            spacing={2}
+          <ArticlePaper
+            variant="main"
           >
-            <ForwardRef(Typography)
-              align="center"
-              component="h2"
-              variant="h4"
+            <ForwardRef(Stack)
+              spacing={2}
             >
-              title
-            </ForwardRef(Typography)>
-            <ForwardRef(Typography)>
-              content
-            </ForwardRef(Typography)>
-            <ForwardRef(Box)
-              sx={
-                Object {
-                  "position": "relative",
-                }
-              }
-            >
-              <TriviaMap
-                disabled={true}
-                doNotShowMarkers={true}
-                height={400}
-                initCenter={
-                  Object {
-                    "lat": 0,
-                    "lng": 0,
-                  }
-                }
-                initZoom={3}
-              />
+              <ForwardRef(Typography)
+                align="center"
+                component="h2"
+                variant="h4"
+              >
+                title
+              </ForwardRef(Typography)>
+              <ForwardRef(Typography)>
+                content
+              </ForwardRef(Typography)>
               <ForwardRef(Box)
                 sx={
                   Object {
-                    "backgroundColor": "rgba(0,0,0,0.5)",
-                    "height": "100%",
-                    "left": 0,
-                    "position": "absolute",
-                    "top": 0,
-                    "width": "100%",
-                    "zIndex": 2000,
+                    "position": "relative",
                   }
                 }
-              />
-            </ForwardRef(Box)>
-          </ForwardRef(Stack)>
-        </ArticlePaper>
-      </ForwardRef(Grid)>
-      <ForwardRef(Grid)
-        item={true}
-        xs={12}
-      >
-        <ArticlePaper
-          variant="side"
+              >
+                <TriviaMap
+                  disabled={true}
+                  doNotShowMarkers={true}
+                  height={400}
+                  initCenter={
+                    Object {
+                      "lat": 0,
+                      "lng": 0,
+                    }
+                  }
+                  initZoom={3}
+                />
+                <ForwardRef(Box)
+                  sx={
+                    Object {
+                      "backgroundColor": "rgba(0,0,0,0.5)",
+                      "height": "100%",
+                      "left": 0,
+                      "position": "absolute",
+                      "top": 0,
+                      "width": "100%",
+                      "zIndex": 2000,
+                    }
+                  }
+                />
+              </ForwardRef(Box)>
+            </ForwardRef(Stack)>
+          </ArticlePaper>
+        </ForwardRef(Grid)>
+        <ForwardRef(Grid)
+          item={true}
+          xs={12}
         >
-          サイドバー
-        </ArticlePaper>
+          <ArticlePaper
+            variant="side"
+          >
+            サイドバー
+          </ArticlePaper>
+        </ForwardRef(Grid)>
       </ForwardRef(Grid)>
-    </ForwardRef(Grid)>
-  </ForwardRef(Box)>
+    </ForwardRef(Box)>
+  </GlobalMenu>
 </ForwardRef(Box)>
 `;
 
@@ -296,108 +302,110 @@ exports[`Shallow Snapshot Tests with image 1`] = `
   }
 >
   <GlobalMenu
-    barPosition="static"
-  />
-  <ForwardRef(Box)
-    sx={
-      Object {
-        "marginTop": 5,
-        "marginX": 10,
-      }
-    }
+    permanentLeftNavi={true}
+    topBarPosition="static"
   >
-    <ForwardRef(Grid)
-      container={true}
-      spacing={4}
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "marginTop": 5,
+          "marginX": 10,
+        }
+      }
     >
       <ForwardRef(Grid)
-        item={true}
-        xs={12}
+        container={true}
+        spacing={4}
       >
-        <ArticlePaper
-          variant="navi"
+        <ForwardRef(Grid)
+          item={true}
+          xs={12}
         >
-          <Link
-            to="/"
+          <ArticlePaper
+            variant="navi"
           >
-            マップへ戻る
-          </Link>
-        </ArticlePaper>
-      </ForwardRef(Grid)>
-      <ForwardRef(Grid)
-        item={true}
-        xs={8}
-      >
-        <ArticlePaper
-          variant="main"
+            <Link
+              to="/"
+            >
+              マップへ戻る
+            </Link>
+          </ArticlePaper>
+        </ForwardRef(Grid)>
+        <ForwardRef(Grid)
+          item={true}
+          xs={8}
         >
-          <ForwardRef(Stack)
-            spacing={2}
+          <ArticlePaper
+            variant="main"
           >
-            <ForwardRef(Typography)
-              align="center"
-              component="h2"
-              variant="h4"
+            <ForwardRef(Stack)
+              spacing={2}
             >
-              title
-            </ForwardRef(Typography)>
-            <Image
-              borderRadius={true}
-              height="300px"
-              objectFit="cover"
-              src="image.jpg"
-              width="full"
-            />
-            <ForwardRef(Typography)>
-              content
-            </ForwardRef(Typography)>
-            <ForwardRef(Box)
-              sx={
-                Object {
-                  "position": "relative",
-                }
-              }
-            >
-              <TriviaMap
-                disabled={true}
-                doNotShowMarkers={true}
-                height={400}
-                initCenter={
-                  Object {
-                    "lat": 0,
-                    "lng": 0,
-                  }
-                }
-                initZoom={3}
+              <ForwardRef(Typography)
+                align="center"
+                component="h2"
+                variant="h4"
+              >
+                title
+              </ForwardRef(Typography)>
+              <Image
+                borderRadius={true}
+                height="300px"
+                objectFit="cover"
+                src="image.jpg"
+                width="full"
               />
+              <ForwardRef(Typography)>
+                content
+              </ForwardRef(Typography)>
               <ForwardRef(Box)
                 sx={
                   Object {
-                    "backgroundColor": "rgba(0,0,0,0.5)",
-                    "height": "100%",
-                    "left": 0,
-                    "position": "absolute",
-                    "top": 0,
-                    "width": "100%",
-                    "zIndex": 2000,
+                    "position": "relative",
                   }
                 }
-              />
-            </ForwardRef(Box)>
-          </ForwardRef(Stack)>
-        </ArticlePaper>
-      </ForwardRef(Grid)>
-      <ForwardRef(Grid)
-        item={true}
-        xs={4}
-      >
-        <ArticlePaper
-          variant="side"
+              >
+                <TriviaMap
+                  disabled={true}
+                  doNotShowMarkers={true}
+                  height={400}
+                  initCenter={
+                    Object {
+                      "lat": 0,
+                      "lng": 0,
+                    }
+                  }
+                  initZoom={3}
+                />
+                <ForwardRef(Box)
+                  sx={
+                    Object {
+                      "backgroundColor": "rgba(0,0,0,0.5)",
+                      "height": "100%",
+                      "left": 0,
+                      "position": "absolute",
+                      "top": 0,
+                      "width": "100%",
+                      "zIndex": 2000,
+                    }
+                  }
+                />
+              </ForwardRef(Box)>
+            </ForwardRef(Stack)>
+          </ArticlePaper>
+        </ForwardRef(Grid)>
+        <ForwardRef(Grid)
+          item={true}
+          xs={4}
         >
-          サイドバー
-        </ArticlePaper>
+          <ArticlePaper
+            variant="side"
+          >
+            サイドバー
+          </ArticlePaper>
+        </ForwardRef(Grid)>
       </ForwardRef(Grid)>
-    </ForwardRef(Grid)>
-  </ForwardRef(Box)>
+    </ForwardRef(Box)>
+  </GlobalMenu>
 </ForwardRef(Box)>
 `;

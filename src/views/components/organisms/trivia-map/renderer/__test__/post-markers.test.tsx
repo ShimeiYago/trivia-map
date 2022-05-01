@@ -7,13 +7,14 @@ const basicProps: Props = {
     '000': {
       position: { lat: 0, lng: 0 },
       title: 'title1',
+      thumbnailImgUrl: 'https://image.jpg',
     },
     '001': {
       position: { lat: 0, lng: 0 },
       title: 'title2',
     },
   },
-  hiddenMarkerIds: ['000'],
+  hiddenMarkerIds: [],
   map: { setView: jest.fn() } as unknown as LeafletMap,
   popupDisabled: false,
 };
@@ -26,6 +27,11 @@ describe('Shallow Snapshot Tests', () => {
   });
 
   it('basic', () => {
+    expect(shallowWrapper).toMatchSnapshot();
+  });
+
+  it('with hiddenMarkerIds', () => {
+    shallowWrapper.setProps({ hiddenMarkerIds: ['000'] });
     expect(shallowWrapper).toMatchSnapshot();
   });
 });

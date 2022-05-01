@@ -5,6 +5,7 @@ export interface MarkerDict {
   [shopId: string]: {
     position: Position;
     title: string;
+    thumbnailImgUrl?: string;
   };
 }
 

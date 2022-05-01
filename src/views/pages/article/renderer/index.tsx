@@ -1,10 +1,18 @@
 import React from 'react';
-import { Box, CircularProgress, Grid, Typography } from '@mui/material';
+import { Box, CircularProgress, Grid, Stack, Typography } from '@mui/material';
 import { LoadingState } from 'types/loading-state';
 import { GlobalMenu } from 'views/components/organisms/global-menu';
-import { wrapper, contentWrapper } from '../styles';
 import { Link } from 'react-router-dom';
 import { ArticlePaper } from 'views/components/atoms/article-paper';
+import { Position } from 'types/position';
+import { Image } from 'views/components/atoms/image';
+import { TriviaMap } from 'views/components/organisms/trivia-map';
+import {
+  wrapper,
+  contentWrapper,
+  miniMapWrapper,
+  miniMapLayer,
+} from '../styles';
 
 export class Renderer extends React.Component<Props> {
   componentDidMount() {
@@ -39,7 +47,8 @@ export class Renderer extends React.Component<Props> {
   }
 
   protected renderMainArticle = () => {
-    const { articleLoadingState } = this.props;
+    const { articleLoadingState, title, content, position, imageUrl } =
+      this.props;
 
     if (
       articleLoadingState === 'waiting' ||
@@ -53,12 +62,34 @@ export class Renderer extends React.Component<Props> {
     }
 
     return (
-      <>
-        <Typography variant="h4" component="h2" align="center">
-          {this.props.title}
+      <Stack spacing={2}>
+        <Typography component="h2" variant="h4" align="center">
+          {title}
         </Typography>
-        <Typography sx={{ mt: 2 }}>{this.props.content}</Typography>
-      </>
+
+        {imageUrl && (
+          <Image
+            src={imageUrl}
+            width="full"
+            height="300px"
+            objectFit="cover"
+            borderRadius
+          />
+        )}
+
+        <Typography>{content}</Typography>
+
+        <Box sx={miniMapWrapper}>
+          <TriviaMap
+            height={400}
+            initZoom={3}
+            initCenter={position}
+            disabled
+            doNotShowMarkers
+          />
+          <Box sx={miniMapLayer}></Box>
+        </Box>
+      </Stack>
     );
   };
 
@@ -74,6 +105,8 @@ export class Renderer extends React.Component<Props> {
 export type Props = {
   title: string;
   content: string;
+  position: Position;
+  imageUrl: string | null;
   articleLoadingState: LoadingState;
   isMobile: boolean;
 

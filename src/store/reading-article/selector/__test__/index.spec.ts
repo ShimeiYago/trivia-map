@@ -4,6 +4,8 @@ import {
   selectReadingArticleId,
   selectReadingArticleLoadingState,
   selectReadingArticleTitle,
+  selectReadingArticlePosition,
+  selectReadingArticleImageUrl,
 } from '..';
 import { ReadingArticleState } from '../../model';
 
@@ -13,6 +15,8 @@ describe('readingArticle selector', () => {
       postId: 'post-id',
       title: 'title',
       content: 'content',
+      position: { lat: 1, lng: 0 },
+      imageUrl: 'image-url.jpg',
       loadingState: 'error',
       errorMsg: 'error',
     } as ReadingArticleState,
@@ -28,6 +32,14 @@ describe('readingArticle selector', () => {
 
   it('selectReadingArticleContent should return readingArticle content', () => {
     expect(selectReadingArticleContent(rootState)).toEqual('content');
+  });
+
+  it('selectReadingArticlePosition should return readingArticle position', () => {
+    expect(selectReadingArticlePosition(rootState)).toEqual({ lat: 1, lng: 0 });
+  });
+
+  it('selectReadingArticleImageUrl should return readingArticle imageUrl', () => {
+    expect(selectReadingArticleImageUrl(rootState)).toEqual('image-url.jpg');
   });
 
   it('selectReadingArticleLoadingState should return readingArticle loadingState', () => {

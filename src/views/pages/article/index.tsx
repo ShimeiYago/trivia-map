@@ -2,7 +2,9 @@ import { Props, Renderer } from './renderer';
 import { useAppDispatch, useAppSelector } from 'store';
 import {
   selectReadingArticleContent,
+  selectReadingArticleImageUrl,
   selectReadingArticleLoadingState,
+  selectReadingArticlePosition,
   selectReadingArticleTitle,
 } from 'store/reading-article/selector';
 import { fetchReadingArticle } from 'store/reading-article/actions';
@@ -21,6 +23,8 @@ export function Article() {
   const props: Props = {
     title: useAppSelector(selectReadingArticleTitle),
     content: useAppSelector(selectReadingArticleContent),
+    position: useAppSelector(selectReadingArticlePosition),
+    imageUrl: useAppSelector(selectReadingArticleImageUrl),
     articleLoadingState: useAppSelector(selectReadingArticleLoadingState),
     isMobile: isMobile,
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, CircularProgress, Grid, Typography } from '@mui/material';
 import { LoadingState } from 'types/loading-state';
 import { GlobalMenu } from 'views/components/organisms/global-menu';
-import { wrapper } from '../styles';
+import { wrapper, contentWrapper } from '../styles';
 import { Link } from 'react-router-dom';
 import { ArticlePaper } from 'views/components/atoms/article-paper';
 
@@ -12,9 +12,10 @@ export class Renderer extends React.Component<Props> {
   }
 
   render() {
+    const { articleLoadingState, isMobile } = this.props;
     if (
-      this.props.articleLoadingState === 'waiting' ||
-      this.props.articleLoadingState === 'loading'
+      articleLoadingState === 'waiting' ||
+      articleLoadingState === 'loading'
     ) {
       return (
         <Box sx={{ display: 'flex', justifyContent: 'center' }}>
@@ -26,20 +27,20 @@ export class Renderer extends React.Component<Props> {
     return (
       <Box sx={wrapper}>
         <GlobalMenu barPosition="static" />
-        <Box sx={{ marginTop: 5, marginX: 10 }}>
-          <Grid container spacing={4}>
+        <Box sx={contentWrapper(isMobile)}>
+          <Grid container spacing={isMobile ? 2 : 4}>
             <Grid item xs={12}>
               <ArticlePaper variant="navi">
-                <Link to="/">マップへ戻る</Link>
+                {this.renderLocalNavi()}
               </ArticlePaper>
             </Grid>
-            <Grid item xs={8}>
+            <Grid item xs={isMobile ? 12 : 8}>
               <ArticlePaper variant="main">
-                {this.renderContents()}
+                {this.renderMainArticle()}
               </ArticlePaper>
             </Grid>
-            <Grid item xs={4}>
-              <ArticlePaper variant="side">サイドバー</ArticlePaper>
+            <Grid item xs={isMobile ? 12 : 4}>
+              <ArticlePaper variant="side">{this.renderSideBar()}</ArticlePaper>
             </Grid>
           </Grid>
         </Box>
@@ -47,7 +48,7 @@ export class Renderer extends React.Component<Props> {
     );
   }
 
-  protected renderContents = () => {
+  protected renderMainArticle = () => {
     return (
       <>
         <Typography variant="h4" component="h2" align="center">
@@ -57,12 +58,21 @@ export class Renderer extends React.Component<Props> {
       </>
     );
   };
+
+  protected renderSideBar = () => {
+    return <>サイドバー</>;
+  };
+
+  protected renderLocalNavi = () => {
+    return <Link to="/">マップへ戻る</Link>;
+  };
 }
 
 export type Props = {
   title: string;
   content: string;
   articleLoadingState: LoadingState;
+  isMobile: boolean;
 
   fetchArticle: () => void;
 };

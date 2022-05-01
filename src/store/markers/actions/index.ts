@@ -61,7 +61,11 @@ export const appendMarkers =
     const newMarkers: MarkerDict = Object.assign(
       { ...selectMarkersDict(getState()) },
       ...newList.map((marker) => ({
-        [marker.postId]: { title: marker.title, position: marker.position },
+        [marker.postId]: {
+          title: marker.title,
+          position: marker.position,
+          thumbnailImgUrl: marker.thumbnailImgUrl,
+        },
       })),
     );
 

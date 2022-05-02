@@ -3,7 +3,7 @@ import { LatLng, LeafletMouseEvent, Map as LeafletMap } from 'leaflet';
 import { Renderer, Props, State } from '..';
 
 const basicProps: Props = {
-  markers: {
+  postMarkers: {
     '000': {
       position: { lat: 0, lng: 0 },
       title: 'title',
@@ -16,6 +16,7 @@ const basicProps: Props = {
   endToSelectPosition: jest.fn(),
   updatePosition: jest.fn(),
   hiddenMarkerIds: [],
+  additinalMarkers: [{ lat: 1, lng: 1 }],
 };
 
 let shallowWrapper: ShallowWrapper<Props, State, Renderer>;

@@ -95,6 +95,7 @@ export class Renderer extends React.Component<Props, State> {
         >
           <TileLayer url="/tds-map-tiles/{z}/{x}/{y}.png" noWrap />
           {this.renderPostMarkers()}
+          {this.renderAdittionalMarkers()}
           {this.renderCurrentPositionMarker()}
         </MapContainer>
       </Box>
@@ -123,8 +124,12 @@ export class Renderer extends React.Component<Props, State> {
   };
 
   protected renderPostMarkers() {
-    const { markers, doNotShowPostMarkers, newMarkerMode, hiddenMarkerIds } =
-      this.props;
+    const {
+      postMarkers,
+      doNotShowPostMarkers,
+      newMarkerMode,
+      hiddenMarkerIds,
+    } = this.props;
     if (doNotShowPostMarkers || !this.state.map) {
       return null;
     }
@@ -132,11 +137,29 @@ export class Renderer extends React.Component<Props, State> {
     return (
       <PostMarkers
         map={this.state.map}
-        markers={markers}
+        markers={postMarkers}
         popupDisabled={newMarkerMode}
         hiddenMarkerIds={hiddenMarkerIds}
       />
     );
+  }
+
+  protected renderAdittionalMarkers() {
+    const { additinalMarkers } = this.props;
+    const { map } = this.state;
+    if (!map) {
+      return null;
+    }
+
+    return additinalMarkers.map((position, index) => {
+      return (
+        <MapMarker
+          map={map}
+          position={new LatLng(position.lat, position.lng)}
+          key={`additional-marker-${index}`}
+        />
+      );
+    });
   }
 
   protected renderCurrentPositionMarker() {
@@ -248,7 +271,7 @@ export class Renderer extends React.Component<Props, State> {
 }
 
 export type Props = {
-  markers: MarkerDict;
+  postMarkers: MarkerDict;
   newMarkerMode: boolean;
   articleFormPosition?: Position;
   width?: number;
@@ -260,6 +283,7 @@ export type Props = {
   doNotShowPostMarkers?: boolean;
   hiddenMarkerIds: string[];
   shouldCurrentPositionAsyncWithForm?: boolean;
+  additinalMarkers: Position[];
 
   fetchMarkers: () => void;
   updatePosition: (position: Position) => void;

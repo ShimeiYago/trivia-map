@@ -58,6 +58,23 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       }
       popupDisabled={false}
     />
+    <MapMarker
+      autoOpen={false}
+      draggable={false}
+      key="additional-marker-0"
+      map={
+        Object {
+          "setView": [MockFunction],
+        }
+      }
+      position={
+        Object {
+          "lat": 1,
+          "lng": 1,
+        }
+      }
+      variant="blue"
+    />
   </MapContainer>
 </ForwardRef(Box)>
 `;
@@ -106,6 +123,23 @@ exports[`Shallow Snapshot Tests disabled map 1`] = `
     <ForwardRef(LeafComponent)
       noWrap={true}
       url="/tds-map-tiles/{z}/{x}/{y}.png"
+    />
+    <MapMarker
+      autoOpen={false}
+      draggable={false}
+      key="additional-marker-0"
+      map={
+        Object {
+          "setView": [MockFunction],
+        }
+      }
+      position={
+        Object {
+          "lat": 1,
+          "lng": 1,
+        }
+      }
+      variant="blue"
     />
   </MapContainer>
 </ForwardRef(Box)>
@@ -168,6 +202,23 @@ exports[`Shallow Snapshot Tests when currentPosition state is setted 1`] = `
         }
       }
       popupDisabled={true}
+    />
+    <MapMarker
+      autoOpen={false}
+      draggable={false}
+      key="additional-marker-0"
+      map={
+        Object {
+          "setView": [MockFunction],
+        }
+      }
+      position={
+        Object {
+          "lat": 1,
+          "lng": 1,
+        }
+      }
+      variant="blue"
     />
     <MapMarker
       autoOpen={true}
@@ -329,6 +380,38 @@ exports[`Shallow Snapshot Tests with initCenter prop 1`] = `
       }
       popupDisabled={false}
     />
+    <MapMarker
+      autoOpen={false}
+      draggable={false}
+      key="additional-marker-0"
+      map={
+        Object {
+          "setView": [MockFunction] {
+            "calls": Array [
+              Array [
+                Object {
+                  "lat": 1,
+                  "lng": 1,
+                },
+              ],
+            ],
+            "results": Array [
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+            ],
+          },
+        }
+      }
+      position={
+        Object {
+          "lat": 1,
+          "lng": 1,
+        }
+      }
+      variant="blue"
+    />
   </MapContainer>
 </ForwardRef(Box)>
 `;
@@ -390,6 +473,23 @@ exports[`Shallow Snapshot Tests with width and height props 1`] = `
         }
       }
       popupDisabled={false}
+    />
+    <MapMarker
+      autoOpen={false}
+      draggable={false}
+      key="additional-marker-0"
+      map={
+        Object {
+          "setView": [MockFunction],
+        }
+      }
+      position={
+        Object {
+          "lat": 1,
+          "lng": 1,
+        }
+      }
+      variant="blue"
     />
   </MapContainer>
 </ForwardRef(Box)>

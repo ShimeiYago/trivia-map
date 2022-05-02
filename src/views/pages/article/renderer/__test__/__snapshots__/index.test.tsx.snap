@@ -66,6 +66,14 @@ exports[`Shallow Snapshot Tests basic 1`] = `
                 }
               >
                 <TriviaMap
+                  additinalMarkers={
+                    Array [
+                      Object {
+                        "lat": 0,
+                        "lng": 0,
+                      },
+                    ]
+                  }
                   disabled={true}
                   doNotShowPostMarkers={true}
                   height={400}
@@ -249,6 +257,14 @@ exports[`Shallow Snapshot Tests mobile view 1`] = `
                 }
               >
                 <TriviaMap
+                  additinalMarkers={
+                    Array [
+                      Object {
+                        "lat": 0,
+                        "lng": 0,
+                      },
+                    ]
+                  }
                   disabled={true}
                   doNotShowPostMarkers={true}
                   height={400}
@@ -366,6 +382,14 @@ exports[`Shallow Snapshot Tests with image 1`] = `
                 }
               >
                 <TriviaMap
+                  additinalMarkers={
+                    Array [
+                      Object {
+                        "lat": 0,
+                        "lng": 0,
+                      },
+                    ]
+                  }
                   disabled={true}
                   doNotShowPostMarkers={true}
                   height={400}

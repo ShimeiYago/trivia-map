@@ -89,6 +89,7 @@ export class Renderer extends React.Component<Props> {
             initCenter={position}
             disabled
             doNotShowPostMarkers
+            additinalMarkers={[position]}
           />
           <Box sx={miniMapLayer}></Box>
         </Box>

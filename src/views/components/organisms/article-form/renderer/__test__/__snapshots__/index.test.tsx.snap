@@ -54,7 +54,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
         >
           <TriviaMap
             disabled={true}
-            doNotShowMarkers={true}
+            doNotShowPostMarkers={true}
             height={300}
             initCenter={
               Object {
@@ -63,6 +63,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
               }
             }
             initZoom={3}
+            shouldCurrentPositionAsyncWithForm={true}
           />
           <ForwardRef(Box)
             sx={
@@ -181,7 +182,7 @@ exports[`Shallow Snapshot Tests loading 1`] = `
         >
           <TriviaMap
             disabled={true}
-            doNotShowMarkers={true}
+            doNotShowPostMarkers={true}
             height={300}
             initCenter={
               Object {
@@ -190,6 +191,7 @@ exports[`Shallow Snapshot Tests loading 1`] = `
               }
             }
             initZoom={3}
+            shouldCurrentPositionAsyncWithForm={true}
           />
           <ForwardRef(Box)
             sx={
@@ -286,9 +288,10 @@ exports[`Shallow Snapshot Tests position is not selected yet 1`] = `
         >
           <TriviaMap
             disabled={true}
-            doNotShowMarkers={true}
+            doNotShowPostMarkers={true}
             height={300}
             initZoom={3}
+            shouldCurrentPositionAsyncWithForm={true}
           />
           <ForwardRef(Box)
             sx={
@@ -412,7 +415,7 @@ exports[`Shallow Snapshot Tests with close button 1`] = `
         >
           <TriviaMap
             disabled={true}
-            doNotShowMarkers={true}
+            doNotShowPostMarkers={true}
             height={300}
             initCenter={
               Object {
@@ -421,6 +424,7 @@ exports[`Shallow Snapshot Tests with close button 1`] = `
               }
             }
             initZoom={3}
+            shouldCurrentPositionAsyncWithForm={true}
           />
           <ForwardRef(Box)
             sx={
@@ -534,7 +538,7 @@ exports[`Shallow Snapshot Tests with image 1`] = `
         >
           <TriviaMap
             disabled={true}
-            doNotShowMarkers={true}
+            doNotShowPostMarkers={true}
             height={300}
             initCenter={
               Object {
@@ -543,6 +547,7 @@ exports[`Shallow Snapshot Tests with image 1`] = `
               }
             }
             initZoom={3}
+            shouldCurrentPositionAsyncWithForm={true}
           />
           <ForwardRef(Box)
             sx={
@@ -664,7 +669,7 @@ exports[`Shallow Snapshot Tests with validation error 1`] = `
         >
           <TriviaMap
             disabled={true}
-            doNotShowMarkers={true}
+            doNotShowPostMarkers={true}
             height={300}
             initCenter={
               Object {
@@ -673,6 +678,7 @@ exports[`Shallow Snapshot Tests with validation error 1`] = `
               }
             }
             initZoom={3}
+            shouldCurrentPositionAsyncWithForm={true}
           />
           <ForwardRef(Box)
             sx={

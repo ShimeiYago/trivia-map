@@ -58,13 +58,14 @@ export class Renderer extends React.Component<Props, State> {
     const { isFormEditting, isMobile } = this.props;
     return (
       <>
-        <Box sx={mapWrapper(openFormModal && !isMobile, isMobile)}>
-          <GlobalMenu barPosition="static" />
-          <TriviaMap
-            newMarkerMode={this.state.newMarkerMode}
-            endToSelectPosition={this.endToSelectPosition}
-            hiddenMarkerIds={edittingArticleId ? [edittingArticleId] : []}
-          />
+        <GlobalMenu topBarPosition="static">
+          <Box sx={mapWrapper(openFormModal && !isMobile, isMobile)}>
+            <TriviaMap
+              newMarkerMode={this.state.newMarkerMode}
+              endToSelectPosition={this.endToSelectPosition}
+              hiddenMarkerIds={edittingArticleId ? [edittingArticleId] : []}
+              shouldCurrentPositionAsyncWithForm
+            />
 
           {!isFormEditting && (
             <FloatingButton
@@ -75,6 +76,7 @@ export class Renderer extends React.Component<Props, State> {
 
           <LoadingProgressBar />
         </Box>
+        </GlobalMenu>
 
         <DeletingConfirmModal
           open={openDialogToConfirmDeleting}

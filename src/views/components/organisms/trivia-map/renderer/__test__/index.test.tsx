@@ -56,9 +56,26 @@ describe('Shallow Snapshot Tests', () => {
   it('disabled map', () => {
     shallowWrapper.setProps({
       disabled: true,
-      doNotShowMarkers: true,
+      doNotShowPostMarkers: true,
     });
     expect(shallowWrapper).toMatchSnapshot();
+  });
+});
+
+describe('constructor', () => {
+  it('should change currentPosition', () => {
+    shallowWrapper = shallow(
+      <Renderer
+        {...basicProps}
+        articleFormPosition={{ lat: 0, lng: 0 }}
+        shouldCurrentPositionAsyncWithForm
+      />,
+    );
+    const instance = shallowWrapper.instance();
+
+    // const map = { on: jest.fn() };
+    // instance['constructor']();
+    expect(instance.state.currentPosition).toEqual({ lat: 0, lng: 0 });
   });
 });
 
@@ -93,13 +110,13 @@ describe('componentDidUpdate', () => {
     shallowWrapper = shallow(<Renderer {...basicProps} />);
   });
 
-  it('should change currentPosition when newMarkerMode is changed', () => {
-    shallowWrapper.setProps({ newMarkerMode: false });
+  it('should async currentPosition with form', () => {
+    shallowWrapper.setProps({ shouldCurrentPositionAsyncWithForm: true });
     const instance = shallowWrapper.instance();
 
     instance['componentDidUpdate']({
       ...basicProps,
-      newMarkerMode: true,
+      articleFormPosition: { lat: 0, lng: 0 },
     });
     expect(instance.state.currentPosition).toBe(undefined);
   });

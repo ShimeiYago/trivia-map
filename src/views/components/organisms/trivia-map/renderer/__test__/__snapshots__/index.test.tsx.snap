@@ -120,22 +120,6 @@ exports[`Shallow Snapshot Tests when currentPosition state is setted 1`] = `
     }
   }
 >
-  <DialogScreen
-    position="top"
-    theme="black"
-  >
-    <ForwardRef(Typography)
-      align="center"
-      sx={
-        Object {
-          "fontWeight": "bold",
-        }
-      }
-      variant="inherit"
-    >
-      マップ上の好きな位置をタップしてください。
-    </ForwardRef(Typography)>
-  </DialogScreen>
   <MapContainer
     center={
       Object {
@@ -184,6 +168,89 @@ exports[`Shallow Snapshot Tests when currentPosition state is setted 1`] = `
         }
       }
       popupDisabled={true}
+    />
+    <MapMarker
+      autoOpen={true}
+      draggable={true}
+      map={
+        Object {
+          "setView": [MockFunction],
+        }
+      }
+      onDragEnd={[Function]}
+      onDragStart={[Function]}
+      popup={
+        <ForwardRef(Box)
+          sx={
+            Object {
+              "p": 1,
+            }
+          }
+        >
+          <ForwardRef(Typography)
+            align="center"
+            component="p"
+            sx={
+              Object {
+                "fontWeight": "bold",
+              }
+            }
+            variant="h6"
+          >
+            この位置でよろしいですか？
+          </ForwardRef(Typography)>
+          <ForwardRef(Typography)
+            component="p"
+            variant="subtitle2"
+          >
+            ※このマーカーは掴んで移動することができます。
+          </ForwardRef(Typography)>
+          <ForwardRef(Typography)
+            component="p"
+            variant="subtitle2"
+          >
+            ※あとで変更することができます。
+          </ForwardRef(Typography)>
+          <ForwardRef(Grid)
+            container={true}
+            justifyContent="center"
+            spacing={2}
+            sx={
+              Object {
+                "textAlign": "center",
+              }
+            }
+          >
+            <ForwardRef(Grid)
+              item={true}
+              xs={6}
+            >
+              <ForwardRef(Button)
+                onClick={[Function]}
+              >
+                キャンセル
+              </ForwardRef(Button)>
+            </ForwardRef(Grid)>
+            <ForwardRef(Grid)
+              item={true}
+              xs={6}
+            >
+              <ForwardRef(Button)
+                onClick={[Function]}
+              >
+                確定
+              </ForwardRef(Button)>
+            </ForwardRef(Grid)>
+          </ForwardRef(Grid)>
+        </ForwardRef(Box)>
+      }
+      position={
+        Object {
+          "lat": 1,
+          "lng": 1,
+        }
+      }
+      variant="red"
     />
   </MapContainer>
 </ForwardRef(Box)>

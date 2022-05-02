@@ -2,30 +2,32 @@
 
 exports[`Shallow Snapshot Tests basic 1`] = `
 <Fragment>
-  <ForwardRef(Box)
-    sx={
-      Object {
-        "height": "calc(100vh - 58px)",
-        "position": "relative",
-      }
-    }
+  <GlobalMenu
+    topBarPosition="static"
   >
-    <GlobalMenu
-      barPosition="static"
-    />
-    <TriviaMap
-      endToSelectPosition={[Function]}
-      hiddenMarkerIds={Array []}
-      newMarkerMode={false}
-    />
-    <FloatingButton
-      color="primary"
-      disabled={false}
-      icon="add-marker"
-      onClick={[Function]}
-    />
-    <LoadingProgressBar />
-  </ForwardRef(Box)>
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "height": "calc(100vh - 58px)",
+          "position": "relative",
+        }
+      }
+    >
+      <TriviaMap
+        endToSelectPosition={[Function]}
+        hiddenMarkerIds={Array []}
+        newMarkerMode={false}
+        shouldCurrentPositionAsyncWithForm={true}
+      />
+      <FloatingButton
+        color="primary"
+        disabled={false}
+        icon="add-marker"
+        onClick={[Function]}
+      />
+      <LoadingProgressBar />
+    </ForwardRef(Box)>
+  </GlobalMenu>
   <DeletingConfirmModal
     onClickCancel={[Function]}
     onClickConfirm={[Function]}
@@ -78,31 +80,33 @@ exports[`Shallow Snapshot Tests basic 1`] = `
 
 exports[`Shallow Snapshot Tests pc view 1`] = `
 <Fragment>
-  <ForwardRef(Box)
-    sx={
-      Object {
-        "height": "calc(100vh - 66px)",
-        "position": "relative",
-        "width": "calc(100% - 500px)",
-      }
-    }
+  <GlobalMenu
+    topBarPosition="static"
   >
-    <GlobalMenu
-      barPosition="static"
-    />
-    <TriviaMap
-      endToSelectPosition={[Function]}
-      hiddenMarkerIds={Array []}
-      newMarkerMode={false}
-    />
-    <FloatingButton
-      color="primary"
-      disabled={false}
-      icon="add-marker"
-      onClick={[Function]}
-    />
-    <LoadingProgressBar />
-  </ForwardRef(Box)>
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "height": "calc(100vh - 66px)",
+          "position": "relative",
+          "width": "calc(100% - 500px)",
+        }
+      }
+    >
+      <TriviaMap
+        endToSelectPosition={[Function]}
+        hiddenMarkerIds={Array []}
+        newMarkerMode={false}
+        shouldCurrentPositionAsyncWithForm={true}
+      />
+      <FloatingButton
+        color="primary"
+        disabled={false}
+        icon="add-marker"
+        onClick={[Function]}
+      />
+      <LoadingProgressBar />
+    </ForwardRef(Box)>
+  </GlobalMenu>
   <DeletingConfirmModal
     onClickCancel={[Function]}
     onClickConfirm={[Function]}

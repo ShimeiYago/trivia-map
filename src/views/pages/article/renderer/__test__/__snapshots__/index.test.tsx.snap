@@ -67,7 +67,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
               >
                 <TriviaMap
                   disabled={true}
-                  doNotShowMarkers={true}
+                  doNotShowPostMarkers={true}
                   height={400}
                   initCenter={
                     Object {
@@ -250,7 +250,7 @@ exports[`Shallow Snapshot Tests mobile view 1`] = `
               >
                 <TriviaMap
                   disabled={true}
-                  doNotShowMarkers={true}
+                  doNotShowPostMarkers={true}
                   height={400}
                   initCenter={
                     Object {
@@ -367,7 +367,7 @@ exports[`Shallow Snapshot Tests with image 1`] = `
               >
                 <TriviaMap
                   disabled={true}
-                  doNotShowMarkers={true}
+                  doNotShowPostMarkers={true}
                   height={400}
                   initCenter={
                     Object {

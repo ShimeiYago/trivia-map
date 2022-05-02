@@ -159,7 +159,8 @@ export class Renderer extends React.Component<Props> {
                   initZoom={3}
                   initCenter={position}
                   disabled
-                  doNotShowMarkers
+                  doNotShowPostMarkers
+                  shouldCurrentPositionAsyncWithForm
                 />
                 <Box sx={miniMapLayer}></Box>
                 <Box sx={miniMapTextBox}>

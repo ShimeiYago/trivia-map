@@ -21,7 +21,9 @@ export class Renderer extends React.Component<Props, State> {
     super(props);
     this.handleMapCreated = this.handleMapCreated.bind(this);
     this.state = {
-      currentPosition: props.articleFormPosition,
+      currentPosition: props.shouldCurrentPositionAsyncWithForm
+        ? props.articleFormPosition
+        : undefined,
       openableNewMarkerPopup: true,
     };
   }
@@ -29,7 +31,7 @@ export class Renderer extends React.Component<Props, State> {
   componentDidMount() {
     if (
       this.props.markersFetchingState === 'waiting' &&
-      !this.props.doNotShowMarkers
+      !this.props.doNotShowPostMarkers
     ) {
       this.props.fetchMarkers();
     }
@@ -37,8 +39,8 @@ export class Renderer extends React.Component<Props, State> {
 
   componentDidUpdate(prevProps: Props) {
     if (
-      prevProps.articleFormPosition !== this.props.articleFormPosition ||
-      prevProps.newMarkerMode !== this.props.newMarkerMode
+      prevProps.articleFormPosition !== this.props.articleFormPosition &&
+      this.props.shouldCurrentPositionAsyncWithForm
     ) {
       this.setState({
         currentPosition: this.props.articleFormPosition,
@@ -121,9 +123,9 @@ export class Renderer extends React.Component<Props, State> {
   };
 
   protected renderPostMarkers() {
-    const { markers, doNotShowMarkers, newMarkerMode, hiddenMarkerIds } =
+    const { markers, doNotShowPostMarkers, newMarkerMode, hiddenMarkerIds } =
       this.props;
-    if (doNotShowMarkers || !this.state.map) {
+    if (doNotShowPostMarkers || !this.state.map) {
       return null;
     }
 
@@ -208,10 +210,6 @@ export class Renderer extends React.Component<Props, State> {
     }
     this.props.updatePosition(this.state.currentPosition);
 
-    this.setState({
-      currentPosition: undefined,
-    });
-
     if (this.props.endToSelectPosition) {
       this.props.endToSelectPosition();
     }
@@ -259,8 +257,9 @@ export type Props = {
   initCenter?: Position;
   disabled?: boolean;
   markersFetchingState: LoadingState;
-  doNotShowMarkers?: boolean;
+  doNotShowPostMarkers?: boolean;
   hiddenMarkerIds: string[];
+  shouldCurrentPositionAsyncWithForm?: boolean;
 
   fetchMarkers: () => void;
   updatePosition: (position: Position) => void;

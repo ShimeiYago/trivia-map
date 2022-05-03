@@ -11,16 +11,9 @@ export function contentWrapper(isMobile: boolean): SxProps {
   };
 }
 
-export const miniMapWrapper: SxProps = {
-  position: 'relative',
-};
-
-export const miniMapLayer: SxProps = {
-  position: 'absolute',
-  backgroundColor: 'rgba(0,0,0,0.5)',
-  top: 0,
-  left: 0,
-  width: '100%',
-  height: '100%',
-  zIndex: 2000,
+export const mapTitle: SxProps = {
+  display: 'flex',
+  alignItems: 'center',
+  flexWrap: 'wrap',
+  justifyContent: 'center',
 };

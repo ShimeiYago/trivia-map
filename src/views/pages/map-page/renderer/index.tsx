@@ -67,15 +67,15 @@ export class Renderer extends React.Component<Props, State> {
               shouldCurrentPositionAsyncWithForm
             />
 
-          {!isFormEditting && (
-            <FloatingButton
-              icon="add-marker"
-              onClick={this.handleClickAddButton}
-            />
-          )}
+            {!isFormEditting && (
+              <FloatingButton
+                icon="add-marker"
+                onClick={this.handleClickAddButton}
+              />
+            )}
 
-          <LoadingProgressBar />
-        </Box>
+            <LoadingProgressBar />
+          </Box>
         </GlobalMenu>
 
         <DeletingConfirmModal

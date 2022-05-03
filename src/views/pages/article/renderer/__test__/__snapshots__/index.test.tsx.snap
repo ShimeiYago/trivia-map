@@ -58,47 +58,44 @@ exports[`Shallow Snapshot Tests basic 1`] = `
               <ForwardRef(Typography)>
                 content
               </ForwardRef(Typography)>
-              <ForwardRef(Box)
+              <ForwardRef(Divider) />
+              <ForwardRef(Typography)
+                component="h3"
                 sx={
                   Object {
-                    "position": "relative",
+                    "alignItems": "center",
+                    "display": "flex",
+                    "flexWrap": "wrap",
+                    "justifyContent": "center",
                   }
                 }
+                variant="h5"
               >
-                <TriviaMap
-                  additinalMarkers={
-                    Array [
-                      Object {
-                        "lat": 0,
-                        "lng": 0,
-                      },
-                    ]
-                  }
-                  disabled={true}
-                  doNotShowPostMarkers={true}
-                  height={400}
-                  initCenter={
+                <Memo(ForwardRef(MapIcon))
+                  fontSize="inherit"
+                />
+                地図
+              </ForwardRef(Typography)>
+              <TriviaMap
+                additinalMarkers={
+                  Array [
                     Object {
                       "lat": 0,
                       "lng": 0,
-                    }
+                    },
+                  ]
+                }
+                disabled={true}
+                doNotShowPostMarkers={true}
+                height={300}
+                initCenter={
+                  Object {
+                    "lat": 0,
+                    "lng": 0,
                   }
-                  initZoom={3}
-                />
-                <ForwardRef(Box)
-                  sx={
-                    Object {
-                      "backgroundColor": "rgba(0,0,0,0.5)",
-                      "height": "100%",
-                      "left": 0,
-                      "position": "absolute",
-                      "top": 0,
-                      "width": "100%",
-                      "zIndex": 2000,
-                    }
-                  }
-                />
-              </ForwardRef(Box)>
+                }
+                initZoom={3}
+              />
             </ForwardRef(Stack)>
           </ArticlePaper>
         </ForwardRef(Grid)>
@@ -249,47 +246,44 @@ exports[`Shallow Snapshot Tests mobile view 1`] = `
               <ForwardRef(Typography)>
                 content
               </ForwardRef(Typography)>
-              <ForwardRef(Box)
+              <ForwardRef(Divider) />
+              <ForwardRef(Typography)
+                component="h3"
                 sx={
                   Object {
-                    "position": "relative",
+                    "alignItems": "center",
+                    "display": "flex",
+                    "flexWrap": "wrap",
+                    "justifyContent": "center",
                   }
                 }
+                variant="h5"
               >
-                <TriviaMap
-                  additinalMarkers={
-                    Array [
-                      Object {
-                        "lat": 0,
-                        "lng": 0,
-                      },
-                    ]
-                  }
-                  disabled={true}
-                  doNotShowPostMarkers={true}
-                  height={400}
-                  initCenter={
+                <Memo(ForwardRef(MapIcon))
+                  fontSize="inherit"
+                />
+                地図
+              </ForwardRef(Typography)>
+              <TriviaMap
+                additinalMarkers={
+                  Array [
                     Object {
                       "lat": 0,
                       "lng": 0,
-                    }
+                    },
+                  ]
+                }
+                disabled={true}
+                doNotShowPostMarkers={true}
+                height={300}
+                initCenter={
+                  Object {
+                    "lat": 0,
+                    "lng": 0,
                   }
-                  initZoom={3}
-                />
-                <ForwardRef(Box)
-                  sx={
-                    Object {
-                      "backgroundColor": "rgba(0,0,0,0.5)",
-                      "height": "100%",
-                      "left": 0,
-                      "position": "absolute",
-                      "top": 0,
-                      "width": "100%",
-                      "zIndex": 2000,
-                    }
-                  }
-                />
-              </ForwardRef(Box)>
+                }
+                initZoom={3}
+              />
             </ForwardRef(Stack)>
           </ArticlePaper>
         </ForwardRef(Grid)>
@@ -365,56 +359,50 @@ exports[`Shallow Snapshot Tests with image 1`] = `
                 title
               </ForwardRef(Typography)>
               <Image
-                borderRadius={true}
-                height="300px"
-                objectFit="cover"
                 src="image.jpg"
                 width="full"
               />
               <ForwardRef(Typography)>
                 content
               </ForwardRef(Typography)>
-              <ForwardRef(Box)
+              <ForwardRef(Divider) />
+              <ForwardRef(Typography)
+                component="h3"
                 sx={
                   Object {
-                    "position": "relative",
+                    "alignItems": "center",
+                    "display": "flex",
+                    "flexWrap": "wrap",
+                    "justifyContent": "center",
                   }
                 }
+                variant="h5"
               >
-                <TriviaMap
-                  additinalMarkers={
-                    Array [
-                      Object {
-                        "lat": 0,
-                        "lng": 0,
-                      },
-                    ]
-                  }
-                  disabled={true}
-                  doNotShowPostMarkers={true}
-                  height={400}
-                  initCenter={
+                <Memo(ForwardRef(MapIcon))
+                  fontSize="inherit"
+                />
+                地図
+              </ForwardRef(Typography)>
+              <TriviaMap
+                additinalMarkers={
+                  Array [
                     Object {
                       "lat": 0,
                       "lng": 0,
-                    }
+                    },
+                  ]
+                }
+                disabled={true}
+                doNotShowPostMarkers={true}
+                height={300}
+                initCenter={
+                  Object {
+                    "lat": 0,
+                    "lng": 0,
                   }
-                  initZoom={3}
-                />
-                <ForwardRef(Box)
-                  sx={
-                    Object {
-                      "backgroundColor": "rgba(0,0,0,0.5)",
-                      "height": "100%",
-                      "left": 0,
-                      "position": "absolute",
-                      "top": 0,
-                      "width": "100%",
-                      "zIndex": 2000,
-                    }
-                  }
-                />
-              </ForwardRef(Box)>
+                }
+                initZoom={3}
+              />
             </ForwardRef(Stack)>
           </ArticlePaper>
         </ForwardRef(Grid)>

@@ -1,5 +1,12 @@
 import React from 'react';
-import { Box, CircularProgress, Grid, Stack, Typography } from '@mui/material';
+import {
+  Box,
+  CircularProgress,
+  Divider,
+  Grid,
+  Stack,
+  Typography,
+} from '@mui/material';
 import { LoadingState } from 'types/loading-state';
 import { GlobalMenu } from 'views/components/organisms/global-menu';
 import { Link } from 'react-router-dom';
@@ -7,12 +14,8 @@ import { ArticlePaper } from 'views/components/atoms/article-paper';
 import { Position } from 'types/position';
 import { Image } from 'views/components/atoms/image';
 import { TriviaMap } from 'views/components/organisms/trivia-map';
-import {
-  wrapper,
-  contentWrapper,
-  miniMapWrapper,
-  miniMapLayer,
-} from '../styles';
+import { wrapper, contentWrapper, mapTitle } from '../styles';
+import MapIcon from '@mui/icons-material/Map';
 
 export class Renderer extends React.Component<Props> {
   componentDidMount() {
@@ -70,29 +73,25 @@ export class Renderer extends React.Component<Props> {
           {title}
         </Typography>
 
-        {imageUrl && (
-          <Image
-            src={imageUrl}
-            width="full"
-            height="300px"
-            objectFit="cover"
-            borderRadius
-          />
-        )}
+        {imageUrl && <Image src={imageUrl} width="full" />}
 
         <Typography>{content}</Typography>
 
-        <Box sx={miniMapWrapper}>
-          <TriviaMap
-            height={400}
-            initZoom={3}
-            initCenter={position}
-            disabled
-            doNotShowPostMarkers
-            additinalMarkers={[position]}
-          />
-          <Box sx={miniMapLayer}></Box>
-        </Box>
+        <Divider />
+
+        <Typography sx={mapTitle} component="h3" variant="h5">
+          <MapIcon fontSize="inherit" />
+          地図
+        </Typography>
+
+        <TriviaMap
+          height={300}
+          initZoom={3}
+          initCenter={position}
+          disabled
+          doNotShowPostMarkers
+          additinalMarkers={[position]}
+        />
       </Stack>
     );
   };

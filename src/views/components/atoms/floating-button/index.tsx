@@ -2,6 +2,7 @@ import React from 'react';
 import { Fab } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import EditIcon from '@mui/icons-material/Edit';
+import AddLocationAltIcon from '@mui/icons-material/AddLocationAlt';
 import { style } from './styles';
 
 export class FloatingButton extends React.Component<Props> {
@@ -21,6 +22,10 @@ export class FloatingButton extends React.Component<Props> {
         break;
       case 'edit':
         iconComponent = <EditIcon />;
+        break;
+      case 'add-marker':
+        iconComponent = <AddLocationAltIcon />;
+        break;
     }
 
     return (
@@ -38,7 +43,7 @@ export type Props = {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 };
 
-type Icon = 'add' | 'edit';
+type Icon = 'add' | 'edit' | 'add-marker';
 
 type Color =
   | 'inherit'

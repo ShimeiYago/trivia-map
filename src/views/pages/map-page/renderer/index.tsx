@@ -67,7 +67,10 @@ export class Renderer extends React.Component<Props, State> {
           />
 
           {!isFormEditting && (
-            <FloatingButton onClick={this.handleClickAddButton} />
+            <FloatingButton
+              icon="add-marker"
+              onClick={this.handleClickAddButton}
+            />
           )}
 
           <LoadingProgressBar />

@@ -18,4 +18,11 @@ describe('Shallow Snapshot Tests', () => {
     });
     expect(wrapper).toMatchSnapshot();
   });
+
+  it('add-marker icon', () => {
+    wrapper.setProps({
+      icon: 'add-marker',
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
 });

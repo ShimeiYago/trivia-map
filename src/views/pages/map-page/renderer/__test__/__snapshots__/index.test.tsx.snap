@@ -21,7 +21,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
     <FloatingButton
       color="primary"
       disabled={false}
-      icon="add"
+      icon="add-marker"
       onClick={[Function]}
     />
     <LoadingProgressBar />
@@ -98,7 +98,7 @@ exports[`Shallow Snapshot Tests pc view 1`] = `
     <FloatingButton
       color="primary"
       disabled={false}
-      icon="add"
+      icon="add-marker"
       onClick={[Function]}
     />
     <LoadingProgressBar />

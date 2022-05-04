@@ -1,34 +1,423 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Shallow Snapshot Tests basic 1`] = `
-<Fragment>
-  <ForwardRef(Typography)
-    component="h2"
-    variant="h6"
-  >
-    title
-  </ForwardRef(Typography)>
-  <ForwardRef(Typography)
-    sx={
-      Object {
-        "mt": 2,
-      }
+<ForwardRef(Box)
+  sx={
+    Object {
+      "backgroundColor": "#f4f5f7",
     }
+  }
+>
+  <GlobalMenu
+    permanentLeftNavi={true}
+    topBarPosition="static"
   >
-    content
-  </ForwardRef(Typography)>
-</Fragment>
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "marginTop": 5,
+          "marginX": 10,
+        }
+      }
+    >
+      <ForwardRef(Grid)
+        container={true}
+        spacing={4}
+      >
+        <ForwardRef(Grid)
+          item={true}
+          xs={12}
+        >
+          <ArticlePaper
+            variant="navi"
+          >
+            <Link
+              to="/"
+            >
+              マップへ戻る
+            </Link>
+          </ArticlePaper>
+        </ForwardRef(Grid)>
+        <ForwardRef(Grid)
+          item={true}
+          xs={8}
+        >
+          <ArticlePaper
+            variant="main"
+          >
+            <ForwardRef(Stack)
+              spacing={2}
+            >
+              <ForwardRef(Typography)
+                align="center"
+                component="h2"
+                variant="h4"
+              >
+                title
+              </ForwardRef(Typography)>
+              <ForwardRef(Typography)>
+                content
+              </ForwardRef(Typography)>
+              <ForwardRef(Divider) />
+              <ForwardRef(Typography)
+                component="h3"
+                sx={
+                  Object {
+                    "alignItems": "center",
+                    "display": "flex",
+                    "flexWrap": "wrap",
+                    "justifyContent": "center",
+                  }
+                }
+                variant="h5"
+              >
+                <Memo(ForwardRef(MapIcon))
+                  fontSize="inherit"
+                />
+                地図
+              </ForwardRef(Typography)>
+              <TriviaMap
+                additinalMarkers={
+                  Array [
+                    Object {
+                      "lat": 0,
+                      "lng": 0,
+                    },
+                  ]
+                }
+                disabled={true}
+                doNotShowPostMarkers={true}
+                height={300}
+                initCenter={
+                  Object {
+                    "lat": 0,
+                    "lng": 0,
+                  }
+                }
+                initZoom={3}
+              />
+            </ForwardRef(Stack)>
+          </ArticlePaper>
+        </ForwardRef(Grid)>
+        <ForwardRef(Grid)
+          item={true}
+          xs={4}
+        >
+          <ArticlePaper
+            variant="side"
+          >
+            サイドバー
+          </ArticlePaper>
+        </ForwardRef(Grid)>
+      </ForwardRef(Grid)>
+    </ForwardRef(Box)>
+  </GlobalMenu>
+</ForwardRef(Box)>
 `;
 
 exports[`Shallow Snapshot Tests loading 1`] = `
 <ForwardRef(Box)
   sx={
     Object {
-      "display": "flex",
-      "justifyContent": "center",
+      "backgroundColor": "#f4f5f7",
     }
   }
 >
-  <ForwardRef(CircularProgress) />
+  <GlobalMenu
+    permanentLeftNavi={true}
+    topBarPosition="static"
+  >
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "marginTop": 5,
+          "marginX": 10,
+        }
+      }
+    >
+      <ForwardRef(Grid)
+        container={true}
+        spacing={4}
+      >
+        <ForwardRef(Grid)
+          item={true}
+          xs={12}
+        >
+          <ArticlePaper
+            variant="navi"
+          >
+            <Link
+              to="/"
+            >
+              マップへ戻る
+            </Link>
+          </ArticlePaper>
+        </ForwardRef(Grid)>
+        <ForwardRef(Grid)
+          item={true}
+          xs={8}
+        >
+          <ArticlePaper
+            variant="main"
+          >
+            <ForwardRef(Box)
+              sx={
+                Object {
+                  "display": "flex",
+                  "justifyContent": "center",
+                }
+              }
+            >
+              <ForwardRef(CircularProgress) />
+            </ForwardRef(Box)>
+          </ArticlePaper>
+        </ForwardRef(Grid)>
+        <ForwardRef(Grid)
+          item={true}
+          xs={4}
+        >
+          <ArticlePaper
+            variant="side"
+          >
+            サイドバー
+          </ArticlePaper>
+        </ForwardRef(Grid)>
+      </ForwardRef(Grid)>
+    </ForwardRef(Box)>
+  </GlobalMenu>
+</ForwardRef(Box)>
+`;
+
+exports[`Shallow Snapshot Tests mobile view 1`] = `
+<ForwardRef(Box)
+  sx={
+    Object {
+      "backgroundColor": "#f4f5f7",
+    }
+  }
+>
+  <GlobalMenu
+    permanentLeftNavi={false}
+    topBarPosition="static"
+  >
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "marginTop": 1,
+          "marginX": 0,
+        }
+      }
+    >
+      <ForwardRef(Grid)
+        container={true}
+        spacing={2}
+      >
+        <ForwardRef(Grid)
+          item={true}
+          xs={12}
+        >
+          <ArticlePaper
+            variant="navi"
+          >
+            <Link
+              to="/"
+            >
+              マップへ戻る
+            </Link>
+          </ArticlePaper>
+        </ForwardRef(Grid)>
+        <ForwardRef(Grid)
+          item={true}
+          xs={12}
+        >
+          <ArticlePaper
+            variant="main"
+          >
+            <ForwardRef(Stack)
+              spacing={2}
+            >
+              <ForwardRef(Typography)
+                align="center"
+                component="h2"
+                variant="h4"
+              >
+                title
+              </ForwardRef(Typography)>
+              <ForwardRef(Typography)>
+                content
+              </ForwardRef(Typography)>
+              <ForwardRef(Divider) />
+              <ForwardRef(Typography)
+                component="h3"
+                sx={
+                  Object {
+                    "alignItems": "center",
+                    "display": "flex",
+                    "flexWrap": "wrap",
+                    "justifyContent": "center",
+                  }
+                }
+                variant="h5"
+              >
+                <Memo(ForwardRef(MapIcon))
+                  fontSize="inherit"
+                />
+                地図
+              </ForwardRef(Typography)>
+              <TriviaMap
+                additinalMarkers={
+                  Array [
+                    Object {
+                      "lat": 0,
+                      "lng": 0,
+                    },
+                  ]
+                }
+                disabled={true}
+                doNotShowPostMarkers={true}
+                height={300}
+                initCenter={
+                  Object {
+                    "lat": 0,
+                    "lng": 0,
+                  }
+                }
+                initZoom={3}
+              />
+            </ForwardRef(Stack)>
+          </ArticlePaper>
+        </ForwardRef(Grid)>
+        <ForwardRef(Grid)
+          item={true}
+          xs={12}
+        >
+          <ArticlePaper
+            variant="side"
+          >
+            サイドバー
+          </ArticlePaper>
+        </ForwardRef(Grid)>
+      </ForwardRef(Grid)>
+    </ForwardRef(Box)>
+  </GlobalMenu>
+</ForwardRef(Box)>
+`;
+
+exports[`Shallow Snapshot Tests with image 1`] = `
+<ForwardRef(Box)
+  sx={
+    Object {
+      "backgroundColor": "#f4f5f7",
+    }
+  }
+>
+  <GlobalMenu
+    permanentLeftNavi={true}
+    topBarPosition="static"
+  >
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "marginTop": 5,
+          "marginX": 10,
+        }
+      }
+    >
+      <ForwardRef(Grid)
+        container={true}
+        spacing={4}
+      >
+        <ForwardRef(Grid)
+          item={true}
+          xs={12}
+        >
+          <ArticlePaper
+            variant="navi"
+          >
+            <Link
+              to="/"
+            >
+              マップへ戻る
+            </Link>
+          </ArticlePaper>
+        </ForwardRef(Grid)>
+        <ForwardRef(Grid)
+          item={true}
+          xs={8}
+        >
+          <ArticlePaper
+            variant="main"
+          >
+            <ForwardRef(Stack)
+              spacing={2}
+            >
+              <ForwardRef(Typography)
+                align="center"
+                component="h2"
+                variant="h4"
+              >
+                title
+              </ForwardRef(Typography)>
+              <Image
+                src="image.jpg"
+                width="full"
+              />
+              <ForwardRef(Typography)>
+                content
+              </ForwardRef(Typography)>
+              <ForwardRef(Divider) />
+              <ForwardRef(Typography)
+                component="h3"
+                sx={
+                  Object {
+                    "alignItems": "center",
+                    "display": "flex",
+                    "flexWrap": "wrap",
+                    "justifyContent": "center",
+                  }
+                }
+                variant="h5"
+              >
+                <Memo(ForwardRef(MapIcon))
+                  fontSize="inherit"
+                />
+                地図
+              </ForwardRef(Typography)>
+              <TriviaMap
+                additinalMarkers={
+                  Array [
+                    Object {
+                      "lat": 0,
+                      "lng": 0,
+                    },
+                  ]
+                }
+                disabled={true}
+                doNotShowPostMarkers={true}
+                height={300}
+                initCenter={
+                  Object {
+                    "lat": 0,
+                    "lng": 0,
+                  }
+                }
+                initZoom={3}
+              />
+            </ForwardRef(Stack)>
+          </ArticlePaper>
+        </ForwardRef(Grid)>
+        <ForwardRef(Grid)
+          item={true}
+          xs={4}
+        >
+          <ArticlePaper
+            variant="side"
+          >
+            サイドバー
+          </ArticlePaper>
+        </ForwardRef(Grid)>
+      </ForwardRef(Grid)>
+    </ForwardRef(Box)>
+  </GlobalMenu>
 </ForwardRef(Box)>
 `;

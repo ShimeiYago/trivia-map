@@ -20,6 +20,8 @@ export const readingArticleSlice = createSlice({
       state.loadingState = 'success';
       state.title = action.payload.title;
       state.content = action.payload.content;
+      state.imageUrl = action.payload.imageDataUrl;
+      state.position = action.payload.position;
     },
   },
 });

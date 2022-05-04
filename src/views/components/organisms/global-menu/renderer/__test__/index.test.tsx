@@ -3,7 +3,8 @@ import { shallow, ShallowWrapper } from 'enzyme';
 import { Renderer, Props, State } from '..';
 
 const basicProps: Props = {
-  barPosition: 'fixed',
+  topBarPosition: 'fixed',
+  children: 'contents',
 };
 
 let wrapper: ShallowWrapper<Props, State, Renderer>;
@@ -18,7 +19,12 @@ describe('Shallow Snapshot Tests', () => {
   });
 
   it('static position', () => {
-    wrapper.setProps({ barPosition: 'static' });
+    wrapper.setProps({ topBarPosition: 'static' });
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('permanent left navi', () => {
+    wrapper.setProps({ permanentLeftNavi: true });
     expect(wrapper).toMatchSnapshot();
   });
 });

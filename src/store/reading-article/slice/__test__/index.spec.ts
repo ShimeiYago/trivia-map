@@ -9,6 +9,8 @@ describe('readingArticle reducer', () => {
     title: '',
     content: '',
     loadingState: 'waiting',
+    position: { lat: 0, lng: 0 },
+    imageUrl: null,
   };
   const loadingState = Object.assign(initialState, { loadingState: 'loading' });
 
@@ -18,6 +20,8 @@ describe('readingArticle reducer', () => {
       title: '',
       content: '',
       loadingState: 'waiting',
+      position: { lat: 0, lng: 0 },
+      imageUrl: null,
     });
   });
   it('should handle fetchStart', () => {
@@ -45,5 +49,7 @@ describe('readingArticle reducer', () => {
     expect(actual.loadingState).toEqual('success');
     expect(actual.title).toEqual('title');
     expect(actual.content).toEqual('content');
+    expect(actual.imageUrl).toEqual('https://image-data.jpg');
+    expect(actual.position).toEqual({ lat: 0, lng: 0 });
   });
 });

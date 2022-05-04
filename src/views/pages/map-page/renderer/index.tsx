@@ -58,23 +58,25 @@ export class Renderer extends React.Component<Props, State> {
     const { isFormEditting, isMobile } = this.props;
     return (
       <>
-        <Box sx={mapWrapper(openFormModal && !isMobile, isMobile)}>
-          <GlobalMenu barPosition="static" />
-          <TriviaMap
-            newMarkerMode={this.state.newMarkerMode}
-            endToSelectPosition={this.endToSelectPosition}
-            hiddenMarkerIds={edittingArticleId ? [edittingArticleId] : []}
-          />
-
-          {!isFormEditting && (
-            <FloatingButton
-              icon="add-marker"
-              onClick={this.handleClickAddButton}
+        <GlobalMenu topBarPosition="static">
+          <Box sx={mapWrapper(openFormModal && !isMobile, isMobile)}>
+            <TriviaMap
+              newMarkerMode={this.state.newMarkerMode}
+              endToSelectPosition={this.endToSelectPosition}
+              hiddenMarkerIds={edittingArticleId ? [edittingArticleId] : []}
+              shouldCurrentPositionAsyncWithForm
             />
-          )}
 
-          <LoadingProgressBar />
-        </Box>
+            {!isFormEditting && (
+              <FloatingButton
+                icon="add-marker"
+                onClick={this.handleClickAddButton}
+              />
+            )}
+
+            <LoadingProgressBar />
+          </Box>
+        </GlobalMenu>
 
         <DeletingConfirmModal
           open={openDialogToConfirmDeleting}

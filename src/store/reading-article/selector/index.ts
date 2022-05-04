@@ -8,6 +8,10 @@ export const selectReadingArticleTitle = (state: ReadingArticleRootState) =>
   state.readingArticle.title;
 export const selectReadingArticleContent = (state: ReadingArticleRootState) =>
   state.readingArticle.content;
+export const selectReadingArticlePosition = (state: ReadingArticleRootState) =>
+  state.readingArticle.position;
+export const selectReadingArticleImageUrl = (state: ReadingArticleRootState) =>
+  state.readingArticle.imageUrl;
 export const selectReadingArticleLoadingState = (
   state: ReadingArticleRootState,
 ) => state.readingArticle.loadingState;

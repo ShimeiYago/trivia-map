@@ -13,7 +13,7 @@ export function TriviaMap(ownProps: OwnProps) {
   const dispatch = useAppDispatch();
 
   const props: Props = {
-    markers: useAppSelector(selectMarkersDict),
+    postMarkers: useAppSelector(selectMarkersDict),
     newMarkerMode: !!ownProps.newMarkerMode,
     articleFormPosition: useAppSelector(selectArticleFormPosition),
     width: ownProps.width,
@@ -22,8 +22,11 @@ export function TriviaMap(ownProps: OwnProps) {
     initCenter: ownProps.initCenter,
     disabled: ownProps.disabled,
     markersFetchingState: useAppSelector(selectMarkersFetchingState),
-    doNotShowMarkers: ownProps.doNotShowMarkers,
+    doNotShowPostMarkers: ownProps.doNotShowPostMarkers,
     hiddenMarkerIds: ownProps.hiddenMarkerIds ?? [],
+    shouldCurrentPositionAsyncWithForm:
+      ownProps.shouldCurrentPositionAsyncWithForm,
+    additinalMarkers: ownProps.additinalMarkers ?? [],
 
     fetchMarkers: () => dispatch(fetchMarkers()),
     updatePosition: (position: Position) =>
@@ -42,6 +45,8 @@ type OwnProps = {
   initZoom?: number;
   initCenter?: Position;
   disabled?: boolean;
-  doNotShowMarkers?: boolean;
+  doNotShowPostMarkers?: boolean;
   hiddenMarkerIds?: string[];
+  shouldCurrentPositionAsyncWithForm?: boolean;
+  additinalMarkers?: Position[];
 };

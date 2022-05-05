@@ -22,6 +22,10 @@ export const readingArticleSlice = createSlice({
       state.content = action.payload.content;
       state.imageUrl = action.payload.imageDataUrl;
       state.position = action.payload.position;
+      state.userId = action.payload.userId;
+      state.userName = action.payload.userName;
+      state.createdAt = action.payload.createdAt;
+      state.updatedAt = action.payload.updatedAt;
     },
   },
 });

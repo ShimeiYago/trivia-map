@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  Avatar,
   Box,
   CircularProgress,
   Divider,
@@ -16,6 +17,7 @@ import { Image } from 'views/components/atoms/image';
 import { TriviaMap } from 'views/components/organisms/trivia-map';
 import { wrapper, contentWrapper, mapTitle } from '../styles';
 import MapIcon from '@mui/icons-material/Map';
+import { deepOrange } from '@mui/material/colors';
 
 export class Renderer extends React.Component<Props> {
   componentDidMount() {
@@ -53,8 +55,16 @@ export class Renderer extends React.Component<Props> {
   }
 
   protected renderMainArticle = () => {
-    const { articleLoadingState, title, content, position, imageUrl } =
-      this.props;
+    const {
+      articleLoadingState,
+      title,
+      content,
+      position,
+      imageUrl,
+      userName,
+      createdAt,
+      updatedAt,
+    } = this.props;
 
     if (
       articleLoadingState === 'waiting' ||
@@ -69,9 +79,28 @@ export class Renderer extends React.Component<Props> {
 
     return (
       <Stack spacing={2}>
+        <Stack
+          direction="row"
+          justifyContent="flex-start"
+          alignItems="center"
+          spacing={1}
+        >
+          <Avatar sx={{ bgcolor: deepOrange[500], width: 30, height: 30 }}>
+            {userName.slice(0, 1)}
+          </Avatar>
+          <Typography color="gray">{userName}</Typography>
+        </Stack>
+
         <Typography component="h2" variant="h4" align="center">
           {title}
         </Typography>
+
+        <Typography color="gray" align="right">
+          <Typography>{`投稿日 ${createdAt}`}</Typography>
+          {updatedAt && <Typography>{`更新日 ${updatedAt}`}</Typography>}
+        </Typography>
+
+        <Divider />
 
         {imageUrl && <Image src={imageUrl} width="full" />}
 
@@ -110,6 +139,10 @@ export type Props = {
   content: string;
   position: Position;
   imageUrl: string | null;
+  userId: string;
+  userName: string;
+  createdAt: string;
+  updatedAt?: string;
   articleLoadingState: LoadingState;
   isMobile: boolean;
 

@@ -27,4 +27,8 @@ export type GetArticleResponse = {
   content: string;
   position: Position;
   imageDataUrl: string | null;
+  userId: string;
+  userName: string;
+  createdAt: string;
+  updatedAt?: string;
 };

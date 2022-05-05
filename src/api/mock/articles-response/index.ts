@@ -11,6 +11,10 @@ export const mockGetArticleResponse: GetArticleResponse = {
   },
   imageDataUrl:
     'https://www.disneyparkstory.com/wp-content/uploads/2017/02/CIMG9800.jpg',
+  userId: '000',
+  userName: 'Axel',
+  createdAt: '2022/4/1',
+  updatedAt: '2022/5/1',
 };
 
 export const mockPostArticleResponse: PostArticleResponse = {

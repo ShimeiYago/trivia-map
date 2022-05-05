@@ -12,6 +12,14 @@ export const selectReadingArticlePosition = (state: ReadingArticleRootState) =>
   state.readingArticle.position;
 export const selectReadingArticleImageUrl = (state: ReadingArticleRootState) =>
   state.readingArticle.imageUrl;
+export const selectReadingArticleUserId = (state: ReadingArticleRootState) =>
+  state.readingArticle.userId;
+export const selectReadingArticleUserName = (state: ReadingArticleRootState) =>
+  state.readingArticle.userName;
+export const selectReadingArticleCreatedAt = (state: ReadingArticleRootState) =>
+  state.readingArticle.createdAt;
+export const selectReadingArticleUpdatedAt = (state: ReadingArticleRootState) =>
+  state.readingArticle.updatedAt;
 export const selectReadingArticleLoadingState = (
   state: ReadingArticleRootState,
 ) => state.readingArticle.loadingState;

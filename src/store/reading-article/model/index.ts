@@ -10,7 +10,7 @@ export interface ReadingArticleState {
   userId: string;
   userName: string;
   createdAt: string;
-  updatedAt: string;
+  updatedAt?: string;
   loadingState: LoadingState;
   errorMsg?: string;
 }
@@ -25,5 +25,4 @@ export const initialState: ReadingArticleState = {
   userId: '',
   userName: '',
   createdAt: '',
-  updatedAt: '',
 };

@@ -14,7 +14,6 @@ describe('readingArticle reducer', () => {
     userId: '',
     userName: '',
     createdAt: '',
-    updatedAt: '',
   };
   const loadingState = Object.assign(initialState, { loadingState: 'loading' });
 
@@ -29,7 +28,6 @@ describe('readingArticle reducer', () => {
       userId: '',
       userName: '',
       createdAt: '',
-      updatedAt: '',
     });
   });
   it('should handle fetchStart', () => {

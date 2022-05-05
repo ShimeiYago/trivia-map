@@ -30,5 +30,5 @@ export type GetArticleResponse = {
   userId: string;
   userName: string;
   createdAt: string;
-  updatedAt: string;
+  updatedAt?: string;
 };

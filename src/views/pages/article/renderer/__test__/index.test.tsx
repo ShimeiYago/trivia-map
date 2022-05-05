@@ -11,6 +11,10 @@ const basicProps: Props = {
   isMobile: false,
   position: { lat: 0, lng: 0 },
   imageUrl: null,
+  userId: '000',
+  userName: 'Axel',
+  createdAt: '2022/4/1',
+  updatedAt: '2022/5/1',
 };
 
 describe('Shallow Snapshot Tests', () => {

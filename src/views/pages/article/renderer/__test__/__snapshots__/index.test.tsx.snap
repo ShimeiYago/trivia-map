@@ -68,7 +68,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
                 <ForwardRef(Typography)
                   color="gray"
                 >
-                  アクセル
+                  Axel
                 </ForwardRef(Typography)>
               </ForwardRef(Stack)>
               <ForwardRef(Typography)
@@ -86,7 +86,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
                   投稿日 2022/4/1
                 </ForwardRef(Typography)>
                 <ForwardRef(Typography)>
-                  更新日 2022/4/5
+                  更新日 2022/5/1
                 </ForwardRef(Typography)>
               </ForwardRef(Typography)>
               <ForwardRef(Divider) />
@@ -291,7 +291,7 @@ exports[`Shallow Snapshot Tests mobile view 1`] = `
                 <ForwardRef(Typography)
                   color="gray"
                 >
-                  アクセル
+                  Axel
                 </ForwardRef(Typography)>
               </ForwardRef(Stack)>
               <ForwardRef(Typography)
@@ -309,7 +309,7 @@ exports[`Shallow Snapshot Tests mobile view 1`] = `
                   投稿日 2022/4/1
                 </ForwardRef(Typography)>
                 <ForwardRef(Typography)>
-                  更新日 2022/4/5
+                  更新日 2022/5/1
                 </ForwardRef(Typography)>
               </ForwardRef(Typography)>
               <ForwardRef(Divider) />
@@ -441,7 +441,7 @@ exports[`Shallow Snapshot Tests with image 1`] = `
                 <ForwardRef(Typography)
                   color="gray"
                 >
-                  アクセル
+                  Axel
                 </ForwardRef(Typography)>
               </ForwardRef(Stack)>
               <ForwardRef(Typography)
@@ -459,7 +459,7 @@ exports[`Shallow Snapshot Tests with image 1`] = `
                   投稿日 2022/4/1
                 </ForwardRef(Typography)>
                 <ForwardRef(Typography)>
-                  更新日 2022/4/5
+                  更新日 2022/5/1
                 </ForwardRef(Typography)>
               </ForwardRef(Typography)>
               <ForwardRef(Divider) />

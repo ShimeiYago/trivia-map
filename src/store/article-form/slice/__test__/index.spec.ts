@@ -114,6 +114,10 @@ describe('articleForm reducer', () => {
       content: 'content',
       position: { lat: 0, lng: 0 },
       imageDataUrl: 'https://image-data.jpg',
+      userId: '000',
+      userName: 'Axel',
+      createdAt: '2022/4/1',
+      updatedAt: '2022/5/1',
     };
     const actual = articleFormReducer(fetchingLoadingState, fetchSuccess(res));
     expect(actual.fetchingState).toEqual('success');

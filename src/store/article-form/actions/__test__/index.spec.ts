@@ -209,6 +209,10 @@ const mockGetResponse: GetArticleApiModule.GetArticleResponse = {
   content: 'content',
   imageDataUrl: 'https://image-data.jpg',
   position: { lat: 0, lng: 0 },
+  userId: '000',
+  userName: 'Axel',
+  createdAt: '2022/4/1',
+  updatedAt: '2022/5/1',
 };
 
 describe('fetchArticle', () => {

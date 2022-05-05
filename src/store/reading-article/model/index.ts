@@ -7,6 +7,10 @@ export interface ReadingArticleState {
   content: string;
   position: Position;
   imageUrl: string | null;
+  userId: string;
+  userName: string;
+  createdAt: string;
+  updatedAt?: string;
   loadingState: LoadingState;
   errorMsg?: string;
 }
@@ -18,4 +22,7 @@ export const initialState: ReadingArticleState = {
   loadingState: 'waiting',
   position: { lat: 0, lng: 0 },
   imageUrl: null,
+  userId: '',
+  userName: '',
+  createdAt: '',
 };

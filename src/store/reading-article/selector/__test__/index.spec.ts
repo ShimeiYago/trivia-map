@@ -1,3 +1,4 @@
+import { selectReadingArticleUpdatedAt } from './../index';
 import {
   selectReadingArticleContent,
   selectReadingArticleErrorMsg,
@@ -6,6 +7,9 @@ import {
   selectReadingArticleTitle,
   selectReadingArticlePosition,
   selectReadingArticleImageUrl,
+  selectReadingArticleUserId,
+  selectReadingArticleUserName,
+  selectReadingArticleCreatedAt,
 } from '..';
 import { ReadingArticleState } from '../../model';
 
@@ -19,6 +23,10 @@ describe('readingArticle selector', () => {
       imageUrl: 'image-url.jpg',
       loadingState: 'error',
       errorMsg: 'error',
+      userId: '000',
+      userName: 'Axel',
+      createdAt: '2022/4/1',
+      updatedAt: '2022/5/1',
     } as ReadingArticleState,
   };
 
@@ -40,6 +48,22 @@ describe('readingArticle selector', () => {
 
   it('selectReadingArticleImageUrl should return readingArticle imageUrl', () => {
     expect(selectReadingArticleImageUrl(rootState)).toEqual('image-url.jpg');
+  });
+
+  it('selectReadingArticleUserId should return readingArticle userId', () => {
+    expect(selectReadingArticleUserId(rootState)).toEqual('000');
+  });
+
+  it('selectReadingArticleUserName should return readingArticle userName', () => {
+    expect(selectReadingArticleUserName(rootState)).toEqual('Axel');
+  });
+
+  it('selectReadingArticleCreatedAt should return readingArticle createdAt', () => {
+    expect(selectReadingArticleCreatedAt(rootState)).toEqual('2022/4/1');
+  });
+
+  it('selectReadingArticleUpdatedAt should return readingArticle updatedAt', () => {
+    expect(selectReadingArticleUpdatedAt(rootState)).toEqual('2022/5/1');
   });
 
   it('selectReadingArticleLoadingState should return readingArticle loadingState', () => {

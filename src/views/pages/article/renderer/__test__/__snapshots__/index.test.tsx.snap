@@ -48,6 +48,29 @@ exports[`Shallow Snapshot Tests basic 1`] = `
             <ForwardRef(Stack)
               spacing={2}
             >
+              <ForwardRef(Stack)
+                alignItems="center"
+                direction="row"
+                justifyContent="flex-start"
+                spacing={1}
+              >
+                <ForwardRef(Avatar)
+                  sx={
+                    Object {
+                      "bgcolor": "#ff5722",
+                      "height": 30,
+                      "width": 30,
+                    }
+                  }
+                >
+                  A
+                </ForwardRef(Avatar)>
+                <ForwardRef(Typography)
+                  color="gray"
+                >
+                  Axel
+                </ForwardRef(Typography)>
+              </ForwardRef(Stack)>
               <ForwardRef(Typography)
                 align="center"
                 component="h2"
@@ -55,6 +78,18 @@ exports[`Shallow Snapshot Tests basic 1`] = `
               >
                 title
               </ForwardRef(Typography)>
+              <ForwardRef(Typography)
+                align="right"
+                color="gray"
+              >
+                <ForwardRef(Typography)>
+                  投稿日 2022/4/1
+                </ForwardRef(Typography)>
+                <ForwardRef(Typography)>
+                  更新日 2022/5/1
+                </ForwardRef(Typography)>
+              </ForwardRef(Typography)>
+              <ForwardRef(Divider) />
               <ForwardRef(Typography)>
                 content
               </ForwardRef(Typography)>
@@ -236,6 +271,29 @@ exports[`Shallow Snapshot Tests mobile view 1`] = `
             <ForwardRef(Stack)
               spacing={2}
             >
+              <ForwardRef(Stack)
+                alignItems="center"
+                direction="row"
+                justifyContent="flex-start"
+                spacing={1}
+              >
+                <ForwardRef(Avatar)
+                  sx={
+                    Object {
+                      "bgcolor": "#ff5722",
+                      "height": 30,
+                      "width": 30,
+                    }
+                  }
+                >
+                  A
+                </ForwardRef(Avatar)>
+                <ForwardRef(Typography)
+                  color="gray"
+                >
+                  Axel
+                </ForwardRef(Typography)>
+              </ForwardRef(Stack)>
               <ForwardRef(Typography)
                 align="center"
                 component="h2"
@@ -243,6 +301,18 @@ exports[`Shallow Snapshot Tests mobile view 1`] = `
               >
                 title
               </ForwardRef(Typography)>
+              <ForwardRef(Typography)
+                align="right"
+                color="gray"
+              >
+                <ForwardRef(Typography)>
+                  投稿日 2022/4/1
+                </ForwardRef(Typography)>
+                <ForwardRef(Typography)>
+                  更新日 2022/5/1
+                </ForwardRef(Typography)>
+              </ForwardRef(Typography)>
+              <ForwardRef(Divider) />
               <ForwardRef(Typography)>
                 content
               </ForwardRef(Typography)>
@@ -351,6 +421,29 @@ exports[`Shallow Snapshot Tests with image 1`] = `
             <ForwardRef(Stack)
               spacing={2}
             >
+              <ForwardRef(Stack)
+                alignItems="center"
+                direction="row"
+                justifyContent="flex-start"
+                spacing={1}
+              >
+                <ForwardRef(Avatar)
+                  sx={
+                    Object {
+                      "bgcolor": "#ff5722",
+                      "height": 30,
+                      "width": 30,
+                    }
+                  }
+                >
+                  A
+                </ForwardRef(Avatar)>
+                <ForwardRef(Typography)
+                  color="gray"
+                >
+                  Axel
+                </ForwardRef(Typography)>
+              </ForwardRef(Stack)>
               <ForwardRef(Typography)
                 align="center"
                 component="h2"
@@ -358,6 +451,18 @@ exports[`Shallow Snapshot Tests with image 1`] = `
               >
                 title
               </ForwardRef(Typography)>
+              <ForwardRef(Typography)
+                align="right"
+                color="gray"
+              >
+                <ForwardRef(Typography)>
+                  投稿日 2022/4/1
+                </ForwardRef(Typography)>
+                <ForwardRef(Typography)>
+                  更新日 2022/5/1
+                </ForwardRef(Typography)>
+              </ForwardRef(Typography)>
+              <ForwardRef(Divider) />
               <Image
                 src="image.jpg"
                 width="full"

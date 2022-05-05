@@ -41,7 +41,7 @@ describe('Shallow Snapshot Tests', () => {
 });
 
 describe('handleClickAddButton', () => {
-  it('should set openingModal and edittingArticleId states', () => {
+  it('should set openingModal and edittingPostId states', () => {
     shallowWrapper = shallow(<Renderer {...props} />);
     const instance = shallowWrapper.instance();
 
@@ -126,7 +126,7 @@ describe('handleClickPostEdit', () => {
     expect(instance.state.openDoubleEditAlartDialog).toBeTruthy;
   });
 
-  it('should set openingModal and edittingArticleId states', () => {
+  it('should set openingModal and edittingPostId states', () => {
     const instance = shallowWrapper.instance();
 
     instance.setState({
@@ -135,7 +135,7 @@ describe('handleClickPostEdit', () => {
 
     instance['handleClickPostEdit']();
     expect(instance.state.openFormModal).toBeTruthy;
-    expect(instance.state.edittingArticleId).toBe('postId-000');
+    expect(instance.state.edittingPostId).toBe('postId-000');
   });
 });
 

@@ -153,6 +153,12 @@ export class Renderer extends React.Component<Props, State> {
     });
   };
 
+  protected handleHideFormModal = () => {
+    this.setState({
+      openFormModal: false,
+    });
+  };
+
   protected startToSelectPosition = () => {
     this.setState({
       openFormModal: false,
@@ -178,7 +184,7 @@ export class Renderer extends React.Component<Props, State> {
         show={isFormEditting || openFormModal}
         open={openFormModal}
         onOpen={this.handleOpenEditForm}
-        onClose={this.handleCloseFormModal}
+        onClose={this.handleHideFormModal}
         edgeLabel={closeButton}
         edgeLabelWhenClosed="編集中"
         heightRatio={80}

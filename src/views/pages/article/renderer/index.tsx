@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  Avatar,
   Box,
   CircularProgress,
   Divider,
@@ -16,6 +17,7 @@ import { Image } from 'views/components/atoms/image';
 import { TriviaMap } from 'views/components/organisms/trivia-map';
 import { wrapper, contentWrapper, mapTitle } from '../styles';
 import MapIcon from '@mui/icons-material/Map';
+import { deepOrange } from '@mui/material/colors';
 
 export class Renderer extends React.Component<Props> {
   componentDidMount() {
@@ -69,9 +71,28 @@ export class Renderer extends React.Component<Props> {
 
     return (
       <Stack spacing={2}>
+        <Stack
+          direction="row"
+          justifyContent="flex-start"
+          alignItems="center"
+          spacing={1}
+        >
+          <Avatar sx={{ bgcolor: deepOrange[500], width: 30, height: 30 }}>
+            A
+          </Avatar>
+          <Typography color="gray">アクセル</Typography>
+        </Stack>
+
         <Typography component="h2" variant="h4" align="center">
           {title}
         </Typography>
+
+        <Typography color="gray" align="right">
+          <Typography>投稿日 2022/4/1</Typography>
+          <Typography>更新日 2022/4/5</Typography>
+        </Typography>
+
+        <Divider />
 
         {imageUrl && <Image src={imageUrl} width="full" />}
 

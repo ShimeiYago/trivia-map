@@ -203,6 +203,22 @@ describe('handleCloseFormModal', () => {
   });
 });
 
+describe('handleHideFormModal', () => {
+  beforeEach(() => {
+    shallowWrapper = shallow(<Renderer {...props} />);
+  });
+
+  it('should close form modal', () => {
+    const instance = shallowWrapper.instance();
+
+    instance.setState({
+      openFormModal: true,
+    });
+    instance['handleHideFormModal']();
+    expect(instance.state.openFormModal).toBeFalsy;
+  });
+});
+
 describe('startToSelectPosition', () => {
   it('should set states', () => {
     shallowWrapper = shallow(<Renderer {...props} />);

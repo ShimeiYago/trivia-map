@@ -55,8 +55,16 @@ export class Renderer extends React.Component<Props> {
   }
 
   protected renderMainArticle = () => {
-    const { articleLoadingState, title, content, position, imageUrl } =
-      this.props;
+    const {
+      articleLoadingState,
+      title,
+      content,
+      position,
+      imageUrl,
+      userName,
+      createdAt,
+      updatedAt,
+    } = this.props;
 
     if (
       articleLoadingState === 'waiting' ||
@@ -78,9 +86,9 @@ export class Renderer extends React.Component<Props> {
           spacing={1}
         >
           <Avatar sx={{ bgcolor: deepOrange[500], width: 30, height: 30 }}>
-            A
+            {userName.slice(0, 1)}
           </Avatar>
-          <Typography color="gray">アクセル</Typography>
+          <Typography color="gray">{userName}</Typography>
         </Stack>
 
         <Typography component="h2" variant="h4" align="center">
@@ -88,8 +96,8 @@ export class Renderer extends React.Component<Props> {
         </Typography>
 
         <Typography color="gray" align="right">
-          <Typography>投稿日 2022/4/1</Typography>
-          <Typography>更新日 2022/4/5</Typography>
+          <Typography>{`投稿日 ${createdAt}`}</Typography>
+          <Typography>{`更新日 ${updatedAt}`}</Typography>
         </Typography>
 
         <Divider />
@@ -131,6 +139,10 @@ export type Props = {
   content: string;
   position: Position;
   imageUrl: string | null;
+  userId: string;
+  userName: string;
+  createdAt: string;
+  updatedAt: string;
   articleLoadingState: LoadingState;
   isMobile: boolean;
 

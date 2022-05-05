@@ -55,7 +55,7 @@ export const submitNewArticle = (): AppThunk => async (dispatch, getState) => {
     const marker: MarkerTypeAPI = {
       postId: res.postId,
       position: position ?? { lat: 0, lng: 0 },
-      title: title,
+      title: title, // TODO: res should include thumbnailImageUrl
     };
     dispatch(appendMarkers([marker]));
   } catch (error) {
@@ -102,7 +102,7 @@ export const submitEdittedArticle =
       const marker: MarkerTypeAPI = {
         postId: postId,
         position: position ?? { lat: 0, lng: 0 },
-        title: title,
+        title: title, // TODO: res should include thumbnailImageUrl
       };
       dispatch(appendMarkers([marker]));
     } catch (error) {

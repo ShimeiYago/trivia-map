@@ -11,6 +11,10 @@ describe('readingArticle reducer', () => {
     loadingState: 'waiting',
     position: { lat: 0, lng: 0 },
     imageUrl: null,
+    userId: '',
+    userName: '',
+    createdAt: '',
+    updatedAt: '',
   };
   const loadingState = Object.assign(initialState, { loadingState: 'loading' });
 
@@ -22,6 +26,10 @@ describe('readingArticle reducer', () => {
       loadingState: 'waiting',
       position: { lat: 0, lng: 0 },
       imageUrl: null,
+      userId: '',
+      userName: '',
+      createdAt: '',
+      updatedAt: '',
     });
   });
   it('should handle fetchStart', () => {
@@ -44,6 +52,10 @@ describe('readingArticle reducer', () => {
       content: 'content',
       imageDataUrl: 'https://image-data.jpg',
       position: { lat: 0, lng: 0 },
+      userId: '000',
+      userName: 'Axel',
+      createdAt: '2022/4/1',
+      updatedAt: '2022/5/1',
     };
     const actual = readingArticleReducer(loadingState, fetchSuccess(article));
     expect(actual.loadingState).toEqual('success');
@@ -51,5 +63,9 @@ describe('readingArticle reducer', () => {
     expect(actual.content).toEqual('content');
     expect(actual.imageUrl).toEqual('https://image-data.jpg');
     expect(actual.position).toEqual({ lat: 0, lng: 0 });
+    expect(actual.userId).toEqual('000');
+    expect(actual.userName).toEqual('Axel');
+    expect(actual.createdAt).toEqual('2022/4/1');
+    expect(actual.updatedAt).toEqual('2022/5/1');
   });
 });

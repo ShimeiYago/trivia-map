@@ -51,6 +51,23 @@ describe('handleClickAddButton', () => {
   });
 });
 
+describe('componentDidMount', () => {
+  beforeEach(() => {
+    shallowWrapper = shallow(<Renderer {...props} />);
+    jest.resetAllMocks();
+  });
+
+  it('should open form modal', () => {
+    shallowWrapper.setProps({
+      postIdToEdit: '000',
+    });
+    const instance = shallowWrapper.instance();
+
+    instance.componentDidMount();
+    expect(instance.state.openFormModal).toBeTruthy();
+  });
+});
+
 describe('componentDidUpdate', () => {
   beforeEach(() => {
     shallowWrapper = shallow(<Renderer {...props} />);

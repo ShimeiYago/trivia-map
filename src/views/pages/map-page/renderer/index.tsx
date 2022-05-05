@@ -28,7 +28,16 @@ export class Renderer extends React.Component<Props, State> {
       newMarkerMode: false,
       openDialogToConfirmDeleting: false,
       openDoubleEditAlartDialog: false,
+      edittingArticleId: props.postIdToEdit,
     };
+  }
+
+  componentDidMount() {
+    if (this.props.postIdToEdit) {
+      this.setState({
+        openFormModal: true,
+      });
+    }
   }
 
   componentDidUpdate(prevProps: Props) {
@@ -233,6 +242,7 @@ export type Props = {
   isMobile: boolean;
   deleteArticle: (postId: string) => void;
   isFormChangedFromLastSaved: boolean;
+  postIdToEdit?: string;
 };
 
 export type State = {

@@ -40,7 +40,7 @@ export class PostMarkers extends React.Component<Props> {
     title: string,
     imageUrl?: string,
   ) => (
-    <Link to={`posts/${postId}`} className={styles['popup-link']}>
+    <Link to={`article/${postId}`} className={styles['popup-link']}>
       <Stack spacing={1}>
         <Typography component="h2" variant="h6" align="center">
           {title}

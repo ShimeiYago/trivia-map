@@ -1,5 +1,6 @@
 import { useAppDispatch, useAppSelector } from 'store';
 import {
+  selectArticleFormId,
   selectArticleFormIsEditting,
   selectArticleFormIsFormChangedFromLastSaved,
 } from 'store/article-form/selector';
@@ -10,7 +11,10 @@ import { useParams } from 'react-router-dom';
 
 export function MapPage() {
   const dispatch = useAppDispatch();
+
   const { postId } = useParams();
+  const articleFormId = useAppSelector(selectArticleFormId);
+  const postIdToEdit = postId ?? articleFormId;
 
   const props: Props = {
     isFormEditting: useAppSelector(selectArticleFormIsEditting),
@@ -21,9 +25,9 @@ export function MapPage() {
     deleteArticle: (postId: string) => dispatch(deleteArticle(postId)),
   };
 
-  if (!postId) {
+  if (!postIdToEdit) {
     return <Renderer {...props} />;
   }
 
-  return <Renderer {...props} postIdToEdit={postId} />;
+  return <Renderer {...props} postIdToEdit={postIdToEdit} />;
 }

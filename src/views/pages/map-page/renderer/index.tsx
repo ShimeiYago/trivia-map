@@ -37,6 +37,7 @@ export class Renderer extends React.Component<Props, State> {
       this.setState({
         openFormModal: true,
       });
+      history.replaceState('', '', `/edit/${this.props.postIdToEdit}`);
     }
   }
 

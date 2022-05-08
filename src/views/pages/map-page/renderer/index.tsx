@@ -40,7 +40,7 @@ export class Renderer extends React.Component<Props, State> {
     }
   }
 
-  componentDidUpdate(prevProps: Props) {
+  componentDidUpdate(prevProps: Props, prevState: State) {
     if (
       !prevProps.isFormChangedFromLastSaved &&
       this.props.isFormChangedFromLastSaved
@@ -52,6 +52,10 @@ export class Renderer extends React.Component<Props, State> {
       !this.props.isFormChangedFromLastSaved
     ) {
       window.removeEventListener('beforeunload', this.handleBeforeUnload);
+    }
+
+    if (prevState.openFormModal && !this.state.openFormModal) {
+      history.replaceState('', '', '/');
     }
   }
 

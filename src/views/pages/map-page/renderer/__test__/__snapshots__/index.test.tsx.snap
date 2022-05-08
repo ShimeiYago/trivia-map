@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Shallow Snapshot Tests basic 1`] = `
-<Fragment>
+<ForwardRef(Box)
+  sx={Object {}}
+>
   <GlobalMenu
     topBarPosition="static"
   >
@@ -75,11 +77,17 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       </ForwardRef(Button)>
     </ForwardRef(DialogActions)>
   </ForwardRef(Dialog)>
-</Fragment>
+</ForwardRef(Box)>
 `;
 
 exports[`Shallow Snapshot Tests pc view 1`] = `
-<Fragment>
+<ForwardRef(Box)
+  sx={
+    Object {
+      "width": "calc(100% - 500px)",
+    }
+  }
+>
   <GlobalMenu
     topBarPosition="static"
   >
@@ -88,7 +96,6 @@ exports[`Shallow Snapshot Tests pc view 1`] = `
         Object {
           "height": "calc(100vh - 66px)",
           "position": "relative",
-          "width": "calc(100% - 500px)",
         }
       }
     >
@@ -155,5 +162,5 @@ exports[`Shallow Snapshot Tests pc view 1`] = `
       </ForwardRef(Button)>
     </ForwardRef(DialogActions)>
   </ForwardRef(Dialog)>
-</Fragment>
+</ForwardRef(Box)>
 `;

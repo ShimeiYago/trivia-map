@@ -24,7 +24,7 @@ export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      openFormModal: false,
+      openFormModal: props.isFormEditting,
       newMarkerMode: false,
       openDialogToConfirmDeleting: false,
       openDoubleEditAlartDialog: false,

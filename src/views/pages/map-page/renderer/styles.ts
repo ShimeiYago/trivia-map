@@ -12,7 +12,15 @@ export const rightDrawerStyle: SxProps = {
   },
 };
 
-export function mapWrapper(shrink: boolean, isMobile: boolean): SxProps {
+export function wrapper(shrink: boolean): SxProps {
+  return {
+    ...(shrink && {
+      width: `calc(100% - ${drawerWidth}px)`,
+    }),
+  };
+}
+
+export function mapWrapper(isMobile: boolean): SxProps {
   const appBarDefaultHeight = isMobile
     ? appBarDefaultHeightMobile
     : appBarDefaultHeightPC;
@@ -20,8 +28,5 @@ export function mapWrapper(shrink: boolean, isMobile: boolean): SxProps {
   return {
     position: 'relative',
     height: `calc(100vh - ${appBarDefaultHeight})`,
-    ...(shrink && {
-      width: `calc(100% - ${drawerWidth}px)`,
-    }),
   };
 }

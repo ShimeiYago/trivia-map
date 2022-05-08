@@ -17,7 +17,7 @@ import { DeletingConfirmModal } from 'views/components/organisms/deleting-confir
 import { GlobalMessage } from 'views/components/organisms/global-messge';
 import { LoadingProgressBar } from 'views/components/organisms/loading-progress-bar';
 import { TriviaMap } from 'views/components/organisms/trivia-map';
-import { rightDrawerStyle, mapWrapper } from './styles';
+import { rightDrawerStyle, mapWrapper, wrapper } from './styles';
 import { GlobalMenu } from 'views/components/organisms/global-menu';
 
 export class Renderer extends React.Component<Props, State> {
@@ -66,9 +66,9 @@ export class Renderer extends React.Component<Props, State> {
       this.state;
     const { isFormEditting, isMobile } = this.props;
     return (
-      <>
+      <Box sx={wrapper(openFormModal && !isMobile)}>
         <GlobalMenu topBarPosition="static">
-          <Box sx={mapWrapper(openFormModal && !isMobile, isMobile)}>
+          <Box sx={mapWrapper(isMobile)}>
             <TriviaMap
               newMarkerMode={this.state.newMarkerMode}
               endToSelectPosition={this.endToSelectPosition}
@@ -98,7 +98,7 @@ export class Renderer extends React.Component<Props, State> {
         <GlobalMessage closeFormModal={this.handleCloseFormModal} />
 
         {this.renderDoubleEditAlartDialog()}
-      </>
+      </Box>
     );
   }
 

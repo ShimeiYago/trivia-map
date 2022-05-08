@@ -20,7 +20,8 @@ ReactDOM.render(
         <BrowserRouter>
           <Routes>
             <Route index element={<MapPage />} />
-            <Route path="/posts/:postId" element={<Article />} />
+            <Route path="/edit/:postId" element={<MapPage />} />
+            <Route path="/article/:postId" element={<Article />} />
             <Route path="*" element={<div>404 not found (TODO)</div>} />
           </Routes>
         </BrowserRouter>

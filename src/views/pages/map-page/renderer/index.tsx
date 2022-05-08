@@ -28,7 +28,16 @@ export class Renderer extends React.Component<Props, State> {
       newMarkerMode: false,
       openDialogToConfirmDeleting: false,
       openDoubleEditAlartDialog: false,
+      edittingPostId: props.postIdToEdit,
     };
+  }
+
+  componentDidMount() {
+    if (this.props.postIdToEdit) {
+      this.setState({
+        openFormModal: true,
+      });
+    }
   }
 
   componentDidUpdate(prevProps: Props) {
@@ -53,7 +62,7 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   render() {
-    const { openFormModal, edittingArticleId, openDialogToConfirmDeleting } =
+    const { openFormModal, edittingPostId, openDialogToConfirmDeleting } =
       this.state;
     const { isFormEditting, isMobile } = this.props;
     return (
@@ -63,7 +72,7 @@ export class Renderer extends React.Component<Props, State> {
             <TriviaMap
               newMarkerMode={this.state.newMarkerMode}
               endToSelectPosition={this.endToSelectPosition}
-              hiddenMarkerIds={edittingArticleId ? [edittingArticleId] : []}
+              hiddenMarkerIds={edittingPostId ? [edittingPostId] : []}
               shouldCurrentPositionAsyncWithForm
             />
 
@@ -96,7 +105,7 @@ export class Renderer extends React.Component<Props, State> {
   protected handleClickAddButton = () =>
     this.setState({
       openFormModal: true,
-      edittingArticleId: undefined,
+      edittingPostId: undefined,
     });
 
   protected handleClickPostEdit = () => {
@@ -107,7 +116,7 @@ export class Renderer extends React.Component<Props, State> {
     }
     return this.setState({
       openFormModal: true,
-      edittingArticleId: this.state.readingArticleId,
+      edittingPostId: this.state.readingArticleId,
     });
   };
 
@@ -140,7 +149,13 @@ export class Renderer extends React.Component<Props, State> {
   protected handleCloseFormModal = () => {
     this.setState({
       openFormModal: false,
-      edittingArticleId: undefined,
+      edittingPostId: undefined,
+    });
+  };
+
+  protected handleHideFormModal = () => {
+    this.setState({
+      openFormModal: false,
     });
   };
 
@@ -159,7 +174,7 @@ export class Renderer extends React.Component<Props, State> {
   };
 
   protected renderEditForm = () => {
-    const { edittingArticleId, openFormModal } = this.state;
+    const { edittingPostId, openFormModal } = this.state;
     const { isFormEditting, isMobile } = this.props;
 
     const closeButton = <CloseFormButton onClose={this.handleCloseFormModal} />;
@@ -169,13 +184,13 @@ export class Renderer extends React.Component<Props, State> {
         show={isFormEditting || openFormModal}
         open={openFormModal}
         onOpen={this.handleOpenEditForm}
-        onClose={this.handleCloseFormModal}
+        onClose={this.handleHideFormModal}
         edgeLabel={closeButton}
         edgeLabelWhenClosed="編集中"
         heightRatio={80}
       >
         <ArticleForm
-          postId={edittingArticleId}
+          postId={edittingPostId}
           onClickSelectPosition={this.startToSelectPosition}
         />
       </SwipeableEdgeDrawer>
@@ -188,7 +203,7 @@ export class Renderer extends React.Component<Props, State> {
       >
         {openFormModal && (
           <ArticleForm
-            postId={edittingArticleId}
+            postId={edittingPostId}
             onClickSelectPosition={this.startToSelectPosition}
             onClose={this.handleCloseFormModal}
           />
@@ -233,12 +248,13 @@ export type Props = {
   isMobile: boolean;
   deleteArticle: (postId: string) => void;
   isFormChangedFromLastSaved: boolean;
+  postIdToEdit?: string;
 };
 
 export type State = {
   openFormModal: boolean;
   readingArticleId?: string;
-  edittingArticleId?: string;
+  edittingPostId?: string;
   newMarkerMode: boolean;
   openDialogToConfirmDeleting: boolean;
   openDoubleEditAlartDialog: boolean;

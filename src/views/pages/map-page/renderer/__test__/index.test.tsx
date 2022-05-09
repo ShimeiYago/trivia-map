@@ -80,7 +80,10 @@ describe('componentDidUpdate', () => {
     });
     const instance = shallowWrapper.instance();
 
-    instance.componentDidUpdate({ isFormChangedFromLastSaved: false } as Props);
+    instance.componentDidUpdate(
+      { isFormChangedFromLastSaved: false } as Props,
+      {} as State,
+    );
     expect(mockAddEventListener).toHaveBeenCalled();
   });
 
@@ -90,7 +93,10 @@ describe('componentDidUpdate', () => {
     });
     const instance = shallowWrapper.instance();
 
-    instance.componentDidUpdate({ isFormChangedFromLastSaved: true } as Props);
+    instance.componentDidUpdate(
+      { isFormChangedFromLastSaved: true } as Props,
+      {} as State,
+    );
     expect(mockRemoveEventListener).toHaveBeenCalled();
   });
 });

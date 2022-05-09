@@ -78,9 +78,13 @@ exports[`Shallow Snapshot Tests basic 1`] = `
               >
                 title
               </ForwardRef(Typography)>
-              <ForwardRef(Typography)
-                align="right"
-                color="gray"
+              <ForwardRef(Box)
+                sx={
+                  Object {
+                    "color": "gray",
+                    "textAlign": "right",
+                  }
+                }
               >
                 <ForwardRef(Typography)>
                   投稿日 2022/4/1
@@ -88,7 +92,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
                 <ForwardRef(Typography)>
                   更新日 2022/5/1
                 </ForwardRef(Typography)>
-              </ForwardRef(Typography)>
+              </ForwardRef(Box)>
               <ForwardRef(Divider) />
               <ForwardRef(Typography)>
                 content
@@ -301,9 +305,13 @@ exports[`Shallow Snapshot Tests mobile view 1`] = `
               >
                 title
               </ForwardRef(Typography)>
-              <ForwardRef(Typography)
-                align="right"
-                color="gray"
+              <ForwardRef(Box)
+                sx={
+                  Object {
+                    "color": "gray",
+                    "textAlign": "right",
+                  }
+                }
               >
                 <ForwardRef(Typography)>
                   投稿日 2022/4/1
@@ -311,7 +319,7 @@ exports[`Shallow Snapshot Tests mobile view 1`] = `
                 <ForwardRef(Typography)>
                   更新日 2022/5/1
                 </ForwardRef(Typography)>
-              </ForwardRef(Typography)>
+              </ForwardRef(Box)>
               <ForwardRef(Divider) />
               <ForwardRef(Typography)>
                 content
@@ -451,9 +459,13 @@ exports[`Shallow Snapshot Tests with image 1`] = `
               >
                 title
               </ForwardRef(Typography)>
-              <ForwardRef(Typography)
-                align="right"
-                color="gray"
+              <ForwardRef(Box)
+                sx={
+                  Object {
+                    "color": "gray",
+                    "textAlign": "right",
+                  }
+                }
               >
                 <ForwardRef(Typography)>
                   投稿日 2022/4/1
@@ -461,7 +473,7 @@ exports[`Shallow Snapshot Tests with image 1`] = `
                 <ForwardRef(Typography)>
                   更新日 2022/5/1
                 </ForwardRef(Typography)>
-              </ForwardRef(Typography)>
+              </ForwardRef(Box)>
               <ForwardRef(Divider) />
               <Image
                 src="image.jpg"

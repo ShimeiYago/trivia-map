@@ -24,7 +24,7 @@ export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      openFormModal: false,
+      openFormModal: props.isFormEditting,
       newMarkerMode: false,
       openDialogToConfirmDeleting: false,
       openDoubleEditAlartDialog: false,
@@ -37,10 +37,11 @@ export class Renderer extends React.Component<Props, State> {
       this.setState({
         openFormModal: true,
       });
+      history.replaceState('', '', `/edit/${this.props.postIdToEdit}`);
     }
   }
 
-  componentDidUpdate(prevProps: Props) {
+  componentDidUpdate(prevProps: Props, prevState: State) {
     if (
       !prevProps.isFormChangedFromLastSaved &&
       this.props.isFormChangedFromLastSaved
@@ -52,6 +53,10 @@ export class Renderer extends React.Component<Props, State> {
       !this.props.isFormChangedFromLastSaved
     ) {
       window.removeEventListener('beforeunload', this.handleBeforeUnload);
+    }
+
+    if (prevState.openFormModal && !this.state.openFormModal) {
+      history.replaceState('', '', '/');
     }
   }
 

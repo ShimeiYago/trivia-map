@@ -15,7 +15,7 @@ import { ArticlePaper } from 'views/components/atoms/article-paper';
 import { Position } from 'types/position';
 import { Image } from 'views/components/atoms/image';
 import { TriviaMap } from 'views/components/organisms/trivia-map';
-import { wrapper, contentWrapper, mapTitle } from '../styles';
+import { wrapper, contentWrapper, mapTitle, createdAtBox } from '../styles';
 import MapIcon from '@mui/icons-material/Map';
 import { deepOrange } from '@mui/material/colors';
 
@@ -95,10 +95,10 @@ export class Renderer extends React.Component<Props> {
           {title}
         </Typography>
 
-        <Typography color="gray" align="right">
+        <Box sx={createdAtBox}>
           <Typography>{`投稿日 ${createdAt}`}</Typography>
           {updatedAt && <Typography>{`更新日 ${updatedAt}`}</Typography>}
-        </Typography>
+        </Box>
 
         <Divider />
 

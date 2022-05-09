@@ -17,3 +17,8 @@ export const mapTitle: SxProps = {
   flexWrap: 'wrap',
   justifyContent: 'center',
 };
+
+export const createdAtBox: SxProps = {
+  color: 'gray',
+  textAlign: 'right',
+};

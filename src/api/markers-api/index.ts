@@ -6,14 +6,14 @@ import { mockGetMarkersResponse } from './../mock/markers-response';
 import { Position } from 'types/position';
 
 export async function getRemoteMarkers(
-  pageIndex: number,
+  nextUrl?: string,
 ): Promise<GetMarkersResponse> {
-  const axiosInstance = getAxiosInstance({}, mockGetMarkersResponse(pageIndex));
+  const url = nextUrl ?? `${BASE_URL}/markers`;
+
+  const axiosInstance = getAxiosInstance({}, mockGetMarkersResponse(nextUrl));
 
   try {
-    const res: AxiosResponse<GetMarkersResponse> = await axiosInstance.get(
-      `${BASE_URL}/markers?page=${pageIndex}`,
-    );
+    const res: AxiosResponse<GetMarkersResponse> = await axiosInstance.get(url);
     return res.data;
   } catch (error) {
     const axiosError = error as AxiosError;
@@ -29,7 +29,8 @@ export type MarkerTypeAPI = {
 };
 
 export type GetMarkersResponse = {
-  totalPages: number;
-  nextPageIndex: number | null;
-  markers: MarkerTypeAPI[];
+  count: number;
+  next: string | null;
+  previous: string | null;
+  results: MarkerTypeAPI[];
 };

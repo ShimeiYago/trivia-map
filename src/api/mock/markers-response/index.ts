@@ -1,22 +1,18 @@
 import { GetMarkersResponse } from 'api/markers-api';
 
-export function mockGetMarkersResponse(pageIndex: number): GetMarkersResponse {
-  switch (pageIndex) {
-    case 1:
-      return mockGetMarkersResponsePage1;
-    case 2:
-      return mockGetMarkersResponsePage2;
-    case 3:
-      return mockGetMarkersResponsePage3;
-    default:
-      return mockGetMarkersResponsePageLast;
+export function mockGetMarkersResponse(nextUrl?: string): GetMarkersResponse {
+  if (!nextUrl) {
+    return mockGetMarkersResponsePage1;
+  } else {
+    return mockGetMarkersResponsePage2;
   }
 }
 
 const mockGetMarkersResponsePage1 = {
-  totalPages: 3,
-  nextPageIndex: 2,
-  markers: [
+  count: 4,
+  next: 'next-url',
+  previous: null,
+  results: [
     {
       postId: '000',
       position: {
@@ -39,9 +35,10 @@ const mockGetMarkersResponsePage1 = {
 };
 
 const mockGetMarkersResponsePage2 = {
-  totalPages: 3,
-  nextPageIndex: 3,
-  markers: [
+  count: 4,
+  next: null,
+  previous: 'previous-url',
+  results: [
     {
       postId: '002',
       position: {
@@ -57,36 +54,6 @@ const mockGetMarkersResponsePage2 = {
         lng: -106.94,
       },
       title: 'S.S.コロンビア号',
-    },
-  ],
-};
-
-const mockGetMarkersResponsePage3 = {
-  totalPages: 3,
-  nextPageIndex: null,
-  markers: [
-    {
-      postId: '004',
-      position: {
-        lat: 64.575,
-        lng: -57.462,
-      },
-      title: '気象コントロールセンター',
-    },
-  ],
-};
-
-const mockGetMarkersResponsePageLast = {
-  totalPages: 100,
-  nextPageIndex: null,
-  markers: [
-    {
-      postId: '005',
-      position: {
-        lat: 64.575,
-        lng: -57.462,
-      },
-      title: '気象コントロールセンター',
     },
   ],
 };

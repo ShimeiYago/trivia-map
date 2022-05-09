@@ -29,20 +29,29 @@ export const fetchMarkers = (): AppThunk => async (dispatch) => {
   dispatch(fetchStart());
 
   try {
-    let pageIndex: number | null = 1;
-    let prevPageIndex = 0;
-    while (pageIndex && prevPageIndex < pageIndex) {
-      const res: GetMarkersResponse = await getRemoteMarkers(pageIndex);
-
-      if (prevPageIndex === 0) {
-        dispatch(updateTotalPages(res.totalPages));
+    let nextUrl: string | null = '';
+    let totalCount = 1;
+    let loadedCount = 0;
+    while (nextUrl !== null) {
+      if (loadedCount >= totalCount) {
+        break;
       }
 
-      dispatch(appendMarkers(res.markers));
-      dispatch(updateCurrentPageToLoad(pageIndex));
+      let res: GetMarkersResponse;
+      if (loadedCount === 0) {
+        res = await getRemoteMarkers();
+        totalCount = res.count;
+        dispatch(updateTotalPages(totalCount));
+      } else {
+        res = await getRemoteMarkers(nextUrl);
+      }
 
-      prevPageIndex = pageIndex;
-      pageIndex = res.nextPageIndex;
+      dispatch(appendMarkers(res.results));
+
+      loadedCount += res.results.length;
+      dispatch(updateCurrentPageToLoad(loadedCount));
+
+      nextUrl = res.next;
     }
     dispatch(fetchSuccess());
   } catch (error) {

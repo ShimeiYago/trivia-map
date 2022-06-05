@@ -8,7 +8,7 @@ if end of pages, `nextPageIndex` is null.
 
 ```
 {
-  totalPages: 2,
+  totalRecords: 2,
   nextPageIndex: 2,
   markers: [
     {

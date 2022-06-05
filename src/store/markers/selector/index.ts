@@ -8,9 +8,9 @@ export const selectMarkersFetchingState = (state: MarkersRootState) =>
   state.markers.fetchingState;
 export const selectMarkersErrorMsg = (state: MarkersRootState) =>
   state.markers.errorMsg;
-export const selectMarkersCurrentPageToLoad = (state: MarkersRootState) =>
-  state.markers.currentPageToLoad;
-export const selectMarkersTotalPages = (state: MarkersRootState) =>
-  state.markers.totalPages;
+export const selectMarkersLoadedRecords = (state: MarkersRootState) =>
+  state.markers.loadedRecords;
+export const selectMarkersTotalRecords = (state: MarkersRootState) =>
+  state.markers.totalRecords;
 export const selectMarkersDeletingState = (state: MarkersRootState) =>
   state.markers.deletingState;

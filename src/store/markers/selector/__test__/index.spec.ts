@@ -2,8 +2,8 @@ import {
   selectMarkersErrorMsg,
   selectMarkersFetchingState,
   selectMarkersDict,
-  selectMarkersTotalPages,
-  selectMarkersCurrentPageToLoad,
+  selectMarkersTotalRecords,
+  selectMarkersLoadedRecords,
   selectMarkersDeletingState,
 } from '..';
 import { MarkersState } from '../../model';
@@ -19,8 +19,8 @@ describe('markers selector', () => {
       },
       fetchingState: 'waiting',
       errorMsg: 'error',
-      totalPages: 2,
-      currentPageToLoad: 1,
+      totalRecords: 2,
+      loadedRecords: 1,
       deletingState: 'waiting',
     } as MarkersState,
   };
@@ -42,12 +42,12 @@ describe('markers selector', () => {
     expect(selectMarkersErrorMsg(rootState)).toEqual('error');
   });
 
-  it('selectMarkersCurrentPageToLoad should return markers totalPages', () => {
-    expect(selectMarkersCurrentPageToLoad(rootState)).toEqual(1);
+  it('selectMarkersLoadedRecords should return markers totalRecords', () => {
+    expect(selectMarkersLoadedRecords(rootState)).toEqual(1);
   });
 
-  it('selectMarkersTotalPages should return markers totalPages', () => {
-    expect(selectMarkersTotalPages(rootState)).toEqual(2);
+  it('selectMarkersTotalRecords should return markers totalRecords', () => {
+    expect(selectMarkersTotalRecords(rootState)).toEqual(2);
   });
 
   it('selectMarkersDeletingState should return markers deleting state', () => {

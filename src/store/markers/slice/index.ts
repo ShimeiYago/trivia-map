@@ -23,12 +23,12 @@ export const markersSlice = createSlice({
       state.markers = action.payload;
     },
 
-    updateCurrentPageToLoad(state, action: PayloadAction<number>) {
-      state.currentPageToLoad = action.payload;
+    updateLoadedRecords(state, action: PayloadAction<number>) {
+      state.loadedRecords = action.payload;
     },
 
-    updateTotalPages(state, action: PayloadAction<number>) {
-      state.totalPages = action.payload;
+    updateTotalRecords(state, action: PayloadAction<number>) {
+      state.totalRecords = action.payload;
     },
 
     deleteStart(state) {

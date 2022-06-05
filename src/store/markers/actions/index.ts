@@ -17,8 +17,8 @@ export const {
   fetchFailure,
   fetchStart,
   updateMarkers,
-  updateTotalPages,
-  updateCurrentPageToLoad,
+  updateTotalRecords,
+  updateLoadedRecords,
   deleteStart,
   deleteSuccess,
   deleteFailure,
@@ -41,7 +41,7 @@ export const fetchMarkers = (): AppThunk => async (dispatch) => {
       if (loadedCount === 0) {
         res = await getRemoteMarkers();
         totalCount = res.count;
-        dispatch(updateTotalPages(totalCount));
+        dispatch(updateTotalRecords(totalCount));
       } else {
         res = await getRemoteMarkers(nextUrl);
       }
@@ -49,7 +49,7 @@ export const fetchMarkers = (): AppThunk => async (dispatch) => {
       dispatch(appendMarkers(res.results));
 
       loadedCount += res.results.length;
-      dispatch(updateCurrentPageToLoad(loadedCount));
+      dispatch(updateLoadedRecords(loadedCount));
 
       nextUrl = res.next;
     }

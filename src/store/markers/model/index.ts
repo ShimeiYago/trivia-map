@@ -13,14 +13,14 @@ export interface MarkersState {
   markers: MarkerDict;
   fetchingState: LoadingState;
   errorMsg?: string;
-  currentPageToLoad: number;
-  totalPages?: number;
+  loadedRecords: number;
+  totalRecords?: number;
   deletingState: LoadingState;
 }
 
 export const initialState: MarkersState = {
   markers: {},
   fetchingState: 'waiting',
-  currentPageToLoad: 0,
+  loadedRecords: 0,
   deletingState: 'waiting',
 };

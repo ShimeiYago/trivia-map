@@ -1,9 +1,10 @@
+import { GetArticleResponse } from 'api/articles-api/get-remote-article';
 import { articleFormReducer, articleFormSlice } from '..';
 import { FormError, initialState } from '../../model';
 
 const {
   updateTitle,
-  updateContent,
+  updateDescription,
   updatePosition,
   submitStart,
   submitFailure,
@@ -26,17 +27,16 @@ describe('articleForm reducer', () => {
   fetchingLoadingState.fetchingState = 'loading';
 
   const formError: FormError = {
-    errorTitle: 'Inputted contents is invalid.',
-    headerErrors: ['A error is in title.'],
+    errorTitle: 'Inputted descriptions is invalid.',
   };
 
   it('should handle initial state', () => {
     expect(articleFormReducer(undefined, { type: 'unknown' })).toEqual({
       title: '',
-      content: '',
+      description: '',
       imageDataUrl: null,
       lastSavedTitle: '',
-      lastSavedContent: '',
+      lastSavedDescription: '',
       lastSavedImageDataUrl: null,
       submittingState: 'waiting',
       fetchingState: 'waiting',
@@ -50,17 +50,24 @@ describe('articleForm reducer', () => {
     expect(actual.title).toEqual('title');
   });
 
-  it('should handle updateContent', () => {
-    const actual = articleFormReducer(initialState, updateContent('content'));
-    expect(actual.content).toEqual('content');
+  it('should handle updateDescription', () => {
+    const actual = articleFormReducer(
+      initialState,
+      updateDescription('description'),
+    );
+    expect(actual.description).toEqual('description');
   });
 
   it('should handle updatePosition', () => {
     const actual = articleFormReducer(
       initialState,
-      updatePosition({ lat: 1, lng: 1 }),
+      updatePosition({
+        lat: 1,
+        lng: 1,
+        park: 'S',
+      }),
     );
-    expect(actual.position).toEqual({ lat: 1, lng: 1 });
+    expect(actual.position).toEqual({ lat: 1, lng: 1, park: 'S' });
   });
 
   it('should handle updateImageDataUrl', () => {
@@ -88,15 +95,15 @@ describe('articleForm reducer', () => {
   it('should handle submitSuccess', () => {
     const actual = articleFormReducer(
       submittingLoadingState,
-      submitSuccess('newPostId-000'),
+      submitSuccess(100),
     );
     expect(actual.submittingState).toEqual('success');
-    expect(actual.postId).toEqual('newPostId-000');
+    expect(actual.postId).toEqual(100);
   });
 
   it('should handle fetchStart', () => {
-    const actual = articleFormReducer(initialState, fetchStart('postId-000'));
-    expect(actual.postId).toEqual('postId-000');
+    const actual = articleFormReducer(initialState, fetchStart(100));
+    expect(actual.postId).toEqual(100);
   });
 
   it('should handle fetchFailure', () => {
@@ -109,22 +116,37 @@ describe('articleForm reducer', () => {
   });
 
   it('should handle fetchSuccess', () => {
-    const res = {
+    const res: GetArticleResponse = {
+      postId: 1,
       title: 'title',
-      content: 'content',
-      position: { lat: 0, lng: 0 },
-      imageDataUrl: 'https://image-data.jpg',
-      userId: '000',
-      userName: 'Axel',
+      description: 'description',
+      marker: {
+        markerId: 1,
+        lat: 0,
+        lng: 0,
+        park: 'S',
+        numberOfPublicArticles: 1,
+      },
+      imageUrl: 'https://image-data.jpg',
+      author: {
+        userId: 1,
+        nickname: 'Axel',
+      },
       createdAt: '2022/4/1',
       updatedAt: '2022/5/1',
     };
     const actual = articleFormReducer(fetchingLoadingState, fetchSuccess(res));
     expect(actual.fetchingState).toEqual('success');
     expect(actual.title).toEqual(res.title);
-    expect(actual.content).toEqual(res.content);
-    expect(actual.position).toEqual(res.position);
-    expect(actual.imageDataUrl).toEqual(res.imageDataUrl);
+    expect(actual.description).toEqual(res.description);
+    expect(actual.position).toEqual({
+      markerId: 1,
+      lat: res.marker.lat,
+      lng: res.marker.lng,
+      park: res.marker.park,
+      numberOfPublicArticles: 1,
+    });
+    expect(actual.imageDataUrl).toEqual(res.imageUrl);
   });
 
   it('should handle initialize', () => {
@@ -143,13 +165,13 @@ describe('articleForm reducer', () => {
   it('should handle updateLastSavedValues', () => {
     const edittedState = JSON.parse(JSON.stringify(initialState));
     edittedState.title = 'new title';
-    edittedState.content = 'new content';
+    edittedState.description = 'new description';
     edittedState.position = { lat: 0, lng: 0 };
     edittedState.imageDataUrl = 'https://image-data.jpg';
 
     const actual = articleFormReducer(edittedState, updateLastSavedValues());
     expect(actual.lastSavedTitle).toEqual('new title');
-    expect(actual.lastSavedContent).toEqual('new content');
+    expect(actual.lastSavedDescription).toEqual('new description');
     expect(actual.lastSavedPosition).toEqual({ lat: 0, lng: 0 });
     expect(actual.lastSavedImageDataUrl).toEqual('https://image-data.jpg');
   });

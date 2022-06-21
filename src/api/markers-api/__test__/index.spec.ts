@@ -10,14 +10,14 @@ describe('getRemoteMarkers', () => {
     process.env.REACT_APP_MOCK = 'normal';
 
     const response = await getRemoteMarkers();
-    expect(response.results[0].postId).toBe('000');
+    expect(response.results[0].markerId).toBe(0);
   });
 
   it('handle nomal response with page2', async () => {
     process.env.REACT_APP_MOCK = 'normal';
 
     const response = await getRemoteMarkers('next-url');
-    expect(response.results[0].postId).toBe('002');
+    expect(response.results[0].markerId).toBe(2);
   });
 
   it('handle error response', async () => {

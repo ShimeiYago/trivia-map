@@ -3,10 +3,10 @@ import { AxiosError, AxiosResponse } from 'axios';
 import { handleAxiosError } from '../utils/handle-axios-error';
 import { getAxiosInstance } from 'api/utils/get-axios-instance';
 import { mockGetArticleResponse } from '../mock/articles-response';
-import { Position } from 'types/position';
+import { Author } from 'types/author';
 
 export async function getRemoteArticle(
-  postId: string,
+  postId: number,
 ): Promise<GetArticleResponse> {
   const axiosInstance = getAxiosInstance({}, mockGetArticleResponse);
 
@@ -23,12 +23,18 @@ export async function getRemoteArticle(
 }
 
 export type GetArticleResponse = {
+  postId: number;
   title: string;
-  content: string;
-  position: Position;
-  imageDataUrl: string | null;
-  userId: string;
-  userName: string;
+  description: string;
+  marker: {
+    markerId: number;
+    lat: number;
+    lng: number;
+    park: 'L' | 'S';
+    numberOfPublicArticles: number;
+  };
+  imageUrl: string | null;
+  author: Author;
   createdAt: string;
-  updatedAt?: string;
+  updatedAt: string;
 };

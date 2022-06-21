@@ -2,10 +2,11 @@ import { LoadingState } from 'types/loading-state';
 import { Position } from 'types/position';
 
 export interface ArticleFormState {
-  postId?: string;
+  postId?: number;
   title: string;
-  content: string;
+  description: string;
   position?: Position;
+  previousMarkerId?: number;
   imageDataUrl: string | null;
   submittingState: LoadingState;
   fetchingState: LoadingState;
@@ -13,7 +14,7 @@ export interface ArticleFormState {
   fetchingErrorMsg?: string;
   isEditting: boolean;
   lastSavedTitle: string;
-  lastSavedContent: string;
+  lastSavedDescription: string;
   lastSavedPosition?: Position;
   lastSavedImageDataUrl: string | null;
   isFormChangedFromLastSaved: boolean;
@@ -22,8 +23,8 @@ export interface ArticleFormState {
 export const initialState: ArticleFormState = {
   title: '',
   lastSavedTitle: '',
-  content: '',
-  lastSavedContent: '',
+  description: '',
+  lastSavedDescription: '',
   imageDataUrl: null,
   lastSavedImageDataUrl: null,
   submittingState: 'waiting',
@@ -34,10 +35,9 @@ export const initialState: ArticleFormState = {
 
 export type FormError = {
   errorTitle: string;
-  headerErrors?: string[];
   fieldErrors?: {
     title?: string;
-    content?: string;
+    description?: string;
     position?: string;
     imageDataUrl?: string;
   };

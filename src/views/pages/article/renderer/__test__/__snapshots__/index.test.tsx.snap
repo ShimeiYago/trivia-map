@@ -95,7 +95,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
               </ForwardRef(Box)>
               <ForwardRef(Divider) />
               <ForwardRef(Typography)>
-                content
+                description
               </ForwardRef(Typography)>
               <ForwardRef(Divider) />
               <ForwardRef(Typography)
@@ -121,6 +121,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
                     Object {
                       "lat": 0,
                       "lng": 0,
+                      "park": "S",
                     },
                   ]
                 }
@@ -131,6 +132,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
                   Object {
                     "lat": 0,
                     "lng": 0,
+                    "park": "S",
                   }
                 }
                 initZoom={3}
@@ -322,7 +324,7 @@ exports[`Shallow Snapshot Tests mobile view 1`] = `
               </ForwardRef(Box)>
               <ForwardRef(Divider) />
               <ForwardRef(Typography)>
-                content
+                description
               </ForwardRef(Typography)>
               <ForwardRef(Divider) />
               <ForwardRef(Typography)
@@ -348,6 +350,7 @@ exports[`Shallow Snapshot Tests mobile view 1`] = `
                     Object {
                       "lat": 0,
                       "lng": 0,
+                      "park": "S",
                     },
                   ]
                 }
@@ -358,6 +361,7 @@ exports[`Shallow Snapshot Tests mobile view 1`] = `
                   Object {
                     "lat": 0,
                     "lng": 0,
+                    "park": "S",
                   }
                 }
                 initZoom={3}
@@ -480,7 +484,7 @@ exports[`Shallow Snapshot Tests with image 1`] = `
                 width="full"
               />
               <ForwardRef(Typography)>
-                content
+                description
               </ForwardRef(Typography)>
               <ForwardRef(Divider) />
               <ForwardRef(Typography)
@@ -506,6 +510,7 @@ exports[`Shallow Snapshot Tests with image 1`] = `
                     Object {
                       "lat": 0,
                       "lng": 0,
+                      "park": "S",
                     },
                   ]
                 }
@@ -516,6 +521,7 @@ exports[`Shallow Snapshot Tests with image 1`] = `
                   Object {
                     "lat": 0,
                     "lng": 0,
+                    "park": "S",
                   }
                 }
                 initZoom={3}

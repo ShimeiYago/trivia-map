@@ -8,8 +8,8 @@ export const selectArticleFormId = (state: ArticleFormRootState) =>
 export const selectArticleFormTitle = (state: ArticleFormRootState) =>
   state.articleForm.title;
 
-export const selectArticleFormContent = (state: ArticleFormRootState) =>
-  state.articleForm.content;
+export const selectArticleFormDescription = (state: ArticleFormRootState) =>
+  state.articleForm.description;
 
 export const selectArticleFormPosition = (state: ArticleFormRootState) =>
   state.articleForm.position;
@@ -36,9 +36,9 @@ export const selectArticleFormFetchingErrorMsg = (
 export const selectArticleFormLastSavedTitle = (state: ArticleFormRootState) =>
   state.articleForm.lastSavedTitle;
 
-export const selectArticleFormLastSavedContent = (
+export const selectArticleFormLastSavedDescription = (
   state: ArticleFormRootState,
-) => state.articleForm.lastSavedContent;
+) => state.articleForm.lastSavedDescription;
 
 export const selectArticleFormLastSavedPosition = (
   state: ArticleFormRootState,
@@ -51,3 +51,7 @@ export const selectArticleFormLastSavedImageDataUrl = (
 export const selectArticleFormIsFormChangedFromLastSaved = (
   state: ArticleFormRootState,
 ) => state.articleForm.isFormChangedFromLastSaved;
+
+export const selectArticleFormPreviousMarkerId = (
+  state: ArticleFormRootState,
+) => state.articleForm.previousMarkerId;

@@ -94,7 +94,7 @@ export class Renderer extends React.Component<Props, State> {
 }
 
 export type Props = {
-  postId?: string;
+  postId?: number;
   isFormChangedFromLastSaved: boolean;
   submittingState: LoadingState;
   isFormEditting: boolean;

@@ -3,17 +3,22 @@ import { Map as LeafletMap } from 'leaflet';
 import { PostMarkers, Props } from '../helpers/post-markers';
 
 const basicProps: Props = {
-  markers: {
-    '000': {
-      position: { lat: 0, lng: 0 },
-      title: 'title1',
-      thumbnailImgUrl: 'https://image.jpg',
+  markers: [
+    {
+      markerId: 100,
+      lat: 0,
+      lng: 0,
+      park: 'S',
+      numberOfPublicArticles: 1,
     },
-    '001': {
-      position: { lat: 0, lng: 0 },
-      title: 'title2',
+    {
+      markerId: 101,
+      lat: 0,
+      lng: 0,
+      park: 'S',
+      numberOfPublicArticles: 1,
     },
-  },
+  ],
   hiddenMarkerIds: [],
   map: { setView: jest.fn() } as unknown as LeafletMap,
   popupDisabled: false,
@@ -31,7 +36,7 @@ describe('Shallow Snapshot Tests', () => {
   });
 
   it('with hiddenMarkerIds', () => {
-    shallowWrapper.setProps({ hiddenMarkerIds: ['000'] });
+    shallowWrapper.setProps({ hiddenMarkerIds: [100] });
     expect(shallowWrapper).toMatchSnapshot();
   });
 });

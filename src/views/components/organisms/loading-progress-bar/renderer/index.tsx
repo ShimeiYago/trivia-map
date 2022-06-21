@@ -39,14 +39,14 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   render() {
-    const { markersLoadedRecords, markersTotalRecords, isMobile } = this.props;
+    const { markersLoadedPages, markersTotalPages, isMobile } = this.props;
 
     if (!this.state.showLoadingProgressBar) {
       return null;
     }
 
-    const progressValue = markersTotalRecords
-      ? parseInt(((markersLoadedRecords / markersTotalRecords) * 100).toFixed())
+    const progressValue = markersTotalPages
+      ? parseInt(((markersLoadedPages / markersTotalPages) * 100).toFixed())
       : 0;
 
     return (
@@ -115,8 +115,8 @@ export class Renderer extends React.Component<Props, State> {
 }
 
 export type Props = {
-  markersLoadedRecords: number;
-  markersTotalRecords?: number;
+  markersLoadedPages: number;
+  markersTotalPages?: number;
   markersFetchingState: LoadingState;
   markersErrorMsg?: string;
   isMobile: boolean;

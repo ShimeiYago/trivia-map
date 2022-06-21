@@ -1,19 +1,20 @@
+import { PaginationResponse } from './../types/pagination-response';
 import { BASE_URL } from 'constant';
 import { AxiosError, AxiosResponse } from 'axios';
 import { handleAxiosError } from '../utils/handle-axios-error';
 import { getAxiosInstance } from 'api/utils/get-axios-instance';
 import { mockGetMarkersResponse } from './../mock/markers-response';
-import { Position } from 'types/position';
 
 export async function getRemoteMarkers(
   nextUrl?: string,
-): Promise<GetMarkersResponse> {
+): Promise<GetMarkersResponseWithPagination> {
   const url = nextUrl ?? `${BASE_URL}/markers`;
 
   const axiosInstance = getAxiosInstance({}, mockGetMarkersResponse(nextUrl));
 
   try {
-    const res: AxiosResponse<GetMarkersResponse> = await axiosInstance.get(url);
+    const res: AxiosResponse<GetMarkersResponseWithPagination> =
+      await axiosInstance.get(url);
     return res.data;
   } catch (error) {
     const axiosError = error as AxiosError;
@@ -21,16 +22,13 @@ export async function getRemoteMarkers(
   }
 }
 
-export type MarkerTypeAPI = {
-  postId: string;
-  position: Position;
-  title: string;
-  thumbnailImgUrl?: string;
+export type GetMarkersResponse = {
+  markerId: number;
+  lat: number;
+  lng: number;
+  park: 'L' | 'S';
+  numberOfPublicArticles: number;
 };
 
-export type GetMarkersResponse = {
-  count: number;
-  next: string | null;
-  previous: string | null;
-  results: MarkerTypeAPI[];
-};
+export type GetMarkersResponseWithPagination =
+  PaginationResponse<GetMarkersResponse>;

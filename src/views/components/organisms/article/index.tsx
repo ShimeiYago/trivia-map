@@ -1,7 +1,7 @@
 import { Props, Renderer } from './renderer';
 import { useAppDispatch, useAppSelector } from 'store';
 import {
-  selectReadingArticleContent,
+  selectReadingArticleDescription,
   selectReadingArticleLoadingState,
   selectReadingArticleTitle,
 } from 'store/reading-article/selector';
@@ -12,7 +12,7 @@ export function Article(ownProps: OwnProps) {
 
   const props: Props = {
     title: useAppSelector(selectReadingArticleTitle),
-    content: useAppSelector(selectReadingArticleContent),
+    description: useAppSelector(selectReadingArticleDescription),
     articleLoadingState: useAppSelector(selectReadingArticleLoadingState),
 
     fetchArticle: () => dispatch(fetchReadingArticle(ownProps.postId)),
@@ -24,7 +24,7 @@ export function Article(ownProps: OwnProps) {
 }
 
 type OwnProps = {
-  postId: string;
+  postId: number;
   onClickEdit?: () => void;
   onClickDelete?: () => void;
 };

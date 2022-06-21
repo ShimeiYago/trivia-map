@@ -60,6 +60,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
               Object {
                 "lat": 0,
                 "lng": 0,
+                "park": "S",
               }
             }
             initZoom={3}
@@ -143,7 +144,7 @@ exports[`Shallow Snapshot Tests loading 1`] = `
         sx={
           Object {
             "display": "flex",
-            "justifyContent": "center",
+            "justifydescription": "center",
           }
         }
       >
@@ -188,6 +189,7 @@ exports[`Shallow Snapshot Tests loading 1`] = `
               Object {
                 "lat": 0,
                 "lng": 0,
+                "park": "S",
               }
             }
             initZoom={3}
@@ -421,6 +423,7 @@ exports[`Shallow Snapshot Tests with close button 1`] = `
               Object {
                 "lat": 0,
                 "lng": 0,
+                "park": "S",
               }
             }
             initZoom={3}
@@ -544,6 +547,7 @@ exports[`Shallow Snapshot Tests with image 1`] = `
               Object {
                 "lat": 0,
                 "lng": 0,
+                "park": "S",
               }
             }
             initZoom={3}
@@ -629,11 +633,6 @@ exports[`Shallow Snapshot Tests with validation error 1`] = `
         <ForwardRef(AlertTitle)>
           Inputted contents have errors.
         </ForwardRef(AlertTitle)>
-        <li
-          key="headerErrors-0"
-        >
-          position has an error
-        </li>
       </ForwardRef(Alert)>
       <ForwardRef(TextField)
         disabled={false}
@@ -675,6 +674,7 @@ exports[`Shallow Snapshot Tests with validation error 1`] = `
               Object {
                 "lat": 0,
                 "lng": 0,
+                "park": "S",
               }
             }
             initZoom={3}

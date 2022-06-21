@@ -11,19 +11,21 @@ import {
 } from './post-remote-article';
 
 export async function putRemoteArticle(
-  postId: string,
+  postId: number,
   title: string,
-  content: string,
-  imageDataUrl: string | null,
-  position?: Position,
+  description: string,
+  marker: Position,
+  imageUrl: string | null,
+  isDraft: boolean,
 ): Promise<PostArticleResponse> {
   const axiosInstance = getAxiosInstance({}, mockPostArticleResponse);
 
   const requestData: PostArticleRequest = {
     title: title,
-    content: content,
-    position: position,
-    imageDataUrl: imageDataUrl,
+    description: description,
+    marker: marker,
+    imageUrl: imageUrl,
+    isDraft: isDraft,
   };
 
   try {

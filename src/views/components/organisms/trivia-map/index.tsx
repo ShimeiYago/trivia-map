@@ -1,7 +1,7 @@
 import { Props, Renderer } from './renderer';
 import { useAppDispatch, useAppSelector } from 'store';
 import {
-  selectMarkersDict,
+  selectMarkers,
   selectMarkersFetchingState,
 } from 'store/markers/selector';
 import { fetchMarkers } from 'store/markers/actions';
@@ -13,7 +13,7 @@ export function TriviaMap(ownProps: OwnProps) {
   const dispatch = useAppDispatch();
 
   const props: Props = {
-    postMarkers: useAppSelector(selectMarkersDict),
+    postMarkers: useAppSelector(selectMarkers),
     newMarkerMode: !!ownProps.newMarkerMode,
     articleFormPosition: useAppSelector(selectArticleFormPosition),
     width: ownProps.width,
@@ -46,7 +46,7 @@ type OwnProps = {
   initCenter?: Position;
   disabled?: boolean;
   doNotShowPostMarkers?: boolean;
-  hiddenMarkerIds?: string[];
+  hiddenMarkerIds?: number[];
   shouldCurrentPositionAsyncWithForm?: boolean;
   additinalMarkers?: Position[];
 };

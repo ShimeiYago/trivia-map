@@ -11,8 +11,8 @@ export const articleFormSlice = createSlice({
       state.title = action.payload;
     },
 
-    updateContent(state, action: PayloadAction<string>) {
-      state.content = action.payload;
+    updateDescription(state, action: PayloadAction<string>) {
+      state.description = action.payload;
     },
 
     updatePosition(state, action: PayloadAction<Position>) {
@@ -33,13 +33,13 @@ export const articleFormSlice = createSlice({
       state.formError = action.payload;
     },
 
-    submitSuccess(state, action: PayloadAction<string>) {
+    submitSuccess(state, action: PayloadAction<number>) {
       state.submittingState = 'success';
       state.postId = action.payload;
       state.isEditting = false;
     },
 
-    fetchStart(state, action: PayloadAction<string>) {
+    fetchStart(state, action: PayloadAction<number>) {
       state.fetchingState = 'loading';
       state.postId = action.payload;
       state.formError = undefined;
@@ -53,15 +53,15 @@ export const articleFormSlice = createSlice({
     fetchSuccess(state, action: PayloadAction<GetArticleResponse>) {
       state.fetchingState = 'success';
       state.title = action.payload.title;
-      state.content = action.payload.content;
-      state.position = action.payload.position;
-      state.imageDataUrl = action.payload.imageDataUrl;
+      state.description = action.payload.description;
+      state.position = action.payload.marker;
+      state.imageDataUrl = action.payload.imageUrl;
     },
 
     initialize(state) {
       state.postId = initialState.postId;
       state.title = initialState.title;
-      state.content = initialState.content;
+      state.description = initialState.description;
       state.position = initialState.position;
       state.imageDataUrl = initialState.imageDataUrl;
       state.submittingState = initialState.submittingState;
@@ -70,7 +70,7 @@ export const articleFormSlice = createSlice({
       state.isEditting = initialState.isEditting;
       state.fetchingErrorMsg = initialState.fetchingErrorMsg;
       state.lastSavedTitle = initialState.lastSavedTitle;
-      state.lastSavedContent = initialState.lastSavedContent;
+      state.lastSavedDescription = initialState.lastSavedDescription;
       state.lastSavedPosition = initialState.lastSavedPosition;
       state.lastSavedImageDataUrl = initialState.lastSavedImageDataUrl;
       state.isFormChangedFromLastSaved =
@@ -83,7 +83,7 @@ export const articleFormSlice = createSlice({
 
     updateLastSavedValues(state) {
       state.lastSavedTitle = state.title;
-      state.lastSavedContent = state.content;
+      state.lastSavedDescription = state.description;
       state.lastSavedPosition = state.position;
       state.lastSavedImageDataUrl = state.imageDataUrl;
       state.isFormChangedFromLastSaved = false;
@@ -92,7 +92,7 @@ export const articleFormSlice = createSlice({
     updateIsFormChangedFromLastSaved(state) {
       state.isFormChangedFromLastSaved = !(
         state.lastSavedTitle === state.title &&
-        state.lastSavedContent === state.content &&
+        state.lastSavedDescription === state.description &&
         state.lastSavedPosition?.lat === state.position?.lat &&
         state.lastSavedPosition?.lng === state.position?.lng &&
         state.lastSavedImageDataUrl === state.imageDataUrl

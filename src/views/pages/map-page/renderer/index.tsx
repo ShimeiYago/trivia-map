@@ -13,7 +13,6 @@ import { FloatingButton } from 'views/components/atoms/floating-button';
 import { SwipeableEdgeDrawer } from 'views/components/moleculars/swipeable-edge-drawer';
 import { ArticleForm } from 'views/components/organisms/article-form';
 import { CloseFormButton } from 'views/components/organisms/close-form-button';
-import { DeletingConfirmModal } from 'views/components/organisms/deleting-confirm-modal';
 import { GlobalMessage } from 'views/components/organisms/global-messge';
 import { LoadingProgressBar } from 'views/components/organisms/loading-progress-bar';
 import { TriviaMap } from 'views/components/organisms/trivia-map';
@@ -67,8 +66,7 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   render() {
-    const { openFormModal, edittingPostId, openDialogToConfirmDeleting } =
-      this.state;
+    const { openFormModal, edittingPostId } = this.state;
     const { isFormEditting, isMobile } = this.props;
     return (
       <Box sx={wrapper(openFormModal && !isMobile)}>
@@ -91,12 +89,6 @@ export class Renderer extends React.Component<Props, State> {
             <LoadingProgressBar />
           </Box>
         </GlobalMenu>
-
-        <DeletingConfirmModal
-          open={openDialogToConfirmDeleting}
-          onClickCancel={this.handleCancelToDeleteMarker}
-          onClickConfirm={this.handleConfirmToDelete}
-        />
 
         {this.renderEditForm()}
 
@@ -132,15 +124,6 @@ export class Renderer extends React.Component<Props, State> {
   };
 
   protected handleCancelToDeleteMarker = () => {
-    this.setState({
-      openDialogToConfirmDeleting: false,
-    });
-  };
-
-  protected handleConfirmToDelete = () => {
-    const { readingArticleId } = this.state;
-    readingArticleId && this.props.deleteArticle(readingArticleId);
-
     this.setState({
       openDialogToConfirmDeleting: false,
     });
@@ -251,15 +234,14 @@ export class Renderer extends React.Component<Props, State> {
 export type Props = {
   isFormEditting: boolean;
   isMobile: boolean;
-  deleteArticle: (postId: string) => void;
   isFormChangedFromLastSaved: boolean;
-  postIdToEdit?: string;
+  postIdToEdit?: number;
 };
 
 export type State = {
   openFormModal: boolean;
-  readingArticleId?: string;
-  edittingPostId?: string;
+  readingArticleId?: number;
+  edittingPostId?: number;
   newMarkerMode: boolean;
   openDialogToConfirmDeleting: boolean;
   openDoubleEditAlartDialog: boolean;

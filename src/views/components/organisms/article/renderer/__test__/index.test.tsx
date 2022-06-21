@@ -5,7 +5,7 @@ let wrapper: ShallowWrapper<Props, unknown, Renderer>;
 
 const basicProps: Props = {
   title: 'title',
-  content: 'content',
+  description: 'description',
   articleLoadingState: 'success',
   fetchArticle: jest.fn(),
 };

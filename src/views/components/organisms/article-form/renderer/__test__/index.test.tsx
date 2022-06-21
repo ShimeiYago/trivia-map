@@ -5,9 +5,13 @@ let wrapper: ShallowWrapper<Props, unknown, Renderer>;
 
 const basicProps: Props = {
   title: '',
-  content: '',
+  description: '',
   imageDataUrl: null,
-  position: { lat: 0, lng: 0 },
+  position: {
+    lat: 0,
+    lng: 0,
+    park: 'S',
+  },
   submittingState: 'waiting',
   fetchingState: 'waiting',
   isFormEditting: false,
@@ -38,7 +42,6 @@ describe('Shallow Snapshot Tests', () => {
     wrapper.setProps({
       formError: {
         errorTitle: 'Inputted contents have errors.',
-        headerErrors: ['position has an error'],
         fieldErrors: { position: 'position is not selected' },
       },
     });
@@ -77,7 +80,7 @@ describe('constructor', () => {
 describe('componentDidMount', () => {
   it('fetchArticle if postId exists', () => {
     wrapper = shallow(<Renderer {...basicProps} />);
-    wrapper.setProps({ postId: 'postId-000' });
+    wrapper.setProps({ postId: 100 });
     const instance = wrapper.instance();
     instance.componentDidMount();
 
@@ -107,7 +110,7 @@ describe('componentDidUpdate', () => {
   });
 
   it('should call fetchArticle if postId exists', () => {
-    wrapper.setProps({ postId: 'postId-000' });
+    wrapper.setProps({ postId: 100 });
     const instance = wrapper.instance();
     instance.componentDidUpdate(basicProps);
 
@@ -148,13 +151,13 @@ describe('handleChangeTitle', () => {
   });
 });
 
-describe('handleChangeContent', () => {
+describe('handleChangeDescription', () => {
   it('call updateContent', () => {
     wrapper = shallow(<Renderer {...basicProps} />);
     const instance = wrapper.instance();
 
     const changeContentEvent = { target: { value: 'new content' } };
-    instance['handleChangeContent'](
+    instance['handleChangeDescription'](
       changeContentEvent as React.ChangeEvent<HTMLInputElement>,
     );
 
@@ -175,7 +178,7 @@ describe('handleSubmitButton', () => {
   });
 
   it('call submitEdittedArticle if postId exists', () => {
-    wrapper.setProps({ postId: 'postId-000' });
+    wrapper.setProps({ postId: 100 });
     const instance = wrapper.instance();
 
     instance['handleSubmitButton']();

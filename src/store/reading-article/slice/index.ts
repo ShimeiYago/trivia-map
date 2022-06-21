@@ -6,7 +6,7 @@ export const readingArticleSlice = createSlice({
   name: 'readingArticle',
   initialState,
   reducers: {
-    fetchStart(state, action: PayloadAction<string>) {
+    fetchStart(state, action: PayloadAction<number>) {
       state.loadingState = 'loading';
       state.postId = action.payload;
     },
@@ -19,11 +19,10 @@ export const readingArticleSlice = createSlice({
     fetchSuccess(state, action: PayloadAction<GetArticleResponse>) {
       state.loadingState = 'success';
       state.title = action.payload.title;
-      state.content = action.payload.content;
-      state.imageUrl = action.payload.imageDataUrl;
-      state.position = action.payload.position;
-      state.userId = action.payload.userId;
-      state.userName = action.payload.userName;
+      state.description = action.payload.description;
+      state.imageUrl = action.payload.imageUrl;
+      state.position = action.payload.marker;
+      state.author = action.payload.author;
       state.createdAt = action.payload.createdAt;
       state.updatedAt = action.payload.updatedAt;
     },

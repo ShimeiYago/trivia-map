@@ -74,7 +74,7 @@ describe('handleSave', () => {
 
   it('should call submitEdittedArticle when having postId', () => {
     wrapper.setProps({
-      postId: 'post-id-000',
+      postId: 1,
     });
     const instance = wrapper.instance();
     instance['handleSave']();

@@ -72,7 +72,7 @@ export class Renderer extends React.Component<Props> {
     const {
       postId,
       title,
-      content,
+      description,
       position,
       submittingState,
       fetchingState,
@@ -106,7 +106,7 @@ export class Renderer extends React.Component<Props> {
             </Typography>
 
             {fetchingState === 'loading' && (
-              <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+              <Box sx={{ display: 'flex', justifydescription: 'center' }}>
                 <CircularProgress />
               </Box>
             )}
@@ -140,11 +140,11 @@ export class Renderer extends React.Component<Props> {
               label="説明文"
               multiline
               rows={4}
-              value={content}
-              onChange={this.handleChangeContent}
+              value={description}
+              onChange={this.handleChangeDescription}
               disabled={disabled}
-              error={!!formError?.fieldErrors?.content}
-              helperText={formError?.fieldErrors?.content}
+              error={!!formError?.fieldErrors?.description}
+              helperText={formError?.fieldErrors?.description}
             />
 
             <BoxField
@@ -207,8 +207,9 @@ export class Renderer extends React.Component<Props> {
   protected handleChangeTitle = (e: React.ChangeEvent<HTMLInputElement>) =>
     this.props.updateFormField({ title: e.target.value });
 
-  protected handleChangeContent = (e: React.ChangeEvent<HTMLInputElement>) =>
-    this.props.updateFormField({ content: e.target.value });
+  protected handleChangeDescription = (
+    e: React.ChangeEvent<HTMLInputElement>,
+  ) => this.props.updateFormField({ description: e.target.value });
 
   protected handleSubmitButton = () => {
     if (this.props.postId) {
@@ -248,9 +249,6 @@ export class Renderer extends React.Component<Props> {
     return (
       <Alert severity="error">
         <AlertTitle>{formError.errorTitle}</AlertTitle>
-        {formError.headerErrors?.map((msg: string, index: number) => (
-          <li key={`headerErrors-${index}`}>{msg}</li>
-        ))}
       </Alert>
     );
   }
@@ -277,9 +275,9 @@ export class Renderer extends React.Component<Props> {
 }
 
 export type Props = {
-  postId?: string;
+  postId?: number;
   title: string;
-  content: string;
+  description: string;
   imageDataUrl: string | null;
   position?: Position;
   submittingState: LoadingState;
@@ -290,7 +288,7 @@ export type Props = {
   updateFormField: (param: UpdateFormFieldParam) => void;
   submitNewArticle: () => void;
   submitEdittedArticle: () => void;
-  fetchArticle: (postId: string) => void;
+  fetchArticle: (postId: number) => void;
   initialize: () => void;
   handleClickSelectPosition?: () => void;
   updateIsEditting: (isEditting: boolean) => void;

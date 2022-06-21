@@ -1,37 +1,41 @@
 import {
   selectMarkersErrorMsg,
   selectMarkersFetchingState,
-  selectMarkersDict,
-  selectMarkersTotalRecords,
-  selectMarkersLoadedRecords,
-  selectMarkersDeletingState,
+  selectMarkers,
+  selectMarkersTotalPages,
+  selectMarkersLoadedPages,
 } from '..';
 import { MarkersState } from '../../model';
 
 describe('markers selector', () => {
   const rootState = {
     markers: {
-      markers: {
-        '000': {
-          position: { lat: 0, lng: 0 },
-          title: 'title',
+      markers: [
+        {
+          markerId: 1,
+          lat: 0,
+          lng: 0,
+          park: 'S',
+          numberOfPublicArticles: 1,
         },
-      },
+      ],
       fetchingState: 'waiting',
       errorMsg: 'error',
-      totalRecords: 2,
-      loadedRecords: 1,
-      deletingState: 'waiting',
+      totalPages: 2,
+      loadedPages: 1,
     } as MarkersState,
   };
 
   it('selectMarkerList should return marker list', () => {
-    expect(selectMarkersDict(rootState)).toEqual({
-      '000': {
-        position: { lat: 0, lng: 0 },
-        title: 'title',
+    expect(selectMarkers(rootState)).toEqual([
+      {
+        markerId: 1,
+        lat: 0,
+        lng: 0,
+        park: 'S',
+        numberOfPublicArticles: 1,
       },
-    });
+    ]);
   });
 
   it('selectMarkersFetchingState should return markers fetching state', () => {
@@ -42,15 +46,11 @@ describe('markers selector', () => {
     expect(selectMarkersErrorMsg(rootState)).toEqual('error');
   });
 
-  it('selectMarkersLoadedRecords should return markers totalRecords', () => {
-    expect(selectMarkersLoadedRecords(rootState)).toEqual(1);
+  it('selectMarkersLoadedPages should return markers totalPages', () => {
+    expect(selectMarkersLoadedPages(rootState)).toEqual(1);
   });
 
-  it('selectMarkersTotalRecords should return markers totalRecords', () => {
-    expect(selectMarkersTotalRecords(rootState)).toEqual(2);
-  });
-
-  it('selectMarkersDeletingState should return markers deleting state', () => {
-    expect(selectMarkersDeletingState(rootState)).toEqual('waiting');
+  it('selectMarkersTotalPages should return markers totalPages', () => {
+    expect(selectMarkersTotalPages(rootState)).toEqual(2);
   });
 });

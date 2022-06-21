@@ -1,3 +1,4 @@
+import { GetArticleResponse } from 'api/articles-api/get-remote-article';
 import { readingArticleReducer, readingArticleSlice } from '..';
 import { ReadingArticleState } from './../../model/index';
 
@@ -5,36 +6,43 @@ const { fetchSuccess, fetchFailure, fetchStart } = readingArticleSlice.actions;
 
 describe('readingArticle reducer', () => {
   const initialState: ReadingArticleState = {
-    postId: '',
+    postId: 1,
     title: '',
-    content: '',
+    description: '',
     loadingState: 'waiting',
-    position: { lat: 0, lng: 0 },
+    position: {
+      lat: 0,
+      lng: 0,
+      park: 'S',
+    },
     imageUrl: null,
-    userId: '',
-    userName: '',
+    author: {
+      userId: 1,
+      nickname: '',
+    },
     createdAt: '',
+    updatedAt: '',
   };
   const loadingState = Object.assign(initialState, { loadingState: 'loading' });
 
   it('should handle initial state', () => {
     expect(readingArticleReducer(undefined, { type: 'unknown' })).toEqual({
-      postId: '',
+      postId: -1,
       title: '',
-      content: '',
+      description: '',
       loadingState: 'waiting',
-      position: { lat: 0, lng: 0 },
+      position: { lat: 0, lng: 0, park: 'L' },
       imageUrl: null,
-      userId: '',
-      userName: '',
+      author: {
+        userId: -1,
+        nickname: '',
+      },
       createdAt: '',
+      updatedAt: '',
     });
   });
   it('should handle fetchStart', () => {
-    const actual = readingArticleReducer(
-      initialState,
-      fetchStart('postId-000'),
-    );
+    const actual = readingArticleReducer(initialState, fetchStart(1));
     expect(actual.loadingState).toEqual('loading');
   });
 
@@ -45,24 +53,35 @@ describe('readingArticle reducer', () => {
   });
 
   it('should handle fetchSuccess', () => {
-    const article = {
+    const article: GetArticleResponse = {
+      postId: 1,
       title: 'title',
-      content: 'content',
-      imageDataUrl: 'https://image-data.jpg',
-      position: { lat: 0, lng: 0 },
-      userId: '000',
-      userName: 'Axel',
+      description: 'description',
+      imageUrl: 'https://image-data.jpg',
+      marker: {
+        markerId: 1,
+        lat: 0,
+        lng: 0,
+        park: 'S',
+        numberOfPublicArticles: 1,
+      },
+      author: {
+        userId: 1,
+        nickname: 'nickname',
+      },
       createdAt: '2022/4/1',
       updatedAt: '2022/5/1',
     };
     const actual = readingArticleReducer(loadingState, fetchSuccess(article));
     expect(actual.loadingState).toEqual('success');
     expect(actual.title).toEqual('title');
-    expect(actual.content).toEqual('content');
+    expect(actual.description).toEqual('description');
     expect(actual.imageUrl).toEqual('https://image-data.jpg');
-    expect(actual.position).toEqual({ lat: 0, lng: 0 });
-    expect(actual.userId).toEqual('000');
-    expect(actual.userName).toEqual('Axel');
+    expect(actual.position.lat).toEqual(0);
+    expect(actual.author).toEqual({
+      userId: 1,
+      nickname: 'nickname',
+    });
     expect(actual.createdAt).toEqual('2022/4/1');
     expect(actual.updatedAt).toEqual('2022/5/1');
   });

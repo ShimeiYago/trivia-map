@@ -1,14 +1,13 @@
 import { selectReadingArticleUpdatedAt } from './../index';
 import {
-  selectReadingArticleContent,
+  selectReadingArticleDescription,
   selectReadingArticleErrorMsg,
   selectReadingArticleId,
   selectReadingArticleLoadingState,
   selectReadingArticleTitle,
   selectReadingArticlePosition,
   selectReadingArticleImageUrl,
-  selectReadingArticleUserId,
-  selectReadingArticleUserName,
+  selectReadingArticleAuthor,
   selectReadingArticleCreatedAt,
 } from '..';
 import { ReadingArticleState } from '../../model';
@@ -16,46 +15,57 @@ import { ReadingArticleState } from '../../model';
 describe('readingArticle selector', () => {
   const rootState = {
     readingArticle: {
-      postId: 'post-id',
+      postId: 1,
       title: 'title',
-      content: 'content',
-      position: { lat: 1, lng: 0 },
-      imageUrl: 'image-url.jpg',
-      loadingState: 'error',
-      errorMsg: 'error',
-      userId: '000',
-      userName: 'Axel',
+      description: 'description',
+      imageUrl: 'https://image-data.jpg',
+      position: {
+        lat: 0,
+        lng: 0,
+        park: 'S',
+      },
+      author: {
+        userId: 1,
+        nickname: 'nickname',
+      },
       createdAt: '2022/4/1',
       updatedAt: '2022/5/1',
+      loadingState: 'error',
+      errorMsg: 'error',
     } as ReadingArticleState,
   };
 
   it('selectReadingArticleId should return readingArticle id', () => {
-    expect(selectReadingArticleId(rootState)).toEqual('post-id');
+    expect(selectReadingArticleId(rootState)).toEqual(1);
   });
 
   it('selectReadingArticleTitle should return readingArticle title', () => {
     expect(selectReadingArticleTitle(rootState)).toEqual('title');
   });
 
-  it('selectReadingArticleContent should return readingArticle content', () => {
-    expect(selectReadingArticleContent(rootState)).toEqual('content');
+  it('selectReadingArticleDescription should return readingArticle description', () => {
+    expect(selectReadingArticleDescription(rootState)).toEqual('description');
   });
 
   it('selectReadingArticlePosition should return readingArticle position', () => {
-    expect(selectReadingArticlePosition(rootState)).toEqual({ lat: 1, lng: 0 });
+    expect(selectReadingArticlePosition(rootState)).toEqual({
+      lat: 0,
+      lng: 0,
+      park: 'S',
+    });
   });
 
   it('selectReadingArticleImageUrl should return readingArticle imageUrl', () => {
-    expect(selectReadingArticleImageUrl(rootState)).toEqual('image-url.jpg');
+    expect(selectReadingArticleImageUrl(rootState)).toEqual(
+      'https://image-data.jpg',
+    );
   });
 
-  it('selectReadingArticleUserId should return readingArticle userId', () => {
-    expect(selectReadingArticleUserId(rootState)).toEqual('000');
-  });
-
-  it('selectReadingArticleUserName should return readingArticle userName', () => {
-    expect(selectReadingArticleUserName(rootState)).toEqual('Axel');
+  it('selectReadingArticleAuthor should return readingArticle userId', () => {
+    expect(selectReadingArticleAuthor(rootState)).toEqual({
+      userId: 1,
+      nickname: 'nickname',
+    });
   });
 
   it('selectReadingArticleCreatedAt should return readingArticle createdAt', () => {

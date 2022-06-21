@@ -46,15 +46,15 @@ exports[`Shallow Snapshot Tests basic 1`] = `
         }
       }
       markers={
-        Object {
-          "000": Object {
-            "position": Object {
-              "lat": 0,
-              "lng": 0,
-            },
-            "title": "title",
+        Array [
+          Object {
+            "lat": 0,
+            "lng": 0,
+            "markerId": 100,
+            "numberOfPublicArticles": 1,
+            "park": "S",
           },
-        }
+        ]
       }
       popupDisabled={false}
     />
@@ -191,15 +191,15 @@ exports[`Shallow Snapshot Tests when currentPosition state is setted 1`] = `
         }
       }
       markers={
-        Object {
-          "000": Object {
-            "position": Object {
-              "lat": 0,
-              "lng": 0,
-            },
-            "title": "title",
+        Array [
+          Object {
+            "lat": 0,
+            "lng": 0,
+            "markerId": 100,
+            "numberOfPublicArticles": 1,
+            "park": "S",
           },
-        }
+        ]
       }
       popupDisabled={true}
     />
@@ -355,6 +355,7 @@ exports[`Shallow Snapshot Tests with initCenter prop 1`] = `
                 Object {
                   "lat": 1,
                   "lng": 1,
+                  "park": "S",
                 },
               ],
             ],
@@ -368,15 +369,15 @@ exports[`Shallow Snapshot Tests with initCenter prop 1`] = `
         }
       }
       markers={
-        Object {
-          "000": Object {
-            "position": Object {
-              "lat": 0,
-              "lng": 0,
-            },
-            "title": "title",
+        Array [
+          Object {
+            "lat": 0,
+            "lng": 0,
+            "markerId": 100,
+            "numberOfPublicArticles": 1,
+            "park": "S",
           },
-        }
+        ]
       }
       popupDisabled={false}
     />
@@ -392,6 +393,7 @@ exports[`Shallow Snapshot Tests with initCenter prop 1`] = `
                 Object {
                   "lat": 1,
                   "lng": 1,
+                  "park": "S",
                 },
               ],
             ],
@@ -462,15 +464,15 @@ exports[`Shallow Snapshot Tests with width and height props 1`] = `
         }
       }
       markers={
-        Object {
-          "000": Object {
-            "position": Object {
-              "lat": 0,
-              "lng": 0,
-            },
-            "title": "title",
+        Array [
+          Object {
+            "lat": 0,
+            "lng": 0,
+            "markerId": 100,
+            "numberOfPublicArticles": 1,
+            "park": "S",
           },
-        }
+        ]
       }
       popupDisabled={false}
     />

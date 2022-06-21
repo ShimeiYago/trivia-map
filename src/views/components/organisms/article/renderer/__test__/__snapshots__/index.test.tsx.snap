@@ -15,7 +15,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       }
     }
   >
-    content
+    description
   </ForwardRef(Typography)>
 </Fragment>
 `;
@@ -48,7 +48,7 @@ exports[`Shallow Snapshot Tests with delete button 1`] = `
       }
     }
   >
-    content
+    description
   </ForwardRef(Typography)>
   <ForwardRef(Button)
     onClick={[MockFunction]}
@@ -73,7 +73,7 @@ exports[`Shallow Snapshot Tests with edit button 1`] = `
       }
     }
   >
-    content
+    description
   </ForwardRef(Typography)>
   <ForwardRef(Button)
     onClick={[MockFunction]}

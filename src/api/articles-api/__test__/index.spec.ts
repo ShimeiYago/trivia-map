@@ -5,7 +5,11 @@ import { postRemoteArticle } from '../post-remote-article';
 import { putRemoteArticle } from '../put-remote-article';
 import { deleteRemoteArticle } from '../delete-remote-article';
 
-const newPosition: Position = { lat: 0, lng: 0 };
+const newPosition: Position = {
+  lat: 0,
+  lng: 0,
+  park: 'S',
+};
 
 describe('getRemoteArticle', () => {
   beforeEach(() => {
@@ -18,7 +22,7 @@ describe('getRemoteArticle', () => {
   it('handle nomal response', async () => {
     process.env.REACT_APP_MOCK = 'normal';
 
-    const response = await getRemoteArticle('000');
+    const response = await getRemoteArticle(1);
     expect(response.title).toBe('ノーチラス号');
   });
 
@@ -30,7 +34,7 @@ describe('getRemoteArticle', () => {
       data: {},
       errorMsg: 'Intentional API Error with mock',
     };
-    await expect(getRemoteArticle('000')).rejects.toEqual(expectedApiError);
+    await expect(getRemoteArticle(1)).rejects.toEqual(expectedApiError);
   });
 });
 
@@ -47,11 +51,12 @@ describe('postRemoteArticle', () => {
 
     const response = await postRemoteArticle(
       'title',
-      'content',
-      'https://image-data.jpg',
+      'description',
       newPosition,
+      'https://image-data.jpg',
+      false,
     );
-    expect(response.postId).toBe('100');
+    expect(response.postId).toBe(1);
   });
 
   it('handle error response', async () => {
@@ -65,9 +70,10 @@ describe('postRemoteArticle', () => {
     await expect(
       postRemoteArticle(
         'title',
-        'content',
-        'https://image-data.jpg',
+        'description',
         newPosition,
+        'https://image-data.jpg',
+        false,
       ),
     ).rejects.toEqual(expectedApiError);
   });
@@ -85,13 +91,14 @@ describe('putRemoteArticle', () => {
     process.env.REACT_APP_MOCK = 'normal';
 
     const response = await putRemoteArticle(
-      '100',
+      1,
       'title',
-      'content',
-      'https://image-data.jpg',
+      'description',
       newPosition,
+      'https://image-data.jpg',
+      false,
     );
-    expect(response.postId).toBe('100');
+    expect(response.postId).toBe(1);
   });
 
   it('handle error response', async () => {
@@ -104,11 +111,12 @@ describe('putRemoteArticle', () => {
     };
     await expect(
       putRemoteArticle(
-        '100',
+        1,
         'title',
-        'content',
-        'https://image-data.jpg',
+        'description',
         newPosition,
+        'https://image-data.jpg',
+        false,
       ),
     ).rejects.toEqual(expectedApiError);
   });
@@ -125,8 +133,8 @@ describe('deleteRemoteArticle', () => {
   it('handle nomal response', async () => {
     process.env.REACT_APP_MOCK = 'normal';
 
-    const response = await deleteRemoteArticle('100');
-    expect(response.postId).toBe('100');
+    const response = await deleteRemoteArticle(100);
+    expect(response).toEqual({});
   });
 
   it('handle error response', async () => {
@@ -137,6 +145,6 @@ describe('deleteRemoteArticle', () => {
       data: {},
       errorMsg: 'Intentional API Error with mock',
     };
-    await expect(deleteRemoteArticle('000')).rejects.toEqual(expectedApiError);
+    await expect(deleteRemoteArticle(100)).rejects.toEqual(expectedApiError);
   });
 });

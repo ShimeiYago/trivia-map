@@ -7,17 +7,19 @@ import { Position } from 'types/position';
 
 export async function postRemoteArticle(
   title: string,
-  content: string,
-  imageDataUrl: string | null,
-  position?: Position,
+  description: string,
+  position: Position,
+  imageUrl: string | null,
+  isDraft: boolean,
 ): Promise<PostArticleResponse> {
   const axiosInstance = getAxiosInstance({}, mockPostArticleResponse);
 
   const requestData: PostArticleRequest = {
     title: title,
-    content: content,
-    position: position,
-    imageDataUrl: imageDataUrl,
+    description: description,
+    marker: position,
+    imageUrl: imageUrl,
+    isDraft: isDraft,
   };
 
   try {
@@ -35,20 +37,28 @@ export async function postRemoteArticle(
 
 export type PostArticleRequest = {
   title: string;
-  content: string;
-  imageDataUrl: string | null;
-  position?: Position;
+  description: string;
+  marker: Position;
+  imageUrl: string | null;
+  isDraft: boolean;
 };
 
 export type PostArticleResponse = {
-  postId: string;
+  postId: number;
+  title: string;
+  description: string;
+  marker: number;
+  imageUrl: string | null;
+  isDraft: boolean;
+  author: number;
+  createdAt: string;
+  updatedAt: string;
 };
 
 export type ValidationError = {
-  headerErrors: string[];
-  fieldErrors?: {
-    title?: string;
-    content?: string;
-    position?: string;
-  };
+  title?: string[];
+  description?: string[];
+  marker?: string[];
+  imageUrl?: string[];
+  isDraft?: string[];
 };

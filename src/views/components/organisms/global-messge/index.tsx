@@ -9,10 +9,7 @@ import {
   selectReadingArticleErrorMsg,
   selectReadingArticleLoadingState,
 } from 'store/reading-article/selector';
-import {
-  selectMarkersDeletingState,
-  selectMarkersErrorMsg,
-} from 'store/markers/selector';
+import { selectMarkersErrorMsg } from 'store/markers/selector';
 
 export function GlobalMessage(ownProps: OwnProps) {
   const props: Props = {
@@ -27,7 +24,7 @@ export function GlobalMessage(ownProps: OwnProps) {
       selectReadingArticleLoadingState,
     ),
     readingArticleErrorMsg: useAppSelector(selectReadingArticleErrorMsg),
-    markersDeletingState: useAppSelector(selectMarkersDeletingState),
+    markersDeletingState: 'waiting', // TODO
     markersErrorMsg: useAppSelector(selectMarkersErrorMsg),
     closeFormModal: ownProps.closeFormModal,
   };

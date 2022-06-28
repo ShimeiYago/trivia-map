@@ -4,8 +4,8 @@ import { Renderer, State, Props } from '..';
 let shallowWrapper: ShallowWrapper<Props, State, Renderer>;
 
 const props: Props = {
-  markersLoadedRecords: 1,
-  markersTotalRecords: 5,
+  markersLoadedPages: 1,
+  markersTotalPages: 5,
   markersFetchingState: 'waiting',
   isMobile: false,
 };
@@ -26,7 +26,7 @@ describe('Shallow Snapshot Tests', () => {
 
   it('init of loading', () => {
     shallowWrapper.setProps({
-      markersTotalRecords: undefined,
+      markersTotalPages: undefined,
       markersFetchingState: 'loading',
     });
     expect(shallowWrapper).toMatchSnapshot();

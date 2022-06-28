@@ -24,7 +24,7 @@ export class Renderer extends React.Component<Props> {
         <Typography variant="h6" component="h2">
           {this.props.title}
         </Typography>
-        <Typography sx={{ mt: 2 }}>{this.props.content}</Typography>
+        <Typography sx={{ mt: 2 }}>{this.props.description}</Typography>
 
         {this.props.onClickEdit && (
           <Button onClick={this.props.onClickEdit}>編集</Button>
@@ -40,7 +40,7 @@ export class Renderer extends React.Component<Props> {
 
 export type Props = {
   title: string;
-  content: string;
+  description: string;
   articleLoadingState: LoadingState;
 
   fetchArticle: () => void;

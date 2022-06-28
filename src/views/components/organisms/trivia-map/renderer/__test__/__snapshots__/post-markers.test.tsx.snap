@@ -5,7 +5,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
   <MapMarker
     autoOpen={false}
     draggable={false}
-    key="post-marker-000"
+    key="post-marker-100"
     map={
       Object {
         "setView": [MockFunction],
@@ -14,8 +14,11 @@ exports[`Shallow Snapshot Tests basic 1`] = `
     popup={
       <Link
         className="popup-link"
-        to="/article/000"
+        to="/article/xxx"
       >
+        <React.Fragment>
+          100
+        </React.Fragment>
         <ForwardRef(Stack)
           spacing={1}
         >
@@ -24,7 +27,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
             component="h2"
             variant="h6"
           >
-            title1
+            タイトル
           </ForwardRef(Typography)>
           <ForwardRef(Typography)
             align="center"
@@ -33,7 +36,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
               borderRadius={true}
               height="100px"
               objectFit="cover"
-              src="https://image.jpg"
+              src="xxxxx"
               width="200px"
             />
           </ForwardRef(Typography)>
@@ -61,7 +64,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
   <MapMarker
     autoOpen={false}
     draggable={false}
-    key="post-marker-001"
+    key="post-marker-101"
     map={
       Object {
         "setView": [MockFunction],
@@ -70,8 +73,11 @@ exports[`Shallow Snapshot Tests basic 1`] = `
     popup={
       <Link
         className="popup-link"
-        to="/article/001"
+        to="/article/xxx"
       >
+        <React.Fragment>
+          101
+        </React.Fragment>
         <ForwardRef(Stack)
           spacing={1}
         >
@@ -80,7 +86,18 @@ exports[`Shallow Snapshot Tests basic 1`] = `
             component="h2"
             variant="h6"
           >
-            title2
+            タイトル
+          </ForwardRef(Typography)>
+          <ForwardRef(Typography)
+            align="center"
+          >
+            <Image
+              borderRadius={true}
+              height="100px"
+              objectFit="cover"
+              src="xxxxx"
+              width="200px"
+            />
           </ForwardRef(Typography)>
           <ForwardRef(Typography)
             align="center"
@@ -111,7 +128,7 @@ exports[`Shallow Snapshot Tests with hiddenMarkerIds 1`] = `
   <MapMarker
     autoOpen={false}
     draggable={false}
-    key="post-marker-001"
+    key="post-marker-101"
     map={
       Object {
         "setView": [MockFunction],
@@ -120,8 +137,11 @@ exports[`Shallow Snapshot Tests with hiddenMarkerIds 1`] = `
     popup={
       <Link
         className="popup-link"
-        to="/article/001"
+        to="/article/xxx"
       >
+        <React.Fragment>
+          101
+        </React.Fragment>
         <ForwardRef(Stack)
           spacing={1}
         >
@@ -130,7 +150,18 @@ exports[`Shallow Snapshot Tests with hiddenMarkerIds 1`] = `
             component="h2"
             variant="h6"
           >
-            title2
+            タイトル
+          </ForwardRef(Typography)>
+          <ForwardRef(Typography)
+            align="center"
+          >
+            <Image
+              borderRadius={true}
+              height="100px"
+              objectFit="cover"
+              src="xxxxx"
+              width="200px"
+            />
           </ForwardRef(Typography)>
           <ForwardRef(Typography)
             align="center"

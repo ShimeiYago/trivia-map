@@ -8,11 +8,14 @@ export function globalAPIErrorMessage(
       : 'エラーが発生しました。';
 
   switch (status) {
+    case 400:
+      return `入力内容に誤りがあります。`;
     case 401:
-      return `${prefix}ログインが正常に行われているか確認してください。またはしばらく時間を空けてからもう一度お試しください。`;
+      return `${prefix}ログインが正常に行われているか確認してください。`;
+    case 403:
+      return `${prefix}正しいアカウントでログインしてください。`;
     case 404:
       return `${prefix}対象のデータは既に削除されている可能性があります。`;
-    case 400:
     case 500:
       return `${prefix}しばらく時間を空けてからもう一度お試しください。`;
     default:

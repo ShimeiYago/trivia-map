@@ -6,16 +6,15 @@ export const selectReadingArticleId = (state: ReadingArticleRootState) =>
   state.readingArticle.postId;
 export const selectReadingArticleTitle = (state: ReadingArticleRootState) =>
   state.readingArticle.title;
-export const selectReadingArticleContent = (state: ReadingArticleRootState) =>
-  state.readingArticle.content;
+export const selectReadingArticleDescription = (
+  state: ReadingArticleRootState,
+) => state.readingArticle.description;
 export const selectReadingArticlePosition = (state: ReadingArticleRootState) =>
   state.readingArticle.position;
 export const selectReadingArticleImageUrl = (state: ReadingArticleRootState) =>
   state.readingArticle.imageUrl;
-export const selectReadingArticleUserId = (state: ReadingArticleRootState) =>
-  state.readingArticle.userId;
-export const selectReadingArticleUserName = (state: ReadingArticleRootState) =>
-  state.readingArticle.userName;
+export const selectReadingArticleAuthor = (state: ReadingArticleRootState) =>
+  state.readingArticle.author;
 export const selectReadingArticleCreatedAt = (state: ReadingArticleRootState) =>
   state.readingArticle.createdAt;
 export const selectReadingArticleUpdatedAt = (state: ReadingArticleRootState) =>

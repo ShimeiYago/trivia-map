@@ -1,4 +1,4 @@
-import { useAppDispatch, useAppSelector } from 'store';
+import { useAppSelector } from 'store';
 import {
   selectArticleFormId,
   selectArticleFormIsEditting,
@@ -6,15 +6,12 @@ import {
 } from 'store/article-form/selector';
 import { Renderer, Props } from './renderer';
 import { isMobile } from 'react-device-detect';
-import { deleteArticle } from 'store/markers/actions';
 import { useParams } from 'react-router-dom';
 
 export function MapPage() {
-  const dispatch = useAppDispatch();
-
   const { postId } = useParams();
   const articleFormId = useAppSelector(selectArticleFormId);
-  const postIdToEdit = postId ?? articleFormId;
+  const postIdToEdit = Number(postId) ?? articleFormId;
 
   const props: Props = {
     isFormEditting: useAppSelector(selectArticleFormIsEditting),
@@ -22,7 +19,6 @@ export function MapPage() {
     isFormChangedFromLastSaved: useAppSelector(
       selectArticleFormIsFormChangedFromLastSaved,
     ),
-    deleteArticle: (postId: string) => dispatch(deleteArticle(postId)),
   };
 
   if (!postIdToEdit) {

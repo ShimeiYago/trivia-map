@@ -1,6 +1,8 @@
-import { GetMarkersResponse } from 'api/markers-api';
+import { GetMarkersResponseWithPagination } from './../../markers-api';
 
-export function mockGetMarkersResponse(nextUrl?: string): GetMarkersResponse {
+export function mockGetMarkersResponse(
+  nextUrl?: string,
+): GetMarkersResponseWithPagination {
   if (!nextUrl) {
     return mockGetMarkersResponsePage1;
   } else {
@@ -8,52 +10,50 @@ export function mockGetMarkersResponse(nextUrl?: string): GetMarkersResponse {
   }
 }
 
-const mockGetMarkersResponsePage1 = {
-  count: 4,
-  next: 'next-url',
-  previous: null,
+const mockGetMarkersResponsePage1: GetMarkersResponseWithPagination = {
+  nextUrl: 'next-url',
+  previousUrl: null,
+  totalRecords: 4,
+  totalPages: 2,
+  currentPage: 1,
   results: [
     {
-      postId: '000',
-      position: {
-        lat: 22.27,
-        lng: 29.268,
-      },
-      title: 'ノーチラス号',
-      thumbnailImgUrl:
-        'https://www.disneyparkstory.com/wp-content/uploads/2017/02/CIMG9800-150x150.jpg',
+      markerId: 0,
+      lat: 22.27,
+      lng: 29.268,
+      park: 'S',
+      numberOfPublicArticles: 1,
     },
     {
-      postId: '001',
-      position: {
-        lat: 30.524,
-        lng: 15.908,
-      },
-      title: '削岩機',
+      markerId: 1,
+      lat: 30.524,
+      lng: 15.908,
+      park: 'S',
+      numberOfPublicArticles: 1,
     },
   ],
 };
 
-const mockGetMarkersResponsePage2 = {
-  count: 4,
-  next: null,
-  previous: 'previous-url',
+const mockGetMarkersResponsePage2: GetMarkersResponseWithPagination = {
+  nextUrl: null,
+  previousUrl: 'prev-url',
+  totalRecords: 4,
+  totalPages: 2,
+  currentPage: 2,
   results: [
     {
-      postId: '002',
-      position: {
-        lat: -5.616,
-        lng: -126.56,
-      },
-      title: 'S.S.コロンビア号',
+      markerId: 2,
+      lat: -5.616,
+      lng: -126.56,
+      park: 'S',
+      numberOfPublicArticles: 1,
     },
     {
-      postId: '003',
-      position: {
-        lat: -49.937,
-        lng: -106.94,
-      },
-      title: 'S.S.コロンビア号',
+      markerId: 3,
+      lat: -49.937,
+      lng: -106.94,
+      park: 'S',
+      numberOfPublicArticles: 1,
     },
   ],
 };

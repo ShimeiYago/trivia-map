@@ -1,5 +1,5 @@
 import {
-  selectArticleFormContent,
+  selectArticleFormDescription,
   selectArticleFormId,
   selectArticleFormTitle,
   selectArticleFormSubmittingState,
@@ -9,7 +9,7 @@ import {
   selectArticleFormIsEditting,
   selectArticleFormFetchingErrorMsg,
   selectArticleFormLastSavedTitle,
-  selectArticleFormLastSavedContent,
+  selectArticleFormLastSavedDescription,
   selectArticleFormLastSavedPosition,
   selectArticleFormIsFormChangedFromLastSaved,
   selectArticleFormImageDataUrl,
@@ -18,18 +18,17 @@ import {
 import { ArticleFormState, FormError } from '../../model';
 
 const formError: FormError = {
-  errorTitle: 'Inputted contents is invalid.',
-  headerErrors: ['A error is in title.'],
+  errorTitle: 'Inputted descriptions is invalid.',
 };
 
 describe('readingArticle selector', () => {
   const rootState = {
     articleForm: {
-      postId: 'post-id',
+      postId: 100,
       title: 'title',
       lastSavedTitle: 'title',
-      content: 'content',
-      lastSavedContent: 'content',
+      description: 'description',
+      lastSavedDescription: 'description',
       position: { lat: 1, lng: 1 },
       lastSavedPosition: { lat: 1, lng: 1 },
       imageDataUrl: 'https://image-data.jpg',
@@ -44,7 +43,7 @@ describe('readingArticle selector', () => {
   };
 
   it('selectArticleFormId should return articleForm id', () => {
-    expect(selectArticleFormId(rootState)).toEqual('post-id');
+    expect(selectArticleFormId(rootState)).toEqual(100);
   });
 
   it('selectArticleFormTitle should return articleForm title', () => {
@@ -55,12 +54,14 @@ describe('readingArticle selector', () => {
     expect(selectArticleFormLastSavedTitle(rootState)).toEqual('title');
   });
 
-  it('selectArticleFormContent should return articleForm content', () => {
-    expect(selectArticleFormContent(rootState)).toEqual('content');
+  it('selectArticleFormDescription should return articleForm description', () => {
+    expect(selectArticleFormDescription(rootState)).toEqual('description');
   });
 
-  it('selectArticleFormLastSavedContent should return articleForm content', () => {
-    expect(selectArticleFormLastSavedContent(rootState)).toEqual('content');
+  it('selectArticleFormLastSavedDescription should return articleForm description', () => {
+    expect(selectArticleFormLastSavedDescription(rootState)).toEqual(
+      'description',
+    );
   });
 
   it('selectArticleFormPosition should return articleForm position', () => {

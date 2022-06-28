@@ -30,11 +30,6 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       <LoadingProgressBar />
     </ForwardRef(Box)>
   </GlobalMenu>
-  <DeletingConfirmModal
-    onClickCancel={[Function]}
-    onClickConfirm={[Function]}
-    open={false}
-  />
   <SwipeableEdgeDrawer
     bleedingHeight={56}
     edgeLabel={
@@ -114,11 +109,6 @@ exports[`Shallow Snapshot Tests pc view 1`] = `
       <LoadingProgressBar />
     </ForwardRef(Box)>
   </GlobalMenu>
-  <DeletingConfirmModal
-    onClickCancel={[Function]}
-    onClickConfirm={[Function]}
-    open={false}
-  />
   <ForwardRef(Drawer)
     anchor="right"
     open={true}

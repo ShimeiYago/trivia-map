@@ -5,14 +5,16 @@ let wrapper: ShallowWrapper<Props, unknown, Renderer>;
 
 const basicProps: Props = {
   title: 'title',
-  content: 'content',
+  description: 'description',
   articleLoadingState: 'success',
   fetchArticle: jest.fn(),
   isMobile: false,
-  position: { lat: 0, lng: 0 },
+  position: { lat: 0, lng: 0, park: 'S' },
   imageUrl: null,
-  userId: '000',
-  userName: 'Axel',
+  author: {
+    userId: 1,
+    nickname: 'Axel',
+  },
   createdAt: '2022/4/1',
   updatedAt: '2022/5/1',
 };

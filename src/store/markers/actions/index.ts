@@ -1,15 +1,18 @@
-import { MarkerDict } from './../model/index';
 import { globalAPIErrorMessage } from 'constant/global-api-error-message';
-import { selectMarkersDict } from 'store/markers/selector';
+import { selectMarkers } from 'store/markers/selector';
 import { markersSlice } from './../slice/index';
 import { AppThunk } from 'store';
 import {
-  GetMarkersResponse,
   getRemoteMarkers,
-  MarkerTypeAPI,
+  GetMarkersResponseWithPagination,
 } from 'api/markers-api';
 import { ApiError } from 'api/utils/handle-axios-error';
-import { deleteRemoteArticle } from 'api/articles-api/delete-remote-article';
+import { Marker } from '../model';
+import {
+  concatMarkers as helperConcatMarkers,
+  pushMarker as helperPushMarker,
+  deleteOneMarker as helperDeleteOneMarker,
+} from './helpers';
 
 // basic actions
 export const {
@@ -17,11 +20,8 @@ export const {
   fetchFailure,
   fetchStart,
   updateMarkers,
-  updateTotalRecords,
-  updateLoadedRecords,
-  deleteStart,
-  deleteSuccess,
-  deleteFailure,
+  updateTotalPages,
+  updateLoadedPages,
 } = markersSlice.actions;
 
 // fetchMarkers action
@@ -30,28 +30,28 @@ export const fetchMarkers = (): AppThunk => async (dispatch) => {
 
   try {
     let nextUrl: string | null = '';
-    let totalCount = 1;
-    let loadedCount = 0;
+    let totalPages = 1;
+    let loadedPages = 0;
     while (nextUrl !== null) {
-      if (loadedCount >= totalCount) {
+      if (loadedPages >= totalPages) {
         break;
       }
 
-      let res: GetMarkersResponse;
-      if (loadedCount === 0) {
+      let res: GetMarkersResponseWithPagination;
+      if (loadedPages === 0) {
         res = await getRemoteMarkers();
-        totalCount = res.count;
-        dispatch(updateTotalRecords(totalCount));
+        totalPages = res.totalPages;
+        dispatch(updateTotalPages(totalPages));
       } else {
         res = await getRemoteMarkers(nextUrl);
       }
 
       dispatch(appendMarkers(res.results));
 
-      loadedCount += res.results.length;
-      dispatch(updateLoadedRecords(loadedCount));
+      loadedPages += 1;
+      dispatch(updateLoadedPages(loadedPages));
 
-      nextUrl = res.next;
+      nextUrl = res.nextUrl;
     }
     dispatch(fetchSuccess());
   } catch (error) {
@@ -65,45 +65,27 @@ export const fetchMarkers = (): AppThunk => async (dispatch) => {
 
 // appendMarkers action
 export const appendMarkers =
-  (newList: MarkerTypeAPI[]): AppThunk =>
+  (newList: Marker[]): AppThunk =>
   (dispatch, getState) => {
-    const newMarkers: MarkerDict = Object.assign(
-      { ...selectMarkersDict(getState()) },
-      ...newList.map((marker) => ({
-        [marker.postId]: {
-          title: marker.title,
-          position: marker.position,
-          thumbnailImgUrl: marker.thumbnailImgUrl,
-        },
-      })),
+    const newMarkers = helperConcatMarkers(selectMarkers(getState()), newList);
+    dispatch(updateMarkers(newMarkers));
+  };
+
+// pushMarker action
+export const pushMarker =
+  (newMarker: Marker): AppThunk =>
+  (dispatch, getState) => {
+    const newMarkers = helperPushMarker(selectMarkers(getState()), newMarker);
+    dispatch(updateMarkers(newMarkers));
+  };
+
+// deleteOneMarker action
+export const deleteOneMarker =
+  (deletingMarkerId: number): AppThunk =>
+  (dispatch, getState) => {
+    const newMarkers = helperDeleteOneMarker(
+      selectMarkers(getState()),
+      deletingMarkerId,
     );
-
     dispatch(updateMarkers(newMarkers));
-  };
-
-// removeMarkerFromDict action
-export const removeMarkerInDict =
-  (postId: string): AppThunk =>
-  (dispatch, getState) => {
-    const newMarkers: MarkerDict = { ...selectMarkersDict(getState()) };
-    delete newMarkers[postId];
-    dispatch(updateMarkers(newMarkers));
-  };
-
-// deleteArticle action
-export const deleteArticle =
-  (postId: string): AppThunk =>
-  async (dispatch) => {
-    dispatch(deleteStart());
-    try {
-      await deleteRemoteArticle(postId);
-      dispatch(removeMarkerInDict(postId));
-      dispatch(deleteSuccess());
-    } catch (error) {
-      // TODO: take log of error
-      const apiError = error as ApiError<unknown>;
-
-      const errorMsg = globalAPIErrorMessage(apiError.status, 'delete');
-      dispatch(deleteFailure(errorMsg));
-    }
   };

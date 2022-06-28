@@ -4,12 +4,12 @@ import { MapMarker } from 'views/components/moleculars/map-marker';
 import { LatLng, LeafletMouseEvent, Map as LeafletMap } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import './index.css';
-import { MarkerDict } from 'store/markers/model';
 import { Box, Button, Grid, SxProps, Typography } from '@mui/material';
 import { Position } from 'types/position';
 import { DialogScreen } from 'views/components/atoms/dialog-screen';
 import { LoadingState } from 'types/loading-state';
 import { PostMarkers } from './helpers/post-markers';
+import { Marker } from 'store/markers/model';
 
 export class Renderer extends React.Component<Props, State> {
   static readonly defaultProps: Pick<Props, 'newMarkerMode' | 'initZoom'> = {
@@ -115,7 +115,11 @@ export class Renderer extends React.Component<Props, State> {
     }
 
     this.setState({
-      currentPosition: { lat: e.latlng.lat, lng: e.latlng.lng },
+      currentPosition: {
+        lat: e.latlng.lat,
+        lng: e.latlng.lng,
+        park: 'S', // TODO
+      },
       openableNewMarkerPopup: false,
     });
     this.setState({
@@ -246,7 +250,11 @@ export class Renderer extends React.Component<Props, State> {
 
   protected handleDragEndNewMarker = (position: LatLng) => {
     this.setState({
-      currentPosition: { lat: position.lat, lng: position.lng },
+      currentPosition: {
+        lat: position.lat,
+        lng: position.lng,
+        park: 'S', // TODO
+      },
       openableNewMarkerPopup: true,
     });
   };
@@ -271,7 +279,7 @@ export class Renderer extends React.Component<Props, State> {
 }
 
 export type Props = {
-  postMarkers: MarkerDict;
+  postMarkers: Marker[];
   newMarkerMode: boolean;
   articleFormPosition?: Position;
   width?: number;
@@ -281,7 +289,7 @@ export type Props = {
   disabled?: boolean;
   markersFetchingState: LoadingState;
   doNotShowPostMarkers?: boolean;
-  hiddenMarkerIds: string[];
+  hiddenMarkerIds: number[];
   shouldCurrentPositionAsyncWithForm?: boolean;
   additinalMarkers: Position[];
 

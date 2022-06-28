@@ -1,15 +1,14 @@
 import { Props, Renderer } from './renderer';
 import { useAppDispatch, useAppSelector } from 'store';
 import {
-  selectReadingArticleContent,
+  selectReadingArticleDescription,
   selectReadingArticleCreatedAt,
   selectReadingArticleImageUrl,
   selectReadingArticleLoadingState,
   selectReadingArticlePosition,
   selectReadingArticleTitle,
   selectReadingArticleUpdatedAt,
-  selectReadingArticleUserId,
-  selectReadingArticleUserName,
+  selectReadingArticleAuthor,
 } from 'store/reading-article/selector';
 import { fetchReadingArticle } from 'store/reading-article/actions';
 import { useParams } from 'react-router-dom';
@@ -26,18 +25,17 @@ export function Article() {
 
   const props: Props = {
     title: useAppSelector(selectReadingArticleTitle),
-    content: useAppSelector(selectReadingArticleContent),
+    description: useAppSelector(selectReadingArticleDescription),
     position: useAppSelector(selectReadingArticlePosition),
     imageUrl: useAppSelector(selectReadingArticleImageUrl),
-    userId: useAppSelector(selectReadingArticleUserId),
-    userName: useAppSelector(selectReadingArticleUserName),
+    author: useAppSelector(selectReadingArticleAuthor),
     createdAt: useAppSelector(selectReadingArticleCreatedAt),
     updatedAt: useAppSelector(selectReadingArticleUpdatedAt),
 
     articleLoadingState: useAppSelector(selectReadingArticleLoadingState),
     isMobile: isMobile,
 
-    fetchArticle: () => dispatch(fetchReadingArticle(postId)),
+    fetchArticle: () => dispatch(fetchReadingArticle(Number(postId))),
   };
 
   return <Renderer {...props} />;

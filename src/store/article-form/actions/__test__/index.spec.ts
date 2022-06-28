@@ -8,6 +8,7 @@ import {
 import * as GetArticleApiModule from 'api/articles-api/get-remote-article';
 import * as PostArticleApiModule from 'api/articles-api/post-remote-article';
 import * as PutArticleApiModule from 'api/articles-api/put-remote-article';
+import { Position } from 'types/position';
 
 const dispatch = jest.fn();
 let getRemoteArticleSpy: jest.SpyInstance;
@@ -15,28 +16,31 @@ let postRemoteArticleSpy: jest.SpyInstance;
 let putRemoteArticleSpy: jest.SpyInstance;
 
 const formError = {
-  headerErrors: ['an error in title'],
-  fieldErrors: {
-    title: 'title is too long',
-  },
+  title: ['title is too long'],
 };
 const apiError: ApiError<PostArticleApiModule.ValidationError> = {
-  status: 422,
+  status: 400,
   data: formError,
   errorMsg: 'validation error',
 };
 
-const mockPostPutResponse: PostArticleApiModule.PostArticleResponse = {
-  postId: 'postId-000',
-};
+const mockPostPutResponse = {
+  postId: 100,
+  marker: 1,
+} as PostArticleApiModule.PostArticleResponse;
 
 const getState = () => ({
   articleForm: {
-    postId: '000',
+    postId: 100,
     title: 'title',
-    content: 'content',
-    position: { lat: 0, lng: 0 },
+    description: 'description',
+    position: {
+      lat: 0,
+      lng: 0,
+      park: 'S',
+    },
     imageDataUrl: 'https://image-data.jpg',
+    previousMarkerId: 1,
   },
 });
 
@@ -78,7 +82,7 @@ describe('submitNewArticle', () => {
       articleForm: {
         postId: '000',
         title: 'title',
-        content: 'content',
+        description: 'description',
         position: undefined,
       },
     });
@@ -108,12 +112,10 @@ describe('submitNewArticle', () => {
     await appThunk(dispatch, getState, {});
 
     expect(dispatch.mock.calls[1][0].type).toBe('articleForm/submitFailure');
-    expect(dispatch.mock.calls[1][0].payload.headerErrors).toBe(
-      formError.headerErrors,
-    );
-    expect(dispatch.mock.calls[1][0].payload.fieldErrors).toBe(
-      formError.fieldErrors,
-    );
+    expect(dispatch.mock.calls[1][0].payload).toEqual({
+      ...formError,
+      errorTitle: '入力内容に誤りがあります。',
+    });
   });
 });
 
@@ -148,9 +150,9 @@ describe('submitEdittedArticle', () => {
 
     const getStateWithoutPosition = () => ({
       articleForm: {
-        postId: '000',
+        postId: 1,
         title: 'title',
-        content: 'content',
+        description: 'description',
         position: undefined,
       },
     });
@@ -179,38 +181,42 @@ describe('submitEdittedArticle', () => {
     const appThunk = submitEdittedArticle() as any;
     await appThunk(dispatch, getState, {});
 
-    expect(dispatch.mock.calls[1][0].payload.headerErrors).toBe(
-      formError.headerErrors,
-    );
-    expect(dispatch.mock.calls[1][0].payload.fieldErrors).toBe(
-      formError.fieldErrors,
-    );
+    expect(dispatch.mock.calls[1][0].payload).toEqual({
+      ...formError,
+      errorTitle: '入力内容に誤りがあります。',
+    });
   });
 
-  it('throw error if post id is not setted', async () => {
-    putRemoteArticleSpy.mockRejectedValue(apiError);
+  it('call pushMarker if marker is replaced', async () => {
+    const mockPostPutResponseWithMarker2 = {
+      postId: 100,
+      marker: 2,
+    } as PostArticleApiModule.PostArticleResponse;
 
-    const getStateWithoutId = () => ({
-      articleForm: {
-        title: 'title',
-        content: 'content',
-        position: { lat: 0, lng: 0 },
-      },
-    });
+    putRemoteArticleSpy.mockResolvedValue(mockPostPutResponseWithMarker2);
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const appThunk = submitEdittedArticle() as any;
-    await expect(appThunk(dispatch, getStateWithoutId, {})).rejects.toThrow();
+    await appThunk(dispatch, getState, {});
   });
 });
 
 const mockGetResponse: GetArticleApiModule.GetArticleResponse = {
+  postId: 1,
   title: 'title',
-  content: 'content',
-  imageDataUrl: 'https://image-data.jpg',
-  position: { lat: 0, lng: 0 },
-  userId: '000',
-  userName: 'Axel',
+  description: 'description',
+  imageUrl: 'https://image-data.jpg',
+  marker: {
+    markerId: 1,
+    lat: 0,
+    lng: 0,
+    park: 'S',
+    numberOfPublicArticles: 1,
+  },
+  author: {
+    userId: 1,
+    nickname: 'nickname',
+  },
   createdAt: '2022/4/1',
   updatedAt: '2022/5/1',
 };
@@ -225,7 +231,7 @@ describe('fetchArticle', () => {
     getRemoteArticleSpy.mockResolvedValue(mockGetResponse);
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const appThunk = fetchArticle('000') as any;
+    const appThunk = fetchArticle(1) as any;
     await appThunk(dispatch);
 
     expect(dispatch.mock.calls[0][0].type).toBe('articleForm/fetchStart');
@@ -235,7 +241,7 @@ describe('fetchArticle', () => {
     getRemoteArticleSpy.mockResolvedValue(mockGetResponse);
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const appThunk = fetchArticle('000') as any;
+    const appThunk = fetchArticle(1) as any;
     await appThunk(dispatch);
 
     expect(dispatch.mock.calls[1][0].type).toBe('articleForm/fetchSuccess');
@@ -245,7 +251,7 @@ describe('fetchArticle', () => {
     getRemoteArticleSpy.mockRejectedValue(new Error());
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const appThunk = fetchArticle('000') as any;
+    const appThunk = fetchArticle(1) as any;
     await appThunk(dispatch);
 
     expect(dispatch.mock.calls[1][0].type).toBe('articleForm/fetchFailure');
@@ -265,21 +271,27 @@ describe('updateFormField', () => {
     expect(dispatch.mock.calls[0][0].type).toBe('articleForm/updateTitle');
   });
 
-  it('should call updateContent actions', async () => {
+  it('should call updateDescription actions', async () => {
     const param = {
-      content: 'content',
+      description: 'description',
     };
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const appThunk = updateFormField(param) as any;
     await appThunk(dispatch);
 
-    expect(dispatch.mock.calls[0][0].type).toBe('articleForm/updateContent');
+    expect(dispatch.mock.calls[0][0].type).toBe(
+      'articleForm/updateDescription',
+    );
   });
 
   it('should call updatePosition actions', async () => {
     const param = {
-      position: { lat: 0, lng: 0 },
+      position: {
+        lat: 0,
+        lng: 0,
+        park: 'S',
+      } as Position,
     };
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any

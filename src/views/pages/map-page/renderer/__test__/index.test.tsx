@@ -6,7 +6,6 @@ let shallowWrapper: ShallowWrapper<Props, State, Renderer>;
 const props: Props = {
   isFormEditting: false,
   isMobile: true,
-  deleteArticle: jest.fn(),
   isFormChangedFromLastSaved: false,
 };
 
@@ -59,7 +58,7 @@ describe('componentDidMount', () => {
 
   it('should open form modal', () => {
     shallowWrapper.setProps({
-      postIdToEdit: '000',
+      postIdToEdit: 100,
     });
     const instance = shallowWrapper.instance();
 
@@ -136,12 +135,12 @@ describe('handleClickPostEdit', () => {
     const instance = shallowWrapper.instance();
 
     instance.setState({
-      readingArticleId: 'postId-000',
+      readingArticleId: 100,
     });
 
     instance['handleClickPostEdit']();
     expect(instance.state.openFormModal).toBeTruthy;
-    expect(instance.state.edittingPostId).toBe('postId-000');
+    expect(instance.state.edittingPostId).toBe(100);
   });
 });
 
@@ -152,20 +151,6 @@ describe('handleClickPostDelete', () => {
 
     instance['handleClickPostDelete']();
     expect(instance.state.openDialogToConfirmDeleting).toBeTruthy();
-  });
-});
-
-describe('handleConfirmToDelete', () => {
-  it('should call deleteArticle', () => {
-    shallowWrapper = shallow(<Renderer {...props} />);
-    const instance = shallowWrapper.instance();
-
-    instance.setState({
-      readingArticleId: 'postId-000',
-    });
-
-    instance['handleConfirmToDelete']();
-    expect(instance.props.deleteArticle).toBeCalled();
   });
 });
 

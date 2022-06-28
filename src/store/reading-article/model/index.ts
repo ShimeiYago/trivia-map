@@ -1,28 +1,35 @@
 import { LoadingState } from 'types/loading-state';
 import { Position } from 'types/position';
+import { Author } from 'types/author';
 
 export interface ReadingArticleState {
-  postId: string;
+  postId: number;
   title: string;
-  content: string;
+  description: string;
   position: Position;
   imageUrl: string | null;
-  userId: string;
-  userName: string;
+  author: Author;
   createdAt: string;
-  updatedAt?: string;
+  updatedAt: string;
   loadingState: LoadingState;
   errorMsg?: string;
 }
 
 export const initialState: ReadingArticleState = {
-  postId: '',
+  postId: -1,
   title: '',
-  content: '',
+  description: '',
   loadingState: 'waiting',
-  position: { lat: 0, lng: 0 },
+  position: {
+    lat: 0,
+    lng: 0,
+    park: 'L',
+  },
   imageUrl: null,
-  userId: '',
-  userName: '',
+  author: {
+    userId: -1,
+    nickname: '',
+  },
   createdAt: '',
+  updatedAt: '',
 };

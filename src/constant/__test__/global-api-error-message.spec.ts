@@ -1,10 +1,22 @@
 import { globalAPIErrorMessage } from 'constant/global-api-error-message';
 
 describe('globalAPIErrorMessage with get mode', () => {
+  it('return message for 400', () => {
+    const message = globalAPIErrorMessage(400, 'get');
+    expect(message).toBe('入力内容に誤りがあります。');
+  });
+
   it('return message for 401', () => {
     const message = globalAPIErrorMessage(401, 'get');
     expect(message).toBe(
-      'データの取得に失敗しました。ログインが正常に行われているか確認してください。またはしばらく時間を空けてからもう一度お試しください。',
+      'データの取得に失敗しました。ログインが正常に行われているか確認してください。',
+    );
+  });
+
+  it('return message for 403', () => {
+    const message = globalAPIErrorMessage(403, 'get');
+    expect(message).toBe(
+      'データの取得に失敗しました。正しいアカウントでログインしてください。',
     );
   });
 
@@ -15,13 +27,11 @@ describe('globalAPIErrorMessage with get mode', () => {
     );
   });
 
-  it('return message for 400 or 500', () => {
-    const message400 = globalAPIErrorMessage(400, 'get');
-    const message500 = globalAPIErrorMessage(500, 'get');
-    expect(message400).toBe(
+  it('return message for 500', () => {
+    const message = globalAPIErrorMessage(500, 'get');
+    expect(message).toBe(
       'データの取得に失敗しました。しばらく時間を空けてからもう一度お試しください。',
     );
-    expect(message500).toBe(message400);
   });
 
   it('return message for other status', () => {
@@ -34,7 +44,7 @@ describe('globalAPIErrorMessage with submit mode', () => {
   it('return message for 401', () => {
     const message = globalAPIErrorMessage(401, 'submit');
     expect(message).toBe(
-      'エラーが発生しました。ログインが正常に行われているか確認してください。またはしばらく時間を空けてからもう一度お試しください。',
+      'エラーが発生しました。ログインが正常に行われているか確認してください。',
     );
   });
 });

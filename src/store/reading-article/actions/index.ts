@@ -10,7 +10,7 @@ export const { fetchStart, fetchSuccess, fetchFailure } =
 
 // fetchReadingArticle action
 export const fetchReadingArticle =
-  (postId: string): AppThunk =>
+  (postId: number): AppThunk =>
   async (dispatch) => {
     dispatch(fetchStart(postId));
 

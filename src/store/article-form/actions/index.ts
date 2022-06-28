@@ -1,4 +1,3 @@
-import { MarkerTypeAPI } from './../../../api/markers-api/index';
 import { articleFormSlice } from '../slice';
 import { AppThunk } from 'store';
 import { ApiError } from 'api/utils/handle-axios-error';
@@ -11,19 +10,21 @@ import { putRemoteArticle } from 'api/articles-api/put-remote-article';
 import { FormError } from '../model';
 import {
   selectArticleFormTitle,
-  selectArticleFormContent,
+  selectArticleFormDescription,
   selectArticleFormPosition,
   selectArticleFormId,
   selectArticleFormImageDataUrl,
+  selectArticleFormPreviousMarkerId,
 } from '../selector';
 import { globalAPIErrorMessage } from 'constant/global-api-error-message';
-import { appendMarkers } from 'store/markers/actions';
+import { pushMarker, deleteOneMarker } from 'store/markers/actions';
 import { Position } from 'types/position';
+import { Marker } from 'store/markers/model';
 
 // basic actions
 export const {
   updateTitle,
-  updateContent,
+  updateDescription,
   updatePosition,
   submitStart,
   submitFailure,
@@ -43,34 +44,44 @@ export const submitNewArticle = (): AppThunk => async (dispatch, getState) => {
   dispatch(submitStart());
 
   const title = selectArticleFormTitle(getState());
-  const content = selectArticleFormContent(getState());
-  const position = selectArticleFormPosition(getState());
+  const description = selectArticleFormDescription(getState());
+  const position = selectArticleFormPosition(getState()) as Position;
   const imageDataUrl = selectArticleFormImageDataUrl(getState());
+  const isDraft = false; // TODO get from store
 
   try {
-    const res = await postRemoteArticle(title, content, imageDataUrl, position);
+    const res = await postRemoteArticle(
+      title,
+      description,
+      position,
+      imageDataUrl,
+      isDraft,
+    );
     dispatch(submitSuccess(res.postId));
     dispatch(initialize());
 
-    const marker: MarkerTypeAPI = {
-      postId: res.postId,
-      position: position ?? { lat: 0, lng: 0 },
-      title: title, // TODO: res should include thumbnailImageUrl
+    const marker: Marker = {
+      markerId: res.marker,
+      lat: position.lat,
+      lng: position.lng,
+      park: position.park,
+      numberOfPublicArticles: 1,
     };
-    dispatch(appendMarkers([marker]));
+    dispatch(pushMarker(marker));
   } catch (error) {
     const apiError = error as ApiError<ValidationError>;
 
     let formError: FormError;
-    if (apiError.status === 422 && apiError.data) {
+    const errorTitle = globalAPIErrorMessage(apiError.status, 'submit');
+    if (apiError.status === 400 && apiError.data) {
       // validation Error
       formError = {
-        errorTitle: '入力内容に誤りがあります。',
+        errorTitle: errorTitle,
         ...apiError.data,
       };
     } else {
       formError = {
-        errorTitle: globalAPIErrorMessage(apiError.status, 'submit'),
+        errorTitle: errorTitle,
       };
     }
     dispatch(submitFailure(formError));
@@ -82,40 +93,52 @@ export const submitEdittedArticle =
   (): AppThunk => async (dispatch, getState) => {
     dispatch(submitStart());
 
-    const postId = selectArticleFormId(getState());
+    const postId = selectArticleFormId(getState()) as number;
     const title = selectArticleFormTitle(getState());
-    const content = selectArticleFormContent(getState());
-    const position = selectArticleFormPosition(getState());
+    const description = selectArticleFormDescription(getState());
+    const position = selectArticleFormPosition(getState()) as Position;
     const imageDataUrl = selectArticleFormImageDataUrl(getState());
-
-    if (!postId) {
-      throw new Error('post ID is not setted.');
-    }
+    const isDraft = false; // TODO get from store
+    const previousMarkerId = selectArticleFormPreviousMarkerId(getState());
 
     let formError: FormError;
 
     try {
-      await putRemoteArticle(postId, title, content, imageDataUrl, position);
+      const res = await putRemoteArticle(
+        postId,
+        title,
+        description,
+        position,
+        imageDataUrl,
+        isDraft,
+      );
       dispatch(submitSuccess(postId));
       dispatch(initialize());
 
-      const marker: MarkerTypeAPI = {
-        postId: postId,
-        position: position ?? { lat: 0, lng: 0 },
-        title: title, // TODO: res should include thumbnailImageUrl
+      const updatedMarker: Marker = {
+        markerId: res.marker,
+        lat: position.lat,
+        lng: position.lng,
+        park: position.park,
+        numberOfPublicArticles: 1,
       };
-      dispatch(appendMarkers([marker]));
+
+      if (previousMarkerId && updatedMarker.markerId !== previousMarkerId) {
+        dispatch(deleteOneMarker(previousMarkerId));
+        dispatch(pushMarker(updatedMarker));
+      }
     } catch (error) {
       const apiError = error as ApiError<ValidationError>;
-      if (apiError.status === 422 && apiError.data) {
+      const errorTitle = globalAPIErrorMessage(apiError.status, 'submit');
+      if (apiError.status === 400 && apiError.data) {
         // validation Error
         formError = {
-          errorTitle: '入力内容に誤りがあります。',
+          errorTitle: errorTitle,
           ...apiError.data,
         };
       } else {
         formError = {
-          errorTitle: globalAPIErrorMessage(apiError.status, 'submit'),
+          errorTitle: errorTitle,
         };
       }
       dispatch(submitFailure(formError));
@@ -124,7 +147,7 @@ export const submitEdittedArticle =
 
 // fetchArticle action
 export const fetchArticle =
-  (postId: string): AppThunk =>
+  (postId: number): AppThunk =>
   async (dispatch) => {
     dispatch(fetchStart(postId));
 
@@ -148,9 +171,9 @@ export const updateFormField =
     if (param.title !== undefined) {
       dispatch(updateTitle(param.title));
     }
-    // have to pass case param.content=''
-    if (param.content !== undefined) {
-      dispatch(updateContent(param.content));
+    // have to pass case param.description=''
+    if (param.description !== undefined) {
+      dispatch(updateDescription(param.description));
     }
     if (param.position) {
       dispatch(updatePosition(param.position));
@@ -164,7 +187,7 @@ export const updateFormField =
 
 export type UpdateFormFieldParam = {
   title?: string;
-  content?: string;
+  description?: string;
   position?: Position;
   imageDataUrl?: string | null;
 };

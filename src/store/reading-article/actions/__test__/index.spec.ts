@@ -5,12 +5,21 @@ const dispatch = jest.fn();
 let getRemoteArticleSpy: jest.SpyInstance;
 
 const mockResponse: GetArticleApiModule.GetArticleResponse = {
+  postId: 1,
   title: 'title',
-  content: 'content',
-  imageDataUrl: 'https://image-data.jpg',
-  position: { lat: 0, lng: 0 },
-  userId: '000',
-  userName: 'Axel',
+  description: 'description',
+  imageUrl: 'https://image-data.jpg',
+  marker: {
+    markerId: 1,
+    lat: 0,
+    lng: 0,
+    park: 'S',
+    numberOfPublicArticles: 1,
+  },
+  author: {
+    userId: 1,
+    nickname: 'nickname',
+  },
   createdAt: '2022/4/1',
   updatedAt: '2022/5/1',
 };
@@ -25,7 +34,7 @@ describe('fetchReadingArticle', () => {
     getRemoteArticleSpy.mockResolvedValue(mockResponse);
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const appThunk = fetchReadingArticle('postId-000') as any;
+    const appThunk = fetchReadingArticle(100) as any;
     await appThunk(dispatch);
 
     expect(dispatch.mock.calls[0][0].type).toBe('readingArticle/fetchStart');
@@ -35,7 +44,7 @@ describe('fetchReadingArticle', () => {
     getRemoteArticleSpy.mockResolvedValue(mockResponse);
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const appThunk = fetchReadingArticle('postId-000') as any;
+    const appThunk = fetchReadingArticle(100) as any;
     await appThunk(dispatch);
 
     expect(dispatch.mock.calls[1][0].type).toBe('readingArticle/fetchSuccess');
@@ -45,7 +54,7 @@ describe('fetchReadingArticle', () => {
     getRemoteArticleSpy.mockRejectedValue(new Error());
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const appThunk = fetchReadingArticle('postId-000') as any;
+    const appThunk = fetchReadingArticle(100) as any;
     await appThunk(dispatch);
 
     expect(dispatch.mock.calls[1][0].type).toBe('readingArticle/fetchFailure');

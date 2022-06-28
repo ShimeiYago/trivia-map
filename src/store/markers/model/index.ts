@@ -1,26 +1,23 @@
 import { LoadingState } from 'types/loading-state';
-import { Position } from 'types/position';
 
-export interface MarkerDict {
-  [shopId: string]: {
-    position: Position;
-    title: string;
-    thumbnailImgUrl?: string;
-  };
+export interface Marker {
+  markerId: number;
+  lat: number;
+  lng: number;
+  park: 'L' | 'S';
+  numberOfPublicArticles: number;
 }
 
 export interface MarkersState {
-  markers: MarkerDict;
+  markers: Marker[];
   fetchingState: LoadingState;
   errorMsg?: string;
-  loadedRecords: number;
-  totalRecords?: number;
-  deletingState: LoadingState;
+  loadedPages: number;
+  totalPages?: number;
 }
 
 export const initialState: MarkersState = {
-  markers: {},
+  markers: [],
   fetchingState: 'waiting',
-  loadedRecords: 0,
-  deletingState: 'waiting',
+  loadedPages: 0,
 };

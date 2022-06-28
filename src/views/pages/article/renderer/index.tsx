@@ -18,6 +18,7 @@ import { TriviaMap } from 'views/components/organisms/trivia-map';
 import { wrapper, contentWrapper, mapTitle, createdAtBox } from '../styles';
 import MapIcon from '@mui/icons-material/Map';
 import { deepOrange } from '@mui/material/colors';
+import { Author } from 'types/author';
 
 export class Renderer extends React.Component<Props> {
   componentDidMount() {
@@ -58,10 +59,10 @@ export class Renderer extends React.Component<Props> {
     const {
       articleLoadingState,
       title,
-      content,
+      description,
       position,
       imageUrl,
-      userName,
+      author,
       createdAt,
       updatedAt,
     } = this.props;
@@ -86,9 +87,9 @@ export class Renderer extends React.Component<Props> {
           spacing={1}
         >
           <Avatar sx={{ bgcolor: deepOrange[500], width: 30, height: 30 }}>
-            {userName.slice(0, 1)}
+            {author.nickname.slice(0, 1)}
           </Avatar>
-          <Typography color="gray">{userName}</Typography>
+          <Typography color="gray">{author.nickname}</Typography>
         </Stack>
 
         <Typography component="h2" variant="h4" align="center">
@@ -104,7 +105,7 @@ export class Renderer extends React.Component<Props> {
 
         {imageUrl && <Image src={imageUrl} width="full" />}
 
-        <Typography>{content}</Typography>
+        <Typography>{description}</Typography>
 
         <Divider />
 
@@ -136,11 +137,10 @@ export class Renderer extends React.Component<Props> {
 
 export type Props = {
   title: string;
-  content: string;
+  description: string;
   position: Position;
   imageUrl: string | null;
-  userId: string;
-  userName: string;
+  author: Author;
   createdAt: string;
   updatedAt?: string;
   articleLoadingState: LoadingState;

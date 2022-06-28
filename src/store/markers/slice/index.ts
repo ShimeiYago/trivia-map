@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { initialState, MarkerDict } from '../model';
+import { initialState, Marker } from '../model';
 
 export const markersSlice = createSlice({
   name: 'markers',
@@ -19,30 +19,16 @@ export const markersSlice = createSlice({
       state.fetchingState = 'success';
     },
 
-    updateMarkers(state, action: PayloadAction<MarkerDict>) {
+    updateMarkers(state, action: PayloadAction<Marker[]>) {
       state.markers = action.payload;
     },
 
-    updateLoadedRecords(state, action: PayloadAction<number>) {
-      state.loadedRecords = action.payload;
+    updateLoadedPages(state, action: PayloadAction<number>) {
+      state.loadedPages = action.payload;
     },
 
-    updateTotalRecords(state, action: PayloadAction<number>) {
-      state.totalRecords = action.payload;
-    },
-
-    deleteStart(state) {
-      state.deletingState = 'loading';
-      state.errorMsg = undefined;
-    },
-
-    deleteFailure(state, action: PayloadAction<string>) {
-      state.deletingState = 'error';
-      state.errorMsg = action.payload;
-    },
-
-    deleteSuccess(state) {
-      state.deletingState = 'success';
+    updateTotalPages(state, action: PayloadAction<number>) {
+      state.totalPages = action.payload;
     },
   },
 });

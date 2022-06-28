@@ -1,7 +1,7 @@
 import { Props, Renderer } from './renderer';
 import { useAppDispatch, useAppSelector } from 'store';
 import {
-  selectArticleFormContent,
+  selectArticleFormDescription,
   selectArticleFormFetchingState,
   selectArticleFormFormError,
   selectArticleFormPosition,
@@ -26,7 +26,7 @@ export function ArticleForm(ownProps: OwnProps) {
   const props: Props = {
     postId: ownProps.postId,
     title: useAppSelector(selectArticleFormTitle),
-    content: useAppSelector(selectArticleFormContent),
+    description: useAppSelector(selectArticleFormDescription),
     position: useAppSelector(selectArticleFormPosition),
     imageDataUrl: useAppSelector(selectArticleFormImageDataUrl),
     submittingState: useAppSelector(selectArticleFormSubmittingState),
@@ -38,7 +38,7 @@ export function ArticleForm(ownProps: OwnProps) {
       dispatch(updateFormField(param)),
     submitNewArticle: () => dispatch(submitNewArticle()),
     submitEdittedArticle: () => dispatch(submitEdittedArticle()),
-    fetchArticle: (postId: string) => dispatch(fetchArticle(postId)),
+    fetchArticle: (postId: number) => dispatch(fetchArticle(postId)),
     initialize: () => dispatch(initialize()),
     handleClickSelectPosition: ownProps.onClickSelectPosition,
     updateIsEditting: (isEditting: boolean) =>
@@ -50,7 +50,7 @@ export function ArticleForm(ownProps: OwnProps) {
 }
 
 type OwnProps = {
-  postId?: string;
+  postId?: number;
   onClickSelectPosition?: () => void;
   onClose?: () => void;
 };

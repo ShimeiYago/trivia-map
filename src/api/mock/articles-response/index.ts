@@ -39,7 +39,7 @@ export const mockGetArticlesPreviewsResponse: GetArticlesPreviewsResponse = {
   nextUrl: null,
   previousUrl: null,
   totalRecords: 2,
-  totalPages: 1,
+  totalPages: 2,
   currentPage: 1,
   results: [
     {

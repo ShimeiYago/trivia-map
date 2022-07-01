@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shallow Snapshot Tests basic 1`] = `
+<Fragment>
+  <ForwardRef(CircularProgress) />
+</Fragment>
+`;
+
+exports[`Shallow Snapshot Tests with api error 1`] = `
+<Fragment>
+  Error Message (TODO)
+</Fragment>
+`;
+
+exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
+<Fragment>
+  <ForwardRef(Stack)
+    spacing={4}
+  >
+    <Link
+      className="preview-link"
+      key="preview-1"
+      to="/article/1"
+    >
+      <ForwardRef(Card)>
+        <ForwardRef(Stack)
+          spacing={1}
+        >
+          <ForwardRef(Typography)
+            align="center"
+            component="h2"
+            variant="h6"
+          >
+            ノーチラス号のエンジン
+          </ForwardRef(Typography)>
+          <ForwardRef(Typography)
+            align="center"
+          >
+            <Image
+              borderRadius={true}
+              height="100px"
+              objectFit="cover"
+              src="https://www.disneyparkstory.com/wp-content/uploads/2017/02/CIMG9800.jpg"
+              width="200px"
+            />
+          </ForwardRef(Typography)>
+          <ForwardRef(Typography)
+            align="center"
+          >
+            <ForwardRef(Typography)
+              color="primary"
+              variant="button"
+            >
+              くわしく読む
+            </ForwardRef(Typography)>
+          </ForwardRef(Typography)>
+        </ForwardRef(Stack)>
+      </ForwardRef(Card)>
+    </Link>
+    <Link
+      className="preview-link"
+      key="preview-2"
+      to="/article/2"
+    >
+      <ForwardRef(Card)>
+        <ForwardRef(Stack)
+          spacing={1}
+        >
+          <ForwardRef(Typography)
+            align="center"
+            component="h2"
+            variant="h6"
+          >
+            ノーチラス号の名前の由来
+          </ForwardRef(Typography)>
+          <ForwardRef(Typography)
+            align="center"
+          >
+            <ForwardRef(Typography)
+              color="primary"
+              variant="button"
+            >
+              くわしく読む
+            </ForwardRef(Typography)>
+          </ForwardRef(Typography)>
+        </ForwardRef(Stack)>
+      </ForwardRef(Card)>
+    </Link>
+  </ForwardRef(Stack)>
+  <ForwardRef(Pagination)
+    count={2}
+    onChange={[Function]}
+  />
+</Fragment>
+`;

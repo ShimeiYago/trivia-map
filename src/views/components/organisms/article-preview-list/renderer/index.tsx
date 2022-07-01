@@ -1,0 +1,148 @@
+import React from 'react';
+import {
+  CircularProgress,
+  Pagination,
+  Stack,
+  Typography,
+  Card,
+} from '@mui/material';
+import { LoadingState } from 'types/loading-state';
+import {
+  getArticlesPreviews,
+  PreviewKeyType,
+  GetArticlesPreviewsResponseEachItem,
+} from 'api/articles-api/get-articles-previews';
+import { ApiError } from 'api/utils/handle-axios-error';
+import { globalAPIErrorMessage } from 'constant/global-api-error-message';
+import { Link } from 'react-router-dom';
+import { Image } from 'views/components/atoms/image';
+import styles from './index.module.css';
+
+export class Renderer extends React.Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
+    this.state = {
+      loadingState: 'waiting',
+    };
+  }
+
+  componentDidMount() {
+    this.fetchArticlesPreviews();
+  }
+
+  render() {
+    const showPagination = this.state.totalPages && this.state.totalPages > 1;
+
+    return (
+      <>
+        {this.renderPreviewList()}
+        {showPagination && (
+          <Pagination
+            count={this.state.totalPages}
+            onChange={this.handleChangePagination}
+          />
+        )}
+      </>
+    );
+  }
+
+  protected renderPreviewList() {
+    const { loadingState, articlesPreviews } = this.state;
+    if (loadingState === 'waiting' || loadingState === 'loading') {
+      return <CircularProgress />;
+    }
+
+    if (loadingState === 'error') {
+      return <>Error Message (TODO)</>;
+    }
+
+    const previewList = articlesPreviews?.map((preview) => {
+      const { postId, title, imageUrl } = preview;
+
+      return (
+        <Link
+          to={`/article/${postId}`}
+          key={`preview-${postId}`}
+          className={styles['preview-link']}
+        >
+          <Card>
+            <Stack spacing={1}>
+              <Typography component="h2" variant="h6" align="center">
+                {title}
+              </Typography>
+
+              {imageUrl && (
+                <Typography align="center">
+                  <Image
+                    src={imageUrl}
+                    width="200px"
+                    height="100px"
+                    objectFit="cover"
+                    borderRadius
+                  />
+                </Typography>
+              )}
+
+              <Typography align="center">
+                <Typography variant="button" color="primary">
+                  くわしく読む
+                </Typography>
+              </Typography>
+            </Stack>
+          </Card>
+        </Link>
+      );
+    });
+
+    return <Stack spacing={4}>{previewList}</Stack>;
+  }
+
+  protected async fetchArticlesPreviews(page?: number) {
+    this.setState({
+      loadingState: 'loading',
+      articlesPreviews: undefined,
+      errorMessage: undefined,
+    });
+
+    try {
+      const res = await getArticlesPreviews({
+        key: this.props.type,
+        keyId: this.props.keyId,
+        page: page,
+      });
+
+      this.setState({
+        loadingState: 'success',
+        totalPages: res.totalPages,
+        articlesPreviews: res.results,
+      });
+    } catch (error) {
+      const apiError = error as ApiError<unknown>;
+      const errorMsg = globalAPIErrorMessage(apiError.status, 'get');
+
+      this.setState({
+        loadingState: 'error',
+        errorMessage: errorMsg,
+      });
+    }
+  }
+
+  protected handleChangePagination = (
+    event: React.ChangeEvent<unknown>,
+    page: number,
+  ) => {
+    this.fetchArticlesPreviews(page);
+  };
+}
+
+export type Props = {
+  type: PreviewKeyType;
+  keyId?: number;
+};
+
+export type State = {
+  loadingState: LoadingState;
+  totalPages?: number;
+  articlesPreviews?: GetArticlesPreviewsResponseEachItem[];
+  errorMessage?: string;
+};

@@ -12,46 +12,14 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       }
     }
     popup={
-      <Link
-        className="popup-link"
-        to="/article/xxx"
+      <ForwardRef(Box)
+        className="popup-content"
       >
-        <React.Fragment>
-          100
-        </React.Fragment>
-        <ForwardRef(Stack)
-          spacing={1}
-        >
-          <ForwardRef(Typography)
-            align="center"
-            component="h2"
-            variant="h6"
-          >
-            タイトル
-          </ForwardRef(Typography)>
-          <ForwardRef(Typography)
-            align="center"
-          >
-            <Image
-              borderRadius={true}
-              height="100px"
-              objectFit="cover"
-              src="xxxxx"
-              width="200px"
-            />
-          </ForwardRef(Typography)>
-          <ForwardRef(Typography)
-            align="center"
-          >
-            <ForwardRef(Typography)
-              color="primary"
-              variant="button"
-            >
-              くわしく読む
-            </ForwardRef(Typography)>
-          </ForwardRef(Typography)>
-        </ForwardRef(Stack)>
-      </Link>
+        <Renderer
+          keyId={100}
+          type="markerId"
+        />
+      </ForwardRef(Box)>
     }
     position={
       Object {
@@ -71,46 +39,14 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       }
     }
     popup={
-      <Link
-        className="popup-link"
-        to="/article/xxx"
+      <ForwardRef(Box)
+        className="popup-content"
       >
-        <React.Fragment>
-          101
-        </React.Fragment>
-        <ForwardRef(Stack)
-          spacing={1}
-        >
-          <ForwardRef(Typography)
-            align="center"
-            component="h2"
-            variant="h6"
-          >
-            タイトル
-          </ForwardRef(Typography)>
-          <ForwardRef(Typography)
-            align="center"
-          >
-            <Image
-              borderRadius={true}
-              height="100px"
-              objectFit="cover"
-              src="xxxxx"
-              width="200px"
-            />
-          </ForwardRef(Typography)>
-          <ForwardRef(Typography)
-            align="center"
-          >
-            <ForwardRef(Typography)
-              color="primary"
-              variant="button"
-            >
-              くわしく読む
-            </ForwardRef(Typography)>
-          </ForwardRef(Typography)>
-        </ForwardRef(Stack)>
-      </Link>
+        <Renderer
+          keyId={101}
+          type="markerId"
+        />
+      </ForwardRef(Box)>
     }
     position={
       Object {
@@ -135,46 +71,14 @@ exports[`Shallow Snapshot Tests with hiddenMarkerIds 1`] = `
       }
     }
     popup={
-      <Link
-        className="popup-link"
-        to="/article/xxx"
+      <ForwardRef(Box)
+        className="popup-content"
       >
-        <React.Fragment>
-          101
-        </React.Fragment>
-        <ForwardRef(Stack)
-          spacing={1}
-        >
-          <ForwardRef(Typography)
-            align="center"
-            component="h2"
-            variant="h6"
-          >
-            タイトル
-          </ForwardRef(Typography)>
-          <ForwardRef(Typography)
-            align="center"
-          >
-            <Image
-              borderRadius={true}
-              height="100px"
-              objectFit="cover"
-              src="xxxxx"
-              width="200px"
-            />
-          </ForwardRef(Typography)>
-          <ForwardRef(Typography)
-            align="center"
-          >
-            <ForwardRef(Typography)
-              color="primary"
-              variant="button"
-            >
-              くわしく読む
-            </ForwardRef(Typography)>
-          </ForwardRef(Typography)>
-        </ForwardRef(Stack)>
-      </Link>
+        <Renderer
+          keyId={101}
+          type="markerId"
+        />
+      </ForwardRef(Box)>
     }
     position={
       Object {

@@ -16,7 +16,8 @@ import { ApiError } from 'api/utils/handle-axios-error';
 import { globalAPIErrorMessage } from 'constant/global-api-error-message';
 import { Link } from 'react-router-dom';
 import { Image } from 'views/components/atoms/image';
-import styles from './index.module.css';
+import classes from './index.module.css';
+import * as sxProps from './styles';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -31,18 +32,11 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   render() {
-    const showPagination = this.state.totalPages && this.state.totalPages > 1;
-
     return (
-      <>
+      <Stack spacing={2}>
         {this.renderPreviewList()}
-        {showPagination && (
-          <Pagination
-            count={this.state.totalPages}
-            onChange={this.handleChangePagination}
-          />
-        )}
-      </>
+        {this.renderPagination()}
+      </Stack>
     );
   }
 
@@ -63,9 +57,9 @@ export class Renderer extends React.Component<Props, State> {
         <Link
           to={`/article/${postId}`}
           key={`preview-${postId}`}
-          className={styles['preview-link']}
+          className={classes['preview-link']}
         >
-          <Card>
+          <Card sx={sxProps.card}>
             <Stack spacing={1}>
               <Typography component="h2" variant="h6" align="center">
                 {title}
@@ -84,9 +78,7 @@ export class Renderer extends React.Component<Props, State> {
               )}
 
               <Typography align="center">
-                <Typography variant="button" color="primary">
-                  くわしく読む
-                </Typography>
+                <Typography variant="button">＞ くわしく読む</Typography>
               </Typography>
             </Stack>
           </Card>
@@ -94,7 +86,23 @@ export class Renderer extends React.Component<Props, State> {
       );
     });
 
-    return <Stack spacing={4}>{previewList}</Stack>;
+    return <>{previewList}</>;
+  }
+
+  protected renderPagination() {
+    const showPagination = this.state.totalPages && this.state.totalPages > 1;
+    if (!showPagination) {
+      return null;
+    }
+
+    return (
+      <div className={classes['pagination-wrapper']}>
+        <Pagination
+          count={this.state.totalPages}
+          onChange={this.handleChangePagination}
+        />
+      </div>
+    );
   }
 
   protected async fetchArticlesPreviews(page?: number) {

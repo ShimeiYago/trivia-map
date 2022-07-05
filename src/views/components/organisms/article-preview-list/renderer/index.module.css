@@ -2,3 +2,11 @@
   text-decoration: none;
   display: block;
 }
+
+.pagination-wrapper {
+  text-align: center;
+}
+
+.pagination-wrapper nav {
+  display: inline-block;
+}

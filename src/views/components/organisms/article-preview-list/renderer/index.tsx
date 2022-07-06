@@ -18,6 +18,8 @@ import { Link } from 'react-router-dom';
 import { Image } from 'views/components/atoms/image';
 import classes from './index.module.css';
 import * as sxProps from './styles';
+import { IconAndText } from 'views/components/atoms/icon-and-text';
+import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -78,7 +80,12 @@ export class Renderer extends React.Component<Props, State> {
               )}
 
               <Typography align="center">
-                <Typography variant="button">＞ くわしく読む</Typography>
+                <IconAndText
+                  iconComponent={<ArrowRightIcon />}
+                  text="くわしく読む"
+                  component="span"
+                  variant="button"
+                />
               </Typography>
             </Stack>
           </Card>

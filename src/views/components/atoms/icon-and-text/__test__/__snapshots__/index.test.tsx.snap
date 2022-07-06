@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shallow Snapshot Tests basic 1`] = `
+<ForwardRef(Typography)
+  iconComponent={<Memo />}
+  sx={
+    Object {
+      "alignItems": "center",
+      "display": "flex",
+      "flexWrap": "wrap",
+      "justifyContent": "center",
+    }
+  }
+  text="地図"
+>
+  <Memo(ForwardRef(MapIcon))
+    fontSize="inherit"
+  />
+  地図
+</ForwardRef(Typography)>
+`;

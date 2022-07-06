@@ -15,10 +15,11 @@ import { ArticlePaper } from 'views/components/atoms/article-paper';
 import { Position } from 'types/position';
 import { Image } from 'views/components/atoms/image';
 import { TriviaMap } from 'views/components/organisms/trivia-map';
-import { wrapper, contentWrapper, mapTitle, createdAtBox } from '../styles';
+import { wrapper, contentWrapper, createdAtBox } from '../styles';
 import MapIcon from '@mui/icons-material/Map';
 import { deepOrange } from '@mui/material/colors';
 import { Author } from 'types/author';
+import { IconAndText } from 'views/components/atoms/icon-and-text';
 
 export class Renderer extends React.Component<Props> {
   componentDidMount() {
@@ -109,10 +110,12 @@ export class Renderer extends React.Component<Props> {
 
         <Divider />
 
-        <Typography sx={mapTitle} component="h3" variant="h5">
-          <MapIcon fontSize="inherit" />
-          地図
-        </Typography>
+        <IconAndText
+          iconComponent={<MapIcon />}
+          text="地図"
+          component="h3"
+          variant="h5"
+        />
 
         <TriviaMap
           height={300}

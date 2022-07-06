@@ -57,11 +57,12 @@ exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
         <ForwardRef(Typography)
           align="center"
         >
-          <ForwardRef(Typography)
+          <IconAndText
+            component="span"
+            iconComponent={<Memo />}
+            text="くわしく読む"
             variant="button"
-          >
-            ＞ くわしく読む
-          </ForwardRef(Typography)>
+          />
         </ForwardRef(Typography)>
       </ForwardRef(Stack)>
     </ForwardRef(Card)>
@@ -92,11 +93,12 @@ exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
         <ForwardRef(Typography)
           align="center"
         >
-          <ForwardRef(Typography)
+          <IconAndText
+            component="span"
+            iconComponent={<Memo />}
+            text="くわしく読む"
             variant="button"
-          >
-            ＞ くわしく読む
-          </ForwardRef(Typography)>
+          />
         </ForwardRef(Typography)>
       </ForwardRef(Stack)>
     </ForwardRef(Card)>

@@ -98,23 +98,12 @@ exports[`Shallow Snapshot Tests basic 1`] = `
                 description
               </ForwardRef(Typography)>
               <ForwardRef(Divider) />
-              <ForwardRef(Typography)
+              <IconAndText
                 component="h3"
-                sx={
-                  Object {
-                    "alignItems": "center",
-                    "display": "flex",
-                    "flexWrap": "wrap",
-                    "justifyContent": "center",
-                  }
-                }
+                iconComponent={<Memo />}
+                text="地図"
                 variant="h5"
-              >
-                <Memo(ForwardRef(MapIcon))
-                  fontSize="inherit"
-                />
-                地図
-              </ForwardRef(Typography)>
+              />
               <TriviaMap
                 additinalMarkers={
                   Array [
@@ -327,23 +316,12 @@ exports[`Shallow Snapshot Tests mobile view 1`] = `
                 description
               </ForwardRef(Typography)>
               <ForwardRef(Divider) />
-              <ForwardRef(Typography)
+              <IconAndText
                 component="h3"
-                sx={
-                  Object {
-                    "alignItems": "center",
-                    "display": "flex",
-                    "flexWrap": "wrap",
-                    "justifyContent": "center",
-                  }
-                }
+                iconComponent={<Memo />}
+                text="地図"
                 variant="h5"
-              >
-                <Memo(ForwardRef(MapIcon))
-                  fontSize="inherit"
-                />
-                地図
-              </ForwardRef(Typography)>
+              />
               <TriviaMap
                 additinalMarkers={
                   Array [
@@ -487,23 +465,12 @@ exports[`Shallow Snapshot Tests with image 1`] = `
                 description
               </ForwardRef(Typography)>
               <ForwardRef(Divider) />
-              <ForwardRef(Typography)
+              <IconAndText
                 component="h3"
-                sx={
-                  Object {
-                    "alignItems": "center",
-                    "display": "flex",
-                    "flexWrap": "wrap",
-                    "justifyContent": "center",
-                  }
-                }
+                iconComponent={<Memo />}
+                text="地図"
                 variant="h5"
-              >
-                <Memo(ForwardRef(MapIcon))
-                  fontSize="inherit"
-                />
-                地図
-              </ForwardRef(Typography)>
+              />
               <TriviaMap
                 additinalMarkers={
                   Array [

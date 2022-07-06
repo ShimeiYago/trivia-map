@@ -99,7 +99,7 @@ export class Renderer extends React.Component<Props> {
 
         <Box sx={createdAtBox}>
           <Typography>{`投稿日 ${createdAt}`}</Typography>
-          {updatedAt && <Typography>{`更新日 ${updatedAt}`}</Typography>}
+          {<Typography>{`更新日 ${updatedAt}`}</Typography>}
         </Box>
 
         <Divider />
@@ -145,7 +145,7 @@ export type Props = {
   imageUrl: string | null;
   author: Author;
   createdAt: string;
-  updatedAt?: string;
+  updatedAt: string;
   articleLoadingState: LoadingState;
   isMobile: boolean;
 

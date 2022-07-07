@@ -16,7 +16,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
 <ForwardRef(Stack)
   spacing={2}
 >
-  <ForwardRef(CircularProgress) />
+  <CenterSpinner />
 </ForwardRef(Stack)>
 `;
 

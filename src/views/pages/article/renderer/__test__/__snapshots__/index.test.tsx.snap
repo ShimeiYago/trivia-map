@@ -190,16 +190,7 @@ exports[`Shallow Snapshot Tests loading 1`] = `
           <ArticlePaper
             variant="main"
           >
-            <ForwardRef(Box)
-              sx={
-                Object {
-                  "display": "flex",
-                  "justifyContent": "center",
-                }
-              }
-            >
-              <ForwardRef(CircularProgress) />
-            </ForwardRef(Box)>
+            <CenterSpinner />
           </ArticlePaper>
         </ForwardRef(Grid)>
         <ForwardRef(Grid)

@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  CircularProgress,
-  Pagination,
-  Stack,
-  Typography,
-  Card,
-  Alert,
-} from '@mui/material';
+import { Pagination, Stack, Typography, Card, Alert } from '@mui/material';
 import { LoadingState } from 'types/loading-state';
 import {
   getArticlesPreviews,
@@ -21,6 +14,7 @@ import classes from './index.module.css';
 import * as sxProps from './styles';
 import { IconAndText } from 'views/components/atoms/icon-and-text';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
+import { CenterSpinner } from 'views/components/atoms/center-spinner';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -46,7 +40,7 @@ export class Renderer extends React.Component<Props, State> {
   protected renderPreviewList() {
     const { loadingState, articlesPreviews, errorMessage } = this.state;
     if (loadingState === 'waiting' || loadingState === 'loading') {
-      return <CircularProgress />;
+      return <CenterSpinner />;
     }
 
     if (loadingState === 'error') {

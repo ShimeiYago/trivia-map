@@ -1,11 +1,10 @@
 import React from 'react';
-import { Typography, Stack } from '@mui/material';
+import { Box } from '@mui/material';
 import { Marker } from 'store/markers/model';
 import { LatLng, Map as LeafletMap } from 'leaflet';
 import { MapMarker } from 'views/components/moleculars/map-marker';
-import { Image } from 'views/components/atoms/image';
-import { Link } from 'react-router-dom';
 import styles from './index.module.css';
+import { ArticlePreviewList } from 'views/components/organisms/article-preview-list';
 
 export class PostMarkers extends React.Component<Props> {
   render() {
@@ -32,38 +31,10 @@ export class PostMarkers extends React.Component<Props> {
   }
 
   protected renderPopupContents = (markerId: number) => {
-    // TODO: Show list of article
-    const postId = 'xxx';
-    const title = 'タイトル';
-    const imageUrl = 'xxxxx';
-
     return (
-      <Link to={`/article/${postId}`} className={styles['popup-link']}>
-        <>{markerId}</>
-        <Stack spacing={1}>
-          <Typography component="h2" variant="h6" align="center">
-            {title}
-          </Typography>
-
-          {imageUrl && (
-            <Typography align="center">
-              <Image
-                src={imageUrl}
-                width="200px"
-                height="100px"
-                objectFit="cover"
-                borderRadius
-              />
-            </Typography>
-          )}
-
-          <Typography align="center">
-            <Typography variant="button" color="primary">
-              くわしく読む
-            </Typography>
-          </Typography>
-        </Stack>
-      </Link>
+      <Box className={styles['popup-content']}>
+        <ArticlePreviewList type="markerId" keyId={markerId} />
+      </Box>
     );
   };
 }

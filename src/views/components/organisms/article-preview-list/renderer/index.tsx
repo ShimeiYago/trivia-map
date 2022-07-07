@@ -5,6 +5,7 @@ import {
   Stack,
   Typography,
   Card,
+  Alert,
 } from '@mui/material';
 import { LoadingState } from 'types/loading-state';
 import {
@@ -43,13 +44,13 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   protected renderPreviewList() {
-    const { loadingState, articlesPreviews } = this.state;
+    const { loadingState, articlesPreviews, errorMessage } = this.state;
     if (loadingState === 'waiting' || loadingState === 'loading') {
       return <CircularProgress />;
     }
 
     if (loadingState === 'error') {
-      return <>Error Message (TODO)</>;
+      return <Alert severity="error">{errorMessage}</Alert>;
     }
 
     const previewList = articlesPreviews?.map((preview) => {

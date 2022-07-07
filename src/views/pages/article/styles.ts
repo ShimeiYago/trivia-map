@@ -11,13 +11,6 @@ export function contentWrapper(isMobile: boolean): SxProps {
   };
 }
 
-export const mapTitle: SxProps = {
-  display: 'flex',
-  alignItems: 'center',
-  flexWrap: 'wrap',
-  justifyContent: 'center',
-};
-
 export const createdAtBox: SxProps = {
   color: 'gray',
   textAlign: 'right',

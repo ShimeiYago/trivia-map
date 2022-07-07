@@ -1,3 +1,4 @@
+import { GetArticlesPreviewsResponse } from 'api/articles-api/get-articles-previews';
 import { GetArticleResponse } from 'api/articles-api/get-remote-article';
 import { PostArticleResponse } from 'api/articles-api/post-remote-article';
 
@@ -32,4 +33,27 @@ export const mockPostArticleResponse: PostArticleResponse = {
   author: 0,
   createdAt: '2022-06-16T21:42:51.202153+09:00',
   updatedAt: '2022-06-16T21:42:51.202153+09:00',
+};
+
+export const mockGetArticlesPreviewsResponse: GetArticlesPreviewsResponse = {
+  nextUrl: null,
+  previousUrl: null,
+  totalRecords: 2,
+  totalPages: 2,
+  currentPage: 1,
+  results: [
+    {
+      postId: 1,
+      title: 'ノーチラス号のエンジン',
+      imageUrl:
+        'https://www.disneyparkstory.com/wp-content/uploads/2017/02/CIMG9800.jpg',
+      isDraft: false,
+    },
+    {
+      postId: 2,
+      title: 'ノーチラス号の名前の由来',
+      imageUrl: null,
+      isDraft: false,
+    },
+  ],
 };

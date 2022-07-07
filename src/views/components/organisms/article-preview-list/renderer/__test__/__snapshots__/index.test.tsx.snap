@@ -1,0 +1,115 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shallow Snapshot Tests basic 1`] = `
+<ForwardRef(Stack)
+  spacing={2}
+>
+  <ForwardRef(CircularProgress) />
+</ForwardRef(Stack)>
+`;
+
+exports[`Shallow Snapshot Tests with api error 1`] = `
+<ForwardRef(Stack)
+  spacing={2}
+>
+  Error Message (TODO)
+</ForwardRef(Stack)>
+`;
+
+exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
+<ForwardRef(Stack)
+  spacing={2}
+>
+  <Link
+    className="preview-link"
+    key="preview-1"
+    to="/article/1"
+  >
+    <ForwardRef(Card)
+      sx={
+        Object {
+          "backgroundColor": "#e3f2fd",
+          "p": 1,
+        }
+      }
+    >
+      <ForwardRef(Stack)
+        spacing={1}
+      >
+        <ForwardRef(Typography)
+          align="center"
+          component="h2"
+          variant="h6"
+        >
+          ノーチラス号のエンジン
+        </ForwardRef(Typography)>
+        <ForwardRef(Typography)
+          align="center"
+        >
+          <Image
+            borderRadius={true}
+            height="100px"
+            objectFit="cover"
+            src="https://www.disneyparkstory.com/wp-content/uploads/2017/02/CIMG9800.jpg"
+            width="200px"
+          />
+        </ForwardRef(Typography)>
+        <ForwardRef(Typography)
+          align="center"
+        >
+          <IconAndText
+            component="span"
+            iconComponent={<Memo />}
+            text="くわしく読む"
+            variant="button"
+          />
+        </ForwardRef(Typography)>
+      </ForwardRef(Stack)>
+    </ForwardRef(Card)>
+  </Link>
+  <Link
+    className="preview-link"
+    key="preview-2"
+    to="/article/2"
+  >
+    <ForwardRef(Card)
+      sx={
+        Object {
+          "backgroundColor": "#e3f2fd",
+          "p": 1,
+        }
+      }
+    >
+      <ForwardRef(Stack)
+        spacing={1}
+      >
+        <ForwardRef(Typography)
+          align="center"
+          component="h2"
+          variant="h6"
+        >
+          ノーチラス号の名前の由来
+        </ForwardRef(Typography)>
+        <ForwardRef(Typography)
+          align="center"
+        >
+          <IconAndText
+            component="span"
+            iconComponent={<Memo />}
+            text="くわしく読む"
+            variant="button"
+          />
+        </ForwardRef(Typography)>
+      </ForwardRef(Stack)>
+    </ForwardRef(Card)>
+  </Link>
+  <div
+    className="pagination-wrapper"
+  >
+    <ForwardRef(Pagination)
+      count={2}
+      onChange={[Function]}
+    />
+  </div>
+</ForwardRef(Stack)>
+`;

@@ -1,5 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Shallow Snapshot Tests articlesPreviews is zero 1`] = `
+<ForwardRef(Stack)
+  spacing={2}
+>
+  <ForwardRef(Typography)
+    align="center"
+  >
+    表示する記事がありません。
+  </ForwardRef(Typography)>
+</ForwardRef(Stack)>
+`;
+
 exports[`Shallow Snapshot Tests basic 1`] = `
 <ForwardRef(Stack)
   spacing={2}

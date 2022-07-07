@@ -53,6 +53,10 @@ export class Renderer extends React.Component<Props, State> {
       return <Alert severity="error">{errorMessage}</Alert>;
     }
 
+    if (articlesPreviews?.length === 0) {
+      return <Typography align="center">表示する記事がありません。</Typography>;
+    }
+
     const previewList = articlesPreviews?.map((preview) => {
       const { postId, title, imageUrl } = preview;
 

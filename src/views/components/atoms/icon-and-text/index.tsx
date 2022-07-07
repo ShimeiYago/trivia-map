@@ -5,14 +5,14 @@ import { style } from './styles';
 export const IconAndText: React.FC<Props> = (props) => {
   return (
     <Typography sx={style} {...props}>
-      <props.iconComponent.type fontSize="inherit" />
+      <props.iconcomponent.type fontSize="inherit" />
       {props.text}
     </Typography>
   );
 };
 
 type AdditionalProps = {
-  iconComponent: JSX.Element;
+  iconcomponent: JSX.Element;
   text: string;
   component?: string;
 };

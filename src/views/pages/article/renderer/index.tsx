@@ -100,7 +100,7 @@ export class Renderer extends React.Component<Props> {
         <Divider />
 
         <IconAndText
-          iconComponent={<MapIcon />}
+          iconcomponent={<MapIcon />}
           text="地図"
           component="h3"
           variant="h5"

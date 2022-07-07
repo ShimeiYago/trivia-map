@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  CircularProgress,
-  Pagination,
-  Stack,
-  Typography,
-  Card,
-} from '@mui/material';
+import { Pagination, Stack, Typography, Card, Alert } from '@mui/material';
 import { LoadingState } from 'types/loading-state';
 import {
   getArticlesPreviews,
@@ -20,6 +14,7 @@ import classes from './index.module.css';
 import * as sxProps from './styles';
 import { IconAndText } from 'views/components/atoms/icon-and-text';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
+import { CenterSpinner } from 'views/components/atoms/center-spinner';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -43,13 +38,17 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   protected renderPreviewList() {
-    const { loadingState, articlesPreviews } = this.state;
+    const { loadingState, articlesPreviews, errorMessage } = this.state;
     if (loadingState === 'waiting' || loadingState === 'loading') {
-      return <CircularProgress />;
+      return <CenterSpinner />;
     }
 
     if (loadingState === 'error') {
-      return <>Error Message (TODO)</>;
+      return <Alert severity="error">{errorMessage}</Alert>;
+    }
+
+    if (articlesPreviews?.length === 0) {
+      return <Typography align="center">表示する記事がありません。</Typography>;
     }
 
     const previewList = articlesPreviews?.map((preview) => {
@@ -81,7 +80,7 @@ export class Renderer extends React.Component<Props, State> {
 
               <Typography align="center">
                 <IconAndText
-                  iconComponent={<ArrowRightIcon />}
+                  iconcomponent={<ArrowRightIcon />}
                   text="くわしく読む"
                   component="span"
                   variant="button"

@@ -1,10 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Shallow Snapshot Tests articlesPreviews is zero 1`] = `
+<ForwardRef(Stack)
+  spacing={2}
+>
+  <ForwardRef(Typography)
+    align="center"
+  >
+    表示する記事がありません。
+  </ForwardRef(Typography)>
+</ForwardRef(Stack)>
+`;
+
 exports[`Shallow Snapshot Tests basic 1`] = `
 <ForwardRef(Stack)
   spacing={2}
 >
-  <ForwardRef(CircularProgress) />
+  <CenterSpinner />
 </ForwardRef(Stack)>
 `;
 
@@ -12,7 +24,11 @@ exports[`Shallow Snapshot Tests with api error 1`] = `
 <ForwardRef(Stack)
   spacing={2}
 >
-  Error Message (TODO)
+  <ForwardRef(Alert)
+    severity="error"
+  >
+    データの取得に失敗しました。
+  </ForwardRef(Alert)>
 </ForwardRef(Stack)>
 `;
 
@@ -59,7 +75,7 @@ exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
         >
           <IconAndText
             component="span"
-            iconComponent={<Memo />}
+            iconcomponent={<Memo />}
             text="くわしく読む"
             variant="button"
           />
@@ -95,7 +111,7 @@ exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
         >
           <IconAndText
             component="span"
-            iconComponent={<Memo />}
+            iconcomponent={<Memo />}
             text="くわしく読む"
             variant="button"
           />

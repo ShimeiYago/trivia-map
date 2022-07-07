@@ -7,6 +7,8 @@ exports[`Shallow Snapshot Tests basic 1`] = `
     Object {
       "dragend": [Function],
       "dragstart": [Function],
+      "popupclose": [Function],
+      "popupopen": [Function],
     }
   }
   icon={
@@ -50,6 +52,8 @@ exports[`Shallow Snapshot Tests variant red 1`] = `
     Object {
       "dragend": [Function],
       "dragstart": [Function],
+      "popupclose": [Function],
+      "popupopen": [Function],
     }
   }
   icon={
@@ -94,6 +98,8 @@ exports[`Shallow Snapshot Tests with popup 1`] = `
     Object {
       "dragend": [Function],
       "dragstart": [Function],
+      "popupclose": [Function],
+      "popupopen": [Function],
     }
   }
   icon={

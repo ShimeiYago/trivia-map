@@ -34,6 +34,15 @@ describe('Shallow Snapshot Tests', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
+  it('articlesPreviews is zero', () => {
+    wrapper.setState({
+      loadingState: 'success',
+      articlesPreviews: [],
+      totalPages: 0,
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+
   it('with api error', () => {
     wrapper.setState({ loadingState: 'error' });
     expect(wrapper).toMatchSnapshot();

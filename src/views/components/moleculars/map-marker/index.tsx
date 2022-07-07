@@ -10,7 +10,7 @@ import {
 import { defaultIcon, redIcon } from './icons';
 import { CustomMarker } from './helpers/custom-marker';
 
-export class MapMarker extends React.Component<Props> {
+export class MapMarker extends React.Component<Props, State> {
   static defaultProps: Pick<Props, 'variant' | 'draggable' | 'autoOpen'> = {
     variant: 'blue',
     draggable: false,
@@ -22,6 +22,10 @@ export class MapMarker extends React.Component<Props> {
   constructor(props: Props) {
     super(props);
     this.markerRef = React.createRef();
+
+    this.state = {
+      isPopupOpened: false,
+    };
   }
 
   render() {
@@ -55,7 +59,7 @@ export class MapMarker extends React.Component<Props> {
         draggable={this.props.draggable}
         ref={this.markerRef}
         eventHandlers={this.eventHandlers}
-        popup={this.props.popup}
+        popup={this.state.isPopupOpened && this.props.popup}
         autoOpen={this.props.autoOpen}
       />
     );
@@ -73,6 +77,16 @@ export class MapMarker extends React.Component<Props> {
         this.props.onDragEnd(marker.getLatLng());
       }
     },
+    popupopen: () => {
+      this.setState({
+        isPopupOpened: true,
+      });
+    },
+    popupclose: () => {
+      this.setState({
+        isPopupOpened: false,
+      });
+    },
   };
 }
 
@@ -85,4 +99,8 @@ export type Props = {
   draggable?: boolean;
   onDragStart?: () => void;
   onDragEnd?: (position: LatLng) => void;
+};
+
+export type State = {
+  isPopupOpened: boolean;
 };

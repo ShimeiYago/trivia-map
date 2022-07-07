@@ -1,13 +1,5 @@
 import React from 'react';
-import {
-  Avatar,
-  Box,
-  CircularProgress,
-  Divider,
-  Grid,
-  Stack,
-  Typography,
-} from '@mui/material';
+import { Avatar, Box, Divider, Grid, Stack, Typography } from '@mui/material';
 import { LoadingState } from 'types/loading-state';
 import { GlobalMenu } from 'views/components/organisms/global-menu';
 import { Link } from 'react-router-dom';
@@ -20,6 +12,7 @@ import MapIcon from '@mui/icons-material/Map';
 import { deepOrange } from '@mui/material/colors';
 import { Author } from 'types/author';
 import { IconAndText } from 'views/components/atoms/icon-and-text';
+import { CenterSpinner } from 'views/components/atoms/center-spinner';
 
 export class Renderer extends React.Component<Props> {
   componentDidMount() {
@@ -72,11 +65,7 @@ export class Renderer extends React.Component<Props> {
       articleLoadingState === 'waiting' ||
       articleLoadingState === 'loading'
     ) {
-      return (
-        <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-          <CircularProgress />
-        </Box>
-      );
+      return <CenterSpinner />;
     }
 
     return (
@@ -111,7 +100,7 @@ export class Renderer extends React.Component<Props> {
         <Divider />
 
         <IconAndText
-          iconComponent={<MapIcon />}
+          iconcomponent={<MapIcon />}
           text="地図"
           component="h3"
           variant="h5"

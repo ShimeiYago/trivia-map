@@ -1,8 +1,8 @@
 import { shallow, ShallowWrapper } from 'enzyme';
-import { MapMarker, Props } from '..';
+import { MapMarker, Props, State } from '..';
 import { LatLng, Map as LeafletMap } from 'leaflet';
 
-let wrapper: ShallowWrapper<Props, unknown, MapMarker>;
+let wrapper: ShallowWrapper<Props, State, MapMarker>;
 
 const basicProps: Props = {
   position: new LatLng(0, 0),
@@ -23,6 +23,9 @@ describe('Shallow Snapshot Tests', () => {
   it('with popup', () => {
     wrapper.setProps({
       popup: 'popup-text',
+    });
+    wrapper.setState({
+      isPopupOpened: true,
     });
     expect(wrapper).toMatchSnapshot();
   });
@@ -83,5 +86,33 @@ describe('eventHandlers dragend', () => {
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (instance['eventHandlers'] as any).dragend();
+  });
+});
+
+describe('eventHandlers popupopen & popupclose', () => {
+  beforeEach(() => {
+    wrapper = shallow(<MapMarker {...basicProps} />);
+  });
+
+  it('popupopen should set isPopupOpened state true', () => {
+    const instance = wrapper.instance();
+    instance.setState({
+      isPopupOpened: false,
+    });
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (instance['eventHandlers'] as any).popupopen();
+    expect(instance.state.isPopupOpened).toBeTruthy();
+  });
+
+  it('popupclose should set isPopupOpened state false', () => {
+    const instance = wrapper.instance();
+    instance.setState({
+      isPopupOpened: true,
+    });
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (instance['eventHandlers'] as any).popupclose();
+    expect(instance.state.isPopupOpened).toBeFalsy();
   });
 });

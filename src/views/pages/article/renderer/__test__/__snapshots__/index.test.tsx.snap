@@ -100,7 +100,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
               <ForwardRef(Divider) />
               <IconAndText
                 component="h3"
-                iconComponent={<Memo />}
+                iconcomponent={<Memo />}
                 text="地図"
                 variant="h5"
               />
@@ -190,16 +190,7 @@ exports[`Shallow Snapshot Tests loading 1`] = `
           <ArticlePaper
             variant="main"
           >
-            <ForwardRef(Box)
-              sx={
-                Object {
-                  "display": "flex",
-                  "justifyContent": "center",
-                }
-              }
-            >
-              <ForwardRef(CircularProgress) />
-            </ForwardRef(Box)>
+            <CenterSpinner />
           </ArticlePaper>
         </ForwardRef(Grid)>
         <ForwardRef(Grid)
@@ -318,7 +309,7 @@ exports[`Shallow Snapshot Tests mobile view 1`] = `
               <ForwardRef(Divider) />
               <IconAndText
                 component="h3"
-                iconComponent={<Memo />}
+                iconcomponent={<Memo />}
                 text="地図"
                 variant="h5"
               />
@@ -467,7 +458,7 @@ exports[`Shallow Snapshot Tests with image 1`] = `
               <ForwardRef(Divider) />
               <IconAndText
                 component="h3"
-                iconComponent={<Memo />}
+                iconcomponent={<Memo />}
                 text="地図"
                 variant="h5"
               />

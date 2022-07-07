@@ -2,7 +2,7 @@
 
 exports[`Shallow Snapshot Tests basic 1`] = `
 <ForwardRef(Typography)
-  iconComponent={<Memo />}
+  iconcomponent={<Memo />}
   sx={
     Object {
       "alignItems": "center",

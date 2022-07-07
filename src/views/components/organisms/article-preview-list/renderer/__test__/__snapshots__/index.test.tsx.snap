@@ -12,7 +12,11 @@ exports[`Shallow Snapshot Tests with api error 1`] = `
 <ForwardRef(Stack)
   spacing={2}
 >
-  Error Message (TODO)
+  <ForwardRef(Alert)
+    severity="error"
+  >
+    データの取得に失敗しました。
+  </ForwardRef(Alert)>
 </ForwardRef(Stack)>
 `;
 

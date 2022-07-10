@@ -41,7 +41,7 @@ export type LoginResponse = {
 };
 
 export type ValidationError = {
-  emai?: string[];
+  email?: string[];
   password?: string[];
   non_field_errors?: string[];
 };

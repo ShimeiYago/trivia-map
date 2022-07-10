@@ -1,0 +1,291 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shallow Snapshot Tests already logged in 1`] = `
+<ForwardRef(Container)
+  component="main"
+  maxWidth="xs"
+>
+  <ForwardRef(Box)>
+    <ForwardRef(Typography)
+      align="center"
+      component="h1"
+      variant="h5"
+    >
+      ログイン
+    </ForwardRef(Typography)>
+    <ForwardRef(Box)
+      component="form"
+      noValidate={true}
+      sx={
+        Object {
+          "mt": 1,
+        }
+      }
+    >
+      <ForwardRef(TextField)
+        autoComplete="email"
+        autoFocus={true}
+        disabled={true}
+        error={false}
+        fullWidth={true}
+        id="email"
+        label="メールアドレス"
+        margin="normal"
+        name="email"
+      />
+      <ForwardRef(TextField)
+        autoComplete="current-password"
+        disabled={true}
+        error={false}
+        fullWidth={true}
+        id="password"
+        label="パスワード"
+        margin="normal"
+        name="password"
+        type="password"
+      />
+      <ForwardRef(LoadingButton)
+        disabled={true}
+        fullWidth={true}
+        loading={false}
+        onClick={[Function]}
+        sx={
+          Object {
+            "mb": 2,
+            "mt": 3,
+          }
+        }
+        variant="contained"
+      >
+        ログイン
+      </ForwardRef(LoadingButton)>
+      <ForwardRef(Grid)
+        container={true}
+      >
+        <ForwardRef(Grid)
+          item={true}
+          xs={true}
+        >
+          <ForwardRef(Button)
+            variant="text"
+          >
+            パスワードを忘れた場合
+          </ForwardRef(Button)>
+        </ForwardRef(Grid)>
+        <ForwardRef(Grid)
+          item={true}
+        >
+          <ForwardRef(Button)
+            variant="text"
+          >
+            アカウント作成
+          </ForwardRef(Button)>
+        </ForwardRef(Grid)>
+      </ForwardRef(Grid)>
+    </ForwardRef(Box)>
+  </ForwardRef(Box)>
+</ForwardRef(Container)>
+`;
+
+exports[`Shallow Snapshot Tests basic 1`] = `
+<ForwardRef(Container)
+  component="main"
+  maxWidth="xs"
+>
+  <ForwardRef(Box)>
+    <ForwardRef(Typography)
+      align="center"
+      component="h1"
+      variant="h5"
+    >
+      ログイン
+    </ForwardRef(Typography)>
+    <ForwardRef(Box)
+      component="form"
+      noValidate={true}
+      sx={
+        Object {
+          "mt": 1,
+        }
+      }
+    >
+      <ForwardRef(TextField)
+        autoComplete="email"
+        autoFocus={true}
+        disabled={false}
+        error={false}
+        fullWidth={true}
+        id="email"
+        label="メールアドレス"
+        margin="normal"
+        name="email"
+      />
+      <ForwardRef(TextField)
+        autoComplete="current-password"
+        disabled={false}
+        error={false}
+        fullWidth={true}
+        id="password"
+        label="パスワード"
+        margin="normal"
+        name="password"
+        type="password"
+      />
+      <ForwardRef(LoadingButton)
+        disabled={false}
+        fullWidth={true}
+        loading={false}
+        onClick={[Function]}
+        sx={
+          Object {
+            "mb": 2,
+            "mt": 3,
+          }
+        }
+        variant="contained"
+      >
+        ログイン
+      </ForwardRef(LoadingButton)>
+      <ForwardRef(Grid)
+        container={true}
+      >
+        <ForwardRef(Grid)
+          item={true}
+          xs={true}
+        >
+          <ForwardRef(Button)
+            variant="text"
+          >
+            パスワードを忘れた場合
+          </ForwardRef(Button)>
+        </ForwardRef(Grid)>
+        <ForwardRef(Grid)
+          item={true}
+        >
+          <ForwardRef(Button)
+            variant="text"
+          >
+            アカウント作成
+          </ForwardRef(Button)>
+        </ForwardRef(Grid)>
+      </ForwardRef(Grid)>
+    </ForwardRef(Box)>
+  </ForwardRef(Box)>
+</ForwardRef(Container)>
+`;
+
+exports[`Shallow Snapshot Tests error case 1`] = `
+<ForwardRef(Container)
+  component="main"
+  maxWidth="xs"
+>
+  <ForwardRef(Box)>
+    <ForwardRef(Typography)
+      align="center"
+      component="h1"
+      variant="h5"
+    >
+      ログイン
+    </ForwardRef(Typography)>
+    <ForwardRef(Alert)
+      severity="error"
+    >
+      <ForwardRef(AlertTitle)>
+        error title
+      </ForwardRef(AlertTitle)>
+      <ul>
+        <li
+          key="error-0"
+        >
+          error1
+        </li>
+        <li
+          key="error-1"
+        >
+          error2
+        </li>
+      </ul>
+    </ForwardRef(Alert)>
+    <ForwardRef(Box)
+      component="form"
+      noValidate={true}
+      sx={
+        Object {
+          "mt": 1,
+        }
+      }
+    >
+      <ForwardRef(TextField)
+        autoComplete="email"
+        autoFocus={true}
+        disabled={false}
+        error={true}
+        fullWidth={true}
+        helperText={
+          Array [
+            "email is invalid",
+          ]
+        }
+        id="email"
+        label="メールアドレス"
+        margin="normal"
+        name="email"
+      />
+      <ForwardRef(TextField)
+        autoComplete="current-password"
+        disabled={false}
+        error={true}
+        fullWidth={true}
+        helperText={
+          Array [
+            "password is invalid",
+          ]
+        }
+        id="password"
+        label="パスワード"
+        margin="normal"
+        name="password"
+        type="password"
+      />
+      <ForwardRef(LoadingButton)
+        disabled={false}
+        fullWidth={true}
+        loading={false}
+        onClick={[Function]}
+        sx={
+          Object {
+            "mb": 2,
+            "mt": 3,
+          }
+        }
+        variant="contained"
+      >
+        ログイン
+      </ForwardRef(LoadingButton)>
+      <ForwardRef(Grid)
+        container={true}
+      >
+        <ForwardRef(Grid)
+          item={true}
+          xs={true}
+        >
+          <ForwardRef(Button)
+            variant="text"
+          >
+            パスワードを忘れた場合
+          </ForwardRef(Button)>
+        </ForwardRef(Grid)>
+        <ForwardRef(Grid)
+          item={true}
+        >
+          <ForwardRef(Button)
+            variant="text"
+          >
+            アカウント作成
+          </ForwardRef(Button)>
+        </ForwardRef(Grid)>
+      </ForwardRef(Grid)>
+    </ForwardRef(Box)>
+  </ForwardRef(Box)>
+</ForwardRef(Container)>
+`;

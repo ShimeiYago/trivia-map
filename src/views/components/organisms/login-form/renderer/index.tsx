@@ -2,8 +2,6 @@ import React from 'react';
 import { LoadingState } from 'types/loading-state';
 import { User } from 'types/user';
 import {
-  Alert,
-  AlertTitle,
   Box,
   Button,
   Container,
@@ -15,6 +13,7 @@ import { LoadingButton } from '@mui/lab';
 import { login, ValidationError } from 'api/auths-api/login';
 import { ApiError } from 'api/utils/handle-axios-error';
 import { globalAPIErrorMessage } from 'constant/global-api-error-message';
+import { HeaderErrorMessages } from 'views/components/moleculars/header-error-messages';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -96,14 +95,10 @@ export class Renderer extends React.Component<Props, State> {
     }
 
     return (
-      <Alert severity="error">
-        <AlertTitle>{errorTitle}</AlertTitle>
-        <ul>
-          {errorMessages?.map((msg, index) => (
-            <li key={`error-${index}`}>{msg}</li>
-          ))}
-        </ul>
-      </Alert>
+      <HeaderErrorMessages
+        errorTitle={errorTitle}
+        errorMessages={errorMessages}
+      />
     );
   }
 

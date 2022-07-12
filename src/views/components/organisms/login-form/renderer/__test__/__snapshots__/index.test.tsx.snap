@@ -187,25 +187,15 @@ exports[`Shallow Snapshot Tests error case 1`] = `
     >
       ログイン
     </ForwardRef(Typography)>
-    <ForwardRef(Alert)
-      severity="error"
-    >
-      <ForwardRef(AlertTitle)>
-        error title
-      </ForwardRef(AlertTitle)>
-      <ul>
-        <li
-          key="error-0"
-        >
-          error1
-        </li>
-        <li
-          key="error-1"
-        >
-          error2
-        </li>
-      </ul>
-    </ForwardRef(Alert)>
+    <HeaderErrorMessages
+      errorMessages={
+        Array [
+          "error1",
+          "error2",
+        ]
+      }
+      errorTitle="error title"
+    />
     <ForwardRef(Box)
       component="form"
       noValidate={true}

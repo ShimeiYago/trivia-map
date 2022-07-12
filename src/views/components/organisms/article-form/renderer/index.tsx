@@ -1,7 +1,5 @@
 import React from 'react';
 import {
-  Alert,
-  AlertTitle,
   Box,
   CircularProgress,
   Container,
@@ -26,6 +24,7 @@ import { UpdateFormFieldParam } from 'store/article-form/actions';
 import { CloseFormButton } from '../../close-form-button';
 import { ImageField } from 'views/components/moleculars/image-field';
 import { DeletableImage } from 'views/components/moleculars/deletable-image';
+import { HeaderErrorMessages } from 'views/components/moleculars/header-error-messages';
 
 export class Renderer extends React.Component<Props> {
   headerRef: React.RefObject<HTMLDivElement>;
@@ -246,11 +245,7 @@ export class Renderer extends React.Component<Props> {
       return null;
     }
 
-    return (
-      <Alert severity="error">
-        <AlertTitle>{formError.errorTitle}</AlertTitle>
-      </Alert>
-    );
+    return <HeaderErrorMessages errorTitle={formError.errorTitle} />;
   }
 
   protected handleFileInputChange = async (

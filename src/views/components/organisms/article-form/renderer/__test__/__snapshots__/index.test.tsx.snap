@@ -627,13 +627,9 @@ exports[`Shallow Snapshot Tests with validation error 1`] = `
       >
         新しいトリビアを追加
       </ForwardRef(Typography)>
-      <ForwardRef(Alert)
-        severity="error"
-      >
-        <ForwardRef(AlertTitle)>
-          Inputted contents have errors.
-        </ForwardRef(AlertTitle)>
-      </ForwardRef(Alert)>
+      <HeaderErrorMessages
+        errorTitle="Inputted contents have errors."
+      />
       <ForwardRef(TextField)
         disabled={false}
         error={false}

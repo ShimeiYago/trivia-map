@@ -2,6 +2,7 @@ import React from 'react';
 import { LoadingState } from 'types/loading-state';
 import { User } from 'types/user';
 import {
+  Alert,
   Box,
   Button,
   Container,
@@ -33,11 +34,11 @@ export class Renderer extends React.Component<Props, State> {
 
     return (
       <Container component="main" maxWidth="xs">
-        <Box>
-          <Typography component="h1" variant="h5" align="center">
+        <Box sx={{ p: 1 }}>
+          <Typography component="h1" variant="h5" align="center" sx={{ mb: 1 }}>
             ログイン
           </Typography>
-          {this.renderHeaderError()}
+          {this.renderHeaderInfo()}
           <Box component="form" noValidate sx={{ mt: 1 }}>
             <TextField
               margin="normal"
@@ -87,19 +88,24 @@ export class Renderer extends React.Component<Props, State> {
     );
   }
 
-  protected renderHeaderError() {
+  protected renderHeaderInfo() {
+    const { logginingInState } = this.props;
     const { errorTitle, errorMessages } = this.state;
 
-    if (!errorTitle) {
-      return null;
+    if (logginingInState === 'success') {
+      return <Alert>ログインに成功しました。</Alert>;
     }
 
-    return (
-      <HeaderErrorMessages
-        errorTitle={errorTitle}
-        errorMessages={errorMessages}
-      />
-    );
+    if (errorTitle) {
+      return (
+        <HeaderErrorMessages
+          errorTitle={errorTitle}
+          errorMessages={errorMessages}
+        />
+      );
+    }
+
+    return null;
   }
 
   protected handleClickLogin = async () => {

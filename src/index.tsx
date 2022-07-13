@@ -8,6 +8,7 @@ import * as serviceWorker from './serviceWorker';
 import { ErrorBoundary } from 'error-boundary';
 import { MapPage } from 'views/pages/map-page';
 import { Article } from 'views/pages/article';
+import { LoginForm } from 'views/components/organisms/login-form';
 
 // Deactivate all console.log on production
 // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -22,6 +23,7 @@ ReactDOM.render(
             <Route index element={<MapPage />} />
             <Route path="/edit/:postId" element={<MapPage />} />
             <Route path="/article/:postId" element={<Article />} />
+            <Route path="/login" element={<LoginForm />} />
             <Route path="*" element={<div>404 not found (TODO)</div>} />
           </Routes>
         </BrowserRouter>

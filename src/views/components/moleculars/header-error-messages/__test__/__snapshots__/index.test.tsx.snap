@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shallow Snapshot Tests basic 1`] = `
+<ForwardRef(Alert)
+  severity="error"
+  sx={
+    Object {
+      "color": "#f44336",
+      "fontWeight": "bold",
+    }
+  }
+>
+  Inputted values are invalid.
+</ForwardRef(Alert)>
+`;
+
+exports[`Shallow Snapshot Tests with errorMessages 1`] = `
+<ForwardRef(Alert)
+  severity="error"
+  sx={
+    Object {
+      "borderColor": "#f44336",
+      "borderStyle": "solid",
+      "borderWidth": "2px",
+    }
+  }
+>
+  <ForwardRef(AlertTitle)
+    sx={
+      Object {
+        "color": "#f44336",
+        "fontWeight": "bold",
+      }
+    }
+  >
+    Inputted values are invalid.
+  </ForwardRef(AlertTitle)>
+  <ul
+    className="error-ul"
+  >
+    <li
+      key="error-0"
+    >
+      error1
+    </li>
+  </ul>
+</ForwardRef(Alert)>
+`;

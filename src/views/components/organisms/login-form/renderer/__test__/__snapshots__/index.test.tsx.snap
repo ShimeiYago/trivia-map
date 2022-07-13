@@ -5,14 +5,28 @@ exports[`Shallow Snapshot Tests already logged in 1`] = `
   component="main"
   maxWidth="xs"
 >
-  <ForwardRef(Box)>
+  <ForwardRef(Box)
+    sx={
+      Object {
+        "p": 1,
+      }
+    }
+  >
     <ForwardRef(Typography)
       align="center"
       component="h1"
+      sx={
+        Object {
+          "mb": 1,
+        }
+      }
       variant="h5"
     >
       ログイン
     </ForwardRef(Typography)>
+    <ForwardRef(Alert)>
+      ログインに成功しました。
+    </ForwardRef(Alert)>
     <ForwardRef(Box)
       component="form"
       noValidate={true}
@@ -92,10 +106,21 @@ exports[`Shallow Snapshot Tests basic 1`] = `
   component="main"
   maxWidth="xs"
 >
-  <ForwardRef(Box)>
+  <ForwardRef(Box)
+    sx={
+      Object {
+        "p": 1,
+      }
+    }
+  >
     <ForwardRef(Typography)
       align="center"
       component="h1"
+      sx={
+        Object {
+          "mb": 1,
+        }
+      }
       variant="h5"
     >
       ログイン
@@ -179,10 +204,21 @@ exports[`Shallow Snapshot Tests error case 1`] = `
   component="main"
   maxWidth="xs"
 >
-  <ForwardRef(Box)>
+  <ForwardRef(Box)
+    sx={
+      Object {
+        "p": 1,
+      }
+    }
+  >
     <ForwardRef(Typography)
       align="center"
       component="h1"
+      sx={
+        Object {
+          "mb": 1,
+        }
+      }
       variant="h5"
     >
       ログイン

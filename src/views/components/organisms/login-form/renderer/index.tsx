@@ -53,6 +53,7 @@ export class Renderer extends React.Component<Props, State> {
               disabled={disabled}
               helperText={this.state.formError?.email}
               error={!!this.state.formError?.email}
+              onChange={this.handleChangeTextField('email')}
             />
             <TextField
               margin="normal"
@@ -65,6 +66,7 @@ export class Renderer extends React.Component<Props, State> {
               disabled={disabled}
               helperText={this.state.formError?.password}
               error={!!this.state.formError?.password}
+              onChange={this.handleChangeTextField('password')}
             />
             <LoadingButton
               fullWidth
@@ -116,6 +118,20 @@ export class Renderer extends React.Component<Props, State> {
 
     return null;
   }
+
+  protected handleChangeTextField =
+    (fieldType: 'email' | 'password') =>
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      if (fieldType === 'email') {
+        this.setState({
+          email: e.target.value,
+        });
+      } else {
+        this.setState({
+          password: e.target.value,
+        });
+      }
+    };
 
   protected handleClickLogin = async () => {
     this.setState({

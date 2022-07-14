@@ -42,6 +42,38 @@ describe('Shallow Snapshot Tests', () => {
   });
 });
 
+describe('handleChangeTextField', () => {
+  it('should set email', () => {
+    wrapper = shallow(<Renderer {...basicProps} />);
+    const instance = wrapper.instance();
+
+    const event = {
+      target: {
+        value: 'xxx@xxx.com',
+      },
+    } as React.ChangeEvent<HTMLInputElement>;
+
+    instance['handleChangeTextField']('email')(event);
+
+    expect(instance.state.email).toBe('xxx@xxx.com');
+  });
+
+  it('should set password', async () => {
+    wrapper = shallow(<Renderer {...basicProps} />);
+    const instance = wrapper.instance();
+
+    const event = {
+      target: {
+        value: 'xxxxx',
+      },
+    } as React.ChangeEvent<HTMLInputElement>;
+
+    instance['handleChangeTextField']('password')(event);
+
+    expect(instance.state.password).toBe('xxxxx');
+  });
+});
+
 describe('handleClickLogin', () => {
   beforeEach(() => {
     jest.resetAllMocks();

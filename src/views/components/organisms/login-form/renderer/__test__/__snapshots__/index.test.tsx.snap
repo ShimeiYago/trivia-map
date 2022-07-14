@@ -5,21 +5,18 @@ exports[`Shallow Snapshot Tests already logged in 1`] = `
   component="main"
   maxWidth="xs"
 >
-  <ForwardRef(Box)
+  <ForwardRef(Stack)
+    spacing={1}
     sx={
       Object {
-        "p": 1,
+        "px": 1,
+        "py": 2,
       }
     }
   >
     <ForwardRef(Typography)
       align="center"
       component="h1"
-      sx={
-        Object {
-          "mb": 1,
-        }
-      }
       variant="h5"
     >
       ログイン
@@ -30,11 +27,6 @@ exports[`Shallow Snapshot Tests already logged in 1`] = `
     <ForwardRef(Box)
       component="form"
       noValidate={true}
-      sx={
-        Object {
-          "mt": 1,
-        }
-      }
     >
       <ForwardRef(TextField)
         autoComplete="email"
@@ -97,7 +89,7 @@ exports[`Shallow Snapshot Tests already logged in 1`] = `
         </ForwardRef(Grid)>
       </ForwardRef(Grid)>
     </ForwardRef(Box)>
-  </ForwardRef(Box)>
+  </ForwardRef(Stack)>
 </ForwardRef(Container)>
 `;
 
@@ -106,21 +98,18 @@ exports[`Shallow Snapshot Tests basic 1`] = `
   component="main"
   maxWidth="xs"
 >
-  <ForwardRef(Box)
+  <ForwardRef(Stack)
+    spacing={1}
     sx={
       Object {
-        "p": 1,
+        "px": 1,
+        "py": 2,
       }
     }
   >
     <ForwardRef(Typography)
       align="center"
       component="h1"
-      sx={
-        Object {
-          "mb": 1,
-        }
-      }
       variant="h5"
     >
       ログイン
@@ -128,11 +117,6 @@ exports[`Shallow Snapshot Tests basic 1`] = `
     <ForwardRef(Box)
       component="form"
       noValidate={true}
-      sx={
-        Object {
-          "mt": 1,
-        }
-      }
     >
       <ForwardRef(TextField)
         autoComplete="email"
@@ -195,7 +179,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
         </ForwardRef(Grid)>
       </ForwardRef(Grid)>
     </ForwardRef(Box)>
-  </ForwardRef(Box)>
+  </ForwardRef(Stack)>
 </ForwardRef(Container)>
 `;
 
@@ -204,42 +188,36 @@ exports[`Shallow Snapshot Tests error case 1`] = `
   component="main"
   maxWidth="xs"
 >
-  <ForwardRef(Box)
+  <ForwardRef(Stack)
+    spacing={1}
     sx={
       Object {
-        "p": 1,
+        "px": 1,
+        "py": 2,
       }
     }
   >
     <ForwardRef(Typography)
       align="center"
       component="h1"
-      sx={
-        Object {
-          "mb": 1,
-        }
-      }
       variant="h5"
     >
       ログイン
     </ForwardRef(Typography)>
-    <HeaderErrorMessages
-      errorMessages={
-        Array [
-          "error1",
-          "error2",
-        ]
-      }
-      errorTitle="error title"
-    />
+    <ForwardRef(Box)>
+      <HeaderErrorMessages
+        errorMessages={
+          Array [
+            "error1",
+            "error2",
+          ]
+        }
+        errorTitle="error title"
+      />
+    </ForwardRef(Box)>
     <ForwardRef(Box)
       component="form"
       noValidate={true}
-      sx={
-        Object {
-          "mt": 1,
-        }
-      }
     >
       <ForwardRef(TextField)
         autoComplete="email"
@@ -312,6 +290,6 @@ exports[`Shallow Snapshot Tests error case 1`] = `
         </ForwardRef(Grid)>
       </ForwardRef(Grid)>
     </ForwardRef(Box)>
-  </ForwardRef(Box)>
+  </ForwardRef(Stack)>
 </ForwardRef(Container)>
 `;

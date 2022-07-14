@@ -7,6 +7,7 @@ import {
   Button,
   Container,
   Grid,
+  Stack,
   TextField,
   Typography,
 } from '@mui/material';
@@ -23,6 +24,7 @@ export class Renderer extends React.Component<Props, State> {
       email: '',
       password: '',
       localLoadingState: 'waiting',
+      showResendEmailButton: false,
     };
   }
 
@@ -34,12 +36,12 @@ export class Renderer extends React.Component<Props, State> {
 
     return (
       <Container component="main" maxWidth="xs">
-        <Box sx={{ p: 1 }}>
-          <Typography component="h1" variant="h5" align="center" sx={{ mb: 1 }}>
+        <Stack spacing={1} sx={{ px: 1, py: 2 }}>
+          <Typography component="h1" variant="h5" align="center">
             ログイン
           </Typography>
           {this.renderHeaderInfo()}
-          <Box component="form" noValidate sx={{ mt: 1 }}>
+          <Box component="form" noValidate>
             <TextField
               margin="normal"
               fullWidth
@@ -83,14 +85,14 @@ export class Renderer extends React.Component<Props, State> {
               </Grid>
             </Grid>
           </Box>
-        </Box>
+        </Stack>
       </Container>
     );
   }
 
   protected renderHeaderInfo() {
     const { logginingInState } = this.props;
-    const { errorTitle, errorMessages } = this.state;
+    const { errorTitle, errorMessages, showResendEmailButton } = this.state;
 
     if (logginingInState === 'success') {
       return <Alert>ログインに成功しました。</Alert>;
@@ -98,10 +100,17 @@ export class Renderer extends React.Component<Props, State> {
 
     if (errorTitle) {
       return (
-        <HeaderErrorMessages
-          errorTitle={errorTitle}
-          errorMessages={errorMessages}
-        />
+        <Box>
+          <HeaderErrorMessages
+            errorTitle={errorTitle}
+            errorMessages={errorMessages}
+          />
+          {showResendEmailButton && (
+            <Typography align="right">
+              <Button variant="text">確認メールが届いていませんか？</Button>
+            </Typography>
+          )}
+        </Box>
       );
     }
 
@@ -111,6 +120,9 @@ export class Renderer extends React.Component<Props, State> {
   protected handleClickLogin = async () => {
     this.setState({
       localLoadingState: 'loading',
+      errorTitle: undefined,
+      errorMessages: undefined,
+      showResendEmailButton: false,
     });
 
     try {
@@ -136,10 +148,7 @@ export class Renderer extends React.Component<Props, State> {
         });
 
         apiError.data.non_field_errors &&
-          this.setState({
-            // TODO: map non field errors
-            errorMessages: apiError.data.non_field_errors,
-          });
+          this.handleNonFieldErrors(apiError.data.non_field_errors);
       }
 
       this.setState({
@@ -147,6 +156,26 @@ export class Renderer extends React.Component<Props, State> {
       });
     }
   };
+
+  protected handleNonFieldErrors(nonFieldErrors: string[]) {
+    const errorMessages = nonFieldErrors.map((error) => {
+      switch (error) {
+        case 'Must include "email" and "password".':
+          return 'メールアドレスとパスワードを入力してください。';
+        case 'E-mail is not verified.':
+          this.setState({
+            showResendEmailButton: true,
+          });
+          return 'このメールアドレスはまだ有効化されていません。アカウント作成時に送信されたメールを確認してください。';
+        default:
+          return error;
+      }
+    });
+
+    this.setState({
+      errorMessages: errorMessages,
+    });
+  }
 }
 
 export type Props = {
@@ -162,6 +191,7 @@ export type State = {
   errorTitle?: string;
   errorMessages?: string[];
   formError?: FormError;
+  showResendEmailButton: boolean;
 };
 
 type FormError = {

@@ -65,7 +65,11 @@ describe('handleClickLogin', () => {
       data: {
         email: ['email is invalid'],
         password: ['password is invalid'],
-        non_field_errors: ['another error'],
+        non_field_errors: [
+          'another error',
+          'Must include "email" and "password".',
+          'E-mail is not verified.',
+        ],
       },
       errorMsg: '400 request is invalid',
     };

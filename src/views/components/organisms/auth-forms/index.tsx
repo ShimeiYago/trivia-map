@@ -6,7 +6,7 @@ import { User } from 'types/user';
 
 const { loginSuccess } = authsSlice.actions;
 
-export function LoginForm() {
+export function AuthForms() {
   const dispatch = useAppDispatch();
 
   const props: Props = {

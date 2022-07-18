@@ -17,7 +17,7 @@ import { ApiError } from 'api/utils/handle-axios-error';
 import { globalAPIErrorMessage } from 'constant/global-api-error-message';
 import { HeaderErrorMessages } from 'views/components/moleculars/header-error-messages';
 
-export class Renderer extends React.Component<Props, State> {
+export class LoginForm extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {

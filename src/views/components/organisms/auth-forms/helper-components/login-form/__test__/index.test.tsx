@@ -1,10 +1,10 @@
 import { shallow, ShallowWrapper } from 'enzyme';
-import { Renderer, Props, State } from '..';
+import { LoginForm, Props, State } from '..';
 import * as LoginModule from 'api/auths-api/login';
 import { mockLoginResponse } from 'api/mock/auths-response/login';
 import { ApiError } from 'api/utils/handle-axios-error';
 
-let wrapper: ShallowWrapper<Props, State, Renderer>;
+let wrapper: ShallowWrapper<Props, State, LoginForm>;
 
 let loginSpy: jest.SpyInstance;
 
@@ -15,7 +15,7 @@ const basicProps: Props = {
 
 describe('Shallow Snapshot Tests', () => {
   beforeEach(() => {
-    wrapper = shallow(<Renderer {...basicProps} />);
+    wrapper = shallow(<LoginForm {...basicProps} />);
   });
 
   it('basic', () => {
@@ -44,7 +44,7 @@ describe('Shallow Snapshot Tests', () => {
 
 describe('handleChangeTextField', () => {
   it('should set email', () => {
-    wrapper = shallow(<Renderer {...basicProps} />);
+    wrapper = shallow(<LoginForm {...basicProps} />);
     const instance = wrapper.instance();
 
     const event = {
@@ -59,7 +59,7 @@ describe('handleChangeTextField', () => {
   });
 
   it('should set password', async () => {
-    wrapper = shallow(<Renderer {...basicProps} />);
+    wrapper = shallow(<LoginForm {...basicProps} />);
     const instance = wrapper.instance();
 
     const event = {
@@ -83,7 +83,7 @@ describe('handleClickLogin', () => {
   it('should set localLoadingState success when api succeed', async () => {
     loginSpy.mockResolvedValue(mockLoginResponse);
 
-    wrapper = shallow(<Renderer {...basicProps} />);
+    wrapper = shallow(<LoginForm {...basicProps} />);
     const instance = wrapper.instance();
 
     await instance['handleClickLogin']();
@@ -107,7 +107,7 @@ describe('handleClickLogin', () => {
     };
     loginSpy.mockRejectedValue(apiError);
 
-    wrapper = shallow(<Renderer {...basicProps} />);
+    wrapper = shallow(<LoginForm {...basicProps} />);
     const instance = wrapper.instance();
 
     await instance['handleClickLogin']();
@@ -121,7 +121,7 @@ describe('handleClickLogin', () => {
   it('should set localLoadingState error when api fail', async () => {
     loginSpy.mockRejectedValue(new Error());
 
-    wrapper = shallow(<Renderer {...basicProps} />);
+    wrapper = shallow(<LoginForm {...basicProps} />);
     const instance = wrapper.instance();
 
     await instance['handleClickLogin']();

@@ -1,0 +1,297 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shallow Snapshot Tests already logged in 1`] = `
+<ForwardRef(Container)
+  component="main"
+  maxWidth="xs"
+>
+  <ForwardRef(Stack)
+    spacing={1}
+    sx={
+      Object {
+        "px": 1,
+        "py": 2,
+      }
+    }
+  >
+    <ForwardRef(Typography)
+      align="center"
+      component="h1"
+      variant="h5"
+    >
+      アカウント作成
+    </ForwardRef(Typography)>
+    <ForwardRef(Alert)>
+      ログインに成功しました。
+    </ForwardRef(Alert)>
+    <ForwardRef(Box)
+      component="form"
+      noValidate={true}
+    >
+      <ForwardRef(TextField)
+        autoComplete="email"
+        autoFocus={true}
+        disabled={true}
+        error={false}
+        fullWidth={true}
+        id="email"
+        label="メールアドレス"
+        margin="normal"
+        name="email"
+        onChange={[Function]}
+      />
+      <ForwardRef(TextField)
+        autoComplete="current-password"
+        disabled={true}
+        error={false}
+        fullWidth={true}
+        id="password1"
+        label="パスワード"
+        margin="normal"
+        name="password1"
+        onChange={[Function]}
+        type="password"
+      />
+      <ForwardRef(TextField)
+        autoComplete="current-password"
+        disabled={true}
+        error={false}
+        fullWidth={true}
+        id="password2"
+        label="パスワード（確認）"
+        margin="normal"
+        name="password2"
+        onChange={[Function]}
+        type="password"
+      />
+      <ForwardRef(LoadingButton)
+        disabled={true}
+        fullWidth={true}
+        loading={false}
+        sx={
+          Object {
+            "mb": 2,
+            "mt": 3,
+          }
+        }
+        variant="contained"
+      >
+        アカウント作成
+      </ForwardRef(LoadingButton)>
+      <ForwardRef(Typography)
+        align="right"
+      >
+        <ForwardRef(Button)
+          variant="text"
+        >
+          ログイン
+        </ForwardRef(Button)>
+      </ForwardRef(Typography)>
+    </ForwardRef(Box)>
+  </ForwardRef(Stack)>
+</ForwardRef(Container)>
+`;
+
+exports[`Shallow Snapshot Tests basic 1`] = `
+<ForwardRef(Container)
+  component="main"
+  maxWidth="xs"
+>
+  <ForwardRef(Stack)
+    spacing={1}
+    sx={
+      Object {
+        "px": 1,
+        "py": 2,
+      }
+    }
+  >
+    <ForwardRef(Typography)
+      align="center"
+      component="h1"
+      variant="h5"
+    >
+      アカウント作成
+    </ForwardRef(Typography)>
+    <ForwardRef(Box)
+      component="form"
+      noValidate={true}
+    >
+      <ForwardRef(TextField)
+        autoComplete="email"
+        autoFocus={true}
+        disabled={false}
+        error={false}
+        fullWidth={true}
+        id="email"
+        label="メールアドレス"
+        margin="normal"
+        name="email"
+        onChange={[Function]}
+      />
+      <ForwardRef(TextField)
+        autoComplete="current-password"
+        disabled={false}
+        error={false}
+        fullWidth={true}
+        id="password1"
+        label="パスワード"
+        margin="normal"
+        name="password1"
+        onChange={[Function]}
+        type="password"
+      />
+      <ForwardRef(TextField)
+        autoComplete="current-password"
+        disabled={false}
+        error={false}
+        fullWidth={true}
+        id="password2"
+        label="パスワード（確認）"
+        margin="normal"
+        name="password2"
+        onChange={[Function]}
+        type="password"
+      />
+      <ForwardRef(LoadingButton)
+        disabled={false}
+        fullWidth={true}
+        loading={false}
+        sx={
+          Object {
+            "mb": 2,
+            "mt": 3,
+          }
+        }
+        variant="contained"
+      >
+        アカウント作成
+      </ForwardRef(LoadingButton)>
+      <ForwardRef(Typography)
+        align="right"
+      >
+        <ForwardRef(Button)
+          variant="text"
+        >
+          ログイン
+        </ForwardRef(Button)>
+      </ForwardRef(Typography)>
+    </ForwardRef(Box)>
+  </ForwardRef(Stack)>
+</ForwardRef(Container)>
+`;
+
+exports[`Shallow Snapshot Tests error case 1`] = `
+<ForwardRef(Container)
+  component="main"
+  maxWidth="xs"
+>
+  <ForwardRef(Stack)
+    spacing={1}
+    sx={
+      Object {
+        "px": 1,
+        "py": 2,
+      }
+    }
+  >
+    <ForwardRef(Typography)
+      align="center"
+      component="h1"
+      variant="h5"
+    >
+      アカウント作成
+    </ForwardRef(Typography)>
+    <ForwardRef(Box)>
+      <HeaderErrorMessages
+        errorMessages={
+          Array [
+            "error1",
+            "error2",
+          ]
+        }
+        errorTitle="error title"
+      />
+    </ForwardRef(Box)>
+    <ForwardRef(Box)
+      component="form"
+      noValidate={true}
+    >
+      <ForwardRef(TextField)
+        autoComplete="email"
+        autoFocus={true}
+        disabled={false}
+        error={true}
+        fullWidth={true}
+        helperText={
+          Array [
+            "email is invalid",
+          ]
+        }
+        id="email"
+        label="メールアドレス"
+        margin="normal"
+        name="email"
+        onChange={[Function]}
+      />
+      <ForwardRef(TextField)
+        autoComplete="current-password"
+        disabled={false}
+        error={true}
+        fullWidth={true}
+        helperText={
+          Array [
+            "password is invalid",
+          ]
+        }
+        id="password1"
+        label="パスワード"
+        margin="normal"
+        name="password1"
+        onChange={[Function]}
+        type="password"
+      />
+      <ForwardRef(TextField)
+        autoComplete="current-password"
+        disabled={false}
+        error={true}
+        fullWidth={true}
+        helperText={
+          Array [
+            "password is invalid",
+          ]
+        }
+        id="password2"
+        label="パスワード（確認）"
+        margin="normal"
+        name="password2"
+        onChange={[Function]}
+        type="password"
+      />
+      <ForwardRef(LoadingButton)
+        disabled={false}
+        fullWidth={true}
+        loading={false}
+        sx={
+          Object {
+            "mb": 2,
+            "mt": 3,
+          }
+        }
+        variant="contained"
+      >
+        アカウント作成
+      </ForwardRef(LoadingButton)>
+      <ForwardRef(Typography)
+        align="right"
+      >
+        <ForwardRef(Button)
+          variant="text"
+        >
+          ログイン
+        </ForwardRef(Button)>
+      </ForwardRef(Typography)>
+    </ForwardRef(Box)>
+  </ForwardRef(Stack)>
+</ForwardRef(Container)>
+`;

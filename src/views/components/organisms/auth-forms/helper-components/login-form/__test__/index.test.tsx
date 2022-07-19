@@ -11,6 +11,7 @@ let loginSpy: jest.SpyInstance;
 const basicProps: Props = {
   logginingInState: 'waiting',
   loginSuccess: jest.fn(),
+  switchMode: jest.fn(),
 };
 
 describe('Shallow Snapshot Tests', () => {

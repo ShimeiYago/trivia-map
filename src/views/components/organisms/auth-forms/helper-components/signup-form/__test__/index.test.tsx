@@ -6,6 +6,7 @@ let wrapper: ShallowWrapper<Props, State, SignupForm>;
 const basicProps: Props = {
   logginingInState: 'waiting',
   loginSuccess: jest.fn(),
+  switchMode: jest.fn(),
 };
 
 describe('Shallow Snapshot Tests', () => {

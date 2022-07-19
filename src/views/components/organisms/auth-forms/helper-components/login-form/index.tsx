@@ -16,6 +16,7 @@ import { login, ValidationError } from 'api/auths-api/login';
 import { ApiError } from 'api/utils/handle-axios-error';
 import { globalAPIErrorMessage } from 'constant/global-api-error-message';
 import { HeaderErrorMessages } from 'views/components/moleculars/header-error-messages';
+import { AuthFormMode } from '../../renderer';
 
 export class LoginForm extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -83,7 +84,12 @@ export class LoginForm extends React.Component<Props, State> {
                 <Button variant="text">パスワードを忘れた場合</Button>
               </Grid>
               <Grid item>
-                <Button variant="text">アカウント作成</Button>
+                <Button
+                  variant="text"
+                  onClick={this.props.switchMode('signup')}
+                >
+                  アカウント作成
+                </Button>
               </Grid>
             </Grid>
           </Box>
@@ -198,6 +204,7 @@ export type Props = {
   logginingInState: LoadingState;
 
   loginSuccess: (user: User) => void;
+  switchMode: (mode: AuthFormMode) => () => void;
 };
 
 export type State = {

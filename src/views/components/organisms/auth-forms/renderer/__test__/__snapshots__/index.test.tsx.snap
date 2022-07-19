@@ -4,5 +4,14 @@ exports[`Shallow Snapshot Tests basic 1`] = `
 <LoginForm
   logginingInState="waiting"
   loginSuccess={[MockFunction]}
+  switchMode={[Function]}
+/>
+`;
+
+exports[`Shallow Snapshot Tests signup mode 1`] = `
+<LoginForm
+  logginingInState="waiting"
+  loginSuccess={[MockFunction]}
+  switchMode={[Function]}
 />
 `;

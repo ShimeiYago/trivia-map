@@ -1,5 +1,6 @@
 import { ApiError } from 'api/utils/handle-axios-error';
 import { login } from '../login';
+import { registration } from '../registration';
 
 describe('login', () => {
   beforeEach(() => {
@@ -27,5 +28,39 @@ describe('login', () => {
     await expect(login('user@example.com', 'password')).rejects.toEqual(
       expectedApiError,
     );
+  });
+});
+
+describe('registration', () => {
+  beforeEach(() => {
+    process.env.REACT_APP_MOCK = '';
+  });
+  afterEach(() => {
+    process.env.REACT_APP_MOCK = '';
+  });
+
+  it('handle nomal response', async () => {
+    process.env.REACT_APP_MOCK = 'normal';
+
+    const response = await registration(
+      'user@example.com',
+      'Axel',
+      'password1',
+      'password2',
+    );
+    expect(response).toEqual(undefined);
+  });
+
+  it('handle error response', async () => {
+    process.env.REACT_APP_MOCK = 'error';
+
+    const expectedApiError: ApiError<unknown> = {
+      status: 500,
+      data: {},
+      errorMsg: 'Intentional API Error with mock',
+    };
+    await expect(
+      registration('user@example.com', 'Axel', 'password1', 'password2'),
+    ).rejects.toEqual(expectedApiError);
   });
 });

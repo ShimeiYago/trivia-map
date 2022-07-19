@@ -1,6 +1,5 @@
 import React from 'react';
 import { LoadingState } from 'types/loading-state';
-import { User } from 'types/user';
 import {
   Alert,
   Box,
@@ -25,10 +24,7 @@ export class SignupForm extends React.Component<Props, State> {
   }
 
   render() {
-    const disabled =
-      this.props.logginingInState === 'loading' ||
-      this.props.logginingInState === 'success' ||
-      this.state.localLoadingState === 'loading';
+    const disabled = this.state.localLoadingState === 'loading';
 
     return (
       <Container component="main" maxWidth="xs">
@@ -88,7 +84,7 @@ export class SignupForm extends React.Component<Props, State> {
             >
               アカウント作成
             </LoadingButton>
-            <Typography align="right">
+            <Typography>
               <Button variant="text" onClick={this.props.switchMode('login')}>
                 ログイン
               </Button>
@@ -100,10 +96,9 @@ export class SignupForm extends React.Component<Props, State> {
   }
 
   protected renderHeaderInfo() {
-    const { logginingInState } = this.props;
-    const { errorTitle, errorMessages } = this.state;
+    const { errorTitle, errorMessages, localLoadingState } = this.state;
 
-    if (logginingInState === 'success') {
+    if (localLoadingState === 'success') {
       return (
         <Alert>
           入力されたメールアドレス宛に確認用メールを送信しました。メールの内容に従ってアカウント作成を完了してください。
@@ -141,11 +136,9 @@ export class SignupForm extends React.Component<Props, State> {
 }
 
 export type Props = {
-  logginingInState: LoadingState;
   email: string;
 
   onChangeEmail: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  loginSuccess: (user: User) => void;
   switchMode: (mode: AuthFormMode) => () => void;
 };
 

@@ -1,6 +1,5 @@
 import React from 'react';
 import { LoadingState } from 'types/loading-state';
-import { User } from 'types/user';
 import {
   Alert,
   Box,
@@ -24,10 +23,7 @@ export class PasswordResetRequestForm extends React.Component<Props, State> {
   }
 
   render() {
-    const disabled =
-      this.props.logginingInState === 'loading' ||
-      this.props.logginingInState === 'success' ||
-      this.state.localLoadingState === 'loading';
+    const disabled = this.state.localLoadingState === 'loading';
 
     return (
       <Container component="main" maxWidth="xs">
@@ -82,10 +78,9 @@ export class PasswordResetRequestForm extends React.Component<Props, State> {
   }
 
   protected renderHeaderInfo() {
-    const { logginingInState } = this.props;
-    const { errorTitle, errorMessages } = this.state;
+    const { errorTitle, errorMessages, localLoadingState } = this.state;
 
-    if (logginingInState === 'success') {
+    if (localLoadingState === 'success') {
       return (
         <Alert>
           入力されたメールアドレス宛に再設定用メールを送信しました。メールの内容に従ってパスワードを再設定してください。
@@ -109,11 +104,9 @@ export class PasswordResetRequestForm extends React.Component<Props, State> {
 }
 
 export type Props = {
-  logginingInState: LoadingState;
   email: string;
 
   onChangeEmail: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  loginSuccess: (user: User) => void;
   switchMode: (mode: AuthFormMode) => () => void;
 };
 

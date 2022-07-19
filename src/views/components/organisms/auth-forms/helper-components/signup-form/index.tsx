@@ -18,7 +18,6 @@ export class SignupForm extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      email: '',
       password1: '',
       password2: '',
       localLoadingState: 'waiting',
@@ -50,7 +49,8 @@ export class SignupForm extends React.Component<Props, State> {
               disabled={disabled}
               helperText={this.state.formError?.email}
               error={!!this.state.formError?.email}
-              onChange={this.handleChangeTextField('email')}
+              onChange={this.props.onChangeEmail}
+              value={this.props.email}
             />
             <TextField
               margin="normal"
@@ -63,7 +63,7 @@ export class SignupForm extends React.Component<Props, State> {
               disabled={disabled}
               helperText={this.state.formError?.password1}
               error={!!this.state.formError?.password1}
-              onChange={this.handleChangeTextField('password1')}
+              onChange={this.handleChangePassword('password1')}
             />
             <TextField
               margin="normal"
@@ -76,7 +76,7 @@ export class SignupForm extends React.Component<Props, State> {
               disabled={disabled}
               helperText={this.state.formError?.password2}
               error={!!this.state.formError?.password2}
-              onChange={this.handleChangeTextField('password2')}
+              onChange={this.handleChangePassword('password2')}
             />
             <LoadingButton
               fullWidth
@@ -125,15 +125,9 @@ export class SignupForm extends React.Component<Props, State> {
     return null;
   }
 
-  protected handleChangeTextField =
-    (fieldType: 'email' | 'password1' | 'password2') =>
+  protected handleChangePassword =
+    (fieldType: 'password1' | 'password2') =>
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      if (fieldType === 'email') {
-        this.setState({
-          email: e.target.value,
-        });
-      }
-
       if (fieldType === 'password1') {
         this.setState({
           password1: e.target.value,
@@ -148,13 +142,14 @@ export class SignupForm extends React.Component<Props, State> {
 
 export type Props = {
   logginingInState: LoadingState;
+  email: string;
 
+  onChangeEmail: (e: React.ChangeEvent<HTMLInputElement>) => void;
   loginSuccess: (user: User) => void;
   switchMode: (mode: AuthFormMode) => () => void;
 };
 
 export type State = {
-  email: string;
   password1: string;
   password2: string;
   localLoadingState: LoadingState;

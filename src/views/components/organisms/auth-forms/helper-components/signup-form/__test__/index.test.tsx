@@ -7,6 +7,8 @@ const basicProps: Props = {
   logginingInState: 'waiting',
   loginSuccess: jest.fn(),
   switchMode: jest.fn(),
+  email: '',
+  onChangeEmail: jest.fn(),
 };
 
 describe('Shallow Snapshot Tests', () => {
@@ -39,22 +41,7 @@ describe('Shallow Snapshot Tests', () => {
   });
 });
 
-describe('handleChangeTextField', () => {
-  it('should set email', () => {
-    wrapper = shallow(<SignupForm {...basicProps} />);
-    const instance = wrapper.instance();
-
-    const event = {
-      target: {
-        value: 'xxx@xxx.com',
-      },
-    } as React.ChangeEvent<HTMLInputElement>;
-
-    instance['handleChangeTextField']('email')(event);
-
-    expect(instance.state.email).toBe('xxx@xxx.com');
-  });
-
+describe('handleChangePassword', () => {
   it('should set password1', async () => {
     wrapper = shallow(<SignupForm {...basicProps} />);
     const instance = wrapper.instance();
@@ -65,7 +52,7 @@ describe('handleChangeTextField', () => {
       },
     } as React.ChangeEvent<HTMLInputElement>;
 
-    instance['handleChangeTextField']('password1')(event);
+    instance['handleChangePassword']('password1')(event);
 
     expect(instance.state.password1).toBe('xxxxx');
   });
@@ -80,7 +67,7 @@ describe('handleChangeTextField', () => {
       },
     } as React.ChangeEvent<HTMLInputElement>;
 
-    instance['handleChangeTextField']('password2')(event);
+    instance['handleChangePassword']('password2')(event);
 
     expect(instance.state.password2).toBe('xxxxx');
   });

@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shallow Snapshot Tests basic 1`] = `
+<LoginForm
+  email=""
+  logginingInState="waiting"
+  loginSuccess={[MockFunction]}
+  onChangeEmail={[Function]}
+  switchMode={[Function]}
+/>
+`;
+
+exports[`Shallow Snapshot Tests reset-pasword mode 1`] = `
+<PasswordResetRequestForm
+  email=""
+  onChangeEmail={[Function]}
+  switchMode={[Function]}
+/>
+`;
+
+exports[`Shallow Snapshot Tests signup mode 1`] = `
+<SignupForm
+  email=""
+  onChangeEmail={[Function]}
+  switchMode={[Function]}
+/>
+`;

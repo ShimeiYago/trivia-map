@@ -16,12 +16,12 @@ import { login, ValidationError } from 'api/auths-api/login';
 import { ApiError } from 'api/utils/handle-axios-error';
 import { globalAPIErrorMessage } from 'constant/global-api-error-message';
 import { HeaderErrorMessages } from 'views/components/moleculars/header-error-messages';
+import { AuthFormMode } from '../../renderer';
 
-export class Renderer extends React.Component<Props, State> {
+export class LoginForm extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      email: '',
       password: '',
       localLoadingState: 'waiting',
       showResendEmailButton: false,
@@ -53,7 +53,8 @@ export class Renderer extends React.Component<Props, State> {
               disabled={disabled}
               helperText={this.state.formError?.email}
               error={!!this.state.formError?.email}
-              onChange={this.handleChangeTextField('email')}
+              onChange={this.props.onChangeEmail}
+              value={this.props.email}
             />
             <TextField
               margin="normal"
@@ -66,7 +67,7 @@ export class Renderer extends React.Component<Props, State> {
               disabled={disabled}
               helperText={this.state.formError?.password}
               error={!!this.state.formError?.password}
-              onChange={this.handleChangeTextField('password')}
+              onChange={this.handleChangePassword}
             />
             <LoadingButton
               fullWidth
@@ -80,10 +81,20 @@ export class Renderer extends React.Component<Props, State> {
             </LoadingButton>
             <Grid container>
               <Grid item xs>
-                <Button variant="text">パスワードを忘れた場合</Button>
+                <Button
+                  variant="text"
+                  onClick={this.props.switchMode('reset-password')}
+                >
+                  パスワードを忘れた場合
+                </Button>
               </Grid>
               <Grid item>
-                <Button variant="text">アカウント作成</Button>
+                <Button
+                  variant="text"
+                  onClick={this.props.switchMode('signup')}
+                >
+                  アカウント作成
+                </Button>
               </Grid>
             </Grid>
           </Box>
@@ -119,19 +130,11 @@ export class Renderer extends React.Component<Props, State> {
     return null;
   }
 
-  protected handleChangeTextField =
-    (fieldType: 'email' | 'password') =>
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      if (fieldType === 'email') {
-        this.setState({
-          email: e.target.value,
-        });
-      } else {
-        this.setState({
-          password: e.target.value,
-        });
-      }
-    };
+  protected handleChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({
+      password: e.target.value,
+    });
+  };
 
   protected handleClickLogin = async () => {
     this.setState({
@@ -142,7 +145,7 @@ export class Renderer extends React.Component<Props, State> {
     });
 
     try {
-      const res = await login(this.state.email, this.state.password);
+      const res = await login(this.props.email, this.state.password);
       this.props.loginSuccess(res.user);
       this.setState({
         localLoadingState: 'success',
@@ -196,12 +199,14 @@ export class Renderer extends React.Component<Props, State> {
 
 export type Props = {
   logginingInState: LoadingState;
+  email: string;
 
+  onChangeEmail: (e: React.ChangeEvent<HTMLInputElement>) => void;
   loginSuccess: (user: User) => void;
+  switchMode: (mode: AuthFormMode) => () => void;
 };
 
 export type State = {
-  email: string;
   password: string;
   localLoadingState: LoadingState;
   errorTitle?: string;

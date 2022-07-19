@@ -1,0 +1,275 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shallow Snapshot Tests basic 1`] = `
+<ForwardRef(Container)
+  component="main"
+  maxWidth="xs"
+>
+  <ForwardRef(Stack)
+    spacing={1}
+    sx={
+      Object {
+        "px": 1,
+        "py": 2,
+      }
+    }
+  >
+    <ForwardRef(Typography)
+      align="center"
+      component="h1"
+      variant="h5"
+    >
+      パスワード再設定
+    </ForwardRef(Typography)>
+    <ForwardRef(Typography)
+      component="p"
+      variant="subtitle2"
+    >
+      パスワードを忘れた場合はこちらでパスワードの再設定を行なってください。
+    </ForwardRef(Typography)>
+    <ForwardRef(Box)
+      component="form"
+      noValidate={true}
+    >
+      <ForwardRef(TextField)
+        autoComplete="email"
+        autoFocus={true}
+        disabled={false}
+        error={false}
+        fullWidth={true}
+        id="email"
+        label="メールアドレス"
+        margin="normal"
+        name="email"
+        onChange={[MockFunction]}
+      />
+      <ForwardRef(LoadingButton)
+        disabled={false}
+        fullWidth={true}
+        loading={false}
+        sx={
+          Object {
+            "mb": 2,
+            "mt": 3,
+          }
+        }
+        variant="contained"
+      >
+        再設定用のメールを送信する
+      </ForwardRef(LoadingButton)>
+      <ForwardRef(Grid)
+        container={true}
+      >
+        <ForwardRef(Grid)
+          item={true}
+          xs={true}
+        >
+          <ForwardRef(Button)
+            variant="text"
+          >
+            ログイン
+          </ForwardRef(Button)>
+        </ForwardRef(Grid)>
+        <ForwardRef(Grid)
+          item={true}
+        >
+          <ForwardRef(Button)
+            variant="text"
+          >
+            アカウント作成
+          </ForwardRef(Button)>
+        </ForwardRef(Grid)>
+      </ForwardRef(Grid)>
+    </ForwardRef(Box)>
+  </ForwardRef(Stack)>
+</ForwardRef(Container)>
+`;
+
+exports[`Shallow Snapshot Tests error case 1`] = `
+<ForwardRef(Container)
+  component="main"
+  maxWidth="xs"
+>
+  <ForwardRef(Stack)
+    spacing={1}
+    sx={
+      Object {
+        "px": 1,
+        "py": 2,
+      }
+    }
+  >
+    <ForwardRef(Typography)
+      align="center"
+      component="h1"
+      variant="h5"
+    >
+      パスワード再設定
+    </ForwardRef(Typography)>
+    <ForwardRef(Typography)
+      component="p"
+      variant="subtitle2"
+    >
+      パスワードを忘れた場合はこちらでパスワードの再設定を行なってください。
+    </ForwardRef(Typography)>
+    <ForwardRef(Box)>
+      <HeaderErrorMessages
+        errorMessages={
+          Array [
+            "error1",
+            "error2",
+          ]
+        }
+        errorTitle="error title"
+      />
+    </ForwardRef(Box)>
+    <ForwardRef(Box)
+      component="form"
+      noValidate={true}
+    >
+      <ForwardRef(TextField)
+        autoComplete="email"
+        autoFocus={true}
+        disabled={false}
+        error={true}
+        fullWidth={true}
+        helperText={
+          Array [
+            "email is invalid",
+          ]
+        }
+        id="email"
+        label="メールアドレス"
+        margin="normal"
+        name="email"
+        onChange={[MockFunction]}
+      />
+      <ForwardRef(LoadingButton)
+        disabled={false}
+        fullWidth={true}
+        loading={false}
+        sx={
+          Object {
+            "mb": 2,
+            "mt": 3,
+          }
+        }
+        variant="contained"
+      >
+        再設定用のメールを送信する
+      </ForwardRef(LoadingButton)>
+      <ForwardRef(Grid)
+        container={true}
+      >
+        <ForwardRef(Grid)
+          item={true}
+          xs={true}
+        >
+          <ForwardRef(Button)
+            variant="text"
+          >
+            ログイン
+          </ForwardRef(Button)>
+        </ForwardRef(Grid)>
+        <ForwardRef(Grid)
+          item={true}
+        >
+          <ForwardRef(Button)
+            variant="text"
+          >
+            アカウント作成
+          </ForwardRef(Button)>
+        </ForwardRef(Grid)>
+      </ForwardRef(Grid)>
+    </ForwardRef(Box)>
+  </ForwardRef(Stack)>
+</ForwardRef(Container)>
+`;
+
+exports[`Shallow Snapshot Tests success case 1`] = `
+<ForwardRef(Container)
+  component="main"
+  maxWidth="xs"
+>
+  <ForwardRef(Stack)
+    spacing={1}
+    sx={
+      Object {
+        "px": 1,
+        "py": 2,
+      }
+    }
+  >
+    <ForwardRef(Typography)
+      align="center"
+      component="h1"
+      variant="h5"
+    >
+      パスワード再設定
+    </ForwardRef(Typography)>
+    <ForwardRef(Typography)
+      component="p"
+      variant="subtitle2"
+    >
+      パスワードを忘れた場合はこちらでパスワードの再設定を行なってください。
+    </ForwardRef(Typography)>
+    <ForwardRef(Alert)>
+      入力されたメールアドレス宛に再設定用メールを送信しました。メールの内容に従ってパスワードを再設定してください。
+    </ForwardRef(Alert)>
+    <ForwardRef(Box)
+      component="form"
+      noValidate={true}
+    >
+      <ForwardRef(TextField)
+        autoComplete="email"
+        autoFocus={true}
+        disabled={false}
+        error={false}
+        fullWidth={true}
+        id="email"
+        label="メールアドレス"
+        margin="normal"
+        name="email"
+        onChange={[MockFunction]}
+      />
+      <ForwardRef(LoadingButton)
+        disabled={false}
+        fullWidth={true}
+        loading={false}
+        sx={
+          Object {
+            "mb": 2,
+            "mt": 3,
+          }
+        }
+        variant="contained"
+      >
+        再設定用のメールを送信する
+      </ForwardRef(LoadingButton)>
+      <ForwardRef(Grid)
+        container={true}
+      >
+        <ForwardRef(Grid)
+          item={true}
+          xs={true}
+        >
+          <ForwardRef(Button)
+            variant="text"
+          >
+            ログイン
+          </ForwardRef(Button)>
+        </ForwardRef(Grid)>
+        <ForwardRef(Grid)
+          item={true}
+        >
+          <ForwardRef(Button)
+            variant="text"
+          >
+            アカウント作成
+          </ForwardRef(Button)>
+        </ForwardRef(Grid)>
+      </ForwardRef(Grid)>
+    </ForwardRef(Box)>
+  </ForwardRef(Stack)>
+</ForwardRef(Container)>
+`;

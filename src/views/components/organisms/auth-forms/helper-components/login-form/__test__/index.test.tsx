@@ -1,21 +1,24 @@
 import { shallow, ShallowWrapper } from 'enzyme';
-import { Renderer, Props, State } from '..';
+import { LoginForm, Props, State } from '..';
 import * as LoginModule from 'api/auths-api/login';
 import { mockLoginResponse } from 'api/mock/auths-response/login';
 import { ApiError } from 'api/utils/handle-axios-error';
 
-let wrapper: ShallowWrapper<Props, State, Renderer>;
+let wrapper: ShallowWrapper<Props, State, LoginForm>;
 
 let loginSpy: jest.SpyInstance;
 
 const basicProps: Props = {
   logginingInState: 'waiting',
   loginSuccess: jest.fn(),
+  switchMode: jest.fn(),
+  email: '',
+  onChangeEmail: jest.fn(),
 };
 
 describe('Shallow Snapshot Tests', () => {
   beforeEach(() => {
-    wrapper = shallow(<Renderer {...basicProps} />);
+    wrapper = shallow(<LoginForm {...basicProps} />);
   });
 
   it('basic', () => {
@@ -42,24 +45,9 @@ describe('Shallow Snapshot Tests', () => {
   });
 });
 
-describe('handleChangeTextField', () => {
-  it('should set email', () => {
-    wrapper = shallow(<Renderer {...basicProps} />);
-    const instance = wrapper.instance();
-
-    const event = {
-      target: {
-        value: 'xxx@xxx.com',
-      },
-    } as React.ChangeEvent<HTMLInputElement>;
-
-    instance['handleChangeTextField']('email')(event);
-
-    expect(instance.state.email).toBe('xxx@xxx.com');
-  });
-
+describe('handleChangePassword', () => {
   it('should set password', async () => {
-    wrapper = shallow(<Renderer {...basicProps} />);
+    wrapper = shallow(<LoginForm {...basicProps} />);
     const instance = wrapper.instance();
 
     const event = {
@@ -68,7 +56,7 @@ describe('handleChangeTextField', () => {
       },
     } as React.ChangeEvent<HTMLInputElement>;
 
-    instance['handleChangeTextField']('password')(event);
+    instance['handleChangePassword'](event);
 
     expect(instance.state.password).toBe('xxxxx');
   });
@@ -83,7 +71,7 @@ describe('handleClickLogin', () => {
   it('should set localLoadingState success when api succeed', async () => {
     loginSpy.mockResolvedValue(mockLoginResponse);
 
-    wrapper = shallow(<Renderer {...basicProps} />);
+    wrapper = shallow(<LoginForm {...basicProps} />);
     const instance = wrapper.instance();
 
     await instance['handleClickLogin']();
@@ -107,7 +95,7 @@ describe('handleClickLogin', () => {
     };
     loginSpy.mockRejectedValue(apiError);
 
-    wrapper = shallow(<Renderer {...basicProps} />);
+    wrapper = shallow(<LoginForm {...basicProps} />);
     const instance = wrapper.instance();
 
     await instance['handleClickLogin']();
@@ -121,7 +109,7 @@ describe('handleClickLogin', () => {
   it('should set localLoadingState error when api fail', async () => {
     loginSpy.mockRejectedValue(new Error());
 
-    wrapper = shallow(<Renderer {...basicProps} />);
+    wrapper = shallow(<LoginForm {...basicProps} />);
     const instance = wrapper.instance();
 
     await instance['handleClickLogin']();

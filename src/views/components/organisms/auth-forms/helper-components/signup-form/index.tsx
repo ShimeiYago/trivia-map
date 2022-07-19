@@ -12,6 +12,7 @@ import {
 } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 import { HeaderErrorMessages } from 'views/components/moleculars/header-error-messages';
+import { AuthFormMode } from '../../renderer';
 
 export class SignupForm extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -81,13 +82,16 @@ export class SignupForm extends React.Component<Props, State> {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
+              // onClick={}  TODO
               loading={this.state.localLoadingState === 'loading'}
               disabled={disabled}
             >
               アカウント作成
             </LoadingButton>
             <Typography align="right">
-              <Button variant="text">ログイン</Button>
+              <Button variant="text" onClick={this.props.switchMode('login')}>
+                ログイン
+              </Button>
             </Typography>
           </Box>
         </Stack>
@@ -100,7 +104,11 @@ export class SignupForm extends React.Component<Props, State> {
     const { errorTitle, errorMessages } = this.state;
 
     if (logginingInState === 'success') {
-      return <Alert>ログインに成功しました。</Alert>;
+      return (
+        <Alert>
+          入力されたメールアドレス宛に確認用メールを送信しました。メールの内容に従ってアカウント作成を完了してください。
+        </Alert>
+      );
     }
 
     if (errorTitle) {
@@ -142,6 +150,7 @@ export type Props = {
   logginingInState: LoadingState;
 
   loginSuccess: (user: User) => void;
+  switchMode: (mode: AuthFormMode) => () => void;
 };
 
 export type State = {

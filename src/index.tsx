@@ -23,7 +23,7 @@ ReactDOM.render(
             <Route index element={<MapPage />} />
             <Route path="/edit/:postId" element={<MapPage />} />
             <Route path="/article/:postId" element={<Article />} />
-            <Route path="/login" element={<AuthForms />} />
+            <Route path="/login" element={<AuthForms initialMode="login" />} />
             <Route path="*" element={<div>404 not found (TODO)</div>} />
           </Routes>
         </BrowserRouter>

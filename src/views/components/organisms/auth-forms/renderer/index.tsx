@@ -2,6 +2,7 @@ import React from 'react';
 import { LoadingState } from 'types/loading-state';
 import { User } from 'types/user';
 import { LoginForm } from '../helper-components/login-form';
+import { PasswordResetRequestForm } from '../helper-components/password-reset-request-form';
 import { SignupForm } from '../helper-components/signup-form';
 
 export class Renderer extends React.Component<Props, State> {
@@ -18,6 +19,16 @@ export class Renderer extends React.Component<Props, State> {
       case 'signup':
         return (
           <SignupForm
+            email={this.state.email}
+            onChangeEmail={this.handleChangeEmail}
+            logginingInState={this.props.logginingInState}
+            loginSuccess={this.props.loginSuccess}
+            switchMode={this.switchMode}
+          />
+        );
+      case 'reset-password':
+        return (
+          <PasswordResetRequestForm
             email={this.state.email}
             onChangeEmail={this.handleChangeEmail}
             logginingInState={this.props.logginingInState}
@@ -63,4 +74,4 @@ export type State = {
   email: string;
 };
 
-export type AuthFormMode = 'login' | 'signup';
+export type AuthFormMode = 'login' | 'signup' | 'reset-password';

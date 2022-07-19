@@ -38,7 +38,8 @@ exports[`Shallow Snapshot Tests already logged in 1`] = `
         label="メールアドレス"
         margin="normal"
         name="email"
-        onChange={[Function]}
+        onChange={[MockFunction]}
+        value=""
       />
       <ForwardRef(TextField)
         autoComplete="current-password"
@@ -130,7 +131,8 @@ exports[`Shallow Snapshot Tests basic 1`] = `
         label="メールアドレス"
         margin="normal"
         name="email"
-        onChange={[Function]}
+        onChange={[MockFunction]}
+        value=""
       />
       <ForwardRef(TextField)
         autoComplete="current-password"
@@ -238,7 +240,8 @@ exports[`Shallow Snapshot Tests error case 1`] = `
         label="メールアドレス"
         margin="normal"
         name="email"
-        onChange={[Function]}
+        onChange={[MockFunction]}
+        value=""
       />
       <ForwardRef(TextField)
         autoComplete="current-password"

@@ -39,7 +39,22 @@ describe('Shallow Snapshot Tests', () => {
   });
 });
 
-describe('handleChangePassword', () => {
+describe('handleChangeTextField', () => {
+  it('should set nickname', async () => {
+    wrapper = shallow(<SignupForm {...basicProps} />);
+    const instance = wrapper.instance();
+
+    const event = {
+      target: {
+        value: 'xxxxx',
+      },
+    } as React.ChangeEvent<HTMLInputElement>;
+
+    instance['handleChangeTextField']('nickname')(event);
+
+    expect(instance.state.nickname).toBe('xxxxx');
+  });
+
   it('should set password1', async () => {
     wrapper = shallow(<SignupForm {...basicProps} />);
     const instance = wrapper.instance();
@@ -50,7 +65,7 @@ describe('handleChangePassword', () => {
       },
     } as React.ChangeEvent<HTMLInputElement>;
 
-    instance['handleChangePassword']('password1')(event);
+    instance['handleChangeTextField']('password1')(event);
 
     expect(instance.state.password1).toBe('xxxxx');
   });
@@ -65,7 +80,7 @@ describe('handleChangePassword', () => {
       },
     } as React.ChangeEvent<HTMLInputElement>;
 
-    instance['handleChangePassword']('password2')(event);
+    instance['handleChangeTextField']('password2')(event);
 
     expect(instance.state.password2).toBe('xxxxx');
   });

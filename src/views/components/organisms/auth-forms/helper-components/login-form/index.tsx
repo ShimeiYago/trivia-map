@@ -81,7 +81,12 @@ export class LoginForm extends React.Component<Props, State> {
             </LoadingButton>
             <Grid container>
               <Grid item xs>
-                <Button variant="text">パスワードを忘れた場合</Button>
+                <Button
+                  variant="text"
+                  onClick={this.props.switchMode('reset-password')}
+                >
+                  パスワードを忘れた場合
+                </Button>
               </Grid>
               <Grid item>
                 <Button

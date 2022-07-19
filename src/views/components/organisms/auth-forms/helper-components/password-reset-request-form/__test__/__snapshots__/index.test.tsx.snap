@@ -19,10 +19,10 @@ exports[`Shallow Snapshot Tests already logged in 1`] = `
       component="h1"
       variant="h5"
     >
-      アカウント作成
+      パスワード再設定
     </ForwardRef(Typography)>
     <ForwardRef(Alert)>
-      入力されたメールアドレス宛に確認用メールを送信しました。メールの内容に従ってアカウント作成を完了してください。
+      入力されたメールアドレス宛に再設定用メールを送信しました。メールの内容に従ってパスワードを再設定してください。
     </ForwardRef(Alert)>
     <ForwardRef(Box)
       component="form"
@@ -39,31 +39,6 @@ exports[`Shallow Snapshot Tests already logged in 1`] = `
         margin="normal"
         name="email"
         onChange={[MockFunction]}
-        value=""
-      />
-      <ForwardRef(TextField)
-        autoComplete="current-password"
-        disabled={true}
-        error={false}
-        fullWidth={true}
-        id="password1"
-        label="パスワード"
-        margin="normal"
-        name="password1"
-        onChange={[Function]}
-        type="password"
-      />
-      <ForwardRef(TextField)
-        autoComplete="current-password"
-        disabled={true}
-        error={false}
-        fullWidth={true}
-        id="password2"
-        label="パスワード（確認）"
-        margin="normal"
-        name="password2"
-        onChange={[Function]}
-        type="password"
       />
       <ForwardRef(LoadingButton)
         disabled={true}
@@ -77,17 +52,31 @@ exports[`Shallow Snapshot Tests already logged in 1`] = `
         }
         variant="contained"
       >
-        アカウント作成
+        再設定用のメールを送信する
       </ForwardRef(LoadingButton)>
-      <ForwardRef(Typography)
-        align="right"
+      <ForwardRef(Grid)
+        container={true}
       >
-        <ForwardRef(Button)
-          variant="text"
+        <ForwardRef(Grid)
+          item={true}
+          xs={true}
         >
-          ログイン
-        </ForwardRef(Button)>
-      </ForwardRef(Typography)>
+          <ForwardRef(Button)
+            variant="text"
+          >
+            ログイン
+          </ForwardRef(Button)>
+        </ForwardRef(Grid)>
+        <ForwardRef(Grid)
+          item={true}
+        >
+          <ForwardRef(Button)
+            variant="text"
+          >
+            アカウント作成
+          </ForwardRef(Button)>
+        </ForwardRef(Grid)>
+      </ForwardRef(Grid)>
     </ForwardRef(Box)>
   </ForwardRef(Stack)>
 </ForwardRef(Container)>
@@ -112,7 +101,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       component="h1"
       variant="h5"
     >
-      アカウント作成
+      パスワード再設定
     </ForwardRef(Typography)>
     <ForwardRef(Box)
       component="form"
@@ -129,31 +118,6 @@ exports[`Shallow Snapshot Tests basic 1`] = `
         margin="normal"
         name="email"
         onChange={[MockFunction]}
-        value=""
-      />
-      <ForwardRef(TextField)
-        autoComplete="current-password"
-        disabled={false}
-        error={false}
-        fullWidth={true}
-        id="password1"
-        label="パスワード"
-        margin="normal"
-        name="password1"
-        onChange={[Function]}
-        type="password"
-      />
-      <ForwardRef(TextField)
-        autoComplete="current-password"
-        disabled={false}
-        error={false}
-        fullWidth={true}
-        id="password2"
-        label="パスワード（確認）"
-        margin="normal"
-        name="password2"
-        onChange={[Function]}
-        type="password"
       />
       <ForwardRef(LoadingButton)
         disabled={false}
@@ -167,17 +131,31 @@ exports[`Shallow Snapshot Tests basic 1`] = `
         }
         variant="contained"
       >
-        アカウント作成
+        再設定用のメールを送信する
       </ForwardRef(LoadingButton)>
-      <ForwardRef(Typography)
-        align="right"
+      <ForwardRef(Grid)
+        container={true}
       >
-        <ForwardRef(Button)
-          variant="text"
+        <ForwardRef(Grid)
+          item={true}
+          xs={true}
         >
-          ログイン
-        </ForwardRef(Button)>
-      </ForwardRef(Typography)>
+          <ForwardRef(Button)
+            variant="text"
+          >
+            ログイン
+          </ForwardRef(Button)>
+        </ForwardRef(Grid)>
+        <ForwardRef(Grid)
+          item={true}
+        >
+          <ForwardRef(Button)
+            variant="text"
+          >
+            アカウント作成
+          </ForwardRef(Button)>
+        </ForwardRef(Grid)>
+      </ForwardRef(Grid)>
     </ForwardRef(Box)>
   </ForwardRef(Stack)>
 </ForwardRef(Container)>
@@ -202,7 +180,7 @@ exports[`Shallow Snapshot Tests error case 1`] = `
       component="h1"
       variant="h5"
     >
-      アカウント作成
+      パスワード再設定
     </ForwardRef(Typography)>
     <ForwardRef(Box)>
       <HeaderErrorMessages
@@ -235,41 +213,6 @@ exports[`Shallow Snapshot Tests error case 1`] = `
         margin="normal"
         name="email"
         onChange={[MockFunction]}
-        value=""
-      />
-      <ForwardRef(TextField)
-        autoComplete="current-password"
-        disabled={false}
-        error={true}
-        fullWidth={true}
-        helperText={
-          Array [
-            "password is invalid",
-          ]
-        }
-        id="password1"
-        label="パスワード"
-        margin="normal"
-        name="password1"
-        onChange={[Function]}
-        type="password"
-      />
-      <ForwardRef(TextField)
-        autoComplete="current-password"
-        disabled={false}
-        error={true}
-        fullWidth={true}
-        helperText={
-          Array [
-            "password is invalid",
-          ]
-        }
-        id="password2"
-        label="パスワード（確認）"
-        margin="normal"
-        name="password2"
-        onChange={[Function]}
-        type="password"
       />
       <ForwardRef(LoadingButton)
         disabled={false}
@@ -283,17 +226,31 @@ exports[`Shallow Snapshot Tests error case 1`] = `
         }
         variant="contained"
       >
-        アカウント作成
+        再設定用のメールを送信する
       </ForwardRef(LoadingButton)>
-      <ForwardRef(Typography)
-        align="right"
+      <ForwardRef(Grid)
+        container={true}
       >
-        <ForwardRef(Button)
-          variant="text"
+        <ForwardRef(Grid)
+          item={true}
+          xs={true}
         >
-          ログイン
-        </ForwardRef(Button)>
-      </ForwardRef(Typography)>
+          <ForwardRef(Button)
+            variant="text"
+          >
+            ログイン
+          </ForwardRef(Button)>
+        </ForwardRef(Grid)>
+        <ForwardRef(Grid)
+          item={true}
+        >
+          <ForwardRef(Button)
+            variant="text"
+          >
+            アカウント作成
+          </ForwardRef(Button)>
+        </ForwardRef(Grid)>
+      </ForwardRef(Grid)>
     </ForwardRef(Box)>
   </ForwardRef(Stack)>
 </ForwardRef(Container)>

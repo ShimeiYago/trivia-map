@@ -12,6 +12,8 @@ const basicProps: Props = {
   logginingInState: 'waiting',
   loginSuccess: jest.fn(),
   switchMode: jest.fn(),
+  email: '',
+  onChangeEmail: jest.fn(),
 };
 
 describe('Shallow Snapshot Tests', () => {
@@ -43,22 +45,7 @@ describe('Shallow Snapshot Tests', () => {
   });
 });
 
-describe('handleChangeTextField', () => {
-  it('should set email', () => {
-    wrapper = shallow(<LoginForm {...basicProps} />);
-    const instance = wrapper.instance();
-
-    const event = {
-      target: {
-        value: 'xxx@xxx.com',
-      },
-    } as React.ChangeEvent<HTMLInputElement>;
-
-    instance['handleChangeTextField']('email')(event);
-
-    expect(instance.state.email).toBe('xxx@xxx.com');
-  });
-
+describe('handleChangePassword', () => {
   it('should set password', async () => {
     wrapper = shallow(<LoginForm {...basicProps} />);
     const instance = wrapper.instance();
@@ -69,7 +56,7 @@ describe('handleChangeTextField', () => {
       },
     } as React.ChangeEvent<HTMLInputElement>;
 
-    instance['handleChangeTextField']('password')(event);
+    instance['handleChangePassword'](event);
 
     expect(instance.state.password).toBe('xxxxx');
   });

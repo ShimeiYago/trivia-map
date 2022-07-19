@@ -9,6 +9,7 @@ export class Renderer extends React.Component<Props, State> {
     super(props);
     this.state = {
       mode: props.initialMode,
+      email: '',
     };
   }
 
@@ -17,6 +18,8 @@ export class Renderer extends React.Component<Props, State> {
       case 'signup':
         return (
           <SignupForm
+            email={this.state.email}
+            onChangeEmail={this.handleChangeEmail}
             logginingInState={this.props.logginingInState}
             loginSuccess={this.props.loginSuccess}
             switchMode={this.switchMode}
@@ -25,6 +28,8 @@ export class Renderer extends React.Component<Props, State> {
       default:
         return (
           <LoginForm
+            email={this.state.email}
+            onChangeEmail={this.handleChangeEmail}
             logginingInState={this.props.logginingInState}
             loginSuccess={this.props.loginSuccess}
             switchMode={this.switchMode}
@@ -38,6 +43,12 @@ export class Renderer extends React.Component<Props, State> {
       mode: mode,
     });
   };
+
+  protected handleChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({
+      email: e.target.value,
+    });
+  };
 }
 
 export type Props = {
@@ -49,6 +60,7 @@ export type Props = {
 
 export type State = {
   mode: AuthFormMode;
+  email: string;
 };
 
 export type AuthFormMode = 'login' | 'signup';

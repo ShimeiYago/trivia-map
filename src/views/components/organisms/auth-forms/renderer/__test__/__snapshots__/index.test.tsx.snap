@@ -13,8 +13,6 @@ exports[`Shallow Snapshot Tests basic 1`] = `
 exports[`Shallow Snapshot Tests reset-pasword mode 1`] = `
 <PasswordResetRequestForm
   email=""
-  logginingInState="waiting"
-  loginSuccess={[MockFunction]}
   onChangeEmail={[Function]}
   switchMode={[Function]}
 />
@@ -23,8 +21,6 @@ exports[`Shallow Snapshot Tests reset-pasword mode 1`] = `
 exports[`Shallow Snapshot Tests signup mode 1`] = `
 <SignupForm
   email=""
-  logginingInState="waiting"
-  loginSuccess={[MockFunction]}
   onChangeEmail={[Function]}
   switchMode={[Function]}
 />

@@ -4,8 +4,6 @@ import { SignupForm, Props, State } from '..';
 let wrapper: ShallowWrapper<Props, State, SignupForm>;
 
 const basicProps: Props = {
-  logginingInState: 'waiting',
-  loginSuccess: jest.fn(),
   switchMode: jest.fn(),
   email: '',
   onChangeEmail: jest.fn(),
@@ -33,9 +31,9 @@ describe('Shallow Snapshot Tests', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('already logged in', () => {
-    wrapper.setProps({
-      logginingInState: 'success',
+  it('success case', () => {
+    wrapper.setState({
+      localLoadingState: 'success',
     });
     expect(wrapper).toMatchSnapshot();
   });

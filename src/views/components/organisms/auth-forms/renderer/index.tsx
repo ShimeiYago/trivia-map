@@ -21,8 +21,6 @@ export class Renderer extends React.Component<Props, State> {
           <SignupForm
             email={this.state.email}
             onChangeEmail={this.handleChangeEmail}
-            logginingInState={this.props.logginingInState}
-            loginSuccess={this.props.loginSuccess}
             switchMode={this.switchMode}
           />
         );
@@ -31,8 +29,6 @@ export class Renderer extends React.Component<Props, State> {
           <PasswordResetRequestForm
             email={this.state.email}
             onChangeEmail={this.handleChangeEmail}
-            logginingInState={this.props.logginingInState}
-            loginSuccess={this.props.loginSuccess}
             switchMode={this.switchMode}
           />
         );

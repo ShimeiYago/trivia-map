@@ -1,7 +1,12 @@
 import { shallow, ShallowWrapper } from 'enzyme';
 import { SignupForm, Props, State } from '..';
+import * as RegistrationModule from 'api/auths-api/registration';
+import { mockLoginResponse } from 'api/mock/auths-response/login';
+import { ApiError } from 'api/utils/handle-axios-error';
 
 let wrapper: ShallowWrapper<Props, State, SignupForm>;
+
+let loginSpy: jest.SpyInstance;
 
 const basicProps: Props = {
   switchMode: jest.fn(),
@@ -83,5 +88,64 @@ describe('handleChangeTextField', () => {
     instance['handleChangeTextField']('password2')(event);
 
     expect(instance.state.password2).toBe('xxxxx');
+  });
+});
+
+describe('handleClickSignup', () => {
+  beforeEach(() => {
+    jest.resetAllMocks();
+    loginSpy = jest.spyOn(RegistrationModule, 'registration');
+  });
+
+  it('should set localLoadingState success when api succeed', async () => {
+    loginSpy.mockResolvedValue(mockLoginResponse);
+
+    wrapper = shallow(<SignupForm {...basicProps} />);
+    const instance = wrapper.instance();
+
+    await instance['handleClickSignup']();
+
+    expect(instance.state.localLoadingState).toBe('success');
+  });
+
+  it('should set form error when api have validation error', async () => {
+    const apiError: ApiError<RegistrationModule.ValidationError> = {
+      status: 400,
+      data: {
+        email: ['email is invalid'],
+        nickname: ['nickname is invalid'],
+        password1: ['password is invalid'],
+        password2: ['password is invalid'],
+        non_field_errors: [
+          'another error',
+          "The two password fields didn't match.",
+        ],
+      },
+      errorMsg: '400 request is invalid',
+    };
+    loginSpy.mockRejectedValue(apiError);
+
+    wrapper = shallow(<SignupForm {...basicProps} />);
+    const instance = wrapper.instance();
+
+    await instance['handleClickSignup']();
+
+    expect(instance.state.formError).toEqual({
+      email: ['email is invalid'],
+      nickname: ['nickname is invalid'],
+      password1: ['password is invalid'],
+      password2: ['password is invalid'],
+    });
+  });
+
+  it('should set localLoadingState error when api fail', async () => {
+    loginSpy.mockRejectedValue(new Error());
+
+    wrapper = shallow(<SignupForm {...basicProps} />);
+    const instance = wrapper.instance();
+
+    await instance['handleClickSignup']();
+
+    expect(instance.state.localLoadingState).toBe('error');
   });
 });

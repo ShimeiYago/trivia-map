@@ -250,84 +250,30 @@ exports[`Shallow Snapshot Tests success case 1`] = `
       アカウント作成
     </ForwardRef(Typography)>
     <ForwardRef(Alert)>
-      入力されたメールアドレス宛に確認用メールを送信しました。メールの内容に従ってアカウント作成を完了してください。
-    </ForwardRef(Alert)>
-    <ForwardRef(Box)
-      component="form"
-      noValidate={true}
-    >
-      <ForwardRef(TextField)
-        autoComplete="email"
-        autoFocus={true}
-        disabled={false}
-        error={false}
-        fullWidth={true}
-        id="email"
-        label="メールアドレス"
-        margin="normal"
-        name="email"
-        onChange={[MockFunction]}
-        value=""
-      />
-      <ForwardRef(TextField)
-        autoComplete="nickname"
-        autoFocus={true}
-        disabled={false}
-        error={false}
-        fullWidth={true}
-        id="nickname"
-        label="名前"
-        margin="normal"
-        name="nickname"
-        onChange={[Function]}
-      />
-      <ForwardRef(TextField)
-        autoComplete="current-password"
-        disabled={false}
-        error={false}
-        fullWidth={true}
-        id="password1"
-        label="パスワード"
-        margin="normal"
-        name="password1"
-        onChange={[Function]}
-        type="password"
-      />
-      <ForwardRef(TextField)
-        autoComplete="current-password"
-        disabled={false}
-        error={false}
-        fullWidth={true}
-        id="password2"
-        label="パスワード（確認）"
-        margin="normal"
-        name="password2"
-        onChange={[Function]}
-        type="password"
-      />
-      <ForwardRef(LoadingButton)
-        disabled={false}
-        fullWidth={true}
-        loading={false}
-        onClick={[Function]}
-        sx={
-          Object {
-            "mb": 2,
-            "mt": 3,
-          }
-        }
-        variant="contained"
+      <ForwardRef(Typography)
+        variant="inherit"
       >
-        アカウント作成
-      </ForwardRef(LoadingButton)>
-      <ForwardRef(Typography)>
-        <ForwardRef(Button)
-          variant="text"
-        >
+        入力されたメールアドレス宛に確認用メールを送信しました。メールの内容に従ってアカウント作成を完了してください。
+      </ForwardRef(Typography)>
+      <ForwardRef(Typography)
+        variant="inherit"
+      >
+        その後
+        <ForwardRef(Button)>
           ログイン
         </ForwardRef(Button)>
+        してください。
       </ForwardRef(Typography)>
-    </ForwardRef(Box)>
+    </ForwardRef(Alert)>
+    <ForwardRef(Typography)
+      align="right"
+    >
+      <ForwardRef(Button)
+        variant="text"
+      >
+        確認メールが届いていませんか？
+      </ForwardRef(Button)>
+    </ForwardRef(Typography)>
   </ForwardRef(Stack)>
 </ForwardRef(Container)>
 `;

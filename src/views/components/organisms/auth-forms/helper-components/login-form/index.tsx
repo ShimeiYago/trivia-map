@@ -142,6 +142,7 @@ export class LoginForm extends React.Component<Props, State> {
       errorTitle: undefined,
       errorMessages: undefined,
       showResendEmailButton: false,
+      formError: undefined,
     });
 
     try {

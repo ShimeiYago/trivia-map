@@ -133,6 +133,7 @@ export class PasswordResetRequestForm extends React.Component<Props, State> {
           formError: {
             email: apiError.data.email,
           },
+          errorMessages: apiError.data.non_field_errors,
         });
       }
 

@@ -64,6 +64,7 @@ describe('handleSubmit', () => {
       status: 400,
       data: {
         email: ['email is invalid'],
+        non_field_errors: ['unknown error'],
       },
       errorMsg: '400 request is invalid',
     };

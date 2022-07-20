@@ -78,6 +78,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
         disabled={false}
         fullWidth={true}
         loading={false}
+        onClick={[Function]}
         sx={
           Object {
             "mb": 2,
@@ -204,6 +205,7 @@ exports[`Shallow Snapshot Tests error case 1`] = `
         disabled={false}
         fullWidth={true}
         loading={false}
+        onClick={[Function]}
         sx={
           Object {
             "mb": 2,
@@ -307,6 +309,7 @@ exports[`Shallow Snapshot Tests success case 1`] = `
         disabled={false}
         fullWidth={true}
         loading={false}
+        onClick={[Function]}
         sx={
           Object {
             "mb": 2,

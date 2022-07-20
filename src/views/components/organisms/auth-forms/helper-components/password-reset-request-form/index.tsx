@@ -13,6 +13,9 @@ import {
 import { LoadingButton } from '@mui/lab';
 import { HeaderErrorMessages } from 'views/components/moleculars/header-error-messages';
 import { AuthFormMode } from '../../renderer';
+import { resetPassword, ValidationError } from 'api/auths-api/reset-password';
+import { ApiError } from 'api/utils/handle-axios-error';
+import { globalAPIErrorMessage } from 'constant/global-api-error-message';
 
 export class PasswordResetRequestForm extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -53,7 +56,7 @@ export class PasswordResetRequestForm extends React.Component<Props, State> {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
-              // onClick={} TODO
+              onClick={this.handleSubmit}
               loading={this.state.localLoadingState === 'loading'}
               disabled={disabled}
             >
@@ -104,6 +107,41 @@ export class PasswordResetRequestForm extends React.Component<Props, State> {
 
     return null;
   }
+
+  protected handleSubmit = async () => {
+    this.setState({
+      localLoadingState: 'loading',
+      errorTitle: undefined,
+      errorMessages: undefined,
+    });
+
+    try {
+      await resetPassword(this.props.email);
+      this.setState({
+        localLoadingState: 'success',
+      });
+    } catch (error) {
+      const apiError = error as ApiError<ValidationError>;
+
+      this.setState({
+        errorTitle: globalAPIErrorMessage(apiError.status, 'submit'),
+      });
+
+      if (apiError.status === 400 && apiError.data) {
+        // validation Error
+        this.setState({
+          formError: {
+            email: apiError.data.email,
+          },
+          errorMessages: apiError.data.non_field_errors,
+        });
+      }
+
+      this.setState({
+        localLoadingState: 'error',
+      });
+    }
+  };
 }
 
 export type Props = {

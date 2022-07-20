@@ -95,7 +95,7 @@ export class SignupForm extends React.Component<Props, State> {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
-              // onClick={}  TODO
+              onClick={this.handleClickSignup}
               loading={this.state.localLoadingState === 'loading'}
               disabled={disabled}
             >

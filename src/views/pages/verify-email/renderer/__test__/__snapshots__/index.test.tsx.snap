@@ -1,0 +1,98 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shallow Snapshot Tests basic 1`] = `
+<ForwardRef(Box)
+  sx={
+    Object {
+      "mt": 10,
+      "mx": 5,
+    }
+  }
+>
+  <ForwardRef(Typography)
+    align="center"
+    sx={
+      Object {
+        "mb": 2,
+      }
+    }
+  >
+    下のボタンをクリックして登録を完了させてください。
+  </ForwardRef(Typography)>
+  <ForwardRef(Typography)
+    align="center"
+  >
+    <ForwardRef(LoadingButton)
+      loading={false}
+      onClick={[Function]}
+      variant="outlined"
+    >
+      アカウント有効化
+    </ForwardRef(LoadingButton)>
+  </ForwardRef(Typography)>
+</ForwardRef(Box)>
+`;
+
+exports[`Shallow Snapshot Tests error case 1`] = `
+<ForwardRef(Box)
+  sx={
+    Object {
+      "mt": 10,
+      "mx": 5,
+    }
+  }
+>
+  <HeaderErrorMessages
+    errorMessages={
+      Array [
+        "error1",
+        "error2",
+      ]
+    }
+    errorTitle="error title"
+  />
+  <ForwardRef(Typography)
+    align="center"
+    sx={
+      Object {
+        "mb": 2,
+      }
+    }
+  >
+    下のボタンをクリックして登録を完了させてください。
+  </ForwardRef(Typography)>
+  <ForwardRef(Typography)
+    align="center"
+  >
+    <ForwardRef(LoadingButton)
+      loading={false}
+      onClick={[Function]}
+      variant="outlined"
+    >
+      アカウント有効化
+    </ForwardRef(LoadingButton)>
+  </ForwardRef(Typography)>
+</ForwardRef(Box)>
+`;
+
+exports[`Shallow Snapshot Tests success case 1`] = `
+<ForwardRef(Box)
+  sx={
+    Object {
+      "mt": 10,
+      "mx": 5,
+    }
+  }
+>
+  <ForwardRef(Typography)
+    align="center"
+  >
+    ユーザー登録が完了しました。
+  </ForwardRef(Typography)>
+  <ForwardRef(Typography)
+    align="center"
+  >
+    元々のページに戻り、登録した内容でログインしてください。
+  </ForwardRef(Typography)>
+</ForwardRef(Box)>
+`;

@@ -167,7 +167,7 @@ export class SignupForm extends React.Component<Props, State> {
     });
 
     try {
-      await registration(nickname, this.props.email, password1, password2);
+      await registration(this.props.email, nickname, password1, password2);
       this.setState({
         localLoadingState: 'success',
       });

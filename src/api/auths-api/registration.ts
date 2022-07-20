@@ -12,8 +12,8 @@ export async function registration(
   const axiosInstance = getAxiosInstance({}, {});
 
   const requestData: RegistrationRequest = {
-    nickname: nickname,
     email: email,
+    nickname: nickname,
     password1: password1,
     password2: password2,
   };

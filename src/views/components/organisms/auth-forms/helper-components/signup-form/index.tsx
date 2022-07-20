@@ -164,6 +164,7 @@ export class SignupForm extends React.Component<Props, State> {
       localLoadingState: 'loading',
       errorTitle: undefined,
       errorMessages: undefined,
+      formError: undefined,
     });
 
     try {

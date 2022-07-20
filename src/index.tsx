@@ -9,6 +9,7 @@ import { ErrorBoundary } from 'error-boundary';
 import { MapPage } from 'views/pages/map-page';
 import { Article } from 'views/pages/article';
 import { AuthForms } from 'views/components/organisms/auth-forms';
+import { VerifyEmail } from 'views/pages/verify-email';
 
 // Deactivate all console.log on production
 // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -24,6 +25,7 @@ ReactDOM.render(
             <Route path="/edit/:postId" element={<MapPage />} />
             <Route path="/article/:postId" element={<Article />} />
             <Route path="/login" element={<AuthForms initialMode="login" />} />
+            <Route path="/verify-email/:verifyKey" element={<VerifyEmail />} />
             <Route path="*" element={<div>404 not found (TODO)</div>} />
           </Routes>
         </BrowserRouter>

@@ -12,6 +12,9 @@ import {
 import { LoadingButton } from '@mui/lab';
 import { HeaderErrorMessages } from 'views/components/moleculars/header-error-messages';
 import { AuthFormMode } from '../../renderer';
+import { registration, ValidationError } from 'api/auths-api/registration';
+import { ApiError } from 'api/utils/handle-axios-error';
+import { globalAPIErrorMessage } from 'constant/global-api-error-message';
 
 export class SignupForm extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -154,6 +157,62 @@ export class SignupForm extends React.Component<Props, State> {
           });
       }
     };
+
+  protected handleClickSignup = async () => {
+    const { nickname, password1, password2 } = this.state;
+    this.setState({
+      localLoadingState: 'loading',
+      errorTitle: undefined,
+      errorMessages: undefined,
+    });
+
+    try {
+      await registration(nickname, this.props.email, password1, password2);
+      this.setState({
+        localLoadingState: 'success',
+      });
+    } catch (error) {
+      const apiError = error as ApiError<ValidationError>;
+
+      this.setState({
+        errorTitle: globalAPIErrorMessage(apiError.status, 'submit'),
+      });
+
+      if (apiError.status === 400 && apiError.data) {
+        // validation Error
+        this.setState({
+          formError: {
+            email: apiError.data.email,
+            nickname: apiError.data.nickname,
+            password1: apiError.data.password1,
+            password2: apiError.data.password2,
+          },
+        });
+
+        apiError.data.non_field_errors &&
+          this.handleNonFieldErrors(apiError.data.non_field_errors);
+      }
+
+      this.setState({
+        localLoadingState: 'error',
+      });
+    }
+  };
+
+  protected handleNonFieldErrors(nonFieldErrors: string[]) {
+    const errorMessages = nonFieldErrors.map((error) => {
+      switch (error) {
+        case "The two password fields didn't match.":
+          return '入力された２つのパスワードが一致しません。';
+        default:
+          return error;
+      }
+    });
+
+    this.setState({
+      errorMessages: errorMessages,
+    });
+  }
 }
 
 export type Props = {

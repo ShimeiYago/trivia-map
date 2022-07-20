@@ -25,4 +25,5 @@ export type ResetPasswordRequest = {
 
 export type ValidationError = {
   email?: string[];
+  non_field_errors?: string[];
 };

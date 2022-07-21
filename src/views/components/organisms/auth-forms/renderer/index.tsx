@@ -3,6 +3,7 @@ import { LoadingState } from 'types/loading-state';
 import { User } from 'types/user';
 import { LoginForm } from '../helper-components/login-form';
 import { PasswordResetRequestForm } from '../helper-components/password-reset-request-form';
+import { ResendEmailForm } from '../helper-components/resend-email-form';
 import { SignupForm } from '../helper-components/signup-form';
 
 export class Renderer extends React.Component<Props, State> {
@@ -27,6 +28,14 @@ export class Renderer extends React.Component<Props, State> {
       case 'reset-password':
         return (
           <PasswordResetRequestForm
+            email={this.state.email}
+            onChangeEmail={this.handleChangeEmail}
+            switchMode={this.switchMode}
+          />
+        );
+      case 'resend-email':
+        return (
+          <ResendEmailForm
             email={this.state.email}
             onChangeEmail={this.handleChangeEmail}
             switchMode={this.switchMode}
@@ -70,4 +79,8 @@ export type State = {
   email: string;
 };
 
-export type AuthFormMode = 'login' | 'signup' | 'reset-password';
+export type AuthFormMode =
+  | 'login'
+  | 'signup'
+  | 'reset-password'
+  | 'resend-email';

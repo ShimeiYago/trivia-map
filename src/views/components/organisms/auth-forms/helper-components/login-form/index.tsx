@@ -120,7 +120,12 @@ export class LoginForm extends React.Component<Props, State> {
           />
           {showResendEmailButton && (
             <Typography align="right">
-              <Button variant="text">確認メールが届いていませんか？</Button>
+              <Button
+                variant="text"
+                onClick={this.props.switchMode('resend-email')}
+              >
+                確認メールが届いていませんか？
+              </Button>
             </Typography>
           )}
         </Box>

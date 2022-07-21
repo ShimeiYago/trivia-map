@@ -10,6 +10,14 @@ exports[`Shallow Snapshot Tests basic 1`] = `
 />
 `;
 
+exports[`Shallow Snapshot Tests resend-email mode 1`] = `
+<ResendEmailForm
+  email=""
+  onChangeEmail={[Function]}
+  switchMode={[Function]}
+/>
+`;
+
 exports[`Shallow Snapshot Tests reset-pasword mode 1`] = `
 <PasswordResetRequestForm
   email=""

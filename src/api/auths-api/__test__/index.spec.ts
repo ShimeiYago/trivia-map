@@ -1,6 +1,7 @@
 import { ApiError } from 'api/utils/handle-axios-error';
 import { login } from '../login';
 import { registration } from '../registration';
+import { resendEmail } from '../resend-email';
 import { resetPassword } from '../reset-password';
 import { verifyEmail } from '../verify-email';
 
@@ -120,5 +121,32 @@ describe('verify-email', () => {
       errorMsg: 'Intentional API Error with mock',
     };
     await expect(verifyEmail('xxxxxx')).rejects.toEqual(expectedApiError);
+  });
+});
+
+describe('resend-email', () => {
+  beforeEach(() => {
+    process.env.REACT_APP_MOCK = '';
+  });
+  afterEach(() => {
+    process.env.REACT_APP_MOCK = '';
+  });
+
+  it('handle nomal response', async () => {
+    process.env.REACT_APP_MOCK = 'normal';
+
+    const response = await resendEmail('xxxxxx');
+    expect(response).toEqual(undefined);
+  });
+
+  it('handle error response', async () => {
+    process.env.REACT_APP_MOCK = 'error';
+
+    const expectedApiError: ApiError<unknown> = {
+      status: 500,
+      data: {},
+      errorMsg: 'Intentional API Error with mock',
+    };
+    await expect(resendEmail('xxxxxx')).rejects.toEqual(expectedApiError);
   });
 });

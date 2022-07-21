@@ -53,7 +53,6 @@ export class SignupForm extends React.Component<Props, State> {
           label="名前"
           name="nickname"
           autoComplete="nickname"
-          autoFocus
           disabled={disabled}
           helperText={this.state.formError?.nickname}
           error={!!this.state.formError?.nickname}
@@ -105,7 +104,9 @@ export class SignupForm extends React.Component<Props, State> {
 
     const successMessage = (
       <Typography align="right">
-        <Button variant="text">確認メールが届いていませんか？</Button>
+        <Button variant="text" onClick={this.props.switchMode('resend-email')}>
+          確認メールが届いていませんか？
+        </Button>
       </Typography>
     );
 

@@ -1,20 +1,53 @@
-import React from 'react';
-import { Typography, TypographyProps } from '@mui/material';
+import React, { ElementType } from 'react';
+import { SxProps, Typography } from '@mui/material';
 import { style } from './styles';
 
 export const IconAndText: React.FC<Props> = (props) => {
-  return (
-    <Typography sx={style} {...props}>
-      <props.iconcomponent.type fontSize="inherit" />
-      {props.text}
-    </Typography>
-  );
+  const wrapperStyle: SxProps = {
+    ...style,
+    justifyContent: props.align ?? 'center',
+  };
+
+  if (props.iconPosition === 'left') {
+    return (
+      <Typography
+        component={props.component ?? 'div'}
+        variant={props.variant}
+        sx={wrapperStyle}
+      >
+        {props.iconComponent}
+        {props.text}
+      </Typography>
+    );
+  } else {
+    return (
+      <Typography sx={wrapperStyle}>
+        {props.text}
+        {props.iconComponent}
+      </Typography>
+    );
+  }
 };
 
-type AdditionalProps = {
-  iconcomponent: JSX.Element;
+export type Props = {
+  iconComponent: JSX.Element;
   text: string;
-  component?: string;
+  component?: ElementType;
+  variant?:
+    | 'inherit'
+    | 'button'
+    | 'overline'
+    | 'caption'
+    | 'h1'
+    | 'h2'
+    | 'h3'
+    | 'h4'
+    | 'h5'
+    | 'h6'
+    | 'subtitle1'
+    | 'subtitle2'
+    | 'body1'
+    | 'body2';
+  iconPosition: 'left' | 'right';
+  align?: 'left' | 'right' | 'center';
 };
-
-export type Props = AdditionalProps & Omit<TypographyProps, 'children'>;

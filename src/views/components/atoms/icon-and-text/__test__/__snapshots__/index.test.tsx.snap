@@ -2,7 +2,7 @@
 
 exports[`Shallow Snapshot Tests basic 1`] = `
 <ForwardRef(Typography)
-  iconcomponent={<Memo />}
+  component="div"
   sx={
     Object {
       "alignItems": "center",
@@ -11,11 +11,41 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       "justifyContent": "center",
     }
   }
-  text="地図"
 >
-  <Memo(ForwardRef(MapIcon))
-    fontSize="inherit"
-  />
+  <Memo(ForwardRef(MapIcon)) />
   地図
+</ForwardRef(Typography)>
+`;
+
+exports[`Shallow Snapshot Tests left align 1`] = `
+<ForwardRef(Typography)
+  component="div"
+  sx={
+    Object {
+      "alignItems": "center",
+      "display": "flex",
+      "flexWrap": "wrap",
+      "justifyContent": "left",
+    }
+  }
+>
+  <Memo(ForwardRef(MapIcon)) />
+  地図
+</ForwardRef(Typography)>
+`;
+
+exports[`Shallow Snapshot Tests right icon 1`] = `
+<ForwardRef(Typography)
+  sx={
+    Object {
+      "alignItems": "center",
+      "display": "flex",
+      "flexWrap": "wrap",
+      "justifyContent": "center",
+    }
+  }
+>
+  地図
+  <Memo(ForwardRef(MapIcon)) />
 </ForwardRef(Typography)>
 `;

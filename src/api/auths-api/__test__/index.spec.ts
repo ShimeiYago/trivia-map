@@ -197,6 +197,6 @@ describe('refreshToken', () => {
       data: {},
       errorMsg: 'Intentional API Error with mock',
     };
-    await expect(getUserInfo()).rejects.toEqual(expectedApiError);
+    await expect(refreshToken()).rejects.toEqual(expectedApiError);
   });
 });

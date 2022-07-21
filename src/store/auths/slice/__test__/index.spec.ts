@@ -1,21 +1,23 @@
 import { AuthsState } from 'store/auths/model';
 import { authsReducer, authsSlice } from '..';
 
-const { loginStart, loginSuccess } = authsSlice.actions;
+const { autoLoginStart, loginSuccess, autoLoginFailure } = authsSlice.actions;
 
 describe('auths reducer', () => {
   const initialState: AuthsState = {
     loggingInState: 'waiting',
+    isAutoLoginTried: false,
   };
 
   it('should handle initial state', () => {
     expect(authsReducer(undefined, { type: 'unknown' })).toEqual({
       loggingInState: 'waiting',
+      isAutoLoginTried: false,
     });
   });
 
-  it('should handle loginStart', () => {
-    const actual = authsReducer(initialState, loginStart());
+  it('should handle autoLoginStart', () => {
+    const actual = authsReducer(initialState, autoLoginStart());
     expect(actual.loggingInState).toEqual('loading');
   });
 
@@ -33,5 +35,10 @@ describe('auths reducer', () => {
       email: 'user@example.com',
       nickname: 'Axel',
     });
+  });
+
+  it('should handle autoLoginFailure', () => {
+    const actual = authsReducer(initialState, autoLoginFailure());
+    expect(actual.loggingInState).toEqual('waiting');
   });
 });

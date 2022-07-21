@@ -30,6 +30,86 @@ export class SignupForm extends React.Component<Props, State> {
   render() {
     const disabled = this.state.localLoadingState === 'loading';
 
+    const form = (
+      <Box component="form" noValidate>
+        <TextField
+          margin="normal"
+          fullWidth
+          id="email"
+          label="メールアドレス"
+          name="email"
+          autoComplete="email"
+          autoFocus
+          disabled={disabled}
+          helperText={this.state.formError?.email}
+          error={!!this.state.formError?.email}
+          onChange={this.props.onChangeEmail}
+          value={this.props.email}
+        />
+        <TextField
+          margin="normal"
+          fullWidth
+          id="nickname"
+          label="名前"
+          name="nickname"
+          autoComplete="nickname"
+          disabled={disabled}
+          helperText={this.state.formError?.nickname}
+          error={!!this.state.formError?.nickname}
+          onChange={this.handleChangeTextField('nickname')}
+        />
+        <TextField
+          margin="normal"
+          fullWidth
+          name="password1"
+          label="パスワード"
+          type="password"
+          id="password1"
+          autoComplete="current-password"
+          disabled={disabled}
+          helperText={this.state.formError?.password1}
+          error={!!this.state.formError?.password1}
+          onChange={this.handleChangeTextField('password1')}
+        />
+        <TextField
+          margin="normal"
+          fullWidth
+          name="password2"
+          label="パスワード（確認）"
+          type="password"
+          id="password2"
+          autoComplete="current-password"
+          disabled={disabled}
+          helperText={this.state.formError?.password2}
+          error={!!this.state.formError?.password2}
+          onChange={this.handleChangeTextField('password2')}
+        />
+        <LoadingButton
+          fullWidth
+          variant="contained"
+          sx={{ mt: 3, mb: 2 }}
+          onClick={this.handleClickSignup}
+          loading={this.state.localLoadingState === 'loading'}
+          disabled={disabled}
+        >
+          アカウント作成
+        </LoadingButton>
+        <Typography>
+          <Button variant="text" onClick={this.props.switchMode('login')}>
+            ログイン
+          </Button>
+        </Typography>
+      </Box>
+    );
+
+    const successMessage = (
+      <Typography align="right">
+        <Button variant="text" onClick={this.props.switchMode('resend-email')}>
+          確認メールが届いていませんか？
+        </Button>
+      </Typography>
+    );
+
     return (
       <Container component="main" maxWidth="xs">
         <Stack spacing={1} sx={{ px: 1, py: 2 }}>
@@ -37,76 +117,7 @@ export class SignupForm extends React.Component<Props, State> {
             アカウント作成
           </Typography>
           {this.renderHeaderInfo()}
-          <Box component="form" noValidate>
-            <TextField
-              margin="normal"
-              fullWidth
-              id="email"
-              label="メールアドレス"
-              name="email"
-              autoComplete="email"
-              autoFocus
-              disabled={disabled}
-              helperText={this.state.formError?.email}
-              error={!!this.state.formError?.email}
-              onChange={this.props.onChangeEmail}
-              value={this.props.email}
-            />
-            <TextField
-              margin="normal"
-              fullWidth
-              id="nickname"
-              label="名前"
-              name="nickname"
-              autoComplete="nickname"
-              autoFocus
-              disabled={disabled}
-              helperText={this.state.formError?.nickname}
-              error={!!this.state.formError?.nickname}
-              onChange={this.handleChangeTextField('nickname')}
-            />
-            <TextField
-              margin="normal"
-              fullWidth
-              name="password1"
-              label="パスワード"
-              type="password"
-              id="password1"
-              autoComplete="current-password"
-              disabled={disabled}
-              helperText={this.state.formError?.password1}
-              error={!!this.state.formError?.password1}
-              onChange={this.handleChangeTextField('password1')}
-            />
-            <TextField
-              margin="normal"
-              fullWidth
-              name="password2"
-              label="パスワード（確認）"
-              type="password"
-              id="password2"
-              autoComplete="current-password"
-              disabled={disabled}
-              helperText={this.state.formError?.password2}
-              error={!!this.state.formError?.password2}
-              onChange={this.handleChangeTextField('password2')}
-            />
-            <LoadingButton
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-              onClick={this.handleClickSignup}
-              loading={this.state.localLoadingState === 'loading'}
-              disabled={disabled}
-            >
-              アカウント作成
-            </LoadingButton>
-            <Typography>
-              <Button variant="text" onClick={this.props.switchMode('login')}>
-                ログイン
-              </Button>
-            </Typography>
-          </Box>
+          {this.state.localLoadingState === 'success' ? successMessage : form}
         </Stack>
       </Container>
     );
@@ -118,7 +129,14 @@ export class SignupForm extends React.Component<Props, State> {
     if (localLoadingState === 'success') {
       return (
         <Alert>
-          入力されたメールアドレス宛に確認用メールを送信しました。メールの内容に従ってアカウント作成を完了してください。
+          <Typography variant="inherit">
+            入力されたメールアドレス宛に確認用メールを送信しました。メールの内容に従ってアカウント作成を完了してください。
+          </Typography>
+          <Typography variant="inherit">
+            その後
+            <Button onClick={this.props.switchMode('login')}>ログイン</Button>
+            してください。
+          </Typography>
         </Alert>
       );
     }

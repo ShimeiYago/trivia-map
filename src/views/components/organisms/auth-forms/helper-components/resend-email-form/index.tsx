@@ -13,11 +13,11 @@ import {
 import { LoadingButton } from '@mui/lab';
 import { HeaderErrorMessages } from 'views/components/moleculars/header-error-messages';
 import { AuthFormMode } from '../../renderer';
-import { resetPassword, ValidationError } from 'api/auths-api/reset-password';
 import { ApiError } from 'api/utils/handle-axios-error';
 import { globalAPIErrorMessage } from 'constant/global-api-error-message';
+import { resendEmail, ValidationError } from 'api/auths-api/resend-email';
 
-export class PasswordResetRequestForm extends React.Component<Props, State> {
+export class ResendEmailForm extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
@@ -26,16 +26,16 @@ export class PasswordResetRequestForm extends React.Component<Props, State> {
   }
 
   render() {
-    const disabled = this.state.localLoadingState === 'loading';
+    const isLoading = this.state.localLoadingState === 'loading';
 
     return (
       <Container component="main" maxWidth="xs">
         <Stack spacing={1} sx={{ px: 1, py: 2 }}>
           <Typography component="h1" variant="h5" align="center">
-            パスワード再設定
+            確認用メール再送
           </Typography>
           <Typography component="p" variant="subtitle2">
-            パスワードを忘れた場合はこちらでパスワードの再設定を行なってください。
+            アカウント作成時に送信した確認メールをもう一度送信します。
           </Typography>
           {this.renderHeaderInfo()}
           <Box component="form" noValidate>
@@ -46,8 +46,7 @@ export class PasswordResetRequestForm extends React.Component<Props, State> {
               label="メールアドレス"
               name="email"
               autoComplete="email"
-              autoFocus
-              disabled={disabled}
+              disabled={isLoading}
               helperText={this.state.formError?.email}
               error={!!this.state.formError?.email}
               onChange={this.props.onChangeEmail}
@@ -58,10 +57,10 @@ export class PasswordResetRequestForm extends React.Component<Props, State> {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
               onClick={this.handleSubmit}
-              loading={this.state.localLoadingState === 'loading'}
-              disabled={disabled}
+              loading={isLoading}
+              disabled={isLoading}
             >
-              再設定用のメールを送信する
+              メールを再送信する
             </LoadingButton>
             <Grid container>
               <Grid item xs>
@@ -90,7 +89,7 @@ export class PasswordResetRequestForm extends React.Component<Props, State> {
     if (localLoadingState === 'success') {
       return (
         <Alert>
-          入力されたメールアドレス宛に再設定用メールを送信しました。メールの内容に従ってパスワードを再設定してください。
+          入力されたメールアドレス宛に確認用メールを再送信しました。メールの内容に従ってアカウント作成を完了してください。
         </Alert>
       );
     }
@@ -118,7 +117,7 @@ export class PasswordResetRequestForm extends React.Component<Props, State> {
     });
 
     try {
-      await resetPassword(this.props.email);
+      await resendEmail(this.props.email);
       this.setState({
         localLoadingState: 'success',
       });

@@ -1,7 +1,6 @@
 import { shallow, ShallowWrapper } from 'enzyme';
 import { SignupForm, Props, State } from '..';
 import * as RegistrationModule from 'api/auths-api/registration';
-import { mockLoginResponse } from 'api/mock/auths-response/login';
 import { ApiError } from 'api/utils/handle-axios-error';
 
 let wrapper: ShallowWrapper<Props, State, SignupForm>;
@@ -98,7 +97,7 @@ describe('handleClickSignup', () => {
   });
 
   it('should set localLoadingState success when api succeed', async () => {
-    loginSpy.mockResolvedValue(mockLoginResponse);
+    loginSpy.mockResolvedValue({});
 
     wrapper = shallow(<SignupForm {...basicProps} />);
     const instance = wrapper.instance();

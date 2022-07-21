@@ -31,6 +31,13 @@ describe('Shallow Snapshot Tests', () => {
     });
     expect(wrapper).toMatchSnapshot();
   });
+
+  it('resend-email mode', () => {
+    wrapper.setState({
+      mode: 'resend-email',
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
 });
 
 describe('switchMode', () => {

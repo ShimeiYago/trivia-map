@@ -40,7 +40,6 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       />
       <ForwardRef(TextField)
         autoComplete="nickname"
-        autoFocus={true}
         disabled={false}
         error={false}
         fullWidth={true}
@@ -157,7 +156,6 @@ exports[`Shallow Snapshot Tests error case 1`] = `
       />
       <ForwardRef(TextField)
         autoComplete="nickname"
-        autoFocus={true}
         disabled={false}
         error={false}
         fullWidth={true}

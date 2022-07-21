@@ -1,21 +1,21 @@
 import { shallow, ShallowWrapper } from 'enzyme';
-import { PasswordResetRequestForm, Props, State } from '..';
-import * as ResetPsswordModule from 'api/auths-api/reset-password';
+import { ResendEmailForm, Props, State } from '..';
+import * as ResendEmailModule from 'api/auths-api/resend-email';
 import { ApiError } from 'api/utils/handle-axios-error';
 
-let wrapper: ShallowWrapper<Props, State, PasswordResetRequestForm>;
+let wrapper: ShallowWrapper<Props, State, ResendEmailForm>;
 
 let loginSpy: jest.SpyInstance;
 
 const basicProps: Props = {
   switchMode: jest.fn(),
-  email: '',
   onChangeEmail: jest.fn(),
+  email: '',
 };
 
 describe('Shallow Snapshot Tests', () => {
   beforeEach(() => {
-    wrapper = shallow(<PasswordResetRequestForm {...basicProps} />);
+    wrapper = shallow(<ResendEmailForm {...basicProps} />);
   });
 
   it('basic', () => {
@@ -44,13 +44,13 @@ describe('Shallow Snapshot Tests', () => {
 describe('handleSubmit', () => {
   beforeEach(() => {
     jest.resetAllMocks();
-    loginSpy = jest.spyOn(ResetPsswordModule, 'resetPassword');
+    loginSpy = jest.spyOn(ResendEmailModule, 'resendEmail');
   });
 
   it('should set localLoadingState success when api succeed', async () => {
     loginSpy.mockResolvedValue({});
 
-    wrapper = shallow(<PasswordResetRequestForm {...basicProps} />);
+    wrapper = shallow(<ResendEmailForm {...basicProps} />);
     const instance = wrapper.instance();
 
     await instance['handleSubmit']();
@@ -59,7 +59,7 @@ describe('handleSubmit', () => {
   });
 
   it('should set form error when api have validation error', async () => {
-    const apiError: ApiError<ResetPsswordModule.ValidationError> = {
+    const apiError: ApiError<ResendEmailModule.ValidationError> = {
       status: 400,
       data: {
         email: ['email is invalid'],
@@ -69,7 +69,7 @@ describe('handleSubmit', () => {
     };
     loginSpy.mockRejectedValue(apiError);
 
-    wrapper = shallow(<PasswordResetRequestForm {...basicProps} />);
+    wrapper = shallow(<ResendEmailForm {...basicProps} />);
     const instance = wrapper.instance();
 
     await instance['handleSubmit']();
@@ -82,7 +82,7 @@ describe('handleSubmit', () => {
   it('should set localLoadingState error when api fail', async () => {
     loginSpy.mockRejectedValue(new Error());
 
-    wrapper = shallow(<PasswordResetRequestForm {...basicProps} />);
+    wrapper = shallow(<ResendEmailForm {...basicProps} />);
     const instance = wrapper.instance();
 
     await instance['handleSubmit']();

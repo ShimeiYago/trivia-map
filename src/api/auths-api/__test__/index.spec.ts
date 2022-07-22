@@ -1,5 +1,7 @@
 import { ApiError } from 'api/utils/handle-axios-error';
+import { getUserInfo } from '../get-user-info';
 import { login } from '../login';
+import { refreshToken } from '../refresh-token';
 import { registration } from '../registration';
 import { resendEmail } from '../resend-email';
 import { resetPassword } from '../reset-password';
@@ -148,5 +150,53 @@ describe('resend-email', () => {
       errorMsg: 'Intentional API Error with mock',
     };
     await expect(resendEmail('xxxxxx')).rejects.toEqual(expectedApiError);
+  });
+});
+
+describe('getUserInfo', () => {
+  beforeEach(() => {
+    process.env.REACT_APP_MOCK = '';
+  });
+
+  it('handle nomal response', async () => {
+    process.env.REACT_APP_MOCK = 'normal';
+
+    const response = await getUserInfo();
+    expect(response.userId).toBe(1);
+  });
+
+  it('handle error response', async () => {
+    process.env.REACT_APP_MOCK = 'error';
+
+    const expectedApiError: ApiError<unknown> = {
+      status: 500,
+      data: {},
+      errorMsg: 'Intentional API Error with mock',
+    };
+    await expect(getUserInfo()).rejects.toEqual(expectedApiError);
+  });
+});
+
+describe('refreshToken', () => {
+  beforeEach(() => {
+    process.env.REACT_APP_MOCK = '';
+  });
+
+  it('handle nomal response', async () => {
+    process.env.REACT_APP_MOCK = 'normal';
+
+    const response = await refreshToken();
+    expect(response.access).toBe('xxx');
+  });
+
+  it('handle error response', async () => {
+    process.env.REACT_APP_MOCK = 'error';
+
+    const expectedApiError: ApiError<unknown> = {
+      status: 500,
+      data: {},
+      errorMsg: 'Intentional API Error with mock',
+    };
+    await expect(refreshToken()).rejects.toEqual(expectedApiError);
   });
 });

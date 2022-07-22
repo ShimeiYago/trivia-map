@@ -5,6 +5,7 @@ import { Renderer, Props, State } from '..';
 const basicProps: Props = {
   topBarPosition: 'fixed',
   children: 'contents',
+  autoLogin: jest.fn(),
 };
 
 let wrapper: ShallowWrapper<Props, State, Renderer>;
@@ -27,6 +28,17 @@ describe('Shallow Snapshot Tests', () => {
     wrapper.setProps({ permanentLeftNavi: true });
     expect(wrapper).toMatchSnapshot();
   });
+
+  it('with userInfo', () => {
+    wrapper.setProps({
+      userInfo: {
+        email: 'xxx@example.com',
+        userId: 1,
+        nickname: 'Axel',
+      },
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
 });
 
 describe('toggleLeftMenu', () => {
@@ -38,5 +50,32 @@ describe('toggleLeftMenu', () => {
     const instance = wrapper.instance();
     instance['toggleLeftMenu'](true)();
     expect(instance.state.openLeftNavi).toBeTruthy();
+  });
+});
+
+describe('handleClickAuthMenu', () => {
+  beforeEach(() => {
+    wrapper = shallow(<Renderer {...basicProps} />);
+  });
+
+  it('should set anchor element', () => {
+    const event = {
+      currentTarget: null,
+    } as unknown as React.MouseEvent<HTMLElement>;
+    const instance = wrapper.instance();
+    instance['handleClickAuthMenu'](event);
+    expect(instance.state.authMenuAnchorEl).toBe(null);
+  });
+});
+
+describe('handleCloseAuthPopover', () => {
+  beforeEach(() => {
+    wrapper = shallow(<Renderer {...basicProps} />);
+  });
+
+  it('should reset handleCloseAuthPopover', () => {
+    const instance = wrapper.instance();
+    instance['handleCloseAuthPopover']();
+    expect(instance.state.authMenuAnchorEl).toBe(null);
   });
 });

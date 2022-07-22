@@ -75,7 +75,8 @@ exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
         >
           <IconAndText
             component="span"
-            iconcomponent={<Memo />}
+            iconComponent={<Memo />}
+            iconPosition="left"
             text="くわしく読む"
             variant="button"
           />
@@ -111,7 +112,8 @@ exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
         >
           <IconAndText
             component="span"
-            iconcomponent={<Memo />}
+            iconComponent={<Memo />}
+            iconPosition="left"
             text="くわしく読む"
             variant="button"
           />

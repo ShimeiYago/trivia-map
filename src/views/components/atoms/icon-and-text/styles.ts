@@ -4,5 +4,4 @@ export const style: SxProps = {
   display: 'flex',
   alignItems: 'center',
   flexWrap: 'wrap',
-  justifyContent: 'center',
 };

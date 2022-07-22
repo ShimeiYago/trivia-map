@@ -80,10 +80,11 @@ export class Renderer extends React.Component<Props, State> {
 
               <Typography align="center">
                 <IconAndText
-                  iconcomponent={<ArrowRightIcon />}
+                  iconComponent={<ArrowRightIcon />}
                   text="くわしく読む"
                   component="span"
                   variant="button"
+                  iconPosition="left"
                 />
               </Typography>
             </Stack>

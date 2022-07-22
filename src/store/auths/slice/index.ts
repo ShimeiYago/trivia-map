@@ -6,13 +6,18 @@ export const authsSlice = createSlice({
   name: 'auths',
   initialState,
   reducers: {
-    loginStart(state) {
+    autoLoginStart(state) {
       state.loggingInState = 'loading';
+      state.isAutoLoginTried = true;
     },
 
     loginSuccess(state, action: PayloadAction<User>) {
       state.loggingInState = 'success';
       state.user = action.payload;
+    },
+
+    autoLoginFailure(state) {
+      state.loggingInState = 'waiting';
     },
   },
 });

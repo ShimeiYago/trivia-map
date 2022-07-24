@@ -1,18 +1,21 @@
 import { AuthsState } from 'store/auths/model';
 import { authsReducer, authsSlice } from '..';
 
-const { autoLoginStart, loginSuccess, autoLoginFailure } = authsSlice.actions;
+const { autoLoginStart, loginSuccess, autoLoginFailure, toggleFormModal } =
+  authsSlice.actions;
 
 describe('auths reducer', () => {
   const initialState: AuthsState = {
     loggingInState: 'waiting',
     isAutoLoginTried: false,
+    openFormModal: false,
   };
 
   it('should handle initial state', () => {
     expect(authsReducer(undefined, { type: 'unknown' })).toEqual({
       loggingInState: 'waiting',
       isAutoLoginTried: false,
+      openFormModal: false,
     });
   });
 
@@ -40,5 +43,10 @@ describe('auths reducer', () => {
   it('should handle autoLoginFailure', () => {
     const actual = authsReducer(initialState, autoLoginFailure());
     expect(actual.loggingInState).toEqual('waiting');
+  });
+
+  it('should handle toggleFormModal', () => {
+    const actual = authsReducer(initialState, toggleFormModal(true));
+    expect(actual.openFormModal).toEqual(true);
   });
 });

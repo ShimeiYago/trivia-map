@@ -9,3 +9,6 @@ export const selectIsAutoLoginTried = (state: AuthsRootState) =>
   state.auths.isAutoLoginTried;
 
 export const selectUser = (state: AuthsRootState) => state.auths.user;
+
+export const selectOpenFormModal = (state: AuthsRootState) =>
+  state.auths.openFormModal;

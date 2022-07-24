@@ -216,6 +216,13 @@ exports[`Shallow Snapshot Tests basic 1`] = `
   >
     contents
   </ForwardRef(Box)>
+  <BoxModal
+    open={false}
+  >
+    <AuthForms
+      initialMode="login"
+    />
+  </BoxModal>
 </Fragment>
 `;
 
@@ -421,6 +428,13 @@ exports[`Shallow Snapshot Tests permanent left navi 1`] = `
   >
     contents
   </ForwardRef(Box)>
+  <BoxModal
+    open={false}
+  >
+    <AuthForms
+      initialMode="login"
+    />
+  </BoxModal>
 </Fragment>
 `;
 
@@ -640,6 +654,13 @@ exports[`Shallow Snapshot Tests static position 1`] = `
   >
     contents
   </ForwardRef(Box)>
+  <BoxModal
+    open={false}
+  >
+    <AuthForms
+      initialMode="login"
+    />
+  </BoxModal>
 </Fragment>
 `;
 
@@ -862,5 +883,12 @@ exports[`Shallow Snapshot Tests with userInfo 1`] = `
   >
     contents
   </ForwardRef(Box)>
+  <BoxModal
+    open={false}
+  >
+    <AuthForms
+      initialMode="login"
+    />
+  </BoxModal>
 </Fragment>
 `;

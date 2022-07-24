@@ -20,6 +20,8 @@ import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import { IconAndText } from 'views/components/atoms/icon-and-text';
 import { Link } from 'react-router-dom';
 import { authMenuLinks } from '../constants';
+import { BoxModal } from 'views/components/moleculars/box-modal';
+import { AuthForms } from '../../auth-forms';
 
 export class Renderer extends React.Component<Props, State> {
   static readonly defaultProps: Pick<Props, 'topBarPosition'> = {
@@ -67,6 +69,13 @@ export class Renderer extends React.Component<Props, State> {
         <Box sx={contentStyle(!!this.props.permanentLeftNavi)}>
           {this.props.children}
         </Box>
+
+        <BoxModal
+          open={this.props.openAuthFormModal}
+          onClose={this.props.toggleAuthFormModal(false)}
+        >
+          <AuthForms initialMode={'login'} />
+        </BoxModal>
       </>
     );
   }
@@ -127,7 +136,12 @@ export class Renderer extends React.Component<Props, State> {
             ログインして新しいトリビアを投稿しませんか？
           </Typography>
           <Typography align="center" component="div" sx={{ mb: 1 }}>
-            <Button variant="contained">ログイン</Button>
+            <Button
+              variant="contained"
+              onClick={this.props.toggleAuthFormModal(true)}
+            >
+              ログイン
+            </Button>
           </Typography>
         </Box>
       );
@@ -172,8 +186,10 @@ export type Props = {
   children: React.ReactNode;
   permanentLeftNavi?: boolean;
   userInfo?: User;
+  openAuthFormModal: boolean;
 
   autoLogin: () => void;
+  toggleAuthFormModal: (open: boolean) => () => void;
 };
 
 export type State = {

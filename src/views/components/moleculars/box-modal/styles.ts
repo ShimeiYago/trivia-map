@@ -6,6 +6,6 @@ export const boxStyle: SxProps = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   bgcolor: 'background.paper',
-  width: '350px',
+  width: '320px',
   boxShadow: 24,
 };

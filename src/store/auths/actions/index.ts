@@ -5,8 +5,12 @@ import { refreshToken } from 'api/auths-api/refresh-token';
 import { selectIsAutoLoginTried } from '../selector';
 
 // basic actions
-export const { autoLoginStart, loginSuccess, autoLoginFailure } =
-  authsSlice.actions;
+export const {
+  autoLoginStart,
+  loginSuccess,
+  autoLoginFailure,
+  toggleFormModal,
+} = authsSlice.actions;
 
 // autoLogin action
 export const autoLogin = (): AppThunk => async (dispatch, getState) => {

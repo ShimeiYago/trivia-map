@@ -1,4 +1,9 @@
-import { selectIsAutoLoginTried, selectLogginingInState, selectUser } from '..';
+import {
+  selectIsAutoLoginTried,
+  selectLogginingInState,
+  selectUser,
+  selectOpenFormModal,
+} from '..';
 import { AuthsState } from '../../model';
 
 describe('auths selector', () => {
@@ -12,6 +17,7 @@ describe('auths selector', () => {
         nickname: 'Axel',
       },
       errorMsg: 'error',
+      openFormModal: true,
     } as AuthsState,
   };
 
@@ -29,5 +35,9 @@ describe('auths selector', () => {
       email: 'user@example.com',
       nickname: 'Axel',
     });
+  });
+
+  it('selectOpenFormModal should return openFormModal', () => {
+    expect(selectOpenFormModal(rootState)).toEqual(true);
   });
 });

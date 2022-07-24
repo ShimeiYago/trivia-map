@@ -5,9 +5,11 @@ export interface AuthsState {
   loggingInState: LoadingState;
   isAutoLoginTried: boolean;
   user?: User;
+  openFormModal: boolean;
 }
 
 export const initialState: AuthsState = {
   loggingInState: 'waiting',
   isAutoLoginTried: false,
+  openFormModal: false,
 };

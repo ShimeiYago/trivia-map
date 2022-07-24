@@ -19,6 +19,10 @@ export const authsSlice = createSlice({
     autoLoginFailure(state) {
       state.loggingInState = 'waiting';
     },
+
+    toggleFormModal(state, action: PayloadAction<boolean>) {
+      state.openFormModal = action.payload;
+    },
   },
 });
 

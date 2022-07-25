@@ -4,7 +4,6 @@ import {
   Alert,
   Box,
   Button,
-  Container,
   Stack,
   TextField,
   Typography,
@@ -111,15 +110,13 @@ export class SignupForm extends React.Component<Props, State> {
     );
 
     return (
-      <Container component="main" maxWidth="xs">
-        <Stack spacing={1} sx={{ px: 1, py: 2 }}>
-          <Typography component="h1" variant="h5" align="center">
-            アカウント作成
-          </Typography>
-          {this.renderHeaderInfo()}
-          {this.state.localLoadingState === 'success' ? successMessage : form}
-        </Stack>
-      </Container>
+      <Stack spacing={1} sx={{ px: 1, py: 2 }}>
+        <Typography component="h1" variant="h5" align="center">
+          アカウント作成
+        </Typography>
+        {this.renderHeaderInfo()}
+        {this.state.localLoadingState === 'success' ? successMessage : form}
+      </Stack>
     );
   }
 

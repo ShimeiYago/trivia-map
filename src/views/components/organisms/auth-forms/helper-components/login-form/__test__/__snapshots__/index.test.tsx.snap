@@ -1,304 +1,289 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Shallow Snapshot Tests already logged in 1`] = `
-<ForwardRef(Container)
-  component="main"
-  maxWidth="xs"
->
-  <ForwardRef(Stack)
-    spacing={1}
-    sx={
-      Object {
-        "px": 1,
-        "py": 2,
-      }
+<ForwardRef(Stack)
+  spacing={1}
+  sx={
+    Object {
+      "px": 1,
+      "py": 2,
     }
+  }
+>
+  <ForwardRef(Typography)
+    align="center"
+    component="h1"
+    variant="h5"
   >
-    <ForwardRef(Typography)
-      align="center"
-      component="h1"
-      variant="h5"
+    ログイン
+  </ForwardRef(Typography)>
+  <ForwardRef(Alert)>
+    ログインに成功しました。
+  </ForwardRef(Alert)>
+  <ForwardRef(Box)
+    component="form"
+    noValidate={true}
+  >
+    <ForwardRef(TextField)
+      autoComplete="email"
+      autoFocus={true}
+      disabled={true}
+      error={false}
+      fullWidth={true}
+      id="email"
+      label="メールアドレス"
+      margin="normal"
+      name="email"
+      onChange={[MockFunction]}
+      value=""
+    />
+    <ForwardRef(TextField)
+      autoComplete="current-password"
+      disabled={true}
+      error={false}
+      fullWidth={true}
+      id="password"
+      label="パスワード"
+      margin="normal"
+      name="password"
+      onChange={[Function]}
+      type="password"
+    />
+    <ForwardRef(LoadingButton)
+      disabled={true}
+      fullWidth={true}
+      loading={false}
+      onClick={[Function]}
+      sx={
+        Object {
+          "mb": 2,
+          "mt": 3,
+        }
+      }
+      variant="contained"
     >
       ログイン
-    </ForwardRef(Typography)>
-    <ForwardRef(Alert)>
-      ログインに成功しました。
-    </ForwardRef(Alert)>
-    <ForwardRef(Box)
-      component="form"
-      noValidate={true}
+    </ForwardRef(LoadingButton)>
+    <ForwardRef(Grid)
+      container={true}
     >
-      <ForwardRef(TextField)
-        autoComplete="email"
-        autoFocus={true}
-        disabled={true}
-        error={false}
-        fullWidth={true}
-        id="email"
-        label="メールアドレス"
-        margin="normal"
-        name="email"
-        onChange={[MockFunction]}
-        value=""
-      />
-      <ForwardRef(TextField)
-        autoComplete="current-password"
-        disabled={true}
-        error={false}
-        fullWidth={true}
-        id="password"
-        label="パスワード"
-        margin="normal"
-        name="password"
-        onChange={[Function]}
-        type="password"
-      />
-      <ForwardRef(LoadingButton)
-        disabled={true}
-        fullWidth={true}
-        loading={false}
-        onClick={[Function]}
-        sx={
-          Object {
-            "mb": 2,
-            "mt": 3,
-          }
-        }
-        variant="contained"
-      >
-        ログイン
-      </ForwardRef(LoadingButton)>
       <ForwardRef(Grid)
-        container={true}
+        item={true}
+        xs={true}
       >
-        <ForwardRef(Grid)
-          item={true}
-          xs={true}
+        <ForwardRef(Button)
+          variant="text"
         >
-          <ForwardRef(Button)
-            variant="text"
-          >
-            パスワードを忘れた場合
-          </ForwardRef(Button)>
-        </ForwardRef(Grid)>
-        <ForwardRef(Grid)
-          item={true}
-        >
-          <ForwardRef(Button)
-            variant="text"
-          >
-            アカウント作成
-          </ForwardRef(Button)>
-        </ForwardRef(Grid)>
+          パスワードを忘れた場合
+        </ForwardRef(Button)>
       </ForwardRef(Grid)>
-    </ForwardRef(Box)>
-  </ForwardRef(Stack)>
-</ForwardRef(Container)>
+      <ForwardRef(Grid)
+        item={true}
+      >
+        <ForwardRef(Button)
+          variant="text"
+        >
+          アカウント作成
+        </ForwardRef(Button)>
+      </ForwardRef(Grid)>
+    </ForwardRef(Grid)>
+  </ForwardRef(Box)>
+</ForwardRef(Stack)>
 `;
 
 exports[`Shallow Snapshot Tests basic 1`] = `
-<ForwardRef(Container)
-  component="main"
-  maxWidth="xs"
->
-  <ForwardRef(Stack)
-    spacing={1}
-    sx={
-      Object {
-        "px": 1,
-        "py": 2,
-      }
+<ForwardRef(Stack)
+  spacing={1}
+  sx={
+    Object {
+      "px": 1,
+      "py": 2,
     }
+  }
+>
+  <ForwardRef(Typography)
+    align="center"
+    component="h1"
+    variant="h5"
   >
-    <ForwardRef(Typography)
-      align="center"
-      component="h1"
-      variant="h5"
+    ログイン
+  </ForwardRef(Typography)>
+  <ForwardRef(Box)
+    component="form"
+    noValidate={true}
+  >
+    <ForwardRef(TextField)
+      autoComplete="email"
+      autoFocus={true}
+      disabled={false}
+      error={false}
+      fullWidth={true}
+      id="email"
+      label="メールアドレス"
+      margin="normal"
+      name="email"
+      onChange={[MockFunction]}
+      value=""
+    />
+    <ForwardRef(TextField)
+      autoComplete="current-password"
+      disabled={false}
+      error={false}
+      fullWidth={true}
+      id="password"
+      label="パスワード"
+      margin="normal"
+      name="password"
+      onChange={[Function]}
+      type="password"
+    />
+    <ForwardRef(LoadingButton)
+      disabled={false}
+      fullWidth={true}
+      loading={false}
+      onClick={[Function]}
+      sx={
+        Object {
+          "mb": 2,
+          "mt": 3,
+        }
+      }
+      variant="contained"
     >
       ログイン
-    </ForwardRef(Typography)>
-    <ForwardRef(Box)
-      component="form"
-      noValidate={true}
+    </ForwardRef(LoadingButton)>
+    <ForwardRef(Grid)
+      container={true}
     >
-      <ForwardRef(TextField)
-        autoComplete="email"
-        autoFocus={true}
-        disabled={false}
-        error={false}
-        fullWidth={true}
-        id="email"
-        label="メールアドレス"
-        margin="normal"
-        name="email"
-        onChange={[MockFunction]}
-        value=""
-      />
-      <ForwardRef(TextField)
-        autoComplete="current-password"
-        disabled={false}
-        error={false}
-        fullWidth={true}
-        id="password"
-        label="パスワード"
-        margin="normal"
-        name="password"
-        onChange={[Function]}
-        type="password"
-      />
-      <ForwardRef(LoadingButton)
-        disabled={false}
-        fullWidth={true}
-        loading={false}
-        onClick={[Function]}
-        sx={
-          Object {
-            "mb": 2,
-            "mt": 3,
-          }
-        }
-        variant="contained"
-      >
-        ログイン
-      </ForwardRef(LoadingButton)>
       <ForwardRef(Grid)
-        container={true}
+        item={true}
+        xs={true}
       >
-        <ForwardRef(Grid)
-          item={true}
-          xs={true}
+        <ForwardRef(Button)
+          variant="text"
         >
-          <ForwardRef(Button)
-            variant="text"
-          >
-            パスワードを忘れた場合
-          </ForwardRef(Button)>
-        </ForwardRef(Grid)>
-        <ForwardRef(Grid)
-          item={true}
-        >
-          <ForwardRef(Button)
-            variant="text"
-          >
-            アカウント作成
-          </ForwardRef(Button)>
-        </ForwardRef(Grid)>
+          パスワードを忘れた場合
+        </ForwardRef(Button)>
       </ForwardRef(Grid)>
-    </ForwardRef(Box)>
-  </ForwardRef(Stack)>
-</ForwardRef(Container)>
+      <ForwardRef(Grid)
+        item={true}
+      >
+        <ForwardRef(Button)
+          variant="text"
+        >
+          アカウント作成
+        </ForwardRef(Button)>
+      </ForwardRef(Grid)>
+    </ForwardRef(Grid)>
+  </ForwardRef(Box)>
+</ForwardRef(Stack)>
 `;
 
 exports[`Shallow Snapshot Tests error case 1`] = `
-<ForwardRef(Container)
-  component="main"
-  maxWidth="xs"
->
-  <ForwardRef(Stack)
-    spacing={1}
-    sx={
-      Object {
-        "px": 1,
-        "py": 2,
-      }
+<ForwardRef(Stack)
+  spacing={1}
+  sx={
+    Object {
+      "px": 1,
+      "py": 2,
     }
+  }
+>
+  <ForwardRef(Typography)
+    align="center"
+    component="h1"
+    variant="h5"
   >
-    <ForwardRef(Typography)
-      align="center"
-      component="h1"
-      variant="h5"
+    ログイン
+  </ForwardRef(Typography)>
+  <ForwardRef(Box)>
+    <HeaderErrorMessages
+      errorMessages={
+        Array [
+          "error1",
+          "error2",
+        ]
+      }
+      errorTitle="error title"
+    />
+  </ForwardRef(Box)>
+  <ForwardRef(Box)
+    component="form"
+    noValidate={true}
+  >
+    <ForwardRef(TextField)
+      autoComplete="email"
+      autoFocus={true}
+      disabled={false}
+      error={true}
+      fullWidth={true}
+      helperText={
+        Array [
+          "email is invalid",
+        ]
+      }
+      id="email"
+      label="メールアドレス"
+      margin="normal"
+      name="email"
+      onChange={[MockFunction]}
+      value=""
+    />
+    <ForwardRef(TextField)
+      autoComplete="current-password"
+      disabled={false}
+      error={true}
+      fullWidth={true}
+      helperText={
+        Array [
+          "password is invalid",
+        ]
+      }
+      id="password"
+      label="パスワード"
+      margin="normal"
+      name="password"
+      onChange={[Function]}
+      type="password"
+    />
+    <ForwardRef(LoadingButton)
+      disabled={false}
+      fullWidth={true}
+      loading={false}
+      onClick={[Function]}
+      sx={
+        Object {
+          "mb": 2,
+          "mt": 3,
+        }
+      }
+      variant="contained"
     >
       ログイン
-    </ForwardRef(Typography)>
-    <ForwardRef(Box)>
-      <HeaderErrorMessages
-        errorMessages={
-          Array [
-            "error1",
-            "error2",
-          ]
-        }
-        errorTitle="error title"
-      />
-    </ForwardRef(Box)>
-    <ForwardRef(Box)
-      component="form"
-      noValidate={true}
+    </ForwardRef(LoadingButton)>
+    <ForwardRef(Grid)
+      container={true}
     >
-      <ForwardRef(TextField)
-        autoComplete="email"
-        autoFocus={true}
-        disabled={false}
-        error={true}
-        fullWidth={true}
-        helperText={
-          Array [
-            "email is invalid",
-          ]
-        }
-        id="email"
-        label="メールアドレス"
-        margin="normal"
-        name="email"
-        onChange={[MockFunction]}
-        value=""
-      />
-      <ForwardRef(TextField)
-        autoComplete="current-password"
-        disabled={false}
-        error={true}
-        fullWidth={true}
-        helperText={
-          Array [
-            "password is invalid",
-          ]
-        }
-        id="password"
-        label="パスワード"
-        margin="normal"
-        name="password"
-        onChange={[Function]}
-        type="password"
-      />
-      <ForwardRef(LoadingButton)
-        disabled={false}
-        fullWidth={true}
-        loading={false}
-        onClick={[Function]}
-        sx={
-          Object {
-            "mb": 2,
-            "mt": 3,
-          }
-        }
-        variant="contained"
-      >
-        ログイン
-      </ForwardRef(LoadingButton)>
       <ForwardRef(Grid)
-        container={true}
+        item={true}
+        xs={true}
       >
-        <ForwardRef(Grid)
-          item={true}
-          xs={true}
+        <ForwardRef(Button)
+          variant="text"
         >
-          <ForwardRef(Button)
-            variant="text"
-          >
-            パスワードを忘れた場合
-          </ForwardRef(Button)>
-        </ForwardRef(Grid)>
-        <ForwardRef(Grid)
-          item={true}
-        >
-          <ForwardRef(Button)
-            variant="text"
-          >
-            アカウント作成
-          </ForwardRef(Button)>
-        </ForwardRef(Grid)>
+          パスワードを忘れた場合
+        </ForwardRef(Button)>
       </ForwardRef(Grid)>
-    </ForwardRef(Box)>
-  </ForwardRef(Stack)>
-</ForwardRef(Container)>
+      <ForwardRef(Grid)
+        item={true}
+      >
+        <ForwardRef(Button)
+          variant="text"
+        >
+          アカウント作成
+        </ForwardRef(Button)>
+      </ForwardRef(Grid)>
+    </ForwardRef(Grid)>
+  </ForwardRef(Box)>
+</ForwardRef(Stack)>
 `;

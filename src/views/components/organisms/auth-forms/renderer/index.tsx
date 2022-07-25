@@ -1,3 +1,4 @@
+import { Box } from '@mui/material';
 import React from 'react';
 import { LoadingState } from 'types/loading-state';
 import { User } from 'types/user';
@@ -17,33 +18,37 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   render() {
+    let content;
     switch (this.state.mode) {
       case 'signup':
-        return (
+        content = (
           <SignupForm
             email={this.state.email}
             onChangeEmail={this.handleChangeEmail}
             switchMode={this.switchMode}
           />
         );
+        break;
       case 'reset-password':
-        return (
+        content = (
           <PasswordResetRequestForm
             email={this.state.email}
             onChangeEmail={this.handleChangeEmail}
             switchMode={this.switchMode}
           />
         );
+        break;
       case 'resend-email':
-        return (
+        content = (
           <ResendEmailForm
             email={this.state.email}
             onChangeEmail={this.handleChangeEmail}
             switchMode={this.switchMode}
           />
         );
+        break;
       default:
-        return (
+        content = (
           <LoginForm
             email={this.state.email}
             onChangeEmail={this.handleChangeEmail}
@@ -53,6 +58,12 @@ export class Renderer extends React.Component<Props, State> {
           />
         );
     }
+
+    return (
+      <Box width="340px" sx={{ mx: 'auto' }}>
+        {content}
+      </Box>
+    );
   }
 
   protected switchMode = (mode: AuthFormMode) => () => {

@@ -4,7 +4,6 @@ import {
   Alert,
   Box,
   Button,
-  Container,
   Grid,
   Stack,
   TextField,
@@ -29,57 +28,52 @@ export class ResendEmailForm extends React.Component<Props, State> {
     const isLoading = this.state.localLoadingState === 'loading';
 
     return (
-      <Container component="main" maxWidth="xs">
-        <Stack spacing={1} sx={{ px: 1, py: 2 }}>
-          <Typography component="h1" variant="h5" align="center">
-            確認用メール再送
-          </Typography>
-          <Typography component="p" variant="subtitle2">
-            アカウント作成時に送信した確認メールをもう一度送信します。
-          </Typography>
-          {this.renderHeaderInfo()}
-          <Box component="form" noValidate>
-            <TextField
-              margin="normal"
-              fullWidth
-              id="email"
-              label="メールアドレス"
-              name="email"
-              autoComplete="email"
-              disabled={isLoading}
-              helperText={this.state.formError?.email}
-              error={!!this.state.formError?.email}
-              onChange={this.props.onChangeEmail}
-              value={this.props.email}
-            />
-            <LoadingButton
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-              onClick={this.handleSubmit}
-              loading={isLoading}
-              disabled={isLoading}
-            >
-              メールを再送信する
-            </LoadingButton>
-            <Grid container>
-              <Grid item xs>
-                <Button variant="text" onClick={this.props.switchMode('login')}>
-                  ログイン
-                </Button>
-              </Grid>
-              <Grid item>
-                <Button
-                  variant="text"
-                  onClick={this.props.switchMode('signup')}
-                >
-                  アカウント作成
-                </Button>
-              </Grid>
+      <Stack spacing={1} sx={{ px: 1, py: 2 }}>
+        <Typography component="h1" variant="h5" align="center">
+          確認用メール再送
+        </Typography>
+        <Typography component="p" variant="subtitle2">
+          アカウント作成時に送信した確認メールをもう一度送信します。
+        </Typography>
+        {this.renderHeaderInfo()}
+        <Box component="form" noValidate>
+          <TextField
+            margin="normal"
+            fullWidth
+            id="email"
+            label="メールアドレス"
+            name="email"
+            autoComplete="email"
+            disabled={isLoading}
+            helperText={this.state.formError?.email}
+            error={!!this.state.formError?.email}
+            onChange={this.props.onChangeEmail}
+            value={this.props.email}
+          />
+          <LoadingButton
+            fullWidth
+            variant="contained"
+            sx={{ mt: 3, mb: 2 }}
+            onClick={this.handleSubmit}
+            loading={isLoading}
+            disabled={isLoading}
+          >
+            メールを再送信する
+          </LoadingButton>
+          <Grid container>
+            <Grid item xs>
+              <Button variant="text" onClick={this.props.switchMode('login')}>
+                ログイン
+              </Button>
             </Grid>
-          </Box>
-        </Stack>
-      </Container>
+            <Grid item>
+              <Button variant="text" onClick={this.props.switchMode('signup')}>
+                アカウント作成
+              </Button>
+            </Grid>
+          </Grid>
+        </Box>
+      </Stack>
     );
   }
 

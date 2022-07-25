@@ -8,7 +8,6 @@ export const authsSlice = createSlice({
   reducers: {
     autoLoginStart(state) {
       state.loggingInState = 'loading';
-      state.isAutoLoginTried = true;
     },
 
     loginSuccess(state, action: PayloadAction<User>) {

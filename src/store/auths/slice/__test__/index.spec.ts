@@ -7,14 +7,12 @@ const { autoLoginStart, loginSuccess, autoLoginFailure, toggleFormModal } =
 describe('auths reducer', () => {
   const initialState: AuthsState = {
     loggingInState: 'waiting',
-    isAutoLoginTried: false,
     openFormModal: false,
   };
 
   it('should handle initial state', () => {
     expect(authsReducer(undefined, { type: 'unknown' })).toEqual({
       loggingInState: 'waiting',
-      isAutoLoginTried: false,
       openFormModal: false,
     });
   });

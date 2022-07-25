@@ -7,6 +7,7 @@ const basicProps: Props = {
   logginingInState: 'waiting',
   initialMode: 'login',
   loginSuccess: jest.fn(),
+  autoLogin: jest.fn(),
 };
 
 describe('Shallow Snapshot Tests', () => {

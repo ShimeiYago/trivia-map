@@ -20,10 +20,14 @@ const initialGetState = () => ({
   },
 });
 
-const alreadyTriedGetState = () => ({
+const loggedInGetState = () => ({
   auths: {
     loggingInState: 'waiting',
-    isAutoLoginTried: true,
+    user: {
+      userId: 1,
+      email: 'xxx@example.com',
+      nickname: 'Axel',
+    },
   },
 });
 
@@ -55,12 +59,12 @@ describe('autoLogin', () => {
     expect(dispatch.mock.calls[1][0].type).toBe(undefined);
   });
 
-  it('do nothing if autoLogin is already tried', async () => {
+  it('do nothing if user already logged in', async () => {
     getUserInfoSpy.mockResolvedValue(mockResponse);
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const appThunk = autoLogin() as any;
-    await appThunk(dispatch, alreadyTriedGetState);
+    await appThunk(dispatch, loggedInGetState);
 
     expect(dispatch.mock.calls).toEqual([]);
   });

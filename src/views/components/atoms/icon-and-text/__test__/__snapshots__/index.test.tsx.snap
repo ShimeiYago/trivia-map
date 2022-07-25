@@ -6,8 +6,10 @@ exports[`Shallow Snapshot Tests basic 1`] = `
   sx={
     Object {
       "alignItems": "center",
+      "columnGap": undefined,
       "display": "flex",
       "flexWrap": "wrap",
+      "fontSize": undefined,
       "justifyContent": "center",
     }
   }
@@ -23,8 +25,10 @@ exports[`Shallow Snapshot Tests left align 1`] = `
   sx={
     Object {
       "alignItems": "center",
+      "columnGap": undefined,
       "display": "flex",
       "flexWrap": "wrap",
+      "fontSize": undefined,
       "justifyContent": "left",
     }
   }
@@ -39,8 +43,10 @@ exports[`Shallow Snapshot Tests right icon 1`] = `
   sx={
     Object {
       "alignItems": "center",
+      "columnGap": undefined,
       "display": "flex",
       "flexWrap": "wrap",
+      "fontSize": undefined,
       "justifyContent": "center",
     }
   }

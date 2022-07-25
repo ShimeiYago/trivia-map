@@ -13,6 +13,7 @@ export class Renderer extends React.Component<Props, State> {
       mode: props.initialMode,
       email: '',
     };
+    props.autoLogin();
   }
 
   render() {
@@ -72,6 +73,7 @@ export type Props = {
   initialMode: AuthFormMode;
 
   loginSuccess: (user: User) => void;
+  autoLogin: () => void;
 };
 
 export type State = {

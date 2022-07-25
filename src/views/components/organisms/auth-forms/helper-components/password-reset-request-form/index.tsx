@@ -4,7 +4,6 @@ import {
   Alert,
   Box,
   Button,
-  Container,
   Grid,
   Stack,
   TextField,
@@ -29,58 +28,53 @@ export class PasswordResetRequestForm extends React.Component<Props, State> {
     const disabled = this.state.localLoadingState === 'loading';
 
     return (
-      <Container component="main" maxWidth="xs">
-        <Stack spacing={1} sx={{ px: 1, py: 2 }}>
-          <Typography component="h1" variant="h5" align="center">
-            パスワード再設定
-          </Typography>
-          <Typography component="p" variant="subtitle2">
-            パスワードを忘れた場合はこちらでパスワードの再設定を行なってください。
-          </Typography>
-          {this.renderHeaderInfo()}
-          <Box component="form" noValidate>
-            <TextField
-              margin="normal"
-              fullWidth
-              id="email"
-              label="メールアドレス"
-              name="email"
-              autoComplete="email"
-              autoFocus
-              disabled={disabled}
-              helperText={this.state.formError?.email}
-              error={!!this.state.formError?.email}
-              onChange={this.props.onChangeEmail}
-              value={this.props.email}
-            />
-            <LoadingButton
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-              onClick={this.handleSubmit}
-              loading={this.state.localLoadingState === 'loading'}
-              disabled={disabled}
-            >
-              再設定用のメールを送信する
-            </LoadingButton>
-            <Grid container>
-              <Grid item xs>
-                <Button variant="text" onClick={this.props.switchMode('login')}>
-                  ログイン
-                </Button>
-              </Grid>
-              <Grid item>
-                <Button
-                  variant="text"
-                  onClick={this.props.switchMode('signup')}
-                >
-                  アカウント作成
-                </Button>
-              </Grid>
+      <Stack spacing={1} sx={{ px: 1, py: 2 }}>
+        <Typography component="h1" variant="h5" align="center">
+          パスワード再設定
+        </Typography>
+        <Typography component="p" variant="subtitle2">
+          パスワードを忘れた場合はこちらでパスワードの再設定を行なってください。
+        </Typography>
+        {this.renderHeaderInfo()}
+        <Box component="form" noValidate>
+          <TextField
+            margin="normal"
+            fullWidth
+            id="email"
+            label="メールアドレス"
+            name="email"
+            autoComplete="email"
+            autoFocus
+            disabled={disabled}
+            helperText={this.state.formError?.email}
+            error={!!this.state.formError?.email}
+            onChange={this.props.onChangeEmail}
+            value={this.props.email}
+          />
+          <LoadingButton
+            fullWidth
+            variant="contained"
+            sx={{ mt: 3, mb: 2 }}
+            onClick={this.handleSubmit}
+            loading={this.state.localLoadingState === 'loading'}
+            disabled={disabled}
+          >
+            再設定用のメールを送信する
+          </LoadingButton>
+          <Grid container>
+            <Grid item xs>
+              <Button variant="text" onClick={this.props.switchMode('login')}>
+                ログイン
+              </Button>
             </Grid>
-          </Box>
-        </Stack>
-      </Container>
+            <Grid item>
+              <Button variant="text" onClick={this.props.switchMode('signup')}>
+                アカウント作成
+              </Button>
+            </Grid>
+          </Grid>
+        </Box>
+      </Stack>
     );
   }
 

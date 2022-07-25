@@ -5,7 +5,6 @@ import {
   Alert,
   Box,
   Button,
-  Container,
   Grid,
   Stack,
   TextField,
@@ -35,71 +34,66 @@ export class LoginForm extends React.Component<Props, State> {
       this.state.localLoadingState === 'loading';
 
     return (
-      <Container component="main" maxWidth="xs">
-        <Stack spacing={1} sx={{ px: 1, py: 2 }}>
-          <Typography component="h1" variant="h5" align="center">
+      <Stack spacing={1} sx={{ px: 1, py: 2 }}>
+        <Typography component="h1" variant="h5" align="center">
+          ログイン
+        </Typography>
+        {this.renderHeaderInfo()}
+        <Box component="form" noValidate>
+          <TextField
+            margin="normal"
+            fullWidth
+            id="email"
+            label="メールアドレス"
+            name="email"
+            autoComplete="email"
+            autoFocus
+            disabled={disabled}
+            helperText={this.state.formError?.email}
+            error={!!this.state.formError?.email}
+            onChange={this.props.onChangeEmail}
+            value={this.props.email}
+          />
+          <TextField
+            margin="normal"
+            fullWidth
+            name="password"
+            label="パスワード"
+            type="password"
+            id="password"
+            autoComplete="current-password"
+            disabled={disabled}
+            helperText={this.state.formError?.password}
+            error={!!this.state.formError?.password}
+            onChange={this.handleChangePassword}
+          />
+          <LoadingButton
+            fullWidth
+            variant="contained"
+            sx={{ mt: 3, mb: 2 }}
+            onClick={this.handleClickLogin}
+            loading={this.state.localLoadingState === 'loading'}
+            disabled={disabled}
+          >
             ログイン
-          </Typography>
-          {this.renderHeaderInfo()}
-          <Box component="form" noValidate>
-            <TextField
-              margin="normal"
-              fullWidth
-              id="email"
-              label="メールアドレス"
-              name="email"
-              autoComplete="email"
-              autoFocus
-              disabled={disabled}
-              helperText={this.state.formError?.email}
-              error={!!this.state.formError?.email}
-              onChange={this.props.onChangeEmail}
-              value={this.props.email}
-            />
-            <TextField
-              margin="normal"
-              fullWidth
-              name="password"
-              label="パスワード"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-              disabled={disabled}
-              helperText={this.state.formError?.password}
-              error={!!this.state.formError?.password}
-              onChange={this.handleChangePassword}
-            />
-            <LoadingButton
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-              onClick={this.handleClickLogin}
-              loading={this.state.localLoadingState === 'loading'}
-              disabled={disabled}
-            >
-              ログイン
-            </LoadingButton>
-            <Grid container>
-              <Grid item xs>
-                <Button
-                  variant="text"
-                  onClick={this.props.switchMode('reset-password')}
-                >
-                  パスワードを忘れた場合
-                </Button>
-              </Grid>
-              <Grid item>
-                <Button
-                  variant="text"
-                  onClick={this.props.switchMode('signup')}
-                >
-                  アカウント作成
-                </Button>
-              </Grid>
+          </LoadingButton>
+          <Grid container>
+            <Grid item xs>
+              <Button
+                variant="text"
+                onClick={this.props.switchMode('reset-password')}
+              >
+                パスワードを忘れた場合
+              </Button>
             </Grid>
-          </Box>
-        </Stack>
-      </Container>
+            <Grid item>
+              <Button variant="text" onClick={this.props.switchMode('signup')}>
+                アカウント作成
+              </Button>
+            </Grid>
+          </Grid>
+        </Box>
+      </Stack>
     );
   }
 

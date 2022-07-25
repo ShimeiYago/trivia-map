@@ -5,7 +5,9 @@ import { Renderer, Props, State } from '..';
 const basicProps: Props = {
   topBarPosition: 'fixed',
   children: 'contents',
+  openAuthFormModal: false,
   autoLogin: jest.fn(),
+  toggleAuthFormModal: jest.fn(),
 };
 
 let wrapper: ShallowWrapper<Props, State, Renderer>;

@@ -1,278 +1,263 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Shallow Snapshot Tests basic 1`] = `
-<ForwardRef(Container)
-  component="main"
-  maxWidth="xs"
->
-  <ForwardRef(Stack)
-    spacing={1}
-    sx={
-      Object {
-        "px": 1,
-        "py": 2,
-      }
+<ForwardRef(Stack)
+  spacing={1}
+  sx={
+    Object {
+      "px": 1,
+      "py": 2,
     }
+  }
+>
+  <ForwardRef(Typography)
+    align="center"
+    component="h1"
+    variant="h5"
   >
-    <ForwardRef(Typography)
-      align="center"
-      component="h1"
-      variant="h5"
-    >
-      確認用メール再送
-    </ForwardRef(Typography)>
-    <ForwardRef(Typography)
-      component="p"
-      variant="subtitle2"
-    >
-      アカウント作成時に送信した確認メールをもう一度送信します。
-    </ForwardRef(Typography)>
-    <ForwardRef(Box)
-      component="form"
-      noValidate={true}
-    >
-      <ForwardRef(TextField)
-        autoComplete="email"
-        disabled={false}
-        error={false}
-        fullWidth={true}
-        id="email"
-        label="メールアドレス"
-        margin="normal"
-        name="email"
-        onChange={[MockFunction]}
-        value=""
-      />
-      <ForwardRef(LoadingButton)
-        disabled={false}
-        fullWidth={true}
-        loading={false}
-        onClick={[Function]}
-        sx={
-          Object {
-            "mb": 2,
-            "mt": 3,
-          }
+    確認用メール再送
+  </ForwardRef(Typography)>
+  <ForwardRef(Typography)
+    component="p"
+    variant="subtitle2"
+  >
+    アカウント作成時に送信した確認メールをもう一度送信します。
+  </ForwardRef(Typography)>
+  <ForwardRef(Box)
+    component="form"
+    noValidate={true}
+  >
+    <ForwardRef(TextField)
+      autoComplete="email"
+      disabled={false}
+      error={false}
+      fullWidth={true}
+      id="email"
+      label="メールアドレス"
+      margin="normal"
+      name="email"
+      onChange={[MockFunction]}
+      value=""
+    />
+    <ForwardRef(LoadingButton)
+      disabled={false}
+      fullWidth={true}
+      loading={false}
+      onClick={[Function]}
+      sx={
+        Object {
+          "mb": 2,
+          "mt": 3,
         }
-        variant="contained"
-      >
-        メールを再送信する
-      </ForwardRef(LoadingButton)>
+      }
+      variant="contained"
+    >
+      メールを再送信する
+    </ForwardRef(LoadingButton)>
+    <ForwardRef(Grid)
+      container={true}
+    >
       <ForwardRef(Grid)
-        container={true}
+        item={true}
+        xs={true}
       >
-        <ForwardRef(Grid)
-          item={true}
-          xs={true}
+        <ForwardRef(Button)
+          variant="text"
         >
-          <ForwardRef(Button)
-            variant="text"
-          >
-            ログイン
-          </ForwardRef(Button)>
-        </ForwardRef(Grid)>
-        <ForwardRef(Grid)
-          item={true}
-        >
-          <ForwardRef(Button)
-            variant="text"
-          >
-            アカウント作成
-          </ForwardRef(Button)>
-        </ForwardRef(Grid)>
+          ログイン
+        </ForwardRef(Button)>
       </ForwardRef(Grid)>
-    </ForwardRef(Box)>
-  </ForwardRef(Stack)>
-</ForwardRef(Container)>
+      <ForwardRef(Grid)
+        item={true}
+      >
+        <ForwardRef(Button)
+          variant="text"
+        >
+          アカウント作成
+        </ForwardRef(Button)>
+      </ForwardRef(Grid)>
+    </ForwardRef(Grid)>
+  </ForwardRef(Box)>
+</ForwardRef(Stack)>
 `;
 
 exports[`Shallow Snapshot Tests error case 1`] = `
-<ForwardRef(Container)
-  component="main"
-  maxWidth="xs"
->
-  <ForwardRef(Stack)
-    spacing={1}
-    sx={
-      Object {
-        "px": 1,
-        "py": 2,
-      }
+<ForwardRef(Stack)
+  spacing={1}
+  sx={
+    Object {
+      "px": 1,
+      "py": 2,
     }
+  }
+>
+  <ForwardRef(Typography)
+    align="center"
+    component="h1"
+    variant="h5"
   >
-    <ForwardRef(Typography)
-      align="center"
-      component="h1"
-      variant="h5"
-    >
-      確認用メール再送
-    </ForwardRef(Typography)>
-    <ForwardRef(Typography)
-      component="p"
-      variant="subtitle2"
-    >
-      アカウント作成時に送信した確認メールをもう一度送信します。
-    </ForwardRef(Typography)>
-    <ForwardRef(Box)>
-      <HeaderErrorMessages
-        errorMessages={
-          Array [
-            "error1",
-            "error2",
-          ]
+    確認用メール再送
+  </ForwardRef(Typography)>
+  <ForwardRef(Typography)
+    component="p"
+    variant="subtitle2"
+  >
+    アカウント作成時に送信した確認メールをもう一度送信します。
+  </ForwardRef(Typography)>
+  <ForwardRef(Box)>
+    <HeaderErrorMessages
+      errorMessages={
+        Array [
+          "error1",
+          "error2",
+        ]
+      }
+      errorTitle="error title"
+    />
+  </ForwardRef(Box)>
+  <ForwardRef(Box)
+    component="form"
+    noValidate={true}
+  >
+    <ForwardRef(TextField)
+      autoComplete="email"
+      disabled={false}
+      error={true}
+      fullWidth={true}
+      helperText={
+        Array [
+          "email is invalid",
+        ]
+      }
+      id="email"
+      label="メールアドレス"
+      margin="normal"
+      name="email"
+      onChange={[MockFunction]}
+      value=""
+    />
+    <ForwardRef(LoadingButton)
+      disabled={false}
+      fullWidth={true}
+      loading={false}
+      onClick={[Function]}
+      sx={
+        Object {
+          "mb": 2,
+          "mt": 3,
         }
-        errorTitle="error title"
-      />
-    </ForwardRef(Box)>
-    <ForwardRef(Box)
-      component="form"
-      noValidate={true}
+      }
+      variant="contained"
     >
-      <ForwardRef(TextField)
-        autoComplete="email"
-        disabled={false}
-        error={true}
-        fullWidth={true}
-        helperText={
-          Array [
-            "email is invalid",
-          ]
-        }
-        id="email"
-        label="メールアドレス"
-        margin="normal"
-        name="email"
-        onChange={[MockFunction]}
-        value=""
-      />
-      <ForwardRef(LoadingButton)
-        disabled={false}
-        fullWidth={true}
-        loading={false}
-        onClick={[Function]}
-        sx={
-          Object {
-            "mb": 2,
-            "mt": 3,
-          }
-        }
-        variant="contained"
-      >
-        メールを再送信する
-      </ForwardRef(LoadingButton)>
+      メールを再送信する
+    </ForwardRef(LoadingButton)>
+    <ForwardRef(Grid)
+      container={true}
+    >
       <ForwardRef(Grid)
-        container={true}
+        item={true}
+        xs={true}
       >
-        <ForwardRef(Grid)
-          item={true}
-          xs={true}
+        <ForwardRef(Button)
+          variant="text"
         >
-          <ForwardRef(Button)
-            variant="text"
-          >
-            ログイン
-          </ForwardRef(Button)>
-        </ForwardRef(Grid)>
-        <ForwardRef(Grid)
-          item={true}
-        >
-          <ForwardRef(Button)
-            variant="text"
-          >
-            アカウント作成
-          </ForwardRef(Button)>
-        </ForwardRef(Grid)>
+          ログイン
+        </ForwardRef(Button)>
       </ForwardRef(Grid)>
-    </ForwardRef(Box)>
-  </ForwardRef(Stack)>
-</ForwardRef(Container)>
+      <ForwardRef(Grid)
+        item={true}
+      >
+        <ForwardRef(Button)
+          variant="text"
+        >
+          アカウント作成
+        </ForwardRef(Button)>
+      </ForwardRef(Grid)>
+    </ForwardRef(Grid)>
+  </ForwardRef(Box)>
+</ForwardRef(Stack)>
 `;
 
 exports[`Shallow Snapshot Tests success case 1`] = `
-<ForwardRef(Container)
-  component="main"
-  maxWidth="xs"
->
-  <ForwardRef(Stack)
-    spacing={1}
-    sx={
-      Object {
-        "px": 1,
-        "py": 2,
-      }
+<ForwardRef(Stack)
+  spacing={1}
+  sx={
+    Object {
+      "px": 1,
+      "py": 2,
     }
+  }
+>
+  <ForwardRef(Typography)
+    align="center"
+    component="h1"
+    variant="h5"
   >
-    <ForwardRef(Typography)
-      align="center"
-      component="h1"
-      variant="h5"
-    >
-      確認用メール再送
-    </ForwardRef(Typography)>
-    <ForwardRef(Typography)
-      component="p"
-      variant="subtitle2"
-    >
-      アカウント作成時に送信した確認メールをもう一度送信します。
-    </ForwardRef(Typography)>
-    <ForwardRef(Alert)>
-      入力されたメールアドレス宛に確認用メールを再送信しました。メールの内容に従ってアカウント作成を完了してください。
-    </ForwardRef(Alert)>
-    <ForwardRef(Box)
-      component="form"
-      noValidate={true}
-    >
-      <ForwardRef(TextField)
-        autoComplete="email"
-        disabled={false}
-        error={false}
-        fullWidth={true}
-        id="email"
-        label="メールアドレス"
-        margin="normal"
-        name="email"
-        onChange={[MockFunction]}
-        value=""
-      />
-      <ForwardRef(LoadingButton)
-        disabled={false}
-        fullWidth={true}
-        loading={false}
-        onClick={[Function]}
-        sx={
-          Object {
-            "mb": 2,
-            "mt": 3,
-          }
+    確認用メール再送
+  </ForwardRef(Typography)>
+  <ForwardRef(Typography)
+    component="p"
+    variant="subtitle2"
+  >
+    アカウント作成時に送信した確認メールをもう一度送信します。
+  </ForwardRef(Typography)>
+  <ForwardRef(Alert)>
+    入力されたメールアドレス宛に確認用メールを再送信しました。メールの内容に従ってアカウント作成を完了してください。
+  </ForwardRef(Alert)>
+  <ForwardRef(Box)
+    component="form"
+    noValidate={true}
+  >
+    <ForwardRef(TextField)
+      autoComplete="email"
+      disabled={false}
+      error={false}
+      fullWidth={true}
+      id="email"
+      label="メールアドレス"
+      margin="normal"
+      name="email"
+      onChange={[MockFunction]}
+      value=""
+    />
+    <ForwardRef(LoadingButton)
+      disabled={false}
+      fullWidth={true}
+      loading={false}
+      onClick={[Function]}
+      sx={
+        Object {
+          "mb": 2,
+          "mt": 3,
         }
-        variant="contained"
-      >
-        メールを再送信する
-      </ForwardRef(LoadingButton)>
+      }
+      variant="contained"
+    >
+      メールを再送信する
+    </ForwardRef(LoadingButton)>
+    <ForwardRef(Grid)
+      container={true}
+    >
       <ForwardRef(Grid)
-        container={true}
+        item={true}
+        xs={true}
       >
-        <ForwardRef(Grid)
-          item={true}
-          xs={true}
+        <ForwardRef(Button)
+          variant="text"
         >
-          <ForwardRef(Button)
-            variant="text"
-          >
-            ログイン
-          </ForwardRef(Button)>
-        </ForwardRef(Grid)>
-        <ForwardRef(Grid)
-          item={true}
-        >
-          <ForwardRef(Button)
-            variant="text"
-          >
-            アカウント作成
-          </ForwardRef(Button)>
-        </ForwardRef(Grid)>
+          ログイン
+        </ForwardRef(Button)>
       </ForwardRef(Grid)>
-    </ForwardRef(Box)>
-  </ForwardRef(Stack)>
-</ForwardRef(Container)>
+      <ForwardRef(Grid)
+        item={true}
+      >
+        <ForwardRef(Button)
+          variant="text"
+        >
+          アカウント作成
+        </ForwardRef(Button)>
+      </ForwardRef(Grid)>
+    </ForwardRef(Grid)>
+  </ForwardRef(Box)>
+</ForwardRef(Stack)>
 `;

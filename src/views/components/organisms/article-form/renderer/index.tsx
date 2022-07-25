@@ -25,6 +25,7 @@ import { CloseFormButton } from '../../close-form-button';
 import { ImageField } from 'views/components/moleculars/image-field';
 import { DeletableImage } from 'views/components/moleculars/deletable-image';
 import { HeaderErrorMessages } from 'views/components/moleculars/header-error-messages';
+import { User } from 'types/user';
 
 export class Renderer extends React.Component<Props> {
   headerRef: React.RefObject<HTMLDivElement>;
@@ -211,6 +212,10 @@ export class Renderer extends React.Component<Props> {
   ) => this.props.updateFormField({ description: e.target.value });
 
   protected handleSubmitButton = () => {
+    if (!this.props.userInfo) {
+      return this.props.toggleAuthFormModal(true);
+    }
+
     if (this.props.postId) {
       return this.props.submitEdittedArticle();
     } else {
@@ -279,6 +284,7 @@ export type Props = {
   fetchingState: LoadingState;
   formError?: FormError;
   isFormEditting: boolean;
+  userInfo?: User;
 
   updateFormField: (param: UpdateFormFieldParam) => void;
   submitNewArticle: () => void;
@@ -288,4 +294,5 @@ export type Props = {
   handleClickSelectPosition?: () => void;
   updateIsEditting: (isEditting: boolean) => void;
   onClose?: () => void;
+  toggleAuthFormModal: (open: boolean) => void;
 };

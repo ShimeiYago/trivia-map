@@ -8,7 +8,6 @@ export const authsSlice = createSlice({
   reducers: {
     autoLoginStart(state) {
       state.loggingInState = 'loading';
-      state.isAutoLoginTried = true;
     },
 
     loginSuccess(state, action: PayloadAction<User>) {
@@ -18,6 +17,10 @@ export const authsSlice = createSlice({
 
     autoLoginFailure(state) {
       state.loggingInState = 'waiting';
+    },
+
+    toggleFormModal(state, action: PayloadAction<boolean>) {
+      state.openFormModal = action.payload;
     },
   },
 });

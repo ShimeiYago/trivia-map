@@ -2,15 +2,19 @@ import { authsSlice } from '../slice';
 import { AppThunk } from 'store';
 import { getUserInfo } from 'api/auths-api/get-user-info';
 import { refreshToken } from 'api/auths-api/refresh-token';
-import { selectIsAutoLoginTried } from '../selector';
+import { selectUser } from '../selector';
 
 // basic actions
-export const { autoLoginStart, loginSuccess, autoLoginFailure } =
-  authsSlice.actions;
+export const {
+  autoLoginStart,
+  loginSuccess,
+  autoLoginFailure,
+  toggleFormModal,
+} = authsSlice.actions;
 
 // autoLogin action
 export const autoLogin = (): AppThunk => async (dispatch, getState) => {
-  if (selectIsAutoLoginTried(getState())) {
+  if (selectUser(getState())) {
     return;
   }
 

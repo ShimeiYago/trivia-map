@@ -1,35 +1,71 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Shallow Snapshot Tests basic 1`] = `
-<LoginForm
-  email=""
-  logginingInState="waiting"
-  loginSuccess={[MockFunction]}
-  onChangeEmail={[Function]}
-  switchMode={[Function]}
-/>
+<ForwardRef(Box)
+  sx={
+    Object {
+      "mx": "auto",
+    }
+  }
+  width="340px"
+>
+  <LoginForm
+    email=""
+    logginingInState="waiting"
+    loginSuccess={[MockFunction]}
+    onChangeEmail={[Function]}
+    switchMode={[Function]}
+  />
+</ForwardRef(Box)>
 `;
 
 exports[`Shallow Snapshot Tests resend-email mode 1`] = `
-<ResendEmailForm
-  email=""
-  onChangeEmail={[Function]}
-  switchMode={[Function]}
-/>
+<ForwardRef(Box)
+  sx={
+    Object {
+      "mx": "auto",
+    }
+  }
+  width="340px"
+>
+  <ResendEmailForm
+    email=""
+    onChangeEmail={[Function]}
+    switchMode={[Function]}
+  />
+</ForwardRef(Box)>
 `;
 
 exports[`Shallow Snapshot Tests reset-pasword mode 1`] = `
-<PasswordResetRequestForm
-  email=""
-  onChangeEmail={[Function]}
-  switchMode={[Function]}
-/>
+<ForwardRef(Box)
+  sx={
+    Object {
+      "mx": "auto",
+    }
+  }
+  width="340px"
+>
+  <PasswordResetRequestForm
+    email=""
+    onChangeEmail={[Function]}
+    switchMode={[Function]}
+  />
+</ForwardRef(Box)>
 `;
 
 exports[`Shallow Snapshot Tests signup mode 1`] = `
-<SignupForm
-  email=""
-  onChangeEmail={[Function]}
-  switchMode={[Function]}
-/>
+<ForwardRef(Box)
+  sx={
+    Object {
+      "mx": "auto",
+    }
+  }
+  width="340px"
+>
+  <SignupForm
+    email=""
+    onChangeEmail={[Function]}
+    switchMode={[Function]}
+  />
+</ForwardRef(Box)>
 `;

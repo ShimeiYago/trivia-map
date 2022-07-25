@@ -15,13 +15,18 @@ const basicProps: Props = {
   submittingState: 'waiting',
   fetchingState: 'waiting',
   isFormEditting: false,
-
+  userInfo: {
+    userId: 1,
+    email: 'xxx@example.com',
+    nickname: 'Axel',
+  },
   updateFormField: jest.fn(),
   submitNewArticle: jest.fn(),
   submitEdittedArticle: jest.fn(),
   fetchArticle: jest.fn(),
   initialize: jest.fn(),
   updateIsEditting: jest.fn(),
+  toggleAuthFormModal: jest.fn(),
 };
 
 describe('Shallow Snapshot Tests', () => {
@@ -184,6 +189,15 @@ describe('handleSubmitButton', () => {
     instance['handleSubmitButton']();
 
     expect(basicProps.submitEdittedArticle).toBeCalled();
+  });
+
+  it('call toggleAuthFormModal if user does not login', () => {
+    wrapper.setProps({ userInfo: undefined });
+    const instance = wrapper.instance();
+
+    instance['handleSubmitButton']();
+
+    expect(instance.props.toggleAuthFormModal).toBeCalled();
   });
 });
 

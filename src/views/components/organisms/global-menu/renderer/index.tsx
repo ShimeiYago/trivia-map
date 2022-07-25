@@ -15,8 +15,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { leftNaviContents } from './left-navi-contents';
 import { appBarStyle, contentStyle, leftNaviBox } from '../styles';
 import { User } from 'types/user';
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { IconAndText } from 'views/components/atoms/icon-and-text';
 import { Link } from 'react-router-dom';
 import { authMenuLinks } from '../constants';
@@ -58,7 +58,7 @@ export class Renderer extends React.Component<Props, State> {
               </IconButton>
             )}
             <Typography variant="h6" sx={{ flexGrow: 1 }} component="div">
-              Persistent drawer
+              Trivia Map
             </Typography>
             {this.renderAuthMenu()}
           </Toolbar>
@@ -97,9 +97,7 @@ export class Renderer extends React.Component<Props, State> {
   };
 
   protected renderAuthMenu = () => {
-    const welcomeText = `ようこそ ${
-      this.props.userInfo?.nickname ?? 'ゲストさん'
-    }`;
+    const nickname = `${this.props.userInfo?.nickname ?? 'ゲストさん'}`;
 
     return (
       <Box>
@@ -108,9 +106,11 @@ export class Renderer extends React.Component<Props, State> {
           sx={{ cursor: 'pointer', py: 2 }}
         >
           <IconAndText
-            iconComponent={<ArrowDropDownIcon />}
-            text={welcomeText}
+            iconComponent={<AccountCircleIcon />}
+            text={nickname}
             iconPosition="right"
+            fontSize={14}
+            columnGap={0.5}
           />
         </Box>
         <Popover

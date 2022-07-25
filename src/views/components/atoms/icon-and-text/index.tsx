@@ -6,6 +6,8 @@ export const IconAndText: React.FC<Props> = (props) => {
   const wrapperStyle: SxProps = {
     ...style,
     justifyContent: props.align ?? 'center',
+    fontSize: props.fontSize,
+    columnGap: props.columnGap,
   };
 
   if (props.iconPosition === 'left') {
@@ -50,4 +52,6 @@ export type Props = {
     | 'body2';
   iconPosition: 'left' | 'right';
   align?: 'left' | 'right' | 'center';
+  fontSize?: number;
+  columnGap?: number;
 };

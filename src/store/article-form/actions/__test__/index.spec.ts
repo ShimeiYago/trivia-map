@@ -41,6 +41,7 @@ const getState = () => ({
     },
     imageDataUrl: 'https://image-data.jpg',
     previousMarkerId: 1,
+    isDraft: false,
   },
 });
 
@@ -117,6 +118,34 @@ describe('submitNewArticle', () => {
       errorTitle: '入力内容に誤りがあります。',
     });
   });
+
+  it('do not call pushMarker if isDraft is true', async () => {
+    postRemoteArticleSpy.mockResolvedValue({
+      ...mockPostPutResponse,
+    });
+
+    const getStateWithDraft = () => ({
+      articleForm: {
+        postId: '000',
+        title: 'title',
+        description: 'description',
+        position: {
+          lat: 0,
+          lng: 0,
+          park: 'S',
+        },
+        isDraft: true,
+      },
+    });
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const appThunk = submitNewArticle() as any;
+    await appThunk(dispatch, getStateWithDraft, {});
+
+    expect(dispatch.mock.calls[dispatch.mock.calls.length - 1][0].type).toBe(
+      'articleForm/initialize',
+    );
+  });
 });
 
 describe('submitEdittedArticle', () => {
@@ -187,17 +216,69 @@ describe('submitEdittedArticle', () => {
     });
   });
 
-  it('call pushMarker if marker is replaced', async () => {
+  it('do not call pushMarker if post is draft', async () => {
     const mockPostPutResponseWithMarker2 = {
       postId: 100,
       marker: 2,
     } as PostArticleApiModule.PostArticleResponse;
 
+    const getStateWithDraft = () => ({
+      articleForm: {
+        postId: 100,
+        title: 'title',
+        description: 'description',
+        position: {
+          lat: 0,
+          lng: 0,
+          park: 'S',
+        },
+        imageDataUrl: 'https://image-data.jpg',
+        previousMarkerId: 2,
+        isDraft: true,
+      },
+    });
+
     putRemoteArticleSpy.mockResolvedValue(mockPostPutResponseWithMarker2);
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const appThunk = submitEdittedArticle() as any;
-    await appThunk(dispatch, getState, {});
+    await appThunk(dispatch, getStateWithDraft, {});
+
+    expect(dispatch.mock.calls[dispatch.mock.calls.length - 1][0].type).toBe(
+      undefined,
+    );
+  });
+
+  it('do not anything after initialize if previousMarkerId is undefined', async () => {
+    const mockPostPutResponseWithMarker2 = {
+      postId: 100,
+      marker: 2,
+    } as PostArticleApiModule.PostArticleResponse;
+
+    const getStateWithoutPreviousPosition = () => ({
+      articleForm: {
+        postId: 100,
+        title: 'title',
+        description: 'description',
+        position: {
+          lat: 0,
+          lng: 0,
+          park: 'S',
+        },
+        imageDataUrl: 'https://image-data.jpg',
+        previousMarkerId: undefined,
+      },
+    });
+
+    putRemoteArticleSpy.mockResolvedValue(mockPostPutResponseWithMarker2);
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const appThunk = submitEdittedArticle() as any;
+    await appThunk(dispatch, getStateWithoutPreviousPosition, {});
+
+    expect(dispatch.mock.calls[dispatch.mock.calls.length - 1][0].type).toBe(
+      'articleForm/initialize',
+    );
   });
 });
 

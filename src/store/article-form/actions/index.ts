@@ -62,14 +62,16 @@ export const submitNewArticle = (): AppThunk => async (dispatch, getState) => {
     dispatch(submitSuccess(res.postId));
     dispatch(initialize());
 
-    const marker: Marker = {
-      markerId: res.marker,
-      lat: position.lat,
-      lng: position.lng,
-      park: position.park,
-      numberOfPublicArticles: 1,
-    };
-    dispatch(pushMarker(marker));
+    if (!isDraft) {
+      const marker: Marker = {
+        markerId: res.marker,
+        lat: position.lat,
+        lng: position.lng,
+        park: position.park,
+        numberOfPublicArticles: 1,
+      };
+      dispatch(pushMarker(marker));
+    }
   } catch (error) {
     const apiError = error as ApiError<ValidationError>;
 
@@ -125,8 +127,13 @@ export const submitEdittedArticle =
         numberOfPublicArticles: 1,
       };
 
-      if (previousMarkerId && updatedMarker.markerId !== previousMarkerId) {
-        dispatch(deleteOneMarker(previousMarkerId));
+      if (!previousMarkerId) {
+        return;
+      }
+
+      dispatch(deleteOneMarker(previousMarkerId));
+
+      if (!isDraft) {
         dispatch(pushMarker(updatedMarker));
       }
     } catch (error) {

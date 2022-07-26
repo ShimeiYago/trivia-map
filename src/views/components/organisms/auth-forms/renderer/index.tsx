@@ -55,6 +55,7 @@ export class Renderer extends React.Component<Props, State> {
             autoLoggingInState={this.props.autoLoggingInState}
             loginSuccess={this.props.loginSuccess}
             switchMode={this.switchMode}
+            userInfo={this.props.userInfo}
           />
         );
     }
@@ -82,6 +83,7 @@ export class Renderer extends React.Component<Props, State> {
 export type Props = {
   autoLoggingInState: LoadingState;
   initialMode: AuthFormMode;
+  userInfo?: User;
 
   loginSuccess: (user: User) => void;
   autoLogin: () => void;

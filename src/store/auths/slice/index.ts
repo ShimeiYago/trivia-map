@@ -16,7 +16,7 @@ export const authsSlice = createSlice({
     },
 
     autoLoginFailure(state) {
-      state.autoLoggingInState = 'waiting';
+      state.autoLoggingInState = 'error';
     },
 
     toggleFormModal(state, action: PayloadAction<boolean>) {

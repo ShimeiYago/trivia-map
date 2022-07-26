@@ -314,4 +314,16 @@ describe('updateFormField', () => {
       'articleForm/updateImageDataUrl',
     );
   });
+
+  it('should call updateIsDraft actions', async () => {
+    const param = {
+      isDraft: true,
+    };
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const appThunk = updateFormField(param) as any;
+    await appThunk(dispatch);
+
+    expect(dispatch.mock.calls[0][0].type).toBe('articleForm/updateIsDraft');
+  });
 });

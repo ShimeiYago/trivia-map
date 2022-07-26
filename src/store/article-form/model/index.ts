@@ -18,6 +18,7 @@ export interface ArticleFormState {
   lastSavedPosition?: Position;
   lastSavedImageDataUrl: string | null;
   isFormChangedFromLastSaved: boolean;
+  isDraft: boolean;
 }
 
 export const initialState: ArticleFormState = {
@@ -31,6 +32,7 @@ export const initialState: ArticleFormState = {
   fetchingState: 'waiting',
   isEditting: false,
   isFormChangedFromLastSaved: false,
+  isDraft: false,
 };
 
 export type FormError = {
@@ -40,5 +42,6 @@ export type FormError = {
     description?: string;
     position?: string;
     imageDataUrl?: string;
+    isDraft?: string;
   };
 };

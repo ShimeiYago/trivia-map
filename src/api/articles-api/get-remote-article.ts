@@ -13,7 +13,7 @@ export async function getRemoteArticle(
   try {
     // TODO: Set reasonable timeout
     const res: AxiosResponse<GetArticleResponse> = await axiosInstance.get(
-      `${BASE_URL}/articles/${postId}`,
+      `${BASE_URL}/articles/detail/${postId}`,
     );
     return res.data;
   } catch (error) {
@@ -34,6 +34,7 @@ export type GetArticleResponse = {
     numberOfPublicArticles: number;
   };
   imageUrl: string | null;
+  isDraft: boolean;
   author: Author;
   createdAt: string;
   updatedAt: string;

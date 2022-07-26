@@ -15,6 +15,7 @@ import {
   selectArticleFormId,
   selectArticleFormImageDataUrl,
   selectArticleFormPreviousMarkerId,
+  selectArticleFormIsDraft,
 } from '../selector';
 import { globalAPIErrorMessage } from 'constant/global-api-error-message';
 import { pushMarker, deleteOneMarker } from 'store/markers/actions';
@@ -26,6 +27,7 @@ export const {
   updateTitle,
   updateDescription,
   updatePosition,
+  updateIsDraft,
   submitStart,
   submitFailure,
   submitSuccess,
@@ -47,7 +49,7 @@ export const submitNewArticle = (): AppThunk => async (dispatch, getState) => {
   const description = selectArticleFormDescription(getState());
   const position = selectArticleFormPosition(getState()) as Position;
   const imageDataUrl = selectArticleFormImageDataUrl(getState());
-  const isDraft = false; // TODO get from store
+  const isDraft = selectArticleFormIsDraft(getState());
 
   try {
     const res = await postRemoteArticle(
@@ -98,7 +100,7 @@ export const submitEdittedArticle =
     const description = selectArticleFormDescription(getState());
     const position = selectArticleFormPosition(getState()) as Position;
     const imageDataUrl = selectArticleFormImageDataUrl(getState());
-    const isDraft = false; // TODO get from store
+    const isDraft = selectArticleFormIsDraft(getState());
     const previousMarkerId = selectArticleFormPreviousMarkerId(getState());
 
     let formError: FormError;
@@ -181,6 +183,9 @@ export const updateFormField =
     if (param.imageDataUrl !== undefined) {
       dispatch(updateImageDataUrl(param.imageDataUrl));
     }
+    if (param.isDraft !== undefined) {
+      dispatch(updateIsDraft(param.isDraft));
+    }
 
     dispatch(updateIsFormChangedFromLastSaved());
   };
@@ -190,4 +195,5 @@ export type UpdateFormFieldParam = {
   description?: string;
   position?: Position;
   imageDataUrl?: string | null;
+  isDraft?: boolean;
 };

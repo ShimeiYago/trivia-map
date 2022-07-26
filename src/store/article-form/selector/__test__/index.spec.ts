@@ -14,6 +14,7 @@ import {
   selectArticleFormIsFormChangedFromLastSaved,
   selectArticleFormImageDataUrl,
   selectArticleFormLastSavedImageDataUrl,
+  selectArticleFormIsDraft,
 } from '..';
 import { ArticleFormState, FormError } from '../../model';
 
@@ -39,6 +40,7 @@ describe('readingArticle selector', () => {
       isEditting: false,
       fetchingErrorMsg: 'fetch error',
       isFormChangedFromLastSaved: false,
+      isDraft: true,
     } as ArticleFormState,
   };
 
@@ -111,5 +113,9 @@ describe('readingArticle selector', () => {
     expect(selectArticleFormIsFormChangedFromLastSaved(rootState)).toEqual(
       false,
     );
+  });
+
+  it('selectArticleFormIsDraft should return articleForm isDraft state', () => {
+    expect(selectArticleFormIsDraft(rootState)).toEqual(true);
   });
 });

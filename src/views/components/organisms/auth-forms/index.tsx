@@ -1,6 +1,6 @@
 import { AuthFormMode, Props, Renderer } from './renderer';
 import { useAppDispatch, useAppSelector } from 'store';
-import { selectLogginingInState } from 'store/auths/selector';
+import { selectAutoLoggingInState, selectUser } from 'store/auths/selector';
 import { authsSlice } from 'store/auths/slice';
 import { User } from 'types/user';
 import { autoLogin } from 'store/auths/actions';
@@ -11,8 +11,9 @@ export function AuthForms(ownProps: OwnProps) {
   const dispatch = useAppDispatch();
 
   const props: Props = {
-    logginingInState: useAppSelector(selectLogginingInState),
+    autoLoggingInState: useAppSelector(selectAutoLoggingInState),
     initialMode: ownProps.initialMode,
+    userInfo: useAppSelector(selectUser),
 
     loginSuccess: (user: User) => dispatch(loginSuccess(user)),
     autoLogin: () => dispatch(autoLogin()),

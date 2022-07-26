@@ -6,20 +6,20 @@ const { autoLoginStart, loginSuccess, autoLoginFailure, toggleFormModal } =
 
 describe('auths reducer', () => {
   const initialState: AuthsState = {
-    loggingInState: 'waiting',
+    autoLoggingInState: 'waiting',
     openFormModal: false,
   };
 
   it('should handle initial state', () => {
     expect(authsReducer(undefined, { type: 'unknown' })).toEqual({
-      loggingInState: 'waiting',
+      autoLoggingInState: 'waiting',
       openFormModal: false,
     });
   });
 
   it('should handle autoLoginStart', () => {
     const actual = authsReducer(initialState, autoLoginStart());
-    expect(actual.loggingInState).toEqual('loading');
+    expect(actual.autoLoggingInState).toEqual('loading');
   });
 
   it('should handle loginSuccess', () => {
@@ -40,7 +40,7 @@ describe('auths reducer', () => {
 
   it('should handle autoLoginFailure', () => {
     const actual = authsReducer(initialState, autoLoginFailure());
-    expect(actual.loggingInState).toEqual('waiting');
+    expect(actual.autoLoggingInState).toEqual('error');
   });
 
   it('should handle toggleFormModal', () => {

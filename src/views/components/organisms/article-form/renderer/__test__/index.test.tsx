@@ -12,6 +12,7 @@ const basicProps: Props = {
     lng: 0,
     park: 'S',
   },
+  isDraft: false,
   submittingState: 'waiting',
   fetchingState: 'waiting',
   isFormEditting: false,
@@ -70,6 +71,13 @@ describe('Shallow Snapshot Tests', () => {
   it('with image', () => {
     wrapper.setProps({
       imageDataUrl: 'https://image-data.jpg',
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('draft mode', () => {
+    wrapper.setProps({
+      isDraft: true,
     });
     expect(wrapper).toMatchSnapshot();
   });
@@ -163,6 +171,20 @@ describe('handleChangeDescription', () => {
 
     const changeContentEvent = { target: { value: 'new content' } };
     instance['handleChangeDescription'](
+      changeContentEvent as React.ChangeEvent<HTMLInputElement>,
+    );
+
+    expect(basicProps.updateFormField).toBeCalled();
+  });
+});
+
+describe('handleChangeIsDraft', () => {
+  it('call updateContent', () => {
+    wrapper = shallow(<Renderer {...basicProps} />);
+    const instance = wrapper.instance();
+
+    const changeContentEvent = { target: { checked: true } };
+    instance['handleChangeIsDraft'](
       changeContentEvent as React.ChangeEvent<HTMLInputElement>,
     );
 

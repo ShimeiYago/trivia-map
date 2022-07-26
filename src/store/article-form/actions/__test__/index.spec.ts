@@ -206,6 +206,7 @@ const mockGetResponse: GetArticleApiModule.GetArticleResponse = {
   title: 'title',
   description: 'description',
   imageUrl: 'https://image-data.jpg',
+  isDraft: false,
   marker: {
     markerId: 1,
     lat: 0,
@@ -313,5 +314,17 @@ describe('updateFormField', () => {
     expect(dispatch.mock.calls[0][0].type).toBe(
       'articleForm/updateImageDataUrl',
     );
+  });
+
+  it('should call updateIsDraft actions', async () => {
+    const param = {
+      isDraft: true,
+    };
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const appThunk = updateFormField(param) as any;
+    await appThunk(dispatch);
+
+    expect(dispatch.mock.calls[0][0].type).toBe('articleForm/updateIsDraft');
   });
 });

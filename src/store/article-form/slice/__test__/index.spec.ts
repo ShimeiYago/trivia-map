@@ -17,6 +17,7 @@ const {
   updateLastSavedValues,
   updateIsFormChangedFromLastSaved,
   updateImageDataUrl,
+  updateIsDraft,
 } = articleFormSlice.actions;
 
 describe('articleForm reducer', () => {
@@ -42,6 +43,7 @@ describe('articleForm reducer', () => {
       fetchingState: 'waiting',
       isEditting: false,
       isFormChangedFromLastSaved: false,
+      isDraft: false,
     });
   });
 
@@ -76,6 +78,11 @@ describe('articleForm reducer', () => {
       updateImageDataUrl('https://image-data.jpg'),
     );
     expect(actual.imageDataUrl).toEqual('https://image-data.jpg');
+  });
+
+  it('should handle updateIsDraft', () => {
+    const actual = articleFormReducer(initialState, updateIsDraft(true));
+    expect(actual.isDraft).toBeTruthy();
   });
 
   it('should handle submitStart', () => {
@@ -128,6 +135,7 @@ describe('articleForm reducer', () => {
         numberOfPublicArticles: 1,
       },
       imageUrl: 'https://image-data.jpg',
+      isDraft: false,
       author: {
         userId: 1,
         nickname: 'Axel',

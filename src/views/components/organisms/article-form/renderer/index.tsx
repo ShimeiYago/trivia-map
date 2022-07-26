@@ -1,6 +1,8 @@
 import React from 'react';
 import {
   Box,
+  Checkbox,
+  FormControlLabel,
   CircularProgress,
   Container,
   Stack,
@@ -74,6 +76,7 @@ export class Renderer extends React.Component<Props> {
       title,
       description,
       position,
+      isDraft,
       submittingState,
       fetchingState,
       formError,
@@ -179,13 +182,24 @@ export class Renderer extends React.Component<Props> {
               </Box>
             </BoxField>
 
+            <FormControlLabel
+              control={
+                <Checkbox
+                  onChange={this.handleChangeIsDraft}
+                  checked={isDraft}
+                  disabled={disabled}
+                />
+              }
+              label="下書きとして保存（非公開）"
+            />
+
             <LoadingButton
               loading={submittingState === 'loading'}
               variant="outlined"
               disabled={disabled}
               onClick={this.handleSubmitButton}
             >
-              保存して公開
+              {isDraft ? '下書き保存' : '保存して公開'}
             </LoadingButton>
           </Stack>
         </Container>
@@ -210,6 +224,9 @@ export class Renderer extends React.Component<Props> {
   protected handleChangeDescription = (
     e: React.ChangeEvent<HTMLInputElement>,
   ) => this.props.updateFormField({ description: e.target.value });
+
+  protected handleChangeIsDraft = (e: React.ChangeEvent<HTMLInputElement>) =>
+    this.props.updateFormField({ isDraft: e.target.checked });
 
   protected handleSubmitButton = () => {
     if (!this.props.userInfo) {
@@ -280,6 +297,7 @@ export type Props = {
   description: string;
   imageDataUrl: string | null;
   position?: Position;
+  isDraft: boolean;
   submittingState: LoadingState;
   fetchingState: LoadingState;
   formError?: FormError;

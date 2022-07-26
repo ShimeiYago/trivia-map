@@ -23,6 +23,10 @@ export const articleFormSlice = createSlice({
       state.imageDataUrl = action.payload;
     },
 
+    updateIsDraft(state, action: PayloadAction<boolean>) {
+      state.isDraft = action.payload;
+    },
+
     submitStart(state) {
       state.submittingState = 'loading';
       state.formError = undefined;
@@ -56,6 +60,7 @@ export const articleFormSlice = createSlice({
       state.description = action.payload.description;
       state.position = action.payload.marker;
       state.imageDataUrl = action.payload.imageUrl;
+      state.isDraft = action.payload.isDraft;
     },
 
     initialize(state) {

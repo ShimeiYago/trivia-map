@@ -115,7 +115,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
     <ForwardRef(TextField)
       autoComplete="email"
       autoFocus={true}
-      disabled={false}
+      disabled={true}
       error={false}
       fullWidth={true}
       id="email"
@@ -127,7 +127,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
     />
     <ForwardRef(TextField)
       autoComplete="current-password"
-      disabled={false}
+      disabled={true}
       error={false}
       fullWidth={true}
       id="password"
@@ -138,7 +138,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       type="password"
     />
     <ForwardRef(LoadingButton)
-      disabled={false}
+      disabled={true}
       fullWidth={true}
       loading={false}
       onClick={[Function]}
@@ -214,7 +214,7 @@ exports[`Shallow Snapshot Tests error case 1`] = `
     <ForwardRef(TextField)
       autoComplete="email"
       autoFocus={true}
-      disabled={false}
+      disabled={true}
       error={true}
       fullWidth={true}
       helperText={
@@ -231,7 +231,7 @@ exports[`Shallow Snapshot Tests error case 1`] = `
     />
     <ForwardRef(TextField)
       autoComplete="current-password"
-      disabled={false}
+      disabled={true}
       error={true}
       fullWidth={true}
       helperText={
@@ -247,9 +247,97 @@ exports[`Shallow Snapshot Tests error case 1`] = `
       type="password"
     />
     <ForwardRef(LoadingButton)
-      disabled={false}
+      disabled={true}
       fullWidth={true}
       loading={false}
+      onClick={[Function]}
+      sx={
+        Object {
+          "mb": 2,
+          "mt": 3,
+        }
+      }
+      variant="contained"
+    >
+      ログイン
+    </ForwardRef(LoadingButton)>
+    <ForwardRef(Grid)
+      container={true}
+    >
+      <ForwardRef(Grid)
+        item={true}
+        xs={true}
+      >
+        <ForwardRef(Button)
+          variant="text"
+        >
+          パスワードを忘れた場合
+        </ForwardRef(Button)>
+      </ForwardRef(Grid)>
+      <ForwardRef(Grid)
+        item={true}
+      >
+        <ForwardRef(Button)
+          variant="text"
+        >
+          アカウント作成
+        </ForwardRef(Button)>
+      </ForwardRef(Grid)>
+    </ForwardRef(Grid)>
+  </ForwardRef(Box)>
+</ForwardRef(Stack)>
+`;
+
+exports[`Shallow Snapshot Tests loading 1`] = `
+<ForwardRef(Stack)
+  spacing={1}
+  sx={
+    Object {
+      "px": 1,
+      "py": 2,
+    }
+  }
+>
+  <ForwardRef(Typography)
+    align="center"
+    component="h1"
+    variant="h5"
+  >
+    ログイン
+  </ForwardRef(Typography)>
+  <ForwardRef(Box)
+    component="form"
+    noValidate={true}
+  >
+    <ForwardRef(TextField)
+      autoComplete="email"
+      autoFocus={true}
+      disabled={true}
+      error={false}
+      fullWidth={true}
+      id="email"
+      label="メールアドレス"
+      margin="normal"
+      name="email"
+      onChange={[MockFunction]}
+      value=""
+    />
+    <ForwardRef(TextField)
+      autoComplete="current-password"
+      disabled={true}
+      error={false}
+      fullWidth={true}
+      id="password"
+      label="パスワード"
+      margin="normal"
+      name="password"
+      onChange={[Function]}
+      type="password"
+    />
+    <ForwardRef(LoadingButton)
+      disabled={true}
+      fullWidth={true}
+      loading={true}
       onClick={[Function]}
       sx={
         Object {

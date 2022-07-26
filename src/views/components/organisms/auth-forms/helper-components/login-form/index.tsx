@@ -29,8 +29,7 @@ export class LoginForm extends React.Component<Props, State> {
 
   render() {
     const disabled =
-      this.props.logginingInState === 'loading' ||
-      this.props.logginingInState === 'success' ||
+      this.props.autoLoggingInState !== 'error' ||
       this.state.localLoadingState === 'loading';
 
     return (
@@ -98,10 +97,10 @@ export class LoginForm extends React.Component<Props, State> {
   }
 
   protected renderHeaderInfo() {
-    const { logginingInState } = this.props;
+    const { autoLoggingInState } = this.props;
     const { errorTitle, errorMessages, showResendEmailButton } = this.state;
 
-    if (logginingInState === 'success') {
+    if (autoLoggingInState === 'success') {
       return <Alert>ログインに成功しました。</Alert>;
     }
 
@@ -198,7 +197,7 @@ export class LoginForm extends React.Component<Props, State> {
 }
 
 export type Props = {
-  logginingInState: LoadingState;
+  autoLoggingInState: LoadingState;
   email: string;
 
   onChangeEmail: (e: React.ChangeEvent<HTMLInputElement>) => void;

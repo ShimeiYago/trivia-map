@@ -15,14 +15,14 @@ const mockResponse: User = {
 
 const initialGetState = () => ({
   auths: {
-    loggingInState: 'waiting',
+    autoLoggingInState: 'waiting',
     isAutoLoginTried: false,
   },
 });
 
 const loggedInGetState = () => ({
   auths: {
-    loggingInState: 'waiting',
+    autoLoggingInState: 'waiting',
     user: {
       userId: 1,
       email: 'xxx@example.com',

@@ -7,16 +7,16 @@ export const authsSlice = createSlice({
   initialState,
   reducers: {
     autoLoginStart(state) {
-      state.loggingInState = 'loading';
+      state.autoLoggingInState = 'loading';
     },
 
     loginSuccess(state, action: PayloadAction<User>) {
-      state.loggingInState = 'success';
+      state.autoLoggingInState = 'success';
       state.user = action.payload;
     },
 
     autoLoginFailure(state) {
-      state.loggingInState = 'waiting';
+      state.autoLoggingInState = 'waiting';
     },
 
     toggleFormModal(state, action: PayloadAction<boolean>) {

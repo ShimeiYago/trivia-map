@@ -4,7 +4,7 @@ import { Renderer, Props } from '..';
 let wrapper: ShallowWrapper<Props, unknown, Renderer>;
 
 const basicProps: Props = {
-  logginingInState: 'waiting',
+  autoLoggingInState: 'waiting',
   initialMode: 'login',
   loginSuccess: jest.fn(),
   autoLogin: jest.fn(),

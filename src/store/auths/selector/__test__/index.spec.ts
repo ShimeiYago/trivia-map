@@ -1,10 +1,10 @@
-import { selectLogginingInState, selectUser, selectOpenFormModal } from '..';
+import { selectAutoLoggingInState, selectUser, selectOpenFormModal } from '..';
 import { AuthsState } from '../../model';
 
 describe('auths selector', () => {
   const rootState = {
     auths: {
-      loggingInState: 'success',
+      autoLoggingInState: 'success',
       isAutoLoginTried: true,
       user: {
         userId: 1,
@@ -16,8 +16,8 @@ describe('auths selector', () => {
     } as AuthsState,
   };
 
-  it('selectLogginingInState should return loggingInState', () => {
-    expect(selectLogginingInState(rootState)).toEqual('success');
+  it('selectAutoLoggingInState should return autoLoggingInState', () => {
+    expect(selectAutoLoggingInState(rootState)).toEqual('success');
   });
 
   it('selectUser should return user info', () => {

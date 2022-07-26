@@ -52,9 +52,10 @@ export class Renderer extends React.Component<Props, State> {
           <LoginForm
             email={this.state.email}
             onChangeEmail={this.handleChangeEmail}
-            logginingInState={this.props.logginingInState}
+            autoLoggingInState={this.props.autoLoggingInState}
             loginSuccess={this.props.loginSuccess}
             switchMode={this.switchMode}
+            userInfo={this.props.userInfo}
           />
         );
     }
@@ -80,8 +81,9 @@ export class Renderer extends React.Component<Props, State> {
 }
 
 export type Props = {
-  logginingInState: LoadingState;
+  autoLoggingInState: LoadingState;
   initialMode: AuthFormMode;
+  userInfo?: User;
 
   loginSuccess: (user: User) => void;
   autoLogin: () => void;

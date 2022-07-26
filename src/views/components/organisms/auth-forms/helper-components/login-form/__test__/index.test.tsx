@@ -9,7 +9,7 @@ let wrapper: ShallowWrapper<Props, State, LoginForm>;
 let loginSpy: jest.SpyInstance;
 
 const basicProps: Props = {
-  logginingInState: 'waiting',
+  autoLoggingInState: 'waiting',
   loginSuccess: jest.fn(),
   switchMode: jest.fn(),
   email: '',
@@ -22,6 +22,17 @@ describe('Shallow Snapshot Tests', () => {
   });
 
   it('basic', () => {
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('loading', () => {
+    wrapper.setProps({
+      autoLoggingInState: 'error',
+    });
+
+    wrapper.setState({
+      localLoadingState: 'loading',
+    });
     expect(wrapper).toMatchSnapshot();
   });
 
@@ -39,7 +50,11 @@ describe('Shallow Snapshot Tests', () => {
 
   it('already logged in', () => {
     wrapper.setProps({
-      logginingInState: 'success',
+      userInfo: {
+        userId: 1,
+        nickname: 'Axel',
+        email: 'xxx@example.com',
+      },
     });
     expect(wrapper).toMatchSnapshot();
   });

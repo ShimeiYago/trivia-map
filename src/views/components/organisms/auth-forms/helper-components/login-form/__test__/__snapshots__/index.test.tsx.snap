@@ -18,7 +18,14 @@ exports[`Shallow Snapshot Tests already logged in 1`] = `
     ログイン
   </ForwardRef(Typography)>
   <ForwardRef(Alert)>
-    ログインに成功しました。
+    <div>
+      ログインに成功しました。
+    </div>
+    <div>
+      ようこそ 
+      Axel
+      さん
+    </div>
   </ForwardRef(Alert)>
   <ForwardRef(Box)
     component="form"

@@ -40,7 +40,7 @@ describe('auths reducer', () => {
 
   it('should handle autoLoginFailure', () => {
     const actual = authsReducer(initialState, autoLoginFailure());
-    expect(actual.autoLoggingInState).toEqual('waiting');
+    expect(actual.autoLoggingInState).toEqual('error');
   });
 
   it('should handle toggleFormModal', () => {

@@ -50,7 +50,11 @@ describe('Shallow Snapshot Tests', () => {
 
   it('already logged in', () => {
     wrapper.setProps({
-      autoLoggingInState: 'success',
+      userInfo: {
+        userId: 1,
+        nickname: 'Axel',
+        email: 'xxx@example.com',
+      },
     });
     expect(wrapper).toMatchSnapshot();
   });

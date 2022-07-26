@@ -58,6 +58,7 @@ describe('readingArticle reducer', () => {
       title: 'title',
       description: 'description',
       imageUrl: 'https://image-data.jpg',
+      isDraft: false,
       marker: {
         markerId: 1,
         lat: 0,

@@ -16,6 +16,7 @@ const mockResponse: GetArticleApiModule.GetArticleResponse = {
     park: 'S',
     numberOfPublicArticles: 1,
   },
+  isDraft: false,
   author: {
     userId: 1,
     nickname: 'nickname',

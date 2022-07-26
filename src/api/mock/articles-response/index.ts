@@ -15,6 +15,7 @@ export const mockGetArticleResponse: GetArticleResponse = {
   },
   imageUrl:
     'https://www.disneyparkstory.com/wp-content/uploads/2017/02/CIMG9800.jpg',
+  isDraft: false,
   author: {
     userId: 1,
     nickname: 'Axel',

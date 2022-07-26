@@ -135,6 +135,7 @@ describe('articleForm reducer', () => {
         numberOfPublicArticles: 1,
       },
       imageUrl: 'https://image-data.jpg',
+      isDraft: false,
       author: {
         userId: 1,
         nickname: 'Axel',

@@ -60,6 +60,7 @@ export const articleFormSlice = createSlice({
       state.description = action.payload.description;
       state.position = action.payload.marker;
       state.imageDataUrl = action.payload.imageUrl;
+      state.isDraft = action.payload.isDraft;
     },
 
     initialize(state) {

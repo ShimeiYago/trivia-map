@@ -1,3 +1,4 @@
+import { selectAutoLoggingInState } from './../selector/index';
 import { authsSlice } from '../slice';
 import { AppThunk } from 'store';
 import { getUserInfo } from 'api/auths-api/get-user-info';
@@ -14,7 +15,10 @@ export const {
 
 // autoLogin action
 export const autoLogin = (): AppThunk => async (dispatch, getState) => {
-  if (selectUser(getState())) {
+  if (
+    selectUser(getState()) ||
+    selectAutoLoggingInState(getState()) === 'loading'
+  ) {
     return;
   }
 

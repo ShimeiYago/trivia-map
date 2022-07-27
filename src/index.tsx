@@ -10,6 +10,7 @@ import { MapPage } from 'views/pages/map-page';
 import { Article } from 'views/pages/article';
 import { VerifyEmail } from 'views/pages/verify-email';
 import { Login } from 'views/pages/login';
+import { Admin } from 'views/pages/admin';
 
 // Deactivate all console.log on production
 // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -25,6 +26,7 @@ ReactDOM.render(
             <Route path="/edit/:postId" element={<MapPage />} />
             <Route path="/article/:postId" element={<Article />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/admin" element={<Admin />} />
             <Route path="/verify-email/:verifyKey" element={<VerifyEmail />} />
             <Route path="*" element={<div>404 not found (TODO)</div>} />
           </Routes>

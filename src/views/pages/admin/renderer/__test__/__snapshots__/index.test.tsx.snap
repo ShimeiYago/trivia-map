@@ -32,12 +32,29 @@ exports[`Shallow Snapshot Tests basic 1`] = `
             variant="main"
           >
             <ForwardRef(Stack)
-              spacing={2}
+              spacing={3}
             >
-              <ForwardRef(Box)>
+              <ForwardRef(Typography)
+                align="center"
+              >
                 ようこそ 
                 Axel
                 さん
+              </ForwardRef(Typography)>
+              <ForwardRef(Box)>
+                <ForwardRef(Typography)
+                  align="center"
+                  component="h2"
+                  sx={
+                    Object {
+                      "mb": 3,
+                    }
+                  }
+                  variant="h4"
+                >
+                  投稿一覧
+                </ForwardRef(Typography)>
+                <Renderer />
               </ForwardRef(Box)>
             </ForwardRef(Stack)>
           </ArticlePaper>
@@ -92,12 +109,29 @@ exports[`Shallow Snapshot Tests mobile 1`] = `
             variant="main"
           >
             <ForwardRef(Stack)
-              spacing={2}
+              spacing={3}
             >
-              <ForwardRef(Box)>
+              <ForwardRef(Typography)
+                align="center"
+              >
                 ようこそ 
                 Axel
                 さん
+              </ForwardRef(Typography)>
+              <ForwardRef(Box)>
+                <ForwardRef(Typography)
+                  align="center"
+                  component="h2"
+                  sx={
+                    Object {
+                      "mb": 3,
+                    }
+                  }
+                  variant="h4"
+                >
+                  投稿一覧
+                </ForwardRef(Typography)>
+                <Renderer />
               </ForwardRef(Box)>
             </ForwardRef(Stack)>
           </ArticlePaper>

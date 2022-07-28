@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Grid, Stack } from '@mui/material';
+import { Box, Grid, Stack, Typography } from '@mui/material';
 import { LoadingState } from 'types/loading-state';
 import { GlobalMenu } from 'views/components/organisms/global-menu';
 import { ArticlePaper } from 'views/components/atoms/article-paper';
@@ -7,6 +7,7 @@ import { wrapper, contentWrapper } from '../styles';
 import { CenterSpinner } from 'views/components/atoms/center-spinner';
 import { User } from 'types/user';
 import { Navigate } from 'react-router-dom';
+import { ArticleManageTable } from 'views/components/organisms/article-manage-table';
 
 export class Renderer extends React.Component<Props> {
   constructor(props: Props) {
@@ -52,8 +53,14 @@ export class Renderer extends React.Component<Props> {
     const { user } = this.props;
 
     return (
-      <Stack spacing={2}>
-        <Box>ようこそ {user?.nickname}さん</Box>
+      <Stack spacing={3}>
+        <Typography align="center">ようこそ {user?.nickname}さん</Typography>
+        <Box>
+          <Typography align="center" component="h2" variant="h4" sx={{ mb: 3 }}>
+            投稿一覧
+          </Typography>
+          <ArticleManageTable />
+        </Box>
       </Stack>
     );
   };

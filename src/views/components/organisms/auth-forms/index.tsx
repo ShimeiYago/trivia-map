@@ -17,6 +17,7 @@ export function AuthForms(ownProps: OwnProps) {
 
     loginSuccess: (user: User) => dispatch(loginSuccess(user)),
     autoLogin: () => dispatch(autoLogin()),
+    onLoginSucceed: ownProps.onLoginSucceed,
   };
 
   return <Renderer {...props} />;
@@ -24,4 +25,5 @@ export function AuthForms(ownProps: OwnProps) {
 
 type OwnProps = {
   initialMode: AuthFormMode;
+  onLoginSucceed?: () => void;
 };

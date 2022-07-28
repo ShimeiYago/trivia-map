@@ -22,6 +22,7 @@ import { Link } from 'react-router-dom';
 import { authMenuLinks } from '../constants';
 import { BoxModal } from 'views/components/moleculars/box-modal';
 import { AuthForms } from '../../auth-forms';
+import { sleep } from 'utils/sleep';
 
 export class Renderer extends React.Component<Props, State> {
   static readonly defaultProps: Pick<Props, 'topBarPosition'> = {
@@ -72,9 +73,12 @@ export class Renderer extends React.Component<Props, State> {
 
         <BoxModal
           open={this.props.openAuthFormModal}
-          onClose={this.props.toggleAuthFormModal(false)}
+          onClose={this.toggleAuthModal(false)}
         >
-          <AuthForms initialMode={'login'} />
+          <AuthForms
+            initialMode={'login'}
+            onLoginSucceed={this.handleLoginSucceed}
+          />
         </BoxModal>
       </>
     );
@@ -136,10 +140,7 @@ export class Renderer extends React.Component<Props, State> {
             ログインして新しいトリビアを投稿しませんか？
           </Typography>
           <Typography align="center" component="div" sx={{ mb: 1 }}>
-            <Button
-              variant="contained"
-              onClick={this.props.toggleAuthFormModal(true)}
-            >
+            <Button variant="contained" onClick={this.toggleAuthModal(true)}>
               ログイン
             </Button>
           </Typography>
@@ -179,6 +180,15 @@ export class Renderer extends React.Component<Props, State> {
         openLeftNavi: open,
       });
   }
+
+  protected toggleAuthModal(open: boolean) {
+    return () => this.props.toggleAuthFormModal(open);
+  }
+
+  protected handleLoginSucceed = async () => {
+    await sleep(1000);
+    this.props.toggleAuthFormModal(false);
+  };
 }
 
 export type Props = {
@@ -189,7 +199,7 @@ export type Props = {
   openAuthFormModal: boolean;
 
   autoLogin: () => void;
-  toggleAuthFormModal: (open: boolean) => () => void;
+  toggleAuthFormModal: (open: boolean) => void;
 };
 
 export type State = {

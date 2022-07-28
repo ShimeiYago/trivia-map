@@ -154,6 +154,7 @@ export class LoginForm extends React.Component<Props, State> {
       this.setState({
         localLoadingState: 'success',
       });
+      this.props.onLoginSuceed && this.props.onLoginSuceed();
     } catch (error) {
       const apiError = error as ApiError<ValidationError>;
 
@@ -209,6 +210,7 @@ export type Props = {
   onChangeEmail: (e: React.ChangeEvent<HTMLInputElement>) => void;
   loginSuccess: (user: User) => void;
   switchMode: (mode: AuthFormMode) => () => void;
+  onLoginSuceed?: () => void;
 };
 
 export type State = {

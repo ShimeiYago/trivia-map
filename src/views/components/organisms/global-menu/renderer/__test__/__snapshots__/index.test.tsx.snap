@@ -101,6 +101,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
                 }
               >
                 <ForwardRef(Button)
+                  onClick={[Function]}
                   variant="contained"
                 >
                   ログイン
@@ -219,10 +220,12 @@ exports[`Shallow Snapshot Tests basic 1`] = `
     contents
   </ForwardRef(Box)>
   <BoxModal
+    onClose={[Function]}
     open={false}
   >
     <AuthForms
       initialMode="login"
+      onLoginSucceed={[Function]}
     />
   </BoxModal>
 </Fragment>
@@ -316,6 +319,7 @@ exports[`Shallow Snapshot Tests permanent left navi 1`] = `
                 }
               >
                 <ForwardRef(Button)
+                  onClick={[Function]}
                   variant="contained"
                 >
                   ログイン
@@ -433,10 +437,12 @@ exports[`Shallow Snapshot Tests permanent left navi 1`] = `
     contents
   </ForwardRef(Box)>
   <BoxModal
+    onClose={[Function]}
     open={false}
   >
     <AuthForms
       initialMode="login"
+      onLoginSucceed={[Function]}
     />
   </BoxModal>
 </Fragment>
@@ -543,6 +549,7 @@ exports[`Shallow Snapshot Tests static position 1`] = `
                 }
               >
                 <ForwardRef(Button)
+                  onClick={[Function]}
                   variant="contained"
                 >
                   ログイン
@@ -661,10 +668,12 @@ exports[`Shallow Snapshot Tests static position 1`] = `
     contents
   </ForwardRef(Box)>
   <BoxModal
+    onClose={[Function]}
     open={false}
   >
     <AuthForms
       initialMode="login"
+      onLoginSucceed={[Function]}
     />
   </BoxModal>
 </Fragment>
@@ -892,10 +901,12 @@ exports[`Shallow Snapshot Tests with userInfo 1`] = `
     contents
   </ForwardRef(Box)>
   <BoxModal
+    onClose={[Function]}
     open={false}
   >
     <AuthForms
       initialMode="login"
+      onLoginSucceed={[Function]}
     />
   </BoxModal>
 </Fragment>

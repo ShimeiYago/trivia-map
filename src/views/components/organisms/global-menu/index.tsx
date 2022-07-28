@@ -13,8 +13,7 @@ export function GlobalMenu(ownProps: OwnProps) {
     userInfo: useAppSelector(selectUser),
     openAuthFormModal: useAppSelector(selectOpenFormModal),
     autoLogin: () => dispatch(autoLogin()),
-    toggleAuthFormModal: (open: boolean) => () =>
-      dispatch(toggleFormModal(open)),
+    toggleAuthFormModal: (open: boolean) => dispatch(toggleFormModal(open)),
   };
 
   return <Renderer {...props} />;

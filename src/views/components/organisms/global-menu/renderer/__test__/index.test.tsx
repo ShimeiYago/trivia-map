@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme';
 import { Renderer, Props, State } from '..';
+import * as SleepModule from 'utils/sleep';
 
 const basicProps: Props = {
   topBarPosition: 'fixed',
@@ -11,6 +12,8 @@ const basicProps: Props = {
 };
 
 let wrapper: ShallowWrapper<Props, State, Renderer>;
+
+jest.spyOn(SleepModule, 'sleep');
 
 describe('Shallow Snapshot Tests', () => {
   beforeEach(() => {
@@ -79,5 +82,29 @@ describe('handleCloseAuthPopover', () => {
     const instance = wrapper.instance();
     instance['handleCloseAuthPopover']();
     expect(instance.state.authMenuAnchorEl).toBe(null);
+  });
+});
+
+describe('toggleAuthModal', () => {
+  beforeEach(() => {
+    wrapper = shallow(<Renderer {...basicProps} />);
+  });
+
+  it('should open auth modal', () => {
+    const instance = wrapper.instance();
+    instance['toggleAuthModal'](true)();
+    expect(instance.props.toggleAuthFormModal).toBeCalled();
+  });
+});
+
+describe('handleLoginSucceed', () => {
+  beforeEach(() => {
+    wrapper = shallow(<Renderer {...basicProps} />);
+  });
+
+  it('should call toggleAuthFormModal', async () => {
+    const instance = wrapper.instance();
+    await instance['handleLoginSucceed']();
+    expect(instance.props.toggleAuthFormModal).toBeCalled();
   });
 });

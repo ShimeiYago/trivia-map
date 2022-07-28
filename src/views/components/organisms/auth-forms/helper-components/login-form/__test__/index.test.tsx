@@ -94,6 +94,17 @@ describe('handleClickLogin', () => {
     expect(instance.state.localLoadingState).toBe('success');
   });
 
+  it('should set localLoadingState success and call onLoginSuceed when api succeed', async () => {
+    loginSpy.mockResolvedValue(mockLoginResponse);
+
+    wrapper = shallow(<LoginForm {...basicProps} onLoginSuceed={jest.fn()} />);
+    const instance = wrapper.instance();
+
+    await instance['handleClickLogin']();
+
+    expect(instance.props.onLoginSuceed).toBeCalled();
+  });
+
   it('should set form error when api have validation error', async () => {
     const apiError: ApiError<LoginModule.ValidationError> = {
       status: 400,

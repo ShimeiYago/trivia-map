@@ -9,9 +9,6 @@ const basicProps: Props = {
     nickname: 'Axel',
     email: 'xxx@example.com',
   },
-  autoLoggingInState: 'success',
-  isMobile: false,
-  autoLogin: jest.fn(),
 };
 
 describe('Shallow Snapshot Tests', () => {
@@ -20,21 +17,6 @@ describe('Shallow Snapshot Tests', () => {
   });
 
   it('basic', () => {
-    expect(wrapper).toMatchSnapshot();
-  });
-
-  it('mobile', () => {
-    wrapper.setProps({ isMobile: true });
-    expect(wrapper).toMatchSnapshot();
-  });
-
-  it('loading', () => {
-    wrapper.setProps({ autoLoggingInState: 'loading' });
-    expect(wrapper).toMatchSnapshot();
-  });
-
-  it('redirect', () => {
-    wrapper.setProps({ autoLoggingInState: 'error' });
     expect(wrapper).toMatchSnapshot();
   });
 });

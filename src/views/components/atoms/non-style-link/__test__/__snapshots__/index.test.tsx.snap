@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shallow Snapshot Tests basic 1`] = `
+<Link
+  style={
+    Object {
+      "color": "inherit",
+      "textDecoration": "none",
+    }
+  }
+  to="/path"
+>
+  children
+</Link>
+`;

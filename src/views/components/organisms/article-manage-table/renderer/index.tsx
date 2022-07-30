@@ -1,22 +1,27 @@
 import React from 'react';
-import { Pagination, Stack, Typography, Card, Alert } from '@mui/material';
+import {
+  Pagination,
+  Stack,
+  Typography,
+  Alert,
+  Table,
+  TableHead,
+  TableRow,
+  TableCell,
+  TableBody,
+} from '@mui/material';
 import { LoadingState } from 'types/loading-state';
 import {
   getArticlesPreviews,
-  PreviewKeyType,
   GetArticlesPreviewsResponseEachItem,
 } from 'api/articles-api/get-articles-previews';
 import { ApiError } from 'api/utils/handle-axios-error';
 import { globalAPIErrorMessage } from 'constant/global-api-error-message';
 import { Link } from 'react-router-dom';
-import { Image } from 'views/components/atoms/image';
 import classes from './index.module.css';
-import * as sxProps from './styles';
-import { IconAndText } from 'views/components/atoms/icon-and-text';
-import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import { CenterSpinner } from 'views/components/atoms/center-spinner';
-
-// TODO: スクロール機能
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -31,15 +36,6 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   render() {
-    return (
-      <Stack spacing={2}>
-        {this.renderPreviewList()}
-        {this.renderPagination()}
-      </Stack>
-    );
-  }
-
-  protected renderPreviewList() {
     const { loadingState, articlesPreviews, errorMessage } = this.state;
     if (loadingState === 'waiting' || loadingState === 'loading') {
       return <CenterSpinner />;
@@ -50,60 +46,57 @@ export class Renderer extends React.Component<Props, State> {
     }
 
     if (articlesPreviews?.length === 0) {
-      return <Typography align="center">表示する記事がありません。</Typography>;
+      return (
+        <Typography align="center">まだ記事が投稿されていません。</Typography>
+      );
     }
 
-    const previewList = articlesPreviews?.map((preview) => {
-      const { postId, title, imageUrl } = preview;
+    return (
+      <Stack spacing={1}>
+        {this.renderPagination()}
+        {this.renderTable()}
+      </Stack>
+    );
+  }
+
+  protected renderTable() {
+    const { articlesPreviews } = this.state;
+
+    const tableRows = articlesPreviews?.map((preview) => {
+      const { postId, title } = preview;
 
       return (
-        <Link
-          to={`/article/${postId}`}
-          key={`preview-${postId}`}
-          className={classes['preview-link']}
-        >
-          <Card sx={sxProps.card}>
-            <Stack spacing={1}>
-              <Typography component="h2" variant="h6" align="center">
-                {title}
-              </Typography>
-
-              {imageUrl && (
-                <Typography align="center">
-                  <Image
-                    src={imageUrl}
-                    width="200px"
-                    height="100px"
-                    objectFit="cover"
-                    borderRadius
-                  />
-                </Typography>
-              )}
-
-              <Typography align="center">
-                <IconAndText
-                  iconComponent={<ArrowRightIcon />}
-                  text="くわしく読む"
-                  component="span"
-                  variant="button"
-                  iconPosition="left"
-                />
-              </Typography>
-            </Stack>
-          </Card>
-        </Link>
+        <TableRow key={`preview-${postId}`}>
+          <TableCell>
+            <Link to={`/article/${postId}`}>{title}</Link>
+          </TableCell>
+          <TableCell>
+            <Link to={`/edit/${postId}`}>
+              <EditIcon />
+            </Link>
+          </TableCell>
+          <TableCell>
+            <DeleteIcon />
+          </TableCell>
+        </TableRow>
       );
     });
 
-    return <>{previewList}</>;
+    return (
+      <Table>
+        <TableHead>
+          <TableRow>
+            <TableCell>タイトル（表示）</TableCell>
+            <TableCell>編集</TableCell>
+            <TableCell>削除</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>{tableRows}</TableBody>
+      </Table>
+    );
   }
 
   protected renderPagination() {
-    const showPagination = this.state.totalPages && this.state.totalPages > 1;
-    if (!showPagination) {
-      return null;
-    }
-
     return (
       <div className={classes['pagination-wrapper']}>
         <Pagination
@@ -123,8 +116,7 @@ export class Renderer extends React.Component<Props, State> {
 
     try {
       const res = await getArticlesPreviews({
-        key: this.props.type,
-        keyId: this.props.keyId,
+        key: 'mine',
         page: page,
       });
 
@@ -152,10 +144,8 @@ export class Renderer extends React.Component<Props, State> {
   };
 }
 
-export type Props = {
-  type: PreviewKeyType;
-  keyId?: number;
-};
+// eslint-disable-next-line @typescript-eslint/ban-types
+export type Props = {};
 
 export type State = {
   loadingState: LoadingState;

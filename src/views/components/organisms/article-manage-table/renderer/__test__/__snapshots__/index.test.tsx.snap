@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shallow Snapshot Tests articlesPreviews is zero 1`] = `
+<ForwardRef(Typography)
+  align="center"
+>
+  まだ記事が投稿されていません。
+</ForwardRef(Typography)>
+`;
+
+exports[`Shallow Snapshot Tests basic 1`] = `<CenterSpinner />`;
+
+exports[`Shallow Snapshot Tests with api error 1`] = `
+<ForwardRef(Alert)
+  severity="error"
+>
+  データの取得に失敗しました。
+</ForwardRef(Alert)>
+`;
+
+exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
+<ForwardRef(Stack)
+  spacing={1}
+>
+  <div
+    className="pagination-wrapper"
+  >
+    <ForwardRef(Pagination)
+      count={2}
+      onChange={[Function]}
+    />
+  </div>
+  <ForwardRef(Table)>
+    <ForwardRef(TableHead)>
+      <ForwardRef(TableRow)>
+        <ForwardRef(TableCell)>
+          タイトル（表示）
+        </ForwardRef(TableCell)>
+        <ForwardRef(TableCell)>
+          編集
+        </ForwardRef(TableCell)>
+        <ForwardRef(TableCell)>
+          削除
+        </ForwardRef(TableCell)>
+      </ForwardRef(TableRow)>
+    </ForwardRef(TableHead)>
+    <ForwardRef(TableBody)>
+      <ForwardRef(TableRow)
+        key="preview-1"
+      >
+        <ForwardRef(TableCell)>
+          <Link
+            to="/article/1"
+          >
+            ノーチラス号のエンジン
+          </Link>
+        </ForwardRef(TableCell)>
+        <ForwardRef(TableCell)>
+          <Link
+            to="/edit/1"
+          >
+            <Memo(ForwardRef(EditIcon)) />
+          </Link>
+        </ForwardRef(TableCell)>
+        <ForwardRef(TableCell)>
+          <Memo(ForwardRef(DeleteIcon)) />
+        </ForwardRef(TableCell)>
+      </ForwardRef(TableRow)>
+      <ForwardRef(TableRow)
+        key="preview-2"
+      >
+        <ForwardRef(TableCell)>
+          <Link
+            to="/article/2"
+          >
+            ノーチラス号の名前の由来
+          </Link>
+        </ForwardRef(TableCell)>
+        <ForwardRef(TableCell)>
+          <Link
+            to="/edit/2"
+          >
+            <Memo(ForwardRef(EditIcon)) />
+          </Link>
+        </ForwardRef(TableCell)>
+        <ForwardRef(TableCell)>
+          <Memo(ForwardRef(DeleteIcon)) />
+        </ForwardRef(TableCell)>
+      </ForwardRef(TableRow)>
+    </ForwardRef(TableBody)>
+  </ForwardRef(Table)>
+</ForwardRef(Stack)>
+`;

@@ -1,0 +1,149 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shallow Snapshot Tests basic 1`] = `
+<ForwardRef(Box)
+  sx={
+    Object {
+      "backgroundColor": "#f4f5f7",
+    }
+  }
+>
+  <GlobalMenu
+    permanentLeftNavi={true}
+    topBarPosition="static"
+  >
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "marginTop": 5,
+          "marginX": 10,
+        }
+      }
+    >
+      <ForwardRef(Grid)
+        container={true}
+        spacing={4}
+      >
+        <ForwardRef(Grid)
+          item={true}
+          xs={12}
+        >
+          <ArticlePaper
+            variant="main"
+          >
+            <ForwardRef(Stack)
+              spacing={3}
+            >
+              <ForwardRef(Typography)
+                align="center"
+              >
+                ようこそ 
+                Axel
+                さん
+              </ForwardRef(Typography)>
+              <ForwardRef(Box)>
+                <ForwardRef(Typography)
+                  align="center"
+                  component="h2"
+                  sx={
+                    Object {
+                      "mb": 3,
+                    }
+                  }
+                  variant="h4"
+                >
+                  投稿一覧
+                </ForwardRef(Typography)>
+                <Renderer />
+              </ForwardRef(Box)>
+            </ForwardRef(Stack)>
+          </ArticlePaper>
+        </ForwardRef(Grid)>
+      </ForwardRef(Grid)>
+    </ForwardRef(Box)>
+  </GlobalMenu>
+</ForwardRef(Box)>
+`;
+
+exports[`Shallow Snapshot Tests loading 1`] = `
+<ForwardRef(Box)
+  sx={
+    Object {
+      "mt": 3,
+    }
+  }
+>
+  <CenterSpinner />
+</ForwardRef(Box)>
+`;
+
+exports[`Shallow Snapshot Tests mobile 1`] = `
+<ForwardRef(Box)
+  sx={
+    Object {
+      "backgroundColor": "#f4f5f7",
+    }
+  }
+>
+  <GlobalMenu
+    permanentLeftNavi={false}
+    topBarPosition="static"
+  >
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "marginTop": 1,
+          "marginX": 0,
+        }
+      }
+    >
+      <ForwardRef(Grid)
+        container={true}
+        spacing={2}
+      >
+        <ForwardRef(Grid)
+          item={true}
+          xs={12}
+        >
+          <ArticlePaper
+            variant="main"
+          >
+            <ForwardRef(Stack)
+              spacing={3}
+            >
+              <ForwardRef(Typography)
+                align="center"
+              >
+                ようこそ 
+                Axel
+                さん
+              </ForwardRef(Typography)>
+              <ForwardRef(Box)>
+                <ForwardRef(Typography)
+                  align="center"
+                  component="h2"
+                  sx={
+                    Object {
+                      "mb": 3,
+                    }
+                  }
+                  variant="h4"
+                >
+                  投稿一覧
+                </ForwardRef(Typography)>
+                <Renderer />
+              </ForwardRef(Box)>
+            </ForwardRef(Stack)>
+          </ArticlePaper>
+        </ForwardRef(Grid)>
+      </ForwardRef(Grid)>
+    </ForwardRef(Box)>
+  </GlobalMenu>
+</ForwardRef(Box)>
+`;
+
+exports[`Shallow Snapshot Tests redirect 1`] = `
+<Navigate
+  to="/login"
+/>
+`;

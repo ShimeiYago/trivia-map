@@ -15,6 +15,7 @@ import * as sxProps from './styles';
 import { IconAndText } from 'views/components/atoms/icon-and-text';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import { CenterSpinner } from 'views/components/atoms/center-spinner';
+import { ARTICLE_PAGE_LINK } from 'constant/links';
 
 // TODO: スクロール機能
 
@@ -58,7 +59,7 @@ export class Renderer extends React.Component<Props, State> {
 
       return (
         <Link
-          to={`/article/${postId}`}
+          to={ARTICLE_PAGE_LINK(String(postId))}
           key={`preview-${postId}`}
           className={classes['preview-link']}
         >

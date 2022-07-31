@@ -16,8 +16,11 @@ import { ProfileEdit } from 'views/pages/profile-edit';
 import {
   ACCOUNT_SETTINGS_LINK,
   ADMIN_LINK,
+  ARTICLE_PAGE_LINK,
+  EDIT_LINK,
   LOGIN_LINK,
   PROFILE_SETTINGS_LINK,
+  VERIFY_EMAIL_LINK,
 } from 'constant/links';
 
 // Deactivate all console.log on production
@@ -31,13 +34,16 @@ ReactDOM.render(
         <BrowserRouter>
           <Routes>
             <Route index element={<MapPage />} />
-            <Route path="/edit/:postId" element={<MapPage />} />
-            <Route path="/article/:postId" element={<Article />} />
+            <Route path={EDIT_LINK(':postId')} element={<MapPage />} />
+            <Route path={ARTICLE_PAGE_LINK(':postId')} element={<Article />} />
             <Route path={LOGIN_LINK} element={<Login />} />
             <Route path={ADMIN_LINK} element={<Admin />} />
             <Route path={ACCOUNT_SETTINGS_LINK} element={<AccountSettings />} />
             <Route path={PROFILE_SETTINGS_LINK} element={<ProfileEdit />} />
-            <Route path="/verify-email/:verifyKey" element={<VerifyEmail />} />
+            <Route
+              path={VERIFY_EMAIL_LINK(':verifyKey')}
+              element={<VerifyEmail />}
+            />
             <Route path="*" element={<div>404 not found (TODO)</div>} />
           </Routes>
         </BrowserRouter>

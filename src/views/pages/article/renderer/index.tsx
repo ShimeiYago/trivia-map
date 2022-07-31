@@ -13,6 +13,7 @@ import { deepOrange } from '@mui/material/colors';
 import { Author } from 'types/author';
 import { IconAndText } from 'views/components/atoms/icon-and-text';
 import { CenterSpinner } from 'views/components/atoms/center-spinner';
+import { MAP_PAGE_LINK } from 'constant/links';
 
 export class Renderer extends React.Component<Props> {
   componentDidMount() {
@@ -124,7 +125,7 @@ export class Renderer extends React.Component<Props> {
   };
 
   protected renderLocalNavi = () => {
-    return <Link to="/">マップへ戻る</Link>;
+    return <Link to={MAP_PAGE_LINK}>マップへ戻る</Link>;
   };
 }
 

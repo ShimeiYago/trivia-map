@@ -29,8 +29,8 @@ export class Renderer extends React.Component {
       },
       { icon: <KeyIcon />, text: 'パスワード変更', link: '/account/password' },
     ].map((item, index) => (
-      <NonStyleLink to={item.link}>
-        <ListItem key={`account-setting-${index}`}>
+      <NonStyleLink to={item.link} key={`account-setting-${index}`}>
+        <ListItem>
           <ListItemButton>
             <ListItemIcon>{item.icon}</ListItemIcon>
             <ListItemText primary={item.text} />

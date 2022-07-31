@@ -1,0 +1,314 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shallow Snapshot Tests basic 1`] = `
+<AdminWrapper>
+  <ForwardRef(Stack)
+    spacing={3}
+  >
+    <NonStyleLink
+      to="/admin/account"
+    >
+      <IconAndText
+        align="left"
+        iconComponent={<Memo />}
+        iconPosition="left"
+        text="アカウント設定"
+      />
+    </NonStyleLink>
+    <ForwardRef(Box)>
+      <ForwardRef(Stack)
+        spacing={1}
+        sx={
+          Object {
+            "maxWidth": "400px",
+            "mx": "auto",
+            "px": 1,
+          }
+        }
+      >
+        <ForwardRef(Typography)
+          align="center"
+          component="h2"
+          variant="h5"
+        >
+          プロフィール
+        </ForwardRef(Typography)>
+        <ForwardRef(Typography)>
+          xxx@example.com
+        </ForwardRef(Typography)>
+        <ForwardRef(Box)
+          component="form"
+          noValidate={true}
+        >
+          <ForwardRef(TextField)
+            disabled={false}
+            error={false}
+            fullWidth={true}
+            id="nickname"
+            label="名前"
+            margin="normal"
+            name="nickname"
+            onChange={[Function]}
+            type="nickname"
+            value="Axel"
+          />
+          <ForwardRef(LoadingButton)
+            disabled={false}
+            fullWidth={true}
+            loading={false}
+            onClick={[Function]}
+            sx={
+              Object {
+                "mb": 2,
+                "mt": 3,
+              }
+            }
+            variant="contained"
+          >
+            更新
+          </ForwardRef(LoadingButton)>
+        </ForwardRef(Box)>
+      </ForwardRef(Stack)>
+    </ForwardRef(Box)>
+  </ForwardRef(Stack)>
+</AdminWrapper>
+`;
+
+exports[`Shallow Snapshot Tests error case 1`] = `
+<AdminWrapper>
+  <ForwardRef(Stack)
+    spacing={3}
+  >
+    <NonStyleLink
+      to="/admin/account"
+    >
+      <IconAndText
+        align="left"
+        iconComponent={<Memo />}
+        iconPosition="left"
+        text="アカウント設定"
+      />
+    </NonStyleLink>
+    <ForwardRef(Box)>
+      <ForwardRef(Stack)
+        spacing={1}
+        sx={
+          Object {
+            "maxWidth": "400px",
+            "mx": "auto",
+            "px": 1,
+          }
+        }
+      >
+        <ForwardRef(Typography)
+          align="center"
+          component="h2"
+          variant="h5"
+        >
+          プロフィール
+        </ForwardRef(Typography)>
+        <HeaderErrorMessages
+          errorMessages={
+            Array [
+              "error1",
+              "error2",
+            ]
+          }
+          errorTitle="error title"
+        />
+        <ForwardRef(Typography)>
+          xxx@example.com
+        </ForwardRef(Typography)>
+        <ForwardRef(Box)
+          component="form"
+          noValidate={true}
+        >
+          <ForwardRef(TextField)
+            disabled={false}
+            error={true}
+            fullWidth={true}
+            helperText={
+              Array [
+                "nickname is invalid",
+              ]
+            }
+            id="nickname"
+            label="名前"
+            margin="normal"
+            name="nickname"
+            onChange={[Function]}
+            type="nickname"
+            value="Axel"
+          />
+          <ForwardRef(LoadingButton)
+            disabled={false}
+            fullWidth={true}
+            loading={false}
+            onClick={[Function]}
+            sx={
+              Object {
+                "mb": 2,
+                "mt": 3,
+              }
+            }
+            variant="contained"
+          >
+            更新
+          </ForwardRef(LoadingButton)>
+        </ForwardRef(Box)>
+      </ForwardRef(Stack)>
+    </ForwardRef(Box)>
+  </ForwardRef(Stack)>
+</AdminWrapper>
+`;
+
+exports[`Shallow Snapshot Tests loading 1`] = `
+<AdminWrapper>
+  <ForwardRef(Stack)
+    spacing={3}
+  >
+    <NonStyleLink
+      to="/admin/account"
+    >
+      <IconAndText
+        align="left"
+        iconComponent={<Memo />}
+        iconPosition="left"
+        text="アカウント設定"
+      />
+    </NonStyleLink>
+    <ForwardRef(Box)>
+      <ForwardRef(Stack)
+        spacing={1}
+        sx={
+          Object {
+            "maxWidth": "400px",
+            "mx": "auto",
+            "px": 1,
+          }
+        }
+      >
+        <ForwardRef(Typography)
+          align="center"
+          component="h2"
+          variant="h5"
+        >
+          プロフィール
+        </ForwardRef(Typography)>
+        <ForwardRef(Typography)>
+          xxx@example.com
+        </ForwardRef(Typography)>
+        <ForwardRef(Box)
+          component="form"
+          noValidate={true}
+        >
+          <ForwardRef(TextField)
+            disabled={true}
+            error={false}
+            fullWidth={true}
+            id="nickname"
+            label="名前"
+            margin="normal"
+            name="nickname"
+            onChange={[Function]}
+            type="nickname"
+            value="Axel"
+          />
+          <ForwardRef(LoadingButton)
+            disabled={true}
+            fullWidth={true}
+            loading={true}
+            onClick={[Function]}
+            sx={
+              Object {
+                "mb": 2,
+                "mt": 3,
+              }
+            }
+            variant="contained"
+          >
+            更新
+          </ForwardRef(LoadingButton)>
+        </ForwardRef(Box)>
+      </ForwardRef(Stack)>
+    </ForwardRef(Box)>
+  </ForwardRef(Stack)>
+</AdminWrapper>
+`;
+
+exports[`Shallow Snapshot Tests success 1`] = `
+<AdminWrapper>
+  <ForwardRef(Stack)
+    spacing={3}
+  >
+    <NonStyleLink
+      to="/admin/account"
+    >
+      <IconAndText
+        align="left"
+        iconComponent={<Memo />}
+        iconPosition="left"
+        text="アカウント設定"
+      />
+    </NonStyleLink>
+    <ForwardRef(Box)>
+      <ForwardRef(Stack)
+        spacing={1}
+        sx={
+          Object {
+            "maxWidth": "400px",
+            "mx": "auto",
+            "px": 1,
+          }
+        }
+      >
+        <ForwardRef(Typography)
+          align="center"
+          component="h2"
+          variant="h5"
+        >
+          プロフィール
+        </ForwardRef(Typography)>
+        <ForwardRef(Alert)>
+          ユーザー情報を変更しました。
+        </ForwardRef(Alert)>
+        <ForwardRef(Typography)>
+          xxx@example.com
+        </ForwardRef(Typography)>
+        <ForwardRef(Box)
+          component="form"
+          noValidate={true}
+        >
+          <ForwardRef(TextField)
+            disabled={false}
+            error={false}
+            fullWidth={true}
+            id="nickname"
+            label="名前"
+            margin="normal"
+            name="nickname"
+            onChange={[Function]}
+            type="nickname"
+            value="Axel"
+          />
+          <ForwardRef(LoadingButton)
+            disabled={false}
+            fullWidth={true}
+            loading={false}
+            onClick={[Function]}
+            sx={
+              Object {
+                "mb": 2,
+                "mt": 3,
+              }
+            }
+            variant="contained"
+          >
+            更新
+          </ForwardRef(LoadingButton)>
+        </ForwardRef(Box)>
+      </ForwardRef(Stack)>
+    </ForwardRef(Box)>
+  </ForwardRef(Stack)>
+</AdminWrapper>
+`;

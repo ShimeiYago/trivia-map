@@ -1,5 +1,6 @@
+import { ADMIN_LINK, ACCOUNT_SETTINGS_LINK } from 'constant/links';
+
 export const authMenuLinks = [
-  { path: '#', text: 'マイページ' },
-  { path: '#', text: '投稿一覧' },
-  { path: '#', text: 'アカウント管理' },
+  { path: ADMIN_LINK, text: '投稿一覧' },
+  { path: ACCOUNT_SETTINGS_LINK, text: 'アカウント管理' },
 ];

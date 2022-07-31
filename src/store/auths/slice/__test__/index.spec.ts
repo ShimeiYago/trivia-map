@@ -1,8 +1,13 @@
 import { AuthsState } from 'store/auths/model';
 import { authsReducer, authsSlice } from '..';
 
-const { autoLoginStart, loginSuccess, autoLoginFailure, toggleFormModal } =
-  authsSlice.actions;
+const {
+  autoLoginStart,
+  loginSuccess,
+  autoLoginFailure,
+  toggleFormModal,
+  updateUser,
+} = authsSlice.actions;
 
 describe('auths reducer', () => {
   const initialState: AuthsState = {
@@ -26,6 +31,22 @@ describe('auths reducer', () => {
     const actual = authsReducer(
       initialState,
       loginSuccess({
+        userId: 1,
+        email: 'user@example.com',
+        nickname: 'Axel',
+      }),
+    );
+    expect(actual.user).toEqual({
+      userId: 1,
+      email: 'user@example.com',
+      nickname: 'Axel',
+    });
+  });
+
+  it('should handle updateUser', () => {
+    const actual = authsReducer(
+      initialState,
+      updateUser({
         userId: 1,
         email: 'user@example.com',
         nickname: 'Axel',

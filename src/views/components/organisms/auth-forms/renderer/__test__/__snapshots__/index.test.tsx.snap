@@ -2,12 +2,12 @@
 
 exports[`Shallow Snapshot Tests basic 1`] = `
 <ForwardRef(Box)
+  maxWidth="340px"
   sx={
     Object {
       "mx": "auto",
     }
   }
-  width="340px"
 >
   <LoginForm
     autoLoggingInState="waiting"
@@ -21,12 +21,12 @@ exports[`Shallow Snapshot Tests basic 1`] = `
 
 exports[`Shallow Snapshot Tests resend-email mode 1`] = `
 <ForwardRef(Box)
+  maxWidth="340px"
   sx={
     Object {
       "mx": "auto",
     }
   }
-  width="340px"
 >
   <ResendEmailForm
     email=""
@@ -38,12 +38,12 @@ exports[`Shallow Snapshot Tests resend-email mode 1`] = `
 
 exports[`Shallow Snapshot Tests reset-pasword mode 1`] = `
 <ForwardRef(Box)
+  maxWidth="340px"
   sx={
     Object {
       "mx": "auto",
     }
   }
-  width="340px"
 >
   <PasswordResetRequestForm
     email=""
@@ -55,12 +55,12 @@ exports[`Shallow Snapshot Tests reset-pasword mode 1`] = `
 
 exports[`Shallow Snapshot Tests signup mode 1`] = `
 <ForwardRef(Box)
+  maxWidth="340px"
   sx={
     Object {
       "mx": "auto",
     }
   }
-  width="340px"
 >
   <SignupForm
     email=""

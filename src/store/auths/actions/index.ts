@@ -11,6 +11,7 @@ export const {
   loginSuccess,
   autoLoginFailure,
   toggleFormModal,
+  updateUser,
 } = authsSlice.actions;
 
 // autoLogin action

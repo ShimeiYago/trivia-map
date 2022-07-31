@@ -62,7 +62,7 @@ export class Renderer extends React.Component<Props, State> {
     }
 
     return (
-      <Box width="340px" sx={{ mx: 'auto' }}>
+      <Box maxWidth="340px" sx={{ mx: 'auto' }}>
         {content}
       </Box>
     );

@@ -20,11 +20,10 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       </ForwardRef(Typography)>
       <ForwardRef(List)>
         <NonStyleLink
+          key="account-setting-0"
           to="/account/profile"
         >
-          <ForwardRef(ListItem)
-            key="account-setting-0"
-          >
+          <ForwardRef(ListItem)>
             <ForwardRef(ListItemButton)>
               <ForwardRef(ListItemIcon)>
                 <Memo(ForwardRef(BadgeIcon)) />
@@ -39,11 +38,10 @@ exports[`Shallow Snapshot Tests basic 1`] = `
           </ForwardRef(ListItem)>
         </NonStyleLink>
         <NonStyleLink
+          key="account-setting-1"
           to="/account/password"
         >
-          <ForwardRef(ListItem)
-            key="account-setting-1"
-          >
+          <ForwardRef(ListItem)>
             <ForwardRef(ListItemButton)>
               <ForwardRef(ListItemIcon)>
                 <Memo(ForwardRef(KeyIcon)) />

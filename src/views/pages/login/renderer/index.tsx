@@ -1,3 +1,4 @@
+import { ADMIN_LINK } from 'constant/links';
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { sleep } from 'utils/sleep';
@@ -10,7 +11,7 @@ export class Renderer extends React.Component<unknown, State> {
 
   render() {
     if (this.state.redirect) {
-      return <Navigate to="/admin" />;
+      return <Navigate to={ADMIN_LINK} />;
     }
 
     return (

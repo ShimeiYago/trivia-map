@@ -14,6 +14,7 @@ import BadgeIcon from '@mui/icons-material/Badge';
 import KeyIcon from '@mui/icons-material/Key';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import { NonStyleLink } from 'views/components/atoms/non-style-link';
+import { PASSWORD_CHANGE_LINK, PROFILE_SETTINGS_LINK } from 'constant/links';
 
 export class Renderer extends React.Component {
   render() {
@@ -25,9 +26,9 @@ export class Renderer extends React.Component {
       {
         icon: <BadgeIcon />,
         text: 'プロフィール変更',
-        link: '/account/profile',
+        link: PROFILE_SETTINGS_LINK,
       },
-      { icon: <KeyIcon />, text: 'パスワード変更', link: '/account/password' },
+      { icon: <KeyIcon />, text: 'パスワード変更', link: PASSWORD_CHANGE_LINK },
     ].map((item, index) => (
       <NonStyleLink to={item.link} key={`account-setting-${index}`}>
         <ListItem>

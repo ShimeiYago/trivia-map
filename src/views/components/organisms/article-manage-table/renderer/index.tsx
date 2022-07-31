@@ -22,6 +22,7 @@ import classes from './index.module.css';
 import { CenterSpinner } from 'views/components/atoms/center-spinner';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { ARTICLE_PAGE_LINK, EDIT_LINK } from 'constant/links';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -68,10 +69,10 @@ export class Renderer extends React.Component<Props, State> {
       return (
         <TableRow key={`preview-${postId}`}>
           <TableCell>
-            <Link to={`/article/${postId}`}>{title}</Link>
+            <Link to={ARTICLE_PAGE_LINK(String(postId))}>{title}</Link>
           </TableCell>
           <TableCell>
-            <Link to={`/edit/${postId}`}>
+            <Link to={EDIT_LINK(String(postId))}>
               <EditIcon />
             </Link>
           </TableCell>

@@ -15,6 +15,10 @@ export const authsSlice = createSlice({
       state.user = action.payload;
     },
 
+    updateUser(state, action: PayloadAction<User>) {
+      state.user = action.payload;
+    },
+
     autoLoginFailure(state) {
       state.autoLoggingInState = 'error';
     },

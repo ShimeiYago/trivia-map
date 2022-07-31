@@ -5,6 +5,7 @@ import { refreshToken } from '../refresh-token';
 import { registration } from '../registration';
 import { resendEmail } from '../resend-email';
 import { resetPassword } from '../reset-password';
+import { updateUserInfo } from '../update-user-info';
 import { verifyEmail } from '../verify-email';
 
 describe('login', () => {
@@ -198,5 +199,32 @@ describe('refreshToken', () => {
       errorMsg: 'Intentional API Error with mock',
     };
     await expect(refreshToken()).rejects.toEqual(expectedApiError);
+  });
+});
+
+describe('update-user-info', () => {
+  beforeEach(() => {
+    process.env.REACT_APP_MOCK = '';
+  });
+  afterEach(() => {
+    process.env.REACT_APP_MOCK = '';
+  });
+
+  it('handle nomal response', async () => {
+    process.env.REACT_APP_MOCK = 'normal';
+
+    const response = await updateUserInfo('Axel');
+    expect(response.userId).toBe(1);
+  });
+
+  it('handle error response', async () => {
+    process.env.REACT_APP_MOCK = 'error';
+
+    const expectedApiError: ApiError<unknown> = {
+      status: 500,
+      data: {},
+      errorMsg: 'Intentional API Error with mock',
+    };
+    await expect(updateUserInfo('Axel')).rejects.toEqual(expectedApiError);
   });
 });

@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shallow Snapshot Tests basic 1`] = `
+<AdminWrapper>
+  <ForwardRef(Stack)
+    spacing={3}
+  >
+    <ForwardRef(Box)>
+      <ForwardRef(Typography)
+        align="center"
+        component="h2"
+        sx={
+          Object {
+            "mb": 3,
+          }
+        }
+        variant="h4"
+      >
+        アカウント設定
+      </ForwardRef(Typography)>
+      <ForwardRef(List)>
+        <NonStyleLink
+          key="account-setting-0"
+          to="/account/profile"
+        >
+          <ForwardRef(ListItem)>
+            <ForwardRef(ListItemButton)>
+              <ForwardRef(ListItemIcon)>
+                <Memo(ForwardRef(BadgeIcon)) />
+              </ForwardRef(ListItemIcon)>
+              <ForwardRef(ListItemText)
+                primary="プロフィール変更"
+              />
+              <ForwardRef(ListItemIcon)>
+                <Memo(ForwardRef(KeyboardArrowRightIcon)) />
+              </ForwardRef(ListItemIcon)>
+            </ForwardRef(ListItemButton)>
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+        <NonStyleLink
+          key="account-setting-1"
+          to="/account/password"
+        >
+          <ForwardRef(ListItem)>
+            <ForwardRef(ListItemButton)>
+              <ForwardRef(ListItemIcon)>
+                <Memo(ForwardRef(KeyIcon)) />
+              </ForwardRef(ListItemIcon)>
+              <ForwardRef(ListItemText)
+                primary="パスワード変更"
+              />
+              <ForwardRef(ListItemIcon)>
+                <Memo(ForwardRef(KeyboardArrowRightIcon)) />
+              </ForwardRef(ListItemIcon)>
+            </ForwardRef(ListItemButton)>
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+      </ForwardRef(List)>
+    </ForwardRef(Box)>
+  </ForwardRef(Stack)>
+</AdminWrapper>
+`;

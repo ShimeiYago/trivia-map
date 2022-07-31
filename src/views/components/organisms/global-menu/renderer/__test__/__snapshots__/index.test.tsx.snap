@@ -757,18 +757,7 @@ exports[`Shallow Snapshot Tests with userInfo 1`] = `
             >
               <Link
                 key="authmenu-0"
-                to="#"
-              >
-                <IconAndText
-                  align="left"
-                  iconComponent={<Memo />}
-                  iconPosition="left"
-                  text="マイページ"
-                />
-              </Link>
-              <Link
-                key="authmenu-1"
-                to="#"
+                to="/admin"
               >
                 <IconAndText
                   align="left"
@@ -778,8 +767,8 @@ exports[`Shallow Snapshot Tests with userInfo 1`] = `
                 />
               </Link>
               <Link
-                key="authmenu-2"
-                to="#"
+                key="authmenu-1"
+                to="/admin/account"
               >
                 <IconAndText
                   align="left"

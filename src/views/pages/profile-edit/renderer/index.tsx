@@ -54,7 +54,7 @@ export class Renderer extends React.Component<Props, State> {
             プロフィール
           </Typography>
           {this.renderHeaderInfo()}
-          <Typography>{this.props.user?.email}</Typography>
+          {this.renderEmail()}
           <Box component="form" noValidate>
             <TextField
               margin="normal"
@@ -81,6 +81,17 @@ export class Renderer extends React.Component<Props, State> {
             </LoadingButton>
           </Box>
         </Stack>
+      </Box>
+    );
+  };
+
+  protected renderEmail = () => {
+    return (
+      <Box sx={{ pl: 1.5 }}>
+        <Typography fontSize={12} color="gray" sx={{ pb: 0.5 }}>
+          メールアドレス
+        </Typography>
+        <Typography fontSize={18}>{this.props.user?.email}</Typography>
       </Box>
     );
   };

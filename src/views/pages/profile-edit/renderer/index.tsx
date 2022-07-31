@@ -14,6 +14,7 @@ import {
 } from 'api/auths-api/update-user-info';
 import { globalAPIErrorMessage } from 'constant/global-api-error-message';
 import { ApiError } from 'api/utils/handle-axios-error';
+import { ACCOUNT_SETTINGS_LINK } from 'constant/links';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -31,7 +32,7 @@ export class Renderer extends React.Component<Props, State> {
   protected renderContents = () => {
     return (
       <Stack spacing={3}>
-        <NonStyleLink to="/admin/account">
+        <NonStyleLink to={ACCOUNT_SETTINGS_LINK}>
           <IconAndText
             iconComponent={<KeyboardArrowLeftIcon />}
             text="アカウント設定"

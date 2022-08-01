@@ -1,4 +1,5 @@
 import { ApiError } from 'api/utils/handle-axios-error';
+import { changePassword } from '../change-password';
 import { getUserInfo } from '../get-user-info';
 import { login } from '../login';
 import { refreshToken } from '../refresh-token';
@@ -226,5 +227,34 @@ describe('update-user-info', () => {
       errorMsg: 'Intentional API Error with mock',
     };
     await expect(updateUserInfo('Axel')).rejects.toEqual(expectedApiError);
+  });
+});
+
+describe('changePassword', () => {
+  beforeEach(() => {
+    process.env.REACT_APP_MOCK = '';
+  });
+  afterEach(() => {
+    process.env.REACT_APP_MOCK = '';
+  });
+
+  it('handle nomal response', async () => {
+    process.env.REACT_APP_MOCK = 'normal';
+
+    const response = await changePassword('password1', 'password2');
+    expect(response).toEqual(undefined);
+  });
+
+  it('handle error response', async () => {
+    process.env.REACT_APP_MOCK = 'error';
+
+    const expectedApiError: ApiError<unknown> = {
+      status: 500,
+      data: {},
+      errorMsg: 'Intentional API Error with mock',
+    };
+    await expect(changePassword('password1', 'password2')).rejects.toEqual(
+      expectedApiError,
+    );
   });
 });

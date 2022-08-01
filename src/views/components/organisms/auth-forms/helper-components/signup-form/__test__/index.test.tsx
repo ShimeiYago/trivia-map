@@ -5,7 +5,7 @@ import { ApiError } from 'api/utils/handle-axios-error';
 
 let wrapper: ShallowWrapper<Props, State, SignupForm>;
 
-let loginSpy: jest.SpyInstance;
+let registrationSpy: jest.SpyInstance;
 
 const basicProps: Props = {
   switchMode: jest.fn(),
@@ -93,11 +93,11 @@ describe('handleChangeTextField', () => {
 describe('handleClickSignup', () => {
   beforeEach(() => {
     jest.resetAllMocks();
-    loginSpy = jest.spyOn(RegistrationModule, 'registration');
+    registrationSpy = jest.spyOn(RegistrationModule, 'registration');
   });
 
   it('should set localLoadingState success when api succeed', async () => {
-    loginSpy.mockResolvedValue({});
+    registrationSpy.mockResolvedValue({});
 
     wrapper = shallow(<SignupForm {...basicProps} />);
     const instance = wrapper.instance();
@@ -122,7 +122,7 @@ describe('handleClickSignup', () => {
       },
       errorMsg: '400 request is invalid',
     };
-    loginSpy.mockRejectedValue(apiError);
+    registrationSpy.mockRejectedValue(apiError);
 
     wrapper = shallow(<SignupForm {...basicProps} />);
     const instance = wrapper.instance();
@@ -138,7 +138,7 @@ describe('handleClickSignup', () => {
   });
 
   it('should set localLoadingState error when api fail', async () => {
-    loginSpy.mockRejectedValue(new Error());
+    registrationSpy.mockRejectedValue(new Error());
 
     wrapper = shallow(<SignupForm {...basicProps} />);
     const instance = wrapper.instance();

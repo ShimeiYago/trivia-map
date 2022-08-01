@@ -19,9 +19,11 @@ import {
   ARTICLE_PAGE_LINK,
   EDIT_LINK,
   LOGIN_LINK,
+  PASSWORD_CHANGE_LINK,
   PROFILE_SETTINGS_LINK,
   VERIFY_EMAIL_LINK,
 } from 'constant/links';
+import { ChangePassword } from 'views/pages/change-password';
 
 // Deactivate all console.log on production
 // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -40,6 +42,7 @@ ReactDOM.render(
             <Route path={ADMIN_LINK} element={<Admin />} />
             <Route path={ACCOUNT_SETTINGS_LINK} element={<AccountSettings />} />
             <Route path={PROFILE_SETTINGS_LINK} element={<ProfileEdit />} />
+            <Route path={PASSWORD_CHANGE_LINK} element={<ChangePassword />} />
             <Route
               path={VERIFY_EMAIL_LINK(':verifyKey')}
               element={<VerifyEmail />}

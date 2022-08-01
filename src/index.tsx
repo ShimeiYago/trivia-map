@@ -21,9 +21,11 @@ import {
   LOGIN_LINK,
   PASSWORD_CHANGE_LINK,
   PROFILE_SETTINGS_LINK,
+  RESET_PASSWORD_LINK,
   VERIFY_EMAIL_LINK,
 } from 'constant/links';
 import { ChangePassword } from 'views/pages/change-password';
+import { ResetPassword } from 'views/pages/reset-password';
 
 // Deactivate all console.log on production
 // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -46,6 +48,10 @@ ReactDOM.render(
             <Route
               path={VERIFY_EMAIL_LINK(':verifyKey')}
               element={<VerifyEmail />}
+            />
+            <Route
+              path={RESET_PASSWORD_LINK(':uid', ':token')}
+              element={<ResetPassword />}
             />
             <Route path="*" element={<div>404 not found (TODO)</div>} />
           </Routes>

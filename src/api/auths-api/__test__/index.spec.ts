@@ -6,6 +6,7 @@ import { refreshToken } from '../refresh-token';
 import { registration } from '../registration';
 import { resendEmail } from '../resend-email';
 import { resetPassword } from '../reset-password';
+import { resetPasswordConfirm } from '../reset-password-confirm';
 import { updateUserInfo } from '../update-user-info';
 import { verifyEmail } from '../verify-email';
 
@@ -256,5 +257,39 @@ describe('changePassword', () => {
     await expect(changePassword('password1', 'password2')).rejects.toEqual(
       expectedApiError,
     );
+  });
+});
+
+describe('resetPasswordConfirm', () => {
+  beforeEach(() => {
+    process.env.REACT_APP_MOCK = '';
+  });
+  afterEach(() => {
+    process.env.REACT_APP_MOCK = '';
+  });
+
+  it('handle nomal response', async () => {
+    process.env.REACT_APP_MOCK = 'normal';
+
+    const response = await resetPasswordConfirm(
+      'password1',
+      'password2',
+      'uid',
+      'token',
+    );
+    expect(response).toEqual(undefined);
+  });
+
+  it('handle error response', async () => {
+    process.env.REACT_APP_MOCK = 'error';
+
+    const expectedApiError: ApiError<unknown> = {
+      status: 500,
+      data: {},
+      errorMsg: 'Intentional API Error with mock',
+    };
+    await expect(
+      resetPasswordConfirm('password1', 'password2', 'uid', 'token'),
+    ).rejects.toEqual(expectedApiError);
   });
 });

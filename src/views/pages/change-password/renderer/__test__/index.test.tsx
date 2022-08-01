@@ -19,7 +19,6 @@ describe('Shallow Snapshot Tests', () => {
   it('error case', () => {
     wrapper.setState({
       errorTitle: 'error title',
-      errorMessages: ['error1', 'error2'],
       formError: {
         password1: ['password is invalid'],
         password2: ['password is invalid'],

@@ -75,7 +75,7 @@ export class Renderer extends React.Component<unknown, State> {
   }
 
   protected renderHeaderInfo() {
-    const { errorTitle, errorMessages, loadingState } = this.state;
+    const { errorTitle, loadingState } = this.state;
 
     if (loadingState === 'success') {
       return <Alert>パスワードが変更されました。</Alert>;
@@ -84,10 +84,7 @@ export class Renderer extends React.Component<unknown, State> {
     if (errorTitle) {
       return (
         <Box>
-          <HeaderErrorMessages
-            errorTitle={errorTitle}
-            errorMessages={errorMessages}
-          />
+          <HeaderErrorMessages errorTitle={errorTitle} />
         </Box>
       );
     }
@@ -117,7 +114,6 @@ export class Renderer extends React.Component<unknown, State> {
     this.setState({
       loadingState: 'loading',
       errorTitle: undefined,
-      errorMessages: undefined,
       formError: undefined,
     });
 
@@ -155,7 +151,6 @@ export type State = {
   password2: string;
   loadingState: LoadingState;
   errorTitle?: string;
-  errorMessages?: string[];
   formError?: FormError;
 };
 

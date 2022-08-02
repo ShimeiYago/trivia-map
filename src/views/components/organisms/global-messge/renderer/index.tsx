@@ -17,8 +17,6 @@ export class Renderer extends React.Component<Props, State> {
       articleFormSubmittingState,
       articleFormFetchingState,
       articleFormFetchingErrorMsg,
-      readingArticleLoadingState,
-      readingArticleErrorMsg,
       markersDeletingState,
       markersErrorMsg,
       closeFormModal,
@@ -46,17 +44,6 @@ export class Renderer extends React.Component<Props, State> {
         type: 'error',
       });
       closeFormModal();
-    }
-
-    if (
-      prevProps.readingArticleLoadingState !== readingArticleLoadingState &&
-      readingArticleLoadingState === 'error'
-    ) {
-      this.setState({
-        show: true,
-        message: readingArticleErrorMsg ?? '',
-        type: 'error',
-      });
     }
 
     if (
@@ -111,8 +98,6 @@ export type Props = {
   articleFormFetchingState: LoadingState;
   articleFormFetchingErrorMsg?: string;
   articleFormSubmittingState: LoadingState;
-  readingArticleLoadingState: LoadingState;
-  readingArticleErrorMsg?: string;
   markersDeletingState: LoadingState;
   markersErrorMsg?: string;
 

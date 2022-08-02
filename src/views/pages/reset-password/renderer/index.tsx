@@ -3,12 +3,14 @@ import { LoadingState } from 'types/loading-state';
 import { Alert, Box, Stack, TextField, Typography } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 import { HeaderErrorMessages } from 'views/components/moleculars/header-error-messages';
-import { changePassword, ValidationError } from 'api/auths-api/change-password';
+import {
+  resetPasswordConfirm,
+  ValidationError,
+} from 'api/auths-api/reset-password-confirm';
 import { ApiError } from 'api/utils/handle-axios-error';
 import { globalAPIErrorMessage } from 'constant/global-api-error-message';
-import { AdminWrapper } from 'views/components/organisms/admin-wrapper';
 
-export class Renderer extends React.Component<unknown, State> {
+export class Renderer extends React.Component<Props, State> {
   state: State = {
     password1: '',
     password2: '',
@@ -16,7 +18,9 @@ export class Renderer extends React.Component<unknown, State> {
   };
 
   render() {
-    const disabled = this.state.loadingState === 'loading';
+    const disabled =
+      this.state.loadingState === 'loading' ||
+      this.state.loadingState === 'success';
 
     const form = (
       <Box component="form" noValidate>
@@ -54,37 +58,38 @@ export class Renderer extends React.Component<unknown, State> {
           loading={this.state.loadingState === 'loading'}
           disabled={disabled}
         >
-          パスワード更新
+          再設定する
         </LoadingButton>
       </Box>
     );
 
     return (
-      <AdminWrapper>
-        <Box>
-          <Stack spacing={1} sx={{ px: 1, maxWidth: '400px', mx: 'auto' }}>
-            <Typography component="h1" variant="h5" align="center">
-              パスワード変更
-            </Typography>
-            {this.renderHeaderInfo()}
-            {form}
-          </Stack>
-        </Box>
-      </AdminWrapper>
+      <Box>
+        <Stack spacing={1} sx={{ px: 1, py: 2, maxWidth: '400px', mx: 'auto' }}>
+          <Typography component="h1" variant="h5" align="center">
+            パスワード再設定
+          </Typography>
+          {this.renderHeaderInfo()}
+          {form}
+        </Stack>
+      </Box>
     );
   }
 
   protected renderHeaderInfo() {
-    const { errorTitle, loadingState } = this.state;
+    const { errorTitle, errorMessages, loadingState } = this.state;
 
     if (loadingState === 'success') {
-      return <Alert>パスワードが変更されました。</Alert>;
+      return <Alert>パスワードが設定されました。</Alert>;
     }
 
     if (errorTitle) {
       return (
         <Box>
-          <HeaderErrorMessages errorTitle={errorTitle} />
+          <HeaderErrorMessages
+            errorTitle={errorTitle}
+            errorMessages={errorMessages}
+          />
         </Box>
       );
     }
@@ -110,15 +115,17 @@ export class Renderer extends React.Component<unknown, State> {
     };
 
   protected handleSubmit = async () => {
+    const { uid, token } = this.props;
     const { password1, password2 } = this.state;
     this.setState({
       loadingState: 'loading',
       errorTitle: undefined,
+      errorMessages: undefined,
       formError: undefined,
     });
 
     try {
-      await changePassword(password1, password2);
+      await resetPasswordConfirm(uid, token, password1, password2);
       this.setState({
         loadingState: 'success',
       });
@@ -136,6 +143,10 @@ export class Renderer extends React.Component<unknown, State> {
             password1: apiError.data.password1,
             password2: apiError.data.password2,
           },
+          errorMessages: [
+            ...(apiError.data.uid ?? []),
+            ...(apiError.data.token ?? []),
+          ],
         });
       }
 
@@ -146,11 +157,17 @@ export class Renderer extends React.Component<unknown, State> {
   };
 }
 
+export type Props = {
+  uid: string;
+  token: string;
+};
+
 export type State = {
   password1: string;
   password2: string;
   loadingState: LoadingState;
   errorTitle?: string;
+  errorMessages?: string[];
   formError?: FormError;
 };
 

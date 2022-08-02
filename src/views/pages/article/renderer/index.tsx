@@ -1,23 +1,39 @@
 import React from 'react';
-import { Avatar, Box, Divider, Grid, Stack, Typography } from '@mui/material';
+import {
+  Alert,
+  Avatar,
+  Box,
+  Divider,
+  Grid,
+  Stack,
+  Typography,
+} from '@mui/material';
 import { LoadingState } from 'types/loading-state';
 import { GlobalMenu } from 'views/components/organisms/global-menu';
 import { Link } from 'react-router-dom';
 import { ArticlePaper } from 'views/components/atoms/article-paper';
-import { Position } from 'types/position';
 import { Image } from 'views/components/atoms/image';
 import { TriviaMap } from 'views/components/organisms/trivia-map';
 import { wrapper, contentWrapper, createdAtBox } from '../styles';
 import MapIcon from '@mui/icons-material/Map';
 import { deepOrange } from '@mui/material/colors';
-import { Author } from 'types/author';
 import { IconAndText } from 'views/components/atoms/icon-and-text';
 import { CenterSpinner } from 'views/components/atoms/center-spinner';
 import { MAP_PAGE_LINK } from 'constant/links';
+import {
+  GetArticleResponse,
+  getRemoteArticle,
+} from 'api/articles-api/get-remote-article';
+import { ApiError } from 'api/utils/handle-axios-error';
+import { globalAPIErrorMessage } from 'constant/global-api-error-message';
 
-export class Renderer extends React.Component<Props> {
-  componentDidMount() {
-    this.props.fetchArticle();
+export class Renderer extends React.Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
+    this.state = {
+      loadingState: 'waiting',
+    };
+    this.fetchArticle();
   }
 
   render() {
@@ -51,23 +67,25 @@ export class Renderer extends React.Component<Props> {
   }
 
   protected renderMainArticle = () => {
+    const { article, loadingState, errorMsg } = this.state;
+
+    if (loadingState === 'error') {
+      return <Alert severity="error">{errorMsg}</Alert>;
+    }
+
+    if (!article || loadingState === 'waiting' || loadingState === 'loading') {
+      return <CenterSpinner />;
+    }
+
     const {
-      articleLoadingState,
       title,
       description,
-      position,
+      marker,
       imageUrl,
       author,
       createdAt,
       updatedAt,
-    } = this.props;
-
-    if (
-      articleLoadingState === 'waiting' ||
-      articleLoadingState === 'loading'
-    ) {
-      return <CenterSpinner />;
-    }
+    } = article;
 
     return (
       <Stack spacing={2}>
@@ -111,10 +129,10 @@ export class Renderer extends React.Component<Props> {
         <TriviaMap
           height={300}
           initZoom={3}
-          initCenter={position}
+          initCenter={marker}
           disabled
           doNotShowPostMarkers
-          additinalMarkers={[position]}
+          additinalMarkers={[marker]}
         />
       </Stack>
     );
@@ -127,18 +145,38 @@ export class Renderer extends React.Component<Props> {
   protected renderLocalNavi = () => {
     return <Link to={MAP_PAGE_LINK}>マップへ戻る</Link>;
   };
+
+  protected fetchArticle = async () => {
+    this.setState({
+      article: undefined,
+      loadingState: 'loading',
+      errorMsg: undefined,
+    });
+    try {
+      const res = await getRemoteArticle(this.props.postId);
+      this.setState({
+        article: res,
+        loadingState: 'success',
+      });
+    } catch (error) {
+      const apiError = error as ApiError<unknown>;
+
+      const errorMsg = globalAPIErrorMessage(apiError.status, 'get');
+      this.setState({
+        loadingState: 'error',
+        errorMsg: errorMsg,
+      });
+    }
+  };
 }
 
 export type Props = {
-  title: string;
-  description: string;
-  position: Position;
-  imageUrl: string | null;
-  author: Author;
-  createdAt: string;
-  updatedAt: string;
-  articleLoadingState: LoadingState;
+  postId: number;
   isMobile: boolean;
+};
 
-  fetchArticle: () => void;
+export type State = {
+  article?: GetArticleResponse;
+  loadingState: LoadingState;
+  errorMsg?: string;
 };

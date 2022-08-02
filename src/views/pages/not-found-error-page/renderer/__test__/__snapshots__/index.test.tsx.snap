@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shallow Snapshot Tests basic 1`] = `
+<GlobalMenu
+  topBarPosition="static"
+>
+  <ForwardRef(Box)
+    sx={
+      Object {
+        "p": 1,
+      }
+    }
+  >
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "maxWidth": 600,
+          "mx": "auto",
+          "my": 3,
+          "textAlign": "center",
+        }
+      }
+    >
+      <img
+        alt="404"
+        src="404.png"
+        width="100%"
+      />
+    </ForwardRef(Box)>
+    <ForwardRef(Typography)
+      align="center"
+      fontSize={18}
+      sx={
+        Object {
+          "my": 1,
+        }
+      }
+    >
+      お探しのページは見つかりませんでした。
+    </ForwardRef(Typography)>
+    <ForwardRef(Typography)
+      align="center"
+      fontSize={18}
+    >
+      URLが間違っているか、既に削除された可能性があります。
+    </ForwardRef(Typography)>
+  </ForwardRef(Box)>
+</GlobalMenu>
+`;

@@ -26,6 +26,7 @@ import {
 } from 'constant/links';
 import { ChangePassword } from 'views/pages/change-password';
 import { ResetPassword } from 'views/pages/reset-password';
+import { NotFoundErrorPage } from 'views/pages/not-found-error-page';
 
 // Deactivate all console.log on production
 // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -53,7 +54,7 @@ ReactDOM.render(
               path={RESET_PASSWORD_LINK(':uid', ':token')}
               element={<ResetPassword />}
             />
-            <Route path="*" element={<div>404 not found (TODO)</div>} />
+            <Route path="*" element={<NotFoundErrorPage />} />
           </Routes>
         </BrowserRouter>
       </Provider>

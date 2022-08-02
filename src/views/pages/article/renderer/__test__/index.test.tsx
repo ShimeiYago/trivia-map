@@ -1,15 +1,22 @@
+import { GetArticleResponse } from 'api/articles-api/get-remote-article';
 import { shallow, ShallowWrapper } from 'enzyme';
-import { Renderer, Props } from '..';
+import { Renderer, Props, State } from '..';
+import * as GetRemoteArticleModule from 'api/articles-api/get-remote-article';
 
-let wrapper: ShallowWrapper<Props, unknown, Renderer>;
+let wrapper: ShallowWrapper<Props, State, Renderer>;
+
+let getRemoteArticleSpy: jest.SpyInstance;
 
 const basicProps: Props = {
+  postId: 1,
+  isMobile: false,
+};
+
+const article: GetArticleResponse = {
+  postId: 1,
   title: 'title',
   description: 'description',
-  articleLoadingState: 'success',
-  fetchArticle: jest.fn(),
-  isMobile: false,
-  position: { lat: 0, lng: 0, park: 'S' },
+  marker: { markerId: 1, lat: 0, lng: 0, park: 'S', numberOfPublicArticles: 1 },
   imageUrl: null,
   author: {
     userId: 1,
@@ -17,6 +24,7 @@ const basicProps: Props = {
   },
   createdAt: '2022/4/1',
   updatedAt: '2022/5/1',
+  isDraft: false,
 };
 
 describe('Shallow Snapshot Tests', () => {
@@ -28,8 +36,13 @@ describe('Shallow Snapshot Tests', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
+  it('with article', () => {
+    wrapper.setState({ article: article, loadingState: 'success' });
+    expect(wrapper).toMatchSnapshot();
+  });
+
   it('loading', () => {
-    wrapper.setProps({ articleLoadingState: 'loading' });
+    wrapper.setState({ loadingState: 'loading' });
     expect(wrapper).toMatchSnapshot();
   });
 
@@ -39,7 +52,42 @@ describe('Shallow Snapshot Tests', () => {
   });
 
   it('with image', () => {
-    wrapper.setProps({ imageUrl: 'image.jpg' });
+    wrapper.setState({
+      article: { ...article, imageUrl: 'image.jpg' },
+      loadingState: 'success',
+    });
     expect(wrapper).toMatchSnapshot();
+  });
+});
+
+describe('fetchArticle', () => {
+  beforeEach(() => {
+    jest.resetAllMocks();
+    getRemoteArticleSpy = jest.spyOn(
+      GetRemoteArticleModule,
+      'getRemoteArticle',
+    );
+  });
+
+  it('should set loadingState success when api succeed', async () => {
+    getRemoteArticleSpy.mockResolvedValue({});
+
+    wrapper = shallow(<Renderer {...basicProps} />);
+    const instance = wrapper.instance();
+
+    await instance['fetchArticle']();
+
+    expect(instance.state.loadingState).toBe('success');
+  });
+
+  it('should set loadingstate error when api fail', async () => {
+    getRemoteArticleSpy.mockRejectedValue(new Error());
+
+    wrapper = shallow(<Renderer {...basicProps} />);
+    const instance = wrapper.instance();
+
+    await instance['fetchArticle']();
+
+    expect(instance.state.loadingState).toBe('error');
   });
 });

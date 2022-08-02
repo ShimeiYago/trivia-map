@@ -1,7 +1,6 @@
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import { markersReducer } from './markers/slice';
-import { readingArticleReducer } from './reading-article/slice';
 import { articleFormReducer } from './article-form/slice';
 import { authsReducer } from './auths/slice/index';
 
@@ -9,7 +8,6 @@ import { authsReducer } from './auths/slice/index';
 export const store = configureStore({
   reducer: {
     markers: markersReducer,
-    readingArticle: readingArticleReducer,
     articleForm: articleFormReducer,
     auths: authsReducer,
   },

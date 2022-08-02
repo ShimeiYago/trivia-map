@@ -34,6 +34,9 @@ export class Renderer extends React.Component<Props, State> {
     this.state = {
       loadingState: 'waiting',
     };
+  }
+
+  componentDidMount() {
     this.fetchArticle();
   }
 

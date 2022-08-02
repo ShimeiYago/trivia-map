@@ -91,12 +91,6 @@ exports[`Shallow Snapshot Tests error case 1`] = `
       </ForwardRef(Typography)>
       <ForwardRef(Box)>
         <HeaderErrorMessages
-          errorMessages={
-            Array [
-              "error1",
-              "error2",
-            ]
-          }
           errorTitle="error title"
         />
       </ForwardRef(Box)>

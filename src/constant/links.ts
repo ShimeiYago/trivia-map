@@ -15,4 +15,7 @@ export const EDIT_LINK = (postId: string) => `/edit/${postId}`;
 export const VERIFY_EMAIL_LINK = (verifyKey: string) =>
   `/verify-email/${verifyKey}`;
 
+export const RESET_PASSWORD_LINK = (uid: string, token: string) =>
+  `/reset-password/${uid}/${token}`;
+
 export const MAP_PAGE_LINK = '/';

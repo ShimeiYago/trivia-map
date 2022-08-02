@@ -5,10 +5,6 @@ import {
   selectArticleFormFetchingState,
   selectArticleFormSubmittingState,
 } from 'store/article-form/selector';
-import {
-  selectReadingArticleErrorMsg,
-  selectReadingArticleLoadingState,
-} from 'store/reading-article/selector';
 import { selectMarkersErrorMsg } from 'store/markers/selector';
 
 export function GlobalMessage(ownProps: OwnProps) {
@@ -20,10 +16,6 @@ export function GlobalMessage(ownProps: OwnProps) {
     articleFormSubmittingState: useAppSelector(
       selectArticleFormSubmittingState,
     ),
-    readingArticleLoadingState: useAppSelector(
-      selectReadingArticleLoadingState,
-    ),
-    readingArticleErrorMsg: useAppSelector(selectReadingArticleErrorMsg),
     markersDeletingState: 'waiting', // TODO
     markersErrorMsg: useAppSelector(selectMarkersErrorMsg),
     closeFormModal: ownProps.closeFormModal,

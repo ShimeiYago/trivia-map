@@ -10,7 +10,7 @@ import {
 } from '@mui/material';
 import { LoadingState } from 'types/loading-state';
 import { GlobalMenu } from 'views/components/organisms/global-menu';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { ArticlePaper } from 'views/components/atoms/article-paper';
 import { Image } from 'views/components/atoms/image';
 import { TriviaMap } from 'views/components/organisms/trivia-map';
@@ -19,7 +19,7 @@ import MapIcon from '@mui/icons-material/Map';
 import { deepOrange } from '@mui/material/colors';
 import { IconAndText } from 'views/components/atoms/icon-and-text';
 import { CenterSpinner } from 'views/components/atoms/center-spinner';
-import { MAP_PAGE_LINK } from 'constant/links';
+import { MAP_PAGE_LINK, NOT_FOUND_LINK } from 'constant/links';
 import {
   GetArticleResponse,
   getRemoteArticle,
@@ -33,6 +33,7 @@ export class Renderer extends React.Component<Props, State> {
     super(props);
     this.state = {
       loadingState: 'waiting',
+      redirectNotFound: false,
     };
   }
 
@@ -42,6 +43,10 @@ export class Renderer extends React.Component<Props, State> {
 
   render() {
     const { isMobile } = this.props;
+
+    if (this.state.redirectNotFound) {
+      return <Navigate to={NOT_FOUND_LINK} />;
+    }
 
     return (
       <Box sx={wrapper}>
@@ -170,6 +175,17 @@ export class Renderer extends React.Component<Props, State> {
     } catch (error) {
       const apiError = error as ApiError<unknown>;
 
+      if (
+        apiError.status === 404 ||
+        apiError.status === 401 ||
+        apiError.status === 403
+      ) {
+        this.setState({
+          redirectNotFound: true,
+        });
+      }
+
+      // TODO: Redirect to 500 error page
       const errorMsg = globalAPIErrorMessage(apiError.status, 'get');
       this.setState({
         loadingState: 'error',
@@ -188,4 +204,5 @@ export type State = {
   article?: GetArticleResponse;
   loadingState: LoadingState;
   errorMsg?: string;
+  redirectNotFound: boolean;
 };

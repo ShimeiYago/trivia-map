@@ -27,6 +27,7 @@ import {
 import { ApiError } from 'api/utils/handle-axios-error';
 import { globalAPIErrorMessage } from 'constant/global-api-error-message';
 
+// TODO: apiが404のときも403のときも401のときも等しく404エラーページ。500だけは別。
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
@@ -85,10 +86,15 @@ export class Renderer extends React.Component<Props, State> {
       author,
       createdAt,
       updatedAt,
+      isDraft,
     } = article;
 
     return (
       <Stack spacing={2}>
+        {isDraft && (
+          <Alert>この記事は下書きです。あなただけが閲覧できます。</Alert>
+        )}
+
         <Stack
           direction="row"
           justifyContent="flex-start"

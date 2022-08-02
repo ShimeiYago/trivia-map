@@ -58,6 +58,14 @@ describe('Shallow Snapshot Tests', () => {
     });
     expect(wrapper).toMatchSnapshot();
   });
+
+  it('draft', () => {
+    wrapper.setState({
+      article: { ...article, isDraft: true },
+      loadingState: 'success',
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
 });
 
 describe('fetchArticle', () => {

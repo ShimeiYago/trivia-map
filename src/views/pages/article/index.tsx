@@ -1,17 +1,18 @@
 import { Props, Renderer } from './renderer';
-import { useParams } from 'react-router-dom';
+import { Navigate, useParams } from 'react-router-dom';
 import { isMobile } from 'react-device-detect';
+import { NOT_FOUND_LINK } from 'constant/links';
 
 export function Article() {
   const { postId } = useParams();
-  // TODO
-  if (!postId) {
-    throw Error;
+  const postIdNumber = Number(postId);
+
+  if (!postIdNumber) {
+    return <Navigate to={NOT_FOUND_LINK} />;
   }
 
-  // TODO: If postId is not number??
   const props: Props = {
-    postId: Number(postId),
+    postId: postIdNumber,
     isMobile: isMobile,
   };
 

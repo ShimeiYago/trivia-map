@@ -108,6 +108,6 @@ describe('fetchArticle', () => {
 
     await instance['fetchArticle']();
 
-    expect(instance.state.loadingState).toBe('error');
+    expect(instance.props.throwError).toBeCalled();
   });
 });

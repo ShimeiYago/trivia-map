@@ -1,3 +1,4 @@
+import { throwError } from 'store/global-error/slice';
 import { articleFormSlice } from '../slice';
 import { AppThunk } from 'store';
 import { ApiError } from 'api/utils/handle-axios-error';
@@ -33,7 +34,6 @@ export const {
   submitSuccess,
   fetchStart,
   fetchSuccess,
-  fetchFailure,
   initialize,
   updateIsEditting,
   updateIsFormChangedFromLastSaved,
@@ -167,8 +167,15 @@ export const fetchArticle =
     } catch (error) {
       const apiError = error as ApiError<unknown>;
 
-      const errorMsg = globalAPIErrorMessage(apiError.status, 'get');
-      dispatch(fetchFailure(errorMsg));
+      if (
+        apiError.status === 404 ||
+        apiError.status === 403 ||
+        apiError.status === 401
+      ) {
+        dispatch(throwError(404));
+      } else {
+        dispatch(throwError(500));
+      }
     }
   };
 

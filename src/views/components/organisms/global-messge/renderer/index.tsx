@@ -15,8 +15,6 @@ export class Renderer extends React.Component<Props, State> {
   componentDidUpdate(prevProps: Props) {
     const {
       articleFormSubmittingState,
-      articleFormFetchingState,
-      articleFormFetchingErrorMsg,
       markersDeletingState,
       markersErrorMsg,
       closeFormModal,
@@ -30,18 +28,6 @@ export class Renderer extends React.Component<Props, State> {
         show: true,
         message: '投稿が完了しました！',
         type: 'success',
-      });
-      closeFormModal();
-    }
-
-    if (
-      prevProps.articleFormFetchingState !== articleFormFetchingState &&
-      articleFormFetchingState === 'error'
-    ) {
-      this.setState({
-        show: true,
-        message: articleFormFetchingErrorMsg ?? '',
-        type: 'error',
       });
       closeFormModal();
     }
@@ -95,8 +81,6 @@ export class Renderer extends React.Component<Props, State> {
 }
 
 export type Props = {
-  articleFormFetchingState: LoadingState;
-  articleFormFetchingErrorMsg?: string;
   articleFormSubmittingState: LoadingState;
   markersDeletingState: LoadingState;
   markersErrorMsg?: string;

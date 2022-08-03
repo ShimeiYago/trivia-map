@@ -169,9 +169,9 @@ export class Renderer extends React.Component<Props, State> {
         apiError.status === 403
       ) {
         this.props.throwError(404);
+      } else {
+        this.props.throwError(500);
       }
-
-      this.props.throwError(500);
     }
   };
 }

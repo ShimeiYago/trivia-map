@@ -4,7 +4,6 @@ import { Renderer, State, Props } from '..';
 let shallowWrapper: ShallowWrapper<Props, State, Renderer>;
 
 const props: Props = {
-  articleFormFetchingState: 'waiting',
   articleFormSubmittingState: 'waiting',
   closeFormModal: jest.fn(),
   markersDeletingState: 'waiting',
@@ -36,33 +35,6 @@ describe('componentDidUpdate', () => {
       articleFormSubmittingState: 'loading',
     });
     expect(instance.state.message).toBe('投稿が完了しました！');
-  });
-
-  it('should change states to show fetching form error message', () => {
-    shallowWrapper.setProps({
-      articleFormFetchingState: 'error',
-      articleFormFetchingErrorMsg: 'fetch error',
-    });
-    const instance = shallowWrapper.instance();
-
-    instance.componentDidUpdate({
-      ...props,
-      articleFormFetchingState: 'loading',
-    });
-    expect(instance.state.message).toBe('fetch error');
-  });
-
-  it('should change states to show fetching empty form error message', () => {
-    shallowWrapper.setProps({
-      articleFormFetchingState: 'error',
-    });
-    const instance = shallowWrapper.instance();
-
-    instance.componentDidUpdate({
-      ...props,
-      articleFormFetchingState: 'loading',
-    });
-    expect(instance.state.message).toBe('');
   });
 
   it('should change states to show deleting marker success message', () => {

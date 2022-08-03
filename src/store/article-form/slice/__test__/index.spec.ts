@@ -10,7 +10,6 @@ const {
   submitFailure,
   submitSuccess,
   fetchStart,
-  fetchFailure,
   fetchSuccess,
   initialize,
   updateIsEditting,
@@ -111,15 +110,6 @@ describe('articleForm reducer', () => {
   it('should handle fetchStart', () => {
     const actual = articleFormReducer(initialState, fetchStart(100));
     expect(actual.postId).toEqual(100);
-  });
-
-  it('should handle fetchFailure', () => {
-    const actual = articleFormReducer(
-      fetchingLoadingState,
-      fetchFailure('fetch error'),
-    );
-    expect(actual.fetchingState).toEqual('error');
-    expect(actual.fetchingErrorMsg).toEqual('fetch error');
   });
 
   it('should handle fetchSuccess', () => {

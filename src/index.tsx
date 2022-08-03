@@ -45,7 +45,7 @@ ReactDOM.render(
       <Provider store={store}>
         <BrowserRouter>
           <Routes>
-            <Route index element={<MapPage />} />
+            <Route index element={errorHandledElement(<MapPage />)} />
             <Route
               path={EDIT_LINK(':postId')}
               element={errorHandledElement(<MapPage />)}

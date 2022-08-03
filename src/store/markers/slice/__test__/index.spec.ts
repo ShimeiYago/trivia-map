@@ -3,13 +3,8 @@ import { updateLoadedPages } from 'store/markers/actions';
 import { markersReducer, markersSlice } from '..';
 import { MarkersState } from '../../model';
 
-const {
-  fetchSuccess,
-  fetchFailure,
-  fetchStart,
-  updateMarkers,
-  updateTotalPages,
-} = markersSlice.actions;
+const { fetchSuccess, fetchStart, updateMarkers, updateTotalPages } =
+  markersSlice.actions;
 
 describe('markers reducer', () => {
   const initialState: MarkersState = {
@@ -29,12 +24,6 @@ describe('markers reducer', () => {
   it('should handle fetchStart', () => {
     const actual = markersReducer(initialState, fetchStart());
     expect(actual.fetchingState).toEqual('loading');
-  });
-
-  it('should handle fetchFailure', () => {
-    const actual = markersReducer(loadingState, fetchFailure('error'));
-    expect(actual.fetchingState).toEqual('error');
-    expect(actual.errorMsg).toEqual('error');
   });
 
   it('should handle fetchSuccess', () => {

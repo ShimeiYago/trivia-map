@@ -48,7 +48,7 @@ describe('fetchMarkers', () => {
     const appThunk = fetchMarkers() as any;
     await appThunk(dispatch, getState);
     expect(dispatch.mock.calls.slice(-1)[0][0].type).toBe(
-      'markers/fetchFailure',
+      'globalError/throwError',
     );
   });
 });

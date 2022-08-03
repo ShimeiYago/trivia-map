@@ -345,6 +345,12 @@ exports[`Shallow Snapshot Tests mobile view 1`] = `
 </ForwardRef(Box)>
 `;
 
+exports[`Shallow Snapshot Tests redirect 1`] = `
+<Navigate
+  to="/error/404"
+/>
+`;
+
 exports[`Shallow Snapshot Tests with article 1`] = `
 <ForwardRef(Box)
   sx={

@@ -66,6 +66,13 @@ describe('Shallow Snapshot Tests', () => {
     });
     expect(wrapper).toMatchSnapshot();
   });
+
+  it('redirect', () => {
+    wrapper.setState({
+      redirectNotFound: true,
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
 });
 
 describe('fetchArticle', () => {
@@ -86,6 +93,17 @@ describe('fetchArticle', () => {
     await instance['fetchArticle']();
 
     expect(instance.state.loadingState).toBe('success');
+  });
+
+  it('should set redirectNotFound when api fail with 404', async () => {
+    getRemoteArticleSpy.mockRejectedValue({ status: 404 });
+
+    wrapper = shallow(<Renderer {...basicProps} />);
+    const instance = wrapper.instance();
+
+    await instance['fetchArticle']();
+
+    expect(instance.state.redirectNotFound).toBeTruthy;
   });
 
   it('should set loadingstate error when api fail', async () => {

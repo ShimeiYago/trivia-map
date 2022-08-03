@@ -19,3 +19,5 @@ export const RESET_PASSWORD_LINK = (uid: string, token: string) =>
   `/reset-password/${uid}/${token}`;
 
 export const MAP_PAGE_LINK = '/';
+
+export const NOT_FOUND_LINK = '/error/404';

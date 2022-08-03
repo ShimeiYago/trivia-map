@@ -50,20 +50,6 @@ describe('componentDidUpdate', () => {
     expect(instance.state.message).toBe('投稿を削除しました。');
   });
 
-  it('should change states to show deleting marker error message', () => {
-    shallowWrapper.setProps({
-      markersDeletingState: 'error',
-      markersErrorMsg: 'delete error',
-    });
-    const instance = shallowWrapper.instance();
-
-    instance.componentDidUpdate({
-      ...props,
-      markersDeletingState: 'loading',
-    });
-    expect(instance.state.message).toBe('delete error');
-  });
-
   it('should change states to show deleting empty error message', () => {
     shallowWrapper.setProps({
       markersDeletingState: 'error',

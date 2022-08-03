@@ -1,5 +1,4 @@
 import {
-  selectMarkersErrorMsg,
   selectMarkersFetchingState,
   selectMarkers,
   selectMarkersTotalPages,
@@ -40,10 +39,6 @@ describe('markers selector', () => {
 
   it('selectMarkersFetchingState should return markers fetching state', () => {
     expect(selectMarkersFetchingState(rootState)).toEqual('waiting');
-  });
-
-  it('selectMarkersErrorMsg should return markers error message', () => {
-    expect(selectMarkersErrorMsg(rootState)).toEqual('error');
   });
 
   it('selectMarkersLoadedPages should return markers totalPages', () => {

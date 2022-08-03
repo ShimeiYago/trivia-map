@@ -20,12 +20,19 @@ exports[`Shallow Snapshot Tests basic 1`] = `
     open={true}
   >
     <ForwardRef(DialogTitle)>
-      投稿を保存しますか？
+      変更を保存しますか？
     </ForwardRef(DialogTitle)>
     <ForwardRef(DialogContent)>
-      （未確定）下書き保存すれば、後から再編集して投稿できます。
+      未保存のデータがありますが、本当に閉じてもよろしいですか？
     </ForwardRef(DialogContent)>
-    <ForwardRef(DialogActions)>
+    <ForwardRef(DialogActions)
+      sx={
+        Object {
+          "mb": 1,
+          "mr": 1,
+        }
+      }
+    >
       <ForwardRef(Button)
         onClick={[Function]}
         variant="outlined"

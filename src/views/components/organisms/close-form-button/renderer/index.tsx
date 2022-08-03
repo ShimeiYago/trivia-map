@@ -62,11 +62,11 @@ export class Renderer extends React.Component<Props, State> {
   protected renderDialog() {
     return (
       <Dialog open={this.state.openDialog} onClose={this.cancelToClose}>
-        <DialogTitle>投稿を保存しますか？</DialogTitle>
+        <DialogTitle>変更を保存しますか？</DialogTitle>
         <DialogContent>
-          （未確定）下書き保存すれば、後から再編集して投稿できます。
+          未保存のデータがありますが、本当に閉じてもよろしいですか？
         </DialogContent>
-        <DialogActions>
+        <DialogActions sx={{ mr: 1, mb: 1 }}>
           <Button onClick={this.handleClose} variant="outlined">
             破棄
           </Button>

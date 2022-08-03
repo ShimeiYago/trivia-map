@@ -18,6 +18,7 @@ import {
   ADMIN_LINK,
   ARTICLE_PAGE_LINK,
   EDIT_LINK,
+  INTERNAL_ERROR_LINK,
   LOGIN_LINK,
   PASSWORD_CHANGE_LINK,
   PROFILE_SETTINGS_LINK,
@@ -27,6 +28,7 @@ import {
 import { ChangePassword } from 'views/pages/change-password';
 import { ResetPassword } from 'views/pages/reset-password';
 import { NotFoundErrorPage } from 'views/pages/not-found-error-page';
+import { InternalErrorPage } from 'views/pages/internal-error-page';
 
 // Deactivate all console.log on production
 // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -54,6 +56,7 @@ ReactDOM.render(
               path={RESET_PASSWORD_LINK(':uid', ':token')}
               element={<ResetPassword />}
             />
+            <Route path={INTERNAL_ERROR_LINK} element={<InternalErrorPage />} />
             <Route path="*" element={<NotFoundErrorPage />} />
           </Routes>
         </BrowserRouter>

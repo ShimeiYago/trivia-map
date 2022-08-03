@@ -1,9 +1,7 @@
 export interface GlobalErrorState {
-  status?: ErrorStatus;
+  status?: number;
 }
 
 export const initialState: GlobalErrorState = {
   status: undefined,
 };
-
-export type ErrorStatus = 404 | 500;

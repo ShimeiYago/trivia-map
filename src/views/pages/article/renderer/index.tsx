@@ -26,7 +26,6 @@ import {
 } from 'api/articles-api/get-remote-article';
 import { ApiError } from 'api/utils/handle-axios-error';
 import { globalAPIErrorMessage } from 'constant/global-api-error-message';
-import { ErrorStatus } from 'store/global-error/model';
 
 // TODO: apiが404のときも403のときも401のときも等しく404エラーページ。500だけは別。
 export class Renderer extends React.Component<Props, State> {
@@ -193,7 +192,7 @@ export type Props = {
   postId: number;
   isMobile: boolean;
 
-  throwError: (errorStatus: ErrorStatus) => void;
+  throwError: (errorStatus: number) => void;
 };
 
 export type State = {

@@ -54,7 +54,11 @@ export class Renderer extends React.Component<Props, State> {
       window.removeEventListener('beforeunload', this.handleBeforeUnload);
     }
 
-    if (prevState.openFormModal && !this.state.openFormModal) {
+    if (
+      !this.props.isFormEditting &&
+      prevState.openFormModal &&
+      !this.state.openFormModal
+    ) {
       history.replaceState('', '', '/');
     }
   }

@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ErrorStatus, initialState } from '../model';
+import { initialState } from '../model';
 
 export const globalErrorSlice = createSlice({
   name: 'globalError',
   initialState,
   reducers: {
-    throwError(state, action: PayloadAction<ErrorStatus>) {
+    throwError(state, action: PayloadAction<number>) {
       state.status = action.payload;
     },
 

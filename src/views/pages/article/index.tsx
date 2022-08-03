@@ -2,7 +2,6 @@ import { Props, Renderer } from './renderer';
 import { useParams } from 'react-router-dom';
 import { isMobile } from 'react-device-detect';
 import { useAppDispatch } from 'store';
-import { ErrorStatus } from 'store/global-error/model';
 import { throwError } from 'store/global-error/slice';
 
 export function Article() {
@@ -19,7 +18,7 @@ export function Article() {
     postId: postIdNumber,
     isMobile: isMobile,
 
-    throwError: (errorStatus: ErrorStatus) => dispatch(throwError(errorStatus)),
+    throwError: (errorStatus: number) => dispatch(throwError(errorStatus)),
   };
 
   return <Renderer {...props} />;

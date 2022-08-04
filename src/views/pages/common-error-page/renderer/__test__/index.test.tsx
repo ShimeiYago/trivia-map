@@ -5,10 +5,15 @@ let wrapper: ShallowWrapper;
 
 describe('Shallow Snapshot Tests', () => {
   beforeEach(() => {
-    wrapper = shallow(<Renderer />);
+    wrapper = shallow(<Renderer errorStatus={500} />);
   });
 
   it('basic', () => {
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('404', () => {
+    wrapper.setProps({ errorStatus: 404 });
     expect(wrapper).toMatchSnapshot();
   });
 });

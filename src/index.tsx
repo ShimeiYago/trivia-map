@@ -20,6 +20,7 @@ import {
   EDIT_LINK,
   INTERNAL_ERROR_LINK,
   LOGIN_LINK,
+  NOT_FOUND_LINK,
   PASSWORD_CHANGE_LINK,
   PROFILE_SETTINGS_LINK,
   RESET_PASSWORD_LINK,
@@ -27,8 +28,7 @@ import {
 } from 'constant/links';
 import { ChangePassword } from 'views/pages/change-password';
 import { ResetPassword } from 'views/pages/reset-password';
-import { NotFoundErrorPage } from 'views/pages/not-found-error-page';
-import { InternalErrorPage } from 'views/pages/internal-error-page';
+import { CommonErrorPage } from 'views/pages/common-error-page';
 import { GlobalErrorHandler } from 'views/components/organisms/global-error-handler';
 
 // Deactivate all console.log on production
@@ -76,8 +76,15 @@ ReactDOM.render(
               path={RESET_PASSWORD_LINK(':uid', ':token')}
               element={errorHandledElement(<ResetPassword />)}
             />
-            <Route path={INTERNAL_ERROR_LINK} element={<InternalErrorPage />} />
-            <Route path="*" element={<NotFoundErrorPage />} />
+            <Route
+              path={NOT_FOUND_LINK}
+              element={<CommonErrorPage errorStatus={404} />}
+            />
+            <Route
+              path={INTERNAL_ERROR_LINK}
+              element={<CommonErrorPage errorStatus={500} />}
+            />
+            <Route path="*" element={<CommonErrorPage errorStatus={404} />} />
           </Routes>
         </BrowserRouter>
       </Provider>

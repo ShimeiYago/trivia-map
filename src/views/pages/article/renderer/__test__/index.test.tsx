@@ -10,6 +10,7 @@ let getRemoteArticleSpy: jest.SpyInstance;
 const basicProps: Props = {
   postId: 1,
   isMobile: false,
+  throwError: jest.fn(),
 };
 
 const article: GetArticleResponse = {
@@ -66,13 +67,6 @@ describe('Shallow Snapshot Tests', () => {
     });
     expect(wrapper).toMatchSnapshot();
   });
-
-  it('redirect', () => {
-    wrapper.setState({
-      redirectNotFound: true,
-    });
-    expect(wrapper).toMatchSnapshot();
-  });
 });
 
 describe('fetchArticle', () => {
@@ -103,7 +97,7 @@ describe('fetchArticle', () => {
 
     await instance['fetchArticle']();
 
-    expect(instance.state.redirectNotFound).toBeTruthy;
+    expect(instance.props.throwError).toBeCalled();
   });
 
   it('should set loadingstate error when api fail', async () => {
@@ -114,6 +108,6 @@ describe('fetchArticle', () => {
 
     await instance['fetchArticle']();
 
-    expect(instance.state.loadingState).toBe('error');
+    expect(instance.props.throwError).toBeCalled();
   });
 });

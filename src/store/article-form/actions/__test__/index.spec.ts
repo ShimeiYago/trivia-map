@@ -329,6 +329,16 @@ describe('fetchArticle', () => {
     expect(dispatch.mock.calls[1][0].type).toBe('articleForm/fetchSuccess');
   });
 
+  it('call fetchFailure if API failed with 404 error', async () => {
+    getRemoteArticleSpy.mockRejectedValue({ status: 404 });
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const appThunk = fetchArticle(1) as any;
+    await appThunk(dispatch);
+
+    expect(dispatch.mock.calls[1][0].type).toBe('globalError/throwError');
+  });
+
   it('call fetchFailure if API failed', async () => {
     getRemoteArticleSpy.mockRejectedValue(new Error());
 
@@ -336,7 +346,7 @@ describe('fetchArticle', () => {
     const appThunk = fetchArticle(1) as any;
     await appThunk(dispatch);
 
-    expect(dispatch.mock.calls[1][0].type).toBe('articleForm/fetchFailure');
+    expect(dispatch.mock.calls[1][0].type).toBe('globalError/throwError');
   });
 });
 

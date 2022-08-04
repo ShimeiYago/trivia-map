@@ -21,3 +21,5 @@ export const RESET_PASSWORD_LINK = (uid: string, token: string) =>
 export const MAP_PAGE_LINK = '/';
 
 export const NOT_FOUND_LINK = '/error/404';
+
+export const INTERNAL_ERROR_LINK = '/error/500';

@@ -13,14 +13,8 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   componentDidUpdate(prevProps: Props) {
-    const {
-      articleFormSubmittingState,
-      articleFormFetchingState,
-      articleFormFetchingErrorMsg,
-      markersDeletingState,
-      markersErrorMsg,
-      closeFormModal,
-    } = this.props;
+    const { articleFormSubmittingState, markersDeletingState, closeFormModal } =
+      this.props;
 
     if (
       prevProps.articleFormSubmittingState !== articleFormSubmittingState &&
@@ -35,18 +29,6 @@ export class Renderer extends React.Component<Props, State> {
     }
 
     if (
-      prevProps.articleFormFetchingState !== articleFormFetchingState &&
-      articleFormFetchingState === 'error'
-    ) {
-      this.setState({
-        show: true,
-        message: articleFormFetchingErrorMsg ?? '',
-        type: 'error',
-      });
-      closeFormModal();
-    }
-
-    if (
       prevProps.markersDeletingState !== markersDeletingState &&
       markersDeletingState === 'success'
     ) {
@@ -54,17 +36,6 @@ export class Renderer extends React.Component<Props, State> {
         show: true,
         message: '投稿を削除しました。',
         type: 'success',
-      });
-    }
-
-    if (
-      prevProps.markersDeletingState !== markersDeletingState &&
-      markersDeletingState === 'error'
-    ) {
-      this.setState({
-        show: true,
-        message: markersErrorMsg ?? '',
-        type: 'error',
       });
     }
   }
@@ -95,11 +66,8 @@ export class Renderer extends React.Component<Props, State> {
 }
 
 export type Props = {
-  articleFormFetchingState: LoadingState;
-  articleFormFetchingErrorMsg?: string;
   articleFormSubmittingState: LoadingState;
   markersDeletingState: LoadingState;
-  markersErrorMsg?: string;
 
   closeFormModal: () => void;
 };

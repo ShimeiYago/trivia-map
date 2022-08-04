@@ -18,6 +18,7 @@ import {
   ADMIN_LINK,
   ARTICLE_PAGE_LINK,
   EDIT_LINK,
+  INTERNAL_ERROR_LINK,
   LOGIN_LINK,
   PASSWORD_CHANGE_LINK,
   PROFILE_SETTINGS_LINK,
@@ -27,10 +28,16 @@ import {
 import { ChangePassword } from 'views/pages/change-password';
 import { ResetPassword } from 'views/pages/reset-password';
 import { NotFoundErrorPage } from 'views/pages/not-found-error-page';
+import { InternalErrorPage } from 'views/pages/internal-error-page';
+import { GlobalErrorHandler } from 'views/components/organisms/global-error-handler';
 
 // Deactivate all console.log on production
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 process.env.NODE_ENV === 'production' && (console.log = () => {});
+
+function errorHandledElement(element: React.ReactNode) {
+  return <GlobalErrorHandler>{element}</GlobalErrorHandler>;
+}
 
 ReactDOM.render(
   <React.StrictMode>
@@ -38,22 +45,38 @@ ReactDOM.render(
       <Provider store={store}>
         <BrowserRouter>
           <Routes>
-            <Route index element={<MapPage />} />
-            <Route path={EDIT_LINK(':postId')} element={<MapPage />} />
-            <Route path={ARTICLE_PAGE_LINK(':postId')} element={<Article />} />
-            <Route path={LOGIN_LINK} element={<Login />} />
-            <Route path={ADMIN_LINK} element={<Admin />} />
-            <Route path={ACCOUNT_SETTINGS_LINK} element={<AccountSettings />} />
-            <Route path={PROFILE_SETTINGS_LINK} element={<ProfileEdit />} />
-            <Route path={PASSWORD_CHANGE_LINK} element={<ChangePassword />} />
+            <Route index element={errorHandledElement(<MapPage />)} />
+            <Route
+              path={EDIT_LINK(':postId')}
+              element={errorHandledElement(<MapPage />)}
+            />
+            <Route
+              path={ARTICLE_PAGE_LINK(':postId')}
+              element={errorHandledElement(<Article />)}
+            />
+            <Route path={LOGIN_LINK} element={errorHandledElement(<Login />)} />
+            <Route path={ADMIN_LINK} element={errorHandledElement(<Admin />)} />
+            <Route
+              path={ACCOUNT_SETTINGS_LINK}
+              element={errorHandledElement(<AccountSettings />)}
+            />
+            <Route
+              path={PROFILE_SETTINGS_LINK}
+              element={errorHandledElement(<ProfileEdit />)}
+            />
+            <Route
+              path={PASSWORD_CHANGE_LINK}
+              element={errorHandledElement(<ChangePassword />)}
+            />
             <Route
               path={VERIFY_EMAIL_LINK(':verifyKey')}
-              element={<VerifyEmail />}
+              element={errorHandledElement(<VerifyEmail />)}
             />
             <Route
               path={RESET_PASSWORD_LINK(':uid', ':token')}
-              element={<ResetPassword />}
+              element={errorHandledElement(<ResetPassword />)}
             />
+            <Route path={INTERNAL_ERROR_LINK} element={<InternalErrorPage />} />
             <Route path="*" element={<NotFoundErrorPage />} />
           </Routes>
         </BrowserRouter>

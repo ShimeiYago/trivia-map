@@ -7,7 +7,6 @@ import {
   selectArticleFormFetchingState,
   selectArticleFormFormError,
   selectArticleFormIsEditting,
-  selectArticleFormFetchingErrorMsg,
   selectArticleFormLastSavedTitle,
   selectArticleFormLastSavedDescription,
   selectArticleFormLastSavedPosition,
@@ -38,7 +37,6 @@ describe('readingArticle selector', () => {
       fetchingState: 'success',
       formError: formError,
       isEditting: false,
-      fetchingErrorMsg: 'fetch error',
       isFormChangedFromLastSaved: false,
       isDraft: true,
     } as ArticleFormState,
@@ -103,10 +101,6 @@ describe('readingArticle selector', () => {
 
   it('selectArticleFormIsEditting should return articleForm isEditting state', () => {
     expect(selectArticleFormIsEditting(rootState)).toEqual(false);
-  });
-
-  it('selectArticleFormFetchingErrorMsg should return articleForm fetchingErrorMsg state', () => {
-    expect(selectArticleFormFetchingErrorMsg(rootState)).toEqual('fetch error');
   });
 
   it('selectArticleFormIsFormChangedFromLastSaved should return articleForm isFormChangedFromLastSaved state', () => {

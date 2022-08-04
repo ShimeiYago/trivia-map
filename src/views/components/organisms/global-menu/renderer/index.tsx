@@ -159,7 +159,14 @@ export class Renderer extends React.Component<Props, State> {
       </Link>
     ));
 
-    return <Stack spacing={2}>{menuList}</Stack>;
+    return (
+      <Stack spacing={2}>
+        {menuList}
+        <Button variant="outlined" onClick={this.handleClickLogout}>
+          ログアウト
+        </Button>
+      </Stack>
+    );
   };
 
   protected handleClickAuthMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -189,6 +196,10 @@ export class Renderer extends React.Component<Props, State> {
     await sleep(1000);
     this.props.toggleAuthFormModal(false);
   };
+
+  protected handleClickLogout = () => {
+    this.props.logout();
+  };
 }
 
 export type Props = {
@@ -200,6 +211,7 @@ export type Props = {
 
   autoLogin: () => void;
   toggleAuthFormModal: (open: boolean) => void;
+  logout: () => void;
 };
 
 export type State = {

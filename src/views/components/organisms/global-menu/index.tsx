@@ -1,6 +1,6 @@
 import { Props, Renderer } from './renderer';
 import { useAppSelector, useAppDispatch } from 'store';
-import { autoLogin, toggleFormModal } from 'store/auths/actions';
+import { autoLogin, logout, toggleFormModal } from 'store/auths/actions';
 import { selectOpenFormModal, selectUser } from 'store/auths/selector';
 
 export function GlobalMenu(ownProps: OwnProps) {
@@ -12,8 +12,10 @@ export function GlobalMenu(ownProps: OwnProps) {
     permanentLeftNavi: ownProps.permanentLeftNavi,
     userInfo: useAppSelector(selectUser),
     openAuthFormModal: useAppSelector(selectOpenFormModal),
+
     autoLogin: () => dispatch(autoLogin()),
     toggleAuthFormModal: (open: boolean) => dispatch(toggleFormModal(open)),
+    logout: () => dispatch(logout()),
   };
 
   return <Renderer {...props} />;

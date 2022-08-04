@@ -1,4 +1,9 @@
-import { selectAutoLoggingInState, selectUser, selectOpenFormModal } from '..';
+import {
+  selectAutoLoggingInState,
+  selectUser,
+  selectOpenFormModal,
+  selectLoggedOutSuccessfully,
+} from '..';
 import { AuthsState } from '../../model';
 
 describe('auths selector', () => {
@@ -13,6 +18,7 @@ describe('auths selector', () => {
       },
       errorMsg: 'error',
       openFormModal: true,
+      loggedOutSuccessfully: false,
     } as AuthsState,
   };
 
@@ -30,5 +36,9 @@ describe('auths selector', () => {
 
   it('selectOpenFormModal should return openFormModal', () => {
     expect(selectOpenFormModal(rootState)).toEqual(true);
+  });
+
+  it('selectLoggedOutSuccessfully should return loggedOutSuccessfully', () => {
+    expect(selectLoggedOutSuccessfully(rootState)).toEqual(false);
   });
 });

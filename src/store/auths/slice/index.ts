@@ -26,6 +26,16 @@ export const authsSlice = createSlice({
     toggleFormModal(state, action: PayloadAction<boolean>) {
       state.openFormModal = action.payload;
     },
+
+    logoutStart(state) {
+      state.loggedOutSuccessfully = false;
+    },
+
+    logoutSuccess(state) {
+      state.loggedOutSuccessfully = true;
+      state.user = undefined;
+      state.autoLoggingInState = 'error';
+    },
   },
 });
 

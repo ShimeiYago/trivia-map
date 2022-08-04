@@ -52,7 +52,6 @@ exports[`Shallow Snapshot Tests basic 1`] = `
 <ForwardRef(Typography)
   align="center"
   component="div"
-  fontSize={18}
   sx={
     Object {
       "mt": 3,
@@ -61,16 +60,29 @@ exports[`Shallow Snapshot Tests basic 1`] = `
 >
   <ForwardRef(Typography)
     component="h1"
+    fontSize={18}
   >
     エラーが発生しました。
   </ForwardRef(Typography)>
-  <ForwardRef(Typography)>
+  <ForwardRef(Typography)
+    fontSize={18}
+  >
     しばらく時間を空けてからもう一度お試しください。
   </ForwardRef(Typography)>
-  <Link
-    to="/"
+  <ForwardRef(Typography)
+    component="h1"
+    fontSize={20}
+    sx={
+      Object {
+        "mt": 1,
+      }
+    }
   >
-    トップへ戻る
-  </Link>
+    <Link
+      to="/"
+    >
+      トップへ戻る
+    </Link>
+  </ForwardRef(Typography)>
 </ForwardRef(Typography)>
 `;

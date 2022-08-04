@@ -6,10 +6,14 @@ import { mockGetArticlesPreviewsResponse } from 'api/mock/articles-response';
 let wrapper: ShallowWrapper<unknown, State, Renderer>;
 let getArticlesPreviewsSpy: jest.SpyInstance;
 
+const basicProps = {
+  throwError: jest.fn(),
+};
+
 describe('Shallow Snapshot Tests', () => {
   beforeEach(() => {
     jest.resetAllMocks();
-    wrapper = shallow(<Renderer />);
+    wrapper = shallow(<Renderer {...basicProps} />);
     getArticlesPreviewsSpy = jest.spyOn(
       GetArticlesPreviewsApiModule,
       'getArticlesPreviews',
@@ -37,11 +41,6 @@ describe('Shallow Snapshot Tests', () => {
     });
     expect(wrapper).toMatchSnapshot();
   });
-
-  it('with api error', () => {
-    wrapper.setState({ loadingState: 'error' });
-    expect(wrapper).toMatchSnapshot();
-  });
 });
 
 describe('fetchArticlesPreviews', () => {
@@ -56,7 +55,7 @@ describe('fetchArticlesPreviews', () => {
   it('should set success states if api calling succeed', async () => {
     getArticlesPreviewsSpy.mockResolvedValue(mockGetArticlesPreviewsResponse);
 
-    wrapper = shallow(<Renderer />);
+    wrapper = shallow(<Renderer {...basicProps} />);
     const instance = wrapper.instance();
     await instance['fetchArticlesPreviews']();
 
@@ -66,11 +65,11 @@ describe('fetchArticlesPreviews', () => {
   it('should set error states if api calling fail', async () => {
     getArticlesPreviewsSpy.mockRejectedValue(new Error());
 
-    wrapper = shallow(<Renderer />);
+    wrapper = shallow(<Renderer {...basicProps} />);
     const instance = wrapper.instance();
     await instance['fetchArticlesPreviews']();
 
-    expect(instance.state.loadingState).toBe('error');
+    expect(instance.props.throwError).toBeCalled();
   });
 });
 
@@ -84,7 +83,7 @@ describe('handleChangePagination', () => {
   });
 
   it('should set success states if api calling succeed', () => {
-    wrapper = shallow(<Renderer />);
+    wrapper = shallow(<Renderer {...basicProps} />);
     const instance = wrapper.instance();
     instance['handleChangePagination']({} as React.ChangeEvent<unknown>, 1);
 

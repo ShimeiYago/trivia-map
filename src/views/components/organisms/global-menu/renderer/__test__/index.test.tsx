@@ -7,6 +7,7 @@ const basicProps: Props = {
   topBarPosition: 'fixed',
   children: 'contents',
   openAuthFormModal: false,
+  loggedOutSuccessfully: false,
   autoLogin: jest.fn(),
   toggleAuthFormModal: jest.fn(),
   logout: jest.fn(),
@@ -44,6 +45,45 @@ describe('Shallow Snapshot Tests', () => {
       },
     });
     expect(wrapper).toMatchSnapshot();
+  });
+
+  it('redirect to top page', () => {
+    wrapper.setState({
+      redirectToTop: true,
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+});
+
+describe('componentDidUpdate', () => {
+  beforeEach(() => {
+    wrapper = shallow(<Renderer {...basicProps} />);
+  });
+
+  it('should set authMenuAnchorEl null when loggedOutSuccessfully is changed to true', () => {
+    wrapper.setProps({
+      loggedOutSuccessfully: true,
+    });
+
+    const instance = wrapper.instance();
+    instance['componentDidUpdate'](
+      { loggedOutSuccessfully: false } as Props,
+      {} as State,
+    );
+    expect(instance.state.authMenuAnchorEl).toBe(null);
+  });
+
+  it('should set redirectToTop false when redirectToTop is changed to true', () => {
+    wrapper.setState({
+      redirectToTop: true,
+    });
+
+    const instance = wrapper.instance();
+    instance['componentDidUpdate'](
+      {} as Props,
+      { redirectToTop: false } as State,
+    );
+    expect(instance.state.redirectToTop).toBeFalsy();
   });
 });
 

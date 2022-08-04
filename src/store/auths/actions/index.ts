@@ -6,6 +6,7 @@ import { getUserInfo } from 'api/auths-api/get-user-info';
 import { refreshToken } from 'api/auths-api/refresh-token';
 import { logout as logoutApi } from 'api/auths-api/logout';
 import { selectUser } from '../selector';
+import { sleep } from 'utils/sleep';
 
 // basic actions
 export const {
@@ -57,7 +58,10 @@ export const logout = (): AppThunk => async (dispatch) => {
   try {
     await logoutApi();
     dispatch(logoutSuccess());
-    return;
+
+    // In order to set loggedOutSuccessfully false
+    await sleep(3000);
+    dispatch(logoutStart());
   } catch (error) {
     dispatch(throwError(500));
   }

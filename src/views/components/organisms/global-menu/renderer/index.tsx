@@ -18,11 +18,12 @@ import { User } from 'types/user';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { IconAndText } from 'views/components/atoms/icon-and-text';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { authMenuLinks } from '../constants';
 import { BoxModal } from 'views/components/moleculars/box-modal';
 import { AuthForms } from '../../auth-forms';
 import { sleep } from 'utils/sleep';
+import { MAP_PAGE_LINK } from 'constant/links';
 
 export class Renderer extends React.Component<Props, State> {
   static readonly defaultProps: Pick<Props, 'topBarPosition'> = {
@@ -37,9 +38,29 @@ export class Renderer extends React.Component<Props, State> {
   state = {
     openLeftNavi: false,
     authMenuAnchorEl: null,
+    redirectToTop: false,
   };
 
+  componentDidUpdate(prevProps: Props, prevState: State) {
+    if (!prevProps.loggedOutSuccessfully && this.props.loggedOutSuccessfully) {
+      this.setState({
+        redirectToTop: true,
+        authMenuAnchorEl: null,
+      });
+    }
+
+    if (!prevState.redirectToTop && this.state.redirectToTop) {
+      this.setState({
+        redirectToTop: false,
+      });
+    }
+  }
+
   render() {
+    if (this.state.redirectToTop) {
+      return <Navigate to={MAP_PAGE_LINK} />;
+    }
+
     return (
       <>
         <AppBar
@@ -159,7 +180,14 @@ export class Renderer extends React.Component<Props, State> {
       </Link>
     ));
 
-    return <Stack spacing={2}>{menuList}</Stack>;
+    return (
+      <Stack spacing={2}>
+        {menuList}
+        <Button variant="outlined" onClick={this.handleClickLogout}>
+          ログアウト
+        </Button>
+      </Stack>
+    );
   };
 
   protected handleClickAuthMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -188,6 +216,13 @@ export class Renderer extends React.Component<Props, State> {
   protected handleLoginSucceed = async () => {
     await sleep(1000);
     this.props.toggleAuthFormModal(false);
+    this.setState({
+      authMenuAnchorEl: null,
+    });
+  };
+
+  protected handleClickLogout = () => {
+    this.props.logout();
   };
 }
 
@@ -197,12 +232,15 @@ export type Props = {
   permanentLeftNavi?: boolean;
   userInfo?: User;
   openAuthFormModal: boolean;
+  loggedOutSuccessfully: boolean;
 
   autoLogin: () => void;
   toggleAuthFormModal: (open: boolean) => void;
+  logout: () => void;
 };
 
 export type State = {
   openLeftNavi: boolean;
   authMenuAnchorEl: HTMLElement | null;
+  redirectToTop: boolean;
 };

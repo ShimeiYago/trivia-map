@@ -7,6 +7,7 @@ const props: Props = {
   articleFormSubmittingState: 'waiting',
   closeFormModal: jest.fn(),
   markersDeletingState: 'waiting',
+  loggedOutSuccessfully: false,
 };
 
 describe('Shallow Snapshot Tests', () => {
@@ -16,6 +17,17 @@ describe('Shallow Snapshot Tests', () => {
 
   it('basic', () => {
     expect(shallowWrapper).toMatchSnapshot();
+  });
+});
+
+describe('componentDidMount', () => {
+  it('should change states to show logout success message', () => {
+    shallowWrapper = shallow(<Renderer {...props} />);
+    shallowWrapper.setProps({ loggedOutSuccessfully: true });
+    const instance = shallowWrapper.instance();
+
+    instance['componentDidMount']();
+    expect(instance.state.message).toBe('ログアウトしました。');
   });
 });
 
@@ -61,6 +73,19 @@ describe('componentDidUpdate', () => {
       markersDeletingState: 'loading',
     });
     expect(instance.state.message).toBe('');
+  });
+
+  it('should change states to show logout success message', () => {
+    shallowWrapper.setProps({
+      loggedOutSuccessfully: true,
+    });
+    const instance = shallowWrapper.instance();
+
+    instance.componentDidUpdate({
+      ...props,
+      loggedOutSuccessfully: false,
+    });
+    expect(instance.state.message).toBe('ログアウトしました。');
   });
 });
 

@@ -12,9 +12,23 @@ export class Renderer extends React.Component<Props, State> {
     };
   }
 
+  componentDidMount() {
+    if (this.props.loggedOutSuccessfully) {
+      this.setState({
+        show: true,
+        message: 'ログアウトしました。',
+        type: 'success',
+      });
+    }
+  }
+
   componentDidUpdate(prevProps: Props) {
-    const { articleFormSubmittingState, markersDeletingState, closeFormModal } =
-      this.props;
+    const {
+      articleFormSubmittingState,
+      markersDeletingState,
+      loggedOutSuccessfully,
+      closeFormModal,
+    } = this.props;
 
     if (
       prevProps.articleFormSubmittingState !== articleFormSubmittingState &&
@@ -35,6 +49,14 @@ export class Renderer extends React.Component<Props, State> {
       this.setState({
         show: true,
         message: '投稿を削除しました。',
+        type: 'success',
+      });
+    }
+
+    if (!prevProps.loggedOutSuccessfully && loggedOutSuccessfully) {
+      this.setState({
+        show: true,
+        message: 'ログアウトしました。',
         type: 'success',
       });
     }
@@ -68,6 +90,7 @@ export class Renderer extends React.Component<Props, State> {
 export type Props = {
   articleFormSubmittingState: LoadingState;
   markersDeletingState: LoadingState;
+  loggedOutSuccessfully: boolean;
 
   closeFormModal: () => void;
 };

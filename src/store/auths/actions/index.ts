@@ -1,9 +1,12 @@
+import { throwError } from 'store/global-error/slice';
 import { selectAutoLoggingInState } from './../selector/index';
 import { authsSlice } from '../slice';
 import { AppThunk } from 'store';
 import { getUserInfo } from 'api/auths-api/get-user-info';
 import { refreshToken } from 'api/auths-api/refresh-token';
+import { logout as logoutApi } from 'api/auths-api/logout';
 import { selectUser } from '../selector';
+import { sleep } from 'utils/sleep';
 
 // basic actions
 export const {
@@ -12,6 +15,8 @@ export const {
   autoLoginFailure,
   toggleFormModal,
   updateUser,
+  logoutStart,
+  logoutSuccess,
 } = authsSlice.actions;
 
 // autoLogin action
@@ -44,5 +49,20 @@ export const refreshTokenAndGetUserInfo = (): AppThunk => async (dispatch) => {
     return;
   } catch (error) {
     dispatch(autoLoginFailure());
+  }
+};
+
+//logout
+export const logout = (): AppThunk => async (dispatch) => {
+  dispatch(logoutStart());
+  try {
+    await logoutApi();
+    dispatch(logoutSuccess());
+
+    // In order to set loggedOutSuccessfully false
+    await sleep(3000);
+    dispatch(logoutStart());
+  } catch (error) {
+    dispatch(throwError(500));
   }
 };

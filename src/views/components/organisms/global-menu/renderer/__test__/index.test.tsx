@@ -9,6 +9,7 @@ const basicProps: Props = {
   openAuthFormModal: false,
   autoLogin: jest.fn(),
   toggleAuthFormModal: jest.fn(),
+  logout: jest.fn(),
 };
 
 let wrapper: ShallowWrapper<Props, State, Renderer>;
@@ -106,5 +107,17 @@ describe('handleLoginSucceed', () => {
     const instance = wrapper.instance();
     await instance['handleLoginSucceed']();
     expect(instance.props.toggleAuthFormModal).toBeCalled();
+  });
+});
+
+describe('handleClickLogout', () => {
+  beforeEach(() => {
+    wrapper = shallow(<Renderer {...basicProps} />);
+  });
+
+  it('should call logout', async () => {
+    const instance = wrapper.instance();
+    await instance['handleClickLogout']();
+    expect(instance.props.logout).toBeCalled();
   });
 });

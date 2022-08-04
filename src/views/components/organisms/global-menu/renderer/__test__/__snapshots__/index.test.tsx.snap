@@ -777,6 +777,12 @@ exports[`Shallow Snapshot Tests with userInfo 1`] = `
                   text="アカウント管理"
                 />
               </Link>
+              <ForwardRef(Button)
+                onClick={[Function]}
+                variant="outlined"
+              >
+                ログアウト
+              </ForwardRef(Button)>
             </ForwardRef(Stack)>
           </ForwardRef(Box)>
         </ForwardRef(Popover)>

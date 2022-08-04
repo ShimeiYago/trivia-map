@@ -1,4 +1,3 @@
-import { globalAPIErrorMessage } from 'constant/global-api-error-message';
 import { selectMarkers } from 'store/markers/selector';
 import { markersSlice } from './../slice/index';
 import { AppThunk } from 'store';
@@ -6,18 +5,17 @@ import {
   getRemoteMarkers,
   GetMarkersResponseWithPagination,
 } from 'api/markers-api';
-import { ApiError } from 'api/utils/handle-axios-error';
 import { Marker } from '../model';
 import {
   concatMarkers as helperConcatMarkers,
   pushMarker as helperPushMarker,
   deleteOneMarker as helperDeleteOneMarker,
 } from './helpers';
+import { throwError } from 'store/global-error/slice';
 
 // basic actions
 export const {
   fetchSuccess,
-  fetchFailure,
   fetchStart,
   updateMarkers,
   updateTotalPages,
@@ -56,10 +54,8 @@ export const fetchMarkers = (): AppThunk => async (dispatch) => {
     dispatch(fetchSuccess());
   } catch (error) {
     // TODO: take log of error
-    const apiError = error as ApiError<unknown>;
 
-    const errorMsg = globalAPIErrorMessage(apiError.status, 'get');
-    dispatch(fetchFailure(errorMsg));
+    dispatch(throwError(500));
   }
 };
 

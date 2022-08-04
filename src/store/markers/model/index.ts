@@ -11,7 +11,6 @@ export interface Marker {
 export interface MarkersState {
   markers: Marker[];
   fetchingState: LoadingState;
-  errorMsg?: string;
   loadedPages: number;
   totalPages?: number;
 }

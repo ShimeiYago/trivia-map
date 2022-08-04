@@ -10,7 +10,7 @@ import {
 } from '@mui/material';
 import { LoadingState } from 'types/loading-state';
 import { GlobalMenu } from 'views/components/organisms/global-menu';
-import { Link, Navigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { ArticlePaper } from 'views/components/atoms/article-paper';
 import { Image } from 'views/components/atoms/image';
 import { TriviaMap } from 'views/components/organisms/trivia-map';
@@ -19,21 +19,18 @@ import MapIcon from '@mui/icons-material/Map';
 import { deepOrange } from '@mui/material/colors';
 import { IconAndText } from 'views/components/atoms/icon-and-text';
 import { CenterSpinner } from 'views/components/atoms/center-spinner';
-import { MAP_PAGE_LINK, NOT_FOUND_LINK } from 'constant/links';
+import { MAP_PAGE_LINK } from 'constant/links';
 import {
   GetArticleResponse,
   getRemoteArticle,
 } from 'api/articles-api/get-remote-article';
 import { ApiError } from 'api/utils/handle-axios-error';
-import { globalAPIErrorMessage } from 'constant/global-api-error-message';
 
-// TODO: apiが404のときも403のときも401のときも等しく404エラーページ。500だけは別。
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
       loadingState: 'waiting',
-      redirectNotFound: false,
     };
   }
 
@@ -43,10 +40,6 @@ export class Renderer extends React.Component<Props, State> {
 
   render() {
     const { isMobile } = this.props;
-
-    if (this.state.redirectNotFound) {
-      return <Navigate to={NOT_FOUND_LINK} />;
-    }
 
     return (
       <Box sx={wrapper}>
@@ -76,11 +69,7 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   protected renderMainArticle = () => {
-    const { article, loadingState, errorMsg } = this.state;
-
-    if (loadingState === 'error') {
-      return <Alert severity="error">{errorMsg}</Alert>;
-    }
+    const { article, loadingState } = this.state;
 
     if (!article || loadingState === 'waiting' || loadingState === 'loading') {
       return <CenterSpinner />;
@@ -164,7 +153,6 @@ export class Renderer extends React.Component<Props, State> {
     this.setState({
       article: undefined,
       loadingState: 'loading',
-      errorMsg: undefined,
     });
     try {
       const res = await getRemoteArticle(this.props.postId);
@@ -180,17 +168,10 @@ export class Renderer extends React.Component<Props, State> {
         apiError.status === 401 ||
         apiError.status === 403
       ) {
-        this.setState({
-          redirectNotFound: true,
-        });
+        this.props.throwError(404);
+      } else {
+        this.props.throwError(500);
       }
-
-      // TODO: Redirect to 500 error page
-      const errorMsg = globalAPIErrorMessage(apiError.status, 'get');
-      this.setState({
-        loadingState: 'error',
-        errorMsg: errorMsg,
-      });
     }
   };
 }
@@ -198,11 +179,11 @@ export class Renderer extends React.Component<Props, State> {
 export type Props = {
   postId: number;
   isMobile: boolean;
+
+  throwError: (errorStatus: number) => void;
 };
 
 export type State = {
   article?: GetArticleResponse;
   loadingState: LoadingState;
-  errorMsg?: string;
-  redirectNotFound: boolean;
 };

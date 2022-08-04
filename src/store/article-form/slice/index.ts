@@ -49,11 +49,6 @@ export const articleFormSlice = createSlice({
       state.formError = undefined;
     },
 
-    fetchFailure(state, action: PayloadAction<string>) {
-      state.fetchingState = 'error';
-      state.fetchingErrorMsg = action.payload;
-    },
-
     fetchSuccess(state, action: PayloadAction<GetArticleResponse>) {
       state.fetchingState = 'success';
       state.title = action.payload.title;
@@ -73,7 +68,6 @@ export const articleFormSlice = createSlice({
       state.fetchingState = initialState.fetchingState;
       state.formError = initialState.formError;
       state.isEditting = initialState.isEditting;
-      state.fetchingErrorMsg = initialState.fetchingErrorMsg;
       state.lastSavedTitle = initialState.lastSavedTitle;
       state.lastSavedDescription = initialState.lastSavedDescription;
       state.lastSavedPosition = initialState.lastSavedPosition;

@@ -32,17 +32,6 @@ describe('Shallow Snapshot Tests', () => {
     expect(shallowWrapper).toMatchSnapshot();
   });
 
-  it('with error', () => {
-    shallowWrapper.setProps({
-      markersFetchingState: 'error',
-      markersErrorMsg: 'loading error',
-    });
-    shallowWrapper.setState({
-      showLoadingProgressBar: true,
-    });
-    expect(shallowWrapper).toMatchSnapshot();
-  });
-
   it('mobile view', () => {
     shallowWrapper.setProps({
       isMobile: true,

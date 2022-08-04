@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shallow Snapshot Tests basic 1`] = `"children"`;
+
+exports[`Shallow Snapshot Tests redirect to 404 1`] = `
+<Navigate
+  to="/error/404"
+/>
+`;
+
+exports[`Shallow Snapshot Tests redirect to 500 1`] = `
+<Navigate
+  to="/error/500"
+/>
+`;

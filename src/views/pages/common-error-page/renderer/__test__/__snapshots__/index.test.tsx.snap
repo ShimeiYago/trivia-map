@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Shallow Snapshot Tests basic 1`] = `
+exports[`Shallow Snapshot Tests 404 1`] = `
 <GlobalMenu
   topBarPosition="static"
 >
@@ -46,4 +46,43 @@ exports[`Shallow Snapshot Tests basic 1`] = `
     </ForwardRef(Typography)>
   </ForwardRef(Box)>
 </GlobalMenu>
+`;
+
+exports[`Shallow Snapshot Tests basic 1`] = `
+<ForwardRef(Typography)
+  align="center"
+  component="div"
+  sx={
+    Object {
+      "mt": 3,
+    }
+  }
+>
+  <ForwardRef(Typography)
+    component="h1"
+    fontSize={18}
+  >
+    エラーが発生しました。
+  </ForwardRef(Typography)>
+  <ForwardRef(Typography)
+    fontSize={18}
+  >
+    しばらく時間を空けてからもう一度お試しください。
+  </ForwardRef(Typography)>
+  <ForwardRef(Typography)
+    component="h1"
+    fontSize={20}
+    sx={
+      Object {
+        "mt": 1,
+      }
+    }
+  >
+    <Link
+      to="/"
+    >
+      トップへ戻る
+    </Link>
+  </ForwardRef(Typography)>
+</ForwardRef(Typography)>
 `;

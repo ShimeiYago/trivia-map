@@ -10,14 +10,6 @@ exports[`Shallow Snapshot Tests articlesPreviews is zero 1`] = `
 
 exports[`Shallow Snapshot Tests basic 1`] = `<CenterSpinner />`;
 
-exports[`Shallow Snapshot Tests with api error 1`] = `
-<ForwardRef(Alert)
-  severity="error"
->
-  データの取得に失敗しました。
-</ForwardRef(Alert)>
-`;
-
 exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
 <ForwardRef(Stack)
   spacing={1}

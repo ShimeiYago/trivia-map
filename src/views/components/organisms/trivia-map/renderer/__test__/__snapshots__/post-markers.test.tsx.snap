@@ -19,6 +19,21 @@ exports[`Shallow Snapshot Tests basic 1`] = `
           keyId={100}
           type="markerId"
         />
+        <ForwardRef(Box)
+          sx={
+            Object {
+              "mt": 2,
+              "textAlign": "right",
+            }
+          }
+        >
+          <ForwardRef(Button)
+            onClick={[Function]}
+            startIcon={<Memo />}
+          >
+            投稿を追加する
+          </ForwardRef(Button)>
+        </ForwardRef(Box)>
       </ForwardRef(Box)>
     }
     position={
@@ -46,6 +61,21 @@ exports[`Shallow Snapshot Tests basic 1`] = `
           keyId={101}
           type="markerId"
         />
+        <ForwardRef(Box)
+          sx={
+            Object {
+              "mt": 2,
+              "textAlign": "right",
+            }
+          }
+        >
+          <ForwardRef(Button)
+            onClick={[Function]}
+            startIcon={<Memo />}
+          >
+            投稿を追加する
+          </ForwardRef(Button)>
+        </ForwardRef(Box)>
       </ForwardRef(Box)>
     }
     position={
@@ -78,6 +108,21 @@ exports[`Shallow Snapshot Tests with hiddenMarkerIds 1`] = `
           keyId={101}
           type="markerId"
         />
+        <ForwardRef(Box)
+          sx={
+            Object {
+              "mt": 2,
+              "textAlign": "right",
+            }
+          }
+        >
+          <ForwardRef(Button)
+            onClick={[Function]}
+            startIcon={<Memo />}
+          >
+            投稿を追加する
+          </ForwardRef(Button)>
+        </ForwardRef(Box)>
       </ForwardRef(Box)>
     }
     position={

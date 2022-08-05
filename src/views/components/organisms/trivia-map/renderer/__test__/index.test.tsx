@@ -26,6 +26,7 @@ const basicProps: Props = {
       park: 'S',
     },
   ],
+  updateIsEditting: jest.fn(),
 };
 
 let shallowWrapper: ShallowWrapper<Props, State, Renderer>;
@@ -245,6 +246,39 @@ describe('handleDragEndNewMarker', () => {
 
     instance['handleDragEndNewMarker'](newPosition);
     expect(instance.state.currentPosition).toEqual({
+      lat: 1,
+      lng: 1,
+      park: 'S',
+    });
+  });
+});
+
+describe('openFormWithTheMarker', () => {
+  beforeEach(() => {
+    shallowWrapper = shallow(<Renderer {...basicProps} />);
+  });
+
+  it('should change currentPosition state', () => {
+    const instance = shallowWrapper.instance();
+
+    instance['openFormWithTheMarker']({
+      lat: 1,
+      lng: 1,
+      park: 'S',
+    });
+
+    expect(instance.state.currentPosition).toEqual({
+      lat: 1,
+      lng: 1,
+      park: 'S',
+    });
+  });
+
+  it('should not call endToSelectPosition prop if endToSelectPosition is not setted', () => {
+    shallowWrapper.setProps({ endToSelectPosition: undefined });
+    const instance = shallowWrapper.instance();
+
+    instance['openFormWithTheMarker']({
       lat: 1,
       lng: 1,
       park: 'S',

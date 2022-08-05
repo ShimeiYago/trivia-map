@@ -56,6 +56,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
           },
         ]
       }
+      openFormWithTheMarker={[Function]}
       popupDisabled={false}
     />
     <MapMarker
@@ -201,6 +202,7 @@ exports[`Shallow Snapshot Tests when currentPosition state is setted 1`] = `
           },
         ]
       }
+      openFormWithTheMarker={[Function]}
       popupDisabled={true}
     />
     <MapMarker
@@ -379,6 +381,7 @@ exports[`Shallow Snapshot Tests with initCenter prop 1`] = `
           },
         ]
       }
+      openFormWithTheMarker={[Function]}
       popupDisabled={false}
     />
     <MapMarker
@@ -474,6 +477,7 @@ exports[`Shallow Snapshot Tests with width and height props 1`] = `
           },
         ]
       }
+      openFormWithTheMarker={[Function]}
       popupDisabled={false}
     />
     <MapMarker

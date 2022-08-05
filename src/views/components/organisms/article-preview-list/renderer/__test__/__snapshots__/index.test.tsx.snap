@@ -7,7 +7,7 @@ exports[`Shallow Snapshot Tests articlesPreviews is zero 1`] = `
   <ForwardRef(Typography)
     align="center"
   >
-    表示する記事がありません。
+    表示する投稿がありません。
   </ForwardRef(Typography)>
 </ForwardRef(Stack)>
 `;
@@ -36,91 +36,105 @@ exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
 <ForwardRef(Stack)
   spacing={2}
 >
-  <Link
-    className="preview-link"
-    key="preview-1"
-    to="/article/1"
-  >
-    <ForwardRef(Card)
-      sx={
-        Object {
-          "backgroundColor": "#e3f2fd",
-          "p": 1,
-        }
+  <ForwardRef(Box)
+    maxHeight={300}
+    sx={
+      Object {
+        "overflow": "scroll",
+        "p": 1,
       }
-    >
-      <ForwardRef(Stack)
-        spacing={1}
-      >
-        <ForwardRef(Typography)
-          align="center"
-          component="h2"
-          variant="h6"
-        >
-          ノーチラス号のエンジン
-        </ForwardRef(Typography)>
-        <ForwardRef(Typography)
-          align="center"
-        >
-          <Image
-            borderRadius={true}
-            height="100px"
-            objectFit="cover"
-            src="https://www.disneyparkstory.com/wp-content/uploads/2017/02/CIMG9800.jpg"
-            width="200px"
-          />
-        </ForwardRef(Typography)>
-        <ForwardRef(Typography)
-          align="center"
-        >
-          <IconAndText
-            component="span"
-            iconComponent={<Memo />}
-            iconPosition="left"
-            text="くわしく読む"
-            variant="button"
-          />
-        </ForwardRef(Typography)>
-      </ForwardRef(Stack)>
-    </ForwardRef(Card)>
-  </Link>
-  <Link
-    className="preview-link"
-    key="preview-2"
-    to="/article/2"
+    }
   >
-    <ForwardRef(Card)
-      sx={
-        Object {
-          "backgroundColor": "#e3f2fd",
-          "p": 1,
-        }
-      }
+    <ForwardRef(Stack)
+      spacing={2}
     >
-      <ForwardRef(Stack)
-        spacing={1}
+      <Link
+        className="preview-link"
+        key="preview-1"
+        to="/article/1"
       >
-        <ForwardRef(Typography)
-          align="center"
-          component="h2"
-          variant="h6"
+        <ForwardRef(Card)
+          sx={
+            Object {
+              "backgroundColor": "#e3f2fd",
+              "p": 1,
+            }
+          }
         >
-          ノーチラス号の名前の由来
-        </ForwardRef(Typography)>
-        <ForwardRef(Typography)
-          align="center"
+          <ForwardRef(Stack)
+            spacing={1}
+          >
+            <ForwardRef(Typography)
+              align="center"
+              component="h2"
+              variant="h6"
+            >
+              ノーチラス号のエンジン
+            </ForwardRef(Typography)>
+            <ForwardRef(Typography)
+              align="center"
+            >
+              <Image
+                borderRadius={true}
+                height="100px"
+                objectFit="cover"
+                src="https://www.disneyparkstory.com/wp-content/uploads/2017/02/CIMG9800.jpg"
+                width="200px"
+              />
+            </ForwardRef(Typography)>
+            <ForwardRef(Typography)
+              align="center"
+            >
+              <IconAndText
+                component="span"
+                iconComponent={<Memo />}
+                iconPosition="left"
+                text="くわしく読む"
+                variant="button"
+              />
+            </ForwardRef(Typography)>
+          </ForwardRef(Stack)>
+        </ForwardRef(Card)>
+      </Link>
+      <Link
+        className="preview-link"
+        key="preview-2"
+        to="/article/2"
+      >
+        <ForwardRef(Card)
+          sx={
+            Object {
+              "backgroundColor": "#e3f2fd",
+              "p": 1,
+            }
+          }
         >
-          <IconAndText
-            component="span"
-            iconComponent={<Memo />}
-            iconPosition="left"
-            text="くわしく読む"
-            variant="button"
-          />
-        </ForwardRef(Typography)>
-      </ForwardRef(Stack)>
-    </ForwardRef(Card)>
-  </Link>
+          <ForwardRef(Stack)
+            spacing={1}
+          >
+            <ForwardRef(Typography)
+              align="center"
+              component="h2"
+              variant="h6"
+            >
+              ノーチラス号の名前の由来
+            </ForwardRef(Typography)>
+            <ForwardRef(Typography)
+              align="center"
+            >
+              <IconAndText
+                component="span"
+                iconComponent={<Memo />}
+                iconPosition="left"
+                text="くわしく読む"
+                variant="button"
+              />
+            </ForwardRef(Typography)>
+          </ForwardRef(Stack)>
+        </ForwardRef(Card)>
+      </Link>
+    </ForwardRef(Stack)>
+  </ForwardRef(Box)>
   <div
     className="pagination-wrapper"
   >

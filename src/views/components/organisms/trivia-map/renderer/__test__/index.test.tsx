@@ -27,6 +27,7 @@ const basicProps: Props = {
     },
   ],
   updateIsEditting: jest.fn(),
+  isFormEditting: false,
 };
 
 let shallowWrapper: ShallowWrapper<Props, State, Renderer>;

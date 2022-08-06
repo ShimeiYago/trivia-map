@@ -37,14 +37,23 @@ export class PostMarkers extends React.Component<Props> {
     return (
       <Box className={styles['popup-content']}>
         <ArticlePreviewList type="markerId" keyId={markerId} />
-        <Box sx={{ textAlign: 'right', mt: 2 }}>
-          <Button
-            onClick={this.handleClickAdd(position)}
-            startIcon={<AddLocationAltIcon />}
-          >
-            投稿を追加する
-          </Button>
-        </Box>
+        {this.renderAddButton(position)}
+      </Box>
+    );
+  };
+
+  protected renderAddButton = (position: Position) => {
+    if (this.props.hideAddButton) {
+      return null;
+    }
+    return (
+      <Box sx={{ textAlign: 'right', mt: 2 }}>
+        <Button
+          onClick={this.handleClickAdd(position)}
+          startIcon={<AddLocationAltIcon />}
+        >
+          投稿を追加する
+        </Button>
       </Box>
     );
   };
@@ -59,6 +68,7 @@ export type Props = {
   markers: Marker[];
   popupDisabled: boolean;
   hiddenMarkerIds: number[];
+  hideAddButton: boolean;
 
   openFormWithTheMarker: (position: Position) => void;
 };

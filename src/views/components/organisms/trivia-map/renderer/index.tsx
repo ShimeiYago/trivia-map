@@ -133,6 +133,7 @@ export class Renderer extends React.Component<Props, State> {
       doNotShowPostMarkers,
       newMarkerMode,
       hiddenMarkerIds,
+      isFormEditting,
     } = this.props;
     if (doNotShowPostMarkers || !this.state.map) {
       return null;
@@ -144,6 +145,8 @@ export class Renderer extends React.Component<Props, State> {
         markers={postMarkers}
         popupDisabled={newMarkerMode}
         hiddenMarkerIds={hiddenMarkerIds}
+        openFormWithTheMarker={this.openFormWithTheMarker}
+        hideAddButton={isFormEditting}
       />
     );
   }
@@ -276,6 +279,19 @@ export class Renderer extends React.Component<Props, State> {
       </DialogScreen>
     );
   }
+
+  protected openFormWithTheMarker = (position: Position) => {
+    this.setState({
+      currentPosition: position,
+    });
+
+    this.props.updatePosition(position);
+    this.props.updateIsEditting(true);
+
+    if (this.props.endToSelectPosition) {
+      this.props.endToSelectPosition();
+    }
+  };
 }
 
 export type Props = {
@@ -292,10 +308,12 @@ export type Props = {
   hiddenMarkerIds: number[];
   shouldCurrentPositionAsyncWithForm?: boolean;
   additinalMarkers: Position[];
+  isFormEditting: boolean;
 
   fetchMarkers: () => void;
   updatePosition: (position: Position) => void;
   endToSelectPosition?: () => void;
+  updateIsEditting: (isEditting: boolean) => void;
 };
 
 export type State = {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pagination, Stack, Typography, Card, Alert } from '@mui/material';
+import { Pagination, Stack, Typography, Card, Alert, Box } from '@mui/material';
 import { LoadingState } from 'types/loading-state';
 import {
   getArticlesPreviews,
@@ -16,8 +16,6 @@ import { IconAndText } from 'views/components/atoms/icon-and-text';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import { CenterSpinner } from 'views/components/atoms/center-spinner';
 import { ARTICLE_PAGE_LINK } from 'constant/links';
-
-// TODO: スクロール機能
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -51,7 +49,7 @@ export class Renderer extends React.Component<Props, State> {
     }
 
     if (articlesPreviews?.length === 0) {
-      return <Typography align="center">表示する記事がありません。</Typography>;
+      return <Typography align="center">表示する投稿がありません。</Typography>;
     }
 
     const previewList = articlesPreviews?.map((preview) => {
@@ -96,7 +94,11 @@ export class Renderer extends React.Component<Props, State> {
       );
     });
 
-    return <>{previewList}</>;
+    return (
+      <Box maxHeight={300} sx={{ overflow: 'scroll', py: 1 }}>
+        <Stack spacing={2}>{previewList}</Stack>
+      </Box>
+    );
   }
 
   protected renderPagination() {

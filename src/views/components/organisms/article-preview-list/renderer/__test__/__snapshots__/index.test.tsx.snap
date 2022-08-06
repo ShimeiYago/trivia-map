@@ -41,7 +41,7 @@ exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
     sx={
       Object {
         "overflow": "scroll",
-        "p": 1,
+        "py": 1,
       }
     }
   >

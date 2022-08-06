@@ -9,7 +9,6 @@ let getRemoteArticleSpy: jest.SpyInstance;
 
 const basicProps: Props = {
   postId: 1,
-  isMobile: false,
   throwError: jest.fn(),
 };
 
@@ -44,11 +43,6 @@ describe('Shallow Snapshot Tests', () => {
 
   it('loading', () => {
     wrapper.setState({ loadingState: 'loading' });
-    expect(wrapper).toMatchSnapshot();
-  });
-
-  it('mobile view', () => {
-    wrapper.setProps({ isMobile: true });
     expect(wrapper).toMatchSnapshot();
   });
 

@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shallow Snapshot Tests basic 1`] = `
+<ArticleWrapper>
+  <Renderer
+    keyId={1}
+    type="userId"
+  />
+</ArticleWrapper>
+`;

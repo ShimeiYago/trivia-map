@@ -25,11 +25,13 @@ import {
   PROFILE_SETTINGS_LINK,
   RESET_PASSWORD_LINK,
   VERIFY_EMAIL_LINK,
+  AUTHER_PAGE_LINK,
 } from 'constant/links';
 import { ChangePassword } from 'views/pages/change-password';
 import { ResetPassword } from 'views/pages/reset-password';
 import { CommonErrorPage } from 'views/pages/common-error-page';
 import { GlobalErrorHandler } from 'views/components/organisms/global-error-handler';
+import { ArticleList } from 'views/pages/article-list';
 
 // Deactivate all console.log on production
 // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -53,6 +55,10 @@ ReactDOM.render(
             <Route
               path={ARTICLE_PAGE_LINK(':postId')}
               element={errorHandledElement(<Article />)}
+            />
+            <Route
+              path={AUTHER_PAGE_LINK(':keyId')}
+              element={errorHandledElement(<ArticleList type="userId" />)}
             />
             <Route path={LOGIN_LINK} element={errorHandledElement(<Login />)} />
             <Route path={ADMIN_LINK} element={errorHandledElement(<Admin />)} />

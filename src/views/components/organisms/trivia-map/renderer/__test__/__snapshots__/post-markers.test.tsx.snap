@@ -19,6 +19,95 @@ exports[`Shallow Snapshot Tests basic 1`] = `
           keyId={100}
           type="markerId"
         />
+        <ForwardRef(Box)
+          sx={
+            Object {
+              "mt": 2,
+              "textAlign": "right",
+            }
+          }
+        >
+          <ForwardRef(Button)
+            onClick={[Function]}
+            startIcon={<Memo />}
+          >
+            投稿を追加する
+          </ForwardRef(Button)>
+        </ForwardRef(Box)>
+      </ForwardRef(Box)>
+    }
+    position={
+      Object {
+        "lat": 0,
+        "lng": 0,
+      }
+    }
+    variant="blue"
+  />
+  <MapMarker
+    autoOpen={false}
+    draggable={false}
+    key="post-marker-101"
+    map={
+      Object {
+        "setView": [MockFunction],
+      }
+    }
+    popup={
+      <ForwardRef(Box)
+        className="popup-content"
+      >
+        <Renderer
+          keyId={101}
+          type="markerId"
+        />
+        <ForwardRef(Box)
+          sx={
+            Object {
+              "mt": 2,
+              "textAlign": "right",
+            }
+          }
+        >
+          <ForwardRef(Button)
+            onClick={[Function]}
+            startIcon={<Memo />}
+          >
+            投稿を追加する
+          </ForwardRef(Button)>
+        </ForwardRef(Box)>
+      </ForwardRef(Box)>
+    }
+    position={
+      Object {
+        "lat": 0,
+        "lng": 0,
+      }
+    }
+    variant="blue"
+  />
+</Fragment>
+`;
+
+exports[`Shallow Snapshot Tests form is editting 1`] = `
+<Fragment>
+  <MapMarker
+    autoOpen={false}
+    draggable={false}
+    key="post-marker-100"
+    map={
+      Object {
+        "setView": [MockFunction],
+      }
+    }
+    popup={
+      <ForwardRef(Box)
+        className="popup-content"
+      >
+        <Renderer
+          keyId={100}
+          type="markerId"
+        />
       </ForwardRef(Box)>
     }
     position={
@@ -78,6 +167,21 @@ exports[`Shallow Snapshot Tests with hiddenMarkerIds 1`] = `
           keyId={101}
           type="markerId"
         />
+        <ForwardRef(Box)
+          sx={
+            Object {
+              "mt": 2,
+              "textAlign": "right",
+            }
+          }
+        >
+          <ForwardRef(Button)
+            onClick={[Function]}
+            startIcon={<Memo />}
+          >
+            投稿を追加する
+          </ForwardRef(Button)>
+        </ForwardRef(Box)>
       </ForwardRef(Box)>
     }
     position={

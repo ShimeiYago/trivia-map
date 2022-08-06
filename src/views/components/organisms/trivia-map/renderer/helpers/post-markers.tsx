@@ -1,10 +1,12 @@
 import React from 'react';
-import { Box } from '@mui/material';
+import { Box, Button } from '@mui/material';
 import { Marker } from 'store/markers/model';
 import { LatLng, Map as LeafletMap } from 'leaflet';
 import { MapMarker } from 'views/components/moleculars/map-marker';
 import styles from './index.module.css';
 import { ArticlePreviewList } from 'views/components/organisms/article-preview-list';
+import AddLocationAltIcon from '@mui/icons-material/AddLocationAlt';
+import { Position } from 'types/position';
 
 export class PostMarkers extends React.Component<Props> {
   render() {
@@ -15,7 +17,8 @@ export class PostMarkers extends React.Component<Props> {
         return null;
       }
 
-      const popup = !popupDisabled && this.renderPopupContents(marker.markerId);
+      const popup =
+        !popupDisabled && this.renderPopupContents(marker.markerId, marker);
 
       return (
         <MapMarker
@@ -30,12 +33,33 @@ export class PostMarkers extends React.Component<Props> {
     return <>{markerElmList}</>;
   }
 
-  protected renderPopupContents = (markerId: number) => {
+  protected renderPopupContents = (markerId: number, position: Position) => {
     return (
       <Box className={styles['popup-content']}>
         <ArticlePreviewList type="markerId" keyId={markerId} />
+        {this.renderAddButton(position)}
       </Box>
     );
+  };
+
+  protected renderAddButton = (position: Position) => {
+    if (this.props.hideAddButton) {
+      return null;
+    }
+    return (
+      <Box sx={{ textAlign: 'right', mt: 2 }}>
+        <Button
+          onClick={this.handleClickAdd(position)}
+          startIcon={<AddLocationAltIcon />}
+        >
+          投稿を追加する
+        </Button>
+      </Box>
+    );
+  };
+
+  protected handleClickAdd = (position: Position) => () => {
+    this.props.openFormWithTheMarker(position);
   };
 }
 
@@ -44,4 +68,7 @@ export type Props = {
   markers: Marker[];
   popupDisabled: boolean;
   hiddenMarkerIds: number[];
+  hideAddButton: boolean;
+
+  openFormWithTheMarker: (position: Position) => void;
 };

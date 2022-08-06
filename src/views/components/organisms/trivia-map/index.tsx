@@ -5,9 +5,12 @@ import {
   selectMarkersFetchingState,
 } from 'store/markers/selector';
 import { fetchMarkers } from 'store/markers/actions';
-import { updateFormField } from 'store/article-form/actions';
+import { updateFormField, updateIsEditting } from 'store/article-form/actions';
 import { Position } from 'types/position';
-import { selectArticleFormPosition } from 'store/article-form/selector';
+import {
+  selectArticleFormIsEditting,
+  selectArticleFormPosition,
+} from 'store/article-form/selector';
 
 export function TriviaMap(ownProps: OwnProps) {
   const dispatch = useAppDispatch();
@@ -27,11 +30,14 @@ export function TriviaMap(ownProps: OwnProps) {
     shouldCurrentPositionAsyncWithForm:
       ownProps.shouldCurrentPositionAsyncWithForm,
     additinalMarkers: ownProps.additinalMarkers ?? [],
+    isFormEditting: useAppSelector(selectArticleFormIsEditting),
 
     fetchMarkers: () => dispatch(fetchMarkers()),
     updatePosition: (position: Position) =>
       dispatch(updateFormField({ position: position })),
     endToSelectPosition: ownProps.endToSelectPosition,
+    updateIsEditting: (isEditting: boolean) =>
+      dispatch(updateIsEditting(isEditting)),
   };
 
   return <Renderer {...props} />;

@@ -1,10 +1,10 @@
 import { shallow, ShallowWrapper } from 'enzyme';
 import { Renderer, State } from '..';
-import * as GetArticlesPreviewsApiModule from 'api/articles-api/get-articles-previews';
+import * as GetMyArticlesApiModule from 'api/articles-api/get-my-articles';
 import { mockGetArticlesPreviewsResponse } from 'api/mock/articles-response';
 
 let wrapper: ShallowWrapper<unknown, State, Renderer>;
-let getArticlesPreviewsSpy: jest.SpyInstance;
+let getMyArticlesSpy: jest.SpyInstance;
 
 const basicProps = {
   throwError: jest.fn(),
@@ -14,10 +14,7 @@ describe('Shallow Snapshot Tests', () => {
   beforeEach(() => {
     jest.resetAllMocks();
     wrapper = shallow(<Renderer {...basicProps} />);
-    getArticlesPreviewsSpy = jest.spyOn(
-      GetArticlesPreviewsApiModule,
-      'getArticlesPreviews',
-    );
+    getMyArticlesSpy = jest.spyOn(GetMyArticlesApiModule, 'getMyArticles');
   });
 
   it('basic', () => {
@@ -46,14 +43,11 @@ describe('Shallow Snapshot Tests', () => {
 describe('fetchArticlesPreviews', () => {
   beforeEach(() => {
     jest.resetAllMocks();
-    getArticlesPreviewsSpy = jest.spyOn(
-      GetArticlesPreviewsApiModule,
-      'getArticlesPreviews',
-    );
+    getMyArticlesSpy = jest.spyOn(GetMyArticlesApiModule, 'getMyArticles');
   });
 
   it('should set success states if api calling succeed', async () => {
-    getArticlesPreviewsSpy.mockResolvedValue(mockGetArticlesPreviewsResponse);
+    getMyArticlesSpy.mockResolvedValue(mockGetArticlesPreviewsResponse);
 
     wrapper = shallow(<Renderer {...basicProps} />);
     const instance = wrapper.instance();
@@ -63,7 +57,7 @@ describe('fetchArticlesPreviews', () => {
   });
 
   it('should set error states if api calling fail', async () => {
-    getArticlesPreviewsSpy.mockRejectedValue(new Error());
+    getMyArticlesSpy.mockRejectedValue(new Error());
 
     wrapper = shallow(<Renderer {...basicProps} />);
     const instance = wrapper.instance();
@@ -76,10 +70,7 @@ describe('fetchArticlesPreviews', () => {
 describe('handleChangePagination', () => {
   beforeEach(() => {
     jest.resetAllMocks();
-    getArticlesPreviewsSpy = jest.spyOn(
-      GetArticlesPreviewsApiModule,
-      'getArticlesPreviews',
-    );
+    getMyArticlesSpy = jest.spyOn(GetMyArticlesApiModule, 'getMyArticles');
   });
 
   it('should set success states if api calling succeed', () => {
@@ -87,6 +78,6 @@ describe('handleChangePagination', () => {
     const instance = wrapper.instance();
     instance['handleChangePagination']({} as React.ChangeEvent<unknown>, 1);
 
-    expect(getArticlesPreviewsSpy).toBeCalled();
+    expect(getMyArticlesSpy).toBeCalled();
   });
 });

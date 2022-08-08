@@ -5,27 +5,29 @@ import { getAxiosInstance } from 'api/utils/get-axios-instance';
 import { mockGetArticlesPreviewsResponse } from '../mock/articles-response';
 import { PaginationResponse } from 'api/types/pagination-response';
 
-export async function getArticlesPreviews(param: {
-  key: PreviewKeyType;
-  keyId?: number;
-  page?: number;
-}): Promise<GetArticlesPreviewsResponse> {
+export async function getArticlesPreviews(
+  param: GetArticlesPreviewsParam,
+): Promise<GetArticlesPreviewsResponse> {
   const axiosInstance = getAxiosInstance({}, mockGetArticlesPreviewsResponse);
 
-  let url: string;
-  switch (param.key) {
-    case 'markerId':
-      url = `${BASE_URL}/articles/previews/public/marker/${param.keyId}`;
-      break;
-    case 'userId':
-      url = `${BASE_URL}/articles/previews/public/user/${param.keyId}`;
-      break;
-    default:
-      url = `${BASE_URL}/articles/previews/mine`;
+  let url = `${BASE_URL}/articles/public/previews`;
+
+  const apiParmas = [];
+  if (param.page) {
+    apiParmas.push(`page=${param.page}`);
+  }
+  if (param.marker) {
+    apiParmas.push(`marker=${param.marker}`);
+  }
+  if (param.user) {
+    apiParmas.push(`user=${param.user}`);
+  }
+  if (param.park) {
+    apiParmas.push(`park=${param.park}`);
   }
 
-  if (param.page) {
-    url = `${url}?page=${param.page}`;
+  if (apiParmas.length > 0) {
+    url = `${url}?${apiParmas.join('&')}`;
   }
 
   try {
@@ -49,4 +51,9 @@ export type GetArticlesPreviewsResponseEachItem = {
 export type GetArticlesPreviewsResponse =
   PaginationResponse<GetArticlesPreviewsResponseEachItem>;
 
-export type PreviewKeyType = 'markerId' | 'userId' | 'mine';
+export type GetArticlesPreviewsParam = {
+  page?: number;
+  marker?: number;
+  user?: number;
+  park?: 'L' | 'S';
+};

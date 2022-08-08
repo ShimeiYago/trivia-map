@@ -11,9 +11,9 @@ import {
 } from '@mui/material';
 import { LoadingState } from 'types/loading-state';
 import {
-  getArticlesPreviews,
-  GetArticlesPreviewsResponseEachItem,
-} from 'api/articles-api/get-articles-previews';
+  getMyArticles,
+  GetMyArticlesResponseEachItem,
+} from 'api/articles-api/get-my-articles';
 import { Link } from 'react-router-dom';
 import classes from './index.module.css';
 import { CenterSpinner } from 'views/components/atoms/center-spinner';
@@ -108,10 +108,7 @@ export class Renderer extends React.Component<Props, State> {
     });
 
     try {
-      const res = await getArticlesPreviews({
-        key: 'mine',
-        page: page,
-      });
+      const res = await getMyArticles(page);
 
       this.setState({
         loadingState: 'success',
@@ -138,5 +135,5 @@ export type Props = {
 export type State = {
   loadingState: LoadingState;
   totalPages?: number;
-  articlesPreviews?: GetArticlesPreviewsResponseEachItem[];
+  articlesPreviews?: GetMyArticlesResponseEachItem[];
 };

@@ -2,18 +2,20 @@ import React from 'react';
 import { ArticleWrapper } from 'views/components/organisms/article-wrapper';
 import { ArticlePreviewList } from 'views/components/organisms/article-preview-list';
 
-// TODO: Add search condition form
-// TODO: Change url parameters depending on search conditions
+// TODO: Redirect to 404 if target user does not exist.
 
-export class Renderer extends React.Component {
+export class Renderer extends React.Component<Props> {
   render() {
     return <ArticleWrapper>{this.renderMainContent()}</ArticleWrapper>;
   }
 
   protected renderMainContent = () => {
-    return <ArticlePreviewList />;
+    return <ArticlePreviewList user={this.props.userId} />;
   };
 }
 
-// export type Props = {
-// };
+export type Props = {
+  userId: number;
+
+  throwError: (errorStatus: number) => void;
+};

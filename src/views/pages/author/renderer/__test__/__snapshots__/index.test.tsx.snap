@@ -2,6 +2,8 @@
 
 exports[`Shallow Snapshot Tests basic 1`] = `
 <ArticleWrapper>
-  <Renderer />
+  <Renderer
+    user={1}
+  />
 </ArticleWrapper>
 `;

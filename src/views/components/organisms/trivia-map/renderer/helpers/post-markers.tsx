@@ -36,7 +36,7 @@ export class PostMarkers extends React.Component<Props> {
   protected renderPopupContents = (markerId: number, position: Position) => {
     return (
       <Box className={styles['popup-content']}>
-        <ArticlePreviewList type="markerId" keyId={markerId} />
+        <ArticlePreviewList marker={markerId} />
         {this.renderAddButton(position)}
       </Box>
     );

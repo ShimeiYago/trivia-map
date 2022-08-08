@@ -178,6 +178,7 @@ describe('getArticlesPreviews', () => {
       marker: 1,
       user: 1,
       park: 'L',
+      category: 1,
     });
     expect(response.results[0].title).toBe('ノーチラス号のエンジン');
   });

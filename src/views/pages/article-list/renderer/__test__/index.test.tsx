@@ -1,17 +1,11 @@
 import { shallow, ShallowWrapper } from 'enzyme';
-import { Renderer, Props } from '..';
+import { Renderer } from '..';
 
-let wrapper: ShallowWrapper<Props, unknown, Renderer>;
-
-const basicProps: Props = {
-  type: 'userId',
-  keyId: 1,
-  throwError: jest.fn(),
-};
+let wrapper: ShallowWrapper<unknown, unknown, Renderer>;
 
 describe('Shallow Snapshot Tests', () => {
   beforeEach(() => {
-    wrapper = shallow(<Renderer {...basicProps} />);
+    wrapper = shallow(<Renderer />);
   });
 
   it('basic', () => {

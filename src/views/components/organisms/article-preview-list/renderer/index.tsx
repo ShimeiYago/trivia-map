@@ -3,7 +3,7 @@ import { Pagination, Stack, Typography, Card, Alert, Box } from '@mui/material';
 import { LoadingState } from 'types/loading-state';
 import {
   getArticlesPreviews,
-  PreviewKeyType,
+  GetArticlesPreviewsParam,
   GetArticlesPreviewsResponseEachItem,
 } from 'api/articles-api/get-articles-previews';
 import { ApiError } from 'api/utils/handle-axios-error';
@@ -126,9 +126,8 @@ export class Renderer extends React.Component<Props, State> {
 
     try {
       const res = await getArticlesPreviews({
-        key: this.props.type,
-        keyId: this.props.keyId,
         page: page,
+        ...this.props,
       });
 
       this.setState({
@@ -155,10 +154,7 @@ export class Renderer extends React.Component<Props, State> {
   };
 }
 
-export type Props = {
-  type: PreviewKeyType;
-  keyId?: number;
-};
+export type Props = Omit<GetArticlesPreviewsParam, 'page'>;
 
 export type State = {
   loadingState: LoadingState;

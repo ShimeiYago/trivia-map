@@ -5,6 +5,7 @@ import { postRemoteArticle } from '../post-remote-article';
 import { putRemoteArticle } from '../put-remote-article';
 import { deleteRemoteArticle } from '../delete-remote-article';
 import { getArticlesPreviews } from '../get-articles-previews';
+import { getMyArticles } from '../get-my-articles';
 
 const newPosition: Position = {
   lat: 0,
@@ -158,35 +159,22 @@ describe('getArticlesPreviews', () => {
     process.env.REACT_APP_MOCK = '';
   });
 
-  it('should return preview list of specific marker', async () => {
+  it('should return preview list without parameters', async () => {
     process.env.REACT_APP_MOCK = 'normal';
 
-    const response = await getArticlesPreviews({ key: 'markerId', keyId: 1 });
+    const response = await getArticlesPreviews({});
     expect(response.results[0].title).toBe('ノーチラス号のエンジン');
   });
 
-  it('should return preview list of specific user', async () => {
-    process.env.REACT_APP_MOCK = 'normal';
-
-    const response = await getArticlesPreviews({ key: 'userId', keyId: 1 });
-    expect(response.results[0].title).toBe('ノーチラス号のエンジン');
-  });
-
-  it('should return preview list when page is provided', async () => {
+  it('should return preview list with parameters', async () => {
     process.env.REACT_APP_MOCK = 'normal';
 
     const response = await getArticlesPreviews({
-      key: 'markerId',
-      keyId: 1,
-      page: 2,
+      page: 1,
+      marker: 1,
+      user: 1,
+      park: 'L',
     });
-    expect(response.results[0].title).toBe('ノーチラス号のエンジン');
-  });
-
-  it('should return preview list of login user', async () => {
-    process.env.REACT_APP_MOCK = 'normal';
-
-    const response = await getArticlesPreviews({ key: 'mine' });
     expect(response.results[0].title).toBe('ノーチラス号のエンジン');
   });
 
@@ -198,8 +186,40 @@ describe('getArticlesPreviews', () => {
       data: {},
       errorMsg: 'Intentional API Error with mock',
     };
-    await expect(getArticlesPreviews({ key: 'mine' })).rejects.toEqual(
-      expectedApiError,
-    );
+    await expect(getArticlesPreviews({})).rejects.toEqual(expectedApiError);
+  });
+});
+
+describe('getMyArticles', () => {
+  beforeEach(() => {
+    process.env.REACT_APP_MOCK = '';
+  });
+  afterEach(() => {
+    process.env.REACT_APP_MOCK = '';
+  });
+
+  it('should return preview list', async () => {
+    process.env.REACT_APP_MOCK = 'normal';
+
+    const response = await getMyArticles();
+    expect(response.results[0].title).toBe('ノーチラス号のエンジン');
+  });
+
+  it('should return preview list with page param', async () => {
+    process.env.REACT_APP_MOCK = 'normal';
+
+    const response = await getMyArticles(1);
+    expect(response.results[0].title).toBe('ノーチラス号のエンジン');
+  });
+
+  it('handle error response', async () => {
+    process.env.REACT_APP_MOCK = 'error';
+
+    const expectedApiError: ApiError<unknown> = {
+      status: 500,
+      data: {},
+      errorMsg: 'Intentional API Error with mock',
+    };
+    await expect(getMyArticles()).rejects.toEqual(expectedApiError);
   });
 });

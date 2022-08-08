@@ -10,28 +10,30 @@ import {
   ValidationError,
 } from './post-remote-article';
 
-export async function putRemoteArticle(
-  postId: number,
-  title: string,
-  description: string,
-  marker: Position,
-  imageUrl: string | null,
-  isDraft: boolean,
-): Promise<PostArticleResponse> {
+export async function putRemoteArticle(param: {
+  postId: number;
+  title: string;
+  description: string;
+  category: number;
+  marker: Position;
+  imageUrl: string | null;
+  isDraft: boolean;
+}): Promise<PostArticleResponse> {
   const axiosInstance = getAxiosInstance({}, mockPostArticleResponse);
 
   const requestData: PostArticleRequest = {
-    title: title,
-    description: description,
-    marker: marker,
-    imageUrl: imageUrl,
-    isDraft: isDraft,
+    title: param.title,
+    description: param.description,
+    marker: param.marker,
+    category: param.category,
+    imageUrl: param.imageUrl,
+    isDraft: param.isDraft,
   };
 
   try {
     // TODO: Set reasonable timeout
     const res: AxiosResponse<PostArticleResponse> = await axiosInstance.put(
-      `${BASE_URL}/articles/${postId}`,
+      `${BASE_URL}/articles/${param.postId}`,
       requestData,
     );
     return res.data;

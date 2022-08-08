@@ -51,13 +51,14 @@ describe('postRemoteArticle', () => {
   it('handle nomal response', async () => {
     process.env.REACT_APP_MOCK = 'normal';
 
-    const response = await postRemoteArticle(
-      'title',
-      'description',
-      newPosition,
-      'https://image-data.jpg',
-      false,
-    );
+    const response = await postRemoteArticle({
+      title: 'title',
+      description: 'description',
+      marker: newPosition,
+      imageUrl: 'https://image-data.jpg',
+      isDraft: false,
+      category: 1,
+    });
     expect(response.postId).toBe(1);
   });
 
@@ -70,13 +71,14 @@ describe('postRemoteArticle', () => {
       errorMsg: 'Intentional API Error with mock',
     };
     await expect(
-      postRemoteArticle(
-        'title',
-        'description',
-        newPosition,
-        'https://image-data.jpg',
-        false,
-      ),
+      postRemoteArticle({
+        title: 'title',
+        description: 'description',
+        marker: newPosition,
+        imageUrl: 'https://image-data.jpg',
+        isDraft: false,
+        category: 1,
+      }),
     ).rejects.toEqual(expectedApiError);
   });
 });
@@ -92,14 +94,15 @@ describe('putRemoteArticle', () => {
   it('handle nomal response', async () => {
     process.env.REACT_APP_MOCK = 'normal';
 
-    const response = await putRemoteArticle(
-      1,
-      'title',
-      'description',
-      newPosition,
-      'https://image-data.jpg',
-      false,
-    );
+    const response = await putRemoteArticle({
+      postId: 1,
+      title: 'title',
+      description: 'description',
+      marker: newPosition,
+      imageUrl: 'https://image-data.jpg',
+      isDraft: false,
+      category: 1,
+    });
     expect(response.postId).toBe(1);
   });
 
@@ -112,14 +115,15 @@ describe('putRemoteArticle', () => {
       errorMsg: 'Intentional API Error with mock',
     };
     await expect(
-      putRemoteArticle(
-        1,
-        'title',
-        'description',
-        newPosition,
-        'https://image-data.jpg',
-        false,
-      ),
+      putRemoteArticle({
+        postId: 1,
+        title: 'title',
+        description: 'description',
+        marker: newPosition,
+        imageUrl: 'https://image-data.jpg',
+        isDraft: false,
+        category: 1,
+      }),
     ).rejects.toEqual(expectedApiError);
   });
 });

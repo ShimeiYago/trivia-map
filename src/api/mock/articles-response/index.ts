@@ -34,6 +34,7 @@ export const mockPostArticleResponse: PostArticleResponse = {
   imageUrl: null,
   isDraft: false,
   author: 0,
+  category: 1,
   createdAt: '2022-06-16T21:42:51.202153+09:00',
   updatedAt: '2022-06-16T21:42:51.202153+09:00',
 };

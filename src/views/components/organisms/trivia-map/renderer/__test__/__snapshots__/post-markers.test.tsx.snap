@@ -16,8 +16,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
         className="popup-content"
       >
         <Renderer
-          keyId={100}
-          type="markerId"
+          marker={100}
         />
         <ForwardRef(Box)
           sx={
@@ -58,8 +57,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
         className="popup-content"
       >
         <Renderer
-          keyId={101}
-          type="markerId"
+          marker={101}
         />
         <ForwardRef(Box)
           sx={
@@ -105,8 +103,7 @@ exports[`Shallow Snapshot Tests form is editting 1`] = `
         className="popup-content"
       >
         <Renderer
-          keyId={100}
-          type="markerId"
+          marker={100}
         />
       </ForwardRef(Box)>
     }
@@ -132,8 +129,7 @@ exports[`Shallow Snapshot Tests form is editting 1`] = `
         className="popup-content"
       >
         <Renderer
-          keyId={101}
-          type="markerId"
+          marker={101}
         />
       </ForwardRef(Box)>
     }
@@ -164,8 +160,7 @@ exports[`Shallow Snapshot Tests with hiddenMarkerIds 1`] = `
         className="popup-content"
       >
         <Renderer
-          keyId={101}
-          type="markerId"
+          marker={101}
         />
         <ForwardRef(Box)
           sx={

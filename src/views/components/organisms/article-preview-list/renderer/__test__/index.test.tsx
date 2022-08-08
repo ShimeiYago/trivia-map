@@ -7,8 +7,7 @@ let wrapper: ShallowWrapper<Props, State, Renderer>;
 let getArticlesPreviewsSpy: jest.SpyInstance;
 
 const basicProps: Props = {
-  type: 'markerId',
-  keyId: 1,
+  marker: 1,
 };
 
 describe('Shallow Snapshot Tests', () => {

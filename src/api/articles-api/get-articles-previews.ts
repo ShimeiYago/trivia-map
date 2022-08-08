@@ -45,7 +45,7 @@ export type GetArticlesPreviewsResponseEachItem = {
   postId: number;
   title: string;
   imageUrl: string | null;
-  isDraft: boolean;
+  category: number;
 };
 
 export type GetArticlesPreviewsResponse =

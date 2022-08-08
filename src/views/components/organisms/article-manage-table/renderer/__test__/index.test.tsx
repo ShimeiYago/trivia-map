@@ -1,7 +1,7 @@
 import { shallow, ShallowWrapper } from 'enzyme';
 import { Renderer, State } from '..';
 import * as GetMyArticlesApiModule from 'api/articles-api/get-my-articles';
-import { mockGetArticlesPreviewsResponse } from 'api/mock/articles-response';
+import { mockGetMyArticlesResponse } from 'api/mock/articles-response';
 
 let wrapper: ShallowWrapper<unknown, State, Renderer>;
 let getMyArticlesSpy: jest.SpyInstance;
@@ -24,7 +24,7 @@ describe('Shallow Snapshot Tests', () => {
   it('with articlesPreviews', () => {
     wrapper.setState({
       loadingState: 'success',
-      articlesPreviews: mockGetArticlesPreviewsResponse.results,
+      articlesPreviews: mockGetMyArticlesResponse.results,
       totalPages: 2,
     });
     expect(wrapper).toMatchSnapshot();
@@ -47,7 +47,7 @@ describe('fetchArticlesPreviews', () => {
   });
 
   it('should set success states if api calling succeed', async () => {
-    getMyArticlesSpy.mockResolvedValue(mockGetArticlesPreviewsResponse);
+    getMyArticlesSpy.mockResolvedValue(mockGetMyArticlesResponse);
 
     wrapper = shallow(<Renderer {...basicProps} />);
     const instance = wrapper.instance();

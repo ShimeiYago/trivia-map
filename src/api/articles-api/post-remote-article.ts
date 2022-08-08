@@ -5,21 +5,23 @@ import { getAxiosInstance } from 'api/utils/get-axios-instance';
 import { mockPostArticleResponse } from '../mock/articles-response';
 import { Position } from 'types/position';
 
-export async function postRemoteArticle(
-  title: string,
-  description: string,
-  position: Position,
-  imageUrl: string | null,
-  isDraft: boolean,
-): Promise<PostArticleResponse> {
+export async function postRemoteArticle(param: {
+  title: string;
+  description: string;
+  marker: Position;
+  category: number;
+  imageUrl: string | null;
+  isDraft: boolean;
+}): Promise<PostArticleResponse> {
   const axiosInstance = getAxiosInstance({}, mockPostArticleResponse);
 
   const requestData: PostArticleRequest = {
-    title: title,
-    description: description,
-    marker: position,
-    imageUrl: imageUrl,
-    isDraft: isDraft,
+    title: param.title,
+    description: param.description,
+    marker: param.marker,
+    imageUrl: param.imageUrl,
+    isDraft: param.isDraft,
+    category: param.category,
   };
 
   try {
@@ -41,6 +43,7 @@ export type PostArticleRequest = {
   marker: Position;
   imageUrl: string | null;
   isDraft: boolean;
+  category: number;
 };
 
 export type PostArticleResponse = {
@@ -49,6 +52,7 @@ export type PostArticleResponse = {
   description: string;
   marker: number;
   imageUrl: string | null;
+  category: number;
   isDraft: boolean;
   author: number;
   createdAt: string;

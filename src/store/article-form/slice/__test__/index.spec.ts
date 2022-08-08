@@ -130,6 +130,7 @@ describe('articleForm reducer', () => {
         userId: 1,
         nickname: 'Axel',
       },
+      category: 1,
       createdAt: '2022/4/1',
       updatedAt: '2022/5/1',
     };

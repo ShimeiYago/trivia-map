@@ -33,6 +33,7 @@ export type GetArticleResponse = {
     park: 'L' | 'S';
     numberOfPublicArticles: number;
   };
+  category: number;
   imageUrl: string | null;
   isDraft: boolean;
   author: Author;

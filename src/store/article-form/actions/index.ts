@@ -50,15 +50,17 @@ export const submitNewArticle = (): AppThunk => async (dispatch, getState) => {
   const position = selectArticleFormPosition(getState()) as Position;
   const imageDataUrl = selectArticleFormImageDataUrl(getState());
   const isDraft = selectArticleFormIsDraft(getState());
+  const category = 0; // TODO: Should be provided from state
 
   try {
-    const res = await postRemoteArticle(
-      title,
-      description,
-      position,
-      imageDataUrl,
-      isDraft,
-    );
+    const res = await postRemoteArticle({
+      title: title,
+      description: description,
+      marker: position,
+      imageUrl: imageDataUrl,
+      isDraft: isDraft,
+      category: category,
+    });
     dispatch(submitSuccess(res.postId));
     dispatch(initialize());
 
@@ -104,18 +106,20 @@ export const submitEdittedArticle =
     const imageDataUrl = selectArticleFormImageDataUrl(getState());
     const isDraft = selectArticleFormIsDraft(getState());
     const previousMarkerId = selectArticleFormPreviousMarkerId(getState());
+    const category = 0; // TODO: Should be provided from state
 
     let formError: FormError;
 
     try {
-      const res = await putRemoteArticle(
-        postId,
-        title,
-        description,
-        position,
-        imageDataUrl,
-        isDraft,
-      );
+      const res = await putRemoteArticle({
+        postId: postId,
+        title: title,
+        description: description,
+        marker: position,
+        imageUrl: imageDataUrl,
+        isDraft: isDraft,
+        category: category,
+      });
       dispatch(submitSuccess(postId));
       dispatch(initialize());
 

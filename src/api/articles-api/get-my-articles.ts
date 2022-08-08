@@ -31,7 +31,7 @@ export async function getMyArticles(
 export type GetMyArticlesResponseEachItem = {
   postId: number;
   title: string;
-  imageUrl: string | null;
+  category: number;
   isDraft: boolean;
 };
 

@@ -25,6 +25,7 @@ const article: GetArticleResponse = {
   createdAt: '2022/4/1',
   updatedAt: '2022/5/1',
   isDraft: false,
+  category: 1,
 };
 
 describe('Shallow Snapshot Tests', () => {

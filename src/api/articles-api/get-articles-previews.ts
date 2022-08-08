@@ -22,6 +22,9 @@ export async function getArticlesPreviews(
   if (param.user) {
     apiParmas.push(`user=${param.user}`);
   }
+  if (param.category) {
+    apiParmas.push(`category=${param.category}`);
+  }
   if (param.park) {
     apiParmas.push(`park=${param.park}`);
   }
@@ -55,5 +58,6 @@ export type GetArticlesPreviewsParam = {
   page?: number;
   marker?: number;
   user?: number;
+  category?: number;
   park?: 'L' | 'S';
 };

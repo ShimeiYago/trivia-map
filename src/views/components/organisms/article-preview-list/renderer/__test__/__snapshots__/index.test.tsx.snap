@@ -20,19 +20,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
 </ForwardRef(Stack)>
 `;
 
-exports[`Shallow Snapshot Tests with api error 1`] = `
-<ForwardRef(Stack)
-  spacing={2}
->
-  <ForwardRef(Alert)
-    severity="error"
-  >
-    データの取得に失敗しました。
-  </ForwardRef(Alert)>
-</ForwardRef(Stack)>
-`;
-
-exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
+exports[`Shallow Snapshot Tests variant popup 1`] = `
 <ForwardRef(Stack)
   spacing={2}
 >
@@ -83,6 +71,22 @@ exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
               />
             </ForwardRef(Typography)>
             <ForwardRef(Typography)
+              component="div"
+              sx={
+                Object {
+                  "pr": 2,
+                }
+              }
+            >
+              <IconAndText
+                align="right"
+                fontSize={14}
+                iconComponent={<Memo />}
+                iconPosition="left"
+                text="その他"
+              />
+            </ForwardRef(Typography)>
+            <ForwardRef(Typography)
               align="center"
             >
               <IconAndText
@@ -120,6 +124,22 @@ exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
               ノーチラス号の名前の由来
             </ForwardRef(Typography)>
             <ForwardRef(Typography)
+              component="div"
+              sx={
+                Object {
+                  "pr": 2,
+                }
+              }
+            >
+              <IconAndText
+                align="right"
+                fontSize={14}
+                iconComponent={<Memo />}
+                iconPosition="left"
+                text="その他"
+              />
+            </ForwardRef(Typography)>
+            <ForwardRef(Typography)
               align="center"
             >
               <IconAndText
@@ -135,6 +155,151 @@ exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
       </Link>
     </ForwardRef(Stack)>
   </ForwardRef(Box)>
+  <div
+    className="pagination-wrapper"
+  >
+    <ForwardRef(Pagination)
+      count={2}
+      onChange={[Function]}
+    />
+  </div>
+</ForwardRef(Stack)>
+`;
+
+exports[`Shallow Snapshot Tests with api error 1`] = `
+<ForwardRef(Stack)
+  spacing={2}
+>
+  <ForwardRef(Alert)
+    severity="error"
+  >
+    データの取得に失敗しました。
+  </ForwardRef(Alert)>
+</ForwardRef(Stack)>
+`;
+
+exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
+<ForwardRef(Stack)
+  spacing={2}
+>
+  <ForwardRef(Stack)
+    spacing={3}
+  >
+    <Link
+      className="preview-link"
+      key="preview-1"
+      to="/article/1"
+    >
+      <ForwardRef(Card)
+        sx={
+          Object {
+            "maxWidth": 700,
+            "mx": "auto",
+          }
+        }
+      >
+        <ForwardRef(CardMedia)
+          alt="green iguana"
+          className="card-media"
+          component="img"
+          image="https://www.disneyparkstory.com/wp-content/uploads/2017/02/CIMG9800.jpg"
+        />
+        <ForwardRef(CardContent)>
+          <ForwardRef(Typography)
+            component="div"
+            gutterBottom={true}
+            variant="h5"
+          >
+            ノーチラス号のエンジン
+          </ForwardRef(Typography)>
+          <ForwardRef(Typography)
+            align="left"
+            component="div"
+            sx={
+              Object {
+                "mb": 2,
+              }
+            }
+          >
+            <IconAndText
+              align="left"
+              iconComponent={<Memo />}
+              iconPosition="left"
+              text="その他"
+            />
+          </ForwardRef(Typography)>
+          <ForwardRef(Typography)
+            align="center"
+            component="div"
+          >
+            <IconAndText
+              component="span"
+              iconComponent={<Memo />}
+              iconPosition="left"
+              text="くわしく読む"
+            />
+          </ForwardRef(Typography)>
+        </ForwardRef(CardContent)>
+      </ForwardRef(Card)>
+    </Link>
+    <Link
+      className="preview-link"
+      key="preview-2"
+      to="/article/2"
+    >
+      <ForwardRef(Card)
+        sx={
+          Object {
+            "maxWidth": 700,
+            "mx": "auto",
+          }
+        }
+      >
+        <ForwardRef(CardMedia)
+          alt="green iguana"
+          className="card-media"
+          component="img"
+          image="no-image-16x7.jpg"
+        />
+        <ForwardRef(CardContent)>
+          <ForwardRef(Typography)
+            component="div"
+            gutterBottom={true}
+            variant="h5"
+          >
+            ノーチラス号の名前の由来
+          </ForwardRef(Typography)>
+          <ForwardRef(Typography)
+            align="left"
+            component="div"
+            sx={
+              Object {
+                "mb": 2,
+              }
+            }
+          >
+            <IconAndText
+              align="left"
+              iconComponent={<Memo />}
+              iconPosition="left"
+              text="その他"
+            />
+          </ForwardRef(Typography)>
+          <ForwardRef(Typography)
+            align="center"
+            component="div"
+          >
+            <IconAndText
+              component="span"
+              iconComponent={<Memo />}
+              iconPosition="left"
+              text="くわしく読む"
+            />
+          </ForwardRef(Typography)>
+        </ForwardRef(CardContent)>
+      </ForwardRef(Card)>
+    </Link>
+  </ForwardRef(Stack)>
   <div
     className="pagination-wrapper"
   >

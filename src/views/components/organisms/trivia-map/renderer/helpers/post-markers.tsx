@@ -36,7 +36,10 @@ export class PostMarkers extends React.Component<Props> {
   protected renderPopupContents = (markerId: number, position: Position) => {
     return (
       <Box className={styles['popup-content']}>
-        <ArticlePreviewList marker={markerId} />
+        <ArticlePreviewList
+          searchConditions={{ marker: markerId }}
+          variant="popup"
+        />
         {this.renderAddButton(position)}
       </Box>
     );

@@ -7,7 +7,10 @@ let wrapper: ShallowWrapper<Props, State, Renderer>;
 let getArticlesPreviewsSpy: jest.SpyInstance;
 
 const basicProps: Props = {
-  marker: 1,
+  searchConditions: {
+    marker: 1,
+  },
+  variant: 'large',
 };
 
 describe('Shallow Snapshot Tests', () => {
@@ -44,6 +47,16 @@ describe('Shallow Snapshot Tests', () => {
 
   it('with api error', () => {
     wrapper.setState({ loadingState: 'error' });
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('variant popup', () => {
+    wrapper.setProps({ variant: 'popup' });
+    wrapper.setState({
+      loadingState: 'success',
+      articlesPreviews: mockGetArticlesPreviewsResponse.results,
+      totalPages: 2,
+    });
     expect(wrapper).toMatchSnapshot();
   });
 });

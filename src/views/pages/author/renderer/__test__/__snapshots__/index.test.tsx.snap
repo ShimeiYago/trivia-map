@@ -3,7 +3,12 @@
 exports[`Shallow Snapshot Tests basic 1`] = `
 <ArticleWrapper>
   <Renderer
-    user={1}
+    searchConditions={
+      Object {
+        "user": 1,
+      }
+    }
+    variant="large"
   />
 </ArticleWrapper>
 `;

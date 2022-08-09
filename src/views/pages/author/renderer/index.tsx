@@ -10,7 +10,12 @@ export class Renderer extends React.Component<Props> {
   }
 
   protected renderMainContent = () => {
-    return <ArticlePreviewList user={this.props.userId} />;
+    return (
+      <ArticlePreviewList
+        variant="large"
+        searchConditions={{ user: this.props.userId }}
+      />
+    );
   };
 }
 

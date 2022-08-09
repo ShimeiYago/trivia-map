@@ -2,6 +2,9 @@
 
 exports[`Shallow Snapshot Tests basic 1`] = `
 <ArticleWrapper>
-  <Renderer />
+  <Renderer
+    searchConditions={Object {}}
+    variant="large"
+  />
 </ArticleWrapper>
 `;

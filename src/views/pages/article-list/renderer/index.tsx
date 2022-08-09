@@ -11,7 +11,7 @@ export class Renderer extends React.Component {
   }
 
   protected renderMainContent = () => {
-    return <ArticlePreviewList />;
+    return <ArticlePreviewList variant="large" searchConditions={{}} />;
   };
 }
 

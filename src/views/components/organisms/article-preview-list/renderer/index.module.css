@@ -10,3 +10,7 @@
 .pagination-wrapper nav {
   display: inline-block;
 }
+
+.card-media {
+  aspect-ratio: 16 / 7;
+}

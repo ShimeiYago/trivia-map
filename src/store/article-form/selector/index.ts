@@ -17,6 +17,9 @@ export const selectArticleFormPosition = (state: ArticleFormRootState) =>
 export const selectArticleFormImageDataUrl = (state: ArticleFormRootState) =>
   state.articleForm.imageDataUrl;
 
+export const selectArticleFormCategory = (state: ArticleFormRootState) =>
+  state.articleForm.category;
+
 export const selectArticleFormSubmittingState = (state: ArticleFormRootState) =>
   state.articleForm.submittingState;
 
@@ -43,6 +46,10 @@ export const selectArticleFormLastSavedPosition = (
 export const selectArticleFormLastSavedImageDataUrl = (
   state: ArticleFormRootState,
 ) => state.articleForm.lastSavedImageDataUrl;
+
+export const selectArticleFormLastSavedCategory = (
+  state: ArticleFormRootState,
+) => state.articleForm.lastSavedCategory;
 
 export const selectArticleFormIsFormChangedFromLastSaved = (
   state: ArticleFormRootState,

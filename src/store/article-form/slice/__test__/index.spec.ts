@@ -17,6 +17,7 @@ const {
   updateIsFormChangedFromLastSaved,
   updateImageDataUrl,
   updateIsDraft,
+  updateCategory,
 } = articleFormSlice.actions;
 
 describe('articleForm reducer', () => {
@@ -77,6 +78,11 @@ describe('articleForm reducer', () => {
       updateImageDataUrl('https://image-data.jpg'),
     );
     expect(actual.imageDataUrl).toEqual('https://image-data.jpg');
+  });
+
+  it('should handle updateCategory', () => {
+    const actual = articleFormReducer(initialState, updateCategory(1));
+    expect(actual.category).toEqual(1);
   });
 
   it('should handle updateIsDraft', () => {

@@ -81,6 +81,13 @@ describe('Shallow Snapshot Tests', () => {
     });
     expect(wrapper).toMatchSnapshot();
   });
+
+  it('with category', () => {
+    wrapper.setProps({
+      category: 1,
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
 });
 
 describe('constructor', () => {
@@ -272,6 +279,28 @@ describe('handleDeleteImage', () => {
 
     expect(instance.props.updateFormField).toBeCalledWith({
       imageDataUrl: null,
+    });
+  });
+});
+
+describe('handleChangeCategory', () => {
+  beforeEach(() => {
+    wrapper = shallow(<Renderer {...basicProps} />);
+  });
+
+  it('should set null as imageDataUrl', () => {
+    const event = {
+      target: {
+        value: 1,
+      },
+    };
+
+    const instance = wrapper.instance();
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    instance['handleChangeCategory'](event as any);
+
+    expect(instance.props.updateFormField).toBeCalledWith({
+      category: 1,
     });
   });
 });

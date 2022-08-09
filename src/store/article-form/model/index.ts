@@ -8,6 +8,7 @@ export interface ArticleFormState {
   position?: Position;
   previousMarkerId?: number;
   imageDataUrl: string | null;
+  category?: number;
   submittingState: LoadingState;
   fetchingState: LoadingState;
   formError?: FormError;
@@ -16,6 +17,7 @@ export interface ArticleFormState {
   lastSavedDescription: string;
   lastSavedPosition?: Position;
   lastSavedImageDataUrl: string | null;
+  lastSavedCategory?: number;
   isFormChangedFromLastSaved: boolean;
   isDraft: boolean;
 }

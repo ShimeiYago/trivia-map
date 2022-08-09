@@ -14,7 +14,7 @@ export async function putRemoteArticle(param: {
   postId: number;
   title: string;
   description: string;
-  category: number;
+  category?: number;
   marker: Position;
   imageUrl: string | null;
   isDraft: boolean;

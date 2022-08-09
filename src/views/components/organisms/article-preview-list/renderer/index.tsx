@@ -4,7 +4,6 @@ import {
   Stack,
   Typography,
   Card,
-  Alert,
   Box,
   CardMedia,
   CardContent,
@@ -15,8 +14,6 @@ import {
   GetArticlesPreviewsParam,
   GetArticlesPreviewsResponseEachItem,
 } from 'api/articles-api/get-articles-previews';
-import { ApiError } from 'api/utils/handle-axios-error';
-import { globalAPIErrorMessage } from 'constant/global-api-error-message';
 import { Link } from 'react-router-dom';
 import { Image } from 'views/components/atoms/image';
 import classes from './index.module.css';
@@ -51,13 +48,9 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   protected renderPreviewList() {
-    const { loadingState, articlesPreviews, errorMessage } = this.state;
+    const { loadingState, articlesPreviews } = this.state;
     if (loadingState === 'waiting' || loadingState === 'loading') {
       return <CenterSpinner />;
-    }
-
-    if (loadingState === 'error') {
-      return <Alert severity="error">{errorMessage}</Alert>;
     }
 
     if (articlesPreviews?.length === 0) {
@@ -197,7 +190,6 @@ export class Renderer extends React.Component<Props, State> {
     this.setState({
       loadingState: 'loading',
       articlesPreviews: undefined,
-      errorMessage: undefined,
     });
 
     try {
@@ -212,13 +204,7 @@ export class Renderer extends React.Component<Props, State> {
         articlesPreviews: res.results,
       });
     } catch (error) {
-      const apiError = error as ApiError<unknown>;
-      const errorMsg = globalAPIErrorMessage(apiError.status, 'get');
-
-      this.setState({
-        loadingState: 'error',
-        errorMessage: errorMsg,
-      });
+      this.props.throwError(500);
     }
   }
 
@@ -233,11 +219,12 @@ export class Renderer extends React.Component<Props, State> {
 export type Props = {
   variant: 'popup' | 'large';
   searchConditions: Omit<GetArticlesPreviewsParam, 'page'>;
+
+  throwError: (status: number) => void;
 };
 
 export type State = {
   loadingState: LoadingState;
   totalPages?: number;
   articlesPreviews?: GetArticlesPreviewsResponseEachItem[];
-  errorMessage?: string;
 };

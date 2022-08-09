@@ -15,7 +15,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       <ForwardRef(Box)
         className="popup-content"
       >
-        <Renderer
+        <ArticlePreviewList
           searchConditions={
             Object {
               "marker": 100,
@@ -61,7 +61,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       <ForwardRef(Box)
         className="popup-content"
       >
-        <Renderer
+        <ArticlePreviewList
           searchConditions={
             Object {
               "marker": 101,
@@ -112,7 +112,7 @@ exports[`Shallow Snapshot Tests form is editting 1`] = `
       <ForwardRef(Box)
         className="popup-content"
       >
-        <Renderer
+        <ArticlePreviewList
           searchConditions={
             Object {
               "marker": 100,
@@ -143,7 +143,7 @@ exports[`Shallow Snapshot Tests form is editting 1`] = `
       <ForwardRef(Box)
         className="popup-content"
       >
-        <Renderer
+        <ArticlePreviewList
           searchConditions={
             Object {
               "marker": 101,
@@ -179,7 +179,7 @@ exports[`Shallow Snapshot Tests with hiddenMarkerIds 1`] = `
       <ForwardRef(Box)
         className="popup-content"
       >
-        <Renderer
+        <ArticlePreviewList
           searchConditions={
             Object {
               "marker": 101,

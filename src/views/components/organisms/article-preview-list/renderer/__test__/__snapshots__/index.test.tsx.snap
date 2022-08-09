@@ -166,18 +166,6 @@ exports[`Shallow Snapshot Tests variant popup 1`] = `
 </ForwardRef(Stack)>
 `;
 
-exports[`Shallow Snapshot Tests with api error 1`] = `
-<ForwardRef(Stack)
-  spacing={2}
->
-  <ForwardRef(Alert)
-    severity="error"
-  >
-    データの取得に失敗しました。
-  </ForwardRef(Alert)>
-</ForwardRef(Stack)>
-`;
-
 exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
 <ForwardRef(Stack)
   spacing={2}

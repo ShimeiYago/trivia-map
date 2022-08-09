@@ -11,6 +11,7 @@ const basicProps: Props = {
     marker: 1,
   },
   variant: 'large',
+  throwError: jest.fn(),
 };
 
 describe('Shallow Snapshot Tests', () => {
@@ -45,11 +46,6 @@ describe('Shallow Snapshot Tests', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('with api error', () => {
-    wrapper.setState({ loadingState: 'error' });
-    expect(wrapper).toMatchSnapshot();
-  });
-
   it('variant popup', () => {
     wrapper.setProps({ variant: 'popup' });
     wrapper.setState({
@@ -80,14 +76,14 @@ describe('fetchArticlesPreviews', () => {
     expect(instance.state.loadingState).toBe('success');
   });
 
-  it('should set error states if api calling fail', async () => {
+  it('should call throwError if api calling fail', async () => {
     getArticlesPreviewsSpy.mockRejectedValue(new Error());
 
     wrapper = shallow(<Renderer {...basicProps} />);
     const instance = wrapper.instance();
     await instance['fetchArticlesPreviews']();
 
-    expect(instance.state.loadingState).toBe('error');
+    expect(instance.props.throwError).toBeCalled();
   });
 });
 

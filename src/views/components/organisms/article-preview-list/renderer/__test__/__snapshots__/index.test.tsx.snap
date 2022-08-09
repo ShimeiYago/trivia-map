@@ -83,7 +83,7 @@ exports[`Shallow Snapshot Tests variant popup 1`] = `
                 fontSize={14}
                 iconComponent={<Memo />}
                 iconPosition="left"
-                text="その他"
+                text="隠れミッキー"
               />
             </ForwardRef(Typography)>
             <ForwardRef(Typography)
@@ -136,7 +136,7 @@ exports[`Shallow Snapshot Tests variant popup 1`] = `
                 fontSize={14}
                 iconComponent={<Memo />}
                 iconPosition="left"
-                text="その他"
+                text="隠れミッキー"
               />
             </ForwardRef(Typography)>
             <ForwardRef(Typography)
@@ -213,7 +213,7 @@ exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
               align="left"
               iconComponent={<Memo />}
               iconPosition="left"
-              text="その他"
+              text="隠れミッキー"
             />
           </ForwardRef(Typography)>
           <ForwardRef(Typography)
@@ -270,7 +270,7 @@ exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
               align="left"
               iconComponent={<Memo />}
               iconPosition="left"
-              text="その他"
+              text="隠れミッキー"
             />
           </ForwardRef(Typography)>
           <ForwardRef(Typography)

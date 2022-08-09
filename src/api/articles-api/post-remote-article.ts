@@ -9,7 +9,7 @@ export async function postRemoteArticle(param: {
   title: string;
   description: string;
   marker: Position;
-  category: number;
+  category?: number;
   imageUrl: string | null;
   isDraft: boolean;
 }): Promise<PostArticleResponse> {
@@ -43,7 +43,7 @@ export type PostArticleRequest = {
   marker: Position;
   imageUrl: string | null;
   isDraft: boolean;
-  category: number;
+  category?: number;
 };
 
 export type PostArticleResponse = {

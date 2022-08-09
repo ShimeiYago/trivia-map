@@ -408,6 +408,18 @@ describe('updateFormField', () => {
     );
   });
 
+  it('should call updateCategory actions', async () => {
+    const param = {
+      category: 1,
+    };
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const appThunk = updateFormField(param) as any;
+    await appThunk(dispatch);
+
+    expect(dispatch.mock.calls[0][0].type).toBe('articleForm/updateCategory');
+  });
+
   it('should call updateIsDraft actions', async () => {
     const param = {
       isDraft: true,

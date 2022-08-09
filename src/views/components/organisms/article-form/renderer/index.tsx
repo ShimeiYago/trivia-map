@@ -8,6 +8,11 @@ import {
   Stack,
   TextField,
   Typography,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+  SelectChangeEvent,
 } from '@mui/material';
 import { LoadingState } from 'types/loading-state';
 import { Position } from 'types/position';
@@ -28,6 +33,7 @@ import { ImageField } from 'views/components/moleculars/image-field';
 import { DeletableImage } from 'views/components/moleculars/deletable-image';
 import { HeaderErrorMessages } from 'views/components/moleculars/header-error-messages';
 import { User } from 'types/user';
+import { CATEGORIES } from 'constant';
 
 export class Renderer extends React.Component<Props> {
   headerRef: React.RefObject<HTMLDivElement>;
@@ -126,6 +132,8 @@ export class Renderer extends React.Component<Props> {
               helperText={formError?.fieldErrors?.title}
             />
 
+            {this.renderCategorySelectField(disabled)}
+
             {this.props.imageDataUrl ? (
               <DeletableImage
                 src={this.props.imageDataUrl}
@@ -218,6 +226,34 @@ export class Renderer extends React.Component<Props> {
     );
   }
 
+  protected renderCategorySelectField = (disabled: boolean) => {
+    const menuItems = CATEGORIES.map((category) => (
+      <MenuItem
+        key={`category-${category.categoryId}`}
+        value={category.categoryId.toString()}
+      >
+        {category.categoryName}
+      </MenuItem>
+    ));
+
+    const categoryValue =
+      this.props.category === undefined ? '' : this.props.category.toString();
+
+    return (
+      <FormControl fullWidth>
+        <InputLabel>カテゴリー</InputLabel>
+        <Select
+          value={categoryValue}
+          label="カテゴリー"
+          onChange={this.handleChangeCategory}
+          disabled={disabled}
+        >
+          {menuItems}
+        </Select>
+      </FormControl>
+    );
+  };
+
   protected handleChangeTitle = (e: React.ChangeEvent<HTMLInputElement>) =>
     this.props.updateFormField({ title: e.target.value });
 
@@ -289,6 +325,10 @@ export class Renderer extends React.Component<Props> {
   protected handleDeleteImage = () => {
     this.props.updateFormField({ imageDataUrl: null });
   };
+
+  protected handleChangeCategory = (event: SelectChangeEvent) => {
+    this.props.updateFormField({ category: Number(event.target.value) });
+  };
 }
 
 export type Props = {
@@ -296,6 +336,7 @@ export type Props = {
   title: string;
   description: string;
   imageDataUrl: string | null;
+  category?: number;
   position?: Position;
   isDraft: boolean;
   submittingState: LoadingState;

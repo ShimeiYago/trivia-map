@@ -10,6 +10,7 @@ import {
   selectArticleFormIsEditting,
   selectArticleFormImageDataUrl,
   selectArticleFormIsDraft,
+  selectArticleFormCategory,
 } from 'store/article-form/selector';
 import {
   fetchArticle,
@@ -33,6 +34,7 @@ export function ArticleForm(ownProps: OwnProps) {
     position: useAppSelector(selectArticleFormPosition),
     isDraft: useAppSelector(selectArticleFormIsDraft),
     imageDataUrl: useAppSelector(selectArticleFormImageDataUrl),
+    category: useAppSelector(selectArticleFormCategory),
     submittingState: useAppSelector(selectArticleFormSubmittingState),
     fetchingState: useAppSelector(selectArticleFormFetchingState),
     formError: useAppSelector(selectArticleFormFormError),

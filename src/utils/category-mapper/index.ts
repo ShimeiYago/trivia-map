@@ -7,5 +7,5 @@ export function categoryMapper(categoryId: number) {
     }
   }
 
-  return CATEGORIES[0].categoryName;
+  return CATEGORIES[CATEGORIES.length - 1].categoryName;
 }

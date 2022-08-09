@@ -1,3 +1,4 @@
+import { selectArticleFormCategory } from './../selector/index';
 import { throwError } from 'store/global-error/slice';
 import { articleFormSlice } from '../slice';
 import { AppThunk } from 'store';
@@ -39,6 +40,7 @@ export const {
   updateIsFormChangedFromLastSaved,
   updateLastSavedValues,
   updateImageDataUrl,
+  updateCategory,
 } = articleFormSlice.actions;
 
 // submitNewArticle action
@@ -50,7 +52,7 @@ export const submitNewArticle = (): AppThunk => async (dispatch, getState) => {
   const position = selectArticleFormPosition(getState()) as Position;
   const imageDataUrl = selectArticleFormImageDataUrl(getState());
   const isDraft = selectArticleFormIsDraft(getState());
-  const category = 0; // TODO: Should be provided from state
+  const category = selectArticleFormCategory(getState());
 
   try {
     const res = await postRemoteArticle({
@@ -106,7 +108,7 @@ export const submitEdittedArticle =
     const imageDataUrl = selectArticleFormImageDataUrl(getState());
     const isDraft = selectArticleFormIsDraft(getState());
     const previousMarkerId = selectArticleFormPreviousMarkerId(getState());
-    const category = 0; // TODO: Should be provided from state
+    const category = selectArticleFormCategory(getState());
 
     let formError: FormError;
 
@@ -201,6 +203,9 @@ export const updateFormField =
     if (param.imageDataUrl !== undefined) {
       dispatch(updateImageDataUrl(param.imageDataUrl));
     }
+    if (param.category !== undefined) {
+      dispatch(updateCategory(param.category));
+    }
     if (param.isDraft !== undefined) {
       dispatch(updateIsDraft(param.isDraft));
     }
@@ -213,5 +218,6 @@ export type UpdateFormFieldParam = {
   description?: string;
   position?: Position;
   imageDataUrl?: string | null;
+  category?: number;
   isDraft?: boolean;
 };

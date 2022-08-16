@@ -1,10 +1,12 @@
 import { shallow, ShallowWrapper } from 'enzyme';
 import { Renderer, State } from '..';
 import * as GetMyArticlesApiModule from 'api/articles-api/get-my-articles';
+import * as DeleteArticleApiModule from 'api/articles-api/delete-remote-article';
 import { mockGetMyArticlesResponse } from 'api/mock/articles-response';
 
 let wrapper: ShallowWrapper<unknown, State, Renderer>;
 let getMyArticlesSpy: jest.SpyInstance;
+let deleteArticleSpy: jest.SpyInstance;
 
 const basicProps = {
   throwError: jest.fn(),
@@ -35,6 +37,17 @@ describe('Shallow Snapshot Tests', () => {
       loadingState: 'success',
       articlesPreviews: [],
       totalPages: 0,
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('with meesage', () => {
+    wrapper.setState({
+      loadingState: 'success',
+      message: {
+        text: 'message',
+        type: 'success',
+      },
     });
     expect(wrapper).toMatchSnapshot();
   });
@@ -79,5 +92,51 @@ describe('handleChangePagination', () => {
     instance['handleChangePagination']({} as React.ChangeEvent<unknown>, 1);
 
     expect(getMyArticlesSpy).toBeCalled();
+  });
+});
+
+describe('deleteArticle', () => {
+  beforeEach(() => {
+    jest.resetAllMocks();
+    deleteArticleSpy = jest.spyOn(
+      DeleteArticleApiModule,
+      'deleteRemoteArticle',
+    );
+  });
+
+  it('should set success states if api calling succeed', async () => {
+    deleteArticleSpy.mockResolvedValue({});
+
+    wrapper = shallow(<Renderer {...basicProps} />);
+    const instance = wrapper.instance();
+    await instance['deleteArticle'](1, 'title')();
+
+    expect(instance.state.message?.type).toBe('success');
+  });
+
+  it('should set error states if api calling fail', async () => {
+    deleteArticleSpy.mockRejectedValue(new Error());
+
+    wrapper = shallow(<Renderer {...basicProps} />);
+    const instance = wrapper.instance();
+    await instance['deleteArticle'](1, 'title')();
+
+    expect(instance.state.message?.type).toBe('error');
+  });
+});
+
+describe('handleCloseMessage', () => {
+  it('should change message state', () => {
+    wrapper = shallow(<Renderer {...basicProps} />);
+    wrapper.setState({
+      message: {
+        text: 'message',
+        type: 'success',
+      },
+    });
+    const instance = wrapper.instance();
+
+    instance['handleCloseMessage']();
+    expect(instance.state.message).toBe(undefined);
   });
 });

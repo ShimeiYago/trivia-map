@@ -11,75 +11,137 @@ exports[`Shallow Snapshot Tests articlesPreviews is zero 1`] = `
 exports[`Shallow Snapshot Tests basic 1`] = `<CenterSpinner />`;
 
 exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
-<ForwardRef(Stack)
-  spacing={1}
->
-  <div
-    className="pagination-wrapper"
+<Fragment>
+  <ForwardRef(Stack)
+    spacing={1}
   >
-    <ForwardRef(Pagination)
-      count={2}
-      onChange={[Function]}
-    />
-  </div>
-  <ForwardRef(Table)>
-    <ForwardRef(TableHead)>
-      <ForwardRef(TableRow)>
-        <ForwardRef(TableCell)>
-          タイトル（表示）
-        </ForwardRef(TableCell)>
-        <ForwardRef(TableCell)>
-          編集
-        </ForwardRef(TableCell)>
-        <ForwardRef(TableCell)>
-          削除
-        </ForwardRef(TableCell)>
-      </ForwardRef(TableRow)>
-    </ForwardRef(TableHead)>
-    <ForwardRef(TableBody)>
-      <ForwardRef(TableRow)
-        key="preview-1"
-      >
-        <ForwardRef(TableCell)>
-          <Link
-            to="/article/1"
-          >
-            ノーチラス号のエンジン
-          </Link>
-        </ForwardRef(TableCell)>
-        <ForwardRef(TableCell)>
-          <Link
-            to="/edit/1"
-          >
-            <Memo(ForwardRef(EditIcon)) />
-          </Link>
-        </ForwardRef(TableCell)>
-        <ForwardRef(TableCell)>
-          <Memo(ForwardRef(DeleteIcon)) />
-        </ForwardRef(TableCell)>
-      </ForwardRef(TableRow)>
-      <ForwardRef(TableRow)
-        key="preview-2"
-      >
-        <ForwardRef(TableCell)>
-          <Link
-            to="/article/2"
-          >
-            ノーチラス号の名前の由来
-          </Link>
-        </ForwardRef(TableCell)>
-        <ForwardRef(TableCell)>
-          <Link
-            to="/edit/2"
-          >
-            <Memo(ForwardRef(EditIcon)) />
-          </Link>
-        </ForwardRef(TableCell)>
-        <ForwardRef(TableCell)>
-          <Memo(ForwardRef(DeleteIcon)) />
-        </ForwardRef(TableCell)>
-      </ForwardRef(TableRow)>
-    </ForwardRef(TableBody)>
-  </ForwardRef(Table)>
-</ForwardRef(Stack)>
+    <div
+      className="pagination-wrapper"
+    >
+      <ForwardRef(Pagination)
+        count={2}
+        onChange={[Function]}
+      />
+    </div>
+    <ForwardRef(Table)>
+      <ForwardRef(TableHead)>
+        <ForwardRef(TableRow)>
+          <ForwardRef(TableCell)>
+            タイトル（表示）
+          </ForwardRef(TableCell)>
+          <ForwardRef(TableCell)>
+            編集
+          </ForwardRef(TableCell)>
+          <ForwardRef(TableCell)>
+            削除
+          </ForwardRef(TableCell)>
+        </ForwardRef(TableRow)>
+      </ForwardRef(TableHead)>
+      <ForwardRef(TableBody)>
+        <ForwardRef(TableRow)
+          key="preview-1"
+        >
+          <ForwardRef(TableCell)>
+            <Link
+              to="/article/1"
+            >
+              ノーチラス号のエンジン
+            </Link>
+          </ForwardRef(TableCell)>
+          <ForwardRef(TableCell)>
+            <Link
+              to="/edit/1"
+            >
+              <Memo(ForwardRef(EditIcon)) />
+            </Link>
+          </ForwardRef(TableCell)>
+          <ForwardRef(TableCell)>
+            <ForwardRef(IconButton)
+              disabled={false}
+              onClick={[Function]}
+            >
+              <Memo(ForwardRef(DeleteIcon)) />
+            </ForwardRef(IconButton)>
+          </ForwardRef(TableCell)>
+        </ForwardRef(TableRow)>
+        <ForwardRef(TableRow)
+          key="preview-2"
+        >
+          <ForwardRef(TableCell)>
+            <Link
+              to="/article/2"
+            >
+              ノーチラス号の名前の由来
+            </Link>
+          </ForwardRef(TableCell)>
+          <ForwardRef(TableCell)>
+            <Link
+              to="/edit/2"
+            >
+              <Memo(ForwardRef(EditIcon)) />
+            </Link>
+          </ForwardRef(TableCell)>
+          <ForwardRef(TableCell)>
+            <ForwardRef(IconButton)
+              disabled={false}
+              onClick={[Function]}
+            >
+              <Memo(ForwardRef(DeleteIcon)) />
+            </ForwardRef(IconButton)>
+          </ForwardRef(TableCell)>
+        </ForwardRef(TableRow)>
+      </ForwardRef(TableBody)>
+    </ForwardRef(Table)>
+  </ForwardRef(Stack)>
+</Fragment>
+`;
+
+exports[`Shallow Snapshot Tests with meesage 1`] = `
+<Fragment>
+  <ForwardRef(Stack)
+    spacing={1}
+  >
+    <div
+      className="pagination-wrapper"
+    >
+      <ForwardRef(Pagination)
+        onChange={[Function]}
+      />
+    </div>
+    <ForwardRef(Table)>
+      <ForwardRef(TableHead)>
+        <ForwardRef(TableRow)>
+          <ForwardRef(TableCell)>
+            タイトル（表示）
+          </ForwardRef(TableCell)>
+          <ForwardRef(TableCell)>
+            編集
+          </ForwardRef(TableCell)>
+          <ForwardRef(TableCell)>
+            削除
+          </ForwardRef(TableCell)>
+        </ForwardRef(TableRow)>
+      </ForwardRef(TableHead)>
+      <ForwardRef(TableBody) />
+    </ForwardRef(Table)>
+  </ForwardRef(Stack)>
+  <ForwardRef(Snackbar)
+    autoHideDuration={6000}
+    onClose={[Function]}
+    open={true}
+  >
+    <ForwardRef(Alert)
+      onClose={[Function]}
+      severity="success"
+      sx={
+        Object {
+          "width": "100%",
+        }
+      }
+      variant="filled"
+    >
+      message
+    </ForwardRef(Alert)>
+  </ForwardRef(Snackbar)>
+</Fragment>
 `;

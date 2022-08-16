@@ -8,6 +8,9 @@ import {
   TableRow,
   TableCell,
   TableBody,
+  Snackbar,
+  Alert,
+  IconButton,
 } from '@mui/material';
 import { LoadingState } from 'types/loading-state';
 import {
@@ -21,12 +24,16 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { ARTICLE_PAGE_LINK, EDIT_LINK } from 'constant/links';
 import { autoRefreshApiWrapper } from 'utils/auto-refresh-api-wrapper';
+import { deleteRemoteArticle } from 'api/articles-api/delete-remote-article';
+import { ApiError } from 'api/utils/handle-axios-error';
+import { globalAPIErrorMessage } from 'constant/global-api-error-message';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
       loadingState: 'waiting',
+      deleting: false,
     };
   }
 
@@ -47,15 +54,18 @@ export class Renderer extends React.Component<Props, State> {
     }
 
     return (
-      <Stack spacing={1}>
-        {this.renderPagination()}
-        {this.renderTable()}
-      </Stack>
+      <>
+        <Stack spacing={1}>
+          {this.renderPagination()}
+          {this.renderTable()}
+        </Stack>
+        {this.renderMessage()}
+      </>
     );
   }
 
   protected renderTable() {
-    const { articlesPreviews } = this.state;
+    const { articlesPreviews, deleting } = this.state;
 
     const tableRows = articlesPreviews?.map((preview) => {
       const { postId, title } = preview;
@@ -71,7 +81,12 @@ export class Renderer extends React.Component<Props, State> {
             </Link>
           </TableCell>
           <TableCell>
-            <DeleteIcon />
+            <IconButton
+              onClick={this.deleteArticle(postId, title)}
+              disabled={deleting}
+            >
+              <DeleteIcon />
+            </IconButton>
           </TableCell>
         </TableRow>
       );
@@ -102,6 +117,29 @@ export class Renderer extends React.Component<Props, State> {
     );
   }
 
+  protected renderMessage() {
+    if (!this.state.message) {
+      return null;
+    }
+
+    return (
+      <Snackbar
+        open={true}
+        autoHideDuration={6000}
+        onClose={this.handleCloseMessage}
+      >
+        <Alert
+          onClose={this.handleCloseMessage}
+          severity={this.state.message.type}
+          variant="filled"
+          sx={{ width: '100%' }}
+        >
+          {this.state.message.text}
+        </Alert>
+      </Snackbar>
+    );
+  }
+
   protected async fetchArticlesPreviews(page?: number) {
     this.setState({
       loadingState: 'loading',
@@ -127,6 +165,41 @@ export class Renderer extends React.Component<Props, State> {
   ) => {
     this.fetchArticlesPreviews(page);
   };
+
+  protected deleteArticle = (postId: number, title: string) => async () => {
+    this.setState({
+      message: undefined,
+      deleting: true,
+    });
+
+    try {
+      await autoRefreshApiWrapper(() => deleteRemoteArticle(postId));
+
+      this.setState({
+        message: {
+          text: `「${title}」を削除しました。`,
+          type: 'success',
+        },
+        deleting: false,
+      });
+      this.fetchArticlesPreviews();
+    } catch (error) {
+      const apiError = error as ApiError<unknown>;
+      this.setState({
+        message: {
+          text: globalAPIErrorMessage(apiError.status, 'delete'),
+          type: 'error',
+        },
+        deleting: false,
+      });
+    }
+  };
+
+  protected handleCloseMessage = () => {
+    this.setState({
+      message: undefined,
+    });
+  };
 }
 
 export type Props = {
@@ -135,6 +208,11 @@ export type Props = {
 
 export type State = {
   loadingState: LoadingState;
+  deleting: boolean;
   totalPages?: number;
   articlesPreviews?: GetMyArticlesResponseEachItem[];
+  message?: {
+    text: string;
+    type: 'error' | 'success';
+  };
 };

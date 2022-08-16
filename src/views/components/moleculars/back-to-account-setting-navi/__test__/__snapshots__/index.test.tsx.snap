@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shallow Snapshot Tests basic 1`] = `
+<NonStyleLink
+  to="/admin/account"
+>
+  <IconAndText
+    align="left"
+    iconComponent={<Memo />}
+    iconPosition="left"
+    text="アカウント設定"
+  />
+</NonStyleLink>
+`;

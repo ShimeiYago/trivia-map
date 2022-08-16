@@ -5,16 +5,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
   <ForwardRef(Stack)
     spacing={3}
   >
-    <NonStyleLink
-      to="/admin/account"
-    >
-      <IconAndText
-        align="left"
-        iconComponent={<Memo />}
-        iconPosition="left"
-        text="アカウント設定"
-      />
-    </NonStyleLink>
+    <BackToAccountSettingNavi />
     <ForwardRef(Box)>
       <ForwardRef(Stack)
         spacing={1}
@@ -100,16 +91,7 @@ exports[`Shallow Snapshot Tests error case 1`] = `
   <ForwardRef(Stack)
     spacing={3}
   >
-    <NonStyleLink
-      to="/admin/account"
-    >
-      <IconAndText
-        align="left"
-        iconComponent={<Memo />}
-        iconPosition="left"
-        text="アカウント設定"
-      />
-    </NonStyleLink>
+    <BackToAccountSettingNavi />
     <ForwardRef(Box)>
       <ForwardRef(Stack)
         spacing={1}
@@ -209,16 +191,7 @@ exports[`Shallow Snapshot Tests loading 1`] = `
   <ForwardRef(Stack)
     spacing={3}
   >
-    <NonStyleLink
-      to="/admin/account"
-    >
-      <IconAndText
-        align="left"
-        iconComponent={<Memo />}
-        iconPosition="left"
-        text="アカウント設定"
-      />
-    </NonStyleLink>
+    <BackToAccountSettingNavi />
     <ForwardRef(Box)>
       <ForwardRef(Stack)
         spacing={1}
@@ -304,16 +277,7 @@ exports[`Shallow Snapshot Tests success 1`] = `
   <ForwardRef(Stack)
     spacing={3}
   >
-    <NonStyleLink
-      to="/admin/account"
-    >
-      <IconAndText
-        align="left"
-        iconComponent={<Memo />}
-        iconPosition="left"
-        text="アカウント設定"
-      />
-    </NonStyleLink>
+    <BackToAccountSettingNavi />
     <ForwardRef(Box)>
       <ForwardRef(Stack)
         spacing={1}

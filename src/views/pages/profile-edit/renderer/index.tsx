@@ -2,9 +2,6 @@ import React from 'react';
 import { Alert, Box, Stack, TextField, Typography } from '@mui/material';
 import { User } from 'types/user';
 import { AdminWrapper } from 'views/components/organisms/admin-wrapper';
-import { NonStyleLink } from 'views/components/atoms/non-style-link';
-import { IconAndText } from 'views/components/atoms/icon-and-text';
-import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import { LoadingButton } from '@mui/lab';
 import { LoadingState } from 'types/loading-state';
 import { HeaderErrorMessages } from 'views/components/moleculars/header-error-messages';
@@ -14,8 +11,8 @@ import {
 } from 'api/auths-api/update-user-info';
 import { globalAPIErrorMessage } from 'constant/global-api-error-message';
 import { ApiError } from 'api/utils/handle-axios-error';
-import { ACCOUNT_SETTINGS_LINK } from 'constant/links';
 import { autoRefreshApiWrapper } from 'utils/auto-refresh-api-wrapper';
+import { BackToAccountSettingNavi } from 'views/components/moleculars/back-to-account-setting-navi';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -33,14 +30,7 @@ export class Renderer extends React.Component<Props, State> {
   protected renderContents = () => {
     return (
       <Stack spacing={3}>
-        <NonStyleLink to={ACCOUNT_SETTINGS_LINK}>
-          <IconAndText
-            iconComponent={<KeyboardArrowLeftIcon />}
-            text="アカウント設定"
-            align="left"
-            iconPosition="left"
-          />
-        </NonStyleLink>
+        <BackToAccountSettingNavi />
         {this.renderForm()}
       </Stack>
     );

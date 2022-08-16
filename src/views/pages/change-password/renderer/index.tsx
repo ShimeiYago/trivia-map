@@ -7,6 +7,7 @@ import { changePassword, ValidationError } from 'api/auths-api/change-password';
 import { ApiError } from 'api/utils/handle-axios-error';
 import { globalAPIErrorMessage } from 'constant/global-api-error-message';
 import { AdminWrapper } from 'views/components/organisms/admin-wrapper';
+import { autoRefreshApiWrapper } from 'utils/auto-refresh-api-wrapper';
 
 export class Renderer extends React.Component<unknown, State> {
   state: State = {
@@ -118,7 +119,7 @@ export class Renderer extends React.Component<unknown, State> {
     });
 
     try {
-      await changePassword(password1, password2);
+      await autoRefreshApiWrapper(() => changePassword(password1, password2));
       this.setState({
         loadingState: 'success',
       });

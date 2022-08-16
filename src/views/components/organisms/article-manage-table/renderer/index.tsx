@@ -20,6 +20,7 @@ import { CenterSpinner } from 'views/components/atoms/center-spinner';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { ARTICLE_PAGE_LINK, EDIT_LINK } from 'constant/links';
+import { autoRefreshApiWrapper } from 'utils/auto-refresh-api-wrapper';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -108,7 +109,7 @@ export class Renderer extends React.Component<Props, State> {
     });
 
     try {
-      const res = await getMyArticles(page);
+      const res = await autoRefreshApiWrapper(() => getMyArticles(page));
 
       this.setState({
         loadingState: 'success',

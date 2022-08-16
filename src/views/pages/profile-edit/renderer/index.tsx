@@ -15,6 +15,7 @@ import {
 import { globalAPIErrorMessage } from 'constant/global-api-error-message';
 import { ApiError } from 'api/utils/handle-axios-error';
 import { ACCOUNT_SETTINGS_LINK } from 'constant/links';
+import { autoRefreshApiWrapper } from 'utils/auto-refresh-api-wrapper';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -131,7 +132,9 @@ export class Renderer extends React.Component<Props, State> {
     });
 
     try {
-      const res = await updateUserInfo(this.state.nickname);
+      const res = await autoRefreshApiWrapper(() =>
+        updateUserInfo(this.state.nickname),
+      );
       this.props.updateUser(res);
       this.setState({
         loadingState: 'success',

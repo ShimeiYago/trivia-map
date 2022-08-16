@@ -14,6 +14,7 @@ import {
 } from 'api/articles-api/get-remote-article';
 import { ApiError } from 'api/utils/handle-axios-error';
 import { ArticleWrapper } from 'views/components/organisms/article-wrapper';
+import { autoRefreshApiWrapper } from 'utils/auto-refresh-api-wrapper';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -110,7 +111,9 @@ export class Renderer extends React.Component<Props, State> {
       loadingState: 'loading',
     });
     try {
-      const res = await getRemoteArticle(this.props.postId);
+      const res = await autoRefreshApiWrapper(() =>
+        getRemoteArticle(this.props.postId),
+      );
       this.setState({
         article: res,
         loadingState: 'success',

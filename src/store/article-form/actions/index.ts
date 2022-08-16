@@ -23,6 +23,7 @@ import { globalAPIErrorMessage } from 'constant/global-api-error-message';
 import { pushMarker, deleteOneMarker } from 'store/markers/actions';
 import { Position } from 'types/position';
 import { Marker } from 'store/markers/model';
+import { autoRefreshApiWrapper } from 'utils/auto-refresh-api-wrapper';
 
 // basic actions
 export const {
@@ -55,14 +56,16 @@ export const submitNewArticle = (): AppThunk => async (dispatch, getState) => {
   const category = selectArticleFormCategory(getState());
 
   try {
-    const res = await postRemoteArticle({
-      title: title,
-      description: description,
-      marker: position,
-      imageUrl: imageDataUrl,
-      isDraft: isDraft,
-      category: category,
-    });
+    const res = await autoRefreshApiWrapper(() =>
+      postRemoteArticle({
+        title: title,
+        description: description,
+        marker: position,
+        imageUrl: imageDataUrl,
+        isDraft: isDraft,
+        category: category,
+      }),
+    );
     dispatch(submitSuccess(res.postId));
     dispatch(initialize());
 
@@ -113,15 +116,17 @@ export const submitEdittedArticle =
     let formError: FormError;
 
     try {
-      const res = await putRemoteArticle({
-        postId: postId,
-        title: title,
-        description: description,
-        marker: position,
-        imageUrl: imageDataUrl,
-        isDraft: isDraft,
-        category: category,
-      });
+      const res = await autoRefreshApiWrapper(() =>
+        putRemoteArticle({
+          postId: postId,
+          title: title,
+          description: description,
+          marker: position,
+          imageUrl: imageDataUrl,
+          isDraft: isDraft,
+          category: category,
+        }),
+      );
       dispatch(submitSuccess(postId));
       dispatch(initialize());
 
@@ -167,7 +172,7 @@ export const fetchArticle =
     dispatch(fetchStart(postId));
 
     try {
-      const res = await getRemoteArticle(postId);
+      const res = await autoRefreshApiWrapper(() => getRemoteArticle(postId));
       dispatch(fetchSuccess(res));
       dispatch(updateLastSavedValues());
     } catch (error) {

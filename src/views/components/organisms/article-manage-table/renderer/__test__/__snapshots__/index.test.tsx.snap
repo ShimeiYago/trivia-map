@@ -50,6 +50,7 @@ exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
           </ForwardRef(TableCell)>
           <ForwardRef(TableCell)>
             <Link
+              target="_blank"
               to="/edit/1"
             >
               <Memo(ForwardRef(EditIcon)) />
@@ -76,6 +77,7 @@ exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
           </ForwardRef(TableCell)>
           <ForwardRef(TableCell)>
             <Link
+              target="_blank"
               to="/edit/2"
             >
               <Memo(ForwardRef(EditIcon)) />

@@ -76,7 +76,7 @@ export class Renderer extends React.Component<Props, State> {
             <Link to={ARTICLE_PAGE_LINK(String(postId))}>{title}</Link>
           </TableCell>
           <TableCell>
-            <Link to={EDIT_LINK(String(postId))}>
+            <Link to={EDIT_LINK(String(postId))} target="_blank">
               <EditIcon />
             </Link>
           </TableCell>

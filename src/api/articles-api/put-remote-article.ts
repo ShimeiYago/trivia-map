@@ -16,7 +16,7 @@ export async function putRemoteArticle(param: {
   description: string;
   category?: number;
   marker: Position;
-  imageUrl: string | null;
+  image?: File | null;
   isDraft: boolean;
 }): Promise<PostArticleResponse> {
   const axiosInstance = getAxiosInstance({}, mockPostArticleResponse);
@@ -26,7 +26,7 @@ export async function putRemoteArticle(param: {
     description: param.description,
     marker: param.marker,
     category: param.category,
-    imageUrl: param.imageUrl,
+    image: param.image,
     isDraft: param.isDraft,
   };
 

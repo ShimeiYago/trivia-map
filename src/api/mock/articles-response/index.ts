@@ -14,7 +14,7 @@ export const mockGetArticleResponse: GetArticleResponse = {
     park: 'S',
     numberOfPublicArticles: 1,
   },
-  imageUrl:
+  image:
     'https://www.disneyparkstory.com/wp-content/uploads/2017/02/CIMG9800.jpg',
   isDraft: false,
   author: {
@@ -31,7 +31,7 @@ export const mockPostArticleResponse: PostArticleResponse = {
   title: 'ノーチラス号',
   description: 'ネモ船長が最大の発明だと自負する潜水艇。',
   marker: 100,
-  imageUrl: null,
+  image: null,
   isDraft: false,
   author: 0,
   category: 1,
@@ -49,14 +49,14 @@ export const mockGetArticlesPreviewsResponse: GetArticlesPreviewsResponse = {
     {
       postId: 1,
       title: 'ノーチラス号のエンジン',
-      imageUrl:
+      image:
         'https://www.disneyparkstory.com/wp-content/uploads/2017/02/CIMG9800.jpg',
       category: 1,
     },
     {
       postId: 2,
       title: 'ノーチラス号の名前の由来',
-      imageUrl: null,
+      image: null,
       category: 1,
     },
   ],

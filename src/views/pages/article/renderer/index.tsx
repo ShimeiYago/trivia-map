@@ -74,7 +74,9 @@ export class Renderer extends React.Component<Props, State> {
 
         <Box sx={createdAtBox}>
           <Typography>{`投稿日 ${createdAt}`}</Typography>
-          {<Typography>{`更新日 ${updatedAt}`}</Typography>}
+          {createdAt !== updatedAt && (
+            <Typography>{`更新日 ${updatedAt}`}</Typography>
+          )}
         </Box>
 
         <Divider />

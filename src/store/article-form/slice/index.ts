@@ -2,6 +2,7 @@ import { GetArticleResponse } from '../../../api/articles-api/get-remote-article
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { FormError, initialState } from '../model';
 import { Position } from 'types/position';
+import { SelializedImageFile } from 'types/SelializedImageFile';
 
 export const articleFormSlice = createSlice({
   name: 'articleForm',
@@ -19,8 +20,11 @@ export const articleFormSlice = createSlice({
       state.position = action.payload;
     },
 
-    updateImageDataUrl(state, action: PayloadAction<string | null>) {
-      state.imageDataUrl = action.payload;
+    updateImage(
+      state,
+      action: PayloadAction<string | SelializedImageFile | null>,
+    ) {
+      state.image = action.payload;
     },
 
     updateCategory(state, action: PayloadAction<number>) {
@@ -58,7 +62,7 @@ export const articleFormSlice = createSlice({
       state.title = action.payload.title;
       state.description = action.payload.description;
       state.position = action.payload.marker;
-      state.imageDataUrl = action.payload.imageUrl;
+      state.image = action.payload.image;
       state.category = action.payload.category;
       state.isDraft = action.payload.isDraft;
     },
@@ -68,7 +72,7 @@ export const articleFormSlice = createSlice({
       state.title = initialState.title;
       state.description = initialState.description;
       state.position = initialState.position;
-      state.imageDataUrl = initialState.imageDataUrl;
+      state.image = initialState.image;
       state.category = initialState.category;
       state.submittingState = initialState.submittingState;
       state.fetchingState = initialState.fetchingState;
@@ -77,7 +81,7 @@ export const articleFormSlice = createSlice({
       state.lastSavedTitle = initialState.lastSavedTitle;
       state.lastSavedDescription = initialState.lastSavedDescription;
       state.lastSavedPosition = initialState.lastSavedPosition;
-      state.lastSavedImageDataUrl = initialState.lastSavedImageDataUrl;
+      state.lastSavedImage = initialState.lastSavedImage;
       state.lastSavedCategory = initialState.lastSavedCategory;
       state.isFormChangedFromLastSaved =
         initialState.isFormChangedFromLastSaved;
@@ -91,7 +95,7 @@ export const articleFormSlice = createSlice({
       state.lastSavedTitle = state.title;
       state.lastSavedDescription = state.description;
       state.lastSavedPosition = state.position;
-      state.lastSavedImageDataUrl = state.imageDataUrl;
+      state.lastSavedImage = state.image;
       state.lastSavedCategory = state.category;
       state.isFormChangedFromLastSaved = false;
     },
@@ -102,7 +106,7 @@ export const articleFormSlice = createSlice({
         state.lastSavedDescription === state.description &&
         state.lastSavedPosition?.lat === state.position?.lat &&
         state.lastSavedPosition?.lng === state.position?.lng &&
-        state.lastSavedImageDataUrl === state.imageDataUrl &&
+        state.lastSavedImage === state.image &&
         state.lastSavedCategory === state.category
       );
     },

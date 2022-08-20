@@ -39,7 +39,7 @@ const getState = () => ({
       lng: 0,
       park: 'S',
     },
-    imageDataUrl: 'https://image-data.jpg',
+    image: null,
     previousMarkerId: 1,
     isDraft: false,
   },
@@ -91,6 +91,23 @@ describe('submitNewArticle', () => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const appThunk = submitNewArticle() as any;
     await appThunk(dispatch, getStateWithoutPosition, {});
+
+    expect(dispatch.mock.calls[1][0].type).toBe('articleForm/submitSuccess');
+  });
+
+  it('call submitSuccess if API successed if image is provided', async () => {
+    postRemoteArticleSpy.mockResolvedValue(mockPostPutResponse);
+
+    const getStateWithImage = () => ({
+      articleForm: {
+        ...getState().articleForm,
+        image: 'data:image/png;base64,xxx',
+      },
+    });
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const appThunk = submitNewArticle() as any;
+    await appThunk(dispatch, getStateWithImage, {});
 
     expect(dispatch.mock.calls[1][0].type).toBe('articleForm/submitSuccess');
   });
@@ -193,6 +210,23 @@ describe('submitEdittedArticle', () => {
     expect(dispatch.mock.calls[1][0].type).toBe('articleForm/submitSuccess');
   });
 
+  it('call submitSuccess if API successed if image is provided', async () => {
+    putRemoteArticleSpy.mockResolvedValue(mockPostPutResponse);
+
+    const getStateWithImage = () => ({
+      articleForm: {
+        ...getState().articleForm,
+        image: 'data:image/png;base64,xxx',
+      },
+    });
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const appThunk = submitEdittedArticle() as any;
+    await appThunk(dispatch, getStateWithImage, {});
+
+    expect(dispatch.mock.calls[1][0].type).toBe('articleForm/submitSuccess');
+  });
+
   it('call submitFailure if API failed', async () => {
     putRemoteArticleSpy.mockRejectedValue(new Error());
 
@@ -286,7 +320,7 @@ const mockGetResponse: GetArticleApiModule.GetArticleResponse = {
   postId: 1,
   title: 'title',
   description: 'description',
-  imageUrl: 'https://image-data.jpg',
+  image: 'https://image-data.jpg',
   isDraft: false,
   marker: {
     markerId: 1,
@@ -394,18 +428,19 @@ describe('updateFormField', () => {
     expect(dispatch.mock.calls[0][0].type).toBe('articleForm/updatePosition');
   });
 
-  it('should call updateImageDataUrl actions', async () => {
+  it('should call updateImage actions', async () => {
     const param = {
-      imageDataUrl: 'https://image-data.jpg',
+      image: {
+        dataUrl: 'dataxxx',
+        fileName: 'filename',
+      },
     };
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const appThunk = updateFormField(param) as any;
     await appThunk(dispatch);
 
-    expect(dispatch.mock.calls[0][0].type).toBe(
-      'articleForm/updateImageDataUrl',
-    );
+    expect(dispatch.mock.calls[0][0].type).toBe('articleForm/updateImage');
   });
 
   it('should call updateCategory actions', async () => {

@@ -47,7 +47,7 @@ export async function getArticlesPreviews(
 export type GetArticlesPreviewsResponseEachItem = {
   postId: number;
   title: string;
-  imageUrl: string | null;
+  image: string | null;
   category: number;
 };
 

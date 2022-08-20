@@ -43,7 +43,7 @@ export class Renderer extends React.Component<Props, State> {
       title,
       description,
       marker,
-      imageUrl,
+      image,
       author,
       createdAt,
       updatedAt,
@@ -79,7 +79,7 @@ export class Renderer extends React.Component<Props, State> {
 
         <Divider />
 
-        {imageUrl && <Image src={imageUrl} width="full" />}
+        {image && <Image src={image} width="full" />}
 
         <Typography>{description}</Typography>
 

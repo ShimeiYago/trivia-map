@@ -52,6 +52,7 @@ export class LoginForm extends React.Component<Props, State> {
             error={!!this.state.formError?.email}
             onChange={this.props.onChangeEmail}
             value={this.props.email}
+            required
           />
           <TextField
             margin="normal"
@@ -65,6 +66,7 @@ export class LoginForm extends React.Component<Props, State> {
             helperText={this.state.formError?.password}
             error={!!this.state.formError?.password}
             onChange={this.handleChangePassword}
+            required
           />
           <LoadingButton
             fullWidth

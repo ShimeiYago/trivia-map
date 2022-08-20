@@ -60,6 +60,7 @@ export class Renderer extends React.Component<Props, State> {
               error={!!this.state.formError?.nickname}
               onChange={this.handleChangeNickname}
               value={this.props.user?.nickname}
+              required
             />
             <LoadingButton
               fullWidth

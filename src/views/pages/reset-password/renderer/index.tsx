@@ -36,6 +36,7 @@ export class Renderer extends React.Component<Props, State> {
           helperText={this.state.formError?.password1}
           error={!!this.state.formError?.password1}
           onChange={this.handleChangeTextField('password1')}
+          required
         />
         <TextField
           margin="normal"
@@ -49,6 +50,7 @@ export class Renderer extends React.Component<Props, State> {
           helperText={this.state.formError?.password2}
           error={!!this.state.formError?.password2}
           onChange={this.handleChangeTextField('password2')}
+          required
         />
         <LoadingButton
           fullWidth

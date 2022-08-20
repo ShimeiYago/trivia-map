@@ -15,7 +15,7 @@ import {
   selectArticleFormDescription,
   selectArticleFormPosition,
   selectArticleFormId,
-  selectArticleFormImageDataUrl,
+  // selectArticleFormImageDataUrl,
   selectArticleFormPreviousMarkerId,
   selectArticleFormIsDraft,
 } from '../selector';
@@ -51,7 +51,7 @@ export const submitNewArticle = (): AppThunk => async (dispatch, getState) => {
   const title = selectArticleFormTitle(getState());
   const description = selectArticleFormDescription(getState());
   const position = selectArticleFormPosition(getState()) as Position;
-  const imageDataUrl = selectArticleFormImageDataUrl(getState());
+  // const imageDataUrl = selectArticleFormImageDataUrl(getState());
   const isDraft = selectArticleFormIsDraft(getState());
   const category = selectArticleFormCategory(getState());
 
@@ -61,7 +61,7 @@ export const submitNewArticle = (): AppThunk => async (dispatch, getState) => {
         title: title,
         description: description,
         marker: position,
-        imageUrl: imageDataUrl,
+        // imageUrl: imageDataUrl,
         isDraft: isDraft,
         category: category,
       }),
@@ -108,7 +108,7 @@ export const submitEdittedArticle =
     const title = selectArticleFormTitle(getState());
     const description = selectArticleFormDescription(getState());
     const position = selectArticleFormPosition(getState()) as Position;
-    const imageDataUrl = selectArticleFormImageDataUrl(getState());
+    // const imageDataUrl = selectArticleFormImageDataUrl(getState());
     const isDraft = selectArticleFormIsDraft(getState());
     const previousMarkerId = selectArticleFormPreviousMarkerId(getState());
     const category = selectArticleFormCategory(getState());
@@ -122,7 +122,7 @@ export const submitEdittedArticle =
           title: title,
           description: description,
           marker: position,
-          imageUrl: imageDataUrl,
+          // imageUrl: imageDataUrl,
           isDraft: isDraft,
           category: category,
         }),

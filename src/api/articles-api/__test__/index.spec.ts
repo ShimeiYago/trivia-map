@@ -55,7 +55,6 @@ describe('postRemoteArticle', () => {
       title: 'title',
       description: 'description',
       marker: newPosition,
-      imageUrl: 'https://image-data.jpg',
       isDraft: false,
       category: 1,
     });
@@ -75,7 +74,6 @@ describe('postRemoteArticle', () => {
         title: 'title',
         description: 'description',
         marker: newPosition,
-        imageUrl: 'https://image-data.jpg',
         isDraft: false,
         category: 1,
       }),
@@ -99,7 +97,6 @@ describe('putRemoteArticle', () => {
       title: 'title',
       description: 'description',
       marker: newPosition,
-      imageUrl: 'https://image-data.jpg',
       isDraft: false,
       category: 1,
     });
@@ -120,7 +117,6 @@ describe('putRemoteArticle', () => {
         title: 'title',
         description: 'description',
         marker: newPosition,
-        imageUrl: 'https://image-data.jpg',
         isDraft: false,
         category: 1,
       }),

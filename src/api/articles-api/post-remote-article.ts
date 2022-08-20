@@ -10,7 +10,7 @@ export async function postRemoteArticle(param: {
   description: string;
   marker: Position;
   category?: number;
-  imageUrl: string | null;
+  image?: File;
   isDraft: boolean;
 }): Promise<PostArticleResponse> {
   const axiosInstance = getAxiosInstance({}, mockPostArticleResponse);
@@ -19,7 +19,7 @@ export async function postRemoteArticle(param: {
     title: param.title,
     description: param.description,
     marker: param.marker,
-    imageUrl: param.imageUrl,
+    image: param.image,
     isDraft: param.isDraft,
     category: param.category,
   };
@@ -41,7 +41,7 @@ export type PostArticleRequest = {
   title: string;
   description: string;
   marker: Position;
-  imageUrl: string | null;
+  image?: File | null;
   isDraft: boolean;
   category?: number;
 };
@@ -51,7 +51,7 @@ export type PostArticleResponse = {
   title: string;
   description: string;
   marker: number;
-  imageUrl: string | null;
+  image: string | null;
   category: number;
   isDraft: boolean;
   author: number;
@@ -63,6 +63,6 @@ export type ValidationError = {
   title?: string[];
   description?: string[];
   marker?: string[];
-  imageUrl?: string[];
+  image?: string[];
   isDraft?: string[];
 };

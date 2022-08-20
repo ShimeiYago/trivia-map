@@ -11,8 +11,8 @@ import {
   selectArticleFormLastSavedDescription,
   selectArticleFormLastSavedPosition,
   selectArticleFormIsFormChangedFromLastSaved,
-  selectArticleFormImageDataUrl,
-  selectArticleFormLastSavedImageDataUrl,
+  selectArticleFormImage,
+  selectArticleFormLastSavedImage,
   selectArticleFormIsDraft,
   selectArticleFormCategory,
   selectArticleFormLastSavedCategory,
@@ -33,8 +33,8 @@ describe('readingArticle selector', () => {
       lastSavedDescription: 'description',
       position: { lat: 1, lng: 1 },
       lastSavedPosition: { lat: 1, lng: 1 },
-      imageDataUrl: 'https://image-data.jpg',
-      lastSavedImageDataUrl: 'https://image-data.jpg',
+      image: 'https://image-data.jpg',
+      lastSavedImage: 'https://image-data.jpg',
       category: 1,
       lastSavedCategory: 1,
       submittingState: 'success',
@@ -79,14 +79,12 @@ describe('readingArticle selector', () => {
     });
   });
 
-  it('selectArticleFormImageDataUrl should return articleForm imageDataUrl', () => {
-    expect(selectArticleFormImageDataUrl(rootState)).toEqual(
-      'https://image-data.jpg',
-    );
+  it('selectArticleFormImage should return articleForm image', () => {
+    expect(selectArticleFormImage(rootState)).toEqual('https://image-data.jpg');
   });
 
-  it('selectArticleFormLastSavedImageDataUrl should return articleForm imageDataUrl', () => {
-    expect(selectArticleFormLastSavedImageDataUrl(rootState)).toEqual(
+  it('selectArticleFormLastSavedImage should return articleForm image', () => {
+    expect(selectArticleFormLastSavedImage(rootState)).toEqual(
       'https://image-data.jpg',
     );
   });

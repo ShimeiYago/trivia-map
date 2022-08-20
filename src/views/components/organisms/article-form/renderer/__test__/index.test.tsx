@@ -6,7 +6,7 @@ let wrapper: ShallowWrapper<Props, unknown, Renderer>;
 const basicProps: Props = {
   title: '',
   description: '',
-  imageDataUrl: null,
+  image: null,
   position: {
     lat: 0,
     lng: 0,
@@ -68,9 +68,19 @@ describe('Shallow Snapshot Tests', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('with image', () => {
+  it('with image url', () => {
     wrapper.setProps({
-      imageDataUrl: 'https://image-data.jpg',
+      image: 'https://image-data.jpg',
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('with image data url', () => {
+    wrapper.setProps({
+      image: {
+        dataUrl: 'data:image/png;base64,xxx',
+        fileName: 'filename',
+      },
     });
     expect(wrapper).toMatchSnapshot();
   });
@@ -249,7 +259,7 @@ describe('handleFileInputChange', () => {
     await instance['handleFileInputChange'](event);
 
     expect(instance.props.updateFormField).not.toBeCalledWith({
-      imageDataUrl: null,
+      image: null,
     });
   });
 
@@ -263,7 +273,7 @@ describe('handleFileInputChange', () => {
     await instance['handleFileInputChange'](event);
 
     expect(instance.props.updateFormField).toBeCalledWith({
-      imageDataUrl: null,
+      image: null,
     });
   });
 });
@@ -273,12 +283,12 @@ describe('handleDeleteImage', () => {
     wrapper = shallow(<Renderer {...basicProps} />);
   });
 
-  it('should set null as imageDataUrl', () => {
+  it('should set null as image', () => {
     const instance = wrapper.instance();
     instance['handleDeleteImage']();
 
     expect(instance.props.updateFormField).toBeCalledWith({
-      imageDataUrl: null,
+      image: null,
     });
   });
 });
@@ -288,7 +298,7 @@ describe('handleChangeCategory', () => {
     wrapper = shallow(<Renderer {...basicProps} />);
   });
 
-  it('should set null as imageDataUrl', () => {
+  it('should set null as image', () => {
     const event = {
       target: {
         value: 1,

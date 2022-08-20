@@ -61,6 +61,23 @@ describe('postRemoteArticle', () => {
     expect(response.postId).toBe(1);
   });
 
+  it('handle image', async () => {
+    process.env.REACT_APP_MOCK = 'normal';
+
+    const response = await postRemoteArticle({
+      title: 'title',
+      description: 'description',
+      marker: newPosition,
+      isDraft: false,
+      category: 1,
+      image: {
+        dataUrl: 'data:image/png;base64,xxx',
+        fileName: 'filename',
+      },
+    });
+    expect(response.postId).toBe(1);
+  });
+
   it('handle error response', async () => {
     process.env.REACT_APP_MOCK = 'error';
 
@@ -99,6 +116,24 @@ describe('putRemoteArticle', () => {
       marker: newPosition,
       isDraft: false,
       category: 1,
+    });
+    expect(response.postId).toBe(1);
+  });
+
+  it('handle image', async () => {
+    process.env.REACT_APP_MOCK = 'normal';
+
+    const response = await putRemoteArticle({
+      postId: 1,
+      title: 'title',
+      description: 'description',
+      marker: newPosition,
+      isDraft: false,
+      category: 1,
+      image: {
+        dataUrl: 'data:image/png;base64,xxx',
+        fileName: 'filename',
+      },
     });
     expect(response.postId).toBe(1);
   });

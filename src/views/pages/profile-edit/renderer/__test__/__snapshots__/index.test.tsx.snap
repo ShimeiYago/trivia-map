@@ -61,6 +61,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
             margin="normal"
             name="nickname"
             onChange={[Function]}
+            required={true}
             type="nickname"
             value="Axel"
           />
@@ -161,6 +162,7 @@ exports[`Shallow Snapshot Tests error case 1`] = `
             margin="normal"
             name="nickname"
             onChange={[Function]}
+            required={true}
             type="nickname"
             value="Axel"
           />
@@ -247,6 +249,7 @@ exports[`Shallow Snapshot Tests loading 1`] = `
             margin="normal"
             name="nickname"
             onChange={[Function]}
+            required={true}
             type="nickname"
             value="Axel"
           />
@@ -336,6 +339,7 @@ exports[`Shallow Snapshot Tests success 1`] = `
             margin="normal"
             name="nickname"
             onChange={[Function]}
+            required={true}
             type="nickname"
             value="Axel"
           />

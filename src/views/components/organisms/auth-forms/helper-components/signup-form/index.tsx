@@ -44,6 +44,7 @@ export class SignupForm extends React.Component<Props, State> {
           error={!!this.state.formError?.email}
           onChange={this.props.onChangeEmail}
           value={this.props.email}
+          required
         />
         <TextField
           margin="normal"
@@ -56,6 +57,7 @@ export class SignupForm extends React.Component<Props, State> {
           helperText={this.state.formError?.nickname}
           error={!!this.state.formError?.nickname}
           onChange={this.handleChangeTextField('nickname')}
+          required
         />
         <TextField
           margin="normal"
@@ -69,6 +71,7 @@ export class SignupForm extends React.Component<Props, State> {
           helperText={this.state.formError?.password1}
           error={!!this.state.formError?.password1}
           onChange={this.handleChangeTextField('password1')}
+          required
         />
         <TextField
           margin="normal"
@@ -82,6 +85,7 @@ export class SignupForm extends React.Component<Props, State> {
           helperText={this.state.formError?.password2}
           error={!!this.state.formError?.password2}
           onChange={this.handleChangeTextField('password2')}
+          required
         />
         <LoadingButton
           fullWidth

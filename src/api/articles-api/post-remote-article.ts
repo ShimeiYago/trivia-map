@@ -4,22 +4,26 @@ import { handleAxiosError } from '../utils/handle-axios-error';
 import { getAxiosInstance } from 'api/utils/get-axios-instance';
 import { mockPostArticleResponse } from '../mock/articles-response';
 import { Position } from 'types/position';
+import { SelializedImageFile } from 'types/SelializedImageFile';
+import { convertToFile } from 'utils/convert-to-file';
 
 export async function postRemoteArticle(param: {
   title: string;
   description: string;
   marker: Position;
   category?: number;
-  image?: File;
+  image?: SelializedImageFile;
   isDraft: boolean;
 }): Promise<PostArticleResponse> {
   const axiosInstance = getAxiosInstance({}, mockPostArticleResponse);
+
+  const uploadFile = param.image ? await convertToFile(param.image) : undefined;
 
   const requestData: PostArticleRequest = {
     title: param.title,
     description: param.description,
     marker: param.marker,
-    image: param.image,
+    image: uploadFile,
     isDraft: param.isDraft,
     category: param.category,
   };

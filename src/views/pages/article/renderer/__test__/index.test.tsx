@@ -17,7 +17,7 @@ const article: GetArticleResponse = {
   title: 'title',
   description: 'description',
   marker: { markerId: 1, lat: 0, lng: 0, park: 'S', numberOfPublicArticles: 1 },
-  imageUrl: null,
+  image: null,
   author: {
     userId: 1,
     nickname: 'Axel',
@@ -49,7 +49,7 @@ describe('Shallow Snapshot Tests', () => {
 
   it('with image', () => {
     wrapper.setState({
-      article: { ...article, imageUrl: 'image.jpg' },
+      article: { ...article, image: 'image.jpg' },
       loadingState: 'success',
     });
     expect(wrapper).toMatchSnapshot();

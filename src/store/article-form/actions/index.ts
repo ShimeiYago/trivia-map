@@ -1,3 +1,4 @@
+import { SelializedImageFile } from './../../../types/SelializedImageFile';
 import { selectArticleFormCategory } from './../selector/index';
 import { throwError } from 'store/global-error/slice';
 import { articleFormSlice } from '../slice';
@@ -15,7 +16,7 @@ import {
   selectArticleFormDescription,
   selectArticleFormPosition,
   selectArticleFormId,
-  selectArticleFormImageDataUrl,
+  selectArticleFormImage,
   selectArticleFormPreviousMarkerId,
   selectArticleFormIsDraft,
 } from '../selector';
@@ -40,7 +41,7 @@ export const {
   updateIsEditting,
   updateIsFormChangedFromLastSaved,
   updateLastSavedValues,
-  updateImageDataUrl,
+  updateImage,
   updateCategory,
 } = articleFormSlice.actions;
 
@@ -51,7 +52,7 @@ export const submitNewArticle = (): AppThunk => async (dispatch, getState) => {
   const title = selectArticleFormTitle(getState());
   const description = selectArticleFormDescription(getState());
   const position = selectArticleFormPosition(getState()) as Position;
-  const imageDataUrl = selectArticleFormImageDataUrl(getState());
+  const image = selectArticleFormImage(getState());
   const isDraft = selectArticleFormIsDraft(getState());
   const category = selectArticleFormCategory(getState());
 
@@ -61,7 +62,7 @@ export const submitNewArticle = (): AppThunk => async (dispatch, getState) => {
         title: title,
         description: description,
         marker: position,
-        imageUrl: imageDataUrl,
+        image: typeof image === 'string' || image === null ? undefined : image,
         isDraft: isDraft,
         category: category,
       }),
@@ -108,7 +109,7 @@ export const submitEdittedArticle =
     const title = selectArticleFormTitle(getState());
     const description = selectArticleFormDescription(getState());
     const position = selectArticleFormPosition(getState()) as Position;
-    const imageDataUrl = selectArticleFormImageDataUrl(getState());
+    const image = selectArticleFormImage(getState());
     const isDraft = selectArticleFormIsDraft(getState());
     const previousMarkerId = selectArticleFormPreviousMarkerId(getState());
     const category = selectArticleFormCategory(getState());
@@ -122,7 +123,7 @@ export const submitEdittedArticle =
           title: title,
           description: description,
           marker: position,
-          imageUrl: imageDataUrl,
+          image: typeof image === 'string' ? undefined : image,
           isDraft: isDraft,
           category: category,
         }),
@@ -205,8 +206,8 @@ export const updateFormField =
     if (param.position) {
       dispatch(updatePosition(param.position));
     }
-    if (param.imageDataUrl !== undefined) {
-      dispatch(updateImageDataUrl(param.imageDataUrl));
+    if (param.image !== undefined) {
+      dispatch(updateImage(param.image));
     }
     if (param.category !== undefined) {
       dispatch(updateCategory(param.category));
@@ -222,7 +223,7 @@ export type UpdateFormFieldParam = {
   title?: string;
   description?: string;
   position?: Position;
-  imageDataUrl?: string | null;
+  image?: SelializedImageFile | null;
   category?: number;
   isDraft?: boolean;
 };

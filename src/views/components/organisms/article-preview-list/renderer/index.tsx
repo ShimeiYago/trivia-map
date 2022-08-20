@@ -58,7 +58,7 @@ export class Renderer extends React.Component<Props, State> {
     }
 
     const previewList = articlesPreviews?.map((preview) => {
-      const { postId, title, imageUrl, category } = preview;
+      const { postId, title, image, category } = preview;
 
       return (
         <Link
@@ -67,8 +67,8 @@ export class Renderer extends React.Component<Props, State> {
           className={classes['preview-link']}
         >
           {this.props.variant === 'popup'
-            ? this.renderPopupCard(title, imageUrl, category)
-            : this.renderLargeCard(title, imageUrl, category)}
+            ? this.renderPopupCard(title, image, category)
+            : this.renderLargeCard(title, image, category)}
         </Link>
       );
     });

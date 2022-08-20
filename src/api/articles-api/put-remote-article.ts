@@ -1,3 +1,4 @@
+import { SelializedImageFile } from './../../types/SelializedImageFile';
 import { BASE_URL } from 'constant';
 import { AxiosError, AxiosResponse } from 'axios';
 import { handleAxiosError } from '../utils/handle-axios-error';
@@ -9,6 +10,7 @@ import {
   PostArticleResponse,
   ValidationError,
 } from './post-remote-article';
+import { convertToFile } from 'utils/convert-to-file';
 
 export async function putRemoteArticle(param: {
   postId: number;
@@ -16,17 +18,19 @@ export async function putRemoteArticle(param: {
   description: string;
   category?: number;
   marker: Position;
-  imageUrl: string | null;
+  image?: SelializedImageFile | null;
   isDraft: boolean;
 }): Promise<PostArticleResponse> {
   const axiosInstance = getAxiosInstance({}, mockPostArticleResponse);
+
+  const uploadFile = param.image ? await convertToFile(param.image) : undefined;
 
   const requestData: PostArticleRequest = {
     title: param.title,
     description: param.description,
     marker: param.marker,
     category: param.category,
-    imageUrl: param.imageUrl,
+    image: uploadFile,
     isDraft: param.isDraft,
   };
 

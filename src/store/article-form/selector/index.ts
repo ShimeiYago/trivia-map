@@ -14,8 +14,8 @@ export const selectArticleFormDescription = (state: ArticleFormRootState) =>
 export const selectArticleFormPosition = (state: ArticleFormRootState) =>
   state.articleForm.position;
 
-export const selectArticleFormImageDataUrl = (state: ArticleFormRootState) =>
-  state.articleForm.imageDataUrl;
+export const selectArticleFormImage = (state: ArticleFormRootState) =>
+  state.articleForm.image;
 
 export const selectArticleFormCategory = (state: ArticleFormRootState) =>
   state.articleForm.category;
@@ -43,9 +43,8 @@ export const selectArticleFormLastSavedPosition = (
   state: ArticleFormRootState,
 ) => state.articleForm.lastSavedPosition;
 
-export const selectArticleFormLastSavedImageDataUrl = (
-  state: ArticleFormRootState,
-) => state.articleForm.lastSavedImageDataUrl;
+export const selectArticleFormLastSavedImage = (state: ArticleFormRootState) =>
+  state.articleForm.lastSavedImage;
 
 export const selectArticleFormLastSavedCategory = (
   state: ArticleFormRootState,

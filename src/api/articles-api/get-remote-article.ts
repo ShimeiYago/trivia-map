@@ -34,7 +34,7 @@ export type GetArticleResponse = {
     numberOfPublicArticles: number;
   };
   category: number;
-  imageUrl: string | null;
+  image: string | null;
   isDraft: boolean;
   author: Author;
   createdAt: string;

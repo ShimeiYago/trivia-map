@@ -34,6 +34,7 @@ import { DeletableImage } from 'views/components/moleculars/deletable-image';
 import { HeaderErrorMessages } from 'views/components/moleculars/header-error-messages';
 import { User } from 'types/user';
 import { CATEGORIES } from 'constant';
+import { SelializedImageFile } from 'types/SelializedImageFile';
 
 export class Renderer extends React.Component<Props> {
   headerRef: React.RefObject<HTMLDivElement>;
@@ -100,6 +101,8 @@ export class Renderer extends React.Component<Props> {
       ? 'valid'
       : 'normal';
 
+    const imageSrc = this.getImageSrc();
+
     return (
       <>
         {this.renderHeader()}
@@ -134,9 +137,9 @@ export class Renderer extends React.Component<Props> {
 
             {this.renderCategorySelectField(disabled)}
 
-            {this.props.imageDataUrl ? (
+            {imageSrc ? (
               <DeletableImage
-                src={this.props.imageDataUrl}
+                src={imageSrc}
                 width="full"
                 height="200px"
                 objectFit="cover"
@@ -313,29 +316,48 @@ export class Renderer extends React.Component<Props> {
     if (files && files.length > 0) {
       const file = files[0];
 
+      // convert file to SelializedImageFile
       const reader = new FileReader();
       reader.readAsDataURL(file);
       await new Promise<void>((resolve) => (reader.onload = () => resolve()));
-      this.props.updateFormField({ imageDataUrl: reader.result as string });
+      this.props.updateFormField({
+        image: {
+          dataUrl: reader.result as string,
+          fileName: file.name,
+        },
+      });
     } else {
-      this.props.updateFormField({ imageDataUrl: null });
+      this.props.updateFormField({ image: null });
     }
   };
 
   protected handleDeleteImage = () => {
-    this.props.updateFormField({ imageDataUrl: null });
+    this.props.updateFormField({ image: null });
   };
 
   protected handleChangeCategory = (event: SelectChangeEvent) => {
     this.props.updateFormField({ category: Number(event.target.value) });
   };
+
+  protected getImageSrc() {
+    if (typeof this.props.image === 'string') {
+      return this.props.image;
+    }
+
+    if (this.props.image === null) {
+      return undefined;
+    }
+
+    // SelializedImageFile case
+    return this.props.image.dataUrl;
+  }
 }
 
 export type Props = {
   postId?: number;
   title: string;
   description: string;
-  imageDataUrl: string | null;
+  image: string | SelializedImageFile | null;
   category?: number;
   position?: Position;
   isDraft: boolean;

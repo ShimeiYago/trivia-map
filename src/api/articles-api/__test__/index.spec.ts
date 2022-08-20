@@ -55,9 +55,25 @@ describe('postRemoteArticle', () => {
       title: 'title',
       description: 'description',
       marker: newPosition,
-      imageUrl: 'https://image-data.jpg',
       isDraft: false,
       category: 1,
+    });
+    expect(response.postId).toBe(1);
+  });
+
+  it('handle image', async () => {
+    process.env.REACT_APP_MOCK = 'normal';
+
+    const response = await postRemoteArticle({
+      title: 'title',
+      description: 'description',
+      marker: newPosition,
+      isDraft: false,
+      category: 1,
+      image: {
+        dataUrl: 'data:image/png;base64,xxx',
+        fileName: 'filename',
+      },
     });
     expect(response.postId).toBe(1);
   });
@@ -75,7 +91,6 @@ describe('postRemoteArticle', () => {
         title: 'title',
         description: 'description',
         marker: newPosition,
-        imageUrl: 'https://image-data.jpg',
         isDraft: false,
         category: 1,
       }),
@@ -99,9 +114,26 @@ describe('putRemoteArticle', () => {
       title: 'title',
       description: 'description',
       marker: newPosition,
-      imageUrl: 'https://image-data.jpg',
       isDraft: false,
       category: 1,
+    });
+    expect(response.postId).toBe(1);
+  });
+
+  it('handle image', async () => {
+    process.env.REACT_APP_MOCK = 'normal';
+
+    const response = await putRemoteArticle({
+      postId: 1,
+      title: 'title',
+      description: 'description',
+      marker: newPosition,
+      isDraft: false,
+      category: 1,
+      image: {
+        dataUrl: 'data:image/png;base64,xxx',
+        fileName: 'filename',
+      },
     });
     expect(response.postId).toBe(1);
   });
@@ -120,7 +152,6 @@ describe('putRemoteArticle', () => {
         title: 'title',
         description: 'description',
         marker: newPosition,
-        imageUrl: 'https://image-data.jpg',
         isDraft: false,
         category: 1,
       }),

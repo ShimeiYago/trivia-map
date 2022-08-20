@@ -15,7 +15,7 @@ const {
   updateIsEditting,
   updateLastSavedValues,
   updateIsFormChangedFromLastSaved,
-  updateImageDataUrl,
+  updateImage,
   updateIsDraft,
   updateCategory,
 } = articleFormSlice.actions;
@@ -35,10 +35,10 @@ describe('articleForm reducer', () => {
     expect(articleFormReducer(undefined, { type: 'unknown' })).toEqual({
       title: '',
       description: '',
-      imageDataUrl: null,
+      image: null,
       lastSavedTitle: '',
       lastSavedDescription: '',
-      lastSavedImageDataUrl: null,
+      lastSavedImage: null,
       submittingState: 'waiting',
       fetchingState: 'waiting',
       isEditting: false,
@@ -75,9 +75,9 @@ describe('articleForm reducer', () => {
   it('should handle updateImageDataUrl', () => {
     const actual = articleFormReducer(
       initialState,
-      updateImageDataUrl('https://image-data.jpg'),
+      updateImage('https://image-data.jpg'),
     );
-    expect(actual.imageDataUrl).toEqual('https://image-data.jpg');
+    expect(actual.image).toEqual('https://image-data.jpg');
   });
 
   it('should handle updateCategory', () => {
@@ -130,7 +130,7 @@ describe('articleForm reducer', () => {
         park: 'S',
         numberOfPublicArticles: 1,
       },
-      imageUrl: 'https://image-data.jpg',
+      image: 'https://image-data.jpg',
       isDraft: false,
       author: {
         userId: 1,
@@ -151,7 +151,7 @@ describe('articleForm reducer', () => {
       park: res.marker.park,
       numberOfPublicArticles: 1,
     });
-    expect(actual.imageDataUrl).toEqual(res.imageUrl);
+    expect(actual.image).toEqual(res.image);
   });
 
   it('should handle initialize', () => {
@@ -172,13 +172,13 @@ describe('articleForm reducer', () => {
     edittedState.title = 'new title';
     edittedState.description = 'new description';
     edittedState.position = { lat: 0, lng: 0 };
-    edittedState.imageDataUrl = 'https://image-data.jpg';
+    edittedState.image = 'https://image-data.jpg';
 
     const actual = articleFormReducer(edittedState, updateLastSavedValues());
     expect(actual.lastSavedTitle).toEqual('new title');
     expect(actual.lastSavedDescription).toEqual('new description');
     expect(actual.lastSavedPosition).toEqual({ lat: 0, lng: 0 });
-    expect(actual.lastSavedImageDataUrl).toEqual('https://image-data.jpg');
+    expect(actual.lastSavedImage).toEqual('https://image-data.jpg');
   });
 
   it('should handle updateIsFormChangedFromLastSaved', () => {

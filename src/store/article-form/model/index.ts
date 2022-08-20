@@ -1,3 +1,4 @@
+import { SelializedImageFile } from './../../../types/SelializedImageFile';
 import { LoadingState } from 'types/loading-state';
 import { Position } from 'types/position';
 
@@ -7,7 +8,7 @@ export interface ArticleFormState {
   description: string;
   position?: Position;
   previousMarkerId?: number;
-  imageDataUrl: string | null;
+  image: string | SelializedImageFile | null;
   category?: number;
   submittingState: LoadingState;
   fetchingState: LoadingState;
@@ -16,7 +17,7 @@ export interface ArticleFormState {
   lastSavedTitle: string;
   lastSavedDescription: string;
   lastSavedPosition?: Position;
-  lastSavedImageDataUrl: string | null;
+  lastSavedImage: string | SelializedImageFile | null;
   lastSavedCategory?: number;
   isFormChangedFromLastSaved: boolean;
   isDraft: boolean;
@@ -27,8 +28,8 @@ export const initialState: ArticleFormState = {
   lastSavedTitle: '',
   description: '',
   lastSavedDescription: '',
-  imageDataUrl: null,
-  lastSavedImageDataUrl: null,
+  image: null,
+  lastSavedImage: null,
   submittingState: 'waiting',
   fetchingState: 'waiting',
   isEditting: false,
@@ -42,7 +43,7 @@ export type FormError = {
     title?: string;
     description?: string;
     position?: string;
-    imageDataUrl?: string;
+    image?: string;
     isDraft?: string;
   };
 };

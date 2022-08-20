@@ -32,6 +32,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       margin="normal"
       name="email"
       onChange={[MockFunction]}
+      required={true}
       value=""
     />
     <ForwardRef(TextField)
@@ -44,6 +45,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       margin="normal"
       name="nickname"
       onChange={[Function]}
+      required={true}
     />
     <ForwardRef(TextField)
       autoComplete="current-password"
@@ -55,6 +57,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       margin="normal"
       name="password1"
       onChange={[Function]}
+      required={true}
       type="password"
     />
     <ForwardRef(TextField)
@@ -67,6 +70,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       margin="normal"
       name="password2"
       onChange={[Function]}
+      required={true}
       type="password"
     />
     <ForwardRef(LoadingButton)
@@ -143,6 +147,7 @@ exports[`Shallow Snapshot Tests error case 1`] = `
       margin="normal"
       name="email"
       onChange={[MockFunction]}
+      required={true}
       value=""
     />
     <ForwardRef(TextField)
@@ -155,6 +160,7 @@ exports[`Shallow Snapshot Tests error case 1`] = `
       margin="normal"
       name="nickname"
       onChange={[Function]}
+      required={true}
     />
     <ForwardRef(TextField)
       autoComplete="current-password"
@@ -171,6 +177,7 @@ exports[`Shallow Snapshot Tests error case 1`] = `
       margin="normal"
       name="password1"
       onChange={[Function]}
+      required={true}
       type="password"
     />
     <ForwardRef(TextField)
@@ -188,6 +195,7 @@ exports[`Shallow Snapshot Tests error case 1`] = `
       margin="normal"
       name="password2"
       onChange={[Function]}
+      required={true}
       type="password"
     />
     <ForwardRef(LoadingButton)

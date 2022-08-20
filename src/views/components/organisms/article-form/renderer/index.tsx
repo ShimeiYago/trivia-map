@@ -133,6 +133,7 @@ export class Renderer extends React.Component<Props> {
               disabled={disabled}
               error={!!formError?.fieldErrors?.title}
               helperText={formError?.fieldErrors?.title}
+              required
             />
 
             {this.renderCategorySelectField(disabled)}

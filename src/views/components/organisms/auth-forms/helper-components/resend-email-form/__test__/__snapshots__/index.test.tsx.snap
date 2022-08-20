@@ -37,6 +37,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       margin="normal"
       name="email"
       onChange={[MockFunction]}
+      required={true}
       value=""
     />
     <ForwardRef(LoadingButton)
@@ -134,6 +135,7 @@ exports[`Shallow Snapshot Tests error case 1`] = `
       margin="normal"
       name="email"
       onChange={[MockFunction]}
+      required={true}
       value=""
     />
     <ForwardRef(LoadingButton)
@@ -218,6 +220,7 @@ exports[`Shallow Snapshot Tests success case 1`] = `
       margin="normal"
       name="email"
       onChange={[MockFunction]}
+      required={true}
       value=""
     />
     <ForwardRef(LoadingButton)

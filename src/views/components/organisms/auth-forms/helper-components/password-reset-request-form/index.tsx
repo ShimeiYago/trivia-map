@@ -50,6 +50,7 @@ export class PasswordResetRequestForm extends React.Component<Props, State> {
             error={!!this.state.formError?.email}
             onChange={this.props.onChangeEmail}
             value={this.props.email}
+            required
           />
           <LoadingButton
             fullWidth

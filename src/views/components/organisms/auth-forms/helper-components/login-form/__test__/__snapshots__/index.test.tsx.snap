@@ -42,6 +42,7 @@ exports[`Shallow Snapshot Tests already logged in 1`] = `
       margin="normal"
       name="email"
       onChange={[MockFunction]}
+      required={true}
       value=""
     />
     <ForwardRef(TextField)
@@ -54,6 +55,7 @@ exports[`Shallow Snapshot Tests already logged in 1`] = `
       margin="normal"
       name="password"
       onChange={[Function]}
+      required={true}
       type="password"
     />
     <ForwardRef(LoadingButton)
@@ -130,6 +132,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       margin="normal"
       name="email"
       onChange={[MockFunction]}
+      required={true}
       value=""
     />
     <ForwardRef(TextField)
@@ -142,6 +145,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       margin="normal"
       name="password"
       onChange={[Function]}
+      required={true}
       type="password"
     />
     <ForwardRef(LoadingButton)
@@ -234,6 +238,7 @@ exports[`Shallow Snapshot Tests error case 1`] = `
       margin="normal"
       name="email"
       onChange={[MockFunction]}
+      required={true}
       value=""
     />
     <ForwardRef(TextField)
@@ -251,6 +256,7 @@ exports[`Shallow Snapshot Tests error case 1`] = `
       margin="normal"
       name="password"
       onChange={[Function]}
+      required={true}
       type="password"
     />
     <ForwardRef(LoadingButton)
@@ -327,6 +333,7 @@ exports[`Shallow Snapshot Tests loading 1`] = `
       margin="normal"
       name="email"
       onChange={[MockFunction]}
+      required={true}
       value=""
     />
     <ForwardRef(TextField)
@@ -339,6 +346,7 @@ exports[`Shallow Snapshot Tests loading 1`] = `
       margin="normal"
       name="password"
       onChange={[Function]}
+      required={true}
       type="password"
     />
     <ForwardRef(LoadingButton)

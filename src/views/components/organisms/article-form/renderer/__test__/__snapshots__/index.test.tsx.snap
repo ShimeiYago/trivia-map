@@ -26,6 +26,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
         error={false}
         label="タイトル"
         onChange={[Function]}
+        required={true}
         value=""
         variant="standard"
       />
@@ -187,6 +188,7 @@ exports[`Shallow Snapshot Tests draft mode 1`] = `
         error={false}
         label="タイトル"
         onChange={[Function]}
+        required={true}
         value=""
         variant="standard"
       />
@@ -358,6 +360,7 @@ exports[`Shallow Snapshot Tests loading 1`] = `
         error={false}
         label="タイトル"
         onChange={[Function]}
+        required={true}
         value=""
         variant="standard"
       />
@@ -507,6 +510,7 @@ exports[`Shallow Snapshot Tests position is not selected yet 1`] = `
         error={false}
         label="タイトル"
         onChange={[Function]}
+        required={true}
         value=""
         variant="standard"
       />
@@ -661,6 +665,7 @@ exports[`Shallow Snapshot Tests with category 1`] = `
         error={false}
         label="タイトル"
         onChange={[Function]}
+        required={true}
         value=""
         variant="standard"
       />
@@ -837,6 +842,7 @@ exports[`Shallow Snapshot Tests with close button 1`] = `
         error={false}
         label="タイトル"
         onChange={[Function]}
+        required={true}
         value=""
         variant="standard"
       />
@@ -998,6 +1004,7 @@ exports[`Shallow Snapshot Tests with image data url 1`] = `
         error={false}
         label="タイトル"
         onChange={[Function]}
+        required={true}
         value=""
         variant="standard"
       />
@@ -1164,6 +1171,7 @@ exports[`Shallow Snapshot Tests with image url 1`] = `
         error={false}
         label="タイトル"
         onChange={[Function]}
+        required={true}
         value=""
         variant="standard"
       />
@@ -1333,6 +1341,7 @@ exports[`Shallow Snapshot Tests with validation error 1`] = `
         error={false}
         label="タイトル"
         onChange={[Function]}
+        required={true}
         value=""
         variant="standard"
       />

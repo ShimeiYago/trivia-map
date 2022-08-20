@@ -21,8 +21,8 @@ export const mockGetArticleResponse: GetArticleResponse = {
     userId: 1,
     nickname: 'Axel',
   },
-  createdAt: '2022-06-16T21:42:51.202153+09:00',
-  updatedAt: '2022-06-16T21:42:51.202153+09:00',
+  createdAt: '2022/06/16 21:42',
+  updatedAt: '2022/06/16 21:42',
   category: 1,
 };
 
@@ -35,8 +35,8 @@ export const mockPostArticleResponse: PostArticleResponse = {
   isDraft: false,
   author: 0,
   category: 1,
-  createdAt: '2022-06-16T21:42:51.202153+09:00',
-  updatedAt: '2022-06-16T21:42:51.202153+09:00',
+  createdAt: '2022/06/16 21:42',
+  updatedAt: '2022/06/16 21:42',
 };
 
 export const mockGetArticlesPreviewsResponse: GetArticlesPreviewsResponse = {

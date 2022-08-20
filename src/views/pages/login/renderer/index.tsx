@@ -3,6 +3,7 @@ import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { sleep } from 'utils/sleep';
 import { AuthForms } from 'views/components/organisms/auth-forms';
+import { GlobalMenu } from 'views/components/organisms/global-menu';
 
 export class Renderer extends React.Component<unknown, State> {
   state: State = {
@@ -15,10 +16,12 @@ export class Renderer extends React.Component<unknown, State> {
     }
 
     return (
-      <AuthForms
-        initialMode="login"
-        onLoginSucceed={this.redirectAfterSeveralSeconds}
-      />
+      <GlobalMenu topBarPosition="static">
+        <AuthForms
+          initialMode="login"
+          onLoginSucceed={this.redirectAfterSeveralSeconds}
+        />
+      </GlobalMenu>
     );
   }
 

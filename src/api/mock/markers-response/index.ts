@@ -29,7 +29,7 @@ const mockGetMarkersResponsePage1: GetMarkersResponseWithPagination = {
       lat: 30.524,
       lng: 15.908,
       park: 'S',
-      numberOfPublicArticles: 1,
+      numberOfPublicArticles: 2,
     },
   ],
 };

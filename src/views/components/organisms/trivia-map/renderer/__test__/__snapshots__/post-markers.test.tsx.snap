@@ -57,6 +57,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
         "setView": [MockFunction],
       }
     }
+    numberOfContents={2}
     popup={
       <ForwardRef(Box)
         className="popup-content"
@@ -139,6 +140,7 @@ exports[`Shallow Snapshot Tests form is editting 1`] = `
         "setView": [MockFunction],
       }
     }
+    numberOfContents={2}
     popup={
       <ForwardRef(Box)
         className="popup-content"
@@ -175,6 +177,7 @@ exports[`Shallow Snapshot Tests with hiddenMarkerIds 1`] = `
         "setView": [MockFunction],
       }
     }
+    numberOfContents={2}
     popup={
       <ForwardRef(Box)
         className="popup-content"

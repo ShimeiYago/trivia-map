@@ -126,13 +126,28 @@ describe('componentDidUpdate', () => {
     shallowWrapper = shallow(<Renderer {...basicProps} />);
   });
 
-  it('should async currentPosition with form', () => {
+  it('should async currentPosition with form if articleFormPosition is changed', () => {
     shallowWrapper.setProps({ shouldCurrentPositionAsyncWithForm: true });
     const instance = shallowWrapper.instance();
 
     instance['componentDidUpdate']({
       ...basicProps,
       articleFormPosition: { lat: 0, lng: 0, park: 'S' },
+    });
+    expect(instance.state.currentPosition).toBe(undefined);
+  });
+
+  it('should async currentPosition with form id new marker mode is finished', () => {
+    shallowWrapper.setProps({
+      shouldCurrentPositionAsyncWithForm: true,
+      newMarkerMode: false,
+    });
+    const instance = shallowWrapper.instance();
+
+    instance['componentDidUpdate']({
+      ...basicProps,
+      articleFormPosition: { lat: 0, lng: 0, park: 'S' },
+      newMarkerMode: true,
     });
     expect(instance.state.currentPosition).toBe(undefined);
   });

@@ -38,6 +38,18 @@ export class Renderer extends React.Component<Props, State> {
     this.fetchArticlesPreviews();
   }
 
+  componentDidUpdate(prevProps: Props) {
+    if (
+      JSON.stringify(prevProps.searchConditions) !==
+      JSON.stringify(this.props.searchConditions)
+    ) {
+      this.fetchArticlesPreviews();
+      this.setState({
+        totalPages: undefined,
+      });
+    }
+  }
+
   render() {
     return (
       <Stack spacing={2}>

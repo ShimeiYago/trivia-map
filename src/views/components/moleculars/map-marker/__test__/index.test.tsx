@@ -36,6 +36,13 @@ describe('Shallow Snapshot Tests', () => {
     });
     expect(wrapper).toMatchSnapshot();
   });
+
+  it('with numberOfContents', () => {
+    wrapper.setProps({
+      numberOfContents: 1,
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
 });
 
 describe('eventHandlers dragstart', () => {
@@ -105,14 +112,56 @@ describe('eventHandlers popupopen & popupclose', () => {
     expect(instance.state.isPopupOpened).toBeTruthy();
   });
 
-  it('popupclose should set isPopupOpened state false', () => {
+  it('popupclose should set isPopupOpened state false', async () => {
     const instance = wrapper.instance();
     instance.setState({
       isPopupOpened: true,
     });
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (instance['eventHandlers'] as any).popupclose();
+    await (instance['eventHandlers'] as any).popupclose();
     expect(instance.state.isPopupOpened).toBeFalsy();
+  });
+});
+
+describe('numberCircleEventHandlers click', () => {
+  beforeEach(() => {
+    wrapper = shallow(<MapMarker {...basicProps} />);
+  });
+
+  it('click should open popup', () => {
+    const instance = wrapper.instance();
+
+    instance.markerRef = {
+      current: {
+        openPopup: jest.fn(),
+      },
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } as React.RefObject<any>;
+
+    instance.setState({
+      isPopupOpened: false,
+    });
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (instance['numberCircleEventHandlers'] as any).click();
+
+    expect(instance.markerRef.current?.openPopup).toHaveBeenCalled();
+  });
+
+  it('click should not open popup if markerRef is null', () => {
+    const instance = wrapper.instance();
+
+    instance.markerRef = {
+      current: null,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } as React.RefObject<any>;
+
+    instance.setState({
+      isPopupOpened: false,
+    });
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (instance['numberCircleEventHandlers'] as any).click();
   });
 });

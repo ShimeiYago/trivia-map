@@ -1,7 +1,10 @@
 import { shallow, ShallowWrapper } from 'enzyme';
 import { Renderer, Props } from '..';
+import * as ResizeAndConvertToSelializedImageFileModule from 'utils/resize-and-convert-to-selialized-image-file.ts';
 
 let wrapper: ShallowWrapper<Props, unknown, Renderer>;
+
+let resizeAndConvertToSelializedImageFileSpy: jest.SpyInstance;
 
 const basicProps: Props = {
   title: '',
@@ -28,6 +31,7 @@ const basicProps: Props = {
   initialize: jest.fn(),
   updateIsEditting: jest.fn(),
   toggleAuthFormModal: jest.fn(),
+  throwError: jest.fn(),
 };
 
 describe('Shallow Snapshot Tests', () => {
@@ -243,9 +247,20 @@ describe('handleSubmitButton', () => {
 describe('handleFileInputChange', () => {
   beforeEach(() => {
     wrapper = shallow(<Renderer {...basicProps} />);
+
+    jest.resetAllMocks();
+    resizeAndConvertToSelializedImageFileSpy = jest.spyOn(
+      ResizeAndConvertToSelializedImageFileModule,
+      'resizeAndConvertToSelializedImageFile',
+    );
   });
 
   it('set imageData when image is uploaded', async () => {
+    resizeAndConvertToSelializedImageFileSpy.mockResolvedValue({
+      dataUrl: 'data:image/png;base64,xxx',
+      fileName: 'filename',
+    });
+
     const blob = new Blob(['image-data']);
     const file = new File([blob], 'test.jpeg', {
       type: 'image/jpeg',
@@ -258,9 +273,30 @@ describe('handleFileInputChange', () => {
     const instance = wrapper.instance();
     await instance['handleFileInputChange'](event);
 
-    expect(instance.props.updateFormField).not.toBeCalledWith({
-      image: null,
+    expect(instance.props.updateFormField).toBeCalledWith({
+      image: {
+        dataUrl: 'data:image/png;base64,xxx',
+        fileName: 'filename',
+      },
     });
+  });
+
+  it('throw error when invalid image is uploaded', async () => {
+    resizeAndConvertToSelializedImageFileSpy.mockRejectedValue(new Error());
+
+    const blob = new Blob(['image-data']);
+    const file = new File([blob], 'test.jpeg', {
+      type: 'image/jpeg',
+    });
+    const event = {
+      target: {
+        files: [file],
+      },
+    } as unknown as React.ChangeEvent<HTMLInputElement>;
+    const instance = wrapper.instance();
+    await instance['handleFileInputChange'](event);
+
+    expect(instance.props.throwError).toBeCalled();
   });
 
   it('do not set imageData with no image', async () => {

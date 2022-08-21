@@ -48,6 +48,16 @@ export class Renderer extends React.Component<Props, State> {
     }
 
     if (
+      prevProps.newMarkerMode &&
+      !this.props.newMarkerMode &&
+      this.props.shouldCurrentPositionAsyncWithForm
+    ) {
+      this.setState({
+        currentPosition: this.props.articleFormPosition,
+      });
+    }
+
+    if (
       this.props.initCenter &&
       prevProps.initCenter !== this.props.initCenter
     ) {

@@ -1,6 +1,7 @@
 import L from 'leaflet';
 import presetIconUrl from 'leaflet/dist/images/marker-icon.png';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
+import styles from './index.module.css';
 
 import defaultIconUrl from 'images/marker-icons/default.png';
 import redIconUrl from 'images/marker-icons/red.png';
@@ -27,3 +28,11 @@ export const redIcon = L.icon({
   ...iconOptions,
   iconUrl: redIconUrl,
 });
+
+// number circle icon
+export const numberCircleIcon = (text: string) =>
+  L.divIcon({
+    className: styles['number-circle-icon'],
+    iconAnchor: [iconWidth / 2 + 10, iconHeight + 5],
+    html: text,
+  });

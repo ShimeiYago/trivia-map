@@ -1,139 +1,218 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Shallow Snapshot Tests basic 1`] = `
-<ForwardRef(ContainerComponent)
-  draggable={false}
-  eventHandlers={
-    Object {
-      "dragend": [Function],
-      "dragstart": [Function],
-      "popupclose": [Function],
-      "popupopen": [Function],
+<Fragment>
+  <ForwardRef(ContainerComponent)
+    draggable={false}
+    eventHandlers={
+      Object {
+        "dragend": [Function],
+        "dragstart": [Function],
+        "popupclose": [Function],
+        "popupopen": [Function],
+      }
     }
-  }
-  icon={
-    NewClass {
-      "_initHooksCalled": true,
-      "options": Object {
-        "iconAnchor": Array [
-          12.5,
-          41,
-        ],
-        "iconSize": Array [
-          25,
-          41,
-        ],
-        "iconUrl": "default.png",
-        "popupAnchor": Array [
-          0,
-          -36,
-        ],
-        "shadowUrl": "marker-shadow.png",
-        "tooltipAnchor": Array [
-          0,
-          -36,
-        ],
-      },
+    icon={
+      NewClass {
+        "_initHooksCalled": true,
+        "options": Object {
+          "iconAnchor": Array [
+            12.5,
+            41,
+          ],
+          "iconSize": Array [
+            25,
+            41,
+          ],
+          "iconUrl": "default.png",
+          "popupAnchor": Array [
+            0,
+            -36,
+          ],
+          "shadowUrl": "marker-shadow.png",
+          "tooltipAnchor": Array [
+            0,
+            -36,
+          ],
+        },
+      }
     }
-  }
-  position={
-    Object {
-      "lat": 0,
-      "lng": 0,
+    position={
+      Object {
+        "lat": 0,
+        "lng": 0,
+      }
     }
-  }
-/>
+  />
+</Fragment>
 `;
 
 exports[`Shallow Snapshot Tests variant red 1`] = `
-<ForwardRef(ContainerComponent)
-  draggable={false}
-  eventHandlers={
-    Object {
-      "dragend": [Function],
-      "dragstart": [Function],
-      "popupclose": [Function],
-      "popupopen": [Function],
+<Fragment>
+  <ForwardRef(ContainerComponent)
+    draggable={false}
+    eventHandlers={
+      Object {
+        "dragend": [Function],
+        "dragstart": [Function],
+        "popupclose": [Function],
+        "popupopen": [Function],
+      }
     }
-  }
-  icon={
-    NewClass {
-      "_initHooksCalled": true,
-      "options": Object {
-        "iconAnchor": Array [
-          12.5,
-          41,
-        ],
-        "iconSize": Array [
-          25,
-          41,
-        ],
-        "iconUrl": "red.png",
-        "popupAnchor": Array [
-          0,
-          -36,
-        ],
-        "shadowUrl": "marker-shadow.png",
-        "tooltipAnchor": Array [
-          0,
-          -36,
-        ],
-      },
+    icon={
+      NewClass {
+        "_initHooksCalled": true,
+        "options": Object {
+          "iconAnchor": Array [
+            12.5,
+            41,
+          ],
+          "iconSize": Array [
+            25,
+            41,
+          ],
+          "iconUrl": "red.png",
+          "popupAnchor": Array [
+            0,
+            -36,
+          ],
+          "shadowUrl": "marker-shadow.png",
+          "tooltipAnchor": Array [
+            0,
+            -36,
+          ],
+        },
+      }
     }
-  }
-  position={
-    Object {
-      "lat": 0,
-      "lng": 0,
+    position={
+      Object {
+        "lat": 0,
+        "lng": 0,
+      }
     }
-  }
-/>
+  />
+</Fragment>
+`;
+
+exports[`Shallow Snapshot Tests with numberOfContents 1`] = `
+<Fragment>
+  <ForwardRef(ContainerComponent)
+    draggable={false}
+    eventHandlers={
+      Object {
+        "dragend": [Function],
+        "dragstart": [Function],
+        "popupclose": [Function],
+        "popupopen": [Function],
+      }
+    }
+    icon={
+      NewClass {
+        "_initHooksCalled": true,
+        "options": Object {
+          "iconAnchor": Array [
+            12.5,
+            41,
+          ],
+          "iconSize": Array [
+            25,
+            41,
+          ],
+          "iconUrl": "default.png",
+          "popupAnchor": Array [
+            0,
+            -36,
+          ],
+          "shadowUrl": "marker-shadow.png",
+          "tooltipAnchor": Array [
+            0,
+            -36,
+          ],
+        },
+      }
+    }
+    position={
+      Object {
+        "lat": 0,
+        "lng": 0,
+      }
+    }
+  />
+  <ForwardRef(ContainerComponent)
+    eventHandlers={
+      Object {
+        "click": [Function],
+      }
+    }
+    icon={
+      NewClass {
+        "_initHooksCalled": true,
+        "options": Object {
+          "className": "number-circle-icon",
+          "html": "1",
+          "iconAnchor": Array [
+            22.5,
+            46,
+          ],
+        },
+      }
+    }
+    position={
+      Object {
+        "lat": 0,
+        "lng": 0,
+      }
+    }
+  />
+</Fragment>
 `;
 
 exports[`Shallow Snapshot Tests with popup 1`] = `
-<ForwardRef
-  autoOpen={false}
-  draggable={false}
-  eventHandlers={
-    Object {
-      "dragend": [Function],
-      "dragstart": [Function],
-      "popupclose": [Function],
-      "popupopen": [Function],
+<Fragment>
+  <ForwardRef
+    autoOpen={false}
+    draggable={false}
+    eventHandlers={
+      Object {
+        "dragend": [Function],
+        "dragstart": [Function],
+        "popupclose": [Function],
+        "popupopen": [Function],
+      }
     }
-  }
-  icon={
-    NewClass {
-      "_initHooksCalled": true,
-      "options": Object {
-        "iconAnchor": Array [
-          12.5,
-          41,
-        ],
-        "iconSize": Array [
-          25,
-          41,
-        ],
-        "iconUrl": "default.png",
-        "popupAnchor": Array [
-          0,
-          -36,
-        ],
-        "shadowUrl": "marker-shadow.png",
-        "tooltipAnchor": Array [
-          0,
-          -36,
-        ],
-      },
+    icon={
+      NewClass {
+        "_initHooksCalled": true,
+        "options": Object {
+          "iconAnchor": Array [
+            12.5,
+            41,
+          ],
+          "iconSize": Array [
+            25,
+            41,
+          ],
+          "iconUrl": "default.png",
+          "popupAnchor": Array [
+            0,
+            -36,
+          ],
+          "shadowUrl": "marker-shadow.png",
+          "tooltipAnchor": Array [
+            0,
+            -36,
+          ],
+        },
+      }
     }
-  }
-  map={Object {}}
-  popup="popup-text"
-  position={
-    Object {
-      "lat": 0,
-      "lng": 0,
+    map={Object {}}
+    popup="popup-text"
+    position={
+      Object {
+        "lat": 0,
+        "lng": 0,
+      }
     }
-  }
-/>
+  />
+</Fragment>
 `;

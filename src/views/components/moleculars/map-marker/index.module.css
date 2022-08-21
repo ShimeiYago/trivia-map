@@ -1,0 +1,9 @@
+.number-circle-icon {
+  background: #fff;
+  border-radius: 10px;
+  height: 20px !important;
+  width: 20px !important;
+  text-align: center !important;
+  vertical-align: middle;
+  z-index: 500 !important;
+}

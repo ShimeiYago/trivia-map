@@ -23,6 +23,7 @@ import {
 } from 'store/article-form/actions';
 import { toggleFormModal } from 'store/auths/actions';
 import { selectUser } from 'store/auths/selector';
+import { throwError } from 'store/global-error/slice';
 
 export function ArticleForm(ownProps: OwnProps) {
   const dispatch = useAppDispatch();
@@ -52,6 +53,7 @@ export function ArticleForm(ownProps: OwnProps) {
       dispatch(updateIsEditting(isEditting)),
     onClose: ownProps.onClose,
     toggleAuthFormModal: (open: boolean) => dispatch(toggleFormModal(open)),
+    throwError: (errorStatus: number) => dispatch(throwError(errorStatus)),
   };
 
   return <Renderer {...props} />;

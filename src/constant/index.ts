@@ -16,3 +16,5 @@ export const CATEGORIES = [
     categoryName: 'その他',
   },
 ];
+
+export const UPLOAD_IMAGE_MAX_LENGTH = 1000;

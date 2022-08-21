@@ -35,6 +35,7 @@ import { HeaderErrorMessages } from 'views/components/moleculars/header-error-me
 import { User } from 'types/user';
 import { CATEGORIES } from 'constant';
 import { SelializedImageFile } from 'types/SelializedImageFile';
+import { resizeAndConvertToSelializedImageFile } from 'utils/resize-and-convert-to-selialized-image-file.ts';
 
 export class Renderer extends React.Component<Props> {
   headerRef: React.RefObject<HTMLDivElement>;
@@ -318,15 +319,16 @@ export class Renderer extends React.Component<Props> {
       const file = files[0];
 
       // convert file to SelializedImageFile
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      await new Promise<void>((resolve) => (reader.onload = () => resolve()));
-      this.props.updateFormField({
-        image: {
-          dataUrl: reader.result as string,
-          fileName: file.name,
-        },
-      });
+      try {
+        const selializedImageFile = await resizeAndConvertToSelializedImageFile(
+          file,
+        );
+        this.props.updateFormField({
+          image: selializedImageFile,
+        });
+      } catch (error: unknown) {
+        this.props.throwError(500);
+      }
     } else {
       this.props.updateFormField({ image: null });
     }
@@ -377,4 +379,5 @@ export type Props = {
   updateIsEditting: (isEditting: boolean) => void;
   onClose?: () => void;
   toggleAuthFormModal: (open: boolean) => void;
+  throwError: (errorStatus: number) => void;
 };

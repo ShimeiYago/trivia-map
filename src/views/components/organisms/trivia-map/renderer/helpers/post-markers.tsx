@@ -20,11 +20,17 @@ export class PostMarkers extends React.Component<Props> {
       const popup =
         !popupDisabled && this.renderPopupContents(marker.markerId, marker);
 
+      const numberOfContents =
+        marker.numberOfPublicArticles > 1
+          ? marker.numberOfPublicArticles
+          : undefined;
+
       return (
         <MapMarker
           map={map}
           position={new LatLng(marker.lat, marker.lng)}
           popup={popup}
+          numberOfContents={numberOfContents}
           key={`post-marker-${marker.markerId}`}
         />
       );

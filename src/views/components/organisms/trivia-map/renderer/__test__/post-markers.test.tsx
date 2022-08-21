@@ -16,7 +16,7 @@ const basicProps: Props = {
       lat: 0,
       lng: 0,
       park: 'S',
-      numberOfPublicArticles: 1,
+      numberOfPublicArticles: 2,
     },
   ],
   hiddenMarkerIds: [],

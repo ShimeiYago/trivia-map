@@ -104,3 +104,28 @@ describe('handleChangePagination', () => {
     expect(getArticlesPreviewsSpy).toBeCalled();
   });
 });
+
+describe('componentDidUpdate', () => {
+  beforeEach(() => {
+    jest.resetAllMocks();
+    getArticlesPreviewsSpy = jest.spyOn(
+      GetArticlesPreviewsApiModule,
+      'getArticlesPreviews',
+    );
+  });
+
+  it('should re-fetch and set undefined as totalPages if searchConditions are changed', () => {
+    wrapper.setProps({
+      searchConditions: {
+        category: 1,
+      },
+    });
+    wrapper = shallow(<Renderer {...basicProps} />);
+    const instance = wrapper.instance();
+    instance['componentDidUpdate']({
+      searchConditions: {},
+    } as Props);
+
+    expect(instance.state.totalPages).toBe(undefined);
+  });
+});

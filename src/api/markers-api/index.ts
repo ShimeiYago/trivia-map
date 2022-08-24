@@ -7,9 +7,10 @@ import { mockGetMarkersResponse } from './../mock/markers-response';
 import { Park } from './../../types/park';
 
 export async function getRemoteMarkers(
+  park: Park,
   nextUrl?: string,
 ): Promise<GetMarkersResponseWithPagination> {
-  const url = nextUrl ?? `${BASE_URL}/markers`;
+  const url = nextUrl ?? `${BASE_URL}/markers/${park}`;
 
   const axiosInstance = getAxiosInstance({}, mockGetMarkersResponse(nextUrl));
 

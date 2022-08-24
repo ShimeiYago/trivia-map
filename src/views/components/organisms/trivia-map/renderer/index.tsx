@@ -10,6 +10,8 @@ import { DialogScreen } from 'views/components/atoms/dialog-screen';
 import { LoadingState } from 'types/loading-state';
 import { PostMarkers } from './helpers/post-markers';
 import { Marker } from 'store/markers/model';
+import { Park } from 'types/park';
+import { TDL_TILE_URL, TDS_TILE_URL } from 'constant';
 
 export class Renderer extends React.Component<Props, State> {
   static readonly defaultProps: Pick<Props, 'newMarkerMode' | 'initZoom'> = {
@@ -66,7 +68,7 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   render() {
-    const { width, height, initZoom, initCenter, disabled } = this.props;
+    const { width, height, initZoom, initCenter, disabled, park } = this.props;
     const mapWrapper: SxProps = {
       width: width ?? '100%',
       height: height ?? '100%',
@@ -86,6 +88,8 @@ export class Renderer extends React.Component<Props, State> {
       boxZoom: false,
     };
 
+    const mapTileUrl = park === 'L' ? TDL_TILE_URL : TDS_TILE_URL;
+
     return (
       <Box sx={mapWrapper}>
         {this.renderGuideDialog()}
@@ -103,7 +107,7 @@ export class Renderer extends React.Component<Props, State> {
           tap={false}
           {...(disabled ? disabledProps : {})}
         >
-          <TileLayer url="/tds-map-tiles/{z}/{x}/{y}.png" noWrap />
+          <TileLayer url={mapTileUrl} noWrap />
           {this.renderPostMarkers()}
           {this.renderAdittionalMarkers()}
           {this.renderCurrentPositionMarker()}
@@ -128,7 +132,7 @@ export class Renderer extends React.Component<Props, State> {
       currentPosition: {
         lat: e.latlng.lat,
         lng: e.latlng.lng,
-        park: 'S', // TODO
+        park: this.props.park,
       },
       openableNewMarkerPopup: false,
     });
@@ -266,7 +270,7 @@ export class Renderer extends React.Component<Props, State> {
       currentPosition: {
         lat: position.lat,
         lng: position.lng,
-        park: 'S', // TODO
+        park: this.props.park,
       },
       openableNewMarkerPopup: true,
     });
@@ -319,6 +323,7 @@ export type Props = {
   shouldCurrentPositionAsyncWithForm?: boolean;
   additinalMarkers: Position[];
   isFormEditting: boolean;
+  park: Park;
 
   fetchMarkers: () => void;
   updatePosition: (position: Position) => void;

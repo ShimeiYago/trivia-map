@@ -18,6 +18,7 @@ import { LoadingProgressBar } from 'views/components/organisms/loading-progress-
 import { TriviaMap } from 'views/components/organisms/trivia-map';
 import { rightDrawerStyle, mapWrapper, wrapper } from './styles';
 import { GlobalMenu } from 'views/components/organisms/global-menu';
+import { Park } from 'types/park';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -28,6 +29,7 @@ export class Renderer extends React.Component<Props, State> {
       openDialogToConfirmDeleting: false,
       openDoubleEditAlartDialog: false,
       edittingPostId: props.postIdToEdit,
+      park: 'S', // TODO
     };
   }
 
@@ -70,7 +72,7 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   render() {
-    const { openFormModal, edittingPostId } = this.state;
+    const { openFormModal, edittingPostId, park } = this.state;
     const { isFormEditting, isMobile } = this.props;
     return (
       <Box sx={wrapper(openFormModal && !isMobile)}>
@@ -81,7 +83,7 @@ export class Renderer extends React.Component<Props, State> {
               endToSelectPosition={this.endToSelectPosition}
               hiddenMarkerIds={edittingPostId ? [edittingPostId] : []}
               shouldCurrentPositionAsyncWithForm
-              park="L" // TODO
+              park={park}
             />
 
             {!isFormEditting && (
@@ -167,7 +169,7 @@ export class Renderer extends React.Component<Props, State> {
   };
 
   protected renderEditForm = () => {
-    const { edittingPostId, openFormModal } = this.state;
+    const { edittingPostId, openFormModal, park } = this.state;
     const { isFormEditting, isMobile } = this.props;
 
     const closeButton = <CloseFormButton onClose={this.handleCloseFormModal} />;
@@ -185,6 +187,7 @@ export class Renderer extends React.Component<Props, State> {
         <ArticleForm
           postId={edittingPostId}
           onClickSelectPosition={this.startToSelectPosition}
+          park={park}
         />
       </SwipeableEdgeDrawer>
     ) : (
@@ -199,6 +202,7 @@ export class Renderer extends React.Component<Props, State> {
             postId={edittingPostId}
             onClickSelectPosition={this.startToSelectPosition}
             onClose={this.handleCloseFormModal}
+            park={park}
           />
         )}
       </Drawer>
@@ -250,4 +254,5 @@ export type State = {
   newMarkerMode: boolean;
   openDialogToConfirmDeleting: boolean;
   openDoubleEditAlartDialog: boolean;
+  park: Park;
 };

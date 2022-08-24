@@ -14,7 +14,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       "top": "10%",
       "transform": "translate(-50%,-50%)",
       "width": "80%",
-      "zIndex": 1000,
+      "zIndex": 1001,
     }
   }
 >
@@ -36,7 +36,7 @@ exports[`Shallow Snapshot Tests position bottom 1`] = `
       "top": "90%",
       "transform": "translate(-50%,-50%)",
       "width": "80%",
-      "zIndex": 1000,
+      "zIndex": 1001,
     }
   }
 >
@@ -58,7 +58,7 @@ exports[`Shallow Snapshot Tests position freely 1`] = `
       "top": "50%",
       "transform": "translate(-50%,-50%)",
       "width": "80%",
-      "zIndex": 1000,
+      "zIndex": 1001,
     }
   }
 >
@@ -80,7 +80,7 @@ exports[`Shallow Snapshot Tests white theme 1`] = `
       "top": "10%",
       "transform": "translate(-50%,-50%)",
       "width": "80%",
-      "zIndex": 1000,
+      "zIndex": 1001,
     }
   }
 >

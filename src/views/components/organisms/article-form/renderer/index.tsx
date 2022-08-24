@@ -178,7 +178,7 @@ export class Renderer extends React.Component<Props> {
                   disabled
                   doNotShowPostMarkers
                   shouldCurrentPositionAsyncWithForm
-                  park={this.props.park}
+                  park={position?.park ?? this.props.park}
                 />
                 <Box sx={miniMapLayer}></Box>
                 <Box sx={miniMapTextBox}>

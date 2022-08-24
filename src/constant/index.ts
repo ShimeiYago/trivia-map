@@ -18,3 +18,6 @@ export const CATEGORIES = [
 ];
 
 export const UPLOAD_IMAGE_MAX_LENGTH = 1000;
+
+export const TDL_TILE_URL = '/tdl-map-tiles/{z}/{x}/{y}.png';
+export const TDS_TILE_URL = '/tds-map-tiles/{z}/{x}/{y}.png';

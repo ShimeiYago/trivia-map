@@ -2,8 +2,12 @@ import React from 'react';
 import { ArticleWrapper } from 'views/components/organisms/article-wrapper';
 import { ArticlePreviewList } from 'views/components/organisms/article-preview-list';
 import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
   Box,
   Button,
+  Divider,
   FormControl,
   Grid,
   InputLabel,
@@ -17,6 +21,8 @@ import { CATEGORIES } from 'constant';
 import { IconAndText } from 'views/components/atoms/icon-and-text';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import SearchIcon from '@mui/icons-material/Search';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ArticleIcon from '@mui/icons-material/Article';
 
 export class Renderer extends React.Component<Props, State> {
   state: State = {
@@ -32,6 +38,16 @@ export class Renderer extends React.Component<Props, State> {
     return (
       <>
         {this.renderConditionsForm()}
+        <Divider sx={{ my: 3 }} />
+
+        <Typography component="h2" variant="h4" align="center" sx={{ my: 2 }}>
+          <IconAndText
+            iconComponent={<ArticleIcon fontSize="inherit" />}
+            text="投稿一覧"
+            iconPosition="left"
+            variant="inherit"
+          />
+        </Typography>
         <ArticlePreviewList
           variant="large"
           searchConditions={this.state.currentSearchConditions}
@@ -41,43 +57,64 @@ export class Renderer extends React.Component<Props, State> {
   };
 
   protected renderConditionsForm = () => {
+    const disabled =
+      JSON.stringify(this.state.formSearchConditions) ===
+      JSON.stringify(this.state.currentSearchConditions);
+
     return (
-      <Box
-        sx={{
-          borderColor: 'gray',
-          borderStyle: 'solid',
-          borderWidth: 2,
-          borderRadius: 3,
-          mb: 3,
-          mx: 2,
-          p: 2,
-        }}
-      >
-        <Typography component="h2" variant="h6" align="center">
-          <IconAndText
-            iconComponent={<FilterAltIcon />}
-            text="絞り込み条件"
-            iconPosition="left"
-            variant="inherit"
-          />
-        </Typography>
-        <Grid container columnSpacing={6} rowSpacing={2} sx={{ mt: 1, mb: 3 }}>
-          <Grid item xs={12} md={6}>
-            {this.renderCategorySelect()}
-          </Grid>
-          <Grid item xs={12} md={6}>
-            {this.renderParkSelect()}
-          </Grid>
-          <Grid item xs={12}>
-            {this.renderKeywordSearch()}
-          </Grid>
-        </Grid>
-        <Box textAlign="center">
-          <Button onClick={this.handleClickFiltering}>
-            この条件で絞り込む
-          </Button>
-        </Box>
-      </Box>
+      <Accordion>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography>
+            <IconAndText
+              iconComponent={<FilterAltIcon />}
+              text="絞り込み検索"
+              iconPosition="left"
+              variant="inherit"
+            />
+          </Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Box
+            sx={{
+              borderColor: 'gray',
+              borderStyle: 'solid',
+              borderWidth: 2,
+              borderRadius: 3,
+              p: 2,
+            }}
+          >
+            <Typography component="h2" variant="h6" align="center">
+              <IconAndText
+                iconComponent={<FilterAltIcon />}
+                text="絞り込み条件"
+                iconPosition="left"
+                variant="inherit"
+              />
+            </Typography>
+            <Grid
+              container
+              columnSpacing={6}
+              rowSpacing={2}
+              sx={{ mt: 1, mb: 3 }}
+            >
+              <Grid item xs={12} md={6}>
+                {this.renderCategorySelect()}
+              </Grid>
+              <Grid item xs={12} md={6}>
+                {this.renderParkSelect()}
+              </Grid>
+              <Grid item xs={12}>
+                {this.renderKeywordSearch()}
+              </Grid>
+            </Grid>
+            <Box textAlign="center">
+              <Button onClick={this.handleClickFiltering} disabled={disabled}>
+                この条件で絞り込む
+              </Button>
+            </Box>
+          </Box>
+        </AccordionDetails>
+      </Accordion>
     );
   };
 

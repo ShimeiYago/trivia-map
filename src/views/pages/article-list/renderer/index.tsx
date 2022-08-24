@@ -57,6 +57,10 @@ export class Renderer extends React.Component<Props, State> {
   };
 
   protected renderConditionsForm = () => {
+    const disabled =
+      JSON.stringify(this.state.formSearchConditions) ===
+      JSON.stringify(this.state.currentSearchConditions);
+
     return (
       <Accordion>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
@@ -104,7 +108,7 @@ export class Renderer extends React.Component<Props, State> {
               </Grid>
             </Grid>
             <Box textAlign="center">
-              <Button onClick={this.handleClickFiltering}>
+              <Button onClick={this.handleClickFiltering} disabled={disabled}>
                 この条件で絞り込む
               </Button>
             </Box>

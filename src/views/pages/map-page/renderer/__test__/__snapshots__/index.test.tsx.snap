@@ -19,6 +19,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
         endToSelectPosition={[Function]}
         hiddenMarkerIds={Array []}
         newMarkerMode={false}
+        park="L"
         shouldCurrentPositionAsyncWithForm={true}
       />
       <FloatingButton
@@ -98,6 +99,7 @@ exports[`Shallow Snapshot Tests pc view 1`] = `
         endToSelectPosition={[Function]}
         hiddenMarkerIds={Array []}
         newMarkerMode={false}
+        park="L"
         shouldCurrentPositionAsyncWithForm={true}
       />
       <FloatingButton

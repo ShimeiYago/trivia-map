@@ -28,6 +28,7 @@ const basicProps: Props = {
   ],
   updateIsEditting: jest.fn(),
   isFormEditting: false,
+  park: 'S',
 };
 
 let shallowWrapper: ShallowWrapper<Props, State, Renderer>;
@@ -41,6 +42,13 @@ describe('Shallow Snapshot Tests', () => {
   });
 
   it('basic', () => {
+    expect(shallowWrapper).toMatchSnapshot();
+  });
+
+  it('land map', () => {
+    shallowWrapper.setProps({
+      park: 'L',
+    });
     expect(shallowWrapper).toMatchSnapshot();
   });
 

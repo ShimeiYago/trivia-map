@@ -8,6 +8,10 @@ import {
   DialogContentText,
   DialogTitle,
   Drawer,
+  FormControl,
+  FormControlLabel,
+  Radio,
+  RadioGroup,
 } from '@mui/material';
 import { FloatingButton } from 'views/components/atoms/floating-button';
 import { SwipeableEdgeDrawer } from 'views/components/moleculars/swipeable-edge-drawer';
@@ -16,7 +20,7 @@ import { CloseFormButton } from 'views/components/organisms/close-form-button';
 import { GlobalMessage } from 'views/components/organisms/global-messge';
 import { LoadingProgressBar } from 'views/components/organisms/loading-progress-bar';
 import { TriviaMap } from 'views/components/organisms/trivia-map';
-import { rightDrawerStyle, mapWrapper, wrapper } from './styles';
+import { rightDrawerStyle, mapWrapper, wrapper, parkSelectBox } from './styles';
 import { GlobalMenu } from 'views/components/organisms/global-menu';
 import { Park } from 'types/park';
 
@@ -94,6 +98,8 @@ export class Renderer extends React.Component<Props, State> {
             )}
 
             <LoadingProgressBar />
+
+            {this.renderParkSelectBox()}
           </Box>
         </GlobalMenu>
 
@@ -105,6 +111,25 @@ export class Renderer extends React.Component<Props, State> {
       </Box>
     );
   }
+
+  protected renderParkSelectBox = () => {
+    return (
+      <Box sx={parkSelectBox}>
+        <FormControl component="fieldset">
+          <RadioGroup value={this.state.park} onChange={this.handleChangePark}>
+            <FormControlLabel value="L" control={<Radio />} label="ランド" />
+            <FormControlLabel value="S" control={<Radio />} label="シー" />
+          </RadioGroup>
+        </FormControl>
+      </Box>
+    );
+  };
+
+  protected handleChangePark = (event: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({
+      park: event.target.value as Park,
+    });
+  };
 
   protected handleClickAddButton = () =>
     this.setState({

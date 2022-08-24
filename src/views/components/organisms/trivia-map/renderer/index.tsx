@@ -65,10 +65,18 @@ export class Renderer extends React.Component<Props, State> {
     ) {
       this.state.map?.setView(this.props.initCenter);
     }
+
+    if (
+      prevProps.park !== this.props.park &&
+      !this.props.doNotShowPostMarkers
+    ) {
+      this.props.fetchMarkers(this.props.park);
+    }
   }
 
   render() {
     const { width, height, initZoom, initCenter, disabled, park } = this.props;
+
     const mapWrapper: SxProps = {
       width: width ?? '100%',
       height: height ?? '100%',
@@ -88,8 +96,6 @@ export class Renderer extends React.Component<Props, State> {
       boxZoom: false,
     };
 
-    const mapTileUrl = park === 'L' ? TDL_TILE_URL : TDS_TILE_URL;
-
     return (
       <Box sx={mapWrapper}>
         {this.renderGuideDialog()}
@@ -107,7 +113,8 @@ export class Renderer extends React.Component<Props, State> {
           tap={false}
           {...(disabled ? disabledProps : {})}
         >
-          <TileLayer url={mapTileUrl} noWrap />
+          {park === 'L' && <TileLayer url={TDL_TILE_URL} noWrap />}
+          {park === 'S' && <TileLayer url={TDS_TILE_URL} noWrap />}
           {this.renderPostMarkers()}
           {this.renderAdittionalMarkers()}
           {this.renderCurrentPositionMarker()}
@@ -185,9 +192,9 @@ export class Renderer extends React.Component<Props, State> {
 
   protected renderCurrentPositionMarker() {
     const { currentPosition, openableNewMarkerPopup } = this.state;
-    const { newMarkerMode } = this.props;
+    const { newMarkerMode, park } = this.props;
 
-    if (currentPosition === undefined) {
+    if (currentPosition === undefined || currentPosition.park !== park) {
       return null;
     }
 

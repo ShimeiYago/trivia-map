@@ -34,7 +34,7 @@ export function TriviaMap(ownProps: OwnProps) {
     isFormEditting: useAppSelector(selectArticleFormIsEditting),
     park: ownProps.park,
 
-    fetchMarkers: () => dispatch(fetchMarkers()),
+    fetchMarkers: (park: Park) => dispatch(fetchMarkers(park)),
     updatePosition: (position: Position) =>
       dispatch(updateFormField({ position: position })),
     endToSelectPosition: ownProps.endToSelectPosition,

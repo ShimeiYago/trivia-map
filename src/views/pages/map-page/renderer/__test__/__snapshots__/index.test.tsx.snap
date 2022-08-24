@@ -19,7 +19,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
         endToSelectPosition={[Function]}
         hiddenMarkerIds={Array []}
         newMarkerMode={false}
-        park="L"
+        park="S"
         shouldCurrentPositionAsyncWithForm={true}
       />
       <FloatingButton
@@ -47,6 +47,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
   >
     <ArticleForm
       onClickSelectPosition={[Function]}
+      park="S"
     />
   </SwipeableEdgeDrawer>
   <GlobalMessage
@@ -99,7 +100,7 @@ exports[`Shallow Snapshot Tests pc view 1`] = `
         endToSelectPosition={[Function]}
         hiddenMarkerIds={Array []}
         newMarkerMode={false}
-        park="L"
+        park="S"
         shouldCurrentPositionAsyncWithForm={true}
       />
       <FloatingButton
@@ -128,6 +129,7 @@ exports[`Shallow Snapshot Tests pc view 1`] = `
     <ArticleForm
       onClickSelectPosition={[Function]}
       onClose={[Function]}
+      park="S"
     />
   </ForwardRef(Drawer)>
   <GlobalMessage

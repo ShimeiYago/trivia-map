@@ -17,6 +17,7 @@ describe('Shallow Snapshot Tests', () => {
       formSearchConditions: {
         category: 1,
         park: 'L',
+        keywords: ['keyword1', 'keyword2'],
       },
     });
     expect(wrapper).toMatchSnapshot();
@@ -125,5 +126,30 @@ describe('handleClickFiltering', () => {
       category: 1,
       park: 'L',
     });
+  });
+});
+
+describe('handleChangeKeyword', () => {
+  beforeEach(() => {
+    wrapper = shallow(<Renderer />);
+  });
+
+  it('should set divided keywords', () => {
+    const event = {
+      target: {
+        value: 'keyword1 keyword2　keyword3,keyword4 ,',
+      },
+    };
+
+    const instance = wrapper.instance();
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    instance['handleChangeKeyword'](event as any);
+
+    expect(instance.state.formSearchConditions.keywords).toEqual([
+      'keyword1',
+      'keyword2',
+      'keyword3',
+      'keyword4',
+    ]);
   });
 });

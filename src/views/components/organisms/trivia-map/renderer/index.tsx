@@ -35,7 +35,7 @@ export class Renderer extends React.Component<Props, State> {
       this.props.markersFetchingState === 'waiting' &&
       !this.props.doNotShowPostMarkers
     ) {
-      this.props.fetchMarkers();
+      this.props.fetchMarkers(this.props.park);
     }
   }
 
@@ -325,7 +325,7 @@ export type Props = {
   isFormEditting: boolean;
   park: Park;
 
-  fetchMarkers: () => void;
+  fetchMarkers: (park: Park) => void;
   updatePosition: (position: Position) => void;
   endToSelectPosition?: () => void;
   updateIsEditting: (isEditting: boolean) => void;

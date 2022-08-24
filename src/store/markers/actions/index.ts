@@ -12,6 +12,7 @@ import {
   deleteOneMarker as helperDeleteOneMarker,
 } from './helpers';
 import { throwError } from 'store/global-error/slice';
+import { Park } from './../../../types/park';
 
 // basic actions
 export const {
@@ -23,41 +24,43 @@ export const {
 } = markersSlice.actions;
 
 // fetchMarkers action
-export const fetchMarkers = (): AppThunk => async (dispatch) => {
-  dispatch(fetchStart());
+export const fetchMarkers =
+  (park: Park): AppThunk =>
+  async (dispatch) => {
+    dispatch(fetchStart());
 
-  try {
-    let nextUrl: string | null = '';
-    let totalPages = 1;
-    let loadedPages = 0;
-    while (nextUrl !== null) {
-      if (loadedPages >= totalPages) {
-        break;
+    try {
+      let nextUrl: string | null = '';
+      let totalPages = 1;
+      let loadedPages = 0;
+      while (nextUrl !== null) {
+        if (loadedPages >= totalPages) {
+          break;
+        }
+
+        let res: GetMarkersResponseWithPagination;
+        if (loadedPages === 0) {
+          res = await getRemoteMarkers(park);
+          totalPages = res.totalPages;
+          dispatch(updateTotalPages(totalPages));
+        } else {
+          res = await getRemoteMarkers(park, nextUrl);
+        }
+
+        dispatch(appendMarkers(res.results));
+
+        loadedPages += 1;
+        dispatch(updateLoadedPages(loadedPages));
+
+        nextUrl = res.nextUrl;
       }
+      dispatch(fetchSuccess());
+    } catch (error) {
+      // TODO: take log of error
 
-      let res: GetMarkersResponseWithPagination;
-      if (loadedPages === 0) {
-        res = await getRemoteMarkers('S'); // TODO
-        totalPages = res.totalPages;
-        dispatch(updateTotalPages(totalPages));
-      } else {
-        res = await getRemoteMarkers('S', nextUrl); // TODO
-      }
-
-      dispatch(appendMarkers(res.results));
-
-      loadedPages += 1;
-      dispatch(updateLoadedPages(loadedPages));
-
-      nextUrl = res.nextUrl;
+      dispatch(throwError(500));
     }
-    dispatch(fetchSuccess());
-  } catch (error) {
-    // TODO: take log of error
-
-    dispatch(throwError(500));
-  }
-};
+  };
 
 // appendMarkers action
 export const appendMarkers =

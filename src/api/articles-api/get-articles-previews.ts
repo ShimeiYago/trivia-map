@@ -4,6 +4,7 @@ import { handleAxiosError } from '../utils/handle-axios-error';
 import { getAxiosInstance } from 'api/utils/get-axios-instance';
 import { mockGetArticlesPreviewsResponse } from '../mock/articles-response';
 import { PaginationResponse } from 'api/types/pagination-response';
+import { Park } from './../../types/park';
 
 export async function getArticlesPreviews(
   param: GetArticlesPreviewsParam,
@@ -62,6 +63,6 @@ export type GetArticlesPreviewsParam = {
   marker?: number;
   user?: number;
   category?: number;
-  park?: 'L' | 'S';
+  park?: Park;
   keywords?: string[];
 };

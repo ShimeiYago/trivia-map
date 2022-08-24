@@ -171,6 +171,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
           textAlign="center"
         >
           <ForwardRef(Button)
+            disabled={true}
             onClick={[Function]}
           >
             この条件で絞り込む
@@ -385,6 +386,7 @@ exports[`Shallow Snapshot Tests with form conditions 1`] = `
           textAlign="center"
         >
           <ForwardRef(Button)
+            disabled={false}
             onClick={[Function]}
           >
             この条件で絞り込む

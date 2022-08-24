@@ -1,10 +1,11 @@
 import { LoadingState } from 'types/loading-state';
+import { Park } from './../../../types/park';
 
 export interface Marker {
   markerId: number;
   lat: number;
   lng: number;
-  park: 'L' | 'S';
+  park: Park;
   numberOfPublicArticles: number;
 }
 

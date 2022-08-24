@@ -28,6 +28,9 @@ export async function getArticlesPreviews(
   if (param.park) {
     apiParmas.push(`park=${param.park}`);
   }
+  if (param.keywords && param.keywords.length > 0) {
+    apiParmas.push(`keywords=${param.keywords.join(',')}`);
+  }
 
   if (apiParmas.length > 0) {
     url = `${url}?${apiParmas.join('&')}`;
@@ -60,4 +63,5 @@ export type GetArticlesPreviewsParam = {
   user?: number;
   category?: number;
   park?: 'L' | 'S';
+  keywords?: string[];
 };

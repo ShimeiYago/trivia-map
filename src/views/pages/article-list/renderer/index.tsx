@@ -10,11 +10,13 @@ import {
   MenuItem,
   Select,
   SelectChangeEvent,
+  TextField,
   Typography,
 } from '@mui/material';
 import { CATEGORIES } from 'constant';
 import { IconAndText } from 'views/components/atoms/icon-and-text';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
+import SearchIcon from '@mui/icons-material/Search';
 
 export class Renderer extends React.Component<Props, State> {
   state: State = {
@@ -65,6 +67,9 @@ export class Renderer extends React.Component<Props, State> {
           </Grid>
           <Grid item xs={12} md={6}>
             {this.renderParkSelect()}
+          </Grid>
+          <Grid item xs={12}>
+            {this.renderKeywordSearch()}
           </Grid>
         </Grid>
         <Box textAlign="center">
@@ -158,6 +163,35 @@ export class Renderer extends React.Component<Props, State> {
     });
   };
 
+  protected renderKeywordSearch = () => {
+    return (
+      <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
+        <SearchIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+        <TextField
+          label="キーワード検索"
+          variant="standard"
+          fullWidth
+          onChange={this.handleChangeKeyword}
+        />
+      </Box>
+    );
+  };
+
+  protected handleChangeKeyword = (
+    event: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    const keywords = event.target.value
+      .split(/[\s,]+/)
+      .filter((keyword) => keyword !== '');
+
+    this.setState({
+      formSearchConditions: {
+        ...this.state.formSearchConditions,
+        keywords: keywords,
+      },
+    });
+  };
+
   protected handleClickFiltering = () => {
     this.setState({
       currentSearchConditions: this.state.formSearchConditions,
@@ -176,4 +210,5 @@ export type State = {
 type Conditions = {
   category?: number;
   park?: 'L' | 'S';
+  keywords?: string[];
 };

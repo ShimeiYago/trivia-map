@@ -125,6 +125,35 @@ exports[`Shallow Snapshot Tests basic 1`] = `
           </ForwardRef(Select)>
         </ForwardRef(FormControl)>
       </ForwardRef(Grid)>
+      <ForwardRef(Grid)
+        item={true}
+        xs={12}
+      >
+        <ForwardRef(Box)
+          sx={
+            Object {
+              "alignItems": "flex-end",
+              "display": "flex",
+            }
+          }
+        >
+          <Memo(ForwardRef(SearchIcon))
+            sx={
+              Object {
+                "color": "action.active",
+                "mr": 1,
+                "my": 0.5,
+              }
+            }
+          />
+          <ForwardRef(TextField)
+            fullWidth={true}
+            label="キーワード検索"
+            onChange={[Function]}
+            variant="standard"
+          />
+        </ForwardRef(Box)>
+      </ForwardRef(Grid)>
     </ForwardRef(Grid)>
     <ForwardRef(Box)
       textAlign="center"
@@ -267,6 +296,35 @@ exports[`Shallow Snapshot Tests with form conditions 1`] = `
             </ForwardRef(MenuItem)>
           </ForwardRef(Select)>
         </ForwardRef(FormControl)>
+      </ForwardRef(Grid)>
+      <ForwardRef(Grid)
+        item={true}
+        xs={12}
+      >
+        <ForwardRef(Box)
+          sx={
+            Object {
+              "alignItems": "flex-end",
+              "display": "flex",
+            }
+          }
+        >
+          <Memo(ForwardRef(SearchIcon))
+            sx={
+              Object {
+                "color": "action.active",
+                "mr": 1,
+                "my": 0.5,
+              }
+            }
+          />
+          <ForwardRef(TextField)
+            fullWidth={true}
+            label="キーワード検索"
+            onChange={[Function]}
+            variant="standard"
+          />
+        </ForwardRef(Box)>
       </ForwardRef(Grid)>
     </ForwardRef(Grid)>
     <ForwardRef(Box)

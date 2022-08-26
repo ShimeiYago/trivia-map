@@ -102,7 +102,7 @@ export class Renderer extends React.Component<Props, State> {
           disabled
           doNotShowPostMarkers
           additinalMarkers={[marker]}
-          park="S" // TODO
+          park={marker.park}
         />
       </Stack>
     );

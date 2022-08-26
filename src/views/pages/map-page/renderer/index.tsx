@@ -33,7 +33,7 @@ export class Renderer extends React.Component<Props, State> {
       openDialogToConfirmDeleting: false,
       openDoubleEditAlartDialog: false,
       edittingPostId: props.postIdToEdit,
-      park: 'S', // TODO
+      park: 'S',
     };
   }
 
@@ -114,7 +114,7 @@ export class Renderer extends React.Component<Props, State> {
 
   protected renderParkSelectBox = () => {
     return (
-      <Box sx={parkSelectBox}>
+      <Box sx={parkSelectBox(!this.props.isMobile && this.state.openFormModal)}>
         <FormControl component="fieldset">
           <RadioGroup value={this.state.park} onChange={this.handleChangePark}>
             <FormControlLabel value="L" control={<Radio />} label="ランド" />

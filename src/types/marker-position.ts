@@ -1,7 +1,9 @@
+import { Park } from './park';
+
 export type MarkerPosition = {
   markerId: number;
   lat: number;
   lng: number;
-  park: 'L' | 'S';
+  park: Park;
   numberOfPublicArticles?: number;
 };

@@ -7,6 +7,7 @@ export const markersSlice = createSlice({
   reducers: {
     fetchStart(state) {
       state.fetchingState = 'loading';
+      state.markers = [];
     },
 
     fetchSuccess(state) {

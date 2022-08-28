@@ -10,6 +10,8 @@ import { DialogScreen } from 'views/components/atoms/dialog-screen';
 import { LoadingState } from 'types/loading-state';
 import { PostMarkers } from './helpers/post-markers';
 import { Marker } from 'store/markers/model';
+import { Park } from 'types/park';
+import { TDL_TILE_URL, TDS_TILE_URL } from 'constant';
 
 export class Renderer extends React.Component<Props, State> {
   static readonly defaultProps: Pick<Props, 'newMarkerMode' | 'initZoom'> = {
@@ -33,7 +35,7 @@ export class Renderer extends React.Component<Props, State> {
       this.props.markersFetchingState === 'waiting' &&
       !this.props.doNotShowPostMarkers
     ) {
-      this.props.fetchMarkers();
+      this.props.fetchMarkers(this.props.park);
     }
   }
 
@@ -63,10 +65,18 @@ export class Renderer extends React.Component<Props, State> {
     ) {
       this.state.map?.setView(this.props.initCenter);
     }
+
+    if (
+      prevProps.park !== this.props.park &&
+      !this.props.doNotShowPostMarkers
+    ) {
+      this.props.fetchMarkers(this.props.park);
+    }
   }
 
   render() {
-    const { width, height, initZoom, initCenter, disabled } = this.props;
+    const { width, height, initZoom, initCenter, disabled, park } = this.props;
+
     const mapWrapper: SxProps = {
       width: width ?? '100%',
       height: height ?? '100%',
@@ -103,7 +113,8 @@ export class Renderer extends React.Component<Props, State> {
           tap={false}
           {...(disabled ? disabledProps : {})}
         >
-          <TileLayer url="/tds-map-tiles/{z}/{x}/{y}.png" noWrap />
+          {park === 'L' && <TileLayer url={TDL_TILE_URL} noWrap />}
+          {park === 'S' && <TileLayer url={TDS_TILE_URL} noWrap />}
           {this.renderPostMarkers()}
           {this.renderAdittionalMarkers()}
           {this.renderCurrentPositionMarker()}
@@ -128,7 +139,7 @@ export class Renderer extends React.Component<Props, State> {
       currentPosition: {
         lat: e.latlng.lat,
         lng: e.latlng.lng,
-        park: 'S', // TODO
+        park: this.props.park,
       },
       openableNewMarkerPopup: false,
     });
@@ -181,9 +192,9 @@ export class Renderer extends React.Component<Props, State> {
 
   protected renderCurrentPositionMarker() {
     const { currentPosition, openableNewMarkerPopup } = this.state;
-    const { newMarkerMode } = this.props;
+    const { newMarkerMode, park } = this.props;
 
-    if (currentPosition === undefined) {
+    if (currentPosition === undefined || currentPosition.park !== park) {
       return null;
     }
 
@@ -266,7 +277,7 @@ export class Renderer extends React.Component<Props, State> {
       currentPosition: {
         lat: position.lat,
         lng: position.lng,
-        park: 'S', // TODO
+        park: this.props.park,
       },
       openableNewMarkerPopup: true,
     });
@@ -319,8 +330,9 @@ export type Props = {
   shouldCurrentPositionAsyncWithForm?: boolean;
   additinalMarkers: Position[];
   isFormEditting: boolean;
+  park: Park;
 
-  fetchMarkers: () => void;
+  fetchMarkers: (park: Park) => void;
   updatePosition: (position: Position) => void;
   endToSelectPosition?: () => void;
   updateIsEditting: (isEditting: boolean) => void;

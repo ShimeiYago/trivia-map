@@ -40,11 +40,11 @@ export const fetchMarkers =
 
         let res: GetMarkersResponseWithPagination;
         if (loadedPages === 0) {
-          res = await getRemoteMarkers(park);
+          res = await getRemoteMarkers({ park });
           totalPages = res.totalPages;
           dispatch(updateTotalPages(totalPages));
         } else {
-          res = await getRemoteMarkers(park, nextUrl);
+          res = await getRemoteMarkers({ park, nextUrl });
         }
 
         dispatch(appendMarkers(res.results));

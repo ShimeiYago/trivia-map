@@ -36,6 +36,7 @@ import { User } from 'types/user';
 import { CATEGORIES } from 'constant';
 import { SelializedImageFile } from 'types/SelializedImageFile';
 import { resizeAndConvertToSelializedImageFile } from 'utils/resize-and-convert-to-selialized-image-file.ts';
+import { Park } from 'types/park';
 
 export class Renderer extends React.Component<Props> {
   headerRef: React.RefObject<HTMLDivElement>;
@@ -177,6 +178,7 @@ export class Renderer extends React.Component<Props> {
                   disabled
                   doNotShowPostMarkers
                   shouldCurrentPositionAsyncWithForm
+                  park={position?.park ?? this.props.park}
                 />
                 <Box sx={miniMapLayer}></Box>
                 <Box sx={miniMapTextBox}>
@@ -369,6 +371,7 @@ export type Props = {
   formError?: FormError;
   isFormEditting: boolean;
   userInfo?: User;
+  park: Park;
 
   updateFormField: (param: UpdateFormFieldParam) => void;
   submitNewArticle: () => void;

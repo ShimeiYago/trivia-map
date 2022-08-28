@@ -24,6 +24,7 @@ const basicProps: Props = {
     email: 'xxx@example.com',
     nickname: 'Axel',
   },
+  park: 'S',
   updateFormField: jest.fn(),
   submitNewArticle: jest.fn(),
   submitEdittedArticle: jest.fn(),

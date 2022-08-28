@@ -19,6 +19,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
         endToSelectPosition={[Function]}
         hiddenMarkerIds={Array []}
         newMarkerMode={false}
+        park="S"
         shouldCurrentPositionAsyncWithForm={true}
       />
       <FloatingButton
@@ -28,6 +29,44 @@ exports[`Shallow Snapshot Tests basic 1`] = `
         onClick={[Function]}
       />
       <LoadingProgressBar />
+      <ForwardRef(Box)
+        sx={
+          Object {
+            "backgroundColor": "white",
+            "borderColor": "#9e9e9e",
+            "borderRadius": 2,
+            "borderStyle": "solid",
+            "bottom": "auto",
+            "left": "auto",
+            "margin": 0,
+            "padding": 1,
+            "position": "fixed",
+            "right": 20,
+            "top": 70,
+            "zIndex": 1000,
+          }
+        }
+      >
+        <ForwardRef(FormControl)
+          component="fieldset"
+        >
+          <ForwardRef(RadioGroup)
+            onChange={[Function]}
+            value="S"
+          >
+            <ForwardRef(FormControlLabel)
+              control={<ForwardRef(Radio) />}
+              label="ランド"
+              value="L"
+            />
+            <ForwardRef(FormControlLabel)
+              control={<ForwardRef(Radio) />}
+              label="シー"
+              value="S"
+            />
+          </ForwardRef(RadioGroup)>
+        </ForwardRef(FormControl)>
+      </ForwardRef(Box)>
     </ForwardRef(Box)>
   </GlobalMenu>
   <SwipeableEdgeDrawer
@@ -46,6 +85,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
   >
     <ArticleForm
       onClickSelectPosition={[Function]}
+      park="S"
     />
   </SwipeableEdgeDrawer>
   <GlobalMessage
@@ -98,6 +138,7 @@ exports[`Shallow Snapshot Tests pc view 1`] = `
         endToSelectPosition={[Function]}
         hiddenMarkerIds={Array []}
         newMarkerMode={false}
+        park="S"
         shouldCurrentPositionAsyncWithForm={true}
       />
       <FloatingButton
@@ -107,6 +148,44 @@ exports[`Shallow Snapshot Tests pc view 1`] = `
         onClick={[Function]}
       />
       <LoadingProgressBar />
+      <ForwardRef(Box)
+        sx={
+          Object {
+            "backgroundColor": "white",
+            "borderColor": "#9e9e9e",
+            "borderRadius": 2,
+            "borderStyle": "solid",
+            "bottom": "auto",
+            "left": "auto",
+            "margin": 0,
+            "padding": 1,
+            "position": "fixed",
+            "right": 520,
+            "top": 70,
+            "zIndex": 1000,
+          }
+        }
+      >
+        <ForwardRef(FormControl)
+          component="fieldset"
+        >
+          <ForwardRef(RadioGroup)
+            onChange={[Function]}
+            value="S"
+          >
+            <ForwardRef(FormControlLabel)
+              control={<ForwardRef(Radio) />}
+              label="ランド"
+              value="L"
+            />
+            <ForwardRef(FormControlLabel)
+              control={<ForwardRef(Radio) />}
+              label="シー"
+              value="S"
+            />
+          </ForwardRef(RadioGroup)>
+        </ForwardRef(FormControl)>
+      </ForwardRef(Box)>
     </ForwardRef(Box)>
   </GlobalMenu>
   <ForwardRef(Drawer)
@@ -126,6 +205,7 @@ exports[`Shallow Snapshot Tests pc view 1`] = `
     <ArticleForm
       onClickSelectPosition={[Function]}
       onClose={[Function]}
+      park="S"
     />
   </ForwardRef(Drawer)>
   <GlobalMessage

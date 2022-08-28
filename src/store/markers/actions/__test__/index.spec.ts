@@ -25,7 +25,7 @@ describe('fetchMarkers', () => {
     getRemoteMarkersSpy.mockResolvedValue(mockGetMarkersResponse());
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const appThunk = fetchMarkers() as any;
+    const appThunk = fetchMarkers('L') as any;
     await appThunk(dispatch);
     expect(dispatch.mock.calls[0][0].type).toBe('markers/fetchStart');
   });
@@ -34,7 +34,7 @@ describe('fetchMarkers', () => {
     getRemoteMarkersSpy.mockResolvedValue(mockGetMarkersResponse());
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const appThunk = fetchMarkers() as any;
+    const appThunk = fetchMarkers('L') as any;
     await appThunk(dispatch);
     expect(dispatch.mock.calls.slice(-1)[0][0].type).toBe(
       'markers/fetchSuccess',
@@ -45,7 +45,7 @@ describe('fetchMarkers', () => {
     getRemoteMarkersSpy.mockRejectedValue(new Error());
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const appThunk = fetchMarkers() as any;
+    const appThunk = fetchMarkers('L') as any;
     await appThunk(dispatch, getState);
     expect(dispatch.mock.calls.slice(-1)[0][0].type).toBe(
       'globalError/throwError',

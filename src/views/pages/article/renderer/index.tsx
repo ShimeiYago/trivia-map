@@ -102,6 +102,7 @@ export class Renderer extends React.Component<Props, State> {
           disabled
           doNotShowPostMarkers
           additinalMarkers={[marker]}
+          park={marker.park}
         />
       </Stack>
     );

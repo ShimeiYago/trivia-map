@@ -97,6 +97,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
               }
             }
             initZoom={3}
+            park="S"
             shouldCurrentPositionAsyncWithForm={true}
           />
           <ForwardRef(Box)
@@ -259,6 +260,7 @@ exports[`Shallow Snapshot Tests draft mode 1`] = `
               }
             }
             initZoom={3}
+            park="S"
             shouldCurrentPositionAsyncWithForm={true}
           />
           <ForwardRef(Box)
@@ -431,6 +433,7 @@ exports[`Shallow Snapshot Tests loading 1`] = `
               }
             }
             initZoom={3}
+            park="S"
             shouldCurrentPositionAsyncWithForm={true}
           />
           <ForwardRef(Box)
@@ -574,6 +577,7 @@ exports[`Shallow Snapshot Tests position is not selected yet 1`] = `
             doNotShowPostMarkers={true}
             height={300}
             initZoom={3}
+            park="S"
             shouldCurrentPositionAsyncWithForm={true}
           />
           <ForwardRef(Box)
@@ -736,6 +740,7 @@ exports[`Shallow Snapshot Tests with category 1`] = `
               }
             }
             initZoom={3}
+            park="S"
             shouldCurrentPositionAsyncWithForm={true}
           />
           <ForwardRef(Box)
@@ -913,6 +918,7 @@ exports[`Shallow Snapshot Tests with close button 1`] = `
               }
             }
             initZoom={3}
+            park="S"
             shouldCurrentPositionAsyncWithForm={true}
           />
           <ForwardRef(Box)
@@ -1080,6 +1086,7 @@ exports[`Shallow Snapshot Tests with image data url 1`] = `
               }
             }
             initZoom={3}
+            park="S"
             shouldCurrentPositionAsyncWithForm={true}
           />
           <ForwardRef(Box)
@@ -1247,6 +1254,7 @@ exports[`Shallow Snapshot Tests with image url 1`] = `
               }
             }
             initZoom={3}
+            park="S"
             shouldCurrentPositionAsyncWithForm={true}
           />
           <ForwardRef(Box)
@@ -1413,6 +1421,7 @@ exports[`Shallow Snapshot Tests with validation error 1`] = `
               }
             }
             initZoom={3}
+            park="S"
             shouldCurrentPositionAsyncWithForm={true}
           />
           <ForwardRef(Box)

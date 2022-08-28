@@ -23,6 +23,7 @@ import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import SearchIcon from '@mui/icons-material/Search';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ArticleIcon from '@mui/icons-material/Article';
+import { Park } from 'types/park';
 
 export class Renderer extends React.Component<Props, State> {
   state: State = {
@@ -246,6 +247,6 @@ export type State = {
 
 type Conditions = {
   category?: number;
-  park?: 'L' | 'S';
+  park?: Park;
   keywords?: string[];
 };

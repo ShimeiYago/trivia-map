@@ -240,3 +240,19 @@ describe('handleCloseDoubleEditAlartDialog', () => {
     expect(instance.state.openDoubleEditAlartDialog).toBeFalsy();
   });
 });
+
+describe('handleChangePark', () => {
+  it('change park state', () => {
+    shallowWrapper = shallow(<Renderer {...props} />);
+    const instance = shallowWrapper.instance();
+
+    const event = {
+      target: {
+        value: 'L',
+      },
+    };
+
+    instance['handleChangePark'](event as React.ChangeEvent<HTMLInputElement>);
+    expect(instance.state.park).toBe('L');
+  });
+});

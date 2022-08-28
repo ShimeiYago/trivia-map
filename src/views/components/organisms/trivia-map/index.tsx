@@ -11,6 +11,7 @@ import {
   selectArticleFormIsEditting,
   selectArticleFormPosition,
 } from 'store/article-form/selector';
+import { Park } from 'types/park';
 
 export function TriviaMap(ownProps: OwnProps) {
   const dispatch = useAppDispatch();
@@ -31,8 +32,9 @@ export function TriviaMap(ownProps: OwnProps) {
       ownProps.shouldCurrentPositionAsyncWithForm,
     additinalMarkers: ownProps.additinalMarkers ?? [],
     isFormEditting: useAppSelector(selectArticleFormIsEditting),
+    park: ownProps.park,
 
-    fetchMarkers: () => dispatch(fetchMarkers()),
+    fetchMarkers: (park: Park) => dispatch(fetchMarkers(park)),
     updatePosition: (position: Position) =>
       dispatch(updateFormField({ position: position })),
     endToSelectPosition: ownProps.endToSelectPosition,
@@ -55,4 +57,5 @@ type OwnProps = {
   hiddenMarkerIds?: number[];
   shouldCurrentPositionAsyncWithForm?: boolean;
   additinalMarkers?: Position[];
+  park: Park;
 };

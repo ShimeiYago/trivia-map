@@ -20,7 +20,7 @@ export const style = (theme: string, position: string | number): SxProps => {
     width: '80%',
     display: 'inline-block',
     transform: 'translate(-50%,-50%)',
-    zIndex: 1000,
+    zIndex: 1001,
     p: 2,
     borderRadius: 2,
     color: theme === 'black' ? 'white' : 'black',

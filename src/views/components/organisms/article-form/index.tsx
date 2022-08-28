@@ -24,6 +24,7 @@ import {
 import { toggleFormModal } from 'store/auths/actions';
 import { selectUser } from 'store/auths/selector';
 import { throwError } from 'store/global-error/slice';
+import { Park } from 'types/park';
 
 export function ArticleForm(ownProps: OwnProps) {
   const dispatch = useAppDispatch();
@@ -41,6 +42,7 @@ export function ArticleForm(ownProps: OwnProps) {
     formError: useAppSelector(selectArticleFormFormError),
     isFormEditting: useAppSelector(selectArticleFormIsEditting),
     userInfo: useAppSelector(selectUser),
+    park: ownProps.park,
 
     updateFormField: (param: UpdateFormFieldParam) =>
       dispatch(updateFormField(param)),
@@ -61,6 +63,7 @@ export function ArticleForm(ownProps: OwnProps) {
 
 type OwnProps = {
   postId?: number;
+  park: Park;
   onClickSelectPosition?: () => void;
   onClose?: () => void;
 };

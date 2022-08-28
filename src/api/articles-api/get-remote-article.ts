@@ -4,6 +4,7 @@ import { handleAxiosError } from '../utils/handle-axios-error';
 import { getAxiosInstance } from 'api/utils/get-axios-instance';
 import { mockGetArticleResponse } from '../mock/articles-response';
 import { Author } from 'types/author';
+import { Park } from './../../types/park';
 
 export async function getRemoteArticle(
   postId: number,
@@ -30,7 +31,7 @@ export type GetArticleResponse = {
     markerId: number;
     lat: number;
     lng: number;
-    park: 'L' | 'S';
+    park: Park;
     numberOfPublicArticles: number;
   };
   category: number;

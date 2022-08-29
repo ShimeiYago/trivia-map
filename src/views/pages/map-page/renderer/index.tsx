@@ -83,7 +83,8 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   render() {
-    const { openFormModal, edittingPostId, park } = this.state;
+    const { openFormModal, edittingPostId, park, selectedCategoryId } =
+      this.state;
     const { isFormEditting, isMobile } = this.props;
     return (
       <Box sx={wrapper(openFormModal && !isMobile)}>
@@ -95,6 +96,7 @@ export class Renderer extends React.Component<Props, State> {
               hiddenMarkerIds={edittingPostId ? [edittingPostId] : []}
               shouldCurrentPositionAsyncWithForm
               park={park}
+              categoryId={selectedCategoryId}
             />
 
             {!isFormEditting && (

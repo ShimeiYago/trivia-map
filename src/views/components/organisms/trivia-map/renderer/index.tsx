@@ -72,10 +72,11 @@ export class Renderer extends React.Component<Props, State> {
     }
 
     if (
-      prevProps.park !== this.props.park &&
-      !this.props.doNotShowPostMarkers
+      !this.props.doNotShowPostMarkers &&
+      (prevProps.park !== this.props.park ||
+        prevProps.categoryId !== this.props.categoryId)
     ) {
-      this.props.fetchMarkers(this.props.park);
+      this.props.fetchMarkers(this.props.park, this.props.categoryId);
     }
   }
 
@@ -337,8 +338,9 @@ export type Props = {
   additinalMarkers: Position[];
   isFormEditting: boolean;
   park: Park;
+  categoryId?: number;
 
-  fetchMarkers: (park: Park) => void;
+  fetchMarkers: (park: Park, category?: number) => void;
   updatePosition: (position: Position) => void;
   endToSelectPosition?: () => void;
   updateIsEditting: (isEditting: boolean) => void;

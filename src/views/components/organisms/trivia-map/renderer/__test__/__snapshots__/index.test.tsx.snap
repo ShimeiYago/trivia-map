@@ -33,6 +33,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
     tap={false}
     whenCreated={[Function]}
     zoom={1}
+    zoomControl={false}
   >
     <ForwardRef(LeafComponent)
       noWrap={true}
@@ -76,6 +77,9 @@ exports[`Shallow Snapshot Tests basic 1`] = `
         }
       }
       variant="blue"
+    />
+    <ForwardRef(LeafComponent)
+      position="bottomleft"
     />
   </MapContainer>
 </ForwardRef(Box)>
@@ -180,6 +184,7 @@ exports[`Shallow Snapshot Tests land map 1`] = `
     tap={false}
     whenCreated={[Function]}
     zoom={1}
+    zoomControl={false}
   >
     <ForwardRef(LeafComponent)
       noWrap={true}
@@ -224,6 +229,9 @@ exports[`Shallow Snapshot Tests land map 1`] = `
       }
       variant="blue"
     />
+    <ForwardRef(LeafComponent)
+      position="bottomleft"
+    />
   </MapContainer>
 </ForwardRef(Box)>
 `;
@@ -261,6 +269,7 @@ exports[`Shallow Snapshot Tests when currentPosition state is setted 1`] = `
     tap={false}
     whenCreated={[Function]}
     zoom={1}
+    zoomControl={false}
   >
     <ForwardRef(LeafComponent)
       noWrap={true}
@@ -388,6 +397,9 @@ exports[`Shallow Snapshot Tests when currentPosition state is setted 1`] = `
       }
       variant="red"
     />
+    <ForwardRef(LeafComponent)
+      position="bottomleft"
+    />
   </MapContainer>
 </ForwardRef(Box)>
 `;
@@ -425,6 +437,7 @@ exports[`Shallow Snapshot Tests with initCenter prop 1`] = `
     tap={false}
     whenCreated={[Function]}
     zoom={1}
+    zoomControl={false}
   >
     <ForwardRef(LeafComponent)
       noWrap={true}
@@ -500,6 +513,9 @@ exports[`Shallow Snapshot Tests with initCenter prop 1`] = `
         }
       }
       variant="blue"
+    />
+    <ForwardRef(LeafComponent)
+      position="bottomleft"
     />
   </MapContainer>
 </ForwardRef(Box)>
@@ -538,6 +554,7 @@ exports[`Shallow Snapshot Tests with width and height props 1`] = `
     tap={false}
     whenCreated={[Function]}
     zoom={1}
+    zoomControl={false}
   >
     <ForwardRef(LeafComponent)
       noWrap={true}
@@ -581,6 +598,9 @@ exports[`Shallow Snapshot Tests with width and height props 1`] = `
         }
       }
       variant="blue"
+    />
+    <ForwardRef(LeafComponent)
+      position="bottomleft"
     />
   </MapContainer>
 </ForwardRef(Box)>

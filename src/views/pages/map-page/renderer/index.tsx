@@ -8,10 +8,9 @@ import {
   DialogContentText,
   DialogTitle,
   Drawer,
-  FormControl,
-  FormControlLabel,
-  Radio,
-  RadioGroup,
+  Stack,
+  Switch,
+  Typography,
 } from '@mui/material';
 import { FloatingButton } from 'views/components/atoms/floating-button';
 import { SwipeableEdgeDrawer } from 'views/components/moleculars/swipeable-edge-drawer';
@@ -20,9 +19,17 @@ import { CloseFormButton } from 'views/components/organisms/close-form-button';
 import { GlobalMessage } from 'views/components/organisms/global-messge';
 import { LoadingProgressBar } from 'views/components/organisms/loading-progress-bar';
 import { TriviaMap } from 'views/components/organisms/trivia-map';
-import { rightDrawerStyle, mapWrapper, wrapper, parkSelectBox } from './styles';
+import {
+  rightDrawerStyle,
+  mapWrapper,
+  wrapper,
+  parkSelectBox,
+  categoryButtons,
+} from './styles';
 import { GlobalMenu } from 'views/components/organisms/global-menu';
 import { Park } from 'types/park';
+import { RoundButton } from 'views/components/atoms/round-button';
+import { CATEGORIES } from 'constant';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -100,6 +107,8 @@ export class Renderer extends React.Component<Props, State> {
             <LoadingProgressBar />
 
             {this.renderParkSelectBox()}
+
+            {this.renderCategoryButtons()}
           </Box>
         </GlobalMenu>
 
@@ -113,21 +122,59 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   protected renderParkSelectBox = () => {
+    const { isMobile } = this.props;
+    const { park, openFormModal } = this.state;
+
     return (
-      <Box sx={parkSelectBox(!this.props.isMobile && this.state.openFormModal)}>
-        <FormControl component="fieldset">
-          <RadioGroup value={this.state.park} onChange={this.handleChangePark}>
-            <FormControlLabel value="L" control={<Radio />} label="ランド" />
-            <FormControlLabel value="S" control={<Radio />} label="シー" />
-          </RadioGroup>
-        </FormControl>
+      <Box sx={parkSelectBox(!isMobile && openFormModal, isMobile, park)}>
+        <Stack direction="row" spacing={1} alignItems="center">
+          <Typography fontSize="0.875rem">ランド</Typography>
+          <Switch
+            checked={park === 'S'}
+            onChange={this.handleChangePark}
+            size="small"
+            color="primary"
+          />
+          <Typography fontSize="0.875rem">シー</Typography>
+        </Stack>
       </Box>
+    );
+  };
+
+  protected renderCategoryButtons = () => {
+    const { isMobile } = this.props;
+
+    const buttons = CATEGORIES.map((category, index) => (
+      <RoundButton
+        key={`category-button-${index}`}
+        selected={this.state.selectedCategoryId === category.categoryId}
+        onClick={this.handleClickCategoryButton(category.categoryId)}
+      >
+        {category.categoryName}
+      </RoundButton>
+    ));
+
+    return (
+      <Stack
+        direction="row"
+        spacing={1}
+        sx={categoryButtons(!isMobile && this.state.openFormModal, isMobile)}
+      >
+        {buttons}
+      </Stack>
     );
   };
 
   protected handleChangePark = (event: React.ChangeEvent<HTMLInputElement>) => {
     this.setState({
-      park: event.target.value as Park,
+      park: event.target.checked ? 'S' : 'L',
+    });
+  };
+
+  protected handleClickCategoryButton = (categoryId: number) => () => {
+    this.setState({
+      selectedCategoryId:
+        this.state.selectedCategoryId === categoryId ? undefined : categoryId,
     });
   };
 
@@ -280,4 +327,5 @@ export type State = {
   openDialogToConfirmDeleting: boolean;
   openDoubleEditAlartDialog: boolean;
   park: Park;
+  selectedCategoryId?: number;
 };

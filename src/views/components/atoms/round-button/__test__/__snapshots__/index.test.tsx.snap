@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shallow Snapshot Tests base 1`] = `
+<button
+  className="round-button"
+  onClick={[MockFunction]}
+>
+  <ForwardRef(Typography)
+    color="black"
+    component="div"
+    variant="button"
+  >
+    button
+  </ForwardRef(Typography)>
+</button>
+`;
+
+exports[`Shallow Snapshot Tests selected 1`] = `
+<button
+  className="round-button selected"
+  onClick={[MockFunction]}
+>
+  <ForwardRef(Typography)
+    color="white"
+    component="div"
+    variant="button"
+  >
+    button
+  </ForwardRef(Typography)>
+</button>
+`;

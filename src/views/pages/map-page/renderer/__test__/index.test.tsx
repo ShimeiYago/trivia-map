@@ -242,17 +242,52 @@ describe('handleCloseDoubleEditAlartDialog', () => {
 });
 
 describe('handleChangePark', () => {
-  it('change park state', () => {
+  it('change park state "L"', () => {
     shallowWrapper = shallow(<Renderer {...props} />);
     const instance = shallowWrapper.instance();
 
     const event = {
       target: {
-        value: 'L',
+        checked: false,
       },
     };
 
     instance['handleChangePark'](event as React.ChangeEvent<HTMLInputElement>);
     expect(instance.state.park).toBe('L');
+  });
+
+  it('change park state "S"', () => {
+    shallowWrapper = shallow(<Renderer {...props} />);
+    const instance = shallowWrapper.instance();
+
+    const event = {
+      target: {
+        checked: true,
+      },
+    };
+
+    instance['handleChangePark'](event as React.ChangeEvent<HTMLInputElement>);
+    expect(instance.state.park).toBe('S');
+  });
+});
+
+describe('handleClickCategoryButton', () => {
+  it('change category state', () => {
+    shallowWrapper = shallow(<Renderer {...props} />);
+    const instance = shallowWrapper.instance();
+
+    instance['handleClickCategoryButton'](1)();
+    expect(instance.state.selectedCategoryId).toBe(1);
+  });
+
+  it('set undefined category state if same button is clicked', () => {
+    shallowWrapper = shallow(<Renderer {...props} />);
+    const instance = shallowWrapper.instance();
+    instance.setState({
+      selectedCategoryId: 1,
+    });
+
+    instance['handleClickCategoryButton'](1)();
+    expect(instance.state.selectedCategoryId).toBe(undefined);
   });
 });

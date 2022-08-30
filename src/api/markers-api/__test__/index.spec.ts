@@ -9,14 +9,14 @@ describe('getRemoteMarkers', () => {
   it('handle nomal response', async () => {
     process.env.REACT_APP_MOCK = 'normal';
 
-    const response = await getRemoteMarkers('L');
+    const response = await getRemoteMarkers({ park: 'L', category: 1 });
     expect(response.results[0].markerId).toBe(0);
   });
 
   it('handle nomal response with page2', async () => {
     process.env.REACT_APP_MOCK = 'normal';
 
-    const response = await getRemoteMarkers('L', 'next-url');
+    const response = await getRemoteMarkers({ park: 'L', nextUrl: 'next-url' });
     expect(response.results[0].markerId).toBe(2);
   });
 
@@ -28,6 +28,8 @@ describe('getRemoteMarkers', () => {
       data: {},
       errorMsg: 'Intentional API Error with mock',
     };
-    await expect(getRemoteMarkers('L')).rejects.toEqual(expectedApiError);
+    await expect(getRemoteMarkers({ park: 'L' })).rejects.toEqual(
+      expectedApiError,
+    );
   });
 });

@@ -33,8 +33,10 @@ export function TriviaMap(ownProps: OwnProps) {
     additinalMarkers: ownProps.additinalMarkers ?? [],
     isFormEditting: useAppSelector(selectArticleFormIsEditting),
     park: ownProps.park,
+    categoryId: ownProps.categoryId,
 
-    fetchMarkers: (park: Park) => dispatch(fetchMarkers(park)),
+    fetchMarkers: (park: Park, category?: number) =>
+      dispatch(fetchMarkers(park, category)),
     updatePosition: (position: Position) =>
       dispatch(updateFormField({ position: position })),
     endToSelectPosition: ownProps.endToSelectPosition,
@@ -58,4 +60,5 @@ type OwnProps = {
   shouldCurrentPositionAsyncWithForm?: boolean;
   additinalMarkers?: Position[];
   park: Park;
+  categoryId?: number;
 };

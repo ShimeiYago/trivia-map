@@ -7,12 +7,22 @@ import { mockGetMarkersResponse } from './../mock/markers-response';
 import { Park } from './../../types/park';
 
 export async function getRemoteMarkers(
-  park: Park,
-  nextUrl?: string,
+  params: GetRemoteMarkersParams,
 ): Promise<GetMarkersResponseWithPagination> {
-  const url = nextUrl ?? `${BASE_URL}/markers/${park}`;
+  let url;
+  if (params.nextUrl) {
+    url = params.nextUrl;
+  } else {
+    url = `${BASE_URL}/markers/${params.park}`;
+    if (params.category) {
+      url = `${url}?catregory=${params.category}`;
+    }
+  }
 
-  const axiosInstance = getAxiosInstance({}, mockGetMarkersResponse(nextUrl));
+  const axiosInstance = getAxiosInstance(
+    {},
+    mockGetMarkersResponse(params.nextUrl),
+  );
 
   try {
     const res: AxiosResponse<GetMarkersResponseWithPagination> =
@@ -23,6 +33,12 @@ export async function getRemoteMarkers(
     throw handleAxiosError(axiosError);
   }
 }
+
+type GetRemoteMarkersParams = {
+  park: Park;
+  category?: number;
+  nextUrl?: string;
+};
 
 export type GetMarkersResponse = {
   markerId: number;

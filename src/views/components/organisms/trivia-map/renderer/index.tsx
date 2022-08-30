@@ -1,5 +1,10 @@
 import React from 'react';
-import { MapContainer, MapContainerProps, TileLayer } from 'react-leaflet';
+import {
+  MapContainer,
+  MapContainerProps,
+  TileLayer,
+  ZoomControl,
+} from 'react-leaflet';
 import { MapMarker } from 'views/components/moleculars/map-marker';
 import { LatLng, LeafletMouseEvent, Map as LeafletMap } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -67,10 +72,11 @@ export class Renderer extends React.Component<Props, State> {
     }
 
     if (
-      prevProps.park !== this.props.park &&
-      !this.props.doNotShowPostMarkers
+      !this.props.doNotShowPostMarkers &&
+      (prevProps.park !== this.props.park ||
+        prevProps.categoryId !== this.props.categoryId)
     ) {
-      this.props.fetchMarkers(this.props.park);
+      this.props.fetchMarkers(this.props.park, this.props.categoryId);
     }
   }
 
@@ -87,7 +93,6 @@ export class Renderer extends React.Component<Props, State> {
       : new LatLng(0, 0);
 
     const disabledProps: MapContainerProps = {
-      zoomControl: false,
       dragging: false,
       keyboard: false,
       touchZoom: false,
@@ -103,6 +108,7 @@ export class Renderer extends React.Component<Props, State> {
         <MapContainer
           center={center}
           zoom={initZoom}
+          zoomControl={false}
           minZoom={1}
           maxZoom={4}
           maxBounds={[
@@ -118,6 +124,7 @@ export class Renderer extends React.Component<Props, State> {
           {this.renderPostMarkers()}
           {this.renderAdittionalMarkers()}
           {this.renderCurrentPositionMarker()}
+          {!disabled && <ZoomControl position="bottomleft" />}
         </MapContainer>
       </Box>
     );
@@ -331,8 +338,9 @@ export type Props = {
   additinalMarkers: Position[];
   isFormEditting: boolean;
   park: Park;
+  categoryId?: number;
 
-  fetchMarkers: (park: Park) => void;
+  fetchMarkers: (park: Park, category?: number) => void;
   updatePosition: (position: Position) => void;
   endToSelectPosition?: () => void;
   updateIsEditting: (isEditting: boolean) => void;

@@ -24,7 +24,7 @@ import { Marker } from 'store/markers/model';
 import { Park } from 'types/park';
 import { TDL_TILE_URL, TDS_TILE_URL } from 'constant';
 import { FloatingButton } from 'views/components/atoms/floating-button';
-import areaData from 'area-data/area-data.json';
+import coordsData from 'coords-data/coords-data.json';
 
 export class Renderer extends React.Component<Props, State> {
   static readonly defaultProps: Pick<Props, 'newMarkerMode' | 'initZoom'> = {
@@ -39,9 +39,9 @@ export class Renderer extends React.Component<Props, State> {
     const positions: Position[] = [];
     const areas: Area[] = [];
     let currentIndex = 0;
-    areaData['L'].map((area) => {
+    for (const [areaId, coords] of Object.entries(coordsData['L'])) {
       const indeces: number[] = [];
-      area.coords.map((coord) => {
+      coords.map((coord) => {
         const position: Position = {
           lat: coord[0],
           lng: coord[1],
@@ -62,14 +62,14 @@ export class Renderer extends React.Component<Props, State> {
       });
       areas.push({
         park: 'L',
-        areaId: area.areaId,
-        areaName: area.areaName,
+        areaId: areaId,
         positionIndeces: indeces,
       });
-    });
-    areaData['S'].map((area) => {
+    }
+
+    for (const [areaId, coords] of Object.entries(coordsData['S'])) {
       const indeces: number[] = [];
-      area.coords.map((coord) => {
+      coords.map((coord) => {
         const position: Position = {
           lat: coord[0],
           lng: coord[1],
@@ -90,11 +90,10 @@ export class Renderer extends React.Component<Props, State> {
       });
       areas.push({
         park: 'S',
-        areaId: area.areaId,
-        areaName: area.areaName,
+        areaId: areaId,
         positionIndeces: indeces,
       });
-    });
+    }
 
     this.state = {
       areas: areas,
@@ -201,7 +200,6 @@ export class Renderer extends React.Component<Props, State> {
 
         return {
           areaId: area.areaId,
-          areaName: area.areaName,
           coords: coords,
         };
       })
@@ -220,15 +218,18 @@ export class Renderer extends React.Component<Props, State> {
 
         return {
           areaId: area.areaId,
-          areaName: area.areaName,
           coords: coords,
         };
       })
       .filter((e) => e);
 
     const downloadData = {
-      L: landData,
-      S: seaData,
+      L: Object.fromEntries(
+        landData.map((area) => [area?.areaId, area?.coords]),
+      ),
+      S: Object.fromEntries(
+        seaData.map((area) => [area?.areaId, area?.coords]),
+      ),
     };
 
     const blob = new Blob([JSON.stringify(downloadData, null, '  ')], {
@@ -238,7 +239,7 @@ export class Renderer extends React.Component<Props, State> {
     const link = document.createElement('a');
     document.body.appendChild(link);
     link.href = url;
-    link.setAttribute('download', 'area-data.json');
+    link.setAttribute('download', 'coords-data.json');
     link.click();
     document.body.removeChild(link);
   };
@@ -280,7 +281,7 @@ export class Renderer extends React.Component<Props, State> {
               onChange={this.handleClickCheckBox(index, positionIndex)}
             />
           }
-          label={area.areaName}
+          label={area.areaId}
         />
       );
     });
@@ -398,7 +399,6 @@ export type State = {
 type Area = {
   park: Park;
   areaId: string;
-  areaName: string;
   positionIndeces: number[];
 };
 

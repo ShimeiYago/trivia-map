@@ -24,7 +24,7 @@ import { Marker } from 'store/markers/model';
 import { Park } from 'types/park';
 import { TDL_TILE_URL, TDS_TILE_URL } from 'constant';
 import { FloatingButton } from 'views/components/atoms/floating-button';
-import coordsData from 'coords-data/coords-data.json';
+import areaCoords from 'export-data/area-coords.json';
 
 export class Renderer extends React.Component<Props, State> {
   static readonly defaultProps: Pick<Props, 'newMarkerMode' | 'initZoom'> = {
@@ -39,7 +39,7 @@ export class Renderer extends React.Component<Props, State> {
     const positions: Position[] = [];
     const areas: Area[] = [];
     let currentIndex = 0;
-    for (const [areaId, coords] of Object.entries(coordsData['L'])) {
+    for (const [areaId, coords] of Object.entries(areaCoords['L'])) {
       const indeces: number[] = [];
       coords.map((coord) => {
         const position: Position = {
@@ -67,9 +67,9 @@ export class Renderer extends React.Component<Props, State> {
       });
     }
 
-    for (const [areaId, coords] of Object.entries(coordsData['S'])) {
+    for (const [areaId, coords] of Object.entries(areaCoords['S'])) {
       const indeces: number[] = [];
-      coords.map((coord) => {
+      (coords as number[][]).map((coord) => {
         const position: Position = {
           lat: coord[0],
           lng: coord[1],
@@ -239,7 +239,7 @@ export class Renderer extends React.Component<Props, State> {
     const link = document.createElement('a');
     document.body.appendChild(link);
     link.href = url;
-    link.setAttribute('download', 'coords-data.json');
+    link.setAttribute('download', 'area-coords.json');
     link.click();
     document.body.removeChild(link);
   };

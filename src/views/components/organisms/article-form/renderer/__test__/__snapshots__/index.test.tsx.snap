@@ -74,7 +74,6 @@ exports[`Shallow Snapshot Tests basic 1`] = `
         rows={4}
         value=""
       />
-      <ForwardRef(Typography) />
       <BoxField
         disabled={false}
         status="valid"
@@ -114,6 +113,37 @@ exports[`Shallow Snapshot Tests basic 1`] = `
               }
             }
           />
+          <ForwardRef(Box)
+            sx={
+              Object {
+                "fontWeight": "bold",
+                "left": "50%",
+                "position": "absolute",
+                "top": "10%",
+                "transform": "translate(-50%,-50%)",
+                "width": "90%",
+                "zIndex": 2000,
+              }
+            }
+          >
+            <ForwardRef(Typography)
+              color="white"
+              component="div"
+              fontSize="14"
+              variant="inherit"
+            >
+              <AreaNames
+                areaNames={
+                  Array [
+                    "シー",
+                    "メディテレーニアンハーバー",
+                    "ポルトパラディーゾ",
+                  ]
+                }
+                variant="inherit"
+              />
+            </ForwardRef(Typography)>
+          </ForwardRef(Box)>
           <ForwardRef(Box)
             sx={
               Object {
@@ -238,7 +268,6 @@ exports[`Shallow Snapshot Tests draft mode 1`] = `
         rows={4}
         value=""
       />
-      <ForwardRef(Typography) />
       <BoxField
         disabled={false}
         status="valid"
@@ -278,6 +307,37 @@ exports[`Shallow Snapshot Tests draft mode 1`] = `
               }
             }
           />
+          <ForwardRef(Box)
+            sx={
+              Object {
+                "fontWeight": "bold",
+                "left": "50%",
+                "position": "absolute",
+                "top": "10%",
+                "transform": "translate(-50%,-50%)",
+                "width": "90%",
+                "zIndex": 2000,
+              }
+            }
+          >
+            <ForwardRef(Typography)
+              color="white"
+              component="div"
+              fontSize="14"
+              variant="inherit"
+            >
+              <AreaNames
+                areaNames={
+                  Array [
+                    "シー",
+                    "メディテレーニアンハーバー",
+                    "ポルトパラディーゾ",
+                  ]
+                }
+                variant="inherit"
+              />
+            </ForwardRef(Typography)>
+          </ForwardRef(Box)>
           <ForwardRef(Box)
             sx={
               Object {
@@ -412,7 +472,6 @@ exports[`Shallow Snapshot Tests loading 1`] = `
         rows={4}
         value=""
       />
-      <ForwardRef(Typography) />
       <BoxField
         disabled={true}
         status="valid"
@@ -448,6 +507,19 @@ exports[`Shallow Snapshot Tests loading 1`] = `
                 "position": "absolute",
                 "top": 0,
                 "width": "100%",
+                "zIndex": 2000,
+              }
+            }
+          />
+          <ForwardRef(Box)
+            sx={
+              Object {
+                "fontWeight": "bold",
+                "left": "50%",
+                "position": "absolute",
+                "top": "10%",
+                "transform": "translate(-50%,-50%)",
+                "width": "90%",
                 "zIndex": 2000,
               }
             }
@@ -564,7 +636,6 @@ exports[`Shallow Snapshot Tests position is not selected yet 1`] = `
         rows={4}
         value=""
       />
-      <ForwardRef(Typography) />
       <BoxField
         disabled={false}
         status="normal"
@@ -597,6 +668,37 @@ exports[`Shallow Snapshot Tests position is not selected yet 1`] = `
               }
             }
           />
+          <ForwardRef(Box)
+            sx={
+              Object {
+                "fontWeight": "bold",
+                "left": "50%",
+                "position": "absolute",
+                "top": "10%",
+                "transform": "translate(-50%,-50%)",
+                "width": "90%",
+                "zIndex": 2000,
+              }
+            }
+          >
+            <ForwardRef(Typography)
+              color="white"
+              component="div"
+              fontSize="14"
+              variant="inherit"
+            >
+              <AreaNames
+                areaNames={
+                  Array [
+                    "シー",
+                    "メディテレーニアンハーバー",
+                    "ポルトパラディーゾ",
+                  ]
+                }
+                variant="inherit"
+              />
+            </ForwardRef(Typography)>
+          </ForwardRef(Box)>
           <ForwardRef(Box)
             sx={
               Object {
@@ -721,7 +823,6 @@ exports[`Shallow Snapshot Tests with category 1`] = `
         rows={4}
         value=""
       />
-      <ForwardRef(Typography) />
       <BoxField
         disabled={false}
         status="valid"
@@ -761,6 +862,37 @@ exports[`Shallow Snapshot Tests with category 1`] = `
               }
             }
           />
+          <ForwardRef(Box)
+            sx={
+              Object {
+                "fontWeight": "bold",
+                "left": "50%",
+                "position": "absolute",
+                "top": "10%",
+                "transform": "translate(-50%,-50%)",
+                "width": "90%",
+                "zIndex": 2000,
+              }
+            }
+          >
+            <ForwardRef(Typography)
+              color="white"
+              component="div"
+              fontSize="14"
+              variant="inherit"
+            >
+              <AreaNames
+                areaNames={
+                  Array [
+                    "シー",
+                    "メディテレーニアンハーバー",
+                    "ポルトパラディーゾ",
+                  ]
+                }
+                variant="inherit"
+              />
+            </ForwardRef(Typography)>
+          </ForwardRef(Box)>
           <ForwardRef(Box)
             sx={
               Object {
@@ -900,7 +1032,6 @@ exports[`Shallow Snapshot Tests with close button 1`] = `
         rows={4}
         value=""
       />
-      <ForwardRef(Typography) />
       <BoxField
         disabled={false}
         status="valid"
@@ -940,6 +1071,37 @@ exports[`Shallow Snapshot Tests with close button 1`] = `
               }
             }
           />
+          <ForwardRef(Box)
+            sx={
+              Object {
+                "fontWeight": "bold",
+                "left": "50%",
+                "position": "absolute",
+                "top": "10%",
+                "transform": "translate(-50%,-50%)",
+                "width": "90%",
+                "zIndex": 2000,
+              }
+            }
+          >
+            <ForwardRef(Typography)
+              color="white"
+              component="div"
+              fontSize="14"
+              variant="inherit"
+            >
+              <AreaNames
+                areaNames={
+                  Array [
+                    "シー",
+                    "メディテレーニアンハーバー",
+                    "ポルトパラディーゾ",
+                  ]
+                }
+                variant="inherit"
+              />
+            </ForwardRef(Typography)>
+          </ForwardRef(Box)>
           <ForwardRef(Box)
             sx={
               Object {
@@ -1069,7 +1231,6 @@ exports[`Shallow Snapshot Tests with image data url 1`] = `
         rows={4}
         value=""
       />
-      <ForwardRef(Typography) />
       <BoxField
         disabled={false}
         status="valid"
@@ -1109,6 +1270,37 @@ exports[`Shallow Snapshot Tests with image data url 1`] = `
               }
             }
           />
+          <ForwardRef(Box)
+            sx={
+              Object {
+                "fontWeight": "bold",
+                "left": "50%",
+                "position": "absolute",
+                "top": "10%",
+                "transform": "translate(-50%,-50%)",
+                "width": "90%",
+                "zIndex": 2000,
+              }
+            }
+          >
+            <ForwardRef(Typography)
+              color="white"
+              component="div"
+              fontSize="14"
+              variant="inherit"
+            >
+              <AreaNames
+                areaNames={
+                  Array [
+                    "シー",
+                    "メディテレーニアンハーバー",
+                    "ポルトパラディーゾ",
+                  ]
+                }
+                variant="inherit"
+              />
+            </ForwardRef(Typography)>
+          </ForwardRef(Box)>
           <ForwardRef(Box)
             sx={
               Object {
@@ -1238,7 +1430,6 @@ exports[`Shallow Snapshot Tests with image url 1`] = `
         rows={4}
         value=""
       />
-      <ForwardRef(Typography) />
       <BoxField
         disabled={false}
         status="valid"
@@ -1278,6 +1469,37 @@ exports[`Shallow Snapshot Tests with image url 1`] = `
               }
             }
           />
+          <ForwardRef(Box)
+            sx={
+              Object {
+                "fontWeight": "bold",
+                "left": "50%",
+                "position": "absolute",
+                "top": "10%",
+                "transform": "translate(-50%,-50%)",
+                "width": "90%",
+                "zIndex": 2000,
+              }
+            }
+          >
+            <ForwardRef(Typography)
+              color="white"
+              component="div"
+              fontSize="14"
+              variant="inherit"
+            >
+              <AreaNames
+                areaNames={
+                  Array [
+                    "シー",
+                    "メディテレーニアンハーバー",
+                    "ポルトパラディーゾ",
+                  ]
+                }
+                variant="inherit"
+              />
+            </ForwardRef(Typography)>
+          </ForwardRef(Box)>
           <ForwardRef(Box)
             sx={
               Object {
@@ -1405,7 +1627,6 @@ exports[`Shallow Snapshot Tests with validation error 1`] = `
         rows={4}
         value=""
       />
-      <ForwardRef(Typography) />
       <BoxField
         disabled={false}
         helperText="position is not selected"
@@ -1446,6 +1667,37 @@ exports[`Shallow Snapshot Tests with validation error 1`] = `
               }
             }
           />
+          <ForwardRef(Box)
+            sx={
+              Object {
+                "fontWeight": "bold",
+                "left": "50%",
+                "position": "absolute",
+                "top": "10%",
+                "transform": "translate(-50%,-50%)",
+                "width": "90%",
+                "zIndex": 2000,
+              }
+            }
+          >
+            <ForwardRef(Typography)
+              color="white"
+              component="div"
+              fontSize="14"
+              variant="inherit"
+            >
+              <AreaNames
+                areaNames={
+                  Array [
+                    "シー",
+                    "メディテレーニアンハーバー",
+                    "ポルトパラディーゾ",
+                  ]
+                }
+                variant="inherit"
+              />
+            </ForwardRef(Typography)>
+          </ForwardRef(Box)>
           <ForwardRef(Box)
             sx={
               Object {

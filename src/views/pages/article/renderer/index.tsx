@@ -15,6 +15,7 @@ import {
 import { ApiError } from 'api/utils/handle-axios-error';
 import { ArticleWrapper } from 'views/components/organisms/article-wrapper';
 import { autoRefreshApiWrapper } from 'utils/auto-refresh-api-wrapper';
+import { AreaNames } from 'views/components/atoms/area-names';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -94,6 +95,8 @@ export class Renderer extends React.Component<Props, State> {
           variant="h5"
           iconPosition="left"
         />
+
+        <AreaNames areaNames={marker.areaNames} variant="body2" />
 
         <TriviaMap
           height={300}

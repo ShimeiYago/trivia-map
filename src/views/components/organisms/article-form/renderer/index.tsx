@@ -85,6 +85,7 @@ export class Renderer extends React.Component<Props> {
       title,
       description,
       position,
+      areaNames,
       isDraft,
       submittingState,
       fetchingState,
@@ -163,6 +164,9 @@ export class Renderer extends React.Component<Props> {
               error={!!formError?.fieldErrors?.description}
               helperText={formError?.fieldErrors?.description}
             />
+
+            {/* TODO */}
+            <Typography>{areaNames?.join(' > ')}</Typography>
 
             <BoxField
               status={miniMapFieldStatus}
@@ -365,6 +369,7 @@ export type Props = {
   image: string | SelializedImageFile | null;
   category?: number;
   position?: Position;
+  areaNames?: string[];
   isDraft: boolean;
   submittingState: LoadingState;
   fetchingState: LoadingState;

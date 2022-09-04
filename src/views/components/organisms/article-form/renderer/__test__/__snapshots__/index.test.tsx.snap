@@ -74,6 +74,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
         rows={4}
         value=""
       />
+      <ForwardRef(Typography) />
       <BoxField
         disabled={false}
         status="valid"
@@ -237,6 +238,7 @@ exports[`Shallow Snapshot Tests draft mode 1`] = `
         rows={4}
         value=""
       />
+      <ForwardRef(Typography) />
       <BoxField
         disabled={false}
         status="valid"
@@ -410,6 +412,7 @@ exports[`Shallow Snapshot Tests loading 1`] = `
         rows={4}
         value=""
       />
+      <ForwardRef(Typography) />
       <BoxField
         disabled={true}
         status="valid"
@@ -561,6 +564,7 @@ exports[`Shallow Snapshot Tests position is not selected yet 1`] = `
         rows={4}
         value=""
       />
+      <ForwardRef(Typography) />
       <BoxField
         disabled={false}
         status="normal"
@@ -717,6 +721,7 @@ exports[`Shallow Snapshot Tests with category 1`] = `
         rows={4}
         value=""
       />
+      <ForwardRef(Typography) />
       <BoxField
         disabled={false}
         status="valid"
@@ -895,6 +900,7 @@ exports[`Shallow Snapshot Tests with close button 1`] = `
         rows={4}
         value=""
       />
+      <ForwardRef(Typography) />
       <BoxField
         disabled={false}
         status="valid"
@@ -1063,6 +1069,7 @@ exports[`Shallow Snapshot Tests with image data url 1`] = `
         rows={4}
         value=""
       />
+      <ForwardRef(Typography) />
       <BoxField
         disabled={false}
         status="valid"
@@ -1231,6 +1238,7 @@ exports[`Shallow Snapshot Tests with image url 1`] = `
         rows={4}
         value=""
       />
+      <ForwardRef(Typography) />
       <BoxField
         disabled={false}
         status="valid"
@@ -1397,6 +1405,7 @@ exports[`Shallow Snapshot Tests with validation error 1`] = `
         rows={4}
         value=""
       />
+      <ForwardRef(Typography) />
       <BoxField
         disabled={false}
         helperText="position is not selected"

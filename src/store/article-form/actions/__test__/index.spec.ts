@@ -328,6 +328,7 @@ const mockGetResponse: GetArticleApiModule.GetArticleResponse = {
     lng: 0,
     park: 'S',
     numberOfPublicArticles: 1,
+    areaNames: ['xxx', 'yyy'],
   },
   author: {
     userId: 1,

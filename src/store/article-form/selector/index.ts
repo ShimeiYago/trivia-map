@@ -14,6 +14,9 @@ export const selectArticleFormDescription = (state: ArticleFormRootState) =>
 export const selectArticleFormPosition = (state: ArticleFormRootState) =>
   state.articleForm.position;
 
+export const selectArticleFormAreaNames = (state: ArticleFormRootState) =>
+  state.articleForm.areaNames;
+
 export const selectArticleFormImage = (state: ArticleFormRootState) =>
   state.articleForm.image;
 

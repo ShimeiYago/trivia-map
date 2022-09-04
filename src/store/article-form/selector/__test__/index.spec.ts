@@ -16,6 +16,7 @@ import {
   selectArticleFormIsDraft,
   selectArticleFormCategory,
   selectArticleFormLastSavedCategory,
+  selectArticleFormAreaNames,
 } from '..';
 import { ArticleFormState, FormError } from '../../model';
 
@@ -32,6 +33,7 @@ describe('readingArticle selector', () => {
       description: 'description',
       lastSavedDescription: 'description',
       position: { lat: 1, lng: 1 },
+      areaNames: ['シー', 'メディテレーニアンハーバー', 'ポルトパラディーゾ'],
       lastSavedPosition: { lat: 1, lng: 1 },
       image: 'https://image-data.jpg',
       lastSavedImage: 'https://image-data.jpg',
@@ -77,6 +79,14 @@ describe('readingArticle selector', () => {
       lat: 1,
       lng: 1,
     });
+  });
+
+  it('selectArticleFormAreaNames should return articleForm areaNames', () => {
+    expect(selectArticleFormAreaNames(rootState)).toEqual([
+      'シー',
+      'メディテレーニアンハーバー',
+      'ポルトパラディーゾ',
+    ]);
   });
 
   it('selectArticleFormImage should return articleForm image', () => {

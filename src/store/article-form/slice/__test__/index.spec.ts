@@ -18,6 +18,7 @@ const {
   updateImage,
   updateIsDraft,
   updateCategory,
+  updateAreaNames,
 } = articleFormSlice.actions;
 
 describe('articleForm reducer', () => {
@@ -183,5 +184,13 @@ describe('articleForm reducer', () => {
       updateIsFormChangedFromLastSaved(),
     );
     expect(actual.isFormChangedFromLastSaved).toBeFalsy;
+  });
+
+  it('should handle updateAreaNames', () => {
+    const actual = articleFormReducer(
+      initialState,
+      updateAreaNames(['xxx', 'yyy']),
+    );
+    expect(actual.areaNames).toEqual(['xxx', 'yyy']);
   });
 });

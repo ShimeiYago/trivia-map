@@ -25,12 +25,14 @@ import { pushMarker, deleteOneMarker } from 'store/markers/actions';
 import { Position } from 'types/position';
 import { Marker } from 'store/markers/model';
 import { autoRefreshApiWrapper } from 'utils/auto-refresh-api-wrapper';
+import { guessArea } from 'api/guess-area';
 
 // basic actions
 export const {
   updateTitle,
   updateDescription,
   updatePosition,
+  updateAreaNames,
   updateIsDraft,
   submitStart,
   submitFailure,
@@ -205,6 +207,7 @@ export const updateFormField =
     }
     if (param.position) {
       dispatch(updatePosition(param.position));
+      dispatch(getAndUpdateAreaNames());
     }
     if (param.image !== undefined) {
       dispatch(updateImage(param.image));
@@ -227,3 +230,21 @@ export type UpdateFormFieldParam = {
   category?: number;
   isDraft?: boolean;
 };
+
+// getAndUpdateAreaNames action
+export const getAndUpdateAreaNames =
+  (): AppThunk => async (dispatch, getState) => {
+    const position = getState().articleForm.position;
+
+    if (!position) {
+      dispatch(updateAreaNames(undefined));
+      return;
+    }
+
+    try {
+      const res = await guessArea(position);
+      dispatch(updateAreaNames(res.areaNames));
+    } catch (error) {
+      dispatch(throwError(500));
+    }
+  };

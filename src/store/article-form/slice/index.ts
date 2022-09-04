@@ -20,6 +20,10 @@ export const articleFormSlice = createSlice({
       state.position = action.payload;
     },
 
+    updateAreaNames(state, action: PayloadAction<string[] | undefined>) {
+      state.areaNames = action.payload;
+    },
+
     updateImage(
       state,
       action: PayloadAction<string | SelializedImageFile | null>,

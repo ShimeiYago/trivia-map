@@ -33,6 +33,7 @@ export type GetArticleResponse = {
     lng: number;
     park: Park;
     numberOfPublicArticles: number;
+    areaNames: string[];
   };
   category: number;
   image: string | null;

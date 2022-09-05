@@ -16,7 +16,14 @@ const article: GetArticleResponse = {
   postId: 1,
   title: 'title',
   description: 'description',
-  marker: { markerId: 1, lat: 0, lng: 0, park: 'S', numberOfPublicArticles: 1 },
+  marker: {
+    markerId: 1,
+    lat: 0,
+    lng: 0,
+    park: 'S',
+    numberOfPublicArticles: 1,
+    areaNames: ['シー'],
+  },
   image: null,
   author: {
     userId: 1,

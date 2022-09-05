@@ -27,9 +27,19 @@ export const miniMapLayer: SxProps = {
   zIndex: 2000,
 };
 
-export const miniMapTextBox: SxProps = {
+export const miniMapGuideTextBox: SxProps = {
   position: 'absolute',
   top: '70%',
+  left: '50%',
+  width: '90%',
+  transform: 'translate(-50%,-50%)',
+  zIndex: 2000,
+  fontWeight: 'bold',
+};
+
+export const miniMapAreaTextBox: SxProps = {
+  position: 'absolute',
+  top: '10%',
   left: '50%',
   width: '90%',
   transform: 'translate(-50%,-50%)',

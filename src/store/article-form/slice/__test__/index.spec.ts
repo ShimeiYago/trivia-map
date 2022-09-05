@@ -18,6 +18,7 @@ const {
   updateImage,
   updateIsDraft,
   updateCategory,
+  updateAreaNames,
 } = articleFormSlice.actions;
 
 describe('articleForm reducer', () => {
@@ -129,6 +130,7 @@ describe('articleForm reducer', () => {
         lng: 0,
         park: 'S',
         numberOfPublicArticles: 1,
+        areaNames: ['xxx', 'yyy'],
       },
       image: 'https://image-data.jpg',
       isDraft: false,
@@ -144,13 +146,8 @@ describe('articleForm reducer', () => {
     expect(actual.fetchingState).toEqual('success');
     expect(actual.title).toEqual(res.title);
     expect(actual.description).toEqual(res.description);
-    expect(actual.position).toEqual({
-      markerId: 1,
-      lat: res.marker.lat,
-      lng: res.marker.lng,
-      park: res.marker.park,
-      numberOfPublicArticles: 1,
-    });
+    expect(actual.position).toEqual(res.marker);
+    expect(actual.areaNames).toEqual(res.marker.areaNames);
     expect(actual.image).toEqual(res.image);
   });
 
@@ -187,5 +184,13 @@ describe('articleForm reducer', () => {
       updateIsFormChangedFromLastSaved(),
     );
     expect(actual.isFormChangedFromLastSaved).toBeFalsy;
+  });
+
+  it('should handle updateAreaNames', () => {
+    const actual = articleFormReducer(
+      initialState,
+      updateAreaNames(['xxx', 'yyy']),
+    );
+    expect(actual.areaNames).toEqual(['xxx', 'yyy']);
   });
 });

@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shallow Snapshot Tests basic 1`] = `
+<ForwardRef(Typography)
+  sx={
+    Object {
+      "alignItems": "center",
+      "columnGap": undefined,
+      "display": "flex",
+      "flexWrap": "wrap",
+      "fontSize": undefined,
+      "justifyContent": "left",
+    }
+  }
+>
+  シー
+  <Memo(ForwardRef(KeyboardArrowRightIcon))
+    fontSize="inherit"
+  />
+  メディテレーニアンハーバー
+  <Memo(ForwardRef(KeyboardArrowRightIcon))
+    fontSize="inherit"
+  />
+  ポルトパラディーゾ
+</ForwardRef(Typography)>
+`;

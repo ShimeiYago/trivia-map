@@ -15,6 +15,7 @@ const basicProps: Props = {
     lng: 0,
     park: 'S',
   },
+  areaNames: ['シー', 'メディテレーニアンハーバー', 'ポルトパラディーゾ'],
   isDraft: false,
   submittingState: 'waiting',
   fetchingState: 'waiting',

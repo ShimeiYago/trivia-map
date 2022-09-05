@@ -20,6 +20,10 @@ export const articleFormSlice = createSlice({
       state.position = action.payload;
     },
 
+    updateAreaNames(state, action: PayloadAction<string[] | undefined>) {
+      state.areaNames = action.payload;
+    },
+
     updateImage(
       state,
       action: PayloadAction<string | SelializedImageFile | null>,
@@ -62,6 +66,7 @@ export const articleFormSlice = createSlice({
       state.title = action.payload.title;
       state.description = action.payload.description;
       state.position = action.payload.marker;
+      state.areaNames = action.payload.marker.areaNames;
       state.image = action.payload.image;
       state.category = action.payload.category;
       state.isDraft = action.payload.isDraft;
@@ -72,6 +77,7 @@ export const articleFormSlice = createSlice({
       state.title = initialState.title;
       state.description = initialState.description;
       state.position = initialState.position;
+      state.areaNames = initialState.areaNames;
       state.image = initialState.image;
       state.category = initialState.category;
       state.submittingState = initialState.submittingState;

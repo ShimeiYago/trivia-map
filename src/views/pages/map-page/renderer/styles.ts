@@ -5,6 +5,7 @@ import { Park } from 'types/park';
 const drawerWidth = 500;
 const appBarDefaultHeightPC = 66;
 const appBarDefaultHeightMobile = 58;
+const zIndex = 1000;
 
 export const rightDrawerStyle: SxProps = {
   width: drawerWidth,
@@ -47,7 +48,7 @@ export function parkSelectBox(
     top: (isMobile ? appBarDefaultHeightMobile : appBarDefaultHeightPC) + 50,
     left: 'auto',
     position: 'fixed',
-    zIndex: 1000,
+    zIndex: zIndex,
     backgroundColor: 'white',
     borderStyle: 'solid',
     borderColor: grey[500],
@@ -67,7 +68,7 @@ export function categoryButtonsPC(shrink: boolean): SxProps {
     margin: 0,
     position: 'fixed',
     top: appBarDefaultHeightPC + 10,
-    zIndex: 1000,
+    zIndex: zIndex,
     width: '100%',
     ...(shrink && {
       width: `calc(100% - ${drawerWidth}px)`,
@@ -86,7 +87,7 @@ export const categoryButtonsMobile: SxProps = {
   margin: 0,
   position: 'fixed',
   top: appBarDefaultHeightMobile + 10,
-  zIndex: 1000,
+  zIndex: zIndex,
   overflowX: 'scroll',
   whiteSpace: 'nowrap',
   px: 1,

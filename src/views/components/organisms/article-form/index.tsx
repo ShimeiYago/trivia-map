@@ -11,6 +11,7 @@ import {
   selectArticleFormImage,
   selectArticleFormIsDraft,
   selectArticleFormCategory,
+  selectArticleFormAreaNames,
 } from 'store/article-form/selector';
 import {
   fetchArticle,
@@ -34,6 +35,7 @@ export function ArticleForm(ownProps: OwnProps) {
     title: useAppSelector(selectArticleFormTitle),
     description: useAppSelector(selectArticleFormDescription),
     position: useAppSelector(selectArticleFormPosition),
+    areaNames: useAppSelector(selectArticleFormAreaNames),
     isDraft: useAppSelector(selectArticleFormIsDraft),
     image: useAppSelector(selectArticleFormImage),
     category: useAppSelector(selectArticleFormCategory),

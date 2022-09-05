@@ -22,8 +22,9 @@ import {
   formContainer,
   formHeader,
   miniMapLayer,
-  miniMapTextBox,
+  miniMapGuideTextBox,
   miniMapWrapper,
+  miniMapAreaTextBox,
 } from './styles';
 import { TriviaMap } from '../../trivia-map';
 import { BoxField } from 'views/components/moleculars/box-field';
@@ -37,6 +38,7 @@ import { CATEGORIES } from 'constant';
 import { SelializedImageFile } from 'types/SelializedImageFile';
 import { resizeAndConvertToSelializedImageFile } from 'utils/resize-and-convert-to-selialized-image-file.ts';
 import { Park } from 'types/park';
+import { AreaNames } from 'views/components/atoms/area-names';
 
 export class Renderer extends React.Component<Props> {
   headerRef: React.RefObject<HTMLDivElement>;
@@ -85,6 +87,7 @@ export class Renderer extends React.Component<Props> {
       title,
       description,
       position,
+      areaNames,
       isDraft,
       submittingState,
       fetchingState,
@@ -181,7 +184,19 @@ export class Renderer extends React.Component<Props> {
                   park={position?.park ?? this.props.park}
                 />
                 <Box sx={miniMapLayer}></Box>
-                <Box sx={miniMapTextBox}>
+                <Box sx={miniMapAreaTextBox}>
+                  {!disabled && areaNames && (
+                    <Typography
+                      color="white"
+                      component="div"
+                      fontSize="14"
+                      variant="inherit"
+                    >
+                      <AreaNames areaNames={areaNames} variant="inherit" />
+                    </Typography>
+                  )}
+                </Box>
+                <Box sx={miniMapGuideTextBox}>
                   {!disabled && (
                     <Typography
                       color="white"
@@ -365,6 +380,7 @@ export type Props = {
   image: string | SelializedImageFile | null;
   category?: number;
   position?: Position;
+  areaNames?: string[];
   isDraft: boolean;
   submittingState: LoadingState;
   fetchingState: LoadingState;

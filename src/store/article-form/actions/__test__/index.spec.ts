@@ -4,16 +4,19 @@ import {
   submitEdittedArticle,
   fetchArticle,
   updateFormField,
+  getAndUpdateAreaNames,
 } from '..';
 import * as GetArticleApiModule from 'api/articles-api/get-remote-article';
 import * as PostArticleApiModule from 'api/articles-api/post-remote-article';
 import * as PutArticleApiModule from 'api/articles-api/put-remote-article';
+import * as GuessAreaModule from 'api/guess-area';
 import { Position } from 'types/position';
 
 const dispatch = jest.fn();
 let getRemoteArticleSpy: jest.SpyInstance;
 let postRemoteArticleSpy: jest.SpyInstance;
 let putRemoteArticleSpy: jest.SpyInstance;
+let guessAreaSpy: jest.SpyInstance;
 
 const formError = {
   title: ['title is too long'],
@@ -328,6 +331,7 @@ const mockGetResponse: GetArticleApiModule.GetArticleResponse = {
     lng: 0,
     park: 'S',
     numberOfPublicArticles: 1,
+    areaNames: ['xxx', 'yyy'],
   },
   author: {
     userId: 1,
@@ -465,5 +469,47 @@ describe('updateFormField', () => {
     await appThunk(dispatch);
 
     expect(dispatch.mock.calls[0][0].type).toBe('articleForm/updateIsDraft');
+  });
+});
+
+describe('getAndUpdateAreaNames', () => {
+  beforeEach(() => {
+    jest.resetAllMocks();
+    guessAreaSpy = jest.spyOn(GuessAreaModule, 'guessArea');
+  });
+
+  it('call updateAreaNames if API successed', async () => {
+    const mockGuessAreaResponse: GuessAreaModule.GuessAreaResponse = {
+      areaNames: ['xxx'],
+    };
+    guessAreaSpy.mockResolvedValue(mockGuessAreaResponse);
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const appThunk = getAndUpdateAreaNames() as any;
+    await appThunk(dispatch, getState);
+
+    expect(dispatch.mock.calls[0][0].payload).toEqual(['xxx']);
+  });
+
+  it('call updateAreaNames with undefined if position is undefined', async () => {
+    const getStatewithoutPosition = () => ({
+      articleForm: {},
+    });
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const appThunk = getAndUpdateAreaNames() as any;
+    await appThunk(dispatch, getStatewithoutPosition);
+
+    expect(dispatch.mock.calls[0][0].payload).toBe(undefined);
+  });
+
+  it('call fetchFailure if API failed', async () => {
+    getRemoteArticleSpy.mockRejectedValue(new Error());
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const appThunk = getAndUpdateAreaNames() as any;
+    await appThunk(dispatch, getState);
+
+    expect(dispatch.mock.calls[0][0].type).toBe('globalError/throwError');
   });
 });

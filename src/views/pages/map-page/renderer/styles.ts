@@ -62,22 +62,18 @@ export function parkSelectBox(
   };
 }
 
-export function categoryButtons(shrink: boolean, isMobile: boolean): SxProps {
+export function categoryButtonsPC(shrink: boolean): SxProps {
   return {
     margin: 0,
     position: 'fixed',
-    top: (isMobile ? appBarDefaultHeightMobile : appBarDefaultHeightPC) + 10,
-    ...(!isMobile && { left: '50%', transform: 'translate(-50%, 0%)' }),
+    top: appBarDefaultHeightPC + 10,
     zIndex: 1000,
+    width: '100%',
     ...(shrink && {
       width: `calc(100% - ${drawerWidth}px)`,
     }),
     overflowX: 'scroll',
     whiteSpace: 'nowrap',
-    px: 1,
-    py: 0,
-    boxSizing: 'border-box',
-    maxWidth: '100vw',
     msOverflowStyle: 'none',
     scrollbarWidth: 'none',
     '&::-webkit-scrollbar': {
@@ -85,3 +81,21 @@ export function categoryButtons(shrink: boolean, isMobile: boolean): SxProps {
     },
   };
 }
+
+export const categoryButtonsMobile: SxProps = {
+  margin: 0,
+  position: 'fixed',
+  top: appBarDefaultHeightMobile + 10,
+  zIndex: 1000,
+  overflowX: 'scroll',
+  whiteSpace: 'nowrap',
+  px: 1,
+  py: 0,
+  boxSizing: 'border-box',
+  maxWidth: '100vw',
+  msOverflowStyle: 'none',
+  scrollbarWidth: 'none',
+  '&::-webkit-scrollbar': {
+    display: 'none',
+  },
+};

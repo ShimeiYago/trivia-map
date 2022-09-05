@@ -24,7 +24,8 @@ import {
   mapWrapper,
   wrapper,
   parkSelectBox,
-  categoryButtons,
+  categoryButtonsPC,
+  categoryButtonsMobile,
 } from './styles';
 import { GlobalMenu } from 'views/components/organisms/global-menu';
 import { Park } from 'types/park';
@@ -156,14 +157,20 @@ export class Renderer extends React.Component<Props, State> {
       </RoundButton>
     ));
 
+    if (isMobile) {
+      return (
+        <Stack direction="row" spacing={1} sx={categoryButtonsMobile}>
+          {buttons}
+        </Stack>
+      );
+    }
+
     return (
-      <Stack
-        direction="row"
-        spacing={1}
-        sx={categoryButtons(!isMobile && this.state.openFormModal, isMobile)}
-      >
-        {buttons}
-      </Stack>
+      <Box sx={categoryButtonsPC(!isMobile && this.state.openFormModal)}>
+        <Stack direction="row" spacing={1} justifyContent="center">
+          {buttons}
+        </Stack>
+      </Box>
     );
   };
 

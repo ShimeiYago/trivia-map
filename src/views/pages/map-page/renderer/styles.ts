@@ -5,6 +5,7 @@ import { Park } from 'types/park';
 const drawerWidth = 500;
 const appBarDefaultHeightPC = 66;
 const appBarDefaultHeightMobile = 58;
+const zIndex = 1000;
 
 export const rightDrawerStyle: SxProps = {
   width: drawerWidth,
@@ -47,7 +48,7 @@ export function parkSelectBox(
     top: (isMobile ? appBarDefaultHeightMobile : appBarDefaultHeightPC) + 50,
     left: 'auto',
     position: 'fixed',
-    zIndex: 1000,
+    zIndex: zIndex,
     backgroundColor: 'white',
     borderStyle: 'solid',
     borderColor: grey[500],
@@ -62,22 +63,18 @@ export function parkSelectBox(
   };
 }
 
-export function categoryButtons(shrink: boolean, isMobile: boolean): SxProps {
+export function categoryButtonsPC(shrink: boolean): SxProps {
   return {
     margin: 0,
     position: 'fixed',
-    top: (isMobile ? appBarDefaultHeightMobile : appBarDefaultHeightPC) + 10,
-    ...(!isMobile && { left: '50%', transform: 'translate(-50%, 0%)' }),
-    zIndex: 1000,
+    top: appBarDefaultHeightPC + 10,
+    zIndex: zIndex,
+    width: '100%',
     ...(shrink && {
       width: `calc(100% - ${drawerWidth}px)`,
     }),
     overflowX: 'scroll',
     whiteSpace: 'nowrap',
-    px: 1,
-    py: 0,
-    boxSizing: 'border-box',
-    maxWidth: '100vw',
     msOverflowStyle: 'none',
     scrollbarWidth: 'none',
     '&::-webkit-scrollbar': {
@@ -85,3 +82,21 @@ export function categoryButtons(shrink: boolean, isMobile: boolean): SxProps {
     },
   };
 }
+
+export const categoryButtonsMobile: SxProps = {
+  margin: 0,
+  position: 'fixed',
+  top: appBarDefaultHeightMobile + 10,
+  zIndex: zIndex,
+  overflowX: 'scroll',
+  whiteSpace: 'nowrap',
+  px: 1,
+  py: 0,
+  boxSizing: 'border-box',
+  maxWidth: '100vw',
+  msOverflowStyle: 'none',
+  scrollbarWidth: 'none',
+  '&::-webkit-scrollbar': {
+    display: 'none',
+  },
+};

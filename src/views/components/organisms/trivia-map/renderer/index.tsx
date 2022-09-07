@@ -4,27 +4,19 @@ import {
   MapContainerProps,
   TileLayer,
   ZoomControl,
-  Polygon,
 } from 'react-leaflet';
 import { MapMarker } from 'views/components/moleculars/map-marker';
-import { LatLng, Map as LeafletMap } from 'leaflet';
+import { LatLng, LeafletMouseEvent, Map as LeafletMap } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import './index.css';
-import {
-  Box,
-  Button,
-  Checkbox,
-  FormControlLabel,
-  FormGroup,
-  SxProps,
-} from '@mui/material';
+import { Box, Button, Grid, SxProps, Typography } from '@mui/material';
 import { Position } from 'types/position';
+import { DialogScreen } from 'views/components/atoms/dialog-screen';
 import { LoadingState } from 'types/loading-state';
+import { PostMarkers } from './helpers/post-markers';
 import { Marker } from 'store/markers/model';
 import { Park } from 'types/park';
 import { TDL_TILE_URL, TDS_TILE_URL } from 'constant';
-import { FloatingButton } from 'views/components/atoms/floating-button';
-import areaCoords from 'export-data/area-coords.json';
 
 export class Renderer extends React.Component<Props, State> {
   static readonly defaultProps: Pick<Props, 'newMarkerMode' | 'initZoom'> = {
@@ -35,71 +27,57 @@ export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.handleMapCreated = this.handleMapCreated.bind(this);
-
-    const positions: Position[] = [];
-    const areas: Area[] = [];
-    let currentIndex = 0;
-    for (const [areaId, coords] of Object.entries(areaCoords['L'])) {
-      const indeces: number[] = [];
-      coords.map((coord) => {
-        const position: Position = {
-          lat: coord[0],
-          lng: coord[1],
-          park: 'L',
-        };
-        const duplicatedIndex = myIndexOf(positions, position);
-        if (duplicatedIndex) {
-          indeces.push(duplicatedIndex);
-        } else {
-          positions.push({
-            lat: coord[0],
-            lng: coord[1],
-            park: 'L',
-          });
-          indeces.push(currentIndex);
-          currentIndex += 1;
-        }
-      });
-      areas.push({
-        park: 'L',
-        areaId: areaId,
-        positionIndeces: indeces,
-      });
-    }
-
-    for (const [areaId, coords] of Object.entries(areaCoords['S'])) {
-      const indeces: number[] = [];
-      (coords as number[][]).map((coord) => {
-        const position: Position = {
-          lat: coord[0],
-          lng: coord[1],
-          park: 'S',
-        };
-        const duplicatedIndex = myIndexOf(positions, position);
-        if (duplicatedIndex) {
-          indeces.push(duplicatedIndex);
-        } else {
-          positions.push({
-            lat: coord[0],
-            lng: coord[1],
-            park: 'S',
-          });
-          indeces.push(currentIndex);
-          currentIndex += 1;
-        }
-      });
-      areas.push({
-        park: 'S',
-        areaId: areaId,
-        positionIndeces: indeces,
-      });
-    }
-
     this.state = {
-      areas: areas,
+      currentPosition: props.shouldCurrentPositionAsyncWithForm
+        ? props.articleFormPosition
+        : undefined,
       openableNewMarkerPopup: true,
-      positions: positions,
     };
+  }
+
+  componentDidMount() {
+    if (
+      this.props.markersFetchingState === 'waiting' &&
+      !this.props.doNotShowPostMarkers
+    ) {
+      this.props.fetchMarkers(this.props.park);
+    }
+  }
+
+  componentDidUpdate(prevProps: Props) {
+    if (
+      prevProps.articleFormPosition !== this.props.articleFormPosition &&
+      this.props.shouldCurrentPositionAsyncWithForm
+    ) {
+      this.setState({
+        currentPosition: this.props.articleFormPosition,
+      });
+    }
+
+    if (
+      prevProps.newMarkerMode &&
+      !this.props.newMarkerMode &&
+      this.props.shouldCurrentPositionAsyncWithForm
+    ) {
+      this.setState({
+        currentPosition: this.props.articleFormPosition,
+      });
+    }
+
+    if (
+      this.props.initCenter &&
+      prevProps.initCenter !== this.props.initCenter
+    ) {
+      this.state.map?.setView(this.props.initCenter);
+    }
+
+    if (
+      !this.props.doNotShowPostMarkers &&
+      (prevProps.park !== this.props.park ||
+        prevProps.categoryId !== this.props.categoryId)
+    ) {
+      this.props.fetchMarkers(this.props.park, this.props.categoryId);
+    }
   }
 
   render() {
@@ -125,6 +103,8 @@ export class Renderer extends React.Component<Props, State> {
 
     return (
       <Box sx={mapWrapper}>
+        {this.renderGuideDialog()}
+
         <MapContainer
           center={center}
           zoom={initZoom}
@@ -141,226 +121,205 @@ export class Renderer extends React.Component<Props, State> {
         >
           {park === 'L' && <TileLayer url={TDL_TILE_URL} noWrap />}
           {park === 'S' && <TileLayer url={TDS_TILE_URL} noWrap />}
-          {this.renderMarkers()}
+          {this.renderPostMarkers()}
+          {this.renderAdittionalMarkers()}
+          {this.renderCurrentPositionMarker()}
           {!disabled && <ZoomControl position="bottomleft" />}
-
-          {this.renderPolygons()}
         </MapContainer>
-
-        <FloatingButton icon="add-marker" onClick={this.handleClickAddButton} />
-
-        <Box
-          sx={{
-            margin: 0,
-            top: 'auto',
-            right: 20,
-            bottom: 100,
-            left: 'auto',
-            position: 'fixed',
-            zIndex: 1000,
-            backgroundColor: 'white',
-          }}
-        >
-          <Button onClick={this.download}>ダウンロード</Button>
-        </Box>
       </Box>
     );
   }
 
   protected handleMapCreated(map: LeafletMap) {
+    map.on('click', this.handleMapClick);
     this.setState({
       map: map,
     });
   }
 
-  protected handleClickAddButton = () => {
-    const newPositions = [...this.state.positions];
-    newPositions.push({
-      lat: 0,
-      lng: 0,
-      park: this.props.park,
-    });
+  protected handleMapClick = (e: LeafletMouseEvent) => {
+    if (!this.props.newMarkerMode) {
+      return;
+    }
 
     this.setState({
-      positions: newPositions,
+      currentPosition: {
+        lat: e.latlng.lat,
+        lng: e.latlng.lng,
+        park: this.props.park,
+      },
+      openableNewMarkerPopup: false,
     });
-  };
-
-  protected download = () => {
-    const landData = this.state.areas
-      .map((area) => {
-        if (area.park !== 'L') {
-          return null;
-        }
-
-        const coords = area.positionIndeces.map((positionIndex) => {
-          const position = this.state.positions[positionIndex];
-          return [position.lat, position.lng];
-        });
-
-        return {
-          areaId: area.areaId,
-          coords: coords,
-        };
-      })
-      .filter((e) => e);
-
-    const seaData = this.state.areas
-      .map((area) => {
-        if (area.park !== 'S') {
-          return null;
-        }
-
-        const coords = area.positionIndeces.map((positionIndex) => {
-          const position = this.state.positions[positionIndex];
-          return [position.lat, position.lng];
-        });
-
-        return {
-          areaId: area.areaId,
-          coords: coords,
-        };
-      })
-      .filter((e) => e);
-
-    const downloadData = {
-      L: Object.fromEntries(
-        landData.map((area) => [area?.areaId, area?.coords]),
-      ),
-      S: Object.fromEntries(
-        seaData.map((area) => [area?.areaId, area?.coords]),
-      ),
-    };
-
-    const blob = new Blob([JSON.stringify(downloadData, null, '  ')], {
-      type: 'application/json',
-    });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    document.body.appendChild(link);
-    link.href = url;
-    link.setAttribute('download', 'area-coords.json');
-    link.click();
-    document.body.removeChild(link);
-  };
-
-  protected handleChangeArea = (event: React.ChangeEvent<HTMLInputElement>) => {
     this.setState({
-      selectedAreaIndex: Number(event.target.value),
+      openableNewMarkerPopup: true,
     });
   };
 
-  protected renderMarkers() {
-    const { positions } = this.state;
-    return positions.map((position, index) => {
-      if (position.park !== this.props.park) {
-        return null;
-      }
-      return this.renderMarker(position, index);
-    });
+  protected renderPostMarkers() {
+    const {
+      postMarkers,
+      doNotShowPostMarkers,
+      newMarkerMode,
+      hiddenMarkerIds,
+      isFormEditting,
+    } = this.props;
+    if (doNotShowPostMarkers || !this.state.map) {
+      return null;
+    }
+
+    return (
+      <PostMarkers
+        map={this.state.map}
+        markers={postMarkers}
+        popupDisabled={newMarkerMode}
+        hiddenMarkerIds={hiddenMarkerIds}
+        openFormWithTheMarker={this.openFormWithTheMarker}
+        hideAddButton={isFormEditting}
+      />
+    );
   }
 
-  protected renderMarker(position: Position, positionIndex: number) {
-    const areaIds: string[] = [];
-    this.state.areas.map((area) => {
-      if (area.positionIndeces.includes(positionIndex)) {
-        areaIds.push(area.areaId);
-      }
-    });
+  protected renderAdittionalMarkers() {
+    const { additinalMarkers } = this.props;
+    const { map } = this.state;
+    if (!map) {
+      return null;
+    }
 
-    const checkBoxes = this.state.areas.map((area, index) => {
-      if (area.park !== this.props.park) {
-        return null;
-      }
+    return additinalMarkers.map((position, index) => {
       return (
-        <FormControlLabel
-          key={`checkbox-${index}`}
-          control={
-            <Checkbox
-              checked={areaIds.includes(area.areaId)}
-              onChange={this.handleClickCheckBox(index, positionIndex)}
-            />
-          }
-          label={area.areaId}
+        <MapMarker
+          map={map}
+          position={new LatLng(position.lat, position.lng)}
+          key={`additional-marker-${index}`}
         />
       );
     });
+  }
+
+  protected renderCurrentPositionMarker() {
+    const { currentPosition, openableNewMarkerPopup } = this.state;
+    const { newMarkerMode, park } = this.props;
+
+    if (currentPosition === undefined || currentPosition.park !== park) {
+      return null;
+    }
 
     const popup = (
       <Box sx={{ p: 1 }}>
-        <div>lat: {position.lat}</div>
-        <div>lng: {position.lng}</div>
-        <FormGroup>{checkBoxes}</FormGroup>
+        <Typography
+          align="center"
+          variant="h6"
+          component="p"
+          sx={{ fontWeight: 'bold' }}
+        >
+          この位置でよろしいですか？
+        </Typography>
+        <Typography variant="subtitle2" component="p">
+          ※このマーカーは掴んで移動することができます。
+        </Typography>
+        <Typography variant="subtitle2" component="p">
+          ※あとで変更することができます。
+        </Typography>
+
+        <Grid
+          container
+          spacing={2}
+          justifyContent="center"
+          sx={{ textAlign: 'center' }}
+        >
+          <Grid item xs={6}>
+            <Button onClick={this.handleClickCancelNewMarker}>
+              キャンセル
+            </Button>
+          </Grid>
+          <Grid item xs={6}>
+            <Button onClick={this.handleClickConfirmNewMarker}>確定</Button>
+          </Grid>
+        </Grid>
       </Box>
     );
 
     return (
       this.state.map && (
         <MapMarker
-          key={`marker-${positionIndex}`}
           map={this.state.map}
-          position={new LatLng(position.lat, position.lng)}
-          popup={popup}
+          position={new LatLng(currentPosition.lat, currentPosition.lng)}
+          popup={newMarkerMode && popup}
+          autoOpen={newMarkerMode && openableNewMarkerPopup}
           variant="red"
-          draggable
-          // eslint-disable-next-line @typescript-eslint/no-empty-function
-          onDragStart={() => {}}
-          onDragEnd={this.handleDragEndNewMarker(positionIndex)}
+          draggable={newMarkerMode}
+          onDragStart={this.handleDragStartNewMarker}
+          onDragEnd={this.handleDragEndNewMarker}
         />
       )
     );
   }
 
-  protected handleClickCheckBox =
-    (areaIndex: number, positionIndex: number) =>
-    (event: React.ChangeEvent<HTMLInputElement>) => {
-      const newAreas = [...this.state.areas];
-      if (event.target.checked) {
-        newAreas[areaIndex].positionIndeces.push(positionIndex);
-      } else {
-        newAreas[areaIndex].positionIndeces = newAreas[
-          areaIndex
-        ].positionIndeces.filter((i) => i !== positionIndex);
-      }
+  protected handleClickCancelNewMarker = async () => {
+    if (this.props.endToSelectPosition) {
+      this.props.endToSelectPosition();
+    }
+  };
 
-      this.setState({
-        areas: newAreas,
-      });
-    };
+  protected handleClickConfirmNewMarker = () => {
+    if (!this.state.currentPosition) {
+      return;
+    }
+    this.props.updatePosition(this.state.currentPosition);
 
-  protected renderPolygons = () => {
-    return this.state.areas.map((area) => {
-      if (area.park !== this.props.park) {
-        return null;
-      }
+    if (this.props.endToSelectPosition) {
+      this.props.endToSelectPosition();
+    }
+  };
 
-      const positions = area.positionIndeces.map((i) => {
-        const position = this.state.positions[i];
-        return new LatLng(position.lat, position.lng);
-      });
-      return (
-        <Polygon
-          pathOptions={{ color: 'purple' }}
-          positions={positions}
-          key={`area-${area.areaId}`}
-        />
-      );
+  protected handleDragStartNewMarker = () => {
+    this.setState({
+      openableNewMarkerPopup: false,
     });
   };
 
-  protected handleDragEndNewMarker =
-    (positionIndex: number) => (position: LatLng) => {
-      const newPositions = [...this.state.positions];
-      newPositions[positionIndex] = {
+  protected handleDragEndNewMarker = (position: LatLng) => {
+    this.setState({
+      currentPosition: {
         lat: position.lat,
         lng: position.lng,
         park: this.props.park,
-      };
+      },
+      openableNewMarkerPopup: true,
+    });
+  };
 
-      this.setState({
-        positions: newPositions,
-      });
-    };
+  protected renderGuideDialog() {
+    if (!this.props.newMarkerMode || this.state.currentPosition) {
+      return null;
+    }
+
+    return (
+      <DialogScreen theme="black" position="top">
+        <Typography
+          align="center"
+          variant="inherit"
+          sx={{ fontWeight: 'bold' }}
+        >
+          マップ上の好きな位置をタップしてください。
+        </Typography>
+      </DialogScreen>
+    );
+  }
+
+  protected openFormWithTheMarker = (position: Position) => {
+    this.setState({
+      currentPosition: position,
+    });
+
+    this.props.updatePosition(position);
+    this.props.updateIsEditting(true);
+
+    if (this.props.endToSelectPosition) {
+      this.props.endToSelectPosition();
+    }
+  };
 }
 
 export type Props = {
@@ -388,36 +347,7 @@ export type Props = {
 };
 
 export type State = {
-  positions: Position[];
-  areas: Area[];
-  selectedAreaIndex?: number;
+  currentPosition?: Position;
   openableNewMarkerPopup: boolean;
   map?: LeafletMap;
-  movingMarkerIndex?: number;
 };
-
-type Area = {
-  park: Park;
-  areaId: string;
-  positionIndeces: number[];
-};
-
-function myIndexOf(positions: Position[], position: Position) {
-  const indeces = positions
-    .map((p, index) => {
-      if (
-        p.lat === position.lat &&
-        p.lng === position.lng &&
-        p.park === position.park
-      ) {
-        return index;
-      }
-    })
-    .filter((e) => e);
-
-  if (indeces.length > 0) {
-    return indeces[0];
-  } else {
-    return undefined;
-  }
-}

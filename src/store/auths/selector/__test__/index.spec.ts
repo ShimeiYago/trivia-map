@@ -15,6 +15,7 @@ describe('auths selector', () => {
         userId: 1,
         email: 'user@example.com',
         nickname: 'Axel',
+        icon: 'https://...',
       },
       errorMsg: 'error',
       openFormModal: true,
@@ -31,6 +32,7 @@ describe('auths selector', () => {
       userId: 1,
       email: 'user@example.com',
       nickname: 'Axel',
+      icon: 'https://...',
     });
   });
 

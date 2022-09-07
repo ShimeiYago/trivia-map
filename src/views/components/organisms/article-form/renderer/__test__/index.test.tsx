@@ -24,6 +24,7 @@ const basicProps: Props = {
     userId: 1,
     email: 'xxx@example.com',
     nickname: 'Axel',
+    icon: 'https://...',
   },
   park: 'S',
   updateFormField: jest.fn(),

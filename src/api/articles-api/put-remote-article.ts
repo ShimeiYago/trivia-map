@@ -23,7 +23,9 @@ export async function putRemoteArticle(param: {
 }): Promise<PostArticleResponse> {
   const axiosInstance = getAxiosInstance({}, mockPostArticleResponse);
 
-  const uploadFile = param.image ? await convertToFile(param.image) : undefined;
+  const uploadFile = param.image
+    ? await convertToFile(param.image)
+    : param.image;
 
   const requestData: PostArticleRequest = {
     title: param.title,

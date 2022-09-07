@@ -124,7 +124,7 @@ export class Renderer extends React.Component<Props, State> {
 
     try {
       const res = await autoRefreshApiWrapper(() =>
-        updateUserInfo(this.state.nickname),
+        updateUserInfo({ nickname: this.state.nickname }),
       );
       this.props.updateUser(res);
       this.setState({

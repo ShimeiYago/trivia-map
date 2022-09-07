@@ -4,12 +4,20 @@ import { handleAxiosError } from '../utils/handle-axios-error';
 import { getAxiosInstance } from 'api/utils/get-axios-instance';
 import { User } from 'types/user';
 import { mockGetUserInfoResponse } from 'api/mock/auths-response/get-user-info';
+import { SelializedImageFile } from 'types/selialized-image-file';
+import { convertToFile } from 'utils/convert-to-file';
 
-export async function updateUserInfo(nickname: string): Promise<User> {
+export async function updateUserInfo(param: {
+  nickname: string;
+  icon?: SelializedImageFile | null;
+}): Promise<User> {
   const axiosInstance = getAxiosInstance({}, mockGetUserInfoResponse);
 
+  const uploadFile = param.icon ? await convertToFile(param.icon) : param.icon;
+
   const requestData: UpdateUserInfoRequest = {
-    nickname: nickname,
+    nickname: param.nickname,
+    icon: uploadFile,
   };
 
   try {
@@ -27,8 +35,10 @@ export async function updateUserInfo(nickname: string): Promise<User> {
 
 export type UpdateUserInfoRequest = {
   nickname: string;
+  icon?: File | null;
 };
 
 export type ValidationError = {
   nickname?: string[];
+  icon?: string[];
 };

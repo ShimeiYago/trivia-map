@@ -216,7 +216,13 @@ describe('update-user-info', () => {
   it('handle nomal response', async () => {
     process.env.REACT_APP_MOCK = 'normal';
 
-    const response = await updateUserInfo('Axel');
+    const response = await updateUserInfo({
+      nickname: 'Axel',
+      icon: {
+        dataUrl: 'data:image/png;base64,xxx',
+        fileName: 'filename',
+      },
+    });
     expect(response.userId).toBe(1);
   });
 
@@ -228,7 +234,9 @@ describe('update-user-info', () => {
       data: {},
       errorMsg: 'Intentional API Error with mock',
     };
-    await expect(updateUserInfo('Axel')).rejects.toEqual(expectedApiError);
+    await expect(updateUserInfo({ nickname: 'Axel' })).rejects.toEqual(
+      expectedApiError,
+    );
   });
 });
 

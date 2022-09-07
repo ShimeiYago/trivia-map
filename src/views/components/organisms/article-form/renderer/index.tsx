@@ -35,7 +35,7 @@ import { DeletableImage } from 'views/components/moleculars/deletable-image';
 import { HeaderErrorMessages } from 'views/components/moleculars/header-error-messages';
 import { User } from 'types/user';
 import { CATEGORIES } from 'constant';
-import { SelializedImageFile } from 'types/SelializedImageFile';
+import { SelializedImageFile } from 'types/selialized-image-file';
 import { resizeAndConvertToSelializedImageFile } from 'utils/resize-and-convert-to-selialized-image-file.ts';
 import { Park } from 'types/park';
 import { AreaNames } from 'views/components/atoms/area-names';

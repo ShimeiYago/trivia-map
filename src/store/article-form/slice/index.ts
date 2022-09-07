@@ -2,7 +2,7 @@ import { GetArticleResponse } from '../../../api/articles-api/get-remote-article
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { FormError, initialState } from '../model';
 import { Position } from 'types/position';
-import { SelializedImageFile } from 'types/SelializedImageFile';
+import { SelializedImageFile } from 'types/selialized-image-file';
 
 export const articleFormSlice = createSlice({
   name: 'articleForm',

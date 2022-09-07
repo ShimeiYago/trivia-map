@@ -1,4 +1,4 @@
-import { SelializedImageFile } from './../../types/SelializedImageFile';
+import { SelializedImageFile } from '../../types/selialized-image-file';
 import { BASE_URL } from 'constant';
 import { AxiosError, AxiosResponse } from 'axios';
 import { handleAxiosError } from '../utils/handle-axios-error';

@@ -4,7 +4,7 @@ import { handleAxiosError } from '../utils/handle-axios-error';
 import { getAxiosInstance } from 'api/utils/get-axios-instance';
 import { mockPostArticleResponse } from '../mock/articles-response';
 import { Position } from 'types/position';
-import { SelializedImageFile } from 'types/SelializedImageFile';
+import { SelializedImageFile } from 'types/selialized-image-file';
 import { convertToFile } from 'utils/convert-to-file';
 
 export async function postRemoteArticle(param: {

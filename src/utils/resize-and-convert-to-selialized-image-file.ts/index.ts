@@ -1,7 +1,7 @@
 /* istanbul ignore file */
 
 import { UPLOAD_IMAGE_MAX_LENGTH } from './../../constant/index';
-import { SelializedImageFile } from '../../types/SelializedImageFile';
+import { SelializedImageFile } from '../../types/selialized-image-file';
 
 export async function resizeAndConvertToSelializedImageFile(
   file: File,

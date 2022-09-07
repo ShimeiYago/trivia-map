@@ -1,0 +1,607 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shallow Snapshot Tests basic 1`] = `
+<ForwardRef(Box)
+  sx={
+    Object {
+      "height": "100%",
+      "width": "100%",
+    }
+  }
+>
+  <MapContainer
+    center={
+      Object {
+        "lat": 0,
+        "lng": 0,
+      }
+    }
+    maxBounds={
+      Array [
+        Array [
+          300,
+          -300,
+        ],
+        Array [
+          -300,
+          300,
+        ],
+      ]
+    }
+    maxZoom={4}
+    minZoom={1}
+    tap={false}
+    whenCreated={[Function]}
+    zoom={1}
+    zoomControl={false}
+  >
+    <ForwardRef(LeafComponent)
+      noWrap={true}
+      url="/tds-map-tiles/{z}/{x}/{y}.png"
+    />
+    <PostMarkers
+      hiddenMarkerIds={Array []}
+      hideAddButton={false}
+      map={
+        Object {
+          "setView": [MockFunction],
+        }
+      }
+      markers={
+        Array [
+          Object {
+            "lat": 0,
+            "lng": 0,
+            "markerId": 100,
+            "numberOfPublicArticles": 1,
+            "park": "S",
+          },
+        ]
+      }
+      openFormWithTheMarker={[Function]}
+      popupDisabled={false}
+    />
+    <MapMarker
+      autoOpen={false}
+      draggable={false}
+      key="additional-marker-0"
+      map={
+        Object {
+          "setView": [MockFunction],
+        }
+      }
+      position={
+        Object {
+          "lat": 1,
+          "lng": 1,
+        }
+      }
+      variant="blue"
+    />
+    <ForwardRef(LeafComponent)
+      position="bottomleft"
+    />
+  </MapContainer>
+</ForwardRef(Box)>
+`;
+
+exports[`Shallow Snapshot Tests disabled map 1`] = `
+<ForwardRef(Box)
+  sx={
+    Object {
+      "height": "100%",
+      "width": "100%",
+    }
+  }
+>
+  <MapContainer
+    boxZoom={false}
+    center={
+      Object {
+        "lat": 0,
+        "lng": 0,
+      }
+    }
+    doubleClickZoom={false}
+    dragging={false}
+    keyboard={false}
+    maxBounds={
+      Array [
+        Array [
+          300,
+          -300,
+        ],
+        Array [
+          -300,
+          300,
+        ],
+      ]
+    }
+    maxZoom={4}
+    minZoom={1}
+    scrollWheelZoom={false}
+    tap={false}
+    touchZoom={false}
+    whenCreated={[Function]}
+    zoom={1}
+    zoomControl={false}
+  >
+    <ForwardRef(LeafComponent)
+      noWrap={true}
+      url="/tds-map-tiles/{z}/{x}/{y}.png"
+    />
+    <MapMarker
+      autoOpen={false}
+      draggable={false}
+      key="additional-marker-0"
+      map={
+        Object {
+          "setView": [MockFunction],
+        }
+      }
+      position={
+        Object {
+          "lat": 1,
+          "lng": 1,
+        }
+      }
+      variant="blue"
+    />
+  </MapContainer>
+</ForwardRef(Box)>
+`;
+
+exports[`Shallow Snapshot Tests land map 1`] = `
+<ForwardRef(Box)
+  sx={
+    Object {
+      "height": "100%",
+      "width": "100%",
+    }
+  }
+>
+  <MapContainer
+    center={
+      Object {
+        "lat": 0,
+        "lng": 0,
+      }
+    }
+    maxBounds={
+      Array [
+        Array [
+          300,
+          -300,
+        ],
+        Array [
+          -300,
+          300,
+        ],
+      ]
+    }
+    maxZoom={4}
+    minZoom={1}
+    tap={false}
+    whenCreated={[Function]}
+    zoom={1}
+    zoomControl={false}
+  >
+    <ForwardRef(LeafComponent)
+      noWrap={true}
+      url="/tdl-map-tiles/{z}/{x}/{y}.png"
+    />
+    <PostMarkers
+      hiddenMarkerIds={Array []}
+      hideAddButton={false}
+      map={
+        Object {
+          "setView": [MockFunction],
+        }
+      }
+      markers={
+        Array [
+          Object {
+            "lat": 0,
+            "lng": 0,
+            "markerId": 100,
+            "numberOfPublicArticles": 1,
+            "park": "S",
+          },
+        ]
+      }
+      openFormWithTheMarker={[Function]}
+      popupDisabled={false}
+    />
+    <MapMarker
+      autoOpen={false}
+      draggable={false}
+      key="additional-marker-0"
+      map={
+        Object {
+          "setView": [MockFunction],
+        }
+      }
+      position={
+        Object {
+          "lat": 1,
+          "lng": 1,
+        }
+      }
+      variant="blue"
+    />
+    <ForwardRef(LeafComponent)
+      position="bottomleft"
+    />
+  </MapContainer>
+</ForwardRef(Box)>
+`;
+
+exports[`Shallow Snapshot Tests when currentPosition state is setted 1`] = `
+<ForwardRef(Box)
+  sx={
+    Object {
+      "height": "100%",
+      "width": "100%",
+    }
+  }
+>
+  <MapContainer
+    center={
+      Object {
+        "lat": 0,
+        "lng": 0,
+      }
+    }
+    maxBounds={
+      Array [
+        Array [
+          300,
+          -300,
+        ],
+        Array [
+          -300,
+          300,
+        ],
+      ]
+    }
+    maxZoom={4}
+    minZoom={1}
+    tap={false}
+    whenCreated={[Function]}
+    zoom={1}
+    zoomControl={false}
+  >
+    <ForwardRef(LeafComponent)
+      noWrap={true}
+      url="/tds-map-tiles/{z}/{x}/{y}.png"
+    />
+    <PostMarkers
+      hiddenMarkerIds={Array []}
+      hideAddButton={false}
+      map={
+        Object {
+          "setView": [MockFunction],
+        }
+      }
+      markers={
+        Array [
+          Object {
+            "lat": 0,
+            "lng": 0,
+            "markerId": 100,
+            "numberOfPublicArticles": 1,
+            "park": "S",
+          },
+        ]
+      }
+      openFormWithTheMarker={[Function]}
+      popupDisabled={true}
+    />
+    <MapMarker
+      autoOpen={false}
+      draggable={false}
+      key="additional-marker-0"
+      map={
+        Object {
+          "setView": [MockFunction],
+        }
+      }
+      position={
+        Object {
+          "lat": 1,
+          "lng": 1,
+        }
+      }
+      variant="blue"
+    />
+    <MapMarker
+      autoOpen={true}
+      draggable={true}
+      map={
+        Object {
+          "setView": [MockFunction],
+        }
+      }
+      onDragEnd={[Function]}
+      onDragStart={[Function]}
+      popup={
+        <ForwardRef(Box)
+          sx={
+            Object {
+              "p": 1,
+            }
+          }
+        >
+          <ForwardRef(Typography)
+            align="center"
+            component="p"
+            sx={
+              Object {
+                "fontWeight": "bold",
+              }
+            }
+            variant="h6"
+          >
+            この位置でよろしいですか？
+          </ForwardRef(Typography)>
+          <ForwardRef(Typography)
+            component="p"
+            variant="subtitle2"
+          >
+            ※このマーカーは掴んで移動することができます。
+          </ForwardRef(Typography)>
+          <ForwardRef(Typography)
+            component="p"
+            variant="subtitle2"
+          >
+            ※あとで変更することができます。
+          </ForwardRef(Typography)>
+          <ForwardRef(Grid)
+            container={true}
+            justifyContent="center"
+            spacing={2}
+            sx={
+              Object {
+                "textAlign": "center",
+              }
+            }
+          >
+            <ForwardRef(Grid)
+              item={true}
+              xs={6}
+            >
+              <ForwardRef(Button)
+                onClick={[Function]}
+              >
+                キャンセル
+              </ForwardRef(Button)>
+            </ForwardRef(Grid)>
+            <ForwardRef(Grid)
+              item={true}
+              xs={6}
+            >
+              <ForwardRef(Button)
+                onClick={[Function]}
+              >
+                確定
+              </ForwardRef(Button)>
+            </ForwardRef(Grid)>
+          </ForwardRef(Grid)>
+        </ForwardRef(Box)>
+      }
+      position={
+        Object {
+          "lat": 1,
+          "lng": 1,
+        }
+      }
+      variant="red"
+    />
+    <ForwardRef(LeafComponent)
+      position="bottomleft"
+    />
+  </MapContainer>
+</ForwardRef(Box)>
+`;
+
+exports[`Shallow Snapshot Tests with initCenter prop 1`] = `
+<ForwardRef(Box)
+  sx={
+    Object {
+      "height": "100%",
+      "width": "100%",
+    }
+  }
+>
+  <MapContainer
+    center={
+      Object {
+        "lat": 1,
+        "lng": 1,
+      }
+    }
+    maxBounds={
+      Array [
+        Array [
+          300,
+          -300,
+        ],
+        Array [
+          -300,
+          300,
+        ],
+      ]
+    }
+    maxZoom={4}
+    minZoom={1}
+    tap={false}
+    whenCreated={[Function]}
+    zoom={1}
+    zoomControl={false}
+  >
+    <ForwardRef(LeafComponent)
+      noWrap={true}
+      url="/tds-map-tiles/{z}/{x}/{y}.png"
+    />
+    <PostMarkers
+      hiddenMarkerIds={Array []}
+      hideAddButton={false}
+      map={
+        Object {
+          "setView": [MockFunction] {
+            "calls": Array [
+              Array [
+                Object {
+                  "lat": 1,
+                  "lng": 1,
+                  "park": "S",
+                },
+              ],
+            ],
+            "results": Array [
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+            ],
+          },
+        }
+      }
+      markers={
+        Array [
+          Object {
+            "lat": 0,
+            "lng": 0,
+            "markerId": 100,
+            "numberOfPublicArticles": 1,
+            "park": "S",
+          },
+        ]
+      }
+      openFormWithTheMarker={[Function]}
+      popupDisabled={false}
+    />
+    <MapMarker
+      autoOpen={false}
+      draggable={false}
+      key="additional-marker-0"
+      map={
+        Object {
+          "setView": [MockFunction] {
+            "calls": Array [
+              Array [
+                Object {
+                  "lat": 1,
+                  "lng": 1,
+                  "park": "S",
+                },
+              ],
+            ],
+            "results": Array [
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+            ],
+          },
+        }
+      }
+      position={
+        Object {
+          "lat": 1,
+          "lng": 1,
+        }
+      }
+      variant="blue"
+    />
+    <ForwardRef(LeafComponent)
+      position="bottomleft"
+    />
+  </MapContainer>
+</ForwardRef(Box)>
+`;
+
+exports[`Shallow Snapshot Tests with width and height props 1`] = `
+<ForwardRef(Box)
+  sx={
+    Object {
+      "height": 100,
+      "width": 100,
+    }
+  }
+>
+  <MapContainer
+    center={
+      Object {
+        "lat": 0,
+        "lng": 0,
+      }
+    }
+    maxBounds={
+      Array [
+        Array [
+          300,
+          -300,
+        ],
+        Array [
+          -300,
+          300,
+        ],
+      ]
+    }
+    maxZoom={4}
+    minZoom={1}
+    tap={false}
+    whenCreated={[Function]}
+    zoom={1}
+    zoomControl={false}
+  >
+    <ForwardRef(LeafComponent)
+      noWrap={true}
+      url="/tds-map-tiles/{z}/{x}/{y}.png"
+    />
+    <PostMarkers
+      hiddenMarkerIds={Array []}
+      hideAddButton={false}
+      map={
+        Object {
+          "setView": [MockFunction],
+        }
+      }
+      markers={
+        Array [
+          Object {
+            "lat": 0,
+            "lng": 0,
+            "markerId": 100,
+            "numberOfPublicArticles": 1,
+            "park": "S",
+          },
+        ]
+      }
+      openFormWithTheMarker={[Function]}
+      popupDisabled={false}
+    />
+    <MapMarker
+      autoOpen={false}
+      draggable={false}
+      key="additional-marker-0"
+      map={
+        Object {
+          "setView": [MockFunction],
+        }
+      }
+      position={
+        Object {
+          "lat": 1,
+          "lng": 1,
+        }
+      }
+      variant="blue"
+    />
+    <ForwardRef(LeafComponent)
+      position="bottomleft"
+    />
+  </MapContainer>
+</ForwardRef(Box)>
+`;

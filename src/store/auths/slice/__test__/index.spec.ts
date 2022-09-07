@@ -38,12 +38,14 @@ describe('auths reducer', () => {
         userId: 1,
         email: 'user@example.com',
         nickname: 'Axel',
+        icon: 'https://...',
       }),
     );
     expect(actual.user).toEqual({
       userId: 1,
       email: 'user@example.com',
       nickname: 'Axel',
+      icon: 'https://...',
     });
   });
 
@@ -54,12 +56,14 @@ describe('auths reducer', () => {
         userId: 1,
         email: 'user@example.com',
         nickname: 'Axel',
+        icon: 'https://...',
       }),
     );
     expect(actual.user).toEqual({
       userId: 1,
       email: 'user@example.com',
       nickname: 'Axel',
+      icon: 'https://...',
     });
   });
 

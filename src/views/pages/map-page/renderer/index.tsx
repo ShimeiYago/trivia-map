@@ -92,34 +92,21 @@ export class Renderer extends React.Component<Props, State> {
         <GlobalMenu topBarPosition="static">
           <Box sx={mapWrapper(isMobile)}>
             <TriviaMap
-              newMarkerMode={this.state.newMarkerMode}
-              endToSelectPosition={this.endToSelectPosition}
-              hiddenMarkerIds={edittingPostId ? [edittingPostId] : []}
+              doNotShowPostMarkers
               shouldCurrentPositionAsyncWithForm
               park={park}
-              categoryId={selectedCategoryId}
             />
 
-            {!isFormEditting && (
+            {/* {!isFormEditting && (
               <FloatingButton
                 icon="add-marker"
                 onClick={this.handleClickAddButton}
               />
-            )}
-
-            <LoadingProgressBar />
+            )} */}
 
             {this.renderParkSelectBox()}
-
-            {this.renderCategoryButtons()}
           </Box>
         </GlobalMenu>
-
-        {this.renderEditForm()}
-
-        <GlobalMessage closeFormModal={this.handleCloseFormModal} />
-
-        {this.renderDoubleEditAlartDialog()}
       </Box>
     );
   }

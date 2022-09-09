@@ -3,6 +3,7 @@ import { useAppDispatch, useAppSelector } from 'store';
 import { selectUser } from 'store/auths/selector';
 import { updateUser } from 'store/auths/actions';
 import { User } from 'types/user';
+import { throwError } from 'store/global-error/slice';
 
 export function ProfileEdit() {
   const dispatch = useAppDispatch();
@@ -11,6 +12,7 @@ export function ProfileEdit() {
     user: useAppSelector(selectUser),
 
     updateUser: (user: User) => dispatch(updateUser(user)),
+    throwError: (errorStatus: number) => dispatch(throwError(errorStatus)),
   };
 
   return <Renderer {...props} />;

@@ -3,7 +3,7 @@
 exports[`Shallow Snapshot Tests basic 1`] = `
 <div>
   <label
-    className="label label-active"
+    className="label variant-square label-active label-noimage"
   >
     <input
       accept="image/*"
@@ -12,7 +12,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       type="file"
     />
     <div
-      className="content"
+      className="content content-large"
     >
       <ForwardRef(Typography)>
         <Memo(ForwardRef(AddAPhotoIcon))
@@ -30,15 +30,15 @@ exports[`Shallow Snapshot Tests basic 1`] = `
 exports[`Shallow Snapshot Tests disabled 1`] = `
 <div>
   <label
-    className="label"
+    className="label variant-square label-noimage"
   />
 </div>
 `;
 
-exports[`Shallow Snapshot Tests with error & helperText 1`] = `
+exports[`Shallow Snapshot Tests icon 1`] = `
 <div>
   <label
-    className="label label-active"
+    className="label variant-icon label-active label-noimage"
   >
     <input
       accept="image/*"
@@ -47,7 +47,31 @@ exports[`Shallow Snapshot Tests with error & helperText 1`] = `
       type="file"
     />
     <div
-      className="content"
+      className="content content-small"
+    >
+      <ForwardRef(Typography)>
+        <Memo(ForwardRef(AddAPhotoIcon))
+          fontSize="large"
+        />
+      </ForwardRef(Typography)>
+    </div>
+  </label>
+</div>
+`;
+
+exports[`Shallow Snapshot Tests with error & helperText 1`] = `
+<div>
+  <label
+    className="label variant-square label-active label-noimage"
+  >
+    <input
+      accept="image/*"
+      className="input-image"
+      onChange={[MockFunction]}
+      type="file"
+    />
+    <div
+      className="content content-large"
     >
       <ForwardRef(Typography)>
         <Memo(ForwardRef(AddAPhotoIcon))
@@ -70,7 +94,7 @@ exports[`Shallow Snapshot Tests with error & helperText 1`] = `
 exports[`Shallow Snapshot Tests with error 1`] = `
 <div>
   <label
-    className="label label-active"
+    className="label variant-square label-active label-noimage"
   >
     <input
       accept="image/*"
@@ -79,7 +103,7 @@ exports[`Shallow Snapshot Tests with error 1`] = `
       type="file"
     />
     <div
-      className="content"
+      className="content content-large"
     >
       <ForwardRef(Typography)>
         <Memo(ForwardRef(AddAPhotoIcon))
@@ -97,7 +121,7 @@ exports[`Shallow Snapshot Tests with error 1`] = `
 exports[`Shallow Snapshot Tests with helperText 1`] = `
 <div>
   <label
-    className="label label-active"
+    className="label variant-square label-active label-noimage"
   >
     <input
       accept="image/*"
@@ -106,7 +130,7 @@ exports[`Shallow Snapshot Tests with helperText 1`] = `
       type="file"
     />
     <div
-      className="content"
+      className="content content-large"
     >
       <ForwardRef(Typography)>
         <Memo(ForwardRef(AddAPhotoIcon))
@@ -123,5 +147,36 @@ exports[`Shallow Snapshot Tests with helperText 1`] = `
   >
     text
   </ForwardRef(Typography)>
+</div>
+`;
+
+exports[`Shallow Snapshot Tests with src 1`] = `
+<div>
+  <label
+    className="label variant-square label-active"
+  >
+    <input
+      accept="image/*"
+      className="input-image"
+      onChange={[MockFunction]}
+      type="file"
+    />
+    <img
+      className="img variant-square"
+      src="https://xxx.image.png"
+    />
+    <div
+      className="content content-large"
+    >
+      <ForwardRef(Typography)>
+        <Memo(ForwardRef(AddAPhotoIcon))
+          fontSize="large"
+        />
+      </ForwardRef(Typography)>
+      <ForwardRef(Typography)>
+        タップして写真を追加
+      </ForwardRef(Typography)>
+    </div>
+  </label>
 </div>
 `;

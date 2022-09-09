@@ -4,6 +4,7 @@ import { ImageField, Props } from '..';
 let wrapper: ShallowWrapper<Props, unknown, ImageField>;
 
 const props: Props = {
+  variant: 'square',
   onChange: jest.fn(),
 };
 
@@ -33,6 +34,16 @@ describe('Shallow Snapshot Tests', () => {
 
   it('disabled', () => {
     wrapper.setProps({ disabled: true });
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('icon', () => {
+    wrapper.setProps({ variant: 'icon' });
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('with src', () => {
+    wrapper.setProps({ src: 'https://xxx.image.png' });
     expect(wrapper).toMatchSnapshot();
   });
 });

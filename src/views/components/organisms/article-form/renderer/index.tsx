@@ -153,7 +153,10 @@ export class Renderer extends React.Component<Props> {
                 onDelete={this.handleDeleteImage}
               />
             ) : (
-              <ImageField onChange={this.handleFileInputChange} />
+              <ImageField
+                onChange={this.handleFileInputChange}
+                variant="square"
+              />
             )}
 
             <TextField

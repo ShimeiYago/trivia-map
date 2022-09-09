@@ -24,6 +24,15 @@ exports[`Shallow Snapshot Tests basic 1`] = `
         >
           プロフィール
         </ForwardRef(Typography)>
+        <ForwardRef(Box)>
+          <ImageField
+            disabled={false}
+            error={false}
+            onChange={[Function]}
+            src="https://..."
+            variant="icon"
+          />
+        </ForwardRef(Box)>
         <ForwardRef(Box)
           sx={
             Object {
@@ -40,7 +49,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
               }
             }
           >
-            メールアドレス
+            メールアドレス（非公開）
           </ForwardRef(Typography)>
           <ForwardRef(Typography)
             fontSize={18}
@@ -120,6 +129,20 @@ exports[`Shallow Snapshot Tests error case 1`] = `
           }
           errorTitle="error title"
         />
+        <ForwardRef(Box)>
+          <ImageField
+            disabled={false}
+            error={true}
+            helperText={
+              Array [
+                "nickname is invalid",
+              ]
+            }
+            onChange={[Function]}
+            src="https://..."
+            variant="icon"
+          />
+        </ForwardRef(Box)>
         <ForwardRef(Box)
           sx={
             Object {
@@ -136,7 +159,7 @@ exports[`Shallow Snapshot Tests error case 1`] = `
               }
             }
           >
-            メールアドレス
+            メールアドレス（非公開）
           </ForwardRef(Typography)>
           <ForwardRef(Typography)
             fontSize={18}
@@ -212,6 +235,15 @@ exports[`Shallow Snapshot Tests loading 1`] = `
         >
           プロフィール
         </ForwardRef(Typography)>
+        <ForwardRef(Box)>
+          <ImageField
+            disabled={true}
+            error={false}
+            onChange={[Function]}
+            src="https://..."
+            variant="icon"
+          />
+        </ForwardRef(Box)>
         <ForwardRef(Box)
           sx={
             Object {
@@ -228,7 +260,7 @@ exports[`Shallow Snapshot Tests loading 1`] = `
               }
             }
           >
-            メールアドレス
+            メールアドレス（非公開）
           </ForwardRef(Typography)>
           <ForwardRef(Typography)
             fontSize={18}
@@ -302,6 +334,15 @@ exports[`Shallow Snapshot Tests success 1`] = `
         <ForwardRef(Alert)>
           ユーザー情報を変更しました。
         </ForwardRef(Alert)>
+        <ForwardRef(Box)>
+          <ImageField
+            disabled={false}
+            error={false}
+            onChange={[Function]}
+            src="https://..."
+            variant="icon"
+          />
+        </ForwardRef(Box)>
         <ForwardRef(Box)
           sx={
             Object {
@@ -318,7 +359,198 @@ exports[`Shallow Snapshot Tests success 1`] = `
               }
             }
           >
-            メールアドレス
+            メールアドレス（非公開）
+          </ForwardRef(Typography)>
+          <ForwardRef(Typography)
+            fontSize={18}
+          >
+            xxx@example.com
+          </ForwardRef(Typography)>
+        </ForwardRef(Box)>
+        <ForwardRef(Box)
+          component="form"
+          noValidate={true}
+        >
+          <ForwardRef(TextField)
+            disabled={false}
+            error={false}
+            fullWidth={true}
+            id="nickname"
+            label="名前"
+            margin="normal"
+            name="nickname"
+            onChange={[Function]}
+            required={true}
+            type="nickname"
+            value="Axel"
+          />
+          <ForwardRef(LoadingButton)
+            disabled={false}
+            fullWidth={true}
+            loading={false}
+            onClick={[Function]}
+            sx={
+              Object {
+                "mb": 2,
+                "mt": 3,
+              }
+            }
+            variant="contained"
+          >
+            更新
+          </ForwardRef(LoadingButton)>
+        </ForwardRef(Box)>
+      </ForwardRef(Stack)>
+    </ForwardRef(Box)>
+  </ForwardRef(Stack)>
+</AdminWrapper>
+`;
+
+exports[`Shallow Snapshot Tests with icon as file 1`] = `
+<AdminWrapper>
+  <ForwardRef(Stack)
+    spacing={3}
+  >
+    <BackToAccountSettingNavi />
+    <ForwardRef(Box)>
+      <ForwardRef(Stack)
+        spacing={1}
+        sx={
+          Object {
+            "maxWidth": "400px",
+            "mx": "auto",
+            "px": 1,
+          }
+        }
+      >
+        <ForwardRef(Typography)
+          align="center"
+          component="h2"
+          variant="h5"
+        >
+          プロフィール
+        </ForwardRef(Typography)>
+        <ForwardRef(Box)>
+          <ImageField
+            disabled={false}
+            error={false}
+            onChange={[Function]}
+            src="data-url"
+            variant="icon"
+          />
+        </ForwardRef(Box)>
+        <ForwardRef(Box)
+          sx={
+            Object {
+              "pl": 1.5,
+            }
+          }
+        >
+          <ForwardRef(Typography)
+            color="gray"
+            fontSize={12}
+            sx={
+              Object {
+                "pb": 0.5,
+              }
+            }
+          >
+            メールアドレス（非公開）
+          </ForwardRef(Typography)>
+          <ForwardRef(Typography)
+            fontSize={18}
+          >
+            xxx@example.com
+          </ForwardRef(Typography)>
+        </ForwardRef(Box)>
+        <ForwardRef(Box)
+          component="form"
+          noValidate={true}
+        >
+          <ForwardRef(TextField)
+            disabled={false}
+            error={false}
+            fullWidth={true}
+            id="nickname"
+            label="名前"
+            margin="normal"
+            name="nickname"
+            onChange={[Function]}
+            required={true}
+            type="nickname"
+            value="Axel"
+          />
+          <ForwardRef(LoadingButton)
+            disabled={false}
+            fullWidth={true}
+            loading={false}
+            onClick={[Function]}
+            sx={
+              Object {
+                "mb": 2,
+                "mt": 3,
+              }
+            }
+            variant="contained"
+          >
+            更新
+          </ForwardRef(LoadingButton)>
+        </ForwardRef(Box)>
+      </ForwardRef(Stack)>
+    </ForwardRef(Box)>
+  </ForwardRef(Stack)>
+</AdminWrapper>
+`;
+
+exports[`Shallow Snapshot Tests with icon as null 1`] = `
+<AdminWrapper>
+  <ForwardRef(Stack)
+    spacing={3}
+  >
+    <BackToAccountSettingNavi />
+    <ForwardRef(Box)>
+      <ForwardRef(Stack)
+        spacing={1}
+        sx={
+          Object {
+            "maxWidth": "400px",
+            "mx": "auto",
+            "px": 1,
+          }
+        }
+      >
+        <ForwardRef(Typography)
+          align="center"
+          component="h2"
+          variant="h5"
+        >
+          プロフィール
+        </ForwardRef(Typography)>
+        <ForwardRef(Box)>
+          <ImageField
+            disabled={false}
+            error={false}
+            onChange={[Function]}
+            variant="icon"
+          />
+        </ForwardRef(Box)>
+        <ForwardRef(Box)
+          sx={
+            Object {
+              "pl": 1.5,
+            }
+          }
+        >
+          <ForwardRef(Typography)
+            color="gray"
+            fontSize={12}
+            sx={
+              Object {
+                "pb": 0.5,
+              }
+            }
+          >
+            メールアドレス（非公開）
           </ForwardRef(Typography)>
           <ForwardRef(Typography)
             fontSize={18}

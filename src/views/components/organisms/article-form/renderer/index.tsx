@@ -34,9 +34,8 @@ import { ImageField } from 'views/components/moleculars/image-field';
 import { DeletableImage } from 'views/components/moleculars/deletable-image';
 import { HeaderErrorMessages } from 'views/components/moleculars/header-error-messages';
 import { User } from 'types/user';
-import { CATEGORIES } from 'constant';
+import { CATEGORIES, UPLOAD_IMAGE_MAX_LENGTH } from 'constant';
 import { SelializedImageFile } from 'types/selialized-image-file';
-import { resizeAndConvertToSelializedImageFile } from 'utils/resize-and-convert-to-selialized-image-file.ts';
 import { Park } from 'types/park';
 import { AreaNames } from 'views/components/atoms/area-names';
 
@@ -154,8 +153,10 @@ export class Renderer extends React.Component<Props> {
               />
             ) : (
               <ImageField
-                onChange={this.handleFileInputChange}
+                onChange={this.handleImageChange}
                 variant="square"
+                maxLength={UPLOAD_IMAGE_MAX_LENGTH.article}
+                onCatchError={this.handleError}
               />
             )}
 
@@ -331,27 +332,8 @@ export class Renderer extends React.Component<Props> {
     return <HeaderErrorMessages errorTitle={formError.errorTitle} />;
   }
 
-  protected handleFileInputChange = async (
-    e: React.ChangeEvent<HTMLInputElement>,
-  ) => {
-    const files = e.target.files;
-    if (files && files.length > 0) {
-      const file = files[0];
-
-      // convert file to SelializedImageFile
-      try {
-        const selializedImageFile = await resizeAndConvertToSelializedImageFile(
-          file,
-        );
-        this.props.updateFormField({
-          image: selializedImageFile,
-        });
-      } catch (error: unknown) {
-        this.props.throwError(500);
-      }
-    } else {
-      this.props.updateFormField({ image: null });
-    }
+  protected handleImageChange = (src: SelializedImageFile | null) => {
+    this.props.updateFormField({ image: src });
   };
 
   protected handleDeleteImage = () => {
@@ -374,6 +356,10 @@ export class Renderer extends React.Component<Props> {
     // SelializedImageFile case
     return this.props.image.dataUrl;
   }
+
+  protected handleError = () => {
+    this.props.throwError(500);
+  };
 }
 
 export type Props = {

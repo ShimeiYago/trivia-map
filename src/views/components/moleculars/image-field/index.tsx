@@ -1,11 +1,24 @@
 import React from 'react';
-import { Typography } from '@mui/material';
+import { Box, Button, Typography } from '@mui/material';
 import styles from './index.module.css';
 import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
+import { SelializedImageFile } from 'types/selialized-image-file';
+import { resizeAndConvertToSelializedImageFile } from 'utils/resize-and-convert-to-selialized-image-file.ts';
+import { UploadedImage } from 'types/uploaded-image';
+import ReactCrop, { PercentCrop, PixelCrop } from 'react-image-crop';
+import { getImageSize } from 'utils/get-image-size.ts';
+import { BoxModal } from '../box-modal';
 
-export class ImageField extends React.Component<Props> {
+export class ImageField extends React.Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
+    this.state = {
+      openCropModal: false,
+    };
+  }
+
   render() {
-    const { helperText, onChange, disabled, src, variant } = this.props;
+    const { helperText, disabled, src, variant } = this.props;
 
     const labelClassNames = this.getLabelClassNames();
     const imgClassNames = this.getImgClassNames();
@@ -19,7 +32,7 @@ export class ImageField extends React.Component<Props> {
             <input
               type="file"
               accept="image/*"
-              onChange={onChange}
+              onChange={this.handleFileInputChange}
               className={styles['input-image']}
             />
           )}
@@ -42,8 +55,139 @@ export class ImageField extends React.Component<Props> {
             {helperText}
           </Typography>
         )}
+
+        {this.renderCropModal()}
       </div>
     );
+  }
+
+  protected handleFileInputChange = async (
+    e: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    const files = e.target.files;
+
+    if (!files || files.length === 0) {
+      this.props.onChange(null);
+      return;
+    }
+
+    const file = files[0];
+
+    if (!this.props.cropable) {
+      try {
+        const selializedImage = await resizeAndConvertToSelializedImageFile(
+          file,
+          this.props.maxLength,
+        );
+        this.props.onChange(selializedImage);
+      } catch (e: unknown) {
+        this.props.onCatchError();
+      }
+      return;
+    }
+
+    const objectUrl = URL.createObjectURL(file);
+
+    this.setState({
+      uploadedImage: {
+        objectUrl: objectUrl,
+        fileType: file.type,
+        fileName: file.name,
+      },
+      openCropModal: true,
+    });
+
+    const initialCrop = await this.getInitialCrop(objectUrl);
+    this.setState({
+      crop: initialCrop,
+    });
+
+    // initialize file input field
+    e.target.value = '';
+  };
+
+  protected renderCropModal() {
+    const { openCropModal, uploadedImage } = this.state;
+
+    const aspect = this.props.variant === 'icon' ? 1 : undefined;
+
+    return (
+      <BoxModal open={openCropModal}>
+        <Box sx={{ m: 2, textAlign: 'center' }}>
+          <ReactCrop
+            crop={this.state.crop}
+            aspect={aspect}
+            onChange={this.handleChangeCrop}
+          >
+            <img src={uploadedImage?.objectUrl} />
+          </ReactCrop>
+        </Box>
+        <Typography align="right" sx={{ m: 2 }}>
+          <Button variant="contained" onClick={this.handleFinishCrop}>
+            決定
+          </Button>
+        </Typography>
+      </BoxModal>
+    );
+  }
+
+  protected handleChangeCrop = (_: PixelCrop, percentageCrop: PercentCrop) => {
+    this.setState({
+      crop: percentageCrop,
+    });
+  };
+
+  protected handleFinishCrop = async () => {
+    const { uploadedImage, crop } = this.state;
+
+    // convert file to SelializedImageFile
+    try {
+      const selializedImageFile = await resizeAndConvertToSelializedImageFile(
+        uploadedImage as UploadedImage,
+        this.props.maxLength,
+        crop,
+      );
+      this.props.onChange(selializedImageFile);
+
+      this.setState({
+        openCropModal: false,
+        uploadedImage: undefined,
+        crop: undefined,
+      });
+    } catch (error: unknown) {
+      this.props.onCatchError();
+    }
+  };
+
+  protected async getInitialCrop(objectUrl: string): Promise<PercentCrop> {
+    if (this.props.variant === 'square') {
+      return {
+        unit: '%',
+        x: 25,
+        y: 25,
+        width: 50,
+        height: 50,
+      };
+    }
+
+    const aspect = (await getImageSize(objectUrl)).aspect;
+    if (aspect <= 1) {
+      return {
+        unit: '%',
+        x: 50 - (100 * aspect) / 2,
+        y: 0,
+        width: aspect * 100,
+        height: 100,
+      };
+    } else {
+      return {
+        unit: '%',
+        x: 0,
+        y: 50 - 100 / (2 * aspect),
+        width: 100,
+        height: 100 / aspect,
+      };
+    }
   }
 
   protected getLabelClassNames() {
@@ -117,8 +261,18 @@ export class ImageField extends React.Component<Props> {
 export type Props = {
   error?: boolean;
   helperText?: React.ReactNode;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  cropable?: boolean;
   disabled?: boolean;
   variant: 'square' | 'icon';
   src?: string;
+  maxLength: number;
+
+  onChange: (src: SelializedImageFile | null) => void;
+  onCatchError: () => void;
+};
+
+export type State = {
+  openCropModal: boolean;
+  uploadedImage?: UploadedImage;
+  crop?: PercentCrop;
 };

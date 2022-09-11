@@ -63,6 +63,8 @@ exports[`Shallow Snapshot Tests basic 1`] = `
         </ForwardRef(Select)>
       </ForwardRef(FormControl)>
       <ImageField
+        maxLength={1000}
+        onCatchError={[Function]}
         onChange={[Function]}
         variant="square"
       />
@@ -258,6 +260,8 @@ exports[`Shallow Snapshot Tests draft mode 1`] = `
         </ForwardRef(Select)>
       </ForwardRef(FormControl)>
       <ImageField
+        maxLength={1000}
+        onCatchError={[Function]}
         onChange={[Function]}
         variant="square"
       />
@@ -463,6 +467,8 @@ exports[`Shallow Snapshot Tests loading 1`] = `
         </ForwardRef(Select)>
       </ForwardRef(FormControl)>
       <ImageField
+        maxLength={1000}
+        onCatchError={[Function]}
         onChange={[Function]}
         variant="square"
       />
@@ -628,6 +634,8 @@ exports[`Shallow Snapshot Tests position is not selected yet 1`] = `
         </ForwardRef(Select)>
       </ForwardRef(FormControl)>
       <ImageField
+        maxLength={1000}
+        onCatchError={[Function]}
         onChange={[Function]}
         variant="square"
       />
@@ -816,6 +824,8 @@ exports[`Shallow Snapshot Tests with category 1`] = `
         </ForwardRef(Select)>
       </ForwardRef(FormControl)>
       <ImageField
+        maxLength={1000}
+        onCatchError={[Function]}
         onChange={[Function]}
         variant="square"
       />
@@ -1026,6 +1036,8 @@ exports[`Shallow Snapshot Tests with close button 1`] = `
         </ForwardRef(Select)>
       </ForwardRef(FormControl)>
       <ImageField
+        maxLength={1000}
+        onCatchError={[Function]}
         onChange={[Function]}
         variant="square"
       />
@@ -1622,6 +1634,8 @@ exports[`Shallow Snapshot Tests with validation error 1`] = `
         </ForwardRef(Select)>
       </ForwardRef(FormControl)>
       <ImageField
+        maxLength={1000}
+        onCatchError={[Function]}
         onChange={[Function]}
         variant="square"
       />

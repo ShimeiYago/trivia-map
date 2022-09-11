@@ -15,7 +15,8 @@ import { autoRefreshApiWrapper } from 'utils/auto-refresh-api-wrapper';
 import { BackToAccountSettingNavi } from 'views/components/moleculars/back-to-account-setting-navi';
 import { SelializedImageFile } from 'types/selialized-image-file';
 import { ImageField } from 'views/components/moleculars/image-field';
-import { resizeAndConvertToSelializedImageFile } from 'utils/resize-and-convert-to-selialized-image-file.ts';
+import 'react-image-crop/dist/ReactCrop.css';
+import { UPLOAD_IMAGE_MAX_LENGTH } from 'constant';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -64,10 +65,13 @@ export class Renderer extends React.Component<Props, State> {
             <ImageField
               variant="icon"
               src={this.getSrc()}
-              onChange={this.handleFileInputChange}
               disabled={disabled}
               helperText={this.state.formError?.nickname}
               error={!!this.state.formError?.nickname}
+              maxLength={UPLOAD_IMAGE_MAX_LENGTH.icon}
+              onChange={this.handleChangeImage}
+              onCatchError={this.handleError}
+              cropable
             />
           </Box>
 
@@ -154,29 +158,10 @@ export class Renderer extends React.Component<Props, State> {
     });
   };
 
-  protected handleFileInputChange = async (
-    e: React.ChangeEvent<HTMLInputElement>,
-  ) => {
-    const files = e.target.files;
-    if (files && files.length > 0) {
-      const file = files[0];
-
-      // convert file to SelializedImageFile
-      try {
-        const selializedImageFile = await resizeAndConvertToSelializedImageFile(
-          file,
-        );
-        this.setState({
-          icon: selializedImageFile,
-        });
-      } catch (error: unknown) {
-        this.props.throwError(500);
-      }
-    } else {
-      this.setState({
-        icon: null,
-      });
-    }
+  protected handleChangeImage = (src: SelializedImageFile | null) => {
+    this.setState({
+      icon: src,
+    });
   };
 
   protected handleSubmit = async () => {
@@ -216,6 +201,10 @@ export class Renderer extends React.Component<Props, State> {
         loadingState: 'error',
       });
     }
+  };
+
+  protected handleError = () => {
+    this.props.throwError(500);
   };
 }
 

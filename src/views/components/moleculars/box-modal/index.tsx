@@ -14,6 +14,6 @@ export class BoxModal extends React.Component<Props> {
 
 export type Props = {
   open: boolean;
-  onClose: () => void;
+  onClose?: () => void;
   children: ReactNode;
 };

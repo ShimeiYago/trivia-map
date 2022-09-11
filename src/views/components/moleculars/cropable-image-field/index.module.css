@@ -1,0 +1,68 @@
+.input-image {
+  display: none;
+}
+
+.label {
+  display: block;
+  position: relative;
+  color: #5a5a5a;
+}
+.label-active {
+  cursor: pointer;
+}
+.label-active:hover {
+  border-color: #5a5a5a;
+  color: #101010;
+}
+.label-noimage {
+  border: 2px #c4c4c4 dashed;
+}
+
+.variant-square {
+  border-radius: 8px;
+  width: 100%;
+  height: 200px;
+}
+
+.variant-icon {
+  border-radius: 50px;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+}
+
+.img {
+  object-fit: cover;
+}
+
+.content {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  background:rgba(255,255,255,0.7);
+}
+.content-large {
+  width: 200px;
+  border-radius: 8px;
+  padding: 10px 0;
+}
+.content-small {
+  width: 50px;
+  border-radius: 8px;
+}
+
+.helper-text {
+  margin: 3px 14px 0;
+  color: #747474;
+  font-size: 0.75rem;
+}
+.helper-text-center {
+  text-align: center;
+}
+
+.helper-text-error {
+  color: #d32f2f;
+}

@@ -8,7 +8,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
     <input
       accept="image/*"
       className="input-image"
-      onChange={[MockFunction]}
+      onChange={[Function]}
       type="file"
     />
     <div
@@ -24,6 +24,52 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       </ForwardRef(Typography)>
     </div>
   </label>
+  <BoxModal
+    open={false}
+  >
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "m": 2,
+          "textAlign": "center",
+        }
+      }
+    >
+      <u
+        ariaLabels={
+          Object {
+            "cropArea": "Use the arrow keys to move the crop selection area",
+            "eDragHandle": "Use the up and down arrow keys to move the east drag handle to change the crop selection area",
+            "nDragHandle": "Use the up and down arrow keys to move the north drag handle to change the crop selection area",
+            "neDragHandle": "Use the arrow keys to move the north east drag handle to change the crop selection area",
+            "nwDragHandle": "Use the arrow keys to move the north west drag handle to change the crop selection area",
+            "sDragHandle": "Use the up and down arrow keys to move the south drag handle to change the crop selection area",
+            "seDragHandle": "Use the arrow keys to move the south east drag handle to change the crop selection area",
+            "swDragHandle": "Use the arrow keys to move the south west drag handle to change the crop selection area",
+            "wDragHandle": "Use the up and down arrow keys to move the west drag handle to change the crop selection area",
+          }
+        }
+        onChange={[Function]}
+      >
+        <img />
+      </u>
+    </ForwardRef(Box)>
+    <ForwardRef(Typography)
+      align="right"
+      sx={
+        Object {
+          "m": 2,
+        }
+      }
+    >
+      <ForwardRef(Button)
+        onClick={[Function]}
+        variant="contained"
+      >
+        決定
+      </ForwardRef(Button)>
+    </ForwardRef(Typography)>
+  </BoxModal>
 </div>
 `;
 
@@ -32,6 +78,52 @@ exports[`Shallow Snapshot Tests disabled 1`] = `
   <label
     className="label variant-square label-noimage"
   />
+  <BoxModal
+    open={false}
+  >
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "m": 2,
+          "textAlign": "center",
+        }
+      }
+    >
+      <u
+        ariaLabels={
+          Object {
+            "cropArea": "Use the arrow keys to move the crop selection area",
+            "eDragHandle": "Use the up and down arrow keys to move the east drag handle to change the crop selection area",
+            "nDragHandle": "Use the up and down arrow keys to move the north drag handle to change the crop selection area",
+            "neDragHandle": "Use the arrow keys to move the north east drag handle to change the crop selection area",
+            "nwDragHandle": "Use the arrow keys to move the north west drag handle to change the crop selection area",
+            "sDragHandle": "Use the up and down arrow keys to move the south drag handle to change the crop selection area",
+            "seDragHandle": "Use the arrow keys to move the south east drag handle to change the crop selection area",
+            "swDragHandle": "Use the arrow keys to move the south west drag handle to change the crop selection area",
+            "wDragHandle": "Use the up and down arrow keys to move the west drag handle to change the crop selection area",
+          }
+        }
+        onChange={[Function]}
+      >
+        <img />
+      </u>
+    </ForwardRef(Box)>
+    <ForwardRef(Typography)
+      align="right"
+      sx={
+        Object {
+          "m": 2,
+        }
+      }
+    >
+      <ForwardRef(Button)
+        onClick={[Function]}
+        variant="contained"
+      >
+        決定
+      </ForwardRef(Button)>
+    </ForwardRef(Typography)>
+  </BoxModal>
 </div>
 `;
 
@@ -43,7 +135,7 @@ exports[`Shallow Snapshot Tests icon 1`] = `
     <input
       accept="image/*"
       className="input-image"
-      onChange={[MockFunction]}
+      onChange={[Function]}
       type="file"
     />
     <div
@@ -56,6 +148,126 @@ exports[`Shallow Snapshot Tests icon 1`] = `
       </ForwardRef(Typography)>
     </div>
   </label>
+  <BoxModal
+    open={false}
+  >
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "m": 2,
+          "textAlign": "center",
+        }
+      }
+    >
+      <u
+        ariaLabels={
+          Object {
+            "cropArea": "Use the arrow keys to move the crop selection area",
+            "eDragHandle": "Use the up and down arrow keys to move the east drag handle to change the crop selection area",
+            "nDragHandle": "Use the up and down arrow keys to move the north drag handle to change the crop selection area",
+            "neDragHandle": "Use the arrow keys to move the north east drag handle to change the crop selection area",
+            "nwDragHandle": "Use the arrow keys to move the north west drag handle to change the crop selection area",
+            "sDragHandle": "Use the up and down arrow keys to move the south drag handle to change the crop selection area",
+            "seDragHandle": "Use the arrow keys to move the south east drag handle to change the crop selection area",
+            "swDragHandle": "Use the arrow keys to move the south west drag handle to change the crop selection area",
+            "wDragHandle": "Use the up and down arrow keys to move the west drag handle to change the crop selection area",
+          }
+        }
+        aspect={1}
+        onChange={[Function]}
+      >
+        <img />
+      </u>
+    </ForwardRef(Box)>
+    <ForwardRef(Typography)
+      align="right"
+      sx={
+        Object {
+          "m": 2,
+        }
+      }
+    >
+      <ForwardRef(Button)
+        onClick={[Function]}
+        variant="contained"
+      >
+        決定
+      </ForwardRef(Button)>
+    </ForwardRef(Typography)>
+  </BoxModal>
+</div>
+`;
+
+exports[`Shallow Snapshot Tests open modal 1`] = `
+<div>
+  <label
+    className="label variant-square label-active label-noimage"
+  >
+    <input
+      accept="image/*"
+      className="input-image"
+      onChange={[Function]}
+      type="file"
+    />
+    <div
+      className="content content-large"
+    >
+      <ForwardRef(Typography)>
+        <Memo(ForwardRef(AddAPhotoIcon))
+          fontSize="large"
+        />
+      </ForwardRef(Typography)>
+      <ForwardRef(Typography)>
+        タップして写真を追加
+      </ForwardRef(Typography)>
+    </div>
+  </label>
+  <BoxModal
+    open={true}
+  >
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "m": 2,
+          "textAlign": "center",
+        }
+      }
+    >
+      <u
+        ariaLabels={
+          Object {
+            "cropArea": "Use the arrow keys to move the crop selection area",
+            "eDragHandle": "Use the up and down arrow keys to move the east drag handle to change the crop selection area",
+            "nDragHandle": "Use the up and down arrow keys to move the north drag handle to change the crop selection area",
+            "neDragHandle": "Use the arrow keys to move the north east drag handle to change the crop selection area",
+            "nwDragHandle": "Use the arrow keys to move the north west drag handle to change the crop selection area",
+            "sDragHandle": "Use the up and down arrow keys to move the south drag handle to change the crop selection area",
+            "seDragHandle": "Use the arrow keys to move the south east drag handle to change the crop selection area",
+            "swDragHandle": "Use the arrow keys to move the south west drag handle to change the crop selection area",
+            "wDragHandle": "Use the up and down arrow keys to move the west drag handle to change the crop selection area",
+          }
+        }
+        onChange={[Function]}
+      >
+        <img />
+      </u>
+    </ForwardRef(Box)>
+    <ForwardRef(Typography)
+      align="right"
+      sx={
+        Object {
+          "m": 2,
+        }
+      }
+    >
+      <ForwardRef(Button)
+        onClick={[Function]}
+        variant="contained"
+      >
+        決定
+      </ForwardRef(Button)>
+    </ForwardRef(Typography)>
+  </BoxModal>
 </div>
 `;
 
@@ -67,7 +279,7 @@ exports[`Shallow Snapshot Tests with error & helperText 1`] = `
     <input
       accept="image/*"
       className="input-image"
-      onChange={[MockFunction]}
+      onChange={[Function]}
       type="file"
     />
     <div
@@ -88,6 +300,52 @@ exports[`Shallow Snapshot Tests with error & helperText 1`] = `
   >
     text
   </ForwardRef(Typography)>
+  <BoxModal
+    open={false}
+  >
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "m": 2,
+          "textAlign": "center",
+        }
+      }
+    >
+      <u
+        ariaLabels={
+          Object {
+            "cropArea": "Use the arrow keys to move the crop selection area",
+            "eDragHandle": "Use the up and down arrow keys to move the east drag handle to change the crop selection area",
+            "nDragHandle": "Use the up and down arrow keys to move the north drag handle to change the crop selection area",
+            "neDragHandle": "Use the arrow keys to move the north east drag handle to change the crop selection area",
+            "nwDragHandle": "Use the arrow keys to move the north west drag handle to change the crop selection area",
+            "sDragHandle": "Use the up and down arrow keys to move the south drag handle to change the crop selection area",
+            "seDragHandle": "Use the arrow keys to move the south east drag handle to change the crop selection area",
+            "swDragHandle": "Use the arrow keys to move the south west drag handle to change the crop selection area",
+            "wDragHandle": "Use the up and down arrow keys to move the west drag handle to change the crop selection area",
+          }
+        }
+        onChange={[Function]}
+      >
+        <img />
+      </u>
+    </ForwardRef(Box)>
+    <ForwardRef(Typography)
+      align="right"
+      sx={
+        Object {
+          "m": 2,
+        }
+      }
+    >
+      <ForwardRef(Button)
+        onClick={[Function]}
+        variant="contained"
+      >
+        決定
+      </ForwardRef(Button)>
+    </ForwardRef(Typography)>
+  </BoxModal>
 </div>
 `;
 
@@ -99,7 +357,7 @@ exports[`Shallow Snapshot Tests with error 1`] = `
     <input
       accept="image/*"
       className="input-image"
-      onChange={[MockFunction]}
+      onChange={[Function]}
       type="file"
     />
     <div
@@ -115,6 +373,52 @@ exports[`Shallow Snapshot Tests with error 1`] = `
       </ForwardRef(Typography)>
     </div>
   </label>
+  <BoxModal
+    open={false}
+  >
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "m": 2,
+          "textAlign": "center",
+        }
+      }
+    >
+      <u
+        ariaLabels={
+          Object {
+            "cropArea": "Use the arrow keys to move the crop selection area",
+            "eDragHandle": "Use the up and down arrow keys to move the east drag handle to change the crop selection area",
+            "nDragHandle": "Use the up and down arrow keys to move the north drag handle to change the crop selection area",
+            "neDragHandle": "Use the arrow keys to move the north east drag handle to change the crop selection area",
+            "nwDragHandle": "Use the arrow keys to move the north west drag handle to change the crop selection area",
+            "sDragHandle": "Use the up and down arrow keys to move the south drag handle to change the crop selection area",
+            "seDragHandle": "Use the arrow keys to move the south east drag handle to change the crop selection area",
+            "swDragHandle": "Use the arrow keys to move the south west drag handle to change the crop selection area",
+            "wDragHandle": "Use the up and down arrow keys to move the west drag handle to change the crop selection area",
+          }
+        }
+        onChange={[Function]}
+      >
+        <img />
+      </u>
+    </ForwardRef(Box)>
+    <ForwardRef(Typography)
+      align="right"
+      sx={
+        Object {
+          "m": 2,
+        }
+      }
+    >
+      <ForwardRef(Button)
+        onClick={[Function]}
+        variant="contained"
+      >
+        決定
+      </ForwardRef(Button)>
+    </ForwardRef(Typography)>
+  </BoxModal>
 </div>
 `;
 
@@ -126,7 +430,7 @@ exports[`Shallow Snapshot Tests with helperText 1`] = `
     <input
       accept="image/*"
       className="input-image"
-      onChange={[MockFunction]}
+      onChange={[Function]}
       type="file"
     />
     <div
@@ -147,6 +451,52 @@ exports[`Shallow Snapshot Tests with helperText 1`] = `
   >
     text
   </ForwardRef(Typography)>
+  <BoxModal
+    open={false}
+  >
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "m": 2,
+          "textAlign": "center",
+        }
+      }
+    >
+      <u
+        ariaLabels={
+          Object {
+            "cropArea": "Use the arrow keys to move the crop selection area",
+            "eDragHandle": "Use the up and down arrow keys to move the east drag handle to change the crop selection area",
+            "nDragHandle": "Use the up and down arrow keys to move the north drag handle to change the crop selection area",
+            "neDragHandle": "Use the arrow keys to move the north east drag handle to change the crop selection area",
+            "nwDragHandle": "Use the arrow keys to move the north west drag handle to change the crop selection area",
+            "sDragHandle": "Use the up and down arrow keys to move the south drag handle to change the crop selection area",
+            "seDragHandle": "Use the arrow keys to move the south east drag handle to change the crop selection area",
+            "swDragHandle": "Use the arrow keys to move the south west drag handle to change the crop selection area",
+            "wDragHandle": "Use the up and down arrow keys to move the west drag handle to change the crop selection area",
+          }
+        }
+        onChange={[Function]}
+      >
+        <img />
+      </u>
+    </ForwardRef(Box)>
+    <ForwardRef(Typography)
+      align="right"
+      sx={
+        Object {
+          "m": 2,
+        }
+      }
+    >
+      <ForwardRef(Button)
+        onClick={[Function]}
+        variant="contained"
+      >
+        決定
+      </ForwardRef(Button)>
+    </ForwardRef(Typography)>
+  </BoxModal>
 </div>
 `;
 
@@ -158,7 +508,7 @@ exports[`Shallow Snapshot Tests with src 1`] = `
     <input
       accept="image/*"
       className="input-image"
-      onChange={[MockFunction]}
+      onChange={[Function]}
       type="file"
     />
     <img
@@ -178,5 +528,51 @@ exports[`Shallow Snapshot Tests with src 1`] = `
       </ForwardRef(Typography)>
     </div>
   </label>
+  <BoxModal
+    open={false}
+  >
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "m": 2,
+          "textAlign": "center",
+        }
+      }
+    >
+      <u
+        ariaLabels={
+          Object {
+            "cropArea": "Use the arrow keys to move the crop selection area",
+            "eDragHandle": "Use the up and down arrow keys to move the east drag handle to change the crop selection area",
+            "nDragHandle": "Use the up and down arrow keys to move the north drag handle to change the crop selection area",
+            "neDragHandle": "Use the arrow keys to move the north east drag handle to change the crop selection area",
+            "nwDragHandle": "Use the arrow keys to move the north west drag handle to change the crop selection area",
+            "sDragHandle": "Use the up and down arrow keys to move the south drag handle to change the crop selection area",
+            "seDragHandle": "Use the arrow keys to move the south east drag handle to change the crop selection area",
+            "swDragHandle": "Use the arrow keys to move the south west drag handle to change the crop selection area",
+            "wDragHandle": "Use the up and down arrow keys to move the west drag handle to change the crop selection area",
+          }
+        }
+        onChange={[Function]}
+      >
+        <img />
+      </u>
+    </ForwardRef(Box)>
+    <ForwardRef(Typography)
+      align="right"
+      sx={
+        Object {
+          "m": 2,
+        }
+      }
+    >
+      <ForwardRef(Button)
+        onClick={[Function]}
+        variant="contained"
+      >
+        決定
+      </ForwardRef(Button)>
+    </ForwardRef(Typography)>
+  </BoxModal>
 </div>
 `;

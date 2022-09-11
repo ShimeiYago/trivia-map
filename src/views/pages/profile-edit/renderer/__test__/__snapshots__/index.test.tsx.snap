@@ -26,8 +26,11 @@ exports[`Shallow Snapshot Tests basic 1`] = `
         </ForwardRef(Typography)>
         <ForwardRef(Box)>
           <ImageField
+            cropable={true}
             disabled={false}
             error={false}
+            maxLength={200}
+            onCatchError={[Function]}
             onChange={[Function]}
             src="https://..."
             variant="icon"
@@ -131,6 +134,7 @@ exports[`Shallow Snapshot Tests error case 1`] = `
         />
         <ForwardRef(Box)>
           <ImageField
+            cropable={true}
             disabled={false}
             error={true}
             helperText={
@@ -138,6 +142,8 @@ exports[`Shallow Snapshot Tests error case 1`] = `
                 "nickname is invalid",
               ]
             }
+            maxLength={200}
+            onCatchError={[Function]}
             onChange={[Function]}
             src="https://..."
             variant="icon"
@@ -237,8 +243,11 @@ exports[`Shallow Snapshot Tests loading 1`] = `
         </ForwardRef(Typography)>
         <ForwardRef(Box)>
           <ImageField
+            cropable={true}
             disabled={true}
             error={false}
+            maxLength={200}
+            onCatchError={[Function]}
             onChange={[Function]}
             src="https://..."
             variant="icon"
@@ -336,8 +345,11 @@ exports[`Shallow Snapshot Tests success 1`] = `
         </ForwardRef(Alert)>
         <ForwardRef(Box)>
           <ImageField
+            cropable={true}
             disabled={false}
             error={false}
+            maxLength={200}
+            onCatchError={[Function]}
             onChange={[Function]}
             src="https://..."
             variant="icon"
@@ -432,8 +444,11 @@ exports[`Shallow Snapshot Tests with icon as file 1`] = `
         </ForwardRef(Typography)>
         <ForwardRef(Box)>
           <ImageField
+            cropable={true}
             disabled={false}
             error={false}
+            maxLength={200}
+            onCatchError={[Function]}
             onChange={[Function]}
             src="data-url"
             variant="icon"
@@ -528,8 +543,11 @@ exports[`Shallow Snapshot Tests with icon as null 1`] = `
         </ForwardRef(Typography)>
         <ForwardRef(Box)>
           <ImageField
+            cropable={true}
             disabled={false}
             error={false}
+            maxLength={200}
+            onCatchError={[Function]}
             onChange={[Function]}
             variant="icon"
           />

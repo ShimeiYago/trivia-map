@@ -8,7 +8,7 @@ const basicProps: Props = {
   position: new LatLng(0, 0),
   variant: 'blue',
   autoOpen: false,
-  map: {} as LeafletMap,
+  map: { flyTo: jest.fn() } as unknown as LeafletMap,
 };
 
 describe('Shallow Snapshot Tests', () => {

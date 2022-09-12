@@ -87,7 +87,7 @@ export class Renderer extends React.Component<Props, State> {
 
     if (this.props.variant === 'popup') {
       return (
-        <Box maxHeight={300} sx={{ overflow: 'scroll', py: 1 }}>
+        <Box maxHeight={240} sx={{ overflow: 'scroll', py: 1 }}>
           <Stack spacing={2}>{previewList}</Stack>
         </Box>
       );

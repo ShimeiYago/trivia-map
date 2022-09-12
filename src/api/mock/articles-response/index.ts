@@ -15,8 +15,7 @@ export const mockGetArticleResponse: GetArticleResponse = {
     numberOfPublicArticles: 1,
     areaNames: ['シー', 'メディテレーニアンハーバー', 'ポルトパラディーゾ'],
   },
-  image:
-    'https://www.disneyparkstory.com/wp-content/uploads/2017/02/CIMG9800.jpg',
+  image: 'https://disneyparkstory.com/wp-content/uploads/2017/02/CIMG9800.jpg',
   isDraft: false,
   author: {
     userId: 1,
@@ -51,7 +50,7 @@ export const mockGetArticlesPreviewsResponse: GetArticlesPreviewsResponse = {
       postId: 1,
       title: 'ノーチラス号のエンジン',
       image:
-        'https://www.disneyparkstory.com/wp-content/uploads/2017/02/CIMG9800.jpg',
+        'https://disneyparkstory.com/wp-content/uploads/2017/02/CIMG9800.jpg',
       category: 1,
     },
     {

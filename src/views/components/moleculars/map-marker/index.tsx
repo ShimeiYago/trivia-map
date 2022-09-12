@@ -9,7 +9,7 @@ import {
 
 import { defaultIcon, numberCircleIcon, redIcon } from './icons';
 import { CustomMarker } from './helpers/custom-marker';
-import { sleep } from 'utils/sleep';
+import { ZOOMS } from 'constant';
 
 export class MapMarker extends React.Component<Props, State> {
   static defaultProps: Pick<Props, 'variant' | 'draggable' | 'autoOpen'> = {
@@ -91,6 +91,7 @@ export class MapMarker extends React.Component<Props, State> {
         dragging: true,
       });
     },
+
     dragend: () => {
       const marker = this.markerRef.current;
       if (marker != null && this.props.onDragEnd) {
@@ -100,13 +101,20 @@ export class MapMarker extends React.Component<Props, State> {
         dragging: false,
       });
     },
+
     popupopen: () => {
       this.setState({
         isPopupOpened: true,
       });
+
+      const position = new LatLng(
+        this.props.position.lat + 30,
+        this.props.position.lng,
+      );
+      this.props.map.flyTo(position, ZOOMS.popupOpen);
     },
+
     popupclose: async () => {
-      await sleep(100);
       this.setState({
         isPopupOpened: false,
       });

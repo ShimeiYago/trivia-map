@@ -205,7 +205,11 @@ exports[`Shallow Snapshot Tests with popup 1`] = `
         },
       }
     }
-    map={Object {}}
+    map={
+      Object {
+        "flyTo": [MockFunction],
+      }
+    }
     popup="popup-text"
     position={
       Object {

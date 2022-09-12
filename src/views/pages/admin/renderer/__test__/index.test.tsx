@@ -8,6 +8,7 @@ const basicProps: Props = {
     userId: 1,
     nickname: 'Axel',
     email: 'xxx@example.com',
+    icon: 'https://...',
   },
 };
 

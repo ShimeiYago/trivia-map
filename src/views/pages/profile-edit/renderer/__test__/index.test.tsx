@@ -13,8 +13,10 @@ const basicProps: Props = {
     userId: 1,
     email: 'xxx@example.com',
     nickname: 'Axel',
+    icon: 'https://...',
   },
   updateUser: jest.fn(),
+  throwError: jest.fn(),
 };
 
 describe('Shallow Snapshot Tests', () => {
@@ -49,6 +51,51 @@ describe('Shallow Snapshot Tests', () => {
       loadingState: 'success',
     });
     expect(wrapper).toMatchSnapshot();
+  });
+
+  it('with icon as file', () => {
+    wrapper.setState({
+      icon: {
+        dataUrl: 'data-url',
+        fileName: 'file-name',
+      },
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('with icon as null', () => {
+    wrapper.setState({
+      icon: null,
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+});
+
+describe('componentDidUpdate', () => {
+  it('should set new user info', async () => {
+    wrapper = shallow(<Renderer {...basicProps} />);
+    const instance = wrapper.instance();
+
+    const prevProps = {
+      user: undefined,
+    } as Props;
+
+    instance['componentDidUpdate'](prevProps);
+
+    expect(instance.state.nickname).toBe('Axel');
+  });
+
+  it('should set no user info', async () => {
+    const props = {
+      user: undefined,
+    } as Props;
+
+    wrapper = shallow(<Renderer {...props} />);
+    const instance = wrapper.instance();
+
+    instance['componentDidUpdate'](basicProps);
+
+    expect(instance.state.nickname).toBe('');
   });
 });
 
@@ -126,5 +173,39 @@ describe('handleSubmit', () => {
     await instance['handleSubmit']();
 
     expect(instance.state.loadingState).toBe('error');
+  });
+});
+
+describe('handleChangeImage', () => {
+  beforeEach(() => {
+    wrapper = shallow(<Renderer {...basicProps} />);
+  });
+
+  it('set imageData when image is uploaded', async () => {
+    const instance = wrapper.instance();
+
+    const src = {
+      dataUrl: 'data:image/png;base64,xxx',
+      fileName: 'filename',
+    };
+    instance['handleChangeImage'](src);
+
+    expect(instance.state.icon).toEqual({
+      dataUrl: 'data:image/png;base64,xxx',
+      fileName: 'filename',
+    });
+  });
+});
+
+describe('handleError', () => {
+  beforeEach(() => {
+    wrapper = shallow(<Renderer {...basicProps} />);
+  });
+
+  it('should call throwError prop', () => {
+    const instance = wrapper.instance();
+    instance['handleError']();
+
+    expect(instance.props.throwError).toBeCalled();
   });
 });

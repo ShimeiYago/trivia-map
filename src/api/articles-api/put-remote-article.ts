@@ -1,4 +1,4 @@
-import { SelializedImageFile } from './../../types/SelializedImageFile';
+import { SelializedImageFile } from '../../types/selialized-image-file';
 import { BASE_URL } from 'constant';
 import { AxiosError, AxiosResponse } from 'axios';
 import { handleAxiosError } from '../utils/handle-axios-error';
@@ -23,7 +23,9 @@ export async function putRemoteArticle(param: {
 }): Promise<PostArticleResponse> {
   const axiosInstance = getAxiosInstance({}, mockPostArticleResponse);
 
-  const uploadFile = param.image ? await convertToFile(param.image) : undefined;
+  const uploadFile = param.image
+    ? await convertToFile(param.image)
+    : param.image;
 
   const requestData: PostArticleRequest = {
     title: param.title,

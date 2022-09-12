@@ -7,5 +7,6 @@ export const mockLoginResponse: LoginResponse = {
     userId: 1,
     email: 'user@example.com',
     nickname: 'Axel',
+    icon: 'https://www.disneyparkstory.com/wp-content/uploads/2017/09/apple-touch-icon.png',
   },
 };

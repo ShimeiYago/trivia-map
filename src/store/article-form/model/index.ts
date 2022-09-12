@@ -1,4 +1,4 @@
-import { SelializedImageFile } from './../../../types/SelializedImageFile';
+import { SelializedImageFile } from '../../../types/selialized-image-file';
 import { LoadingState } from 'types/loading-state';
 import { Position } from 'types/position';
 

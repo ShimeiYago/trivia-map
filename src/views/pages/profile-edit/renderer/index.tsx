@@ -13,14 +13,28 @@ import { globalAPIErrorMessage } from 'constant/global-api-error-message';
 import { ApiError } from 'api/utils/handle-axios-error';
 import { autoRefreshApiWrapper } from 'utils/auto-refresh-api-wrapper';
 import { BackToAccountSettingNavi } from 'views/components/moleculars/back-to-account-setting-navi';
+import { SelializedImageFile } from 'types/selialized-image-file';
+import { ImageField } from 'views/components/moleculars/image-field';
+import 'react-image-crop/dist/ReactCrop.css';
+import { UPLOAD_IMAGE_MAX_LENGTH } from 'constant';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      nickname: '',
+      nickname: props.user?.nickname ?? '',
       loadingState: 'waiting',
+      icon: props.user?.icon ?? null,
     };
+  }
+
+  componentDidUpdate(prevProps: Readonly<Props>) {
+    if (JSON.stringify(prevProps.user) !== JSON.stringify(this.props.user)) {
+      this.setState({
+        nickname: this.props.user?.nickname ?? '',
+        icon: this.props.user?.icon ?? null,
+      });
+    }
   }
 
   render() {
@@ -46,6 +60,21 @@ export class Renderer extends React.Component<Props, State> {
             プロフィール
           </Typography>
           {this.renderHeaderInfo()}
+
+          <Box>
+            <ImageField
+              variant="icon"
+              src={this.getSrc()}
+              disabled={disabled}
+              helperText={this.state.formError?.nickname}
+              error={!!this.state.formError?.nickname}
+              maxLength={UPLOAD_IMAGE_MAX_LENGTH.icon}
+              onChange={this.handleChangeImage}
+              onCatchError={this.handleError}
+              cropable
+            />
+          </Box>
+
           {this.renderEmail()}
           <Box component="form" noValidate>
             <TextField
@@ -59,9 +88,10 @@ export class Renderer extends React.Component<Props, State> {
               helperText={this.state.formError?.nickname}
               error={!!this.state.formError?.nickname}
               onChange={this.handleChangeNickname}
-              value={this.props.user?.nickname}
+              value={this.state.nickname}
               required
             />
+
             <LoadingButton
               fullWidth
               variant="contained"
@@ -78,11 +108,25 @@ export class Renderer extends React.Component<Props, State> {
     );
   };
 
+  protected getSrc() {
+    const { icon } = this.state;
+
+    if (typeof icon === 'string') {
+      return icon;
+    }
+
+    if (icon === null) {
+      return undefined;
+    }
+
+    return icon.dataUrl;
+  }
+
   protected renderEmail = () => {
     return (
       <Box sx={{ pl: 1.5 }}>
         <Typography fontSize={12} color="gray" sx={{ pb: 0.5 }}>
-          メールアドレス
+          メールアドレス（非公開）
         </Typography>
         <Typography fontSize={18}>{this.props.user?.email}</Typography>
       </Box>
@@ -114,6 +158,12 @@ export class Renderer extends React.Component<Props, State> {
     });
   };
 
+  protected handleChangeImage = (src: SelializedImageFile | null) => {
+    this.setState({
+      icon: src,
+    });
+  };
+
   protected handleSubmit = async () => {
     this.setState({
       loadingState: 'loading',
@@ -124,7 +174,7 @@ export class Renderer extends React.Component<Props, State> {
 
     try {
       const res = await autoRefreshApiWrapper(() =>
-        updateUserInfo(this.state.nickname),
+        updateUserInfo({ nickname: this.state.nickname }),
       );
       this.props.updateUser(res);
       this.setState({
@@ -142,6 +192,7 @@ export class Renderer extends React.Component<Props, State> {
         this.setState({
           formError: {
             nickname: apiError.data.nickname,
+            icon: apiError.data.icon,
           },
         });
       }
@@ -151,16 +202,22 @@ export class Renderer extends React.Component<Props, State> {
       });
     }
   };
+
+  protected handleError = () => {
+    this.props.throwError(500);
+  };
 }
 
 export type Props = {
   user?: User;
 
   updateUser: (user: User) => void;
+  throwError: (errorStatus: number) => void;
 };
 
 export type State = {
   nickname: string;
+  icon: string | SelializedImageFile | null;
   loadingState: LoadingState;
   errorTitle?: string;
   errorMessages?: string[];
@@ -169,4 +226,5 @@ export type State = {
 
 type FormError = {
   nickname?: string[];
+  icon?: string[];
 };

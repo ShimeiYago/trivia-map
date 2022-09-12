@@ -1,4 +1,4 @@
-import { SelializedImageFile } from './../../../types/SelializedImageFile';
+import { SelializedImageFile } from '../../../types/selialized-image-file';
 import { selectArticleFormCategory } from './../selector/index';
 import { throwError } from 'store/global-error/slice';
 import { articleFormSlice } from '../slice';

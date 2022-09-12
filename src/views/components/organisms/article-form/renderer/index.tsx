@@ -146,8 +146,6 @@ export class Renderer extends React.Component<Props> {
               <DeletableImage
                 src={imageSrc}
                 width="full"
-                height="200px"
-                objectFit="cover"
                 borderRadius
                 onDelete={this.handleDeleteImage}
               />
@@ -157,6 +155,7 @@ export class Renderer extends React.Component<Props> {
                 variant="square"
                 maxLength={UPLOAD_IMAGE_MAX_LENGTH.article}
                 onCatchError={this.handleError}
+                cropable
               />
             )}
 

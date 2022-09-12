@@ -163,10 +163,10 @@ export class ImageField extends React.Component<Props, State> {
     if (this.props.variant === 'square') {
       return {
         unit: '%',
-        x: 25,
-        y: 25,
-        width: 50,
-        height: 50,
+        x: 10,
+        y: 10,
+        width: 80,
+        height: 80,
       };
     }
 

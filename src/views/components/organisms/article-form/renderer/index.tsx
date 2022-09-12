@@ -34,7 +34,7 @@ import { ImageField } from 'views/components/moleculars/image-field';
 import { DeletableImage } from 'views/components/moleculars/deletable-image';
 import { HeaderErrorMessages } from 'views/components/moleculars/header-error-messages';
 import { User } from 'types/user';
-import { CATEGORIES, UPLOAD_IMAGE_MAX_LENGTH } from 'constant';
+import { CATEGORIES, UPLOAD_IMAGE_MAX_LENGTH, ZOOMS } from 'constant';
 import { SelializedImageFile } from 'types/selialized-image-file';
 import { Park } from 'types/park';
 import { AreaNames } from 'views/components/atoms/area-names';
@@ -179,7 +179,7 @@ export class Renderer extends React.Component<Props> {
               <Box sx={miniMapWrapper}>
                 <TriviaMap
                   height={300}
-                  initZoom={3}
+                  initZoom={ZOOMS.miniMap}
                   initCenter={position}
                   disabled
                   doNotShowPostMarkers

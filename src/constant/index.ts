@@ -24,3 +24,11 @@ export const UPLOAD_IMAGE_MAX_LENGTH = {
 
 export const TDL_TILE_URL = '/tdl-map-tiles/{z}/{x}/{y}.png';
 export const TDS_TILE_URL = '/tds-map-tiles/{z}/{x}/{y}.png';
+
+export const ZOOMS = {
+  min: 1,
+  max: 4,
+  default: 2,
+  miniMap: 3,
+  popupOpen: 3,
+};

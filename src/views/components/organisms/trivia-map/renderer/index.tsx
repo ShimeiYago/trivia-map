@@ -16,12 +16,12 @@ import { LoadingState } from 'types/loading-state';
 import { PostMarkers } from './helpers/post-markers';
 import { Marker } from 'store/markers/model';
 import { Park } from 'types/park';
-import { TDL_TILE_URL, TDS_TILE_URL } from 'constant';
+import { TDL_TILE_URL, TDS_TILE_URL, ZOOMS } from 'constant';
 
 export class Renderer extends React.Component<Props, State> {
   static readonly defaultProps: Pick<Props, 'newMarkerMode' | 'initZoom'> = {
     newMarkerMode: false,
-    initZoom: 1,
+    initZoom: ZOOMS.default,
   };
 
   constructor(props: Props) {
@@ -109,8 +109,8 @@ export class Renderer extends React.Component<Props, State> {
           center={center}
           zoom={initZoom}
           zoomControl={false}
-          minZoom={1}
-          maxZoom={4}
+          minZoom={ZOOMS.min}
+          maxZoom={ZOOMS.max}
           maxBounds={[
             [300, -300],
             [-300, 300],

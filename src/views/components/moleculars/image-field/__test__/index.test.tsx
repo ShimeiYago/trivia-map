@@ -150,10 +150,10 @@ describe('handleFileInputChange', () => {
 
     expect(instance.state.crop).toEqual({
       unit: '%',
-      x: 25,
-      y: 25,
-      width: 50,
-      height: 50,
+      x: 10,
+      y: 10,
+      width: 80,
+      height: 80,
     });
   });
 

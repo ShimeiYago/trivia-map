@@ -25,7 +25,7 @@ exports[`Shallow Snapshot Tests variant popup 1`] = `
   spacing={2}
 >
   <ForwardRef(Box)
-    maxHeight={300}
+    maxHeight={240}
     sx={
       Object {
         "overflow": "scroll",

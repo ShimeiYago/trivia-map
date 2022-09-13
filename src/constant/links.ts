@@ -2,6 +2,8 @@ export const LOGIN_LINK = '/login';
 
 export const ADMIN_LINK = '/admin';
 
+export const MY_ARTICLES_LINK = '/admin/articles';
+
 export const ACCOUNT_SETTINGS_LINK = '/admin/account';
 
 export const PROFILE_SETTINGS_LINK = '/admin/account/profile';

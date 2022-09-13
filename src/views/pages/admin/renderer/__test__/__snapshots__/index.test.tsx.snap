@@ -5,6 +5,10 @@ exports[`Shallow Snapshot Tests basic 1`] = `
   <ForwardRef(Stack)
     spacing={3}
   >
+    <BackToNavi
+      link="/"
+      text="トリビアマップ"
+    />
     <ForwardRef(Typography)
       align="center"
     >
@@ -12,21 +16,86 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       Axel
       さん
     </ForwardRef(Typography)>
-    <ForwardRef(Box)>
-      <ForwardRef(Typography)
-        align="center"
-        component="h2"
+    <ForwardRef(Stack)
+      direction="row"
+    >
+      <ForwardRef(Avatar)
+        src="https://..."
         sx={
           Object {
-            "mb": 3,
+            "height": 80,
+            "mx": "auto",
+            "width": 80,
           }
         }
-        variant="h4"
-      >
-        投稿一覧
-      </ForwardRef(Typography)>
-      <ArticleManageTable />
-    </ForwardRef(Box)>
+      />
+    </ForwardRef(Stack)>
+    <LinkList
+      list={
+        Array [
+          Object {
+            "icon": <Memo />,
+            "link": "/admin/articles",
+            "text": "投稿一覧",
+          },
+          Object {
+            "icon": <Memo />,
+            "link": "/admin/account",
+            "text": "アカウント設定",
+          },
+        ]
+      }
+    />
+  </ForwardRef(Stack)>
+</AdminWrapper>
+`;
+
+exports[`Shallow Snapshot Tests no icon 1`] = `
+<AdminWrapper>
+  <ForwardRef(Stack)
+    spacing={3}
+  >
+    <BackToNavi
+      link="/"
+      text="トリビアマップ"
+    />
+    <ForwardRef(Typography)
+      align="center"
+    >
+      ようこそ 
+      Axel
+      さん
+    </ForwardRef(Typography)>
+    <ForwardRef(Stack)
+      direction="row"
+    >
+      <ForwardRef(Avatar)
+        src="no-icon.jpg"
+        sx={
+          Object {
+            "height": 80,
+            "mx": "auto",
+            "width": 80,
+          }
+        }
+      />
+    </ForwardRef(Stack)>
+    <LinkList
+      list={
+        Array [
+          Object {
+            "icon": <Memo />,
+            "link": "/admin/articles",
+            "text": "投稿一覧",
+          },
+          Object {
+            "icon": <Memo />,
+            "link": "/admin/account",
+            "text": "アカウント設定",
+          },
+        ]
+      }
+    />
   </ForwardRef(Stack)>
 </AdminWrapper>
 `;

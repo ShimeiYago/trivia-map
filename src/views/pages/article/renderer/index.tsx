@@ -5,7 +5,6 @@ import { Image } from 'views/components/atoms/image';
 import { TriviaMap } from 'views/components/organisms/trivia-map';
 import { createdAtBox } from '../styles';
 import MapIcon from '@mui/icons-material/Map';
-import { deepOrange } from '@mui/material/colors';
 import { IconAndText } from 'views/components/atoms/icon-and-text';
 import { CenterSpinner } from 'views/components/atoms/center-spinner';
 import {
@@ -16,6 +15,8 @@ import { ApiError } from 'api/utils/handle-axios-error';
 import { ArticleWrapper } from 'views/components/organisms/article-wrapper';
 import { autoRefreshApiWrapper } from 'utils/auto-refresh-api-wrapper';
 import { AreaNames } from 'views/components/atoms/area-names';
+import { ZOOMS } from 'constant';
+import noIcon from 'images/no-icon.jpg';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -63,9 +64,7 @@ export class Renderer extends React.Component<Props, State> {
           alignItems="center"
           spacing={1}
         >
-          <Avatar sx={{ bgcolor: deepOrange[500], width: 30, height: 30 }}>
-            {author.nickname.slice(0, 1)}
-          </Avatar>
+          <Avatar sx={{ width: 30, height: 30 }} src={author.icon ?? noIcon} />
           <Typography color="gray">{author.nickname}</Typography>
         </Stack>
 
@@ -100,7 +99,7 @@ export class Renderer extends React.Component<Props, State> {
 
         <TriviaMap
           height={300}
-          initZoom={3}
+          initZoom={ZOOMS.miniMap}
           initCenter={marker}
           disabled
           doNotShowPostMarkers

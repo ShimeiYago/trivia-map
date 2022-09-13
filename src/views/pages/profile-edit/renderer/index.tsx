@@ -12,11 +12,12 @@ import {
 import { globalAPIErrorMessage } from 'constant/global-api-error-message';
 import { ApiError } from 'api/utils/handle-axios-error';
 import { autoRefreshApiWrapper } from 'utils/auto-refresh-api-wrapper';
-import { BackToAccountSettingNavi } from 'views/components/moleculars/back-to-account-setting-navi';
+import { BackToNavi } from 'views/components/moleculars/back-to-navi';
 import { SelializedImageFile } from 'types/selialized-image-file';
 import { ImageField } from 'views/components/moleculars/image-field';
 import 'react-image-crop/dist/ReactCrop.css';
 import { UPLOAD_IMAGE_MAX_LENGTH } from 'constant';
+import { ACCOUNT_SETTINGS_LINK } from 'constant/links';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -44,7 +45,7 @@ export class Renderer extends React.Component<Props, State> {
   protected renderContents = () => {
     return (
       <Stack spacing={3}>
-        <BackToAccountSettingNavi />
+        <BackToNavi text="アカウント設定" link={ACCOUNT_SETTINGS_LINK} />
         {this.renderForm()}
       </Stack>
     );

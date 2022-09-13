@@ -994,18 +994,29 @@ exports[`Shallow Snapshot Tests with userInfo 1`] = `
                   align="left"
                   iconComponent={<Memo />}
                   iconPosition="left"
-                  text="投稿一覧"
+                  text="マイページ"
                 />
               </Link>
               <Link
                 key="authmenu-1"
+                to="/admin/articles"
+              >
+                <IconAndText
+                  align="left"
+                  iconComponent={<Memo />}
+                  iconPosition="left"
+                  text="投稿一覧"
+                />
+              </Link>
+              <Link
+                key="authmenu-2"
                 to="/admin/account"
               >
                 <IconAndText
                   align="left"
                   iconComponent={<Memo />}
                   iconPosition="left"
-                  text="アカウント管理"
+                  text="アカウント設定"
                 />
               </Link>
               <ForwardRef(Button)

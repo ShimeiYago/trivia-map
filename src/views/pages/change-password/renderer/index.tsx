@@ -8,7 +8,8 @@ import { ApiError } from 'api/utils/handle-axios-error';
 import { globalAPIErrorMessage } from 'constant/global-api-error-message';
 import { AdminWrapper } from 'views/components/organisms/admin-wrapper';
 import { autoRefreshApiWrapper } from 'utils/auto-refresh-api-wrapper';
-import { BackToAccountSettingNavi } from 'views/components/moleculars/back-to-account-setting-navi';
+import { BackToNavi } from 'views/components/moleculars/back-to-navi';
+import { ACCOUNT_SETTINGS_LINK } from 'constant/links';
 
 export class Renderer extends React.Component<unknown, State> {
   state: State = {
@@ -64,7 +65,7 @@ export class Renderer extends React.Component<unknown, State> {
     return (
       <AdminWrapper>
         <Box sx={{ mb: 3 }}>
-          <BackToAccountSettingNavi />
+          <BackToNavi text="アカウント設定" link={ACCOUNT_SETTINGS_LINK} />
         </Box>
         <Stack spacing={1} sx={{ px: 1, maxWidth: '400px', mx: 'auto' }}>
           <Typography component="h1" variant="h5" align="center">

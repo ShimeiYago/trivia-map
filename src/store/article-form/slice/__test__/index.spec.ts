@@ -137,6 +137,7 @@ describe('articleForm reducer', () => {
       author: {
         userId: 1,
         nickname: 'Axel',
+        icon: null,
       },
       category: 1,
       createdAt: '2022/4/1',

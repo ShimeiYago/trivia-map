@@ -21,16 +21,14 @@ exports[`Shallow Snapshot Tests draft 1`] = `
       spacing={1}
     >
       <ForwardRef(Avatar)
+        src="no-icon.jpg"
         sx={
           Object {
-            "bgcolor": "#ff5722",
             "height": 30,
             "width": 30,
           }
         }
-      >
-        A
-      </ForwardRef(Avatar)>
+      />
       <ForwardRef(Typography)
         color="gray"
       >
@@ -134,16 +132,14 @@ exports[`Shallow Snapshot Tests with article 1`] = `
       spacing={1}
     >
       <ForwardRef(Avatar)
+        src="no-icon.jpg"
         sx={
           Object {
-            "bgcolor": "#ff5722",
             "height": 30,
             "width": 30,
           }
         }
-      >
-        A
-      </ForwardRef(Avatar)>
+      />
       <ForwardRef(Typography)
         color="gray"
       >
@@ -241,16 +237,14 @@ exports[`Shallow Snapshot Tests with image 1`] = `
       spacing={1}
     >
       <ForwardRef(Avatar)
+        src="no-icon.jpg"
         sx={
           Object {
-            "bgcolor": "#ff5722",
             "height": 30,
             "width": 30,
           }
         }
-      >
-        A
-      </ForwardRef(Avatar)>
+      />
       <ForwardRef(Typography)
         color="gray"
       >

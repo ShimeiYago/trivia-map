@@ -14,27 +14,31 @@ exports[`Shallow Snapshot Tests draft 1`] = `
     <ForwardRef(Alert)>
       この記事は下書きです。あなただけが閲覧できます。
     </ForwardRef(Alert)>
-    <ForwardRef(Stack)
-      alignItems="center"
-      direction="row"
-      justifyContent="flex-start"
-      spacing={1}
+    <Link
+      to="/user/1"
     >
-      <ForwardRef(Avatar)
-        src="no-icon.jpg"
-        sx={
-          Object {
-            "height": 30,
-            "width": 30,
-          }
-        }
-      />
-      <ForwardRef(Typography)
-        color="gray"
+      <ForwardRef(Stack)
+        alignItems="center"
+        direction="row"
+        justifyContent="flex-start"
+        spacing={1}
       >
-        Axel
-      </ForwardRef(Typography)>
-    </ForwardRef(Stack)>
+        <ForwardRef(Avatar)
+          src="no-icon.jpg"
+          sx={
+            Object {
+              "height": 30,
+              "width": 30,
+            }
+          }
+        />
+        <ForwardRef(Typography)
+          color="gray"
+        >
+          Axel
+        </ForwardRef(Typography)>
+      </ForwardRef(Stack)>
+    </Link>
     <ForwardRef(Typography)
       align="center"
       component="h2"
@@ -125,27 +129,31 @@ exports[`Shallow Snapshot Tests with article 1`] = `
   <ForwardRef(Stack)
     spacing={2}
   >
-    <ForwardRef(Stack)
-      alignItems="center"
-      direction="row"
-      justifyContent="flex-start"
-      spacing={1}
+    <Link
+      to="/user/1"
     >
-      <ForwardRef(Avatar)
-        src="no-icon.jpg"
-        sx={
-          Object {
-            "height": 30,
-            "width": 30,
-          }
-        }
-      />
-      <ForwardRef(Typography)
-        color="gray"
+      <ForwardRef(Stack)
+        alignItems="center"
+        direction="row"
+        justifyContent="flex-start"
+        spacing={1}
       >
-        Axel
-      </ForwardRef(Typography)>
-    </ForwardRef(Stack)>
+        <ForwardRef(Avatar)
+          src="no-icon.jpg"
+          sx={
+            Object {
+              "height": 30,
+              "width": 30,
+            }
+          }
+        />
+        <ForwardRef(Typography)
+          color="gray"
+        >
+          Axel
+        </ForwardRef(Typography)>
+      </ForwardRef(Stack)>
+    </Link>
     <ForwardRef(Typography)
       align="center"
       component="h2"
@@ -230,27 +238,31 @@ exports[`Shallow Snapshot Tests with image 1`] = `
   <ForwardRef(Stack)
     spacing={2}
   >
-    <ForwardRef(Stack)
-      alignItems="center"
-      direction="row"
-      justifyContent="flex-start"
-      spacing={1}
+    <Link
+      to="/user/1"
     >
-      <ForwardRef(Avatar)
-        src="no-icon.jpg"
-        sx={
-          Object {
-            "height": 30,
-            "width": 30,
-          }
-        }
-      />
-      <ForwardRef(Typography)
-        color="gray"
+      <ForwardRef(Stack)
+        alignItems="center"
+        direction="row"
+        justifyContent="flex-start"
+        spacing={1}
       >
-        Axel
-      </ForwardRef(Typography)>
-    </ForwardRef(Stack)>
+        <ForwardRef(Avatar)
+          src="no-icon.jpg"
+          sx={
+            Object {
+              "height": 30,
+              "width": 30,
+            }
+          }
+        />
+        <ForwardRef(Typography)
+          color="gray"
+        >
+          Axel
+        </ForwardRef(Typography)>
+      </ForwardRef(Stack)>
+    </Link>
     <ForwardRef(Typography)
       align="center"
       component="h2"

@@ -2,6 +2,81 @@
 
 exports[`Shallow Snapshot Tests basic 1`] = `
 <ArticleWrapper>
+  <ForwardRef(Stack)
+    alignItems="center"
+    direction="row"
+    justifyContent="center"
+    spacing={1}
+    sx={
+      Object {
+        "mb": 3,
+      }
+    }
+  >
+    <ForwardRef(Avatar)
+      src="https://xxx/xxx.jpg"
+      sx={
+        Object {
+          "height": 50,
+          "width": 50,
+        }
+      }
+    />
+    <ForwardRef(Typography)
+      component="h2"
+      variant="h4"
+    >
+      Axel
+      さんの投稿一覧
+    </ForwardRef(Typography)>
+  </ForwardRef(Stack)>
+  <ArticlePreviewList
+    searchConditions={
+      Object {
+        "user": 1,
+      }
+    }
+    variant="large"
+  />
+</ArticleWrapper>
+`;
+
+exports[`Shallow Snapshot Tests loading 1`] = `
+<ArticleWrapper>
+  <CenterSpinner />
+</ArticleWrapper>
+`;
+
+exports[`Shallow Snapshot Tests no icon 1`] = `
+<ArticleWrapper>
+  <ForwardRef(Stack)
+    alignItems="center"
+    direction="row"
+    justifyContent="center"
+    spacing={1}
+    sx={
+      Object {
+        "mb": 3,
+      }
+    }
+  >
+    <ForwardRef(Avatar)
+      src="no-icon.jpg"
+      sx={
+        Object {
+          "height": 50,
+          "width": 50,
+        }
+      }
+    />
+    <ForwardRef(Typography)
+      component="h2"
+      variant="h4"
+    >
+      Axel
+      さんの投稿一覧
+    </ForwardRef(Typography)>
+  </ForwardRef(Stack)>
   <ArticlePreviewList
     searchConditions={
       Object {

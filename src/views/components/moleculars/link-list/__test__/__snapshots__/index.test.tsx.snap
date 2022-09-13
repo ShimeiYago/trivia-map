@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shallow Snapshot Tests basic 1`] = `
+<ForwardRef(List)>
+  <NonStyleLink
+    key="account-setting-0"
+    to="https://xxx"
+  >
+    <ForwardRef(ListItem)>
+      <ForwardRef(ListItemButton)>
+        <ForwardRef(ListItemIcon)>
+          x
+        </ForwardRef(ListItemIcon)>
+        <ForwardRef(ListItemText)
+          primary="text"
+        />
+        <ForwardRef(ListItemIcon)>
+          <Memo(ForwardRef(KeyboardArrowRightIcon)) />
+        </ForwardRef(ListItemIcon)>
+      </ForwardRef(ListItemButton)>
+    </ForwardRef(ListItem)>
+  </NonStyleLink>
+</ForwardRef(List)>
+`;

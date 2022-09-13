@@ -2,13 +2,13 @@
 
 exports[`Shallow Snapshot Tests basic 1`] = `
 <NonStyleLink
-  to="/admin/account"
+  to="#"
 >
   <IconAndText
     align="left"
     iconComponent={<Memo />}
     iconPosition="left"
-    text="アカウント設定"
+    text="text"
   />
 </NonStyleLink>
 `;

@@ -73,15 +73,17 @@ export class Renderer extends React.Component<Props, State> {
       const { postId, title, image, category } = preview;
 
       return (
-        <Link
-          to={ARTICLE_PAGE_LINK(String(postId))}
-          key={`preview-${postId}`}
-          className={classes['preview-link']}
-        >
-          {this.props.variant === 'popup'
-            ? this.renderPopupCard(title, image, category)
-            : this.renderLargeCard(title, image, category)}
-        </Link>
+        <Box>
+          <Link
+            to={ARTICLE_PAGE_LINK(String(postId))}
+            key={`preview-${postId}`}
+            className={classes['preview-link']}
+          >
+            {this.props.variant === 'popup'
+              ? this.renderPopupCard(title, image, category)
+              : this.renderLargeCard(title, image, category)}
+          </Link>
+        </Box>
       );
     });
 
@@ -150,7 +152,7 @@ export class Renderer extends React.Component<Props, State> {
     category: number,
   ) => {
     return (
-      <Card sx={{ mx: 'auto', maxWidth: 700 }}>
+      <Card sx={{ mx: 'auto' }}>
         <CardMedia
           component="img"
           className={classes['card-media']}

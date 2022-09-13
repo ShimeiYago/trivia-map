@@ -31,11 +31,10 @@ exports[`Shallow Snapshot Tests basic 1`] = `
           <ArticlePaper
             variant="navi"
           >
-            <Link
-              to="/"
-            >
-              マップへ戻る
-            </Link>
+            <BackToNavi
+              link="/"
+              text="マップへ戻る"
+            />
           </ArticlePaper>
         </ForwardRef(Grid)>
         <ForwardRef(Grid)
@@ -95,11 +94,10 @@ exports[`Shallow Snapshot Tests mobile 1`] = `
           <ArticlePaper
             variant="navi"
           >
-            <Link
-              to="/"
-            >
-              マップへ戻る
-            </Link>
+            <BackToNavi
+              link="/"
+              text="マップへ戻る"
+            />
           </ArticlePaper>
         </ForwardRef(Grid)>
         <ForwardRef(Grid)

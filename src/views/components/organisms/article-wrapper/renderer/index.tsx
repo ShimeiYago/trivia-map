@@ -3,8 +3,8 @@ import { Box, Grid } from '@mui/material';
 import { GlobalMenu } from 'views/components/organisms/global-menu';
 import { ArticlePaper } from 'views/components/atoms/article-paper';
 import { wrapper, contentWrapper } from '../styles';
-import { Link } from 'react-router-dom';
 import { MAP_PAGE_LINK } from 'constant/links';
+import { BackToNavi } from 'views/components/moleculars/back-to-navi';
 
 export class Renderer extends React.Component<Props> {
   constructor(props: Props) {
@@ -44,7 +44,7 @@ export class Renderer extends React.Component<Props> {
   };
 
   protected renderLocalNavi = () => {
-    return <Link to={MAP_PAGE_LINK}>マップへ戻る</Link>;
+    return <BackToNavi text="マップへ戻る" link={MAP_PAGE_LINK} />;
   };
 }
 

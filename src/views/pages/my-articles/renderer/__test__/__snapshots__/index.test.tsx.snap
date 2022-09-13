@@ -20,24 +20,9 @@ exports[`Shallow Snapshot Tests basic 1`] = `
         }
         variant="h4"
       >
-        アカウント設定
+        投稿一覧
       </ForwardRef(Typography)>
-      <LinkList
-        list={
-          Array [
-            Object {
-              "icon": <Memo />,
-              "link": "/admin/account/profile",
-              "text": "プロフィール変更",
-            },
-            Object {
-              "icon": <Memo />,
-              "link": "/admin/account/password",
-              "text": "パスワード変更",
-            },
-          ]
-        }
-      />
+      <ArticleManageTable />
     </ForwardRef(Box)>
   </ForwardRef(Stack)>
 </AdminWrapper>

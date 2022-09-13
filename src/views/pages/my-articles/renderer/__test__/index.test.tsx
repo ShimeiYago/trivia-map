@@ -1,11 +1,11 @@
 import { shallow, ShallowWrapper } from 'enzyme';
-import { BackToAccountSettingNavi } from '..';
+import { Renderer } from '..';
 
-let wrapper: ShallowWrapper<unknown, unknown, BackToAccountSettingNavi>;
+let wrapper: ShallowWrapper<unknown, unknown, Renderer>;
 
 describe('Shallow Snapshot Tests', () => {
   beforeEach(() => {
-    wrapper = shallow(<BackToAccountSettingNavi />);
+    wrapper = shallow(<Renderer />);
   });
 
   it('basic', () => {

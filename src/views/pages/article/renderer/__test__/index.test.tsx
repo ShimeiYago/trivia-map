@@ -28,6 +28,7 @@ const article: GetArticleResponse = {
   author: {
     userId: 1,
     nickname: 'Axel',
+    icon: null,
   },
   createdAt: '2022/4/1',
   updatedAt: '2022/5/1',

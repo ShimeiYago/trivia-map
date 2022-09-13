@@ -20,4 +20,17 @@ describe('Shallow Snapshot Tests', () => {
   it('basic', () => {
     expect(wrapper).toMatchSnapshot();
   });
+
+  it('no icon', () => {
+    const props: Props = {
+      user: {
+        userId: 1,
+        nickname: 'Axel',
+        email: 'xxx@example.com',
+        icon: null,
+      },
+    };
+    wrapper.setProps(props);
+    expect(wrapper).toMatchSnapshot();
+  });
 });

@@ -17,6 +17,8 @@ import { autoRefreshApiWrapper } from 'utils/auto-refresh-api-wrapper';
 import { AreaNames } from 'views/components/atoms/area-names';
 import { ZOOMS } from 'constant';
 import noIcon from 'images/no-icon.jpg';
+import { AUTHER_PAGE_LINK } from 'constant/links';
+import { Link } from 'react-router-dom';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -58,15 +60,20 @@ export class Renderer extends React.Component<Props, State> {
           <Alert>この記事は下書きです。あなただけが閲覧できます。</Alert>
         )}
 
-        <Stack
-          direction="row"
-          justifyContent="flex-start"
-          alignItems="center"
-          spacing={1}
-        >
-          <Avatar sx={{ width: 30, height: 30 }} src={author.icon ?? noIcon} />
-          <Typography color="gray">{author.nickname}</Typography>
-        </Stack>
+        <Link to={AUTHER_PAGE_LINK(author.userId.toString())}>
+          <Stack
+            direction="row"
+            justifyContent="flex-start"
+            alignItems="center"
+            spacing={1}
+          >
+            <Avatar
+              sx={{ width: 30, height: 30 }}
+              src={author.icon ?? noIcon}
+            />
+            <Typography color="gray">{author.nickname}</Typography>
+          </Stack>
+        </Link>
 
         <Typography component="h2" variant="h4" align="center">
           {title}

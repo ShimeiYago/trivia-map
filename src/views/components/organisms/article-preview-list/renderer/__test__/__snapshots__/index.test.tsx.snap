@@ -36,123 +36,127 @@ exports[`Shallow Snapshot Tests variant popup 1`] = `
     <ForwardRef(Stack)
       spacing={2}
     >
-      <Link
-        className="preview-link"
-        key="preview-1"
-        to="/article/1"
-      >
-        <ForwardRef(Card)
-          sx={
-            Object {
-              "backgroundColor": "#e3f2fd",
-              "p": 1,
-            }
-          }
+      <ForwardRef(Box)>
+        <Link
+          className="preview-link"
+          key="preview-1"
+          to="/article/1"
         >
-          <ForwardRef(Stack)
-            spacing={1}
-          >
-            <ForwardRef(Typography)
-              align="center"
-              component="h2"
-              variant="h6"
-            >
-              ノーチラス号のエンジン
-            </ForwardRef(Typography)>
-            <ForwardRef(Typography)
-              align="center"
-            >
-              <Image
-                borderRadius={true}
-                height="100px"
-                objectFit="cover"
-                src="https://disneyparkstory.com/wp-content/uploads/2017/02/CIMG9800.jpg"
-                width="200px"
-              />
-            </ForwardRef(Typography)>
-            <ForwardRef(Typography)
-              component="div"
-              sx={
-                Object {
-                  "pr": 2,
-                }
+          <ForwardRef(Card)
+            sx={
+              Object {
+                "backgroundColor": "#e3f2fd",
+                "p": 1,
               }
-            >
-              <IconAndText
-                align="right"
-                fontSize={14}
-                iconComponent={<Memo />}
-                iconPosition="left"
-                text="隠れミッキー"
-              />
-            </ForwardRef(Typography)>
-            <ForwardRef(Typography)
-              align="center"
-            >
-              <IconAndText
-                component="span"
-                iconComponent={<Memo />}
-                iconPosition="left"
-                text="くわしく読む"
-                variant="button"
-              />
-            </ForwardRef(Typography)>
-          </ForwardRef(Stack)>
-        </ForwardRef(Card)>
-      </Link>
-      <Link
-        className="preview-link"
-        key="preview-2"
-        to="/article/2"
-      >
-        <ForwardRef(Card)
-          sx={
-            Object {
-              "backgroundColor": "#e3f2fd",
-              "p": 1,
             }
-          }
-        >
-          <ForwardRef(Stack)
-            spacing={1}
           >
-            <ForwardRef(Typography)
-              align="center"
-              component="h2"
-              variant="h6"
+            <ForwardRef(Stack)
+              spacing={1}
             >
-              ノーチラス号の名前の由来
-            </ForwardRef(Typography)>
-            <ForwardRef(Typography)
-              component="div"
-              sx={
-                Object {
-                  "pr": 2,
+              <ForwardRef(Typography)
+                align="center"
+                component="h2"
+                variant="h6"
+              >
+                ノーチラス号のエンジン
+              </ForwardRef(Typography)>
+              <ForwardRef(Typography)
+                align="center"
+              >
+                <Image
+                  borderRadius={true}
+                  height="100px"
+                  objectFit="cover"
+                  src="https://disneyparkstory.com/wp-content/uploads/2017/02/CIMG9800.jpg"
+                  width="200px"
+                />
+              </ForwardRef(Typography)>
+              <ForwardRef(Typography)
+                component="div"
+                sx={
+                  Object {
+                    "pr": 2,
+                  }
                 }
+              >
+                <IconAndText
+                  align="right"
+                  fontSize={14}
+                  iconComponent={<Memo />}
+                  iconPosition="left"
+                  text="隠れミッキー"
+                />
+              </ForwardRef(Typography)>
+              <ForwardRef(Typography)
+                align="center"
+              >
+                <IconAndText
+                  component="span"
+                  iconComponent={<Memo />}
+                  iconPosition="left"
+                  text="くわしく読む"
+                  variant="button"
+                />
+              </ForwardRef(Typography)>
+            </ForwardRef(Stack)>
+          </ForwardRef(Card)>
+        </Link>
+      </ForwardRef(Box)>
+      <ForwardRef(Box)>
+        <Link
+          className="preview-link"
+          key="preview-2"
+          to="/article/2"
+        >
+          <ForwardRef(Card)
+            sx={
+              Object {
+                "backgroundColor": "#e3f2fd",
+                "p": 1,
               }
+            }
+          >
+            <ForwardRef(Stack)
+              spacing={1}
             >
-              <IconAndText
-                align="right"
-                fontSize={14}
-                iconComponent={<Memo />}
-                iconPosition="left"
-                text="隠れミッキー"
-              />
-            </ForwardRef(Typography)>
-            <ForwardRef(Typography)
-              align="center"
-            >
-              <IconAndText
-                component="span"
-                iconComponent={<Memo />}
-                iconPosition="left"
-                text="くわしく読む"
-                variant="button"
-              />
-            </ForwardRef(Typography)>
-          </ForwardRef(Stack)>
-        </ForwardRef(Card)>
-      </Link>
+              <ForwardRef(Typography)
+                align="center"
+                component="h2"
+                variant="h6"
+              >
+                ノーチラス号の名前の由来
+              </ForwardRef(Typography)>
+              <ForwardRef(Typography)
+                component="div"
+                sx={
+                  Object {
+                    "pr": 2,
+                  }
+                }
+              >
+                <IconAndText
+                  align="right"
+                  fontSize={14}
+                  iconComponent={<Memo />}
+                  iconPosition="left"
+                  text="隠れミッキー"
+                />
+              </ForwardRef(Typography)>
+              <ForwardRef(Typography)
+                align="center"
+              >
+                <IconAndText
+                  component="span"
+                  iconComponent={<Memo />}
+                  iconPosition="left"
+                  text="くわしく読む"
+                  variant="button"
+                />
+              </ForwardRef(Typography)>
+            </ForwardRef(Stack)>
+          </ForwardRef(Card)>
+        </Link>
+      </ForwardRef(Box)>
     </ForwardRef(Stack)>
   </ForwardRef(Box)>
   <div
@@ -173,120 +177,122 @@ exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
   <ForwardRef(Stack)
     spacing={3}
   >
-    <Link
-      className="preview-link"
-      key="preview-1"
-      to="/article/1"
-    >
-      <ForwardRef(Card)
-        sx={
-          Object {
-            "maxWidth": 700,
-            "mx": "auto",
-          }
-        }
+    <ForwardRef(Box)>
+      <Link
+        className="preview-link"
+        key="preview-1"
+        to="/article/1"
       >
-        <ForwardRef(CardMedia)
-          alt="green iguana"
-          className="card-media"
-          component="img"
-          image="https://disneyparkstory.com/wp-content/uploads/2017/02/CIMG9800.jpg"
-        />
-        <ForwardRef(CardContent)>
-          <ForwardRef(Typography)
-            component="div"
-            gutterBottom={true}
-            variant="h5"
-          >
-            ノーチラス号のエンジン
-          </ForwardRef(Typography)>
-          <ForwardRef(Typography)
-            align="left"
-            component="div"
-            sx={
-              Object {
-                "mb": 2,
-              }
+        <ForwardRef(Card)
+          sx={
+            Object {
+              "mx": "auto",
             }
-          >
-            <IconAndText
-              align="left"
-              iconComponent={<Memo />}
-              iconPosition="left"
-              text="隠れミッキー"
-            />
-          </ForwardRef(Typography)>
-          <ForwardRef(Typography)
-            align="center"
-            component="div"
-          >
-            <IconAndText
-              component="span"
-              iconComponent={<Memo />}
-              iconPosition="left"
-              text="くわしく読む"
-            />
-          </ForwardRef(Typography)>
-        </ForwardRef(CardContent)>
-      </ForwardRef(Card)>
-    </Link>
-    <Link
-      className="preview-link"
-      key="preview-2"
-      to="/article/2"
-    >
-      <ForwardRef(Card)
-        sx={
-          Object {
-            "maxWidth": 700,
-            "mx": "auto",
           }
-        }
-      >
-        <ForwardRef(CardMedia)
-          alt="green iguana"
-          className="card-media"
-          component="img"
-          image="no-image-16x7.jpg"
-        />
-        <ForwardRef(CardContent)>
-          <ForwardRef(Typography)
-            component="div"
-            gutterBottom={true}
-            variant="h5"
-          >
-            ノーチラス号の名前の由来
-          </ForwardRef(Typography)>
-          <ForwardRef(Typography)
-            align="left"
-            component="div"
-            sx={
-              Object {
-                "mb": 2,
-              }
-            }
-          >
-            <IconAndText
+        >
+          <ForwardRef(CardMedia)
+            alt="green iguana"
+            className="card-media"
+            component="img"
+            image="https://disneyparkstory.com/wp-content/uploads/2017/02/CIMG9800.jpg"
+          />
+          <ForwardRef(CardContent)>
+            <ForwardRef(Typography)
+              component="div"
+              gutterBottom={true}
+              variant="h5"
+            >
+              ノーチラス号のエンジン
+            </ForwardRef(Typography)>
+            <ForwardRef(Typography)
               align="left"
-              iconComponent={<Memo />}
-              iconPosition="left"
-              text="隠れミッキー"
-            />
-          </ForwardRef(Typography)>
-          <ForwardRef(Typography)
-            align="center"
-            component="div"
-          >
-            <IconAndText
-              component="span"
-              iconComponent={<Memo />}
-              iconPosition="left"
-              text="くわしく読む"
-            />
-          </ForwardRef(Typography)>
-        </ForwardRef(CardContent)>
-      </ForwardRef(Card)>
-    </Link>
+              component="div"
+              sx={
+                Object {
+                  "mb": 2,
+                }
+              }
+            >
+              <IconAndText
+                align="left"
+                iconComponent={<Memo />}
+                iconPosition="left"
+                text="隠れミッキー"
+              />
+            </ForwardRef(Typography)>
+            <ForwardRef(Typography)
+              align="center"
+              component="div"
+            >
+              <IconAndText
+                component="span"
+                iconComponent={<Memo />}
+                iconPosition="left"
+                text="くわしく読む"
+              />
+            </ForwardRef(Typography)>
+          </ForwardRef(CardContent)>
+        </ForwardRef(Card)>
+      </Link>
+    </ForwardRef(Box)>
+    <ForwardRef(Box)>
+      <Link
+        className="preview-link"
+        key="preview-2"
+        to="/article/2"
+      >
+        <ForwardRef(Card)
+          sx={
+            Object {
+              "mx": "auto",
+            }
+          }
+        >
+          <ForwardRef(CardMedia)
+            alt="green iguana"
+            className="card-media"
+            component="img"
+            image="no-image-16x7.jpg"
+          />
+          <ForwardRef(CardContent)>
+            <ForwardRef(Typography)
+              component="div"
+              gutterBottom={true}
+              variant="h5"
+            >
+              ノーチラス号の名前の由来
+            </ForwardRef(Typography)>
+            <ForwardRef(Typography)
+              align="left"
+              component="div"
+              sx={
+                Object {
+                  "mb": 2,
+                }
+              }
+            >
+              <IconAndText
+                align="left"
+                iconComponent={<Memo />}
+                iconPosition="left"
+                text="隠れミッキー"
+              />
+            </ForwardRef(Typography)>
+            <ForwardRef(Typography)
+              align="center"
+              component="div"
+            >
+              <IconAndText
+                component="span"
+                iconComponent={<Memo />}
+                iconPosition="left"
+                text="くわしく読む"
+              />
+            </ForwardRef(Typography)>
+          </ForwardRef(CardContent)>
+        </ForwardRef(Card)>
+      </Link>
+    </ForwardRef(Box)>
   </ForwardRef(Stack)>
   <div
     className="pagination-wrapper"

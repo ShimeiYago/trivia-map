@@ -174,7 +174,7 @@ export class Renderer extends React.Component<Props, State> {
         popupDisabled={newMarkerMode}
         hiddenMarkerIds={hiddenMarkerIds}
         openFormWithTheMarker={this.openFormWithTheMarker}
-        hideAddButton={isFormEditting}
+        editting={isFormEditting}
       />
     );
   }

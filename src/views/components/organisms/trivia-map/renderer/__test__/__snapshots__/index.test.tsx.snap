@@ -40,8 +40,8 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       url="/tds-map-tiles/{z}/{x}/{y}.png"
     />
     <PostMarkers
+      editting={false}
       hiddenMarkerIds={Array []}
-      hideAddButton={false}
       map={
         Object {
           "setView": [MockFunction],
@@ -191,8 +191,8 @@ exports[`Shallow Snapshot Tests land map 1`] = `
       url="/tdl-map-tiles/{z}/{x}/{y}.png"
     />
     <PostMarkers
+      editting={false}
       hiddenMarkerIds={Array []}
-      hideAddButton={false}
       map={
         Object {
           "setView": [MockFunction],
@@ -276,8 +276,8 @@ exports[`Shallow Snapshot Tests when currentPosition state is setted 1`] = `
       url="/tds-map-tiles/{z}/{x}/{y}.png"
     />
     <PostMarkers
+      editting={false}
       hiddenMarkerIds={Array []}
-      hideAddButton={false}
       map={
         Object {
           "setView": [MockFunction],
@@ -444,8 +444,8 @@ exports[`Shallow Snapshot Tests with initCenter prop 1`] = `
       url="/tds-map-tiles/{z}/{x}/{y}.png"
     />
     <PostMarkers
+      editting={false}
       hiddenMarkerIds={Array []}
-      hideAddButton={false}
       map={
         Object {
           "setView": [MockFunction] {
@@ -561,8 +561,8 @@ exports[`Shallow Snapshot Tests with width and height props 1`] = `
       url="/tds-map-tiles/{z}/{x}/{y}.png"
     />
     <PostMarkers
+      editting={false}
       hiddenMarkerIds={Array []}
-      hideAddButton={false}
       map={
         Object {
           "setView": [MockFunction],

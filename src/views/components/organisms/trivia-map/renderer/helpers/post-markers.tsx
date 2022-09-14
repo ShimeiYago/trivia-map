@@ -52,16 +52,15 @@ export class PostMarkers extends React.Component<Props> {
   };
 
   protected renderAddButton = (position: Position) => {
-    if (this.props.hideAddButton) {
-      return null;
-    }
     return (
       <Box sx={{ textAlign: 'right', mt: 2 }}>
         <Button
           onClick={this.handleClickAdd(position)}
           startIcon={<AddLocationAltIcon />}
         >
-          投稿を追加する
+          {this.props.editting
+            ? 'ここにマーカーを置く'
+            : 'ここに投稿を追加する'}
         </Button>
       </Box>
     );
@@ -77,7 +76,7 @@ export type Props = {
   markers: Marker[];
   popupDisabled: boolean;
   hiddenMarkerIds: number[];
-  hideAddButton: boolean;
+  editting: boolean;
 
   openFormWithTheMarker: (position: Position) => void;
 };

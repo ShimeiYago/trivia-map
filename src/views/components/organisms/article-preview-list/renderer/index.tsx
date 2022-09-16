@@ -73,7 +73,7 @@ export class Renderer extends React.Component<Props, State> {
       const { postId, title, image, category } = preview;
 
       return (
-        <Box>
+        <Box key={`preview-list-${postId}`}>
           <Link
             to={ARTICLE_PAGE_LINK(String(postId))}
             key={`preview-${postId}`}

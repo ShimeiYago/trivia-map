@@ -4,7 +4,6 @@ import { GlobalMenu } from 'views/components/organisms/global-menu';
 import { ArticlePaper } from 'views/components/atoms/article-paper';
 import { wrapper, contentWrapper } from '../styles';
 import { MAP_PAGE_LINK } from 'constant/links';
-import { BackToNavi } from 'views/components/moleculars/back-to-navi';
 
 export class Renderer extends React.Component<Props> {
   constructor(props: Props) {
@@ -14,16 +13,20 @@ export class Renderer extends React.Component<Props> {
   render() {
     const { isMobile, children } = this.props;
 
+    const localNavi = {
+      text: 'マップへ戻る',
+      link: MAP_PAGE_LINK,
+    };
+
     return (
       <Box sx={wrapper}>
-        <GlobalMenu topBarPosition="static" permanentLeftNavi={!isMobile}>
+        <GlobalMenu
+          topBarPosition="fixed"
+          permanentLeftNavi={!isMobile}
+          localBackNavi={localNavi}
+        >
           <Box sx={contentWrapper(isMobile)}>
             <Grid container spacing={isMobile ? 2 : 4}>
-              <Grid item xs={12}>
-                <ArticlePaper variant="navi">
-                  {this.renderLocalNavi()}
-                </ArticlePaper>
-              </Grid>
               <Grid item xs={isMobile ? 12 : 8}>
                 <ArticlePaper variant="main">{children}</ArticlePaper>
               </Grid>
@@ -41,10 +44,6 @@ export class Renderer extends React.Component<Props> {
 
   protected renderSideBar = () => {
     return <>TODO: サイドバー</>;
-  };
-
-  protected renderLocalNavi = () => {
-    return <BackToNavi text="マップへ戻る" link={MAP_PAGE_LINK} />;
   };
 }
 

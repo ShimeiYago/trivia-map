@@ -6,6 +6,238 @@ exports[`Shallow Snapshot Tests basic 1`] = `
     position="fixed"
     sx={
       Object {
+        "borderBottom": undefined,
+        "ml": undefined,
+        "width": undefined,
+      }
+    }
+  >
+    <ForwardRef(Toolbar)>
+      <ForwardRef(IconButton)
+        aria-label="open drawer"
+        color="inherit"
+        edge="start"
+        onClick={[Function]}
+        sx={
+          Object {
+            "mr": 2,
+          }
+        }
+      >
+        <Memo(ForwardRef(MenuIcon)) />
+      </ForwardRef(IconButton)>
+      <ForwardRef(Typography)
+        component="div"
+        sx={
+          Object {
+            "flexGrow": 1,
+          }
+        }
+        variant="h6"
+      >
+        Trivia Map
+      </ForwardRef(Typography)>
+      <ForwardRef(Box)>
+        <ForwardRef(Box)
+          onClick={[Function]}
+          sx={
+            Object {
+              "cursor": "pointer",
+              "py": 2,
+            }
+          }
+        >
+          <IconAndText
+            columnGap={0.5}
+            fontSize={14}
+            iconComponent={<Memo />}
+            iconPosition="right"
+            text="ゲストさん"
+          />
+        </ForwardRef(Box)>
+        <ForwardRef(Popover)
+          anchorEl={null}
+          anchorOrigin={
+            Object {
+              "horizontal": "right",
+              "vertical": "bottom",
+            }
+          }
+          onClose={[Function]}
+          open={false}
+        >
+          <ForwardRef(Box)
+            sx={
+              Object {
+                "p": 2,
+              }
+            }
+          >
+            <ForwardRef(Box)
+              sx={
+                Object {
+                  "width": 210,
+                }
+              }
+            >
+              <ForwardRef(Typography)
+                align="center"
+                component="div"
+                sx={
+                  Object {
+                    "mb": 1,
+                  }
+                }
+              >
+                ログインして新しいトリビアを投稿しませんか？
+              </ForwardRef(Typography)>
+              <ForwardRef(Typography)
+                align="center"
+                component="div"
+                sx={
+                  Object {
+                    "mb": 1,
+                  }
+                }
+              >
+                <ForwardRef(Button)
+                  onClick={[Function]}
+                  variant="contained"
+                >
+                  ログイン
+                </ForwardRef(Button)>
+              </ForwardRef(Typography)>
+            </ForwardRef(Box)>
+          </ForwardRef(Box)>
+        </ForwardRef(Popover)>
+      </ForwardRef(Box)>
+    </ForwardRef(Toolbar)>
+  </ForwardRef(AppBar)>
+  <ForwardRef(SwipeableDrawer)
+    onClose={[Function]}
+    onOpen={[Function]}
+    open={false}
+  >
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "width": 250,
+        }
+      }
+    >
+      <ForwardRef(List)>
+        <ForwardRef(ListItem)
+          button={true}
+          key="Inbox"
+        >
+          <ForwardRef(ListItemIcon)>
+            <Memo(ForwardRef(MoveToInboxIcon)) />
+          </ForwardRef(ListItemIcon)>
+          <ForwardRef(ListItemText)
+            primary="Inbox"
+          />
+        </ForwardRef(ListItem)>
+        <ForwardRef(ListItem)
+          button={true}
+          key="Starred"
+        >
+          <ForwardRef(ListItemIcon)>
+            <Memo(ForwardRef(MailIcon)) />
+          </ForwardRef(ListItemIcon)>
+          <ForwardRef(ListItemText)
+            primary="Starred"
+          />
+        </ForwardRef(ListItem)>
+        <ForwardRef(ListItem)
+          button={true}
+          key="Send email"
+        >
+          <ForwardRef(ListItemIcon)>
+            <Memo(ForwardRef(MoveToInboxIcon)) />
+          </ForwardRef(ListItemIcon)>
+          <ForwardRef(ListItemText)
+            primary="Send email"
+          />
+        </ForwardRef(ListItem)>
+        <ForwardRef(ListItem)
+          button={true}
+          key="Drafts"
+        >
+          <ForwardRef(ListItemIcon)>
+            <Memo(ForwardRef(MailIcon)) />
+          </ForwardRef(ListItemIcon)>
+          <ForwardRef(ListItemText)
+            primary="Drafts"
+          />
+        </ForwardRef(ListItem)>
+      </ForwardRef(List)>
+      <ForwardRef(Divider) />
+      <ForwardRef(List)>
+        <ForwardRef(ListItem)
+          button={true}
+          key="All mail"
+        >
+          <ForwardRef(ListItemIcon)>
+            <Memo(ForwardRef(MoveToInboxIcon)) />
+          </ForwardRef(ListItemIcon)>
+          <ForwardRef(ListItemText)
+            primary="All mail"
+          />
+        </ForwardRef(ListItem)>
+        <ForwardRef(ListItem)
+          button={true}
+          key="Trash"
+        >
+          <ForwardRef(ListItemIcon)>
+            <Memo(ForwardRef(MailIcon)) />
+          </ForwardRef(ListItemIcon)>
+          <ForwardRef(ListItemText)
+            primary="Trash"
+          />
+        </ForwardRef(ListItem)>
+        <ForwardRef(ListItem)
+          button={true}
+          key="Spam"
+        >
+          <ForwardRef(ListItemIcon)>
+            <Memo(ForwardRef(MoveToInboxIcon)) />
+          </ForwardRef(ListItemIcon)>
+          <ForwardRef(ListItemText)
+            primary="Spam"
+          />
+        </ForwardRef(ListItem)>
+      </ForwardRef(List)>
+    </ForwardRef(Box)>
+  </ForwardRef(SwipeableDrawer)>
+  <ForwardRef(Box)
+    sx={
+      Object {
+        "ml": undefined,
+        "pt": "64px",
+        "width": "100%",
+      }
+    }
+  >
+    contents
+  </ForwardRef(Box)>
+  <BoxModal
+    onClose={[Function]}
+    open={false}
+  >
+    <AuthForms
+      initialMode="login"
+      onLoginSucceed={[Function]}
+    />
+  </BoxModal>
+</Fragment>
+`;
+
+exports[`Shallow Snapshot Tests map page 1`] = `
+<Fragment>
+  <ForwardRef(AppBar)
+    position="fixed"
+    sx={
+      Object {
         "borderBottom": "2px solid rgba(255, 255, 255, 0.7)",
         "ml": undefined,
         "width": undefined,
@@ -213,7 +445,8 @@ exports[`Shallow Snapshot Tests basic 1`] = `
     sx={
       Object {
         "ml": undefined,
-        "width": undefined,
+        "pt": undefined,
+        "width": "100%",
       }
     }
   >
@@ -237,7 +470,7 @@ exports[`Shallow Snapshot Tests permanent left navi 1`] = `
     position="fixed"
     sx={
       Object {
-        "borderBottom": "2px solid rgba(255, 255, 255, 0.7)",
+        "borderBottom": undefined,
         "ml": "250px",
         "width": "calc(100% - 250px)",
       }
@@ -430,6 +663,7 @@ exports[`Shallow Snapshot Tests permanent left navi 1`] = `
     sx={
       Object {
         "ml": "250px",
+        "pt": "64px",
         "width": "calc(100% - 250px)",
       }
     }
@@ -454,7 +688,7 @@ exports[`Shallow Snapshot Tests redirect to top page 1`] = `
     position="fixed"
     sx={
       Object {
-        "borderBottom": "2px solid rgba(255, 255, 255, 0.7)",
+        "borderBottom": undefined,
         "ml": undefined,
         "width": undefined,
       }
@@ -661,7 +895,8 @@ exports[`Shallow Snapshot Tests redirect to top page 1`] = `
     sx={
       Object {
         "ml": undefined,
-        "width": undefined,
+        "pt": "64px",
+        "width": "100%",
       }
     }
   >
@@ -685,7 +920,7 @@ exports[`Shallow Snapshot Tests static position 1`] = `
     position="static"
     sx={
       Object {
-        "borderBottom": "2px solid rgba(255, 255, 255, 0.7)",
+        "borderBottom": undefined,
         "ml": undefined,
         "width": undefined,
       }
@@ -892,7 +1127,512 @@ exports[`Shallow Snapshot Tests static position 1`] = `
     sx={
       Object {
         "ml": undefined,
+        "pt": "64px",
+        "width": "100%",
+      }
+    }
+  >
+    contents
+  </ForwardRef(Box)>
+  <BoxModal
+    onClose={[Function]}
+    open={false}
+  >
+    <AuthForms
+      initialMode="login"
+      onLoginSucceed={[Function]}
+    />
+  </BoxModal>
+</Fragment>
+`;
+
+exports[`Shallow Snapshot Tests with local navi & mobile 1`] = `
+<Fragment>
+  <ForwardRef(AppBar)
+    position="fixed"
+    sx={
+      Object {
+        "borderBottom": undefined,
+        "ml": undefined,
         "width": undefined,
+      }
+    }
+  >
+    <ForwardRef(Toolbar)>
+      <ForwardRef(IconButton)
+        aria-label="open drawer"
+        color="inherit"
+        edge="start"
+        onClick={[Function]}
+        sx={
+          Object {
+            "mr": 2,
+          }
+        }
+      >
+        <Memo(ForwardRef(MenuIcon)) />
+      </ForwardRef(IconButton)>
+      <ForwardRef(Typography)
+        component="div"
+        sx={
+          Object {
+            "flexGrow": 1,
+          }
+        }
+        variant="h6"
+      >
+        Trivia Map
+      </ForwardRef(Typography)>
+      <ForwardRef(Box)>
+        <ForwardRef(Box)
+          onClick={[Function]}
+          sx={
+            Object {
+              "cursor": "pointer",
+              "py": 2,
+            }
+          }
+        >
+          <IconAndText
+            columnGap={0.5}
+            fontSize={14}
+            iconComponent={<Memo />}
+            iconPosition="right"
+            text="ゲストさん"
+          />
+        </ForwardRef(Box)>
+        <ForwardRef(Popover)
+          anchorEl={null}
+          anchorOrigin={
+            Object {
+              "horizontal": "right",
+              "vertical": "bottom",
+            }
+          }
+          onClose={[Function]}
+          open={false}
+        >
+          <ForwardRef(Box)
+            sx={
+              Object {
+                "p": 2,
+              }
+            }
+          >
+            <ForwardRef(Box)
+              sx={
+                Object {
+                  "width": 210,
+                }
+              }
+            >
+              <ForwardRef(Typography)
+                align="center"
+                component="div"
+                sx={
+                  Object {
+                    "mb": 1,
+                  }
+                }
+              >
+                ログインして新しいトリビアを投稿しませんか？
+              </ForwardRef(Typography)>
+              <ForwardRef(Typography)
+                align="center"
+                component="div"
+                sx={
+                  Object {
+                    "mb": 1,
+                  }
+                }
+              >
+                <ForwardRef(Button)
+                  onClick={[Function]}
+                  variant="contained"
+                >
+                  ログイン
+                </ForwardRef(Button)>
+              </ForwardRef(Typography)>
+            </ForwardRef(Box)>
+          </ForwardRef(Box)>
+        </ForwardRef(Popover)>
+      </ForwardRef(Box)>
+    </ForwardRef(Toolbar)>
+  </ForwardRef(AppBar)>
+  <ForwardRef(SwipeableDrawer)
+    onClose={[Function]}
+    onOpen={[Function]}
+    open={false}
+  >
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "width": 250,
+        }
+      }
+    >
+      <ForwardRef(List)>
+        <ForwardRef(ListItem)
+          button={true}
+          key="Inbox"
+        >
+          <ForwardRef(ListItemIcon)>
+            <Memo(ForwardRef(MoveToInboxIcon)) />
+          </ForwardRef(ListItemIcon)>
+          <ForwardRef(ListItemText)
+            primary="Inbox"
+          />
+        </ForwardRef(ListItem)>
+        <ForwardRef(ListItem)
+          button={true}
+          key="Starred"
+        >
+          <ForwardRef(ListItemIcon)>
+            <Memo(ForwardRef(MailIcon)) />
+          </ForwardRef(ListItemIcon)>
+          <ForwardRef(ListItemText)
+            primary="Starred"
+          />
+        </ForwardRef(ListItem)>
+        <ForwardRef(ListItem)
+          button={true}
+          key="Send email"
+        >
+          <ForwardRef(ListItemIcon)>
+            <Memo(ForwardRef(MoveToInboxIcon)) />
+          </ForwardRef(ListItemIcon)>
+          <ForwardRef(ListItemText)
+            primary="Send email"
+          />
+        </ForwardRef(ListItem)>
+        <ForwardRef(ListItem)
+          button={true}
+          key="Drafts"
+        >
+          <ForwardRef(ListItemIcon)>
+            <Memo(ForwardRef(MailIcon)) />
+          </ForwardRef(ListItemIcon)>
+          <ForwardRef(ListItemText)
+            primary="Drafts"
+          />
+        </ForwardRef(ListItem)>
+      </ForwardRef(List)>
+      <ForwardRef(Divider) />
+      <ForwardRef(List)>
+        <ForwardRef(ListItem)
+          button={true}
+          key="All mail"
+        >
+          <ForwardRef(ListItemIcon)>
+            <Memo(ForwardRef(MoveToInboxIcon)) />
+          </ForwardRef(ListItemIcon)>
+          <ForwardRef(ListItemText)
+            primary="All mail"
+          />
+        </ForwardRef(ListItem)>
+        <ForwardRef(ListItem)
+          button={true}
+          key="Trash"
+        >
+          <ForwardRef(ListItemIcon)>
+            <Memo(ForwardRef(MailIcon)) />
+          </ForwardRef(ListItemIcon)>
+          <ForwardRef(ListItemText)
+            primary="Trash"
+          />
+        </ForwardRef(ListItem)>
+        <ForwardRef(ListItem)
+          button={true}
+          key="Spam"
+        >
+          <ForwardRef(ListItemIcon)>
+            <Memo(ForwardRef(MoveToInboxIcon)) />
+          </ForwardRef(ListItemIcon)>
+          <ForwardRef(ListItemText)
+            primary="Spam"
+          />
+        </ForwardRef(ListItem)>
+      </ForwardRef(List)>
+    </ForwardRef(Box)>
+  </ForwardRef(SwipeableDrawer)>
+  <ForwardRef(Box)
+    sx={
+      Object {
+        "ml": undefined,
+        "position": "fixed",
+        "pt": "56px",
+        "width": "100%",
+        "zIndex": 1000,
+      }
+    }
+  >
+    <ArticlePaper
+      variant="navi"
+    >
+      <BackToNavi
+        link="https://..."
+        text="text"
+      />
+    </ArticlePaper>
+  </ForwardRef(Box)>
+  <ForwardRef(Box)
+    sx={
+      Object {
+        "ml": undefined,
+        "pt": "96px",
+        "width": "100%",
+      }
+    }
+  >
+    contents
+  </ForwardRef(Box)>
+  <BoxModal
+    onClose={[Function]}
+    open={false}
+  >
+    <AuthForms
+      initialMode="login"
+      onLoginSucceed={[Function]}
+    />
+  </BoxModal>
+</Fragment>
+`;
+
+exports[`Shallow Snapshot Tests with local navi 1`] = `
+<Fragment>
+  <ForwardRef(AppBar)
+    position="fixed"
+    sx={
+      Object {
+        "borderBottom": undefined,
+        "ml": undefined,
+        "width": undefined,
+      }
+    }
+  >
+    <ForwardRef(Toolbar)>
+      <ForwardRef(IconButton)
+        aria-label="open drawer"
+        color="inherit"
+        edge="start"
+        onClick={[Function]}
+        sx={
+          Object {
+            "mr": 2,
+          }
+        }
+      >
+        <Memo(ForwardRef(MenuIcon)) />
+      </ForwardRef(IconButton)>
+      <ForwardRef(Typography)
+        component="div"
+        sx={
+          Object {
+            "flexGrow": 1,
+          }
+        }
+        variant="h6"
+      >
+        Trivia Map
+      </ForwardRef(Typography)>
+      <ForwardRef(Box)>
+        <ForwardRef(Box)
+          onClick={[Function]}
+          sx={
+            Object {
+              "cursor": "pointer",
+              "py": 2,
+            }
+          }
+        >
+          <IconAndText
+            columnGap={0.5}
+            fontSize={14}
+            iconComponent={<Memo />}
+            iconPosition="right"
+            text="ゲストさん"
+          />
+        </ForwardRef(Box)>
+        <ForwardRef(Popover)
+          anchorEl={null}
+          anchorOrigin={
+            Object {
+              "horizontal": "right",
+              "vertical": "bottom",
+            }
+          }
+          onClose={[Function]}
+          open={false}
+        >
+          <ForwardRef(Box)
+            sx={
+              Object {
+                "p": 2,
+              }
+            }
+          >
+            <ForwardRef(Box)
+              sx={
+                Object {
+                  "width": 210,
+                }
+              }
+            >
+              <ForwardRef(Typography)
+                align="center"
+                component="div"
+                sx={
+                  Object {
+                    "mb": 1,
+                  }
+                }
+              >
+                ログインして新しいトリビアを投稿しませんか？
+              </ForwardRef(Typography)>
+              <ForwardRef(Typography)
+                align="center"
+                component="div"
+                sx={
+                  Object {
+                    "mb": 1,
+                  }
+                }
+              >
+                <ForwardRef(Button)
+                  onClick={[Function]}
+                  variant="contained"
+                >
+                  ログイン
+                </ForwardRef(Button)>
+              </ForwardRef(Typography)>
+            </ForwardRef(Box)>
+          </ForwardRef(Box)>
+        </ForwardRef(Popover)>
+      </ForwardRef(Box)>
+    </ForwardRef(Toolbar)>
+  </ForwardRef(AppBar)>
+  <ForwardRef(SwipeableDrawer)
+    onClose={[Function]}
+    onOpen={[Function]}
+    open={false}
+  >
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "width": 250,
+        }
+      }
+    >
+      <ForwardRef(List)>
+        <ForwardRef(ListItem)
+          button={true}
+          key="Inbox"
+        >
+          <ForwardRef(ListItemIcon)>
+            <Memo(ForwardRef(MoveToInboxIcon)) />
+          </ForwardRef(ListItemIcon)>
+          <ForwardRef(ListItemText)
+            primary="Inbox"
+          />
+        </ForwardRef(ListItem)>
+        <ForwardRef(ListItem)
+          button={true}
+          key="Starred"
+        >
+          <ForwardRef(ListItemIcon)>
+            <Memo(ForwardRef(MailIcon)) />
+          </ForwardRef(ListItemIcon)>
+          <ForwardRef(ListItemText)
+            primary="Starred"
+          />
+        </ForwardRef(ListItem)>
+        <ForwardRef(ListItem)
+          button={true}
+          key="Send email"
+        >
+          <ForwardRef(ListItemIcon)>
+            <Memo(ForwardRef(MoveToInboxIcon)) />
+          </ForwardRef(ListItemIcon)>
+          <ForwardRef(ListItemText)
+            primary="Send email"
+          />
+        </ForwardRef(ListItem)>
+        <ForwardRef(ListItem)
+          button={true}
+          key="Drafts"
+        >
+          <ForwardRef(ListItemIcon)>
+            <Memo(ForwardRef(MailIcon)) />
+          </ForwardRef(ListItemIcon)>
+          <ForwardRef(ListItemText)
+            primary="Drafts"
+          />
+        </ForwardRef(ListItem)>
+      </ForwardRef(List)>
+      <ForwardRef(Divider) />
+      <ForwardRef(List)>
+        <ForwardRef(ListItem)
+          button={true}
+          key="All mail"
+        >
+          <ForwardRef(ListItemIcon)>
+            <Memo(ForwardRef(MoveToInboxIcon)) />
+          </ForwardRef(ListItemIcon)>
+          <ForwardRef(ListItemText)
+            primary="All mail"
+          />
+        </ForwardRef(ListItem)>
+        <ForwardRef(ListItem)
+          button={true}
+          key="Trash"
+        >
+          <ForwardRef(ListItemIcon)>
+            <Memo(ForwardRef(MailIcon)) />
+          </ForwardRef(ListItemIcon)>
+          <ForwardRef(ListItemText)
+            primary="Trash"
+          />
+        </ForwardRef(ListItem)>
+        <ForwardRef(ListItem)
+          button={true}
+          key="Spam"
+        >
+          <ForwardRef(ListItemIcon)>
+            <Memo(ForwardRef(MoveToInboxIcon)) />
+          </ForwardRef(ListItemIcon)>
+          <ForwardRef(ListItemText)
+            primary="Spam"
+          />
+        </ForwardRef(ListItem)>
+      </ForwardRef(List)>
+    </ForwardRef(Box)>
+  </ForwardRef(SwipeableDrawer)>
+  <ForwardRef(Box)
+    sx={
+      Object {
+        "ml": undefined,
+        "position": "fixed",
+        "pt": "64px",
+        "width": "100%",
+        "zIndex": 1000,
+      }
+    }
+  >
+    <ArticlePaper
+      variant="navi"
+    >
+      <BackToNavi
+        link="https://..."
+        text="text"
+      />
+    </ArticlePaper>
+  </ForwardRef(Box)>
+  <ForwardRef(Box)
+    sx={
+      Object {
+        "ml": undefined,
+        "pt": "104px",
+        "width": "100%",
       }
     }
   >
@@ -916,7 +1656,7 @@ exports[`Shallow Snapshot Tests with userInfo 1`] = `
     position="fixed"
     sx={
       Object {
-        "borderBottom": "2px solid rgba(255, 255, 255, 0.7)",
+        "borderBottom": undefined,
         "ml": undefined,
         "width": undefined,
       }
@@ -1131,7 +1871,8 @@ exports[`Shallow Snapshot Tests with userInfo 1`] = `
     sx={
       Object {
         "ml": undefined,
-        "width": undefined,
+        "pt": "64px",
+        "width": "100%",
       }
     }
   >

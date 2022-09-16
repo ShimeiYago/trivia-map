@@ -10,13 +10,13 @@ export const PROFILE_SETTINGS_LINK = '/admin/account/profile';
 
 export const PASSWORD_CHANGE_LINK = '/admin/account/password';
 
-export const ARTICLE_PAGE_LINK = (postId: string) => `/article/${postId}`;
+export const ARTICLE_PAGE_LINK = (postId: string) => `/articles/${postId}`;
 
-export const EDIT_LINK = (postId: string) => `/edit/${postId}`;
+export const EDIT_LINK = (postId: string) => `map/edit/${postId}`;
 
 export const ARTICLE_LIST_PAGE_LINK = '/articles';
 
-export const AUTHER_PAGE_LINK = (userId: string) => `/user/${userId}`;
+export const AUTHER_PAGE_LINK = (userId: string) => `/users/${userId}`;
 
 export const VERIFY_EMAIL_LINK = (verifyKey: string) =>
   `/verify-email/${verifyKey}`;

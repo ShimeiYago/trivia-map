@@ -13,7 +13,7 @@ import {
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { leftNaviContents } from './left-navi-contents';
-import { appBarStyle, contentStyle, leftNaviBox } from '../styles';
+import { appBarStyle, contentStyle, leftNaviBox, localNavi } from '../styles';
 import { User } from 'types/user';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
@@ -24,6 +24,8 @@ import { BoxModal } from 'views/components/moleculars/box-modal';
 import { AuthForms } from '../../auth-forms';
 import { sleep } from 'utils/sleep';
 import { MAP_PAGE_LINK } from 'constant/links';
+import { ArticlePaper } from 'views/components/atoms/article-paper';
+import { BackToNavi } from 'views/components/moleculars/back-to-navi';
 
 export class Renderer extends React.Component<Props, State> {
   static readonly defaultProps: Pick<Props, 'topBarPosition'> = {
@@ -65,7 +67,7 @@ export class Renderer extends React.Component<Props, State> {
       <>
         <AppBar
           position={this.props.topBarPosition}
-          sx={appBarStyle(!!this.props.permanentLeftNavi)}
+          sx={appBarStyle(!!this.props.permanentLeftNavi, !!this.props.mapPage)}
         >
           <Toolbar>
             {!this.props.permanentLeftNavi && (
@@ -88,7 +90,31 @@ export class Renderer extends React.Component<Props, State> {
 
         {this.renderLeftNavi()}
 
-        <Box sx={contentStyle(!!this.props.permanentLeftNavi)}>
+        {this.props.localBackNavi && (
+          <Box
+            sx={localNavi(
+              !!this.props.permanentLeftNavi,
+              !!this.props.mapPage,
+              this.props.isMobile,
+            )}
+          >
+            <ArticlePaper variant="navi">
+              <BackToNavi
+                text={this.props.localBackNavi.text}
+                link={this.props.localBackNavi.link}
+              />
+            </ArticlePaper>
+          </Box>
+        )}
+
+        <Box
+          sx={contentStyle(
+            !!this.props.permanentLeftNavi,
+            !!this.props.mapPage,
+            this.props.isMobile,
+            !!this.props.localBackNavi,
+          )}
+        >
           {this.props.children}
         </Box>
 
@@ -233,6 +259,12 @@ export type Props = {
   userInfo?: User;
   openAuthFormModal: boolean;
   loggedOutSuccessfully: boolean;
+  isMobile: boolean;
+  mapPage?: boolean;
+  localBackNavi?: {
+    text: string;
+    link: string;
+  };
 
   autoLogin: () => void;
   toggleAuthFormModal: (open: boolean) => void;

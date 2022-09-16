@@ -11,6 +11,7 @@ const basicProps: Props = {
   autoLogin: jest.fn(),
   toggleAuthFormModal: jest.fn(),
   logout: jest.fn(),
+  isMobile: false,
 };
 
 let wrapper: ShallowWrapper<Props, State, Renderer>;
@@ -51,6 +52,34 @@ describe('Shallow Snapshot Tests', () => {
   it('redirect to top page', () => {
     wrapper.setState({
       redirectToTop: true,
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('with local navi', () => {
+    wrapper.setProps({
+      localBackNavi: {
+        text: 'text',
+        link: 'https://...',
+      },
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('with local navi & mobile', () => {
+    wrapper.setProps({
+      localBackNavi: {
+        text: 'text',
+        link: 'https://...',
+      },
+      isMobile: true,
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('map page', () => {
+    wrapper.setProps({
+      mapPage: true,
     });
     expect(wrapper).toMatchSnapshot();
   });

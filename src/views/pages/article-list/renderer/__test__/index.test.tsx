@@ -1,11 +1,15 @@
 import { shallow, ShallowWrapper } from 'enzyme';
-import { Renderer, State } from '..';
+import { Renderer, State, Props } from '..';
 
-let wrapper: ShallowWrapper<unknown, State, Renderer>;
+let wrapper: ShallowWrapper<Props, State, Renderer>;
+
+const basicProps: Props = {
+  initialSearchConditions: {},
+};
 
 describe('Shallow Snapshot Tests', () => {
   beforeEach(() => {
-    wrapper = shallow(<Renderer />);
+    wrapper = shallow(<Renderer {...basicProps} />);
   });
 
   it('basic', () => {
@@ -26,7 +30,7 @@ describe('Shallow Snapshot Tests', () => {
 
 describe('handleChangeCategory', () => {
   beforeEach(() => {
-    wrapper = shallow(<Renderer />);
+    wrapper = shallow(<Renderer {...basicProps} />);
   });
 
   it('should set category id number', () => {
@@ -60,7 +64,7 @@ describe('handleChangeCategory', () => {
 
 describe('handleChangePark', () => {
   beforeEach(() => {
-    wrapper = shallow(<Renderer />);
+    wrapper = shallow(<Renderer {...basicProps} />);
   });
 
   it('should set park L', () => {
@@ -108,7 +112,7 @@ describe('handleChangePark', () => {
 
 describe('handleClickFiltering', () => {
   beforeEach(() => {
-    wrapper = shallow(<Renderer />);
+    wrapper = shallow(<Renderer {...basicProps} />);
   });
 
   it('should synchronize searchConditions', () => {
@@ -131,7 +135,7 @@ describe('handleClickFiltering', () => {
 
 describe('handleChangeKeyword', () => {
   beforeEach(() => {
-    wrapper = shallow(<Renderer />);
+    wrapper = shallow(<Renderer {...basicProps} />);
   });
 
   it('should set divided keywords', () => {

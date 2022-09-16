@@ -23,7 +23,7 @@ const basicProps: Props = {
   map: { setView: jest.fn() } as unknown as LeafletMap,
   popupDisabled: false,
   openFormWithTheMarker: jest.fn(),
-  hideAddButton: false,
+  editting: false,
 };
 
 let shallowWrapper: ShallowWrapper<Props, unknown, PostMarkers>;
@@ -43,7 +43,7 @@ describe('Shallow Snapshot Tests', () => {
   });
 
   it('form is editting', () => {
-    shallowWrapper.setProps({ hideAddButton: true });
+    shallowWrapper.setProps({ editting: true });
     expect(shallowWrapper).toMatchSnapshot();
   });
 });

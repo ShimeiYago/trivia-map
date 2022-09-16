@@ -35,7 +35,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
             onClick={[Function]}
             startIcon={<Memo />}
           >
-            投稿を追加する
+            ここに投稿を追加する
           </ForwardRef(Button)>
         </ForwardRef(Box)>
       </ForwardRef(Box)>
@@ -82,7 +82,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
             onClick={[Function]}
             startIcon={<Memo />}
           >
-            投稿を追加する
+            ここに投稿を追加する
           </ForwardRef(Button)>
         </ForwardRef(Box)>
       </ForwardRef(Box)>
@@ -121,6 +121,21 @@ exports[`Shallow Snapshot Tests form is editting 1`] = `
           }
           variant="popup"
         />
+        <ForwardRef(Box)
+          sx={
+            Object {
+              "mt": 2,
+              "textAlign": "right",
+            }
+          }
+        >
+          <ForwardRef(Button)
+            onClick={[Function]}
+            startIcon={<Memo />}
+          >
+            ここにマーカーを置く
+          </ForwardRef(Button)>
+        </ForwardRef(Box)>
       </ForwardRef(Box)>
     }
     position={
@@ -153,6 +168,21 @@ exports[`Shallow Snapshot Tests form is editting 1`] = `
           }
           variant="popup"
         />
+        <ForwardRef(Box)
+          sx={
+            Object {
+              "mt": 2,
+              "textAlign": "right",
+            }
+          }
+        >
+          <ForwardRef(Button)
+            onClick={[Function]}
+            startIcon={<Memo />}
+          >
+            ここにマーカーを置く
+          </ForwardRef(Button)>
+        </ForwardRef(Box)>
       </ForwardRef(Box)>
     }
     position={
@@ -202,7 +232,7 @@ exports[`Shallow Snapshot Tests with hiddenMarkerIds 1`] = `
             onClick={[Function]}
             startIcon={<Memo />}
           >
-            投稿を追加する
+            ここに投稿を追加する
           </ForwardRef(Button)>
         </ForwardRef(Box)>
       </ForwardRef(Box)>

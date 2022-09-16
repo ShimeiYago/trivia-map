@@ -36,11 +36,13 @@ exports[`Shallow Snapshot Tests variant popup 1`] = `
     <ForwardRef(Stack)
       spacing={2}
     >
-      <ForwardRef(Box)>
+      <ForwardRef(Box)
+        key="preview-list-1"
+      >
         <Link
           className="preview-link"
           key="preview-1"
-          to="/article/1"
+          to="/articles/1"
         >
           <ForwardRef(Card)
             sx={
@@ -102,11 +104,13 @@ exports[`Shallow Snapshot Tests variant popup 1`] = `
           </ForwardRef(Card)>
         </Link>
       </ForwardRef(Box)>
-      <ForwardRef(Box)>
+      <ForwardRef(Box)
+        key="preview-list-2"
+      >
         <Link
           className="preview-link"
           key="preview-2"
-          to="/article/2"
+          to="/articles/2"
         >
           <ForwardRef(Card)
             sx={
@@ -177,11 +181,13 @@ exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
   <ForwardRef(Stack)
     spacing={3}
   >
-    <ForwardRef(Box)>
+    <ForwardRef(Box)
+      key="preview-list-1"
+    >
       <Link
         className="preview-link"
         key="preview-1"
-        to="/article/1"
+        to="/articles/1"
       >
         <ForwardRef(Card)
           sx={
@@ -235,11 +241,13 @@ exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
         </ForwardRef(Card)>
       </Link>
     </ForwardRef(Box)>
-    <ForwardRef(Box)>
+    <ForwardRef(Box)
+      key="preview-list-2"
+    >
       <Link
         className="preview-link"
         key="preview-2"
-        to="/article/2"
+        to="/articles/2"
       >
         <ForwardRef(Card)
           sx={

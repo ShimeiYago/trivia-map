@@ -43,7 +43,7 @@ exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
         >
           <ForwardRef(TableCell)>
             <Link
-              to="/article/1"
+              to="/articles/1"
             >
               ノーチラス号のエンジン
             </Link>
@@ -51,7 +51,7 @@ exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
           <ForwardRef(TableCell)>
             <Link
               target="_blank"
-              to="/edit/1"
+              to="map/edit/1"
             >
               <Memo(ForwardRef(EditIcon)) />
             </Link>
@@ -70,7 +70,7 @@ exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
         >
           <ForwardRef(TableCell)>
             <Link
-              to="/article/2"
+              to="/articles/2"
             >
               ノーチラス号の名前の由来
             </Link>
@@ -78,7 +78,7 @@ exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
           <ForwardRef(TableCell)>
             <Link
               target="_blank"
-              to="/edit/2"
+              to="map/edit/2"
             >
               <Memo(ForwardRef(EditIcon)) />
             </Link>

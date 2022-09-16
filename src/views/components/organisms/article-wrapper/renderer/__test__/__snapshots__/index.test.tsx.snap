@@ -9,8 +9,14 @@ exports[`Shallow Snapshot Tests basic 1`] = `
   }
 >
   <GlobalMenu
+    localBackNavi={
+      Object {
+        "link": "/",
+        "text": "マップへ戻る",
+      }
+    }
     permanentLeftNavi={true}
-    topBarPosition="static"
+    topBarPosition="fixed"
   >
     <ForwardRef(Box)
       sx={
@@ -24,19 +30,6 @@ exports[`Shallow Snapshot Tests basic 1`] = `
         container={true}
         spacing={4}
       >
-        <ForwardRef(Grid)
-          item={true}
-          xs={12}
-        >
-          <ArticlePaper
-            variant="navi"
-          >
-            <BackToNavi
-              link="/"
-              text="マップへ戻る"
-            />
-          </ArticlePaper>
-        </ForwardRef(Grid)>
         <ForwardRef(Grid)
           item={true}
           xs={8}
@@ -72,8 +65,14 @@ exports[`Shallow Snapshot Tests mobile 1`] = `
   }
 >
   <GlobalMenu
+    localBackNavi={
+      Object {
+        "link": "/",
+        "text": "マップへ戻る",
+      }
+    }
     permanentLeftNavi={false}
-    topBarPosition="static"
+    topBarPosition="fixed"
   >
     <ForwardRef(Box)
       sx={
@@ -87,19 +86,6 @@ exports[`Shallow Snapshot Tests mobile 1`] = `
         container={true}
         spacing={2}
       >
-        <ForwardRef(Grid)
-          item={true}
-          xs={12}
-        >
-          <ArticlePaper
-            variant="navi"
-          >
-            <BackToNavi
-              link="/"
-              text="マップへ戻る"
-            />
-          </ArticlePaper>
-        </ForwardRef(Grid)>
         <ForwardRef(Grid)
           item={true}
           xs={12}

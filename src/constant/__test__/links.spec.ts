@@ -9,12 +9,12 @@ import {
 describe('links', () => {
   it('ARTICLE_PAGE_LINK return article page link', () => {
     const link = ARTICLE_PAGE_LINK('1');
-    expect(link).toBe('/article/1');
+    expect(link).toBe('/articles/1');
   });
 
   it('EDIT_LINK return edit page link', () => {
     const link = EDIT_LINK('1');
-    expect(link).toBe('/edit/1');
+    expect(link).toBe('map/edit/1');
   });
 
   it('VERIFY_EMAIL_LINK return verify email page link', () => {
@@ -29,6 +29,6 @@ describe('links', () => {
 
   it('AUTHER_PAGE_LINK return user page link', () => {
     const link = AUTHER_PAGE_LINK('1');
-    expect(link).toBe('/user/1');
+    expect(link).toBe('/users/1');
   });
 });

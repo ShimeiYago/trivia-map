@@ -5,6 +5,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
   sx={Object {}}
 >
   <GlobalMenu
+    mapPage={true}
     topBarPosition="static"
   >
     <ForwardRef(Box)
@@ -178,6 +179,7 @@ exports[`Shallow Snapshot Tests pc view 1`] = `
   }
 >
   <GlobalMenu
+    mapPage={true}
     topBarPosition="static"
   >
     <ForwardRef(Box)

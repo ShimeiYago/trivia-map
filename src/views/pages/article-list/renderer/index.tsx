@@ -33,6 +33,13 @@ export class Renderer extends React.Component<Props, State> {
     currentSearchConditions: {},
   };
 
+  componentDidMount() {
+    this.setState({
+      formSearchConditions: this.props.initialSearchConditions,
+      currentSearchConditions: this.props.initialSearchConditions,
+    });
+  }
+
   componentDidUpdate(_: Props, prevState: State) {
     if (
       JSON.stringify(prevState.currentSearchConditions) !==
@@ -224,6 +231,7 @@ export class Renderer extends React.Component<Props, State> {
           variant="standard"
           fullWidth
           onChange={this.handleChangeKeyword}
+          value={this.state.formSearchConditions.keywords?.join(',')}
         />
       </Box>
     );
@@ -251,15 +259,16 @@ export class Renderer extends React.Component<Props, State> {
   };
 }
 
-// eslint-disable-next-line @typescript-eslint/ban-types
-export type Props = {};
+export type Props = {
+  initialSearchConditions: Conditions;
+};
 
 export type State = {
   formSearchConditions: Conditions;
   currentSearchConditions: Conditions;
 };
 
-type Conditions = {
+export type Conditions = {
   category?: number;
   park?: Park;
   keywords?: string[];

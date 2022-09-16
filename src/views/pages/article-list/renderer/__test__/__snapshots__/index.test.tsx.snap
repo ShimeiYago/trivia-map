@@ -377,6 +377,7 @@ exports[`Shallow Snapshot Tests with form conditions 1`] = `
                 fullWidth={true}
                 label="キーワード検索"
                 onChange={[Function]}
+                value="keyword1,keyword2"
                 variant="standard"
               />
             </ForwardRef(Box)>

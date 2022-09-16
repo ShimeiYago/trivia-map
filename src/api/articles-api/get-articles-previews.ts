@@ -5,37 +5,15 @@ import { getAxiosInstance } from 'api/utils/get-axios-instance';
 import { mockGetArticlesPreviewsResponse } from '../mock/articles-response';
 import { PaginationResponse } from 'api/types/pagination-response';
 import { Park } from './../../types/park';
+import { getUrlParameters } from 'utils/get-url-parameters';
 
 export async function getArticlesPreviews(
   param: GetArticlesPreviewsParam,
 ): Promise<GetArticlesPreviewsResponse> {
   const axiosInstance = getAxiosInstance({}, mockGetArticlesPreviewsResponse);
 
-  let url = `${BASE_URL}/articles/public/previews`;
-
-  const apiParmas = [];
-  if (param.page) {
-    apiParmas.push(`page=${param.page}`);
-  }
-  if (param.marker) {
-    apiParmas.push(`marker=${param.marker}`);
-  }
-  if (param.user) {
-    apiParmas.push(`user=${param.user}`);
-  }
-  if (param.category) {
-    apiParmas.push(`category=${param.category}`);
-  }
-  if (param.park) {
-    apiParmas.push(`park=${param.park}`);
-  }
-  if (param.keywords && param.keywords.length > 0) {
-    apiParmas.push(`keywords=${param.keywords.join(',')}`);
-  }
-
-  if (apiParmas.length > 0) {
-    url = `${url}?${apiParmas.join('&')}`;
-  }
+  const urlParams = getUrlParameters(param);
+  const url = `${BASE_URL}/articles/public/previews${urlParams}`;
 
   try {
     // TODO: Set reasonable timeout

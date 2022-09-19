@@ -31,6 +31,7 @@ import { GlobalMenu } from 'views/components/organisms/global-menu';
 import { Park } from 'types/park';
 import { RoundButton } from 'views/components/atoms/round-button';
 import { CATEGORIES } from 'constant';
+import { EDIT_LINK } from 'constant/links';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -50,7 +51,7 @@ export class Renderer extends React.Component<Props, State> {
       this.setState({
         openFormModal: true,
       });
-      history.replaceState('', '', `/edit/${this.props.postIdToEdit}`);
+      history.replaceState('', '', EDIT_LINK(`${this.props.postIdToEdit}`));
     }
   }
 

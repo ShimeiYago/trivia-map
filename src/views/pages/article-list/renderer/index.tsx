@@ -24,12 +24,33 @@ import SearchIcon from '@mui/icons-material/Search';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ArticleIcon from '@mui/icons-material/Article';
 import { Park } from 'types/park';
+import { ARTICLE_LIST_PAGE_LINK } from 'constant/links';
+import { getUrlParameters } from 'utils/get-url-parameters';
 
 export class Renderer extends React.Component<Props, State> {
   state: State = {
     formSearchConditions: {},
     currentSearchConditions: {},
   };
+
+  componentDidMount() {
+    this.setState({
+      formSearchConditions: this.props.initialSearchConditions,
+      currentSearchConditions: this.props.initialSearchConditions,
+    });
+  }
+
+  componentDidUpdate(_: Props, prevState: State) {
+    if (
+      JSON.stringify(prevState.currentSearchConditions) !==
+      JSON.stringify(this.state.currentSearchConditions)
+    ) {
+      const urlParameters = getUrlParameters(
+        this.state.currentSearchConditions,
+      );
+      history.replaceState('', '', `${ARTICLE_LIST_PAGE_LINK}${urlParameters}`);
+    }
+  }
 
   render() {
     return <ArticleWrapper>{this.renderMainContent()}</ArticleWrapper>;
@@ -210,6 +231,7 @@ export class Renderer extends React.Component<Props, State> {
           variant="standard"
           fullWidth
           onChange={this.handleChangeKeyword}
+          value={this.state.formSearchConditions.keywords?.join(',')}
         />
       </Box>
     );
@@ -237,15 +259,16 @@ export class Renderer extends React.Component<Props, State> {
   };
 }
 
-// eslint-disable-next-line @typescript-eslint/ban-types
-export type Props = {};
+export type Props = {
+  initialSearchConditions: Conditions;
+};
 
 export type State = {
   formSearchConditions: Conditions;
   currentSearchConditions: Conditions;
 };
 
-type Conditions = {
+export type Conditions = {
   category?: number;
   park?: Park;
   keywords?: string[];

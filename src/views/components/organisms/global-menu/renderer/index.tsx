@@ -113,6 +113,7 @@ export class Renderer extends React.Component<Props, State> {
             !!this.props.mapPage,
             this.props.isMobile,
             !!this.props.localBackNavi,
+            this.props.topBarPosition === 'fixed',
           )}
         >
           {this.props.children}

@@ -14,7 +14,7 @@ describe('links', () => {
 
   it('EDIT_LINK return edit page link', () => {
     const link = EDIT_LINK('1');
-    expect(link).toBe('map/edit/1');
+    expect(link).toBe('/map/edit/1');
   });
 
   it('VERIFY_EMAIL_LINK return verify email page link', () => {

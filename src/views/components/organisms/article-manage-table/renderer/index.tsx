@@ -11,6 +11,10 @@ import {
   Snackbar,
   Alert,
   IconButton,
+  Dialog,
+  DialogTitle,
+  DialogActions,
+  Button,
 } from '@mui/material';
 import { LoadingState } from 'types/loading-state';
 import {
@@ -59,6 +63,7 @@ export class Renderer extends React.Component<Props, State> {
           {this.renderPagination()}
           {this.renderTable()}
         </Stack>
+        {this.renderDeleteConfirmDialog()}
         {this.renderMessage()}
       </>
     );
@@ -82,7 +87,7 @@ export class Renderer extends React.Component<Props, State> {
           </TableCell>
           <TableCell>
             <IconButton
-              onClick={this.deleteArticle(postId, title)}
+              onClick={this.openDeleteConfirmDialog(postId, title)}
               disabled={deleting}
             >
               <DeleteIcon />
@@ -96,9 +101,9 @@ export class Renderer extends React.Component<Props, State> {
       <Table>
         <TableHead>
           <TableRow>
-            <TableCell>タイトル（表示）</TableCell>
-            <TableCell>編集</TableCell>
-            <TableCell>削除</TableCell>
+            <TableCell>投稿名</TableCell>
+            <TableCell sx={{ minWidth: '30px' }}>編集</TableCell>
+            <TableCell sx={{ minWidth: '30px' }}>削除</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>{tableRows}</TableBody>
@@ -166,6 +171,46 @@ export class Renderer extends React.Component<Props, State> {
     this.fetchArticlesPreviews(page);
   };
 
+  protected renderDeleteConfirmDialog() {
+    const { deleteDialog } = this.state;
+    if (!deleteDialog) {
+      return null;
+    }
+
+    return (
+      <Dialog open onClose={this.closeDeleteConfirmDialog}>
+        <DialogTitle>投稿「{deleteDialog.title}」を削除しますか？</DialogTitle>
+        <DialogActions>
+          <Button onClick={this.closeDeleteConfirmDialog}>削除しない</Button>
+          <Button
+            onClick={this.deleteArticle(
+              deleteDialog.postId,
+              deleteDialog.title,
+            )}
+            autoFocus
+          >
+            削除する
+          </Button>
+        </DialogActions>
+      </Dialog>
+    );
+  }
+
+  protected openDeleteConfirmDialog = (postId: number, title: string) => () => {
+    this.setState({
+      deleteDialog: {
+        postId: postId,
+        title: title,
+      },
+    });
+  };
+
+  protected closeDeleteConfirmDialog = () => {
+    this.setState({
+      deleteDialog: undefined,
+    });
+  };
+
   protected deleteArticle = (postId: number, title: string) => async () => {
     this.setState({
       message: undefined,
@@ -181,6 +226,7 @@ export class Renderer extends React.Component<Props, State> {
           type: 'success',
         },
         deleting: false,
+        deleteDialog: undefined,
       });
       this.fetchArticlesPreviews();
     } catch (error) {
@@ -191,6 +237,7 @@ export class Renderer extends React.Component<Props, State> {
           type: 'error',
         },
         deleting: false,
+        deleteDialog: undefined,
       });
     }
   };
@@ -209,6 +256,10 @@ export type Props = {
 export type State = {
   loadingState: LoadingState;
   deleting: boolean;
+  deleteDialog?: {
+    postId: number;
+    title: string;
+  };
   totalPages?: number;
   articlesPreviews?: GetMyArticlesResponseEachItem[];
   message?: {

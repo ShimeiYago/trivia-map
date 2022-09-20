@@ -27,12 +27,24 @@ exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
       <ForwardRef(TableHead)>
         <ForwardRef(TableRow)>
           <ForwardRef(TableCell)>
-            タイトル（表示）
+            投稿名
           </ForwardRef(TableCell)>
-          <ForwardRef(TableCell)>
+          <ForwardRef(TableCell)
+            sx={
+              Object {
+                "minWidth": "30px",
+              }
+            }
+          >
             編集
           </ForwardRef(TableCell)>
-          <ForwardRef(TableCell)>
+          <ForwardRef(TableCell)
+            sx={
+              Object {
+                "minWidth": "30px",
+              }
+            }
+          >
             削除
           </ForwardRef(TableCell)>
         </ForwardRef(TableRow)>
@@ -51,7 +63,7 @@ exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
           <ForwardRef(TableCell)>
             <Link
               target="_blank"
-              to="map/edit/1"
+              to="/map/edit/1"
             >
               <Memo(ForwardRef(EditIcon)) />
             </Link>
@@ -78,7 +90,7 @@ exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
           <ForwardRef(TableCell)>
             <Link
               target="_blank"
-              to="map/edit/2"
+              to="/map/edit/2"
             >
               <Memo(ForwardRef(EditIcon)) />
             </Link>
@@ -98,6 +110,73 @@ exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
 </Fragment>
 `;
 
+exports[`Shallow Snapshot Tests with dialog 1`] = `
+<Fragment>
+  <ForwardRef(Stack)
+    spacing={1}
+  >
+    <div
+      className="pagination-wrapper"
+    >
+      <ForwardRef(Pagination)
+        onChange={[Function]}
+      />
+    </div>
+    <ForwardRef(Table)>
+      <ForwardRef(TableHead)>
+        <ForwardRef(TableRow)>
+          <ForwardRef(TableCell)>
+            投稿名
+          </ForwardRef(TableCell)>
+          <ForwardRef(TableCell)
+            sx={
+              Object {
+                "minWidth": "30px",
+              }
+            }
+          >
+            編集
+          </ForwardRef(TableCell)>
+          <ForwardRef(TableCell)
+            sx={
+              Object {
+                "minWidth": "30px",
+              }
+            }
+          >
+            削除
+          </ForwardRef(TableCell)>
+        </ForwardRef(TableRow)>
+      </ForwardRef(TableHead)>
+      <ForwardRef(TableBody) />
+    </ForwardRef(Table)>
+  </ForwardRef(Stack)>
+  <ForwardRef(Dialog)
+    onClose={[Function]}
+    open={true}
+  >
+    <ForwardRef(DialogTitle)>
+      投稿「
+      title
+      」を削除しますか？
+    </ForwardRef(DialogTitle)>
+    <ForwardRef(DialogActions)>
+      <ForwardRef(Button)
+        onClick={[Function]}
+      >
+        削除しない
+      </ForwardRef(Button)>
+      <ForwardRef(Button)
+        autoFocus={true}
+        onClick={[Function]}
+      >
+        削除する
+      </ForwardRef(Button)>
+    </ForwardRef(DialogActions)>
+  </ForwardRef(Dialog)>
+</Fragment>
+`;
+
 exports[`Shallow Snapshot Tests with meesage 1`] = `
 <Fragment>
   <ForwardRef(Stack)
@@ -114,12 +193,24 @@ exports[`Shallow Snapshot Tests with meesage 1`] = `
       <ForwardRef(TableHead)>
         <ForwardRef(TableRow)>
           <ForwardRef(TableCell)>
-            タイトル（表示）
+            投稿名
           </ForwardRef(TableCell)>
-          <ForwardRef(TableCell)>
+          <ForwardRef(TableCell)
+            sx={
+              Object {
+                "minWidth": "30px",
+              }
+            }
+          >
             編集
           </ForwardRef(TableCell)>
-          <ForwardRef(TableCell)>
+          <ForwardRef(TableCell)
+            sx={
+              Object {
+                "minWidth": "30px",
+              }
+            }
+          >
             削除
           </ForwardRef(TableCell)>
         </ForwardRef(TableRow)>

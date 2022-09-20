@@ -27,7 +27,7 @@ exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
       <ForwardRef(TableHead)>
         <ForwardRef(TableRow)>
           <ForwardRef(TableCell)>
-            タイトル（表示）
+            投稿名
           </ForwardRef(TableCell)>
           <ForwardRef(TableCell)>
             編集
@@ -51,7 +51,7 @@ exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
           <ForwardRef(TableCell)>
             <Link
               target="_blank"
-              to="map/edit/1"
+              to="/map/edit/1"
             >
               <Memo(ForwardRef(EditIcon)) />
             </Link>
@@ -78,7 +78,7 @@ exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
           <ForwardRef(TableCell)>
             <Link
               target="_blank"
-              to="map/edit/2"
+              to="/map/edit/2"
             >
               <Memo(ForwardRef(EditIcon)) />
             </Link>
@@ -114,7 +114,7 @@ exports[`Shallow Snapshot Tests with meesage 1`] = `
       <ForwardRef(TableHead)>
         <ForwardRef(TableRow)>
           <ForwardRef(TableCell)>
-            タイトル（表示）
+            投稿名
           </ForwardRef(TableCell)>
           <ForwardRef(TableCell)>
             編集

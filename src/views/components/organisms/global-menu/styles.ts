@@ -25,8 +25,9 @@ export function contentStyle(
   mapPage: boolean,
   isMobile: boolean,
   hasLocalNavi: boolean,
+  fixedPosition: boolean,
 ): SxProps {
-  let topPadding = isMobile ? mobileHeight : PCHeight;
+  let topPadding = !fixedPosition ? 0 : isMobile ? mobileHeight : PCHeight;
   if (hasLocalNavi) {
     topPadding += localNaviHeight;
   }
@@ -45,7 +46,7 @@ export function localNavi(
   const topPadding = isMobile ? mobileHeight : PCHeight;
 
   return {
-    ...contentStyle(permanentLeftNavi, mapPage, isMobile, true),
+    ...contentStyle(permanentLeftNavi, mapPage, isMobile, true, true),
     position: 'fixed',
     pt: `${topPadding}px`,
     zIndex: 1000,

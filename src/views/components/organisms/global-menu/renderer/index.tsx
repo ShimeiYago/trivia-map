@@ -139,11 +139,11 @@ export class Renderer extends React.Component<Props, State> {
         onOpen={this.toggleLeftMenu(true)}
         onClose={this.toggleLeftMenu(false)}
       >
-        <Box sx={leftNaviBox}>{leftNaviContents}</Box>
+        <Box sx={leftNaviBox}>{leftNaviContents(!!this.props.userInfo)}</Box>
       </SwipeableDrawer>
     ) : (
       <Drawer open={true} variant="permanent">
-        <Box sx={leftNaviBox}>{leftNaviContents}</Box>
+        <Box sx={leftNaviBox}>{leftNaviContents(!!this.props.userInfo)}</Box>
       </Drawer>
     );
   };

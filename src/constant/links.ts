@@ -12,7 +12,7 @@ export const PASSWORD_CHANGE_LINK = '/admin/account/password';
 
 export const ARTICLE_PAGE_LINK = (postId: string) => `/articles/${postId}`;
 
-export const EDIT_LINK = (postId: string) => `map/edit/${postId}`;
+export const EDIT_LINK = (postId: string) => `/map/edit/${postId}`;
 
 export const ARTICLE_LIST_PAGE_LINK = '/articles';
 

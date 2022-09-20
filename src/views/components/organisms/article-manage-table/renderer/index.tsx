@@ -96,7 +96,7 @@ export class Renderer extends React.Component<Props, State> {
       <Table>
         <TableHead>
           <TableRow>
-            <TableCell>タイトル（表示）</TableCell>
+            <TableCell>投稿名</TableCell>
             <TableCell>編集</TableCell>
             <TableCell>削除</TableCell>
           </TableRow>

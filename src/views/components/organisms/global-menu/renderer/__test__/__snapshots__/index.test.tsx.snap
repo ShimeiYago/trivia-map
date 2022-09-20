@@ -1127,7 +1127,7 @@ exports[`Shallow Snapshot Tests static position 1`] = `
     sx={
       Object {
         "ml": undefined,
-        "pt": "64px",
+        "pt": "0px",
         "width": "100%",
       }
     }

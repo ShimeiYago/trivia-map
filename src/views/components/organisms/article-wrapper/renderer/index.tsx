@@ -14,7 +14,7 @@ export class Renderer extends React.Component<Props> {
     const { isMobile, children } = this.props;
 
     const localNavi = {
-      text: 'マップへ戻る',
+      text: 'マップへ',
       link: MAP_PAGE_LINK,
     };
 

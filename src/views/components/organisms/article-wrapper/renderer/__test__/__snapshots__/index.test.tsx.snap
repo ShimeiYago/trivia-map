@@ -12,7 +12,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
     localBackNavi={
       Object {
         "link": "/",
-        "text": "マップへ戻る",
+        "text": "マップへ",
       }
     }
     permanentLeftNavi={true}
@@ -68,7 +68,7 @@ exports[`Shallow Snapshot Tests mobile 1`] = `
     localBackNavi={
       Object {
         "link": "/",
-        "text": "マップへ戻る",
+        "text": "マップへ",
       }
     }
     permanentLeftNavi={false}

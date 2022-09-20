@@ -51,6 +51,17 @@ describe('Shallow Snapshot Tests', () => {
     });
     expect(wrapper).toMatchSnapshot();
   });
+
+  it('with dialog', () => {
+    wrapper.setState({
+      loadingState: 'success',
+      deleteDialog: {
+        postId: 1,
+        title: 'title',
+      },
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
 });
 
 describe('fetchArticlesPreviews', () => {
@@ -138,5 +149,34 @@ describe('handleCloseMessage', () => {
 
     instance['handleCloseMessage']();
     expect(instance.state.message).toBe(undefined);
+  });
+});
+
+describe('openDeleteConfirmDialog', () => {
+  it('should change deleteDialog state', () => {
+    wrapper = shallow(<Renderer {...basicProps} />);
+    const instance = wrapper.instance();
+
+    instance['openDeleteConfirmDialog'](1, 'title')();
+    expect(instance.state.deleteDialog).toEqual({
+      postId: 1,
+      title: 'title',
+    });
+  });
+});
+
+describe('closeDeleteConfirmDialog', () => {
+  it('should refresh deleteDialog state', () => {
+    wrapper = shallow(<Renderer {...basicProps} />);
+    wrapper.setState({
+      deleteDialog: {
+        postId: 1,
+        title: 'title',
+      },
+    });
+    const instance = wrapper.instance();
+
+    instance['closeDeleteConfirmDialog']();
+    expect(instance.state.deleteDialog).toBe(undefined);
   });
 });

@@ -7,7 +7,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
   >
     <BackToNavi
       link="/"
-      text="トリビアマップ"
+      text="マップへ"
     />
     <ForwardRef(Typography)
       align="center"
@@ -57,7 +57,7 @@ exports[`Shallow Snapshot Tests no icon 1`] = `
   >
     <BackToNavi
       link="/"
-      text="トリビアマップ"
+      text="マップへ"
     />
     <ForwardRef(Typography)
       align="center"

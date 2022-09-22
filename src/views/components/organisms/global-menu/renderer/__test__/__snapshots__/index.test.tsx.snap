@@ -126,86 +126,54 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       }
     >
       <ForwardRef(List)>
-        <ForwardRef(ListItem)
-          button={true}
-          key="Inbox"
+        <NonStyleLink
+          key="0"
+          to="/"
         >
-          <ForwardRef(ListItemIcon)>
-            <Memo(ForwardRef(MoveToInboxIcon)) />
-          </ForwardRef(ListItemIcon)>
-          <ForwardRef(ListItemText)
-            primary="Inbox"
-          />
-        </ForwardRef(ListItem)>
-        <ForwardRef(ListItem)
-          button={true}
-          key="Starred"
+          <ForwardRef(ListItem)
+            button={true}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(MapIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="マップ"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+        <NonStyleLink
+          key="1"
+          to="/articles"
         >
-          <ForwardRef(ListItemIcon)>
-            <Memo(ForwardRef(MailIcon)) />
-          </ForwardRef(ListItemIcon)>
-          <ForwardRef(ListItemText)
-            primary="Starred"
-          />
-        </ForwardRef(ListItem)>
-        <ForwardRef(ListItem)
-          button={true}
-          key="Send email"
-        >
-          <ForwardRef(ListItemIcon)>
-            <Memo(ForwardRef(MoveToInboxIcon)) />
-          </ForwardRef(ListItemIcon)>
-          <ForwardRef(ListItemText)
-            primary="Send email"
-          />
-        </ForwardRef(ListItem)>
-        <ForwardRef(ListItem)
-          button={true}
-          key="Drafts"
-        >
-          <ForwardRef(ListItemIcon)>
-            <Memo(ForwardRef(MailIcon)) />
-          </ForwardRef(ListItemIcon)>
-          <ForwardRef(ListItemText)
-            primary="Drafts"
-          />
-        </ForwardRef(ListItem)>
+          <ForwardRef(ListItem)
+            button={true}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(ArticleIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="投稿一覧＆検索"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
       </ForwardRef(List)>
       <ForwardRef(Divider) />
       <ForwardRef(List)>
-        <ForwardRef(ListItem)
-          button={true}
-          key="All mail"
+        <NonStyleLink
+          key="0"
+          to="/login"
         >
-          <ForwardRef(ListItemIcon)>
-            <Memo(ForwardRef(MoveToInboxIcon)) />
-          </ForwardRef(ListItemIcon)>
-          <ForwardRef(ListItemText)
-            primary="All mail"
-          />
-        </ForwardRef(ListItem)>
-        <ForwardRef(ListItem)
-          button={true}
-          key="Trash"
-        >
-          <ForwardRef(ListItemIcon)>
-            <Memo(ForwardRef(MailIcon)) />
-          </ForwardRef(ListItemIcon)>
-          <ForwardRef(ListItemText)
-            primary="Trash"
-          />
-        </ForwardRef(ListItem)>
-        <ForwardRef(ListItem)
-          button={true}
-          key="Spam"
-        >
-          <ForwardRef(ListItemIcon)>
-            <Memo(ForwardRef(MoveToInboxIcon)) />
-          </ForwardRef(ListItemIcon)>
-          <ForwardRef(ListItemText)
-            primary="Spam"
-          />
-        </ForwardRef(ListItem)>
+          <ForwardRef(ListItem)
+            button={true}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(LoginIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="ログイン"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
       </ForwardRef(List)>
     </ForwardRef(Box)>
   </ForwardRef(SwipeableDrawer)>
@@ -358,86 +326,54 @@ exports[`Shallow Snapshot Tests map page 1`] = `
       }
     >
       <ForwardRef(List)>
-        <ForwardRef(ListItem)
-          button={true}
-          key="Inbox"
+        <NonStyleLink
+          key="0"
+          to="/"
         >
-          <ForwardRef(ListItemIcon)>
-            <Memo(ForwardRef(MoveToInboxIcon)) />
-          </ForwardRef(ListItemIcon)>
-          <ForwardRef(ListItemText)
-            primary="Inbox"
-          />
-        </ForwardRef(ListItem)>
-        <ForwardRef(ListItem)
-          button={true}
-          key="Starred"
+          <ForwardRef(ListItem)
+            button={true}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(MapIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="マップ"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+        <NonStyleLink
+          key="1"
+          to="/articles"
         >
-          <ForwardRef(ListItemIcon)>
-            <Memo(ForwardRef(MailIcon)) />
-          </ForwardRef(ListItemIcon)>
-          <ForwardRef(ListItemText)
-            primary="Starred"
-          />
-        </ForwardRef(ListItem)>
-        <ForwardRef(ListItem)
-          button={true}
-          key="Send email"
-        >
-          <ForwardRef(ListItemIcon)>
-            <Memo(ForwardRef(MoveToInboxIcon)) />
-          </ForwardRef(ListItemIcon)>
-          <ForwardRef(ListItemText)
-            primary="Send email"
-          />
-        </ForwardRef(ListItem)>
-        <ForwardRef(ListItem)
-          button={true}
-          key="Drafts"
-        >
-          <ForwardRef(ListItemIcon)>
-            <Memo(ForwardRef(MailIcon)) />
-          </ForwardRef(ListItemIcon)>
-          <ForwardRef(ListItemText)
-            primary="Drafts"
-          />
-        </ForwardRef(ListItem)>
+          <ForwardRef(ListItem)
+            button={true}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(ArticleIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="投稿一覧＆検索"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
       </ForwardRef(List)>
       <ForwardRef(Divider) />
       <ForwardRef(List)>
-        <ForwardRef(ListItem)
-          button={true}
-          key="All mail"
+        <NonStyleLink
+          key="0"
+          to="/login"
         >
-          <ForwardRef(ListItemIcon)>
-            <Memo(ForwardRef(MoveToInboxIcon)) />
-          </ForwardRef(ListItemIcon)>
-          <ForwardRef(ListItemText)
-            primary="All mail"
-          />
-        </ForwardRef(ListItem)>
-        <ForwardRef(ListItem)
-          button={true}
-          key="Trash"
-        >
-          <ForwardRef(ListItemIcon)>
-            <Memo(ForwardRef(MailIcon)) />
-          </ForwardRef(ListItemIcon)>
-          <ForwardRef(ListItemText)
-            primary="Trash"
-          />
-        </ForwardRef(ListItem)>
-        <ForwardRef(ListItem)
-          button={true}
-          key="Spam"
-        >
-          <ForwardRef(ListItemIcon)>
-            <Memo(ForwardRef(MoveToInboxIcon)) />
-          </ForwardRef(ListItemIcon)>
-          <ForwardRef(ListItemText)
-            primary="Spam"
-          />
-        </ForwardRef(ListItem)>
+          <ForwardRef(ListItem)
+            button={true}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(LoginIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="ログイン"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
       </ForwardRef(List)>
     </ForwardRef(Box)>
   </ForwardRef(SwipeableDrawer)>
@@ -576,86 +512,54 @@ exports[`Shallow Snapshot Tests permanent left navi 1`] = `
       }
     >
       <ForwardRef(List)>
-        <ForwardRef(ListItem)
-          button={true}
-          key="Inbox"
+        <NonStyleLink
+          key="0"
+          to="/"
         >
-          <ForwardRef(ListItemIcon)>
-            <Memo(ForwardRef(MoveToInboxIcon)) />
-          </ForwardRef(ListItemIcon)>
-          <ForwardRef(ListItemText)
-            primary="Inbox"
-          />
-        </ForwardRef(ListItem)>
-        <ForwardRef(ListItem)
-          button={true}
-          key="Starred"
+          <ForwardRef(ListItem)
+            button={true}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(MapIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="マップ"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+        <NonStyleLink
+          key="1"
+          to="/articles"
         >
-          <ForwardRef(ListItemIcon)>
-            <Memo(ForwardRef(MailIcon)) />
-          </ForwardRef(ListItemIcon)>
-          <ForwardRef(ListItemText)
-            primary="Starred"
-          />
-        </ForwardRef(ListItem)>
-        <ForwardRef(ListItem)
-          button={true}
-          key="Send email"
-        >
-          <ForwardRef(ListItemIcon)>
-            <Memo(ForwardRef(MoveToInboxIcon)) />
-          </ForwardRef(ListItemIcon)>
-          <ForwardRef(ListItemText)
-            primary="Send email"
-          />
-        </ForwardRef(ListItem)>
-        <ForwardRef(ListItem)
-          button={true}
-          key="Drafts"
-        >
-          <ForwardRef(ListItemIcon)>
-            <Memo(ForwardRef(MailIcon)) />
-          </ForwardRef(ListItemIcon)>
-          <ForwardRef(ListItemText)
-            primary="Drafts"
-          />
-        </ForwardRef(ListItem)>
+          <ForwardRef(ListItem)
+            button={true}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(ArticleIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="投稿一覧＆検索"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
       </ForwardRef(List)>
       <ForwardRef(Divider) />
       <ForwardRef(List)>
-        <ForwardRef(ListItem)
-          button={true}
-          key="All mail"
+        <NonStyleLink
+          key="0"
+          to="/login"
         >
-          <ForwardRef(ListItemIcon)>
-            <Memo(ForwardRef(MoveToInboxIcon)) />
-          </ForwardRef(ListItemIcon)>
-          <ForwardRef(ListItemText)
-            primary="All mail"
-          />
-        </ForwardRef(ListItem)>
-        <ForwardRef(ListItem)
-          button={true}
-          key="Trash"
-        >
-          <ForwardRef(ListItemIcon)>
-            <Memo(ForwardRef(MailIcon)) />
-          </ForwardRef(ListItemIcon)>
-          <ForwardRef(ListItemText)
-            primary="Trash"
-          />
-        </ForwardRef(ListItem)>
-        <ForwardRef(ListItem)
-          button={true}
-          key="Spam"
-        >
-          <ForwardRef(ListItemIcon)>
-            <Memo(ForwardRef(MoveToInboxIcon)) />
-          </ForwardRef(ListItemIcon)>
-          <ForwardRef(ListItemText)
-            primary="Spam"
-          />
-        </ForwardRef(ListItem)>
+          <ForwardRef(ListItem)
+            button={true}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(LoginIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="ログイン"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
       </ForwardRef(List)>
     </ForwardRef(Box)>
   </ForwardRef(Drawer)>
@@ -808,86 +712,54 @@ exports[`Shallow Snapshot Tests redirect to top page 1`] = `
       }
     >
       <ForwardRef(List)>
-        <ForwardRef(ListItem)
-          button={true}
-          key="Inbox"
+        <NonStyleLink
+          key="0"
+          to="/"
         >
-          <ForwardRef(ListItemIcon)>
-            <Memo(ForwardRef(MoveToInboxIcon)) />
-          </ForwardRef(ListItemIcon)>
-          <ForwardRef(ListItemText)
-            primary="Inbox"
-          />
-        </ForwardRef(ListItem)>
-        <ForwardRef(ListItem)
-          button={true}
-          key="Starred"
+          <ForwardRef(ListItem)
+            button={true}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(MapIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="マップ"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+        <NonStyleLink
+          key="1"
+          to="/articles"
         >
-          <ForwardRef(ListItemIcon)>
-            <Memo(ForwardRef(MailIcon)) />
-          </ForwardRef(ListItemIcon)>
-          <ForwardRef(ListItemText)
-            primary="Starred"
-          />
-        </ForwardRef(ListItem)>
-        <ForwardRef(ListItem)
-          button={true}
-          key="Send email"
-        >
-          <ForwardRef(ListItemIcon)>
-            <Memo(ForwardRef(MoveToInboxIcon)) />
-          </ForwardRef(ListItemIcon)>
-          <ForwardRef(ListItemText)
-            primary="Send email"
-          />
-        </ForwardRef(ListItem)>
-        <ForwardRef(ListItem)
-          button={true}
-          key="Drafts"
-        >
-          <ForwardRef(ListItemIcon)>
-            <Memo(ForwardRef(MailIcon)) />
-          </ForwardRef(ListItemIcon)>
-          <ForwardRef(ListItemText)
-            primary="Drafts"
-          />
-        </ForwardRef(ListItem)>
+          <ForwardRef(ListItem)
+            button={true}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(ArticleIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="投稿一覧＆検索"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
       </ForwardRef(List)>
       <ForwardRef(Divider) />
       <ForwardRef(List)>
-        <ForwardRef(ListItem)
-          button={true}
-          key="All mail"
+        <NonStyleLink
+          key="0"
+          to="/login"
         >
-          <ForwardRef(ListItemIcon)>
-            <Memo(ForwardRef(MoveToInboxIcon)) />
-          </ForwardRef(ListItemIcon)>
-          <ForwardRef(ListItemText)
-            primary="All mail"
-          />
-        </ForwardRef(ListItem)>
-        <ForwardRef(ListItem)
-          button={true}
-          key="Trash"
-        >
-          <ForwardRef(ListItemIcon)>
-            <Memo(ForwardRef(MailIcon)) />
-          </ForwardRef(ListItemIcon)>
-          <ForwardRef(ListItemText)
-            primary="Trash"
-          />
-        </ForwardRef(ListItem)>
-        <ForwardRef(ListItem)
-          button={true}
-          key="Spam"
-        >
-          <ForwardRef(ListItemIcon)>
-            <Memo(ForwardRef(MoveToInboxIcon)) />
-          </ForwardRef(ListItemIcon)>
-          <ForwardRef(ListItemText)
-            primary="Spam"
-          />
-        </ForwardRef(ListItem)>
+          <ForwardRef(ListItem)
+            button={true}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(LoginIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="ログイン"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
       </ForwardRef(List)>
     </ForwardRef(Box)>
   </ForwardRef(SwipeableDrawer)>
@@ -1040,86 +912,54 @@ exports[`Shallow Snapshot Tests static position 1`] = `
       }
     >
       <ForwardRef(List)>
-        <ForwardRef(ListItem)
-          button={true}
-          key="Inbox"
+        <NonStyleLink
+          key="0"
+          to="/"
         >
-          <ForwardRef(ListItemIcon)>
-            <Memo(ForwardRef(MoveToInboxIcon)) />
-          </ForwardRef(ListItemIcon)>
-          <ForwardRef(ListItemText)
-            primary="Inbox"
-          />
-        </ForwardRef(ListItem)>
-        <ForwardRef(ListItem)
-          button={true}
-          key="Starred"
+          <ForwardRef(ListItem)
+            button={true}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(MapIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="マップ"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+        <NonStyleLink
+          key="1"
+          to="/articles"
         >
-          <ForwardRef(ListItemIcon)>
-            <Memo(ForwardRef(MailIcon)) />
-          </ForwardRef(ListItemIcon)>
-          <ForwardRef(ListItemText)
-            primary="Starred"
-          />
-        </ForwardRef(ListItem)>
-        <ForwardRef(ListItem)
-          button={true}
-          key="Send email"
-        >
-          <ForwardRef(ListItemIcon)>
-            <Memo(ForwardRef(MoveToInboxIcon)) />
-          </ForwardRef(ListItemIcon)>
-          <ForwardRef(ListItemText)
-            primary="Send email"
-          />
-        </ForwardRef(ListItem)>
-        <ForwardRef(ListItem)
-          button={true}
-          key="Drafts"
-        >
-          <ForwardRef(ListItemIcon)>
-            <Memo(ForwardRef(MailIcon)) />
-          </ForwardRef(ListItemIcon)>
-          <ForwardRef(ListItemText)
-            primary="Drafts"
-          />
-        </ForwardRef(ListItem)>
+          <ForwardRef(ListItem)
+            button={true}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(ArticleIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="投稿一覧＆検索"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
       </ForwardRef(List)>
       <ForwardRef(Divider) />
       <ForwardRef(List)>
-        <ForwardRef(ListItem)
-          button={true}
-          key="All mail"
+        <NonStyleLink
+          key="0"
+          to="/login"
         >
-          <ForwardRef(ListItemIcon)>
-            <Memo(ForwardRef(MoveToInboxIcon)) />
-          </ForwardRef(ListItemIcon)>
-          <ForwardRef(ListItemText)
-            primary="All mail"
-          />
-        </ForwardRef(ListItem)>
-        <ForwardRef(ListItem)
-          button={true}
-          key="Trash"
-        >
-          <ForwardRef(ListItemIcon)>
-            <Memo(ForwardRef(MailIcon)) />
-          </ForwardRef(ListItemIcon)>
-          <ForwardRef(ListItemText)
-            primary="Trash"
-          />
-        </ForwardRef(ListItem)>
-        <ForwardRef(ListItem)
-          button={true}
-          key="Spam"
-        >
-          <ForwardRef(ListItemIcon)>
-            <Memo(ForwardRef(MoveToInboxIcon)) />
-          </ForwardRef(ListItemIcon)>
-          <ForwardRef(ListItemText)
-            primary="Spam"
-          />
-        </ForwardRef(ListItem)>
+          <ForwardRef(ListItem)
+            button={true}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(LoginIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="ログイン"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
       </ForwardRef(List)>
     </ForwardRef(Box)>
   </ForwardRef(SwipeableDrawer)>
@@ -1272,86 +1112,54 @@ exports[`Shallow Snapshot Tests with local navi & mobile 1`] = `
       }
     >
       <ForwardRef(List)>
-        <ForwardRef(ListItem)
-          button={true}
-          key="Inbox"
+        <NonStyleLink
+          key="0"
+          to="/"
         >
-          <ForwardRef(ListItemIcon)>
-            <Memo(ForwardRef(MoveToInboxIcon)) />
-          </ForwardRef(ListItemIcon)>
-          <ForwardRef(ListItemText)
-            primary="Inbox"
-          />
-        </ForwardRef(ListItem)>
-        <ForwardRef(ListItem)
-          button={true}
-          key="Starred"
+          <ForwardRef(ListItem)
+            button={true}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(MapIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="マップ"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+        <NonStyleLink
+          key="1"
+          to="/articles"
         >
-          <ForwardRef(ListItemIcon)>
-            <Memo(ForwardRef(MailIcon)) />
-          </ForwardRef(ListItemIcon)>
-          <ForwardRef(ListItemText)
-            primary="Starred"
-          />
-        </ForwardRef(ListItem)>
-        <ForwardRef(ListItem)
-          button={true}
-          key="Send email"
-        >
-          <ForwardRef(ListItemIcon)>
-            <Memo(ForwardRef(MoveToInboxIcon)) />
-          </ForwardRef(ListItemIcon)>
-          <ForwardRef(ListItemText)
-            primary="Send email"
-          />
-        </ForwardRef(ListItem)>
-        <ForwardRef(ListItem)
-          button={true}
-          key="Drafts"
-        >
-          <ForwardRef(ListItemIcon)>
-            <Memo(ForwardRef(MailIcon)) />
-          </ForwardRef(ListItemIcon)>
-          <ForwardRef(ListItemText)
-            primary="Drafts"
-          />
-        </ForwardRef(ListItem)>
+          <ForwardRef(ListItem)
+            button={true}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(ArticleIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="投稿一覧＆検索"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
       </ForwardRef(List)>
       <ForwardRef(Divider) />
       <ForwardRef(List)>
-        <ForwardRef(ListItem)
-          button={true}
-          key="All mail"
+        <NonStyleLink
+          key="0"
+          to="/login"
         >
-          <ForwardRef(ListItemIcon)>
-            <Memo(ForwardRef(MoveToInboxIcon)) />
-          </ForwardRef(ListItemIcon)>
-          <ForwardRef(ListItemText)
-            primary="All mail"
-          />
-        </ForwardRef(ListItem)>
-        <ForwardRef(ListItem)
-          button={true}
-          key="Trash"
-        >
-          <ForwardRef(ListItemIcon)>
-            <Memo(ForwardRef(MailIcon)) />
-          </ForwardRef(ListItemIcon)>
-          <ForwardRef(ListItemText)
-            primary="Trash"
-          />
-        </ForwardRef(ListItem)>
-        <ForwardRef(ListItem)
-          button={true}
-          key="Spam"
-        >
-          <ForwardRef(ListItemIcon)>
-            <Memo(ForwardRef(MoveToInboxIcon)) />
-          </ForwardRef(ListItemIcon)>
-          <ForwardRef(ListItemText)
-            primary="Spam"
-          />
-        </ForwardRef(ListItem)>
+          <ForwardRef(ListItem)
+            button={true}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(LoginIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="ログイン"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
       </ForwardRef(List)>
     </ForwardRef(Box)>
   </ForwardRef(SwipeableDrawer)>
@@ -1524,86 +1332,54 @@ exports[`Shallow Snapshot Tests with local navi 1`] = `
       }
     >
       <ForwardRef(List)>
-        <ForwardRef(ListItem)
-          button={true}
-          key="Inbox"
+        <NonStyleLink
+          key="0"
+          to="/"
         >
-          <ForwardRef(ListItemIcon)>
-            <Memo(ForwardRef(MoveToInboxIcon)) />
-          </ForwardRef(ListItemIcon)>
-          <ForwardRef(ListItemText)
-            primary="Inbox"
-          />
-        </ForwardRef(ListItem)>
-        <ForwardRef(ListItem)
-          button={true}
-          key="Starred"
+          <ForwardRef(ListItem)
+            button={true}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(MapIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="マップ"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+        <NonStyleLink
+          key="1"
+          to="/articles"
         >
-          <ForwardRef(ListItemIcon)>
-            <Memo(ForwardRef(MailIcon)) />
-          </ForwardRef(ListItemIcon)>
-          <ForwardRef(ListItemText)
-            primary="Starred"
-          />
-        </ForwardRef(ListItem)>
-        <ForwardRef(ListItem)
-          button={true}
-          key="Send email"
-        >
-          <ForwardRef(ListItemIcon)>
-            <Memo(ForwardRef(MoveToInboxIcon)) />
-          </ForwardRef(ListItemIcon)>
-          <ForwardRef(ListItemText)
-            primary="Send email"
-          />
-        </ForwardRef(ListItem)>
-        <ForwardRef(ListItem)
-          button={true}
-          key="Drafts"
-        >
-          <ForwardRef(ListItemIcon)>
-            <Memo(ForwardRef(MailIcon)) />
-          </ForwardRef(ListItemIcon)>
-          <ForwardRef(ListItemText)
-            primary="Drafts"
-          />
-        </ForwardRef(ListItem)>
+          <ForwardRef(ListItem)
+            button={true}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(ArticleIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="投稿一覧＆検索"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
       </ForwardRef(List)>
       <ForwardRef(Divider) />
       <ForwardRef(List)>
-        <ForwardRef(ListItem)
-          button={true}
-          key="All mail"
+        <NonStyleLink
+          key="0"
+          to="/login"
         >
-          <ForwardRef(ListItemIcon)>
-            <Memo(ForwardRef(MoveToInboxIcon)) />
-          </ForwardRef(ListItemIcon)>
-          <ForwardRef(ListItemText)
-            primary="All mail"
-          />
-        </ForwardRef(ListItem)>
-        <ForwardRef(ListItem)
-          button={true}
-          key="Trash"
-        >
-          <ForwardRef(ListItemIcon)>
-            <Memo(ForwardRef(MailIcon)) />
-          </ForwardRef(ListItemIcon)>
-          <ForwardRef(ListItemText)
-            primary="Trash"
-          />
-        </ForwardRef(ListItem)>
-        <ForwardRef(ListItem)
-          button={true}
-          key="Spam"
-        >
-          <ForwardRef(ListItemIcon)>
-            <Memo(ForwardRef(MoveToInboxIcon)) />
-          </ForwardRef(ListItemIcon)>
-          <ForwardRef(ListItemText)
-            primary="Spam"
-          />
-        </ForwardRef(ListItem)>
+          <ForwardRef(ListItem)
+            button={true}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(LoginIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="ログイン"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
       </ForwardRef(List)>
     </ForwardRef(Box)>
   </ForwardRef(SwipeableDrawer)>
@@ -1784,86 +1560,84 @@ exports[`Shallow Snapshot Tests with userInfo 1`] = `
       }
     >
       <ForwardRef(List)>
-        <ForwardRef(ListItem)
-          button={true}
-          key="Inbox"
+        <NonStyleLink
+          key="0"
+          to="/"
         >
-          <ForwardRef(ListItemIcon)>
-            <Memo(ForwardRef(MoveToInboxIcon)) />
-          </ForwardRef(ListItemIcon)>
-          <ForwardRef(ListItemText)
-            primary="Inbox"
-          />
-        </ForwardRef(ListItem)>
-        <ForwardRef(ListItem)
-          button={true}
-          key="Starred"
+          <ForwardRef(ListItem)
+            button={true}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(MapIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="マップ"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+        <NonStyleLink
+          key="1"
+          to="/articles"
         >
-          <ForwardRef(ListItemIcon)>
-            <Memo(ForwardRef(MailIcon)) />
-          </ForwardRef(ListItemIcon)>
-          <ForwardRef(ListItemText)
-            primary="Starred"
-          />
-        </ForwardRef(ListItem)>
-        <ForwardRef(ListItem)
-          button={true}
-          key="Send email"
-        >
-          <ForwardRef(ListItemIcon)>
-            <Memo(ForwardRef(MoveToInboxIcon)) />
-          </ForwardRef(ListItemIcon)>
-          <ForwardRef(ListItemText)
-            primary="Send email"
-          />
-        </ForwardRef(ListItem)>
-        <ForwardRef(ListItem)
-          button={true}
-          key="Drafts"
-        >
-          <ForwardRef(ListItemIcon)>
-            <Memo(ForwardRef(MailIcon)) />
-          </ForwardRef(ListItemIcon)>
-          <ForwardRef(ListItemText)
-            primary="Drafts"
-          />
-        </ForwardRef(ListItem)>
+          <ForwardRef(ListItem)
+            button={true}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(ArticleIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="投稿一覧＆検索"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
       </ForwardRef(List)>
       <ForwardRef(Divider) />
       <ForwardRef(List)>
-        <ForwardRef(ListItem)
-          button={true}
-          key="All mail"
+        <NonStyleLink
+          key="0"
+          to="/admin"
         >
-          <ForwardRef(ListItemIcon)>
-            <Memo(ForwardRef(MoveToInboxIcon)) />
-          </ForwardRef(ListItemIcon)>
-          <ForwardRef(ListItemText)
-            primary="All mail"
-          />
-        </ForwardRef(ListItem)>
-        <ForwardRef(ListItem)
-          button={true}
-          key="Trash"
+          <ForwardRef(ListItem)
+            button={true}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(AdminPanelSettingsIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="マイページ"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+        <NonStyleLink
+          key="1"
+          to="/admin/articles"
         >
-          <ForwardRef(ListItemIcon)>
-            <Memo(ForwardRef(MailIcon)) />
-          </ForwardRef(ListItemIcon)>
-          <ForwardRef(ListItemText)
-            primary="Trash"
-          />
-        </ForwardRef(ListItem)>
-        <ForwardRef(ListItem)
-          button={true}
-          key="Spam"
+          <ForwardRef(ListItem)
+            button={true}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(ListAltIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="マイ投稿一覧＆管理"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+        <NonStyleLink
+          key="2"
+          to="/admin/account"
         >
-          <ForwardRef(ListItemIcon)>
-            <Memo(ForwardRef(MoveToInboxIcon)) />
-          </ForwardRef(ListItemIcon)>
-          <ForwardRef(ListItemText)
-            primary="Spam"
-          />
-        </ForwardRef(ListItem)>
+          <ForwardRef(ListItem)
+            button={true}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(ManageAccountsIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="アカウント設定"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
       </ForwardRef(List)>
     </ForwardRef(Box)>
   </ForwardRef(SwipeableDrawer)>

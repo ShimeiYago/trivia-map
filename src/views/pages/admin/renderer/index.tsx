@@ -38,7 +38,7 @@ export class Renderer extends React.Component<Props> {
 
     return (
       <Stack spacing={3}>
-        <BackToNavi text="トリビアマップ" link={MAP_PAGE_LINK} />
+        <BackToNavi text="マップへ" link={MAP_PAGE_LINK} />
 
         <Typography align="center">ようこそ {user?.nickname}さん</Typography>
         <Stack direction="row">

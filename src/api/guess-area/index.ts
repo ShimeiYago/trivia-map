@@ -6,14 +6,16 @@ import { getAxiosInstance } from 'api/utils/get-axios-instance';
 import { Park } from '../../types/park';
 
 export async function guessArea(
-  params: GuessAreaParams,
+  request: GuessAreaRequest,
 ): Promise<GuessAreaResponse> {
-  const url = `${BASE_URL}/guess-area?lat=${params.lat}&lng=${params.lng}&park=${params.park}`;
-
+  const url = `${BASE_URL}/guess-area`;
   const axiosInstance = getAxiosInstance({}, mockGuessAreaResponse);
 
   try {
-    const res: AxiosResponse<GuessAreaResponse> = await axiosInstance.get(url);
+    const res: AxiosResponse<GuessAreaResponse> = await axiosInstance.post(
+      url,
+      request,
+    );
     return res.data;
   } catch (error) {
     const axiosError = error as AxiosError;
@@ -21,7 +23,7 @@ export async function guessArea(
   }
 }
 
-type GuessAreaParams = {
+type GuessAreaRequest = {
   lat: number;
   lng: number;
   park: Park;

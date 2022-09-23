@@ -8,10 +8,13 @@ import { Renderer, Props } from './renderer';
 import { isMobile } from 'react-device-detect';
 import { Navigate, useParams } from 'react-router-dom';
 import { NOT_FOUND_LINK } from 'constant/links';
+import usePageTracking from 'tracker';
 
 export function MapPage() {
   const { postId } = useParams();
   const postIdNumber = Number(postId);
+
+  usePageTracking();
 
   if (postId && !postIdNumber) {
     return <Navigate to={NOT_FOUND_LINK} />;

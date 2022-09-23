@@ -29,3 +29,5 @@ export const MAP_PAGE_LINK = '/';
 export const NOT_FOUND_LINK = '/error/404';
 
 export const INTERNAL_ERROR_LINK = '/error/500';
+
+export const INQUIRY_PAGE_LINK = '/inquiry';

@@ -175,6 +175,24 @@ exports[`Shallow Snapshot Tests basic 1`] = `
           </ForwardRef(ListItem)>
         </NonStyleLink>
       </ForwardRef(List)>
+      <ForwardRef(Divider) />
+      <ForwardRef(List)>
+        <NonStyleLink
+          key="0"
+          to="/inquiry"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(EmailIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="お問い合わせ"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+      </ForwardRef(List)>
     </ForwardRef(Box)>
   </ForwardRef(SwipeableDrawer)>
   <ForwardRef(Box)
@@ -375,6 +393,24 @@ exports[`Shallow Snapshot Tests map page 1`] = `
           </ForwardRef(ListItem)>
         </NonStyleLink>
       </ForwardRef(List)>
+      <ForwardRef(Divider) />
+      <ForwardRef(List)>
+        <NonStyleLink
+          key="0"
+          to="/inquiry"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(EmailIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="お問い合わせ"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+      </ForwardRef(List)>
     </ForwardRef(Box)>
   </ForwardRef(SwipeableDrawer)>
   <ForwardRef(Box)
@@ -557,6 +593,24 @@ exports[`Shallow Snapshot Tests permanent left navi 1`] = `
             </ForwardRef(ListItemIcon)>
             <ForwardRef(ListItemText)
               primary="ログイン"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+      </ForwardRef(List)>
+      <ForwardRef(Divider) />
+      <ForwardRef(List)>
+        <NonStyleLink
+          key="0"
+          to="/inquiry"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(EmailIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="お問い合わせ"
             />
           </ForwardRef(ListItem)>
         </NonStyleLink>
@@ -761,6 +815,24 @@ exports[`Shallow Snapshot Tests redirect to top page 1`] = `
           </ForwardRef(ListItem)>
         </NonStyleLink>
       </ForwardRef(List)>
+      <ForwardRef(Divider) />
+      <ForwardRef(List)>
+        <NonStyleLink
+          key="0"
+          to="/inquiry"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(EmailIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="お問い合わせ"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+      </ForwardRef(List)>
     </ForwardRef(Box)>
   </ForwardRef(SwipeableDrawer)>
   <ForwardRef(Box)
@@ -961,6 +1033,24 @@ exports[`Shallow Snapshot Tests static position 1`] = `
           </ForwardRef(ListItem)>
         </NonStyleLink>
       </ForwardRef(List)>
+      <ForwardRef(Divider) />
+      <ForwardRef(List)>
+        <NonStyleLink
+          key="0"
+          to="/inquiry"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(EmailIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="お問い合わせ"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+      </ForwardRef(List)>
     </ForwardRef(Box)>
   </ForwardRef(SwipeableDrawer)>
   <ForwardRef(Box)
@@ -1157,6 +1247,24 @@ exports[`Shallow Snapshot Tests with local navi & mobile 1`] = `
             </ForwardRef(ListItemIcon)>
             <ForwardRef(ListItemText)
               primary="ログイン"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+      </ForwardRef(List)>
+      <ForwardRef(Divider) />
+      <ForwardRef(List)>
+        <NonStyleLink
+          key="0"
+          to="/inquiry"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(EmailIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="お問い合わせ"
             />
           </ForwardRef(ListItem)>
         </NonStyleLink>
@@ -1377,6 +1485,24 @@ exports[`Shallow Snapshot Tests with local navi 1`] = `
             </ForwardRef(ListItemIcon)>
             <ForwardRef(ListItemText)
               primary="ログイン"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+      </ForwardRef(List)>
+      <ForwardRef(Divider) />
+      <ForwardRef(List)>
+        <NonStyleLink
+          key="0"
+          to="/inquiry"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(EmailIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="お問い合わせ"
             />
           </ForwardRef(ListItem)>
         </NonStyleLink>
@@ -1635,6 +1761,24 @@ exports[`Shallow Snapshot Tests with userInfo 1`] = `
             </ForwardRef(ListItemIcon)>
             <ForwardRef(ListItemText)
               primary="アカウント設定"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+      </ForwardRef(List)>
+      <ForwardRef(Divider) />
+      <ForwardRef(List)>
+        <NonStyleLink
+          key="0"
+          to="/inquiry"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(EmailIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="お問い合わせ"
             />
           </ForwardRef(ListItem)>
         </NonStyleLink>

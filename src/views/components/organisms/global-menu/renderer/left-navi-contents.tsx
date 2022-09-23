@@ -10,6 +10,7 @@ import {
   ACCOUNT_SETTINGS_LINK,
   ADMIN_LINK,
   ARTICLE_LIST_PAGE_LINK,
+  INQUIRY_PAGE_LINK,
   LOGIN_LINK,
   MAP_PAGE_LINK,
   MY_ARTICLES_LINK,
@@ -21,6 +22,7 @@ import LoginIcon from '@mui/icons-material/Login';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import ListAltIcon from '@mui/icons-material/ListAlt';
+import EmailIcon from '@mui/icons-material/Email';
 
 const listItemsForMap: ListItem[] = [
   {
@@ -61,6 +63,14 @@ const listItemsForAdmin: ListItem[] = [
   },
 ];
 
+const listItemsInquiry: ListItem[] = [
+  {
+    text: 'お問い合わせ',
+    icon: <EmailIcon />,
+    link: INQUIRY_PAGE_LINK,
+  },
+];
+
 const listItemMapping = (items: ListItem[]) => {
   return items.map((item, index) => (
     <NonStyleLink to={item.link} key={index}>
@@ -79,6 +89,8 @@ export const leftNaviContents = (login: boolean) => (
     <List>
       {listItemMapping(login ? listItemsForAdmin : listItemsForLogin)}
     </List>
+    <Divider />
+    <List>{listItemMapping(listItemsInquiry)}</List>
   </>
 );
 

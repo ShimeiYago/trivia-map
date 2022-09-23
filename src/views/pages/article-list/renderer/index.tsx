@@ -86,14 +86,13 @@ export class Renderer extends React.Component<Props, State> {
     return (
       <Accordion>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography>
-            <IconAndText
-              iconComponent={<FilterAltIcon />}
-              text="絞り込み検索"
-              iconPosition="left"
-              variant="inherit"
-            />
-          </Typography>
+          <IconAndText
+            iconComponent={<FilterAltIcon />}
+            text="絞り込み検索"
+            iconPosition="left"
+            variant="inherit"
+            component="p"
+          />
         </AccordionSummary>
         <AccordionDetails>
           <Box

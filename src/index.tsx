@@ -28,6 +28,7 @@ import {
   AUTHER_PAGE_LINK,
   ARTICLE_LIST_PAGE_LINK,
   MY_ARTICLES_LINK,
+  INQUIRY_PAGE_LINK,
 } from 'constant/links';
 import { ChangePassword } from 'views/pages/change-password';
 import { ResetPassword } from 'views/pages/reset-password';
@@ -36,6 +37,7 @@ import { GlobalErrorHandler } from 'views/components/organisms/global-error-hand
 import { ArticleList } from 'views/pages/article-list';
 import { AuthorPage } from 'views/pages/author';
 import { MyArticles } from 'views/pages/my-articles';
+import { InquiryPage } from 'views/pages/inquiry-page';
 
 // Deactivate all console.log on production
 // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -98,6 +100,7 @@ ReactDOM.render(
               path={NOT_FOUND_LINK}
               element={<CommonErrorPage errorStatus={404} />}
             />
+            <Route path={INQUIRY_PAGE_LINK} element={<InquiryPage />} />
             <Route
               path={INTERNAL_ERROR_LINK}
               element={<CommonErrorPage errorStatus={500} />}

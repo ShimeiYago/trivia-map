@@ -33,7 +33,9 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   render() {
-    return <ArticleWrapper>{this.renderMainArticle()}</ArticleWrapper>;
+    return (
+      <ArticleWrapper showSidebar>{this.renderMainArticle()}</ArticleWrapper>
+    );
   }
 
   protected renderMainArticle = () => {

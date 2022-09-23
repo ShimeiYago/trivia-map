@@ -17,7 +17,6 @@ const basicProps: Props = {
     nickname: 'Axel',
     icon: 'https://...',
   },
-  isMobile: false,
 };
 
 describe('Shallow Snapshot Tests', () => {
@@ -77,7 +76,6 @@ describe('componentDidUpdate', () => {
 
     const prevProps: Props = {
       user: undefined,
-      isMobile: false,
     };
 
     instance['componentDidUpdate'](prevProps);
@@ -86,7 +84,7 @@ describe('componentDidUpdate', () => {
   });
 
   it('should reset email & name states when user is updated', () => {
-    wrapper = shallow(<Renderer isMobile={false} />);
+    wrapper = shallow(<Renderer />);
     const instance = wrapper.instance();
 
     const prevProps: Props = {
@@ -96,7 +94,6 @@ describe('componentDidUpdate', () => {
         nickname: 'Axel',
         icon: 'https://...',
       },
-      isMobile: false,
     };
 
     instance['componentDidUpdate'](prevProps);

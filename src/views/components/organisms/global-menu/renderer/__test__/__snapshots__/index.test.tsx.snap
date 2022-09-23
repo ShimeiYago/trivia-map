@@ -192,6 +192,21 @@ exports[`Shallow Snapshot Tests basic 1`] = `
             />
           </ForwardRef(ListItem)>
         </NonStyleLink>
+        <NonStyleLink
+          key="1"
+          to="/privacy-policy"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(InfoIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="プライバシーポリシー"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
       </ForwardRef(List)>
     </ForwardRef(Box)>
   </ForwardRef(SwipeableDrawer)>
@@ -199,6 +214,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
     sx={
       Object {
         "ml": undefined,
+        "pb": 4,
         "pt": "64px",
         "width": "100%",
       }
@@ -410,6 +426,21 @@ exports[`Shallow Snapshot Tests map page 1`] = `
             />
           </ForwardRef(ListItem)>
         </NonStyleLink>
+        <NonStyleLink
+          key="1"
+          to="/privacy-policy"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(InfoIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="プライバシーポリシー"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
       </ForwardRef(List)>
     </ForwardRef(Box)>
   </ForwardRef(SwipeableDrawer)>
@@ -417,6 +448,7 @@ exports[`Shallow Snapshot Tests map page 1`] = `
     sx={
       Object {
         "ml": undefined,
+        "pb": 4,
         "pt": undefined,
         "width": "100%",
       }
@@ -614,6 +646,21 @@ exports[`Shallow Snapshot Tests permanent left navi 1`] = `
             />
           </ForwardRef(ListItem)>
         </NonStyleLink>
+        <NonStyleLink
+          key="1"
+          to="/privacy-policy"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(InfoIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="プライバシーポリシー"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
       </ForwardRef(List)>
     </ForwardRef(Box)>
   </ForwardRef(Drawer)>
@@ -621,6 +668,7 @@ exports[`Shallow Snapshot Tests permanent left navi 1`] = `
     sx={
       Object {
         "ml": "250px",
+        "pb": 4,
         "pt": "64px",
         "width": "calc(100% - 250px)",
       }
@@ -832,6 +880,21 @@ exports[`Shallow Snapshot Tests redirect to top page 1`] = `
             />
           </ForwardRef(ListItem)>
         </NonStyleLink>
+        <NonStyleLink
+          key="1"
+          to="/privacy-policy"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(InfoIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="プライバシーポリシー"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
       </ForwardRef(List)>
     </ForwardRef(Box)>
   </ForwardRef(SwipeableDrawer)>
@@ -839,6 +902,7 @@ exports[`Shallow Snapshot Tests redirect to top page 1`] = `
     sx={
       Object {
         "ml": undefined,
+        "pb": 4,
         "pt": "64px",
         "width": "100%",
       }
@@ -1050,6 +1114,21 @@ exports[`Shallow Snapshot Tests static position 1`] = `
             />
           </ForwardRef(ListItem)>
         </NonStyleLink>
+        <NonStyleLink
+          key="1"
+          to="/privacy-policy"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(InfoIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="プライバシーポリシー"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
       </ForwardRef(List)>
     </ForwardRef(Box)>
   </ForwardRef(SwipeableDrawer)>
@@ -1057,6 +1136,7 @@ exports[`Shallow Snapshot Tests static position 1`] = `
     sx={
       Object {
         "ml": undefined,
+        "pb": 4,
         "pt": "0px",
         "width": "100%",
       }
@@ -1268,6 +1348,21 @@ exports[`Shallow Snapshot Tests with local navi & mobile 1`] = `
             />
           </ForwardRef(ListItem)>
         </NonStyleLink>
+        <NonStyleLink
+          key="1"
+          to="/privacy-policy"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(InfoIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="プライバシーポリシー"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
       </ForwardRef(List)>
     </ForwardRef(Box)>
   </ForwardRef(SwipeableDrawer)>
@@ -1275,6 +1370,7 @@ exports[`Shallow Snapshot Tests with local navi & mobile 1`] = `
     sx={
       Object {
         "ml": undefined,
+        "pb": 4,
         "position": "fixed",
         "pt": "56px",
         "width": "100%",
@@ -1295,6 +1391,7 @@ exports[`Shallow Snapshot Tests with local navi & mobile 1`] = `
     sx={
       Object {
         "ml": undefined,
+        "pb": 4,
         "pt": "96px",
         "width": "100%",
       }
@@ -1506,6 +1603,21 @@ exports[`Shallow Snapshot Tests with local navi 1`] = `
             />
           </ForwardRef(ListItem)>
         </NonStyleLink>
+        <NonStyleLink
+          key="1"
+          to="/privacy-policy"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(InfoIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="プライバシーポリシー"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
       </ForwardRef(List)>
     </ForwardRef(Box)>
   </ForwardRef(SwipeableDrawer)>
@@ -1513,6 +1625,7 @@ exports[`Shallow Snapshot Tests with local navi 1`] = `
     sx={
       Object {
         "ml": undefined,
+        "pb": 4,
         "position": "fixed",
         "pt": "64px",
         "width": "100%",
@@ -1533,6 +1646,7 @@ exports[`Shallow Snapshot Tests with local navi 1`] = `
     sx={
       Object {
         "ml": undefined,
+        "pb": 4,
         "pt": "104px",
         "width": "100%",
       }
@@ -1782,6 +1896,21 @@ exports[`Shallow Snapshot Tests with userInfo 1`] = `
             />
           </ForwardRef(ListItem)>
         </NonStyleLink>
+        <NonStyleLink
+          key="1"
+          to="/privacy-policy"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(InfoIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="プライバシーポリシー"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
       </ForwardRef(List)>
     </ForwardRef(Box)>
   </ForwardRef(SwipeableDrawer)>
@@ -1789,6 +1918,7 @@ exports[`Shallow Snapshot Tests with userInfo 1`] = `
     sx={
       Object {
         "ml": undefined,
+        "pb": 4,
         "pt": "64px",
         "width": "100%",
       }

@@ -14,6 +14,7 @@ import {
   LOGIN_LINK,
   MAP_PAGE_LINK,
   MY_ARTICLES_LINK,
+  PRIVACY_POLICY_PAGE_LINK,
 } from 'constant/links';
 import MapIcon from '@mui/icons-material/Map';
 import ArticleIcon from '@mui/icons-material/Article';
@@ -23,6 +24,7 @@ import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import ListAltIcon from '@mui/icons-material/ListAlt';
 import EmailIcon from '@mui/icons-material/Email';
+import InfoIcon from '@mui/icons-material/Info';
 
 const listItemsForMap: ListItem[] = [
   {
@@ -63,11 +65,16 @@ const listItemsForAdmin: ListItem[] = [
   },
 ];
 
-const listItemsInquiry: ListItem[] = [
+const listItemsOthers: ListItem[] = [
   {
     text: 'お問い合わせ',
     icon: <EmailIcon />,
     link: INQUIRY_PAGE_LINK,
+  },
+  {
+    text: 'プライバシーポリシー',
+    icon: <InfoIcon />,
+    link: PRIVACY_POLICY_PAGE_LINK,
   },
 ];
 
@@ -90,7 +97,7 @@ export const leftNaviContents = (login: boolean) => (
       {listItemMapping(login ? listItemsForAdmin : listItemsForLogin)}
     </List>
     <Divider />
-    <List>{listItemMapping(listItemsInquiry)}</List>
+    <List>{listItemMapping(listItemsOthers)}</List>
   </>
 );
 

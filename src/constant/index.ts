@@ -17,6 +17,13 @@ export const CATEGORIES = [
   },
 ];
 
+export const INQUIRY_CATEGORIES = [
+  '不具合の報告',
+  'ご要望',
+  'アカウント関連',
+  'その他',
+];
+
 export const UPLOAD_IMAGE_MAX_LENGTH = {
   article: 1000,
   icon: 200,

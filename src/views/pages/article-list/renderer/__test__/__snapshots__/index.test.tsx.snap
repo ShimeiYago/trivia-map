@@ -6,14 +6,13 @@ exports[`Shallow Snapshot Tests basic 1`] = `
     <ForwardRef(AccordionSummary)
       expandIcon={<Memo />}
     >
-      <ForwardRef(Typography)>
-        <IconAndText
-          iconComponent={<Memo />}
-          iconPosition="left"
-          text="絞り込み検索"
-          variant="inherit"
-        />
-      </ForwardRef(Typography)>
+      <IconAndText
+        component="p"
+        iconComponent={<Memo />}
+        iconPosition="left"
+        text="絞り込み検索"
+        variant="inherit"
+      />
     </ForwardRef(AccordionSummary)>
     <ForwardRef(AccordionDetails)>
       <ForwardRef(Box)
@@ -221,14 +220,13 @@ exports[`Shallow Snapshot Tests with form conditions 1`] = `
     <ForwardRef(AccordionSummary)
       expandIcon={<Memo />}
     >
-      <ForwardRef(Typography)>
-        <IconAndText
-          iconComponent={<Memo />}
-          iconPosition="left"
-          text="絞り込み検索"
-          variant="inherit"
-        />
-      </ForwardRef(Typography)>
+      <IconAndText
+        component="p"
+        iconComponent={<Memo />}
+        iconPosition="left"
+        text="絞り込み検索"
+        variant="inherit"
+      />
     </ForwardRef(AccordionSummary)>
     <ForwardRef(AccordionDetails)>
       <ForwardRef(Box)

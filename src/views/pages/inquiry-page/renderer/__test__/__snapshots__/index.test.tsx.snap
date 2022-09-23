@@ -1,10 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Shallow Snapshot Tests basic 1`] = `
-<GlobalMenu
-  permanentLeftNavi={true}
-  topBarPosition="static"
->
+<ArticleWrapper>
   <ForwardRef(Stack)
     spacing={1}
     sx={
@@ -124,14 +121,11 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       </ForwardRef(LoadingButton)>
     </ForwardRef(Stack)>
   </ForwardRef(Stack)>
-</GlobalMenu>
+</ArticleWrapper>
 `;
 
 exports[`Shallow Snapshot Tests error case 1`] = `
-<GlobalMenu
-  permanentLeftNavi={true}
-  topBarPosition="static"
->
+<ArticleWrapper>
   <ForwardRef(Stack)
     spacing={1}
     sx={
@@ -275,14 +269,11 @@ exports[`Shallow Snapshot Tests error case 1`] = `
       </ForwardRef(LoadingButton)>
     </ForwardRef(Stack)>
   </ForwardRef(Stack)>
-</GlobalMenu>
+</ArticleWrapper>
 `;
 
 exports[`Shallow Snapshot Tests loading 1`] = `
-<GlobalMenu
-  permanentLeftNavi={true}
-  topBarPosition="static"
->
+<ArticleWrapper>
   <ForwardRef(Stack)
     spacing={1}
     sx={
@@ -402,14 +393,11 @@ exports[`Shallow Snapshot Tests loading 1`] = `
       </ForwardRef(LoadingButton)>
     </ForwardRef(Stack)>
   </ForwardRef(Stack)>
-</GlobalMenu>
+</ArticleWrapper>
 `;
 
 exports[`Shallow Snapshot Tests success 1`] = `
-<GlobalMenu
-  permanentLeftNavi={true}
-  topBarPosition="static"
->
+<ArticleWrapper>
   <ForwardRef(Stack)
     spacing={1}
     sx={
@@ -532,5 +520,5 @@ exports[`Shallow Snapshot Tests success 1`] = `
       </ForwardRef(LoadingButton)>
     </ForwardRef(Stack)>
   </ForwardRef(Stack)>
-</GlobalMenu>
+</ArticleWrapper>
 `;

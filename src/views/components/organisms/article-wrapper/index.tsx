@@ -5,6 +5,7 @@ export function ArticleWrapper(ownProps: OwnProps) {
   const props: Props = {
     isMobile: isMobile,
     children: ownProps.children,
+    showSidebar: !!ownProps.showSidebar,
   };
 
   return <Renderer {...props} />;
@@ -12,4 +13,5 @@ export function ArticleWrapper(ownProps: OwnProps) {
 
 type OwnProps = {
   children: React.ReactNode;
+  showSidebar?: boolean;
 };

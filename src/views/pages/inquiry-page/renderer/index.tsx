@@ -16,9 +16,9 @@ import { LoadingState } from 'types/loading-state';
 import { HeaderErrorMessages } from 'views/components/moleculars/header-error-messages';
 import { globalAPIErrorMessage } from 'constant/global-api-error-message';
 import { ApiError } from 'api/utils/handle-axios-error';
-import { GlobalMenu } from 'views/components/organisms/global-menu';
 import { inquiry, ValidationError } from 'api/inquiry-api';
 import { INQUIRY_CATEGORIES } from 'constant';
+import { ArticleWrapper } from 'views/components/organisms/article-wrapper';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -43,10 +43,7 @@ export class Renderer extends React.Component<Props, State> {
 
   render() {
     return (
-      <GlobalMenu
-        topBarPosition="static"
-        permanentLeftNavi={!this.props.isMobile}
-      >
+      <ArticleWrapper>
         <Stack spacing={1} sx={{ px: 1, maxWidth: '400px', mx: 'auto', my: 3 }}>
           <Typography component="h1" variant="h5" align="center">
             お問い合わせ
@@ -54,7 +51,7 @@ export class Renderer extends React.Component<Props, State> {
           {this.renderHeaderInfo()}
           {this.renderForm()}
         </Stack>
-      </GlobalMenu>
+      </ArticleWrapper>
     );
   }
 
@@ -241,7 +238,6 @@ export class Renderer extends React.Component<Props, State> {
 
 export type Props = {
   user?: User;
-  isMobile: boolean;
 };
 
 export type State = {

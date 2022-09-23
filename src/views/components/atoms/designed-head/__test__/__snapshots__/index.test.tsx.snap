@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shallow Snapshot Tests basic 1`] = `
+<ForwardRef(Typography)
+  component="h2"
+  sx={
+    Object {
+      "borderBottom": "solid 2px #7db4e6",
+      "borderLeft": "solid 5px #7db4e6",
+      "mb": 2,
+      "mt": 1,
+      "px": 1,
+      "py": 0.5,
+    }
+  }
+  variant="h5"
+>
+  xxx
+</ForwardRef(Typography)>
+`;

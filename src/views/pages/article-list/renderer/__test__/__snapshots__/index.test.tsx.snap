@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Shallow Snapshot Tests basic 1`] = `
-<ArticleWrapper>
+<ArticleWrapper
+  showSidebar={true}
+>
   <ForwardRef(Accordion)>
     <ForwardRef(AccordionSummary)
       expandIcon={<Memo />}
@@ -215,7 +217,9 @@ exports[`Shallow Snapshot Tests basic 1`] = `
 `;
 
 exports[`Shallow Snapshot Tests with form conditions 1`] = `
-<ArticleWrapper>
+<ArticleWrapper
+  showSidebar={true}
+>
   <ForwardRef(Accordion)>
     <ForwardRef(AccordionSummary)
       expandIcon={<Memo />}

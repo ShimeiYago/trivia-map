@@ -35,7 +35,7 @@ export function contentStyle(
     width: permanentLeftNavi ? `calc(100% - ${drawerWidth}px)` : '100%',
     ml: permanentLeftNavi ? `${drawerWidth}px` : undefined,
     pt: mapPage ? undefined : `${topPadding}px`,
-    pb: 4,
+    pb: mapPage ? 0 : 4,
   };
 }
 

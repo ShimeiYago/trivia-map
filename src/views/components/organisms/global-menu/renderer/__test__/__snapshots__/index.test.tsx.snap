@@ -448,7 +448,7 @@ exports[`Shallow Snapshot Tests map page 1`] = `
     sx={
       Object {
         "ml": undefined,
-        "pb": 4,
+        "pb": 0,
         "pt": undefined,
         "width": "100%",
       }

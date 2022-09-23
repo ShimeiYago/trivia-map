@@ -2,9 +2,12 @@ import { Props, Renderer } from './renderer';
 import { useParams } from 'react-router-dom';
 import { useAppDispatch } from 'store';
 import { throwError } from 'store/global-error/slice';
+import usePageTracking from 'tracker';
 
 export function AuthorPage() {
   const dispatch = useAppDispatch();
+
+  usePageTracking();
 
   const { userId } = useParams();
   const userIdNumber = Number(userId);

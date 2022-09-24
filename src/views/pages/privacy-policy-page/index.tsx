@@ -1,3 +1,7 @@
 import { Renderer } from './renderer';
+import usePageTracking from 'tracker';
 
-export const PrivacyPolicyPage = Renderer;
+export const PrivacyPolicyPage = () => {
+  usePageTracking();
+  return <Renderer />;
+};

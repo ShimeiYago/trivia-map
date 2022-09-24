@@ -1,3 +1,8 @@
 import { Renderer } from './renderer';
+import usePageTracking from 'tracker';
 
-export const Login = Renderer;
+export const Login = () => {
+  usePageTracking();
+
+  return <Renderer />;
+};

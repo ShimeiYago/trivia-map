@@ -15,6 +15,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - Node.js 16 or more
 
 ## Setup
+
 1. `npm install`
 2. `npx husky install`
 
@@ -77,9 +78,17 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 ## Environment variables
 
+- For development, please set env variables in `.env.development.local`.
+- For production release, please set env variables in `.env.production.local`.
+
 ### `REACT_APP_API_BASE_URL`
 
-For production release, please set API base URL in `.env.production.local`.
+API base URL.
+
+### `REACT_APP_ANALYTICS_ID`
+
+Google Analytics ID (G-xxx).
 
 ## Author
+
 [ShimeiYago](https://github.com/ShimeiYago)

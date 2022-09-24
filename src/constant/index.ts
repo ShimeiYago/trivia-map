@@ -3,6 +3,8 @@ export const BASE_URL =
 
 export const SITE_NAME = 'トリビアマップ';
 
+export const ANALYTICS_ID = process.env.REACT_APP_ANALYTICS_ID;
+
 export const CATEGORIES = [
   {
     categoryId: 1,

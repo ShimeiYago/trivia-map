@@ -1,7 +1,11 @@
 import { SxProps } from '@mui/material';
-import { blue } from '@mui/material/colors';
+
+const BG_COLOR = '#f5f8fa';
 
 export const card: SxProps = {
-  p: 1,
-  backgroundColor: blue[50],
+  backgroundColor: BG_COLOR,
+  transition: 'all 0.3s',
+  '&:hover': {
+    transform: 'translate(0,-5px)',
+  },
 };

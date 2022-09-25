@@ -8,7 +8,7 @@ export class Renderer extends React.Component {
   render() {
     return (
       <ArticleWrapper>
-        <DesignedHead>個人情報の利用目的</DesignedHead>
+        {renderHead('個人情報の利用目的')}
         <Typography sx={{ mb: 1 }}>
           {SITE_NAME}
           （以下当ブログ）では、アカウント登録、お問い合わせなどの際に、名前（ハンドルネーム）、メールアドレス等の個人情報をご登録いただく場合がございます。
@@ -17,7 +17,7 @@ export class Renderer extends React.Component {
           これらの個人情報は、各投稿にお名前を表示する場合や、必要な情報を電子メールなどでご連絡する場合に利用させていただくものであり、個人情報をご提供いただく際の目的以外では利用いたしません。
         </Typography>
 
-        <DesignedHead>個人情報の第三者への開示</DesignedHead>
+        {renderHead('個人情報の第三者への開示')}
         <Typography sx={{ mb: 1 }}>
           当サイトでは、個人情報は適切に管理し、以下に該当する場合を除いて第三者に開示することはありません。
         </Typography>
@@ -29,10 +29,10 @@ export class Renderer extends React.Component {
           また、ご本人からの個人データの開示、訂正、追加、削除、利用停止のご希望の場合には、ご本人であることを確認させていただいた上、速やかに対応させていただきます。
         </Typography>
 
-        <DesignedHead>広告の配信について</DesignedHead>
+        {renderHead('広告の配信について')}
         <Typography sx={{ mb: 3 }}>TODO</Typography>
 
-        <DesignedHead>アクセス解析ツールについて</DesignedHead>
+        {renderHead('アクセス解析ツールについて')}
         <Typography sx={{ mb: 1 }}>
           当サイトでは、Googleによるアクセス解析ツール「Googleアナリティクス」を利用しています。
         </Typography>
@@ -44,7 +44,7 @@ export class Renderer extends React.Component {
           をご覧ください。
         </Typography>
 
-        <DesignedHead>当サイトへのコメントについて</DesignedHead>
+        {renderHead('当サイトへのコメントについて')}
         <Typography sx={{ mb: 1 }}>
           当サイトでは、スパム・荒らしへの対応として、投稿・コメントの際に使用されたIPアドレスを記録しています。
         </Typography>
@@ -62,7 +62,7 @@ export class Renderer extends React.Component {
           </li>
         </ul>
 
-        <DesignedHead>著作権について</DesignedHead>
+        {renderHead('著作権について')}
         <Typography sx={{ mb: 1 }}>
           当サイトで掲載している画像の著作権・肖像権等は各権利所有者に帰属致します。権利を侵害する目的ではございません。記事の内容や掲載画像等に問題がございましたら、各権利所有者様本人が直接メールでご連絡下さい。確認後、対応させて頂きます。
         </Typography>
@@ -76,7 +76,7 @@ export class Renderer extends React.Component {
           当サイトに掲載された内容によって生じた損害等の一切の責任を負いかねますのでご了承ください。
         </Typography>
 
-        <DesignedHead>免責事項</DesignedHead>
+        {renderHead('免責事項')}
         <Typography sx={{ mb: 1 }}>
           当サイトの記事について、著作権は放棄しておりません。当サイトに存在する、文章・画像・動画等の著作物の情報を無断転載することを禁止します。引用の範囲を超えるものについては、法的処置を行います。転載を希望される方は、ご連絡をお願いします。
         </Typography>
@@ -84,10 +84,18 @@ export class Renderer extends React.Component {
           当サイトは著作権の侵害を目的とするものではありません。使用している版権物の知的所有権はそれぞれの著作者・団体に帰属しております。著作権や肖像権に関して問題がありましたら御連絡下さい。著作権所有者様からの警告及び修正・撤去のご連絡があった場合は迅速に対処または削除致します。
         </Typography>
 
-        <DesignedHead>制定日・最終改定日</DesignedHead>
+        {renderHead('制定日・最終改定日')}
         <Typography sx={{ mb: 1 }}>制定日：2022年10月1日</Typography>
         <Typography sx={{ mb: 3 }}>最終改定日：2022年10月1日</Typography>
       </ArticleWrapper>
     );
   }
+}
+
+function renderHead(text: string) {
+  return (
+    <DesignedHead variant="h5" component="h2">
+      {text}
+    </DesignedHead>
+  );
 }

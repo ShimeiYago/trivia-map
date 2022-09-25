@@ -43,4 +43,8 @@ export type GetArticlesPreviewsParam = {
   category?: number;
   park?: Park;
   keywords?: string[];
+  order?: PreviewListOrder;
+  limit?: number;
 };
+
+export type PreviewListOrder = 'latest' | 'oldest' | 'popular';

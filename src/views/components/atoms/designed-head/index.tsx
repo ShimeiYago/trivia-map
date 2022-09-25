@@ -1,10 +1,11 @@
 import { Typography } from '@mui/material';
+import { ElementType } from 'react';
 
 export function DesignedHead(props: Props) {
   return (
     <Typography
-      variant="h5"
-      component="h2"
+      variant={props.variant}
+      component={props.component ?? 'div'}
       sx={{
         py: 0.5,
         px: 1,
@@ -21,4 +22,20 @@ export function DesignedHead(props: Props) {
 
 type Props = {
   children: React.ReactNode;
+  component?: ElementType;
+  variant?:
+    | 'inherit'
+    | 'button'
+    | 'overline'
+    | 'caption'
+    | 'h1'
+    | 'h2'
+    | 'h3'
+    | 'h4'
+    | 'h5'
+    | 'h6'
+    | 'subtitle1'
+    | 'subtitle2'
+    | 'body1'
+    | 'body2';
 };

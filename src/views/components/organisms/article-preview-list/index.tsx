@@ -16,6 +16,6 @@ export function ArticlePreviewList(ownProps: OwnProps) {
 }
 
 type OwnProps = {
-  variant: 'popup' | 'large';
+  variant: 'popup' | 'large' | 'sidebar';
   searchConditions: Omit<GetArticlesPreviewsParam, 'page'>;
 };

@@ -17,7 +17,7 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
-import { CATEGORIES } from 'constant';
+import { ARTICLES_ORDER_OPTIONS, CATEGORIES } from 'constant';
 import { IconAndText } from 'views/components/atoms/icon-and-text';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import SearchIcon from '@mui/icons-material/Search';
@@ -26,11 +26,13 @@ import ArticleIcon from '@mui/icons-material/Article';
 import { Park } from 'types/park';
 import { ARTICLE_LIST_PAGE_LINK } from 'constant/links';
 import { getUrlParameters } from 'utils/get-url-parameters';
+import { PreviewListOrder } from 'api/articles-api/get-articles-previews';
 
 export class Renderer extends React.Component<Props, State> {
   state: State = {
     formSearchConditions: {},
     currentSearchConditions: {},
+    order: 'latest',
   };
 
   componentDidMount() {
@@ -72,9 +74,14 @@ export class Renderer extends React.Component<Props, State> {
             variant="inherit"
           />
         </Typography>
+        {this.renderOrderSelectBox()}
+
         <ArticlePreviewList
           variant="large"
-          searchConditions={this.state.currentSearchConditions}
+          searchConditions={{
+            ...this.state.currentSearchConditions,
+            order: this.state.order,
+          }}
         />
       </>
     );
@@ -184,6 +191,34 @@ export class Renderer extends React.Component<Props, State> {
     });
   };
 
+  protected renderOrderSelectBox = () => {
+    const menuItems = ARTICLES_ORDER_OPTIONS.map((orderOption) => (
+      <MenuItem key={orderOption.orderKey} value={orderOption.orderKey}>
+        {orderOption.orderName}
+      </MenuItem>
+    ));
+
+    return (
+      <Box sx={{ display: 'flex', justifyContent: 'flex-end', mb: 2 }}>
+        <FormControl size="small" variant="standard">
+          <Select
+            value={this.state.order}
+            label="表示順"
+            onChange={this.handleChangeOrder}
+          >
+            {menuItems}
+          </Select>
+        </FormControl>
+      </Box>
+    );
+  };
+
+  protected handleChangeOrder = (event: SelectChangeEvent) => {
+    this.setState({
+      order: event.target.value as PreviewListOrder,
+    });
+  };
+
   protected renderParkSelect = () => {
     const { formSearchConditions } = this.state;
     const categoryValue =
@@ -267,6 +302,7 @@ export type Props = {
 export type State = {
   formSearchConditions: Conditions;
   currentSearchConditions: Conditions;
+  order: PreviewListOrder;
 };
 
 export type Conditions = {

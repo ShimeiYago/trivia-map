@@ -157,3 +157,23 @@ describe('handleChangeKeyword', () => {
     ]);
   });
 });
+
+describe('renderOrderSelectBox', () => {
+  beforeEach(() => {
+    wrapper = shallow(<Renderer {...basicProps} />);
+  });
+
+  it('should set order key', () => {
+    const event = {
+      target: {
+        value: 'popular',
+      },
+    };
+
+    const instance = wrapper.instance();
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    instance['handleChangeOrder'](event as any);
+
+    expect(instance.state.order).toBe('popular');
+  });
+});

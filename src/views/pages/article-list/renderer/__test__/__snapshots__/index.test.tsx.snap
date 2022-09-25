@@ -209,8 +209,51 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       variant="inherit"
     />
   </ForwardRef(Typography)>
+  <ForwardRef(Box)
+    sx={
+      Object {
+        "display": "flex",
+        "justifyContent": "flex-end",
+        "mb": 2,
+      }
+    }
+  >
+    <ForwardRef(FormControl)
+      size="small"
+      variant="standard"
+    >
+      <ForwardRef(Select)
+        label="表示順"
+        onChange={[Function]}
+        value="latest"
+      >
+        <ForwardRef(MenuItem)
+          key="latest"
+          value="latest"
+        >
+          投稿日時が新しい順
+        </ForwardRef(MenuItem)>
+        <ForwardRef(MenuItem)
+          key="oldest"
+          value="oldest"
+        >
+          投稿日時が古い順
+        </ForwardRef(MenuItem)>
+        <ForwardRef(MenuItem)
+          key="popular"
+          value="popular"
+        >
+          閲覧数が多い順
+        </ForwardRef(MenuItem)>
+      </ForwardRef(Select)>
+    </ForwardRef(FormControl)>
+  </ForwardRef(Box)>
   <ArticlePreviewList
-    searchConditions={Object {}}
+    searchConditions={
+      Object {
+        "order": "latest",
+      }
+    }
     variant="large"
   />
 </ArticleWrapper>
@@ -426,8 +469,51 @@ exports[`Shallow Snapshot Tests with form conditions 1`] = `
       variant="inherit"
     />
   </ForwardRef(Typography)>
+  <ForwardRef(Box)
+    sx={
+      Object {
+        "display": "flex",
+        "justifyContent": "flex-end",
+        "mb": 2,
+      }
+    }
+  >
+    <ForwardRef(FormControl)
+      size="small"
+      variant="standard"
+    >
+      <ForwardRef(Select)
+        label="表示順"
+        onChange={[Function]}
+        value="latest"
+      >
+        <ForwardRef(MenuItem)
+          key="latest"
+          value="latest"
+        >
+          投稿日時が新しい順
+        </ForwardRef(MenuItem)>
+        <ForwardRef(MenuItem)
+          key="oldest"
+          value="oldest"
+        >
+          投稿日時が古い順
+        </ForwardRef(MenuItem)>
+        <ForwardRef(MenuItem)
+          key="popular"
+          value="popular"
+        >
+          閲覧数が多い順
+        </ForwardRef(MenuItem)>
+      </ForwardRef(Select)>
+    </ForwardRef(FormControl)>
+  </ForwardRef(Box)>
   <ArticlePreviewList
-    searchConditions={Object {}}
+    searchConditions={
+      Object {
+        "order": "latest",
+      }
+    }
     variant="large"
   />
 </ArticleWrapper>

@@ -1,3 +1,5 @@
+import { PreviewListOrder } from 'api/articles-api/get-articles-previews';
+
 export const BASE_URL =
   process.env.REACT_APP_API_BASE_URL ?? 'http://localhost:3001';
 
@@ -18,6 +20,24 @@ export const CATEGORIES = [
   {
     categoryId: 0,
     categoryName: 'その他',
+  },
+];
+
+export const ARTICLES_ORDER_OPTIONS: {
+  orderKey: PreviewListOrder;
+  orderName: string;
+}[] = [
+  {
+    orderKey: 'latest',
+    orderName: '投稿日時が新しい順',
+  },
+  {
+    orderKey: 'oldest',
+    orderName: '投稿日時が古い順',
+  },
+  {
+    orderKey: 'popular',
+    orderName: '閲覧数が多い順',
   },
 ];
 

@@ -47,8 +47,12 @@ exports[`Shallow Snapshot Tests variant popup 1`] = `
           <ForwardRef(Card)
             sx={
               Object {
-                "backgroundColor": "#e3f2fd",
+                "&:hover": Object {
+                  "transform": "translate(0,-5px)",
+                },
+                "backgroundColor": "#f5f8fa",
                 "p": 1,
+                "transition": "all 0.3s",
               }
             }
           >
@@ -115,8 +119,12 @@ exports[`Shallow Snapshot Tests variant popup 1`] = `
           <ForwardRef(Card)
             sx={
               Object {
-                "backgroundColor": "#e3f2fd",
+                "&:hover": Object {
+                  "transform": "translate(0,-5px)",
+                },
+                "backgroundColor": "#f5f8fa",
                 "p": 1,
+                "transition": "all 0.3s",
               }
             }
           >
@@ -174,6 +182,129 @@ exports[`Shallow Snapshot Tests variant popup 1`] = `
 </ForwardRef(Stack)>
 `;
 
+exports[`Shallow Snapshot Tests variant sidebar 1`] = `
+<ForwardRef(Stack)
+  spacing={2}
+>
+  <ForwardRef(Stack)
+    spacing={1}
+  >
+    <ForwardRef(Box)
+      key="preview-list-1"
+    >
+      <Link
+        className="preview-link"
+        key="preview-1"
+        to="/articles/1"
+      >
+        <ForwardRef(Card)
+          sx={
+            Object {
+              "&:hover": Object {
+                "transform": "translate(0,-5px)",
+              },
+              "backgroundColor": "#f5f8fa",
+              "transition": "all 0.3s",
+            }
+          }
+        >
+          <ForwardRef(CardContent)>
+            <ForwardRef(Grid)
+              container={true}
+              spacing={1}
+            >
+              <ForwardRef(Grid)
+                item={true}
+                xs={5}
+              >
+                <Image
+                  height="100px"
+                  objectFit="cover"
+                  src="https://disneyparkstory.com/wp-content/uploads/2017/02/CIMG9800.jpg"
+                  width="full"
+                />
+              </ForwardRef(Grid)>
+              <ForwardRef(Grid)
+                item={true}
+                xs={7}
+              >
+                <ForwardRef(Typography)
+                  component="h3"
+                  gutterBottom={true}
+                  variant="body1"
+                >
+                  ノーチラス号のエンジン
+                </ForwardRef(Typography)>
+              </ForwardRef(Grid)>
+            </ForwardRef(Grid)>
+          </ForwardRef(CardContent)>
+        </ForwardRef(Card)>
+      </Link>
+    </ForwardRef(Box)>
+    <ForwardRef(Box)
+      key="preview-list-2"
+    >
+      <Link
+        className="preview-link"
+        key="preview-2"
+        to="/articles/2"
+      >
+        <ForwardRef(Card)
+          sx={
+            Object {
+              "&:hover": Object {
+                "transform": "translate(0,-5px)",
+              },
+              "backgroundColor": "#f5f8fa",
+              "transition": "all 0.3s",
+            }
+          }
+        >
+          <ForwardRef(CardContent)>
+            <ForwardRef(Grid)
+              container={true}
+              spacing={1}
+            >
+              <ForwardRef(Grid)
+                item={true}
+                xs={5}
+              >
+                <Image
+                  height="100px"
+                  objectFit="cover"
+                  src="no-image-16x7.jpg"
+                  width="full"
+                />
+              </ForwardRef(Grid)>
+              <ForwardRef(Grid)
+                item={true}
+                xs={7}
+              >
+                <ForwardRef(Typography)
+                  component="h3"
+                  gutterBottom={true}
+                  variant="body1"
+                >
+                  ノーチラス号の名前の由来
+                </ForwardRef(Typography)>
+              </ForwardRef(Grid)>
+            </ForwardRef(Grid)>
+          </ForwardRef(CardContent)>
+        </ForwardRef(Card)>
+      </Link>
+    </ForwardRef(Box)>
+  </ForwardRef(Stack)>
+  <div
+    className="pagination-wrapper"
+  >
+    <ForwardRef(Pagination)
+      count={2}
+      onChange={[Function]}
+    />
+  </div>
+</ForwardRef(Stack)>
+`;
+
 exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
 <ForwardRef(Stack)
   spacing={2}
@@ -192,19 +323,22 @@ exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
         <ForwardRef(Card)
           sx={
             Object {
-              "mx": "auto",
+              "&:hover": Object {
+                "transform": "translate(0,-5px)",
+              },
+              "backgroundColor": "#f5f8fa",
+              "transition": "all 0.3s",
             }
           }
         >
           <ForwardRef(CardMedia)
-            alt="green iguana"
             className="card-media"
             component="img"
             image="https://disneyparkstory.com/wp-content/uploads/2017/02/CIMG9800.jpg"
           />
           <ForwardRef(CardContent)>
             <ForwardRef(Typography)
-              component="div"
+              component="h3"
               gutterBottom={true}
               variant="h5"
             >
@@ -252,19 +386,22 @@ exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
         <ForwardRef(Card)
           sx={
             Object {
-              "mx": "auto",
+              "&:hover": Object {
+                "transform": "translate(0,-5px)",
+              },
+              "backgroundColor": "#f5f8fa",
+              "transition": "all 0.3s",
             }
           }
         >
           <ForwardRef(CardMedia)
-            alt="green iguana"
             className="card-media"
             component="img"
             image="no-image-16x7.jpg"
           />
           <ForwardRef(CardContent)>
             <ForwardRef(Typography)
-              component="div"
+              component="h3"
               gutterBottom={true}
               variant="h5"
             >

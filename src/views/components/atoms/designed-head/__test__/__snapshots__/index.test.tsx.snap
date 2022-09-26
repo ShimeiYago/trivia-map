@@ -2,7 +2,7 @@
 
 exports[`Shallow Snapshot Tests basic 1`] = `
 <ForwardRef(Typography)
-  component="h2"
+  component="div"
   sx={
     Object {
       "borderBottom": "solid 2px #7db4e6",
@@ -13,7 +13,24 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       "py": 0.5,
     }
   }
-  variant="h5"
+>
+  xxx
+</ForwardRef(Typography)>
+`;
+
+exports[`Shallow Snapshot Tests basic 2`] = `
+<ForwardRef(Typography)
+  component="h5"
+  sx={
+    Object {
+      "borderBottom": "solid 2px #7db4e6",
+      "borderLeft": "solid 5px #7db4e6",
+      "mb": 2,
+      "mt": 1,
+      "px": 1,
+      "py": 0.5,
+    }
+  }
 >
   xxx
 </ForwardRef(Typography)>

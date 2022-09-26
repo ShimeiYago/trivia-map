@@ -47,7 +47,57 @@ exports[`Shallow Snapshot Tests basic 1`] = `
           <ArticlePaper
             variant="side"
           >
-            TODO: サイドバー
+            <ForwardRef(Stack)
+              spacing={3}
+            >
+              <ForwardRef(Box)>
+                <DesignedHead
+                  component="h2"
+                >
+                  <IconAndText
+                    align="left"
+                    columnGap={1}
+                    component="div"
+                    iconComponent={<Memo />}
+                    iconPosition="left"
+                    text="新着記事"
+                    variant="h6"
+                  />
+                </DesignedHead>
+                <ArticlePreviewList
+                  searchConditions={
+                    Object {
+                      "limit": 5,
+                      "order": "latest",
+                    }
+                  }
+                  variant="sidebar"
+                />
+              </ForwardRef(Box)>
+              <ForwardRef(Box)>
+                <DesignedHead
+                  component="h2"
+                >
+                  <IconAndText
+                    align="left"
+                    component="div"
+                    iconComponent={<Memo />}
+                    iconPosition="left"
+                    text="人気記事"
+                    variant="h6"
+                  />
+                </DesignedHead>
+                <ArticlePreviewList
+                  searchConditions={
+                    Object {
+                      "limit": 5,
+                      "order": "popular",
+                    }
+                  }
+                  variant="sidebar"
+                />
+              </ForwardRef(Box)>
+            </ForwardRef(Stack)>
           </ArticlePaper>
         </ForwardRef(Grid)>
       </ForwardRef(Grid)>
@@ -103,7 +153,57 @@ exports[`Shallow Snapshot Tests mobile 1`] = `
           <ArticlePaper
             variant="side"
           >
-            TODO: サイドバー
+            <ForwardRef(Stack)
+              spacing={3}
+            >
+              <ForwardRef(Box)>
+                <DesignedHead
+                  component="h2"
+                >
+                  <IconAndText
+                    align="left"
+                    columnGap={1}
+                    component="div"
+                    iconComponent={<Memo />}
+                    iconPosition="left"
+                    text="新着記事"
+                    variant="h6"
+                  />
+                </DesignedHead>
+                <ArticlePreviewList
+                  searchConditions={
+                    Object {
+                      "limit": 5,
+                      "order": "latest",
+                    }
+                  }
+                  variant="sidebar"
+                />
+              </ForwardRef(Box)>
+              <ForwardRef(Box)>
+                <DesignedHead
+                  component="h2"
+                >
+                  <IconAndText
+                    align="left"
+                    component="div"
+                    iconComponent={<Memo />}
+                    iconPosition="left"
+                    text="人気記事"
+                    variant="h6"
+                  />
+                </DesignedHead>
+                <ArticlePreviewList
+                  searchConditions={
+                    Object {
+                      "limit": 5,
+                      "order": "popular",
+                    }
+                  }
+                  variant="sidebar"
+                />
+              </ForwardRef(Box)>
+            </ForwardRef(Stack)>
           </ArticlePaper>
         </ForwardRef(Grid)>
       </ForwardRef(Grid)>

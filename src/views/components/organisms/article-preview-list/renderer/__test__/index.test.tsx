@@ -55,6 +55,16 @@ describe('Shallow Snapshot Tests', () => {
     });
     expect(wrapper).toMatchSnapshot();
   });
+
+  it('variant sidebar', () => {
+    wrapper.setProps({ variant: 'sidebar' });
+    wrapper.setState({
+      loadingState: 'success',
+      articlesPreviews: mockGetArticlesPreviewsResponse.results,
+      totalPages: 2,
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
 });
 
 describe('fetchArticlesPreviews', () => {

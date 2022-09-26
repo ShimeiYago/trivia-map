@@ -11,4 +11,11 @@ describe('Shallow Snapshot Tests', () => {
   it('basic', () => {
     expect(wrapper).toMatchSnapshot();
   });
+
+  it('basic', () => {
+    wrapper.setProps({
+      component: 'h5',
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
 });

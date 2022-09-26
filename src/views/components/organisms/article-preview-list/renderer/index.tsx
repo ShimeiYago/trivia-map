@@ -7,6 +7,7 @@ import {
   Box,
   CardMedia,
   CardContent,
+  Grid,
 } from '@mui/material';
 import { LoadingState } from 'types/loading-state';
 import {
@@ -72,6 +73,18 @@ export class Renderer extends React.Component<Props, State> {
     const previewList = articlesPreviews?.map((preview) => {
       const { postId, title, image, category } = preview;
 
+      let card = null;
+      switch (this.props.variant) {
+        case 'popup':
+          card = this.renderPopupCard(title, image, category);
+          break;
+        case 'large':
+          card = this.renderLargeCard(title, image, category);
+          break;
+        case 'sidebar':
+          card = this.renderSidebarCard(title, image);
+      }
+
       return (
         <Box key={`preview-list-${postId}`}>
           <Link
@@ -79,9 +92,7 @@ export class Renderer extends React.Component<Props, State> {
             key={`preview-${postId}`}
             className={classes['preview-link']}
           >
-            {this.props.variant === 'popup'
-              ? this.renderPopupCard(title, image, category)
-              : this.renderLargeCard(title, image, category)}
+            {card}
           </Link>
         </Box>
       );
@@ -94,7 +105,11 @@ export class Renderer extends React.Component<Props, State> {
         </Box>
       );
     } else {
-      return <Stack spacing={3}>{previewList}</Stack>;
+      return (
+        <Stack spacing={this.props.variant === 'large' ? 3 : 1}>
+          {previewList}
+        </Stack>
+      );
     }
   }
 
@@ -104,7 +119,7 @@ export class Renderer extends React.Component<Props, State> {
     category: number,
   ) => {
     return (
-      <Card sx={sxProps.card}>
+      <Card sx={{ ...sxProps.card, p: 1 }}>
         <Stack spacing={1}>
           <Typography component="h2" variant="h6" align="center">
             {title}
@@ -152,15 +167,14 @@ export class Renderer extends React.Component<Props, State> {
     category: number,
   ) => {
     return (
-      <Card sx={{ mx: 'auto' }}>
+      <Card sx={sxProps.card}>
         <CardMedia
           component="img"
           className={classes['card-media']}
           image={imageUrl ?? notImage}
-          alt="green iguana"
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
+          <Typography gutterBottom variant="h5" component="h3">
             {title}
           </Typography>
           <Typography align="left" sx={{ mb: 2 }} component="div">
@@ -179,6 +193,30 @@ export class Renderer extends React.Component<Props, State> {
               iconPosition="left"
             />
           </Typography>
+        </CardContent>
+      </Card>
+    );
+  };
+
+  protected renderSidebarCard = (title: string, imageUrl: string | null) => {
+    return (
+      <Card sx={sxProps.card}>
+        <CardContent>
+          <Grid container spacing={1}>
+            <Grid item xs={5}>
+              <Image
+                src={imageUrl ?? notImage}
+                width="full"
+                height="100px"
+                objectFit="cover"
+              />
+            </Grid>
+            <Grid item xs={7}>
+              <Typography gutterBottom variant="body1" component="h3">
+                {title}
+              </Typography>
+            </Grid>
+          </Grid>
         </CardContent>
       </Card>
     );
@@ -231,7 +269,7 @@ export class Renderer extends React.Component<Props, State> {
 }
 
 export type Props = {
-  variant: 'popup' | 'large';
+  variant: 'popup' | 'large' | 'sidebar';
   searchConditions: Omit<GetArticlesPreviewsParam, 'page'>;
 
   throwError: (status: number) => void;

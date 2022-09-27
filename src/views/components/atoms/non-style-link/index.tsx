@@ -3,7 +3,11 @@ import { Link } from 'react-router-dom';
 
 export const NonStyleLink: React.FC<Props> = (props) => {
   return (
-    <Link to={props.to} style={{ color: 'inherit', textDecoration: 'none' }}>
+    <Link
+      to={props.to}
+      style={{ color: 'inherit', textDecoration: 'none' }}
+      target={props.target}
+    >
       {props.children}
     </Link>
   );
@@ -12,4 +16,5 @@ export const NonStyleLink: React.FC<Props> = (props) => {
 export type Props = {
   children: React.ReactNode;
   to: string;
+  target?: React.HTMLAttributeAnchorTarget;
 };

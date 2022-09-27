@@ -79,7 +79,7 @@ export const mockGetMyArticlesResponse: GetMyArticlesResponse = {
     {
       postId: 2,
       title: 'ノーチラス号の名前の由来',
-      isDraft: false,
+      isDraft: true,
       category: 1,
     },
   ],

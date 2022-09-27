@@ -36,7 +36,7 @@ exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
               }
             }
           >
-            編集
+            カテゴリー
           </ForwardRef(TableCell)>
           <ForwardRef(TableCell)
             sx={
@@ -45,7 +45,7 @@ exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
               }
             }
           >
-            削除
+            公開状態
           </ForwardRef(TableCell)>
         </ForwardRef(TableRow)>
       </ForwardRef(TableHead)>
@@ -54,54 +54,388 @@ exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
           key="preview-1"
         >
           <ForwardRef(TableCell)>
-            <Link
-              to="/articles/1"
-            >
-              ノーチラス号のエンジン
-            </Link>
+            <ForwardRef(Box)>
+              <ForwardRef(Typography)
+                component="h3"
+                sx={
+                  Object {
+                    "my": 1,
+                  }
+                }
+                variant="body1"
+              >
+                ノーチラス号のエンジン
+              </ForwardRef(Typography)>
+              <ForwardRef(Box)>
+                <ForwardRef(Stack)
+                  direction="row"
+                  divider={
+                    <ForwardRef(Divider)
+                      flexItem={true}
+                      orientation="vertical"
+                    />
+                  }
+                  spacing={1}
+                >
+                  <NonStyleLink
+                    target="_blank"
+                    to="/articles/1"
+                  >
+                    <ForwardRef(Button)
+                      sx={
+                        Object {
+                          "minWidth": 0,
+                          "p": 0,
+                        }
+                      }
+                    >
+                      表示
+                    </ForwardRef(Button)>
+                  </NonStyleLink>
+                  <NonStyleLink
+                    target="_blank"
+                    to="/map/edit/1"
+                  >
+                    <ForwardRef(Button)
+                      sx={
+                        Object {
+                          "minWidth": 0,
+                          "p": 0,
+                        }
+                      }
+                    >
+                      編集
+                    </ForwardRef(Button)>
+                  </NonStyleLink>
+                  <ForwardRef(Button)
+                    disabled={false}
+                    onClick={[Function]}
+                    sx={
+                      Object {
+                        "minWidth": 0,
+                        "p": 0,
+                      }
+                    }
+                  >
+                    削除
+                  </ForwardRef(Button)>
+                </ForwardRef(Stack)>
+              </ForwardRef(Box)>
+            </ForwardRef(Box)>
           </ForwardRef(TableCell)>
           <ForwardRef(TableCell)>
-            <Link
-              target="_blank"
-              to="/map/edit/1"
-            >
-              <Memo(ForwardRef(EditIcon)) />
-            </Link>
+            隠れミッキー
           </ForwardRef(TableCell)>
           <ForwardRef(TableCell)>
-            <ForwardRef(IconButton)
-              disabled={false}
-              onClick={[Function]}
-            >
-              <Memo(ForwardRef(DeleteIcon)) />
-            </ForwardRef(IconButton)>
+            公開中
           </ForwardRef(TableCell)>
         </ForwardRef(TableRow)>
         <ForwardRef(TableRow)
           key="preview-2"
         >
           <ForwardRef(TableCell)>
-            <Link
-              to="/articles/2"
-            >
-              ノーチラス号の名前の由来
-            </Link>
+            <ForwardRef(Box)>
+              <ForwardRef(Typography)
+                component="h3"
+                sx={
+                  Object {
+                    "my": 1,
+                  }
+                }
+                variant="body1"
+              >
+                ノーチラス号の名前の由来
+              </ForwardRef(Typography)>
+              <ForwardRef(Box)>
+                <ForwardRef(Stack)
+                  direction="row"
+                  divider={
+                    <ForwardRef(Divider)
+                      flexItem={true}
+                      orientation="vertical"
+                    />
+                  }
+                  spacing={1}
+                >
+                  <NonStyleLink
+                    target="_blank"
+                    to="/articles/2"
+                  >
+                    <ForwardRef(Button)
+                      sx={
+                        Object {
+                          "minWidth": 0,
+                          "p": 0,
+                        }
+                      }
+                    >
+                      表示
+                    </ForwardRef(Button)>
+                  </NonStyleLink>
+                  <NonStyleLink
+                    target="_blank"
+                    to="/map/edit/2"
+                  >
+                    <ForwardRef(Button)
+                      sx={
+                        Object {
+                          "minWidth": 0,
+                          "p": 0,
+                        }
+                      }
+                    >
+                      編集
+                    </ForwardRef(Button)>
+                  </NonStyleLink>
+                  <ForwardRef(Button)
+                    disabled={false}
+                    onClick={[Function]}
+                    sx={
+                      Object {
+                        "minWidth": 0,
+                        "p": 0,
+                      }
+                    }
+                  >
+                    削除
+                  </ForwardRef(Button)>
+                </ForwardRef(Stack)>
+              </ForwardRef(Box)>
+            </ForwardRef(Box)>
           </ForwardRef(TableCell)>
           <ForwardRef(TableCell)>
-            <Link
-              target="_blank"
-              to="/map/edit/2"
-            >
-              <Memo(ForwardRef(EditIcon)) />
-            </Link>
+            隠れミッキー
           </ForwardRef(TableCell)>
           <ForwardRef(TableCell)>
-            <ForwardRef(IconButton)
-              disabled={false}
-              onClick={[Function]}
+            下書き
+          </ForwardRef(TableCell)>
+        </ForwardRef(TableRow)>
+      </ForwardRef(TableBody)>
+    </ForwardRef(Table)>
+  </ForwardRef(Stack)>
+</Fragment>
+`;
+
+exports[`Shallow Snapshot Tests with articlesPreviews mobile view 1`] = `
+<Fragment>
+  <ForwardRef(Stack)
+    spacing={1}
+  >
+    <div
+      className="pagination-wrapper"
+    >
+      <ForwardRef(Pagination)
+        count={2}
+        onChange={[Function]}
+      />
+    </div>
+    <ForwardRef(Table)>
+      <ForwardRef(TableHead)>
+        <ForwardRef(TableRow)>
+          <ForwardRef(TableCell)>
+            投稿名
+          </ForwardRef(TableCell)>
+        </ForwardRef(TableRow)>
+      </ForwardRef(TableHead)>
+      <ForwardRef(TableBody)>
+        <ForwardRef(TableRow)
+          key="preview-1"
+        >
+          <ForwardRef(TableCell)>
+            <ForwardRef(Typography)
+              color="gray"
+              component="div"
             >
-              <Memo(ForwardRef(DeleteIcon)) />
-            </ForwardRef(IconButton)>
+              <ForwardRef(Stack)
+                direction="row"
+                spacing={1}
+              >
+                <ForwardRef(Typography)
+                  variant="subtitle2"
+                >
+                  公開中
+                </ForwardRef(Typography)>
+                <IconAndText
+                  align="left"
+                  iconComponent={
+                    <Memo
+                      fontSize="inherit"
+                    />
+                  }
+                  iconPosition="left"
+                  text="隠れミッキー"
+                  variant="subtitle2"
+                />
+              </ForwardRef(Stack)>
+            </ForwardRef(Typography)>
+            <ForwardRef(Box)>
+              <ForwardRef(Typography)
+                component="h3"
+                sx={
+                  Object {
+                    "my": 1,
+                  }
+                }
+                variant="body1"
+              >
+                ノーチラス号のエンジン
+              </ForwardRef(Typography)>
+              <ForwardRef(Box)>
+                <ForwardRef(Stack)
+                  direction="row"
+                  divider={
+                    <ForwardRef(Divider)
+                      flexItem={true}
+                      orientation="vertical"
+                    />
+                  }
+                  spacing={1}
+                >
+                  <NonStyleLink
+                    target="_blank"
+                    to="/articles/1"
+                  >
+                    <ForwardRef(Button)
+                      sx={
+                        Object {
+                          "minWidth": 0,
+                          "p": 0,
+                        }
+                      }
+                    >
+                      表示
+                    </ForwardRef(Button)>
+                  </NonStyleLink>
+                  <NonStyleLink
+                    target="_blank"
+                    to="/map/edit/1"
+                  >
+                    <ForwardRef(Button)
+                      sx={
+                        Object {
+                          "minWidth": 0,
+                          "p": 0,
+                        }
+                      }
+                    >
+                      編集
+                    </ForwardRef(Button)>
+                  </NonStyleLink>
+                  <ForwardRef(Button)
+                    disabled={false}
+                    onClick={[Function]}
+                    sx={
+                      Object {
+                        "minWidth": 0,
+                        "p": 0,
+                      }
+                    }
+                  >
+                    削除
+                  </ForwardRef(Button)>
+                </ForwardRef(Stack)>
+              </ForwardRef(Box)>
+            </ForwardRef(Box)>
+          </ForwardRef(TableCell)>
+        </ForwardRef(TableRow)>
+        <ForwardRef(TableRow)
+          key="preview-2"
+        >
+          <ForwardRef(TableCell)>
+            <ForwardRef(Typography)
+              color="gray"
+              component="div"
+            >
+              <ForwardRef(Stack)
+                direction="row"
+                spacing={1}
+              >
+                <ForwardRef(Typography)
+                  variant="subtitle2"
+                >
+                  下書き
+                </ForwardRef(Typography)>
+                <IconAndText
+                  align="left"
+                  iconComponent={
+                    <Memo
+                      fontSize="inherit"
+                    />
+                  }
+                  iconPosition="left"
+                  text="隠れミッキー"
+                  variant="subtitle2"
+                />
+              </ForwardRef(Stack)>
+            </ForwardRef(Typography)>
+            <ForwardRef(Box)>
+              <ForwardRef(Typography)
+                component="h3"
+                sx={
+                  Object {
+                    "my": 1,
+                  }
+                }
+                variant="body1"
+              >
+                ノーチラス号の名前の由来
+              </ForwardRef(Typography)>
+              <ForwardRef(Box)>
+                <ForwardRef(Stack)
+                  direction="row"
+                  divider={
+                    <ForwardRef(Divider)
+                      flexItem={true}
+                      orientation="vertical"
+                    />
+                  }
+                  spacing={1}
+                >
+                  <NonStyleLink
+                    target="_blank"
+                    to="/articles/2"
+                  >
+                    <ForwardRef(Button)
+                      sx={
+                        Object {
+                          "minWidth": 0,
+                          "p": 0,
+                        }
+                      }
+                    >
+                      表示
+                    </ForwardRef(Button)>
+                  </NonStyleLink>
+                  <NonStyleLink
+                    target="_blank"
+                    to="/map/edit/2"
+                  >
+                    <ForwardRef(Button)
+                      sx={
+                        Object {
+                          "minWidth": 0,
+                          "p": 0,
+                        }
+                      }
+                    >
+                      編集
+                    </ForwardRef(Button)>
+                  </NonStyleLink>
+                  <ForwardRef(Button)
+                    disabled={false}
+                    onClick={[Function]}
+                    sx={
+                      Object {
+                        "minWidth": 0,
+                        "p": 0,
+                      }
+                    }
+                  >
+                    削除
+                  </ForwardRef(Button)>
+                </ForwardRef(Stack)>
+              </ForwardRef(Box)>
+            </ForwardRef(Box)>
           </ForwardRef(TableCell)>
         </ForwardRef(TableRow)>
       </ForwardRef(TableBody)>
@@ -135,7 +469,7 @@ exports[`Shallow Snapshot Tests with dialog 1`] = `
               }
             }
           >
-            編集
+            カテゴリー
           </ForwardRef(TableCell)>
           <ForwardRef(TableCell)
             sx={
@@ -144,7 +478,7 @@ exports[`Shallow Snapshot Tests with dialog 1`] = `
               }
             }
           >
-            削除
+            公開状態
           </ForwardRef(TableCell)>
         </ForwardRef(TableRow)>
       </ForwardRef(TableHead)>
@@ -202,7 +536,7 @@ exports[`Shallow Snapshot Tests with meesage 1`] = `
               }
             }
           >
-            編集
+            カテゴリー
           </ForwardRef(TableCell)>
           <ForwardRef(TableCell)
             sx={
@@ -211,7 +545,7 @@ exports[`Shallow Snapshot Tests with meesage 1`] = `
               }
             }
           >
-            削除
+            公開状態
           </ForwardRef(TableCell)>
         </ForwardRef(TableRow)>
       </ForwardRef(TableHead)>

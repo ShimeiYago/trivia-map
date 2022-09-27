@@ -193,7 +193,8 @@ exports[`Shallow Snapshot Tests basic 1`] = `
     component="h2"
     sx={
       Object {
-        "my": 2,
+        "mb": 4,
+        "mt": 3,
       }
     }
     variant="h4"
@@ -453,7 +454,8 @@ exports[`Shallow Snapshot Tests with form conditions 1`] = `
     component="h2"
     sx={
       Object {
-        "my": 2,
+        "mb": 4,
+        "mt": 3,
       }
     }
     variant="h4"

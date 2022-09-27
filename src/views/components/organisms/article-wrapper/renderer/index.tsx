@@ -1,14 +1,28 @@
 import React from 'react';
-import { Box, Grid, Stack } from '@mui/material';
+import {
+  Box,
+  Divider,
+  Grid,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  Stack,
+} from '@mui/material';
 import { GlobalMenu } from 'views/components/organisms/global-menu';
 import { ArticlePaper } from 'views/components/atoms/article-paper';
 import { wrapper, contentWrapper } from '../styles';
-import { MAP_PAGE_LINK } from 'constant/links';
+import { CATEGORY_PAGE_LINK, MAP_PAGE_LINK } from 'constant/links';
 import { ArticlePreviewList } from '../../article-preview-list';
 import { IconAndText } from 'views/components/atoms/icon-and-text';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import { DesignedHead } from 'views/components/atoms/designed-head';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
+import FolderIcon from '@mui/icons-material/Folder';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import { CATEGORIES } from 'constant';
+import { NonStyleLink } from 'views/components/atoms/non-style-link';
 
 export class Renderer extends React.Component<Props> {
   constructor(props: Props) {
@@ -55,6 +69,22 @@ export class Renderer extends React.Component<Props> {
         <Box>
           <DesignedHead component="h2">
             <IconAndText
+              iconComponent={<FolderIcon />}
+              text="カテゴリー"
+              iconPosition="left"
+              align="left"
+              component="div"
+              variant="h6"
+              columnGap={1}
+            />
+          </DesignedHead>
+
+          {this.renderCategoryList()}
+        </Box>
+
+        <Box>
+          <DesignedHead component="h2">
+            <IconAndText
               iconComponent={<CalendarTodayIcon />}
               text="新着記事"
               iconPosition="left"
@@ -89,6 +119,28 @@ export class Renderer extends React.Component<Props> {
       </Stack>
     );
   };
+
+  protected renderCategoryList() {
+    const listItems = CATEGORIES.map((category) => {
+      return (
+        <>
+          <NonStyleLink to={CATEGORY_PAGE_LINK(category.categoryId.toString())}>
+            <ListItem disablePadding>
+              <ListItemButton sx={{ py: 0.5 }}>
+                <ListItemIcon sx={{ minWidth: '40px' }}>
+                  <KeyboardArrowRightIcon />
+                </ListItemIcon>
+                <ListItemText primary={category.categoryName} />
+              </ListItemButton>
+            </ListItem>
+          </NonStyleLink>
+          <Divider component="li" />
+        </>
+      );
+    });
+
+    return <List sx={{ m: 0, p: 0 }}>{listItems}</List>;
+  }
 }
 
 export type Props = {

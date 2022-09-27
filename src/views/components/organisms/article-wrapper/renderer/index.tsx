@@ -123,7 +123,7 @@ export class Renderer extends React.Component<Props> {
   protected renderCategoryList() {
     const listItems = CATEGORIES.map((category) => {
       return (
-        <>
+        <React.Fragment key={`category-${category.categoryId}`}>
           <NonStyleLink to={CATEGORY_PAGE_LINK(category.categoryId.toString())}>
             <ListItem disablePadding>
               <ListItemButton sx={{ py: 0.5 }}>
@@ -135,7 +135,7 @@ export class Renderer extends React.Component<Props> {
             </ListItem>
           </NonStyleLink>
           <Divider component="li" />
-        </>
+        </React.Fragment>
       );
     });
 

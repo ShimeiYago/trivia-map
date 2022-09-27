@@ -18,6 +18,9 @@ export const ARTICLE_LIST_PAGE_LINK = '/articles';
 
 export const AUTHER_PAGE_LINK = (userId: string) => `/users/${userId}`;
 
+export const CATEGORY_PAGE_LINK = (categoryId: string) =>
+  `/categories/${categoryId}`;
+
 export const VERIFY_EMAIL_LINK = (verifyKey: string) =>
   `/verify-email/${verifyKey}`;
 

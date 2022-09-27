@@ -13,7 +13,7 @@ export function CategoryPage() {
   const { categoryId } = useParams();
   const categoryIdNumber = Number(categoryId);
 
-  if (!categoryIdNumber) {
+  if (categoryIdNumber !== 0 && !categoryIdNumber) {
     dispatch(throwError(404));
   }
 

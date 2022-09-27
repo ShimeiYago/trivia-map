@@ -10,27 +10,29 @@ import {
   TableBody,
   Snackbar,
   Alert,
-  IconButton,
   Dialog,
   DialogTitle,
   DialogActions,
   Button,
+  Box,
+  Divider,
 } from '@mui/material';
 import { LoadingState } from 'types/loading-state';
 import {
   getMyArticles,
   GetMyArticlesResponseEachItem,
 } from 'api/articles-api/get-my-articles';
-import { Link } from 'react-router-dom';
 import classes from './index.module.css';
 import { CenterSpinner } from 'views/components/atoms/center-spinner';
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/Delete';
 import { ARTICLE_PAGE_LINK, EDIT_LINK } from 'constant/links';
 import { autoRefreshApiWrapper } from 'utils/auto-refresh-api-wrapper';
 import { deleteRemoteArticle } from 'api/articles-api/delete-remote-article';
 import { ApiError } from 'api/utils/handle-axios-error';
 import { globalAPIErrorMessage } from 'constant/global-api-error-message';
+import { NonStyleLink } from 'views/components/atoms/non-style-link';
+import { categoryMapper } from 'utils/category-mapper';
+import { IconAndText } from 'views/components/atoms/icon-and-text';
+import FolderIcon from '@mui/icons-material/Folder';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -61,7 +63,9 @@ export class Renderer extends React.Component<Props, State> {
       <>
         <Stack spacing={1}>
           {this.renderPagination()}
-          {this.renderTable()}
+          {this.props.isMobile
+            ? this.renderMobileTable()
+            : this.renderDesktopTable()}
         </Stack>
         {this.renderDeleteConfirmDialog()}
         {this.renderMessage()}
@@ -69,29 +73,59 @@ export class Renderer extends React.Component<Props, State> {
     );
   }
 
-  protected renderTable() {
-    const { articlesPreviews, deleting } = this.state;
+  protected renderDesktopTable() {
+    const { articlesPreviews } = this.state;
 
     const tableRows = articlesPreviews?.map((preview) => {
-      const { postId, title } = preview;
+      const { postId, isDraft, category } = preview;
+
+      return (
+        <TableRow key={`preview-${postId}`}>
+          <TableCell>{this.renderTitleAndButtons(preview)}</TableCell>
+          <TableCell>{categoryMapper(category)}</TableCell>
+          <TableCell>{isDraft ? '下書き' : '公開中'}</TableCell>
+        </TableRow>
+      );
+    });
+
+    return (
+      <Table>
+        <TableHead>
+          <TableRow>
+            <TableCell>投稿名</TableCell>
+            <TableCell sx={{ minWidth: '30px' }}>カテゴリー</TableCell>
+            <TableCell sx={{ minWidth: '30px' }}>公開状態</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>{tableRows}</TableBody>
+      </Table>
+    );
+  }
+
+  protected renderMobileTable() {
+    const { articlesPreviews } = this.state;
+
+    const tableRows = articlesPreviews?.map((preview) => {
+      const { postId, isDraft, category } = preview;
 
       return (
         <TableRow key={`preview-${postId}`}>
           <TableCell>
-            <Link to={ARTICLE_PAGE_LINK(String(postId))}>{title}</Link>
-          </TableCell>
-          <TableCell>
-            <Link to={EDIT_LINK(String(postId))} target="_blank">
-              <EditIcon />
-            </Link>
-          </TableCell>
-          <TableCell>
-            <IconButton
-              onClick={this.openDeleteConfirmDialog(postId, title)}
-              disabled={deleting}
-            >
-              <DeleteIcon />
-            </IconButton>
+            <Typography color="gray" component="div">
+              <Stack direction="row" spacing={1}>
+                <Typography variant="subtitle2">
+                  {isDraft ? '下書き' : '公開中'}
+                </Typography>
+                <IconAndText
+                  iconComponent={<FolderIcon fontSize="inherit" />}
+                  iconPosition="left"
+                  text={categoryMapper(category)}
+                  variant="subtitle2"
+                  align="left"
+                />
+              </Stack>
+            </Typography>
+            {this.renderTitleAndButtons(preview)}
           </TableCell>
         </TableRow>
       );
@@ -102,12 +136,47 @@ export class Renderer extends React.Component<Props, State> {
         <TableHead>
           <TableRow>
             <TableCell>投稿名</TableCell>
-            <TableCell sx={{ minWidth: '30px' }}>編集</TableCell>
-            <TableCell sx={{ minWidth: '30px' }}>削除</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>{tableRows}</TableBody>
       </Table>
+    );
+  }
+
+  protected renderTitleAndButtons(preview: GetMyArticlesResponseEachItem) {
+    const { postId, title } = preview;
+
+    return (
+      <Box>
+        <Typography component="h3" variant="body1" sx={{ my: 1 }}>
+          {title}
+        </Typography>
+
+        <Box>
+          <Stack
+            direction="row"
+            divider={<Divider orientation="vertical" flexItem />}
+            spacing={1}
+          >
+            <NonStyleLink
+              to={ARTICLE_PAGE_LINK(String(postId))}
+              target="_blank"
+            >
+              <Button sx={{ p: 0, minWidth: 0 }}>表示</Button>
+            </NonStyleLink>
+            <NonStyleLink to={EDIT_LINK(String(postId))} target="_blank">
+              <Button sx={{ p: 0, minWidth: 0 }}>編集</Button>
+            </NonStyleLink>
+            <Button
+              onClick={this.openDeleteConfirmDialog(postId, title)}
+              disabled={this.state.deleting}
+              sx={{ p: 0, minWidth: 0 }}
+            >
+              削除
+            </Button>
+          </Stack>
+        </Box>
+      </Box>
     );
   }
 
@@ -250,6 +319,7 @@ export class Renderer extends React.Component<Props, State> {
 }
 
 export type Props = {
+  isMobile: boolean;
   throwError: (status: number) => void;
 };
 

@@ -1,15 +1,16 @@
 import { shallow, ShallowWrapper } from 'enzyme';
-import { Renderer, State } from '..';
+import { Renderer, Props, State } from '..';
 import * as GetMyArticlesApiModule from 'api/articles-api/get-my-articles';
 import * as DeleteArticleApiModule from 'api/articles-api/delete-remote-article';
 import { mockGetMyArticlesResponse } from 'api/mock/articles-response';
 
-let wrapper: ShallowWrapper<unknown, State, Renderer>;
+let wrapper: ShallowWrapper<Props, State, Renderer>;
 let getMyArticlesSpy: jest.SpyInstance;
 let deleteArticleSpy: jest.SpyInstance;
 
 const basicProps = {
   throwError: jest.fn(),
+  isMobile: false,
 };
 
 describe('Shallow Snapshot Tests', () => {
@@ -24,6 +25,18 @@ describe('Shallow Snapshot Tests', () => {
   });
 
   it('with articlesPreviews', () => {
+    wrapper.setState({
+      loadingState: 'success',
+      articlesPreviews: mockGetMyArticlesResponse.results,
+      totalPages: 2,
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('with articlesPreviews mobile view', () => {
+    wrapper.setProps({
+      isMobile: true,
+    });
     wrapper.setState({
       loadingState: 'success',
       articlesPreviews: mockGetMyArticlesResponse.results,

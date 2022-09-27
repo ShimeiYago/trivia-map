@@ -19,6 +19,8 @@ import { ZOOMS } from 'constant';
 import noIcon from 'images/no-icon.jpg';
 import { AUTHER_PAGE_LINK } from 'constant/links';
 import { Link } from 'react-router-dom';
+import { categoryMapper } from 'utils/category-mapper';
+import LabelIcon from '@mui/icons-material/Label';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -54,6 +56,7 @@ export class Renderer extends React.Component<Props, State> {
       createdAt,
       updatedAt,
       isDraft,
+      category,
     } = article;
 
     return (
@@ -76,6 +79,15 @@ export class Renderer extends React.Component<Props, State> {
             <Typography color="gray">{author.nickname}</Typography>
           </Stack>
         </Link>
+
+        <Typography color="gray" component="div">
+          <IconAndText
+            iconComponent={<LabelIcon />}
+            text={categoryMapper(category)}
+            align="right"
+            iconPosition="left"
+          ></IconAndText>
+        </Typography>
 
         <Typography component="h2" variant="h4" align="center">
           {title}

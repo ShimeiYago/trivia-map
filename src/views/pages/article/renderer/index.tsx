@@ -17,7 +17,7 @@ import { autoRefreshApiWrapper } from 'utils/auto-refresh-api-wrapper';
 import { AreaNames } from 'views/components/atoms/area-names';
 import { ZOOMS } from 'constant';
 import noIcon from 'images/no-icon.jpg';
-import { AUTHER_PAGE_LINK } from 'constant/links';
+import { AUTHER_PAGE_LINK, CATEGORY_PAGE_LINK } from 'constant/links';
 import { Link } from 'react-router-dom';
 import { categoryMapper } from 'utils/category-mapper';
 import FolderIcon from '@mui/icons-material/Folder';
@@ -80,14 +80,16 @@ export class Renderer extends React.Component<Props, State> {
           </Stack>
         </Link>
 
-        <Typography color="gray" component="div">
-          <IconAndText
-            iconComponent={<FolderIcon />}
-            text={categoryMapper(category)}
-            align="right"
-            iconPosition="left"
-          ></IconAndText>
-        </Typography>
+        <Link to={CATEGORY_PAGE_LINK(category.toString())}>
+          <Typography color="gray" component="div">
+            <IconAndText
+              iconComponent={<FolderIcon />}
+              text={categoryMapper(category)}
+              align="right"
+              iconPosition="left"
+            />
+          </Typography>
+        </Link>
 
         <Typography component="h2" variant="h4" align="center">
           {title}

@@ -70,6 +70,19 @@ describe('Shallow Snapshot Tests', () => {
     });
     expect(wrapper).toMatchSnapshot();
   });
+
+  it('author view', () => {
+    wrapper.setProps({
+      user: {
+        nickname: 'Axel',
+        userId: 1,
+        email: 'xxx',
+        icon: null,
+      },
+    });
+    wrapper.setState({ article: article, loadingState: 'success' });
+    expect(wrapper).toMatchSnapshot();
+  });
 });
 
 describe('fetchArticle', () => {

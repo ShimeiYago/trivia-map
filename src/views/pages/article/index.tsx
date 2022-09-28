@@ -1,8 +1,9 @@
 import { Props, Renderer } from './renderer';
 import { useParams } from 'react-router-dom';
-import { useAppDispatch } from 'store';
+import { useAppDispatch, useAppSelector } from 'store';
 import { throwError } from 'store/global-error/slice';
 import usePageTracking from 'tracker';
+import { selectUser } from 'store/auths/selector';
 
 export function Article() {
   const dispatch = useAppDispatch();
@@ -18,6 +19,7 @@ export function Article() {
 
   const props: Props = {
     postId: postIdNumber,
+    user: useAppSelector(selectUser),
 
     throwError: (errorStatus: number) => dispatch(throwError(errorStatus)),
   };

@@ -17,10 +17,16 @@ import { autoRefreshApiWrapper } from 'utils/auto-refresh-api-wrapper';
 import { AreaNames } from 'views/components/atoms/area-names';
 import { ZOOMS } from 'constant';
 import noIcon from 'images/no-icon.jpg';
-import { AUTHER_PAGE_LINK, CATEGORY_PAGE_LINK } from 'constant/links';
+import {
+  AUTHER_PAGE_LINK,
+  CATEGORY_PAGE_LINK,
+  EDIT_LINK,
+} from 'constant/links';
 import { Link } from 'react-router-dom';
 import { categoryMapper } from 'utils/category-mapper';
 import FolderIcon from '@mui/icons-material/Folder';
+import { User } from 'types/user';
+import EditIcon from '@mui/icons-material/Edit';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -62,8 +68,12 @@ export class Renderer extends React.Component<Props, State> {
     return (
       <Stack spacing={2}>
         {isDraft && (
-          <Alert>この記事は下書きです。あなただけが閲覧できます。</Alert>
+          <Alert severity="info">
+            この記事は下書きです。あなただけが閲覧できます。
+          </Alert>
         )}
+
+        {this.renderEditLink()}
 
         <Link to={AUTHER_PAGE_LINK(author.userId.toString())}>
           <Stack
@@ -80,20 +90,20 @@ export class Renderer extends React.Component<Props, State> {
           </Stack>
         </Link>
 
+        <Typography component="h2" variant="h4" align="center">
+          {title}
+        </Typography>
+
         <Link to={CATEGORY_PAGE_LINK(category.toString())}>
           <Typography color="gray" component="div">
             <IconAndText
               iconComponent={<FolderIcon />}
               text={categoryMapper(category)}
-              align="right"
+              align="left"
               iconPosition="left"
             />
           </Typography>
         </Link>
-
-        <Typography component="h2" variant="h4" align="center">
-          {title}
-        </Typography>
 
         <Box sx={createdAtBox}>
           <Typography>{`投稿日 ${createdAt}`}</Typography>
@@ -160,10 +170,32 @@ export class Renderer extends React.Component<Props, State> {
       }
     }
   };
+
+  protected renderEditLink = () => {
+    if (
+      !this.props.user ||
+      !this.state.article ||
+      this.props.user.userId !== this.state.article.author.userId
+    ) {
+      return null;
+    }
+
+    return (
+      <Link to={EDIT_LINK(this.props.postId.toString())}>
+        <IconAndText
+          iconComponent={<EditIcon />}
+          text="編集"
+          iconPosition="left"
+          align="right"
+        />
+      </Link>
+    );
+  };
 }
 
 export type Props = {
   postId: number;
+  user?: User;
 
   throwError: (errorStatus: number) => void;
 };

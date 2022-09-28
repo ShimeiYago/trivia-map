@@ -4,6 +4,7 @@ import {
   EDIT_LINK,
   RESET_PASSWORD_LINK,
   VERIFY_EMAIL_LINK,
+  CATEGORY_PAGE_LINK,
 } from '../links';
 
 describe('links', () => {
@@ -30,5 +31,10 @@ describe('links', () => {
   it('AUTHER_PAGE_LINK return user page link', () => {
     const link = AUTHER_PAGE_LINK('1');
     expect(link).toBe('/users/1');
+  });
+
+  it('CATEGORY_PAGE_LINK return category page link', () => {
+    const link = CATEGORY_PAGE_LINK('1');
+    expect(link).toBe('/categories/1');
   });
 });

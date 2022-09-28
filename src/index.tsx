@@ -30,6 +30,7 @@ import {
   MY_ARTICLES_LINK,
   INQUIRY_PAGE_LINK,
   PRIVACY_POLICY_PAGE_LINK,
+  CATEGORY_PAGE_LINK,
 } from 'constant/links';
 import { ChangePassword } from 'views/pages/change-password';
 import { ResetPassword } from 'views/pages/reset-password';
@@ -40,6 +41,7 @@ import { AuthorPage } from 'views/pages/author';
 import { MyArticles } from 'views/pages/my-articles';
 import { InquiryPage } from 'views/pages/inquiry-page';
 import { PrivacyPolicyPage } from 'views/pages/privacy-policy-page';
+import { CategoryPage } from 'views/pages/category-page';
 
 // Deactivate all console.log on production
 // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -72,6 +74,11 @@ ReactDOM.render(
               path={AUTHER_PAGE_LINK(':userId')}
               element={errorHandledElement(<AuthorPage />)}
             />
+            <Route
+              path={CATEGORY_PAGE_LINK(':categoryId')}
+              element={errorHandledElement(<CategoryPage />)}
+            />
+
             <Route path={LOGIN_LINK} element={errorHandledElement(<Login />)} />
             <Route path={ADMIN_LINK} element={errorHandledElement(<Admin />)} />
             <Route

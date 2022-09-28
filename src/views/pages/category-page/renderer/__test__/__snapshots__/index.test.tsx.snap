@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shallow Snapshot Tests basic 1`] = `
+<ArticleWrapper
+  showSidebar={true}
+>
+  <ForwardRef(Typography)
+    align="center"
+    component="h2"
+    sx={
+      Object {
+        "mb": 2,
+      }
+    }
+    variant="h6"
+  >
+    <IconAndText
+      iconComponent={
+        <Memo
+          fontSize="inherit"
+        />
+      }
+      iconPosition="left"
+      text="隠れミッキー"
+      variant="inherit"
+    />
+  </ForwardRef(Typography)>
+  <ArticlePreviewList
+    searchConditions={
+      Object {
+        "category": 1,
+      }
+    }
+    variant="large"
+  />
+</ArticleWrapper>
+`;

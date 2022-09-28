@@ -60,6 +60,123 @@ exports[`Shallow Snapshot Tests basic 1`] = `
                     component="div"
                     iconComponent={<Memo />}
                     iconPosition="left"
+                    text="カテゴリー"
+                    variant="h6"
+                  />
+                </DesignedHead>
+                <ForwardRef(List)
+                  sx={
+                    Object {
+                      "m": 0,
+                      "p": 0,
+                    }
+                  }
+                >
+                  <NonStyleLink
+                    to="/categories/1"
+                  >
+                    <ForwardRef(ListItem)
+                      disablePadding={true}
+                    >
+                      <ForwardRef(ListItemButton)
+                        sx={
+                          Object {
+                            "py": 0.5,
+                          }
+                        }
+                      >
+                        <ForwardRef(ListItemIcon)
+                          sx={
+                            Object {
+                              "minWidth": "40px",
+                            }
+                          }
+                        >
+                          <Memo(ForwardRef(KeyboardArrowRightIcon)) />
+                        </ForwardRef(ListItemIcon)>
+                        <ForwardRef(ListItemText)
+                          primary="隠れミッキー"
+                        />
+                      </ForwardRef(ListItemButton)>
+                    </ForwardRef(ListItem)>
+                  </NonStyleLink>
+                  <ForwardRef(Divider)
+                    component="li"
+                  />
+                  <NonStyleLink
+                    to="/categories/2"
+                  >
+                    <ForwardRef(ListItem)
+                      disablePadding={true}
+                    >
+                      <ForwardRef(ListItemButton)
+                        sx={
+                          Object {
+                            "py": 0.5,
+                          }
+                        }
+                      >
+                        <ForwardRef(ListItemIcon)
+                          sx={
+                            Object {
+                              "minWidth": "40px",
+                            }
+                          }
+                        >
+                          <Memo(ForwardRef(KeyboardArrowRightIcon)) />
+                        </ForwardRef(ListItemIcon)>
+                        <ForwardRef(ListItemText)
+                          primary="バックグラウンドストーリー"
+                        />
+                      </ForwardRef(ListItemButton)>
+                    </ForwardRef(ListItem)>
+                  </NonStyleLink>
+                  <ForwardRef(Divider)
+                    component="li"
+                  />
+                  <NonStyleLink
+                    to="/categories/0"
+                  >
+                    <ForwardRef(ListItem)
+                      disablePadding={true}
+                    >
+                      <ForwardRef(ListItemButton)
+                        sx={
+                          Object {
+                            "py": 0.5,
+                          }
+                        }
+                      >
+                        <ForwardRef(ListItemIcon)
+                          sx={
+                            Object {
+                              "minWidth": "40px",
+                            }
+                          }
+                        >
+                          <Memo(ForwardRef(KeyboardArrowRightIcon)) />
+                        </ForwardRef(ListItemIcon)>
+                        <ForwardRef(ListItemText)
+                          primary="その他"
+                        />
+                      </ForwardRef(ListItemButton)>
+                    </ForwardRef(ListItem)>
+                  </NonStyleLink>
+                  <ForwardRef(Divider)
+                    component="li"
+                  />
+                </ForwardRef(List)>
+              </ForwardRef(Box)>
+              <ForwardRef(Box)>
+                <DesignedHead
+                  component="h2"
+                >
+                  <IconAndText
+                    align="left"
+                    columnGap={1}
+                    component="div"
+                    iconComponent={<Memo />}
+                    iconPosition="left"
                     text="新着記事"
                     variant="h6"
                   />
@@ -156,6 +273,123 @@ exports[`Shallow Snapshot Tests mobile 1`] = `
             <ForwardRef(Stack)
               spacing={3}
             >
+              <ForwardRef(Box)>
+                <DesignedHead
+                  component="h2"
+                >
+                  <IconAndText
+                    align="left"
+                    columnGap={1}
+                    component="div"
+                    iconComponent={<Memo />}
+                    iconPosition="left"
+                    text="カテゴリー"
+                    variant="h6"
+                  />
+                </DesignedHead>
+                <ForwardRef(List)
+                  sx={
+                    Object {
+                      "m": 0,
+                      "p": 0,
+                    }
+                  }
+                >
+                  <NonStyleLink
+                    to="/categories/1"
+                  >
+                    <ForwardRef(ListItem)
+                      disablePadding={true}
+                    >
+                      <ForwardRef(ListItemButton)
+                        sx={
+                          Object {
+                            "py": 0.5,
+                          }
+                        }
+                      >
+                        <ForwardRef(ListItemIcon)
+                          sx={
+                            Object {
+                              "minWidth": "40px",
+                            }
+                          }
+                        >
+                          <Memo(ForwardRef(KeyboardArrowRightIcon)) />
+                        </ForwardRef(ListItemIcon)>
+                        <ForwardRef(ListItemText)
+                          primary="隠れミッキー"
+                        />
+                      </ForwardRef(ListItemButton)>
+                    </ForwardRef(ListItem)>
+                  </NonStyleLink>
+                  <ForwardRef(Divider)
+                    component="li"
+                  />
+                  <NonStyleLink
+                    to="/categories/2"
+                  >
+                    <ForwardRef(ListItem)
+                      disablePadding={true}
+                    >
+                      <ForwardRef(ListItemButton)
+                        sx={
+                          Object {
+                            "py": 0.5,
+                          }
+                        }
+                      >
+                        <ForwardRef(ListItemIcon)
+                          sx={
+                            Object {
+                              "minWidth": "40px",
+                            }
+                          }
+                        >
+                          <Memo(ForwardRef(KeyboardArrowRightIcon)) />
+                        </ForwardRef(ListItemIcon)>
+                        <ForwardRef(ListItemText)
+                          primary="バックグラウンドストーリー"
+                        />
+                      </ForwardRef(ListItemButton)>
+                    </ForwardRef(ListItem)>
+                  </NonStyleLink>
+                  <ForwardRef(Divider)
+                    component="li"
+                  />
+                  <NonStyleLink
+                    to="/categories/0"
+                  >
+                    <ForwardRef(ListItem)
+                      disablePadding={true}
+                    >
+                      <ForwardRef(ListItemButton)
+                        sx={
+                          Object {
+                            "py": 0.5,
+                          }
+                        }
+                      >
+                        <ForwardRef(ListItemIcon)
+                          sx={
+                            Object {
+                              "minWidth": "40px",
+                            }
+                          }
+                        >
+                          <Memo(ForwardRef(KeyboardArrowRightIcon)) />
+                        </ForwardRef(ListItemIcon)>
+                        <ForwardRef(ListItemText)
+                          primary="その他"
+                        />
+                      </ForwardRef(ListItemButton)>
+                    </ForwardRef(ListItem)>
+                  </NonStyleLink>
+                  <ForwardRef(Divider)
+                    component="li"
+                  />
+                </ForwardRef(List)>
+              </ForwardRef(Box)>
               <ForwardRef(Box)>
                 <DesignedHead
                   component="h2"

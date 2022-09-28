@@ -12,7 +12,7 @@ export function AuthorPage() {
   const { userId } = useParams();
   const userIdNumber = Number(userId);
 
-  if (!userIdNumber) {
+  if (userIdNumber !== 0 && !userIdNumber) {
     dispatch(throwError(404));
   }
 

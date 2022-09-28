@@ -12,7 +12,7 @@ export function Article() {
   const { postId } = useParams();
   const postIdNumber = Number(postId);
 
-  if (!postIdNumber) {
+  if (postIdNumber !== 0 && !postIdNumber) {
     dispatch(throwError(404));
   }
 

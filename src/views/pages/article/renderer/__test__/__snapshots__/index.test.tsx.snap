@@ -43,17 +43,21 @@ exports[`Shallow Snapshot Tests draft 1`] = `
         </ForwardRef(Typography)>
       </ForwardRef(Stack)>
     </Link>
-    <ForwardRef(Typography)
-      color="gray"
-      component="div"
+    <Link
+      to="/categories/1"
     >
-      <IconAndText
-        align="right"
-        iconComponent={<Memo />}
-        iconPosition="left"
-        text="隠れミッキー"
-      />
-    </ForwardRef(Typography)>
+      <ForwardRef(Typography)
+        color="gray"
+        component="div"
+      >
+        <IconAndText
+          align="right"
+          iconComponent={<Memo />}
+          iconPosition="left"
+          text="隠れミッキー"
+        />
+      </ForwardRef(Typography)>
+    </Link>
     <ForwardRef(Typography)
       align="center"
       component="h2"
@@ -173,17 +177,21 @@ exports[`Shallow Snapshot Tests with article 1`] = `
         </ForwardRef(Typography)>
       </ForwardRef(Stack)>
     </Link>
-    <ForwardRef(Typography)
-      color="gray"
-      component="div"
+    <Link
+      to="/categories/1"
     >
-      <IconAndText
-        align="right"
-        iconComponent={<Memo />}
-        iconPosition="left"
-        text="隠れミッキー"
-      />
-    </ForwardRef(Typography)>
+      <ForwardRef(Typography)
+        color="gray"
+        component="div"
+      >
+        <IconAndText
+          align="right"
+          iconComponent={<Memo />}
+          iconPosition="left"
+          text="隠れミッキー"
+        />
+      </ForwardRef(Typography)>
+    </Link>
     <ForwardRef(Typography)
       align="center"
       component="h2"
@@ -295,17 +303,21 @@ exports[`Shallow Snapshot Tests with image 1`] = `
         </ForwardRef(Typography)>
       </ForwardRef(Stack)>
     </Link>
-    <ForwardRef(Typography)
-      color="gray"
-      component="div"
+    <Link
+      to="/categories/1"
     >
-      <IconAndText
-        align="right"
-        iconComponent={<Memo />}
-        iconPosition="left"
-        text="隠れミッキー"
-      />
-    </ForwardRef(Typography)>
+      <ForwardRef(Typography)
+        color="gray"
+        component="div"
+      >
+        <IconAndText
+          align="right"
+          iconComponent={<Memo />}
+          iconPosition="left"
+          text="隠れミッキー"
+        />
+      </ForwardRef(Typography)>
+    </Link>
     <ForwardRef(Typography)
       align="center"
       component="h2"

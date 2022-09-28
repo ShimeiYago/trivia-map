@@ -66,7 +66,12 @@ export class Renderer extends React.Component<Props, State> {
         {this.renderConditionsForm()}
         <Divider sx={{ my: 3 }} />
 
-        <Typography component="h2" variant="h4" align="center" sx={{ my: 2 }}>
+        <Typography
+          component="h2"
+          variant="h4"
+          align="center"
+          sx={{ mt: 3, mb: 4 }}
+        >
           <IconAndText
             iconComponent={<ArticleIcon fontSize="inherit" />}
             text="投稿一覧"

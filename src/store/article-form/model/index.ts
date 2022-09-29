@@ -8,7 +8,6 @@ export interface ArticleFormState {
   description: string;
   position?: Position;
   areaNames?: string[];
-  previousMarkerId?: number;
   image: string | SelializedImageFile | null;
   category?: number;
   submittingState: LoadingState;

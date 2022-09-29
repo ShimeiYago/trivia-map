@@ -53,3 +53,12 @@ export function localNavi(
     zIndex: 1000,
   };
 }
+
+export function logoImageBox(isMobile: boolean): SxProps {
+  return {
+    height: isMobile ? mobileHeight : PCHeight,
+    flexGrow: 1,
+    py: isMobile ? 1.5 : 2,
+    boxSizing: 'border-box',
+  };
+}

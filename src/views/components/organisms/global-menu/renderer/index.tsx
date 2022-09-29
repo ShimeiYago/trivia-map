@@ -13,7 +13,13 @@ import {
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { leftNaviContents } from './left-navi-contents';
-import { appBarStyle, contentStyle, leftNaviBox, localNavi } from '../styles';
+import {
+  appBarStyle,
+  contentStyle,
+  leftNaviBox,
+  localNavi,
+  logoImageBox,
+} from '../styles';
 import { User } from 'types/user';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
@@ -26,6 +32,10 @@ import { sleep } from 'utils/sleep';
 import { MAP_PAGE_LINK } from 'constant/links';
 import { ArticlePaper } from 'views/components/atoms/article-paper';
 import { BackToNavi } from 'views/components/moleculars/back-to-navi';
+import logoImage from 'images/logo.png';
+import { Image } from 'views/components/atoms/image';
+import { NonStyleLink } from 'views/components/atoms/non-style-link';
+import { SITE_NAME } from 'constant';
 
 export class Renderer extends React.Component<Props, State> {
   static readonly defaultProps: Pick<Props, 'topBarPosition'> = {
@@ -81,9 +91,13 @@ export class Renderer extends React.Component<Props, State> {
                 <MenuIcon />
               </IconButton>
             )}
-            <Typography variant="h6" sx={{ flexGrow: 1 }} component="div">
-              Trivia Map
-            </Typography>
+            <Box sx={logoImageBox(this.props.isMobile)}>
+              <h1 hidden>{SITE_NAME}</h1>
+              <NonStyleLink to={MAP_PAGE_LINK}>
+                <Image src={logoImage} height="full" />
+              </NonStyleLink>
+            </Box>
+
             {this.renderAuthMenu()}
           </Toolbar>
         </AppBar>

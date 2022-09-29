@@ -26,17 +26,30 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       >
         <Memo(ForwardRef(MenuIcon)) />
       </ForwardRef(IconButton)>
-      <ForwardRef(Typography)
-        component="div"
+      <ForwardRef(Box)
         sx={
           Object {
+            "boxSizing": "border-box",
             "flexGrow": 1,
+            "height": 64,
+            "py": 2,
           }
         }
-        variant="h6"
       >
-        Trivia Map
-      </ForwardRef(Typography)>
+        <h1
+          hidden={true}
+        >
+          トリビアマップ
+        </h1>
+        <NonStyleLink
+          to="/"
+        >
+          <Image
+            height="full"
+            src="logo.png"
+          />
+        </NonStyleLink>
+      </ForwardRef(Box)>
       <ForwardRef(Box)>
         <ForwardRef(Box)
           onClick={[Function]}
@@ -260,17 +273,30 @@ exports[`Shallow Snapshot Tests map page 1`] = `
       >
         <Memo(ForwardRef(MenuIcon)) />
       </ForwardRef(IconButton)>
-      <ForwardRef(Typography)
-        component="div"
+      <ForwardRef(Box)
         sx={
           Object {
+            "boxSizing": "border-box",
             "flexGrow": 1,
+            "height": 64,
+            "py": 2,
           }
         }
-        variant="h6"
       >
-        Trivia Map
-      </ForwardRef(Typography)>
+        <h1
+          hidden={true}
+        >
+          トリビアマップ
+        </h1>
+        <NonStyleLink
+          to="/"
+        >
+          <Image
+            height="full"
+            src="logo.png"
+          />
+        </NonStyleLink>
+      </ForwardRef(Box)>
       <ForwardRef(Box)>
         <ForwardRef(Box)
           onClick={[Function]}
@@ -481,17 +507,30 @@ exports[`Shallow Snapshot Tests permanent left navi 1`] = `
     }
   >
     <ForwardRef(Toolbar)>
-      <ForwardRef(Typography)
-        component="div"
+      <ForwardRef(Box)
         sx={
           Object {
+            "boxSizing": "border-box",
             "flexGrow": 1,
+            "height": 64,
+            "py": 2,
           }
         }
-        variant="h6"
       >
-        Trivia Map
-      </ForwardRef(Typography)>
+        <h1
+          hidden={true}
+        >
+          トリビアマップ
+        </h1>
+        <NonStyleLink
+          to="/"
+        >
+          <Image
+            height="full"
+            src="logo.png"
+          />
+        </NonStyleLink>
+      </ForwardRef(Box)>
       <ForwardRef(Box)>
         <ForwardRef(Box)
           onClick={[Function]}
@@ -714,17 +753,30 @@ exports[`Shallow Snapshot Tests redirect to top page 1`] = `
       >
         <Memo(ForwardRef(MenuIcon)) />
       </ForwardRef(IconButton)>
-      <ForwardRef(Typography)
-        component="div"
+      <ForwardRef(Box)
         sx={
           Object {
+            "boxSizing": "border-box",
             "flexGrow": 1,
+            "height": 64,
+            "py": 2,
           }
         }
-        variant="h6"
       >
-        Trivia Map
-      </ForwardRef(Typography)>
+        <h1
+          hidden={true}
+        >
+          トリビアマップ
+        </h1>
+        <NonStyleLink
+          to="/"
+        >
+          <Image
+            height="full"
+            src="logo.png"
+          />
+        </NonStyleLink>
+      </ForwardRef(Box)>
       <ForwardRef(Box)>
         <ForwardRef(Box)
           onClick={[Function]}
@@ -948,17 +1000,30 @@ exports[`Shallow Snapshot Tests static position 1`] = `
       >
         <Memo(ForwardRef(MenuIcon)) />
       </ForwardRef(IconButton)>
-      <ForwardRef(Typography)
-        component="div"
+      <ForwardRef(Box)
         sx={
           Object {
+            "boxSizing": "border-box",
             "flexGrow": 1,
+            "height": 64,
+            "py": 2,
           }
         }
-        variant="h6"
       >
-        Trivia Map
-      </ForwardRef(Typography)>
+        <h1
+          hidden={true}
+        >
+          トリビアマップ
+        </h1>
+        <NonStyleLink
+          to="/"
+        >
+          <Image
+            height="full"
+            src="logo.png"
+          />
+        </NonStyleLink>
+      </ForwardRef(Box)>
       <ForwardRef(Box)>
         <ForwardRef(Box)
           onClick={[Function]}
@@ -1182,17 +1247,30 @@ exports[`Shallow Snapshot Tests with local navi & mobile 1`] = `
       >
         <Memo(ForwardRef(MenuIcon)) />
       </ForwardRef(IconButton)>
-      <ForwardRef(Typography)
-        component="div"
+      <ForwardRef(Box)
         sx={
           Object {
+            "boxSizing": "border-box",
             "flexGrow": 1,
+            "height": 56,
+            "py": 1.5,
           }
         }
-        variant="h6"
       >
-        Trivia Map
-      </ForwardRef(Typography)>
+        <h1
+          hidden={true}
+        >
+          トリビアマップ
+        </h1>
+        <NonStyleLink
+          to="/"
+        >
+          <Image
+            height="full"
+            src="logo.png"
+          />
+        </NonStyleLink>
+      </ForwardRef(Box)>
       <ForwardRef(Box)>
         <ForwardRef(Box)
           onClick={[Function]}
@@ -1437,17 +1515,30 @@ exports[`Shallow Snapshot Tests with local navi 1`] = `
       >
         <Memo(ForwardRef(MenuIcon)) />
       </ForwardRef(IconButton)>
-      <ForwardRef(Typography)
-        component="div"
+      <ForwardRef(Box)
         sx={
           Object {
+            "boxSizing": "border-box",
             "flexGrow": 1,
+            "height": 64,
+            "py": 2,
           }
         }
-        variant="h6"
       >
-        Trivia Map
-      </ForwardRef(Typography)>
+        <h1
+          hidden={true}
+        >
+          トリビアマップ
+        </h1>
+        <NonStyleLink
+          to="/"
+        >
+          <Image
+            height="full"
+            src="logo.png"
+          />
+        </NonStyleLink>
+      </ForwardRef(Box)>
       <ForwardRef(Box)>
         <ForwardRef(Box)
           onClick={[Function]}
@@ -1692,17 +1783,30 @@ exports[`Shallow Snapshot Tests with userInfo 1`] = `
       >
         <Memo(ForwardRef(MenuIcon)) />
       </ForwardRef(IconButton)>
-      <ForwardRef(Typography)
-        component="div"
+      <ForwardRef(Box)
         sx={
           Object {
+            "boxSizing": "border-box",
             "flexGrow": 1,
+            "height": 64,
+            "py": 2,
           }
         }
-        variant="h6"
       >
-        Trivia Map
-      </ForwardRef(Typography)>
+        <h1
+          hidden={true}
+        >
+          トリビアマップ
+        </h1>
+        <NonStyleLink
+          to="/"
+        >
+          <Image
+            height="full"
+            src="logo.png"
+          />
+        </NonStyleLink>
+      </ForwardRef(Box)>
       <ForwardRef(Box)>
         <ForwardRef(Box)
           onClick={[Function]}

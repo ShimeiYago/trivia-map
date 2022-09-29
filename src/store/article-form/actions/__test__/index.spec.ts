@@ -1,10 +1,5 @@
 import { ApiError } from 'api/utils/handle-axios-error';
-import {
-  submitArticle,
-  fetchArticle,
-  updateFormField,
-  getAndUpdateAreaNames,
-} from '..';
+import { submitArticle, fetchArticle, updateFormField, getAndUpdateAreaNames } from '..';
 import * as GetArticleApiModule from 'api/articles-api/get-remote-article';
 import * as PostArticleApiModule from 'api/articles-api/post-remote-article';
 import * as PutArticleApiModule from 'api/articles-api/put-remote-article';
@@ -48,10 +43,7 @@ const getState = () => ({
 
 describe('submitArticle', () => {
   beforeEach(() => {
-    postRemoteArticleSpy = jest.spyOn(
-      PostArticleApiModule,
-      'postRemoteArticle',
-    );
+    postRemoteArticleSpy = jest.spyOn(PostArticleApiModule, 'postRemoteArticle');
     putRemoteArticleSpy = jest.spyOn(PutArticleApiModule, 'putRemoteArticle');
   });
 

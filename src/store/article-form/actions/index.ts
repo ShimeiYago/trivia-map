@@ -74,8 +74,7 @@ export const submitArticle = (): AppThunk => async (dispatch, getState) => {
           title: title,
           description: description,
           marker: position,
-          image:
-            typeof image === 'string' || image === null ? undefined : image,
+          image: typeof image === 'string' || image === null ? undefined : image,
           isDraft: isDraft,
           category: category,
         }),

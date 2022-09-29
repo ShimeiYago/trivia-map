@@ -50,5 +50,4 @@ export const selectArticleFormLastSavedCategory = (state: ArticleFormRootState) 
 export const selectArticleFormIsFormChangedFromLastSaved = (state: ArticleFormRootState) =>
   state.articleForm.isFormChangedFromLastSaved;
 
-export const selectArticleFormIsDraft = (state: ArticleFormRootState) =>
-  state.articleForm.isDraft;
+export const selectArticleFormIsDraft = (state: ArticleFormRootState) => state.articleForm.isDraft;

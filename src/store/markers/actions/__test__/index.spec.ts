@@ -1,4 +1,4 @@
-import { fetchMarkers, appendMarkers, pushMarker, deleteOneMarker } from '..';
+import { fetchMarkers, appendMarkers } from '..';
 import * as MarkersApiModule from 'api/markers-api';
 import { mockGetMarkersResponse } from 'api/mock/markers-response';
 import { Marker } from 'store/markers/model';
@@ -62,32 +62,6 @@ describe('appendMarkers', () => {
     ];
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const appThunk = appendMarkers(newist) as any;
-    await appThunk(dispatch, getState);
-    expect(dispatch.mock.calls[0][0].type).toBe('markers/updateMarkers');
-  });
-});
-
-describe('pushMarker', () => {
-  it('call updateList', async () => {
-    const newMarker: Marker = {
-      markerId: 0,
-      lat: 0,
-      lng: 0,
-      park: 'S',
-      numberOfPublicArticles: 1,
-    };
-
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const appThunk = pushMarker(newMarker) as any;
-    await appThunk(dispatch, getState);
-    expect(dispatch.mock.calls[0][0].type).toBe('markers/updateMarkers');
-  });
-});
-
-describe('pushMarker', () => {
-  it('call updateList', async () => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const appThunk = deleteOneMarker(1) as any;
     await appThunk(dispatch, getState);
     expect(dispatch.mock.calls[0][0].type).toBe('markers/updateMarkers');
   });

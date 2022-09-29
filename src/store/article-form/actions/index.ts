@@ -1,5 +1,5 @@
+import { PostArticleResponse } from './../../../api/articles-api/post-remote-article';
 import { SelializedImageFile } from '../../../types/selialized-image-file';
-import { selectArticleFormCategory } from './../selector/index';
 import { throwError } from 'store/global-error/slice';
 import { articleFormSlice } from '../slice';
 import { AppThunk } from 'store';
@@ -12,15 +12,13 @@ import {
   selectArticleFormTitle,
   selectArticleFormDescription,
   selectArticleFormPosition,
-  selectArticleFormId,
   selectArticleFormImage,
-  selectArticleFormPreviousMarkerId,
   selectArticleFormIsDraft,
+  selectArticleFormCategory,
+  selectArticleFormId,
 } from '../selector';
 import { globalAPIErrorMessage } from 'constant/global-api-error-message';
-import { pushMarker, deleteOneMarker } from 'store/markers/actions';
 import { Position } from 'types/position';
-import { Marker } from 'store/markers/model';
 import { autoRefreshApiWrapper } from 'utils/auto-refresh-api-wrapper';
 import { guessArea } from 'api/guess-area';
 
@@ -44,10 +42,11 @@ export const {
   updateCategory,
 } = articleFormSlice.actions;
 
-// submitNewArticle action
-export const submitNewArticle = (): AppThunk => async (dispatch, getState) => {
+// submitArticle action
+export const submitArticle = (): AppThunk => async (dispatch, getState) => {
   dispatch(submitStart());
 
+  const postId = selectArticleFormId(getState());
   const title = selectArticleFormTitle(getState());
   const description = selectArticleFormDescription(getState());
   const position = selectArticleFormPosition(getState()) as Position;
@@ -55,100 +54,41 @@ export const submitNewArticle = (): AppThunk => async (dispatch, getState) => {
   const isDraft = selectArticleFormIsDraft(getState());
   const category = selectArticleFormCategory(getState());
 
+  let res: PostArticleResponse;
   try {
-    const res = await autoRefreshApiWrapper(() =>
-      postRemoteArticle({
-        title: title,
-        description: description,
-        marker: position,
-        image: typeof image === 'string' || image === null ? undefined : image,
-        isDraft: isDraft,
-        category: category,
-      }),
-    );
+    if (postId) {
+      res = await autoRefreshApiWrapper(() =>
+        putRemoteArticle({
+          postId: postId,
+          title: title,
+          description: description,
+          marker: position,
+          image: typeof image === 'string' ? undefined : image,
+          isDraft: isDraft,
+          category: category,
+        }),
+      );
+    } else {
+      res = await autoRefreshApiWrapper(() =>
+        postRemoteArticle({
+          title: title,
+          description: description,
+          marker: position,
+          image:
+            typeof image === 'string' || image === null ? undefined : image,
+          isDraft: isDraft,
+          category: category,
+        }),
+      );
+    }
     dispatch(submitSuccess(res.postId));
     dispatch(initialize());
-
-    if (!isDraft) {
-      const marker: Marker = {
-        markerId: res.marker,
-        lat: position.lat,
-        lng: position.lng,
-        park: position.park,
-        numberOfPublicArticles: 1,
-      };
-      dispatch(pushMarker(marker));
-    }
+    // TODO: fetch markers
   } catch (error) {
     const apiError = error as ApiError<ValidationError>;
+    const errorTitle = globalAPIErrorMessage(apiError.status, 'submit');
 
     let formError: FormError;
-    const errorTitle = globalAPIErrorMessage(apiError.status, 'submit');
-    if (apiError.status === 400 && apiError.data) {
-      // validation Error
-      formError = {
-        errorTitle: errorTitle,
-        ...apiError.data,
-      };
-    } else {
-      formError = {
-        errorTitle: errorTitle,
-      };
-    }
-    dispatch(submitFailure(formError));
-  }
-};
-
-// submitEdittedArticle action
-export const submitEdittedArticle = (): AppThunk => async (dispatch, getState) => {
-  dispatch(submitStart());
-
-  const postId = selectArticleFormId(getState()) as number;
-  const title = selectArticleFormTitle(getState());
-  const description = selectArticleFormDescription(getState());
-  const position = selectArticleFormPosition(getState()) as Position;
-  const image = selectArticleFormImage(getState());
-  const isDraft = selectArticleFormIsDraft(getState());
-  const previousMarkerId = selectArticleFormPreviousMarkerId(getState());
-  const category = selectArticleFormCategory(getState());
-
-  let formError: FormError;
-
-  try {
-    const res = await autoRefreshApiWrapper(() =>
-      putRemoteArticle({
-        postId: postId,
-        title: title,
-        description: description,
-        marker: position,
-        image: typeof image === 'string' ? undefined : image,
-        isDraft: isDraft,
-        category: category,
-      }),
-    );
-    dispatch(submitSuccess(postId));
-    dispatch(initialize());
-
-    const updatedMarker: Marker = {
-      markerId: res.marker,
-      lat: position.lat,
-      lng: position.lng,
-      park: position.park,
-      numberOfPublicArticles: 1,
-    };
-
-    if (!previousMarkerId) {
-      return;
-    }
-
-    dispatch(deleteOneMarker(previousMarkerId));
-
-    if (!isDraft) {
-      dispatch(pushMarker(updatedMarker));
-    }
-  } catch (error) {
-    const apiError = error as ApiError<ValidationError>;
-    const errorTitle = globalAPIErrorMessage(apiError.status, 'submit');
     if (apiError.status === 400 && apiError.data) {
       // validation Error
       formError = {

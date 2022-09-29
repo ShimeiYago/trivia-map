@@ -65,7 +65,7 @@ export class Renderer extends React.Component<Props, State> {
             破棄
           </Button>
           <LoadingButton
-            onClick={this.handleSave}
+            onClick={this.props.submitArticle}
             autoFocus
             variant="contained"
             loading={this.props.submittingState === 'loading'}
@@ -76,15 +76,6 @@ export class Renderer extends React.Component<Props, State> {
       </Dialog>
     );
   }
-
-  protected handleSave = () => {
-    // TODO: save as draft or public
-    if (this.props.postId) {
-      return this.props.submitEdittedArticle();
-    } else {
-      return this.props.submitNewArticle();
-    }
-  };
 }
 
 export type Props = {
@@ -94,8 +85,7 @@ export type Props = {
   isFormEditting: boolean;
 
   onClose: () => void;
-  submitEdittedArticle: () => void;
-  submitNewArticle: () => void;
+  submitArticle: () => void;
   initialize: () => void;
 };
 

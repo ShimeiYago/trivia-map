@@ -5,6 +5,19 @@ exports[`Shallow Snapshot Tests basic 1`] = `
   title="パスワード初期化 - トリビアマップ"
 >
   <ForwardRef(Box)>
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "my": 3,
+          "textAlign": "center",
+        }
+      }
+    >
+      <Image
+        src="trivia-map-logo-black.png"
+        width="200px"
+      />
+    </ForwardRef(Box)>
     <ForwardRef(Stack)
       spacing={1}
       sx={
@@ -79,6 +92,19 @@ exports[`Shallow Snapshot Tests error case 1`] = `
   title="パスワード初期化 - トリビアマップ"
 >
   <ForwardRef(Box)>
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "my": 3,
+          "textAlign": "center",
+        }
+      }
+    >
+      <Image
+        src="trivia-map-logo-black.png"
+        width="200px"
+      />
+    </ForwardRef(Box)>
     <ForwardRef(Stack)
       spacing={1}
       sx={
@@ -174,6 +200,19 @@ exports[`Shallow Snapshot Tests success case 1`] = `
   title="パスワード初期化 - トリビアマップ"
 >
   <ForwardRef(Box)>
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "my": 3,
+          "textAlign": "center",
+        }
+      }
+    >
+      <Image
+        src="trivia-map-logo-black.png"
+        width="200px"
+      />
+    </ForwardRef(Box)>
     <ForwardRef(Stack)
       spacing={1}
       sx={

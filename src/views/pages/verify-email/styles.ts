@@ -1,6 +1,6 @@
 import { SxProps } from '@mui/material';
 
 export const wrapper: SxProps = {
-  mt: 10,
+  mt: 5,
   mx: 5,
 };

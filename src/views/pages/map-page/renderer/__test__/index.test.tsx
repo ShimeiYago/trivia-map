@@ -7,6 +7,9 @@ const props: Props = {
   isFormEditting: false,
   isMobile: true,
   isFormChangedFromLastSaved: false,
+  park: 'S',
+  updateFoocusingPark: jest.fn(),
+  updateFilteringCategoryId: jest.fn(),
 };
 
 const mockAddEventListener = jest
@@ -25,6 +28,13 @@ describe('Shallow Snapshot Tests', () => {
   });
 
   it('basic', () => {
+    expect(shallowWrapper).toMatchSnapshot();
+  });
+
+  it('land mode', () => {
+    shallowWrapper.setProps({
+      park: 'L',
+    });
     expect(shallowWrapper).toMatchSnapshot();
   });
 
@@ -234,7 +244,7 @@ describe('handleCloseDoubleEditAlartDialog', () => {
 });
 
 describe('handleChangePark', () => {
-  it('change park state "L"', () => {
+  it('call updateFocusingPark with "L"', () => {
     shallowWrapper = shallow(<Renderer {...props} />);
     const instance = shallowWrapper.instance();
 
@@ -245,10 +255,10 @@ describe('handleChangePark', () => {
     };
 
     instance['handleChangePark'](event as React.ChangeEvent<HTMLInputElement>);
-    expect(instance.state.park).toBe('L');
+    expect(instance.props.updateFoocusingPark).toBeCalledWith('L');
   });
 
-  it('change park state "S"', () => {
+  it('call updateFocusingPark with "S"', () => {
     shallowWrapper = shallow(<Renderer {...props} />);
     const instance = shallowWrapper.instance();
 
@@ -259,7 +269,7 @@ describe('handleChangePark', () => {
     };
 
     instance['handleChangePark'](event as React.ChangeEvent<HTMLInputElement>);
-    expect(instance.state.park).toBe('S');
+    expect(instance.props.updateFoocusingPark).toBeCalledWith('S');
   });
 });
 
@@ -269,17 +279,17 @@ describe('handleClickCategoryButton', () => {
     const instance = shallowWrapper.instance();
 
     instance['handleClickCategoryButton'](1)();
-    expect(instance.state.selectedCategoryId).toBe(1);
+    expect(instance.props.updateFilteringCategoryId).toBeCalledWith(1);
   });
 
   it('set undefined category state if same button is clicked', () => {
     shallowWrapper = shallow(<Renderer {...props} />);
-    const instance = shallowWrapper.instance();
-    instance.setState({
-      selectedCategoryId: 1,
+    shallowWrapper.setProps({
+      filteringCategoryId: 1,
     });
+    const instance = shallowWrapper.instance();
 
     instance['handleClickCategoryButton'](1)();
-    expect(instance.state.selectedCategoryId).toBe(undefined);
+    expect(instance.props.updateFilteringCategoryId).toBeCalledWith(undefined);
   });
 });

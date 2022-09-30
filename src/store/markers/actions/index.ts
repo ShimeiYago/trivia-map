@@ -14,6 +14,7 @@ export const {
   updateTotalPages,
   updateLoadedPages,
   updateFocusingPark,
+  updateFilteringCategoryId,
 } = markersSlice.actions;
 
 // fetchMarkers action

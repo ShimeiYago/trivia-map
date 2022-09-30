@@ -7,10 +7,16 @@ import { ADMIN_LINK, PASSWORD_CHANGE_LINK, PROFILE_SETTINGS_LINK } from 'constan
 import { BackToNavi } from 'views/components/moleculars/back-to-navi';
 import { LinkList } from 'views/components/moleculars/link-list';
 import { PAGE_NAMES } from 'constant/page-names';
+import { HeadAppender } from 'helper-components/head-appender';
+import { pageTitleGenerator } from 'utils/page-title-generator';
 
 export class Renderer extends React.Component {
   render() {
-    return <AdminWrapper>{this.renderAccountSettingList()}</AdminWrapper>;
+    return (
+      <HeadAppender title={pageTitleGenerator(PAGE_NAMES.accountSettings)}>
+        <AdminWrapper>{this.renderAccountSettingList()}</AdminWrapper>
+      </HeadAppender>
+    );
   }
 
   protected renderAccountSettingList = () => {

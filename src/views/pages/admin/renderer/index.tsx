@@ -10,10 +10,16 @@ import ListAltIcon from '@mui/icons-material/ListAlt';
 import { LinkList } from 'views/components/moleculars/link-list';
 import { PAGE_NAMES } from 'constant/page-names';
 import { SITE_NAME } from 'constant';
+import { pageTitleGenerator } from 'utils/page-title-generator';
+import { HeadAppender } from 'helper-components/head-appender';
 
 export class Renderer extends React.Component<Props> {
   render() {
-    return <AdminWrapper>{this.renderContents()}</AdminWrapper>;
+    return (
+      <HeadAppender title={pageTitleGenerator(PAGE_NAMES.admin)}>
+        <AdminWrapper>{this.renderContents()}</AdminWrapper>
+      </HeadAppender>
+    );
   }
 
   protected renderContents = () => {

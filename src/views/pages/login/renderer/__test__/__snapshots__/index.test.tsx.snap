@@ -1,14 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Shallow Snapshot Tests basic 1`] = `
-<GlobalMenu
-  topBarPosition="static"
+<HeadAppender
+  title="ログイン - トリビアマップ"
 >
-  <AuthForms
-    initialMode="login"
-    onLoginSucceed={[Function]}
-  />
-</GlobalMenu>
+  <GlobalMenu
+    topBarPosition="static"
+  >
+    <AuthForms
+      initialMode="login"
+      onLoginSucceed={[Function]}
+    />
+  </GlobalMenu>
+</HeadAppender>
 `;
 
 exports[`Shallow Snapshot Tests redirect 1`] = `

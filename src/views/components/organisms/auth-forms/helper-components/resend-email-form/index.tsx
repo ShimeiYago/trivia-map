@@ -1,14 +1,6 @@
 import React from 'react';
 import { LoadingState } from 'types/loading-state';
-import {
-  Alert,
-  Box,
-  Button,
-  Grid,
-  Stack,
-  TextField,
-  Typography,
-} from '@mui/material';
+import { Alert, Box, Button, Grid, Stack, TextField, Typography } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 import { HeaderErrorMessages } from 'views/components/moleculars/header-error-messages';
 import { AuthFormMode } from '../../renderer';
@@ -92,10 +84,7 @@ export class ResendEmailForm extends React.Component<Props, State> {
     if (errorTitle) {
       return (
         <Box>
-          <HeaderErrorMessages
-            errorTitle={errorTitle}
-            errorMessages={errorMessages}
-          />
+          <HeaderErrorMessages errorTitle={errorTitle} errorMessages={errorMessages} />
         </Box>
       );
     }

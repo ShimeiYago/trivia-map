@@ -6,9 +6,7 @@ import { mockGetArticleResponse } from '../mock/articles-response';
 import { Author } from 'types/author';
 import { Park } from './../../types/park';
 
-export async function getRemoteArticle(
-  postId: number,
-): Promise<GetArticleResponse> {
+export async function getRemoteArticle(postId: number): Promise<GetArticleResponse> {
   const axiosInstance = getAxiosInstance({}, mockGetArticleResponse);
 
   try {

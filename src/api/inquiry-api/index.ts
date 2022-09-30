@@ -11,8 +11,10 @@ export async function inquiry(
 
   try {
     // TODO: Set reasonable timeout
-    const res: AxiosResponse<InquiryRequestAndResponse> =
-      await axiosInstance.post(`${BASE_URL}/inquiry`, request);
+    const res: AxiosResponse<InquiryRequestAndResponse> = await axiosInstance.post(
+      `${BASE_URL}/inquiry`,
+      request,
+    );
     return res.data;
   } catch (error) {
     const axiosError = error as AxiosError;

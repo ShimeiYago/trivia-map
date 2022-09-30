@@ -24,11 +24,7 @@ export class Renderer extends React.Component<Props, State> {
     return (
       <>
         <Box>
-          <IconButton
-            aria-label="close"
-            onClick={this.handleClick}
-            sx={{ p: 1 }}
-          >
+          <IconButton aria-label="close" onClick={this.handleClick} sx={{ p: 1 }}>
             <CloseIcon />
           </IconButton>
         </Box>
@@ -63,9 +59,7 @@ export class Renderer extends React.Component<Props, State> {
     return (
       <Dialog open={this.state.openDialog} onClose={this.cancelToClose}>
         <DialogTitle>変更を保存しますか？</DialogTitle>
-        <DialogContent>
-          未保存のデータがありますが、本当に閉じてもよろしいですか？
-        </DialogContent>
+        <DialogContent>未保存のデータがありますが、本当に閉じてもよろしいですか？</DialogContent>
         <DialogActions sx={{ mr: 1, mb: 1 }}>
           <Button onClick={this.handleClose} variant="outlined">
             破棄

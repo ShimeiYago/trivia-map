@@ -3,11 +3,7 @@ import { Box, Stack, Typography } from '@mui/material';
 import { AdminWrapper } from 'views/components/organisms/admin-wrapper';
 import BadgeIcon from '@mui/icons-material/Badge';
 import KeyIcon from '@mui/icons-material/Key';
-import {
-  ADMIN_LINK,
-  PASSWORD_CHANGE_LINK,
-  PROFILE_SETTINGS_LINK,
-} from 'constant/links';
+import { ADMIN_LINK, PASSWORD_CHANGE_LINK, PROFILE_SETTINGS_LINK } from 'constant/links';
 import { BackToNavi } from 'views/components/moleculars/back-to-navi';
 import { LinkList } from 'views/components/moleculars/link-list';
 

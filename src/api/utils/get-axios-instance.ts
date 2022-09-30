@@ -46,10 +46,7 @@ const defaultConfig: AxiosRequestConfig = {
   timeout: 3000,
 };
 
-function getMockAdapter(
-  mockData: unknown,
-  mode: 'normal' | 'error',
-): AxiosAdapter {
+function getMockAdapter(mockData: unknown, mode: 'normal' | 'error'): AxiosAdapter {
   return async () => {
     await sleep(Number(process.env.REACT_APP_MOCK_DELAY_TIME));
 

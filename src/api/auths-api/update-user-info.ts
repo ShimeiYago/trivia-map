@@ -22,10 +22,7 @@ export async function updateUserInfo(param: {
 
   try {
     // TODO: Set reasonable timeout
-    const res: AxiosResponse<User> = await axiosInstance.put(
-      `${BASE_URL}/auths/user`,
-      requestData,
-    );
+    const res: AxiosResponse<User> = await axiosInstance.put(`${BASE_URL}/auths/user`, requestData);
     return res.data;
   } catch (error) {
     const axiosError = error as AxiosError;

@@ -18,9 +18,7 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   render() {
-    return (
-      <ArticleWrapper showSidebar>{this.renderMainContent()}</ArticleWrapper>
-    );
+    return <ArticleWrapper showSidebar>{this.renderMainContent()}</ArticleWrapper>;
   }
 
   protected renderMainContent = () => {
@@ -45,10 +43,7 @@ export class Renderer extends React.Component<Props, State> {
           </Typography>
         </Stack>
 
-        <ArticlePreviewList
-          variant="large"
-          searchConditions={{ user: this.props.userId }}
-        />
+        <ArticlePreviewList variant="large" searchConditions={{ user: this.props.userId }} />
       </>
     );
   };

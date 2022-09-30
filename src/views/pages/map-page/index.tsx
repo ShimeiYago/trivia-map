@@ -26,9 +26,7 @@ export function MapPage() {
   const props: Props = {
     isFormEditting: useAppSelector(selectArticleFormIsEditting),
     isMobile: isMobile,
-    isFormChangedFromLastSaved: useAppSelector(
-      selectArticleFormIsFormChangedFromLastSaved,
-    ),
+    isFormChangedFromLastSaved: useAppSelector(selectArticleFormIsFormChangedFromLastSaved),
   };
 
   if (!postIdToEdit) {

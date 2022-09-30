@@ -5,11 +5,7 @@ import { handleAxiosError } from '../utils/handle-axios-error';
 import { getAxiosInstance } from 'api/utils/get-axios-instance';
 import { mockPostArticleResponse } from '../mock/articles-response';
 import { Position } from 'types/position';
-import {
-  PostArticleRequest,
-  PostArticleResponse,
-  ValidationError,
-} from './post-remote-article';
+import { PostArticleRequest, PostArticleResponse, ValidationError } from './post-remote-article';
 import { convertToFile } from 'utils/convert-to-file';
 
 export async function putRemoteArticle(param: {
@@ -23,9 +19,7 @@ export async function putRemoteArticle(param: {
 }): Promise<PostArticleResponse> {
   const axiosInstance = getAxiosInstance({}, mockPostArticleResponse);
 
-  const uploadFile = param.image
-    ? await convertToFile(param.image)
-    : param.image;
+  const uploadFile = param.image ? await convertToFile(param.image) : param.image;
 
   const requestData: PostArticleRequest = {
     title: param.title,

@@ -1,10 +1,7 @@
 import { selectMarkers } from 'store/markers/selector';
 import { markersSlice } from './../slice/index';
 import { AppThunk } from 'store';
-import {
-  getRemoteMarkers,
-  GetMarkersResponseWithPagination,
-} from 'api/markers-api';
+import { getRemoteMarkers, GetMarkersResponseWithPagination } from 'api/markers-api';
 import { Marker } from '../model';
 import {
   concatMarkers as helperConcatMarkers,
@@ -15,13 +12,8 @@ import { throwError } from 'store/global-error/slice';
 import { Park } from './../../../types/park';
 
 // basic actions
-export const {
-  fetchSuccess,
-  fetchStart,
-  updateMarkers,
-  updateTotalPages,
-  updateLoadedPages,
-} = markersSlice.actions;
+export const { fetchSuccess, fetchStart, updateMarkers, updateTotalPages, updateLoadedPages } =
+  markersSlice.actions;
 
 // fetchMarkers action
 export const fetchMarkers =
@@ -82,9 +74,6 @@ export const pushMarker =
 export const deleteOneMarker =
   (deletingMarkerId: number): AppThunk =>
   (dispatch, getState) => {
-    const newMarkers = helperDeleteOneMarker(
-      selectMarkers(getState()),
-      deletingMarkerId,
-    );
+    const newMarkers = helperDeleteOneMarker(selectMarkers(getState()), deletingMarkerId);
     dispatch(updateMarkers(newMarkers));
   };

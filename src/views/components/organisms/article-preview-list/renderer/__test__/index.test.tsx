@@ -18,10 +18,7 @@ describe('Shallow Snapshot Tests', () => {
   beforeEach(() => {
     jest.resetAllMocks();
     wrapper = shallow(<Renderer {...basicProps} />);
-    getArticlesPreviewsSpy = jest.spyOn(
-      GetArticlesPreviewsApiModule,
-      'getArticlesPreviews',
-    );
+    getArticlesPreviewsSpy = jest.spyOn(GetArticlesPreviewsApiModule, 'getArticlesPreviews');
   });
 
   it('basic', () => {
@@ -70,10 +67,7 @@ describe('Shallow Snapshot Tests', () => {
 describe('fetchArticlesPreviews', () => {
   beforeEach(() => {
     jest.resetAllMocks();
-    getArticlesPreviewsSpy = jest.spyOn(
-      GetArticlesPreviewsApiModule,
-      'getArticlesPreviews',
-    );
+    getArticlesPreviewsSpy = jest.spyOn(GetArticlesPreviewsApiModule, 'getArticlesPreviews');
   });
 
   it('should set success states if api calling succeed', async () => {
@@ -100,10 +94,7 @@ describe('fetchArticlesPreviews', () => {
 describe('handleChangePagination', () => {
   beforeEach(() => {
     jest.resetAllMocks();
-    getArticlesPreviewsSpy = jest.spyOn(
-      GetArticlesPreviewsApiModule,
-      'getArticlesPreviews',
-    );
+    getArticlesPreviewsSpy = jest.spyOn(GetArticlesPreviewsApiModule, 'getArticlesPreviews');
   });
 
   it('should set success states if api calling succeed', () => {
@@ -118,10 +109,7 @@ describe('handleChangePagination', () => {
 describe('componentDidUpdate', () => {
   beforeEach(() => {
     jest.resetAllMocks();
-    getArticlesPreviewsSpy = jest.spyOn(
-      GetArticlesPreviewsApiModule,
-      'getArticlesPreviews',
-    );
+    getArticlesPreviewsSpy = jest.spyOn(GetArticlesPreviewsApiModule, 'getArticlesPreviews');
   });
 
   it('should re-fetch and set undefined as totalPages if searchConditions are changed', () => {

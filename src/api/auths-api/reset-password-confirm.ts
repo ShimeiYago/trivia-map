@@ -20,10 +20,7 @@ export async function resetPasswordConfirm(
 
   try {
     // TODO: Set reasonable timeout
-    await axiosInstance.post(
-      `${BASE_URL}/auths/password/reset/confirm`,
-      requestData,
-    );
+    await axiosInstance.post(`${BASE_URL}/auths/password/reset/confirm`, requestData);
   } catch (error) {
     const axiosError = error as AxiosError;
     throw handleAxiosError<ValidationError>(axiosError);

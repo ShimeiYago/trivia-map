@@ -25,8 +25,6 @@ describe('getRemoteMarkers', () => {
       data: {},
       errorMsg: 'Intentional API Error with mock',
     };
-    await expect(guessArea({ lat: 1, lng: 1, park: 'L' })).rejects.toEqual(
-      expectedApiError,
-    );
+    await expect(guessArea({ lat: 1, lng: 1, park: 'L' })).rejects.toEqual(expectedApiError);
   });
 });

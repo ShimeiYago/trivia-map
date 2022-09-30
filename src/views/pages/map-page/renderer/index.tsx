@@ -56,37 +56,25 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   componentDidUpdate(prevProps: Props, prevState: State) {
-    if (
-      !prevProps.isFormChangedFromLastSaved &&
-      this.props.isFormChangedFromLastSaved
-    ) {
+    if (!prevProps.isFormChangedFromLastSaved && this.props.isFormChangedFromLastSaved) {
       window.addEventListener('beforeunload', this.handleBeforeUnload);
     }
-    if (
-      prevProps.isFormChangedFromLastSaved &&
-      !this.props.isFormChangedFromLastSaved
-    ) {
+    if (prevProps.isFormChangedFromLastSaved && !this.props.isFormChangedFromLastSaved) {
       window.removeEventListener('beforeunload', this.handleBeforeUnload);
     }
 
-    if (
-      !this.props.isFormEditting &&
-      prevState.openFormModal &&
-      !this.state.openFormModal
-    ) {
+    if (!this.props.isFormEditting && prevState.openFormModal && !this.state.openFormModal) {
       history.replaceState('', '', '/');
     }
   }
 
   protected handleBeforeUnload(e: BeforeUnloadEvent) {
     e.preventDefault();
-    e.returnValue =
-      '未保存のデータがありますが、本当に閉じてもよろしいですか？';
+    e.returnValue = '未保存のデータがありますが、本当に閉じてもよろしいですか？';
   }
 
   render() {
-    const { openFormModal, edittingPostId, park, selectedCategoryId } =
-      this.state;
+    const { openFormModal, edittingPostId, park, selectedCategoryId } = this.state;
     const { isFormEditting, isMobile } = this.props;
     return (
       <Box sx={wrapper(openFormModal && !isMobile)}>
@@ -102,10 +90,7 @@ export class Renderer extends React.Component<Props, State> {
             />
 
             {!isFormEditting && (
-              <FloatingButton
-                icon="add-marker"
-                onClick={this.handleClickAddButton}
-              />
+              <FloatingButton icon="add-marker" onClick={this.handleClickAddButton} />
             )}
 
             <LoadingProgressBar />
@@ -183,8 +168,7 @@ export class Renderer extends React.Component<Props, State> {
 
   protected handleClickCategoryButton = (categoryId: number) => () => {
     this.setState({
-      selectedCategoryId:
-        this.state.selectedCategoryId === categoryId ? undefined : categoryId,
+      selectedCategoryId: this.state.selectedCategoryId === categoryId ? undefined : categoryId,
     });
   };
 
@@ -273,12 +257,7 @@ export class Renderer extends React.Component<Props, State> {
         />
       </SwipeableEdgeDrawer>
     ) : (
-      <Drawer
-        sx={rightDrawerStyle}
-        variant="persistent"
-        anchor="right"
-        open={openFormModal}
-      >
+      <Drawer sx={rightDrawerStyle} variant="persistent" anchor="right" open={openFormModal}>
         {openFormModal && (
           <ArticleForm
             postId={edittingPostId}
@@ -304,10 +283,7 @@ export class Renderer extends React.Component<Props, State> {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button
-            onClick={this.handleCloseDoubleEditAlartDialog}
-            variant="outlined"
-          >
+          <Button onClick={this.handleCloseDoubleEditAlartDialog} variant="outlined">
             閉じる
           </Button>
         </DialogActions>

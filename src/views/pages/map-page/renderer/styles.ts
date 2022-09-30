@@ -24,9 +24,7 @@ export function wrapper(shrink: boolean): SxProps {
 }
 
 export function mapWrapper(isMobile: boolean): SxProps {
-  const appBarDefaultHeight = isMobile
-    ? appBarDefaultHeightMobile
-    : appBarDefaultHeightPC;
+  const appBarDefaultHeight = isMobile ? appBarDefaultHeightMobile : appBarDefaultHeightPC;
 
   return {
     position: 'relative',
@@ -34,11 +32,7 @@ export function mapWrapper(isMobile: boolean): SxProps {
   };
 }
 
-export function parkSelectBox(
-  shrink: boolean,
-  isMobile: boolean,
-  park: Park,
-): SxProps {
+export function parkSelectBox(shrink: boolean, isMobile: boolean, park: Park): SxProps {
   const switchColor = park === 'L' ? red[700] : blue[700];
 
   return {

@@ -17,10 +17,7 @@ export class Renderer extends React.Component<unknown, State> {
 
     return (
       <GlobalMenu topBarPosition="static">
-        <AuthForms
-          initialMode="login"
-          onLoginSucceed={this.redirectAfterSeveralSeconds}
-        />
+        <AuthForms initialMode="login" onLoginSucceed={this.redirectAfterSeveralSeconds} />
       </GlobalMenu>
     );
   }

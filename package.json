@@ -40,7 +40,8 @@
     "test": "react-scripts test --watchAll",
     "test:cover": "react-scripts test --coverage --watchAll",
     "eject": "react-scripts eject",
-    "lint": "eslint '*/**/*.{js,ts,tsx}' --fix"
+    "lint": "eslint '*/**/*.{js,ts,tsx}' --fix",
+    "typecheck": "tsc"
   },
   "eslintConfig": {
     "extends": "react-app"

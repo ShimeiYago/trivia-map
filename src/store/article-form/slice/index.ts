@@ -24,10 +24,7 @@ export const articleFormSlice = createSlice({
       state.areaNames = action.payload;
     },
 
-    updateImage(
-      state,
-      action: PayloadAction<string | SelializedImageFile | null>,
-    ) {
+    updateImage(state, action: PayloadAction<string | SelializedImageFile | null>) {
       state.image = action.payload;
     },
 
@@ -89,8 +86,7 @@ export const articleFormSlice = createSlice({
       state.lastSavedPosition = initialState.lastSavedPosition;
       state.lastSavedImage = initialState.lastSavedImage;
       state.lastSavedCategory = initialState.lastSavedCategory;
-      state.isFormChangedFromLastSaved =
-        initialState.isFormChangedFromLastSaved;
+      state.isFormChangedFromLastSaved = initialState.isFormChangedFromLastSaved;
     },
 
     updateIsEditting(state, action: PayloadAction<boolean>) {

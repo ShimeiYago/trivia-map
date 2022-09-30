@@ -1,9 +1,7 @@
 import { refreshToken } from 'api/auths-api/refresh-token';
 import { ApiError } from 'api/utils/handle-axios-error';
 
-export async function autoRefreshApiWrapper<Response>(
-  api: () => Promise<Response>,
-) {
+export async function autoRefreshApiWrapper<Response>(api: () => Promise<Response>) {
   let apiError: ApiError<unknown>;
 
   try {

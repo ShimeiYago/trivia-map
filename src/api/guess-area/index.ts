@@ -5,17 +5,12 @@ import { handleAxiosError } from '../utils/handle-axios-error';
 import { getAxiosInstance } from 'api/utils/get-axios-instance';
 import { Park } from '../../types/park';
 
-export async function guessArea(
-  request: GuessAreaRequest,
-): Promise<GuessAreaResponse> {
+export async function guessArea(request: GuessAreaRequest): Promise<GuessAreaResponse> {
   const url = `${BASE_URL}/guess-area`;
   const axiosInstance = getAxiosInstance({}, mockGuessAreaResponse);
 
   try {
-    const res: AxiosResponse<GuessAreaResponse> = await axiosInstance.post(
-      url,
-      request,
-    );
+    const res: AxiosResponse<GuessAreaResponse> = await axiosInstance.post(url, request);
     return res.data;
   } catch (error) {
     const axiosError = error as AxiosError;

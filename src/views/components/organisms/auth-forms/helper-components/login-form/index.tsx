@@ -1,15 +1,7 @@
 import React from 'react';
 import { LoadingState } from 'types/loading-state';
 import { User } from 'types/user';
-import {
-  Alert,
-  Box,
-  Button,
-  Grid,
-  Stack,
-  TextField,
-  Typography,
-} from '@mui/material';
+import { Alert, Box, Button, Grid, Stack, TextField, Typography } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 import { login, ValidationError } from 'api/auths-api/login';
 import { ApiError } from 'api/utils/handle-axios-error';
@@ -29,8 +21,7 @@ export class LoginForm extends React.Component<Props, State> {
 
   render() {
     const disabled =
-      this.props.autoLoggingInState !== 'error' ||
-      this.state.localLoadingState === 'loading';
+      this.props.autoLoggingInState !== 'error' || this.state.localLoadingState === 'loading';
 
     return (
       <Stack spacing={1} sx={{ px: 1, py: 2 }}>
@@ -80,10 +71,7 @@ export class LoginForm extends React.Component<Props, State> {
           </LoadingButton>
           <Grid container>
             <Grid item xs>
-              <Button
-                variant="text"
-                onClick={this.props.switchMode('reset-password')}
-              >
+              <Button variant="text" onClick={this.props.switchMode('reset-password')}>
                 パスワードを忘れた場合
               </Button>
             </Grid>
@@ -114,16 +102,10 @@ export class LoginForm extends React.Component<Props, State> {
     if (errorTitle) {
       return (
         <Box>
-          <HeaderErrorMessages
-            errorTitle={errorTitle}
-            errorMessages={errorMessages}
-          />
+          <HeaderErrorMessages errorTitle={errorTitle} errorMessages={errorMessages} />
           {showResendEmailButton && (
             <Typography align="right">
-              <Button
-                variant="text"
-                onClick={this.props.switchMode('resend-email')}
-              >
+              <Button variant="text" onClick={this.props.switchMode('resend-email')}>
                 確認メールが届いていませんか？
               </Button>
             </Typography>
@@ -173,8 +155,7 @@ export class LoginForm extends React.Component<Props, State> {
           },
         });
 
-        apiError.data.non_field_errors &&
-          this.handleNonFieldErrors(apiError.data.non_field_errors);
+        apiError.data.non_field_errors && this.handleNonFieldErrors(apiError.data.non_field_errors);
       }
 
       this.setState({

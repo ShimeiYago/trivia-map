@@ -5,10 +5,7 @@ const mobileHeight = 56;
 const PCHeight = 64;
 const localNaviHeight = 40;
 
-export function appBarStyle(
-  permanentLeftNavi: boolean,
-  mapPage: boolean,
-): SxProps {
+export function appBarStyle(permanentLeftNavi: boolean, mapPage: boolean): SxProps {
   return {
     borderBottom: mapPage ? '2px solid rgba(255, 255, 255, 0.7)' : undefined,
     width: permanentLeftNavi ? `calc(100% - ${drawerWidth}px)` : undefined,

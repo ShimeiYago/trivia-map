@@ -15,9 +15,7 @@ describe('globalAPIErrorMessage with get mode', () => {
 
   it('return message for 403', () => {
     const message = globalAPIErrorMessage(403, 'get');
-    expect(message).toBe(
-      'データの取得に失敗しました。正しいアカウントでログインしてください。',
-    );
+    expect(message).toBe('データの取得に失敗しました。正しいアカウントでログインしてください。');
   });
 
   it('return message for 404', () => {
@@ -43,8 +41,6 @@ describe('globalAPIErrorMessage with get mode', () => {
 describe('globalAPIErrorMessage with submit mode', () => {
   it('return message for 401', () => {
     const message = globalAPIErrorMessage(401, 'submit');
-    expect(message).toBe(
-      'エラーが発生しました。ログインが正常に行われているか確認してください。',
-    );
+    expect(message).toBe('エラーが発生しました。ログインが正常に行われているか確認してください。');
   });
 });

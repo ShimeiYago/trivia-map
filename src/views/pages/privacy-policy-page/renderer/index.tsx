@@ -38,9 +38,7 @@ export class Renderer extends React.Component {
         </Typography>
         <Typography sx={{ mb: 3 }}>
           このGoogleアナリティクスはトラフィックデータの収集のためにCookieを使用しています。このトラフィックデータは匿名で収集されており、個人を特定するものではありません。この機能はCookieを無効にすることで収集を拒否することが出来ますので、お使いのブラウザの設定をご確認ください。この規約に関して、詳しくは
-          <a href="https://marketingplatform.google.com/about/analytics/terms/jp/">
-            こちら
-          </a>
+          <a href="https://marketingplatform.google.com/about/analytics/terms/jp/">こちら</a>
           をご覧ください。
         </Typography>
 
@@ -57,9 +55,7 @@ export class Renderer extends React.Component {
           <li>
             禁制品の取引に関するものや、他者を害する行為の依頼など、法律によって禁止されている物品、行為の依頼や斡旋などに関するもの。
           </li>
-          <li>
-            その他、公序良俗に反し、または管理人によって承認すべきでないと認められるもの。
-          </li>
+          <li>その他、公序良俗に反し、または管理人によって承認すべきでないと認められるもの。</li>
         </ul>
 
         {renderHead('著作権について')}

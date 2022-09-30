@@ -122,10 +122,7 @@ describe('handleChangePagination', () => {
 describe('deleteArticle', () => {
   beforeEach(() => {
     jest.resetAllMocks();
-    deleteArticleSpy = jest.spyOn(
-      DeleteArticleApiModule,
-      'deleteRemoteArticle',
-    );
+    deleteArticleSpy = jest.spyOn(DeleteArticleApiModule, 'deleteRemoteArticle');
   });
 
   it('should set success states if api calling succeed', async () => {

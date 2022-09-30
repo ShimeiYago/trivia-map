@@ -5,8 +5,7 @@ import { LoadingButton } from '@mui/lab';
 
 export class Renderer extends React.Component<Props> {
   render() {
-    const { markerDeletingState, onClickCancel, onClickConfirm, open } =
-      this.props;
+    const { markerDeletingState, onClickCancel, onClickConfirm, open } = this.props;
 
     return (
       <Dialog open={open || markerDeletingState === 'loading'}>

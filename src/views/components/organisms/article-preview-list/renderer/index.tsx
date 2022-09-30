@@ -41,8 +41,7 @@ export class Renderer extends React.Component<Props, State> {
 
   componentDidUpdate(prevProps: Props) {
     if (
-      JSON.stringify(prevProps.searchConditions) !==
-      JSON.stringify(this.props.searchConditions)
+      JSON.stringify(prevProps.searchConditions) !== JSON.stringify(this.props.searchConditions)
     ) {
       this.fetchArticlesPreviews();
       this.setState({
@@ -105,19 +104,11 @@ export class Renderer extends React.Component<Props, State> {
         </Box>
       );
     } else {
-      return (
-        <Stack spacing={this.props.variant === 'large' ? 3 : 1}>
-          {previewList}
-        </Stack>
-      );
+      return <Stack spacing={this.props.variant === 'large' ? 3 : 1}>{previewList}</Stack>;
     }
   }
 
-  protected renderPopupCard = (
-    title: string,
-    imageUrl: string | null,
-    category: number,
-  ) => {
+  protected renderPopupCard = (title: string, imageUrl: string | null, category: number) => {
     return (
       <Card sx={{ ...sxProps.card, p: 1 }}>
         <Stack spacing={1}>
@@ -127,13 +118,7 @@ export class Renderer extends React.Component<Props, State> {
 
           {imageUrl && (
             <Typography align="center">
-              <Image
-                src={imageUrl}
-                width="200px"
-                height="100px"
-                objectFit="cover"
-                borderRadius
-              />
+              <Image src={imageUrl} width="200px" height="100px" objectFit="cover" borderRadius />
             </Typography>
           )}
 
@@ -161,18 +146,10 @@ export class Renderer extends React.Component<Props, State> {
     );
   };
 
-  protected renderLargeCard = (
-    title: string,
-    imageUrl: string | null,
-    category: number,
-  ) => {
+  protected renderLargeCard = (title: string, imageUrl: string | null, category: number) => {
     return (
       <Card sx={sxProps.card}>
-        <CardMedia
-          component="img"
-          className={classes['card-media']}
-          image={imageUrl ?? notImage}
-        />
+        <CardMedia component="img" className={classes['card-media']} image={imageUrl ?? notImage} />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h3">
             {title}
@@ -204,12 +181,7 @@ export class Renderer extends React.Component<Props, State> {
         <CardContent>
           <Grid container spacing={1}>
             <Grid item xs={5}>
-              <Image
-                src={imageUrl ?? notImage}
-                width="full"
-                height="100px"
-                objectFit="cover"
-              />
+              <Image src={imageUrl ?? notImage} width="full" height="100px" objectFit="cover" />
             </Grid>
             <Grid item xs={7}>
               <Typography gutterBottom variant="body1" component="h3">
@@ -230,10 +202,7 @@ export class Renderer extends React.Component<Props, State> {
 
     return (
       <div className={classes['pagination-wrapper']}>
-        <Pagination
-          count={this.state.totalPages}
-          onChange={this.handleChangePagination}
-        />
+        <Pagination count={this.state.totalPages} onChange={this.handleChangePagination} />
       </div>
     );
   }
@@ -260,10 +229,7 @@ export class Renderer extends React.Component<Props, State> {
     }
   }
 
-  protected handleChangePagination = (
-    event: React.ChangeEvent<unknown>,
-    page: number,
-  ) => {
+  protected handleChangePagination = (event: React.ChangeEvent<unknown>, page: number) => {
     this.fetchArticlesPreviews(page);
   };
 }

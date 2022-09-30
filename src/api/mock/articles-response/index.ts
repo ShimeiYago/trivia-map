@@ -50,8 +50,7 @@ export const mockGetArticlesPreviewsResponse: GetArticlesPreviewsResponse = {
     {
       postId: 1,
       title: 'ノーチラス号のエンジン',
-      image:
-        'https://disneyparkstory.com/wp-content/uploads/2017/02/CIMG9800.jpg',
+      image: 'https://disneyparkstory.com/wp-content/uploads/2017/02/CIMG9800.jpg',
       category: 1,
     },
     {

@@ -17,8 +17,7 @@ export async function getArticlesPreviews(
 
   try {
     // TODO: Set reasonable timeout
-    const res: AxiosResponse<GetArticlesPreviewsResponse> =
-      await axiosInstance.get(url);
+    const res: AxiosResponse<GetArticlesPreviewsResponse> = await axiosInstance.get(url);
     return res.data;
   } catch (error) {
     const axiosError = error as AxiosError;
@@ -33,8 +32,7 @@ export type GetArticlesPreviewsResponseEachItem = {
   category: number;
 };
 
-export type GetArticlesPreviewsResponse =
-  PaginationResponse<GetArticlesPreviewsResponseEachItem>;
+export type GetArticlesPreviewsResponse = PaginationResponse<GetArticlesPreviewsResponseEachItem>;
 
 export type GetArticlesPreviewsParam = {
   page?: number;

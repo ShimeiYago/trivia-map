@@ -174,6 +174,180 @@ exports[`Shallow Snapshot Tests basic 1`] = `
 </HeadAppender>
 `;
 
+exports[`Shallow Snapshot Tests land mode 1`] = `
+<HeadAppender
+  title="トリビアマップ"
+>
+  <ForwardRef(Box)
+    sx={Object {}}
+  >
+    <GlobalMenu
+      mapPage={true}
+      topBarPosition="static"
+    >
+      <ForwardRef(Box)
+        sx={
+          Object {
+            "height": "calc(100vh - 58px)",
+            "position": "relative",
+          }
+        }
+      >
+        <TriviaMap
+          endToSelectPosition={[Function]}
+          hiddenMarkerIds={Array []}
+          newMarkerMode={false}
+          park="L"
+          shouldCurrentPositionAsyncWithForm={true}
+        />
+        <FloatingButton
+          color="primary"
+          disabled={false}
+          icon="add-marker"
+          onClick={[Function]}
+        />
+        <LoadingProgressBar />
+        <ForwardRef(Box)
+          sx={
+            Object {
+              "& .MuiSwitch-thumb": Object {
+                "backgroundColor": "#d32f2f",
+              },
+              "& .MuiSwitch-track": Object {
+                "backgroundColor": "#d32f2f",
+              },
+              "backgroundColor": "white",
+              "borderColor": "#9e9e9e",
+              "borderRadius": 2,
+              "borderStyle": "solid",
+              "bottom": "auto",
+              "left": "auto",
+              "margin": 0,
+              "padding": 1,
+              "position": "fixed",
+              "right": 20,
+              "top": 108,
+              "zIndex": 1000,
+            }
+          }
+        >
+          <ForwardRef(Stack)
+            alignItems="center"
+            direction="row"
+            spacing={1}
+          >
+            <ForwardRef(Typography)
+              fontSize="0.875rem"
+            >
+              ランド
+            </ForwardRef(Typography)>
+            <ForwardRef(Switch)
+              checked={false}
+              color="primary"
+              onChange={[Function]}
+              size="small"
+            />
+            <ForwardRef(Typography)
+              fontSize="0.875rem"
+            >
+              シー
+            </ForwardRef(Typography)>
+          </ForwardRef(Stack)>
+        </ForwardRef(Box)>
+        <ForwardRef(Stack)
+          direction="row"
+          spacing={1}
+          sx={
+            Object {
+              "&::-webkit-scrollbar": Object {
+                "display": "none",
+              },
+              "boxSizing": "border-box",
+              "margin": 0,
+              "maxWidth": "100vw",
+              "msOverflowStyle": "none",
+              "overflowX": "scroll",
+              "position": "fixed",
+              "px": 1,
+              "py": 0,
+              "scrollbarWidth": "none",
+              "top": 68,
+              "whiteSpace": "nowrap",
+              "zIndex": 1000,
+            }
+          }
+        >
+          <RoundButton
+            key="category-button-0"
+            onClick={[Function]}
+            selected={false}
+          >
+            隠れミッキー
+          </RoundButton>
+          <RoundButton
+            key="category-button-1"
+            onClick={[Function]}
+            selected={false}
+          >
+            バックグラウンドストーリー
+          </RoundButton>
+          <RoundButton
+            key="category-button-2"
+            onClick={[Function]}
+            selected={false}
+          >
+            その他
+          </RoundButton>
+        </ForwardRef(Stack)>
+      </ForwardRef(Box)>
+    </GlobalMenu>
+    <SwipeableEdgeDrawer
+      bleedingHeight={56}
+      edgeLabel={
+        <CloseFormButton
+          onClose={[Function]}
+        />
+      }
+      edgeLabelWhenClosed="編集中"
+      heightRatio={80}
+      onClose={[Function]}
+      onOpen={[Function]}
+      open={false}
+      show={false}
+    >
+      <ArticleForm
+        onClickSelectPosition={[Function]}
+        park="L"
+      />
+    </SwipeableEdgeDrawer>
+    <GlobalMessage
+      closeFormModal={[Function]}
+    />
+    <ForwardRef(Dialog)
+      onClose={[Function]}
+      open={false}
+    >
+      <ForwardRef(DialogTitle)>
+        入力内容の変更が保存されていません。
+      </ForwardRef(DialogTitle)>
+      <ForwardRef(DialogContent)>
+        <ForwardRef(DialogContentText)>
+          現在編集中の投稿を「下書き保存」、「保存して公開」、または「編集を破棄」してからもう一度お試しください。
+        </ForwardRef(DialogContentText)>
+      </ForwardRef(DialogContent)>
+      <ForwardRef(DialogActions)>
+        <ForwardRef(Button)
+          onClick={[Function]}
+          variant="outlined"
+        >
+          閉じる
+        </ForwardRef(Button)>
+      </ForwardRef(DialogActions)>
+    </ForwardRef(Dialog)>
+  </ForwardRef(Box)>
+</HeadAppender>
+`;
+
 exports[`Shallow Snapshot Tests pc view 1`] = `
 <HeadAppender
   title="トリビアマップ"

@@ -9,6 +9,7 @@ let getRemoteMarkersSpy: jest.SpyInstance;
 const getState = () => ({
   markers: {
     markers: [],
+    focusingPark: 'S',
     loading: false,
     errorMsg: null,
   },
@@ -25,17 +26,17 @@ describe('fetchMarkers', () => {
     getRemoteMarkersSpy.mockResolvedValue(mockGetMarkersResponse());
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const appThunk = fetchMarkers('L') as any;
-    await appThunk(dispatch);
-    expect(dispatch.mock.calls[0][0].type).toBe('markers/fetchStart');
+    const appThunk = fetchMarkers() as any;
+    await appThunk(dispatch, getState);
+    expect(dispatch.mock.calls[1][0].type).toBe('markers/fetchStart');
   });
 
   it('call fetchSuccess if API successed', async () => {
     getRemoteMarkersSpy.mockResolvedValue(mockGetMarkersResponse());
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const appThunk = fetchMarkers('L') as any;
-    await appThunk(dispatch);
+    const appThunk = fetchMarkers() as any;
+    await appThunk(dispatch, getState);
     expect(dispatch.mock.calls.slice(-1)[0][0].type).toBe('markers/fetchSuccess');
   });
 
@@ -43,14 +44,14 @@ describe('fetchMarkers', () => {
     getRemoteMarkersSpy.mockRejectedValue(new Error());
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const appThunk = fetchMarkers('L') as any;
+    const appThunk = fetchMarkers() as any;
     await appThunk(dispatch, getState);
     expect(dispatch.mock.calls.slice(-1)[0][0].type).toBe('globalError/throwError');
   });
 });
 
 describe('appendMarkers', () => {
-  it('call updateList', async () => {
+  it('call updateList for land', async () => {
     const newist: Marker[] = [
       {
         markerId: 0,

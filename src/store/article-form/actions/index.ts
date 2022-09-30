@@ -21,6 +21,7 @@ import { globalAPIErrorMessage } from 'constant/global-api-error-message';
 import { Position } from 'types/position';
 import { autoRefreshApiWrapper } from 'utils/auto-refresh-api-wrapper';
 import { guessArea } from 'api/guess-area';
+import { fetchMarkers } from 'store/markers/actions';
 
 // basic actions
 export const {
@@ -82,7 +83,10 @@ export const submitArticle = (): AppThunk => async (dispatch, getState) => {
     }
     dispatch(submitSuccess(res.postId));
     dispatch(initialize());
-    // TODO: fetch markers
+
+    if (position.park === getState().markers.focusingPark) {
+      dispatch(fetchMarkers());
+    }
   } catch (error) {
     const apiError = error as ApiError<ValidationError>;
     const errorTitle = globalAPIErrorMessage(apiError.status, 'submit');

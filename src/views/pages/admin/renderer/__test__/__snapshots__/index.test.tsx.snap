@@ -1,109 +1,101 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Shallow Snapshot Tests basic 1`] = `
-<HeadAppender
-  title="マイページ - トリビアマップ"
->
-  <AdminWrapper>
-    <ForwardRef(Stack)
-      spacing={3}
+<AdminWrapper>
+  <ForwardRef(Stack)
+    spacing={3}
+  >
+    <BackToNavi
+      link="/"
+      text="トリビアマップ"
+    />
+    <ForwardRef(Typography)
+      align="center"
     >
-      <BackToNavi
-        link="/"
-        text="トリビアマップ"
-      />
-      <ForwardRef(Typography)
-        align="center"
-      >
-        ようこそ 
-        Axel
-        さん
-      </ForwardRef(Typography)>
-      <ForwardRef(Stack)
-        direction="row"
-      >
-        <ForwardRef(Avatar)
-          src="https://..."
-          sx={
-            Object {
-              "height": 80,
-              "mx": "auto",
-              "width": 80,
-            }
+      ようこそ 
+      Axel
+      さん
+    </ForwardRef(Typography)>
+    <ForwardRef(Stack)
+      direction="row"
+    >
+      <ForwardRef(Avatar)
+        src="https://..."
+        sx={
+          Object {
+            "height": 80,
+            "mx": "auto",
+            "width": 80,
           }
-        />
-      </ForwardRef(Stack)>
-      <LinkList
-        list={
-          Array [
-            Object {
-              "icon": <Memo />,
-              "link": "/admin/articles",
-              "text": "投稿一覧＆検索",
-            },
-            Object {
-              "icon": <Memo />,
-              "link": "/admin/account",
-              "text": "アカウント管理",
-            },
-          ]
         }
       />
     </ForwardRef(Stack)>
-  </AdminWrapper>
-</HeadAppender>
+    <LinkList
+      list={
+        Array [
+          Object {
+            "icon": <Memo />,
+            "link": "/admin/articles",
+            "text": "投稿一覧＆検索",
+          },
+          Object {
+            "icon": <Memo />,
+            "link": "/admin/account",
+            "text": "アカウント管理",
+          },
+        ]
+      }
+    />
+  </ForwardRef(Stack)>
+</AdminWrapper>
 `;
 
 exports[`Shallow Snapshot Tests no icon 1`] = `
-<HeadAppender
-  title="マイページ - トリビアマップ"
->
-  <AdminWrapper>
-    <ForwardRef(Stack)
-      spacing={3}
+<AdminWrapper>
+  <ForwardRef(Stack)
+    spacing={3}
+  >
+    <BackToNavi
+      link="/"
+      text="トリビアマップ"
+    />
+    <ForwardRef(Typography)
+      align="center"
     >
-      <BackToNavi
-        link="/"
-        text="トリビアマップ"
-      />
-      <ForwardRef(Typography)
-        align="center"
-      >
-        ようこそ 
-        Axel
-        さん
-      </ForwardRef(Typography)>
-      <ForwardRef(Stack)
-        direction="row"
-      >
-        <ForwardRef(Avatar)
-          src="no-icon.jpg"
-          sx={
-            Object {
-              "height": 80,
-              "mx": "auto",
-              "width": 80,
-            }
+      ようこそ 
+      Axel
+      さん
+    </ForwardRef(Typography)>
+    <ForwardRef(Stack)
+      direction="row"
+    >
+      <ForwardRef(Avatar)
+        src="no-icon.jpg"
+        sx={
+          Object {
+            "height": 80,
+            "mx": "auto",
+            "width": 80,
           }
-        />
-      </ForwardRef(Stack)>
-      <LinkList
-        list={
-          Array [
-            Object {
-              "icon": <Memo />,
-              "link": "/admin/articles",
-              "text": "投稿一覧＆検索",
-            },
-            Object {
-              "icon": <Memo />,
-              "link": "/admin/account",
-              "text": "アカウント管理",
-            },
-          ]
         }
       />
     </ForwardRef(Stack)>
-  </AdminWrapper>
-</HeadAppender>
+    <LinkList
+      list={
+        Array [
+          Object {
+            "icon": <Memo />,
+            "link": "/admin/articles",
+            "text": "投稿一覧＆検索",
+          },
+          Object {
+            "icon": <Memo />,
+            "link": "/admin/account",
+            "text": "アカウント管理",
+          },
+        ]
+      }
+    />
+  </ForwardRef(Stack)>
+</AdminWrapper>
 `;

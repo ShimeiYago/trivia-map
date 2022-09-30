@@ -1,4 +1,7 @@
+import { PAGE_NAMES } from 'constant/page-names';
+import { Helmet } from 'react-helmet-async';
 import { useParams } from 'react-router-dom';
+import { pageTitleGenerator } from 'utils/page-title-generator';
 import { Renderer, Props } from './renderer';
 
 export function ResetPassword() {
@@ -13,5 +16,13 @@ export function ResetPassword() {
     token: token,
   };
 
-  return <Renderer {...props} />;
+  return (
+    <>
+      <Helmet>
+        <title>{pageTitleGenerator(PAGE_NAMES.passwordInitialize)}</title>
+      </Helmet>
+
+      <Renderer {...props} />
+    </>
+  );
 }

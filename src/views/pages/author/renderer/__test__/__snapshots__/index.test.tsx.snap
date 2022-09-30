@@ -4,45 +4,50 @@ exports[`Shallow Snapshot Tests basic 1`] = `
 <ArticleWrapper
   showSidebar={true}
 >
-  <HeadAppender
-    title="Axelさんの投稿一覧 - トリビアマップ"
+  <Helmet
+    defer={true}
+    encodeSpecialCharacters={true}
+    prioritizeSeoTags={false}
   >
-    <ForwardRef(Stack)
-      alignItems="center"
-      direction="row"
-      justifyContent="center"
-      spacing={1}
+    <title>
+      Axelさんの投稿一覧 - トリビアマップ
+    </title>
+  </Helmet>
+  <ForwardRef(Stack)
+    alignItems="center"
+    direction="row"
+    justifyContent="center"
+    spacing={1}
+    sx={
+      Object {
+        "mb": 3,
+      }
+    }
+  >
+    <ForwardRef(Avatar)
+      src="https://xxx/xxx.jpg"
       sx={
         Object {
-          "mb": 3,
+          "height": 50,
+          "width": 50,
         }
       }
-    >
-      <ForwardRef(Avatar)
-        src="https://xxx/xxx.jpg"
-        sx={
-          Object {
-            "height": 50,
-            "width": 50,
-          }
-        }
-      />
-      <ForwardRef(Typography)
-        component="h2"
-        variant="h4"
-      >
-        Axelさんの投稿一覧
-      </ForwardRef(Typography)>
-    </ForwardRef(Stack)>
-    <ArticlePreviewList
-      searchConditions={
-        Object {
-          "user": 1,
-        }
-      }
-      variant="large"
     />
-  </HeadAppender>
+    <ForwardRef(Typography)
+      component="h2"
+      variant="h4"
+    >
+      Axelさんの投稿一覧
+    </ForwardRef(Typography)>
+  </ForwardRef(Stack)>
+  <ArticlePreviewList
+    searchConditions={
+      Object {
+        "user": 1,
+      }
+    }
+    variant="large"
+  />
 </ArticleWrapper>
 `;
 
@@ -58,44 +63,49 @@ exports[`Shallow Snapshot Tests no icon 1`] = `
 <ArticleWrapper
   showSidebar={true}
 >
-  <HeadAppender
-    title="Axelさんの投稿一覧 - トリビアマップ"
+  <Helmet
+    defer={true}
+    encodeSpecialCharacters={true}
+    prioritizeSeoTags={false}
   >
-    <ForwardRef(Stack)
-      alignItems="center"
-      direction="row"
-      justifyContent="center"
-      spacing={1}
+    <title>
+      Axelさんの投稿一覧 - トリビアマップ
+    </title>
+  </Helmet>
+  <ForwardRef(Stack)
+    alignItems="center"
+    direction="row"
+    justifyContent="center"
+    spacing={1}
+    sx={
+      Object {
+        "mb": 3,
+      }
+    }
+  >
+    <ForwardRef(Avatar)
+      src="no-icon.jpg"
       sx={
         Object {
-          "mb": 3,
+          "height": 50,
+          "width": 50,
         }
       }
-    >
-      <ForwardRef(Avatar)
-        src="no-icon.jpg"
-        sx={
-          Object {
-            "height": 50,
-            "width": 50,
-          }
-        }
-      />
-      <ForwardRef(Typography)
-        component="h2"
-        variant="h4"
-      >
-        Axelさんの投稿一覧
-      </ForwardRef(Typography)>
-    </ForwardRef(Stack)>
-    <ArticlePreviewList
-      searchConditions={
-        Object {
-          "user": 1,
-        }
-      }
-      variant="large"
     />
-  </HeadAppender>
+    <ForwardRef(Typography)
+      component="h2"
+      variant="h4"
+    >
+      Axelさんの投稿一覧
+    </ForwardRef(Typography)>
+  </ForwardRef(Stack)>
+  <ArticlePreviewList
+    searchConditions={
+      Object {
+        "user": 1,
+      }
+    }
+    variant="large"
+  />
 </ArticleWrapper>
 `;

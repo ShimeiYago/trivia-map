@@ -5,6 +5,8 @@ export const BASE_URL = process.env.REACT_APP_API_BASE_URL ?? 'http://localhost:
 
 export const SITE_NAME = 'トリビアマップ';
 
+export const TOP_TITLE_TAG = 'ディズニーの豆知識を共有するサイト「トリビアマップ」';
+
 export const ANALYTICS_ID = process.env.REACT_APP_ANALYTICS_ID;
 
 export const CATEGORIES = [

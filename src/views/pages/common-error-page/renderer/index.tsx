@@ -2,10 +2,10 @@ import React from 'react';
 import { Box, Typography } from '@mui/material';
 import { GlobalMenu } from 'views/components/organisms/global-menu';
 import notFoundImage from 'images/404.png';
-import { HeadAppender } from 'helper-components/head-appender';
 import { pageTitleGenerator } from 'utils/page-title-generator';
 import { PAGE_NAMES } from 'constant/page-names';
 import { InternalError } from 'views/components/moleculars/internal-error';
+import { Helmet } from 'react-helmet-async';
 
 export const Renderer: React.FC<Props> = (props) => {
   switch (props.errorStatus) {
@@ -18,7 +18,11 @@ export const Renderer: React.FC<Props> = (props) => {
 
 const render404Error = () => {
   return (
-    <HeadAppender title={pageTitleGenerator(PAGE_NAMES.notFound)}>
+    <>
+      <Helmet>
+        <title>{pageTitleGenerator(PAGE_NAMES.notFound)}</title>
+      </Helmet>
+
       <GlobalMenu topBarPosition="static">
         <Box sx={{ p: 1 }}>
           <Box sx={{ textAlign: 'center', maxWidth: 600, mx: 'auto', my: 3 }}>
@@ -32,15 +36,19 @@ const render404Error = () => {
           </Typography>
         </Box>
       </GlobalMenu>
-    </HeadAppender>
+    </>
   );
 };
 
 const render500Error = () => {
   return (
-    <HeadAppender title={pageTitleGenerator(PAGE_NAMES.internalError)}>
+    <>
+      <Helmet>
+        <title>{pageTitleGenerator(PAGE_NAMES.internalError)}</title>
+      </Helmet>
+
       <InternalError />
-    </HeadAppender>
+    </>
   );
 };
 

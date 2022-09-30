@@ -1,9 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Shallow Snapshot Tests 404 1`] = `
-<HeadAppender
-  title="Page not found - トリビアマップ"
->
+<Fragment>
+  <Helmet
+    defer={true}
+    encodeSpecialCharacters={true}
+    prioritizeSeoTags={false}
+  >
+    <title>
+      Page not found - トリビアマップ
+    </title>
+  </Helmet>
   <GlobalMenu
     topBarPosition="static"
   >
@@ -49,13 +56,20 @@ exports[`Shallow Snapshot Tests 404 1`] = `
       </ForwardRef(Typography)>
     </ForwardRef(Box)>
   </GlobalMenu>
-</HeadAppender>
+</Fragment>
 `;
 
 exports[`Shallow Snapshot Tests basic 1`] = `
-<HeadAppender
-  title="Internal server error - トリビアマップ"
->
+<Fragment>
+  <Helmet
+    defer={true}
+    encodeSpecialCharacters={true}
+    prioritizeSeoTags={false}
+  >
+    <title>
+      Internal server error - トリビアマップ
+    </title>
+  </Helmet>
   <InternalError />
-</HeadAppender>
+</Fragment>
 `;

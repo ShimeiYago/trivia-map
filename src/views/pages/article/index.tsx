@@ -2,7 +2,7 @@ import { Props, Renderer } from './renderer';
 import { useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from 'store';
 import { throwError } from 'store/global-error/slice';
-import usePageTracking from 'tracker';
+import usePageTracking from 'helper-components/tracker';
 import { selectUser } from 'store/auths/selector';
 
 export function Article() {

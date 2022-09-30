@@ -1,524 +1,540 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Shallow Snapshot Tests basic 1`] = `
-<ArticleWrapper>
-  <ForwardRef(Stack)
-    spacing={1}
-    sx={
-      Object {
-        "maxWidth": "400px",
-        "mx": "auto",
-        "my": 3,
-        "px": 1,
-      }
-    }
-  >
-    <ForwardRef(Typography)
-      align="center"
-      component="h1"
-      variant="h5"
-    >
-      お問い合わせ
-    </ForwardRef(Typography)>
+<HeadAppender
+  title="お問い合わせ - トリビアマップ"
+>
+  <ArticleWrapper>
     <ForwardRef(Stack)
-      spacing={2}
-    >
-      <ForwardRef(TextField)
-        autoComplete="email"
-        disabled={false}
-        error={false}
-        fullWidth={true}
-        id="email"
-        label="メールアドレス"
-        margin="normal"
-        name="email"
-        onChange={[Function]}
-        required={true}
-        type="email"
-        value="xxx@example.com"
-      />
-      <ForwardRef(TextField)
-        autoComplete="nickname"
-        disabled={false}
-        error={false}
-        fullWidth={true}
-        id="name"
-        label="お名前"
-        margin="normal"
-        name="name"
-        onChange={[Function]}
-        required={true}
-        type="nickname"
-        value="Axel"
-      />
-      <ForwardRef(FormControl)
-        fullWidth={true}
-      >
-        <ForwardRef(InputLabel)>
-          カテゴリー
-        </ForwardRef(InputLabel)>
-        <ForwardRef(Select)
-          disabled={false}
-          label="カテゴリー"
-          onChange={[Function]}
-          value=""
-        >
-          <ForwardRef(MenuItem)
-            key="category-0"
-            value={0}
-          >
-            不具合の報告
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-1"
-            value={1}
-          >
-            ご要望
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-2"
-            value={2}
-          >
-            アカウント関連
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-3"
-            value={3}
-          >
-            その他
-          </ForwardRef(MenuItem)>
-        </ForwardRef(Select)>
-      </ForwardRef(FormControl)>
-      <ForwardRef(TextField)
-        disabled={false}
-        error={false}
-        fullWidth={true}
-        id="message"
-        label="お問い合わせ内容"
-        margin="normal"
-        minRows={4}
-        multiline={true}
-        name="message"
-        onChange={[Function]}
-        required={true}
-        type="message"
-        value=""
-      />
-      <ForwardRef(LoadingButton)
-        disabled={false}
-        fullWidth={true}
-        loading={false}
-        onClick={[Function]}
-        sx={
-          Object {
-            "mb": 2,
-            "mt": 3,
-          }
+      spacing={1}
+      sx={
+        Object {
+          "maxWidth": "400px",
+          "mx": "auto",
+          "my": 3,
+          "px": 1,
         }
-        variant="contained"
+      }
+    >
+      <ForwardRef(Typography)
+        align="center"
+        component="h1"
+        variant="h5"
       >
-        送信
-      </ForwardRef(LoadingButton)>
+        お問い合わせ
+      </ForwardRef(Typography)>
+      <ForwardRef(Stack)
+        spacing={2}
+      >
+        <ForwardRef(TextField)
+          autoComplete="email"
+          disabled={false}
+          error={false}
+          fullWidth={true}
+          id="email"
+          label="メールアドレス"
+          margin="normal"
+          name="email"
+          onChange={[Function]}
+          required={true}
+          type="email"
+          value="xxx@example.com"
+        />
+        <ForwardRef(TextField)
+          autoComplete="nickname"
+          disabled={false}
+          error={false}
+          fullWidth={true}
+          id="name"
+          label="お名前"
+          margin="normal"
+          name="name"
+          onChange={[Function]}
+          required={true}
+          type="nickname"
+          value="Axel"
+        />
+        <ForwardRef(FormControl)
+          fullWidth={true}
+        >
+          <ForwardRef(InputLabel)>
+            カテゴリー
+          </ForwardRef(InputLabel)>
+          <ForwardRef(Select)
+            disabled={false}
+            label="カテゴリー"
+            onChange={[Function]}
+            value=""
+          >
+            <ForwardRef(MenuItem)
+              key="category-0"
+              value={0}
+            >
+              不具合の報告
+            </ForwardRef(MenuItem)>
+            <ForwardRef(MenuItem)
+              key="category-1"
+              value={1}
+            >
+              ご要望
+            </ForwardRef(MenuItem)>
+            <ForwardRef(MenuItem)
+              key="category-2"
+              value={2}
+            >
+              アカウント関連
+            </ForwardRef(MenuItem)>
+            <ForwardRef(MenuItem)
+              key="category-3"
+              value={3}
+            >
+              その他
+            </ForwardRef(MenuItem)>
+          </ForwardRef(Select)>
+        </ForwardRef(FormControl)>
+        <ForwardRef(TextField)
+          disabled={false}
+          error={false}
+          fullWidth={true}
+          id="message"
+          label="お問い合わせ内容"
+          margin="normal"
+          minRows={4}
+          multiline={true}
+          name="message"
+          onChange={[Function]}
+          required={true}
+          type="message"
+          value=""
+        />
+        <ForwardRef(LoadingButton)
+          disabled={false}
+          fullWidth={true}
+          loading={false}
+          onClick={[Function]}
+          sx={
+            Object {
+              "mb": 2,
+              "mt": 3,
+            }
+          }
+          variant="contained"
+        >
+          送信
+        </ForwardRef(LoadingButton)>
+      </ForwardRef(Stack)>
     </ForwardRef(Stack)>
-  </ForwardRef(Stack)>
-</ArticleWrapper>
+  </ArticleWrapper>
+</HeadAppender>
 `;
 
 exports[`Shallow Snapshot Tests error case 1`] = `
-<ArticleWrapper>
-  <ForwardRef(Stack)
-    spacing={1}
-    sx={
-      Object {
-        "maxWidth": "400px",
-        "mx": "auto",
-        "my": 3,
-        "px": 1,
-      }
-    }
-  >
-    <ForwardRef(Typography)
-      align="center"
-      component="h1"
-      variant="h5"
-    >
-      お問い合わせ
-    </ForwardRef(Typography)>
-    <HeaderErrorMessages
-      errorMessages={
-        Array [
-          "error1",
-          "error2",
-        ]
-      }
-      errorTitle="error title"
-    />
+<HeadAppender
+  title="お問い合わせ - トリビアマップ"
+>
+  <ArticleWrapper>
     <ForwardRef(Stack)
-      spacing={2}
+      spacing={1}
+      sx={
+        Object {
+          "maxWidth": "400px",
+          "mx": "auto",
+          "my": 3,
+          "px": 1,
+        }
+      }
     >
-      <ForwardRef(TextField)
-        autoComplete="email"
-        disabled={false}
-        error={true}
-        fullWidth={true}
-        helperText={
-          Array [
-            "email is invalid",
-          ]
-        }
-        id="email"
-        label="メールアドレス"
-        margin="normal"
-        name="email"
-        onChange={[Function]}
-        required={true}
-        type="email"
-        value="xxx@example.com"
-      />
-      <ForwardRef(TextField)
-        autoComplete="nickname"
-        disabled={false}
-        error={true}
-        fullWidth={true}
-        helperText={
-          Array [
-            "name is invalid",
-          ]
-        }
-        id="name"
-        label="お名前"
-        margin="normal"
-        name="name"
-        onChange={[Function]}
-        required={true}
-        type="nickname"
-        value="Axel"
-      />
-      <ForwardRef(FormControl)
-        fullWidth={true}
+      <ForwardRef(Typography)
+        align="center"
+        component="h1"
+        variant="h5"
       >
-        <ForwardRef(InputLabel)>
-          カテゴリー
-        </ForwardRef(InputLabel)>
-        <ForwardRef(Select)
+        お問い合わせ
+      </ForwardRef(Typography)>
+      <HeaderErrorMessages
+        errorMessages={
+          Array [
+            "error1",
+            "error2",
+          ]
+        }
+        errorTitle="error title"
+      />
+      <ForwardRef(Stack)
+        spacing={2}
+      >
+        <ForwardRef(TextField)
+          autoComplete="email"
           disabled={false}
-          label="カテゴリー"
-          onChange={[Function]}
-          value=""
-        >
-          <ForwardRef(MenuItem)
-            key="category-0"
-            value={0}
-          >
-            不具合の報告
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-1"
-            value={1}
-          >
-            ご要望
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-2"
-            value={2}
-          >
-            アカウント関連
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-3"
-            value={3}
-          >
-            その他
-          </ForwardRef(MenuItem)>
-        </ForwardRef(Select)>
-      </ForwardRef(FormControl)>
-      <ForwardRef(TextField)
-        disabled={false}
-        error={true}
-        fullWidth={true}
-        helperText={
-          Array [
-            "message is invalid",
-          ]
-        }
-        id="message"
-        label="お問い合わせ内容"
-        margin="normal"
-        minRows={4}
-        multiline={true}
-        name="message"
-        onChange={[Function]}
-        required={true}
-        type="message"
-        value=""
-      />
-      <ForwardRef(LoadingButton)
-        disabled={false}
-        fullWidth={true}
-        loading={false}
-        onClick={[Function]}
-        sx={
-          Object {
-            "mb": 2,
-            "mt": 3,
+          error={true}
+          fullWidth={true}
+          helperText={
+            Array [
+              "email is invalid",
+            ]
           }
-        }
-        variant="contained"
-      >
-        送信
-      </ForwardRef(LoadingButton)>
+          id="email"
+          label="メールアドレス"
+          margin="normal"
+          name="email"
+          onChange={[Function]}
+          required={true}
+          type="email"
+          value="xxx@example.com"
+        />
+        <ForwardRef(TextField)
+          autoComplete="nickname"
+          disabled={false}
+          error={true}
+          fullWidth={true}
+          helperText={
+            Array [
+              "name is invalid",
+            ]
+          }
+          id="name"
+          label="お名前"
+          margin="normal"
+          name="name"
+          onChange={[Function]}
+          required={true}
+          type="nickname"
+          value="Axel"
+        />
+        <ForwardRef(FormControl)
+          fullWidth={true}
+        >
+          <ForwardRef(InputLabel)>
+            カテゴリー
+          </ForwardRef(InputLabel)>
+          <ForwardRef(Select)
+            disabled={false}
+            label="カテゴリー"
+            onChange={[Function]}
+            value=""
+          >
+            <ForwardRef(MenuItem)
+              key="category-0"
+              value={0}
+            >
+              不具合の報告
+            </ForwardRef(MenuItem)>
+            <ForwardRef(MenuItem)
+              key="category-1"
+              value={1}
+            >
+              ご要望
+            </ForwardRef(MenuItem)>
+            <ForwardRef(MenuItem)
+              key="category-2"
+              value={2}
+            >
+              アカウント関連
+            </ForwardRef(MenuItem)>
+            <ForwardRef(MenuItem)
+              key="category-3"
+              value={3}
+            >
+              その他
+            </ForwardRef(MenuItem)>
+          </ForwardRef(Select)>
+        </ForwardRef(FormControl)>
+        <ForwardRef(TextField)
+          disabled={false}
+          error={true}
+          fullWidth={true}
+          helperText={
+            Array [
+              "message is invalid",
+            ]
+          }
+          id="message"
+          label="お問い合わせ内容"
+          margin="normal"
+          minRows={4}
+          multiline={true}
+          name="message"
+          onChange={[Function]}
+          required={true}
+          type="message"
+          value=""
+        />
+        <ForwardRef(LoadingButton)
+          disabled={false}
+          fullWidth={true}
+          loading={false}
+          onClick={[Function]}
+          sx={
+            Object {
+              "mb": 2,
+              "mt": 3,
+            }
+          }
+          variant="contained"
+        >
+          送信
+        </ForwardRef(LoadingButton)>
+      </ForwardRef(Stack)>
     </ForwardRef(Stack)>
-  </ForwardRef(Stack)>
-</ArticleWrapper>
+  </ArticleWrapper>
+</HeadAppender>
 `;
 
 exports[`Shallow Snapshot Tests loading 1`] = `
-<ArticleWrapper>
-  <ForwardRef(Stack)
-    spacing={1}
-    sx={
-      Object {
-        "maxWidth": "400px",
-        "mx": "auto",
-        "my": 3,
-        "px": 1,
-      }
-    }
-  >
-    <ForwardRef(Typography)
-      align="center"
-      component="h1"
-      variant="h5"
-    >
-      お問い合わせ
-    </ForwardRef(Typography)>
+<HeadAppender
+  title="お問い合わせ - トリビアマップ"
+>
+  <ArticleWrapper>
     <ForwardRef(Stack)
-      spacing={2}
-    >
-      <ForwardRef(TextField)
-        autoComplete="email"
-        disabled={true}
-        error={false}
-        fullWidth={true}
-        id="email"
-        label="メールアドレス"
-        margin="normal"
-        name="email"
-        onChange={[Function]}
-        required={true}
-        type="email"
-        value="xxx@example.com"
-      />
-      <ForwardRef(TextField)
-        autoComplete="nickname"
-        disabled={true}
-        error={false}
-        fullWidth={true}
-        id="name"
-        label="お名前"
-        margin="normal"
-        name="name"
-        onChange={[Function]}
-        required={true}
-        type="nickname"
-        value="Axel"
-      />
-      <ForwardRef(FormControl)
-        fullWidth={true}
-      >
-        <ForwardRef(InputLabel)>
-          カテゴリー
-        </ForwardRef(InputLabel)>
-        <ForwardRef(Select)
-          disabled={true}
-          label="カテゴリー"
-          onChange={[Function]}
-          value=""
-        >
-          <ForwardRef(MenuItem)
-            key="category-0"
-            value={0}
-          >
-            不具合の報告
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-1"
-            value={1}
-          >
-            ご要望
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-2"
-            value={2}
-          >
-            アカウント関連
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-3"
-            value={3}
-          >
-            その他
-          </ForwardRef(MenuItem)>
-        </ForwardRef(Select)>
-      </ForwardRef(FormControl)>
-      <ForwardRef(TextField)
-        disabled={true}
-        error={false}
-        fullWidth={true}
-        id="message"
-        label="お問い合わせ内容"
-        margin="normal"
-        minRows={4}
-        multiline={true}
-        name="message"
-        onChange={[Function]}
-        required={true}
-        type="message"
-        value=""
-      />
-      <ForwardRef(LoadingButton)
-        disabled={true}
-        fullWidth={true}
-        loading={true}
-        onClick={[Function]}
-        sx={
-          Object {
-            "mb": 2,
-            "mt": 3,
-          }
+      spacing={1}
+      sx={
+        Object {
+          "maxWidth": "400px",
+          "mx": "auto",
+          "my": 3,
+          "px": 1,
         }
-        variant="contained"
+      }
+    >
+      <ForwardRef(Typography)
+        align="center"
+        component="h1"
+        variant="h5"
       >
-        送信
-      </ForwardRef(LoadingButton)>
+        お問い合わせ
+      </ForwardRef(Typography)>
+      <ForwardRef(Stack)
+        spacing={2}
+      >
+        <ForwardRef(TextField)
+          autoComplete="email"
+          disabled={true}
+          error={false}
+          fullWidth={true}
+          id="email"
+          label="メールアドレス"
+          margin="normal"
+          name="email"
+          onChange={[Function]}
+          required={true}
+          type="email"
+          value="xxx@example.com"
+        />
+        <ForwardRef(TextField)
+          autoComplete="nickname"
+          disabled={true}
+          error={false}
+          fullWidth={true}
+          id="name"
+          label="お名前"
+          margin="normal"
+          name="name"
+          onChange={[Function]}
+          required={true}
+          type="nickname"
+          value="Axel"
+        />
+        <ForwardRef(FormControl)
+          fullWidth={true}
+        >
+          <ForwardRef(InputLabel)>
+            カテゴリー
+          </ForwardRef(InputLabel)>
+          <ForwardRef(Select)
+            disabled={true}
+            label="カテゴリー"
+            onChange={[Function]}
+            value=""
+          >
+            <ForwardRef(MenuItem)
+              key="category-0"
+              value={0}
+            >
+              不具合の報告
+            </ForwardRef(MenuItem)>
+            <ForwardRef(MenuItem)
+              key="category-1"
+              value={1}
+            >
+              ご要望
+            </ForwardRef(MenuItem)>
+            <ForwardRef(MenuItem)
+              key="category-2"
+              value={2}
+            >
+              アカウント関連
+            </ForwardRef(MenuItem)>
+            <ForwardRef(MenuItem)
+              key="category-3"
+              value={3}
+            >
+              その他
+            </ForwardRef(MenuItem)>
+          </ForwardRef(Select)>
+        </ForwardRef(FormControl)>
+        <ForwardRef(TextField)
+          disabled={true}
+          error={false}
+          fullWidth={true}
+          id="message"
+          label="お問い合わせ内容"
+          margin="normal"
+          minRows={4}
+          multiline={true}
+          name="message"
+          onChange={[Function]}
+          required={true}
+          type="message"
+          value=""
+        />
+        <ForwardRef(LoadingButton)
+          disabled={true}
+          fullWidth={true}
+          loading={true}
+          onClick={[Function]}
+          sx={
+            Object {
+              "mb": 2,
+              "mt": 3,
+            }
+          }
+          variant="contained"
+        >
+          送信
+        </ForwardRef(LoadingButton)>
+      </ForwardRef(Stack)>
     </ForwardRef(Stack)>
-  </ForwardRef(Stack)>
-</ArticleWrapper>
+  </ArticleWrapper>
+</HeadAppender>
 `;
 
 exports[`Shallow Snapshot Tests success 1`] = `
-<ArticleWrapper>
-  <ForwardRef(Stack)
-    spacing={1}
-    sx={
-      Object {
-        "maxWidth": "400px",
-        "mx": "auto",
-        "my": 3,
-        "px": 1,
-      }
-    }
-  >
-    <ForwardRef(Typography)
-      align="center"
-      component="h1"
-      variant="h5"
-    >
-      お問い合わせ
-    </ForwardRef(Typography)>
-    <ForwardRef(Alert)>
-      お問い合わせを受け付けました。後日ご指定のメールアドレスへお返事をお送り致します。
-    </ForwardRef(Alert)>
+<HeadAppender
+  title="お問い合わせ - トリビアマップ"
+>
+  <ArticleWrapper>
     <ForwardRef(Stack)
-      spacing={2}
-    >
-      <ForwardRef(TextField)
-        autoComplete="email"
-        disabled={true}
-        error={false}
-        fullWidth={true}
-        id="email"
-        label="メールアドレス"
-        margin="normal"
-        name="email"
-        onChange={[Function]}
-        required={true}
-        type="email"
-        value="xxx@example.com"
-      />
-      <ForwardRef(TextField)
-        autoComplete="nickname"
-        disabled={true}
-        error={false}
-        fullWidth={true}
-        id="name"
-        label="お名前"
-        margin="normal"
-        name="name"
-        onChange={[Function]}
-        required={true}
-        type="nickname"
-        value="Axel"
-      />
-      <ForwardRef(FormControl)
-        fullWidth={true}
-      >
-        <ForwardRef(InputLabel)>
-          カテゴリー
-        </ForwardRef(InputLabel)>
-        <ForwardRef(Select)
-          disabled={true}
-          label="カテゴリー"
-          onChange={[Function]}
-          value=""
-        >
-          <ForwardRef(MenuItem)
-            key="category-0"
-            value={0}
-          >
-            不具合の報告
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-1"
-            value={1}
-          >
-            ご要望
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-2"
-            value={2}
-          >
-            アカウント関連
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-3"
-            value={3}
-          >
-            その他
-          </ForwardRef(MenuItem)>
-        </ForwardRef(Select)>
-      </ForwardRef(FormControl)>
-      <ForwardRef(TextField)
-        disabled={true}
-        error={false}
-        fullWidth={true}
-        id="message"
-        label="お問い合わせ内容"
-        margin="normal"
-        minRows={4}
-        multiline={true}
-        name="message"
-        onChange={[Function]}
-        required={true}
-        type="message"
-        value=""
-      />
-      <ForwardRef(LoadingButton)
-        disabled={true}
-        fullWidth={true}
-        loading={false}
-        onClick={[Function]}
-        sx={
-          Object {
-            "mb": 2,
-            "mt": 3,
-          }
+      spacing={1}
+      sx={
+        Object {
+          "maxWidth": "400px",
+          "mx": "auto",
+          "my": 3,
+          "px": 1,
         }
-        variant="contained"
+      }
+    >
+      <ForwardRef(Typography)
+        align="center"
+        component="h1"
+        variant="h5"
       >
-        送信
-      </ForwardRef(LoadingButton)>
+        お問い合わせ
+      </ForwardRef(Typography)>
+      <ForwardRef(Alert)>
+        お問い合わせを受け付けました。後日ご指定のメールアドレスへお返事をお送り致します。
+      </ForwardRef(Alert)>
+      <ForwardRef(Stack)
+        spacing={2}
+      >
+        <ForwardRef(TextField)
+          autoComplete="email"
+          disabled={true}
+          error={false}
+          fullWidth={true}
+          id="email"
+          label="メールアドレス"
+          margin="normal"
+          name="email"
+          onChange={[Function]}
+          required={true}
+          type="email"
+          value="xxx@example.com"
+        />
+        <ForwardRef(TextField)
+          autoComplete="nickname"
+          disabled={true}
+          error={false}
+          fullWidth={true}
+          id="name"
+          label="お名前"
+          margin="normal"
+          name="name"
+          onChange={[Function]}
+          required={true}
+          type="nickname"
+          value="Axel"
+        />
+        <ForwardRef(FormControl)
+          fullWidth={true}
+        >
+          <ForwardRef(InputLabel)>
+            カテゴリー
+          </ForwardRef(InputLabel)>
+          <ForwardRef(Select)
+            disabled={true}
+            label="カテゴリー"
+            onChange={[Function]}
+            value=""
+          >
+            <ForwardRef(MenuItem)
+              key="category-0"
+              value={0}
+            >
+              不具合の報告
+            </ForwardRef(MenuItem)>
+            <ForwardRef(MenuItem)
+              key="category-1"
+              value={1}
+            >
+              ご要望
+            </ForwardRef(MenuItem)>
+            <ForwardRef(MenuItem)
+              key="category-2"
+              value={2}
+            >
+              アカウント関連
+            </ForwardRef(MenuItem)>
+            <ForwardRef(MenuItem)
+              key="category-3"
+              value={3}
+            >
+              その他
+            </ForwardRef(MenuItem)>
+          </ForwardRef(Select)>
+        </ForwardRef(FormControl)>
+        <ForwardRef(TextField)
+          disabled={true}
+          error={false}
+          fullWidth={true}
+          id="message"
+          label="お問い合わせ内容"
+          margin="normal"
+          minRows={4}
+          multiline={true}
+          name="message"
+          onChange={[Function]}
+          required={true}
+          type="message"
+          value=""
+        />
+        <ForwardRef(LoadingButton)
+          disabled={true}
+          fullWidth={true}
+          loading={false}
+          onClick={[Function]}
+          sx={
+            Object {
+              "mb": 2,
+              "mt": 3,
+            }
+          }
+          variant="contained"
+        >
+          送信
+        </ForwardRef(LoadingButton)>
+      </ForwardRef(Stack)>
     </ForwardRef(Stack)>
-  </ForwardRef(Stack)>
-</ArticleWrapper>
+  </ArticleWrapper>
+</HeadAppender>
 `;

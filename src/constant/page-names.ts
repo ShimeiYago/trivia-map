@@ -8,6 +8,7 @@ export const PAGE_NAMES = {
   passwordChange: 'パスワード変更',
   articles: '投稿一覧＆検索',
   passwordInitialize: 'パスワード初期化',
+  verifyEmail: 'メールアドレス確認',
   notFound: 'Page not found',
   internalError: 'Internal server error',
   inquiry: 'お問い合わせ',

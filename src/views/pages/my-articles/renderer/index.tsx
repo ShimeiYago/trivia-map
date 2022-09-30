@@ -5,10 +5,16 @@ import { AdminWrapper } from 'views/components/organisms/admin-wrapper';
 import { BackToNavi } from 'views/components/moleculars/back-to-navi';
 import { ADMIN_LINK } from 'constant/links';
 import { PAGE_NAMES } from 'constant/page-names';
+import { HeadAppender } from 'helper-components/head-appender';
+import { pageTitleGenerator } from 'utils/page-title-generator';
 
 export class Renderer extends React.Component {
   render() {
-    return <AdminWrapper>{this.renderContents()}</AdminWrapper>;
+    return (
+      <HeadAppender title={pageTitleGenerator(PAGE_NAMES.myArticles)}>
+        <AdminWrapper>{this.renderContents()}</AdminWrapper>
+      </HeadAppender>
+    );
   }
 
   protected renderContents = () => {

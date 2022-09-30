@@ -20,6 +20,8 @@ import { categoryMapper } from 'utils/category-mapper';
 import FolderIcon from '@mui/icons-material/Folder';
 import { User } from 'types/user';
 import EditIcon from '@mui/icons-material/Edit';
+import { HeadAppender } from 'helper-components/head-appender';
+import { pageTitleGenerator } from 'utils/page-title-generator';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -48,66 +50,70 @@ export class Renderer extends React.Component<Props, State> {
       article;
 
     return (
-      <Stack spacing={2}>
-        {isDraft && <Alert severity="info">この記事は下書きです。あなただけが閲覧できます。</Alert>}
+      <HeadAppender title={pageTitleGenerator(title)}>
+        <Stack spacing={2}>
+          {isDraft && (
+            <Alert severity="info">この記事は下書きです。あなただけが閲覧できます。</Alert>
+          )}
 
-        {this.renderEditLink()}
+          {this.renderEditLink()}
 
-        <Link to={AUTHER_PAGE_LINK(author.userId.toString())}>
-          <Stack direction="row" justifyContent="flex-start" alignItems="center" spacing={1}>
-            <Avatar sx={{ width: 30, height: 30 }} src={author.icon ?? noIcon} />
-            <Typography color="gray">{author.nickname}</Typography>
-          </Stack>
-        </Link>
+          <Link to={AUTHER_PAGE_LINK(author.userId.toString())}>
+            <Stack direction="row" justifyContent="flex-start" alignItems="center" spacing={1}>
+              <Avatar sx={{ width: 30, height: 30 }} src={author.icon ?? noIcon} />
+              <Typography color="gray">{author.nickname}</Typography>
+            </Stack>
+          </Link>
 
-        <Typography component="h2" variant="h4" align="center">
-          {title}
-        </Typography>
-
-        <Link to={CATEGORY_PAGE_LINK(category.toString())}>
-          <Typography color="gray" component="div">
-            <IconAndText
-              iconComponent={<FolderIcon />}
-              text={categoryMapper(category)}
-              align="left"
-              iconPosition="left"
-            />
+          <Typography component="h2" variant="h4" align="center">
+            {title}
           </Typography>
-        </Link>
 
-        <Box sx={createdAtBox}>
-          <Typography>{`投稿日 ${createdAt}`}</Typography>
-          {createdAt !== updatedAt && <Typography>{`更新日 ${updatedAt}`}</Typography>}
-        </Box>
+          <Link to={CATEGORY_PAGE_LINK(category.toString())}>
+            <Typography color="gray" component="div">
+              <IconAndText
+                iconComponent={<FolderIcon />}
+                text={categoryMapper(category)}
+                align="left"
+                iconPosition="left"
+              />
+            </Typography>
+          </Link>
 
-        <Divider />
+          <Box sx={createdAtBox}>
+            <Typography>{`投稿日 ${createdAt}`}</Typography>
+            {createdAt !== updatedAt && <Typography>{`更新日 ${updatedAt}`}</Typography>}
+          </Box>
 
-        {image && <Image src={image} width="full" />}
+          <Divider />
 
-        <Typography>{description}</Typography>
+          {image && <Image src={image} width="full" />}
 
-        <Divider />
+          <Typography>{description}</Typography>
 
-        <IconAndText
-          iconComponent={<MapIcon />}
-          text="地図"
-          component="h3"
-          variant="h5"
-          iconPosition="left"
-        />
+          <Divider />
 
-        <AreaNames areaNames={marker.areaNames} variant="body2" />
+          <IconAndText
+            iconComponent={<MapIcon />}
+            text="地図"
+            component="h3"
+            variant="h5"
+            iconPosition="left"
+          />
 
-        <TriviaMap
-          height={300}
-          initZoom={ZOOMS.miniMap}
-          initCenter={marker}
-          disabled
-          doNotShowPostMarkers
-          additinalMarkers={[marker]}
-          park={marker.park}
-        />
-      </Stack>
+          <AreaNames areaNames={marker.areaNames} variant="body2" />
+
+          <TriviaMap
+            height={300}
+            initZoom={ZOOMS.miniMap}
+            initCenter={marker}
+            disabled
+            doNotShowPostMarkers
+            additinalMarkers={[marker]}
+            park={marker.park}
+          />
+        </Stack>
+      </HeadAppender>
     );
   };
 

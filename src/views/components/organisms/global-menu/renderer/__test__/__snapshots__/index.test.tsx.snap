@@ -41,14 +41,14 @@ exports[`Shallow Snapshot Tests basic 1`] = `
         >
           トリビアマップ
         </h1>
-        <NonStyleLink
-          to="/"
+        <a
+          href="/"
         >
           <Image
             height="full"
             src="logo.png"
           />
-        </NonStyleLink>
+        </a>
       </ForwardRef(Box)>
       <ForwardRef(Box)>
         <ForwardRef(Box)
@@ -288,14 +288,14 @@ exports[`Shallow Snapshot Tests map page 1`] = `
         >
           トリビアマップ
         </h1>
-        <NonStyleLink
-          to="/"
+        <a
+          href="/"
         >
           <Image
             height="full"
             src="logo.png"
           />
-        </NonStyleLink>
+        </a>
       </ForwardRef(Box)>
       <ForwardRef(Box)>
         <ForwardRef(Box)
@@ -522,14 +522,14 @@ exports[`Shallow Snapshot Tests permanent left navi 1`] = `
         >
           トリビアマップ
         </h1>
-        <NonStyleLink
-          to="/"
+        <a
+          href="/"
         >
           <Image
             height="full"
             src="logo.png"
           />
-        </NonStyleLink>
+        </a>
       </ForwardRef(Box)>
       <ForwardRef(Box)>
         <ForwardRef(Box)
@@ -768,14 +768,14 @@ exports[`Shallow Snapshot Tests redirect to top page 1`] = `
         >
           トリビアマップ
         </h1>
-        <NonStyleLink
-          to="/"
+        <a
+          href="/"
         >
           <Image
             height="full"
             src="logo.png"
           />
-        </NonStyleLink>
+        </a>
       </ForwardRef(Box)>
       <ForwardRef(Box)>
         <ForwardRef(Box)
@@ -1015,14 +1015,14 @@ exports[`Shallow Snapshot Tests static position 1`] = `
         >
           トリビアマップ
         </h1>
-        <NonStyleLink
-          to="/"
+        <a
+          href="/"
         >
           <Image
             height="full"
             src="logo.png"
           />
-        </NonStyleLink>
+        </a>
       </ForwardRef(Box)>
       <ForwardRef(Box)>
         <ForwardRef(Box)
@@ -1262,14 +1262,14 @@ exports[`Shallow Snapshot Tests with local navi & mobile 1`] = `
         >
           トリビアマップ
         </h1>
-        <NonStyleLink
-          to="/"
+        <a
+          href="/"
         >
           <Image
             height="full"
             src="logo.png"
           />
-        </NonStyleLink>
+        </a>
       </ForwardRef(Box)>
       <ForwardRef(Box)>
         <ForwardRef(Box)
@@ -1530,14 +1530,14 @@ exports[`Shallow Snapshot Tests with local navi 1`] = `
         >
           トリビアマップ
         </h1>
-        <NonStyleLink
-          to="/"
+        <a
+          href="/"
         >
           <Image
             height="full"
             src="logo.png"
           />
-        </NonStyleLink>
+        </a>
       </ForwardRef(Box)>
       <ForwardRef(Box)>
         <ForwardRef(Box)
@@ -1798,14 +1798,14 @@ exports[`Shallow Snapshot Tests with userInfo 1`] = `
         >
           トリビアマップ
         </h1>
-        <NonStyleLink
-          to="/"
+        <a
+          href="/"
         >
           <Image
             height="full"
             src="logo.png"
           />
-        </NonStyleLink>
+        </a>
       </ForwardRef(Box)>
       <ForwardRef(Box)>
         <ForwardRef(Box)

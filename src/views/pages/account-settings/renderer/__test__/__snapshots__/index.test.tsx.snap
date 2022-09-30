@@ -20,7 +20,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
         }
         variant="h4"
       >
-        アカウント設定
+        アカウント管理
       </ForwardRef(Typography)>
       <LinkList
         list={

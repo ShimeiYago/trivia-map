@@ -4,6 +4,7 @@ import { ArticleManageTable } from 'views/components/organisms/article-manage-ta
 import { AdminWrapper } from 'views/components/organisms/admin-wrapper';
 import { BackToNavi } from 'views/components/moleculars/back-to-navi';
 import { ADMIN_LINK } from 'constant/links';
+import { PAGE_NAMES } from 'constant/page-names';
 
 export class Renderer extends React.Component {
   render() {
@@ -16,7 +17,7 @@ export class Renderer extends React.Component {
         <BackToNavi text="マイページ" link={ADMIN_LINK} />
         <Box>
           <Typography align="center" component="h2" variant="h4" sx={{ mb: 3 }}>
-            投稿一覧
+            {PAGE_NAMES.myArticles}
           </Typography>
           <ArticleManageTable />
         </Box>

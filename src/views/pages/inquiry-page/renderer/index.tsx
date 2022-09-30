@@ -19,6 +19,7 @@ import { ApiError } from 'api/utils/handle-axios-error';
 import { inquiry, ValidationError } from 'api/inquiry-api';
 import { INQUIRY_CATEGORIES } from 'constant';
 import { ArticleWrapper } from 'views/components/organisms/article-wrapper';
+import { PAGE_NAMES } from 'constant/page-names';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -46,7 +47,7 @@ export class Renderer extends React.Component<Props, State> {
       <ArticleWrapper>
         <Stack spacing={1} sx={{ px: 1, maxWidth: '400px', mx: 'auto', my: 3 }}>
           <Typography component="h1" variant="h5" align="center">
-            お問い合わせ
+            {PAGE_NAMES.inquiry}
           </Typography>
           {this.renderHeaderInfo()}
           {this.renderForm()}

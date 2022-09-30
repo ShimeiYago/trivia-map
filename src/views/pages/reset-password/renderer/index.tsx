@@ -6,6 +6,7 @@ import { HeaderErrorMessages } from 'views/components/moleculars/header-error-me
 import { resetPasswordConfirm, ValidationError } from 'api/auths-api/reset-password-confirm';
 import { ApiError } from 'api/utils/handle-axios-error';
 import { globalAPIErrorMessage } from 'constant/global-api-error-message';
+import { PAGE_NAMES } from 'constant/page-names';
 
 export class Renderer extends React.Component<Props, State> {
   state: State = {
@@ -64,7 +65,7 @@ export class Renderer extends React.Component<Props, State> {
       <Box>
         <Stack spacing={1} sx={{ px: 1, py: 2, maxWidth: '400px', mx: 'auto' }}>
           <Typography component="h1" variant="h5" align="center">
-            パスワード再設定
+            {PAGE_NAMES.passwordInitialize}
           </Typography>
           {this.renderHeaderInfo()}
           {form}

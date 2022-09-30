@@ -30,6 +30,7 @@ import { NonStyleLink } from 'views/components/atoms/non-style-link';
 import { categoryMapper } from 'utils/category-mapper';
 import { IconAndText } from 'views/components/atoms/icon-and-text';
 import FolderIcon from '@mui/icons-material/Folder';
+import { LoadingButton } from '@mui/lab';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -45,6 +46,16 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   render() {
+    return (
+      <>
+        {this.renderTable()}
+        {this.renderDeleteConfirmDialog()}
+        {this.renderMessage()}
+      </>
+    );
+  }
+
+  renderTable() {
     const { loadingState, articlesPreviews } = this.state;
     if (loadingState === 'waiting' || loadingState === 'loading') {
       return <CenterSpinner />;
@@ -55,14 +66,10 @@ export class Renderer extends React.Component<Props, State> {
     }
 
     return (
-      <>
-        <Stack spacing={1}>
-          {this.renderPagination()}
-          {this.props.isMobile ? this.renderMobileTable() : this.renderDesktopTable()}
-        </Stack>
-        {this.renderDeleteConfirmDialog()}
-        {this.renderMessage()}
-      </>
+      <Stack spacing={1}>
+        {this.renderPagination()}
+        {this.props.isMobile ? this.renderMobileTable() : this.renderDesktopTable()}
+      </Stack>
     );
   }
 
@@ -215,7 +222,7 @@ export class Renderer extends React.Component<Props, State> {
   };
 
   protected renderDeleteConfirmDialog() {
-    const { deleteDialog } = this.state;
+    const { deleteDialog, deleting } = this.state;
     if (!deleteDialog) {
       return null;
     }
@@ -225,9 +232,13 @@ export class Renderer extends React.Component<Props, State> {
         <DialogTitle>投稿「{deleteDialog.title}」を削除しますか？</DialogTitle>
         <DialogActions>
           <Button onClick={this.closeDeleteConfirmDialog}>削除しない</Button>
-          <Button onClick={this.deleteArticle(deleteDialog.postId, deleteDialog.title)} autoFocus>
+          <LoadingButton
+            onClick={this.deleteArticle(deleteDialog.postId, deleteDialog.title)}
+            autoFocus
+            loading={deleting}
+          >
             削除する
-          </Button>
+          </LoadingButton>
         </DialogActions>
       </Dialog>
     );
@@ -256,6 +267,7 @@ export class Renderer extends React.Component<Props, State> {
 
     try {
       await autoRefreshApiWrapper(() => deleteRemoteArticle(postId));
+      this.props.fetchMarkers();
 
       this.setState({
         message: {
@@ -289,6 +301,7 @@ export class Renderer extends React.Component<Props, State> {
 export type Props = {
   isMobile: boolean;
   throwError: (status: number) => void;
+  fetchMarkers: () => void;
 };
 
 export type State = {

@@ -21,7 +21,7 @@ import FolderIcon from '@mui/icons-material/Folder';
 import { User } from 'types/user';
 import EditIcon from '@mui/icons-material/Edit';
 import { pageTitleGenerator } from 'utils/page-title-generator';
-import { Helmet } from 'react-helmet-async';
+import { CommonHelmet } from 'helper-components/common-helmet';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -51,9 +51,7 @@ export class Renderer extends React.Component<Props, State> {
 
     return (
       <>
-        <Helmet>
-          <title>{pageTitleGenerator(title)}</title>
-        </Helmet>
+        <CommonHelmet title={pageTitleGenerator(title)} />
 
         <Stack spacing={2}>
           {isDraft && (

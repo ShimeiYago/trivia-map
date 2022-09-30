@@ -8,7 +8,7 @@ import { CenterSpinner } from 'views/components/atoms/center-spinner';
 import noIcon from 'images/no-icon.jpg';
 import { ApiError } from 'api/utils/handle-axios-error';
 import { pageTitleGenerator } from 'utils/page-title-generator';
-import { Helmet } from 'react-helmet-async';
+import { CommonHelmet } from 'helper-components/common-helmet';
 
 export class Renderer extends React.Component<Props, State> {
   state: State = {
@@ -34,9 +34,7 @@ export class Renderer extends React.Component<Props, State> {
 
     return (
       <>
-        <Helmet>
-          <title>{pageTitleGenerator(pageName)}</title>
-        </Helmet>
+        <CommonHelmet title={pageTitleGenerator(pageName)} />
 
         <Stack
           direction="row"

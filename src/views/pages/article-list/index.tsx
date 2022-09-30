@@ -1,7 +1,7 @@
 import { Renderer, Conditions } from './renderer';
 import { useLocation } from 'react-router-dom';
 import usePageTracking from 'helper-components/tracker';
-import { Helmet } from 'react-helmet-async';
+import { CommonHelmet } from 'helper-components/common-helmet';
 import { pageTitleGenerator } from 'utils/page-title-generator';
 import { PAGE_NAMES } from 'constant/page-names';
 
@@ -21,9 +21,7 @@ export function ArticleList() {
 
   return (
     <>
-      <Helmet>
-        <title>{pageTitleGenerator(PAGE_NAMES.articles)}</title>
-      </Helmet>
+      <CommonHelmet title={pageTitleGenerator(PAGE_NAMES.articles)} />
 
       <Renderer initialSearchConditions={conditions} />
     </>

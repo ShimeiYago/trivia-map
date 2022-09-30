@@ -1,11 +1,11 @@
 import { shallow, ShallowWrapper } from 'enzyme';
-import { HeadAppender, Props } from '..';
+import { CommonHelmet, Props } from '..';
 
 let wrapper: ShallowWrapper<Props>;
 
 describe('Shallow Snapshot Tests', () => {
   beforeEach(() => {
-    wrapper = shallow(<HeadAppender title="title">xxx</HeadAppender>);
+    wrapper = shallow(<CommonHelmet title="title" />);
   });
 
   it('basic', () => {

@@ -13,8 +13,7 @@ import { selectFilteringCategoryId, selectFocusingPark } from 'store/markers/sel
 import { updateFilteringCategoryId, updateFocusingPark } from 'store/markers/actions';
 import { Park } from 'types/park';
 import { useAppDispatch } from 'store';
-import { Helmet } from 'react-helmet-async';
-import { TOP_TITLE_TAG } from 'constant';
+import { CommonHelmet } from 'helper-components/common-helmet';
 
 export function MapPage() {
   const { postId } = useParams();
@@ -52,9 +51,7 @@ export function MapPage() {
 
   return (
     <>
-      <Helmet>
-        <title>{TOP_TITLE_TAG}</title>
-      </Helmet>
+      <CommonHelmet />
       <Renderer {...props} />
     </>
   );

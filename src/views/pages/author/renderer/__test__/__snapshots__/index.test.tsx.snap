@@ -4,15 +4,9 @@ exports[`Shallow Snapshot Tests basic 1`] = `
 <ArticleWrapper
   showSidebar={true}
 >
-  <Helmet
-    defer={true}
-    encodeSpecialCharacters={true}
-    prioritizeSeoTags={false}
-  >
-    <title>
-      Axelさんの投稿一覧 - トリビアマップ
-    </title>
-  </Helmet>
+  <CommonHelmet
+    title="Axelさんの投稿一覧 - トリビアマップ"
+  />
   <ForwardRef(Stack)
     alignItems="center"
     direction="row"
@@ -63,15 +57,9 @@ exports[`Shallow Snapshot Tests no icon 1`] = `
 <ArticleWrapper
   showSidebar={true}
 >
-  <Helmet
-    defer={true}
-    encodeSpecialCharacters={true}
-    prioritizeSeoTags={false}
-  >
-    <title>
-      Axelさんの投稿一覧 - トリビアマップ
-    </title>
-  </Helmet>
+  <CommonHelmet
+    title="Axelさんの投稿一覧 - トリビアマップ"
+  />
   <ForwardRef(Stack)
     alignItems="center"
     direction="row"

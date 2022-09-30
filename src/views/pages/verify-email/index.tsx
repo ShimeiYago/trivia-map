@@ -2,7 +2,7 @@ import { Props, Renderer } from './renderer';
 import { throwError } from 'store/global-error/slice';
 import { useParams } from 'react-router-dom';
 import { useAppDispatch } from 'store';
-import { Helmet } from 'react-helmet-async';
+import { CommonHelmet } from 'helper-components/common-helmet';
 import { pageTitleGenerator } from 'utils/page-title-generator';
 import { PAGE_NAMES } from 'constant/page-names';
 
@@ -22,9 +22,7 @@ export function VerifyEmail() {
 
   return (
     <>
-      <Helmet>
-        <title>{pageTitleGenerator(PAGE_NAMES.verifyEmail)}</title>
-      </Helmet>
+      <CommonHelmet title={pageTitleGenerator(PAGE_NAMES.verifyEmail)} />
 
       <Renderer {...props} />
     </>

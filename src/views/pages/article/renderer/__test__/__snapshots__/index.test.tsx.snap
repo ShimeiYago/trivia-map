@@ -4,15 +4,9 @@ exports[`Shallow Snapshot Tests author view 1`] = `
 <ArticleWrapper
   showSidebar={true}
 >
-  <Helmet
-    defer={true}
-    encodeSpecialCharacters={true}
-    prioritizeSeoTags={false}
-  >
-    <title>
-      title - トリビアマップ
-    </title>
-  </Helmet>
+  <CommonHelmet
+    title="title - トリビアマップ"
+  />
   <ForwardRef(Stack)
     spacing={2}
   >
@@ -157,15 +151,9 @@ exports[`Shallow Snapshot Tests draft 1`] = `
 <ArticleWrapper
   showSidebar={true}
 >
-  <Helmet
-    defer={true}
-    encodeSpecialCharacters={true}
-    prioritizeSeoTags={false}
-  >
-    <title>
-      title - トリビアマップ
-    </title>
-  </Helmet>
+  <CommonHelmet
+    title="title - トリビアマップ"
+  />
   <ForwardRef(Stack)
     spacing={2}
   >
@@ -305,15 +293,9 @@ exports[`Shallow Snapshot Tests with article 1`] = `
 <ArticleWrapper
   showSidebar={true}
 >
-  <Helmet
-    defer={true}
-    encodeSpecialCharacters={true}
-    prioritizeSeoTags={false}
-  >
-    <title>
-      title - トリビアマップ
-    </title>
-  </Helmet>
+  <CommonHelmet
+    title="title - トリビアマップ"
+  />
   <ForwardRef(Stack)
     spacing={2}
   >
@@ -440,15 +422,9 @@ exports[`Shallow Snapshot Tests with image 1`] = `
 <ArticleWrapper
   showSidebar={true}
 >
-  <Helmet
-    defer={true}
-    encodeSpecialCharacters={true}
-    prioritizeSeoTags={false}
-  >
-    <title>
-      title - トリビアマップ
-    </title>
-  </Helmet>
+  <CommonHelmet
+    title="title - トリビアマップ"
+  />
   <ForwardRef(Stack)
     spacing={2}
   >

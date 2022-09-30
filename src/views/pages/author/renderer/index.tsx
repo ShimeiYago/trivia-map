@@ -8,7 +8,7 @@ import { CenterSpinner } from 'views/components/atoms/center-spinner';
 import noIcon from 'images/no-icon.jpg';
 import { ApiError } from 'api/utils/handle-axios-error';
 import { pageTitleGenerator } from 'utils/page-title-generator';
-import { HeadAppender } from 'helper-components/head-appender';
+import { Helmet } from 'react-helmet-async';
 
 export class Renderer extends React.Component<Props, State> {
   state: State = {
@@ -33,7 +33,11 @@ export class Renderer extends React.Component<Props, State> {
     const pageName = `${author.nickname}さんの投稿一覧`;
 
     return (
-      <HeadAppender title={pageTitleGenerator(pageName)}>
+      <>
+        <Helmet>
+          <title>{pageTitleGenerator(pageName)}</title>
+        </Helmet>
+
         <Stack
           direction="row"
           justifyContent="center"
@@ -48,7 +52,7 @@ export class Renderer extends React.Component<Props, State> {
         </Stack>
 
         <ArticlePreviewList variant="large" searchConditions={{ user: this.props.userId }} />
-      </HeadAppender>
+      </>
     );
   };
 

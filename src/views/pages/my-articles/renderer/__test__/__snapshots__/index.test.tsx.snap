@@ -1,33 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Shallow Snapshot Tests basic 1`] = `
-<HeadAppender
-  title="マイ投稿一覧 - トリビアマップ"
->
-  <AdminWrapper>
-    <ForwardRef(Stack)
-      spacing={3}
-    >
-      <BackToNavi
-        link="/admin"
-        text="マイページ"
-      />
-      <ForwardRef(Box)>
-        <ForwardRef(Typography)
-          align="center"
-          component="h2"
-          sx={
-            Object {
-              "mb": 3,
-            }
+<AdminWrapper>
+  <ForwardRef(Stack)
+    spacing={3}
+  >
+    <BackToNavi
+      link="/admin"
+      text="マイページ"
+    />
+    <ForwardRef(Box)>
+      <ForwardRef(Typography)
+        align="center"
+        component="h2"
+        sx={
+          Object {
+            "mb": 3,
           }
-          variant="h4"
-        >
-          マイ投稿一覧
-        </ForwardRef(Typography)>
-        <ArticleManageTable />
-      </ForwardRef(Box)>
-    </ForwardRef(Stack)>
-  </AdminWrapper>
-</HeadAppender>
+        }
+        variant="h4"
+      >
+        マイ投稿一覧
+      </ForwardRef(Typography)>
+      <ArticleManageTable />
+    </ForwardRef(Box)>
+  </ForwardRef(Stack)>
+</AdminWrapper>
 `;

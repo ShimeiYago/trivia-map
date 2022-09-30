@@ -13,6 +13,8 @@ import { selectFilteringCategoryId, selectFocusingPark } from 'store/markers/sel
 import { updateFilteringCategoryId, updateFocusingPark } from 'store/markers/actions';
 import { Park } from 'types/park';
 import { useAppDispatch } from 'store';
+import { Helmet } from 'react-helmet-async';
+import { TOP_TITLE_TAG } from 'constant';
 
 export function MapPage() {
   const { postId } = useParams();
@@ -29,7 +31,7 @@ export function MapPage() {
   const articleFormId = useAppSelector(selectArticleFormId);
   const postIdToEdit = Number(postId) ?? articleFormId;
 
-  const props: Props = {
+  let props: Props = {
     park: useAppSelector(selectFocusingPark),
     filteringCategoryId: useAppSelector(selectFilteringCategoryId),
     isFormEditting: useAppSelector(selectArticleFormIsEditting),
@@ -41,9 +43,19 @@ export function MapPage() {
       dispatch(updateFilteringCategoryId(categoryId)),
   };
 
-  if (!postIdToEdit) {
-    return <Renderer {...props} />;
+  if (postIdToEdit) {
+    props = {
+      ...props,
+      postIdToEdit: postIdToEdit,
+    };
   }
 
-  return <Renderer {...props} postIdToEdit={postIdToEdit} />;
+  return (
+    <>
+      <Helmet>
+        <title>{TOP_TITLE_TAG}</title>
+      </Helmet>
+      <Renderer {...props} />
+    </>
+  );
 }

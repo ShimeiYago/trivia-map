@@ -4,9 +4,6 @@ import { LoadingState } from 'types/loading-state';
 import { verifyEmail } from 'api/auths-api/verify-email';
 import { wrapper } from '../styles';
 import { LoadingButton } from '@mui/lab';
-import { HeadAppender } from 'helper-components/head-appender';
-import { pageTitleGenerator } from 'utils/page-title-generator';
-import { PAGE_NAMES } from 'constant/page-names';
 import { Image } from 'views/components/atoms/image';
 import logoImage from 'images/trivia-map-logo-black.png';
 
@@ -20,12 +17,12 @@ export class Renderer extends React.Component<Props, State> {
 
   render() {
     return (
-      <HeadAppender title={pageTitleGenerator(PAGE_NAMES.verifyEmail)}>
+      <>
         <Box sx={{ my: 3, textAlign: 'center' }}>
           <Image src={logoImage} width="200px" />
         </Box>
         {this.renderContent()}
-      </HeadAppender>
+      </>
     );
   }
 

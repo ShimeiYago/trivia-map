@@ -30,9 +30,8 @@ import {
 import { GlobalMenu } from 'views/components/organisms/global-menu';
 import { Park } from 'types/park';
 import { RoundButton } from 'views/components/atoms/round-button';
-import { CATEGORIES, SITE_NAME } from 'constant';
+import { CATEGORIES } from 'constant';
 import { EDIT_LINK } from 'constant/links';
-import { HeadAppender } from 'helper-components/head-appender';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -77,38 +76,36 @@ export class Renderer extends React.Component<Props, State> {
     const { openFormModal, edittingPostId } = this.state;
     const { isFormEditting, isMobile, park, filteringCategoryId } = this.props;
     return (
-      <HeadAppender title={SITE_NAME}>
-        <Box sx={wrapper(openFormModal && !isMobile)}>
-          <GlobalMenu topBarPosition="static" mapPage>
-            <Box sx={mapWrapper(isMobile)}>
-              <TriviaMap
-                newMarkerMode={this.state.newMarkerMode}
-                endToSelectPosition={this.endToSelectPosition}
-                hiddenMarkerIds={edittingPostId ? [edittingPostId] : []}
-                shouldCurrentPositionAsyncWithForm
-                park={park}
-                categoryId={filteringCategoryId}
-              />
+      <Box sx={wrapper(openFormModal && !isMobile)}>
+        <GlobalMenu topBarPosition="static" mapPage>
+          <Box sx={mapWrapper(isMobile)}>
+            <TriviaMap
+              newMarkerMode={this.state.newMarkerMode}
+              endToSelectPosition={this.endToSelectPosition}
+              hiddenMarkerIds={edittingPostId ? [edittingPostId] : []}
+              shouldCurrentPositionAsyncWithForm
+              park={park}
+              categoryId={filteringCategoryId}
+            />
 
-              {!isFormEditting && (
-                <FloatingButton icon="add-marker" onClick={this.handleClickAddButton} />
-              )}
+            {!isFormEditting && (
+              <FloatingButton icon="add-marker" onClick={this.handleClickAddButton} />
+            )}
 
-              <LoadingProgressBar />
+            <LoadingProgressBar />
 
-              {this.renderParkSelectBox()}
+            {this.renderParkSelectBox()}
 
-              {this.renderCategoryButtons()}
-            </Box>
-          </GlobalMenu>
+            {this.renderCategoryButtons()}
+          </Box>
+        </GlobalMenu>
 
-          {this.renderEditForm()}
+        {this.renderEditForm()}
 
-          <GlobalMessage closeFormModal={this.handleCloseFormModal} />
+        <GlobalMessage closeFormModal={this.handleCloseFormModal} />
 
-          {this.renderDoubleEditAlartDialog()}
-        </Box>
-      </HeadAppender>
+        {this.renderDoubleEditAlartDialog()}
+      </Box>
     );
   }
 

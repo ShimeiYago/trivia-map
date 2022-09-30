@@ -1,9 +1,6 @@
 import { Props, Renderer } from './renderer';
 import { useAppDispatch, useAppSelector } from 'store';
-import {
-  selectMarkers,
-  selectMarkersFetchingState,
-} from 'store/markers/selector';
+import { selectMarkers, selectMarkersFetchingState } from 'store/markers/selector';
 import { fetchMarkers } from 'store/markers/actions';
 import { updateFormField, updateIsEditting } from 'store/article-form/actions';
 import { Position } from 'types/position';
@@ -28,20 +25,16 @@ export function TriviaMap(ownProps: OwnProps) {
     markersFetchingState: useAppSelector(selectMarkersFetchingState),
     doNotShowPostMarkers: ownProps.doNotShowPostMarkers,
     hiddenMarkerIds: ownProps.hiddenMarkerIds ?? [],
-    shouldCurrentPositionAsyncWithForm:
-      ownProps.shouldCurrentPositionAsyncWithForm,
+    shouldCurrentPositionAsyncWithForm: ownProps.shouldCurrentPositionAsyncWithForm,
     additinalMarkers: ownProps.additinalMarkers ?? [],
     isFormEditting: useAppSelector(selectArticleFormIsEditting),
     park: ownProps.park,
     categoryId: ownProps.categoryId,
 
-    fetchMarkers: (park: Park, category?: number) =>
-      dispatch(fetchMarkers(park, category)),
-    updatePosition: (position: Position) =>
-      dispatch(updateFormField({ position: position })),
+    fetchMarkers: (park: Park, category?: number) => dispatch(fetchMarkers(park, category)),
+    updatePosition: (position: Position) => dispatch(updateFormField({ position: position })),
     endToSelectPosition: ownProps.endToSelectPosition,
-    updateIsEditting: (isEditting: boolean) =>
-      dispatch(updateIsEditting(isEditting)),
+    updateIsEditting: (isEditting: boolean) => dispatch(updateIsEditting(isEditting)),
   };
 
   return <Renderer {...props} />;

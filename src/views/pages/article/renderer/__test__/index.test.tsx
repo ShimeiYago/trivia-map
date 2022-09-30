@@ -88,10 +88,7 @@ describe('Shallow Snapshot Tests', () => {
 describe('fetchArticle', () => {
   beforeEach(() => {
     jest.resetAllMocks();
-    getRemoteArticleSpy = jest.spyOn(
-      GetRemoteArticleModule,
-      'getRemoteArticle',
-    );
+    getRemoteArticleSpy = jest.spyOn(GetRemoteArticleModule, 'getRemoteArticle');
   });
 
   it('should set loadingState success when api succeed', async () => {

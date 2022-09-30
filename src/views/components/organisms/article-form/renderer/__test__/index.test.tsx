@@ -177,9 +177,7 @@ describe('handleChangeTitle', () => {
     const instance = wrapper.instance();
 
     const changeTitleEvent = { target: { value: 'new title' } };
-    instance['handleChangeTitle'](
-      changeTitleEvent as React.ChangeEvent<HTMLInputElement>,
-    );
+    instance['handleChangeTitle'](changeTitleEvent as React.ChangeEvent<HTMLInputElement>);
 
     expect(basicProps.updateFormField).toBeCalled();
   });
@@ -191,9 +189,7 @@ describe('handleChangeDescription', () => {
     const instance = wrapper.instance();
 
     const changeContentEvent = { target: { value: 'new content' } };
-    instance['handleChangeDescription'](
-      changeContentEvent as React.ChangeEvent<HTMLInputElement>,
-    );
+    instance['handleChangeDescription'](changeContentEvent as React.ChangeEvent<HTMLInputElement>);
 
     expect(basicProps.updateFormField).toBeCalled();
   });
@@ -205,9 +201,7 @@ describe('handleChangeIsDraft', () => {
     const instance = wrapper.instance();
 
     const changeContentEvent = { target: { checked: true } };
-    instance['handleChangeIsDraft'](
-      changeContentEvent as React.ChangeEvent<HTMLInputElement>,
-    );
+    instance['handleChangeIsDraft'](changeContentEvent as React.ChangeEvent<HTMLInputElement>);
 
     expect(basicProps.updateFormField).toBeCalled();
   });

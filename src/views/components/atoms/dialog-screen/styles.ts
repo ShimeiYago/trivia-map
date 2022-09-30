@@ -13,8 +13,7 @@ export const style = (theme: string, position: string | number): SxProps => {
 
   return {
     position: 'absolute',
-    backgroundColor:
-      theme === 'black' ? 'rgba(0,0,0,0.8)' : 'rgba(255,255,255,0.8)',
+    backgroundColor: theme === 'black' ? 'rgba(0,0,0,0.8)' : 'rgba(255,255,255,0.8)',
     top: top,
     left: '50%',
     width: '80%',

@@ -1,7 +1,6 @@
 import { PreviewListOrder } from 'api/articles-api/get-articles-previews';
 
-export const BASE_URL =
-  process.env.REACT_APP_API_BASE_URL ?? 'http://localhost:3001';
+export const BASE_URL = process.env.REACT_APP_API_BASE_URL ?? 'http://localhost:3001';
 
 export const SITE_NAME = 'トリビアマップ';
 
@@ -41,12 +40,7 @@ export const ARTICLES_ORDER_OPTIONS: {
   },
 ];
 
-export const INQUIRY_CATEGORIES = [
-  '不具合の報告',
-  'ご要望',
-  'アカウント関連',
-  'その他',
-];
+export const INQUIRY_CATEGORIES = ['不具合の報告', 'ご要望', 'アカウント関連', 'その他'];
 
 export const UPLOAD_IMAGE_MAX_LENGTH = {
   article: 1000,

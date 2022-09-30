@@ -46,9 +46,7 @@ async function resizeAndConvertToSelializedImageFileFromObjectUrl(param: {
     img.src = objectUrl;
   });
 
-  const pixelCrop = crop
-    ? getPixelCrop(img.width, img.height, crop)
-    : undefined;
+  const pixelCrop = crop ? getPixelCrop(img.width, img.height, crop) : undefined;
 
   // convert to image element to canvas with resizing
   const [width, height] = getResizedWidthAndHeight({
@@ -115,11 +113,7 @@ function getResizedWidthAndHeight(param: {
   return [width, height];
 }
 
-function getPixelCrop(
-  width: number,
-  height: number,
-  percentCrop: PercentCrop,
-): PixelCrop {
+function getPixelCrop(width: number, height: number, percentCrop: PercentCrop): PixelCrop {
   return {
     unit: 'px',
     width: (width * percentCrop.width) / 100,

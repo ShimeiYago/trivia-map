@@ -3,8 +3,7 @@ import { updateLoadedPages } from 'store/markers/actions';
 import { markersReducer, markersSlice } from '..';
 import { MarkersState } from '../../model';
 
-const { fetchSuccess, fetchStart, updateMarkers, updateTotalPages } =
-  markersSlice.actions;
+const { fetchSuccess, fetchStart, updateMarkers, updateTotalPages } = markersSlice.actions;
 
 describe('markers reducer', () => {
   const initialState: MarkersState = {

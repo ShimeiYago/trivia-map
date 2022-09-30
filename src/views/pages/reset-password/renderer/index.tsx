@@ -3,10 +3,7 @@ import { LoadingState } from 'types/loading-state';
 import { Alert, Box, Stack, TextField, Typography } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 import { HeaderErrorMessages } from 'views/components/moleculars/header-error-messages';
-import {
-  resetPasswordConfirm,
-  ValidationError,
-} from 'api/auths-api/reset-password-confirm';
+import { resetPasswordConfirm, ValidationError } from 'api/auths-api/reset-password-confirm';
 import { ApiError } from 'api/utils/handle-axios-error';
 import { globalAPIErrorMessage } from 'constant/global-api-error-message';
 
@@ -18,9 +15,7 @@ export class Renderer extends React.Component<Props, State> {
   };
 
   render() {
-    const disabled =
-      this.state.loadingState === 'loading' ||
-      this.state.loadingState === 'success';
+    const disabled = this.state.loadingState === 'loading' || this.state.loadingState === 'success';
 
     const form = (
       <Box component="form" noValidate>
@@ -88,10 +83,7 @@ export class Renderer extends React.Component<Props, State> {
     if (errorTitle) {
       return (
         <Box>
-          <HeaderErrorMessages
-            errorTitle={errorTitle}
-            errorMessages={errorMessages}
-          />
+          <HeaderErrorMessages errorTitle={errorTitle} errorMessages={errorMessages} />
         </Box>
       );
     }
@@ -100,8 +92,7 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   protected handleChangeTextField =
-    (fieldType: 'password1' | 'password2') =>
-    (e: React.ChangeEvent<HTMLInputElement>) => {
+    (fieldType: 'password1' | 'password2') => (e: React.ChangeEvent<HTMLInputElement>) => {
       switch (fieldType) {
         case 'password1':
           this.setState({
@@ -145,10 +136,7 @@ export class Renderer extends React.Component<Props, State> {
             password1: apiError.data.password1,
             password2: apiError.data.password2,
           },
-          errorMessages: [
-            ...(apiError.data.uid ?? []),
-            ...(apiError.data.token ?? []),
-          ],
+          errorMessages: [...(apiError.data.uid ?? []), ...(apiError.data.token ?? [])],
         });
       }
 

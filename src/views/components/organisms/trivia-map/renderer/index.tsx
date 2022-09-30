@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  MapContainer,
-  MapContainerProps,
-  TileLayer,
-  ZoomControl,
-} from 'react-leaflet';
+import { MapContainer, MapContainerProps, TileLayer, ZoomControl } from 'react-leaflet';
 import { MapMarker } from 'views/components/moleculars/map-marker';
 import { LatLng, LeafletMouseEvent, Map as LeafletMap } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -36,10 +31,7 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   componentDidMount() {
-    if (
-      this.props.markersFetchingState === 'waiting' &&
-      !this.props.doNotShowPostMarkers
-    ) {
+    if (this.props.markersFetchingState === 'waiting' && !this.props.doNotShowPostMarkers) {
       this.props.fetchMarkers(this.props.park);
     }
   }
@@ -64,17 +56,13 @@ export class Renderer extends React.Component<Props, State> {
       });
     }
 
-    if (
-      this.props.initCenter &&
-      prevProps.initCenter !== this.props.initCenter
-    ) {
+    if (this.props.initCenter && prevProps.initCenter !== this.props.initCenter) {
       this.state.map?.setView(this.props.initCenter);
     }
 
     if (
       !this.props.doNotShowPostMarkers &&
-      (prevProps.park !== this.props.park ||
-        prevProps.categoryId !== this.props.categoryId)
+      (prevProps.park !== this.props.park || prevProps.categoryId !== this.props.categoryId)
     ) {
       this.props.fetchMarkers(this.props.park, this.props.categoryId);
     }
@@ -88,9 +76,7 @@ export class Renderer extends React.Component<Props, State> {
       height: height ?? '100%',
     };
 
-    const center = initCenter
-      ? new LatLng(initCenter.lat, initCenter.lng)
-      : new LatLng(0, 0);
+    const center = initCenter ? new LatLng(initCenter.lat, initCenter.lng) : new LatLng(0, 0);
 
     const disabledProps: MapContainerProps = {
       dragging: false,
@@ -156,13 +142,8 @@ export class Renderer extends React.Component<Props, State> {
   };
 
   protected renderPostMarkers() {
-    const {
-      postMarkers,
-      doNotShowPostMarkers,
-      newMarkerMode,
-      hiddenMarkerIds,
-      isFormEditting,
-    } = this.props;
+    const { postMarkers, doNotShowPostMarkers, newMarkerMode, hiddenMarkerIds, isFormEditting } =
+      this.props;
     if (doNotShowPostMarkers || !this.state.map) {
       return null;
     }
@@ -207,12 +188,7 @@ export class Renderer extends React.Component<Props, State> {
 
     const popup = (
       <Box sx={{ p: 1 }}>
-        <Typography
-          align="center"
-          variant="h6"
-          component="p"
-          sx={{ fontWeight: 'bold' }}
-        >
+        <Typography align="center" variant="h6" component="p" sx={{ fontWeight: 'bold' }}>
           この位置でよろしいですか？
         </Typography>
         <Typography variant="subtitle2" component="p">
@@ -222,16 +198,9 @@ export class Renderer extends React.Component<Props, State> {
           ※あとで変更することができます。
         </Typography>
 
-        <Grid
-          container
-          spacing={2}
-          justifyContent="center"
-          sx={{ textAlign: 'center' }}
-        >
+        <Grid container spacing={2} justifyContent="center" sx={{ textAlign: 'center' }}>
           <Grid item xs={6}>
-            <Button onClick={this.handleClickCancelNewMarker}>
-              キャンセル
-            </Button>
+            <Button onClick={this.handleClickCancelNewMarker}>キャンセル</Button>
           </Grid>
           <Grid item xs={6}>
             <Button onClick={this.handleClickConfirmNewMarker}>確定</Button>
@@ -297,11 +266,7 @@ export class Renderer extends React.Component<Props, State> {
 
     return (
       <DialogScreen theme="black" position="top">
-        <Typography
-          align="center"
-          variant="inherit"
-          sx={{ fontWeight: 'bold' }}
-        >
+        <Typography align="center" variant="inherit" sx={{ fontWeight: 'bold' }}>
           マップ上の好きな位置をタップしてください。
         </Typography>
       </DialogScreen>

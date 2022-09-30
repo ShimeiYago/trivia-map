@@ -44,16 +44,12 @@ export class ImageField extends React.Component<Props, State> {
               <Typography>
                 <AddAPhotoIcon fontSize="large" />
               </Typography>
-              {variant === 'square' && (
-                <Typography>タップして写真を追加</Typography>
-              )}
+              {variant === 'square' && <Typography>タップして写真を追加</Typography>}
             </div>
           )}
         </label>
         {helperText && (
-          <Typography className={helperTextClassNames.join(' ')}>
-            {helperText}
-          </Typography>
+          <Typography className={helperTextClassNames.join(' ')}>{helperText}</Typography>
         )}
 
         {this.renderCropModal()}
@@ -61,9 +57,7 @@ export class ImageField extends React.Component<Props, State> {
     );
   }
 
-  protected handleFileInputChange = async (
-    e: React.ChangeEvent<HTMLInputElement>,
-  ) => {
+  protected handleFileInputChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
 
     if (!files || files.length === 0) {
@@ -114,11 +108,7 @@ export class ImageField extends React.Component<Props, State> {
     return (
       <BoxModal open={openCropModal}>
         <Box sx={{ m: 2, textAlign: 'center' }}>
-          <ReactCrop
-            crop={this.state.crop}
-            aspect={aspect}
-            onChange={this.handleChangeCrop}
-          >
+          <ReactCrop crop={this.state.crop} aspect={aspect} onChange={this.handleChangeCrop}>
             <img src={uploadedImage?.objectUrl} />
           </ReactCrop>
         </Box>

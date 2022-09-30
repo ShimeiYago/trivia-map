@@ -1,11 +1,5 @@
-export function globalAPIErrorMessage(
-  status: number,
-  method: 'get' | 'submit' | 'delete',
-): string {
-  const prefix =
-    method === 'get'
-      ? 'データの取得に失敗しました。'
-      : 'エラーが発生しました。';
+export function globalAPIErrorMessage(status: number, method: 'get' | 'submit' | 'delete'): string {
+  const prefix = method === 'get' ? 'データの取得に失敗しました。' : 'エラーが発生しました。';
 
   switch (status) {
     case 400:

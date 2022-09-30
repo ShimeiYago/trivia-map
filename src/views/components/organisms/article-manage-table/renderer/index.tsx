@@ -18,10 +18,7 @@ import {
   Divider,
 } from '@mui/material';
 import { LoadingState } from 'types/loading-state';
-import {
-  getMyArticles,
-  GetMyArticlesResponseEachItem,
-} from 'api/articles-api/get-my-articles';
+import { getMyArticles, GetMyArticlesResponseEachItem } from 'api/articles-api/get-my-articles';
 import classes from './index.module.css';
 import { CenterSpinner } from 'views/components/atoms/center-spinner';
 import { ARTICLE_PAGE_LINK, EDIT_LINK } from 'constant/links';
@@ -54,18 +51,14 @@ export class Renderer extends React.Component<Props, State> {
     }
 
     if (articlesPreviews?.length === 0) {
-      return (
-        <Typography align="center">まだ記事が投稿されていません。</Typography>
-      );
+      return <Typography align="center">まだ記事が投稿されていません。</Typography>;
     }
 
     return (
       <>
         <Stack spacing={1}>
           {this.renderPagination()}
-          {this.props.isMobile
-            ? this.renderMobileTable()
-            : this.renderDesktopTable()}
+          {this.props.isMobile ? this.renderMobileTable() : this.renderDesktopTable()}
         </Stack>
         {this.renderDeleteConfirmDialog()}
         {this.renderMessage()}
@@ -113,9 +106,7 @@ export class Renderer extends React.Component<Props, State> {
           <TableCell>
             <Typography color="gray" component="div">
               <Stack direction="row" spacing={1}>
-                <Typography variant="subtitle2">
-                  {isDraft ? '下書き' : '公開中'}
-                </Typography>
+                <Typography variant="subtitle2">{isDraft ? '下書き' : '公開中'}</Typography>
                 <IconAndText
                   iconComponent={<FolderIcon fontSize="inherit" />}
                   iconPosition="left"
@@ -153,15 +144,8 @@ export class Renderer extends React.Component<Props, State> {
         </Typography>
 
         <Box>
-          <Stack
-            direction="row"
-            divider={<Divider orientation="vertical" flexItem />}
-            spacing={1}
-          >
-            <NonStyleLink
-              to={ARTICLE_PAGE_LINK(String(postId))}
-              target="_blank"
-            >
+          <Stack direction="row" divider={<Divider orientation="vertical" flexItem />} spacing={1}>
+            <NonStyleLink to={ARTICLE_PAGE_LINK(String(postId))} target="_blank">
               <Button sx={{ p: 0, minWidth: 0 }}>表示</Button>
             </NonStyleLink>
             <NonStyleLink to={EDIT_LINK(String(postId))} target="_blank">
@@ -183,10 +167,7 @@ export class Renderer extends React.Component<Props, State> {
   protected renderPagination() {
     return (
       <div className={classes['pagination-wrapper']}>
-        <Pagination
-          count={this.state.totalPages}
-          onChange={this.handleChangePagination}
-        />
+        <Pagination count={this.state.totalPages} onChange={this.handleChangePagination} />
       </div>
     );
   }
@@ -197,11 +178,7 @@ export class Renderer extends React.Component<Props, State> {
     }
 
     return (
-      <Snackbar
-        open={true}
-        autoHideDuration={6000}
-        onClose={this.handleCloseMessage}
-      >
+      <Snackbar open={true} autoHideDuration={6000} onClose={this.handleCloseMessage}>
         <Alert
           onClose={this.handleCloseMessage}
           severity={this.state.message.type}
@@ -233,10 +210,7 @@ export class Renderer extends React.Component<Props, State> {
     }
   }
 
-  protected handleChangePagination = (
-    event: React.ChangeEvent<unknown>,
-    page: number,
-  ) => {
+  protected handleChangePagination = (event: React.ChangeEvent<unknown>, page: number) => {
     this.fetchArticlesPreviews(page);
   };
 
@@ -251,13 +225,7 @@ export class Renderer extends React.Component<Props, State> {
         <DialogTitle>投稿「{deleteDialog.title}」を削除しますか？</DialogTitle>
         <DialogActions>
           <Button onClick={this.closeDeleteConfirmDialog}>削除しない</Button>
-          <Button
-            onClick={this.deleteArticle(
-              deleteDialog.postId,
-              deleteDialog.title,
-            )}
-            autoFocus
-          >
+          <Button onClick={this.deleteArticle(deleteDialog.postId, deleteDialog.title)} autoFocus>
             削除する
           </Button>
         </DialogActions>

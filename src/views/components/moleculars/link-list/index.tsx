@@ -1,10 +1,4 @@
-import {
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-} from '@mui/material';
+import { List, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
 import React from 'react';
 import { NonStyleLink } from 'views/components/atoms/non-style-link';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';

@@ -1,9 +1,4 @@
-import {
-  Box,
-  CircularProgress,
-  LinearProgress,
-  Typography,
-} from '@mui/material';
+import { Box, CircularProgress, LinearProgress, Typography } from '@mui/material';
 import React from 'react';
 import { LoadingState } from 'types/loading-state';
 import { sleep } from 'utils/sleep';
@@ -29,10 +24,7 @@ export class Renderer extends React.Component<Props, State> {
         showLoadingProgressBar: true,
       });
     }
-    if (
-      prevProps.markersFetchingState === 'loading' &&
-      markersFetchingState === 'success'
-    ) {
+    if (prevProps.markersFetchingState === 'loading' && markersFetchingState === 'success') {
       this.closeLoadingProgressBar();
     }
   }
@@ -67,11 +59,7 @@ export class Renderer extends React.Component<Props, State> {
     return (
       <Box sx={{ display: 'flex', alignItems: 'center' }}>
         <Box sx={{ width: '100%', mr: 1 }}>
-          <LinearProgress
-            variant="determinate"
-            value={progressValue}
-            color="primary"
-          />
+          <LinearProgress variant="determinate" value={progressValue} color="primary" />
         </Box>
         <Box sx={{ minWidth: 35 }}>
           <Typography variant="body2" color="text.secondary">

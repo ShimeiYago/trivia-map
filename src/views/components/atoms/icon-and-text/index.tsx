@@ -12,11 +12,7 @@ export const IconAndText: React.FC<Props> = (props) => {
 
   if (props.iconPosition === 'left') {
     return (
-      <Typography
-        component={props.component ?? 'div'}
-        variant={props.variant}
-        sx={wrapperStyle}
-      >
+      <Typography component={props.component ?? 'div'} variant={props.variant} sx={wrapperStyle}>
         {props.iconComponent}
         {props.text}
       </Typography>

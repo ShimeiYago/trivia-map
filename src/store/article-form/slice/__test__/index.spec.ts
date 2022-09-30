@@ -54,10 +54,7 @@ describe('articleForm reducer', () => {
   });
 
   it('should handle updateDescription', () => {
-    const actual = articleFormReducer(
-      initialState,
-      updateDescription('description'),
-    );
+    const actual = articleFormReducer(initialState, updateDescription('description'));
     expect(actual.description).toEqual('description');
   });
 
@@ -74,10 +71,7 @@ describe('articleForm reducer', () => {
   });
 
   it('should handle updateImageDataUrl', () => {
-    const actual = articleFormReducer(
-      initialState,
-      updateImage('https://image-data.jpg'),
-    );
+    const actual = articleFormReducer(initialState, updateImage('https://image-data.jpg'));
     expect(actual.image).toEqual('https://image-data.jpg');
   });
 
@@ -97,19 +91,13 @@ describe('articleForm reducer', () => {
   });
 
   it('should handle submitFailure', () => {
-    const actual = articleFormReducer(
-      submittingLoadingState,
-      submitFailure(formError),
-    );
+    const actual = articleFormReducer(submittingLoadingState, submitFailure(formError));
     expect(actual.submittingState).toEqual('error');
     expect(actual.formError).toEqual(formError);
   });
 
   it('should handle submitSuccess', () => {
-    const actual = articleFormReducer(
-      submittingLoadingState,
-      submitSuccess(100),
-    );
+    const actual = articleFormReducer(submittingLoadingState, submitSuccess(100));
     expect(actual.submittingState).toEqual('success');
     expect(actual.postId).toEqual(100);
   });
@@ -158,10 +146,7 @@ describe('articleForm reducer', () => {
   });
 
   it('should handle updateIsEditting', () => {
-    const actual = articleFormReducer(
-      fetchingLoadingState,
-      updateIsEditting(true),
-    );
+    const actual = articleFormReducer(fetchingLoadingState, updateIsEditting(true));
     expect(actual.isEditting).toEqual(true);
   });
 
@@ -180,18 +165,12 @@ describe('articleForm reducer', () => {
   });
 
   it('should handle updateIsFormChangedFromLastSaved', () => {
-    const actual = articleFormReducer(
-      initialState,
-      updateIsFormChangedFromLastSaved(),
-    );
+    const actual = articleFormReducer(initialState, updateIsFormChangedFromLastSaved());
     expect(actual.isFormChangedFromLastSaved).toBeFalsy;
   });
 
   it('should handle updateAreaNames', () => {
-    const actual = articleFormReducer(
-      initialState,
-      updateAreaNames(['xxx', 'yyy']),
-    );
+    const actual = articleFormReducer(initialState, updateAreaNames(['xxx', 'yyy']));
     expect(actual.areaNames).toEqual(['xxx', 'yyy']);
   });
 });

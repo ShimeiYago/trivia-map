@@ -96,8 +96,7 @@ export class Renderer extends React.Component<Props> {
 
     const newMode = !postId;
 
-    const disabled =
-      submittingState === 'loading' || fetchingState === 'loading';
+    const disabled = submittingState === 'loading' || fetchingState === 'loading';
 
     const miniMapFieldStatus = !!formError?.fieldErrors?.position
       ? 'error'
@@ -112,12 +111,7 @@ export class Renderer extends React.Component<Props> {
         {this.renderHeader()}
         <Container maxWidth="sm" sx={formContainer}>
           <Stack spacing={3}>
-            <Typography
-              component="h2"
-              align="center"
-              variant="h4"
-              ref={this.headerRef}
-            >
+            <Typography component="h2" align="center" variant="h4" ref={this.headerRef}>
               {newMode ? '新しいトリビアを追加' : 'トリビアを編集'}
             </Typography>
 
@@ -189,12 +183,7 @@ export class Renderer extends React.Component<Props> {
                 <Box sx={miniMapLayer}></Box>
                 <Box sx={miniMapAreaTextBox}>
                   {!disabled && areaNames && (
-                    <Typography
-                      color="white"
-                      component="div"
-                      fontSize="14"
-                      variant="inherit"
-                    >
+                    <Typography color="white" component="div" fontSize="14" variant="inherit">
                       <AreaNames areaNames={areaNames} variant="inherit" />
                     </Typography>
                   )}
@@ -253,16 +242,12 @@ export class Renderer extends React.Component<Props> {
 
   protected renderCategorySelectField = (disabled: boolean) => {
     const menuItems = CATEGORIES.map((category) => (
-      <MenuItem
-        key={`category-${category.categoryId}`}
-        value={category.categoryId.toString()}
-      >
+      <MenuItem key={`category-${category.categoryId}`} value={category.categoryId.toString()}>
         {category.categoryName}
       </MenuItem>
     ));
 
-    const categoryValue =
-      this.props.category === undefined ? '' : this.props.category.toString();
+    const categoryValue = this.props.category === undefined ? '' : this.props.category.toString();
 
     return (
       <FormControl fullWidth>
@@ -282,9 +267,8 @@ export class Renderer extends React.Component<Props> {
   protected handleChangeTitle = (e: React.ChangeEvent<HTMLInputElement>) =>
     this.props.updateFormField({ title: e.target.value });
 
-  protected handleChangeDescription = (
-    e: React.ChangeEvent<HTMLInputElement>,
-  ) => this.props.updateFormField({ description: e.target.value });
+  protected handleChangeDescription = (e: React.ChangeEvent<HTMLInputElement>) =>
+    this.props.updateFormField({ description: e.target.value });
 
   protected handleChangeIsDraft = (e: React.ChangeEvent<HTMLInputElement>) =>
     this.props.updateFormField({ isDraft: e.target.checked });

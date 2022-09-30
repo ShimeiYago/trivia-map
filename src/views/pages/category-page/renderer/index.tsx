@@ -8,9 +8,7 @@ import { categoryMapper } from 'utils/category-mapper';
 
 export class Renderer extends React.Component<Props> {
   render() {
-    return (
-      <ArticleWrapper showSidebar>{this.renderMainContent()}</ArticleWrapper>
-    );
+    return <ArticleWrapper showSidebar>{this.renderMainContent()}</ArticleWrapper>;
   }
 
   protected renderMainContent = () => {

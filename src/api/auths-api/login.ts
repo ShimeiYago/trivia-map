@@ -5,10 +5,7 @@ import { getAxiosInstance } from 'api/utils/get-axios-instance';
 import { mockLoginResponse } from 'api/mock/auths-response/login';
 import { User } from 'types/user';
 
-export async function login(
-  email: string,
-  password: string,
-): Promise<LoginResponse> {
+export async function login(email: string, password: string): Promise<LoginResponse> {
   const axiosInstance = getAxiosInstance({}, mockLoginResponse);
 
   const requestData: LoginRequest = {

@@ -11,8 +11,7 @@ import {
 } from 'leaflet';
 
 export const CustomMarker = React.forwardRef((props: Props, ref) => {
-  const { position, icon, draggable, eventHandlers, popup, autoOpen, map } =
-    props;
+  const { position, icon, draggable, eventHandlers, popup, autoOpen, map } = props;
 
   const [refReady, setRefReady] = useState(false);
   let popupRef = useRef();

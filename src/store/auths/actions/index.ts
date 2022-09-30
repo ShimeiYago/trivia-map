@@ -21,10 +21,7 @@ export const {
 
 // autoLogin action
 export const autoLogin = (): AppThunk => async (dispatch, getState) => {
-  if (
-    selectUser(getState()) ||
-    selectAutoLoggingInState(getState()) === 'loading'
-  ) {
+  if (selectUser(getState()) || selectAutoLoggingInState(getState()) === 'loading') {
     return;
   }
 

@@ -8,9 +8,10 @@ let wrapper: ShallowWrapper<Props, State, Renderer>;
 let getMyArticlesSpy: jest.SpyInstance;
 let deleteArticleSpy: jest.SpyInstance;
 
-const basicProps = {
+const basicProps: Props = {
   throwError: jest.fn(),
   isMobile: false,
+  fetchMarkers: jest.fn(),
 };
 
 describe('Shallow Snapshot Tests', () => {

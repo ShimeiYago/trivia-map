@@ -1,14 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Shallow Snapshot Tests articlesPreviews is zero 1`] = `
-<ForwardRef(Typography)
-  align="center"
->
-  まだ記事が投稿されていません。
-</ForwardRef(Typography)>
+<Fragment>
+  <ForwardRef(Typography)
+    align="center"
+  >
+    まだ記事が投稿されていません。
+  </ForwardRef(Typography)>
+</Fragment>
 `;
 
-exports[`Shallow Snapshot Tests basic 1`] = `<CenterSpinner />`;
+exports[`Shallow Snapshot Tests basic 1`] = `
+<Fragment>
+  <CenterSpinner />
+</Fragment>
+`;
 
 exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
 <Fragment>
@@ -500,12 +506,13 @@ exports[`Shallow Snapshot Tests with dialog 1`] = `
       >
         削除しない
       </ForwardRef(Button)>
-      <ForwardRef(Button)
+      <ForwardRef(LoadingButton)
         autoFocus={true}
+        loading={false}
         onClick={[Function]}
       >
         削除する
-      </ForwardRef(Button)>
+      </ForwardRef(LoadingButton)>
     </ForwardRef(DialogActions)>
   </ForwardRef(Dialog)>
 </Fragment>

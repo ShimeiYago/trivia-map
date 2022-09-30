@@ -43,7 +43,6 @@ export class Renderer extends React.Component<Props, State> {
       openDialogToConfirmDeleting: false,
       openDoubleEditAlartDialog: false,
       edittingPostId: props.postIdToEdit,
-      park: 'S',
     };
   }
 
@@ -75,8 +74,8 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   render() {
-    const { openFormModal, edittingPostId, park, selectedCategoryId } = this.state;
-    const { isFormEditting, isMobile } = this.props;
+    const { openFormModal, edittingPostId } = this.state;
+    const { isFormEditting, isMobile, park, filteringCategoryId } = this.props;
     return (
       <HeadAppender title={SITE_NAME}>
         <Box sx={wrapper(openFormModal && !isMobile)}>
@@ -88,7 +87,7 @@ export class Renderer extends React.Component<Props, State> {
                 hiddenMarkerIds={edittingPostId ? [edittingPostId] : []}
                 shouldCurrentPositionAsyncWithForm
                 park={park}
-                categoryId={selectedCategoryId}
+                categoryId={filteringCategoryId}
               />
 
               {!isFormEditting && (
@@ -114,8 +113,8 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   protected renderParkSelectBox = () => {
-    const { isMobile } = this.props;
-    const { park, openFormModal } = this.state;
+    const { isMobile, park } = this.props;
+    const { openFormModal } = this.state;
 
     return (
       <Box sx={parkSelectBox(!isMobile && openFormModal, isMobile, park)}>
@@ -134,12 +133,12 @@ export class Renderer extends React.Component<Props, State> {
   };
 
   protected renderCategoryButtons = () => {
-    const { isMobile } = this.props;
+    const { isMobile, filteringCategoryId } = this.props;
 
     const buttons = CATEGORIES.map((category, index) => (
       <RoundButton
         key={`category-button-${index}`}
-        selected={this.state.selectedCategoryId === category.categoryId}
+        selected={filteringCategoryId === category.categoryId}
         onClick={this.handleClickCategoryButton(category.categoryId)}
       >
         {category.categoryName}
@@ -164,15 +163,13 @@ export class Renderer extends React.Component<Props, State> {
   };
 
   protected handleChangePark = (event: React.ChangeEvent<HTMLInputElement>) => {
-    this.setState({
-      park: event.target.checked ? 'S' : 'L',
-    });
+    this.props.updateFoocusingPark(event.target.checked ? 'S' : 'L');
   };
 
   protected handleClickCategoryButton = (categoryId: number) => () => {
-    this.setState({
-      selectedCategoryId: this.state.selectedCategoryId === categoryId ? undefined : categoryId,
-    });
+    this.props.updateFilteringCategoryId(
+      this.props.filteringCategoryId === categoryId ? undefined : categoryId,
+    );
   };
 
   protected handleClickAddButton = () =>
@@ -238,8 +235,8 @@ export class Renderer extends React.Component<Props, State> {
   };
 
   protected renderEditForm = () => {
-    const { edittingPostId, openFormModal, park } = this.state;
-    const { isFormEditting, isMobile } = this.props;
+    const { edittingPostId, openFormModal } = this.state;
+    const { isFormEditting, isMobile, park } = this.props;
 
     const closeButton = <CloseFormButton onClose={this.handleCloseFormModal} />;
 
@@ -302,10 +299,15 @@ export class Renderer extends React.Component<Props, State> {
 }
 
 export type Props = {
+  park: Park;
+  filteringCategoryId?: number;
   isFormEditting: boolean;
   isMobile: boolean;
   isFormChangedFromLastSaved: boolean;
   postIdToEdit?: number;
+
+  updateFoocusingPark: (park: Park) => void;
+  updateFilteringCategoryId: (categoryId?: number) => void;
 };
 
 export type State = {
@@ -315,6 +317,4 @@ export type State = {
   newMarkerMode: boolean;
   openDialogToConfirmDeleting: boolean;
   openDoubleEditAlartDialog: boolean;
-  park: Park;
-  selectedCategoryId?: number;
 };

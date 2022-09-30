@@ -51,10 +51,7 @@ const getState = () => ({
 describe('submitNewArticle', () => {
   beforeEach(async () => {
     jest.resetAllMocks();
-    postRemoteArticleSpy = jest.spyOn(
-      PostArticleApiModule,
-      'postRemoteArticle',
-    );
+    postRemoteArticleSpy = jest.spyOn(PostArticleApiModule, 'postRemoteArticle');
   });
 
   it('call submitStart at first', async () => {
@@ -281,9 +278,7 @@ describe('submitEdittedArticle', () => {
     const appThunk = submitEdittedArticle() as any;
     await appThunk(dispatch, getStateWithDraft, {});
 
-    expect(dispatch.mock.calls[dispatch.mock.calls.length - 1][0].type).toBe(
-      undefined,
-    );
+    expect(dispatch.mock.calls[dispatch.mock.calls.length - 1][0].type).toBe(undefined);
   });
 
   it('do not anything after initialize if previousMarkerId is undefined', async () => {
@@ -412,9 +407,7 @@ describe('updateFormField', () => {
     const appThunk = updateFormField(param) as any;
     await appThunk(dispatch);
 
-    expect(dispatch.mock.calls[0][0].type).toBe(
-      'articleForm/updateDescription',
-    );
+    expect(dispatch.mock.calls[0][0].type).toBe('articleForm/updateDescription');
   });
 
   it('should call updatePosition actions', async () => {

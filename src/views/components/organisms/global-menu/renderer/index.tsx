@@ -13,13 +13,7 @@ import {
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { leftNaviContents } from './left-navi-contents';
-import {
-  appBarStyle,
-  contentStyle,
-  leftNaviBox,
-  localNavi,
-  logoImageBox,
-} from '../styles';
+import { appBarStyle, contentStyle, leftNaviBox, localNavi, logoImageBox } from '../styles';
 import { User } from 'types/user';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
@@ -133,14 +127,8 @@ export class Renderer extends React.Component<Props, State> {
           {this.props.children}
         </Box>
 
-        <BoxModal
-          open={this.props.openAuthFormModal}
-          onClose={this.toggleAuthModal(false)}
-        >
-          <AuthForms
-            initialMode={'login'}
-            onLoginSucceed={this.handleLoginSucceed}
-          />
+        <BoxModal open={this.props.openAuthFormModal} onClose={this.toggleAuthModal(false)}>
+          <AuthForms initialMode={'login'} onLoginSucceed={this.handleLoginSucceed} />
         </BoxModal>
       </>
     );
@@ -167,10 +155,7 @@ export class Renderer extends React.Component<Props, State> {
 
     return (
       <Box>
-        <Box
-          onClick={this.handleClickAuthMenu}
-          sx={{ cursor: 'pointer', py: 2 }}
-        >
+        <Box onClick={this.handleClickAuthMenu} sx={{ cursor: 'pointer', py: 2 }}>
           <IconAndText
             iconComponent={<AccountCircleIcon />}
             text={nickname}

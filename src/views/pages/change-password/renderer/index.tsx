@@ -97,8 +97,7 @@ export class Renderer extends React.Component<unknown, State> {
   }
 
   protected handleChangeTextField =
-    (fieldType: 'password1' | 'password2') =>
-    (e: React.ChangeEvent<HTMLInputElement>) => {
+    (fieldType: 'password1' | 'password2') => (e: React.ChangeEvent<HTMLInputElement>) => {
       switch (fieldType) {
         case 'password1':
           this.setState({

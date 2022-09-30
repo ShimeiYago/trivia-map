@@ -5,9 +5,7 @@ import { selectLoggedOutSuccessfully } from 'store/auths/selector';
 
 export function GlobalMessage(ownProps: OwnProps) {
   const props: Props = {
-    articleFormSubmittingState: useAppSelector(
-      selectArticleFormSubmittingState,
-    ),
+    articleFormSubmittingState: useAppSelector(selectArticleFormSubmittingState),
     markersDeletingState: 'waiting', // TODO
     loggedOutSuccessfully: useAppSelector(selectLoggedOutSuccessfully),
 

@@ -3,10 +3,7 @@ import { AxiosError } from 'axios';
 import { handleAxiosError } from '../utils/handle-axios-error';
 import { getAxiosInstance } from 'api/utils/get-axios-instance';
 
-export async function changePassword(
-  password1: string,
-  password2: string,
-): Promise<void> {
+export async function changePassword(password1: string, password2: string): Promise<void> {
   const axiosInstance = getAxiosInstance({}, {});
 
   const requestData: ChangePasswordRequest = {

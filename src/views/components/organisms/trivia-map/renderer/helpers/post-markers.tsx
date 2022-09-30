@@ -17,13 +17,10 @@ export class PostMarkers extends React.Component<Props> {
         return null;
       }
 
-      const popup =
-        !popupDisabled && this.renderPopupContents(marker.markerId, marker);
+      const popup = !popupDisabled && this.renderPopupContents(marker.markerId, marker);
 
       const numberOfContents =
-        marker.numberOfPublicArticles > 1
-          ? marker.numberOfPublicArticles
-          : undefined;
+        marker.numberOfPublicArticles > 1 ? marker.numberOfPublicArticles : undefined;
 
       return (
         <MapMarker
@@ -42,10 +39,7 @@ export class PostMarkers extends React.Component<Props> {
   protected renderPopupContents = (markerId: number, position: Position) => {
     return (
       <Box className={styles['popup-content']}>
-        <ArticlePreviewList
-          searchConditions={{ marker: markerId }}
-          variant="popup"
-        />
+        <ArticlePreviewList searchConditions={{ marker: markerId }} variant="popup" />
         {this.renderAddButton(position)}
       </Box>
     );
@@ -54,13 +48,8 @@ export class PostMarkers extends React.Component<Props> {
   protected renderAddButton = (position: Position) => {
     return (
       <Box sx={{ textAlign: 'right', mt: 2 }}>
-        <Button
-          onClick={this.handleClickAdd(position)}
-          startIcon={<AddLocationAltIcon />}
-        >
-          {this.props.editting
-            ? 'ここにマーカーを置く'
-            : 'ここに投稿を追加する'}
+        <Button onClick={this.handleClickAdd(position)} startIcon={<AddLocationAltIcon />}>
+          {this.props.editting ? 'ここにマーカーを置く' : 'ここに投稿を追加する'}
         </Button>
       </Box>
     );

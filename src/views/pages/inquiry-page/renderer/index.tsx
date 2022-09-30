@@ -56,9 +56,7 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   protected renderForm = () => {
-    const disabled =
-      this.state.loadingState === 'loading' ||
-      this.state.loadingState === 'success';
+    const disabled = this.state.loadingState === 'loading' || this.state.loadingState === 'success';
 
     return (
       <Stack spacing={2}>
@@ -95,9 +93,7 @@ export class Renderer extends React.Component<Props, State> {
         <FormControl fullWidth>
           <InputLabel>カテゴリー</InputLabel>
           <Select
-            value={
-              this.state.tagIndex === null ? '' : this.state.tagIndex.toString()
-            }
+            value={this.state.tagIndex === null ? '' : this.state.tagIndex.toString()}
             label="カテゴリー"
             onChange={this.handleChangeCategory}
             disabled={disabled}
@@ -153,20 +149,14 @@ export class Renderer extends React.Component<Props, State> {
 
     if (errorTitle) {
       window.scroll({ top: 0 });
-      return (
-        <HeaderErrorMessages
-          errorTitle={errorTitle}
-          errorMessages={errorMessages}
-        />
-      );
+      return <HeaderErrorMessages errorTitle={errorTitle} errorMessages={errorMessages} />;
     }
 
     return null;
   }
 
   protected handleChangeTextField =
-    (fieldType: 'name' | 'email' | 'message') =>
-    (e: React.ChangeEvent<HTMLInputElement>) => {
+    (fieldType: 'name' | 'email' | 'message') => (e: React.ChangeEvent<HTMLInputElement>) => {
       switch (fieldType) {
         case 'name':
           this.setState({

@@ -5,9 +5,7 @@ import { getAxiosInstance } from 'api/utils/get-axios-instance';
 import { mockGetArticlesPreviewsResponse } from '../mock/articles-response';
 import { PaginationResponse } from 'api/types/pagination-response';
 
-export async function getMyArticles(
-  page?: number,
-): Promise<GetMyArticlesResponse> {
+export async function getMyArticles(page?: number): Promise<GetMyArticlesResponse> {
   const axiosInstance = getAxiosInstance({}, mockGetArticlesPreviewsResponse);
 
   let url = `${BASE_URL}/articles/previews/mine`;
@@ -18,9 +16,7 @@ export async function getMyArticles(
 
   try {
     // TODO: Set reasonable timeout
-    const res: AxiosResponse<GetMyArticlesResponse> = await axiosInstance.get(
-      url,
-    );
+    const res: AxiosResponse<GetMyArticlesResponse> = await axiosInstance.get(url);
     return res.data;
   } catch (error) {
     const axiosError = error as AxiosError;
@@ -35,5 +31,4 @@ export type GetMyArticlesResponseEachItem = {
   isDraft: boolean;
 };
 
-export type GetMyArticlesResponse =
-  PaginationResponse<GetMyArticlesResponseEachItem>;
+export type GetMyArticlesResponse = PaginationResponse<GetMyArticlesResponseEachItem>;

@@ -64,11 +64,7 @@ export class Renderer extends React.Component<Props, State> {
 
   render() {
     return (
-      <Snackbar
-        open={this.state.show}
-        autoHideDuration={6000}
-        onClose={this.handleCloseMessage}
-      >
+      <Snackbar open={this.state.show} autoHideDuration={6000} onClose={this.handleCloseMessage}>
         <Alert
           onClose={this.handleCloseMessage}
           severity={this.state.type}

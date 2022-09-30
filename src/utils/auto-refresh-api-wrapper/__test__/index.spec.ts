@@ -19,9 +19,7 @@ describe('autoRefreshApiWrapper', () => {
       status: 500,
     };
 
-    expect(
-      autoRefreshApiWrapper<unknown>(() => Promise.reject(myError)),
-    ).rejects.toEqual(myError);
+    expect(autoRefreshApiWrapper<unknown>(() => Promise.reject(myError))).rejects.toEqual(myError);
   });
 
   it('call refreshToken if api throw 401 error', async () => {
@@ -31,9 +29,7 @@ describe('autoRefreshApiWrapper', () => {
       status: 401,
     };
 
-    expect(
-      autoRefreshApiWrapper<unknown>(() => Promise.reject(myError)),
-    ).rejects.toEqual(myError);
+    expect(autoRefreshApiWrapper<unknown>(() => Promise.reject(myError))).rejects.toEqual(myError);
   });
 
   it('call refreshToken if api throw 401 error', async () => {
@@ -43,9 +39,7 @@ describe('autoRefreshApiWrapper', () => {
       status: 401,
     };
 
-    expect(
-      autoRefreshApiWrapper<unknown>(() => Promise.reject(myError)),
-    ).rejects.toEqual(myError);
+    expect(autoRefreshApiWrapper<unknown>(() => Promise.reject(myError))).rejects.toEqual(myError);
   });
 
   it('throw api error if main api throw 401 error and refreshToken fail', async () => {
@@ -55,8 +49,6 @@ describe('autoRefreshApiWrapper', () => {
       status: 401,
     };
 
-    expect(
-      autoRefreshApiWrapper<unknown>(() => Promise.reject(myError)),
-    ).rejects.toEqual(myError);
+    expect(autoRefreshApiWrapper<unknown>(() => Promise.reject(myError))).rejects.toEqual(myError);
   });
 });

@@ -58,18 +58,9 @@ ReactDOM.render(
         <BrowserRouter>
           <Routes>
             <Route index element={errorHandledElement(<MapPage />)} />
-            <Route
-              path={EDIT_LINK(':postId')}
-              element={errorHandledElement(<MapPage />)}
-            />
-            <Route
-              path={ARTICLE_PAGE_LINK(':postId')}
-              element={errorHandledElement(<Article />)}
-            />
-            <Route
-              path={ARTICLE_LIST_PAGE_LINK}
-              element={errorHandledElement(<ArticleList />)}
-            />
+            <Route path={EDIT_LINK(':postId')} element={errorHandledElement(<MapPage />)} />
+            <Route path={ARTICLE_PAGE_LINK(':postId')} element={errorHandledElement(<Article />)} />
+            <Route path={ARTICLE_LIST_PAGE_LINK} element={errorHandledElement(<ArticleList />)} />
             <Route
               path={AUTHER_PAGE_LINK(':userId')}
               element={errorHandledElement(<AuthorPage />)}
@@ -81,22 +72,13 @@ ReactDOM.render(
 
             <Route path={LOGIN_LINK} element={errorHandledElement(<Login />)} />
             <Route path={ADMIN_LINK} element={errorHandledElement(<Admin />)} />
-            <Route
-              path={MY_ARTICLES_LINK}
-              element={errorHandledElement(<MyArticles />)}
-            />
+            <Route path={MY_ARTICLES_LINK} element={errorHandledElement(<MyArticles />)} />
             <Route
               path={ACCOUNT_SETTINGS_LINK}
               element={errorHandledElement(<AccountSettings />)}
             />
-            <Route
-              path={PROFILE_SETTINGS_LINK}
-              element={errorHandledElement(<ProfileEdit />)}
-            />
-            <Route
-              path={PASSWORD_CHANGE_LINK}
-              element={errorHandledElement(<ChangePassword />)}
-            />
+            <Route path={PROFILE_SETTINGS_LINK} element={errorHandledElement(<ProfileEdit />)} />
+            <Route path={PASSWORD_CHANGE_LINK} element={errorHandledElement(<ChangePassword />)} />
             <Route
               path={VERIFY_EMAIL_LINK(':verifyKey')}
               element={errorHandledElement(<VerifyEmail />)}
@@ -105,22 +87,13 @@ ReactDOM.render(
               path={RESET_PASSWORD_LINK(':uid', ':token')}
               element={errorHandledElement(<ResetPassword />)}
             />
-            <Route
-              path={NOT_FOUND_LINK}
-              element={<CommonErrorPage errorStatus={404} />}
-            />
-            <Route
-              path={INQUIRY_PAGE_LINK}
-              element={errorHandledElement(<InquiryPage />)}
-            />
+            <Route path={NOT_FOUND_LINK} element={<CommonErrorPage errorStatus={404} />} />
+            <Route path={INQUIRY_PAGE_LINK} element={errorHandledElement(<InquiryPage />)} />
             <Route
               path={PRIVACY_POLICY_PAGE_LINK}
               element={errorHandledElement(<PrivacyPolicyPage />)}
             />
-            <Route
-              path={INTERNAL_ERROR_LINK}
-              element={<CommonErrorPage errorStatus={500} />}
-            />
+            <Route path={INTERNAL_ERROR_LINK} element={<CommonErrorPage errorStatus={500} />} />
             <Route path="*" element={<CommonErrorPage errorStatus={404} />} />
           </Routes>
         </BrowserRouter>

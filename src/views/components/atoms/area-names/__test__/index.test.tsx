@@ -6,9 +6,7 @@ let wrapper: ShallowWrapper<Props>;
 describe('Shallow Snapshot Tests', () => {
   beforeEach(() => {
     wrapper = shallow(
-      <AreaNames
-        areaNames={['シー', 'メディテレーニアンハーバー', 'ポルトパラディーゾ']}
-      />,
+      <AreaNames areaNames={['シー', 'メディテレーニアンハーバー', 'ポルトパラディーゾ']} />,
     );
   });
 

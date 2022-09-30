@@ -28,8 +28,6 @@ describe('getRemoteMarkers', () => {
       data: {},
       errorMsg: 'Intentional API Error with mock',
     };
-    await expect(getRemoteMarkers({ park: 'L' })).rejects.toEqual(
-      expectedApiError,
-    );
+    await expect(getRemoteMarkers({ park: 'L' })).rejects.toEqual(expectedApiError);
   });
 });

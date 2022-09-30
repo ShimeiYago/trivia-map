@@ -3,8 +3,7 @@ import styles from './index.module.css';
 
 export class Image extends React.Component<Props> {
   render() {
-    const { src, alt, width, height, objectFit, borderRadius, onClick } =
-      this.props;
+    const { src, alt, width, height, objectFit, borderRadius, onClick } = this.props;
 
     const classNames: string[] = [styles.image];
 
@@ -13,14 +12,7 @@ export class Image extends React.Component<Props> {
     if (height) classNames.push(styles[`height-${height}`]);
     if (borderRadius) classNames.push(styles['border-radius']);
 
-    return (
-      <img
-        src={src}
-        className={classNames.join(' ')}
-        alt={alt}
-        onClick={onClick}
-      />
-    );
+    return <img src={src} className={classNames.join(' ')} alt={alt} onClick={onClick} />;
   }
 }
 

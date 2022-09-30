@@ -5,10 +5,7 @@ import { AdminWrapper } from 'views/components/organisms/admin-wrapper';
 import { LoadingButton } from '@mui/lab';
 import { LoadingState } from 'types/loading-state';
 import { HeaderErrorMessages } from 'views/components/moleculars/header-error-messages';
-import {
-  updateUserInfo,
-  ValidationError,
-} from 'api/auths-api/update-user-info';
+import { updateUserInfo, ValidationError } from 'api/auths-api/update-user-info';
 import { globalAPIErrorMessage } from 'constant/global-api-error-message';
 import { ApiError } from 'api/utils/handle-axios-error';
 import { autoRefreshApiWrapper } from 'utils/auto-refresh-api-wrapper';
@@ -142,12 +139,7 @@ export class Renderer extends React.Component<Props, State> {
     }
 
     if (errorTitle) {
-      return (
-        <HeaderErrorMessages
-          errorTitle={errorTitle}
-          errorMessages={errorMessages}
-        />
-      );
+      return <HeaderErrorMessages errorTitle={errorTitle} errorMessages={errorMessages} />;
     }
 
     return null;

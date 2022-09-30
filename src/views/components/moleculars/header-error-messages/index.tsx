@@ -17,9 +17,7 @@ export class HeaderErrorMessages extends React.Component<Props> {
             borderStyle: 'solid',
           }}
         >
-          <AlertTitle sx={{ color: red[500], fontWeight: 'bold' }}>
-            {errorTitle}
-          </AlertTitle>
+          <AlertTitle sx={{ color: red[500], fontWeight: 'bold' }}>{errorTitle}</AlertTitle>
           <ul className={styles['error-ul']}>
             {errorMessages.map((msg, index) => (
               <li key={`error-${index}`}>{msg}</li>

@@ -12,15 +12,10 @@ export class BoxField extends React.Component<Props> {
 
     return (
       <div>
-        <Box
-          sx={wrapper(status, disabled)}
-          onClick={disabled ? undefined : onClick}
-        >
+        <Box sx={wrapper(status, disabled)} onClick={disabled ? undefined : onClick}>
           {children}
         </Box>
-        {helperText && (
-          <Typography sx={helperTextStyle(status)}>{helperText}</Typography>
-        )}
+        {helperText && <Typography sx={helperTextStyle(status)}>{helperText}</Typography>}
       </div>
     );
   }

@@ -39,11 +39,7 @@ export class Renderer extends React.Component<Props> {
 
     return (
       <Box sx={wrapper}>
-        <GlobalMenu
-          topBarPosition="fixed"
-          permanentLeftNavi={!isMobile}
-          localBackNavi={localNavi}
-        >
+        <GlobalMenu topBarPosition="fixed" permanentLeftNavi={!isMobile} localBackNavi={localNavi}>
           <Box sx={contentWrapper(isMobile)}>
             <Grid container spacing={isMobile || !showSidebar ? 2 : 4}>
               <Grid item xs={isMobile || !showSidebar ? 12 : 8}>
@@ -51,9 +47,7 @@ export class Renderer extends React.Component<Props> {
               </Grid>
               {showSidebar && (
                 <Grid item xs={isMobile ? 12 : 4}>
-                  <ArticlePaper variant="side">
-                    {this.renderSideBar()}
-                  </ArticlePaper>
+                  <ArticlePaper variant="side">{this.renderSideBar()}</ArticlePaper>
                 </Grid>
               )}
             </Grid>
@@ -94,10 +88,7 @@ export class Renderer extends React.Component<Props> {
               columnGap={1}
             />
           </DesignedHead>
-          <ArticlePreviewList
-            variant="sidebar"
-            searchConditions={{ order: 'latest', limit: 5 }}
-          />
+          <ArticlePreviewList variant="sidebar" searchConditions={{ order: 'latest', limit: 5 }} />
         </Box>
 
         <Box>
@@ -111,10 +102,7 @@ export class Renderer extends React.Component<Props> {
               variant="h6"
             />
           </DesignedHead>
-          <ArticlePreviewList
-            variant="sidebar"
-            searchConditions={{ order: 'popular', limit: 5 }}
-          />
+          <ArticlePreviewList variant="sidebar" searchConditions={{ order: 'popular', limit: 5 }} />
         </Box>
       </Stack>
     );

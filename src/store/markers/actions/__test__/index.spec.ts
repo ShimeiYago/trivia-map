@@ -36,9 +36,7 @@ describe('fetchMarkers', () => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const appThunk = fetchMarkers('L') as any;
     await appThunk(dispatch);
-    expect(dispatch.mock.calls.slice(-1)[0][0].type).toBe(
-      'markers/fetchSuccess',
-    );
+    expect(dispatch.mock.calls.slice(-1)[0][0].type).toBe('markers/fetchSuccess');
   });
 
   it('call fetchFailure if API failed', async () => {
@@ -47,9 +45,7 @@ describe('fetchMarkers', () => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const appThunk = fetchMarkers('L') as any;
     await appThunk(dispatch, getState);
-    expect(dispatch.mock.calls.slice(-1)[0][0].type).toBe(
-      'globalError/throwError',
-    );
+    expect(dispatch.mock.calls.slice(-1)[0][0].type).toBe('globalError/throwError');
   });
 });
 

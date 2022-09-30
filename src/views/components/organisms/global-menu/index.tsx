@@ -1,11 +1,7 @@
 import { Props, Renderer } from './renderer';
 import { useAppSelector, useAppDispatch } from 'store';
 import { autoLogin, logout, toggleFormModal } from 'store/auths/actions';
-import {
-  selectLoggedOutSuccessfully,
-  selectOpenFormModal,
-  selectUser,
-} from 'store/auths/selector';
+import { selectLoggedOutSuccessfully, selectOpenFormModal, selectUser } from 'store/auths/selector';
 import { isMobile } from 'react-device-detect';
 
 export function GlobalMenu(ownProps: OwnProps) {

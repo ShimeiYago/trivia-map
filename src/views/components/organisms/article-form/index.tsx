@@ -46,15 +46,13 @@ export function ArticleForm(ownProps: OwnProps) {
     userInfo: useAppSelector(selectUser),
     park: ownProps.park,
 
-    updateFormField: (param: UpdateFormFieldParam) =>
-      dispatch(updateFormField(param)),
+    updateFormField: (param: UpdateFormFieldParam) => dispatch(updateFormField(param)),
     submitNewArticle: () => dispatch(submitNewArticle()),
     submitEdittedArticle: () => dispatch(submitEdittedArticle()),
     fetchArticle: (postId: number) => dispatch(fetchArticle(postId)),
     initialize: () => dispatch(initialize()),
     handleClickSelectPosition: ownProps.onClickSelectPosition,
-    updateIsEditting: (isEditting: boolean) =>
-      dispatch(updateIsEditting(isEditting)),
+    updateIsEditting: (isEditting: boolean) => dispatch(updateIsEditting(isEditting)),
     onClose: ownProps.onClose,
     toggleAuthFormModal: (open: boolean) => dispatch(toggleFormModal(open)),
     throwError: (errorStatus: number) => dispatch(throwError(errorStatus)),

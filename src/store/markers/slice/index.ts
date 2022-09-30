@@ -9,6 +9,8 @@ export const markersSlice = createSlice({
     fetchStart(state) {
       state.fetchingState = 'loading';
       state.markers = [];
+      state.loadedPages = 0;
+      state.totalPages = undefined;
     },
 
     fetchSuccess(state) {

@@ -1,5 +1,5 @@
 import { shallow, ShallowWrapper } from 'enzyme';
-import { ErrorBoundary, Props, State } from 'error-boundary';
+import { ErrorBoundary, Props, State } from 'helper-components/error-boundary';
 
 let wrapper: ShallowWrapper<Props, State, ErrorBoundary>;
 

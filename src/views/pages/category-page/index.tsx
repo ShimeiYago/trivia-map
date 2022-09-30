@@ -1,5 +1,5 @@
 import { Renderer } from './renderer';
-import usePageTracking from 'tracker';
+import usePageTracking from 'helper-components/tracker';
 import { useParams } from 'react-router-dom';
 import { throwError } from 'store/global-error/slice';
 import { useAppDispatch } from 'store';

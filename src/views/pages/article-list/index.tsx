@@ -1,6 +1,6 @@
 import { Renderer, Conditions } from './renderer';
 import { useLocation } from 'react-router-dom';
-import usePageTracking from 'tracker';
+import usePageTracking from 'helper-components/tracker';
 
 export function ArticleList() {
   const search = useLocation().search;

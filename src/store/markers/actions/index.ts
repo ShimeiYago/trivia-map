@@ -7,13 +7,20 @@ import { throwError } from 'store/global-error/slice';
 import { Park } from './../../../types/park';
 
 // basic actions
-export const { fetchSuccess, fetchStart, updateMarkers, updateTotalPages, updateLoadedPages } =
-  markersSlice.actions;
+export const {
+  fetchSuccess,
+  fetchStart,
+  updateMarkers,
+  updateTotalPages,
+  updateLoadedPages,
+  updateFocusingPark,
+} = markersSlice.actions;
 
 // fetchMarkers action
 export const fetchMarkers =
   (park: Park, category?: number): AppThunk =>
   async (dispatch) => {
+    dispatch(updateFocusingPark(park));
     dispatch(fetchStart());
 
     try {
@@ -53,6 +60,7 @@ export const fetchMarkers =
 export const appendMarkers =
   (newList: Marker[]): AppThunk =>
   (dispatch, getState) => {
-    const newMarkers = [...selectMarkers(getState()), ...newList];
+    const currentMarkers = selectMarkers(getState());
+    const newMarkers = [...currentMarkers, ...newList];
     dispatch(updateMarkers(newMarkers));
   };

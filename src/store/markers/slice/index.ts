@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { Park } from 'types/park';
 import { initialState, Marker } from '../model';
 
 export const markersSlice = createSlice({
@@ -24,6 +25,14 @@ export const markersSlice = createSlice({
 
     updateTotalPages(state, action: PayloadAction<number>) {
       state.totalPages = action.payload;
+    },
+
+    updateFocusingPark(state, action: PayloadAction<Park>) {
+      state.focusingPark = action.payload;
+    },
+
+    updateFilteringCategoryId(state, action: PayloadAction<number | undefined>) {
+      state.filteringCategoryId = action.payload;
     },
   },
 });

@@ -11,7 +11,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
   >
     <BackToNavi
       link="/admin/account"
-      text="アカウント設定"
+      text="アカウント管理"
     />
   </ForwardRef(Box)>
   <ForwardRef(Stack)
@@ -90,7 +90,7 @@ exports[`Shallow Snapshot Tests error case 1`] = `
   >
     <BackToNavi
       link="/admin/account"
-      text="アカウント設定"
+      text="アカウント管理"
     />
   </ForwardRef(Box)>
   <ForwardRef(Stack)
@@ -184,7 +184,7 @@ exports[`Shallow Snapshot Tests success case 1`] = `
   >
     <BackToNavi
       link="/admin/account"
-      text="アカウント設定"
+      text="アカウント管理"
     />
   </ForwardRef(Box)>
   <ForwardRef(Stack)

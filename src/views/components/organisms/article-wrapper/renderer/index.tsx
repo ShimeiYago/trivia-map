@@ -21,7 +21,7 @@ import { DesignedHead } from 'views/components/atoms/designed-head';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import FolderIcon from '@mui/icons-material/Folder';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
-import { CATEGORIES } from 'constant';
+import { CATEGORIES, SITE_NAME } from 'constant';
 import { NonStyleLink } from 'views/components/atoms/non-style-link';
 
 export class Renderer extends React.Component<Props> {
@@ -33,7 +33,7 @@ export class Renderer extends React.Component<Props> {
     const { isMobile, children, showSidebar } = this.props;
 
     const localNavi = {
-      text: 'マップへ',
+      text: SITE_NAME,
       link: MAP_PAGE_LINK,
     };
 

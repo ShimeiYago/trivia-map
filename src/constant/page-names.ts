@@ -1,0 +1,15 @@
+export const PAGE_NAMES = {
+  top: 'トリビアマップ',
+  login: 'ログイン',
+  admin: 'マイページ',
+  myArticles: 'マイ投稿一覧',
+  accountSettings: 'アカウント管理',
+  profileEdit: 'プロフィール変更',
+  passwordChange: 'パスワード変更',
+  articles: '投稿一覧＆検索',
+  passwordInitialize: 'パスワード初期化',
+  notFound: 'Page not found',
+  internalError: 'Internal server error',
+  inquiry: 'お問い合わせ',
+  policy: 'プライバシーポリシー',
+};

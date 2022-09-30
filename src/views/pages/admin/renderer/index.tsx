@@ -8,6 +8,8 @@ import { ACCOUNT_SETTINGS_LINK, MAP_PAGE_LINK, MY_ARTICLES_LINK } from 'constant
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import ListAltIcon from '@mui/icons-material/ListAlt';
 import { LinkList } from 'views/components/moleculars/link-list';
+import { PAGE_NAMES } from 'constant/page-names';
+import { SITE_NAME } from 'constant';
 
 export class Renderer extends React.Component<Props> {
   render() {
@@ -22,19 +24,19 @@ export class Renderer extends React.Component<Props> {
     const listItems = [
       {
         icon: <ListAltIcon />,
-        text: '投稿一覧',
+        text: PAGE_NAMES.articles,
         link: MY_ARTICLES_LINK,
       },
       {
         icon: <ManageAccountsIcon />,
-        text: 'アカウント設定',
+        text: PAGE_NAMES.accountSettings,
         link: ACCOUNT_SETTINGS_LINK,
       },
     ];
 
     return (
       <Stack spacing={3}>
-        <BackToNavi text="マップへ" link={MAP_PAGE_LINK} />
+        <BackToNavi text={SITE_NAME} link={MAP_PAGE_LINK} />
 
         <Typography align="center">ようこそ {user?.nickname}さん</Typography>
         <Stack direction="row">

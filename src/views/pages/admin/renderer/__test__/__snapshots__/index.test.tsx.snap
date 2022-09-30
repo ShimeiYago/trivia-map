@@ -7,7 +7,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
   >
     <BackToNavi
       link="/"
-      text="マップへ"
+      text="トリビアマップ"
     />
     <ForwardRef(Typography)
       align="center"
@@ -36,12 +36,12 @@ exports[`Shallow Snapshot Tests basic 1`] = `
           Object {
             "icon": <Memo />,
             "link": "/admin/articles",
-            "text": "投稿一覧",
+            "text": "投稿一覧＆検索",
           },
           Object {
             "icon": <Memo />,
             "link": "/admin/account",
-            "text": "アカウント設定",
+            "text": "アカウント管理",
           },
         ]
       }
@@ -57,7 +57,7 @@ exports[`Shallow Snapshot Tests no icon 1`] = `
   >
     <BackToNavi
       link="/"
-      text="マップへ"
+      text="トリビアマップ"
     />
     <ForwardRef(Typography)
       align="center"
@@ -86,12 +86,12 @@ exports[`Shallow Snapshot Tests no icon 1`] = `
           Object {
             "icon": <Memo />,
             "link": "/admin/articles",
-            "text": "投稿一覧",
+            "text": "投稿一覧＆検索",
           },
           Object {
             "icon": <Memo />,
             "link": "/admin/account",
-            "text": "アカウント設定",
+            "text": "アカウント管理",
           },
         ]
       }

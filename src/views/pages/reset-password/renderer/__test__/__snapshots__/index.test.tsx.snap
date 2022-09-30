@@ -18,7 +18,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       component="h1"
       variant="h5"
     >
-      パスワード再設定
+      パスワード初期化
     </ForwardRef(Typography)>
     <ForwardRef(Box)
       component="form"
@@ -88,7 +88,7 @@ exports[`Shallow Snapshot Tests error case 1`] = `
       component="h1"
       variant="h5"
     >
-      パスワード再設定
+      パスワード初期化
     </ForwardRef(Typography)>
     <ForwardRef(Box)>
       <HeaderErrorMessages
@@ -179,7 +179,7 @@ exports[`Shallow Snapshot Tests success case 1`] = `
       component="h1"
       variant="h5"
     >
-      パスワード再設定
+      パスワード初期化
     </ForwardRef(Typography)>
     <ForwardRef(Alert)>
       パスワードが設定されました。

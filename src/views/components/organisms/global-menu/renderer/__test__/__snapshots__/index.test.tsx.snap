@@ -150,7 +150,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
               <Memo(ForwardRef(MapIcon)) />
             </ForwardRef(ListItemIcon)>
             <ForwardRef(ListItemText)
-              primary="マップ"
+              primary="トリビアマップ"
             />
           </ForwardRef(ListItem)>
         </NonStyleLink>
@@ -397,7 +397,7 @@ exports[`Shallow Snapshot Tests map page 1`] = `
               <Memo(ForwardRef(MapIcon)) />
             </ForwardRef(ListItemIcon)>
             <ForwardRef(ListItemText)
-              primary="マップ"
+              primary="トリビアマップ"
             />
           </ForwardRef(ListItem)>
         </NonStyleLink>
@@ -630,7 +630,7 @@ exports[`Shallow Snapshot Tests permanent left navi 1`] = `
               <Memo(ForwardRef(MapIcon)) />
             </ForwardRef(ListItemIcon)>
             <ForwardRef(ListItemText)
-              primary="マップ"
+              primary="トリビアマップ"
             />
           </ForwardRef(ListItem)>
         </NonStyleLink>
@@ -877,7 +877,7 @@ exports[`Shallow Snapshot Tests redirect to top page 1`] = `
               <Memo(ForwardRef(MapIcon)) />
             </ForwardRef(ListItemIcon)>
             <ForwardRef(ListItemText)
-              primary="マップ"
+              primary="トリビアマップ"
             />
           </ForwardRef(ListItem)>
         </NonStyleLink>
@@ -1124,7 +1124,7 @@ exports[`Shallow Snapshot Tests static position 1`] = `
               <Memo(ForwardRef(MapIcon)) />
             </ForwardRef(ListItemIcon)>
             <ForwardRef(ListItemText)
-              primary="マップ"
+              primary="トリビアマップ"
             />
           </ForwardRef(ListItem)>
         </NonStyleLink>
@@ -1371,7 +1371,7 @@ exports[`Shallow Snapshot Tests with local navi & mobile 1`] = `
               <Memo(ForwardRef(MapIcon)) />
             </ForwardRef(ListItemIcon)>
             <ForwardRef(ListItemText)
-              primary="マップ"
+              primary="トリビアマップ"
             />
           </ForwardRef(ListItem)>
         </NonStyleLink>
@@ -1639,7 +1639,7 @@ exports[`Shallow Snapshot Tests with local navi 1`] = `
               <Memo(ForwardRef(MapIcon)) />
             </ForwardRef(ListItemIcon)>
             <ForwardRef(ListItemText)
-              primary="マップ"
+              primary="トリビアマップ"
             />
           </ForwardRef(ListItem)>
         </NonStyleLink>
@@ -1865,7 +1865,7 @@ exports[`Shallow Snapshot Tests with userInfo 1`] = `
                   align="left"
                   iconComponent={<Memo />}
                   iconPosition="left"
-                  text="投稿一覧"
+                  text="マイ投稿一覧"
                 />
               </Link>
               <Link
@@ -1876,7 +1876,7 @@ exports[`Shallow Snapshot Tests with userInfo 1`] = `
                   align="left"
                   iconComponent={<Memo />}
                   iconPosition="left"
-                  text="アカウント設定"
+                  text="アカウント管理"
                 />
               </Link>
               <ForwardRef(Button)
@@ -1915,7 +1915,7 @@ exports[`Shallow Snapshot Tests with userInfo 1`] = `
               <Memo(ForwardRef(MapIcon)) />
             </ForwardRef(ListItemIcon)>
             <ForwardRef(ListItemText)
-              primary="マップ"
+              primary="トリビアマップ"
             />
           </ForwardRef(ListItem)>
         </NonStyleLink>
@@ -1963,7 +1963,7 @@ exports[`Shallow Snapshot Tests with userInfo 1`] = `
               <Memo(ForwardRef(ListAltIcon)) />
             </ForwardRef(ListItemIcon)>
             <ForwardRef(ListItemText)
-              primary="マイ投稿一覧＆管理"
+              primary="マイ投稿一覧"
             />
           </ForwardRef(ListItem)>
         </NonStyleLink>
@@ -1978,7 +1978,7 @@ exports[`Shallow Snapshot Tests with userInfo 1`] = `
               <Memo(ForwardRef(ManageAccountsIcon)) />
             </ForwardRef(ListItemIcon)>
             <ForwardRef(ListItemText)
-              primary="アカウント設定"
+              primary="アカウント管理"
             />
           </ForwardRef(ListItem)>
         </NonStyleLink>

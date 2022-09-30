@@ -206,7 +206,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
         />
       }
       iconPosition="left"
-      text="投稿一覧"
+      text="投稿一覧＆検索"
       variant="inherit"
     />
   </ForwardRef(Typography)>
@@ -467,7 +467,7 @@ exports[`Shallow Snapshot Tests with form conditions 1`] = `
         />
       }
       iconPosition="left"
-      text="投稿一覧"
+      text="投稿一覧＆検索"
       variant="inherit"
     />
   </ForwardRef(Typography)>

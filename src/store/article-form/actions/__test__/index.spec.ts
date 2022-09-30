@@ -1,11 +1,5 @@
 import { ApiError } from 'api/utils/handle-axios-error';
-import {
-  submitNewArticle,
-  submitEdittedArticle,
-  fetchArticle,
-  updateFormField,
-  getAndUpdateAreaNames,
-} from '..';
+import { submitArticle, fetchArticle, updateFormField, getAndUpdateAreaNames } from '..';
 import * as GetArticleApiModule from 'api/articles-api/get-remote-article';
 import * as PostArticleApiModule from 'api/articles-api/post-remote-article';
 import * as PutArticleApiModule from 'api/articles-api/put-remote-article';
@@ -34,7 +28,6 @@ const mockPostPutResponse = {
 
 const getState = () => ({
   articleForm: {
-    postId: 100,
     title: 'title',
     description: 'description',
     position: {
@@ -48,30 +41,81 @@ const getState = () => ({
   },
 });
 
-describe('submitNewArticle', () => {
-  beforeEach(async () => {
-    jest.resetAllMocks();
+describe('submitArticle', () => {
+  beforeEach(() => {
     postRemoteArticleSpy = jest.spyOn(PostArticleApiModule, 'postRemoteArticle');
+    putRemoteArticleSpy = jest.spyOn(PutArticleApiModule, 'putRemoteArticle');
+  });
+
+  afterEach(() => {
+    jest.resetAllMocks();
   });
 
   it('call submitStart at first', async () => {
     postRemoteArticleSpy.mockResolvedValue(mockPostPutResponse);
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const appThunk = submitNewArticle() as any;
+    const appThunk = submitArticle() as any;
     await appThunk(dispatch, getState, {});
 
     expect(dispatch.mock.calls[0][0].type).toBe('articleForm/submitStart');
   });
 
-  it('call submitSuccess if API successed', async () => {
+  it('call submitSuccess if post API successed', async () => {
     postRemoteArticleSpy.mockResolvedValue(mockPostPutResponse);
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const appThunk = submitNewArticle() as any;
+    const appThunk = submitArticle() as any;
     await appThunk(dispatch, getState, {});
 
     expect(dispatch.mock.calls[1][0].type).toBe('articleForm/submitSuccess');
+  });
+
+  it('call put API if postId is provided', async () => {
+    putRemoteArticleSpy.mockResolvedValue(mockPostPutResponse);
+
+    const getStateWithPostId = () => ({
+      articleForm: {
+        ...getState().articleForm,
+        postId: 1,
+      },
+    });
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const appThunk = submitArticle() as any;
+    await appThunk(dispatch, getStateWithPostId, {});
+
+    expect(putRemoteArticleSpy).toBeCalled();
+  });
+
+  it('call put API without image if image type is string', async () => {
+    putRemoteArticleSpy.mockResolvedValue(mockPostPutResponse);
+
+    const getStateWithStringImage = () => ({
+      articleForm: {
+        ...getState().articleForm,
+        postId: 1,
+        image: 'xxx.jpg',
+      },
+    });
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const appThunk = submitArticle() as any;
+    await appThunk(dispatch, getStateWithStringImage, {});
+
+    expect(putRemoteArticleSpy).toBeCalledWith({
+      category: undefined,
+      description: 'description',
+      image: undefined,
+      isDraft: false,
+      marker: {
+        lat: 0,
+        lng: 0,
+        park: 'S',
+      },
+      postId: 1,
+      title: 'title',
+    });
   });
 
   it('call submitSuccess if API successed if position is undefined', async () => {
@@ -81,7 +125,6 @@ describe('submitNewArticle', () => {
 
     const getStateWithoutPosition = () => ({
       articleForm: {
-        postId: '000',
         title: 'title',
         description: 'description',
         position: undefined,
@@ -89,7 +132,7 @@ describe('submitNewArticle', () => {
     });
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const appThunk = submitNewArticle() as any;
+    const appThunk = submitArticle() as any;
     await appThunk(dispatch, getStateWithoutPosition, {});
 
     expect(dispatch.mock.calls[1][0].type).toBe('articleForm/submitSuccess');
@@ -106,7 +149,7 @@ describe('submitNewArticle', () => {
     });
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const appThunk = submitNewArticle() as any;
+    const appThunk = submitArticle() as any;
     await appThunk(dispatch, getStateWithImage, {});
 
     expect(dispatch.mock.calls[1][0].type).toBe('articleForm/submitSuccess');
@@ -116,7 +159,7 @@ describe('submitNewArticle', () => {
     postRemoteArticleSpy.mockRejectedValue(new Error());
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const appThunk = submitNewArticle() as any;
+    const appThunk = submitArticle() as any;
     await appThunk(dispatch, getState, {});
 
     expect(dispatch.mock.calls[1][0].type).toBe('articleForm/submitFailure');
@@ -126,7 +169,7 @@ describe('submitNewArticle', () => {
     postRemoteArticleSpy.mockRejectedValue(apiError);
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const appThunk = submitNewArticle() as any;
+    const appThunk = submitArticle() as any;
     await appThunk(dispatch, getState, {});
 
     expect(dispatch.mock.calls[1][0].type).toBe('articleForm/submitFailure');
@@ -134,183 +177,6 @@ describe('submitNewArticle', () => {
       ...formError,
       errorTitle: '入力内容に誤りがあります。',
     });
-  });
-
-  it('do not call pushMarker if isDraft is true', async () => {
-    postRemoteArticleSpy.mockResolvedValue({
-      ...mockPostPutResponse,
-    });
-
-    const getStateWithDraft = () => ({
-      articleForm: {
-        postId: '000',
-        title: 'title',
-        description: 'description',
-        position: {
-          lat: 0,
-          lng: 0,
-          park: 'S',
-        },
-        isDraft: true,
-      },
-    });
-
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const appThunk = submitNewArticle() as any;
-    await appThunk(dispatch, getStateWithDraft, {});
-
-    expect(dispatch.mock.calls[dispatch.mock.calls.length - 1][0].type).toBe(
-      'articleForm/initialize',
-    );
-  });
-});
-
-describe('submitEdittedArticle', () => {
-  beforeEach(async () => {
-    jest.resetAllMocks();
-    putRemoteArticleSpy = jest.spyOn(PutArticleApiModule, 'putRemoteArticle');
-  });
-
-  it('call submitStart at first', async () => {
-    putRemoteArticleSpy.mockResolvedValue(mockPostPutResponse);
-
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const appThunk = submitEdittedArticle() as any;
-    await appThunk(dispatch, getState, {});
-
-    expect(dispatch.mock.calls[0][0].type).toBe('articleForm/submitStart');
-  });
-
-  it('call submitSuccess if API successed', async () => {
-    putRemoteArticleSpy.mockResolvedValue(mockPostPutResponse);
-
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const appThunk = submitEdittedArticle() as any;
-    await appThunk(dispatch, getState, {});
-
-    expect(dispatch.mock.calls[1][0].type).toBe('articleForm/submitSuccess');
-  });
-
-  it('call submitSuccess if API successed if position is undefined', async () => {
-    putRemoteArticleSpy.mockResolvedValue(mockPostPutResponse);
-
-    const getStateWithoutPosition = () => ({
-      articleForm: {
-        postId: 1,
-        title: 'title',
-        description: 'description',
-        position: undefined,
-      },
-    });
-
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const appThunk = submitEdittedArticle() as any;
-    await appThunk(dispatch, getStateWithoutPosition, {});
-
-    expect(dispatch.mock.calls[1][0].type).toBe('articleForm/submitSuccess');
-  });
-
-  it('call submitSuccess if API successed if image is provided', async () => {
-    putRemoteArticleSpy.mockResolvedValue(mockPostPutResponse);
-
-    const getStateWithImage = () => ({
-      articleForm: {
-        ...getState().articleForm,
-        image: 'data:image/png;base64,xxx',
-      },
-    });
-
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const appThunk = submitEdittedArticle() as any;
-    await appThunk(dispatch, getStateWithImage, {});
-
-    expect(dispatch.mock.calls[1][0].type).toBe('articleForm/submitSuccess');
-  });
-
-  it('call submitFailure if API failed', async () => {
-    putRemoteArticleSpy.mockRejectedValue(new Error());
-
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const appThunk = submitEdittedArticle() as any;
-    await appThunk(dispatch, getState, {});
-
-    expect(dispatch.mock.calls[1][0].type).toBe('articleForm/submitFailure');
-  });
-
-  it('handle validation error', async () => {
-    putRemoteArticleSpy.mockRejectedValue(apiError);
-
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const appThunk = submitEdittedArticle() as any;
-    await appThunk(dispatch, getState, {});
-
-    expect(dispatch.mock.calls[1][0].payload).toEqual({
-      ...formError,
-      errorTitle: '入力内容に誤りがあります。',
-    });
-  });
-
-  it('do not call pushMarker if post is draft', async () => {
-    const mockPostPutResponseWithMarker2 = {
-      postId: 100,
-      marker: 2,
-    } as PostArticleApiModule.PostArticleResponse;
-
-    const getStateWithDraft = () => ({
-      articleForm: {
-        postId: 100,
-        title: 'title',
-        description: 'description',
-        position: {
-          lat: 0,
-          lng: 0,
-          park: 'S',
-        },
-        imageDataUrl: 'https://image-data.jpg',
-        previousMarkerId: 2,
-        isDraft: true,
-      },
-    });
-
-    putRemoteArticleSpy.mockResolvedValue(mockPostPutResponseWithMarker2);
-
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const appThunk = submitEdittedArticle() as any;
-    await appThunk(dispatch, getStateWithDraft, {});
-
-    expect(dispatch.mock.calls[dispatch.mock.calls.length - 1][0].type).toBe(undefined);
-  });
-
-  it('do not anything after initialize if previousMarkerId is undefined', async () => {
-    const mockPostPutResponseWithMarker2 = {
-      postId: 100,
-      marker: 2,
-    } as PostArticleApiModule.PostArticleResponse;
-
-    const getStateWithoutPreviousPosition = () => ({
-      articleForm: {
-        postId: 100,
-        title: 'title',
-        description: 'description',
-        position: {
-          lat: 0,
-          lng: 0,
-          park: 'S',
-        },
-        imageDataUrl: 'https://image-data.jpg',
-        previousMarkerId: undefined,
-      },
-    });
-
-    putRemoteArticleSpy.mockResolvedValue(mockPostPutResponseWithMarker2);
-
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const appThunk = submitEdittedArticle() as any;
-    await appThunk(dispatch, getStateWithoutPreviousPosition, {});
-
-    expect(dispatch.mock.calls[dispatch.mock.calls.length - 1][0].type).toBe(
-      'articleForm/initialize',
-    );
   });
 });
 

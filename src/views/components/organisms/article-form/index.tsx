@@ -16,8 +16,7 @@ import {
 import {
   fetchArticle,
   initialize,
-  submitEdittedArticle,
-  submitNewArticle,
+  submitArticle,
   updateIsEditting,
   updateFormField,
   UpdateFormFieldParam,
@@ -47,8 +46,7 @@ export function ArticleForm(ownProps: OwnProps) {
     park: ownProps.park,
 
     updateFormField: (param: UpdateFormFieldParam) => dispatch(updateFormField(param)),
-    submitNewArticle: () => dispatch(submitNewArticle()),
-    submitEdittedArticle: () => dispatch(submitEdittedArticle()),
+    submitArticle: () => dispatch(submitArticle()),
     fetchArticle: (postId: number) => dispatch(fetchArticle(postId)),
     initialize: () => dispatch(initialize()),
     handleClickSelectPosition: ownProps.onClickSelectPosition,

@@ -9,8 +9,7 @@ const basicProps: Props = {
   isFormChangedFromLastSaved: false,
 
   onClose: jest.fn(),
-  submitEdittedArticle: jest.fn(),
-  submitNewArticle: jest.fn(),
+  submitArticle: jest.fn(),
   initialize: jest.fn(),
 };
 
@@ -58,26 +57,5 @@ describe('cancelToClose', () => {
     const instance = wrapper.instance();
     instance['cancelToClose']();
     expect(instance.state.openDialog).toBeFalsy();
-  });
-});
-
-describe('handleSave', () => {
-  beforeEach(() => {
-    wrapper = shallow(<Renderer {...basicProps} />);
-  });
-
-  it('should call submitNewArticle when no postId', () => {
-    const instance = wrapper.instance();
-    instance['handleSave']();
-    expect(instance.props.submitNewArticle).toBeCalled();
-  });
-
-  it('should call submitEdittedArticle when having postId', () => {
-    wrapper.setProps({
-      postId: 1,
-    });
-    const instance = wrapper.instance();
-    instance['handleSave']();
-    expect(instance.props.submitEdittedArticle).toBeCalled();
   });
 });

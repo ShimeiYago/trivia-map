@@ -278,11 +278,7 @@ export class Renderer extends React.Component<Props> {
       return this.props.toggleAuthFormModal(true);
     }
 
-    if (this.props.postId) {
-      return this.props.submitEdittedArticle();
-    } else {
-      return this.props.submitNewArticle();
-    }
+    this.props.submitArticle();
   };
 
   protected getMiniMapText() {
@@ -362,8 +358,7 @@ export type Props = {
   park: Park;
 
   updateFormField: (param: UpdateFormFieldParam) => void;
-  submitNewArticle: () => void;
-  submitEdittedArticle: () => void;
+  submitArticle: () => void;
   fetchArticle: (postId: number) => void;
   initialize: () => void;
   handleClickSelectPosition?: () => void;

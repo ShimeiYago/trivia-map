@@ -25,8 +25,7 @@ const basicProps: Props = {
   },
   park: 'S',
   updateFormField: jest.fn(),
-  submitNewArticle: jest.fn(),
-  submitEdittedArticle: jest.fn(),
+  submitArticle: jest.fn(),
   fetchArticle: jest.fn(),
   initialize: jest.fn(),
   updateIsEditting: jest.fn(),
@@ -212,20 +211,13 @@ describe('handleSubmitButton', () => {
     wrapper = shallow(<Renderer {...basicProps} />);
   });
 
-  it('call submitNewArticle if postId does not exists', () => {
-    const instance = wrapper.instance();
-    instance['handleSubmitButton']();
-
-    expect(basicProps.submitNewArticle).toBeCalled();
-  });
-
-  it('call submitEdittedArticle if postId exists', () => {
+  it('call submitArticle', () => {
     wrapper.setProps({ postId: 100 });
     const instance = wrapper.instance();
 
     instance['handleSubmitButton']();
 
-    expect(basicProps.submitEdittedArticle).toBeCalled();
+    expect(basicProps.submitArticle).toBeCalled();
   });
 
   it('call toggleAuthFormModal if user does not login', () => {

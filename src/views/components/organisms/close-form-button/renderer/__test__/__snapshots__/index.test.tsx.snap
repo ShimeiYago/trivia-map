@@ -42,7 +42,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       <ForwardRef(LoadingButton)
         autoFocus={true}
         loading={false}
-        onClick={[Function]}
+        onClick={[MockFunction]}
         variant="contained"
       >
         保存

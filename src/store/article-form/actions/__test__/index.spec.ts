@@ -39,6 +39,9 @@ const getState = () => ({
     previousMarkerId: 1,
     isDraft: false,
   },
+  markers: {
+    focusingPark: 'L',
+  },
 });
 
 describe('submitArticle', () => {
@@ -69,6 +72,23 @@ describe('submitArticle', () => {
     await appThunk(dispatch, getState, {});
 
     expect(dispatch.mock.calls[1][0].type).toBe('articleForm/submitSuccess');
+  });
+
+  it('call fetchMarkers submiting park and focusing park are same', async () => {
+    postRemoteArticleSpy.mockResolvedValue(mockPostPutResponse);
+
+    const newGetState = () => ({
+      articleForm: getState().articleForm,
+      markers: {
+        focusingPark: 'S',
+      },
+    });
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const appThunk = submitArticle() as any;
+    await appThunk(dispatch, newGetState, {});
+
+    expect(dispatch.mock.calls[3][0].type).toBe(undefined);
   });
 
   it('call put API if postId is provided', async () => {

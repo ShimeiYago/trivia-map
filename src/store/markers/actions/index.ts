@@ -4,7 +4,6 @@ import { AppThunk } from 'store';
 import { getRemoteMarkers, GetMarkersResponseWithPagination } from 'api/markers-api';
 import { Marker } from '../model';
 import { throwError } from 'store/global-error/slice';
-import { Park } from './../../../types/park';
 
 // basic actions
 export const {
@@ -18,44 +17,45 @@ export const {
 } = markersSlice.actions;
 
 // fetchMarkers action
-export const fetchMarkers =
-  (park: Park, category?: number): AppThunk =>
-  async (dispatch) => {
-    dispatch(updateFocusingPark(park));
-    dispatch(fetchStart());
+export const fetchMarkers = (): AppThunk => async (dispatch, getState) => {
+  const park = getState().markers.focusingPark;
+  const category = getState().markers.filteringCategoryId;
 
-    try {
-      let nextUrl: string | null = '';
-      let totalPages = 1;
-      let loadedPages = 0;
-      while (nextUrl !== null) {
-        if (loadedPages >= totalPages) {
-          break;
-        }
+  dispatch(updateFocusingPark(park));
+  dispatch(fetchStart());
 
-        let res: GetMarkersResponseWithPagination;
-        if (loadedPages === 0) {
-          res = await getRemoteMarkers({ park, category });
-          totalPages = res.totalPages;
-          dispatch(updateTotalPages(totalPages));
-        } else {
-          res = await getRemoteMarkers({ park, nextUrl, category });
-        }
-
-        dispatch(appendMarkers(res.results));
-
-        loadedPages += 1;
-        dispatch(updateLoadedPages(loadedPages));
-
-        nextUrl = res.nextUrl;
+  try {
+    let nextUrl: string | null = '';
+    let totalPages = 1;
+    let loadedPages = 0;
+    while (nextUrl !== null) {
+      if (loadedPages >= totalPages) {
+        break;
       }
-      dispatch(fetchSuccess());
-    } catch (error) {
-      // TODO: take log of error
 
-      dispatch(throwError(500));
+      let res: GetMarkersResponseWithPagination;
+      if (loadedPages === 0) {
+        res = await getRemoteMarkers({ park, category });
+        totalPages = res.totalPages;
+        dispatch(updateTotalPages(totalPages));
+      } else {
+        res = await getRemoteMarkers({ park, nextUrl, category });
+      }
+
+      dispatch(appendMarkers(res.results));
+
+      loadedPages += 1;
+      dispatch(updateLoadedPages(loadedPages));
+
+      nextUrl = res.nextUrl;
     }
-  };
+    dispatch(fetchSuccess());
+  } catch (error) {
+    // TODO: take log of error
+
+    dispatch(throwError(500));
+  }
+};
 
 // appendMarkers action
 export const appendMarkers =

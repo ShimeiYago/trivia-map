@@ -4,42 +4,45 @@ exports[`Shallow Snapshot Tests basic 1`] = `
 <ArticleWrapper
   showSidebar={true}
 >
-  <ForwardRef(Stack)
-    alignItems="center"
-    direction="row"
-    justifyContent="center"
-    spacing={1}
-    sx={
-      Object {
-        "mb": 3,
-      }
-    }
+  <HeadAppender
+    title="Axelさんの投稿一覧 - トリビアマップ"
   >
-    <ForwardRef(Avatar)
-      src="https://xxx/xxx.jpg"
+    <ForwardRef(Stack)
+      alignItems="center"
+      direction="row"
+      justifyContent="center"
+      spacing={1}
       sx={
         Object {
-          "height": 50,
-          "width": 50,
+          "mb": 3,
         }
       }
-    />
-    <ForwardRef(Typography)
-      component="h2"
-      variant="h4"
     >
-      Axel
-      さんの投稿一覧
-    </ForwardRef(Typography)>
-  </ForwardRef(Stack)>
-  <ArticlePreviewList
-    searchConditions={
-      Object {
-        "user": 1,
+      <ForwardRef(Avatar)
+        src="https://xxx/xxx.jpg"
+        sx={
+          Object {
+            "height": 50,
+            "width": 50,
+          }
+        }
+      />
+      <ForwardRef(Typography)
+        component="h2"
+        variant="h4"
+      >
+        Axelさんの投稿一覧
+      </ForwardRef(Typography)>
+    </ForwardRef(Stack)>
+    <ArticlePreviewList
+      searchConditions={
+        Object {
+          "user": 1,
+        }
       }
-    }
-    variant="large"
-  />
+      variant="large"
+    />
+  </HeadAppender>
 </ArticleWrapper>
 `;
 
@@ -55,41 +58,44 @@ exports[`Shallow Snapshot Tests no icon 1`] = `
 <ArticleWrapper
   showSidebar={true}
 >
-  <ForwardRef(Stack)
-    alignItems="center"
-    direction="row"
-    justifyContent="center"
-    spacing={1}
-    sx={
-      Object {
-        "mb": 3,
-      }
-    }
+  <HeadAppender
+    title="Axelさんの投稿一覧 - トリビアマップ"
   >
-    <ForwardRef(Avatar)
-      src="no-icon.jpg"
+    <ForwardRef(Stack)
+      alignItems="center"
+      direction="row"
+      justifyContent="center"
+      spacing={1}
       sx={
         Object {
-          "height": 50,
-          "width": 50,
+          "mb": 3,
         }
       }
-    />
-    <ForwardRef(Typography)
-      component="h2"
-      variant="h4"
     >
-      Axel
-      さんの投稿一覧
-    </ForwardRef(Typography)>
-  </ForwardRef(Stack)>
-  <ArticlePreviewList
-    searchConditions={
-      Object {
-        "user": 1,
+      <ForwardRef(Avatar)
+        src="no-icon.jpg"
+        sx={
+          Object {
+            "height": 50,
+            "width": 50,
+          }
+        }
+      />
+      <ForwardRef(Typography)
+        component="h2"
+        variant="h4"
+      >
+        Axelさんの投稿一覧
+      </ForwardRef(Typography)>
+    </ForwardRef(Stack)>
+    <ArticlePreviewList
+      searchConditions={
+        Object {
+          "user": 1,
+        }
       }
-    }
-    variant="large"
-  />
+      variant="large"
+    />
+  </HeadAppender>
 </ArticleWrapper>
 `;

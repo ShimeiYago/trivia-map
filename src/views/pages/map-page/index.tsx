@@ -8,7 +8,7 @@ import { Renderer, Props } from './renderer';
 import { isMobile } from 'react-device-detect';
 import { Navigate, useParams } from 'react-router-dom';
 import { NOT_FOUND_LINK } from 'constant/links';
-import usePageTracking from 'tracker';
+import usePageTracking from 'helper-components/tracker';
 
 export function MapPage() {
   const { postId } = useParams();

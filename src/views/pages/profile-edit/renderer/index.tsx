@@ -15,6 +15,9 @@ import { ImageField } from 'views/components/moleculars/image-field';
 import 'react-image-crop/dist/ReactCrop.css';
 import { UPLOAD_IMAGE_MAX_LENGTH } from 'constant';
 import { ACCOUNT_SETTINGS_LINK } from 'constant/links';
+import { PAGE_NAMES } from 'constant/page-names';
+import { HeadAppender } from 'helper-components/head-appender';
+import { pageTitleGenerator } from 'utils/page-title-generator';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -36,13 +39,17 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   render() {
-    return <AdminWrapper>{this.renderContents()}</AdminWrapper>;
+    return (
+      <HeadAppender title={pageTitleGenerator(PAGE_NAMES.profileEdit)}>
+        <AdminWrapper>{this.renderContents()}</AdminWrapper>
+      </HeadAppender>
+    );
   }
 
   protected renderContents = () => {
     return (
       <Stack spacing={3}>
-        <BackToNavi text="アカウント設定" link={ACCOUNT_SETTINGS_LINK} />
+        <BackToNavi text={PAGE_NAMES.accountSettings} link={ACCOUNT_SETTINGS_LINK} />
         {this.renderForm()}
       </Stack>
     );
@@ -55,7 +62,7 @@ export class Renderer extends React.Component<Props, State> {
       <Box>
         <Stack spacing={1} sx={{ px: 1, maxWidth: '400px', mx: 'auto' }}>
           <Typography component="h2" variant="h5" align="center">
-            プロフィール
+            {PAGE_NAMES.profileEdit}
           </Typography>
           {this.renderHeaderInfo()}
 

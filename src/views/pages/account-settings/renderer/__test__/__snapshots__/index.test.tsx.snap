@@ -1,44 +1,48 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Shallow Snapshot Tests basic 1`] = `
-<AdminWrapper>
-  <ForwardRef(Stack)
-    spacing={3}
-  >
-    <BackToNavi
-      link="/admin"
-      text="マイページ"
-    />
-    <ForwardRef(Box)>
-      <ForwardRef(Typography)
-        align="center"
-        component="h2"
-        sx={
-          Object {
-            "mb": 3,
-          }
-        }
-        variant="h4"
-      >
-        アカウント設定
-      </ForwardRef(Typography)>
-      <LinkList
-        list={
-          Array [
-            Object {
-              "icon": <Memo />,
-              "link": "/admin/account/profile",
-              "text": "プロフィール変更",
-            },
-            Object {
-              "icon": <Memo />,
-              "link": "/admin/account/password",
-              "text": "パスワード変更",
-            },
-          ]
-        }
+<HeadAppender
+  title="アカウント管理 - トリビアマップ"
+>
+  <AdminWrapper>
+    <ForwardRef(Stack)
+      spacing={3}
+    >
+      <BackToNavi
+        link="/admin"
+        text="マイページ"
       />
-    </ForwardRef(Box)>
-  </ForwardRef(Stack)>
-</AdminWrapper>
+      <ForwardRef(Box)>
+        <ForwardRef(Typography)
+          align="center"
+          component="h2"
+          sx={
+            Object {
+              "mb": 3,
+            }
+          }
+          variant="h4"
+        >
+          アカウント管理
+        </ForwardRef(Typography)>
+        <LinkList
+          list={
+            Array [
+              Object {
+                "icon": <Memo />,
+                "link": "/admin/account/profile",
+                "text": "プロフィール変更",
+              },
+              Object {
+                "icon": <Memo />,
+                "link": "/admin/account/password",
+                "text": "パスワード変更",
+              },
+            ]
+          }
+        />
+      </ForwardRef(Box)>
+    </ForwardRef(Stack)>
+  </AdminWrapper>
+</HeadAppender>
 `;

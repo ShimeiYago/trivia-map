@@ -19,15 +19,17 @@ import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import ListAltIcon from '@mui/icons-material/ListAlt';
 import EmailIcon from '@mui/icons-material/Email';
 import InfoIcon from '@mui/icons-material/Info';
+import { PAGE_NAMES } from 'constant/page-names';
+import { SITE_NAME } from 'constant';
 
 const listItemsForMap: ListItem[] = [
   {
-    text: 'マップ',
+    text: SITE_NAME,
     icon: <MapIcon />,
     link: MAP_PAGE_LINK,
   },
   {
-    text: '投稿一覧＆検索',
+    text: PAGE_NAMES.articles,
     icon: <ArticleIcon />,
     link: ARTICLE_LIST_PAGE_LINK,
   },
@@ -35,7 +37,7 @@ const listItemsForMap: ListItem[] = [
 
 const listItemsForLogin: ListItem[] = [
   {
-    text: 'ログイン',
+    text: PAGE_NAMES.login,
     icon: <LoginIcon />,
     link: LOGIN_LINK,
   },
@@ -43,17 +45,17 @@ const listItemsForLogin: ListItem[] = [
 
 const listItemsForAdmin: ListItem[] = [
   {
-    text: 'マイページ',
+    text: PAGE_NAMES.admin,
     icon: <AdminPanelSettingsIcon />,
     link: ADMIN_LINK,
   },
   {
-    text: 'マイ投稿一覧＆管理',
+    text: PAGE_NAMES.myArticles,
     icon: <ListAltIcon />,
     link: MY_ARTICLES_LINK,
   },
   {
-    text: 'アカウント設定',
+    text: PAGE_NAMES.accountSettings,
     icon: <ManageAccountsIcon />,
     link: ACCOUNT_SETTINGS_LINK,
   },
@@ -61,12 +63,12 @@ const listItemsForAdmin: ListItem[] = [
 
 const listItemsOthers: ListItem[] = [
   {
-    text: 'お問い合わせ',
+    text: PAGE_NAMES.inquiry,
     icon: <EmailIcon />,
     link: INQUIRY_PAGE_LINK,
   },
   {
-    text: 'プライバシーポリシー',
+    text: PAGE_NAMES.policy,
     icon: <InfoIcon />,
     link: PRIVACY_POLICY_PAGE_LINK,
   },

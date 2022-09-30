@@ -6,29 +6,36 @@ import KeyIcon from '@mui/icons-material/Key';
 import { ADMIN_LINK, PASSWORD_CHANGE_LINK, PROFILE_SETTINGS_LINK } from 'constant/links';
 import { BackToNavi } from 'views/components/moleculars/back-to-navi';
 import { LinkList } from 'views/components/moleculars/link-list';
+import { PAGE_NAMES } from 'constant/page-names';
+import { HeadAppender } from 'helper-components/head-appender';
+import { pageTitleGenerator } from 'utils/page-title-generator';
 
 export class Renderer extends React.Component {
   render() {
-    return <AdminWrapper>{this.renderAccountSettingList()}</AdminWrapper>;
+    return (
+      <HeadAppender title={pageTitleGenerator(PAGE_NAMES.accountSettings)}>
+        <AdminWrapper>{this.renderAccountSettingList()}</AdminWrapper>
+      </HeadAppender>
+    );
   }
 
   protected renderAccountSettingList = () => {
     const listItems = [
       {
         icon: <BadgeIcon />,
-        text: 'プロフィール変更',
+        text: PAGE_NAMES.profileEdit,
         link: PROFILE_SETTINGS_LINK,
       },
-      { icon: <KeyIcon />, text: 'パスワード変更', link: PASSWORD_CHANGE_LINK },
+      { icon: <KeyIcon />, text: PAGE_NAMES.passwordChange, link: PASSWORD_CHANGE_LINK },
     ];
 
     return (
       <Stack spacing={3}>
-        <BackToNavi text="マイページ" link={ADMIN_LINK} />
+        <BackToNavi text={PAGE_NAMES.admin} link={ADMIN_LINK} />
 
         <Box>
           <Typography align="center" component="h2" variant="h4" sx={{ mb: 3 }}>
-            アカウント設定
+            {PAGE_NAMES.accountSettings}
           </Typography>
           <LinkList list={listItems} />
         </Box>

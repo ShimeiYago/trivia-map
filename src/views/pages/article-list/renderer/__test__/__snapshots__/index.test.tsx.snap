@@ -1,522 +1,530 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Shallow Snapshot Tests basic 1`] = `
-<ArticleWrapper
-  showSidebar={true}
+<HeadAppender
+  title="投稿一覧＆検索 - トリビアマップ"
 >
-  <ForwardRef(Accordion)>
-    <ForwardRef(AccordionSummary)
-      expandIcon={<Memo />}
-    >
-      <IconAndText
-        component="p"
-        iconComponent={<Memo />}
-        iconPosition="left"
-        text="絞り込み検索"
-        variant="inherit"
-      />
-    </ForwardRef(AccordionSummary)>
-    <ForwardRef(AccordionDetails)>
-      <ForwardRef(Box)
-        sx={
-          Object {
-            "borderColor": "gray",
-            "borderRadius": 3,
-            "borderStyle": "solid",
-            "borderWidth": 2,
-            "p": 2,
-          }
-        }
+  <ArticleWrapper
+    showSidebar={true}
+  >
+    <ForwardRef(Accordion)>
+      <ForwardRef(AccordionSummary)
+        expandIcon={<Memo />}
       >
-        <ForwardRef(Typography)
-          align="center"
-          component="h2"
-          variant="h6"
-        >
-          <IconAndText
-            iconComponent={<Memo />}
-            iconPosition="left"
-            text="絞り込み条件"
-            variant="inherit"
-          />
-        </ForwardRef(Typography)>
-        <ForwardRef(Grid)
-          columnSpacing={6}
-          container={true}
-          rowSpacing={2}
+        <IconAndText
+          component="p"
+          iconComponent={<Memo />}
+          iconPosition="left"
+          text="絞り込み検索"
+          variant="inherit"
+        />
+      </ForwardRef(AccordionSummary)>
+      <ForwardRef(AccordionDetails)>
+        <ForwardRef(Box)
           sx={
             Object {
-              "mb": 3,
-              "mt": 1,
+              "borderColor": "gray",
+              "borderRadius": 3,
+              "borderStyle": "solid",
+              "borderWidth": 2,
+              "p": 2,
             }
           }
         >
-          <ForwardRef(Grid)
-            item={true}
-            md={6}
-            xs={12}
+          <ForwardRef(Typography)
+            align="center"
+            component="h2"
+            variant="h6"
           >
-            <ForwardRef(FormControl)
-              fullWidth={true}
-              size="small"
+            <IconAndText
+              iconComponent={<Memo />}
+              iconPosition="left"
+              text="絞り込み条件"
+              variant="inherit"
+            />
+          </ForwardRef(Typography)>
+          <ForwardRef(Grid)
+            columnSpacing={6}
+            container={true}
+            rowSpacing={2}
+            sx={
+              Object {
+                "mb": 3,
+                "mt": 1,
+              }
+            }
+          >
+            <ForwardRef(Grid)
+              item={true}
+              md={6}
+              xs={12}
             >
-              <ForwardRef(InputLabel)>
-                カテゴリー
-              </ForwardRef(InputLabel)>
-              <ForwardRef(Select)
-                label="カテゴリー"
-                onChange={[Function]}
-                value=""
+              <ForwardRef(FormControl)
+                fullWidth={true}
+                size="small"
               >
-                <ForwardRef(MenuItem)
+                <ForwardRef(InputLabel)>
+                  カテゴリー
+                </ForwardRef(InputLabel)>
+                <ForwardRef(Select)
+                  label="カテゴリー"
+                  onChange={[Function]}
                   value=""
                 >
-                  <em>
-                    未選択
-                  </em>
-                </ForwardRef(MenuItem)>
-                <ForwardRef(MenuItem)
-                  key="category-1"
-                  value="1"
-                >
-                  隠れミッキー
-                </ForwardRef(MenuItem)>
-                <ForwardRef(MenuItem)
-                  key="category-2"
-                  value="2"
-                >
-                  バックグラウンドストーリー
-                </ForwardRef(MenuItem)>
-                <ForwardRef(MenuItem)
-                  key="category-0"
-                  value="0"
-                >
-                  その他
-                </ForwardRef(MenuItem)>
-              </ForwardRef(Select)>
-            </ForwardRef(FormControl)>
-          </ForwardRef(Grid)>
-          <ForwardRef(Grid)
-            item={true}
-            md={6}
-            xs={12}
-          >
-            <ForwardRef(FormControl)
-              fullWidth={true}
-              size="small"
-              sx={
-                Object {
-                  "minWidth": 120,
-                }
-              }
+                  <ForwardRef(MenuItem)
+                    value=""
+                  >
+                    <em>
+                      未選択
+                    </em>
+                  </ForwardRef(MenuItem)>
+                  <ForwardRef(MenuItem)
+                    key="category-1"
+                    value="1"
+                  >
+                    隠れミッキー
+                  </ForwardRef(MenuItem)>
+                  <ForwardRef(MenuItem)
+                    key="category-2"
+                    value="2"
+                  >
+                    バックグラウンドストーリー
+                  </ForwardRef(MenuItem)>
+                  <ForwardRef(MenuItem)
+                    key="category-0"
+                    value="0"
+                  >
+                    その他
+                  </ForwardRef(MenuItem)>
+                </ForwardRef(Select)>
+              </ForwardRef(FormControl)>
+            </ForwardRef(Grid)>
+            <ForwardRef(Grid)
+              item={true}
+              md={6}
+              xs={12}
             >
-              <ForwardRef(InputLabel)>
-                パーク
-              </ForwardRef(InputLabel)>
-              <ForwardRef(Select)
-                label="パーク"
-                onChange={[Function]}
-                value=""
-              >
-                <ForwardRef(MenuItem)
-                  value=""
-                >
-                  <em>
-                    未選択
-                  </em>
-                </ForwardRef(MenuItem)>
-                <ForwardRef(MenuItem)
-                  value="L"
-                >
-                  ランド
-                </ForwardRef(MenuItem)>
-                <ForwardRef(MenuItem)
-                  value="S"
-                >
-                  シー
-                </ForwardRef(MenuItem)>
-              </ForwardRef(Select)>
-            </ForwardRef(FormControl)>
-          </ForwardRef(Grid)>
-          <ForwardRef(Grid)
-            item={true}
-            xs={12}
-          >
-            <ForwardRef(Box)
-              sx={
-                Object {
-                  "alignItems": "flex-end",
-                  "display": "flex",
-                }
-              }
-            >
-              <Memo(ForwardRef(SearchIcon))
+              <ForwardRef(FormControl)
+                fullWidth={true}
+                size="small"
                 sx={
                   Object {
-                    "color": "action.active",
-                    "mr": 1,
-                    "my": 0.5,
+                    "minWidth": 120,
                   }
                 }
-              />
-              <ForwardRef(TextField)
-                fullWidth={true}
-                label="キーワード検索"
-                onChange={[Function]}
-                variant="standard"
-              />
-            </ForwardRef(Box)>
+              >
+                <ForwardRef(InputLabel)>
+                  パーク
+                </ForwardRef(InputLabel)>
+                <ForwardRef(Select)
+                  label="パーク"
+                  onChange={[Function]}
+                  value=""
+                >
+                  <ForwardRef(MenuItem)
+                    value=""
+                  >
+                    <em>
+                      未選択
+                    </em>
+                  </ForwardRef(MenuItem)>
+                  <ForwardRef(MenuItem)
+                    value="L"
+                  >
+                    ランド
+                  </ForwardRef(MenuItem)>
+                  <ForwardRef(MenuItem)
+                    value="S"
+                  >
+                    シー
+                  </ForwardRef(MenuItem)>
+                </ForwardRef(Select)>
+              </ForwardRef(FormControl)>
+            </ForwardRef(Grid)>
+            <ForwardRef(Grid)
+              item={true}
+              xs={12}
+            >
+              <ForwardRef(Box)
+                sx={
+                  Object {
+                    "alignItems": "flex-end",
+                    "display": "flex",
+                  }
+                }
+              >
+                <Memo(ForwardRef(SearchIcon))
+                  sx={
+                    Object {
+                      "color": "action.active",
+                      "mr": 1,
+                      "my": 0.5,
+                    }
+                  }
+                />
+                <ForwardRef(TextField)
+                  fullWidth={true}
+                  label="キーワード検索"
+                  onChange={[Function]}
+                  variant="standard"
+                />
+              </ForwardRef(Box)>
+            </ForwardRef(Grid)>
           </ForwardRef(Grid)>
-        </ForwardRef(Grid)>
-        <ForwardRef(Box)
-          textAlign="center"
-        >
-          <ForwardRef(Button)
-            disabled={true}
-            onClick={[Function]}
+          <ForwardRef(Box)
+            textAlign="center"
           >
-            この条件で絞り込む
-          </ForwardRef(Button)>
+            <ForwardRef(Button)
+              disabled={true}
+              onClick={[Function]}
+            >
+              この条件で絞り込む
+            </ForwardRef(Button)>
+          </ForwardRef(Box)>
         </ForwardRef(Box)>
-      </ForwardRef(Box)>
-    </ForwardRef(AccordionDetails)>
-  </ForwardRef(Accordion)>
-  <ForwardRef(Divider)
-    sx={
-      Object {
-        "my": 3,
+      </ForwardRef(AccordionDetails)>
+    </ForwardRef(Accordion)>
+    <ForwardRef(Divider)
+      sx={
+        Object {
+          "my": 3,
+        }
       }
-    }
-  />
-  <ForwardRef(Typography)
-    align="center"
-    component="h2"
-    sx={
-      Object {
-        "mb": 4,
-        "mt": 3,
-      }
-    }
-    variant="h4"
-  >
-    <IconAndText
-      iconComponent={
-        <Memo
-          fontSize="inherit"
-        />
-      }
-      iconPosition="left"
-      text="投稿一覧"
-      variant="inherit"
     />
-  </ForwardRef(Typography)>
-  <ForwardRef(Box)
-    sx={
-      Object {
-        "display": "flex",
-        "justifyContent": "flex-end",
-        "mb": 2,
+    <ForwardRef(Typography)
+      align="center"
+      component="h2"
+      sx={
+        Object {
+          "mb": 4,
+          "mt": 3,
+        }
       }
-    }
-  >
-    <ForwardRef(FormControl)
-      size="small"
-      variant="standard"
+      variant="h4"
     >
-      <ForwardRef(Select)
-        label="表示順"
-        onChange={[Function]}
-        value="latest"
+      <IconAndText
+        iconComponent={
+          <Memo
+            fontSize="inherit"
+          />
+        }
+        iconPosition="left"
+        text="投稿一覧＆検索"
+        variant="inherit"
+      />
+    </ForwardRef(Typography)>
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "display": "flex",
+          "justifyContent": "flex-end",
+          "mb": 2,
+        }
+      }
+    >
+      <ForwardRef(FormControl)
+        size="small"
+        variant="standard"
       >
-        <ForwardRef(MenuItem)
-          key="latest"
+        <ForwardRef(Select)
+          label="表示順"
+          onChange={[Function]}
           value="latest"
         >
-          投稿日時が新しい順
-        </ForwardRef(MenuItem)>
-        <ForwardRef(MenuItem)
-          key="oldest"
-          value="oldest"
-        >
-          投稿日時が古い順
-        </ForwardRef(MenuItem)>
-        <ForwardRef(MenuItem)
-          key="popular"
-          value="popular"
-        >
-          閲覧数が多い順
-        </ForwardRef(MenuItem)>
-      </ForwardRef(Select)>
-    </ForwardRef(FormControl)>
-  </ForwardRef(Box)>
-  <ArticlePreviewList
-    searchConditions={
-      Object {
-        "order": "latest",
+          <ForwardRef(MenuItem)
+            key="latest"
+            value="latest"
+          >
+            投稿日時が新しい順
+          </ForwardRef(MenuItem)>
+          <ForwardRef(MenuItem)
+            key="oldest"
+            value="oldest"
+          >
+            投稿日時が古い順
+          </ForwardRef(MenuItem)>
+          <ForwardRef(MenuItem)
+            key="popular"
+            value="popular"
+          >
+            閲覧数が多い順
+          </ForwardRef(MenuItem)>
+        </ForwardRef(Select)>
+      </ForwardRef(FormControl)>
+    </ForwardRef(Box)>
+    <ArticlePreviewList
+      searchConditions={
+        Object {
+          "order": "latest",
+        }
       }
-    }
-    variant="large"
-  />
-</ArticleWrapper>
+      variant="large"
+    />
+  </ArticleWrapper>
+</HeadAppender>
 `;
 
 exports[`Shallow Snapshot Tests with form conditions 1`] = `
-<ArticleWrapper
-  showSidebar={true}
+<HeadAppender
+  title="投稿一覧＆検索 - トリビアマップ"
 >
-  <ForwardRef(Accordion)>
-    <ForwardRef(AccordionSummary)
-      expandIcon={<Memo />}
-    >
-      <IconAndText
-        component="p"
-        iconComponent={<Memo />}
-        iconPosition="left"
-        text="絞り込み検索"
-        variant="inherit"
-      />
-    </ForwardRef(AccordionSummary)>
-    <ForwardRef(AccordionDetails)>
-      <ForwardRef(Box)
-        sx={
-          Object {
-            "borderColor": "gray",
-            "borderRadius": 3,
-            "borderStyle": "solid",
-            "borderWidth": 2,
-            "p": 2,
-          }
-        }
+  <ArticleWrapper
+    showSidebar={true}
+  >
+    <ForwardRef(Accordion)>
+      <ForwardRef(AccordionSummary)
+        expandIcon={<Memo />}
       >
-        <ForwardRef(Typography)
-          align="center"
-          component="h2"
-          variant="h6"
-        >
-          <IconAndText
-            iconComponent={<Memo />}
-            iconPosition="left"
-            text="絞り込み条件"
-            variant="inherit"
-          />
-        </ForwardRef(Typography)>
-        <ForwardRef(Grid)
-          columnSpacing={6}
-          container={true}
-          rowSpacing={2}
+        <IconAndText
+          component="p"
+          iconComponent={<Memo />}
+          iconPosition="left"
+          text="絞り込み検索"
+          variant="inherit"
+        />
+      </ForwardRef(AccordionSummary)>
+      <ForwardRef(AccordionDetails)>
+        <ForwardRef(Box)
           sx={
             Object {
-              "mb": 3,
-              "mt": 1,
+              "borderColor": "gray",
+              "borderRadius": 3,
+              "borderStyle": "solid",
+              "borderWidth": 2,
+              "p": 2,
             }
           }
         >
-          <ForwardRef(Grid)
-            item={true}
-            md={6}
-            xs={12}
+          <ForwardRef(Typography)
+            align="center"
+            component="h2"
+            variant="h6"
           >
-            <ForwardRef(FormControl)
-              fullWidth={true}
-              size="small"
+            <IconAndText
+              iconComponent={<Memo />}
+              iconPosition="left"
+              text="絞り込み条件"
+              variant="inherit"
+            />
+          </ForwardRef(Typography)>
+          <ForwardRef(Grid)
+            columnSpacing={6}
+            container={true}
+            rowSpacing={2}
+            sx={
+              Object {
+                "mb": 3,
+                "mt": 1,
+              }
+            }
+          >
+            <ForwardRef(Grid)
+              item={true}
+              md={6}
+              xs={12}
             >
-              <ForwardRef(InputLabel)>
-                カテゴリー
-              </ForwardRef(InputLabel)>
-              <ForwardRef(Select)
-                label="カテゴリー"
-                onChange={[Function]}
-                value="1"
+              <ForwardRef(FormControl)
+                fullWidth={true}
+                size="small"
               >
-                <ForwardRef(MenuItem)
-                  value=""
-                >
-                  <em>
-                    未選択
-                  </em>
-                </ForwardRef(MenuItem)>
-                <ForwardRef(MenuItem)
-                  key="category-1"
+                <ForwardRef(InputLabel)>
+                  カテゴリー
+                </ForwardRef(InputLabel)>
+                <ForwardRef(Select)
+                  label="カテゴリー"
+                  onChange={[Function]}
                   value="1"
                 >
-                  隠れミッキー
-                </ForwardRef(MenuItem)>
-                <ForwardRef(MenuItem)
-                  key="category-2"
-                  value="2"
-                >
-                  バックグラウンドストーリー
-                </ForwardRef(MenuItem)>
-                <ForwardRef(MenuItem)
-                  key="category-0"
-                  value="0"
-                >
-                  その他
-                </ForwardRef(MenuItem)>
-              </ForwardRef(Select)>
-            </ForwardRef(FormControl)>
-          </ForwardRef(Grid)>
-          <ForwardRef(Grid)
-            item={true}
-            md={6}
-            xs={12}
-          >
-            <ForwardRef(FormControl)
-              fullWidth={true}
-              size="small"
-              sx={
-                Object {
-                  "minWidth": 120,
-                }
-              }
+                  <ForwardRef(MenuItem)
+                    value=""
+                  >
+                    <em>
+                      未選択
+                    </em>
+                  </ForwardRef(MenuItem)>
+                  <ForwardRef(MenuItem)
+                    key="category-1"
+                    value="1"
+                  >
+                    隠れミッキー
+                  </ForwardRef(MenuItem)>
+                  <ForwardRef(MenuItem)
+                    key="category-2"
+                    value="2"
+                  >
+                    バックグラウンドストーリー
+                  </ForwardRef(MenuItem)>
+                  <ForwardRef(MenuItem)
+                    key="category-0"
+                    value="0"
+                  >
+                    その他
+                  </ForwardRef(MenuItem)>
+                </ForwardRef(Select)>
+              </ForwardRef(FormControl)>
+            </ForwardRef(Grid)>
+            <ForwardRef(Grid)
+              item={true}
+              md={6}
+              xs={12}
             >
-              <ForwardRef(InputLabel)>
-                パーク
-              </ForwardRef(InputLabel)>
-              <ForwardRef(Select)
-                label="パーク"
-                onChange={[Function]}
-                value="L"
-              >
-                <ForwardRef(MenuItem)
-                  value=""
-                >
-                  <em>
-                    未選択
-                  </em>
-                </ForwardRef(MenuItem)>
-                <ForwardRef(MenuItem)
-                  value="L"
-                >
-                  ランド
-                </ForwardRef(MenuItem)>
-                <ForwardRef(MenuItem)
-                  value="S"
-                >
-                  シー
-                </ForwardRef(MenuItem)>
-              </ForwardRef(Select)>
-            </ForwardRef(FormControl)>
-          </ForwardRef(Grid)>
-          <ForwardRef(Grid)
-            item={true}
-            xs={12}
-          >
-            <ForwardRef(Box)
-              sx={
-                Object {
-                  "alignItems": "flex-end",
-                  "display": "flex",
-                }
-              }
-            >
-              <Memo(ForwardRef(SearchIcon))
+              <ForwardRef(FormControl)
+                fullWidth={true}
+                size="small"
                 sx={
                   Object {
-                    "color": "action.active",
-                    "mr": 1,
-                    "my": 0.5,
+                    "minWidth": 120,
                   }
                 }
-              />
-              <ForwardRef(TextField)
-                fullWidth={true}
-                label="キーワード検索"
-                onChange={[Function]}
-                value="keyword1,keyword2"
-                variant="standard"
-              />
-            </ForwardRef(Box)>
+              >
+                <ForwardRef(InputLabel)>
+                  パーク
+                </ForwardRef(InputLabel)>
+                <ForwardRef(Select)
+                  label="パーク"
+                  onChange={[Function]}
+                  value="L"
+                >
+                  <ForwardRef(MenuItem)
+                    value=""
+                  >
+                    <em>
+                      未選択
+                    </em>
+                  </ForwardRef(MenuItem)>
+                  <ForwardRef(MenuItem)
+                    value="L"
+                  >
+                    ランド
+                  </ForwardRef(MenuItem)>
+                  <ForwardRef(MenuItem)
+                    value="S"
+                  >
+                    シー
+                  </ForwardRef(MenuItem)>
+                </ForwardRef(Select)>
+              </ForwardRef(FormControl)>
+            </ForwardRef(Grid)>
+            <ForwardRef(Grid)
+              item={true}
+              xs={12}
+            >
+              <ForwardRef(Box)
+                sx={
+                  Object {
+                    "alignItems": "flex-end",
+                    "display": "flex",
+                  }
+                }
+              >
+                <Memo(ForwardRef(SearchIcon))
+                  sx={
+                    Object {
+                      "color": "action.active",
+                      "mr": 1,
+                      "my": 0.5,
+                    }
+                  }
+                />
+                <ForwardRef(TextField)
+                  fullWidth={true}
+                  label="キーワード検索"
+                  onChange={[Function]}
+                  value="keyword1,keyword2"
+                  variant="standard"
+                />
+              </ForwardRef(Box)>
+            </ForwardRef(Grid)>
           </ForwardRef(Grid)>
-        </ForwardRef(Grid)>
-        <ForwardRef(Box)
-          textAlign="center"
-        >
-          <ForwardRef(Button)
-            disabled={false}
-            onClick={[Function]}
+          <ForwardRef(Box)
+            textAlign="center"
           >
-            この条件で絞り込む
-          </ForwardRef(Button)>
+            <ForwardRef(Button)
+              disabled={false}
+              onClick={[Function]}
+            >
+              この条件で絞り込む
+            </ForwardRef(Button)>
+          </ForwardRef(Box)>
         </ForwardRef(Box)>
-      </ForwardRef(Box)>
-    </ForwardRef(AccordionDetails)>
-  </ForwardRef(Accordion)>
-  <ForwardRef(Divider)
-    sx={
-      Object {
-        "my": 3,
+      </ForwardRef(AccordionDetails)>
+    </ForwardRef(Accordion)>
+    <ForwardRef(Divider)
+      sx={
+        Object {
+          "my": 3,
+        }
       }
-    }
-  />
-  <ForwardRef(Typography)
-    align="center"
-    component="h2"
-    sx={
-      Object {
-        "mb": 4,
-        "mt": 3,
-      }
-    }
-    variant="h4"
-  >
-    <IconAndText
-      iconComponent={
-        <Memo
-          fontSize="inherit"
-        />
-      }
-      iconPosition="left"
-      text="投稿一覧"
-      variant="inherit"
     />
-  </ForwardRef(Typography)>
-  <ForwardRef(Box)
-    sx={
-      Object {
-        "display": "flex",
-        "justifyContent": "flex-end",
-        "mb": 2,
+    <ForwardRef(Typography)
+      align="center"
+      component="h2"
+      sx={
+        Object {
+          "mb": 4,
+          "mt": 3,
+        }
       }
-    }
-  >
-    <ForwardRef(FormControl)
-      size="small"
-      variant="standard"
+      variant="h4"
     >
-      <ForwardRef(Select)
-        label="表示順"
-        onChange={[Function]}
-        value="latest"
+      <IconAndText
+        iconComponent={
+          <Memo
+            fontSize="inherit"
+          />
+        }
+        iconPosition="left"
+        text="投稿一覧＆検索"
+        variant="inherit"
+      />
+    </ForwardRef(Typography)>
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "display": "flex",
+          "justifyContent": "flex-end",
+          "mb": 2,
+        }
+      }
+    >
+      <ForwardRef(FormControl)
+        size="small"
+        variant="standard"
       >
-        <ForwardRef(MenuItem)
-          key="latest"
+        <ForwardRef(Select)
+          label="表示順"
+          onChange={[Function]}
           value="latest"
         >
-          投稿日時が新しい順
-        </ForwardRef(MenuItem)>
-        <ForwardRef(MenuItem)
-          key="oldest"
-          value="oldest"
-        >
-          投稿日時が古い順
-        </ForwardRef(MenuItem)>
-        <ForwardRef(MenuItem)
-          key="popular"
-          value="popular"
-        >
-          閲覧数が多い順
-        </ForwardRef(MenuItem)>
-      </ForwardRef(Select)>
-    </ForwardRef(FormControl)>
-  </ForwardRef(Box)>
-  <ArticlePreviewList
-    searchConditions={
-      Object {
-        "order": "latest",
+          <ForwardRef(MenuItem)
+            key="latest"
+            value="latest"
+          >
+            投稿日時が新しい順
+          </ForwardRef(MenuItem)>
+          <ForwardRef(MenuItem)
+            key="oldest"
+            value="oldest"
+          >
+            投稿日時が古い順
+          </ForwardRef(MenuItem)>
+          <ForwardRef(MenuItem)
+            key="popular"
+            value="popular"
+          >
+            閲覧数が多い順
+          </ForwardRef(MenuItem)>
+        </ForwardRef(Select)>
+      </ForwardRef(FormControl)>
+    </ForwardRef(Box)>
+    <ArticlePreviewList
+      searchConditions={
+        Object {
+          "order": "latest",
+        }
       }
-    }
-    variant="large"
-  />
-</ArticleWrapper>
+      variant="large"
+    />
+  </ArticleWrapper>
+</HeadAppender>
 `;

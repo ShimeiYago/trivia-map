@@ -47,17 +47,13 @@ export class Renderer extends React.Component<Props, State> {
       JSON.stringify(prevState.currentSearchConditions) !==
       JSON.stringify(this.state.currentSearchConditions)
     ) {
-      const urlParameters = getUrlParameters(
-        this.state.currentSearchConditions,
-      );
+      const urlParameters = getUrlParameters(this.state.currentSearchConditions);
       history.replaceState('', '', `${ARTICLE_LIST_PAGE_LINK}${urlParameters}`);
     }
   }
 
   render() {
-    return (
-      <ArticleWrapper showSidebar>{this.renderMainContent()}</ArticleWrapper>
-    );
+    return <ArticleWrapper showSidebar>{this.renderMainContent()}</ArticleWrapper>;
   }
 
   protected renderMainContent = () => {
@@ -66,12 +62,7 @@ export class Renderer extends React.Component<Props, State> {
         {this.renderConditionsForm()}
         <Divider sx={{ my: 3 }} />
 
-        <Typography
-          component="h2"
-          variant="h4"
-          align="center"
-          sx={{ mt: 3, mb: 4 }}
-        >
+        <Typography component="h2" variant="h4" align="center" sx={{ mt: 3, mb: 4 }}>
           <IconAndText
             iconComponent={<ArticleIcon fontSize="inherit" />}
             text="投稿一覧"
@@ -126,12 +117,7 @@ export class Renderer extends React.Component<Props, State> {
                 variant="inherit"
               />
             </Typography>
-            <Grid
-              container
-              columnSpacing={6}
-              rowSpacing={2}
-              sx={{ mt: 1, mb: 3 }}
-            >
+            <Grid container columnSpacing={6} rowSpacing={2} sx={{ mt: 1, mb: 3 }}>
               <Grid item xs={12} md={6}>
                 {this.renderCategorySelect()}
               </Grid>
@@ -156,15 +142,10 @@ export class Renderer extends React.Component<Props, State> {
   protected renderCategorySelect = () => {
     const { formSearchConditions } = this.state;
     const categoryValue =
-      formSearchConditions.category !== undefined
-        ? String(formSearchConditions.category)
-        : '';
+      formSearchConditions.category !== undefined ? String(formSearchConditions.category) : '';
 
     const menuItems = CATEGORIES.map((category) => (
-      <MenuItem
-        key={`category-${category.categoryId}`}
-        value={category.categoryId.toString()}
-      >
+      <MenuItem key={`category-${category.categoryId}`} value={category.categoryId.toString()}>
         {category.categoryName}
       </MenuItem>
     ));
@@ -172,11 +153,7 @@ export class Renderer extends React.Component<Props, State> {
     return (
       <FormControl size="small" fullWidth>
         <InputLabel>カテゴリー</InputLabel>
-        <Select
-          value={categoryValue}
-          label="カテゴリー"
-          onChange={this.handleChangeCategory}
-        >
+        <Select value={categoryValue} label="カテゴリー" onChange={this.handleChangeCategory}>
           <MenuItem value="">
             <em>未選択</em>
           </MenuItem>
@@ -190,8 +167,7 @@ export class Renderer extends React.Component<Props, State> {
     this.setState({
       formSearchConditions: {
         ...this.state.formSearchConditions,
-        category:
-          event.target.value === '' ? undefined : Number(event.target.value),
+        category: event.target.value === '' ? undefined : Number(event.target.value),
       },
     });
   };
@@ -206,11 +182,7 @@ export class Renderer extends React.Component<Props, State> {
     return (
       <Box sx={{ display: 'flex', justifyContent: 'flex-end', mb: 2 }}>
         <FormControl size="small" variant="standard">
-          <Select
-            value={this.state.order}
-            label="表示順"
-            onChange={this.handleChangeOrder}
-          >
+          <Select value={this.state.order} label="表示順" onChange={this.handleChangeOrder}>
             {menuItems}
           </Select>
         </FormControl>
@@ -227,18 +199,12 @@ export class Renderer extends React.Component<Props, State> {
   protected renderParkSelect = () => {
     const { formSearchConditions } = this.state;
     const categoryValue =
-      formSearchConditions.park !== undefined
-        ? String(formSearchConditions.park)
-        : '';
+      formSearchConditions.park !== undefined ? String(formSearchConditions.park) : '';
 
     return (
       <FormControl sx={{ minWidth: 120 }} size="small" fullWidth>
         <InputLabel>パーク</InputLabel>
-        <Select
-          value={categoryValue}
-          label="パーク"
-          onChange={this.handleChangePark}
-        >
+        <Select value={categoryValue} label="パーク" onChange={this.handleChangePark}>
           <MenuItem value="">
             <em>未選択</em>
           </MenuItem>
@@ -253,12 +219,7 @@ export class Renderer extends React.Component<Props, State> {
     this.setState({
       formSearchConditions: {
         ...this.state.formSearchConditions,
-        park:
-          event.target.value === 'L'
-            ? 'L'
-            : event.target.value === 'S'
-            ? 'S'
-            : undefined,
+        park: event.target.value === 'L' ? 'L' : event.target.value === 'S' ? 'S' : undefined,
       },
     });
   };
@@ -278,12 +239,8 @@ export class Renderer extends React.Component<Props, State> {
     );
   };
 
-  protected handleChangeKeyword = (
-    event: React.ChangeEvent<HTMLInputElement>,
-  ) => {
-    const keywords = event.target.value
-      .split(/[\s,]+/)
-      .filter((keyword) => keyword !== '');
+  protected handleChangeKeyword = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const keywords = event.target.value.split(/[\s,]+/).filter((keyword) => keyword !== '');
 
     this.setState({
       formSearchConditions: {

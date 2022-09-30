@@ -19,14 +19,10 @@ export async function getRemoteMarkers(
     }
   }
 
-  const axiosInstance = getAxiosInstance(
-    {},
-    mockGetMarkersResponse(params.nextUrl),
-  );
+  const axiosInstance = getAxiosInstance({}, mockGetMarkersResponse(params.nextUrl));
 
   try {
-    const res: AxiosResponse<GetMarkersResponseWithPagination> =
-      await axiosInstance.get(url);
+    const res: AxiosResponse<GetMarkersResponseWithPagination> = await axiosInstance.get(url);
     return res.data;
   } catch (error) {
     const axiosError = error as AxiosError;
@@ -48,5 +44,4 @@ export type GetMarkersResponse = {
   numberOfPublicArticles: number;
 };
 
-export type GetMarkersResponseWithPagination =
-  PaginationResponse<GetMarkersResponse>;
+export type GetMarkersResponseWithPagination = PaginationResponse<GetMarkersResponse>;

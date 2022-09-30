@@ -115,10 +115,7 @@ describe('handleClickSignup', () => {
         nickname: ['nickname is invalid'],
         password1: ['password is invalid'],
         password2: ['password is invalid'],
-        non_field_errors: [
-          'another error',
-          "The two password fields didn't match.",
-        ],
+        non_field_errors: ['another error', "The two password fields didn't match."],
       },
       errorMsg: '400 request is invalid',
     };

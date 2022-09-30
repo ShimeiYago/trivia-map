@@ -10,9 +10,7 @@ export async function getUserInfo(): Promise<User> {
 
   try {
     // TODO: Set reasonable timeout
-    const res: AxiosResponse<User> = await axiosInstance.get(
-      `${BASE_URL}/auths/user`,
-    );
+    const res: AxiosResponse<User> = await axiosInstance.get(`${BASE_URL}/auths/user`);
     return res.data;
   } catch (error) {
     const axiosError = error as AxiosError;

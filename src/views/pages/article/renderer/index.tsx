@@ -7,21 +7,14 @@ import { createdAtBox } from '../styles';
 import MapIcon from '@mui/icons-material/Map';
 import { IconAndText } from 'views/components/atoms/icon-and-text';
 import { CenterSpinner } from 'views/components/atoms/center-spinner';
-import {
-  GetArticleResponse,
-  getRemoteArticle,
-} from 'api/articles-api/get-remote-article';
+import { GetArticleResponse, getRemoteArticle } from 'api/articles-api/get-remote-article';
 import { ApiError } from 'api/utils/handle-axios-error';
 import { ArticleWrapper } from 'views/components/organisms/article-wrapper';
 import { autoRefreshApiWrapper } from 'utils/auto-refresh-api-wrapper';
 import { AreaNames } from 'views/components/atoms/area-names';
 import { ZOOMS } from 'constant';
 import noIcon from 'images/no-icon.jpg';
-import {
-  AUTHER_PAGE_LINK,
-  CATEGORY_PAGE_LINK,
-  EDIT_LINK,
-} from 'constant/links';
+import { AUTHER_PAGE_LINK, CATEGORY_PAGE_LINK, EDIT_LINK } from 'constant/links';
 import { Link } from 'react-router-dom';
 import { categoryMapper } from 'utils/category-mapper';
 import FolderIcon from '@mui/icons-material/Folder';
@@ -41,9 +34,7 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   render() {
-    return (
-      <ArticleWrapper showSidebar>{this.renderMainArticle()}</ArticleWrapper>
-    );
+    return <ArticleWrapper showSidebar>{this.renderMainArticle()}</ArticleWrapper>;
   }
 
   protected renderMainArticle = () => {
@@ -53,39 +44,18 @@ export class Renderer extends React.Component<Props, State> {
       return <CenterSpinner />;
     }
 
-    const {
-      title,
-      description,
-      marker,
-      image,
-      author,
-      createdAt,
-      updatedAt,
-      isDraft,
-      category,
-    } = article;
+    const { title, description, marker, image, author, createdAt, updatedAt, isDraft, category } =
+      article;
 
     return (
       <Stack spacing={2}>
-        {isDraft && (
-          <Alert severity="info">
-            この記事は下書きです。あなただけが閲覧できます。
-          </Alert>
-        )}
+        {isDraft && <Alert severity="info">この記事は下書きです。あなただけが閲覧できます。</Alert>}
 
         {this.renderEditLink()}
 
         <Link to={AUTHER_PAGE_LINK(author.userId.toString())}>
-          <Stack
-            direction="row"
-            justifyContent="flex-start"
-            alignItems="center"
-            spacing={1}
-          >
-            <Avatar
-              sx={{ width: 30, height: 30 }}
-              src={author.icon ?? noIcon}
-            />
+          <Stack direction="row" justifyContent="flex-start" alignItems="center" spacing={1}>
+            <Avatar sx={{ width: 30, height: 30 }} src={author.icon ?? noIcon} />
             <Typography color="gray">{author.nickname}</Typography>
           </Stack>
         </Link>
@@ -107,9 +77,7 @@ export class Renderer extends React.Component<Props, State> {
 
         <Box sx={createdAtBox}>
           <Typography>{`投稿日 ${createdAt}`}</Typography>
-          {createdAt !== updatedAt && (
-            <Typography>{`更新日 ${updatedAt}`}</Typography>
-          )}
+          {createdAt !== updatedAt && <Typography>{`更新日 ${updatedAt}`}</Typography>}
         </Box>
 
         <Divider />
@@ -149,9 +117,7 @@ export class Renderer extends React.Component<Props, State> {
       loadingState: 'loading',
     });
     try {
-      const res = await autoRefreshApiWrapper(() =>
-        getRemoteArticle(this.props.postId),
-      );
+      const res = await autoRefreshApiWrapper(() => getRemoteArticle(this.props.postId));
       this.setState({
         article: res,
         loadingState: 'success',
@@ -159,11 +125,7 @@ export class Renderer extends React.Component<Props, State> {
     } catch (error) {
       const apiError = error as ApiError<unknown>;
 
-      if (
-        apiError.status === 404 ||
-        apiError.status === 401 ||
-        apiError.status === 403
-      ) {
+      if (apiError.status === 404 || apiError.status === 401 || apiError.status === 403) {
         this.props.throwError(404);
       } else {
         this.props.throwError(500);
@@ -182,12 +144,7 @@ export class Renderer extends React.Component<Props, State> {
 
     return (
       <Link to={EDIT_LINK(this.props.postId.toString())}>
-        <IconAndText
-          iconComponent={<EditIcon />}
-          text="編集"
-          iconPosition="left"
-          align="right"
-        />
+        <IconAndText iconComponent={<EditIcon />} text="編集" iconPosition="left" align="right" />
       </Link>
     );
   };

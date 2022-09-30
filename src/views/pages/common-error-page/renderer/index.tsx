@@ -38,9 +38,7 @@ const render500Error = () => {
       <Typography component="h1" fontSize={18}>
         エラーが発生しました。
       </Typography>
-      <Typography fontSize={18}>
-        しばらく時間を空けてからもう一度お試しください。
-      </Typography>
+      <Typography fontSize={18}>しばらく時間を空けてからもう一度お試しください。</Typography>
       <Typography component="h1" fontSize={20} sx={{ mt: 1 }}>
         <Link to={MAP_PAGE_LINK}>トップへ戻る</Link>
       </Typography>

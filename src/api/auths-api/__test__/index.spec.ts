@@ -34,9 +34,7 @@ describe('login', () => {
       data: {},
       errorMsg: 'Intentional API Error with mock',
     };
-    await expect(login('user@example.com', 'password')).rejects.toEqual(
-      expectedApiError,
-    );
+    await expect(login('user@example.com', 'password')).rejects.toEqual(expectedApiError);
   });
 });
 
@@ -51,12 +49,7 @@ describe('registration', () => {
   it('handle nomal response', async () => {
     process.env.REACT_APP_MOCK = 'normal';
 
-    const response = await registration(
-      'user@example.com',
-      'Axel',
-      'password1',
-      'password2',
-    );
+    const response = await registration('user@example.com', 'Axel', 'password1', 'password2');
     expect(response).toEqual(undefined);
   });
 
@@ -97,9 +90,7 @@ describe('reset-password', () => {
       data: {},
       errorMsg: 'Intentional API Error with mock',
     };
-    await expect(resetPassword('user@example.com')).rejects.toEqual(
-      expectedApiError,
-    );
+    await expect(resetPassword('user@example.com')).rejects.toEqual(expectedApiError);
   });
 });
 
@@ -234,9 +225,7 @@ describe('update-user-info', () => {
       data: {},
       errorMsg: 'Intentional API Error with mock',
     };
-    await expect(updateUserInfo({ nickname: 'Axel' })).rejects.toEqual(
-      expectedApiError,
-    );
+    await expect(updateUserInfo({ nickname: 'Axel' })).rejects.toEqual(expectedApiError);
   });
 });
 
@@ -263,9 +252,7 @@ describe('changePassword', () => {
       data: {},
       errorMsg: 'Intentional API Error with mock',
     };
-    await expect(changePassword('password1', 'password2')).rejects.toEqual(
-      expectedApiError,
-    );
+    await expect(changePassword('password1', 'password2')).rejects.toEqual(expectedApiError);
   });
 });
 
@@ -280,12 +267,7 @@ describe('resetPasswordConfirm', () => {
   it('handle nomal response', async () => {
     process.env.REACT_APP_MOCK = 'normal';
 
-    const response = await resetPasswordConfirm(
-      'password1',
-      'password2',
-      'uid',
-      'token',
-    );
+    const response = await resetPasswordConfirm('password1', 'password2', 'uid', 'token');
     expect(response).toEqual(undefined);
   });
 
@@ -297,9 +279,9 @@ describe('resetPasswordConfirm', () => {
       data: {},
       errorMsg: 'Intentional API Error with mock',
     };
-    await expect(
-      resetPasswordConfirm('password1', 'password2', 'uid', 'token'),
-    ).rejects.toEqual(expectedApiError);
+    await expect(resetPasswordConfirm('password1', 'password2', 'uid', 'token')).rejects.toEqual(
+      expectedApiError,
+    );
   });
 });
 

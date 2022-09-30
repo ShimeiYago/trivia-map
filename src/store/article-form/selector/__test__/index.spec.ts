@@ -65,9 +65,7 @@ describe('readingArticle selector', () => {
   });
 
   it('selectArticleFormLastSavedDescription should return articleForm description', () => {
-    expect(selectArticleFormLastSavedDescription(rootState)).toEqual(
-      'description',
-    );
+    expect(selectArticleFormLastSavedDescription(rootState)).toEqual('description');
   });
 
   it('selectArticleFormPosition should return articleForm position', () => {
@@ -94,9 +92,7 @@ describe('readingArticle selector', () => {
   });
 
   it('selectArticleFormLastSavedImage should return articleForm image', () => {
-    expect(selectArticleFormLastSavedImage(rootState)).toEqual(
-      'https://image-data.jpg',
-    );
+    expect(selectArticleFormLastSavedImage(rootState)).toEqual('https://image-data.jpg');
   });
 
   it('selectArticleFormCategory should return articleForm category', () => {
@@ -124,9 +120,7 @@ describe('readingArticle selector', () => {
   });
 
   it('selectArticleFormIsFormChangedFromLastSaved should return articleForm isFormChangedFromLastSaved state', () => {
-    expect(selectArticleFormIsFormChangedFromLastSaved(rootState)).toEqual(
-      false,
-    );
+    expect(selectArticleFormIsFormChangedFromLastSaved(rootState)).toEqual(false);
   });
 
   it('selectArticleFormIsDraft should return articleForm isDraft state', () => {

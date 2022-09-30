@@ -7,10 +7,7 @@ import { Marker } from '../../model';
  * @param newMarkers - The marker list to add newly
  * @returns Combined marker list
  */
-export function concatMarkers(
-  origMarkers: Marker[],
-  newMarkers: Marker[],
-): Marker[] {
+export function concatMarkers(origMarkers: Marker[], newMarkers: Marker[]): Marker[] {
   return [...origMarkers, ...newMarkers];
 }
 
@@ -45,10 +42,7 @@ export function pushMarker(origMarkers: Marker[], newMarker: Marker): Marker[] {
  * @param deletingMarkerId - The marker id to delete
  * @returns updated marker list
  */
-export function deleteOneMarker(
-  origMarkers: Marker[],
-  deletingMarkerId: number,
-): Marker[] {
+export function deleteOneMarker(origMarkers: Marker[], deletingMarkerId: number): Marker[] {
   const editableOrigMarker = deepCopyMarkers(origMarkers);
 
   const sameMarkerIndex = editableOrigMarker.findIndex(

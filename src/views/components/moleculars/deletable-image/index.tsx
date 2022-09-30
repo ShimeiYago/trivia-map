@@ -6,16 +6,7 @@ import { IconButton } from '@mui/material';
 
 export class DeletableImage extends React.Component<Props> {
   render() {
-    const {
-      src,
-      alt,
-      width,
-      height,
-      objectFit,
-      borderRadius,
-      onClick,
-      onDelete,
-    } = this.props;
+    const { src, alt, width, height, objectFit, borderRadius, onClick, onDelete } = this.props;
 
     const wrapperClassNames: string[] = [styles.wrapper];
     if (width) wrapperClassNames.push(styles[`width-${width}`]);

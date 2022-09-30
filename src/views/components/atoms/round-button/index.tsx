@@ -10,11 +10,7 @@ export const RoundButton: React.FC<Props> = (props) => {
 
   return (
     <button className={`${classNames.join(' ')}`} onClick={props.onClick}>
-      <Typography
-        variant="button"
-        component="div"
-        color={props.selected ? 'white' : 'black'}
-      >
+      <Typography variant="button" component="div" color={props.selected ? 'white' : 'black'}>
         {props.children}
       </Typography>
     </button>

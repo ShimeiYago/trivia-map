@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  Divider,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-} from '@mui/material';
+import { Divider, List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
 import {
   ACCOUNT_SETTINGS_LINK,
   ADMIN_LINK,
@@ -93,9 +87,7 @@ export const leftNaviContents = (login: boolean) => (
   <>
     <List>{listItemMapping(listItemsForMap)}</List>
     <Divider />
-    <List>
-      {listItemMapping(login ? listItemsForAdmin : listItemsForLogin)}
-    </List>
+    <List>{listItemMapping(login ? listItemsForAdmin : listItemsForLogin)}</List>
     <Divider />
     <List>{listItemMapping(listItemsOthers)}</List>
   </>

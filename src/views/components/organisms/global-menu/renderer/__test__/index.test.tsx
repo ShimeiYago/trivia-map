@@ -96,10 +96,7 @@ describe('componentDidUpdate', () => {
     });
 
     const instance = wrapper.instance();
-    instance['componentDidUpdate'](
-      { loggedOutSuccessfully: false } as Props,
-      {} as State,
-    );
+    instance['componentDidUpdate']({ loggedOutSuccessfully: false } as Props, {} as State);
     expect(instance.state.authMenuAnchorEl).toBe(null);
   });
 
@@ -109,10 +106,7 @@ describe('componentDidUpdate', () => {
     });
 
     const instance = wrapper.instance();
-    instance['componentDidUpdate'](
-      {} as Props,
-      { redirectToTop: false } as State,
-    );
+    instance['componentDidUpdate']({} as Props, { redirectToTop: false } as State);
     expect(instance.state.redirectToTop).toBeFalsy();
   });
 });

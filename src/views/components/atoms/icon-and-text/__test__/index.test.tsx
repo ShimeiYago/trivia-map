@@ -6,13 +6,7 @@ let wrapper: ShallowWrapper<Props>;
 
 describe('Shallow Snapshot Tests', () => {
   beforeEach(() => {
-    wrapper = shallow(
-      <IconAndText
-        iconComponent={<MapIcon />}
-        text="地図"
-        iconPosition="left"
-      />,
-    );
+    wrapper = shallow(<IconAndText iconComponent={<MapIcon />} text="地図" iconPosition="left" />);
   });
 
   it('basic', () => {

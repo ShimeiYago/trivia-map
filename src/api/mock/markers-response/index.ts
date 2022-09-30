@@ -1,8 +1,6 @@
 import { GetMarkersResponseWithPagination } from './../../markers-api';
 
-export function mockGetMarkersResponse(
-  nextUrl?: string,
-): GetMarkersResponseWithPagination {
+export function mockGetMarkersResponse(nextUrl?: string): GetMarkersResponseWithPagination {
   if (!nextUrl) {
     return mockGetMarkersResponsePage1;
   } else {

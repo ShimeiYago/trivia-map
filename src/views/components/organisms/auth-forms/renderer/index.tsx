@@ -96,8 +96,4 @@ export type State = {
   email: string;
 };
 
-export type AuthFormMode =
-  | 'login'
-  | 'signup'
-  | 'reset-password'
-  | 'resend-email';
+export type AuthFormMode = 'login' | 'signup' | 'reset-password' | 'resend-email';

@@ -79,10 +79,7 @@ describe('componentDidUpdate', () => {
     });
     const instance = shallowWrapper.instance();
 
-    instance.componentDidUpdate(
-      { isFormChangedFromLastSaved: false } as Props,
-      {} as State,
-    );
+    instance.componentDidUpdate({ isFormChangedFromLastSaved: false } as Props, {} as State);
     expect(mockAddEventListener).toHaveBeenCalled();
   });
 
@@ -92,10 +89,7 @@ describe('componentDidUpdate', () => {
     });
     const instance = shallowWrapper.instance();
 
-    instance.componentDidUpdate(
-      { isFormChangedFromLastSaved: true } as Props,
-      {} as State,
-    );
+    instance.componentDidUpdate({ isFormChangedFromLastSaved: true } as Props, {} as State);
     expect(mockRemoveEventListener).toHaveBeenCalled();
   });
 });
@@ -112,9 +106,7 @@ describe('handleBeforeUnload', () => {
 
     instance['handleBeforeUnload'](event);
 
-    expect(event.returnValue).toBe(
-      '未保存のデータがありますが、本当に閉じてもよろしいですか？',
-    );
+    expect(event.returnValue).toBe('未保存のデータがありますが、本当に閉じてもよろしいですか？');
   });
 });
 

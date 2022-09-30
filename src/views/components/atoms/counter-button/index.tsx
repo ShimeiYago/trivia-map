@@ -19,12 +19,7 @@ export class CounterButton extends React.Component<Props> {
     }
 
     return (
-      <button
-        className={className}
-        aria-label={ariaLabel}
-        disabled={disabled}
-        onClick={onClick}
-      >
+      <button className={className} aria-label={ariaLabel} disabled={disabled} onClick={onClick}>
         {children}
       </button>
     );

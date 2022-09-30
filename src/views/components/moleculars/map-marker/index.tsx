@@ -1,11 +1,6 @@
 import React, { ReactNode } from 'react';
 import { Marker } from 'react-leaflet';
-import {
-  LatLng,
-  LeafletEventHandlerFnMap,
-  Marker as MarkerType,
-  Map as LeafletMap,
-} from 'leaflet';
+import { LatLng, LeafletEventHandlerFnMap, Marker as MarkerType, Map as LeafletMap } from 'leaflet';
 
 import { defaultIcon, numberCircleIcon, redIcon } from './icons';
 import { CustomMarker } from './helpers/custom-marker';
@@ -41,14 +36,13 @@ export class MapMarker extends React.Component<Props, State> {
         break;
     }
 
-    const numberCircleMarker = !this.state.dragging &&
-      this.props.numberOfContents && (
-        <Marker
-          position={this.props.position}
-          icon={numberCircleIcon(String(this.props.numberOfContents))}
-          eventHandlers={this.numberCircleEventHandlers}
-        />
-      );
+    const numberCircleMarker = !this.state.dragging && this.props.numberOfContents && (
+      <Marker
+        position={this.props.position}
+        icon={numberCircleIcon(String(this.props.numberOfContents))}
+        eventHandlers={this.numberCircleEventHandlers}
+      />
+    );
 
     if (!this.props.popup) {
       return (
@@ -107,10 +101,7 @@ export class MapMarker extends React.Component<Props, State> {
         isPopupOpened: true,
       });
 
-      const position = new LatLng(
-        this.props.position.lat + 30,
-        this.props.position.lng,
-      );
+      const position = new LatLng(this.props.position.lat + 30, this.props.position.lng);
       this.props.map.flyTo(position, ZOOMS.popupOpen);
     },
 

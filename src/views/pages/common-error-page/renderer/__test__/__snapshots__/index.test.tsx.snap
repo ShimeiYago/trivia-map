@@ -2,15 +2,9 @@
 
 exports[`Shallow Snapshot Tests 404 1`] = `
 <Fragment>
-  <Helmet
-    defer={true}
-    encodeSpecialCharacters={true}
-    prioritizeSeoTags={false}
-  >
-    <title>
-      Page not found - トリビアマップ
-    </title>
-  </Helmet>
+  <CommonHelmet
+    title="Page not found - トリビアマップ"
+  />
   <GlobalMenu
     topBarPosition="static"
   >
@@ -61,15 +55,9 @@ exports[`Shallow Snapshot Tests 404 1`] = `
 
 exports[`Shallow Snapshot Tests basic 1`] = `
 <Fragment>
-  <Helmet
-    defer={true}
-    encodeSpecialCharacters={true}
-    prioritizeSeoTags={false}
-  >
-    <title>
-      Internal server error - トリビアマップ
-    </title>
-  </Helmet>
+  <CommonHelmet
+    title="Internal server error - トリビアマップ"
+  />
   <InternalError />
 </Fragment>
 `;

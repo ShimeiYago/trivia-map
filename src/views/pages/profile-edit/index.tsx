@@ -4,7 +4,7 @@ import { selectUser } from 'store/auths/selector';
 import { updateUser } from 'store/auths/actions';
 import { User } from 'types/user';
 import { throwError } from 'store/global-error/slice';
-import { Helmet } from 'react-helmet-async';
+import { CommonHelmet } from 'helper-components/common-helmet';
 import { pageTitleGenerator } from 'utils/page-title-generator';
 import { PAGE_NAMES } from 'constant/page-names';
 
@@ -20,9 +20,7 @@ export function ProfileEdit() {
 
   return (
     <>
-      <Helmet>
-        <title>{pageTitleGenerator(PAGE_NAMES.profileEdit)}</title>
-      </Helmet>
+      <CommonHelmet title={pageTitleGenerator(PAGE_NAMES.profileEdit)} />
 
       <Renderer {...props} />
     </>

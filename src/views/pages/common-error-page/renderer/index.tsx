@@ -5,7 +5,7 @@ import notFoundImage from 'images/404.png';
 import { pageTitleGenerator } from 'utils/page-title-generator';
 import { PAGE_NAMES } from 'constant/page-names';
 import { InternalError } from 'views/components/moleculars/internal-error';
-import { Helmet } from 'react-helmet-async';
+import { CommonHelmet } from 'helper-components/common-helmet';
 
 export const Renderer: React.FC<Props> = (props) => {
   switch (props.errorStatus) {
@@ -19,9 +19,7 @@ export const Renderer: React.FC<Props> = (props) => {
 const render404Error = () => {
   return (
     <>
-      <Helmet>
-        <title>{pageTitleGenerator(PAGE_NAMES.notFound)}</title>
-      </Helmet>
+      <CommonHelmet title={pageTitleGenerator(PAGE_NAMES.notFound)} />
 
       <GlobalMenu topBarPosition="static">
         <Box sx={{ p: 1 }}>
@@ -43,9 +41,7 @@ const render404Error = () => {
 const render500Error = () => {
   return (
     <>
-      <Helmet>
-        <title>{pageTitleGenerator(PAGE_NAMES.internalError)}</title>
-      </Helmet>
+      <CommonHelmet title={pageTitleGenerator(PAGE_NAMES.internalError)} />
 
       <InternalError />
     </>

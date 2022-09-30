@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { throwError } from 'store/global-error/slice';
 import { useAppDispatch } from 'store';
 import { CATEGORIES } from 'constant';
-import { Helmet } from 'react-helmet-async';
+import { CommonHelmet } from 'helper-components/common-helmet';
 import { pageTitleGenerator } from 'utils/page-title-generator';
 import { categoryMapper } from 'utils/category-mapper';
 
@@ -24,9 +24,7 @@ export function CategoryPage() {
     if (category.categoryId === categoryIdNumber) {
       return (
         <>
-          <Helmet>
-            <title>{pageTitleGenerator(categoryMapper(categoryIdNumber))}</title>
-          </Helmet>
+          <CommonHelmet title={pageTitleGenerator(categoryMapper(categoryIdNumber))} />
 
           <Renderer categoryId={categoryIdNumber} />
         </>

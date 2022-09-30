@@ -1,4 +1,5 @@
 import React from 'react';
+import { InternalError } from 'views/components/moleculars/internal-error';
 
 export class ErrorBoundary extends React.Component<Props, State> {
   state = {
@@ -26,12 +27,7 @@ export class ErrorBoundary extends React.Component<Props, State> {
   }
 
   protected renderErrorFallback() {
-    return (
-      <>
-        <h1>Something went wrong</h1>
-        <pre>{this.state.error.message}</pre>
-      </>
-    );
+    return <InternalError />;
   }
 }
 

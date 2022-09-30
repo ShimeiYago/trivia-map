@@ -28,7 +28,6 @@ import { ArticlePaper } from 'views/components/atoms/article-paper';
 import { BackToNavi } from 'views/components/moleculars/back-to-navi';
 import logoImage from 'images/logo.png';
 import { Image } from 'views/components/atoms/image';
-import { NonStyleLink } from 'views/components/atoms/non-style-link';
 import { SITE_NAME } from 'constant';
 
 export class Renderer extends React.Component<Props, State> {
@@ -87,9 +86,9 @@ export class Renderer extends React.Component<Props, State> {
             )}
             <Box sx={logoImageBox(this.props.isMobile)}>
               <h1 hidden>{SITE_NAME}</h1>
-              <NonStyleLink to={MAP_PAGE_LINK}>
+              <a href={MAP_PAGE_LINK}>
                 <Image src={logoImage} height="full" />
-              </NonStyleLink>
+              </a>
             </Box>
 
             {this.renderAuthMenu()}

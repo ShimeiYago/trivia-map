@@ -1,4 +1,5 @@
 import { PreviewListOrder } from 'api/articles-api/get-articles-previews';
+import { Park } from 'types/park';
 
 export const BASE_URL = process.env.REACT_APP_API_BASE_URL ?? 'http://localhost:3001';
 
@@ -57,3 +58,5 @@ export const ZOOMS = {
   miniMap: 3,
   popupOpen: 3,
 };
+
+export const INITIAL_PARK: Park = 'S';

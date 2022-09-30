@@ -1,8 +1,10 @@
 import {
   selectMarkersFetchingState,
-  selectMarkers,
   selectMarkersTotalPages,
   selectMarkersLoadedPages,
+  selectFocusingPark,
+  selectFilteringCategoryId,
+  selectMarkers,
 } from '..';
 import { MarkersState } from '../../model';
 
@@ -18,6 +20,8 @@ describe('markers selector', () => {
           numberOfPublicArticles: 1,
         },
       ],
+      focusingPark: 'S',
+      filteringCategoryId: 1,
       fetchingState: 'waiting',
       errorMsg: 'error',
       totalPages: 2,
@@ -25,7 +29,7 @@ describe('markers selector', () => {
     } as MarkersState,
   };
 
-  it('selectMarkerList should return marker list', () => {
+  it('selectMarkers should return sea marker list', () => {
     expect(selectMarkers(rootState)).toEqual([
       {
         markerId: 1,
@@ -47,5 +51,13 @@ describe('markers selector', () => {
 
   it('selectMarkersTotalPages should return markers totalPages', () => {
     expect(selectMarkersTotalPages(rootState)).toEqual(2);
+  });
+
+  it('selectFocusingPark should return markers focusingPark', () => {
+    expect(selectFocusingPark(rootState)).toEqual('S');
+  });
+
+  it('selectFilteringCategoryId should return markers filteringCategoryId', () => {
+    expect(selectFilteringCategoryId(rootState)).toEqual(1);
   });
 });

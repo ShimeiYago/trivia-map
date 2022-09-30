@@ -9,6 +9,7 @@ let getRemoteMarkersSpy: jest.SpyInstance;
 const getState = () => ({
   markers: {
     markers: [],
+    focusingPark: 'S',
     loading: false,
     errorMsg: null,
   },
@@ -27,7 +28,7 @@ describe('fetchMarkers', () => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const appThunk = fetchMarkers('L') as any;
     await appThunk(dispatch);
-    expect(dispatch.mock.calls[0][0].type).toBe('markers/fetchStart');
+    expect(dispatch.mock.calls[1][0].type).toBe('markers/fetchStart');
   });
 
   it('call fetchSuccess if API successed', async () => {
@@ -50,7 +51,7 @@ describe('fetchMarkers', () => {
 });
 
 describe('appendMarkers', () => {
-  it('call updateList', async () => {
+  it('call updateList for land', async () => {
     const newist: Marker[] = [
       {
         markerId: 0,

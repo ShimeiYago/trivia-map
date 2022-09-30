@@ -1,634 +1,658 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Shallow Snapshot Tests basic 1`] = `
-<AdminWrapper>
-  <ForwardRef(Stack)
-    spacing={3}
-  >
-    <BackToNavi
-      link="/admin/account"
-      text="アカウント設定"
-    />
-    <ForwardRef(Box)>
-      <ForwardRef(Stack)
-        spacing={1}
-        sx={
-          Object {
-            "maxWidth": "400px",
-            "mx": "auto",
-            "px": 1,
-          }
-        }
-      >
-        <ForwardRef(Typography)
-          align="center"
-          component="h2"
-          variant="h5"
-        >
-          プロフィール
-        </ForwardRef(Typography)>
-        <ForwardRef(Box)>
-          <ImageField
-            cropable={true}
-            disabled={false}
-            error={false}
-            maxLength={200}
-            onCatchError={[Function]}
-            onChange={[Function]}
-            src="https://..."
-            variant="icon"
-          />
-        </ForwardRef(Box)>
-        <ForwardRef(Box)
+<HeadAppender
+  title="プロフィール変更 - トリビアマップ"
+>
+  <AdminWrapper>
+    <ForwardRef(Stack)
+      spacing={3}
+    >
+      <BackToNavi
+        link="/admin/account"
+        text="アカウント管理"
+      />
+      <ForwardRef(Box)>
+        <ForwardRef(Stack)
+          spacing={1}
           sx={
             Object {
-              "pl": 1.5,
+              "maxWidth": "400px",
+              "mx": "auto",
+              "px": 1,
             }
           }
         >
           <ForwardRef(Typography)
-            color="gray"
-            fontSize={12}
+            align="center"
+            component="h2"
+            variant="h5"
+          >
+            プロフィール変更
+          </ForwardRef(Typography)>
+          <ForwardRef(Box)>
+            <ImageField
+              cropable={true}
+              disabled={false}
+              error={false}
+              maxLength={200}
+              onCatchError={[Function]}
+              onChange={[Function]}
+              src="https://..."
+              variant="icon"
+            />
+          </ForwardRef(Box)>
+          <ForwardRef(Box)
             sx={
               Object {
-                "pb": 0.5,
+                "pl": 1.5,
               }
             }
           >
-            メールアドレス（非公開）
-          </ForwardRef(Typography)>
-          <ForwardRef(Typography)
-            fontSize={18}
-          >
-            xxx@example.com
-          </ForwardRef(Typography)>
-        </ForwardRef(Box)>
-        <ForwardRef(Box)
-          component="form"
-          noValidate={true}
-        >
-          <ForwardRef(TextField)
-            disabled={false}
-            error={false}
-            fullWidth={true}
-            id="nickname"
-            label="名前"
-            margin="normal"
-            name="nickname"
-            onChange={[Function]}
-            required={true}
-            type="nickname"
-            value="Axel"
-          />
-          <ForwardRef(LoadingButton)
-            disabled={false}
-            fullWidth={true}
-            loading={false}
-            onClick={[Function]}
-            sx={
-              Object {
-                "mb": 2,
-                "mt": 3,
+            <ForwardRef(Typography)
+              color="gray"
+              fontSize={12}
+              sx={
+                Object {
+                  "pb": 0.5,
+                }
               }
-            }
-            variant="contained"
+            >
+              メールアドレス（非公開）
+            </ForwardRef(Typography)>
+            <ForwardRef(Typography)
+              fontSize={18}
+            >
+              xxx@example.com
+            </ForwardRef(Typography)>
+          </ForwardRef(Box)>
+          <ForwardRef(Box)
+            component="form"
+            noValidate={true}
           >
-            更新
-          </ForwardRef(LoadingButton)>
-        </ForwardRef(Box)>
-      </ForwardRef(Stack)>
-    </ForwardRef(Box)>
-  </ForwardRef(Stack)>
-</AdminWrapper>
+            <ForwardRef(TextField)
+              disabled={false}
+              error={false}
+              fullWidth={true}
+              id="nickname"
+              label="名前"
+              margin="normal"
+              name="nickname"
+              onChange={[Function]}
+              required={true}
+              type="nickname"
+              value="Axel"
+            />
+            <ForwardRef(LoadingButton)
+              disabled={false}
+              fullWidth={true}
+              loading={false}
+              onClick={[Function]}
+              sx={
+                Object {
+                  "mb": 2,
+                  "mt": 3,
+                }
+              }
+              variant="contained"
+            >
+              更新
+            </ForwardRef(LoadingButton)>
+          </ForwardRef(Box)>
+        </ForwardRef(Stack)>
+      </ForwardRef(Box)>
+    </ForwardRef(Stack)>
+  </AdminWrapper>
+</HeadAppender>
 `;
 
 exports[`Shallow Snapshot Tests error case 1`] = `
-<AdminWrapper>
-  <ForwardRef(Stack)
-    spacing={3}
-  >
-    <BackToNavi
-      link="/admin/account"
-      text="アカウント設定"
-    />
-    <ForwardRef(Box)>
-      <ForwardRef(Stack)
-        spacing={1}
-        sx={
-          Object {
-            "maxWidth": "400px",
-            "mx": "auto",
-            "px": 1,
-          }
-        }
-      >
-        <ForwardRef(Typography)
-          align="center"
-          component="h2"
-          variant="h5"
-        >
-          プロフィール
-        </ForwardRef(Typography)>
-        <HeaderErrorMessages
-          errorMessages={
-            Array [
-              "error1",
-              "error2",
-            ]
-          }
-          errorTitle="error title"
-        />
-        <ForwardRef(Box)>
-          <ImageField
-            cropable={true}
-            disabled={false}
-            error={true}
-            helperText={
-              Array [
-                "nickname is invalid",
-              ]
-            }
-            maxLength={200}
-            onCatchError={[Function]}
-            onChange={[Function]}
-            src="https://..."
-            variant="icon"
-          />
-        </ForwardRef(Box)>
-        <ForwardRef(Box)
+<HeadAppender
+  title="プロフィール変更 - トリビアマップ"
+>
+  <AdminWrapper>
+    <ForwardRef(Stack)
+      spacing={3}
+    >
+      <BackToNavi
+        link="/admin/account"
+        text="アカウント管理"
+      />
+      <ForwardRef(Box)>
+        <ForwardRef(Stack)
+          spacing={1}
           sx={
             Object {
-              "pl": 1.5,
+              "maxWidth": "400px",
+              "mx": "auto",
+              "px": 1,
             }
           }
         >
           <ForwardRef(Typography)
-            color="gray"
-            fontSize={12}
-            sx={
-              Object {
-                "pb": 0.5,
-              }
-            }
+            align="center"
+            component="h2"
+            variant="h5"
           >
-            メールアドレス（非公開）
+            プロフィール変更
           </ForwardRef(Typography)>
-          <ForwardRef(Typography)
-            fontSize={18}
-          >
-            xxx@example.com
-          </ForwardRef(Typography)>
-        </ForwardRef(Box)>
-        <ForwardRef(Box)
-          component="form"
-          noValidate={true}
-        >
-          <ForwardRef(TextField)
-            disabled={false}
-            error={true}
-            fullWidth={true}
-            helperText={
+          <HeaderErrorMessages
+            errorMessages={
               Array [
-                "nickname is invalid",
+                "error1",
+                "error2",
               ]
             }
-            id="nickname"
-            label="名前"
-            margin="normal"
-            name="nickname"
-            onChange={[Function]}
-            required={true}
-            type="nickname"
-            value="Axel"
+            errorTitle="error title"
           />
-          <ForwardRef(LoadingButton)
-            disabled={false}
-            fullWidth={true}
-            loading={false}
-            onClick={[Function]}
+          <ForwardRef(Box)>
+            <ImageField
+              cropable={true}
+              disabled={false}
+              error={true}
+              helperText={
+                Array [
+                  "nickname is invalid",
+                ]
+              }
+              maxLength={200}
+              onCatchError={[Function]}
+              onChange={[Function]}
+              src="https://..."
+              variant="icon"
+            />
+          </ForwardRef(Box)>
+          <ForwardRef(Box)
             sx={
               Object {
-                "mb": 2,
-                "mt": 3,
+                "pl": 1.5,
               }
             }
-            variant="contained"
           >
-            更新
-          </ForwardRef(LoadingButton)>
-        </ForwardRef(Box)>
-      </ForwardRef(Stack)>
-    </ForwardRef(Box)>
-  </ForwardRef(Stack)>
-</AdminWrapper>
+            <ForwardRef(Typography)
+              color="gray"
+              fontSize={12}
+              sx={
+                Object {
+                  "pb": 0.5,
+                }
+              }
+            >
+              メールアドレス（非公開）
+            </ForwardRef(Typography)>
+            <ForwardRef(Typography)
+              fontSize={18}
+            >
+              xxx@example.com
+            </ForwardRef(Typography)>
+          </ForwardRef(Box)>
+          <ForwardRef(Box)
+            component="form"
+            noValidate={true}
+          >
+            <ForwardRef(TextField)
+              disabled={false}
+              error={true}
+              fullWidth={true}
+              helperText={
+                Array [
+                  "nickname is invalid",
+                ]
+              }
+              id="nickname"
+              label="名前"
+              margin="normal"
+              name="nickname"
+              onChange={[Function]}
+              required={true}
+              type="nickname"
+              value="Axel"
+            />
+            <ForwardRef(LoadingButton)
+              disabled={false}
+              fullWidth={true}
+              loading={false}
+              onClick={[Function]}
+              sx={
+                Object {
+                  "mb": 2,
+                  "mt": 3,
+                }
+              }
+              variant="contained"
+            >
+              更新
+            </ForwardRef(LoadingButton)>
+          </ForwardRef(Box)>
+        </ForwardRef(Stack)>
+      </ForwardRef(Box)>
+    </ForwardRef(Stack)>
+  </AdminWrapper>
+</HeadAppender>
 `;
 
 exports[`Shallow Snapshot Tests loading 1`] = `
-<AdminWrapper>
-  <ForwardRef(Stack)
-    spacing={3}
-  >
-    <BackToNavi
-      link="/admin/account"
-      text="アカウント設定"
-    />
-    <ForwardRef(Box)>
-      <ForwardRef(Stack)
-        spacing={1}
-        sx={
-          Object {
-            "maxWidth": "400px",
-            "mx": "auto",
-            "px": 1,
-          }
-        }
-      >
-        <ForwardRef(Typography)
-          align="center"
-          component="h2"
-          variant="h5"
-        >
-          プロフィール
-        </ForwardRef(Typography)>
-        <ForwardRef(Box)>
-          <ImageField
-            cropable={true}
-            disabled={true}
-            error={false}
-            maxLength={200}
-            onCatchError={[Function]}
-            onChange={[Function]}
-            src="https://..."
-            variant="icon"
-          />
-        </ForwardRef(Box)>
-        <ForwardRef(Box)
+<HeadAppender
+  title="プロフィール変更 - トリビアマップ"
+>
+  <AdminWrapper>
+    <ForwardRef(Stack)
+      spacing={3}
+    >
+      <BackToNavi
+        link="/admin/account"
+        text="アカウント管理"
+      />
+      <ForwardRef(Box)>
+        <ForwardRef(Stack)
+          spacing={1}
           sx={
             Object {
-              "pl": 1.5,
+              "maxWidth": "400px",
+              "mx": "auto",
+              "px": 1,
             }
           }
         >
           <ForwardRef(Typography)
-            color="gray"
-            fontSize={12}
+            align="center"
+            component="h2"
+            variant="h5"
+          >
+            プロフィール変更
+          </ForwardRef(Typography)>
+          <ForwardRef(Box)>
+            <ImageField
+              cropable={true}
+              disabled={true}
+              error={false}
+              maxLength={200}
+              onCatchError={[Function]}
+              onChange={[Function]}
+              src="https://..."
+              variant="icon"
+            />
+          </ForwardRef(Box)>
+          <ForwardRef(Box)
             sx={
               Object {
-                "pb": 0.5,
+                "pl": 1.5,
               }
             }
           >
-            メールアドレス（非公開）
-          </ForwardRef(Typography)>
-          <ForwardRef(Typography)
-            fontSize={18}
-          >
-            xxx@example.com
-          </ForwardRef(Typography)>
-        </ForwardRef(Box)>
-        <ForwardRef(Box)
-          component="form"
-          noValidate={true}
-        >
-          <ForwardRef(TextField)
-            disabled={true}
-            error={false}
-            fullWidth={true}
-            id="nickname"
-            label="名前"
-            margin="normal"
-            name="nickname"
-            onChange={[Function]}
-            required={true}
-            type="nickname"
-            value="Axel"
-          />
-          <ForwardRef(LoadingButton)
-            disabled={true}
-            fullWidth={true}
-            loading={true}
-            onClick={[Function]}
-            sx={
-              Object {
-                "mb": 2,
-                "mt": 3,
+            <ForwardRef(Typography)
+              color="gray"
+              fontSize={12}
+              sx={
+                Object {
+                  "pb": 0.5,
+                }
               }
-            }
-            variant="contained"
+            >
+              メールアドレス（非公開）
+            </ForwardRef(Typography)>
+            <ForwardRef(Typography)
+              fontSize={18}
+            >
+              xxx@example.com
+            </ForwardRef(Typography)>
+          </ForwardRef(Box)>
+          <ForwardRef(Box)
+            component="form"
+            noValidate={true}
           >
-            更新
-          </ForwardRef(LoadingButton)>
-        </ForwardRef(Box)>
-      </ForwardRef(Stack)>
-    </ForwardRef(Box)>
-  </ForwardRef(Stack)>
-</AdminWrapper>
+            <ForwardRef(TextField)
+              disabled={true}
+              error={false}
+              fullWidth={true}
+              id="nickname"
+              label="名前"
+              margin="normal"
+              name="nickname"
+              onChange={[Function]}
+              required={true}
+              type="nickname"
+              value="Axel"
+            />
+            <ForwardRef(LoadingButton)
+              disabled={true}
+              fullWidth={true}
+              loading={true}
+              onClick={[Function]}
+              sx={
+                Object {
+                  "mb": 2,
+                  "mt": 3,
+                }
+              }
+              variant="contained"
+            >
+              更新
+            </ForwardRef(LoadingButton)>
+          </ForwardRef(Box)>
+        </ForwardRef(Stack)>
+      </ForwardRef(Box)>
+    </ForwardRef(Stack)>
+  </AdminWrapper>
+</HeadAppender>
 `;
 
 exports[`Shallow Snapshot Tests success 1`] = `
-<AdminWrapper>
-  <ForwardRef(Stack)
-    spacing={3}
-  >
-    <BackToNavi
-      link="/admin/account"
-      text="アカウント設定"
-    />
-    <ForwardRef(Box)>
-      <ForwardRef(Stack)
-        spacing={1}
-        sx={
-          Object {
-            "maxWidth": "400px",
-            "mx": "auto",
-            "px": 1,
-          }
-        }
-      >
-        <ForwardRef(Typography)
-          align="center"
-          component="h2"
-          variant="h5"
-        >
-          プロフィール
-        </ForwardRef(Typography)>
-        <ForwardRef(Alert)>
-          ユーザー情報を変更しました。
-        </ForwardRef(Alert)>
-        <ForwardRef(Box)>
-          <ImageField
-            cropable={true}
-            disabled={false}
-            error={false}
-            maxLength={200}
-            onCatchError={[Function]}
-            onChange={[Function]}
-            src="https://..."
-            variant="icon"
-          />
-        </ForwardRef(Box)>
-        <ForwardRef(Box)
+<HeadAppender
+  title="プロフィール変更 - トリビアマップ"
+>
+  <AdminWrapper>
+    <ForwardRef(Stack)
+      spacing={3}
+    >
+      <BackToNavi
+        link="/admin/account"
+        text="アカウント管理"
+      />
+      <ForwardRef(Box)>
+        <ForwardRef(Stack)
+          spacing={1}
           sx={
             Object {
-              "pl": 1.5,
+              "maxWidth": "400px",
+              "mx": "auto",
+              "px": 1,
             }
           }
         >
           <ForwardRef(Typography)
-            color="gray"
-            fontSize={12}
+            align="center"
+            component="h2"
+            variant="h5"
+          >
+            プロフィール変更
+          </ForwardRef(Typography)>
+          <ForwardRef(Alert)>
+            ユーザー情報を変更しました。
+          </ForwardRef(Alert)>
+          <ForwardRef(Box)>
+            <ImageField
+              cropable={true}
+              disabled={false}
+              error={false}
+              maxLength={200}
+              onCatchError={[Function]}
+              onChange={[Function]}
+              src="https://..."
+              variant="icon"
+            />
+          </ForwardRef(Box)>
+          <ForwardRef(Box)
             sx={
               Object {
-                "pb": 0.5,
+                "pl": 1.5,
               }
             }
           >
-            メールアドレス（非公開）
-          </ForwardRef(Typography)>
-          <ForwardRef(Typography)
-            fontSize={18}
-          >
-            xxx@example.com
-          </ForwardRef(Typography)>
-        </ForwardRef(Box)>
-        <ForwardRef(Box)
-          component="form"
-          noValidate={true}
-        >
-          <ForwardRef(TextField)
-            disabled={false}
-            error={false}
-            fullWidth={true}
-            id="nickname"
-            label="名前"
-            margin="normal"
-            name="nickname"
-            onChange={[Function]}
-            required={true}
-            type="nickname"
-            value="Axel"
-          />
-          <ForwardRef(LoadingButton)
-            disabled={false}
-            fullWidth={true}
-            loading={false}
-            onClick={[Function]}
-            sx={
-              Object {
-                "mb": 2,
-                "mt": 3,
+            <ForwardRef(Typography)
+              color="gray"
+              fontSize={12}
+              sx={
+                Object {
+                  "pb": 0.5,
+                }
               }
-            }
-            variant="contained"
+            >
+              メールアドレス（非公開）
+            </ForwardRef(Typography)>
+            <ForwardRef(Typography)
+              fontSize={18}
+            >
+              xxx@example.com
+            </ForwardRef(Typography)>
+          </ForwardRef(Box)>
+          <ForwardRef(Box)
+            component="form"
+            noValidate={true}
           >
-            更新
-          </ForwardRef(LoadingButton)>
-        </ForwardRef(Box)>
-      </ForwardRef(Stack)>
-    </ForwardRef(Box)>
-  </ForwardRef(Stack)>
-</AdminWrapper>
+            <ForwardRef(TextField)
+              disabled={false}
+              error={false}
+              fullWidth={true}
+              id="nickname"
+              label="名前"
+              margin="normal"
+              name="nickname"
+              onChange={[Function]}
+              required={true}
+              type="nickname"
+              value="Axel"
+            />
+            <ForwardRef(LoadingButton)
+              disabled={false}
+              fullWidth={true}
+              loading={false}
+              onClick={[Function]}
+              sx={
+                Object {
+                  "mb": 2,
+                  "mt": 3,
+                }
+              }
+              variant="contained"
+            >
+              更新
+            </ForwardRef(LoadingButton)>
+          </ForwardRef(Box)>
+        </ForwardRef(Stack)>
+      </ForwardRef(Box)>
+    </ForwardRef(Stack)>
+  </AdminWrapper>
+</HeadAppender>
 `;
 
 exports[`Shallow Snapshot Tests with icon as file 1`] = `
-<AdminWrapper>
-  <ForwardRef(Stack)
-    spacing={3}
-  >
-    <BackToNavi
-      link="/admin/account"
-      text="アカウント設定"
-    />
-    <ForwardRef(Box)>
-      <ForwardRef(Stack)
-        spacing={1}
-        sx={
-          Object {
-            "maxWidth": "400px",
-            "mx": "auto",
-            "px": 1,
-          }
-        }
-      >
-        <ForwardRef(Typography)
-          align="center"
-          component="h2"
-          variant="h5"
-        >
-          プロフィール
-        </ForwardRef(Typography)>
-        <ForwardRef(Box)>
-          <ImageField
-            cropable={true}
-            disabled={false}
-            error={false}
-            maxLength={200}
-            onCatchError={[Function]}
-            onChange={[Function]}
-            src="data-url"
-            variant="icon"
-          />
-        </ForwardRef(Box)>
-        <ForwardRef(Box)
+<HeadAppender
+  title="プロフィール変更 - トリビアマップ"
+>
+  <AdminWrapper>
+    <ForwardRef(Stack)
+      spacing={3}
+    >
+      <BackToNavi
+        link="/admin/account"
+        text="アカウント管理"
+      />
+      <ForwardRef(Box)>
+        <ForwardRef(Stack)
+          spacing={1}
           sx={
             Object {
-              "pl": 1.5,
+              "maxWidth": "400px",
+              "mx": "auto",
+              "px": 1,
             }
           }
         >
           <ForwardRef(Typography)
-            color="gray"
-            fontSize={12}
+            align="center"
+            component="h2"
+            variant="h5"
+          >
+            プロフィール変更
+          </ForwardRef(Typography)>
+          <ForwardRef(Box)>
+            <ImageField
+              cropable={true}
+              disabled={false}
+              error={false}
+              maxLength={200}
+              onCatchError={[Function]}
+              onChange={[Function]}
+              src="data-url"
+              variant="icon"
+            />
+          </ForwardRef(Box)>
+          <ForwardRef(Box)
             sx={
               Object {
-                "pb": 0.5,
+                "pl": 1.5,
               }
             }
           >
-            メールアドレス（非公開）
-          </ForwardRef(Typography)>
-          <ForwardRef(Typography)
-            fontSize={18}
-          >
-            xxx@example.com
-          </ForwardRef(Typography)>
-        </ForwardRef(Box)>
-        <ForwardRef(Box)
-          component="form"
-          noValidate={true}
-        >
-          <ForwardRef(TextField)
-            disabled={false}
-            error={false}
-            fullWidth={true}
-            id="nickname"
-            label="名前"
-            margin="normal"
-            name="nickname"
-            onChange={[Function]}
-            required={true}
-            type="nickname"
-            value="Axel"
-          />
-          <ForwardRef(LoadingButton)
-            disabled={false}
-            fullWidth={true}
-            loading={false}
-            onClick={[Function]}
-            sx={
-              Object {
-                "mb": 2,
-                "mt": 3,
+            <ForwardRef(Typography)
+              color="gray"
+              fontSize={12}
+              sx={
+                Object {
+                  "pb": 0.5,
+                }
               }
-            }
-            variant="contained"
+            >
+              メールアドレス（非公開）
+            </ForwardRef(Typography)>
+            <ForwardRef(Typography)
+              fontSize={18}
+            >
+              xxx@example.com
+            </ForwardRef(Typography)>
+          </ForwardRef(Box)>
+          <ForwardRef(Box)
+            component="form"
+            noValidate={true}
           >
-            更新
-          </ForwardRef(LoadingButton)>
-        </ForwardRef(Box)>
-      </ForwardRef(Stack)>
-    </ForwardRef(Box)>
-  </ForwardRef(Stack)>
-</AdminWrapper>
+            <ForwardRef(TextField)
+              disabled={false}
+              error={false}
+              fullWidth={true}
+              id="nickname"
+              label="名前"
+              margin="normal"
+              name="nickname"
+              onChange={[Function]}
+              required={true}
+              type="nickname"
+              value="Axel"
+            />
+            <ForwardRef(LoadingButton)
+              disabled={false}
+              fullWidth={true}
+              loading={false}
+              onClick={[Function]}
+              sx={
+                Object {
+                  "mb": 2,
+                  "mt": 3,
+                }
+              }
+              variant="contained"
+            >
+              更新
+            </ForwardRef(LoadingButton)>
+          </ForwardRef(Box)>
+        </ForwardRef(Stack)>
+      </ForwardRef(Box)>
+    </ForwardRef(Stack)>
+  </AdminWrapper>
+</HeadAppender>
 `;
 
 exports[`Shallow Snapshot Tests with icon as null 1`] = `
-<AdminWrapper>
-  <ForwardRef(Stack)
-    spacing={3}
-  >
-    <BackToNavi
-      link="/admin/account"
-      text="アカウント設定"
-    />
-    <ForwardRef(Box)>
-      <ForwardRef(Stack)
-        spacing={1}
-        sx={
-          Object {
-            "maxWidth": "400px",
-            "mx": "auto",
-            "px": 1,
-          }
-        }
-      >
-        <ForwardRef(Typography)
-          align="center"
-          component="h2"
-          variant="h5"
-        >
-          プロフィール
-        </ForwardRef(Typography)>
-        <ForwardRef(Box)>
-          <ImageField
-            cropable={true}
-            disabled={false}
-            error={false}
-            maxLength={200}
-            onCatchError={[Function]}
-            onChange={[Function]}
-            variant="icon"
-          />
-        </ForwardRef(Box)>
-        <ForwardRef(Box)
+<HeadAppender
+  title="プロフィール変更 - トリビアマップ"
+>
+  <AdminWrapper>
+    <ForwardRef(Stack)
+      spacing={3}
+    >
+      <BackToNavi
+        link="/admin/account"
+        text="アカウント管理"
+      />
+      <ForwardRef(Box)>
+        <ForwardRef(Stack)
+          spacing={1}
           sx={
             Object {
-              "pl": 1.5,
+              "maxWidth": "400px",
+              "mx": "auto",
+              "px": 1,
             }
           }
         >
           <ForwardRef(Typography)
-            color="gray"
-            fontSize={12}
+            align="center"
+            component="h2"
+            variant="h5"
+          >
+            プロフィール変更
+          </ForwardRef(Typography)>
+          <ForwardRef(Box)>
+            <ImageField
+              cropable={true}
+              disabled={false}
+              error={false}
+              maxLength={200}
+              onCatchError={[Function]}
+              onChange={[Function]}
+              variant="icon"
+            />
+          </ForwardRef(Box)>
+          <ForwardRef(Box)
             sx={
               Object {
-                "pb": 0.5,
+                "pl": 1.5,
               }
             }
           >
-            メールアドレス（非公開）
-          </ForwardRef(Typography)>
-          <ForwardRef(Typography)
-            fontSize={18}
-          >
-            xxx@example.com
-          </ForwardRef(Typography)>
-        </ForwardRef(Box)>
-        <ForwardRef(Box)
-          component="form"
-          noValidate={true}
-        >
-          <ForwardRef(TextField)
-            disabled={false}
-            error={false}
-            fullWidth={true}
-            id="nickname"
-            label="名前"
-            margin="normal"
-            name="nickname"
-            onChange={[Function]}
-            required={true}
-            type="nickname"
-            value="Axel"
-          />
-          <ForwardRef(LoadingButton)
-            disabled={false}
-            fullWidth={true}
-            loading={false}
-            onClick={[Function]}
-            sx={
-              Object {
-                "mb": 2,
-                "mt": 3,
+            <ForwardRef(Typography)
+              color="gray"
+              fontSize={12}
+              sx={
+                Object {
+                  "pb": 0.5,
+                }
               }
-            }
-            variant="contained"
+            >
+              メールアドレス（非公開）
+            </ForwardRef(Typography)>
+            <ForwardRef(Typography)
+              fontSize={18}
+            >
+              xxx@example.com
+            </ForwardRef(Typography)>
+          </ForwardRef(Box)>
+          <ForwardRef(Box)
+            component="form"
+            noValidate={true}
           >
-            更新
-          </ForwardRef(LoadingButton)>
-        </ForwardRef(Box)>
-      </ForwardRef(Stack)>
-    </ForwardRef(Box)>
-  </ForwardRef(Stack)>
-</AdminWrapper>
+            <ForwardRef(TextField)
+              disabled={false}
+              error={false}
+              fullWidth={true}
+              id="nickname"
+              label="名前"
+              margin="normal"
+              name="nickname"
+              onChange={[Function]}
+              required={true}
+              type="nickname"
+              value="Axel"
+            />
+            <ForwardRef(LoadingButton)
+              disabled={false}
+              fullWidth={true}
+              loading={false}
+              onClick={[Function]}
+              sx={
+                Object {
+                  "mb": 2,
+                  "mt": 3,
+                }
+              }
+              variant="contained"
+            >
+              更新
+            </ForwardRef(LoadingButton)>
+          </ForwardRef(Box)>
+        </ForwardRef(Stack)>
+      </ForwardRef(Box)>
+    </ForwardRef(Stack)>
+  </AdminWrapper>
+</HeadAppender>
 `;

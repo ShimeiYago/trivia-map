@@ -27,6 +27,9 @@ import { Park } from 'types/park';
 import { ARTICLE_LIST_PAGE_LINK } from 'constant/links';
 import { getUrlParameters } from 'utils/get-url-parameters';
 import { PreviewListOrder } from 'api/articles-api/get-articles-previews';
+import { PAGE_NAMES } from 'constant/page-names';
+import { HeadAppender } from 'helper-components/head-appender';
+import { pageTitleGenerator } from 'utils/page-title-generator';
 
 export class Renderer extends React.Component<Props, State> {
   state: State = {
@@ -53,7 +56,11 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   render() {
-    return <ArticleWrapper showSidebar>{this.renderMainContent()}</ArticleWrapper>;
+    return (
+      <HeadAppender title={pageTitleGenerator(PAGE_NAMES.articles)}>
+        <ArticleWrapper showSidebar>{this.renderMainContent()}</ArticleWrapper>
+      </HeadAppender>
+    );
   }
 
   protected renderMainContent = () => {
@@ -65,7 +72,7 @@ export class Renderer extends React.Component<Props, State> {
         <Typography component="h2" variant="h4" align="center" sx={{ mt: 3, mb: 4 }}>
           <IconAndText
             iconComponent={<ArticleIcon fontSize="inherit" />}
-            text="投稿一覧"
+            text={PAGE_NAMES.articles}
             iconPosition="left"
             variant="inherit"
           />

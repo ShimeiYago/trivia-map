@@ -34,23 +34,27 @@ exports[`Shallow Snapshot Tests basic 1`] = `
 `;
 
 exports[`Shallow Snapshot Tests success case 1`] = `
-<ForwardRef(Box)
-  sx={
-    Object {
-      "mt": 10,
-      "mx": 5,
-    }
-  }
+<HeadAppender
+  title="メールアドレス確認 - トリビアマップ"
 >
-  <ForwardRef(Typography)
-    align="center"
+  <ForwardRef(Box)
+    sx={
+      Object {
+        "mt": 10,
+        "mx": 5,
+      }
+    }
   >
-    ユーザー登録が完了しました。
-  </ForwardRef(Typography)>
-  <ForwardRef(Typography)
-    align="center"
-  >
-    元々のページに戻り、登録した内容でログインしてください。
-  </ForwardRef(Typography)>
-</ForwardRef(Box)>
+    <ForwardRef(Typography)
+      align="center"
+    >
+      ユーザー登録が完了しました。
+    </ForwardRef(Typography)>
+    <ForwardRef(Typography)
+      align="center"
+    >
+      元々のページに戻り、登録した内容でログインしてください。
+    </ForwardRef(Typography)>
+  </ForwardRef(Box)>
+</HeadAppender>
 `;

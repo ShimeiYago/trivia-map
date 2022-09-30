@@ -4,6 +4,9 @@ import { LoadingState } from 'types/loading-state';
 import { verifyEmail } from 'api/auths-api/verify-email';
 import { wrapper } from '../styles';
 import { LoadingButton } from '@mui/lab';
+import { HeadAppender } from 'helper-components/head-appender';
+import { pageTitleGenerator } from 'utils/page-title-generator';
+import { PAGE_NAMES } from 'constant/page-names';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -16,12 +19,14 @@ export class Renderer extends React.Component<Props, State> {
   render() {
     if (this.state.loadingState === 'success') {
       return (
-        <Box sx={wrapper}>
-          <Typography align="center">ユーザー登録が完了しました。</Typography>
-          <Typography align="center">
-            元々のページに戻り、登録した内容でログインしてください。
-          </Typography>
-        </Box>
+        <HeadAppender title={pageTitleGenerator(PAGE_NAMES.verifyEmail)}>
+          <Box sx={wrapper}>
+            <Typography align="center">ユーザー登録が完了しました。</Typography>
+            <Typography align="center">
+              元々のページに戻り、登録した内容でログインしてください。
+            </Typography>
+          </Box>
+        </HeadAppender>
       );
     }
 

@@ -5,7 +5,7 @@ import { store } from 'store';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
-import { ErrorBoundary } from 'error-boundary';
+import { ErrorBoundary } from 'helper-components/error-boundary';
 import { MapPage } from 'views/pages/map-page';
 import { Article } from 'views/pages/article';
 import { VerifyEmail } from 'views/pages/verify-email';

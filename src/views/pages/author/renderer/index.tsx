@@ -7,6 +7,8 @@ import { Avatar, Stack, Typography } from '@mui/material';
 import { CenterSpinner } from 'views/components/atoms/center-spinner';
 import noIcon from 'images/no-icon.jpg';
 import { ApiError } from 'api/utils/handle-axios-error';
+import { pageTitleGenerator } from 'utils/page-title-generator';
+import { HeadAppender } from 'helper-components/head-appender';
 
 export class Renderer extends React.Component<Props, State> {
   state: State = {
@@ -28,8 +30,10 @@ export class Renderer extends React.Component<Props, State> {
       return <CenterSpinner />;
     }
 
+    const pageName = `${author.nickname}さんの投稿一覧`;
+
     return (
-      <>
+      <HeadAppender title={pageTitleGenerator(pageName)}>
         <Stack
           direction="row"
           justifyContent="center"
@@ -39,12 +43,12 @@ export class Renderer extends React.Component<Props, State> {
         >
           <Avatar sx={{ width: 50, height: 50 }} src={author.icon ?? noIcon} />
           <Typography component="h2" variant="h4">
-            {author.nickname}さんの投稿一覧
+            {pageName}
           </Typography>
         </Stack>
 
         <ArticlePreviewList variant="large" searchConditions={{ user: this.props.userId }} />
-      </>
+      </HeadAppender>
     );
   };
 

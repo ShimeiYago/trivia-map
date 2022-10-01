@@ -10,9 +10,9 @@ export function VerifyEmail() {
   const dispatch = useAppDispatch();
 
   const { verifyKey } = useParams();
-  // TODO
-  if (!verifyKey) {
-    throw Error;
+
+  if (verifyKey === undefined) {
+    throw Error('verifyKey is undefined');
   }
 
   const props: Props = {

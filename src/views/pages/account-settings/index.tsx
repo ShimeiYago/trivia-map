@@ -6,7 +6,7 @@ import { Renderer } from './renderer';
 export function AccountSettings() {
   return (
     <>
-      <CommonHelmet title={pageTitleGenerator(PAGE_NAMES.accountSettings)} />
+      <CommonHelmet title={pageTitleGenerator(PAGE_NAMES.accountSettings)} noindex />
       <Renderer />;
     </>
   );

@@ -12,7 +12,7 @@ export function Admin() {
 
   return (
     <>
-      <CommonHelmet title={pageTitleGenerator(PAGE_NAMES.admin)} />
+      <CommonHelmet title={pageTitleGenerator(PAGE_NAMES.admin)} noindex />
       <Renderer {...props} />
     </>
   );

@@ -20,7 +20,7 @@ export function ProfileEdit() {
 
   return (
     <>
-      <CommonHelmet title={pageTitleGenerator(PAGE_NAMES.profileEdit)} />
+      <CommonHelmet title={pageTitleGenerator(PAGE_NAMES.profileEdit)} noindex />
 
       <Renderer {...props} />
     </>

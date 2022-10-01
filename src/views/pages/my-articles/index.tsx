@@ -6,7 +6,7 @@ import { Renderer } from './renderer';
 export function MyArticles() {
   return (
     <>
-      <CommonHelmet title={pageTitleGenerator(PAGE_NAMES.myArticles)} />
+      <CommonHelmet title={pageTitleGenerator(PAGE_NAMES.myArticles)} noindex />
 
       <Renderer />
     </>

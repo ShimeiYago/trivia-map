@@ -6,7 +6,7 @@ import { Renderer } from './renderer';
 export function ChangePassword() {
   return (
     <>
-      <CommonHelmet title={pageTitleGenerator(PAGE_NAMES.passwordChange)} />
+      <CommonHelmet title={pageTitleGenerator(PAGE_NAMES.passwordChange)} noindex />
 
       <Renderer />
     </>

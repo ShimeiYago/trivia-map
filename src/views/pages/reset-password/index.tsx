@@ -18,7 +18,7 @@ export function ResetPassword() {
 
   return (
     <>
-      <CommonHelmet title={pageTitleGenerator(PAGE_NAMES.passwordInitialize)} />
+      <CommonHelmet title={pageTitleGenerator(PAGE_NAMES.passwordInitialize)} noindex />
 
       <Renderer {...props} />
     </>

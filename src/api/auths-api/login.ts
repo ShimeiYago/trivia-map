@@ -1,4 +1,4 @@
-import { BASE_URL } from 'constant';
+import { API_TIMEOUT, BASE_URL } from 'constant';
 import { AxiosError, AxiosResponse } from 'axios';
 import { handleAxiosError } from '../utils/handle-axios-error';
 import { getAxiosInstance } from 'api/utils/get-axios-instance';
@@ -6,7 +6,7 @@ import { mockLoginResponse } from 'api/mock/auths-response/login';
 import { User } from 'types/user';
 
 export async function login(email: string, password: string): Promise<LoginResponse> {
-  const axiosInstance = getAxiosInstance({}, mockLoginResponse);
+  const axiosInstance = getAxiosInstance({ timeout: API_TIMEOUT.long }, mockLoginResponse);
 
   const requestData: LoginRequest = {
     email: email,
@@ -14,7 +14,6 @@ export async function login(email: string, password: string): Promise<LoginRespo
   };
 
   try {
-    // TODO: Set reasonable timeout
     const res: AxiosResponse<LoginResponse> = await axiosInstance.post(
       `${BASE_URL}/auths/login`,
       requestData,

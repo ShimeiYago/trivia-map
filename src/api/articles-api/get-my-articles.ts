@@ -1,4 +1,4 @@
-import { BASE_URL } from 'constant';
+import { API_TIMEOUT, BASE_URL } from 'constant';
 import { AxiosError, AxiosResponse } from 'axios';
 import { handleAxiosError } from '../utils/handle-axios-error';
 import { getAxiosInstance } from 'api/utils/get-axios-instance';
@@ -6,7 +6,10 @@ import { mockGetArticlesPreviewsResponse } from '../mock/articles-response';
 import { PaginationResponse } from 'api/types/pagination-response';
 
 export async function getMyArticles(page?: number): Promise<GetMyArticlesResponse> {
-  const axiosInstance = getAxiosInstance({}, mockGetArticlesPreviewsResponse);
+  const axiosInstance = getAxiosInstance(
+    { timeout: API_TIMEOUT.long },
+    mockGetArticlesPreviewsResponse,
+  );
 
   let url = `${BASE_URL}/articles/previews/mine`;
 

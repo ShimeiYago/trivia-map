@@ -1,3 +1,4 @@
+import { API_TIMEOUT } from './../../constant/index';
 import { BASE_URL } from 'constant';
 import { AxiosError, AxiosResponse } from 'axios';
 import { handleAxiosError } from '../utils/handle-axios-error';
@@ -10,7 +11,10 @@ import { getUrlParameters } from 'utils/get-url-parameters';
 export async function getArticlesPreviews(
   param: GetArticlesPreviewsParam,
 ): Promise<GetArticlesPreviewsResponse> {
-  const axiosInstance = getAxiosInstance({}, mockGetArticlesPreviewsResponse);
+  const axiosInstance = getAxiosInstance(
+    { timeout: API_TIMEOUT.long },
+    mockGetArticlesPreviewsResponse,
+  );
 
   const urlParams = getUrlParameters(param);
   const url = `${BASE_URL}/articles/public/previews${urlParams}`;

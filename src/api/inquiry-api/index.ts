@@ -1,4 +1,4 @@
-import { BASE_URL } from 'constant';
+import { API_TIMEOUT, BASE_URL } from 'constant';
 import { AxiosError, AxiosResponse } from 'axios';
 import { handleAxiosError } from '../utils/handle-axios-error';
 import { getAxiosInstance } from 'api/utils/get-axios-instance';
@@ -7,10 +7,9 @@ import { mockInquiryResponse } from 'api/mock/inquiry-response';
 export async function inquiry(
   request: InquiryRequestAndResponse,
 ): Promise<InquiryRequestAndResponse> {
-  const axiosInstance = getAxiosInstance({}, mockInquiryResponse);
+  const axiosInstance = getAxiosInstance({ timeout: API_TIMEOUT.long }, mockInquiryResponse);
 
   try {
-    // TODO: Set reasonable timeout
     const res: AxiosResponse<InquiryRequestAndResponse> = await axiosInstance.post(
       `${BASE_URL}/inquiry`,
       request,

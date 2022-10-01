@@ -7,7 +7,6 @@ export async function logout(): Promise<void> {
   const axiosInstance = getAxiosInstance({}, {});
 
   try {
-    // TODO: Set reasonable timeout
     await axiosInstance.post(`${BASE_URL}/auths/logout`);
   } catch (error) {
     const axiosError = error as AxiosError;

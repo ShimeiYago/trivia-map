@@ -7,7 +7,6 @@ export async function deleteRemoteArticle(postId: number): Promise<unknown> {
   const axiosInstance = getAxiosInstance({}, {});
 
   try {
-    // TODO: Set reasonable timeout
     const res: AxiosResponse<unknown> = await axiosInstance.delete(
       `${BASE_URL}/articles/${postId}`,
     );

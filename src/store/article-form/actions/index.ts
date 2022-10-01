@@ -179,6 +179,6 @@ export const getAndUpdateAreaNames = (): AppThunk => async (dispatch, getState) 
     const res = await guessArea(position);
     dispatch(updateAreaNames(res.areaNames));
   } catch (error) {
-    dispatch(throwError(500));
+    // nothing
   }
 };

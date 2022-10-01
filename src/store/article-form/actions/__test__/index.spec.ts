@@ -382,14 +382,4 @@ describe('getAndUpdateAreaNames', () => {
 
     expect(dispatch.mock.calls[0][0].payload).toBe(undefined);
   });
-
-  it('call fetchFailure if API failed', async () => {
-    getRemoteArticleSpy.mockRejectedValue(new Error());
-
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const appThunk = getAndUpdateAreaNames() as any;
-    await appThunk(dispatch, getState);
-
-    expect(dispatch.mock.calls[0][0].type).toBe('globalError/throwError');
-  });
 });

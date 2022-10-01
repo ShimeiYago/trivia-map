@@ -20,8 +20,8 @@ import { categoryMapper } from 'utils/category-mapper';
 import FolderIcon from '@mui/icons-material/Folder';
 import { User } from 'types/user';
 import EditIcon from '@mui/icons-material/Edit';
-import { HeadAppender } from 'helper-components/head-appender';
 import { pageTitleGenerator } from 'utils/page-title-generator';
+import { CommonHelmet } from 'helper-components/common-helmet';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -50,7 +50,14 @@ export class Renderer extends React.Component<Props, State> {
       article;
 
     return (
-      <HeadAppender title={pageTitleGenerator(title)}>
+      <>
+        <CommonHelmet
+          title={pageTitleGenerator(title)}
+          description={description ?? undefined}
+          imageUrl={image ?? undefined}
+          ogType="article"
+        />
+
         <Stack spacing={2}>
           {isDraft && (
             <Alert severity="info">この記事は下書きです。あなただけが閲覧できます。</Alert>
@@ -113,7 +120,7 @@ export class Renderer extends React.Component<Props, State> {
             park={marker.park}
           />
         </Stack>
-      </HeadAppender>
+      </>
     );
   };
 

@@ -4,6 +4,9 @@ import { selectUser } from 'store/auths/selector';
 import { updateUser } from 'store/auths/actions';
 import { User } from 'types/user';
 import { throwError } from 'store/global-error/slice';
+import { CommonHelmet } from 'helper-components/common-helmet';
+import { pageTitleGenerator } from 'utils/page-title-generator';
+import { PAGE_NAMES } from 'constant/page-names';
 
 export function ProfileEdit() {
   const dispatch = useAppDispatch();
@@ -15,5 +18,11 @@ export function ProfileEdit() {
     throwError: (errorStatus: number) => dispatch(throwError(errorStatus)),
   };
 
-  return <Renderer {...props} />;
+  return (
+    <>
+      <CommonHelmet title={pageTitleGenerator(PAGE_NAMES.profileEdit)} noindex />
+
+      <Renderer {...props} />
+    </>
+  );
 }

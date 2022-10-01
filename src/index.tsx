@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import { store } from 'store';
 import { Provider } from 'react-redux';
+import { HelmetProvider } from 'react-helmet-async';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
 import { ErrorBoundary } from 'helper-components/error-boundary';
@@ -54,50 +55,58 @@ function errorHandledElement(element: React.ReactNode) {
 ReactDOM.render(
   <React.StrictMode>
     <ErrorBoundary>
-      <Provider store={store}>
-        <BrowserRouter>
-          <Routes>
-            <Route index element={errorHandledElement(<MapPage />)} />
-            <Route path={EDIT_LINK(':postId')} element={errorHandledElement(<MapPage />)} />
-            <Route path={ARTICLE_PAGE_LINK(':postId')} element={errorHandledElement(<Article />)} />
-            <Route path={ARTICLE_LIST_PAGE_LINK} element={errorHandledElement(<ArticleList />)} />
-            <Route
-              path={AUTHER_PAGE_LINK(':userId')}
-              element={errorHandledElement(<AuthorPage />)}
-            />
-            <Route
-              path={CATEGORY_PAGE_LINK(':categoryId')}
-              element={errorHandledElement(<CategoryPage />)}
-            />
+      <HelmetProvider>
+        <Provider store={store}>
+          <BrowserRouter>
+            <Routes>
+              <Route index element={errorHandledElement(<MapPage />)} />
+              <Route path={EDIT_LINK(':postId')} element={errorHandledElement(<MapPage />)} />
+              <Route
+                path={ARTICLE_PAGE_LINK(':postId')}
+                element={errorHandledElement(<Article />)}
+              />
+              <Route path={ARTICLE_LIST_PAGE_LINK} element={errorHandledElement(<ArticleList />)} />
+              <Route
+                path={AUTHER_PAGE_LINK(':userId')}
+                element={errorHandledElement(<AuthorPage />)}
+              />
+              <Route
+                path={CATEGORY_PAGE_LINK(':categoryId')}
+                element={errorHandledElement(<CategoryPage />)}
+              />
 
-            <Route path={LOGIN_LINK} element={errorHandledElement(<Login />)} />
-            <Route path={ADMIN_LINK} element={errorHandledElement(<Admin />)} />
-            <Route path={MY_ARTICLES_LINK} element={errorHandledElement(<MyArticles />)} />
-            <Route
-              path={ACCOUNT_SETTINGS_LINK}
-              element={errorHandledElement(<AccountSettings />)}
-            />
-            <Route path={PROFILE_SETTINGS_LINK} element={errorHandledElement(<ProfileEdit />)} />
-            <Route path={PASSWORD_CHANGE_LINK} element={errorHandledElement(<ChangePassword />)} />
-            <Route
-              path={VERIFY_EMAIL_LINK(':verifyKey')}
-              element={errorHandledElement(<VerifyEmail />)}
-            />
-            <Route
-              path={RESET_PASSWORD_LINK(':uid', ':token')}
-              element={errorHandledElement(<ResetPassword />)}
-            />
-            <Route path={NOT_FOUND_LINK} element={<CommonErrorPage errorStatus={404} />} />
-            <Route path={INQUIRY_PAGE_LINK} element={errorHandledElement(<InquiryPage />)} />
-            <Route
-              path={PRIVACY_POLICY_PAGE_LINK}
-              element={errorHandledElement(<PrivacyPolicyPage />)}
-            />
-            <Route path={INTERNAL_ERROR_LINK} element={<CommonErrorPage errorStatus={500} />} />
-            <Route path="*" element={<CommonErrorPage errorStatus={404} />} />
-          </Routes>
-        </BrowserRouter>
-      </Provider>
+              <Route path={LOGIN_LINK} element={errorHandledElement(<Login />)} />
+              <Route path={ADMIN_LINK} element={errorHandledElement(<Admin />)} />
+              <Route path={MY_ARTICLES_LINK} element={errorHandledElement(<MyArticles />)} />
+              <Route
+                path={ACCOUNT_SETTINGS_LINK}
+                element={errorHandledElement(<AccountSettings />)}
+              />
+              <Route path={PROFILE_SETTINGS_LINK} element={errorHandledElement(<ProfileEdit />)} />
+              <Route
+                path={PASSWORD_CHANGE_LINK}
+                element={errorHandledElement(<ChangePassword />)}
+              />
+              <Route
+                path={VERIFY_EMAIL_LINK(':verifyKey')}
+                element={errorHandledElement(<VerifyEmail />)}
+              />
+              <Route
+                path={RESET_PASSWORD_LINK(':uid', ':token')}
+                element={errorHandledElement(<ResetPassword />)}
+              />
+              <Route path={NOT_FOUND_LINK} element={<CommonErrorPage errorStatus={404} />} />
+              <Route path={INQUIRY_PAGE_LINK} element={errorHandledElement(<InquiryPage />)} />
+              <Route
+                path={PRIVACY_POLICY_PAGE_LINK}
+                element={errorHandledElement(<PrivacyPolicyPage />)}
+              />
+              <Route path={INTERNAL_ERROR_LINK} element={<CommonErrorPage errorStatus={500} />} />
+              <Route path="*" element={<CommonErrorPage errorStatus={404} />} />
+            </Routes>
+          </BrowserRouter>
+        </Provider>
+      </HelmetProvider>
     </ErrorBoundary>
   </React.StrictMode>,
   document.getElementById('root'),

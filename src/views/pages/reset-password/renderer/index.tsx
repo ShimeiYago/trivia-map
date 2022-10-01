@@ -7,8 +7,6 @@ import { resetPasswordConfirm, ValidationError } from 'api/auths-api/reset-passw
 import { ApiError } from 'api/utils/handle-axios-error';
 import { globalAPIErrorMessage } from 'constant/global-api-error-message';
 import { PAGE_NAMES } from 'constant/page-names';
-import { HeadAppender } from 'helper-components/head-appender';
-import { pageTitleGenerator } from 'utils/page-title-generator';
 import { Image } from 'views/components/atoms/image';
 import logoImage from 'images/trivia-map-logo-black.png';
 
@@ -66,21 +64,19 @@ export class Renderer extends React.Component<Props, State> {
     );
 
     return (
-      <HeadAppender title={pageTitleGenerator(PAGE_NAMES.passwordInitialize)}>
-        <Box>
-          <Box sx={{ my: 3, textAlign: 'center' }}>
-            <Image src={logoImage} width="200px" />
-          </Box>
-
-          <Stack spacing={1} sx={{ px: 1, py: 2, maxWidth: '400px', mx: 'auto' }}>
-            <Typography component="h1" variant="h5" align="center">
-              {PAGE_NAMES.passwordInitialize}
-            </Typography>
-            {this.renderHeaderInfo()}
-            {form}
-          </Stack>
+      <Box>
+        <Box sx={{ my: 3, textAlign: 'center' }}>
+          <Image src={logoImage} width="200px" />
         </Box>
-      </HeadAppender>
+
+        <Stack spacing={1} sx={{ px: 1, py: 2, maxWidth: '400px', mx: 'auto' }}>
+          <Typography component="h1" variant="h5" align="center">
+            {PAGE_NAMES.passwordInitialize}
+          </Typography>
+          {this.renderHeaderInfo()}
+          {form}
+        </Stack>
+      </Box>
     );
   }
 

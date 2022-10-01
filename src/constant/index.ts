@@ -7,7 +7,7 @@ export const SITE_NAME = 'トリビアマップ';
 
 export const DOMAIN = process.env.REACT_APP_DOMAIN ?? 'https://xxx.com';
 
-export const ANALYTICS_ID = process.env.REACT_APP_ANALYTICS_ID;
+export const ANALYTICS_ID_ENV_KEY = 'REACT_APP_ANALYTICS_ID';
 
 export const CATEGORIES = [
   {

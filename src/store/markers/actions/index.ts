@@ -51,8 +51,6 @@ export const fetchMarkers = (): AppThunk => async (dispatch, getState) => {
     }
     dispatch(fetchSuccess());
   } catch (error) {
-    // TODO: take log of error
-
     dispatch(throwError(500));
   }
 };

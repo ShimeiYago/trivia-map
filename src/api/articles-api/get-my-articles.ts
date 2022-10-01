@@ -18,7 +18,6 @@ export async function getMyArticles(page?: number): Promise<GetMyArticlesRespons
   }
 
   try {
-    // TODO: Set reasonable timeout
     const res: AxiosResponse<GetMyArticlesResponse> = await axiosInstance.get(url);
     return res.data;
   } catch (error) {

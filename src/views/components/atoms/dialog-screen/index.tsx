@@ -6,10 +6,7 @@ export class DialogScreen extends React.Component<Props> {
   render() {
     const { children, theme, position } = this.props;
 
-    return (
-      // TODO: Feed in & out
-      <Box sx={style(theme, position)}>{children}</Box>
-    );
+    return <Box sx={style(theme, position)}>{children}</Box>;
   }
 }
 

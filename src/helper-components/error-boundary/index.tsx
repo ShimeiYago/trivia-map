@@ -1,4 +1,5 @@
 import React from 'react';
+import { sendGa4ExceptionEvent } from 'utils/send-ga4-exception-event';
 import { InternalError } from 'views/components/moleculars/internal-error';
 
 export class ErrorBoundary extends React.Component<Props, State> {
@@ -16,6 +17,12 @@ export class ErrorBoundary extends React.Component<Props, State> {
     // logErrorToMyService(error, errorInfo);
     console.log(`error: ${error.message}`);
     console.log(`componentStack: ${errorInfo.componentStack}`);
+
+    sendGa4ExceptionEvent({
+      errorCategory: 'front-error',
+      errorLabel: error.message,
+      message: errorInfo.componentStack,
+    });
   }
 
   render() {

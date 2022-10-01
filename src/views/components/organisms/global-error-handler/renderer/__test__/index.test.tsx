@@ -33,10 +33,6 @@ describe('Shallow Snapshot Tests', () => {
 });
 
 describe('componentDidUpdate', () => {
-  beforeEach(() => {
-    wrapper = shallow(<Renderer {...basicProps} />);
-  });
-
   it('should set reditectTo state', () => {
     wrapper.setProps({ errorStatus: 404 });
     const instance = wrapper.instance();

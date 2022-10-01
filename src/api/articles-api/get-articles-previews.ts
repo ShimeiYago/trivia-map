@@ -20,7 +20,6 @@ export async function getArticlesPreviews(
   const url = `${BASE_URL}/articles/public/previews${urlParams}`;
 
   try {
-    // TODO: Set reasonable timeout
     const res: AxiosResponse<GetArticlesPreviewsResponse> = await axiosInstance.get(url);
     return res.data;
   } catch (error) {

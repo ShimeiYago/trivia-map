@@ -6,9 +6,9 @@ import { Renderer, Props } from './renderer';
 
 export function ResetPassword() {
   const { uid, token } = useParams();
-  // TODO
-  if (!uid || !token) {
-    throw Error;
+
+  if (uid === undefined || token === undefined) {
+    throw Error('uid or token is not provided');
   }
 
   const props: Props = {

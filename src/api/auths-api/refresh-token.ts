@@ -8,7 +8,6 @@ export async function refreshToken(): Promise<RefreshTokenResponse> {
   const axiosInstance = getAxiosInstance({}, mockRefreshTokenResponse);
 
   try {
-    // TODO: Set reasonable timeout
     const res: AxiosResponse<RefreshTokenResponse> = await axiosInstance.post(
       `${BASE_URL}/auths/token/refresh`,
     );

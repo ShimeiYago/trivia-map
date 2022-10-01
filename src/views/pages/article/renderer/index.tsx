@@ -51,7 +51,12 @@ export class Renderer extends React.Component<Props, State> {
 
     return (
       <>
-        <CommonHelmet title={pageTitleGenerator(title)} />
+        <CommonHelmet
+          title={pageTitleGenerator(title)}
+          description={description ?? undefined}
+          imageUrl={image ?? undefined}
+          ogType="article"
+        />
 
         <Stack spacing={2}>
           {isDraft && (

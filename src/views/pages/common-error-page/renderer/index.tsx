@@ -19,7 +19,7 @@ export const Renderer: React.FC<Props> = (props) => {
 const render404Error = () => {
   return (
     <>
-      <CommonHelmet title={pageTitleGenerator(PAGE_NAMES.notFound)} />
+      <CommonHelmet title={pageTitleGenerator(PAGE_NAMES.notFound)} noindex />
 
       <GlobalMenu topBarPosition="static">
         <Box sx={{ p: 1 }}>
@@ -41,7 +41,7 @@ const render404Error = () => {
 const render500Error = () => {
   return (
     <>
-      <CommonHelmet title={pageTitleGenerator(PAGE_NAMES.internalError)} />
+      <CommonHelmet title={pageTitleGenerator(PAGE_NAMES.internalError)} noindex />
 
       <InternalError />
     </>

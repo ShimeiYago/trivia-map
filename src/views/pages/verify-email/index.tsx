@@ -22,7 +22,7 @@ export function VerifyEmail() {
 
   return (
     <>
-      <CommonHelmet title={pageTitleGenerator(PAGE_NAMES.verifyEmail)} />
+      <CommonHelmet title={pageTitleGenerator(PAGE_NAMES.verifyEmail)} noindex />
 
       <Renderer {...props} />
     </>

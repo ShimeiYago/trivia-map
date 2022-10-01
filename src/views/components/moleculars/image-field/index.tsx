@@ -8,6 +8,7 @@ import { UploadedImage } from 'types/uploaded-image';
 import ReactCrop, { PercentCrop, PixelCrop } from 'react-image-crop';
 import { getImageSize } from 'utils/get-image-size.ts';
 import { BoxModal } from '../box-modal';
+import { sendGa4ExceptionEvent } from 'utils/send-ga4-exception-event';
 
 export class ImageField extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -144,7 +145,15 @@ export class ImageField extends React.Component<Props, State> {
         uploadedImage: undefined,
         crop: undefined,
       });
-    } catch (error: unknown) {
+    } catch (e) {
+      const error = e as { message: string };
+
+      sendGa4ExceptionEvent({
+        errorCategory: 'front-error',
+        errorLabel: 'image-field-error',
+        message: error.message,
+      });
+
       this.props.onCatchError();
     }
   };

@@ -1,4 +1,7 @@
+import { PAGE_NAMES } from 'constant/page-names';
+import { CommonHelmet } from 'helper-components/common-helmet';
 import { useParams } from 'react-router-dom';
+import { pageTitleGenerator } from 'utils/page-title-generator';
 import { Renderer, Props } from './renderer';
 
 export function ResetPassword() {
@@ -13,5 +16,11 @@ export function ResetPassword() {
     token: token,
   };
 
-  return <Renderer {...props} />;
+  return (
+    <>
+      <CommonHelmet title={pageTitleGenerator(PAGE_NAMES.passwordInitialize)} noindex />
+
+      <Renderer {...props} />
+    </>
+  );
 }

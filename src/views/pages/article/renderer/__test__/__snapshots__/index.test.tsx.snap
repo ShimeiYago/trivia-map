@@ -4,123 +4,109 @@ exports[`Shallow Snapshot Tests author view 1`] = `
 <ArticleWrapper
   showSidebar={true}
 >
-  <HeadAppender
+  <CommonHelmet
+    description="description"
+    ogType="article"
     title="title - トリビアマップ"
+  />
+  <ForwardRef(Stack)
+    spacing={2}
   >
-    <ForwardRef(Stack)
-      spacing={2}
+    <Link
+      to="/map/edit/1"
     >
-      <Link
-        to="/map/edit/1"
-      >
-        <IconAndText
-          align="right"
-          iconComponent={<Memo />}
-          iconPosition="left"
-          text="編集"
-        />
-      </Link>
-      <Link
-        to="/users/1"
-      >
-        <ForwardRef(Stack)
-          alignItems="center"
-          direction="row"
-          justifyContent="flex-start"
-          spacing={1}
-        >
-          <ForwardRef(Avatar)
-            src="no-icon.jpg"
-            sx={
-              Object {
-                "height": 30,
-                "width": 30,
-              }
-            }
-          />
-          <ForwardRef(Typography)
-            color="gray"
-          >
-            Axel
-          </ForwardRef(Typography)>
-        </ForwardRef(Stack)>
-      </Link>
-      <ForwardRef(Typography)
-        align="center"
-        component="h2"
-        variant="h4"
-      >
-        title
-      </ForwardRef(Typography)>
-      <Link
-        to="/categories/1"
-      >
-        <ForwardRef(Typography)
-          color="gray"
-          component="div"
-        >
-          <IconAndText
-            align="left"
-            iconComponent={<Memo />}
-            iconPosition="left"
-            text="隠れミッキー"
-          />
-        </ForwardRef(Typography)>
-      </Link>
-      <ForwardRef(Box)
-        sx={
-          Object {
-            "color": "gray",
-            "textAlign": "right",
-          }
-        }
-      >
-        <ForwardRef(Typography)>
-          投稿日 2022/4/1
-        </ForwardRef(Typography)>
-        <ForwardRef(Typography)>
-          更新日 2022/5/1
-        </ForwardRef(Typography)>
-      </ForwardRef(Box)>
-      <ForwardRef(Divider) />
-      <ForwardRef(Typography)>
-        description
-      </ForwardRef(Typography)>
-      <ForwardRef(Divider) />
       <IconAndText
-        component="h3"
+        align="right"
         iconComponent={<Memo />}
         iconPosition="left"
-        text="地図"
-        variant="h5"
+        text="編集"
       />
-      <AreaNames
-        areaNames={
-          Array [
-            "シー",
-          ]
-        }
-        variant="body2"
-      />
-      <TriviaMap
-        additinalMarkers={
-          Array [
+    </Link>
+    <Link
+      to="/users/1"
+    >
+      <ForwardRef(Stack)
+        alignItems="center"
+        direction="row"
+        justifyContent="flex-start"
+        spacing={1}
+      >
+        <ForwardRef(Avatar)
+          src="no-icon.jpg"
+          sx={
             Object {
-              "areaNames": Array [
-                "シー",
-              ],
-              "lat": 0,
-              "lng": 0,
-              "markerId": 1,
-              "numberOfPublicArticles": 1,
-              "park": "S",
-            },
-          ]
+              "height": 30,
+              "width": 30,
+            }
+          }
+        />
+        <ForwardRef(Typography)
+          color="gray"
+        >
+          Axel
+        </ForwardRef(Typography)>
+      </ForwardRef(Stack)>
+    </Link>
+    <ForwardRef(Typography)
+      align="center"
+      component="h2"
+      variant="h4"
+    >
+      title
+    </ForwardRef(Typography)>
+    <Link
+      to="/categories/1"
+    >
+      <ForwardRef(Typography)
+        color="gray"
+        component="div"
+      >
+        <IconAndText
+          align="left"
+          iconComponent={<Memo />}
+          iconPosition="left"
+          text="隠れミッキー"
+        />
+      </ForwardRef(Typography)>
+    </Link>
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "color": "gray",
+          "textAlign": "right",
         }
-        disabled={true}
-        doNotShowPostMarkers={true}
-        height={300}
-        initCenter={
+      }
+    >
+      <ForwardRef(Typography)>
+        投稿日 2022/4/1
+      </ForwardRef(Typography)>
+      <ForwardRef(Typography)>
+        更新日 2022/5/1
+      </ForwardRef(Typography)>
+    </ForwardRef(Box)>
+    <ForwardRef(Divider) />
+    <ForwardRef(Typography)>
+      description
+    </ForwardRef(Typography)>
+    <ForwardRef(Divider) />
+    <IconAndText
+      component="h3"
+      iconComponent={<Memo />}
+      iconPosition="left"
+      text="地図"
+      variant="h5"
+    />
+    <AreaNames
+      areaNames={
+        Array [
+          "シー",
+        ]
+      }
+      variant="body2"
+    />
+    <TriviaMap
+      additinalMarkers={
+        Array [
           Object {
             "areaNames": Array [
               "シー",
@@ -130,13 +116,28 @@ exports[`Shallow Snapshot Tests author view 1`] = `
             "markerId": 1,
             "numberOfPublicArticles": 1,
             "park": "S",
-          }
+          },
+        ]
+      }
+      disabled={true}
+      doNotShowPostMarkers={true}
+      height={300}
+      initCenter={
+        Object {
+          "areaNames": Array [
+            "シー",
+          ],
+          "lat": 0,
+          "lng": 0,
+          "markerId": 1,
+          "numberOfPublicArticles": 1,
+          "park": "S",
         }
-        initZoom={3}
-        park="S"
-      />
-    </ForwardRef(Stack)>
-  </HeadAppender>
+      }
+      initZoom={3}
+      park="S"
+    />
+  </ForwardRef(Stack)>
 </ArticleWrapper>
 `;
 
@@ -152,118 +153,104 @@ exports[`Shallow Snapshot Tests draft 1`] = `
 <ArticleWrapper
   showSidebar={true}
 >
-  <HeadAppender
+  <CommonHelmet
+    description="description"
+    ogType="article"
     title="title - トリビアマップ"
+  />
+  <ForwardRef(Stack)
+    spacing={2}
   >
-    <ForwardRef(Stack)
-      spacing={2}
+    <ForwardRef(Alert)
+      severity="info"
     >
-      <ForwardRef(Alert)
-        severity="info"
+      この記事は下書きです。あなただけが閲覧できます。
+    </ForwardRef(Alert)>
+    <Link
+      to="/users/1"
+    >
+      <ForwardRef(Stack)
+        alignItems="center"
+        direction="row"
+        justifyContent="flex-start"
+        spacing={1}
       >
-        この記事は下書きです。あなただけが閲覧できます。
-      </ForwardRef(Alert)>
-      <Link
-        to="/users/1"
-      >
-        <ForwardRef(Stack)
-          alignItems="center"
-          direction="row"
-          justifyContent="flex-start"
-          spacing={1}
-        >
-          <ForwardRef(Avatar)
-            src="no-icon.jpg"
-            sx={
-              Object {
-                "height": 30,
-                "width": 30,
-              }
+        <ForwardRef(Avatar)
+          src="no-icon.jpg"
+          sx={
+            Object {
+              "height": 30,
+              "width": 30,
             }
-          />
-          <ForwardRef(Typography)
-            color="gray"
-          >
-            Axel
-          </ForwardRef(Typography)>
-        </ForwardRef(Stack)>
-      </Link>
-      <ForwardRef(Typography)
-        align="center"
-        component="h2"
-        variant="h4"
-      >
-        title
-      </ForwardRef(Typography)>
-      <Link
-        to="/categories/1"
-      >
+          }
+        />
         <ForwardRef(Typography)
           color="gray"
-          component="div"
         >
-          <IconAndText
-            align="left"
-            iconComponent={<Memo />}
-            iconPosition="left"
-            text="隠れミッキー"
-          />
+          Axel
         </ForwardRef(Typography)>
-      </Link>
-      <ForwardRef(Box)
-        sx={
-          Object {
-            "color": "gray",
-            "textAlign": "right",
-          }
-        }
+      </ForwardRef(Stack)>
+    </Link>
+    <ForwardRef(Typography)
+      align="center"
+      component="h2"
+      variant="h4"
+    >
+      title
+    </ForwardRef(Typography)>
+    <Link
+      to="/categories/1"
+    >
+      <ForwardRef(Typography)
+        color="gray"
+        component="div"
       >
-        <ForwardRef(Typography)>
-          投稿日 2022/4/1
-        </ForwardRef(Typography)>
-        <ForwardRef(Typography)>
-          更新日 2022/5/1
-        </ForwardRef(Typography)>
-      </ForwardRef(Box)>
-      <ForwardRef(Divider) />
-      <ForwardRef(Typography)>
-        description
+        <IconAndText
+          align="left"
+          iconComponent={<Memo />}
+          iconPosition="left"
+          text="隠れミッキー"
+        />
       </ForwardRef(Typography)>
-      <ForwardRef(Divider) />
-      <IconAndText
-        component="h3"
-        iconComponent={<Memo />}
-        iconPosition="left"
-        text="地図"
-        variant="h5"
-      />
-      <AreaNames
-        areaNames={
-          Array [
-            "シー",
-          ]
+    </Link>
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "color": "gray",
+          "textAlign": "right",
         }
-        variant="body2"
-      />
-      <TriviaMap
-        additinalMarkers={
-          Array [
-            Object {
-              "areaNames": Array [
-                "シー",
-              ],
-              "lat": 0,
-              "lng": 0,
-              "markerId": 1,
-              "numberOfPublicArticles": 1,
-              "park": "S",
-            },
-          ]
-        }
-        disabled={true}
-        doNotShowPostMarkers={true}
-        height={300}
-        initCenter={
+      }
+    >
+      <ForwardRef(Typography)>
+        投稿日 2022/4/1
+      </ForwardRef(Typography)>
+      <ForwardRef(Typography)>
+        更新日 2022/5/1
+      </ForwardRef(Typography)>
+    </ForwardRef(Box)>
+    <ForwardRef(Divider) />
+    <ForwardRef(Typography)>
+      description
+    </ForwardRef(Typography)>
+    <ForwardRef(Divider) />
+    <IconAndText
+      component="h3"
+      iconComponent={<Memo />}
+      iconPosition="left"
+      text="地図"
+      variant="h5"
+    />
+    <AreaNames
+      areaNames={
+        Array [
+          "シー",
+        ]
+      }
+      variant="body2"
+    />
+    <TriviaMap
+      additinalMarkers={
+        Array [
           Object {
             "areaNames": Array [
               "シー",
@@ -273,13 +260,28 @@ exports[`Shallow Snapshot Tests draft 1`] = `
             "markerId": 1,
             "numberOfPublicArticles": 1,
             "park": "S",
-          }
+          },
+        ]
+      }
+      disabled={true}
+      doNotShowPostMarkers={true}
+      height={300}
+      initCenter={
+        Object {
+          "areaNames": Array [
+            "シー",
+          ],
+          "lat": 0,
+          "lng": 0,
+          "markerId": 1,
+          "numberOfPublicArticles": 1,
+          "park": "S",
         }
-        initZoom={3}
-        park="S"
-      />
-    </ForwardRef(Stack)>
-  </HeadAppender>
+      }
+      initZoom={3}
+      park="S"
+    />
+  </ForwardRef(Stack)>
 </ArticleWrapper>
 `;
 
@@ -295,113 +297,99 @@ exports[`Shallow Snapshot Tests with article 1`] = `
 <ArticleWrapper
   showSidebar={true}
 >
-  <HeadAppender
+  <CommonHelmet
+    description="description"
+    ogType="article"
     title="title - トリビアマップ"
+  />
+  <ForwardRef(Stack)
+    spacing={2}
   >
-    <ForwardRef(Stack)
-      spacing={2}
+    <Link
+      to="/users/1"
     >
-      <Link
-        to="/users/1"
+      <ForwardRef(Stack)
+        alignItems="center"
+        direction="row"
+        justifyContent="flex-start"
+        spacing={1}
       >
-        <ForwardRef(Stack)
-          alignItems="center"
-          direction="row"
-          justifyContent="flex-start"
-          spacing={1}
-        >
-          <ForwardRef(Avatar)
-            src="no-icon.jpg"
-            sx={
-              Object {
-                "height": 30,
-                "width": 30,
-              }
+        <ForwardRef(Avatar)
+          src="no-icon.jpg"
+          sx={
+            Object {
+              "height": 30,
+              "width": 30,
             }
-          />
-          <ForwardRef(Typography)
-            color="gray"
-          >
-            Axel
-          </ForwardRef(Typography)>
-        </ForwardRef(Stack)>
-      </Link>
-      <ForwardRef(Typography)
-        align="center"
-        component="h2"
-        variant="h4"
-      >
-        title
-      </ForwardRef(Typography)>
-      <Link
-        to="/categories/1"
-      >
+          }
+        />
         <ForwardRef(Typography)
           color="gray"
-          component="div"
         >
-          <IconAndText
-            align="left"
-            iconComponent={<Memo />}
-            iconPosition="left"
-            text="隠れミッキー"
-          />
+          Axel
         </ForwardRef(Typography)>
-      </Link>
-      <ForwardRef(Box)
-        sx={
-          Object {
-            "color": "gray",
-            "textAlign": "right",
-          }
-        }
+      </ForwardRef(Stack)>
+    </Link>
+    <ForwardRef(Typography)
+      align="center"
+      component="h2"
+      variant="h4"
+    >
+      title
+    </ForwardRef(Typography)>
+    <Link
+      to="/categories/1"
+    >
+      <ForwardRef(Typography)
+        color="gray"
+        component="div"
       >
-        <ForwardRef(Typography)>
-          投稿日 2022/4/1
-        </ForwardRef(Typography)>
-        <ForwardRef(Typography)>
-          更新日 2022/5/1
-        </ForwardRef(Typography)>
-      </ForwardRef(Box)>
-      <ForwardRef(Divider) />
-      <ForwardRef(Typography)>
-        description
+        <IconAndText
+          align="left"
+          iconComponent={<Memo />}
+          iconPosition="left"
+          text="隠れミッキー"
+        />
       </ForwardRef(Typography)>
-      <ForwardRef(Divider) />
-      <IconAndText
-        component="h3"
-        iconComponent={<Memo />}
-        iconPosition="left"
-        text="地図"
-        variant="h5"
-      />
-      <AreaNames
-        areaNames={
-          Array [
-            "シー",
-          ]
+    </Link>
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "color": "gray",
+          "textAlign": "right",
         }
-        variant="body2"
-      />
-      <TriviaMap
-        additinalMarkers={
-          Array [
-            Object {
-              "areaNames": Array [
-                "シー",
-              ],
-              "lat": 0,
-              "lng": 0,
-              "markerId": 1,
-              "numberOfPublicArticles": 1,
-              "park": "S",
-            },
-          ]
-        }
-        disabled={true}
-        doNotShowPostMarkers={true}
-        height={300}
-        initCenter={
+      }
+    >
+      <ForwardRef(Typography)>
+        投稿日 2022/4/1
+      </ForwardRef(Typography)>
+      <ForwardRef(Typography)>
+        更新日 2022/5/1
+      </ForwardRef(Typography)>
+    </ForwardRef(Box)>
+    <ForwardRef(Divider) />
+    <ForwardRef(Typography)>
+      description
+    </ForwardRef(Typography)>
+    <ForwardRef(Divider) />
+    <IconAndText
+      component="h3"
+      iconComponent={<Memo />}
+      iconPosition="left"
+      text="地図"
+      variant="h5"
+    />
+    <AreaNames
+      areaNames={
+        Array [
+          "シー",
+        ]
+      }
+      variant="body2"
+    />
+    <TriviaMap
+      additinalMarkers={
+        Array [
           Object {
             "areaNames": Array [
               "シー",
@@ -411,13 +399,28 @@ exports[`Shallow Snapshot Tests with article 1`] = `
             "markerId": 1,
             "numberOfPublicArticles": 1,
             "park": "S",
-          }
+          },
+        ]
+      }
+      disabled={true}
+      doNotShowPostMarkers={true}
+      height={300}
+      initCenter={
+        Object {
+          "areaNames": Array [
+            "シー",
+          ],
+          "lat": 0,
+          "lng": 0,
+          "markerId": 1,
+          "numberOfPublicArticles": 1,
+          "park": "S",
         }
-        initZoom={3}
-        park="S"
-      />
-    </ForwardRef(Stack)>
-  </HeadAppender>
+      }
+      initZoom={3}
+      park="S"
+    />
+  </ForwardRef(Stack)>
 </ArticleWrapper>
 `;
 
@@ -425,117 +428,104 @@ exports[`Shallow Snapshot Tests with image 1`] = `
 <ArticleWrapper
   showSidebar={true}
 >
-  <HeadAppender
+  <CommonHelmet
+    description="description"
+    imageUrl="image.jpg"
+    ogType="article"
     title="title - トリビアマップ"
+  />
+  <ForwardRef(Stack)
+    spacing={2}
   >
-    <ForwardRef(Stack)
-      spacing={2}
+    <Link
+      to="/users/1"
     >
-      <Link
-        to="/users/1"
+      <ForwardRef(Stack)
+        alignItems="center"
+        direction="row"
+        justifyContent="flex-start"
+        spacing={1}
       >
-        <ForwardRef(Stack)
-          alignItems="center"
-          direction="row"
-          justifyContent="flex-start"
-          spacing={1}
-        >
-          <ForwardRef(Avatar)
-            src="no-icon.jpg"
-            sx={
-              Object {
-                "height": 30,
-                "width": 30,
-              }
+        <ForwardRef(Avatar)
+          src="no-icon.jpg"
+          sx={
+            Object {
+              "height": 30,
+              "width": 30,
             }
-          />
-          <ForwardRef(Typography)
-            color="gray"
-          >
-            Axel
-          </ForwardRef(Typography)>
-        </ForwardRef(Stack)>
-      </Link>
-      <ForwardRef(Typography)
-        align="center"
-        component="h2"
-        variant="h4"
-      >
-        title
-      </ForwardRef(Typography)>
-      <Link
-        to="/categories/1"
-      >
+          }
+        />
         <ForwardRef(Typography)
           color="gray"
-          component="div"
         >
-          <IconAndText
-            align="left"
-            iconComponent={<Memo />}
-            iconPosition="left"
-            text="隠れミッキー"
-          />
+          Axel
         </ForwardRef(Typography)>
-      </Link>
-      <ForwardRef(Box)
-        sx={
-          Object {
-            "color": "gray",
-            "textAlign": "right",
-          }
-        }
+      </ForwardRef(Stack)>
+    </Link>
+    <ForwardRef(Typography)
+      align="center"
+      component="h2"
+      variant="h4"
+    >
+      title
+    </ForwardRef(Typography)>
+    <Link
+      to="/categories/1"
+    >
+      <ForwardRef(Typography)
+        color="gray"
+        component="div"
       >
-        <ForwardRef(Typography)>
-          投稿日 2022/4/1
-        </ForwardRef(Typography)>
-        <ForwardRef(Typography)>
-          更新日 2022/5/1
-        </ForwardRef(Typography)>
-      </ForwardRef(Box)>
-      <ForwardRef(Divider) />
-      <Image
-        src="image.jpg"
-        width="full"
-      />
-      <ForwardRef(Typography)>
-        description
+        <IconAndText
+          align="left"
+          iconComponent={<Memo />}
+          iconPosition="left"
+          text="隠れミッキー"
+        />
       </ForwardRef(Typography)>
-      <ForwardRef(Divider) />
-      <IconAndText
-        component="h3"
-        iconComponent={<Memo />}
-        iconPosition="left"
-        text="地図"
-        variant="h5"
-      />
-      <AreaNames
-        areaNames={
-          Array [
-            "シー",
-          ]
+    </Link>
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "color": "gray",
+          "textAlign": "right",
         }
-        variant="body2"
-      />
-      <TriviaMap
-        additinalMarkers={
-          Array [
-            Object {
-              "areaNames": Array [
-                "シー",
-              ],
-              "lat": 0,
-              "lng": 0,
-              "markerId": 1,
-              "numberOfPublicArticles": 1,
-              "park": "S",
-            },
-          ]
-        }
-        disabled={true}
-        doNotShowPostMarkers={true}
-        height={300}
-        initCenter={
+      }
+    >
+      <ForwardRef(Typography)>
+        投稿日 2022/4/1
+      </ForwardRef(Typography)>
+      <ForwardRef(Typography)>
+        更新日 2022/5/1
+      </ForwardRef(Typography)>
+    </ForwardRef(Box)>
+    <ForwardRef(Divider) />
+    <Image
+      src="image.jpg"
+      width="full"
+    />
+    <ForwardRef(Typography)>
+      description
+    </ForwardRef(Typography)>
+    <ForwardRef(Divider) />
+    <IconAndText
+      component="h3"
+      iconComponent={<Memo />}
+      iconPosition="left"
+      text="地図"
+      variant="h5"
+    />
+    <AreaNames
+      areaNames={
+        Array [
+          "シー",
+        ]
+      }
+      variant="body2"
+    />
+    <TriviaMap
+      additinalMarkers={
+        Array [
           Object {
             "areaNames": Array [
               "シー",
@@ -545,12 +535,27 @@ exports[`Shallow Snapshot Tests with image 1`] = `
             "markerId": 1,
             "numberOfPublicArticles": 1,
             "park": "S",
-          }
+          },
+        ]
+      }
+      disabled={true}
+      doNotShowPostMarkers={true}
+      height={300}
+      initCenter={
+        Object {
+          "areaNames": Array [
+            "シー",
+          ],
+          "lat": 0,
+          "lng": 0,
+          "markerId": 1,
+          "numberOfPublicArticles": 1,
+          "park": "S",
         }
-        initZoom={3}
-        park="S"
-      />
-    </ForwardRef(Stack)>
-  </HeadAppender>
+      }
+      initZoom={3}
+      park="S"
+    />
+  </ForwardRef(Stack)>
 </ArticleWrapper>
 `;

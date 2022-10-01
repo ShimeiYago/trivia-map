@@ -5,16 +5,10 @@ import { Typography } from '@mui/material';
 import { IconAndText } from 'views/components/atoms/icon-and-text';
 import FolderIcon from '@mui/icons-material/Folder';
 import { categoryMapper } from 'utils/category-mapper';
-import { HeadAppender } from 'helper-components/head-appender';
-import { pageTitleGenerator } from 'utils/page-title-generator';
 
 export class Renderer extends React.Component<Props> {
   render() {
-    return (
-      <HeadAppender title={pageTitleGenerator(categoryMapper(this.props.categoryId))}>
-        <ArticleWrapper showSidebar>{this.renderMainContent()}</ArticleWrapper>{' '}
-      </HeadAppender>
-    );
+    return <ArticleWrapper showSidebar>{this.renderMainContent()}</ArticleWrapper>;
   }
 
   protected renderMainContent = () => {

@@ -20,8 +20,6 @@ import { inquiry, ValidationError } from 'api/inquiry-api';
 import { INQUIRY_CATEGORIES } from 'constant';
 import { ArticleWrapper } from 'views/components/organisms/article-wrapper';
 import { PAGE_NAMES } from 'constant/page-names';
-import { HeadAppender } from 'helper-components/head-appender';
-import { pageTitleGenerator } from 'utils/page-title-generator';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -46,17 +44,15 @@ export class Renderer extends React.Component<Props, State> {
 
   render() {
     return (
-      <HeadAppender title={pageTitleGenerator(PAGE_NAMES.inquiry)}>
-        <ArticleWrapper>
-          <Stack spacing={1} sx={{ px: 1, maxWidth: '400px', mx: 'auto', my: 3 }}>
-            <Typography component="h1" variant="h5" align="center">
-              {PAGE_NAMES.inquiry}
-            </Typography>
-            {this.renderHeaderInfo()}
-            {this.renderForm()}
-          </Stack>
-        </ArticleWrapper>
-      </HeadAppender>
+      <ArticleWrapper>
+        <Stack spacing={1} sx={{ px: 1, maxWidth: '400px', mx: 'auto', my: 3 }}>
+          <Typography component="h1" variant="h5" align="center">
+            {PAGE_NAMES.inquiry}
+          </Typography>
+          {this.renderHeaderInfo()}
+          {this.renderForm()}
+        </Stack>
+      </ArticleWrapper>
     );
   }
 

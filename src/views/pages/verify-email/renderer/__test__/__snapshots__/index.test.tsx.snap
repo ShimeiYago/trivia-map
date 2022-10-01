@@ -1,9 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Shallow Snapshot Tests basic 1`] = `
-<HeadAppender
-  title="メールアドレス確認 - トリビアマップ"
->
+<Fragment>
   <ForwardRef(Box)
     sx={
       Object {
@@ -47,13 +45,11 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       </ForwardRef(LoadingButton)>
     </ForwardRef(Typography)>
   </ForwardRef(Box)>
-</HeadAppender>
+</Fragment>
 `;
 
 exports[`Shallow Snapshot Tests success case 1`] = `
-<HeadAppender
-  title="メールアドレス確認 - トリビアマップ"
->
+<Fragment>
   <ForwardRef(Box)
     sx={
       Object {
@@ -86,5 +82,5 @@ exports[`Shallow Snapshot Tests success case 1`] = `
       元々のページに戻り、登録した内容でログインしてください。
     </ForwardRef(Typography)>
   </ForwardRef(Box)>
-</HeadAppender>
+</Fragment>
 `;

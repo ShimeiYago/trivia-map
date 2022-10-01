@@ -1,5 +1,4 @@
 export const PAGE_NAMES = {
-  top: 'トリビアマップ',
   login: 'ログイン',
   admin: 'マイページ',
   myArticles: 'マイ投稿一覧',

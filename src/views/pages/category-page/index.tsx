@@ -4,6 +4,9 @@ import { useParams } from 'react-router-dom';
 import { throwError } from 'store/global-error/slice';
 import { useAppDispatch } from 'store';
 import { CATEGORIES } from 'constant';
+import { CommonHelmet } from 'helper-components/common-helmet';
+import { pageTitleGenerator } from 'utils/page-title-generator';
+import { categoryMapper } from 'utils/category-mapper';
 
 export function CategoryPage() {
   const dispatch = useAppDispatch();
@@ -19,7 +22,13 @@ export function CategoryPage() {
 
   for (const category of CATEGORIES) {
     if (category.categoryId === categoryIdNumber) {
-      return <Renderer categoryId={categoryIdNumber} />;
+      return (
+        <>
+          <CommonHelmet title={pageTitleGenerator(categoryMapper(categoryIdNumber))} />
+
+          <Renderer categoryId={categoryIdNumber} />
+        </>
+      );
     }
   }
 

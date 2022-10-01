@@ -16,8 +16,6 @@ import 'react-image-crop/dist/ReactCrop.css';
 import { UPLOAD_IMAGE_MAX_LENGTH } from 'constant';
 import { ACCOUNT_SETTINGS_LINK } from 'constant/links';
 import { PAGE_NAMES } from 'constant/page-names';
-import { HeadAppender } from 'helper-components/head-appender';
-import { pageTitleGenerator } from 'utils/page-title-generator';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -39,11 +37,7 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   render() {
-    return (
-      <HeadAppender title={pageTitleGenerator(PAGE_NAMES.profileEdit)}>
-        <AdminWrapper>{this.renderContents()}</AdminWrapper>
-      </HeadAppender>
-    );
+    return <AdminWrapper>{this.renderContents()}</AdminWrapper>;
   }
 
   protected renderContents = () => {

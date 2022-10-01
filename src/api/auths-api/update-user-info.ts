@@ -1,4 +1,4 @@
-import { BASE_URL } from 'constant';
+import { API_TIMEOUT, BASE_URL } from 'constant';
 import { AxiosError, AxiosResponse } from 'axios';
 import { handleAxiosError } from '../utils/handle-axios-error';
 import { getAxiosInstance } from 'api/utils/get-axios-instance';
@@ -11,7 +11,7 @@ export async function updateUserInfo(param: {
   nickname: string;
   icon?: SelializedImageFile | null;
 }): Promise<User> {
-  const axiosInstance = getAxiosInstance({}, mockGetUserInfoResponse);
+  const axiosInstance = getAxiosInstance({ timeout: API_TIMEOUT.long }, mockGetUserInfoResponse);
 
   const uploadFile = param.icon ? await convertToFile(param.icon) : param.icon;
 
@@ -21,7 +21,6 @@ export async function updateUserInfo(param: {
   };
 
   try {
-    // TODO: Set reasonable timeout
     const res: AxiosResponse<User> = await axiosInstance.put(`${BASE_URL}/auths/user`, requestData);
     return res.data;
   } catch (error) {

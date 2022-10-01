@@ -1,4 +1,4 @@
-import { BASE_URL } from 'constant';
+import { API_TIMEOUT, BASE_URL } from 'constant';
 import { AxiosError, AxiosResponse } from 'axios';
 import { handleAxiosError } from '../utils/handle-axios-error';
 import { getAxiosInstance } from 'api/utils/get-axios-instance';
@@ -7,10 +7,9 @@ import { Author } from 'types/author';
 import { Park } from './../../types/park';
 
 export async function getRemoteArticle(postId: number): Promise<GetArticleResponse> {
-  const axiosInstance = getAxiosInstance({}, mockGetArticleResponse);
+  const axiosInstance = getAxiosInstance({ timeout: API_TIMEOUT.long }, mockGetArticleResponse);
 
   try {
-    // TODO: Set reasonable timeout
     const res: AxiosResponse<GetArticleResponse> = await axiosInstance.get(
       `${BASE_URL}/articles/detail/${postId}`,
     );

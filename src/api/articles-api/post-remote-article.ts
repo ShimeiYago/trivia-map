@@ -1,4 +1,4 @@
-import { BASE_URL } from 'constant';
+import { API_TIMEOUT, BASE_URL } from 'constant';
 import { AxiosError, AxiosResponse } from 'axios';
 import { handleAxiosError } from '../utils/handle-axios-error';
 import { getAxiosInstance } from 'api/utils/get-axios-instance';
@@ -15,7 +15,7 @@ export async function postRemoteArticle(param: {
   image?: SelializedImageFile;
   isDraft: boolean;
 }): Promise<PostArticleResponse> {
-  const axiosInstance = getAxiosInstance({}, mockPostArticleResponse);
+  const axiosInstance = getAxiosInstance({ timeout: API_TIMEOUT.long }, mockPostArticleResponse);
 
   const uploadFile = param.image ? await convertToFile(param.image) : undefined;
 
@@ -29,7 +29,6 @@ export async function postRemoteArticle(param: {
   };
 
   try {
-    // TODO: Set reasonable timeout
     const res: AxiosResponse<PostArticleResponse> = await axiosInstance.post(
       `${BASE_URL}/articles`,
       requestData,

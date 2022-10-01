@@ -6,4 +6,7 @@ export const axiosMockError = {
     data: {},
   },
   message: 'Intentional API Error with mock',
+  config: {
+    url: 'https://xxx.com/api',
+  },
 } as AxiosError;

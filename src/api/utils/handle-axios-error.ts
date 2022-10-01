@@ -1,22 +1,31 @@
 import { AxiosError } from 'axios';
+import { sendGa4ExceptionEvent } from 'utils/send-ga4-exception-event';
 
 export function handleAxiosError<Data>(axiosError: AxiosError): ApiError<Data> {
+  let error: ApiError<Data>;
   if (axiosError.response) {
     // when API is active but response includes error
-    const error: ApiError<Data> = {
+    error = {
       status: axiosError.response.status,
       data: axiosError.response.data,
       errorMsg: axiosError.message,
     };
-    return error;
   } else {
     // when API is not active
-    const error: ApiError<Data> = {
+    error = {
       status: 500,
       errorMsg: axiosError.message,
     };
-    return error;
   }
+
+  sendGa4ExceptionEvent({
+    errorCategory: 'api-error',
+    apiStatusCode: error.status,
+    apiEndpoint: axiosError.config.url,
+    message: error.errorMsg,
+  });
+
+  return error;
 }
 
 export type ApiError<Data> = {

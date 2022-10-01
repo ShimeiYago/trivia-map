@@ -1,4 +1,4 @@
-import { BASE_URL } from 'constant';
+import { API_TIMEOUT, BASE_URL } from 'constant';
 import { AxiosError } from 'axios';
 import { handleAxiosError } from '../utils/handle-axios-error';
 import { getAxiosInstance } from 'api/utils/get-axios-instance';
@@ -9,7 +9,7 @@ export async function registration(
   password1: string,
   password2: string,
 ): Promise<void> {
-  const axiosInstance = getAxiosInstance({}, {});
+  const axiosInstance = getAxiosInstance({ timeout: API_TIMEOUT.long }, {});
 
   const requestData: RegistrationRequest = {
     email: email,
@@ -19,7 +19,6 @@ export async function registration(
   };
 
   try {
-    // TODO: Set reasonable timeout
     await axiosInstance.post(`${BASE_URL}/auths/registration`, requestData);
   } catch (error) {
     const axiosError = error as AxiosError;

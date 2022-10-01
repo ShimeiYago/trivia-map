@@ -5,9 +5,14 @@ export const BASE_URL = process.env.REACT_APP_API_BASE_URL ?? 'http://localhost:
 
 export const SITE_NAME = 'トリビアマップ';
 
-export const DOMAIN = process.env.REACT_APP_DOMAIN ?? 'https://xxx.com';
+export const DOMAIN = process.env.REACT_APP_DOMAIN ?? 'https://xxx.com'; // TODO
 
 export const ANALYTICS_ID_ENV_KEY = 'REACT_APP_ANALYTICS_ID';
+
+export const API_TIMEOUT = {
+  short: 10000,
+  long: 30000,
+};
 
 export const CATEGORIES = [
   {

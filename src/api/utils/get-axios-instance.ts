@@ -1,3 +1,4 @@
+import { API_TIMEOUT } from './../../constant/index';
 import { axiosMockError } from 'api/mock/error-response';
 import axios, {
   AxiosAdapter,
@@ -43,7 +44,7 @@ export function getAxiosInstance(
 }
 
 const defaultConfig: AxiosRequestConfig = {
-  timeout: 3000,
+  timeout: API_TIMEOUT.short,
 };
 
 function getMockAdapter(mockData: unknown, mode: 'normal' | 'error'): AxiosAdapter {

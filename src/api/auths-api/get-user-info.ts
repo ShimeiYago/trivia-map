@@ -9,7 +9,6 @@ export async function getUserInfo(): Promise<User> {
   const axiosInstance = getAxiosInstance({}, mockGetUserInfoResponse);
 
   try {
-    // TODO: Set reasonable timeout
     const res: AxiosResponse<User> = await axiosInstance.get(`${BASE_URL}/auths/user`);
     return res.data;
   } catch (error) {

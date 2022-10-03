@@ -14,8 +14,8 @@ export async function getRemoteMarkers(
     url = params.nextUrl;
   } else {
     url = `${BASE_URL}/markers/${params.park}`;
-    if (params.category) {
-      url = `${url}?catregory=${params.category}`;
+    if (params.category !== undefined) {
+      url = `${url}?category=${params.category}`;
     }
   }
 

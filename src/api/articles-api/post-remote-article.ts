@@ -10,23 +10,24 @@ import { convertToFile } from 'utils/convert-to-file';
 export async function postRemoteArticle(param: {
   title: string;
   description: string;
-  marker: Position;
+  marker?: Position;
   category?: number;
   image?: SelializedImageFile;
   isDraft: boolean;
 }): Promise<PostArticleResponse> {
   const axiosInstance = getAxiosInstance({ timeout: API_TIMEOUT.long }, mockPostArticleResponse);
 
-  const uploadFile = param.image ? await convertToFile(param.image) : undefined;
+  const requestData = new FormData();
+  requestData.append('title', param.title);
+  requestData.append('description', param.description);
+  param.marker && requestData.append('marker', JSON.stringify(param.marker));
+  param.category && requestData.append('category', param.category.toString());
+  requestData.append('isDraft', param.isDraft ? 'true' : 'false');
 
-  const requestData: PostArticleRequest = {
-    title: param.title,
-    description: param.description,
-    marker: param.marker,
-    image: uploadFile,
-    isDraft: param.isDraft,
-    category: param.category,
-  };
+  if (param.image) {
+    const uploadFile = await convertToFile(param.image);
+    requestData.append('image', uploadFile);
+  }
 
   try {
     const res: AxiosResponse<PostArticleResponse> = await axiosInstance.post(
@@ -39,15 +40,6 @@ export async function postRemoteArticle(param: {
     throw handleAxiosError<ValidationError>(axiosError);
   }
 }
-
-export type PostArticleRequest = {
-  title: string;
-  description: string;
-  marker: Position;
-  image?: File | null;
-  isDraft: boolean;
-  category?: number;
-};
 
 export type PostArticleResponse = {
   postId: number;

@@ -11,7 +11,7 @@ export async function inquiry(
 
   try {
     const res: AxiosResponse<InquiryRequestAndResponse> = await axiosInstance.post(
-      `${BASE_URL}/inquiry`,
+      `${BASE_URL}/inquiry/`,
       request,
     );
     return res.data;

@@ -11,7 +11,7 @@ export async function getMyArticles(page?: number): Promise<GetMyArticlesRespons
     mockGetArticlesPreviewsResponse,
   );
 
-  let url = `${BASE_URL}/articles/previews/mine`;
+  let url = `${BASE_URL}/articles/mine`;
 
   if (page) {
     url = `${url}?page=${page}`;

@@ -96,7 +96,7 @@ export const submitArticle = (): AppThunk => async (dispatch, getState) => {
       // validation Error
       formError = {
         errorTitle: errorTitle,
-        ...apiError.data,
+        fieldErrors: apiError.data,
       };
     } else {
       formError = {

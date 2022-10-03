@@ -88,8 +88,8 @@ describe('handleSubmit', () => {
     const apiError: ApiError<ChangePasswordModule.ValidationError> = {
       status: 400,
       data: {
-        password1: ['password is invalid'],
-        password2: ['password is invalid'],
+        new_password1: ['password is invalid'],
+        new_password2: ['password is invalid'],
       },
       errorMsg: '400 request is invalid',
     };

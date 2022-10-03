@@ -40,10 +40,10 @@ export const initialState: ArticleFormState = {
 export type FormError = {
   errorTitle: string;
   fieldErrors?: {
-    title?: string;
-    description?: string;
-    position?: string;
-    image?: string;
-    isDraft?: string;
+    title?: string[];
+    description?: string[];
+    marker?: string[];
+    image?: string[];
+    isDraft?: string[];
   };
 };

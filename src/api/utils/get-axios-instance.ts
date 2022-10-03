@@ -45,6 +45,7 @@ export function getAxiosInstance(
 
 const defaultConfig: AxiosRequestConfig = {
   timeout: API_TIMEOUT.short,
+  withCredentials: true,
 };
 
 function getMockAdapter(mockData: unknown, mode: 'normal' | 'error'): AxiosAdapter {

@@ -94,8 +94,8 @@ describe('handleSubmit', () => {
     const apiError: ApiError<ResetPasswordModule.ValidationError> = {
       status: 400,
       data: {
-        password1: ['password is invalid'],
-        password2: ['password is invalid'],
+        new_password1: ['password is invalid'],
+        new_password2: ['password is invalid'],
       },
       errorMsg: '400 request is invalid',
     };
@@ -110,25 +110,6 @@ describe('handleSubmit', () => {
       password1: ['password is invalid'],
       password2: ['password is invalid'],
     });
-  });
-
-  it('should set error messages when api have validation error for uid and token', async () => {
-    const apiError: ApiError<ResetPasswordModule.ValidationError> = {
-      status: 400,
-      data: {
-        uid: ['invalid'],
-        token: ['invalid'],
-      },
-      errorMsg: '400 request is invalid',
-    };
-    resetPasswordSpy.mockRejectedValue(apiError);
-
-    wrapper = shallow(<Renderer {...basicProps} />);
-    const instance = wrapper.instance();
-
-    await instance['handleSubmit']();
-
-    expect(instance.state.errorMessages).toEqual(['invalid', 'invalid']);
   });
 
   it('should set loadingstate error when api fail', async () => {

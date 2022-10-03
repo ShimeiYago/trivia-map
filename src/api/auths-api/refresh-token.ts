@@ -9,7 +9,7 @@ export async function refreshToken(): Promise<RefreshTokenResponse> {
 
   try {
     const res: AxiosResponse<RefreshTokenResponse> = await axiosInstance.post(
-      `${BASE_URL}/auths/token/refresh`,
+      `${BASE_URL}/auths/token/refresh/`,
     );
     return res.data;
   } catch (error) {

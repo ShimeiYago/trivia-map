@@ -77,6 +77,7 @@ export const articleFormSlice = createSlice({
       state.areaNames = initialState.areaNames;
       state.image = initialState.image;
       state.category = initialState.category;
+      state.isDraft = initialState.isDraft;
       state.submittingState = initialState.submittingState;
       state.fetchingState = initialState.fetchingState;
       state.formError = initialState.formError;

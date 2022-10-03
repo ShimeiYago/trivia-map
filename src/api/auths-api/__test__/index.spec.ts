@@ -49,7 +49,12 @@ describe('registration', () => {
   it('handle nomal response', async () => {
     process.env.REACT_APP_MOCK = 'normal';
 
-    const response = await registration('user@example.com', 'Axel', 'password1', 'password2');
+    const response = await registration({
+      email: 'user@example.com',
+      nickname: 'Axel',
+      password1: 'password1',
+      password2: 'password2',
+    });
     expect(response).toEqual(undefined);
   });
 
@@ -62,7 +67,12 @@ describe('registration', () => {
       errorMsg: 'Intentional API Error with mock',
     };
     await expect(
-      registration('user@example.com', 'Axel', 'password1', 'password2'),
+      registration({
+        email: 'user@example.com',
+        nickname: 'Axel',
+        password1: 'password1',
+        password2: 'password2',
+      }),
     ).rejects.toEqual(expectedApiError);
   });
 });
@@ -217,6 +227,16 @@ describe('update-user-info', () => {
     expect(response.userId).toBe(1);
   });
 
+  it('handle null icon', async () => {
+    process.env.REACT_APP_MOCK = 'normal';
+
+    const response = await updateUserInfo({
+      nickname: 'Axel',
+      icon: null,
+    });
+    expect(response.userId).toBe(1);
+  });
+
   it('handle error response', async () => {
     process.env.REACT_APP_MOCK = 'error';
 
@@ -267,7 +287,12 @@ describe('resetPasswordConfirm', () => {
   it('handle nomal response', async () => {
     process.env.REACT_APP_MOCK = 'normal';
 
-    const response = await resetPasswordConfirm('password1', 'password2', 'uid', 'token');
+    const response = await resetPasswordConfirm({
+      password1: 'password1',
+      password2: 'password2',
+      uid: 'uid',
+      token: 'token',
+    });
     expect(response).toEqual(undefined);
   });
 
@@ -279,9 +304,14 @@ describe('resetPasswordConfirm', () => {
       data: {},
       errorMsg: 'Intentional API Error with mock',
     };
-    await expect(resetPasswordConfirm('password1', 'password2', 'uid', 'token')).rejects.toEqual(
-      expectedApiError,
-    );
+    await expect(
+      resetPasswordConfirm({
+        password1: 'password1',
+        password2: 'password2',
+        uid: 'uid',
+        token: 'token',
+      }),
+    ).rejects.toEqual(expectedApiError);
   });
 });
 

@@ -59,7 +59,6 @@ export class SignupForm extends React.Component<Props, State> {
           label="パスワード"
           type="password"
           id="password1"
-          autoComplete="current-password"
           disabled={disabled}
           helperText={this.state.formError?.password1}
           error={!!this.state.formError?.password1}
@@ -73,7 +72,6 @@ export class SignupForm extends React.Component<Props, State> {
           label="パスワード（確認）"
           type="password"
           id="password2"
-          autoComplete="current-password"
           disabled={disabled}
           helperText={this.state.formError?.password2}
           error={!!this.state.formError?.password2}
@@ -177,7 +175,7 @@ export class SignupForm extends React.Component<Props, State> {
     });
 
     try {
-      await registration(this.props.email, nickname, password1, password2);
+      await registration({ email: this.props.email, nickname, password1, password2 });
       this.setState({
         localLoadingState: 'success',
       });

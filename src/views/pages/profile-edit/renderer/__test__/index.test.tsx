@@ -144,6 +144,21 @@ describe('handleSubmit', () => {
     expect(instance.state.loadingState).toBe('success');
   });
 
+  it('should handle null image', async () => {
+    updateUserInfoSpy.mockResolvedValue(mockGetUserInfoResponse);
+
+    wrapper = shallow(<Renderer {...basicProps} />);
+    wrapper.setState({
+      icon: null,
+      nickname: 'xxx',
+    });
+    const instance = wrapper.instance();
+
+    await instance['handleSubmit']();
+
+    expect(updateUserInfoSpy).toBeCalledWith({ icon: null, nickname: 'xxx' });
+  });
+
   it('should set form error when api have validation error', async () => {
     const apiError: ApiError<UpdateUserInfoModule.ValidationError> = {
       status: 400,

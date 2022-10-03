@@ -29,7 +29,6 @@ export class Renderer extends React.Component<Props, State> {
           label="パスワード"
           type="password"
           id="password1"
-          autoComplete="current-password"
           disabled={disabled}
           helperText={this.state.formError?.password1}
           error={!!this.state.formError?.password1}
@@ -43,7 +42,6 @@ export class Renderer extends React.Component<Props, State> {
           label="パスワード（確認）"
           type="password"
           id="password2"
-          autoComplete="current-password"
           disabled={disabled}
           helperText={this.state.formError?.password2}
           error={!!this.state.formError?.password2}
@@ -125,7 +123,7 @@ export class Renderer extends React.Component<Props, State> {
     });
 
     try {
-      await resetPasswordConfirm(uid, token, password1, password2);
+      await resetPasswordConfirm({ uid, token, password1, password2 });
       this.setState({
         loadingState: 'success',
       });
@@ -140,10 +138,9 @@ export class Renderer extends React.Component<Props, State> {
         // validation Error
         this.setState({
           formError: {
-            password1: apiError.data.password1,
-            password2: apiError.data.password2,
+            password1: apiError.data.new_password1,
+            password2: apiError.data.new_password2,
           },
-          errorMessages: [...(apiError.data.uid ?? []), ...(apiError.data.token ?? [])],
         });
       }
 

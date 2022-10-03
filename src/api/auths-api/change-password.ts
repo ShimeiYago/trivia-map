@@ -7,12 +7,12 @@ export async function changePassword(password1: string, password2: string): Prom
   const axiosInstance = getAxiosInstance({ timeout: API_TIMEOUT.long }, {});
 
   const requestData: ChangePasswordRequest = {
-    password1: password1,
-    password2: password2,
+    new_password1: password1,
+    new_password2: password2,
   };
 
   try {
-    await axiosInstance.post(`${BASE_URL}/auths/password/change`, requestData);
+    await axiosInstance.post(`${BASE_URL}/auths/password/change/`, requestData);
   } catch (error) {
     const axiosError = error as AxiosError;
     throw handleAxiosError<ValidationError>(axiosError);
@@ -20,11 +20,11 @@ export async function changePassword(password1: string, password2: string): Prom
 }
 
 export type ChangePasswordRequest = {
-  password1: string;
-  password2: string;
+  new_password1: string;
+  new_password2: string;
 };
 
 export type ValidationError = {
-  password1?: string[];
-  password2?: string[];
+  new_password1?: string[];
+  new_password2?: string[];
 };

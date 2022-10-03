@@ -11,7 +11,7 @@ export async function resendEmail(email: string): Promise<void> {
   };
 
   try {
-    await axiosInstance.post(`${BASE_URL}/auths/registration/resend-email`, requestData);
+    await axiosInstance.post(`${BASE_URL}/auths/registration/resend-email/`, requestData);
   } catch (error) {
     const axiosError = error as AxiosError;
     throw handleAxiosError<ValidationError>(axiosError);

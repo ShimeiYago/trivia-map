@@ -11,7 +11,7 @@ export async function verifyEmail(key: string): Promise<void> {
   };
 
   try {
-    await axiosInstance.post(`${BASE_URL}/auths/registration/verify-email`, requestData);
+    await axiosInstance.post(`${BASE_URL}/auths/registration/verify-email/`, requestData);
   } catch (error) {
     const axiosError = error as AxiosError;
     throw handleAxiosError<ValidationError>(axiosError);

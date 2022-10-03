@@ -13,26 +13,31 @@ export async function updateUserInfo(param: {
 }): Promise<User> {
   const axiosInstance = getAxiosInstance({ timeout: API_TIMEOUT.long }, mockGetUserInfoResponse);
 
-  const uploadFile = param.icon ? await convertToFile(param.icon) : param.icon;
+  const requestData = new FormData();
+  requestData.append('nickname', param.nickname);
 
-  const requestData: UpdateUserInfoRequest = {
-    nickname: param.nickname,
-    icon: uploadFile,
-  };
+  switch (param.icon) {
+    case undefined:
+      break;
+    case null:
+      requestData.append('icon', '');
+      break;
+    default:
+      const uploadFile = await convertToFile(param.icon);
+      requestData.append('icon', uploadFile);
+  }
 
   try {
-    const res: AxiosResponse<User> = await axiosInstance.put(`${BASE_URL}/auths/user`, requestData);
+    const res: AxiosResponse<User> = await axiosInstance.put(
+      `${BASE_URL}/auths/user/`,
+      requestData,
+    );
     return res.data;
   } catch (error) {
     const axiosError = error as AxiosError;
     throw handleAxiosError<ValidationError>(axiosError);
   }
 }
-
-export type UpdateUserInfoRequest = {
-  nickname: string;
-  icon?: File | null;
-};
 
 export type ValidationError = {
   nickname?: string[];

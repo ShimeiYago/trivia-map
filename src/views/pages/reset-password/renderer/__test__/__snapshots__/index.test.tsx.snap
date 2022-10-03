@@ -38,7 +38,6 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       noValidate={true}
     >
       <ForwardRef(TextField)
-        autoComplete="current-password"
         disabled={false}
         error={false}
         fullWidth={true}
@@ -51,7 +50,6 @@ exports[`Shallow Snapshot Tests basic 1`] = `
         type="password"
       />
       <ForwardRef(TextField)
-        autoComplete="current-password"
         disabled={false}
         error={false}
         fullWidth={true}
@@ -132,7 +130,6 @@ exports[`Shallow Snapshot Tests error case 1`] = `
       noValidate={true}
     >
       <ForwardRef(TextField)
-        autoComplete="current-password"
         disabled={false}
         error={true}
         fullWidth={true}
@@ -150,7 +147,6 @@ exports[`Shallow Snapshot Tests error case 1`] = `
         type="password"
       />
       <ForwardRef(TextField)
-        autoComplete="current-password"
         disabled={false}
         error={true}
         fullWidth={true}
@@ -228,7 +224,6 @@ exports[`Shallow Snapshot Tests success case 1`] = `
       noValidate={true}
     >
       <ForwardRef(TextField)
-        autoComplete="current-password"
         disabled={true}
         error={false}
         fullWidth={true}
@@ -241,7 +236,6 @@ exports[`Shallow Snapshot Tests success case 1`] = `
         type="password"
       />
       <ForwardRef(TextField)
-        autoComplete="current-password"
         disabled={true}
         error={false}
         fullWidth={true}

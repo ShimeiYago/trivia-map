@@ -194,8 +194,8 @@ describe('submitArticle', () => {
 
     expect(dispatch.mock.calls[1][0].type).toBe('articleForm/submitFailure');
     expect(dispatch.mock.calls[1][0].payload).toEqual({
-      ...formError,
       errorTitle: '入力内容に誤りがあります。',
+      fieldErrors: formError,
     });
   });
 });

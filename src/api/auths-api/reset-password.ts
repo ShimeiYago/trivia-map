@@ -11,7 +11,7 @@ export async function resetPassword(email: string): Promise<void> {
   };
 
   try {
-    await axiosInstance.post(`${BASE_URL}/auths/password/reset`, requestData);
+    await axiosInstance.post(`${BASE_URL}/auths/password/reset/`, requestData);
   } catch (error) {
     const axiosError = error as AxiosError;
     throw handleAxiosError<ValidationError>(axiosError);

@@ -166,9 +166,11 @@ export class Renderer extends React.Component<Props, State> {
       formError: undefined,
     });
 
+    const uploadIcon = typeof this.state.icon === 'string' ? undefined : this.state.icon;
+
     try {
       const res = await autoRefreshApiWrapper(() =>
-        updateUserInfo({ nickname: this.state.nickname }),
+        updateUserInfo({ nickname: this.state.nickname, icon: uploadIcon }),
       );
       this.props.updateUser(res);
       this.setState({

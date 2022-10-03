@@ -15,7 +15,7 @@ export async function login(email: string, password: string): Promise<LoginRespo
 
   try {
     const res: AxiosResponse<LoginResponse> = await axiosInstance.post(
-      `${BASE_URL}/auths/login`,
+      `${BASE_URL}/auths/login/`,
       requestData,
     );
     return res.data;

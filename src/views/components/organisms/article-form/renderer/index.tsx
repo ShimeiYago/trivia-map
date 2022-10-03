@@ -98,7 +98,7 @@ export class Renderer extends React.Component<Props> {
 
     const disabled = submittingState === 'loading' || fetchingState === 'loading';
 
-    const miniMapFieldStatus = !!formError?.fieldErrors?.position
+    const miniMapFieldStatus = !!formError?.fieldErrors?.marker
       ? 'error'
       : position
       ? 'valid'
@@ -168,7 +168,7 @@ export class Renderer extends React.Component<Props> {
               status={miniMapFieldStatus}
               onClick={handleClickSelectPosition}
               disabled={disabled}
-              helperText={formError?.fieldErrors?.position}
+              helperText={formError?.fieldErrors?.marker}
             >
               <Box sx={miniMapWrapper}>
                 <TriviaMap

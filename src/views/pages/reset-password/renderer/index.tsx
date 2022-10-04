@@ -9,6 +9,10 @@ import { globalAPIErrorMessage } from 'constant/global-api-error-message';
 import { PAGE_NAMES } from 'constant/page-names';
 import { Image } from 'views/components/atoms/image';
 import logoImage from 'images/trivia-map-logo-black.png';
+import { IconAndText } from 'views/components/atoms/icon-and-text';
+import { Link } from 'react-router-dom';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import { LOGIN_LINK } from 'constant/links';
 
 export class Renderer extends React.Component<Props, State> {
   state: State = {
@@ -82,7 +86,19 @@ export class Renderer extends React.Component<Props, State> {
     const { errorTitle, errorMessages, loadingState } = this.state;
 
     if (loadingState === 'success') {
-      return <Alert>パスワードが設定されました。</Alert>;
+      return (
+        <Stack spacing={0.5}>
+          <Alert>パスワードが再設定されました。</Alert>
+          <Link to={LOGIN_LINK}>
+            <IconAndText
+              text="ログインページへ"
+              iconComponent={<KeyboardArrowRightIcon />}
+              iconPosition="left"
+              align="right"
+            />
+          </Link>
+        </Stack>
+      );
     }
 
     if (errorTitle) {

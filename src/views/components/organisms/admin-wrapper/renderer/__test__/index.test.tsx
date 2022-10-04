@@ -11,6 +11,7 @@ const basicProps: Props = {
     icon: 'https://...',
   },
   autoLoggingInState: 'success',
+  loggedOutSuccessfully: false,
   isMobile: false,
   children: <div />,
   autoLogin: jest.fn(),
@@ -35,8 +36,13 @@ describe('Shallow Snapshot Tests', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('redirect', () => {
+  it('redirect to login page', () => {
     wrapper.setProps({ autoLoggingInState: 'error' });
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('redirect to map page when logged out', () => {
+    wrapper.setProps({ autoLoggingInState: 'error', loggedOutSuccessfully: true });
     expect(wrapper).toMatchSnapshot();
   });
 });

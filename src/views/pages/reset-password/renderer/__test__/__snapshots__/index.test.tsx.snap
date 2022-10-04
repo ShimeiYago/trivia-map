@@ -216,9 +216,23 @@ exports[`Shallow Snapshot Tests success case 1`] = `
     >
       パスワード初期化
     </ForwardRef(Typography)>
-    <ForwardRef(Alert)>
-      パスワードが設定されました。
-    </ForwardRef(Alert)>
+    <ForwardRef(Stack)
+      spacing={0.5}
+    >
+      <ForwardRef(Alert)>
+        パスワードが再設定されました。
+      </ForwardRef(Alert)>
+      <Link
+        to="/login"
+      >
+        <IconAndText
+          align="right"
+          iconComponent={<Memo />}
+          iconPosition="left"
+          text="ログインページへ"
+        />
+      </Link>
+    </ForwardRef(Stack)>
     <ForwardRef(Box)
       component="form"
       noValidate={true}

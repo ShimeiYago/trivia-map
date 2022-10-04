@@ -7,7 +7,7 @@ import { wrapper, contentWrapper } from '../styles';
 import { CenterSpinner } from 'views/components/atoms/center-spinner';
 import { User } from 'types/user';
 import { Navigate } from 'react-router-dom';
-import { LOGIN_LINK } from 'constant/links';
+import { LOGIN_LINK, MAP_PAGE_LINK } from 'constant/links';
 
 export class Renderer extends React.Component<Props> {
   constructor(props: Props) {
@@ -16,9 +16,12 @@ export class Renderer extends React.Component<Props> {
   }
 
   render() {
-    const { autoLoggingInState } = this.props;
+    const { autoLoggingInState, loggedOutSuccessfully } = this.props;
 
     if (autoLoggingInState === 'error') {
+      if (loggedOutSuccessfully) {
+        return <Navigate to={MAP_PAGE_LINK} />;
+      }
       return <Navigate to={LOGIN_LINK} />;
     }
 
@@ -51,6 +54,7 @@ export class Renderer extends React.Component<Props> {
 export type Props = {
   user?: User;
   autoLoggingInState: LoadingState;
+  loggedOutSuccessfully: boolean;
   isMobile: boolean;
   children: React.ReactNode;
 

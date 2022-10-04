@@ -1,7 +1,11 @@
 import { Props, Renderer } from './renderer';
 import { useAppDispatch, useAppSelector } from 'store';
 import { isMobile } from 'react-device-detect';
-import { selectAutoLoggingInState, selectUser } from 'store/auths/selector';
+import {
+  selectAutoLoggingInState,
+  selectLoggedOutSuccessfully,
+  selectUser,
+} from 'store/auths/selector';
 import { autoLogin } from 'store/auths/actions';
 
 export function AdminWrapper(ownProps: OwnProps) {
@@ -10,6 +14,7 @@ export function AdminWrapper(ownProps: OwnProps) {
   const props: Props = {
     user: useAppSelector(selectUser),
     autoLoggingInState: useAppSelector(selectAutoLoggingInState),
+    loggedOutSuccessfully: useAppSelector(selectLoggedOutSuccessfully),
     isMobile: isMobile,
     children: ownProps.children,
 

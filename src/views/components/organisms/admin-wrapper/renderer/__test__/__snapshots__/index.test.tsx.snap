@@ -92,8 +92,14 @@ exports[`Shallow Snapshot Tests mobile 1`] = `
 </ForwardRef(Box)>
 `;
 
-exports[`Shallow Snapshot Tests redirect 1`] = `
+exports[`Shallow Snapshot Tests redirect to login page 1`] = `
 <Navigate
   to="/login"
+/>
+`;
+
+exports[`Shallow Snapshot Tests redirect to map page when logged out 1`] = `
+<Navigate
+  to="/"
 />
 `;

@@ -14,7 +14,6 @@ export class Renderer extends React.Component<Props, State> {
       mode: props.initialMode,
       email: '',
     };
-    props.autoLogin();
   }
 
   render() {
@@ -87,7 +86,6 @@ export type Props = {
   userInfo?: User;
 
   loginSuccess: (user: User) => void;
-  autoLogin: () => void;
   onLoginSucceed?: () => void;
 };
 

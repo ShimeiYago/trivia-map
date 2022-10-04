@@ -3,7 +3,6 @@ import { useAppDispatch, useAppSelector } from 'store';
 import { selectAutoLoggingInState, selectUser } from 'store/auths/selector';
 import { authsSlice } from 'store/auths/slice';
 import { User } from 'types/user';
-import { autoLogin } from 'store/auths/actions';
 
 const { loginSuccess } = authsSlice.actions;
 
@@ -16,7 +15,6 @@ export function AuthForms(ownProps: OwnProps) {
     userInfo: useAppSelector(selectUser),
 
     loginSuccess: (user: User) => dispatch(loginSuccess(user)),
-    autoLogin: () => dispatch(autoLogin()),
     onLoginSucceed: ownProps.onLoginSucceed,
   };
 

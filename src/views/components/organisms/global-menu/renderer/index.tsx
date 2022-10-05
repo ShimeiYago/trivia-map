@@ -35,11 +35,6 @@ export class Renderer extends React.Component<Props, State> {
     topBarPosition: 'fixed',
   };
 
-  constructor(props: Props) {
-    super(props);
-    props.autoLogin();
-  }
-
   state = {
     openLeftNavi: false,
     authMenuAnchorEl: null,
@@ -265,7 +260,6 @@ export type Props = {
     link: string;
   };
 
-  autoLogin: () => void;
   toggleAuthFormModal: (open: boolean) => void;
   logout: () => void;
 };

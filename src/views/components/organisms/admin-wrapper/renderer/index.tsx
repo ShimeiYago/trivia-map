@@ -10,11 +10,6 @@ import { Navigate } from 'react-router-dom';
 import { LOGIN_LINK, MAP_PAGE_LINK } from 'constant/links';
 
 export class Renderer extends React.Component<Props> {
-  constructor(props: Props) {
-    super(props);
-    props.autoLogin();
-  }
-
   render() {
     const { autoLoggingInState, loggedOutSuccessfully } = this.props;
 
@@ -57,6 +52,4 @@ export type Props = {
   loggedOutSuccessfully: boolean;
   isMobile: boolean;
   children: React.ReactNode;
-
-  autoLogin: () => void;
 };

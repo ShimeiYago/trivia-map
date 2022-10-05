@@ -14,6 +14,8 @@ const basicProps: Props = {
   switchMode: jest.fn(),
   email: '',
   onChangeEmail: jest.fn(),
+  setAccessTokenExpiration: jest.fn(),
+  setRefreshTokenExpiration: jest.fn(),
 };
 
 describe('Shallow Snapshot Tests', () => {

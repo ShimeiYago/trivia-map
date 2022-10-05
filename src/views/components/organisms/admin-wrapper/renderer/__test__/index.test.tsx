@@ -14,7 +14,6 @@ const basicProps: Props = {
   loggedOutSuccessfully: false,
   isMobile: false,
   children: <div />,
-  autoLogin: jest.fn(),
 };
 
 describe('Shallow Snapshot Tests', () => {

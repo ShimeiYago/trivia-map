@@ -1,3 +1,4 @@
+import { COOKIE_NAME } from './../../../constant/index';
 import { throwError } from 'store/global-error/slice';
 import { selectAutoLoggingInState } from './../selector/index';
 import { authsSlice } from '../slice';
@@ -20,46 +21,68 @@ export const {
 } = authsSlice.actions;
 
 // autoLogin action
-export const autoLogin = (): AppThunk => async (dispatch, getState) => {
-  if (selectUser(getState()) || selectAutoLoggingInState(getState()) === 'loading') {
-    return;
-  }
+export const autoLogin =
+  (cookie: Cookie, setCookie: SetCookie, removeCookie: RemoveCookie): AppThunk =>
+  async (dispatch, getState) => {
+    if (selectUser(getState()) || selectAutoLoggingInState(getState()) === 'loading') {
+      return;
+    }
 
-  dispatch(autoLoginStart());
+    dispatch(autoLoginStart());
 
-  try {
     // try with access token
-    const res = await getUserInfo();
-    dispatch(loginSuccess(res));
-  } catch (error) {
-    // try with refresh token
-    dispatch(refreshTokenAndGetUserInfo());
-  }
-};
+    if (cookie[COOKIE_NAME.hasAccessToken]) {
+      try {
+        const res = await getUserInfo();
+        dispatch(loginSuccess(res));
+      } catch (error) {
+        dispatch(autoLoginFailure());
+        removeCookie(COOKIE_NAME.hasAccessToken);
+      }
+      return;
+    }
 
-// refreshTokenAndGetUserInfo action
-export const refreshTokenAndGetUserInfo = (): AppThunk => async (dispatch) => {
-  try {
-    await refreshToken();
-    const res = await getUserInfo();
-    dispatch(loginSuccess(res));
-    return;
-  } catch (error) {
+    // try refresh token
+    if (cookie[COOKIE_NAME.hasRefreshToken]) {
+      try {
+        const refreshResponse = await refreshToken();
+        const userResponse = await getUserInfo();
+        dispatch(loginSuccess(userResponse));
+        setCookie(COOKIE_NAME.hasAccessToken, 'true', {
+          expires: new Date(refreshResponse.access_token_expiration),
+        });
+        return;
+      } catch (error) {
+        dispatch(autoLoginFailure());
+        removeCookie(COOKIE_NAME.hasRefreshToken);
+      }
+    }
+
     dispatch(autoLoginFailure());
-  }
-};
+  };
 
 //logout
-export const logout = (): AppThunk => async (dispatch) => {
-  dispatch(logoutStart());
-  try {
-    await logoutApi();
-    dispatch(logoutSuccess());
-
-    // In order to set loggedOutSuccessfully false
-    await sleep(3000);
+export const logout =
+  (removeCookie: RemoveCookie): AppThunk =>
+  async (dispatch) => {
     dispatch(logoutStart());
-  } catch (error) {
-    dispatch(throwError(500));
-  }
+    try {
+      await logoutApi();
+      dispatch(logoutSuccess());
+
+      removeCookie(COOKIE_NAME.hasAccessToken);
+      removeCookie(COOKIE_NAME.hasRefreshToken);
+
+      // In order to set loggedOutSuccessfully false
+      await sleep(3000);
+      dispatch(logoutStart());
+    } catch (error) {
+      dispatch(throwError(500));
+    }
+  };
+
+type Cookie = {
+  [x: string]: string;
 };
+type SetCookie = (name: string, value: string, options?: { path?: string; expires?: Date }) => void;
+type RemoveCookie = (name: string) => void;

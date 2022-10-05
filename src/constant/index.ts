@@ -67,3 +67,8 @@ export const ZOOMS = {
 };
 
 export const INITIAL_PARK: Park = 'S';
+
+export const COOKIE_NAME = {
+  hasAccessToken: 'has-trivia-map-access-token',
+  hasRefreshToken: 'has-trivia-map-resresh-token',
+};

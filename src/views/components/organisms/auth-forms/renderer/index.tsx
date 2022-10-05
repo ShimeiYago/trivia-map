@@ -14,7 +14,6 @@ export class Renderer extends React.Component<Props, State> {
       mode: props.initialMode,
       email: '',
     };
-    props.autoLogin();
   }
 
   render() {
@@ -57,6 +56,8 @@ export class Renderer extends React.Component<Props, State> {
             switchMode={this.switchMode}
             userInfo={this.props.userInfo}
             onLoginSuceed={this.props.onLoginSucceed}
+            setAccessTokenExpiration={this.props.setAccessTokenExpiration}
+            setRefreshTokenExpiration={this.props.setRefreshTokenExpiration}
           />
         );
     }
@@ -87,8 +88,9 @@ export type Props = {
   userInfo?: User;
 
   loginSuccess: (user: User) => void;
-  autoLogin: () => void;
   onLoginSucceed?: () => void;
+  setAccessTokenExpiration: (expirationDate: Date) => void;
+  setRefreshTokenExpiration: (expirationDate: Date) => void;
 };
 
 export type State = {

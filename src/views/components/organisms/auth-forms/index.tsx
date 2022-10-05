@@ -3,11 +3,13 @@ import { useAppDispatch, useAppSelector } from 'store';
 import { selectAutoLoggingInState, selectUser } from 'store/auths/selector';
 import { authsSlice } from 'store/auths/slice';
 import { User } from 'types/user';
-import { autoLogin } from 'store/auths/actions';
+import { useCookies } from 'react-cookie';
+import { COOKIE_NAME } from 'constant';
 
 const { loginSuccess } = authsSlice.actions;
 
 export function AuthForms(ownProps: OwnProps) {
+  const [, setCookie] = useCookies();
   const dispatch = useAppDispatch();
 
   const props: Props = {
@@ -16,7 +18,10 @@ export function AuthForms(ownProps: OwnProps) {
     userInfo: useAppSelector(selectUser),
 
     loginSuccess: (user: User) => dispatch(loginSuccess(user)),
-    autoLogin: () => dispatch(autoLogin()),
+    setAccessTokenExpiration: (expirationDate: Date) =>
+      setCookie(COOKIE_NAME.hasAccessToken, 'true', { expires: expirationDate }),
+    setRefreshTokenExpiration: (expirationDate: Date) =>
+      setCookie(COOKIE_NAME.hasRefreshToken, 'true', { expires: expirationDate }),
     onLoginSucceed: ownProps.onLoginSucceed,
   };
 

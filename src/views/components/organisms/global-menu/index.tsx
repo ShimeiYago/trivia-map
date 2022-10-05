@@ -1,11 +1,16 @@
 import { Props, Renderer } from './renderer';
 import { useAppSelector, useAppDispatch } from 'store';
-import { autoLogin, logout, toggleFormModal } from 'store/auths/actions';
+import { logout, toggleFormModal } from 'store/auths/actions';
 import { selectLoggedOutSuccessfully, selectOpenFormModal, selectUser } from 'store/auths/selector';
 import { isMobile } from 'react-device-detect';
+import { useCookies } from 'react-cookie';
+import { UseAutoLogin } from 'helper-components/use-auto-login';
 
 export function GlobalMenu(ownProps: OwnProps) {
   const dispatch = useAppDispatch();
+  const [, , removeCookie] = useCookies();
+
+  UseAutoLogin();
 
   const props: Props = {
     topBarPosition: ownProps.topBarPosition,
@@ -18,9 +23,8 @@ export function GlobalMenu(ownProps: OwnProps) {
     mapPage: ownProps.mapPage,
     localBackNavi: ownProps.localBackNavi,
 
-    autoLogin: () => dispatch(autoLogin()),
     toggleAuthFormModal: (open: boolean) => dispatch(toggleFormModal(open)),
-    logout: () => dispatch(logout()),
+    logout: () => dispatch(logout(removeCookie)),
   };
 
   return <Renderer {...props} />;

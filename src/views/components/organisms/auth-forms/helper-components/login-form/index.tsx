@@ -139,6 +139,9 @@ export class LoginForm extends React.Component<Props, State> {
         localLoadingState: 'success',
       });
       this.props.onLoginSuceed && this.props.onLoginSuceed();
+
+      this.props.setAccessTokenExpiration(new Date(res.access_token_expiration));
+      this.props.setRefreshTokenExpiration(new Date(res.refresh_token_expiration));
     } catch (error) {
       const apiError = error as ApiError<ValidationError>;
 
@@ -194,6 +197,8 @@ export type Props = {
   loginSuccess: (user: User) => void;
   switchMode: (mode: AuthFormMode) => () => void;
   onLoginSuceed?: () => void;
+  setAccessTokenExpiration: (expirationDate: Date) => void;
+  setRefreshTokenExpiration: (expirationDate: Date) => void;
 };
 
 export type State = {

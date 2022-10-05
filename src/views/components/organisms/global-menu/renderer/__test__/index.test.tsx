@@ -8,7 +8,6 @@ const basicProps: Props = {
   children: 'contents',
   openAuthFormModal: false,
   loggedOutSuccessfully: false,
-  autoLogin: jest.fn(),
   toggleAuthFormModal: jest.fn(),
   logout: jest.fn(),
   isMobile: false,

@@ -3,9 +3,10 @@ import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { sleep } from 'utils/sleep';
 import { AuthForms } from 'views/components/organisms/auth-forms';
+import { AuthFormMode } from 'views/components/organisms/auth-forms/renderer';
 import { GlobalMenu } from 'views/components/organisms/global-menu';
 
-export class Renderer extends React.Component<unknown, State> {
+export class Renderer extends React.Component<Props, State> {
   state: State = {
     redirect: false,
   };
@@ -17,7 +18,10 @@ export class Renderer extends React.Component<unknown, State> {
 
     return (
       <GlobalMenu topBarPosition="static">
-        <AuthForms initialMode="login" onLoginSucceed={this.redirectAfterSeveralSeconds} />
+        <AuthForms
+          initialMode={this.props.initialMode}
+          onLoginSucceed={this.redirectAfterSeveralSeconds}
+        />
       </GlobalMenu>
     );
   }
@@ -32,4 +36,8 @@ export class Renderer extends React.Component<unknown, State> {
 
 export type State = {
   redirect: boolean;
+};
+
+export type Props = {
+  initialMode: AuthFormMode;
 };

@@ -40,6 +40,7 @@ exports[`Shallow Snapshot Tests left align 1`] = `
 
 exports[`Shallow Snapshot Tests right icon 1`] = `
 <ForwardRef(Typography)
+  component="div"
   sx={
     Object {
       "alignItems": "center",
@@ -53,5 +54,32 @@ exports[`Shallow Snapshot Tests right icon 1`] = `
 >
   地図
   <Memo(ForwardRef(MapIcon)) />
+</ForwardRef(Typography)>
+`;
+
+exports[`Shallow Snapshot Tests with link 1`] = `
+<ForwardRef(Typography)
+  component="div"
+  sx={
+    Object {
+      "alignItems": "normal",
+      "columnGap": undefined,
+      "display": "flex",
+      "flexWrap": "wrap",
+      "fontSize": undefined,
+      "justifyContent": "center",
+    }
+  }
+>
+  <NonStyleLink
+    to="./"
+  >
+    <Memo(ForwardRef(MapIcon)) />
+  </NonStyleLink>
+  <NonStyleLink
+    to="./"
+  >
+    地図
+  </NonStyleLink>
 </ForwardRef(Typography)>
 `;

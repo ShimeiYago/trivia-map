@@ -1,5 +1,5 @@
 import React from 'react';
-import { Alert, Avatar, Box, Divider, Stack, Typography } from '@mui/material';
+import { Alert, Avatar, Box, Divider, Stack, Typography, Link } from '@mui/material';
 import { LoadingState } from 'types/loading-state';
 import { Image } from 'views/components/atoms/image';
 import { TriviaMap } from 'views/components/organisms/trivia-map';
@@ -15,13 +15,13 @@ import { AreaNames } from 'views/components/atoms/area-names';
 import { ZOOMS } from 'constant';
 import noIcon from 'images/no-icon.jpg';
 import { AUTHER_PAGE_LINK, CATEGORY_PAGE_LINK, EDIT_LINK } from 'constant/links';
-import { Link } from 'react-router-dom';
 import { categoryMapper } from 'utils/category-mapper';
 import FolderIcon from '@mui/icons-material/Folder';
 import { User } from 'types/user';
 import EditIcon from '@mui/icons-material/Edit';
 import { pageTitleGenerator } from 'utils/page-title-generator';
 import { CommonHelmet } from 'helper-components/common-helmet';
+import { NonStyleLink } from 'views/components/atoms/non-style-link';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -65,27 +65,30 @@ export class Renderer extends React.Component<Props, State> {
 
           {this.renderEditLink()}
 
-          <Link to={AUTHER_PAGE_LINK(author.userId.toString())}>
-            <Stack direction="row" justifyContent="flex-start" alignItems="center" spacing={1}>
+          <Stack direction="row" justifyContent="flex-start" alignItems="center" spacing={1}>
+            <NonStyleLink to={AUTHER_PAGE_LINK(author.userId.toString())}>
               <Avatar sx={{ width: 30, height: 30 }} src={author.icon ?? noIcon} />
-              <Typography color="gray">{author.nickname}</Typography>
-            </Stack>
-          </Link>
+            </NonStyleLink>
+            <NonStyleLink to={AUTHER_PAGE_LINK(author.userId.toString())}>
+              <Typography color="gray" sx={{ textDecoration: 'underline' }}>
+                {author.nickname}
+              </Typography>
+            </NonStyleLink>
+          </Stack>
 
           <Typography component="h2" variant="h4" align="center">
             {title}
           </Typography>
 
-          <Link to={CATEGORY_PAGE_LINK(category.toString())}>
-            <Typography color="gray" component="div">
-              <IconAndText
-                iconComponent={<FolderIcon />}
-                text={categoryMapper(category)}
-                align="left"
-                iconPosition="left"
-              />
-            </Typography>
-          </Link>
+          <Typography component="div" color="gray" sx={{ textDecoration: 'underline' }}>
+            <IconAndText
+              iconComponent={<FolderIcon />}
+              text={categoryMapper(category)}
+              align="left"
+              iconPosition="left"
+              link={CATEGORY_PAGE_LINK(category.toString())}
+            />
+          </Typography>
 
           <Box sx={createdAtBox}>
             <Typography>{`投稿日 ${createdAt}`}</Typography>
@@ -156,8 +159,14 @@ export class Renderer extends React.Component<Props, State> {
     }
 
     return (
-      <Link to={EDIT_LINK(this.props.postId.toString())}>
-        <IconAndText iconComponent={<EditIcon />} text="編集" iconPosition="left" align="right" />
+      <Link component="div">
+        <IconAndText
+          iconComponent={<EditIcon />}
+          text="編集"
+          iconPosition="left"
+          align="right"
+          link={EDIT_LINK(this.props.postId.toString())}
+        />
       </Link>
     );
   };

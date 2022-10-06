@@ -99,7 +99,7 @@ export class Renderer extends React.Component<Props, State> {
 
           {image && <Image src={image} width="full" />}
 
-          <Typography>{description}</Typography>
+          <Typography whiteSpace="pre-wrap">{description}</Typography>
 
           <Divider />
 

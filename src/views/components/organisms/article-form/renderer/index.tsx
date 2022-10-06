@@ -112,7 +112,7 @@ export class Renderer extends React.Component<Props> {
         <Container maxWidth="sm" sx={formContainer}>
           <Stack spacing={3}>
             <Typography component="h2" align="center" variant="h4" ref={this.headerRef}>
-              {newMode ? '新しいトリビアを追加' : 'トリビアを編集'}
+              {newMode ? 'トリビアを追加' : 'トリビアを編集'}
             </Typography>
 
             {fetchingState === 'loading' && (
@@ -142,11 +142,16 @@ export class Renderer extends React.Component<Props> {
                 width="full"
                 borderRadius
                 onDelete={this.handleDeleteImage}
+                errors={formError?.fieldErrors?.image}
               />
             ) : (
               <ImageField
+                src={imageSrc}
                 onChange={this.handleImageChange}
                 variant="square"
+                disabled={disabled}
+                error={!!formError?.fieldErrors?.image}
+                helperText={formError?.fieldErrors?.image}
                 maxLength={UPLOAD_IMAGE_MAX_LENGTH.article}
                 onCatchError={this.handleError}
                 cropable

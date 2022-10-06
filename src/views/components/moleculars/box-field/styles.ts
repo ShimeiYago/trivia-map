@@ -37,13 +37,3 @@ export function wrapper(status?: FieldStatus, disabled?: boolean): SxProps {
     ...hoverStyle,
   };
 }
-
-export function helperTextStyle(status?: FieldStatus): SxProps {
-  return {
-    mt: '3px',
-    ml: '14px',
-    mr: '14px',
-    color: status === 'error' ? red : '#747474',
-    fontSize: '0.75rem',
-  };
-}

@@ -296,9 +296,13 @@ exports[`Shallow Snapshot Tests with error & helperText 1`] = `
     </div>
   </label>
   <ForwardRef(Typography)
-    className="helper-text helper-text-error"
+    align="left"
   >
-    text
+    <HelperText
+      error={true}
+    >
+      text
+    </HelperText>
   </ForwardRef(Typography)>
   <BoxModal
     open={false}
@@ -422,6 +426,84 @@ exports[`Shallow Snapshot Tests with error 1`] = `
 </div>
 `;
 
+exports[`Shallow Snapshot Tests with helperText & icon variant 1`] = `
+<div>
+  <label
+    className="label variant-icon label-active label-noimage"
+  >
+    <input
+      accept="image/*"
+      className="input-image"
+      onChange={[Function]}
+      type="file"
+    />
+    <div
+      className="content content-small"
+    >
+      <ForwardRef(Typography)>
+        <Memo(ForwardRef(AddAPhotoIcon))
+          fontSize="large"
+        />
+      </ForwardRef(Typography)>
+    </div>
+  </label>
+  <ForwardRef(Typography)
+    align="center"
+  >
+    <HelperText>
+      xxx
+    </HelperText>
+  </ForwardRef(Typography)>
+  <BoxModal
+    open={false}
+  >
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "m": 2,
+          "textAlign": "center",
+        }
+      }
+    >
+      <u
+        ariaLabels={
+          Object {
+            "cropArea": "Use the arrow keys to move the crop selection area",
+            "eDragHandle": "Use the up and down arrow keys to move the east drag handle to change the crop selection area",
+            "nDragHandle": "Use the up and down arrow keys to move the north drag handle to change the crop selection area",
+            "neDragHandle": "Use the arrow keys to move the north east drag handle to change the crop selection area",
+            "nwDragHandle": "Use the arrow keys to move the north west drag handle to change the crop selection area",
+            "sDragHandle": "Use the up and down arrow keys to move the south drag handle to change the crop selection area",
+            "seDragHandle": "Use the arrow keys to move the south east drag handle to change the crop selection area",
+            "swDragHandle": "Use the arrow keys to move the south west drag handle to change the crop selection area",
+            "wDragHandle": "Use the up and down arrow keys to move the west drag handle to change the crop selection area",
+          }
+        }
+        aspect={1}
+        onChange={[Function]}
+      >
+        <img />
+      </u>
+    </ForwardRef(Box)>
+    <ForwardRef(Typography)
+      align="right"
+      sx={
+        Object {
+          "m": 2,
+        }
+      }
+    >
+      <ForwardRef(Button)
+        onClick={[Function]}
+        variant="contained"
+      >
+        決定
+      </ForwardRef(Button)>
+    </ForwardRef(Typography)>
+  </BoxModal>
+</div>
+`;
+
 exports[`Shallow Snapshot Tests with helperText 1`] = `
 <div>
   <label
@@ -447,9 +529,11 @@ exports[`Shallow Snapshot Tests with helperText 1`] = `
     </div>
   </label>
   <ForwardRef(Typography)
-    className="helper-text"
+    align="left"
   >
-    text
+    <HelperText>
+      text
+    </HelperText>
   </ForwardRef(Typography)>
   <BoxModal
     open={false}

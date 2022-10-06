@@ -345,11 +345,10 @@ exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
               ノーチラス号のエンジン
             </ForwardRef(Typography)>
             <ForwardRef(Typography)
-              align="left"
               component="div"
               sx={
                 Object {
-                  "mb": 2,
+                  "mb": 1,
                 }
               }
             >
@@ -358,6 +357,21 @@ exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
                 iconComponent={<Memo />}
                 iconPosition="left"
                 text="隠れミッキー"
+              />
+            </ForwardRef(Typography)>
+            <ForwardRef(Typography)
+              component="div"
+              sx={
+                Object {
+                  "mb": 2,
+                }
+              }
+            >
+              <IconAndText
+                align="right"
+                iconComponent={<Memo />}
+                iconPosition="left"
+                text="2022/06/16 21:42"
               />
             </ForwardRef(Typography)>
             <ForwardRef(Typography)
@@ -408,11 +422,10 @@ exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
               ノーチラス号の名前の由来
             </ForwardRef(Typography)>
             <ForwardRef(Typography)
-              align="left"
               component="div"
               sx={
                 Object {
-                  "mb": 2,
+                  "mb": 1,
                 }
               }
             >
@@ -421,6 +434,21 @@ exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
                 iconComponent={<Memo />}
                 iconPosition="left"
                 text="隠れミッキー"
+              />
+            </ForwardRef(Typography)>
+            <ForwardRef(Typography)
+              component="div"
+              sx={
+                Object {
+                  "mb": 2,
+                }
+              }
+            >
+              <IconAndText
+                align="right"
+                iconComponent={<Memo />}
+                iconPosition="left"
+                text="2022/06/16 21:42"
               />
             </ForwardRef(Typography)>
             <ForwardRef(Typography)

@@ -33,6 +33,7 @@ export type GetArticlesPreviewsResponseEachItem = {
   title: string;
   image: string | null;
   category: number;
+  createdAt: string;
 };
 
 export type GetArticlesPreviewsResponse = PaginationResponse<GetArticlesPreviewsResponseEachItem>;

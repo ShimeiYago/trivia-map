@@ -26,6 +26,7 @@ import { ARTICLE_PAGE_LINK } from 'constant/links';
 import { categoryMapper } from 'utils/category-mapper';
 import notImage from 'images/no-image-16x7.jpg';
 import FolderIcon from '@mui/icons-material/Folder';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -70,7 +71,7 @@ export class Renderer extends React.Component<Props, State> {
     }
 
     const previewList = articlesPreviews?.map((preview) => {
-      const { postId, title, image, category } = preview;
+      const { postId, title, image, category, createdAt } = preview;
 
       let card = null;
       switch (this.props.variant) {
@@ -78,7 +79,7 @@ export class Renderer extends React.Component<Props, State> {
           card = this.renderPopupCard(title, image, category);
           break;
         case 'large':
-          card = this.renderLargeCard(title, image, category);
+          card = this.renderLargeCard(title, image, category, createdAt);
           break;
         case 'sidebar':
           card = this.renderSidebarCard(title, image);
@@ -146,7 +147,12 @@ export class Renderer extends React.Component<Props, State> {
     );
   };
 
-  protected renderLargeCard = (title: string, imageUrl: string | null, category: number) => {
+  protected renderLargeCard = (
+    title: string,
+    imageUrl: string | null,
+    category: number,
+    createdAt: string,
+  ) => {
     return (
       <Card sx={sxProps.card}>
         <CardMedia component="img" className={classes['card-media']} image={imageUrl ?? notImage} />
@@ -154,12 +160,20 @@ export class Renderer extends React.Component<Props, State> {
           <Typography gutterBottom variant="h5" component="h3">
             {title}
           </Typography>
-          <Typography align="left" sx={{ mb: 2 }} component="div">
+          <Typography sx={{ mb: 1 }} component="div">
             <IconAndText
               iconComponent={<FolderIcon />}
               text={categoryMapper(category)}
               iconPosition={'left'}
               align="left"
+            />
+          </Typography>
+          <Typography sx={{ mb: 2 }} component="div">
+            <IconAndText
+              iconComponent={<AccessTimeIcon />}
+              text={createdAt}
+              iconPosition={'left'}
+              align="right"
             />
           </Typography>
           <Typography align="center" component="div">

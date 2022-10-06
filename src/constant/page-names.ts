@@ -1,5 +1,6 @@
 export const PAGE_NAMES = {
   login: 'ログイン',
+  signup: 'アカウント作成',
   admin: 'マイページ',
   myArticles: 'マイ投稿一覧',
   accountSettings: 'アカウント管理',

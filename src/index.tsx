@@ -32,6 +32,7 @@ import {
   INQUIRY_PAGE_LINK,
   PRIVACY_POLICY_PAGE_LINK,
   CATEGORY_PAGE_LINK,
+  SIGNUP_LINK,
 } from 'constant/links';
 import { ChangePassword } from 'views/pages/change-password';
 import { ResetPassword } from 'views/pages/reset-password';
@@ -80,7 +81,8 @@ ReactDOM.render(
                   element={errorHandledElement(<CategoryPage />)}
                 />
 
-                <Route path={LOGIN_LINK} element={errorHandledElement(<Login />)} />
+                <Route path={LOGIN_LINK} element={errorHandledElement(<Login page="login" />)} />
+                <Route path={SIGNUP_LINK} element={errorHandledElement(<Login page="signup" />)} />
                 <Route path={ADMIN_LINK} element={errorHandledElement(<Admin />)} />
                 <Route path={MY_ARTICLES_LINK} element={errorHandledElement(<MyArticles />)} />
                 <Route

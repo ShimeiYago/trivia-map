@@ -161,7 +161,7 @@ export class Renderer extends React.Component<Props> {
             <TextField
               label="説明文"
               multiline
-              rows={4}
+              rows={6}
               value={description}
               onChange={this.handleChangeDescription}
               disabled={disabled}

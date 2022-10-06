@@ -121,7 +121,11 @@ export class Renderer extends React.Component<Props, State> {
           {this.props.children}
         </Box>
 
-        <BoxModal open={this.props.openAuthFormModal} onClose={this.toggleAuthModal(false)}>
+        <BoxModal
+          open={this.props.openAuthFormModal}
+          onClose={this.toggleAuthModal(false)}
+          showCloseButton
+        >
           <AuthForms initialMode={'login'} onLoginSucceed={this.handleLoginSucceed} />
         </BoxModal>
       </>

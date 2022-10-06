@@ -238,6 +238,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
   <BoxModal
     onClose={[Function]}
     open={false}
+    showCloseButton={true}
   >
     <AuthForms
       initialMode="login"
@@ -485,6 +486,7 @@ exports[`Shallow Snapshot Tests map page 1`] = `
   <BoxModal
     onClose={[Function]}
     open={false}
+    showCloseButton={true}
   >
     <AuthForms
       initialMode="login"
@@ -718,6 +720,7 @@ exports[`Shallow Snapshot Tests permanent left navi 1`] = `
   <BoxModal
     onClose={[Function]}
     open={false}
+    showCloseButton={true}
   >
     <AuthForms
       initialMode="login"
@@ -965,6 +968,7 @@ exports[`Shallow Snapshot Tests redirect to top page 1`] = `
   <BoxModal
     onClose={[Function]}
     open={false}
+    showCloseButton={true}
   >
     <AuthForms
       initialMode="login"
@@ -1212,6 +1216,7 @@ exports[`Shallow Snapshot Tests static position 1`] = `
   <BoxModal
     onClose={[Function]}
     open={false}
+    showCloseButton={true}
   >
     <AuthForms
       initialMode="login"
@@ -1480,6 +1485,7 @@ exports[`Shallow Snapshot Tests with local navi & mobile 1`] = `
   <BoxModal
     onClose={[Function]}
     open={false}
+    showCloseButton={true}
   >
     <AuthForms
       initialMode="login"
@@ -1748,6 +1754,7 @@ exports[`Shallow Snapshot Tests with local navi 1`] = `
   <BoxModal
     onClose={[Function]}
     open={false}
+    showCloseButton={true}
   >
     <AuthForms
       initialMode="login"
@@ -2033,6 +2040,7 @@ exports[`Shallow Snapshot Tests with userInfo 1`] = `
   <BoxModal
     onClose={[Function]}
     open={false}
+    showCloseButton={true}
   >
     <AuthForms
       initialMode="login"

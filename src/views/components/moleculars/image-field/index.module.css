@@ -53,16 +53,3 @@
   width: 50px;
   border-radius: 8px;
 }
-
-.helper-text {
-  margin: 3px 14px 0;
-  color: #747474;
-  font-size: 0.75rem;
-}
-.helper-text-center {
-  text-align: center;
-}
-
-.helper-text-error {
-  color: #d32f2f;
-}

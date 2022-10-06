@@ -19,7 +19,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
         component="h2"
         variant="h4"
       >
-        新しいトリビアを追加
+        トリビアを追加
       </ForwardRef(Typography)>
       <ForwardRef(TextField)
         disabled={false}
@@ -64,6 +64,8 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       </ForwardRef(FormControl)>
       <ImageField
         cropable={true}
+        disabled={false}
+        error={false}
         maxLength={1000}
         onCatchError={[Function]}
         onChange={[Function]}
@@ -217,7 +219,7 @@ exports[`Shallow Snapshot Tests draft mode 1`] = `
         component="h2"
         variant="h4"
       >
-        新しいトリビアを追加
+        トリビアを追加
       </ForwardRef(Typography)>
       <ForwardRef(TextField)
         disabled={false}
@@ -262,6 +264,8 @@ exports[`Shallow Snapshot Tests draft mode 1`] = `
       </ForwardRef(FormControl)>
       <ImageField
         cropable={true}
+        disabled={false}
+        error={false}
         maxLength={1000}
         onCatchError={[Function]}
         onChange={[Function]}
@@ -415,7 +419,7 @@ exports[`Shallow Snapshot Tests loading 1`] = `
         component="h2"
         variant="h4"
       >
-        新しいトリビアを追加
+        トリビアを追加
       </ForwardRef(Typography)>
       <ForwardRef(Box)
         sx={
@@ -470,6 +474,8 @@ exports[`Shallow Snapshot Tests loading 1`] = `
       </ForwardRef(FormControl)>
       <ImageField
         cropable={true}
+        disabled={true}
+        error={false}
         maxLength={1000}
         onCatchError={[Function]}
         onChange={[Function]}
@@ -593,7 +599,7 @@ exports[`Shallow Snapshot Tests position is not selected yet 1`] = `
         component="h2"
         variant="h4"
       >
-        新しいトリビアを追加
+        トリビアを追加
       </ForwardRef(Typography)>
       <ForwardRef(TextField)
         disabled={false}
@@ -638,6 +644,8 @@ exports[`Shallow Snapshot Tests position is not selected yet 1`] = `
       </ForwardRef(FormControl)>
       <ImageField
         cropable={true}
+        disabled={false}
+        error={false}
         maxLength={1000}
         onCatchError={[Function]}
         onChange={[Function]}
@@ -784,7 +792,7 @@ exports[`Shallow Snapshot Tests with category 1`] = `
         component="h2"
         variant="h4"
       >
-        新しいトリビアを追加
+        トリビアを追加
       </ForwardRef(Typography)>
       <ForwardRef(TextField)
         disabled={false}
@@ -829,6 +837,8 @@ exports[`Shallow Snapshot Tests with category 1`] = `
       </ForwardRef(FormControl)>
       <ImageField
         cropable={true}
+        disabled={false}
+        error={false}
         maxLength={1000}
         onCatchError={[Function]}
         onChange={[Function]}
@@ -997,7 +1007,7 @@ exports[`Shallow Snapshot Tests with close button 1`] = `
         component="h2"
         variant="h4"
       >
-        新しいトリビアを追加
+        トリビアを追加
       </ForwardRef(Typography)>
       <ForwardRef(TextField)
         disabled={false}
@@ -1042,6 +1052,8 @@ exports[`Shallow Snapshot Tests with close button 1`] = `
       </ForwardRef(FormControl)>
       <ImageField
         cropable={true}
+        disabled={false}
+        error={false}
         maxLength={1000}
         onCatchError={[Function]}
         onChange={[Function]}
@@ -1195,7 +1207,7 @@ exports[`Shallow Snapshot Tests with image data url 1`] = `
         component="h2"
         variant="h4"
       >
-        新しいトリビアを追加
+        トリビアを追加
       </ForwardRef(Typography)>
       <ForwardRef(TextField)
         disabled={false}
@@ -1392,7 +1404,7 @@ exports[`Shallow Snapshot Tests with image url 1`] = `
         component="h2"
         variant="h4"
       >
-        新しいトリビアを追加
+        トリビアを追加
       </ForwardRef(Typography)>
       <ForwardRef(TextField)
         disabled={false}
@@ -1589,7 +1601,7 @@ exports[`Shallow Snapshot Tests with validation error 1`] = `
         component="h2"
         variant="h4"
       >
-        新しいトリビアを追加
+        トリビアを追加
       </ForwardRef(Typography)>
       <HeaderErrorMessages
         errorTitle="Inputted contents have errors."
@@ -1637,6 +1649,8 @@ exports[`Shallow Snapshot Tests with validation error 1`] = `
       </ForwardRef(FormControl)>
       <ImageField
         cropable={true}
+        disabled={false}
+        error={false}
         maxLength={1000}
         onCatchError={[Function]}
         onChange={[Function]}

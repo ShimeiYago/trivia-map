@@ -9,6 +9,7 @@ import ReactCrop, { PercentCrop, PixelCrop } from 'react-image-crop';
 import { getImageSize } from 'utils/get-image-size.ts';
 import { BoxModal } from '../box-modal';
 import { sendGa4ExceptionEvent } from 'utils/send-ga4-exception-event';
+import { HelperText } from 'views/components/atoms/helper-text';
 
 export class ImageField extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -24,7 +25,6 @@ export class ImageField extends React.Component<Props, State> {
     const labelClassNames = this.getLabelClassNames();
     const imgClassNames = this.getImgClassNames();
     const contentClassNames = this.getContentClassNames();
-    const helperTextClassNames = this.getHelperTextClassNames();
 
     return (
       <div>
@@ -49,8 +49,11 @@ export class ImageField extends React.Component<Props, State> {
             </div>
           )}
         </label>
+
         {helperText && (
-          <Typography className={helperTextClassNames.join(' ')}>{helperText}</Typography>
+          <Typography align={this.props.variant === 'icon' ? 'center' : 'left'}>
+            <HelperText error={this.props.error}>{helperText}</HelperText>
+          </Typography>
         )}
 
         {this.renderCropModal()}
@@ -240,18 +243,6 @@ export class ImageField extends React.Component<Props, State> {
         classNames.push(styles['content-small']);
         break;
     }
-
-    return classNames;
-  }
-
-  protected getHelperTextClassNames() {
-    const { error, variant } = this.props;
-
-    const classNames = [styles['helper-text']];
-
-    if (error) classNames.push(styles['helper-text-error']);
-
-    if (variant === 'icon') classNames.push(styles['helper-text-center']);
 
     return classNames;
   }

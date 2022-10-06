@@ -58,6 +58,11 @@ describe('Shallow Snapshot Tests', () => {
     wrapper.setState({ openCropModal: true });
     expect(wrapper).toMatchSnapshot();
   });
+
+  it('with helperText & icon variant', () => {
+    wrapper.setProps({ helperText: 'xxx', variant: 'icon' });
+    expect(wrapper).toMatchSnapshot();
+  });
 });
 
 describe('handleFileInputChange', () => {

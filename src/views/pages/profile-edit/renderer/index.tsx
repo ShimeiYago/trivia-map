@@ -65,8 +65,8 @@ export class Renderer extends React.Component<Props, State> {
               variant="icon"
               src={this.getSrc()}
               disabled={disabled}
-              helperText={this.state.formError?.nickname}
-              error={!!this.state.formError?.nickname}
+              helperText={this.state.formError?.icon}
+              error={!!this.state.formError?.icon}
               maxLength={UPLOAD_IMAGE_MAX_LENGTH.icon}
               onChange={this.handleChangeImage}
               onCatchError={this.handleError}

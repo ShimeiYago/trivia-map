@@ -1,6 +1,7 @@
 import React from 'react';
-import { Box, Typography } from '@mui/material';
-import { helperTextStyle, wrapper } from './styles';
+import { Box } from '@mui/material';
+import { wrapper } from './styles';
+import { HelperText } from 'views/components/atoms/helper-text';
 
 export class BoxField extends React.Component<Props> {
   static defaultProps: Props = {
@@ -15,7 +16,7 @@ export class BoxField extends React.Component<Props> {
         <Box sx={wrapper(status, disabled)} onClick={disabled ? undefined : onClick}>
           {children}
         </Box>
-        {helperText && <Typography sx={helperTextStyle(status)}>{helperText}</Typography>}
+        {helperText && <HelperText error={status === 'error'}>{helperText}</HelperText>}
       </div>
     );
   }

@@ -142,12 +142,7 @@ exports[`Shallow Snapshot Tests error case 1`] = `
           <ImageField
             cropable={true}
             disabled={false}
-            error={true}
-            helperText={
-              Array [
-                "nickname is invalid",
-              ]
-            }
+            error={false}
             maxLength={200}
             onCatchError={[Function]}
             onChange={[Function]}

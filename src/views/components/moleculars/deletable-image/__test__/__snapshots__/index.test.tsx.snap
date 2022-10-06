@@ -1,76 +1,114 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Shallow Snapshot Tests basic 1`] = `
-<div
-  className="wrapper"
->
-  <Image
-    alt="alt-text"
-    height="full"
-    onClick={[MockFunction]}
-    src="image-data"
-    width="full"
-  />
+<ForwardRef(Box)>
   <div
-    className="delete-button"
-    onClick={[MockFunction]}
+    className="wrapper"
   >
-    <ForwardRef(IconButton)
-      aria-label="delete"
-      color="inherit"
+    <Image
+      alt="alt-text"
+      height="full"
+      onClick={[MockFunction]}
+      src="image-data"
+      width="full"
+    />
+    <div
+      className="delete-button"
+      onClick={[MockFunction]}
     >
-      <Memo(ForwardRef(CloseIcon)) />
-    </ForwardRef(IconButton)>
+      <ForwardRef(IconButton)
+        aria-label="delete"
+        color="inherit"
+      >
+        <Memo(ForwardRef(CloseIcon)) />
+      </ForwardRef(IconButton)>
+    </div>
   </div>
-</div>
+</ForwardRef(Box)>
+`;
+
+exports[`Shallow Snapshot Tests errors 1`] = `
+<ForwardRef(Box)>
+  <div
+    className="wrapper"
+  >
+    <Image
+      alt="alt-text"
+      height="full"
+      onClick={[MockFunction]}
+      src="image-data"
+      width="full"
+    />
+    <div
+      className="delete-button"
+      onClick={[MockFunction]}
+    >
+      <ForwardRef(IconButton)
+        aria-label="delete"
+        color="inherit"
+      >
+        <Memo(ForwardRef(CloseIcon)) />
+      </ForwardRef(IconButton)>
+    </div>
+  </div>
+  <HelperText
+    error={true}
+  >
+    xxx
+  </HelperText>
+</ForwardRef(Box)>
 `;
 
 exports[`Shallow Snapshot Tests height 1`] = `
-<div
-  className="wrapper height-full"
->
-  <Image
-    alt="alt-text"
-    height="full"
-    onClick={[MockFunction]}
-    src="image-data"
-    width="full"
-  />
+<ForwardRef(Box)>
   <div
-    className="delete-button"
-    onClick={[MockFunction]}
+    className="wrapper height-full"
   >
-    <ForwardRef(IconButton)
-      aria-label="delete"
-      color="inherit"
+    <Image
+      alt="alt-text"
+      height="full"
+      onClick={[MockFunction]}
+      src="image-data"
+      width="full"
+    />
+    <div
+      className="delete-button"
+      onClick={[MockFunction]}
     >
-      <Memo(ForwardRef(CloseIcon)) />
-    </ForwardRef(IconButton)>
+      <ForwardRef(IconButton)
+        aria-label="delete"
+        color="inherit"
+      >
+        <Memo(ForwardRef(CloseIcon)) />
+      </ForwardRef(IconButton)>
+    </div>
   </div>
-</div>
+</ForwardRef(Box)>
 `;
 
 exports[`Shallow Snapshot Tests width 1`] = `
-<div
-  className="wrapper width-full"
->
-  <Image
-    alt="alt-text"
-    height="full"
-    onClick={[MockFunction]}
-    src="image-data"
-    width="full"
-  />
+<ForwardRef(Box)>
   <div
-    className="delete-button"
-    onClick={[MockFunction]}
+    className="wrapper width-full"
   >
-    <ForwardRef(IconButton)
-      aria-label="delete"
-      color="inherit"
+    <Image
+      alt="alt-text"
+      height="full"
+      onClick={[MockFunction]}
+      src="image-data"
+      width="full"
+    />
+    <div
+      className="delete-button"
+      onClick={[MockFunction]}
     >
-      <Memo(ForwardRef(CloseIcon)) />
-    </ForwardRef(IconButton)>
+      <ForwardRef(IconButton)
+        aria-label="delete"
+        color="inherit"
+      >
+        <Memo(ForwardRef(CloseIcon)) />
+      </ForwardRef(IconButton)>
+    </div>
   </div>
-</div>
+</ForwardRef(Box)>
 `;

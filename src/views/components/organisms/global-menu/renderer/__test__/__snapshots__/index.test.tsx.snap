@@ -115,9 +115,20 @@ exports[`Shallow Snapshot Tests basic 1`] = `
               >
                 <ForwardRef(Button)
                   onClick={[Function]}
+                  sx={
+                    Object {
+                      "mb": 1,
+                    }
+                  }
                   variant="contained"
                 >
                   ログイン
+                </ForwardRef(Button)>
+                <ForwardRef(Button)
+                  onClick={[Function]}
+                  variant="contained"
+                >
+                  アカウント作成
                 </ForwardRef(Button)>
               </ForwardRef(Typography)>
             </ForwardRef(Box)>
@@ -184,6 +195,21 @@ exports[`Shallow Snapshot Tests basic 1`] = `
             </ForwardRef(ListItemIcon)>
             <ForwardRef(ListItemText)
               primary="ログイン"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+        <NonStyleLink
+          key="1"
+          to="/signup"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(PersonAddIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="アカウント作成"
             />
           </ForwardRef(ListItem)>
         </NonStyleLink>
@@ -363,9 +389,20 @@ exports[`Shallow Snapshot Tests map page 1`] = `
               >
                 <ForwardRef(Button)
                   onClick={[Function]}
+                  sx={
+                    Object {
+                      "mb": 1,
+                    }
+                  }
                   variant="contained"
                 >
                   ログイン
+                </ForwardRef(Button)>
+                <ForwardRef(Button)
+                  onClick={[Function]}
+                  variant="contained"
+                >
+                  アカウント作成
                 </ForwardRef(Button)>
               </ForwardRef(Typography)>
             </ForwardRef(Box)>
@@ -432,6 +469,21 @@ exports[`Shallow Snapshot Tests map page 1`] = `
             </ForwardRef(ListItemIcon)>
             <ForwardRef(ListItemText)
               primary="ログイン"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+        <NonStyleLink
+          key="1"
+          to="/signup"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(PersonAddIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="アカウント作成"
             />
           </ForwardRef(ListItem)>
         </NonStyleLink>
@@ -598,9 +650,20 @@ exports[`Shallow Snapshot Tests permanent left navi 1`] = `
               >
                 <ForwardRef(Button)
                   onClick={[Function]}
+                  sx={
+                    Object {
+                      "mb": 1,
+                    }
+                  }
                   variant="contained"
                 >
                   ログイン
+                </ForwardRef(Button)>
+                <ForwardRef(Button)
+                  onClick={[Function]}
+                  variant="contained"
+                >
+                  アカウント作成
                 </ForwardRef(Button)>
               </ForwardRef(Typography)>
             </ForwardRef(Box)>
@@ -666,6 +729,21 @@ exports[`Shallow Snapshot Tests permanent left navi 1`] = `
             </ForwardRef(ListItemIcon)>
             <ForwardRef(ListItemText)
               primary="ログイン"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+        <NonStyleLink
+          key="1"
+          to="/signup"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(PersonAddIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="アカウント作成"
             />
           </ForwardRef(ListItem)>
         </NonStyleLink>
@@ -845,9 +923,20 @@ exports[`Shallow Snapshot Tests redirect to top page 1`] = `
               >
                 <ForwardRef(Button)
                   onClick={[Function]}
+                  sx={
+                    Object {
+                      "mb": 1,
+                    }
+                  }
                   variant="contained"
                 >
                   ログイン
+                </ForwardRef(Button)>
+                <ForwardRef(Button)
+                  onClick={[Function]}
+                  variant="contained"
+                >
+                  アカウント作成
                 </ForwardRef(Button)>
               </ForwardRef(Typography)>
             </ForwardRef(Box)>
@@ -914,6 +1003,21 @@ exports[`Shallow Snapshot Tests redirect to top page 1`] = `
             </ForwardRef(ListItemIcon)>
             <ForwardRef(ListItemText)
               primary="ログイン"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+        <NonStyleLink
+          key="1"
+          to="/signup"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(PersonAddIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="アカウント作成"
             />
           </ForwardRef(ListItem)>
         </NonStyleLink>
@@ -1093,9 +1197,20 @@ exports[`Shallow Snapshot Tests static position 1`] = `
               >
                 <ForwardRef(Button)
                   onClick={[Function]}
+                  sx={
+                    Object {
+                      "mb": 1,
+                    }
+                  }
                   variant="contained"
                 >
                   ログイン
+                </ForwardRef(Button)>
+                <ForwardRef(Button)
+                  onClick={[Function]}
+                  variant="contained"
+                >
+                  アカウント作成
                 </ForwardRef(Button)>
               </ForwardRef(Typography)>
             </ForwardRef(Box)>
@@ -1162,6 +1277,21 @@ exports[`Shallow Snapshot Tests static position 1`] = `
             </ForwardRef(ListItemIcon)>
             <ForwardRef(ListItemText)
               primary="ログイン"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+        <NonStyleLink
+          key="1"
+          to="/signup"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(PersonAddIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="アカウント作成"
             />
           </ForwardRef(ListItem)>
         </NonStyleLink>
@@ -1341,9 +1471,20 @@ exports[`Shallow Snapshot Tests with local navi & mobile 1`] = `
               >
                 <ForwardRef(Button)
                   onClick={[Function]}
+                  sx={
+                    Object {
+                      "mb": 1,
+                    }
+                  }
                   variant="contained"
                 >
                   ログイン
+                </ForwardRef(Button)>
+                <ForwardRef(Button)
+                  onClick={[Function]}
+                  variant="contained"
+                >
+                  アカウント作成
                 </ForwardRef(Button)>
               </ForwardRef(Typography)>
             </ForwardRef(Box)>
@@ -1410,6 +1551,21 @@ exports[`Shallow Snapshot Tests with local navi & mobile 1`] = `
             </ForwardRef(ListItemIcon)>
             <ForwardRef(ListItemText)
               primary="ログイン"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+        <NonStyleLink
+          key="1"
+          to="/signup"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(PersonAddIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="アカウント作成"
             />
           </ForwardRef(ListItem)>
         </NonStyleLink>
@@ -1610,9 +1766,20 @@ exports[`Shallow Snapshot Tests with local navi 1`] = `
               >
                 <ForwardRef(Button)
                   onClick={[Function]}
+                  sx={
+                    Object {
+                      "mb": 1,
+                    }
+                  }
                   variant="contained"
                 >
                   ログイン
+                </ForwardRef(Button)>
+                <ForwardRef(Button)
+                  onClick={[Function]}
+                  variant="contained"
+                >
+                  アカウント作成
                 </ForwardRef(Button)>
               </ForwardRef(Typography)>
             </ForwardRef(Box)>
@@ -1679,6 +1846,21 @@ exports[`Shallow Snapshot Tests with local navi 1`] = `
             </ForwardRef(ListItemIcon)>
             <ForwardRef(ListItemText)
               primary="ログイン"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+        <NonStyleLink
+          key="1"
+          to="/signup"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(PersonAddIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="アカウント作成"
             />
           </ForwardRef(ListItem)>
         </NonStyleLink>
@@ -1952,7 +2134,7 @@ exports[`Shallow Snapshot Tests with userInfo 1`] = `
             button={true}
           >
             <ForwardRef(ListItemIcon)>
-              <Memo(ForwardRef(AdminPanelSettingsIcon)) />
+              <Memo(ForwardRef(AccountCircleIcon)) />
             </ForwardRef(ListItemIcon)>
             <ForwardRef(ListItemText)
               primary="マイページ"

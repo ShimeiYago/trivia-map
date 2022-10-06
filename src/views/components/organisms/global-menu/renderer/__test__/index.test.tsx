@@ -156,7 +156,7 @@ describe('toggleAuthModal', () => {
 
   it('should open auth modal', () => {
     const instance = wrapper.instance();
-    instance['toggleAuthModal'](true)();
+    instance['toggleAuthModal'](true, 'login')();
     expect(instance.props.toggleAuthFormModal).toBeCalled();
   });
 });

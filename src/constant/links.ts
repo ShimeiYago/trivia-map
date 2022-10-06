@@ -1,5 +1,7 @@
 export const LOGIN_LINK = '/login';
 
+export const SIGNUP_LINK = '/signup';
+
 export const ADMIN_LINK = '/admin';
 
 export const MY_ARTICLES_LINK = '/admin/articles';

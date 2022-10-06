@@ -1,14 +1,14 @@
 import { shallow, ShallowWrapper } from 'enzyme';
-import { Renderer, State } from '..';
+import { Renderer, State, Props } from '..';
 import * as SleepModule from 'utils/sleep';
 
-let wrapper: ShallowWrapper<unknown, State, Renderer>;
+let wrapper: ShallowWrapper<Props, State, Renderer>;
 
 jest.spyOn(SleepModule, 'sleep');
 
 describe('Shallow Snapshot Tests', () => {
   beforeEach(() => {
-    wrapper = shallow(<Renderer />);
+    wrapper = shallow(<Renderer initialMode="login" />);
   });
 
   it('basic', () => {
@@ -25,7 +25,7 @@ describe('Shallow Snapshot Tests', () => {
 
 describe('redirectAfterSeveralSeconds', () => {
   it('should change redirect state', async () => {
-    wrapper = shallow(<Renderer />);
+    wrapper = shallow(<Renderer initialMode="login" />);
     const instance = wrapper.instance();
     await instance['redirectAfterSeveralSeconds']();
     expect(instance.state.redirect).toBeTruthy();

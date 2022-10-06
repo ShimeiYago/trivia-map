@@ -1,6 +1,6 @@
 import { GetArticleResponse } from 'api/articles-api/get-remote-article';
 import { articleFormReducer, articleFormSlice } from '..';
-import { FormError, initialState } from '../../model';
+import { ArticleFormState, FormError, initialState } from '../../model';
 
 const {
   updateTitle,
@@ -20,6 +20,19 @@ const {
   updateCategory,
   updateAreaNames,
 } = articleFormSlice.actions;
+
+const stateWithValidation: ArticleFormState = {
+  ...initialState,
+  formError: {
+    errorTitle: 'xxx',
+    fieldErrors: {
+      title: ['xxx'],
+      description: ['xxx'],
+      image: ['xxx'],
+      marker: ['xxx'],
+    },
+  },
+};
 
 describe('articleForm reducer', () => {
   const submittingLoadingState = JSON.parse(JSON.stringify(initialState));
@@ -53,9 +66,27 @@ describe('articleForm reducer', () => {
     expect(actual.title).toEqual('title');
   });
 
+  it('updateTitle initialize title formError', () => {
+    const actual = articleFormReducer(stateWithValidation, updateTitle('title'));
+    expect(actual.formError?.fieldErrors).toEqual({
+      description: ['xxx'],
+      image: ['xxx'],
+      marker: ['xxx'],
+    });
+  });
+
   it('should handle updateDescription', () => {
     const actual = articleFormReducer(initialState, updateDescription('description'));
     expect(actual.description).toEqual('description');
+  });
+
+  it('updateDescription initialize description formError', () => {
+    const actual = articleFormReducer(stateWithValidation, updateDescription('description'));
+    expect(actual.formError?.fieldErrors).toEqual({
+      title: ['xxx'],
+      image: ['xxx'],
+      marker: ['xxx'],
+    });
   });
 
   it('should handle updatePosition', () => {
@@ -70,9 +101,34 @@ describe('articleForm reducer', () => {
     expect(actual.position).toEqual({ lat: 1, lng: 1, park: 'S' });
   });
 
+  it('updatePosition initialize marker formError', () => {
+    const actual = articleFormReducer(
+      stateWithValidation,
+      updatePosition({
+        lat: 1,
+        lng: 1,
+        park: 'S',
+      }),
+    );
+    expect(actual.formError?.fieldErrors).toEqual({
+      title: ['xxx'],
+      description: ['xxx'],
+      image: ['xxx'],
+    });
+  });
+
   it('should handle updateImageDataUrl', () => {
     const actual = articleFormReducer(initialState, updateImage('https://image-data.jpg'));
     expect(actual.image).toEqual('https://image-data.jpg');
+  });
+
+  it('updateImageDataUrl initialize image formError', () => {
+    const actual = articleFormReducer(stateWithValidation, updateImage('https://image-data.jpg'));
+    expect(actual.formError?.fieldErrors).toEqual({
+      title: ['xxx'],
+      description: ['xxx'],
+      marker: ['xxx'],
+    });
   });
 
   it('should handle updateCategory', () => {

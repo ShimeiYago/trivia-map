@@ -97,7 +97,9 @@ exports[`Shallow Snapshot Tests author view 1`] = `
       </ForwardRef(Typography)>
     </ForwardRef(Box)>
     <ForwardRef(Divider) />
-    <ForwardRef(Typography)>
+    <ForwardRef(Typography)
+      whiteSpace="pre-wrap"
+    >
       description
     </ForwardRef(Typography)>
     <ForwardRef(Divider) />
@@ -252,7 +254,9 @@ exports[`Shallow Snapshot Tests draft 1`] = `
       </ForwardRef(Typography)>
     </ForwardRef(Box)>
     <ForwardRef(Divider) />
-    <ForwardRef(Typography)>
+    <ForwardRef(Typography)
+      whiteSpace="pre-wrap"
+    >
       description
     </ForwardRef(Typography)>
     <ForwardRef(Divider) />
@@ -402,7 +406,9 @@ exports[`Shallow Snapshot Tests with article 1`] = `
       </ForwardRef(Typography)>
     </ForwardRef(Box)>
     <ForwardRef(Divider) />
-    <ForwardRef(Typography)>
+    <ForwardRef(Typography)
+      whiteSpace="pre-wrap"
+    >
       description
     </ForwardRef(Typography)>
     <ForwardRef(Divider) />
@@ -549,7 +555,9 @@ exports[`Shallow Snapshot Tests with image 1`] = `
       src="image.jpg"
       width="full"
     />
-    <ForwardRef(Typography)>
+    <ForwardRef(Typography)
+      whiteSpace="pre-wrap"
+    >
       description
     </ForwardRef(Typography)>
     <ForwardRef(Divider) />

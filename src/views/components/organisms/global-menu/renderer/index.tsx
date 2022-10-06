@@ -29,16 +29,18 @@ import { BackToNavi } from 'views/components/moleculars/back-to-navi';
 import logoImage from 'images/logo.png';
 import { Image } from 'views/components/atoms/image';
 import { SITE_NAME } from 'constant';
+import { AuthFormMode } from '../../auth-forms/renderer';
 
 export class Renderer extends React.Component<Props, State> {
   static readonly defaultProps: Pick<Props, 'topBarPosition'> = {
     topBarPosition: 'fixed',
   };
 
-  state = {
+  state: State = {
     openLeftNavi: false,
     authMenuAnchorEl: null,
     redirectToTop: false,
+    authFormInitialMode: 'login',
   };
 
   componentDidUpdate(prevProps: Props, prevState: State) {
@@ -123,10 +125,13 @@ export class Renderer extends React.Component<Props, State> {
 
         <BoxModal
           open={this.props.openAuthFormModal}
-          onClose={this.toggleAuthModal(false)}
+          onClose={this.toggleAuthModal(false, 'login')}
           showCloseButton
         >
-          <AuthForms initialMode={'login'} onLoginSucceed={this.handleLoginSucceed} />
+          <AuthForms
+            initialMode={this.state.authFormInitialMode}
+            onLoginSucceed={this.handleLoginSucceed}
+          />
         </BoxModal>
       </>
     );
@@ -185,8 +190,15 @@ export class Renderer extends React.Component<Props, State> {
             ログインして新しいトリビアを投稿しませんか？
           </Typography>
           <Typography align="center" component="div" sx={{ mb: 1 }}>
-            <Button variant="contained" onClick={this.toggleAuthModal(true)}>
+            <Button
+              variant="contained"
+              onClick={this.toggleAuthModal(true, 'login')}
+              sx={{ mb: 1 }}
+            >
               ログイン
+            </Button>
+            <Button variant="contained" onClick={this.toggleAuthModal(true, 'signup')}>
+              アカウント作成
             </Button>
           </Typography>
         </Box>
@@ -233,8 +245,13 @@ export class Renderer extends React.Component<Props, State> {
       });
   }
 
-  protected toggleAuthModal(open: boolean) {
-    return () => this.props.toggleAuthFormModal(open);
+  protected toggleAuthModal(open: boolean, initialMode: AuthFormMode) {
+    return () => {
+      this.setState({
+        authFormInitialMode: initialMode,
+      });
+      this.props.toggleAuthFormModal(open);
+    };
   }
 
   protected handleLoginSucceed = async () => {
@@ -272,4 +289,5 @@ export type State = {
   openLeftNavi: boolean;
   authMenuAnchorEl: HTMLElement | null;
   redirectToTop: boolean;
+  authFormInitialMode: AuthFormMode;
 };

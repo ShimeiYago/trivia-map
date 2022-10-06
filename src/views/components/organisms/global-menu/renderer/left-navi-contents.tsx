@@ -9,18 +9,20 @@ import {
   MAP_PAGE_LINK,
   MY_ARTICLES_LINK,
   PRIVACY_POLICY_PAGE_LINK,
+  SIGNUP_LINK,
 } from 'constant/links';
 import MapIcon from '@mui/icons-material/Map';
 import ArticleIcon from '@mui/icons-material/Article';
 import { NonStyleLink } from 'views/components/atoms/non-style-link';
 import LoginIcon from '@mui/icons-material/Login';
-import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import ListAltIcon from '@mui/icons-material/ListAlt';
 import EmailIcon from '@mui/icons-material/Email';
 import InfoIcon from '@mui/icons-material/Info';
 import { PAGE_NAMES } from 'constant/page-names';
 import { SITE_NAME } from 'constant';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
 
 const listItemsForMap: ListItem[] = [
   {
@@ -41,12 +43,17 @@ const listItemsForLogin: ListItem[] = [
     icon: <LoginIcon />,
     link: LOGIN_LINK,
   },
+  {
+    text: PAGE_NAMES.signup,
+    icon: <PersonAddIcon />,
+    link: SIGNUP_LINK,
+  },
 ];
 
 const listItemsForAdmin: ListItem[] = [
   {
     text: PAGE_NAMES.admin,
-    icon: <AdminPanelSettingsIcon />,
+    icon: <AccountCircleIcon />,
     link: ADMIN_LINK,
   },
   {

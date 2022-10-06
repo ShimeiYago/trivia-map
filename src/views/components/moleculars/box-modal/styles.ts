@@ -8,4 +8,5 @@ export const boxStyle: SxProps = {
   bgcolor: 'background.paper',
   width: '360px',
   boxShadow: 24,
+  borderRadius: 1,
 };

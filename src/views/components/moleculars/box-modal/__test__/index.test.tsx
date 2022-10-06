@@ -17,4 +17,11 @@ describe('Shallow Snapshot Tests', () => {
   it('basic', () => {
     expect(wrapper).toMatchSnapshot();
   });
+
+  it('show close button', () => {
+    wrapper.setProps({
+      showCloseButton: true,
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
 });

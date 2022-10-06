@@ -10,14 +10,44 @@ export const articleFormSlice = createSlice({
   reducers: {
     updateTitle(state, action: PayloadAction<string>) {
       state.title = action.payload;
+
+      if (state.formError?.fieldErrors?.title) {
+        state.formError = {
+          ...state.formError,
+          fieldErrors: {
+            ...state.formError.fieldErrors,
+            title: undefined,
+          },
+        };
+      }
     },
 
     updateDescription(state, action: PayloadAction<string>) {
       state.description = action.payload;
+
+      if (state.formError?.fieldErrors?.description) {
+        state.formError = {
+          ...state.formError,
+          fieldErrors: {
+            ...state.formError.fieldErrors,
+            description: undefined,
+          },
+        };
+      }
     },
 
     updatePosition(state, action: PayloadAction<Position>) {
       state.position = action.payload;
+
+      if (state.formError?.fieldErrors?.marker) {
+        state.formError = {
+          ...state.formError,
+          fieldErrors: {
+            ...state.formError.fieldErrors,
+            marker: undefined,
+          },
+        };
+      }
     },
 
     updateAreaNames(state, action: PayloadAction<string[] | undefined>) {
@@ -26,6 +56,16 @@ export const articleFormSlice = createSlice({
 
     updateImage(state, action: PayloadAction<string | SelializedImageFile | null>) {
       state.image = action.payload;
+
+      if (state.formError?.fieldErrors?.image) {
+        state.formError = {
+          ...state.formError,
+          fieldErrors: {
+            ...state.formError.fieldErrors,
+            image: undefined,
+          },
+        };
+      }
     },
 
     updateCategory(state, action: PayloadAction<number>) {

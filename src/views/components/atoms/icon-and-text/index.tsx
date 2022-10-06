@@ -1,31 +1,49 @@
 import React, { ElementType } from 'react';
 import { SxProps, Typography } from '@mui/material';
 import { style } from './styles';
+import { NonStyleLink } from '../non-style-link';
 
-export const IconAndText: React.FC<Props> = (props) => {
+export function IconAndText(props: Props): JSX.Element {
   const wrapperStyle: SxProps = {
     ...style,
     justifyContent: props.align ?? 'center',
     fontSize: props.fontSize,
     columnGap: props.columnGap,
+    alignItems: props.link ? 'normal' : 'center',
   };
 
+  const linkWrapper = (content: React.ReactNode) => {
+    if (props.link) {
+      return <NonStyleLink to={props.link}>{content}</NonStyleLink>;
+    } else {
+      return content;
+    }
+  };
+
+  let contents: JSX.Element;
   if (props.iconPosition === 'left') {
-    return (
-      <Typography component={props.component ?? 'div'} variant={props.variant} sx={wrapperStyle}>
-        {props.iconComponent}
-        {props.text}
-      </Typography>
+    contents = (
+      <>
+        {/* {props.iconComponent} */}
+        {linkWrapper(props.iconComponent)}
+        {linkWrapper(props.text)}
+      </>
     );
   } else {
-    return (
-      <Typography sx={wrapperStyle}>
-        {props.text}
+    contents = (
+      <>
+        {linkWrapper(props.text)}
         {props.iconComponent}
-      </Typography>
+      </>
     );
   }
-};
+
+  return (
+    <Typography component={props.component ?? 'div'} variant={props.variant} sx={wrapperStyle}>
+      {contents}
+    </Typography>
+  );
+}
 
 export type Props = {
   iconComponent: JSX.Element;
@@ -50,4 +68,5 @@ export type Props = {
   align?: 'left' | 'right' | 'center';
   fontSize?: number;
   columnGap?: number;
+  link?: string;
 };

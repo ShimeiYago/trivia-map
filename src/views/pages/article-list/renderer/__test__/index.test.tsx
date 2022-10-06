@@ -131,6 +131,20 @@ describe('handleClickFiltering', () => {
       park: 'L',
     });
   });
+
+  it('should scroll', () => {
+    const instance = wrapper.instance();
+
+    instance.headingRef = {
+      current: {
+        scrollIntoView: jest.fn(),
+      },
+    } as unknown as React.RefObject<HTMLHeadingElement>;
+
+    instance['handleClickFiltering']();
+
+    expect(instance.headingRef.current?.scrollIntoView).toBeCalled();
+  });
 });
 
 describe('handleChangeKeyword', () => {

@@ -44,6 +44,5 @@ export type FormError = {
     description?: string[];
     marker?: string[];
     image?: string[];
-    isDraft?: string[];
   };
 };

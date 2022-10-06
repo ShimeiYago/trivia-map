@@ -32,4 +32,11 @@ describe('Shallow Snapshot Tests', () => {
     });
     expect(wrapper).toMatchSnapshot();
   });
+
+  it('errors', () => {
+    wrapper.setProps({
+      errors: ['xxx'],
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
 });

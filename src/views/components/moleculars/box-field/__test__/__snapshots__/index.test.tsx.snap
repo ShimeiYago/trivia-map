@@ -59,19 +59,11 @@ exports[`Shallow Snapshot Tests with error & helperText 1`] = `
   >
     test
   </ForwardRef(Box)>
-  <ForwardRef(Typography)
-    sx={
-      Object {
-        "color": "#d32f2f",
-        "fontSize": "0.75rem",
-        "ml": "14px",
-        "mr": "14px",
-        "mt": "3px",
-      }
-    }
+  <HelperText
+    error={true}
   >
     text
-  </ForwardRef(Typography)>
+  </HelperText>
 </div>
 `;
 
@@ -95,19 +87,11 @@ exports[`Shallow Snapshot Tests with helperText 1`] = `
   >
     test
   </ForwardRef(Box)>
-  <ForwardRef(Typography)
-    sx={
-      Object {
-        "color": "#747474",
-        "fontSize": "0.75rem",
-        "ml": "14px",
-        "mr": "14px",
-        "mt": "3px",
-      }
-    }
+  <HelperText
+    error={false}
   >
     text
-  </ForwardRef(Typography)>
+  </HelperText>
 </div>
 `;
 

@@ -2,7 +2,8 @@ import React from 'react';
 import styles from './index.module.css';
 import { Image } from '../../atoms/image';
 import CloseIcon from '@mui/icons-material/Close';
-import { IconButton } from '@mui/material';
+import { Box, IconButton } from '@mui/material';
+import { HelperText } from 'views/components/atoms/helper-text';
 
 export class DeletableImage extends React.Component<Props> {
   render() {
@@ -13,22 +14,26 @@ export class DeletableImage extends React.Component<Props> {
     if (height) wrapperClassNames.push(styles[`height-${height}`]);
 
     return (
-      <div className={wrapperClassNames.join(' ')}>
-        <Image
-          src={src}
-          alt={alt}
-          onClick={onClick}
-          height="full"
-          width="full"
-          objectFit={objectFit}
-          borderRadius={borderRadius}
-        />
-        <div className={styles['delete-button']} onClick={onDelete}>
-          <IconButton aria-label="delete" color="inherit">
-            <CloseIcon />
-          </IconButton>
+      <Box>
+        <div className={wrapperClassNames.join(' ')}>
+          <Image
+            src={src}
+            alt={alt}
+            onClick={onClick}
+            height="full"
+            width="full"
+            objectFit={objectFit}
+            borderRadius={borderRadius}
+          />
+          <div className={styles['delete-button']} onClick={onDelete}>
+            <IconButton aria-label="delete" color="inherit">
+              <CloseIcon />
+            </IconButton>
+          </div>
         </div>
-      </div>
+
+        {this.props.errors && <HelperText error>{this.props.errors}</HelperText>}
+      </Box>
     );
   }
 }
@@ -40,6 +45,7 @@ export type Props = {
   height?: Sizes;
   objectFit?: 'cover';
   borderRadius?: boolean;
+  errors?: string[];
   onClick?: () => void;
   onDelete: () => void;
 };

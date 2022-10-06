@@ -30,11 +30,18 @@ import { PreviewListOrder } from 'api/articles-api/get-articles-previews';
 import { PAGE_NAMES } from 'constant/page-names';
 
 export class Renderer extends React.Component<Props, State> {
-  state: State = {
-    formSearchConditions: {},
-    currentSearchConditions: {},
-    order: 'latest',
-  };
+  headingRef: React.RefObject<HTMLHeadingElement>;
+
+  constructor(props: Props) {
+    super(props);
+    this.headingRef = React.createRef();
+
+    this.state = {
+      formSearchConditions: {},
+      currentSearchConditions: {},
+      order: 'latest',
+    };
+  }
 
   componentDidMount() {
     this.setState({
@@ -63,7 +70,13 @@ export class Renderer extends React.Component<Props, State> {
         {this.renderConditionsForm()}
         <Divider sx={{ my: 3 }} />
 
-        <Typography component="h2" variant="h4" align="center" sx={{ mt: 3, mb: 4 }}>
+        <Typography
+          component="h2"
+          variant="h4"
+          align="center"
+          sx={{ mt: 3, mb: 4 }}
+          ref={this.headingRef}
+        >
           <IconAndText
             iconComponent={<ArticleIcon fontSize="inherit" />}
             text={PAGE_NAMES.articles}
@@ -255,6 +268,7 @@ export class Renderer extends React.Component<Props, State> {
     this.setState({
       currentSearchConditions: this.state.formSearchConditions,
     });
+    this.headingRef.current && this.headingRef.current.scrollIntoView({ block: 'center' });
   };
 }
 

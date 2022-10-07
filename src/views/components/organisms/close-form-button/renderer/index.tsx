@@ -10,7 +10,6 @@ import {
 } from '@mui/material';
 import { LoadingState } from 'types/loading-state';
 import CloseIcon from '@mui/icons-material/Close';
-import { LoadingButton } from '@mui/lab';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -58,20 +57,15 @@ export class Renderer extends React.Component<Props, State> {
   protected renderDialog() {
     return (
       <Dialog open={this.state.openDialog} onClose={this.cancelToClose}>
-        <DialogTitle>変更を保存しますか？</DialogTitle>
+        <DialogTitle>変更が保存されていません</DialogTitle>
         <DialogContent>未保存のデータがありますが、本当に閉じてもよろしいですか？</DialogContent>
         <DialogActions sx={{ mr: 1, mb: 1 }}>
-          <Button onClick={this.handleClose} variant="outlined">
-            破棄
+          <Button onClick={this.handleClose} variant="contained">
+            保存せず閉じる
           </Button>
-          <LoadingButton
-            onClick={this.props.submitArticle}
-            autoFocus
-            variant="contained"
-            loading={this.props.submittingState === 'loading'}
-          >
-            保存
-          </LoadingButton>
+          <Button onClick={this.cancelToClose} variant="outlined">
+            編集を再開する
+          </Button>
         </DialogActions>
       </Dialog>
     );
@@ -85,7 +79,6 @@ export type Props = {
   isFormEditting: boolean;
 
   onClose: () => void;
-  submitArticle: () => void;
   initialize: () => void;
 };
 

@@ -9,7 +9,6 @@ const basicProps: Props = {
   isFormChangedFromLastSaved: false,
 
   onClose: jest.fn(),
-  submitArticle: jest.fn(),
   initialize: jest.fn(),
 };
 

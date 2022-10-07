@@ -166,6 +166,7 @@ export class Renderer extends React.Component<Props, State> {
           iconPosition="left"
           align="right"
           link={EDIT_LINK(this.props.postId.toString())}
+          target="_blank"
         />
       </Link>
     );

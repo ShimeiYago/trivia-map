@@ -344,18 +344,41 @@ exports[`Shallow Snapshot Tests when currentPosition state is setted 1`] = `
           >
             この位置でよろしいですか？
           </ForwardRef(Typography)>
-          <ForwardRef(Typography)
-            component="p"
-            variant="subtitle2"
+          <ForwardRef(Grid)
+            alignItems="center"
+            container={true}
+            direction="row"
+            justifyContent="center"
           >
-            ※このマーカーは掴んで移動することができます。
-          </ForwardRef(Typography)>
-          <ForwardRef(Typography)
-            component="p"
-            variant="subtitle2"
-          >
-            ※あとで変更することができます。
-          </ForwardRef(Typography)>
+            <ForwardRef(Grid)
+              item={true}
+              xs={2}
+            >
+              <Memo />
+            </ForwardRef(Grid)>
+            <ForwardRef(Grid)
+              item={true}
+              xs={10}
+            >
+              <ForwardRef(Typography)>
+                マーカーを掴んで位置を調整してみましょう。
+              </ForwardRef(Typography)>
+            </ForwardRef(Grid)>
+            <ForwardRef(Grid)
+              item={true}
+              xs={2}
+            >
+              <Memo />
+            </ForwardRef(Grid)>
+            <ForwardRef(Grid)
+              item={true}
+              xs={10}
+            >
+              <ForwardRef(Typography)>
+                あとから何度でも変更できます。
+              </ForwardRef(Typography)>
+            </ForwardRef(Grid)>
+          </ForwardRef(Grid)>
           <ForwardRef(Grid)
             container={true}
             justifyContent="center"

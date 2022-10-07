@@ -72,3 +72,10 @@ export const COOKIE_NAME = {
   hasAccessToken: 'has-trivia-map-access-token',
   hasRefreshToken: 'has-trivia-map-resresh-token',
 };
+
+export const INPUT_FIELD_MAX_LENGTH = {
+  articleTitle: 50,
+  articleDescription: 500,
+  nickname: 20,
+  inquiryMessage: 2000,
+};

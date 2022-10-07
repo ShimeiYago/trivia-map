@@ -51,3 +51,6 @@ export const selectArticleFormIsFormChangedFromLastSaved = (state: ArticleFormRo
   state.articleForm.isFormChangedFromLastSaved;
 
 export const selectArticleFormIsDraft = (state: ArticleFormRootState) => state.articleForm.isDraft;
+
+export const selectArticleFormSubmitSuccessId = (state: ArticleFormRootState) =>
+  state.articleForm.submitSuccessId;

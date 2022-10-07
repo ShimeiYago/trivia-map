@@ -1,13 +1,16 @@
 import { useAppSelector } from 'store';
 import { Renderer, Props } from './renderer';
-import { selectArticleFormSubmittingState } from 'store/article-form/selector';
+import {
+  selectArticleFormSubmitSuccessId,
+  selectArticleFormSubmittingState,
+} from 'store/article-form/selector';
 import { selectLoggedOutSuccessfully } from 'store/auths/selector';
 
 export function GlobalMessage(ownProps: OwnProps) {
   const props: Props = {
     articleFormSubmittingState: useAppSelector(selectArticleFormSubmittingState),
-    markersDeletingState: 'waiting',
     loggedOutSuccessfully: useAppSelector(selectLoggedOutSuccessfully),
+    submitSuccessId: useAppSelector(selectArticleFormSubmitSuccessId),
 
     closeFormModal: ownProps.closeFormModal,
   };

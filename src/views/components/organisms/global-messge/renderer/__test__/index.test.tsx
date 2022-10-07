@@ -5,8 +5,8 @@ let shallowWrapper: ShallowWrapper<Props, State, Renderer>;
 
 const props: Props = {
   articleFormSubmittingState: 'waiting',
+  submitSuccessId: 1,
   closeFormModal: jest.fn(),
-  markersDeletingState: 'waiting',
   loggedOutSuccessfully: false,
 };
 
@@ -47,32 +47,6 @@ describe('componentDidUpdate', () => {
       articleFormSubmittingState: 'loading',
     });
     expect(instance.state.message).toBe('投稿が完了しました！');
-  });
-
-  it('should change states to show deleting marker success message', () => {
-    shallowWrapper.setProps({
-      markersDeletingState: 'success',
-    });
-    const instance = shallowWrapper.instance();
-
-    instance.componentDidUpdate({
-      ...props,
-      markersDeletingState: 'success',
-    });
-    expect(instance.state.message).toBe('投稿を削除しました。');
-  });
-
-  it('should change states to show deleting empty error message', () => {
-    shallowWrapper.setProps({
-      markersDeletingState: 'error',
-    });
-    const instance = shallowWrapper.instance();
-
-    instance.componentDidUpdate({
-      ...props,
-      markersDeletingState: 'loading',
-    });
-    expect(instance.state.message).toBe('');
   });
 
   it('should change states to show logout success message', () => {

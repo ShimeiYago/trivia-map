@@ -88,7 +88,7 @@ export const articleFormSlice = createSlice({
 
     submitSuccess(state, action: PayloadAction<number>) {
       state.submittingState = 'success';
-      state.postId = action.payload;
+      state.submitSuccessId = action.payload;
       state.isEditting = false;
     },
 

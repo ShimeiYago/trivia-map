@@ -155,7 +155,7 @@ describe('articleForm reducer', () => {
   it('should handle submitSuccess', () => {
     const actual = articleFormReducer(submittingLoadingState, submitSuccess(100));
     expect(actual.submittingState).toEqual('success');
-    expect(actual.postId).toEqual(100);
+    expect(actual.submitSuccessId).toEqual(100);
   });
 
   it('should handle fetchStart', () => {

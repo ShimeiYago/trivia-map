@@ -1,6 +1,8 @@
-import { Alert, Snackbar } from '@mui/material';
+import { Alert, Snackbar, Typography } from '@mui/material';
+import { ARTICLE_PAGE_LINK } from 'constant/links';
 import React from 'react';
 import { LoadingState } from 'types/loading-state';
+import { NonStyleLink } from 'views/components/atoms/non-style-link';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -23,12 +25,7 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   componentDidUpdate(prevProps: Props) {
-    const {
-      articleFormSubmittingState,
-      markersDeletingState,
-      loggedOutSuccessfully,
-      closeFormModal,
-    } = this.props;
+    const { articleFormSubmittingState, loggedOutSuccessfully, closeFormModal } = this.props;
 
     if (
       prevProps.articleFormSubmittingState !== articleFormSubmittingState &&
@@ -40,17 +37,6 @@ export class Renderer extends React.Component<Props, State> {
         type: 'success',
       });
       closeFormModal();
-    }
-
-    if (
-      prevProps.markersDeletingState !== markersDeletingState &&
-      markersDeletingState === 'success'
-    ) {
-      this.setState({
-        show: true,
-        message: '投稿を削除しました。',
-        type: 'success',
-      });
     }
 
     if (!prevProps.loggedOutSuccessfully && loggedOutSuccessfully) {
@@ -71,7 +57,14 @@ export class Renderer extends React.Component<Props, State> {
           variant="filled"
           sx={{ width: '100%' }}
         >
-          {this.state.message}
+          <Typography fontSize="inherit">{this.state.message}</Typography>
+          {this.props.submitSuccessId && (
+            <NonStyleLink to={ARTICLE_PAGE_LINK(this.props.submitSuccessId.toString())}>
+              <Typography fontSize="inherit" sx={{ textDecoration: 'underline' }}>
+                投稿内容を確認する
+              </Typography>
+            </NonStyleLink>
+          )}
         </Alert>
       </Snackbar>
     );
@@ -85,8 +78,8 @@ export class Renderer extends React.Component<Props, State> {
 
 export type Props = {
   articleFormSubmittingState: LoadingState;
-  markersDeletingState: LoadingState;
   loggedOutSuccessfully: boolean;
+  submitSuccessId?: number;
 
   closeFormModal: () => void;
 };

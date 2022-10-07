@@ -14,7 +14,11 @@ export function IconAndText(props: Props): JSX.Element {
 
   const linkWrapper = (content: React.ReactNode) => {
     if (props.link) {
-      return <NonStyleLink to={props.link}>{content}</NonStyleLink>;
+      return (
+        <NonStyleLink to={props.link} target={props.target}>
+          {content}
+        </NonStyleLink>
+      );
     } else {
       return content;
     }
@@ -24,7 +28,6 @@ export function IconAndText(props: Props): JSX.Element {
   if (props.iconPosition === 'left') {
     contents = (
       <>
-        {/* {props.iconComponent} */}
         {linkWrapper(props.iconComponent)}
         {linkWrapper(props.text)}
       </>
@@ -33,7 +36,7 @@ export function IconAndText(props: Props): JSX.Element {
     contents = (
       <>
         {linkWrapper(props.text)}
-        {props.iconComponent}
+        {linkWrapper(props.iconComponent)}
       </>
     );
   }
@@ -69,4 +72,5 @@ export type Props = {
   fontSize?: number;
   columnGap?: number;
   link?: string;
+  target?: React.HTMLAttributeAnchorTarget;
 };

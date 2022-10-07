@@ -12,6 +12,8 @@ import { PostMarkers } from './helpers/post-markers';
 import { Marker } from 'store/markers/model';
 import { Park } from 'types/park';
 import { TDL_TILE_URL, TDS_TILE_URL, ZOOMS } from 'constant';
+import ChangeCircleOutlinedIcon from '@mui/icons-material/ChangeCircleOutlined';
+import TouchAppIcon from '@mui/icons-material/TouchApp';
 
 export class Renderer extends React.Component<Props, State> {
   static readonly defaultProps: Pick<Props, 'newMarkerMode' | 'initZoom'> = {
@@ -191,12 +193,20 @@ export class Renderer extends React.Component<Props, State> {
         <Typography align="center" variant="h6" component="p" sx={{ fontWeight: 'bold' }}>
           この位置でよろしいですか？
         </Typography>
-        <Typography variant="subtitle2" component="p">
-          ※このマーカーは掴んで移動することができます。
-        </Typography>
-        <Typography variant="subtitle2" component="p">
-          ※あとで変更することができます。
-        </Typography>
+        <Grid container direction="row" justifyContent="center" alignItems="center">
+          <Grid item xs={2}>
+            <TouchAppIcon />
+          </Grid>
+          <Grid item xs={10}>
+            <Typography>マーカーを掴んで位置を調整してみましょう。</Typography>
+          </Grid>
+          <Grid item xs={2}>
+            <ChangeCircleOutlinedIcon />
+          </Grid>
+          <Grid item xs={10}>
+            <Typography>あとから何度でも変更できます。</Typography>
+          </Grid>
+        </Grid>
 
         <Grid container spacing={2} justifyContent="center" sx={{ textAlign: 'center' }}>
           <Grid item xs={6}>

@@ -20,7 +20,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
     open={true}
   >
     <ForwardRef(DialogTitle)>
-      変更を保存しますか？
+      変更が保存されていません
     </ForwardRef(DialogTitle)>
     <ForwardRef(DialogContent)>
       未保存のデータがありますが、本当に閉じてもよろしいですか？
@@ -35,18 +35,16 @@ exports[`Shallow Snapshot Tests basic 1`] = `
     >
       <ForwardRef(Button)
         onClick={[Function]}
-        variant="outlined"
-      >
-        破棄
-      </ForwardRef(Button)>
-      <ForwardRef(LoadingButton)
-        autoFocus={true}
-        loading={false}
-        onClick={[MockFunction]}
         variant="contained"
       >
-        保存
-      </ForwardRef(LoadingButton)>
+        保存せず閉じる
+      </ForwardRef(Button)>
+      <ForwardRef(Button)
+        onClick={[Function]}
+        variant="outlined"
+      >
+        編集を再開する
+      </ForwardRef(Button)>
     </ForwardRef(DialogActions)>
   </ForwardRef(Dialog)>
 </Fragment>

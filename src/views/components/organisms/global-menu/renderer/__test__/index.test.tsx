@@ -82,6 +82,19 @@ describe('Shallow Snapshot Tests', () => {
     });
     expect(wrapper).toMatchSnapshot();
   });
+
+  it('long name with mobile', () => {
+    wrapper.setProps({
+      userInfo: {
+        email: 'xxx@example.com',
+        userId: 1,
+        nickname: 'xxxxxxxxxxxxxxx',
+        icon: 'https://...',
+      },
+      isMobile: true,
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
 });
 
 describe('componentDidUpdate', () => {

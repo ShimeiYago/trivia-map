@@ -60,13 +60,27 @@ exports[`Shallow Snapshot Tests basic 1`] = `
             }
           }
         >
-          <IconAndText
-            columnGap={0.5}
-            fontSize={14}
-            iconComponent={<Memo />}
-            iconPosition="right"
-            text="ゲストさん"
-          />
+          <ForwardRef(Stack)
+            alignItems="center"
+            direction="row"
+            justifyContent="flex-start"
+            spacing={0.5}
+          >
+            <ForwardRef(Typography)
+              fontSize={12}
+            >
+              ゲストさん
+            </ForwardRef(Typography)>
+            <ForwardRef(Avatar)
+              src="no-icon.jpg"
+              sx={
+                Object {
+                  "height": 25,
+                  "width": 25,
+                }
+              }
+            />
+          </ForwardRef(Stack)>
         </ForwardRef(Box)>
         <ForwardRef(Popover)
           anchorEl={null}
@@ -274,6 +288,306 @@ exports[`Shallow Snapshot Tests basic 1`] = `
 </Fragment>
 `;
 
+exports[`Shallow Snapshot Tests long name with mobile 1`] = `
+<Fragment>
+  <ForwardRef(AppBar)
+    position="fixed"
+    sx={
+      Object {
+        "borderBottom": undefined,
+        "ml": undefined,
+        "width": undefined,
+      }
+    }
+  >
+    <ForwardRef(Toolbar)>
+      <ForwardRef(IconButton)
+        aria-label="open drawer"
+        color="inherit"
+        edge="start"
+        onClick={[Function]}
+        sx={
+          Object {
+            "mr": 2,
+          }
+        }
+      >
+        <Memo(ForwardRef(MenuIcon)) />
+      </ForwardRef(IconButton)>
+      <ForwardRef(Box)
+        sx={
+          Object {
+            "boxSizing": "border-box",
+            "flexGrow": 1,
+            "height": 56,
+            "py": 1.5,
+          }
+        }
+      >
+        <h1
+          hidden={true}
+        >
+          トリビアマップ
+        </h1>
+        <a
+          href="/"
+        >
+          <Image
+            height="full"
+            src="logo.png"
+          />
+        </a>
+      </ForwardRef(Box)>
+      <ForwardRef(Box)>
+        <ForwardRef(Box)
+          onClick={[Function]}
+          sx={
+            Object {
+              "cursor": "pointer",
+              "py": 2,
+            }
+          }
+        >
+          <ForwardRef(Stack)
+            alignItems="center"
+            direction="row"
+            justifyContent="flex-start"
+            spacing={0.5}
+          >
+            <ForwardRef(Typography)
+              fontSize={12}
+            >
+              xxxxxxxx...
+            </ForwardRef(Typography)>
+            <ForwardRef(Avatar)
+              src="https://..."
+              sx={
+                Object {
+                  "height": 25,
+                  "width": 25,
+                }
+              }
+            />
+          </ForwardRef(Stack)>
+        </ForwardRef(Box)>
+        <ForwardRef(Popover)
+          anchorEl={null}
+          anchorOrigin={
+            Object {
+              "horizontal": "right",
+              "vertical": "bottom",
+            }
+          }
+          onClose={[Function]}
+          open={false}
+        >
+          <ForwardRef(Box)
+            sx={
+              Object {
+                "p": 2,
+              }
+            }
+          >
+            <ForwardRef(Stack)
+              spacing={2}
+            >
+              <Link
+                key="authmenu-0"
+                to="/admin"
+              >
+                <IconAndText
+                  align="left"
+                  iconComponent={<Memo />}
+                  iconPosition="left"
+                  text="マイページ"
+                />
+              </Link>
+              <Link
+                key="authmenu-1"
+                to="/admin/articles"
+              >
+                <IconAndText
+                  align="left"
+                  iconComponent={<Memo />}
+                  iconPosition="left"
+                  text="マイ投稿一覧"
+                />
+              </Link>
+              <Link
+                key="authmenu-2"
+                to="/admin/account"
+              >
+                <IconAndText
+                  align="left"
+                  iconComponent={<Memo />}
+                  iconPosition="left"
+                  text="アカウント管理"
+                />
+              </Link>
+              <ForwardRef(Button)
+                onClick={[Function]}
+                variant="outlined"
+              >
+                ログアウト
+              </ForwardRef(Button)>
+            </ForwardRef(Stack)>
+          </ForwardRef(Box)>
+        </ForwardRef(Popover)>
+      </ForwardRef(Box)>
+    </ForwardRef(Toolbar)>
+  </ForwardRef(AppBar)>
+  <ForwardRef(SwipeableDrawer)
+    onClose={[Function]}
+    onOpen={[Function]}
+    open={false}
+  >
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "width": 250,
+        }
+      }
+    >
+      <ForwardRef(List)>
+        <NonStyleLink
+          key="0"
+          to="/"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(MapIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="トリビアマップ"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+        <NonStyleLink
+          key="1"
+          to="/articles"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(ArticleIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="投稿一覧＆検索"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+      </ForwardRef(List)>
+      <ForwardRef(Divider) />
+      <ForwardRef(List)>
+        <NonStyleLink
+          key="0"
+          to="/admin"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(AccountCircleIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="マイページ"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+        <NonStyleLink
+          key="1"
+          to="/admin/articles"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(ListAltIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="マイ投稿一覧"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+        <NonStyleLink
+          key="2"
+          to="/admin/account"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(ManageAccountsIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="アカウント管理"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+      </ForwardRef(List)>
+      <ForwardRef(Divider) />
+      <ForwardRef(List)>
+        <NonStyleLink
+          key="0"
+          to="/inquiry"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(EmailIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="お問い合わせ"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+        <NonStyleLink
+          key="1"
+          to="/privacy-policy"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(InfoIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="プライバシーポリシー"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+      </ForwardRef(List)>
+    </ForwardRef(Box)>
+  </ForwardRef(SwipeableDrawer)>
+  <ForwardRef(Box)
+    sx={
+      Object {
+        "ml": undefined,
+        "pb": 4,
+        "pt": "56px",
+        "width": "100%",
+      }
+    }
+  >
+    contents
+  </ForwardRef(Box)>
+  <BoxModal
+    onClose={[Function]}
+    open={false}
+    showCloseButton={true}
+  >
+    <AuthForms
+      initialMode="login"
+      onLoginSucceed={[Function]}
+    />
+  </BoxModal>
+</Fragment>
+`;
+
 exports[`Shallow Snapshot Tests map page 1`] = `
 <Fragment>
   <ForwardRef(AppBar)
@@ -334,13 +648,27 @@ exports[`Shallow Snapshot Tests map page 1`] = `
             }
           }
         >
-          <IconAndText
-            columnGap={0.5}
-            fontSize={14}
-            iconComponent={<Memo />}
-            iconPosition="right"
-            text="ゲストさん"
-          />
+          <ForwardRef(Stack)
+            alignItems="center"
+            direction="row"
+            justifyContent="flex-start"
+            spacing={0.5}
+          >
+            <ForwardRef(Typography)
+              fontSize={12}
+            >
+              ゲストさん
+            </ForwardRef(Typography)>
+            <ForwardRef(Avatar)
+              src="no-icon.jpg"
+              sx={
+                Object {
+                  "height": 25,
+                  "width": 25,
+                }
+              }
+            />
+          </ForwardRef(Stack)>
         </ForwardRef(Box)>
         <ForwardRef(Popover)
           anchorEl={null}
@@ -595,13 +923,27 @@ exports[`Shallow Snapshot Tests permanent left navi 1`] = `
             }
           }
         >
-          <IconAndText
-            columnGap={0.5}
-            fontSize={14}
-            iconComponent={<Memo />}
-            iconPosition="right"
-            text="ゲストさん"
-          />
+          <ForwardRef(Stack)
+            alignItems="center"
+            direction="row"
+            justifyContent="flex-start"
+            spacing={0.5}
+          >
+            <ForwardRef(Typography)
+              fontSize={12}
+            >
+              ゲストさん
+            </ForwardRef(Typography)>
+            <ForwardRef(Avatar)
+              src="no-icon.jpg"
+              sx={
+                Object {
+                  "height": 25,
+                  "width": 25,
+                }
+              }
+            />
+          </ForwardRef(Stack)>
         </ForwardRef(Box)>
         <ForwardRef(Popover)
           anchorEl={null}
@@ -868,13 +1210,27 @@ exports[`Shallow Snapshot Tests redirect to top page 1`] = `
             }
           }
         >
-          <IconAndText
-            columnGap={0.5}
-            fontSize={14}
-            iconComponent={<Memo />}
-            iconPosition="right"
-            text="ゲストさん"
-          />
+          <ForwardRef(Stack)
+            alignItems="center"
+            direction="row"
+            justifyContent="flex-start"
+            spacing={0.5}
+          >
+            <ForwardRef(Typography)
+              fontSize={12}
+            >
+              ゲストさん
+            </ForwardRef(Typography)>
+            <ForwardRef(Avatar)
+              src="no-icon.jpg"
+              sx={
+                Object {
+                  "height": 25,
+                  "width": 25,
+                }
+              }
+            />
+          </ForwardRef(Stack)>
         </ForwardRef(Box)>
         <ForwardRef(Popover)
           anchorEl={null}
@@ -1142,13 +1498,27 @@ exports[`Shallow Snapshot Tests static position 1`] = `
             }
           }
         >
-          <IconAndText
-            columnGap={0.5}
-            fontSize={14}
-            iconComponent={<Memo />}
-            iconPosition="right"
-            text="ゲストさん"
-          />
+          <ForwardRef(Stack)
+            alignItems="center"
+            direction="row"
+            justifyContent="flex-start"
+            spacing={0.5}
+          >
+            <ForwardRef(Typography)
+              fontSize={12}
+            >
+              ゲストさん
+            </ForwardRef(Typography)>
+            <ForwardRef(Avatar)
+              src="no-icon.jpg"
+              sx={
+                Object {
+                  "height": 25,
+                  "width": 25,
+                }
+              }
+            />
+          </ForwardRef(Stack)>
         </ForwardRef(Box)>
         <ForwardRef(Popover)
           anchorEl={null}
@@ -1416,13 +1786,27 @@ exports[`Shallow Snapshot Tests with local navi & mobile 1`] = `
             }
           }
         >
-          <IconAndText
-            columnGap={0.5}
-            fontSize={14}
-            iconComponent={<Memo />}
-            iconPosition="right"
-            text="ゲストさん"
-          />
+          <ForwardRef(Stack)
+            alignItems="center"
+            direction="row"
+            justifyContent="flex-start"
+            spacing={0.5}
+          >
+            <ForwardRef(Typography)
+              fontSize={12}
+            >
+              ゲストさん
+            </ForwardRef(Typography)>
+            <ForwardRef(Avatar)
+              src="no-icon.jpg"
+              sx={
+                Object {
+                  "height": 25,
+                  "width": 25,
+                }
+              }
+            />
+          </ForwardRef(Stack)>
         </ForwardRef(Box)>
         <ForwardRef(Popover)
           anchorEl={null}
@@ -1711,13 +2095,27 @@ exports[`Shallow Snapshot Tests with local navi 1`] = `
             }
           }
         >
-          <IconAndText
-            columnGap={0.5}
-            fontSize={14}
-            iconComponent={<Memo />}
-            iconPosition="right"
-            text="ゲストさん"
-          />
+          <ForwardRef(Stack)
+            alignItems="center"
+            direction="row"
+            justifyContent="flex-start"
+            spacing={0.5}
+          >
+            <ForwardRef(Typography)
+              fontSize={12}
+            >
+              ゲストさん
+            </ForwardRef(Typography)>
+            <ForwardRef(Avatar)
+              src="no-icon.jpg"
+              sx={
+                Object {
+                  "height": 25,
+                  "width": 25,
+                }
+              }
+            />
+          </ForwardRef(Stack)>
         </ForwardRef(Box)>
         <ForwardRef(Popover)
           anchorEl={null}
@@ -2006,13 +2404,27 @@ exports[`Shallow Snapshot Tests with userInfo 1`] = `
             }
           }
         >
-          <IconAndText
-            columnGap={0.5}
-            fontSize={14}
-            iconComponent={<Memo />}
-            iconPosition="right"
-            text="Axel"
-          />
+          <ForwardRef(Stack)
+            alignItems="center"
+            direction="row"
+            justifyContent="flex-start"
+            spacing={0.5}
+          >
+            <ForwardRef(Typography)
+              fontSize={12}
+            >
+              Axel
+            </ForwardRef(Typography)>
+            <ForwardRef(Avatar)
+              src="https://..."
+              sx={
+                Object {
+                  "height": 25,
+                  "width": 25,
+                }
+              }
+            />
+          </ForwardRef(Stack)>
         </ForwardRef(Box)>
         <ForwardRef(Popover)
           anchorEl={null}

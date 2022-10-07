@@ -13,7 +13,7 @@ import { BackToNavi } from 'views/components/moleculars/back-to-navi';
 import { SelializedImageFile } from 'types/selialized-image-file';
 import { ImageField } from 'views/components/moleculars/image-field';
 import 'react-image-crop/dist/ReactCrop.css';
-import { UPLOAD_IMAGE_MAX_LENGTH } from 'constant';
+import { INPUT_FIELD_MAX_LENGTH, UPLOAD_IMAGE_MAX_LENGTH } from 'constant';
 import { ACCOUNT_SETTINGS_LINK } from 'constant/links';
 import { PAGE_NAMES } from 'constant/page-names';
 
@@ -89,6 +89,7 @@ export class Renderer extends React.Component<Props, State> {
               onChange={this.handleChangeNickname}
               value={this.state.nickname}
               required
+              inputProps={{ maxLength: INPUT_FIELD_MAX_LENGTH.nickname }}
             />
 
             <LoadingButton

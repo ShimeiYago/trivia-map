@@ -43,6 +43,11 @@ exports[`Shallow Snapshot Tests basic 1`] = `
         error={false}
         fullWidth={true}
         id="name"
+        inputProps={
+          Object {
+            "maxLength": 20,
+          }
+        }
         label="お名前"
         margin="normal"
         name="name"
@@ -94,6 +99,11 @@ exports[`Shallow Snapshot Tests basic 1`] = `
         error={false}
         fullWidth={true}
         id="message"
+        inputProps={
+          Object {
+            "maxLength": 2000,
+          }
+        }
         label="お問い合わせ内容"
         margin="normal"
         minRows={4}
@@ -186,6 +196,11 @@ exports[`Shallow Snapshot Tests error case 1`] = `
           ]
         }
         id="name"
+        inputProps={
+          Object {
+            "maxLength": 20,
+          }
+        }
         label="お名前"
         margin="normal"
         name="name"
@@ -242,6 +257,11 @@ exports[`Shallow Snapshot Tests error case 1`] = `
           ]
         }
         id="message"
+        inputProps={
+          Object {
+            "maxLength": 2000,
+          }
+        }
         label="お問い合わせ内容"
         margin="normal"
         minRows={4}
@@ -315,6 +335,11 @@ exports[`Shallow Snapshot Tests loading 1`] = `
         error={false}
         fullWidth={true}
         id="name"
+        inputProps={
+          Object {
+            "maxLength": 20,
+          }
+        }
         label="お名前"
         margin="normal"
         name="name"
@@ -366,6 +391,11 @@ exports[`Shallow Snapshot Tests loading 1`] = `
         error={false}
         fullWidth={true}
         id="message"
+        inputProps={
+          Object {
+            "maxLength": 2000,
+          }
+        }
         label="お問い合わせ内容"
         margin="normal"
         minRows={4}
@@ -442,6 +472,11 @@ exports[`Shallow Snapshot Tests success 1`] = `
         error={false}
         fullWidth={true}
         id="name"
+        inputProps={
+          Object {
+            "maxLength": 20,
+          }
+        }
         label="お名前"
         margin="normal"
         name="name"
@@ -493,6 +528,11 @@ exports[`Shallow Snapshot Tests success 1`] = `
         error={false}
         fullWidth={true}
         id="message"
+        inputProps={
+          Object {
+            "maxLength": 2000,
+          }
+        }
         label="お問い合わせ内容"
         margin="normal"
         minRows={4}

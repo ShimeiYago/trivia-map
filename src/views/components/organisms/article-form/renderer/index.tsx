@@ -34,7 +34,7 @@ import { ImageField } from 'views/components/moleculars/image-field';
 import { DeletableImage } from 'views/components/moleculars/deletable-image';
 import { HeaderErrorMessages } from 'views/components/moleculars/header-error-messages';
 import { User } from 'types/user';
-import { CATEGORIES, UPLOAD_IMAGE_MAX_LENGTH, ZOOMS } from 'constant';
+import { CATEGORIES, INPUT_FIELD_MAX_LENGTH, UPLOAD_IMAGE_MAX_LENGTH, ZOOMS } from 'constant';
 import { SelializedImageFile } from 'types/selialized-image-file';
 import { Park } from 'types/park';
 import { AreaNames } from 'views/components/atoms/area-names';
@@ -132,6 +132,7 @@ export class Renderer extends React.Component<Props> {
               error={!!formError?.fieldErrors?.title}
               helperText={formError?.fieldErrors?.title}
               required
+              inputProps={{ maxLength: INPUT_FIELD_MAX_LENGTH.articleTitle }}
             />
 
             <BoxField
@@ -207,6 +208,7 @@ export class Renderer extends React.Component<Props> {
               disabled={disabled}
               error={!!formError?.fieldErrors?.description}
               helperText={formError?.fieldErrors?.description}
+              inputProps={{ maxLength: INPUT_FIELD_MAX_LENGTH.articleDescription }}
             />
 
             <FormControlLabel

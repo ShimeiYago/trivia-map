@@ -7,6 +7,7 @@ import { AuthFormMode } from '../../renderer';
 import { registration, ValidationError } from 'api/auths-api/registration';
 import { ApiError } from 'api/utils/handle-axios-error';
 import { globalAPIErrorMessage } from 'constant/global-api-error-message';
+import { INPUT_FIELD_MAX_LENGTH } from 'constant';
 
 export class SignupForm extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -51,6 +52,7 @@ export class SignupForm extends React.Component<Props, State> {
           error={!!this.state.formError?.nickname}
           onChange={this.handleChangeTextField('nickname')}
           required
+          inputProps={{ maxLength: INPUT_FIELD_MAX_LENGTH.nickname }}
         />
         <TextField
           margin="normal"

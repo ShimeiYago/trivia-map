@@ -41,6 +41,11 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       error={false}
       fullWidth={true}
       id="nickname"
+      inputProps={
+        Object {
+          "maxLength": 20,
+        }
+      }
       label="名前"
       margin="normal"
       name="nickname"
@@ -154,6 +159,11 @@ exports[`Shallow Snapshot Tests error case 1`] = `
       error={false}
       fullWidth={true}
       id="nickname"
+      inputProps={
+        Object {
+          "maxLength": 20,
+        }
+      }
       label="名前"
       margin="normal"
       name="nickname"

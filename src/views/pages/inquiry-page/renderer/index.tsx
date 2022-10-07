@@ -17,7 +17,7 @@ import { HeaderErrorMessages } from 'views/components/moleculars/header-error-me
 import { globalAPIErrorMessage } from 'constant/global-api-error-message';
 import { ApiError } from 'api/utils/handle-axios-error';
 import { inquiry, ValidationError } from 'api/inquiry-api';
-import { INQUIRY_CATEGORIES } from 'constant';
+import { INPUT_FIELD_MAX_LENGTH, INQUIRY_CATEGORIES } from 'constant';
 import { ArticleWrapper } from 'views/components/organisms/article-wrapper';
 import { PAGE_NAMES } from 'constant/page-names';
 
@@ -90,6 +90,7 @@ export class Renderer extends React.Component<Props, State> {
           error={!!this.state.formError?.name}
           onChange={this.handleChangeTextField('name')}
           required
+          inputProps={{ maxLength: INPUT_FIELD_MAX_LENGTH.nickname }}
         />
         <FormControl fullWidth>
           <InputLabel>カテゴリー</InputLabel>
@@ -121,6 +122,7 @@ export class Renderer extends React.Component<Props, State> {
           error={!!this.state.formError?.message}
           onChange={this.handleChangeTextField('message')}
           required
+          inputProps={{ maxLength: INPUT_FIELD_MAX_LENGTH.inquiryMessage }}
         />
         <LoadingButton
           fullWidth

@@ -134,41 +134,6 @@ export class Renderer extends React.Component<Props> {
               required
             />
 
-            {this.renderCategorySelectField(disabled)}
-
-            {imageSrc ? (
-              <DeletableImage
-                src={imageSrc}
-                width="full"
-                borderRadius
-                onDelete={this.handleDeleteImage}
-                errors={formError?.fieldErrors?.image}
-              />
-            ) : (
-              <ImageField
-                src={imageSrc}
-                onChange={this.handleImageChange}
-                variant="square"
-                disabled={disabled}
-                error={!!formError?.fieldErrors?.image}
-                helperText={formError?.fieldErrors?.image}
-                maxLength={UPLOAD_IMAGE_MAX_LENGTH.article}
-                onCatchError={this.handleError}
-                cropable
-              />
-            )}
-
-            <TextField
-              label="説明文"
-              multiline
-              rows={6}
-              value={description}
-              onChange={this.handleChangeDescription}
-              disabled={disabled}
-              error={!!formError?.fieldErrors?.description}
-              helperText={formError?.fieldErrors?.description}
-            />
-
             <BoxField
               status={miniMapFieldStatus}
               onClick={handleClickSelectPosition}
@@ -208,6 +173,41 @@ export class Renderer extends React.Component<Props> {
                 </Box>
               </Box>
             </BoxField>
+
+            {this.renderCategorySelectField(disabled)}
+
+            {imageSrc ? (
+              <DeletableImage
+                src={imageSrc}
+                width="full"
+                borderRadius
+                onDelete={this.handleDeleteImage}
+                errors={formError?.fieldErrors?.image}
+              />
+            ) : (
+              <ImageField
+                src={imageSrc}
+                onChange={this.handleImageChange}
+                variant="square"
+                disabled={disabled}
+                error={!!formError?.fieldErrors?.image}
+                helperText={formError?.fieldErrors?.image}
+                maxLength={UPLOAD_IMAGE_MAX_LENGTH.article}
+                onCatchError={this.handleError}
+                cropable
+              />
+            )}
+
+            <TextField
+              label="説明文"
+              multiline
+              rows={6}
+              value={description}
+              onChange={this.handleChangeDescription}
+              disabled={disabled}
+              error={!!formError?.fieldErrors?.description}
+              helperText={formError?.fieldErrors?.description}
+            />
 
             <FormControlLabel
               control={

@@ -30,56 +30,6 @@ exports[`Shallow Snapshot Tests basic 1`] = `
         value=""
         variant="standard"
       />
-      <ForwardRef(FormControl)
-        fullWidth={true}
-      >
-        <ForwardRef(InputLabel)>
-          カテゴリー
-        </ForwardRef(InputLabel)>
-        <ForwardRef(Select)
-          disabled={false}
-          label="カテゴリー"
-          onChange={[Function]}
-          value=""
-        >
-          <ForwardRef(MenuItem)
-            key="category-1"
-            value="1"
-          >
-            隠れミッキー
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-2"
-            value="2"
-          >
-            バックグラウンドストーリー
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-0"
-            value="0"
-          >
-            その他
-          </ForwardRef(MenuItem)>
-        </ForwardRef(Select)>
-      </ForwardRef(FormControl)>
-      <ImageField
-        cropable={true}
-        disabled={false}
-        error={false}
-        maxLength={1000}
-        onCatchError={[Function]}
-        onChange={[Function]}
-        variant="square"
-      />
-      <ForwardRef(TextField)
-        disabled={false}
-        error={false}
-        label="説明文"
-        multiline={true}
-        onChange={[Function]}
-        rows={6}
-        value=""
-      />
       <BoxField
         disabled={false}
         status="valid"
@@ -177,6 +127,56 @@ exports[`Shallow Snapshot Tests basic 1`] = `
           </ForwardRef(Box)>
         </ForwardRef(Box)>
       </BoxField>
+      <ForwardRef(FormControl)
+        fullWidth={true}
+      >
+        <ForwardRef(InputLabel)>
+          カテゴリー
+        </ForwardRef(InputLabel)>
+        <ForwardRef(Select)
+          disabled={false}
+          label="カテゴリー"
+          onChange={[Function]}
+          value=""
+        >
+          <ForwardRef(MenuItem)
+            key="category-1"
+            value="1"
+          >
+            隠れミッキー
+          </ForwardRef(MenuItem)>
+          <ForwardRef(MenuItem)
+            key="category-2"
+            value="2"
+          >
+            バックグラウンドストーリー
+          </ForwardRef(MenuItem)>
+          <ForwardRef(MenuItem)
+            key="category-0"
+            value="0"
+          >
+            その他
+          </ForwardRef(MenuItem)>
+        </ForwardRef(Select)>
+      </ForwardRef(FormControl)>
+      <ImageField
+        cropable={true}
+        disabled={false}
+        error={false}
+        maxLength={1000}
+        onCatchError={[Function]}
+        onChange={[Function]}
+        variant="square"
+      />
+      <ForwardRef(TextField)
+        disabled={false}
+        error={false}
+        label="説明文"
+        multiline={true}
+        onChange={[Function]}
+        rows={6}
+        value=""
+      />
       <ForwardRef(FormControlLabel)
         control={
           <ForwardRef(Checkbox)
@@ -230,56 +230,6 @@ exports[`Shallow Snapshot Tests draft mode 1`] = `
         value=""
         variant="standard"
       />
-      <ForwardRef(FormControl)
-        fullWidth={true}
-      >
-        <ForwardRef(InputLabel)>
-          カテゴリー
-        </ForwardRef(InputLabel)>
-        <ForwardRef(Select)
-          disabled={false}
-          label="カテゴリー"
-          onChange={[Function]}
-          value=""
-        >
-          <ForwardRef(MenuItem)
-            key="category-1"
-            value="1"
-          >
-            隠れミッキー
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-2"
-            value="2"
-          >
-            バックグラウンドストーリー
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-0"
-            value="0"
-          >
-            その他
-          </ForwardRef(MenuItem)>
-        </ForwardRef(Select)>
-      </ForwardRef(FormControl)>
-      <ImageField
-        cropable={true}
-        disabled={false}
-        error={false}
-        maxLength={1000}
-        onCatchError={[Function]}
-        onChange={[Function]}
-        variant="square"
-      />
-      <ForwardRef(TextField)
-        disabled={false}
-        error={false}
-        label="説明文"
-        multiline={true}
-        onChange={[Function]}
-        rows={6}
-        value=""
-      />
       <BoxField
         disabled={false}
         status="valid"
@@ -377,6 +327,56 @@ exports[`Shallow Snapshot Tests draft mode 1`] = `
           </ForwardRef(Box)>
         </ForwardRef(Box)>
       </BoxField>
+      <ForwardRef(FormControl)
+        fullWidth={true}
+      >
+        <ForwardRef(InputLabel)>
+          カテゴリー
+        </ForwardRef(InputLabel)>
+        <ForwardRef(Select)
+          disabled={false}
+          label="カテゴリー"
+          onChange={[Function]}
+          value=""
+        >
+          <ForwardRef(MenuItem)
+            key="category-1"
+            value="1"
+          >
+            隠れミッキー
+          </ForwardRef(MenuItem)>
+          <ForwardRef(MenuItem)
+            key="category-2"
+            value="2"
+          >
+            バックグラウンドストーリー
+          </ForwardRef(MenuItem)>
+          <ForwardRef(MenuItem)
+            key="category-0"
+            value="0"
+          >
+            その他
+          </ForwardRef(MenuItem)>
+        </ForwardRef(Select)>
+      </ForwardRef(FormControl)>
+      <ImageField
+        cropable={true}
+        disabled={false}
+        error={false}
+        maxLength={1000}
+        onCatchError={[Function]}
+        onChange={[Function]}
+        variant="square"
+      />
+      <ForwardRef(TextField)
+        disabled={false}
+        error={false}
+        label="説明文"
+        multiline={true}
+        onChange={[Function]}
+        rows={6}
+        value=""
+      />
       <ForwardRef(FormControlLabel)
         control={
           <ForwardRef(Checkbox)
@@ -440,56 +440,6 @@ exports[`Shallow Snapshot Tests loading 1`] = `
         value=""
         variant="standard"
       />
-      <ForwardRef(FormControl)
-        fullWidth={true}
-      >
-        <ForwardRef(InputLabel)>
-          カテゴリー
-        </ForwardRef(InputLabel)>
-        <ForwardRef(Select)
-          disabled={true}
-          label="カテゴリー"
-          onChange={[Function]}
-          value=""
-        >
-          <ForwardRef(MenuItem)
-            key="category-1"
-            value="1"
-          >
-            隠れミッキー
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-2"
-            value="2"
-          >
-            バックグラウンドストーリー
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-0"
-            value="0"
-          >
-            その他
-          </ForwardRef(MenuItem)>
-        </ForwardRef(Select)>
-      </ForwardRef(FormControl)>
-      <ImageField
-        cropable={true}
-        disabled={true}
-        error={false}
-        maxLength={1000}
-        onCatchError={[Function]}
-        onChange={[Function]}
-        variant="square"
-      />
-      <ForwardRef(TextField)
-        disabled={true}
-        error={false}
-        label="説明文"
-        multiline={true}
-        onChange={[Function]}
-        rows={6}
-        value=""
-      />
       <BoxField
         disabled={true}
         status="valid"
@@ -557,6 +507,56 @@ exports[`Shallow Snapshot Tests loading 1`] = `
           />
         </ForwardRef(Box)>
       </BoxField>
+      <ForwardRef(FormControl)
+        fullWidth={true}
+      >
+        <ForwardRef(InputLabel)>
+          カテゴリー
+        </ForwardRef(InputLabel)>
+        <ForwardRef(Select)
+          disabled={true}
+          label="カテゴリー"
+          onChange={[Function]}
+          value=""
+        >
+          <ForwardRef(MenuItem)
+            key="category-1"
+            value="1"
+          >
+            隠れミッキー
+          </ForwardRef(MenuItem)>
+          <ForwardRef(MenuItem)
+            key="category-2"
+            value="2"
+          >
+            バックグラウンドストーリー
+          </ForwardRef(MenuItem)>
+          <ForwardRef(MenuItem)
+            key="category-0"
+            value="0"
+          >
+            その他
+          </ForwardRef(MenuItem)>
+        </ForwardRef(Select)>
+      </ForwardRef(FormControl)>
+      <ImageField
+        cropable={true}
+        disabled={true}
+        error={false}
+        maxLength={1000}
+        onCatchError={[Function]}
+        onChange={[Function]}
+        variant="square"
+      />
+      <ForwardRef(TextField)
+        disabled={true}
+        error={false}
+        label="説明文"
+        multiline={true}
+        onChange={[Function]}
+        rows={6}
+        value=""
+      />
       <ForwardRef(FormControlLabel)
         control={
           <ForwardRef(Checkbox)
@@ -609,56 +609,6 @@ exports[`Shallow Snapshot Tests position is not selected yet 1`] = `
         required={true}
         value=""
         variant="standard"
-      />
-      <ForwardRef(FormControl)
-        fullWidth={true}
-      >
-        <ForwardRef(InputLabel)>
-          カテゴリー
-        </ForwardRef(InputLabel)>
-        <ForwardRef(Select)
-          disabled={false}
-          label="カテゴリー"
-          onChange={[Function]}
-          value=""
-        >
-          <ForwardRef(MenuItem)
-            key="category-1"
-            value="1"
-          >
-            隠れミッキー
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-2"
-            value="2"
-          >
-            バックグラウンドストーリー
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-0"
-            value="0"
-          >
-            その他
-          </ForwardRef(MenuItem)>
-        </ForwardRef(Select)>
-      </ForwardRef(FormControl)>
-      <ImageField
-        cropable={true}
-        disabled={false}
-        error={false}
-        maxLength={1000}
-        onCatchError={[Function]}
-        onChange={[Function]}
-        variant="square"
-      />
-      <ForwardRef(TextField)
-        disabled={false}
-        error={false}
-        label="説明文"
-        multiline={true}
-        onChange={[Function]}
-        rows={6}
-        value=""
       />
       <BoxField
         disabled={false}
@@ -750,6 +700,56 @@ exports[`Shallow Snapshot Tests position is not selected yet 1`] = `
           </ForwardRef(Box)>
         </ForwardRef(Box)>
       </BoxField>
+      <ForwardRef(FormControl)
+        fullWidth={true}
+      >
+        <ForwardRef(InputLabel)>
+          カテゴリー
+        </ForwardRef(InputLabel)>
+        <ForwardRef(Select)
+          disabled={false}
+          label="カテゴリー"
+          onChange={[Function]}
+          value=""
+        >
+          <ForwardRef(MenuItem)
+            key="category-1"
+            value="1"
+          >
+            隠れミッキー
+          </ForwardRef(MenuItem)>
+          <ForwardRef(MenuItem)
+            key="category-2"
+            value="2"
+          >
+            バックグラウンドストーリー
+          </ForwardRef(MenuItem)>
+          <ForwardRef(MenuItem)
+            key="category-0"
+            value="0"
+          >
+            その他
+          </ForwardRef(MenuItem)>
+        </ForwardRef(Select)>
+      </ForwardRef(FormControl)>
+      <ImageField
+        cropable={true}
+        disabled={false}
+        error={false}
+        maxLength={1000}
+        onCatchError={[Function]}
+        onChange={[Function]}
+        variant="square"
+      />
+      <ForwardRef(TextField)
+        disabled={false}
+        error={false}
+        label="説明文"
+        multiline={true}
+        onChange={[Function]}
+        rows={6}
+        value=""
+      />
       <ForwardRef(FormControlLabel)
         control={
           <ForwardRef(Checkbox)
@@ -802,56 +802,6 @@ exports[`Shallow Snapshot Tests with category 1`] = `
         required={true}
         value=""
         variant="standard"
-      />
-      <ForwardRef(FormControl)
-        fullWidth={true}
-      >
-        <ForwardRef(InputLabel)>
-          カテゴリー
-        </ForwardRef(InputLabel)>
-        <ForwardRef(Select)
-          disabled={false}
-          label="カテゴリー"
-          onChange={[Function]}
-          value="1"
-        >
-          <ForwardRef(MenuItem)
-            key="category-1"
-            value="1"
-          >
-            隠れミッキー
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-2"
-            value="2"
-          >
-            バックグラウンドストーリー
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-0"
-            value="0"
-          >
-            その他
-          </ForwardRef(MenuItem)>
-        </ForwardRef(Select)>
-      </ForwardRef(FormControl)>
-      <ImageField
-        cropable={true}
-        disabled={false}
-        error={false}
-        maxLength={1000}
-        onCatchError={[Function]}
-        onChange={[Function]}
-        variant="square"
-      />
-      <ForwardRef(TextField)
-        disabled={false}
-        error={false}
-        label="説明文"
-        multiline={true}
-        onChange={[Function]}
-        rows={6}
-        value=""
       />
       <BoxField
         disabled={false}
@@ -950,6 +900,56 @@ exports[`Shallow Snapshot Tests with category 1`] = `
           </ForwardRef(Box)>
         </ForwardRef(Box)>
       </BoxField>
+      <ForwardRef(FormControl)
+        fullWidth={true}
+      >
+        <ForwardRef(InputLabel)>
+          カテゴリー
+        </ForwardRef(InputLabel)>
+        <ForwardRef(Select)
+          disabled={false}
+          label="カテゴリー"
+          onChange={[Function]}
+          value="1"
+        >
+          <ForwardRef(MenuItem)
+            key="category-1"
+            value="1"
+          >
+            隠れミッキー
+          </ForwardRef(MenuItem)>
+          <ForwardRef(MenuItem)
+            key="category-2"
+            value="2"
+          >
+            バックグラウンドストーリー
+          </ForwardRef(MenuItem)>
+          <ForwardRef(MenuItem)
+            key="category-0"
+            value="0"
+          >
+            その他
+          </ForwardRef(MenuItem)>
+        </ForwardRef(Select)>
+      </ForwardRef(FormControl)>
+      <ImageField
+        cropable={true}
+        disabled={false}
+        error={false}
+        maxLength={1000}
+        onCatchError={[Function]}
+        onChange={[Function]}
+        variant="square"
+      />
+      <ForwardRef(TextField)
+        disabled={false}
+        error={false}
+        label="説明文"
+        multiline={true}
+        onChange={[Function]}
+        rows={6}
+        value=""
+      />
       <ForwardRef(FormControlLabel)
         control={
           <ForwardRef(Checkbox)
@@ -1018,56 +1018,6 @@ exports[`Shallow Snapshot Tests with close button 1`] = `
         value=""
         variant="standard"
       />
-      <ForwardRef(FormControl)
-        fullWidth={true}
-      >
-        <ForwardRef(InputLabel)>
-          カテゴリー
-        </ForwardRef(InputLabel)>
-        <ForwardRef(Select)
-          disabled={false}
-          label="カテゴリー"
-          onChange={[Function]}
-          value=""
-        >
-          <ForwardRef(MenuItem)
-            key="category-1"
-            value="1"
-          >
-            隠れミッキー
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-2"
-            value="2"
-          >
-            バックグラウンドストーリー
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-0"
-            value="0"
-          >
-            その他
-          </ForwardRef(MenuItem)>
-        </ForwardRef(Select)>
-      </ForwardRef(FormControl)>
-      <ImageField
-        cropable={true}
-        disabled={false}
-        error={false}
-        maxLength={1000}
-        onCatchError={[Function]}
-        onChange={[Function]}
-        variant="square"
-      />
-      <ForwardRef(TextField)
-        disabled={false}
-        error={false}
-        label="説明文"
-        multiline={true}
-        onChange={[Function]}
-        rows={6}
-        value=""
-      />
       <BoxField
         disabled={false}
         status="valid"
@@ -1165,6 +1115,56 @@ exports[`Shallow Snapshot Tests with close button 1`] = `
           </ForwardRef(Box)>
         </ForwardRef(Box)>
       </BoxField>
+      <ForwardRef(FormControl)
+        fullWidth={true}
+      >
+        <ForwardRef(InputLabel)>
+          カテゴリー
+        </ForwardRef(InputLabel)>
+        <ForwardRef(Select)
+          disabled={false}
+          label="カテゴリー"
+          onChange={[Function]}
+          value=""
+        >
+          <ForwardRef(MenuItem)
+            key="category-1"
+            value="1"
+          >
+            隠れミッキー
+          </ForwardRef(MenuItem)>
+          <ForwardRef(MenuItem)
+            key="category-2"
+            value="2"
+          >
+            バックグラウンドストーリー
+          </ForwardRef(MenuItem)>
+          <ForwardRef(MenuItem)
+            key="category-0"
+            value="0"
+          >
+            その他
+          </ForwardRef(MenuItem)>
+        </ForwardRef(Select)>
+      </ForwardRef(FormControl)>
+      <ImageField
+        cropable={true}
+        disabled={false}
+        error={false}
+        maxLength={1000}
+        onCatchError={[Function]}
+        onChange={[Function]}
+        variant="square"
+      />
+      <ForwardRef(TextField)
+        disabled={false}
+        error={false}
+        label="説明文"
+        multiline={true}
+        onChange={[Function]}
+        rows={6}
+        value=""
+      />
       <ForwardRef(FormControlLabel)
         control={
           <ForwardRef(Checkbox)
@@ -1218,53 +1218,6 @@ exports[`Shallow Snapshot Tests with image data url 1`] = `
         value=""
         variant="standard"
       />
-      <ForwardRef(FormControl)
-        fullWidth={true}
-      >
-        <ForwardRef(InputLabel)>
-          カテゴリー
-        </ForwardRef(InputLabel)>
-        <ForwardRef(Select)
-          disabled={false}
-          label="カテゴリー"
-          onChange={[Function]}
-          value=""
-        >
-          <ForwardRef(MenuItem)
-            key="category-1"
-            value="1"
-          >
-            隠れミッキー
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-2"
-            value="2"
-          >
-            バックグラウンドストーリー
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-0"
-            value="0"
-          >
-            その他
-          </ForwardRef(MenuItem)>
-        </ForwardRef(Select)>
-      </ForwardRef(FormControl)>
-      <DeletableImage
-        borderRadius={true}
-        onDelete={[Function]}
-        src="data:image/png;base64,xxx"
-        width="full"
-      />
-      <ForwardRef(TextField)
-        disabled={false}
-        error={false}
-        label="説明文"
-        multiline={true}
-        onChange={[Function]}
-        rows={6}
-        value=""
-      />
       <BoxField
         disabled={false}
         status="valid"
@@ -1362,6 +1315,53 @@ exports[`Shallow Snapshot Tests with image data url 1`] = `
           </ForwardRef(Box)>
         </ForwardRef(Box)>
       </BoxField>
+      <ForwardRef(FormControl)
+        fullWidth={true}
+      >
+        <ForwardRef(InputLabel)>
+          カテゴリー
+        </ForwardRef(InputLabel)>
+        <ForwardRef(Select)
+          disabled={false}
+          label="カテゴリー"
+          onChange={[Function]}
+          value=""
+        >
+          <ForwardRef(MenuItem)
+            key="category-1"
+            value="1"
+          >
+            隠れミッキー
+          </ForwardRef(MenuItem)>
+          <ForwardRef(MenuItem)
+            key="category-2"
+            value="2"
+          >
+            バックグラウンドストーリー
+          </ForwardRef(MenuItem)>
+          <ForwardRef(MenuItem)
+            key="category-0"
+            value="0"
+          >
+            その他
+          </ForwardRef(MenuItem)>
+        </ForwardRef(Select)>
+      </ForwardRef(FormControl)>
+      <DeletableImage
+        borderRadius={true}
+        onDelete={[Function]}
+        src="data:image/png;base64,xxx"
+        width="full"
+      />
+      <ForwardRef(TextField)
+        disabled={false}
+        error={false}
+        label="説明文"
+        multiline={true}
+        onChange={[Function]}
+        rows={6}
+        value=""
+      />
       <ForwardRef(FormControlLabel)
         control={
           <ForwardRef(Checkbox)
@@ -1415,53 +1415,6 @@ exports[`Shallow Snapshot Tests with image url 1`] = `
         value=""
         variant="standard"
       />
-      <ForwardRef(FormControl)
-        fullWidth={true}
-      >
-        <ForwardRef(InputLabel)>
-          カテゴリー
-        </ForwardRef(InputLabel)>
-        <ForwardRef(Select)
-          disabled={false}
-          label="カテゴリー"
-          onChange={[Function]}
-          value=""
-        >
-          <ForwardRef(MenuItem)
-            key="category-1"
-            value="1"
-          >
-            隠れミッキー
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-2"
-            value="2"
-          >
-            バックグラウンドストーリー
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-0"
-            value="0"
-          >
-            その他
-          </ForwardRef(MenuItem)>
-        </ForwardRef(Select)>
-      </ForwardRef(FormControl)>
-      <DeletableImage
-        borderRadius={true}
-        onDelete={[Function]}
-        src="https://image-data.jpg"
-        width="full"
-      />
-      <ForwardRef(TextField)
-        disabled={false}
-        error={false}
-        label="説明文"
-        multiline={true}
-        onChange={[Function]}
-        rows={6}
-        value=""
-      />
       <BoxField
         disabled={false}
         status="valid"
@@ -1559,6 +1512,53 @@ exports[`Shallow Snapshot Tests with image url 1`] = `
           </ForwardRef(Box)>
         </ForwardRef(Box)>
       </BoxField>
+      <ForwardRef(FormControl)
+        fullWidth={true}
+      >
+        <ForwardRef(InputLabel)>
+          カテゴリー
+        </ForwardRef(InputLabel)>
+        <ForwardRef(Select)
+          disabled={false}
+          label="カテゴリー"
+          onChange={[Function]}
+          value=""
+        >
+          <ForwardRef(MenuItem)
+            key="category-1"
+            value="1"
+          >
+            隠れミッキー
+          </ForwardRef(MenuItem)>
+          <ForwardRef(MenuItem)
+            key="category-2"
+            value="2"
+          >
+            バックグラウンドストーリー
+          </ForwardRef(MenuItem)>
+          <ForwardRef(MenuItem)
+            key="category-0"
+            value="0"
+          >
+            その他
+          </ForwardRef(MenuItem)>
+        </ForwardRef(Select)>
+      </ForwardRef(FormControl)>
+      <DeletableImage
+        borderRadius={true}
+        onDelete={[Function]}
+        src="https://image-data.jpg"
+        width="full"
+      />
+      <ForwardRef(TextField)
+        disabled={false}
+        error={false}
+        label="説明文"
+        multiline={true}
+        onChange={[Function]}
+        rows={6}
+        value=""
+      />
       <ForwardRef(FormControlLabel)
         control={
           <ForwardRef(Checkbox)
@@ -1614,56 +1614,6 @@ exports[`Shallow Snapshot Tests with validation error 1`] = `
         required={true}
         value=""
         variant="standard"
-      />
-      <ForwardRef(FormControl)
-        fullWidth={true}
-      >
-        <ForwardRef(InputLabel)>
-          カテゴリー
-        </ForwardRef(InputLabel)>
-        <ForwardRef(Select)
-          disabled={false}
-          label="カテゴリー"
-          onChange={[Function]}
-          value=""
-        >
-          <ForwardRef(MenuItem)
-            key="category-1"
-            value="1"
-          >
-            隠れミッキー
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-2"
-            value="2"
-          >
-            バックグラウンドストーリー
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-0"
-            value="0"
-          >
-            その他
-          </ForwardRef(MenuItem)>
-        </ForwardRef(Select)>
-      </ForwardRef(FormControl)>
-      <ImageField
-        cropable={true}
-        disabled={false}
-        error={false}
-        maxLength={1000}
-        onCatchError={[Function]}
-        onChange={[Function]}
-        variant="square"
-      />
-      <ForwardRef(TextField)
-        disabled={false}
-        error={false}
-        label="説明文"
-        multiline={true}
-        onChange={[Function]}
-        rows={6}
-        value=""
       />
       <BoxField
         disabled={false}
@@ -1767,6 +1717,56 @@ exports[`Shallow Snapshot Tests with validation error 1`] = `
           </ForwardRef(Box)>
         </ForwardRef(Box)>
       </BoxField>
+      <ForwardRef(FormControl)
+        fullWidth={true}
+      >
+        <ForwardRef(InputLabel)>
+          カテゴリー
+        </ForwardRef(InputLabel)>
+        <ForwardRef(Select)
+          disabled={false}
+          label="カテゴリー"
+          onChange={[Function]}
+          value=""
+        >
+          <ForwardRef(MenuItem)
+            key="category-1"
+            value="1"
+          >
+            隠れミッキー
+          </ForwardRef(MenuItem)>
+          <ForwardRef(MenuItem)
+            key="category-2"
+            value="2"
+          >
+            バックグラウンドストーリー
+          </ForwardRef(MenuItem)>
+          <ForwardRef(MenuItem)
+            key="category-0"
+            value="0"
+          >
+            その他
+          </ForwardRef(MenuItem)>
+        </ForwardRef(Select)>
+      </ForwardRef(FormControl)>
+      <ImageField
+        cropable={true}
+        disabled={false}
+        error={false}
+        maxLength={1000}
+        onCatchError={[Function]}
+        onChange={[Function]}
+        variant="square"
+      />
+      <ForwardRef(TextField)
+        disabled={false}
+        error={false}
+        label="説明文"
+        multiline={true}
+        onChange={[Function]}
+        rows={6}
+        value=""
+      />
       <ForwardRef(FormControlLabel)
         control={
           <ForwardRef(Checkbox)

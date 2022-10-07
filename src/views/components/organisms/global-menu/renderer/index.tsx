@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   AppBar,
+  Avatar,
   Box,
   Button,
   Drawer,
@@ -16,7 +17,6 @@ import { leftNaviContents } from './left-navi-contents';
 import { appBarStyle, contentStyle, leftNaviBox, localNavi, logoImageBox } from '../styles';
 import { User } from 'types/user';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { IconAndText } from 'views/components/atoms/icon-and-text';
 import { Link, Navigate } from 'react-router-dom';
 import { authMenuLinks } from '../constants';
@@ -30,6 +30,7 @@ import logoImage from 'images/logo.png';
 import { Image } from 'views/components/atoms/image';
 import { SITE_NAME } from 'constant';
 import { AuthFormMode } from '../../auth-forms/renderer';
+import noIcon from 'images/no-icon.jpg';
 
 export class Renderer extends React.Component<Props, State> {
   static readonly defaultProps: Pick<Props, 'topBarPosition'> = {
@@ -154,18 +155,18 @@ export class Renderer extends React.Component<Props, State> {
   };
 
   protected renderAuthMenu = () => {
-    const nickname = `${this.props.userInfo?.nickname ?? 'ゲストさん'}`;
+    let nickname = `${this.props.userInfo?.nickname ?? 'ゲストさん'}`;
+    if (this.props.isMobile && nickname.length > 8) {
+      nickname = nickname.slice(0, 8) + '...';
+    }
 
     return (
       <Box>
         <Box onClick={this.handleClickAuthMenu} sx={{ cursor: 'pointer', py: 2 }}>
-          <IconAndText
-            iconComponent={<AccountCircleIcon />}
-            text={nickname}
-            iconPosition="right"
-            fontSize={14}
-            columnGap={0.5}
-          />
+          <Stack direction="row" justifyContent="flex-start" alignItems="center" spacing={0.5}>
+            <Typography fontSize={12}>{nickname}</Typography>
+            <Avatar sx={{ width: 25, height: 25 }} src={this.props.userInfo?.icon ?? noIcon} />
+          </Stack>
         </Box>
         <Popover
           open={!!this.state.authMenuAnchorEl}

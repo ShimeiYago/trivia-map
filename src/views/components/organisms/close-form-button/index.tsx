@@ -6,7 +6,7 @@ import {
   selectArticleFormIsFormChangedFromLastSaved,
   selectArticleFormSubmittingState,
 } from 'store/article-form/selector';
-import { initialize, submitArticle } from 'store/article-form/actions';
+import { initialize } from 'store/article-form/actions';
 
 export function CloseFormButton(ownProps: OwnProps) {
   const dispatch = useAppDispatch();
@@ -17,7 +17,6 @@ export function CloseFormButton(ownProps: OwnProps) {
     isFormEditting: useAppSelector(selectArticleFormIsEditting),
     submittingState: useAppSelector(selectArticleFormSubmittingState),
     onClose: ownProps.onClose,
-    submitArticle: () => dispatch(submitArticle()),
     initialize: () => dispatch(initialize()),
   };
 

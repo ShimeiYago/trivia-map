@@ -36,3 +36,5 @@ export const INTERNAL_ERROR_LINK = '/error/500';
 export const INQUIRY_PAGE_LINK = '/inquiry';
 
 export const PRIVACY_POLICY_PAGE_LINK = '/privacy-policy';
+
+export const TWITTER_CALLBACK_LINK = '/twitter-auth-callback';

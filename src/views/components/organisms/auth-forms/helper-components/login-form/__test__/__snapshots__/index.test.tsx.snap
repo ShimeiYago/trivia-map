@@ -97,6 +97,7 @@ exports[`Shallow Snapshot Tests already logged in 1`] = `
       </ForwardRef(Grid)>
     </ForwardRef(Grid)>
   </ForwardRef(Box)>
+  <TwitterLoginButton />
 </ForwardRef(Stack)>
 `;
 
@@ -187,6 +188,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       </ForwardRef(Grid)>
     </ForwardRef(Grid)>
   </ForwardRef(Box)>
+  <TwitterLoginButton />
 </ForwardRef(Stack)>
 `;
 
@@ -298,6 +300,7 @@ exports[`Shallow Snapshot Tests error case 1`] = `
       </ForwardRef(Grid)>
     </ForwardRef(Grid)>
   </ForwardRef(Box)>
+  <TwitterLoginButton />
 </ForwardRef(Stack)>
 `;
 
@@ -388,5 +391,6 @@ exports[`Shallow Snapshot Tests loading 1`] = `
       </ForwardRef(Grid)>
     </ForwardRef(Grid)>
   </ForwardRef(Box)>
+  <TwitterLoginButton />
 </ForwardRef(Stack)>
 `;

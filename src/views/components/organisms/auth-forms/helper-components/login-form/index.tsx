@@ -8,6 +8,7 @@ import { ApiError } from 'api/utils/handle-axios-error';
 import { globalAPIErrorMessage } from 'constant/global-api-error-message';
 import { HeaderErrorMessages } from 'views/components/moleculars/header-error-messages';
 import { AuthFormMode } from '../../renderer';
+import { TwitterLoginButton } from 'views/components/organisms/twitter-login-button';
 
 export class LoginForm extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -82,6 +83,8 @@ export class LoginForm extends React.Component<Props, State> {
             </Grid>
           </Grid>
         </Box>
+
+        <TwitterLoginButton />
       </Stack>
     );
   }

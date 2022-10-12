@@ -2,5 +2,5 @@ import { TwitterAccessTokenResponse } from './../../auths-api/twitter-access-tok
 
 export const mockTwitterAccessTokenResponse: TwitterAccessTokenResponse = {
   accessToken: 'xxx',
-  accessTokeSecret: 'xxx',
+  accessTokenSecret: 'xxx',
 };

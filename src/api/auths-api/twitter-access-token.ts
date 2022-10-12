@@ -28,5 +28,5 @@ export type TwitterAccessTokenRequest = {
 
 export type TwitterAccessTokenResponse = {
   accessToken: string;
-  accessTokeSecret: string;
+  accessTokenSecret: string;
 };

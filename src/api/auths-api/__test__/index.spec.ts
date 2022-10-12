@@ -422,7 +422,7 @@ describe('twitterLogin', () => {
   it('handle nomal response', async () => {
     process.env.REACT_APP_MOCK = 'normal';
 
-    const response = await twitterLogin({ accessToken: 'xxx', accessTokeSecret: 'xxx' });
+    const response = await twitterLogin({ accessToken: 'xxx', accessTokenSecret: 'xxx' });
     expect(response.user.userId).toBe(1);
   });
 
@@ -434,7 +434,7 @@ describe('twitterLogin', () => {
       data: {},
       errorMsg: 'Intentional API Error with mock',
     };
-    await expect(twitterLogin({ accessToken: 'xxx', accessTokeSecret: 'xxx' })).rejects.toEqual(
+    await expect(twitterLogin({ accessToken: 'xxx', accessTokenSecret: 'xxx' })).rejects.toEqual(
       expectedApiError,
     );
   });

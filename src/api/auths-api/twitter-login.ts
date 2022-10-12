@@ -11,7 +11,7 @@ export async function twitterLogin(param: TwitterAccessTokenResponse): Promise<L
 
   const requestData: TwitterLoginRequest = {
     access_token: param.accessToken,
-    token_secret: param.accessTokeSecret,
+    token_secret: param.accessTokenSecret,
   };
 
   try {

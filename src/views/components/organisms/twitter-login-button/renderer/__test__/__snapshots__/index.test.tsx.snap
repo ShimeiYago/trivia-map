@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shallow Snapshot Tests basic 1`] = `
+<ForwardRef(LoadingButton)
+  loading={false}
+  onClick={[Function]}
+  startIcon={<Memo />}
+  variant="outlined"
+>
+  Twitterでログイン
+</ForwardRef(LoadingButton)>
+`;

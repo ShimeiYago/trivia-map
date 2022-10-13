@@ -8,6 +8,9 @@ import { registration } from '../registration';
 import { resendEmail } from '../resend-email';
 import { resetPassword } from '../reset-password';
 import { resetPasswordConfirm } from '../reset-password-confirm';
+import { twitterAccessToken } from '../twitter-access-token';
+import { twitterLogin } from '../twitter-login';
+import { twitterRequestToken } from '../twitter-request-token';
 import { updateUserInfo } from '../update-user-info';
 import { verifyEmail } from '../verify-email';
 
@@ -339,5 +342,100 @@ describe('logout', () => {
       errorMsg: 'Intentional API Error with mock',
     };
     await expect(logout()).rejects.toEqual(expectedApiError);
+  });
+});
+
+describe('twitterRequestToken', () => {
+  beforeEach(() => {
+    process.env.REACT_APP_MOCK = '';
+  });
+  afterEach(() => {
+    process.env.REACT_APP_MOCK = '';
+  });
+
+  it('handle nomal response', async () => {
+    process.env.REACT_APP_MOCK = 'normal';
+
+    const response = await twitterRequestToken({ callbackUrl: 'https://xxx' });
+    expect(response.authenticateUrl).toBe(
+      'https://api.twitter.com/oauth/authenticate?oauth_token=xxx',
+    );
+  });
+
+  it('handle error response', async () => {
+    process.env.REACT_APP_MOCK = 'error';
+
+    const expectedApiError: ApiError<unknown> = {
+      status: 500,
+      data: {},
+      errorMsg: 'Intentional API Error with mock',
+    };
+    await expect(twitterRequestToken({ callbackUrl: 'https://xxx' })).rejects.toEqual(
+      expectedApiError,
+    );
+  });
+});
+
+describe('twitterAccessToken', () => {
+  beforeEach(() => {
+    process.env.REACT_APP_MOCK = '';
+  });
+  afterEach(() => {
+    process.env.REACT_APP_MOCK = '';
+  });
+
+  it('handle nomal response', async () => {
+    process.env.REACT_APP_MOCK = 'normal';
+
+    const response = await twitterAccessToken({
+      oauthToken: 'xxx',
+      oauthVerifier: 'xxx',
+    });
+    expect(response.accessToken).toBe('xxx');
+  });
+
+  it('handle error response', async () => {
+    process.env.REACT_APP_MOCK = 'error';
+
+    const expectedApiError: ApiError<unknown> = {
+      status: 500,
+      data: {},
+      errorMsg: 'Intentional API Error with mock',
+    };
+    await expect(
+      twitterAccessToken({
+        oauthToken: 'xxx',
+        oauthVerifier: 'xxx',
+      }),
+    ).rejects.toEqual(expectedApiError);
+  });
+});
+
+describe('twitterLogin', () => {
+  beforeEach(() => {
+    process.env.REACT_APP_MOCK = '';
+  });
+  afterEach(() => {
+    process.env.REACT_APP_MOCK = '';
+  });
+
+  it('handle nomal response', async () => {
+    process.env.REACT_APP_MOCK = 'normal';
+
+    const response = await twitterLogin({ accessToken: 'xxx', accessTokenSecret: 'xxx' });
+    expect(response.user.userId).toBe(1);
+  });
+
+  it('handle error response', async () => {
+    process.env.REACT_APP_MOCK = 'error';
+
+    const expectedApiError: ApiError<unknown> = {
+      status: 500,
+      data: {},
+      errorMsg: 'Intentional API Error with mock',
+    };
+    await expect(twitterLogin({ accessToken: 'xxx', accessTokenSecret: 'xxx' })).rejects.toEqual(
+      expectedApiError,
+    );
   });
 });

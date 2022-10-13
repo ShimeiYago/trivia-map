@@ -33,6 +33,7 @@ import {
   PRIVACY_POLICY_PAGE_LINK,
   CATEGORY_PAGE_LINK,
   SIGNUP_LINK,
+  TWITTER_CALLBACK_LINK,
 } from 'constant/links';
 import { ChangePassword } from 'views/pages/change-password';
 import { ResetPassword } from 'views/pages/reset-password';
@@ -45,6 +46,7 @@ import { InquiryPage } from 'views/pages/inquiry-page';
 import { PrivacyPolicyPage } from 'views/pages/privacy-policy-page';
 import { CategoryPage } from 'views/pages/category-page';
 import { CookiesProvider } from 'react-cookie';
+import { TwitterCallbackPage } from 'views/pages/twitter-callback-page';
 
 // Deactivate all console.log on production
 // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -110,6 +112,10 @@ ReactDOM.render(
                 <Route
                   path={PRIVACY_POLICY_PAGE_LINK}
                   element={errorHandledElement(<PrivacyPolicyPage />)}
+                />
+                <Route
+                  path={TWITTER_CALLBACK_LINK}
+                  element={errorHandledElement(<TwitterCallbackPage />)}
                 />
                 <Route path={INTERNAL_ERROR_LINK} element={<CommonErrorPage errorStatus={500} />} />
                 <Route path="*" element={<CommonErrorPage errorStatus={404} />} />

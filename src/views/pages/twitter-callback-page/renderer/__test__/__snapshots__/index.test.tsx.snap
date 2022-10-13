@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shallow Snapshot Tests basic 1`] = `
+<ForwardRef(Box)
+  sx={
+    Object {
+      "mt": 3,
+    }
+  }
+>
+  <CenterSpinner />
+  <ForwardRef(Typography)
+    align="center"
+    sx={
+      Object {
+        "mt": 3,
+      }
+    }
+  >
+    Twitterでログイン中
+  </ForwardRef(Typography)>
+</ForwardRef(Box)>
+`;
+
+exports[`Shallow Snapshot Tests redirect 1`] = `
+<Navigate
+  to="/"
+/>
+`;

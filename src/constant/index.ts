@@ -5,7 +5,7 @@ export const BASE_URL = process.env.REACT_APP_API_BASE_URL ?? 'http://localhost:
 
 export const SITE_NAME = 'トリビアマップ';
 
-export const DOMAIN = process.env.REACT_APP_DOMAIN ?? 'https://xxx.com'; // TODO
+export const DOMAIN = process.env.REACT_APP_DOMAIN ?? 'http://127.0.0.1:3000'; // TODO
 
 export const ANALYTICS_ID_ENV_KEY = 'REACT_APP_ANALYTICS_ID';
 

@@ -50,7 +50,7 @@ export class Renderer extends React.Component<Props, State> {
   };
 
   protected renderForm = () => {
-    const disabled = this.state.loadingState === 'loading';
+    const disabled = this.state.loadingState === 'loading' || !this.props.user?.email;
 
     return (
       <Box>
@@ -123,18 +123,30 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   protected renderEmail = () => {
+    if (!this.props.user?.email) {
+      return null;
+    }
+
     return (
       <Box sx={{ pl: 1.5 }}>
         <Typography fontSize={12} color="gray" sx={{ pb: 0.5 }}>
           メールアドレス（非公開）
         </Typography>
-        <Typography fontSize={18}>{this.props.user?.email}</Typography>
+        <Typography fontSize={18}>{this.props.user.email}</Typography>
       </Box>
     );
   };
 
   protected renderHeaderInfo() {
     const { errorTitle, errorMessages, loadingState } = this.state;
+
+    if (this.props.user?.email === '') {
+      return (
+        <Alert severity="info">
+          連携されたソーシャルアカウントのプロフィール情報を表示しています。プロフィールを変更する場合は、ソーシャルアカウントを編集してください。
+        </Alert>
+      );
+    }
 
     if (loadingState === 'success') {
       return <Alert>ユーザー情報を変更しました。</Alert>;

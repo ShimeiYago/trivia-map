@@ -69,6 +69,18 @@ describe('Shallow Snapshot Tests', () => {
     });
     expect(wrapper).toMatchSnapshot();
   });
+
+  it('social account', () => {
+    wrapper.setProps({
+      user: {
+        userId: 1,
+        email: '',
+        nickname: 'Axel',
+        icon: null,
+      },
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
 });
 
 describe('componentDidUpdate', () => {

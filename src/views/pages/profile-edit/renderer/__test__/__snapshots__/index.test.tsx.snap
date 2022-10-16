@@ -335,6 +335,93 @@ exports[`Shallow Snapshot Tests loading 1`] = `
 </AdminWrapper>
 `;
 
+exports[`Shallow Snapshot Tests social account 1`] = `
+<AdminWrapper>
+  <ForwardRef(Stack)
+    spacing={3}
+  >
+    <BackToNavi
+      link="/admin/account"
+      text="アカウント管理"
+    />
+    <ForwardRef(Box)>
+      <ForwardRef(Stack)
+        spacing={1}
+        sx={
+          Object {
+            "maxWidth": "400px",
+            "mx": "auto",
+            "px": 1,
+          }
+        }
+      >
+        <ForwardRef(Typography)
+          align="center"
+          component="h2"
+          variant="h5"
+        >
+          プロフィール変更
+        </ForwardRef(Typography)>
+        <ForwardRef(Alert)
+          severity="info"
+        >
+          連携されたソーシャルアカウントのプロフィール情報を表示しています。プロフィールを変更する場合は、ソーシャルアカウントを編集してください。
+        </ForwardRef(Alert)>
+        <ForwardRef(Box)>
+          <ImageField
+            cropable={true}
+            disabled={true}
+            error={false}
+            maxLength={200}
+            onCatchError={[Function]}
+            onChange={[Function]}
+            variant="icon"
+          />
+        </ForwardRef(Box)>
+        <ForwardRef(Box)
+          component="form"
+          noValidate={true}
+        >
+          <ForwardRef(TextField)
+            disabled={true}
+            error={false}
+            fullWidth={true}
+            id="nickname"
+            inputProps={
+              Object {
+                "maxLength": 20,
+              }
+            }
+            label="名前"
+            margin="normal"
+            name="nickname"
+            onChange={[Function]}
+            required={true}
+            type="nickname"
+            value="Axel"
+          />
+          <ForwardRef(LoadingButton)
+            disabled={true}
+            fullWidth={true}
+            loading={false}
+            onClick={[Function]}
+            sx={
+              Object {
+                "mb": 2,
+                "mt": 3,
+              }
+            }
+            variant="contained"
+          >
+            更新
+          </ForwardRef(LoadingButton)>
+        </ForwardRef(Box)>
+      </ForwardRef(Stack)>
+    </ForwardRef(Box)>
+  </ForwardRef(Stack)>
+</AdminWrapper>
+`;
+
 exports[`Shallow Snapshot Tests success 1`] = `
 <AdminWrapper>
   <ForwardRef(Stack)

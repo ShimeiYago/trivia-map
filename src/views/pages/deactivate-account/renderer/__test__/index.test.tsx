@@ -16,6 +16,7 @@ const basicProps: Props = {
   },
   throwError: jest.fn(),
   removeCookie: jest.fn(),
+  updateUser: jest.fn(),
 };
 
 describe('Shallow Snapshot Tests', () => {

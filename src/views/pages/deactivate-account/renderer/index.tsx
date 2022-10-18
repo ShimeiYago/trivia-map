@@ -123,6 +123,7 @@ export class Renderer extends React.Component<Props, State> {
       });
       this.props.removeCookie(COOKIE_NAME.hasAccessToken);
       this.props.removeCookie(COOKIE_NAME.hasRefreshToken);
+      this.props.updateUser();
     } catch (error) {
       this.props.throwError(500);
     }
@@ -134,6 +135,7 @@ export type Props = {
 
   throwError: (errorStatus: number) => void;
   removeCookie: (name: string) => void;
+  updateUser: (user?: User) => void;
 };
 
 export type State = {

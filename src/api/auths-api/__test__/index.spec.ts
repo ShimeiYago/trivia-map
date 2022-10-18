@@ -1,5 +1,6 @@
 import { ApiError } from 'api/utils/handle-axios-error';
 import { changePassword } from '../change-password';
+import { deactivate } from '../deactivate';
 import { getUserInfo } from '../get-user-info';
 import { login } from '../login';
 import { logout } from '../logout';
@@ -437,5 +438,32 @@ describe('twitterLogin', () => {
     await expect(twitterLogin({ accessToken: 'xxx', accessTokenSecret: 'xxx' })).rejects.toEqual(
       expectedApiError,
     );
+  });
+});
+
+describe('deactivate', () => {
+  beforeEach(() => {
+    process.env.REACT_APP_MOCK = '';
+  });
+  afterEach(() => {
+    process.env.REACT_APP_MOCK = '';
+  });
+
+  it('handle nomal response', async () => {
+    process.env.REACT_APP_MOCK = 'normal';
+
+    const response = await deactivate();
+    expect(response).toEqual(undefined);
+  });
+
+  it('handle error response', async () => {
+    process.env.REACT_APP_MOCK = 'error';
+
+    const expectedApiError: ApiError<unknown> = {
+      status: 500,
+      data: {},
+      errorMsg: 'Intentional API Error with mock',
+    };
+    await expect(deactivate()).rejects.toEqual(expectedApiError);
   });
 });

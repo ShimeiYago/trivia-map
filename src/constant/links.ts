@@ -12,6 +12,8 @@ export const PROFILE_SETTINGS_LINK = '/admin/account/profile';
 
 export const PASSWORD_CHANGE_LINK = '/admin/account/password';
 
+export const DEACTIVATE_ACCOUNT_LINK = '/admin/account/deactivate';
+
 export const ARTICLE_PAGE_LINK = (postId: string) => `/articles/${postId}`;
 
 export const EDIT_LINK = (postId: string) => `/map/edit/${postId}`;

@@ -35,6 +35,11 @@ exports[`Shallow Snapshot Tests basic 1`] = `
               "link": "/admin/account/password",
               "text": "パスワード変更",
             },
+            Object {
+              "icon": <Memo />,
+              "link": "/admin/account/deactivate",
+              "text": "アカウント削除",
+            },
           ]
         }
       />

@@ -47,10 +47,16 @@ export class Renderer extends React.Component<Props, State> {
           <Image src={logoImage} width="200px" />
         </Box>
 
-        <Typography component="h1" fontSize={18}>
-          アカウントの削除が完了しました。
-        </Typography>
-        <Typography>ご利用ありがとうございました。</Typography>
+        <Stack spacing={2}>
+          <Typography component="h1" fontSize={18}>
+            アカウントの削除が完了しました。
+          </Typography>
+          <Typography>
+            アカウントの復元を希望する場合は、３０日以内にお問い合わせください。
+          </Typography>
+          <Typography>ご利用ありがとうございました。</Typography>
+        </Stack>
+
         <Typography fontSize={20} sx={{ mt: 3 }}>
           <a href={MAP_PAGE_LINK}>トップへ戻る</a>
         </Typography>
@@ -68,7 +74,7 @@ export class Renderer extends React.Component<Props, State> {
         <TextList
           list={[
             'アカウントを削除すると、このアカウントから投稿された全てのトリビアも自動的に削除されます。',
-            'アカウント削除後も３０日以内であれば後日アカウントの復旧が可能です。',
+            'アカウント削除後にアカウントの復元を希望する場合は、３０日以内にお問い合わせください。',
           ]}
         />
 

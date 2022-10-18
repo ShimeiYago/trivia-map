@@ -23,7 +23,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
         list={
           Array [
             "アカウントを削除すると、このアカウントから投稿された全てのトリビアも自動的に削除されます。",
-            "アカウント削除後も３０日以内であれば後日アカウントの復旧が可能です。",
+            "アカウント削除後にアカウントの復元を希望する場合は、３０日以内にお問い合わせください。",
           ]
         }
       />
@@ -67,7 +67,7 @@ exports[`Shallow Snapshot Tests loading 1`] = `
         list={
           Array [
             "アカウントを削除すると、このアカウントから投稿された全てのトリビアも自動的に削除されます。",
-            "アカウント削除後も３０日以内であれば後日アカウントの復旧が可能です。",
+            "アカウント削除後にアカウントの復元を希望する場合は、３０日以内にお問い合わせください。",
           ]
         }
       />
@@ -110,15 +110,22 @@ exports[`Shallow Snapshot Tests success 1`] = `
       width="200px"
     />
   </ForwardRef(Box)>
-  <ForwardRef(Typography)
-    component="h1"
-    fontSize={18}
+  <ForwardRef(Stack)
+    spacing={2}
   >
-    アカウントの削除が完了しました。
-  </ForwardRef(Typography)>
-  <ForwardRef(Typography)>
-    ご利用ありがとうございました。
-  </ForwardRef(Typography)>
+    <ForwardRef(Typography)
+      component="h1"
+      fontSize={18}
+    >
+      アカウントの削除が完了しました。
+    </ForwardRef(Typography)>
+    <ForwardRef(Typography)>
+      アカウントの復元を希望する場合は、３０日以内にお問い合わせください。
+    </ForwardRef(Typography)>
+    <ForwardRef(Typography)>
+      ご利用ありがとうございました。
+    </ForwardRef(Typography)>
+  </ForwardRef(Stack)>
   <ForwardRef(Typography)
     fontSize={20}
     sx={

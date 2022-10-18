@@ -6,6 +6,7 @@ export const PAGE_NAMES = {
   accountSettings: 'アカウント管理',
   profileEdit: 'プロフィール変更',
   passwordChange: 'パスワード変更',
+  deactivateAccount: 'アカウント削除',
   articles: '投稿一覧＆検索',
   passwordInitialize: 'パスワード初期化',
   verifyEmail: 'メールアドレス確認',

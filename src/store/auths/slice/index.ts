@@ -15,7 +15,7 @@ export const authsSlice = createSlice({
       state.user = action.payload;
     },
 
-    updateUser(state, action: PayloadAction<User>) {
+    updateUser(state, action: PayloadAction<User | undefined>) {
       state.user = action.payload;
     },
 

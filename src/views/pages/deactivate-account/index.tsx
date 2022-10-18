@@ -6,6 +6,8 @@ import { CommonHelmet } from 'helper-components/common-helmet';
 import { pageTitleGenerator } from 'utils/page-title-generator';
 import { PAGE_NAMES } from 'constant/page-names';
 import { useCookies } from 'react-cookie';
+import { updateUser } from 'store/auths/actions';
+import { User } from 'types/user';
 
 export function DeactivateAccount() {
   const dispatch = useAppDispatch();
@@ -15,6 +17,7 @@ export function DeactivateAccount() {
     user: useAppSelector(selectUser),
 
     throwError: (errorStatus: number) => dispatch(throwError(errorStatus)),
+    updateUser: (user?: User) => dispatch(updateUser(user)),
     removeCookie: (name: string) => removeCookie(name),
   };
 

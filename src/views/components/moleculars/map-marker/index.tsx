@@ -102,7 +102,8 @@ export class MapMarker extends React.Component<Props, State> {
       });
 
       const position = new LatLng(this.props.position.lat + 30, this.props.position.lng);
-      this.props.map.flyTo(position, ZOOMS.popupOpen);
+      const zoom = this.props.map.getZoom() >= ZOOMS.popupOpen ? undefined : ZOOMS.popupOpen;
+      this.props.map.flyTo(position, zoom);
     },
 
     popupclose: async () => {

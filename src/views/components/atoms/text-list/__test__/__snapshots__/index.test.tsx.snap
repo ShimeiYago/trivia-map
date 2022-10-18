@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shallow Snapshot Tests base 1`] = `
+<ForwardRef(Stack)
+  className="ul"
+  component="ul"
+  spacing={1}
+>
+  <ForwardRef(Typography)
+    component="li"
+    key="text-list-0"
+  >
+    xxx
+  </ForwardRef(Typography)>
+  <ForwardRef(Typography)
+    component="li"
+    key="text-list-1"
+  >
+    yyy
+  </ForwardRef(Typography)>
+</ForwardRef(Stack)>
+`;

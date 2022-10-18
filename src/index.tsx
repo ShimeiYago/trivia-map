@@ -34,6 +34,7 @@ import {
   CATEGORY_PAGE_LINK,
   SIGNUP_LINK,
   TWITTER_CALLBACK_LINK,
+  DEACTIVATE_ACCOUNT_LINK,
 } from 'constant/links';
 import { ChangePassword } from 'views/pages/change-password';
 import { ResetPassword } from 'views/pages/reset-password';
@@ -47,6 +48,7 @@ import { PrivacyPolicyPage } from 'views/pages/privacy-policy-page';
 import { CategoryPage } from 'views/pages/category-page';
 import { CookiesProvider } from 'react-cookie';
 import { TwitterCallbackPage } from 'views/pages/twitter-callback-page';
+import { DeactivateAccount } from 'views/pages/deactivate-account';
 
 // Deactivate all console.log on production
 // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -98,6 +100,10 @@ ReactDOM.render(
                 <Route
                   path={PASSWORD_CHANGE_LINK}
                   element={errorHandledElement(<ChangePassword />)}
+                />
+                <Route
+                  path={DEACTIVATE_ACCOUNT_LINK}
+                  element={errorHandledElement(<DeactivateAccount />)}
                 />
                 <Route
                   path={VERIFY_EMAIL_LINK(':verifyKey')}

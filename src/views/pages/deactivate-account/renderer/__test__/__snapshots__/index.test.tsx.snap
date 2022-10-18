@@ -1,0 +1,144 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shallow Snapshot Tests basic 1`] = `
+<AdminWrapper>
+  <ForwardRef(Stack)
+    spacing={3}
+  >
+    <BackToNavi
+      link="/admin/account"
+      text="アカウント管理"
+    />
+    <ForwardRef(Stack)
+      spacing={3}
+    >
+      <ForwardRef(Typography)
+        align="center"
+        component="h2"
+        variant="h5"
+      >
+        アカウント削除
+      </ForwardRef(Typography)>
+      <TextList
+        list={
+          Array [
+            "アカウントを削除すると、このアカウントから投稿された全てのトリビアも自動的に削除されます。",
+            "アカウント削除後にアカウントの復元を希望する場合は、３０日以内にお問い合わせください。",
+          ]
+        }
+      />
+      <ForwardRef(Typography)
+        align="center"
+      >
+        <ForwardRef(Button)
+          color="error"
+          disabled={false}
+          onClick={[Function]}
+          variant="contained"
+        >
+          アカウントを削除する
+        </ForwardRef(Button)>
+      </ForwardRef(Typography)>
+    </ForwardRef(Stack)>
+  </ForwardRef(Stack)>
+</AdminWrapper>
+`;
+
+exports[`Shallow Snapshot Tests loading 1`] = `
+<AdminWrapper>
+  <ForwardRef(Stack)
+    spacing={3}
+  >
+    <BackToNavi
+      link="/admin/account"
+      text="アカウント管理"
+    />
+    <ForwardRef(Stack)
+      spacing={3}
+    >
+      <ForwardRef(Typography)
+        align="center"
+        component="h2"
+        variant="h5"
+      >
+        アカウント削除
+      </ForwardRef(Typography)>
+      <TextList
+        list={
+          Array [
+            "アカウントを削除すると、このアカウントから投稿された全てのトリビアも自動的に削除されます。",
+            "アカウント削除後にアカウントの復元を希望する場合は、３０日以内にお問い合わせください。",
+          ]
+        }
+      />
+      <ForwardRef(Typography)
+        align="center"
+      >
+        <ForwardRef(Button)
+          color="error"
+          disabled={true}
+          onClick={[Function]}
+          variant="contained"
+        >
+          アカウントを削除する
+        </ForwardRef(Button)>
+      </ForwardRef(Typography)>
+    </ForwardRef(Stack)>
+  </ForwardRef(Stack)>
+</AdminWrapper>
+`;
+
+exports[`Shallow Snapshot Tests success 1`] = `
+<ForwardRef(Typography)
+  align="center"
+  component="div"
+  sx={
+    Object {
+      "mt": 3,
+    }
+  }
+>
+  <ForwardRef(Box)
+    sx={
+      Object {
+        "mb": 5,
+      }
+    }
+  >
+    <Image
+      src="trivia-map-logo-black.png"
+      width="200px"
+    />
+  </ForwardRef(Box)>
+  <ForwardRef(Stack)
+    spacing={2}
+  >
+    <ForwardRef(Typography)
+      component="h1"
+      fontSize={18}
+    >
+      アカウントの削除が完了しました。
+    </ForwardRef(Typography)>
+    <ForwardRef(Typography)>
+      アカウントの復元を希望する場合は、３０日以内にお問い合わせください。
+    </ForwardRef(Typography)>
+    <ForwardRef(Typography)>
+      ご利用ありがとうございました。
+    </ForwardRef(Typography)>
+  </ForwardRef(Stack)>
+  <ForwardRef(Typography)
+    fontSize={20}
+    sx={
+      Object {
+        "mt": 3,
+      }
+    }
+  >
+    <a
+      href="/"
+    >
+      トップへ戻る
+    </a>
+  </ForwardRef(Typography)>
+</ForwardRef(Typography)>
+`;

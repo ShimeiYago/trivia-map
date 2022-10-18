@@ -208,6 +208,7 @@ exports[`Shallow Snapshot Tests with popup 1`] = `
     map={
       Object {
         "flyTo": [MockFunction],
+        "getZoom": [Function],
       }
     }
     popup="popup-text"

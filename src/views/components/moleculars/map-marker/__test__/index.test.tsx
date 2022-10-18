@@ -8,7 +8,7 @@ const basicProps: Props = {
   position: new LatLng(0, 0),
   variant: 'blue',
   autoOpen: false,
-  map: { flyTo: jest.fn() } as unknown as LeafletMap,
+  map: { flyTo: jest.fn(), getZoom: () => 1 } as unknown as LeafletMap,
 };
 
 describe('Shallow Snapshot Tests', () => {
@@ -110,6 +110,20 @@ describe('eventHandlers popupopen & popupclose', () => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (instance['eventHandlers'] as any).popupopen();
     expect(instance.state.isPopupOpened).toBeTruthy();
+  });
+
+  it('popupopen should call flyTo without zoom if already zoomed', () => {
+    wrapper.setProps({
+      map: { flyTo: jest.fn(), getZoom: () => 5 } as unknown as LeafletMap,
+    });
+    const instance = wrapper.instance();
+    instance.setState({
+      isPopupOpened: false,
+    });
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (instance['eventHandlers'] as any).popupopen();
+    expect(instance.props.map.flyTo).toBeCalled();
   });
 
   it('popupclose should set isPopupOpened state false', async () => {

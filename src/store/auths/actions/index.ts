@@ -68,10 +68,11 @@ export const logout =
     dispatch(logoutStart());
     try {
       await logoutApi();
-      dispatch(logoutSuccess());
 
       removeCookie(COOKIE_NAME.hasAccessToken);
       removeCookie(COOKIE_NAME.hasRefreshToken);
+
+      dispatch(logoutSuccess());
 
       // In order to set loggedOutSuccessfully false
       await sleep(3000);

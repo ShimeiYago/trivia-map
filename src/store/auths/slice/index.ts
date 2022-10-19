@@ -32,9 +32,9 @@ export const authsSlice = createSlice({
     },
 
     logoutSuccess(state) {
-      state.loggedOutSuccessfully = true;
       state.user = undefined;
       state.autoLoggingInState = 'error';
+      state.loggedOutSuccessfully = true;
     },
   },
 });

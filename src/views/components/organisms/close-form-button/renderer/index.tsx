@@ -60,11 +60,11 @@ export class Renderer extends React.Component<Props, State> {
         <DialogTitle>変更が保存されていません</DialogTitle>
         <DialogContent>未保存のデータがありますが、本当に閉じてもよろしいですか？</DialogContent>
         <DialogActions sx={{ mr: 1, mb: 1 }}>
-          <Button onClick={this.handleClose} variant="contained">
-            保存せず閉じる
-          </Button>
           <Button onClick={this.cancelToClose} variant="outlined">
             編集を再開する
+          </Button>
+          <Button onClick={this.handleClose} variant="contained">
+            保存せず閉じる
           </Button>
         </DialogActions>
       </Dialog>

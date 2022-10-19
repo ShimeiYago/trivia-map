@@ -104,6 +104,13 @@ exports[`Shallow Snapshot Tests already logged in 1`] = `
       }
     }
   >
+    <ForwardRef(Divider)
+      sx={
+        Object {
+          "my": 2,
+        }
+      }
+    />
     <ForwardRef(Typography)
       align="center"
       sx={
@@ -213,6 +220,13 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       }
     }
   >
+    <ForwardRef(Divider)
+      sx={
+        Object {
+          "my": 2,
+        }
+      }
+    />
     <ForwardRef(Typography)
       align="center"
       sx={
@@ -343,6 +357,13 @@ exports[`Shallow Snapshot Tests error case 1`] = `
       }
     }
   >
+    <ForwardRef(Divider)
+      sx={
+        Object {
+          "my": 2,
+        }
+      }
+    />
     <ForwardRef(Typography)
       align="center"
       sx={
@@ -452,6 +473,13 @@ exports[`Shallow Snapshot Tests loading 1`] = `
       }
     }
   >
+    <ForwardRef(Divider)
+      sx={
+        Object {
+          "my": 2,
+        }
+      }
+    />
     <ForwardRef(Typography)
       align="center"
       sx={

@@ -35,15 +35,15 @@ exports[`Shallow Snapshot Tests basic 1`] = `
     >
       <ForwardRef(Button)
         onClick={[Function]}
-        variant="contained"
-      >
-        保存せず閉じる
-      </ForwardRef(Button)>
-      <ForwardRef(Button)
-        onClick={[Function]}
         variant="outlined"
       >
         編集を再開する
+      </ForwardRef(Button)>
+      <ForwardRef(Button)
+        onClick={[Function]}
+        variant="contained"
+      >
+        保存せず閉じる
       </ForwardRef(Button)>
     </ForwardRef(DialogActions)>
   </ForwardRef(Dialog)>

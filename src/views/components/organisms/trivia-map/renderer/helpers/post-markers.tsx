@@ -49,13 +49,14 @@ export class PostMarkers extends React.Component<Props> {
     return (
       <Box sx={{ textAlign: 'right', mt: 2 }}>
         <Button onClick={this.handleClickAdd(position)} startIcon={<AddLocationAltIcon />}>
-          {this.props.editting ? 'ここにマーカーを置く' : 'ここに投稿を追加する'}
+          {this.props.editting ? 'ここにマーカーを置く' : 'ここにトリビアを追加する'}
         </Button>
       </Box>
     );
   };
 
   protected handleClickAdd = (position: Position) => () => {
+    console.log(position);
     this.props.openFormWithTheMarker(position);
   };
 }

@@ -208,6 +208,7 @@ export class Renderer extends React.Component<Props, State> {
     this.setState({
       openFormModal: false,
       edittingPostId: undefined,
+      newMarkerMode: false,
     });
   };
 

@@ -14,6 +14,9 @@ export const API_TIMEOUT = {
   long: 30000,
 };
 
+export const MAP_MAX_COORINATE = 255;
+export const MAP_MARGIN = 50;
+
 export const CATEGORIES = [
   {
     categoryId: 1,

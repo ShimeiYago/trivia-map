@@ -12,19 +12,54 @@ exports[`Shallow Snapshot Tests basic 1`] = `
   <MapContainer
     center={
       Object {
-        "lat": 0,
-        "lng": 0,
+        "lat": -127.5,
+        "lng": 127.5,
+      }
+    }
+    crs={
+      Object {
+        "distance": [Function],
+        "getProjectedBounds": [Function],
+        "infinite": true,
+        "latLngToPoint": [Function],
+        "pointToLatLng": [Function],
+        "project": [Function],
+        "projection": Object {
+          "bounds": Object {
+            "max": Object {
+              "x": 180,
+              "y": 90,
+            },
+            "min": Object {
+              "x": -180,
+              "y": -90,
+            },
+          },
+          "project": [Function],
+          "unproject": [Function],
+        },
+        "scale": [Function],
+        "transformation": Object {
+          "_a": 1,
+          "_b": 0,
+          "_c": -1,
+          "_d": 0,
+        },
+        "unproject": [Function],
+        "wrapLatLng": [Function],
+        "wrapLatLngBounds": [Function],
+        "zoom": [Function],
       }
     }
     maxBounds={
       Array [
         Array [
-          300,
-          -300,
+          50,
+          -50,
         ],
         Array [
-          -300,
-          300,
+          -305,
+          305,
         ],
       ]
     }
@@ -98,8 +133,43 @@ exports[`Shallow Snapshot Tests disabled map 1`] = `
     boxZoom={false}
     center={
       Object {
-        "lat": 0,
-        "lng": 0,
+        "lat": -127.5,
+        "lng": 127.5,
+      }
+    }
+    crs={
+      Object {
+        "distance": [Function],
+        "getProjectedBounds": [Function],
+        "infinite": true,
+        "latLngToPoint": [Function],
+        "pointToLatLng": [Function],
+        "project": [Function],
+        "projection": Object {
+          "bounds": Object {
+            "max": Object {
+              "x": 180,
+              "y": 90,
+            },
+            "min": Object {
+              "x": -180,
+              "y": -90,
+            },
+          },
+          "project": [Function],
+          "unproject": [Function],
+        },
+        "scale": [Function],
+        "transformation": Object {
+          "_a": 1,
+          "_b": 0,
+          "_c": -1,
+          "_d": 0,
+        },
+        "unproject": [Function],
+        "wrapLatLng": [Function],
+        "wrapLatLngBounds": [Function],
+        "zoom": [Function],
       }
     }
     doubleClickZoom={false}
@@ -108,12 +178,12 @@ exports[`Shallow Snapshot Tests disabled map 1`] = `
     maxBounds={
       Array [
         Array [
-          300,
-          -300,
+          50,
+          -50,
         ],
         Array [
-          -300,
-          300,
+          -305,
+          305,
         ],
       ]
     }
@@ -163,19 +233,54 @@ exports[`Shallow Snapshot Tests land map 1`] = `
   <MapContainer
     center={
       Object {
-        "lat": 0,
-        "lng": 0,
+        "lat": -127.5,
+        "lng": 127.5,
+      }
+    }
+    crs={
+      Object {
+        "distance": [Function],
+        "getProjectedBounds": [Function],
+        "infinite": true,
+        "latLngToPoint": [Function],
+        "pointToLatLng": [Function],
+        "project": [Function],
+        "projection": Object {
+          "bounds": Object {
+            "max": Object {
+              "x": 180,
+              "y": 90,
+            },
+            "min": Object {
+              "x": -180,
+              "y": -90,
+            },
+          },
+          "project": [Function],
+          "unproject": [Function],
+        },
+        "scale": [Function],
+        "transformation": Object {
+          "_a": 1,
+          "_b": 0,
+          "_c": -1,
+          "_d": 0,
+        },
+        "unproject": [Function],
+        "wrapLatLng": [Function],
+        "wrapLatLngBounds": [Function],
+        "zoom": [Function],
       }
     }
     maxBounds={
       Array [
         Array [
-          300,
-          -300,
+          50,
+          -50,
         ],
         Array [
-          -300,
-          300,
+          -305,
+          305,
         ],
       ]
     }
@@ -248,19 +353,54 @@ exports[`Shallow Snapshot Tests when currentPosition state is setted 1`] = `
   <MapContainer
     center={
       Object {
-        "lat": 0,
-        "lng": 0,
+        "lat": -127.5,
+        "lng": 127.5,
+      }
+    }
+    crs={
+      Object {
+        "distance": [Function],
+        "getProjectedBounds": [Function],
+        "infinite": true,
+        "latLngToPoint": [Function],
+        "pointToLatLng": [Function],
+        "project": [Function],
+        "projection": Object {
+          "bounds": Object {
+            "max": Object {
+              "x": 180,
+              "y": 90,
+            },
+            "min": Object {
+              "x": -180,
+              "y": -90,
+            },
+          },
+          "project": [Function],
+          "unproject": [Function],
+        },
+        "scale": [Function],
+        "transformation": Object {
+          "_a": 1,
+          "_b": 0,
+          "_c": -1,
+          "_d": 0,
+        },
+        "unproject": [Function],
+        "wrapLatLng": [Function],
+        "wrapLatLngBounds": [Function],
+        "zoom": [Function],
       }
     }
     maxBounds={
       Array [
         Array [
-          300,
-          -300,
+          50,
+          -50,
         ],
         Array [
-          -300,
-          300,
+          -305,
+          305,
         ],
       ]
     }
@@ -443,15 +583,50 @@ exports[`Shallow Snapshot Tests with initCenter prop 1`] = `
         "lng": 1,
       }
     }
+    crs={
+      Object {
+        "distance": [Function],
+        "getProjectedBounds": [Function],
+        "infinite": true,
+        "latLngToPoint": [Function],
+        "pointToLatLng": [Function],
+        "project": [Function],
+        "projection": Object {
+          "bounds": Object {
+            "max": Object {
+              "x": 180,
+              "y": 90,
+            },
+            "min": Object {
+              "x": -180,
+              "y": -90,
+            },
+          },
+          "project": [Function],
+          "unproject": [Function],
+        },
+        "scale": [Function],
+        "transformation": Object {
+          "_a": 1,
+          "_b": 0,
+          "_c": -1,
+          "_d": 0,
+        },
+        "unproject": [Function],
+        "wrapLatLng": [Function],
+        "wrapLatLngBounds": [Function],
+        "zoom": [Function],
+      }
+    }
     maxBounds={
       Array [
         Array [
-          300,
-          -300,
+          50,
+          -50,
         ],
         Array [
-          -300,
-          300,
+          -305,
+          305,
         ],
       ]
     }
@@ -556,19 +731,54 @@ exports[`Shallow Snapshot Tests with width and height props 1`] = `
   <MapContainer
     center={
       Object {
-        "lat": 0,
-        "lng": 0,
+        "lat": -127.5,
+        "lng": 127.5,
+      }
+    }
+    crs={
+      Object {
+        "distance": [Function],
+        "getProjectedBounds": [Function],
+        "infinite": true,
+        "latLngToPoint": [Function],
+        "pointToLatLng": [Function],
+        "project": [Function],
+        "projection": Object {
+          "bounds": Object {
+            "max": Object {
+              "x": 180,
+              "y": 90,
+            },
+            "min": Object {
+              "x": -180,
+              "y": -90,
+            },
+          },
+          "project": [Function],
+          "unproject": [Function],
+        },
+        "scale": [Function],
+        "transformation": Object {
+          "_a": 1,
+          "_b": 0,
+          "_c": -1,
+          "_d": 0,
+        },
+        "unproject": [Function],
+        "wrapLatLng": [Function],
+        "wrapLatLngBounds": [Function],
+        "zoom": [Function],
       }
     }
     maxBounds={
       Array [
         Array [
-          300,
-          -300,
+          50,
+          -50,
         ],
         Array [
-          -300,
-          300,
+          -305,
+          305,
         ],
       ]
     }

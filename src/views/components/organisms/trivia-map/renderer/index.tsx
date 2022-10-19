@@ -11,9 +11,10 @@ import { LoadingState } from 'types/loading-state';
 import { PostMarkers } from './helpers/post-markers';
 import { Marker } from 'store/markers/model';
 import { Park } from 'types/park';
-import { TDL_TILE_URL, TDS_TILE_URL, ZOOMS } from 'constant';
+import { MAP_MARGIN, MAP_MAX_COORINATE, TDL_TILE_URL, TDS_TILE_URL, ZOOMS } from 'constant';
 import ChangeCircleOutlinedIcon from '@mui/icons-material/ChangeCircleOutlined';
 import TouchAppIcon from '@mui/icons-material/TouchApp';
+import { CRS } from 'leaflet';
 
 export class Renderer extends React.Component<Props, State> {
   static readonly defaultProps: Pick<Props, 'newMarkerMode' | 'initZoom'> = {
@@ -78,7 +79,10 @@ export class Renderer extends React.Component<Props, State> {
       height: height ?? '100%',
     };
 
-    const center = initCenter ? new LatLng(initCenter.lat, initCenter.lng) : new LatLng(0, 0);
+    const centerCoord = MAP_MAX_COORINATE / 2;
+    const center = initCenter
+      ? new LatLng(initCenter.lat, initCenter.lng)
+      : new LatLng(-centerCoord, centerCoord);
 
     const disabledProps: MapContainerProps = {
       dragging: false,
@@ -99,9 +103,10 @@ export class Renderer extends React.Component<Props, State> {
           zoomControl={false}
           minZoom={ZOOMS.min}
           maxZoom={ZOOMS.max}
+          crs={CRS.Simple}
           maxBounds={[
-            [300, -300],
-            [-300, 300],
+            [MAP_MARGIN, -MAP_MARGIN],
+            [-MAP_MAX_COORINATE - MAP_MARGIN, MAP_MAX_COORINATE + MAP_MARGIN],
           ]}
           whenCreated={this.handleMapCreated}
           tap={false}

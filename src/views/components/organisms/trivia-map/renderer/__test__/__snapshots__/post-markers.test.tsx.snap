@@ -35,7 +35,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
             onClick={[Function]}
             startIcon={<Memo />}
           >
-            ここに投稿を追加する
+            ここにトリビアを追加する
           </ForwardRef(Button)>
         </ForwardRef(Box)>
       </ForwardRef(Box)>
@@ -82,7 +82,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
             onClick={[Function]}
             startIcon={<Memo />}
           >
-            ここに投稿を追加する
+            ここにトリビアを追加する
           </ForwardRef(Button)>
         </ForwardRef(Box)>
       </ForwardRef(Box)>
@@ -232,7 +232,7 @@ exports[`Shallow Snapshot Tests with hiddenMarkerIds 1`] = `
             onClick={[Function]}
             startIcon={<Memo />}
           >
-            ここに投稿を追加する
+            ここにトリビアを追加する
           </ForwardRef(Button)>
         </ForwardRef(Box)>
       </ForwardRef(Box)>

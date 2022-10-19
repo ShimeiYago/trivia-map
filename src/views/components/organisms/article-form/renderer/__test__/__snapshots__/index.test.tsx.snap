@@ -201,7 +201,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
         disabled={false}
         loading={false}
         onClick={[Function]}
-        variant="outlined"
+        variant="contained"
       >
         保存して公開
       </ForwardRef(LoadingButton)>
@@ -411,7 +411,7 @@ exports[`Shallow Snapshot Tests draft mode 1`] = `
         disabled={false}
         loading={false}
         onClick={[Function]}
-        variant="outlined"
+        variant="contained"
       >
         下書き保存
       </ForwardRef(LoadingButton)>
@@ -601,7 +601,7 @@ exports[`Shallow Snapshot Tests loading 1`] = `
         disabled={true}
         loading={false}
         onClick={[Function]}
-        variant="outlined"
+        variant="contained"
       >
         保存して公開
       </ForwardRef(LoadingButton)>
@@ -804,7 +804,7 @@ exports[`Shallow Snapshot Tests position is not selected yet 1`] = `
         disabled={false}
         loading={false}
         onClick={[Function]}
-        variant="outlined"
+        variant="contained"
       >
         保存して公開
       </ForwardRef(LoadingButton)>
@@ -1014,7 +1014,7 @@ exports[`Shallow Snapshot Tests with category 1`] = `
         disabled={false}
         loading={false}
         onClick={[Function]}
-        variant="outlined"
+        variant="contained"
       >
         保存して公開
       </ForwardRef(LoadingButton)>
@@ -1239,7 +1239,7 @@ exports[`Shallow Snapshot Tests with close button 1`] = `
         disabled={false}
         loading={false}
         onClick={[Function]}
-        variant="outlined"
+        variant="contained"
       >
         保存して公開
       </ForwardRef(LoadingButton)>
@@ -1446,7 +1446,7 @@ exports[`Shallow Snapshot Tests with image data url 1`] = `
         disabled={false}
         loading={false}
         onClick={[Function]}
-        variant="outlined"
+        variant="contained"
       >
         保存して公開
       </ForwardRef(LoadingButton)>
@@ -1653,7 +1653,7 @@ exports[`Shallow Snapshot Tests with image url 1`] = `
         disabled={false}
         loading={false}
         onClick={[Function]}
-        variant="outlined"
+        variant="contained"
       >
         保存して公開
       </ForwardRef(LoadingButton)>
@@ -1871,7 +1871,7 @@ exports[`Shallow Snapshot Tests with validation error 1`] = `
         disabled={false}
         loading={false}
         onClick={[Function]}
-        variant="outlined"
+        variant="contained"
       >
         保存して公開
       </ForwardRef(LoadingButton)>

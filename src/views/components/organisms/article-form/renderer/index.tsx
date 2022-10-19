@@ -13,6 +13,8 @@ import {
   Select,
   MenuItem,
   SelectChangeEvent,
+  Alert,
+  Button,
 } from '@mui/material';
 import { LoadingState } from 'types/loading-state';
 import { Position } from 'types/position';
@@ -121,7 +123,7 @@ export class Renderer extends React.Component<Props> {
               </Box>
             )}
 
-            {this.renderHeaderError()}
+            {this.renderHeaderMessage()}
 
             <TextField
               label="タイトル"
@@ -224,7 +226,7 @@ export class Renderer extends React.Component<Props> {
 
             <LoadingButton
               loading={submittingState === 'loading'}
-              variant="outlined"
+              variant="contained"
               disabled={disabled}
               onClick={this.handleSubmitButton}
             >
@@ -282,10 +284,14 @@ export class Renderer extends React.Component<Props> {
 
   protected handleSubmitButton = () => {
     if (!this.props.userInfo) {
-      return this.props.toggleAuthFormModal(true);
+      return this.openAuthModal();
     }
 
     this.props.submitArticle();
+  };
+
+  protected openAuthModal = () => {
+    this.props.toggleAuthFormModal(true);
   };
 
   protected getMiniMapText() {
@@ -308,14 +314,26 @@ export class Renderer extends React.Component<Props> {
     );
   }
 
-  protected renderHeaderError() {
-    const { formError } = this.props;
+  protected renderHeaderMessage() {
+    const { formError, userInfo } = this.props;
 
-    if (!formError) {
-      return null;
+    if (formError) {
+      return <HeaderErrorMessages errorTitle={formError.errorTitle} />;
     }
 
-    return <HeaderErrorMessages errorTitle={formError.errorTitle} />;
+    if (!userInfo) {
+      return (
+        <Alert severity="info">
+          新しいトリビアを投稿するには
+          <Button sx={{ p: 0 }} onClick={this.openAuthModal}>
+            ログイン
+          </Button>
+          が必要です。
+        </Alert>
+      );
+    }
+
+    return null;
   }
 
   protected handleImageChange = (src: SelializedImageFile | null) => {

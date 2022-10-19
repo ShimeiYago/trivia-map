@@ -56,7 +56,6 @@ export class PostMarkers extends React.Component<Props> {
   };
 
   protected handleClickAdd = (position: Position) => () => {
-    console.log(position);
     this.props.openFormWithTheMarker(position);
   };
 }

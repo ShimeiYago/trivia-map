@@ -1,7 +1,7 @@
 import React from 'react';
 import { LoadingState } from 'types/loading-state';
 import { User } from 'types/user';
-import { Alert, Box, Button, Grid, Stack, TextField, Typography } from '@mui/material';
+import { Alert, Box, Button, Divider, Grid, Stack, TextField, Typography } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 import { login, ValidationError } from 'api/auths-api/login';
 import { ApiError } from 'api/utils/handle-axios-error';
@@ -85,6 +85,7 @@ export class LoginForm extends React.Component<Props, State> {
         </Box>
 
         <Box sx={{ textAlign: 'center' }}>
+          <Divider sx={{ my: 2 }} />
           <Typography align="center" sx={{ my: 2 }}>
             または
           </Typography>

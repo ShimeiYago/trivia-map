@@ -46,7 +46,7 @@ export class MapMarker extends React.Component<Props, State> {
 
     if (!this.props.popup) {
       return (
-        <>
+        <div>
           <Marker
             position={this.props.position}
             icon={icon}
@@ -54,8 +54,8 @@ export class MapMarker extends React.Component<Props, State> {
             ref={this.markerRef}
             eventHandlers={this.eventHandlers}
           />
-          {numberCircleMarker}
-        </>
+          <div>{numberCircleMarker}</div>
+        </div>
       );
     }
 

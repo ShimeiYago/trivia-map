@@ -361,7 +361,7 @@ exports[`Shallow Snapshot Tests when currentPosition state is setted 1`] = `
               xs={10}
             >
               <ForwardRef(Typography)>
-                マーカーを掴んで位置を調整してみましょう。
+                マーカーを掴んで位置を調整しましょう。
               </ForwardRef(Typography)>
             </ForwardRef(Grid)>
             <ForwardRef(Grid)
@@ -375,7 +375,7 @@ exports[`Shallow Snapshot Tests when currentPosition state is setted 1`] = `
               xs={10}
             >
               <ForwardRef(Typography)>
-                あとから何度でも変更できます。
+                あとから位置を変更することができます。
               </ForwardRef(Typography)>
             </ForwardRef(Grid)>
           </ForwardRef(Grid)>

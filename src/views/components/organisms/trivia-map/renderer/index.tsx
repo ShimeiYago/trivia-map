@@ -198,13 +198,13 @@ export class Renderer extends React.Component<Props, State> {
             <TouchAppIcon />
           </Grid>
           <Grid item xs={10}>
-            <Typography>マーカーを掴んで位置を調整してみましょう。</Typography>
+            <Typography>マーカーを掴んで位置を調整しましょう。</Typography>
           </Grid>
           <Grid item xs={2}>
             <ChangeCircleOutlinedIcon />
           </Grid>
           <Grid item xs={10}>
-            <Typography>あとから何度でも変更できます。</Typography>
+            <Typography>あとから位置を変更することができます。</Typography>
           </Grid>
         </Grid>
 

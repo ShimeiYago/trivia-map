@@ -17,6 +17,7 @@ export class Renderer extends React.Component<Props, State> {
         startIcon={<TwitterIcon />}
         onClick={this.handleClick}
         loading={this.state.loading}
+        fullWidth={true}
       >
         Twitterでログイン
       </LoadingButton>

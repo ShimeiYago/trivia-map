@@ -31,7 +31,8 @@ import { Image } from 'views/components/atoms/image';
 import { SITE_NAME } from 'constant';
 import { AuthFormMode } from '../../auth-forms/renderer';
 import noIcon from 'images/no-icon.jpg';
-
+import { TwitterLoginButton } from '../../twitter-login-button';
+import EmailIcon from '@mui/icons-material/Email';
 export class Renderer extends React.Component<Props, State> {
   static readonly defaultProps: Pick<Props, 'topBarPosition'> = {
     topBarPosition: 'fixed',
@@ -192,15 +193,15 @@ export class Renderer extends React.Component<Props, State> {
           </Typography>
           <Typography align="center" component="div" sx={{ mb: 1 }}>
             <Button
-              variant="contained"
+              variant="outlined"
               onClick={this.toggleAuthModal(true, 'login')}
-              sx={{ mb: 1 }}
+              sx={{ my: 2 }}
+              startIcon={<EmailIcon />}
+              fullWidth={true}
             >
-              ログイン
+              メールでログイン
             </Button>
-            <Button variant="contained" onClick={this.toggleAuthModal(true, 'signup')}>
-              アカウント作成
-            </Button>
+            <TwitterLoginButton />
           </Typography>
         </Box>
       );

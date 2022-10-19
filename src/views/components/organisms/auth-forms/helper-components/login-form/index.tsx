@@ -84,7 +84,13 @@ export class LoginForm extends React.Component<Props, State> {
           </Grid>
         </Box>
 
-        <TwitterLoginButton />
+        <Box sx={{ textAlign: 'center' }}>
+          <Typography align="center" sx={{ my: 2 }}>
+            または
+          </Typography>
+
+          <TwitterLoginButton />
+        </Box>
       </Stack>
     );
   }

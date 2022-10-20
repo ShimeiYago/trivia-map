@@ -244,6 +244,7 @@ export class Renderer extends React.Component<Props, State> {
           onDragStart={this.handleDragStartNewMarker}
           onDragEnd={this.handleDragEndNewMarker}
           isMobile={isMobile}
+          zIndexOffset={999}
         />
       )
     );

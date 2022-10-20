@@ -7,10 +7,11 @@ import { CustomMarker } from './helpers/custom-marker';
 import { ZOOMS } from 'constant';
 
 export class MapMarker extends React.Component<Props, State> {
-  static defaultProps: Pick<Props, 'variant' | 'draggable' | 'autoOpen'> = {
+  static defaultProps: Pick<Props, 'variant' | 'draggable' | 'autoOpen' | 'zIndexOffset'> = {
     variant: 'blue',
     draggable: false,
     autoOpen: false,
+    zIndexOffset: 0,
   };
 
   markerRef: React.RefObject<MarkerType>;
@@ -41,21 +42,23 @@ export class MapMarker extends React.Component<Props, State> {
         position={this.props.position}
         icon={numberCircleIcon(String(this.props.numberOfContents))}
         eventHandlers={this.numberCircleEventHandlers}
+        zIndexOffset={this.props.zIndexOffset + 1}
       />
     );
 
     if (!this.props.popup) {
       return (
-        <div>
+        <>
           <Marker
             position={this.props.position}
             icon={icon}
             draggable={this.props.draggable}
             ref={this.markerRef}
             eventHandlers={this.eventHandlers}
+            zIndexOffset={this.props.zIndexOffset}
           />
-          <div>{numberCircleMarker}</div>
-        </div>
+          {numberCircleMarker}
+        </>
       );
     }
 
@@ -70,6 +73,7 @@ export class MapMarker extends React.Component<Props, State> {
           eventHandlers={this.eventHandlers}
           popup={this.state.isPopupOpened && this.props.popup}
           autoOpen={this.props.autoOpen}
+          zIndexOffset={this.props.zIndexOffset}
         />
         {numberCircleMarker}
       </>
@@ -132,6 +136,7 @@ export class MapMarker extends React.Component<Props, State> {
 
 export type Props = {
   position: LatLng;
+  zIndexOffset: number;
   variant: 'blue' | 'red';
   popup?: ReactNode;
   autoOpen: boolean;

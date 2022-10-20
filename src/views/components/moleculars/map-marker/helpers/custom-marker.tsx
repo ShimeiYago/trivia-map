@@ -11,7 +11,7 @@ import {
 } from 'leaflet';
 
 export const CustomMarker = React.forwardRef((props: Props, ref) => {
-  const { position, icon, draggable, eventHandlers, popup, autoOpen, map } = props;
+  const { position, icon, draggable, eventHandlers, popup, autoOpen, map, zIndexOffset } = props;
 
   const [refReady, setRefReady] = useState(false);
   let popupRef = useRef();
@@ -31,6 +31,7 @@ export const CustomMarker = React.forwardRef((props: Props, ref) => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ref={ref as any}
       eventHandlers={eventHandlers}
+      zIndexOffset={zIndexOffset}
     >
       <Popup
         ref={(r) => {
@@ -53,5 +54,6 @@ type Props = {
   map: LeafletMap;
   draggable?: boolean;
   ref: React.RefObject<MarkerType>;
+  zIndexOffset: number;
   eventHandlers: LeafletEventHandlerFnMap;
 };

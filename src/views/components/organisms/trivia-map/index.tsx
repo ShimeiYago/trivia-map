@@ -9,6 +9,7 @@ import {
   selectArticleFormPosition,
 } from 'store/article-form/selector';
 import { Park } from 'types/park';
+import { isMobile } from 'react-device-detect';
 
 export function TriviaMap(ownProps: OwnProps) {
   const dispatch = useAppDispatch();
@@ -30,6 +31,7 @@ export function TriviaMap(ownProps: OwnProps) {
     isFormEditting: useAppSelector(selectArticleFormIsEditting),
     park: ownProps.park,
     categoryId: ownProps.categoryId,
+    isMobile: isMobile,
 
     fetchMarkers: () => dispatch(fetchMarkers()),
     updatePosition: (position: Position) => dispatch(updateFormField({ position: position })),

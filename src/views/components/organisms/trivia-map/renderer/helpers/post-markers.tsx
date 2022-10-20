@@ -10,7 +10,7 @@ import { Position } from 'types/position';
 
 export class PostMarkers extends React.Component<Props> {
   render() {
-    const { map, markers, popupDisabled, hiddenMarkerIds } = this.props;
+    const { map, markers, popupDisabled, hiddenMarkerIds, isMobile } = this.props;
 
     const markerElmList = markers.map((marker) => {
       if (hiddenMarkerIds.includes(marker.markerId)) {
@@ -29,6 +29,7 @@ export class PostMarkers extends React.Component<Props> {
           popup={popup}
           numberOfContents={numberOfContents}
           key={`post-marker-${marker.markerId}`}
+          isMobile={isMobile}
         />
       );
     });
@@ -66,6 +67,7 @@ export type Props = {
   popupDisabled: boolean;
   hiddenMarkerIds: number[];
   editting: boolean;
+  isMobile: boolean;
 
   openFormWithTheMarker: (position: Position) => void;
 };

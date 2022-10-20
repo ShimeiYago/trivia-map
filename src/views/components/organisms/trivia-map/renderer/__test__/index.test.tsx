@@ -29,6 +29,7 @@ const basicProps: Props = {
   updateIsEditting: jest.fn(),
   isFormEditting: false,
   park: 'S',
+  isMobile: false,
 };
 
 let shallowWrapper: ShallowWrapper<Props, State, Renderer>;

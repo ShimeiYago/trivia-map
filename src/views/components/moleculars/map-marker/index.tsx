@@ -101,7 +101,14 @@ export class MapMarker extends React.Component<Props, State> {
         isPopupOpened: true,
       });
 
-      const position = new LatLng(this.props.position.lat + 30, this.props.position.lng);
+      const latGap = this.props.isMobile
+        ? this.props.map.getZoom() <= ZOOMS.popupOpen
+          ? 30
+          : 30 / (this.props.map.getZoom() - ZOOMS.popupOpen + 1)
+        : 10;
+      const lat = this.props.position.lat + latGap;
+
+      const position = new LatLng(lat, this.props.position.lng);
       const zoom = this.props.map.getZoom() >= ZOOMS.popupOpen ? undefined : ZOOMS.popupOpen;
       this.props.map.flyTo(position, zoom);
     },
@@ -131,6 +138,7 @@ export type Props = {
   map: LeafletMap;
   draggable?: boolean;
   numberOfContents?: number;
+  isMobile?: boolean;
   onDragStart?: () => void;
   onDragEnd?: (position: LatLng) => void;
 };

@@ -9,8 +9,8 @@ export const mockGetArticleResponse: GetArticleResponse = {
   description: 'ネモ船長が最大の発明だと自負する潜水艇。',
   marker: {
     markerId: 1,
-    lat: 22.27,
-    lng: 29.268,
+    lat: -111.33,
+    lng: 149.243,
     park: 'S',
     numberOfPublicArticles: 1,
     areaNames: ['シー', 'メディテレーニアンハーバー', 'ポルトパラディーゾ'],

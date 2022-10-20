@@ -115,6 +115,7 @@ describe('eventHandlers popupopen & popupclose', () => {
   it('popupopen should call flyTo without zoom if already zoomed', () => {
     wrapper.setProps({
       map: { flyTo: jest.fn(), getZoom: () => 5 } as unknown as LeafletMap,
+      isMobile: true,
     });
     const instance = wrapper.instance();
     instance.setState({
@@ -123,7 +124,22 @@ describe('eventHandlers popupopen & popupclose', () => {
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (instance['eventHandlers'] as any).popupopen();
-    expect(instance.props.map.flyTo).toBeCalled();
+    expect(instance.props.map.flyTo).toBeCalledWith({ lat: 10, lng: 0 }, undefined);
+  });
+
+  it('popupopen should call flyTo with zoom and gap move', () => {
+    wrapper.setProps({
+      map: { flyTo: jest.fn(), getZoom: () => 1 } as unknown as LeafletMap,
+      isMobile: true,
+    });
+    const instance = wrapper.instance();
+    instance.setState({
+      isPopupOpened: false,
+    });
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (instance['eventHandlers'] as any).popupopen();
+    expect(instance.props.map.flyTo).toBeCalledWith({ lat: 30, lng: 0 }, 3);
   });
 
   it('popupclose should set isPopupOpened state false', async () => {

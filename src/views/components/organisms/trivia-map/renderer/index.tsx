@@ -11,9 +11,10 @@ import { LoadingState } from 'types/loading-state';
 import { PostMarkers } from './helpers/post-markers';
 import { Marker } from 'store/markers/model';
 import { Park } from 'types/park';
-import { TDL_TILE_URL, TDS_TILE_URL, ZOOMS } from 'constant';
+import { MAP_MARGIN, MAP_MAX_COORINATE, TDL_TILE_URL, TDS_TILE_URL, ZOOMS } from 'constant';
 import ChangeCircleOutlinedIcon from '@mui/icons-material/ChangeCircleOutlined';
 import TouchAppIcon from '@mui/icons-material/TouchApp';
+import { CRS } from 'leaflet';
 
 export class Renderer extends React.Component<Props, State> {
   static readonly defaultProps: Pick<Props, 'newMarkerMode' | 'initZoom'> = {
@@ -78,7 +79,10 @@ export class Renderer extends React.Component<Props, State> {
       height: height ?? '100%',
     };
 
-    const center = initCenter ? new LatLng(initCenter.lat, initCenter.lng) : new LatLng(0, 0);
+    const centerCoord = MAP_MAX_COORINATE / 2;
+    const center = initCenter
+      ? new LatLng(initCenter.lat, initCenter.lng)
+      : new LatLng(-centerCoord, centerCoord);
 
     const disabledProps: MapContainerProps = {
       dragging: false,
@@ -99,9 +103,10 @@ export class Renderer extends React.Component<Props, State> {
           zoomControl={false}
           minZoom={ZOOMS.min}
           maxZoom={ZOOMS.max}
+          crs={CRS.Simple}
           maxBounds={[
-            [300, -300],
-            [-300, 300],
+            [MAP_MARGIN, -MAP_MARGIN],
+            [-MAP_MAX_COORINATE - MAP_MARGIN, MAP_MAX_COORINATE + MAP_MARGIN],
           ]}
           whenCreated={this.handleMapCreated}
           tap={false}
@@ -144,8 +149,14 @@ export class Renderer extends React.Component<Props, State> {
   };
 
   protected renderPostMarkers() {
-    const { postMarkers, doNotShowPostMarkers, newMarkerMode, hiddenMarkerIds, isFormEditting } =
-      this.props;
+    const {
+      postMarkers,
+      doNotShowPostMarkers,
+      newMarkerMode,
+      hiddenMarkerIds,
+      isFormEditting,
+      isMobile,
+    } = this.props;
     if (doNotShowPostMarkers || !this.state.map) {
       return null;
     }
@@ -158,12 +169,13 @@ export class Renderer extends React.Component<Props, State> {
         hiddenMarkerIds={hiddenMarkerIds}
         openFormWithTheMarker={this.openFormWithTheMarker}
         editting={isFormEditting}
+        isMobile={isMobile}
       />
     );
   }
 
   protected renderAdittionalMarkers() {
-    const { additinalMarkers } = this.props;
+    const { additinalMarkers, isMobile } = this.props;
     const { map } = this.state;
     if (!map) {
       return null;
@@ -175,6 +187,7 @@ export class Renderer extends React.Component<Props, State> {
           map={map}
           position={new LatLng(position.lat, position.lng)}
           key={`additional-marker-${index}`}
+          isMobile={isMobile}
         />
       );
     });
@@ -182,7 +195,7 @@ export class Renderer extends React.Component<Props, State> {
 
   protected renderCurrentPositionMarker() {
     const { currentPosition, openableNewMarkerPopup } = this.state;
-    const { newMarkerMode, park } = this.props;
+    const { newMarkerMode, park, isMobile } = this.props;
 
     if (currentPosition === undefined || currentPosition.park !== park) {
       return null;
@@ -230,6 +243,7 @@ export class Renderer extends React.Component<Props, State> {
           draggable={newMarkerMode}
           onDragStart={this.handleDragStartNewMarker}
           onDragEnd={this.handleDragEndNewMarker}
+          isMobile={isMobile}
         />
       )
     );
@@ -314,6 +328,7 @@ export type Props = {
   isFormEditting: boolean;
   park: Park;
   categoryId?: number;
+  isMobile: boolean;
 
   fetchMarkers: () => void;
   updatePosition: (position: Position) => void;

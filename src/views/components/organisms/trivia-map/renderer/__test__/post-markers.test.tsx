@@ -24,6 +24,7 @@ const basicProps: Props = {
   popupDisabled: false,
   openFormWithTheMarker: jest.fn(),
   editting: false,
+  isMobile: false,
 };
 
 let shallowWrapper: ShallowWrapper<Props, unknown, PostMarkers>;

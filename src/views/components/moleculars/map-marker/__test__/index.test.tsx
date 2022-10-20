@@ -9,6 +9,7 @@ const basicProps: Props = {
   variant: 'blue',
   autoOpen: false,
   map: { flyTo: jest.fn(), getZoom: () => 1 } as unknown as LeafletMap,
+  zIndexOffset: 0,
 };
 
 describe('Shallow Snapshot Tests', () => {

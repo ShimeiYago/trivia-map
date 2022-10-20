@@ -149,8 +149,14 @@ export class Renderer extends React.Component<Props, State> {
   };
 
   protected renderPostMarkers() {
-    const { postMarkers, doNotShowPostMarkers, newMarkerMode, hiddenMarkerIds, isFormEditting } =
-      this.props;
+    const {
+      postMarkers,
+      doNotShowPostMarkers,
+      newMarkerMode,
+      hiddenMarkerIds,
+      isFormEditting,
+      isMobile,
+    } = this.props;
     if (doNotShowPostMarkers || !this.state.map) {
       return null;
     }
@@ -163,12 +169,13 @@ export class Renderer extends React.Component<Props, State> {
         hiddenMarkerIds={hiddenMarkerIds}
         openFormWithTheMarker={this.openFormWithTheMarker}
         editting={isFormEditting}
+        isMobile={isMobile}
       />
     );
   }
 
   protected renderAdittionalMarkers() {
-    const { additinalMarkers } = this.props;
+    const { additinalMarkers, isMobile } = this.props;
     const { map } = this.state;
     if (!map) {
       return null;
@@ -180,6 +187,7 @@ export class Renderer extends React.Component<Props, State> {
           map={map}
           position={new LatLng(position.lat, position.lng)}
           key={`additional-marker-${index}`}
+          isMobile={isMobile}
         />
       );
     });
@@ -187,7 +195,7 @@ export class Renderer extends React.Component<Props, State> {
 
   protected renderCurrentPositionMarker() {
     const { currentPosition, openableNewMarkerPopup } = this.state;
-    const { newMarkerMode, park } = this.props;
+    const { newMarkerMode, park, isMobile } = this.props;
 
     if (currentPosition === undefined || currentPosition.park !== park) {
       return null;
@@ -235,6 +243,7 @@ export class Renderer extends React.Component<Props, State> {
           draggable={newMarkerMode}
           onDragStart={this.handleDragStartNewMarker}
           onDragEnd={this.handleDragEndNewMarker}
+          isMobile={isMobile}
         />
       )
     );
@@ -319,6 +328,7 @@ export type Props = {
   isFormEditting: boolean;
   park: Park;
   categoryId?: number;
+  isMobile: boolean;
 
   fetchMarkers: () => void;
   updatePosition: (position: Position) => void;

@@ -55,6 +55,7 @@ export type PostArticleResponse = {
 };
 
 export type ValidationError = {
+  errorTitle?: string;
   title?: string[];
   description?: string[];
   marker?: string[];

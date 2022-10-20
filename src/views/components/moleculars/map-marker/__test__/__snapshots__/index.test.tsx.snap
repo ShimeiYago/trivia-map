@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Shallow Snapshot Tests basic 1`] = `
-<div>
+<Fragment>
   <ForwardRef(ContainerComponent)
     draggable={false}
     eventHandlers={
@@ -43,13 +43,13 @@ exports[`Shallow Snapshot Tests basic 1`] = `
         "lng": 0,
       }
     }
+    zIndexOffset={0}
   />
-  <div />
-</div>
+</Fragment>
 `;
 
 exports[`Shallow Snapshot Tests variant red 1`] = `
-<div>
+<Fragment>
   <ForwardRef(ContainerComponent)
     draggable={false}
     eventHandlers={
@@ -91,13 +91,13 @@ exports[`Shallow Snapshot Tests variant red 1`] = `
         "lng": 0,
       }
     }
+    zIndexOffset={0}
   />
-  <div />
-</div>
+</Fragment>
 `;
 
 exports[`Shallow Snapshot Tests with numberOfContents 1`] = `
-<div>
+<Fragment>
   <ForwardRef(ContainerComponent)
     draggable={false}
     eventHandlers={
@@ -139,36 +139,36 @@ exports[`Shallow Snapshot Tests with numberOfContents 1`] = `
         "lng": 0,
       }
     }
+    zIndexOffset={0}
   />
-  <div>
-    <ForwardRef(ContainerComponent)
-      eventHandlers={
-        Object {
-          "click": [Function],
-        }
+  <ForwardRef(ContainerComponent)
+    eventHandlers={
+      Object {
+        "click": [Function],
       }
-      icon={
-        NewClass {
-          "_initHooksCalled": true,
-          "options": Object {
-            "className": "number-circle-icon",
-            "html": "1",
-            "iconAnchor": Array [
-              22.5,
-              46,
-            ],
-          },
-        }
+    }
+    icon={
+      NewClass {
+        "_initHooksCalled": true,
+        "options": Object {
+          "className": "number-circle-icon",
+          "html": "1",
+          "iconAnchor": Array [
+            22.5,
+            46,
+          ],
+        },
       }
-      position={
-        Object {
-          "lat": 0,
-          "lng": 0,
-        }
+    }
+    position={
+      Object {
+        "lat": 0,
+        "lng": 0,
       }
-    />
-  </div>
-</div>
+    }
+    zIndexOffset={1}
+  />
+</Fragment>
 `;
 
 exports[`Shallow Snapshot Tests with popup 1`] = `
@@ -222,6 +222,7 @@ exports[`Shallow Snapshot Tests with popup 1`] = `
         "lng": 0,
       }
     }
+    zIndexOffset={0}
   />
 </Fragment>
 `;

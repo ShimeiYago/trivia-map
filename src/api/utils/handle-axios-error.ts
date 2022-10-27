@@ -18,12 +18,14 @@ export function handleAxiosError<Data>(axiosError: AxiosError): ApiError<Data> {
     };
   }
 
-  sendGa4ExceptionEvent({
-    errorCategory: 'api-error',
-    apiStatusCode: error.status,
-    apiEndpoint: axiosError.config.url,
-    message: error.errorMsg,
-  });
+  if (error.status >= 500) {
+    sendGa4ExceptionEvent({
+      errorCategory: 'api-error',
+      apiStatusCode: error.status,
+      apiEndpoint: axiosError.config.url,
+      message: error.errorMsg,
+    });
+  }
 
   return error;
 }

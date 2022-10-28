@@ -25,6 +25,7 @@ import { Park } from 'types/park';
 import { TDL_TILE_URL, TDS_TILE_URL } from 'constant';
 import { FloatingButton } from 'views/components/atoms/floating-button';
 import areaCoords from 'export-data/area-coords.json';
+import { CRS } from 'leaflet';
 
 export class Renderer extends React.Component<Props, State> {
   static readonly defaultProps: Pick<Props, 'newMarkerMode' | 'initZoom'> = {
@@ -130,12 +131,9 @@ export class Renderer extends React.Component<Props, State> {
           zoom={initZoom}
           zoomControl={false}
           minZoom={1}
-          maxZoom={4}
-          maxBounds={[
-            [300, -300],
-            [-300, 300],
-          ]}
+          maxZoom={5}
           whenCreated={this.handleMapCreated}
+          crs={CRS.Simple}
           tap={false}
           {...(disabled ? disabledProps : {})}
         >

@@ -1,7 +1,8 @@
-import { DOMAIN, SITE_NAME } from 'constant';
+import { SITE_NAME } from 'constant';
 import { DEFAULT_HEAD_TAGS } from 'constant/head-tags';
 import { Helmet } from 'react-helmet-async';
 import { useLocation } from 'react-router-dom';
+import { getDomain } from 'utils/get-domain.ts';
 
 export function CommonHelmet(props: Props): JSX.Element {
   const title = props.title ?? DEFAULT_HEAD_TAGS.title;
@@ -20,6 +21,8 @@ export function CommonHelmet(props: Props): JSX.Element {
     );
   }
 
+  const domain = getDomain(window);
+
   return (
     <Helmet>
       <title>{title}</title>
@@ -27,7 +30,7 @@ export function CommonHelmet(props: Props): JSX.Element {
       <meta name="description" content={description} />
       <meta property="og:description" content={description} />
       <meta property="og:type" content={ogType} />
-      <meta property="og:url" content={`${DOMAIN}${location.pathname}`} />
+      <meta property="og:url" content={`${domain}${location.pathname}`} />
       <meta property="og:image" content={imageUrl} />
       <meta property="og:site_name" content={SITE_NAME} />
       <meta property="og:locale" content={DEFAULT_HEAD_TAGS.ogLocale} />

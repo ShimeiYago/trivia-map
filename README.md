@@ -89,10 +89,6 @@ API base URL.
 
 Google Analytics ID (G-xxx).
 
-### `REACT_APP_DOMAIN`
-
-Site domain.
-
 ## Author
 
 [ShimeiYago](https://github.com/ShimeiYago)

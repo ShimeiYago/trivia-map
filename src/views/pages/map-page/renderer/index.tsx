@@ -78,7 +78,7 @@ export class Renderer extends React.Component<Props, State> {
     return (
       <Box sx={wrapper(openFormModal && !isMobile)}>
         <GlobalMenu topBarPosition="static" mapPage>
-          <Box sx={mapWrapper(isMobile)}>
+          <Box sx={mapWrapper(isMobile, window.innerHeight)}>
             <TriviaMap
               newMarkerMode={this.state.newMarkerMode}
               endToSelectPosition={this.endToSelectPosition}

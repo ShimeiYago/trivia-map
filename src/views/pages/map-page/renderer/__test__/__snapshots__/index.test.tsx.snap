@@ -11,7 +11,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
     <ForwardRef(Box)
       sx={
         Object {
-          "height": "calc(100vh - 58px)",
+          "height": "calc(768px - 58px)",
           "position": "relative",
         }
       }
@@ -181,7 +181,7 @@ exports[`Shallow Snapshot Tests land mode 1`] = `
     <ForwardRef(Box)
       sx={
         Object {
-          "height": "calc(100vh - 58px)",
+          "height": "calc(768px - 58px)",
           "position": "relative",
         }
       }
@@ -355,7 +355,7 @@ exports[`Shallow Snapshot Tests pc view 1`] = `
     <ForwardRef(Box)
       sx={
         Object {
-          "height": "calc(100vh - 66px)",
+          "height": "calc(768px - 66px)",
           "position": "relative",
         }
       }

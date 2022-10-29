@@ -105,11 +105,10 @@ export class MapMarker extends React.Component<Props, State> {
         isPopupOpened: true,
       });
 
-      const latGap = this.props.isMobile
-        ? this.props.map.getZoom() <= ZOOMS.popupOpen
+      const latGap =
+        this.props.map.getZoom() <= ZOOMS.popupOpen
           ? 30
-          : 30 / (this.props.map.getZoom() - ZOOMS.popupOpen + 1)
-        : 10;
+          : 30 / (this.props.map.getZoom() - ZOOMS.popupOpen + 1);
       const lat = this.props.position.lat + latGap;
 
       const position = new LatLng(lat, this.props.position.lng);

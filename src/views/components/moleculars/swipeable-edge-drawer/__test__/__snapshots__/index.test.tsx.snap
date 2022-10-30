@@ -2,16 +2,6 @@
 
 exports[`Shallow Snapshot Tests basic 1`] = `
 <Fragment>
-  <EmotionGlobal
-    styles={
-      Object {
-        ".MuiDrawer-root > .MuiPaper-root": Object {
-          "height": "calc(50% - 56px)",
-          "overflow": "visible",
-        },
-      }
-    }
-  />
   <ForwardRef(SwipeableDrawer)
     ModalProps={
       Object {
@@ -24,6 +14,14 @@ exports[`Shallow Snapshot Tests basic 1`] = `
     onOpen={[MockFunction]}
     open={true}
     swipeAreaWidth={56}
+    sx={
+      Object {
+        ".MuiPaper-root": Object {
+          "height": "calc(50% - 56px)",
+          "overflow": "visible",
+        },
+      }
+    }
   >
     <ForwardRef(Box)
       sx={
@@ -71,6 +69,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
           "backgroundColor": "#fff",
           "height": "100%",
           "overflow": "auto",
+          "transitionDuration": "1s",
         }
       }
     >
@@ -82,16 +81,6 @@ exports[`Shallow Snapshot Tests basic 1`] = `
 
 exports[`Shallow Snapshot Tests with closed label 1`] = `
 <Fragment>
-  <EmotionGlobal
-    styles={
-      Object {
-        ".MuiDrawer-root > .MuiPaper-root": Object {
-          "height": "calc(50% - 56px)",
-          "overflow": "visible",
-        },
-      }
-    }
-  />
   <ForwardRef(SwipeableDrawer)
     ModalProps={
       Object {
@@ -104,6 +93,14 @@ exports[`Shallow Snapshot Tests with closed label 1`] = `
     onOpen={[MockFunction]}
     open={false}
     swipeAreaWidth={56}
+    sx={
+      Object {
+        ".MuiPaper-root": Object {
+          "height": "calc(50% - 56px)",
+          "overflow": "visible",
+        },
+      }
+    }
   >
     <ForwardRef(Box)
       sx={
@@ -151,6 +148,7 @@ exports[`Shallow Snapshot Tests with closed label 1`] = `
           "backgroundColor": "#fff",
           "height": "100%",
           "overflow": "auto",
+          "transitionDuration": "1s",
         }
       }
     >

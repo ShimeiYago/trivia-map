@@ -112,7 +112,13 @@ export class ImageField extends React.Component<Props, State> {
     return (
       <BoxModal open={openCropModal}>
         <Box sx={{ m: 2, textAlign: 'center' }}>
-          <ReactCrop crop={this.state.crop} aspect={aspect} onChange={this.handleChangeCrop}>
+          <ReactCrop
+            crop={this.state.crop}
+            aspect={aspect}
+            onChange={this.handleChangeCrop}
+            keepSelection
+            className={styles['crop']}
+          >
             <img src={uploadedImage?.objectUrl} />
           </ReactCrop>
         </Box>

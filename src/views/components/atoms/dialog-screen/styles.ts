@@ -1,6 +1,6 @@
 import { SxProps } from '@mui/material';
 
-export const style = (theme: string, position: string | number): SxProps => {
+export const style = (theme: string, position: string | number, maxWidth?: number): SxProps => {
   let top: string;
   switch (typeof position) {
     case 'string':
@@ -16,7 +16,7 @@ export const style = (theme: string, position: string | number): SxProps => {
     backgroundColor: theme === 'black' ? 'rgba(0,0,0,0.8)' : 'rgba(255,255,255,0.8)',
     top: top,
     left: '50%',
-    maxWidth: 400,
+    maxWidth: maxWidth,
     width: '80%',
     display: 'inline-block',
     transform: 'translate(-50%,-50%)',

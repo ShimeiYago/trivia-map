@@ -1,7 +1,6 @@
 import React, { ReactNode } from 'react';
 import { Box, SwipeableDrawer, Typography } from '@mui/material';
 import { contentStyle, edgeLabelStyle, headStyle, pullerStyle } from './styles';
-import { Global } from '@emotion/react';
 
 export class SwipeableEdgeDrawer extends React.Component<Props> {
   static readonly defaultProps = {
@@ -31,14 +30,6 @@ export class SwipeableEdgeDrawer extends React.Component<Props> {
 
     return (
       <>
-        <Global
-          styles={{
-            '.MuiDrawer-root > .MuiPaper-root': {
-              height: `calc(${heightRatio}% - ${bleedingHeight}px)`,
-              overflow: 'visible',
-            },
-          }}
-        />
         <SwipeableDrawer
           anchor="bottom"
           open={open}
@@ -48,6 +39,12 @@ export class SwipeableEdgeDrawer extends React.Component<Props> {
           disableSwipeToOpen={false}
           ModalProps={{
             keepMounted: true,
+          }}
+          sx={{
+            '.MuiPaper-root': {
+              height: `calc(${heightRatio}% - ${bleedingHeight}px)`,
+              overflow: 'visible',
+            },
           }}
         >
           <Box sx={headStyle(bleedingHeight)}>

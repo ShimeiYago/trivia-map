@@ -222,7 +222,7 @@ export class Renderer extends React.Component<Props, State> {
 
     return (
       <>
-        <DialogScreen theme="black" position="top">
+        <DialogScreen theme="black" position="top" maxWidth={400}>
           <Typography align="center" variant="inherit" sx={{ fontWeight: 'bold' }}>
             マップを動かして
             <br />

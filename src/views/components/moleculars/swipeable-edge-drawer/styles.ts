@@ -20,6 +20,7 @@ export const contentStyle: SxProps = {
   height: '100%',
   overflow: 'auto',
   backgroundColor,
+  transitionDuration: '1s',
 };
 
 export const pullerStyle: SxProps = {

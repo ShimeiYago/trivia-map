@@ -1,7 +1,7 @@
 import React from 'react';
 import { MapContainer, MapContainerProps, TileLayer, ZoomControl } from 'react-leaflet';
 import { MapMarker } from 'views/components/moleculars/map-marker';
-import { LatLng, LeafletMouseEvent, Map as LeafletMap } from 'leaflet';
+import { LatLng, Map as LeafletMap } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import './index.css';
 import { Box, Button, Grid, SxProps, Typography } from '@mui/material';
@@ -27,9 +27,6 @@ export class Renderer extends React.Component<Props, State> {
     super(props);
     this.handleMapCreated = this.handleMapCreated.bind(this);
     this.state = {
-      currentPosition: props.shouldCurrentPositionAsyncWithForm
-        ? props.articleFormPosition
-        : undefined,
       openableNewMarkerPopup: true,
     };
   }
@@ -41,25 +38,6 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   componentDidUpdate(prevProps: Props) {
-    if (
-      prevProps.articleFormPosition !== this.props.articleFormPosition &&
-      this.props.shouldCurrentPositionAsyncWithForm
-    ) {
-      this.setState({
-        currentPosition: this.props.articleFormPosition,
-      });
-    }
-
-    if (
-      prevProps.newMarkerMode &&
-      !this.props.newMarkerMode &&
-      this.props.shouldCurrentPositionAsyncWithForm
-    ) {
-      this.setState({
-        currentPosition: this.props.articleFormPosition,
-      });
-    }
-
     if (
       !prevProps.newMarkerMode &&
       this.props.newMarkerMode &&
@@ -139,24 +117,6 @@ export class Renderer extends React.Component<Props, State> {
     });
   }
 
-  protected handleMapClick = (e: LeafletMouseEvent) => {
-    if (!this.props.newMarkerMode) {
-      return;
-    }
-
-    this.setState({
-      currentPosition: {
-        lat: e.latlng.lat,
-        lng: e.latlng.lng,
-        park: this.props.park,
-      },
-      openableNewMarkerPopup: false,
-    });
-    this.setState({
-      openableNewMarkerPopup: true,
-    });
-  };
-
   protected renderPostMarkers() {
     const {
       postMarkers,
@@ -203,10 +163,13 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   protected renderCurrentPositionMarker() {
-    const { currentPosition } = this.state;
-    const { park, isMobile } = this.props;
+    const { park, isMobile, articleFormPosition, shouldCurrentPositionAsyncWithForm } = this.props;
 
-    if (currentPosition === undefined || currentPosition.park !== park) {
+    if (
+      !shouldCurrentPositionAsyncWithForm ||
+      !articleFormPosition ||
+      articleFormPosition.park !== park
+    ) {
       return null;
     }
 
@@ -214,14 +177,8 @@ export class Renderer extends React.Component<Props, State> {
       this.state.map && (
         <MapMarker
           map={this.state.map}
-          position={new LatLng(currentPosition.lat, currentPosition.lng)}
-          // position={this.state.map.getCenter()}
-          // popup={newMarkerMode && popup}
-          // autoOpen={newMarkerMode && openableNewMarkerPopup}
+          position={new LatLng(articleFormPosition.lat, articleFormPosition.lng)}
           variant="red"
-          // draggable={false}
-          // onDragStart={this.handleDragStartNewMarker}
-          // onDragEnd={this.handleDragEndNewMarker}
           isMobile={isMobile}
           zIndexOffset={999}
         />
@@ -245,9 +202,6 @@ export class Renderer extends React.Component<Props, State> {
       lng: this.state.map.getCenter().lng,
       park: this.props.park,
     };
-    this.setState({
-      currentPosition: newPosition,
-    });
     this.props.updatePosition(newPosition);
 
     if (this.props.endToSelectPosition) {
@@ -258,17 +212,6 @@ export class Renderer extends React.Component<Props, State> {
   protected handleDragStartNewMarker = () => {
     this.setState({
       openableNewMarkerPopup: false,
-    });
-  };
-
-  protected handleDragEndNewMarker = (position: LatLng) => {
-    this.setState({
-      currentPosition: {
-        lat: position.lat,
-        lng: position.lng,
-        park: this.props.park,
-      },
-      openableNewMarkerPopup: true,
     });
   };
 
@@ -331,10 +274,6 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   protected openFormWithTheMarker = (position: Position) => {
-    this.setState({
-      currentPosition: position,
-    });
-
     this.props.updatePosition(position);
     this.props.updateIsEditting(true);
 
@@ -370,7 +309,6 @@ export type Props = {
 };
 
 export type State = {
-  currentPosition?: Position;
   openableNewMarkerPopup: boolean;
   map?: LeafletMap;
 };

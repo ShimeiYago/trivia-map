@@ -53,3 +53,7 @@
   width: 50px;
   border-radius: 8px;
 }
+
+.crop {
+  max-height: 500px;
+}

@@ -16,6 +16,7 @@ export const style = (theme: string, position: string | number): SxProps => {
     backgroundColor: theme === 'black' ? 'rgba(0,0,0,0.8)' : 'rgba(255,255,255,0.8)',
     top: top,
     left: '50%',
+    maxWidth: 400,
     width: '80%',
     display: 'inline-block',
     transform: 'translate(-50%,-50%)',

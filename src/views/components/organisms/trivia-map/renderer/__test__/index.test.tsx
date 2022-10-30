@@ -1,5 +1,5 @@
 import { shallow, ShallowWrapper } from 'enzyme';
-import { LatLng, LeafletMouseEvent, Map as LeafletMap } from 'leaflet';
+import { Map as LeafletMap } from 'leaflet';
 import { Renderer, Props, State } from '..';
 
 const basicProps: Props = {
@@ -53,9 +53,11 @@ describe('Shallow Snapshot Tests', () => {
     expect(shallowWrapper).toMatchSnapshot();
   });
 
-  it('when currentPosition state is setted', () => {
-    shallowWrapper.setState({ currentPosition: { lat: 1, lng: 1, park: 'S' } });
-    shallowWrapper.setProps({ newMarkerMode: true });
+  it('with current marker', () => {
+    shallowWrapper.setProps({
+      shouldCurrentPositionAsyncWithForm: true,
+      articleFormPosition: { lat: 0, lng: 0, park: 'S' },
+    });
     expect(shallowWrapper).toMatchSnapshot();
   });
 
@@ -83,35 +85,14 @@ describe('Shallow Snapshot Tests', () => {
   });
 });
 
-describe('constructor', () => {
-  it('should change currentPosition', () => {
-    shallowWrapper = shallow(
-      <Renderer
-        {...basicProps}
-        articleFormPosition={{ lat: 0, lng: 0, park: 'S' }}
-        shouldCurrentPositionAsyncWithForm
-      />,
-    );
-    const instance = shallowWrapper.instance();
-
-    // const map = { on: jest.fn() };
-    // instance['constructor']();
-    expect(instance.state.currentPosition).toEqual({
-      lat: 0,
-      lng: 0,
-      park: 'S',
-    });
-  });
-});
-
 describe('handleMapCreated', () => {
-  it('should call map.on methods', () => {
+  it('should set map state', () => {
     shallowWrapper = shallow(<Renderer {...basicProps} />);
     const instance = shallowWrapper.instance();
 
     const map = { on: jest.fn() };
     instance['handleMapCreated'](map as unknown as LeafletMap);
-    expect(map.on).toHaveBeenCalled();
+    expect(instance.state.map).toEqual(map);
   });
 });
 
@@ -135,66 +116,20 @@ describe('componentDidUpdate', () => {
     shallowWrapper = shallow(<Renderer {...basicProps} />);
   });
 
-  it('should async currentPosition with form if articleFormPosition is changed', () => {
-    shallowWrapper.setProps({ shouldCurrentPositionAsyncWithForm: true });
-    const instance = shallowWrapper.instance();
-
-    instance['componentDidUpdate']({
-      ...basicProps,
-      articleFormPosition: { lat: 0, lng: 0, park: 'S' },
+  it('should zoomIn if changed to newMarker mode', () => {
+    shallowWrapper.setState({
+      map: {
+        getZoom: () => 1,
+        zoomIn: jest.fn(),
+      } as unknown as LeafletMap,
     });
-    expect(instance.state.currentPosition).toBe(undefined);
-  });
-
-  it('should async currentPosition with form id new marker mode is finished', () => {
     shallowWrapper.setProps({
-      shouldCurrentPositionAsyncWithForm: true,
-      newMarkerMode: false,
-    });
-    const instance = shallowWrapper.instance();
-
-    instance['componentDidUpdate']({
-      ...basicProps,
-      articleFormPosition: { lat: 0, lng: 0, park: 'S' },
       newMarkerMode: true,
     });
-    expect(instance.state.currentPosition).toBe(undefined);
-  });
-});
-
-describe('handleMapClick', () => {
-  beforeEach(() => {
-    shallowWrapper = shallow(<Renderer {...basicProps} />);
-  });
-
-  it('should change currentPosition state with newMarkerMode', () => {
-    shallowWrapper.setProps({ newMarkerMode: true });
-
     const instance = shallowWrapper.instance();
 
-    const mouseClickEvent = {
-      latlng: { lat: 1, lng: 1 },
-    } as LeafletMouseEvent;
-
-    expect(instance.state.currentPosition).toBe(undefined);
-    instance['handleMapClick'](mouseClickEvent);
-    expect(instance.state.currentPosition).toEqual({
-      lat: 1,
-      lng: 1,
-      park: 'S',
-    });
-  });
-
-  it('should not change currentPosition state if not newMarkerMode', () => {
-    const instance = shallowWrapper.instance();
-
-    const mouseClickEvent = {
-      latlng: { lat: 1, lng: 1 },
-    } as LeafletMouseEvent;
-
-    expect(instance.state.currentPosition).toBe(undefined);
-    instance['handleMapClick'](mouseClickEvent);
-    expect(instance.state.currentPosition).toEqual(undefined);
+    instance['componentDidUpdate'](basicProps);
+    expect(instance.state.map?.zoomIn).toBeCalled();
   });
 });
 
@@ -204,9 +139,6 @@ describe('handleClickCancelNewMarker', () => {
   });
 
   it('should call endToSelectPosition', async () => {
-    shallowWrapper.setState({
-      currentPosition: { lat: 0, lng: 0, park: 'S' },
-    });
     const instance = shallowWrapper.instance();
 
     await instance['handleClickCancelNewMarker']();
@@ -214,7 +146,6 @@ describe('handleClickCancelNewMarker', () => {
   });
 
   it('should not call endToSelectPosition prop if endToSelectPosition is not setted', () => {
-    shallowWrapper.setState({ currentPosition: { lat: 0, lng: 0, park: 'S' } });
     shallowWrapper.setProps({ endToSelectPosition: undefined });
     const instance = shallowWrapper.instance();
 
@@ -225,18 +156,26 @@ describe('handleClickCancelNewMarker', () => {
 describe('handleClickConfirmNewMarker', () => {
   beforeEach(() => {
     shallowWrapper = shallow(<Renderer {...basicProps} />);
+    shallowWrapper.setState({
+      map: {
+        getCenter: () => {
+          return { lat: 0, lng: 0 };
+        },
+      } as unknown as LeafletMap,
+    });
   });
 
   it('should call endToSelectPosition prop', () => {
-    shallowWrapper.setState({ currentPosition: { lat: 0, lng: 0, park: 'S' } });
     const instance = shallowWrapper.instance();
 
     instance['handleClickConfirmNewMarker']();
     expect(instance.props.endToSelectPosition).toHaveBeenCalled();
   });
 
-  it('should not call endToSelectPosition prop if currentPosition state is not setted', () => {
-    shallowWrapper.setState({ currentPosition: undefined });
+  it('should not call endToSelectPosition prop if map is not setted', () => {
+    shallowWrapper.setState({
+      map: undefined,
+    });
     const instance = shallowWrapper.instance();
 
     instance['handleClickConfirmNewMarker']();
@@ -244,7 +183,6 @@ describe('handleClickConfirmNewMarker', () => {
   });
 
   it('should not call endToSelectPosition prop if endToSelectPosition is not setted', () => {
-    shallowWrapper.setState({ currentPosition: { lat: 0, lng: 0, park: 'S' } });
     shallowWrapper.setProps({ endToSelectPosition: undefined });
     const instance = shallowWrapper.instance();
 
@@ -262,22 +200,6 @@ describe('handleDragStartNewMarker', () => {
   });
 });
 
-describe('handleDragEndNewMarker', () => {
-  it('should change currentPosition', () => {
-    shallowWrapper = shallow(<Renderer {...basicProps} />);
-    const instance = shallowWrapper.instance();
-
-    const newPosition = new LatLng(1, 1);
-
-    instance['handleDragEndNewMarker'](newPosition);
-    expect(instance.state.currentPosition).toEqual({
-      lat: 1,
-      lng: 1,
-      park: 'S',
-    });
-  });
-});
-
 describe('openFormWithTheMarker', () => {
   beforeEach(() => {
     shallowWrapper = shallow(<Renderer {...basicProps} />);
@@ -292,11 +214,7 @@ describe('openFormWithTheMarker', () => {
       park: 'S',
     });
 
-    expect(instance.state.currentPosition).toEqual({
-      lat: 1,
-      lng: 1,
-      park: 'S',
-    });
+    expect(instance.props.endToSelectPosition).toBeCalled();
   });
 
   it('should not call endToSelectPosition prop if endToSelectPosition is not setted', () => {

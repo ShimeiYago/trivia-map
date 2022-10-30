@@ -1,7 +1,7 @@
 import React from 'react';
 import { MapContainer, MapContainerProps, TileLayer, ZoomControl } from 'react-leaflet';
 import { MapMarker } from 'views/components/moleculars/map-marker';
-import { LatLng, LeafletMouseEvent, Map as LeafletMap } from 'leaflet';
+import { LatLng, Map as LeafletMap } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import './index.css';
 import { Box, Button, Grid, SxProps, Typography } from '@mui/material';
@@ -12,9 +12,10 @@ import { PostMarkers } from './helpers/post-markers';
 import { Marker } from 'store/markers/model';
 import { Park } from 'types/park';
 import { MAP_MARGIN, MAP_MAX_COORINATE, TDL_TILE_URL, TDS_TILE_URL, ZOOMS } from 'constant';
-import ChangeCircleOutlinedIcon from '@mui/icons-material/ChangeCircleOutlined';
 import TouchAppIcon from '@mui/icons-material/TouchApp';
 import { CRS } from 'leaflet';
+import selectionPosition from 'images/selection-position.png';
+import { blue } from '@mui/material/colors';
 
 export class Renderer extends React.Component<Props, State> {
   static readonly defaultProps: Pick<Props, 'newMarkerMode' | 'initZoom'> = {
@@ -26,9 +27,6 @@ export class Renderer extends React.Component<Props, State> {
     super(props);
     this.handleMapCreated = this.handleMapCreated.bind(this);
     this.state = {
-      currentPosition: props.shouldCurrentPositionAsyncWithForm
-        ? props.articleFormPosition
-        : undefined,
       openableNewMarkerPopup: true,
     };
   }
@@ -41,22 +39,12 @@ export class Renderer extends React.Component<Props, State> {
 
   componentDidUpdate(prevProps: Props) {
     if (
-      prevProps.articleFormPosition !== this.props.articleFormPosition &&
-      this.props.shouldCurrentPositionAsyncWithForm
+      !prevProps.newMarkerMode &&
+      this.props.newMarkerMode &&
+      this.state.map &&
+      this.state.map.getZoom() < ZOOMS.popupOpen
     ) {
-      this.setState({
-        currentPosition: this.props.articleFormPosition,
-      });
-    }
-
-    if (
-      prevProps.newMarkerMode &&
-      !this.props.newMarkerMode &&
-      this.props.shouldCurrentPositionAsyncWithForm
-    ) {
-      this.setState({
-        currentPosition: this.props.articleFormPosition,
-      });
+      this.state.map.zoomIn(ZOOMS.popupOpen);
     }
 
     if (this.props.initCenter && prevProps.initCenter !== this.props.initCenter) {
@@ -124,29 +112,10 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   protected handleMapCreated(map: LeafletMap) {
-    map.on('click', this.handleMapClick);
     this.setState({
       map: map,
     });
   }
-
-  protected handleMapClick = (e: LeafletMouseEvent) => {
-    if (!this.props.newMarkerMode) {
-      return;
-    }
-
-    this.setState({
-      currentPosition: {
-        lat: e.latlng.lat,
-        lng: e.latlng.lng,
-        park: this.props.park,
-      },
-      openableNewMarkerPopup: false,
-    });
-    this.setState({
-      openableNewMarkerPopup: true,
-    });
-  };
 
   protected renderPostMarkers() {
     const {
@@ -194,55 +163,22 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   protected renderCurrentPositionMarker() {
-    const { currentPosition, openableNewMarkerPopup } = this.state;
-    const { newMarkerMode, park, isMobile } = this.props;
+    const { park, isMobile, articleFormPosition, shouldCurrentPositionAsyncWithForm } = this.props;
 
-    if (currentPosition === undefined || currentPosition.park !== park) {
+    if (
+      !shouldCurrentPositionAsyncWithForm ||
+      !articleFormPosition ||
+      articleFormPosition.park !== park
+    ) {
       return null;
     }
-
-    const popup = (
-      <Box sx={{ p: 1 }}>
-        <Typography align="center" variant="h6" component="p" sx={{ fontWeight: 'bold' }}>
-          この位置でよろしいですか？
-        </Typography>
-        <Grid container direction="row" justifyContent="center" alignItems="center">
-          <Grid item xs={2}>
-            <TouchAppIcon />
-          </Grid>
-          <Grid item xs={10}>
-            <Typography>マーカーを掴んで位置を調整しましょう。</Typography>
-          </Grid>
-          <Grid item xs={2}>
-            <ChangeCircleOutlinedIcon />
-          </Grid>
-          <Grid item xs={10}>
-            <Typography>あとから位置を変更することができます。</Typography>
-          </Grid>
-        </Grid>
-
-        <Grid container spacing={2} justifyContent="center" sx={{ textAlign: 'center' }}>
-          <Grid item xs={6}>
-            <Button onClick={this.handleClickCancelNewMarker}>キャンセル</Button>
-          </Grid>
-          <Grid item xs={6}>
-            <Button onClick={this.handleClickConfirmNewMarker}>確定</Button>
-          </Grid>
-        </Grid>
-      </Box>
-    );
 
     return (
       this.state.map && (
         <MapMarker
           map={this.state.map}
-          position={new LatLng(currentPosition.lat, currentPosition.lng)}
-          popup={newMarkerMode && popup}
-          autoOpen={newMarkerMode && openableNewMarkerPopup}
+          position={new LatLng(articleFormPosition.lat, articleFormPosition.lng)}
           variant="red"
-          draggable={newMarkerMode}
-          onDragStart={this.handleDragStartNewMarker}
-          onDragEnd={this.handleDragEndNewMarker}
           isMobile={isMobile}
           zIndexOffset={999}
         />
@@ -257,10 +193,16 @@ export class Renderer extends React.Component<Props, State> {
   };
 
   protected handleClickConfirmNewMarker = () => {
-    if (!this.state.currentPosition) {
+    if (!this.state.map) {
       return;
     }
-    this.props.updatePosition(this.state.currentPosition);
+
+    const newPosition: Position = {
+      lat: this.state.map.getCenter().lat,
+      lng: this.state.map.getCenter().lng,
+      park: this.props.park,
+    };
+    this.props.updatePosition(newPosition);
 
     if (this.props.endToSelectPosition) {
       this.props.endToSelectPosition();
@@ -273,36 +215,65 @@ export class Renderer extends React.Component<Props, State> {
     });
   };
 
-  protected handleDragEndNewMarker = (position: LatLng) => {
-    this.setState({
-      currentPosition: {
-        lat: position.lat,
-        lng: position.lng,
-        park: this.props.park,
-      },
-      openableNewMarkerPopup: true,
-    });
-  };
-
   protected renderGuideDialog() {
-    if (!this.props.newMarkerMode || this.state.currentPosition) {
+    if (!this.props.newMarkerMode) {
       return null;
     }
 
     return (
-      <DialogScreen theme="black" position="top">
-        <Typography align="center" variant="inherit" sx={{ fontWeight: 'bold' }}>
-          マップ上の好きな位置をタップしてください。
-        </Typography>
-      </DialogScreen>
+      <>
+        <DialogScreen theme="black" position="top">
+          <Typography align="center" variant="inherit" sx={{ fontWeight: 'bold' }}>
+            マップを動かして
+            <br />
+            位置を確定してください。
+          </Typography>
+
+          <Typography align="center" variant="inherit" sx={{ mb: 2 }}>
+            <TouchAppIcon />
+          </Typography>
+
+          <Grid
+            container
+            spacing={2}
+            justifyContent="center"
+            sx={{ textAlign: 'center', color: blue[100] }}
+          >
+            <Grid item xs={6}>
+              <Button
+                color="inherit"
+                variant="outlined"
+                fullWidth
+                onClick={this.handleClickCancelNewMarker}
+              >
+                キャンセル
+              </Button>
+            </Grid>
+            <Grid item xs={6}>
+              <Button variant="contained" fullWidth onClick={this.handleClickConfirmNewMarker}>
+                確定
+              </Button>
+            </Grid>
+          </Grid>
+        </DialogScreen>
+
+        <Box
+          sx={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            display: 'inline-block',
+            transform: 'translate(-50%,-50%)',
+            zIndex: 1001,
+          }}
+        >
+          <img src={selectionPosition} />
+        </Box>
+      </>
     );
   }
 
   protected openFormWithTheMarker = (position: Position) => {
-    this.setState({
-      currentPosition: position,
-    });
-
     this.props.updatePosition(position);
     this.props.updateIsEditting(true);
 
@@ -338,7 +309,6 @@ export type Props = {
 };
 
 export type State = {
-  currentPosition?: Position;
   openableNewMarkerPopup: boolean;
   map?: LeafletMap;
 };

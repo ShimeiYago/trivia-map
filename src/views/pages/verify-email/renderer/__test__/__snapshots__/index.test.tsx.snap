@@ -10,16 +10,21 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       }
     }
   >
-    <Image
-      src="trivia-map-logo-black.png"
-      width="200px"
-    />
+    <a
+      href="/"
+    >
+      <Image
+        src="trivia-map-logo-black.png"
+        width="200px"
+      />
+    </a>
   </ForwardRef(Box)>
   <ForwardRef(Box)
     sx={
       Object {
-        "mt": 5,
-        "mx": 5,
+        "maxWidth": 500,
+        "mt": 3,
+        "mx": "auto",
       }
     }
   >
@@ -58,24 +63,34 @@ exports[`Shallow Snapshot Tests success case 1`] = `
       }
     }
   >
-    <Image
-      src="trivia-map-logo-black.png"
-      width="200px"
-    />
+    <a
+      href="/"
+    >
+      <Image
+        src="trivia-map-logo-black.png"
+        width="200px"
+      />
+    </a>
   </ForwardRef(Box)>
   <ForwardRef(Box)
     sx={
       Object {
-        "mt": 5,
-        "mx": 5,
+        "maxWidth": 500,
+        "mt": 3,
+        "mx": "auto",
       }
     }
   >
-    <ForwardRef(Typography)
-      align="center"
+    <ForwardRef(Alert)
+      severity="success"
+      sx={
+        Object {
+          "mb": 3,
+        }
+      }
     >
       ユーザー登録が完了しました。
-    </ForwardRef(Typography)>
+    </ForwardRef(Alert)>
     <ForwardRef(Typography)
       align="center"
     >

@@ -5,10 +5,12 @@ import { selectLoggedOutSuccessfully, selectOpenFormModal, selectUser } from 'st
 import { isMobile } from 'react-device-detect';
 import { useCookies } from 'react-cookie';
 import { UseAutoLogin } from 'helper-components/use-auto-login';
+import { useLocation } from 'react-router-dom';
 
 export function GlobalMenu(ownProps: OwnProps) {
   const dispatch = useAppDispatch();
   const [, , removeCookie] = useCookies();
+  const location = useLocation();
 
   UseAutoLogin();
 
@@ -22,6 +24,7 @@ export function GlobalMenu(ownProps: OwnProps) {
     isMobile: isMobile,
     mapPage: ownProps.mapPage,
     localBackNavi: ownProps.localBackNavi,
+    pathName: location.pathname,
 
     toggleAuthFormModal: (open: boolean) => dispatch(toggleFormModal(open)),
     logout: () => dispatch(logout(removeCookie)),

@@ -42,6 +42,20 @@ describe('Shallow Snapshot Tests', () => {
   });
 });
 
+describe('componentDidUpdate', () => {
+  it('should change mode state when initMode is changed', () => {
+    wrapper = shallow(<Renderer {...basicProps} />);
+    const instance = wrapper.instance();
+
+    instance['componentDidUpdate']({
+      ...basicProps,
+      initialMode: 'signup',
+    });
+
+    expect(instance.state.mode).toBe('login');
+  });
+});
+
 describe('switchMode', () => {
   it('should provide a handler to change mode', () => {
     wrapper = shallow(<Renderer {...basicProps} />);

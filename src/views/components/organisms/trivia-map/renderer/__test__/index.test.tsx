@@ -116,11 +116,11 @@ describe('componentDidUpdate', () => {
     shallowWrapper = shallow(<Renderer {...basicProps} />);
   });
 
-  it('should zoomIn if changed to newMarker mode', () => {
+  it('should setZoom if changed to newMarker mode', () => {
     shallowWrapper.setState({
       map: {
         getZoom: () => 1,
-        zoomIn: jest.fn(),
+        setZoom: jest.fn(),
       } as unknown as LeafletMap,
     });
     shallowWrapper.setProps({
@@ -129,7 +129,7 @@ describe('componentDidUpdate', () => {
     const instance = shallowWrapper.instance();
 
     instance['componentDidUpdate'](basicProps);
-    expect(instance.state.map?.zoomIn).toBeCalled();
+    expect(instance.state.map?.setZoom).toBeCalled();
   });
 });
 

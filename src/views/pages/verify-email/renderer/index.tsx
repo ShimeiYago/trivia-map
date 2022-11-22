@@ -1,11 +1,12 @@
 import React from 'react';
-import { Box, Typography } from '@mui/material';
+import { Alert, Box, Typography } from '@mui/material';
 import { LoadingState } from 'types/loading-state';
 import { verifyEmail } from 'api/auths-api/verify-email';
 import { wrapper } from '../styles';
 import { LoadingButton } from '@mui/lab';
 import { Image } from 'views/components/atoms/image';
 import logoImage from 'images/trivia-map-logo-black.png';
+import { MAP_PAGE_LINK } from 'constant/links';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -19,7 +20,9 @@ export class Renderer extends React.Component<Props, State> {
     return (
       <>
         <Box sx={{ my: 3, textAlign: 'center' }}>
-          <Image src={logoImage} width="200px" />
+          <a href={MAP_PAGE_LINK}>
+            <Image src={logoImage} width="200px" />
+          </a>
         </Box>
         {this.renderContent()}
       </>
@@ -30,7 +33,9 @@ export class Renderer extends React.Component<Props, State> {
     if (this.state.loadingState === 'success') {
       return (
         <Box sx={wrapper}>
-          <Typography align="center">ユーザー登録が完了しました。</Typography>
+          <Alert severity="success" sx={{ mb: 3 }}>
+            ユーザー登録が完了しました。
+          </Alert>
           <Typography align="center">
             元々のページに戻り、登録した内容でログインしてください。
           </Typography>

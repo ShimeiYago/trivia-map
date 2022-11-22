@@ -44,7 +44,7 @@ export class Renderer extends React.Component<Props, State> {
       this.state.map &&
       this.state.map.getZoom() < ZOOMS.popupOpen
     ) {
-      this.state.map.zoomIn(ZOOMS.popupOpen);
+      this.state.map.setZoom(ZOOMS.popupOpen);
     }
 
     if (this.props.initCenter && prevProps.initCenter !== this.props.initCenter) {

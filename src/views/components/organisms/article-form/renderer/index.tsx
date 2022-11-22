@@ -211,6 +211,7 @@ export class Renderer extends React.Component<Props> {
               error={!!formError?.fieldErrors?.description}
               helperText={formError?.fieldErrors?.description}
               inputProps={{ maxLength: INPUT_FIELD_MAX_LENGTH.articleDescription }}
+              required
             />
 
             <FormControlLabel

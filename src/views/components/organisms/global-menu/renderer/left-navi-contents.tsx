@@ -81,24 +81,35 @@ const listItemsOthers: ListItem[] = [
   },
 ];
 
-const listItemMapping = (items: ListItem[]) => {
-  return items.map((item, index) => (
-    <NonStyleLink to={item.link} key={index}>
-      <ListItem button>
-        <ListItemIcon>{item.icon}</ListItemIcon>
-        <ListItemText primary={item.text} />
-      </ListItem>
-    </NonStyleLink>
-  ));
+const listItemMapping = (items: ListItem[], pathName: string) => {
+  return items.map((item, index) => {
+    if (pathName === item.link) {
+      return (
+        <ListItem selected key={index}>
+          <ListItemIcon>{item.icon}</ListItemIcon>
+          <ListItemText primary={item.text} />
+        </ListItem>
+      );
+    }
+
+    return (
+      <NonStyleLink to={item.link} key={index}>
+        <ListItem button>
+          <ListItemIcon>{item.icon}</ListItemIcon>
+          <ListItemText primary={item.text} />
+        </ListItem>
+      </NonStyleLink>
+    );
+  });
 };
 
-export const leftNaviContents = (login: boolean) => (
+export const leftNaviContents = (login: boolean, pathName: string) => (
   <>
-    <List>{listItemMapping(listItemsForMap)}</List>
+    <List>{listItemMapping(listItemsForMap, pathName)}</List>
     <Divider />
-    <List>{listItemMapping(login ? listItemsForAdmin : listItemsForLogin)}</List>
+    <List>{listItemMapping(login ? listItemsForAdmin : listItemsForLogin, pathName)}</List>
     <Divider />
-    <List>{listItemMapping(listItemsOthers)}</List>
+    <List>{listItemMapping(listItemsOthers, pathName)}</List>
   </>
 );
 

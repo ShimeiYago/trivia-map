@@ -161,21 +161,17 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       }
     >
       <ForwardRef(List)>
-        <NonStyleLink
+        <ForwardRef(ListItem)
           key="0"
-          to="/"
+          selected={true}
         >
-          <ForwardRef(ListItem)
-            button={true}
-          >
-            <ForwardRef(ListItemIcon)>
-              <Memo(ForwardRef(MapIcon)) />
-            </ForwardRef(ListItemIcon)>
-            <ForwardRef(ListItemText)
-              primary="トリビアマップ"
-            />
-          </ForwardRef(ListItem)>
-        </NonStyleLink>
+          <ForwardRef(ListItemIcon)>
+            <Memo(ForwardRef(MapIcon)) />
+          </ForwardRef(ListItemIcon)>
+          <ForwardRef(ListItemText)
+            primary="トリビアマップ"
+          />
+        </ForwardRef(ListItem)>
         <NonStyleLink
           key="1"
           to="/articles"
@@ -446,21 +442,17 @@ exports[`Shallow Snapshot Tests long name with mobile 1`] = `
       }
     >
       <ForwardRef(List)>
-        <NonStyleLink
+        <ForwardRef(ListItem)
           key="0"
-          to="/"
+          selected={true}
         >
-          <ForwardRef(ListItem)
-            button={true}
-          >
-            <ForwardRef(ListItemIcon)>
-              <Memo(ForwardRef(MapIcon)) />
-            </ForwardRef(ListItemIcon)>
-            <ForwardRef(ListItemText)
-              primary="トリビアマップ"
-            />
-          </ForwardRef(ListItem)>
-        </NonStyleLink>
+          <ForwardRef(ListItemIcon)>
+            <Memo(ForwardRef(MapIcon)) />
+          </ForwardRef(ListItemIcon)>
+          <ForwardRef(ListItemText)
+            primary="トリビアマップ"
+          />
+        </ForwardRef(ListItem)>
         <NonStyleLink
           key="1"
           to="/articles"
@@ -746,21 +738,17 @@ exports[`Shallow Snapshot Tests map page 1`] = `
       }
     >
       <ForwardRef(List)>
-        <NonStyleLink
+        <ForwardRef(ListItem)
           key="0"
-          to="/"
+          selected={true}
         >
-          <ForwardRef(ListItem)
-            button={true}
-          >
-            <ForwardRef(ListItemIcon)>
-              <Memo(ForwardRef(MapIcon)) />
-            </ForwardRef(ListItemIcon)>
-            <ForwardRef(ListItemText)
-              primary="トリビアマップ"
-            />
-          </ForwardRef(ListItem)>
-        </NonStyleLink>
+          <ForwardRef(ListItemIcon)>
+            <Memo(ForwardRef(MapIcon)) />
+          </ForwardRef(ListItemIcon)>
+          <ForwardRef(ListItemText)
+            primary="トリビアマップ"
+          />
+        </ForwardRef(ListItem)>
         <NonStyleLink
           key="1"
           to="/articles"
@@ -1017,21 +1005,17 @@ exports[`Shallow Snapshot Tests permanent left navi 1`] = `
       }
     >
       <ForwardRef(List)>
-        <NonStyleLink
+        <ForwardRef(ListItem)
           key="0"
-          to="/"
+          selected={true}
         >
-          <ForwardRef(ListItem)
-            button={true}
-          >
-            <ForwardRef(ListItemIcon)>
-              <Memo(ForwardRef(MapIcon)) />
-            </ForwardRef(ListItemIcon)>
-            <ForwardRef(ListItemText)
-              primary="トリビアマップ"
-            />
-          </ForwardRef(ListItem)>
-        </NonStyleLink>
+          <ForwardRef(ListItemIcon)>
+            <Memo(ForwardRef(MapIcon)) />
+          </ForwardRef(ListItemIcon)>
+          <ForwardRef(ListItemText)
+            primary="トリビアマップ"
+          />
+        </ForwardRef(ListItem)>
         <NonStyleLink
           key="1"
           to="/articles"
@@ -1302,21 +1286,17 @@ exports[`Shallow Snapshot Tests redirect to top page 1`] = `
       }
     >
       <ForwardRef(List)>
-        <NonStyleLink
+        <ForwardRef(ListItem)
           key="0"
-          to="/"
+          selected={true}
         >
-          <ForwardRef(ListItem)
-            button={true}
-          >
-            <ForwardRef(ListItemIcon)>
-              <Memo(ForwardRef(MapIcon)) />
-            </ForwardRef(ListItemIcon)>
-            <ForwardRef(ListItemText)
-              primary="トリビアマップ"
-            />
-          </ForwardRef(ListItem)>
-        </NonStyleLink>
+          <ForwardRef(ListItemIcon)>
+            <Memo(ForwardRef(MapIcon)) />
+          </ForwardRef(ListItemIcon)>
+          <ForwardRef(ListItemText)
+            primary="トリビアマップ"
+          />
+        </ForwardRef(ListItem)>
         <NonStyleLink
           key="1"
           to="/articles"
@@ -1587,21 +1567,17 @@ exports[`Shallow Snapshot Tests static position 1`] = `
       }
     >
       <ForwardRef(List)>
-        <NonStyleLink
+        <ForwardRef(ListItem)
           key="0"
-          to="/"
+          selected={true}
         >
-          <ForwardRef(ListItem)
-            button={true}
-          >
-            <ForwardRef(ListItemIcon)>
-              <Memo(ForwardRef(MapIcon)) />
-            </ForwardRef(ListItemIcon)>
-            <ForwardRef(ListItemText)
-              primary="トリビアマップ"
-            />
-          </ForwardRef(ListItem)>
-        </NonStyleLink>
+          <ForwardRef(ListItemIcon)>
+            <Memo(ForwardRef(MapIcon)) />
+          </ForwardRef(ListItemIcon)>
+          <ForwardRef(ListItemText)
+            primary="トリビアマップ"
+          />
+        </ForwardRef(ListItem)>
         <NonStyleLink
           key="1"
           to="/articles"
@@ -1872,21 +1848,17 @@ exports[`Shallow Snapshot Tests with local navi & mobile 1`] = `
       }
     >
       <ForwardRef(List)>
-        <NonStyleLink
+        <ForwardRef(ListItem)
           key="0"
-          to="/"
+          selected={true}
         >
-          <ForwardRef(ListItem)
-            button={true}
-          >
-            <ForwardRef(ListItemIcon)>
-              <Memo(ForwardRef(MapIcon)) />
-            </ForwardRef(ListItemIcon)>
-            <ForwardRef(ListItemText)
-              primary="トリビアマップ"
-            />
-          </ForwardRef(ListItem)>
-        </NonStyleLink>
+          <ForwardRef(ListItemIcon)>
+            <Memo(ForwardRef(MapIcon)) />
+          </ForwardRef(ListItemIcon)>
+          <ForwardRef(ListItemText)
+            primary="トリビアマップ"
+          />
+        </ForwardRef(ListItem)>
         <NonStyleLink
           key="1"
           to="/articles"
@@ -2178,21 +2150,17 @@ exports[`Shallow Snapshot Tests with local navi 1`] = `
       }
     >
       <ForwardRef(List)>
-        <NonStyleLink
+        <ForwardRef(ListItem)
           key="0"
-          to="/"
+          selected={true}
         >
-          <ForwardRef(ListItem)
-            button={true}
-          >
-            <ForwardRef(ListItemIcon)>
-              <Memo(ForwardRef(MapIcon)) />
-            </ForwardRef(ListItemIcon)>
-            <ForwardRef(ListItemText)
-              primary="トリビアマップ"
-            />
-          </ForwardRef(ListItem)>
-        </NonStyleLink>
+          <ForwardRef(ListItemIcon)>
+            <Memo(ForwardRef(MapIcon)) />
+          </ForwardRef(ListItemIcon)>
+          <ForwardRef(ListItemText)
+            primary="トリビアマップ"
+          />
+        </ForwardRef(ListItem)>
         <NonStyleLink
           key="1"
           to="/articles"
@@ -2484,21 +2452,17 @@ exports[`Shallow Snapshot Tests with userInfo 1`] = `
       }
     >
       <ForwardRef(List)>
-        <NonStyleLink
+        <ForwardRef(ListItem)
           key="0"
-          to="/"
+          selected={true}
         >
-          <ForwardRef(ListItem)
-            button={true}
-          >
-            <ForwardRef(ListItemIcon)>
-              <Memo(ForwardRef(MapIcon)) />
-            </ForwardRef(ListItemIcon)>
-            <ForwardRef(ListItemText)
-              primary="トリビアマップ"
-            />
-          </ForwardRef(ListItem)>
-        </NonStyleLink>
+          <ForwardRef(ListItemIcon)>
+            <Memo(ForwardRef(MapIcon)) />
+          </ForwardRef(ListItemIcon)>
+          <ForwardRef(ListItemText)
+            primary="トリビアマップ"
+          />
+        </ForwardRef(ListItem)>
         <NonStyleLink
           key="1"
           to="/articles"

@@ -16,6 +16,14 @@ export class Renderer extends React.Component<Props, State> {
     };
   }
 
+  componentDidUpdate(prevProps: Readonly<Props>): void {
+    if (prevProps.initialMode !== this.props.initialMode) {
+      this.setState({
+        mode: this.props.initialMode,
+      });
+    }
+  }
+
   render() {
     let content;
     switch (this.state.mode) {

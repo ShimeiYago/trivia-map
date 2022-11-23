@@ -8,6 +8,7 @@ import {
   CardMedia,
   CardContent,
   Grid,
+  Divider,
 } from '@mui/material';
 import { LoadingState } from 'types/loading-state';
 import {
@@ -123,13 +124,15 @@ export class Renderer extends React.Component<Props, State> {
             </Typography>
           )}
 
+          <Divider />
+
           <Typography sx={{ pr: 2 }} component="div">
             <IconAndText
               iconComponent={<FolderIcon />}
               text={categoryMapper(category)}
               iconPosition={'left'}
               align="right"
-              fontSize={14}
+              fontSize={12}
             />
           </Typography>
 

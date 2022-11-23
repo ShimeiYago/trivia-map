@@ -99,7 +99,9 @@ export class Renderer extends React.Component<Props, State> {
 
           {image && <Image src={image} width="full" />}
 
-          <Typography whiteSpace="pre-wrap">{description}</Typography>
+          <Typography whiteSpace="pre-wrap" fontSize={20}>
+            {description}
+          </Typography>
 
           <Divider />
 
@@ -111,7 +113,10 @@ export class Renderer extends React.Component<Props, State> {
             iconPosition="left"
           />
 
-          <AreaNames areaNames={marker.areaNames} variant="body2" />
+          <Typography>
+            エリア：
+            <AreaNames areaNames={marker.areaNames} />
+          </Typography>
 
           <TriviaMap
             height={300}

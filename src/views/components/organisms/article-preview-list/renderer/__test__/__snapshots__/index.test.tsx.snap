@@ -77,6 +77,7 @@ exports[`Shallow Snapshot Tests variant popup 1`] = `
                   width="200px"
                 />
               </ForwardRef(Typography)>
+              <ForwardRef(Divider) />
               <ForwardRef(Typography)
                 component="div"
                 sx={
@@ -87,7 +88,7 @@ exports[`Shallow Snapshot Tests variant popup 1`] = `
               >
                 <IconAndText
                   align="right"
-                  fontSize={14}
+                  fontSize={12}
                   iconComponent={<Memo />}
                   iconPosition="left"
                   text="隠れミッキー"
@@ -138,6 +139,7 @@ exports[`Shallow Snapshot Tests variant popup 1`] = `
               >
                 ノーチラス号の名前の由来
               </ForwardRef(Typography)>
+              <ForwardRef(Divider) />
               <ForwardRef(Typography)
                 component="div"
                 sx={
@@ -148,7 +150,7 @@ exports[`Shallow Snapshot Tests variant popup 1`] = `
               >
                 <IconAndText
                   align="right"
-                  fontSize={14}
+                  fontSize={12}
                   iconComponent={<Memo />}
                   iconPosition="left"
                   text="隠れミッキー"

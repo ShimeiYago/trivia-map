@@ -85,6 +85,27 @@ describe('Shallow Snapshot Tests', () => {
   });
 });
 
+describe('componentDidUpdate', () => {
+  beforeEach(() => {
+    jest.resetAllMocks();
+    getRemoteArticleSpy = jest.spyOn(GetRemoteArticleModule, 'getRemoteArticle');
+  });
+
+  it('should call fetchArticle if postId is updated', async () => {
+    getRemoteArticleSpy.mockResolvedValue({});
+
+    wrapper = shallow(<Renderer {...basicProps} />);
+    const instance = wrapper.instance();
+
+    instance['componentDidUpdate']({
+      ...basicProps,
+      postId: 2,
+    });
+
+    expect(getRemoteArticleSpy).toBeCalled();
+  });
+});
+
 describe('fetchArticle', () => {
   beforeEach(() => {
     jest.resetAllMocks();

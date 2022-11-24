@@ -1,9 +1,10 @@
 import { shallow, ShallowWrapper } from 'enzyme';
-import { Renderer, State } from '..';
+import { Renderer, State, Props } from '..';
 import * as ChangePasswordModule from 'api/auths-api/change-password';
 import { ApiError } from 'api/utils/handle-axios-error';
+import { User } from 'types/user';
 
-let wrapper: ShallowWrapper<unknown, State, Renderer>;
+let wrapper: ShallowWrapper<Props, State, Renderer>;
 
 let changePasswordSpy: jest.SpyInstance;
 
@@ -30,6 +31,15 @@ describe('Shallow Snapshot Tests', () => {
   it('success case', () => {
     wrapper.setState({
       loadingState: 'success',
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('social', () => {
+    wrapper.setProps({
+      user: {
+        isSocialAccount: true,
+      } as User,
     });
     expect(wrapper).toMatchSnapshot();
   });

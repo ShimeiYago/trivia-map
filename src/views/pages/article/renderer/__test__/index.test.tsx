@@ -78,6 +78,7 @@ describe('Shallow Snapshot Tests', () => {
         userId: 1,
         email: 'xxx',
         icon: null,
+        isSocialAccount: false,
       },
     });
     wrapper.setState({ article: article, loadingState: 'success' });
@@ -86,9 +87,16 @@ describe('Shallow Snapshot Tests', () => {
 });
 
 describe('componentDidUpdate', () => {
+  const originalScrollTo = window.scrollTo;
+
   beforeEach(() => {
-    jest.resetAllMocks();
     getRemoteArticleSpy = jest.spyOn(GetRemoteArticleModule, 'getRemoteArticle');
+    window.scrollTo = jest.fn();
+  });
+
+  afterEach(() => {
+    jest.resetAllMocks();
+    window.scrollTo = originalScrollTo;
   });
 
   it('should call fetchArticle if postId is updated', async () => {

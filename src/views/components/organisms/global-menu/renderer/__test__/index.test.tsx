@@ -44,6 +44,7 @@ describe('Shallow Snapshot Tests', () => {
         userId: 1,
         nickname: 'Axel',
         icon: 'https://...',
+        isSocialAccount: false,
       },
     });
     expect(wrapper).toMatchSnapshot();
@@ -91,6 +92,7 @@ describe('Shallow Snapshot Tests', () => {
         userId: 1,
         nickname: 'xxxxxxxxxxxxxxx',
         icon: 'https://...',
+        isSocialAccount: false,
       },
       isMobile: true,
     });

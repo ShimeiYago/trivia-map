@@ -14,6 +14,7 @@ const basicProps: Props = {
     email: 'xxx@example.com',
     nickname: 'Axel',
     icon: 'https://...',
+    isSocialAccount: false,
   },
   updateUser: jest.fn(),
   throwError: jest.fn(),
@@ -77,6 +78,7 @@ describe('Shallow Snapshot Tests', () => {
         email: '',
         nickname: 'Axel',
         icon: null,
+        isSocialAccount: true,
       },
     });
     expect(wrapper).toMatchSnapshot();

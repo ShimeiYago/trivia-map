@@ -36,7 +36,6 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       noValidate={true}
     >
       <ForwardRef(TextField)
-        disabled={false}
         error={false}
         fullWidth={true}
         id="password1"
@@ -47,7 +46,6 @@ exports[`Shallow Snapshot Tests basic 1`] = `
         type="password"
       />
       <ForwardRef(TextField)
-        disabled={false}
         error={false}
         fullWidth={true}
         id="password2"
@@ -58,7 +56,6 @@ exports[`Shallow Snapshot Tests basic 1`] = `
         type="password"
       />
       <ForwardRef(LoadingButton)
-        disabled={false}
         fullWidth={true}
         loading={false}
         onClick={[Function]}
@@ -118,7 +115,6 @@ exports[`Shallow Snapshot Tests error case 1`] = `
       noValidate={true}
     >
       <ForwardRef(TextField)
-        disabled={false}
         error={true}
         fullWidth={true}
         helperText={
@@ -134,7 +130,6 @@ exports[`Shallow Snapshot Tests error case 1`] = `
         type="password"
       />
       <ForwardRef(TextField)
-        disabled={false}
         error={true}
         fullWidth={true}
         helperText={
@@ -150,7 +145,88 @@ exports[`Shallow Snapshot Tests error case 1`] = `
         type="password"
       />
       <ForwardRef(LoadingButton)
-        disabled={false}
+        fullWidth={true}
+        loading={false}
+        onClick={[Function]}
+        sx={
+          Object {
+            "mb": 2,
+            "mt": 3,
+          }
+        }
+        variant="contained"
+      >
+        パスワード更新
+      </ForwardRef(LoadingButton)>
+    </ForwardRef(Box)>
+  </ForwardRef(Stack)>
+</AdminWrapper>
+`;
+
+exports[`Shallow Snapshot Tests social 1`] = `
+<AdminWrapper>
+  <ForwardRef(Box)
+    sx={
+      Object {
+        "mb": 3,
+      }
+    }
+  >
+    <BackToNavi
+      link="/admin/account"
+      text="アカウント管理"
+    />
+  </ForwardRef(Box)>
+  <ForwardRef(Stack)
+    spacing={1}
+    sx={
+      Object {
+        "maxWidth": "400px",
+        "mx": "auto",
+        "px": 1,
+      }
+    }
+  >
+    <ForwardRef(Typography)
+      align="center"
+      component="h1"
+      variant="h5"
+    >
+      パスワード変更
+    </ForwardRef(Typography)>
+    <ForwardRef(Alert)
+      severity="info"
+    >
+      ソーシャルアカウントでログインしています。パスワードを変更することはできません。
+    </ForwardRef(Alert)>
+    <ForwardRef(Box)
+      component="form"
+      noValidate={true}
+    >
+      <ForwardRef(TextField)
+        disabled={true}
+        error={false}
+        fullWidth={true}
+        id="password1"
+        label="パスワード"
+        margin="normal"
+        name="password1"
+        onChange={[Function]}
+        type="password"
+      />
+      <ForwardRef(TextField)
+        disabled={true}
+        error={false}
+        fullWidth={true}
+        id="password2"
+        label="パスワード（確認）"
+        margin="normal"
+        name="password2"
+        onChange={[Function]}
+        type="password"
+      />
+      <ForwardRef(LoadingButton)
+        disabled={true}
         fullWidth={true}
         loading={false}
         onClick={[Function]}
@@ -208,7 +284,6 @@ exports[`Shallow Snapshot Tests success case 1`] = `
       noValidate={true}
     >
       <ForwardRef(TextField)
-        disabled={false}
         error={false}
         fullWidth={true}
         id="password1"
@@ -219,7 +294,6 @@ exports[`Shallow Snapshot Tests success case 1`] = `
         type="password"
       />
       <ForwardRef(TextField)
-        disabled={false}
         error={false}
         fullWidth={true}
         id="password2"
@@ -230,7 +304,6 @@ exports[`Shallow Snapshot Tests success case 1`] = `
         type="password"
       />
       <ForwardRef(LoadingButton)
-        disabled={false}
         fullWidth={true}
         loading={false}
         onClick={[Function]}

@@ -16,6 +16,7 @@ const basicProps: Props = {
     email: 'xxx@example.com',
     nickname: 'Axel',
     icon: 'https://...',
+    isSocialAccount: false,
   },
 };
 
@@ -93,6 +94,7 @@ describe('componentDidUpdate', () => {
         email: 'xxx@example.com',
         nickname: 'Axel',
         icon: 'https://...',
+        isSocialAccount: false,
       },
     };
 

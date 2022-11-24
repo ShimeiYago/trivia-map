@@ -8,6 +8,7 @@ import {
   CardMedia,
   CardContent,
   Grid,
+  Divider,
 } from '@mui/material';
 import { LoadingState } from 'types/loading-state';
 import {
@@ -27,6 +28,9 @@ import { categoryMapper } from 'utils/category-mapper';
 import notImage from 'images/no-image-16x7.jpg';
 import FolderIcon from '@mui/icons-material/Folder';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
+
+const POPUP_SCROLL_HEIGHT = '240px';
+const POPUP_SCROLL_GRADATION_HEIGHT = '50px';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -100,8 +104,22 @@ export class Renderer extends React.Component<Props, State> {
 
     if (this.props.variant === 'popup') {
       return (
-        <Box maxHeight={240} sx={{ overflow: 'scroll', py: 1 }}>
-          <Stack spacing={2}>{previewList}</Stack>
+        <Box maxHeight={POPUP_SCROLL_HEIGHT} sx={{ position: 'relative' }}>
+          <Box maxHeight={POPUP_SCROLL_HEIGHT} sx={{ overflow: 'scroll' }}>
+            <Stack spacing={2} sx={{ pb: POPUP_SCROLL_GRADATION_HEIGHT }}>
+              {previewList}
+            </Stack>
+          </Box>
+          <Box
+            sx={{
+              position: 'absolute',
+              background: 'linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.8))',
+              width: '100%',
+              height: POPUP_SCROLL_GRADATION_HEIGHT,
+              bottom: 0,
+              left: 0,
+            }}
+          />
         </Box>
       );
     } else {
@@ -123,13 +141,15 @@ export class Renderer extends React.Component<Props, State> {
             </Typography>
           )}
 
+          <Divider />
+
           <Typography sx={{ pr: 2 }} component="div">
             <IconAndText
               iconComponent={<FolderIcon />}
               text={categoryMapper(category)}
               iconPosition={'left'}
               align="right"
-              fontSize={14}
+              fontSize={12}
             />
           </Typography>
 

@@ -50,7 +50,7 @@ export class Renderer extends React.Component<Props, State> {
   };
 
   protected renderForm = () => {
-    const disabled = this.state.loadingState === 'loading' || !this.props.user?.email;
+    const disabled = this.state.loadingState === 'loading' || this.props.user?.isSocialAccount;
 
     return (
       <Box>

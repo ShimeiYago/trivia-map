@@ -11,8 +11,9 @@ import { autoRefreshApiWrapper } from 'utils/auto-refresh-api-wrapper';
 import { BackToNavi } from 'views/components/moleculars/back-to-navi';
 import { ACCOUNT_SETTINGS_LINK } from 'constant/links';
 import { PAGE_NAMES } from 'constant/page-names';
+import { User } from 'types/user';
 
-export class Renderer extends React.Component<unknown, State> {
+export class Renderer extends React.Component<Props, State> {
   state: State = {
     password1: '',
     password2: '',
@@ -20,7 +21,7 @@ export class Renderer extends React.Component<unknown, State> {
   };
 
   render() {
-    const disabled = this.state.loadingState === 'loading';
+    const disabled = this.state.loadingState === 'loading' || this.props.user?.isSocialAccount;
 
     const form = (
       <Box component="form" noValidate>
@@ -79,6 +80,14 @@ export class Renderer extends React.Component<unknown, State> {
 
   protected renderHeaderInfo() {
     const { errorTitle, loadingState } = this.state;
+
+    if (this.props.user?.isSocialAccount) {
+      return (
+        <Alert severity="info">
+          ソーシャルアカウントでログインしています。パスワードを変更することはできません。
+        </Alert>
+      );
+    }
 
     if (loadingState === 'success') {
       return <Alert>パスワードが変更されました。</Alert>;
@@ -149,6 +158,10 @@ export class Renderer extends React.Component<unknown, State> {
     }
   };
 }
+
+export type Props = {
+  user?: User;
+};
 
 export type State = {
   password1: string;

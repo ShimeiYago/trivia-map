@@ -35,6 +35,13 @@ export class Renderer extends React.Component<Props, State> {
     this.fetchArticle();
   }
 
+  componentDidUpdate(prevProps: Readonly<Props>) {
+    if (prevProps.postId !== this.props.postId) {
+      window.scrollTo({ top: 0 });
+      this.fetchArticle();
+    }
+  }
+
   render() {
     return <ArticleWrapper showSidebar>{this.renderMainArticle()}</ArticleWrapper>;
   }

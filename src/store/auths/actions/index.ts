@@ -8,6 +8,7 @@ import { refreshToken } from 'api/auths-api/refresh-token';
 import { logout as logoutApi } from 'api/auths-api/logout';
 import { selectUser } from '../selector';
 import { sleep } from 'utils/sleep';
+import { updateIsEditting } from 'store/article-form/actions';
 
 // basic actions
 export const {
@@ -71,6 +72,8 @@ export const logout =
 
       removeCookie(COOKIE_NAME.hasAccessToken);
       removeCookie(COOKIE_NAME.hasRefreshToken);
+
+      dispatch(updateIsEditting(false));
 
       dispatch(logoutSuccess());
 

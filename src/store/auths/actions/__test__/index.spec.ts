@@ -121,7 +121,7 @@ describe('logout', () => {
     const appThunk = logout(jest.fn()) as any;
     await appThunk(dispatch, initialGetState);
 
-    expect(dispatch.mock.calls[1][0].type).toBe('auths/logoutSuccess');
+    expect(dispatch.mock.calls[2][0].type).toBe('auths/logoutSuccess');
   });
 
   it('call throwError if getUserInfo API failed', async () => {

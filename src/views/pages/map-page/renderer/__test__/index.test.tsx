@@ -102,6 +102,20 @@ describe('componentDidUpdate', () => {
     instance.componentDidUpdate({ isFormChangedFromLastSaved: true } as Props, {} as State);
     expect(mockRemoveEventListener).toHaveBeenCalled();
   });
+
+  it('should close modal if isFormEditting state is change to false', () => {
+    shallowWrapper.setState({
+      openFormModal: true,
+    });
+
+    shallowWrapper.setProps({
+      isFormEditting: false,
+    });
+    const instance = shallowWrapper.instance();
+
+    instance.componentDidUpdate({ isFormEditting: true } as Props, {} as State);
+    expect(instance.state.openFormModal).toBeFalsy();
+  });
 });
 
 describe('handleBeforeUnload', () => {

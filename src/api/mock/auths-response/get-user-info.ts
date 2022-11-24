@@ -5,4 +5,5 @@ export const mockGetUserInfoResponse: User = {
   email: 'user@example.com',
   nickname: 'Axel',
   icon: 'https://disneyparkstory.com/wp-content/uploads/2017/09/apple-touch-icon.png',
+  isSocialAccount: false,
 };

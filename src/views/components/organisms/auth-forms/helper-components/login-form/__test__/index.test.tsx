@@ -57,6 +57,7 @@ describe('Shallow Snapshot Tests', () => {
         nickname: 'Axel',
         email: 'xxx@example.com',
         icon: 'https://...',
+        isSocialAccount: false,
       },
     });
     expect(wrapper).toMatchSnapshot();

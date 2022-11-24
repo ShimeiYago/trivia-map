@@ -140,7 +140,7 @@ export class Renderer extends React.Component<Props, State> {
   protected renderHeaderInfo() {
     const { errorTitle, errorMessages, loadingState } = this.state;
 
-    if (this.props.user?.email === '') {
+    if (this.props.user?.isSocialAccount) {
       return (
         <Alert severity="info">
           連携されたソーシャルアカウントのプロフィール情報を表示しています。プロフィールを変更する場合は、ソーシャルアカウントを編集してください。

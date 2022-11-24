@@ -13,6 +13,7 @@ const basicProps: Props = {
     email: 'xxx@example.com',
     nickname: 'Axel',
     icon: 'https://...',
+    isSocialAccount: false,
   },
   throwError: jest.fn(),
   removeCookie: jest.fn(),

@@ -9,6 +9,7 @@ const basicProps: Props = {
     nickname: 'Axel',
     email: 'xxx@example.com',
     icon: 'https://...',
+    isSocialAccount: false,
   },
   autoLoggingInState: 'success',
   loggedOutSuccessfully: false,

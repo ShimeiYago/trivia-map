@@ -39,6 +39,7 @@ describe('auths reducer', () => {
         email: 'user@example.com',
         nickname: 'Axel',
         icon: 'https://...',
+        isSocialAccount: false,
       }),
     );
     expect(actual.user).toEqual({
@@ -46,6 +47,7 @@ describe('auths reducer', () => {
       email: 'user@example.com',
       nickname: 'Axel',
       icon: 'https://...',
+      isSocialAccount: false,
     });
   });
 
@@ -57,6 +59,7 @@ describe('auths reducer', () => {
         email: 'user@example.com',
         nickname: 'Axel',
         icon: 'https://...',
+        isSocialAccount: false,
       }),
     );
     expect(actual.user).toEqual({
@@ -64,6 +67,7 @@ describe('auths reducer', () => {
       email: 'user@example.com',
       nickname: 'Axel',
       icon: 'https://...',
+      isSocialAccount: false,
     });
   });
 

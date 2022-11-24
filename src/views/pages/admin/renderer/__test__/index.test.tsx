@@ -9,6 +9,7 @@ const basicProps: Props = {
     nickname: 'Axel',
     email: 'xxx@example.com',
     icon: 'https://...',
+    isSocialAccount: false,
   },
 };
 
@@ -28,6 +29,7 @@ describe('Shallow Snapshot Tests', () => {
         nickname: 'Axel',
         email: 'xxx@example.com',
         icon: null,
+        isSocialAccount: false,
       },
     };
     wrapper.setProps(props);

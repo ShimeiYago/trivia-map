@@ -1,12 +1,12 @@
 import React from 'react';
 import { Box, Button } from '@mui/material';
-import { Marker } from 'store/markers/model';
 import { LatLng, Map as LeafletMap } from 'leaflet';
 import { MapMarker } from 'views/components/moleculars/map-marker';
 import styles from './index.module.css';
 import { ArticlePreviewList } from 'views/components/organisms/article-preview-list';
 import AddLocationAltIcon from '@mui/icons-material/AddLocationAlt';
 import { Position } from 'types/position';
+import { Marker } from 'types/marker';
 
 export class PostMarkers extends React.Component<Props> {
   render() {
@@ -19,15 +19,16 @@ export class PostMarkers extends React.Component<Props> {
 
       const popup = !popupDisabled && this.renderPopupContents(marker.markerId, marker);
 
+      // TODO
       const numberOfContents =
-        marker.numberOfPublicArticles > 1 ? marker.numberOfPublicArticles : undefined;
+        marker.numberOfPublicArticles.total > 1 ? marker.numberOfPublicArticles : undefined;
 
       return (
         <MapMarker
           map={map}
           position={new LatLng(marker.lat, marker.lng)}
           popup={popup}
-          numberOfContents={numberOfContents}
+          numberOfContents={numberOfContents?.total}
           key={`post-marker-${marker.markerId}`}
           isMobile={isMobile}
         />

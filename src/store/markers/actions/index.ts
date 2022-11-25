@@ -2,8 +2,8 @@ import { selectMarkers } from 'store/markers/selector';
 import { markersSlice } from './../slice/index';
 import { AppThunk } from 'store';
 import { getRemoteMarkers, GetMarkersResponseWithPagination } from 'api/markers-api';
-import { Marker } from '../model';
 import { throwError } from 'store/global-error/slice';
+import { Marker } from 'types/marker';
 
 // basic actions
 export const {

@@ -173,7 +173,7 @@ describe('articleForm reducer', () => {
         lat: 0,
         lng: 0,
         park: 'S',
-        numberOfPublicArticles: { total: 4, breakdown: [1, 2, 1] },
+        numberOfPublicArticles: { total: 4, eachCategory: [1, 2, 1] },
         areaNames: ['xxx', 'yyy'],
       },
       image: 'https://image-data.jpg',

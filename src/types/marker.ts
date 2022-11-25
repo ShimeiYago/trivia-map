@@ -7,6 +7,6 @@ export type Marker = {
   park: Park;
   numberOfPublicArticles: {
     total: number;
-    breakdown: number[];
+    eachCategory: number[];
   };
 };

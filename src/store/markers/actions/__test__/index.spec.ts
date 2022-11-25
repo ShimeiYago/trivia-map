@@ -1,7 +1,7 @@
 import { fetchMarkers, appendMarkers } from '..';
 import * as MarkersApiModule from 'api/markers-api';
 import { mockGetMarkersResponse } from 'api/mock/markers-response';
-import { Marker } from 'store/markers/model';
+import { Marker } from 'types/marker';
 
 const dispatch = jest.fn();
 let getRemoteMarkersSpy: jest.SpyInstance;
@@ -58,7 +58,7 @@ describe('appendMarkers', () => {
         lat: 0,
         lng: 0,
         park: 'S',
-        numberOfPublicArticles: 1,
+        numberOfPublicArticles: { total: 4, eachCategory: [1, 2, 1] },
       },
     ];
     // eslint-disable-next-line @typescript-eslint/no-explicit-any

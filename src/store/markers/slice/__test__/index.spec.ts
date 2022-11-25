@@ -1,5 +1,5 @@
-import { Marker } from './../../model/index';
 import { updateLoadedPages } from 'store/markers/actions';
+import { Marker } from 'types/marker';
 import { markersReducer, markersSlice } from '..';
 import { MarkersState } from '../../model';
 
@@ -50,7 +50,7 @@ describe('markers reducer', () => {
         lat: 0,
         lng: 0,
         park: 'S',
-        numberOfPublicArticles: 1,
+        numberOfPublicArticles: { total: 4, eachCategory: [1, 2, 1] },
       },
     ];
     const actual = markersReducer(initialState, updateMarkers(markers));

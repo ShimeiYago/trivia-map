@@ -4,7 +4,8 @@ import { handleAxiosError } from '../utils/handle-axios-error';
 import { getAxiosInstance } from 'api/utils/get-axios-instance';
 import { mockGetArticleResponse } from '../mock/articles-response';
 import { Author } from 'types/author';
-import { Park } from './../../types/park';
+import { Marker } from 'types/marker';
+import { GuessAreaResponse } from 'api/guess-area';
 
 export async function getRemoteArticle(postId: number): Promise<GetArticleResponse> {
   const axiosInstance = getAxiosInstance({ timeout: API_TIMEOUT.long }, mockGetArticleResponse);
@@ -24,14 +25,7 @@ export type GetArticleResponse = {
   postId: number;
   title: string;
   description: string;
-  marker: {
-    markerId: number;
-    lat: number;
-    lng: number;
-    park: Park;
-    numberOfPublicArticles: number;
-    areaNames: string[];
-  };
+  marker: Marker & GuessAreaResponse;
   category: number;
   image: string | null;
   isDraft: boolean;

@@ -5,6 +5,7 @@ import { handleAxiosError } from '../utils/handle-axios-error';
 import { getAxiosInstance } from 'api/utils/get-axios-instance';
 import { mockGetMarkersResponse } from './../mock/markers-response';
 import { Park } from './../../types/park';
+import { Marker } from 'types/marker';
 
 export async function getRemoteMarkers(
   params: GetRemoteMarkersParams,
@@ -36,12 +37,6 @@ type GetRemoteMarkersParams = {
   nextUrl?: string;
 };
 
-export type GetMarkersResponse = {
-  markerId: number;
-  lat: number;
-  lng: number;
-  park: Park;
-  numberOfPublicArticles: number;
-};
+export type GetMarkersResponse = Omit<Marker, 'areaNames'>;
 
 export type GetMarkersResponseWithPagination = PaginationResponse<GetMarkersResponse>;

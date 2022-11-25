@@ -1,16 +1,16 @@
 import React from 'react';
 import { Box, Button } from '@mui/material';
-import { Marker } from 'store/markers/model';
 import { LatLng, Map as LeafletMap } from 'leaflet';
 import { MapMarker } from 'views/components/moleculars/map-marker';
 import styles from './index.module.css';
 import { ArticlePreviewList } from 'views/components/organisms/article-preview-list';
 import AddLocationAltIcon from '@mui/icons-material/AddLocationAlt';
 import { Position } from 'types/position';
+import { Marker } from 'types/marker';
 
 export class PostMarkers extends React.Component<Props> {
   render() {
-    const { map, markers, popupDisabled, hiddenMarkerIds, isMobile } = this.props;
+    const { map, markers, popupDisabled, hiddenMarkerIds, isMobile, categoryId } = this.props;
 
     const markerElmList = markers.map((marker) => {
       if (hiddenMarkerIds.includes(marker.markerId)) {
@@ -19,8 +19,16 @@ export class PostMarkers extends React.Component<Props> {
 
       const popup = !popupDisabled && this.renderPopupContents(marker.markerId, marker);
 
-      const numberOfContents =
-        marker.numberOfPublicArticles > 1 ? marker.numberOfPublicArticles : undefined;
+      const numberOfPublicArticles =
+        categoryId === undefined
+          ? marker.numberOfPublicArticles.total
+          : marker.numberOfPublicArticles.eachCategory[categoryId];
+
+      if (numberOfPublicArticles === 0) {
+        return null;
+      }
+
+      const numberOfContents = numberOfPublicArticles > 1 ? numberOfPublicArticles : undefined;
 
       return (
         <MapMarker
@@ -40,7 +48,10 @@ export class PostMarkers extends React.Component<Props> {
   protected renderPopupContents = (markerId: number, position: Position) => {
     return (
       <Box className={styles['popup-content']}>
-        <ArticlePreviewList searchConditions={{ marker: markerId }} variant="popup" />
+        <ArticlePreviewList
+          searchConditions={{ marker: markerId, category: this.props.categoryId }}
+          variant="popup"
+        />
         {this.renderAddButton(position)}
       </Box>
     );
@@ -68,6 +79,7 @@ export type Props = {
   hiddenMarkerIds: number[];
   editting: boolean;
   isMobile: boolean;
+  categoryId?: number;
 
   openFormWithTheMarker: (position: Position) => void;
 };

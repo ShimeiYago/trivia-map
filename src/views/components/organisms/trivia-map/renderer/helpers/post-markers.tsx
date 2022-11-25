@@ -22,7 +22,7 @@ export class PostMarkers extends React.Component<Props> {
       const numberOfPublicArticles =
         categoryId === undefined
           ? marker.numberOfPublicArticles.total
-          : marker.numberOfPublicArticles.breakdown[categoryId];
+          : marker.numberOfPublicArticles.eachCategory[categoryId];
 
       if (numberOfPublicArticles === 0) {
         return null;

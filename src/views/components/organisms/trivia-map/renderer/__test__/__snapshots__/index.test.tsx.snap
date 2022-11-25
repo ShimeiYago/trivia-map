@@ -89,7 +89,14 @@ exports[`Shallow Snapshot Tests basic 1`] = `
             "lat": 0,
             "lng": 0,
             "markerId": 100,
-            "numberOfPublicArticles": 1,
+            "numberOfPublicArticles": Object {
+              "eachCategory": Array [
+                1,
+                2,
+                1,
+              ],
+              "total": 4,
+            },
             "park": "S",
           },
         ]
@@ -315,7 +322,14 @@ exports[`Shallow Snapshot Tests land map 1`] = `
             "lat": 0,
             "lng": 0,
             "markerId": 100,
-            "numberOfPublicArticles": 1,
+            "numberOfPublicArticles": Object {
+              "eachCategory": Array [
+                1,
+                2,
+                1,
+              ],
+              "total": 4,
+            },
             "park": "S",
           },
         ]
@@ -438,7 +452,14 @@ exports[`Shallow Snapshot Tests with current marker 1`] = `
             "lat": 0,
             "lng": 0,
             "markerId": 100,
-            "numberOfPublicArticles": 1,
+            "numberOfPublicArticles": Object {
+              "eachCategory": Array [
+                1,
+                2,
+                1,
+              ],
+              "total": 4,
+            },
             "park": "S",
           },
         ]
@@ -595,7 +616,14 @@ exports[`Shallow Snapshot Tests with initCenter prop 1`] = `
             "lat": 0,
             "lng": 0,
             "markerId": 100,
-            "numberOfPublicArticles": 1,
+            "numberOfPublicArticles": Object {
+              "eachCategory": Array [
+                1,
+                2,
+                1,
+              ],
+              "total": 4,
+            },
             "park": "S",
           },
         ]
@@ -734,7 +762,14 @@ exports[`Shallow Snapshot Tests with width and height props 1`] = `
             "lat": 0,
             "lng": 0,
             "markerId": 100,
-            "numberOfPublicArticles": 1,
+            "numberOfPublicArticles": Object {
+              "eachCategory": Array [
+                1,
+                2,
+                1,
+              ],
+              "total": 4,
+            },
             "park": "S",
           },
         ]

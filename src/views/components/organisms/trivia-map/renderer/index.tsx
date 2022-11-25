@@ -9,13 +9,13 @@ import { Position } from 'types/position';
 import { DialogScreen } from 'views/components/atoms/dialog-screen';
 import { LoadingState } from 'types/loading-state';
 import { PostMarkers } from './helpers/post-markers';
-import { Marker } from 'store/markers/model';
 import { Park } from 'types/park';
 import { MAP_MARGIN, MAP_MAX_COORINATE, TDL_TILE_URL, TDS_TILE_URL, ZOOMS } from 'constant';
 import TouchAppIcon from '@mui/icons-material/TouchApp';
 import { CRS } from 'leaflet';
 import selectionPosition from 'images/selection-position.png';
 import { blue } from '@mui/material/colors';
+import { Marker } from 'types/marker';
 
 export class Renderer extends React.Component<Props, State> {
   static readonly defaultProps: Pick<Props, 'newMarkerMode' | 'initZoom'> = {
@@ -51,10 +51,7 @@ export class Renderer extends React.Component<Props, State> {
       this.state.map?.setView(this.props.initCenter);
     }
 
-    if (
-      !this.props.doNotShowPostMarkers &&
-      (prevProps.park !== this.props.park || prevProps.categoryId !== this.props.categoryId)
-    ) {
+    if (!this.props.doNotShowPostMarkers && prevProps.park !== this.props.park) {
       this.props.fetchMarkers();
     }
   }
@@ -125,6 +122,7 @@ export class Renderer extends React.Component<Props, State> {
       hiddenMarkerIds,
       isFormEditting,
       isMobile,
+      categoryId,
     } = this.props;
     if (doNotShowPostMarkers || !this.state.map) {
       return null;
@@ -139,6 +137,7 @@ export class Renderer extends React.Component<Props, State> {
         openFormWithTheMarker={this.openFormWithTheMarker}
         editting={isFormEditting}
         isMobile={isMobile}
+        categoryId={categoryId}
       />
     );
   }

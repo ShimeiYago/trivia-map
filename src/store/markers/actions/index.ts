@@ -2,8 +2,8 @@ import { selectMarkers } from 'store/markers/selector';
 import { markersSlice } from './../slice/index';
 import { AppThunk } from 'store';
 import { getRemoteMarkers, GetMarkersResponseWithPagination } from 'api/markers-api';
-import { Marker } from '../model';
 import { throwError } from 'store/global-error/slice';
+import { Marker } from 'types/marker';
 
 // basic actions
 export const {
@@ -19,7 +19,6 @@ export const {
 // fetchMarkers action
 export const fetchMarkers = (): AppThunk => async (dispatch, getState) => {
   const park = getState().markers.focusingPark;
-  const category = getState().markers.filteringCategoryId;
 
   dispatch(updateFocusingPark(park));
   dispatch(fetchStart());
@@ -35,11 +34,11 @@ export const fetchMarkers = (): AppThunk => async (dispatch, getState) => {
 
       let res: GetMarkersResponseWithPagination;
       if (loadedPages === 0) {
-        res = await getRemoteMarkers({ park, category });
+        res = await getRemoteMarkers({ park });
         totalPages = res.totalPages;
         dispatch(updateTotalPages(totalPages));
       } else {
-        res = await getRemoteMarkers({ park, nextUrl, category });
+        res = await getRemoteMarkers({ park, nextUrl });
       }
 
       dispatch(appendMarkers(res.results));

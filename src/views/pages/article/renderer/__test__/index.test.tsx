@@ -21,7 +21,7 @@ const article: GetArticleResponse = {
     lat: 0,
     lng: 0,
     park: 'S',
-    numberOfPublicArticles: 1,
+    numberOfPublicArticles: { total: 4, eachCategory: [1, 2, 1] },
     areaNames: ['シー'],
   },
   image: null,

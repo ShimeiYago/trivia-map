@@ -9,14 +9,14 @@ const basicProps: Props = {
       lat: 0,
       lng: 0,
       park: 'S',
-      numberOfPublicArticles: 1,
+      numberOfPublicArticles: { total: 1, eachCategory: [1, 0, 0] },
     },
     {
       markerId: 101,
       lat: 0,
       lng: 0,
       park: 'S',
-      numberOfPublicArticles: 2,
+      numberOfPublicArticles: { total: 4, eachCategory: [1, 2, 1] },
     },
   ],
   hiddenMarkerIds: [],
@@ -45,6 +45,11 @@ describe('Shallow Snapshot Tests', () => {
 
   it('form is editting', () => {
     shallowWrapper.setProps({ editting: true });
+    expect(shallowWrapper).toMatchSnapshot();
+  });
+
+  it('category is selected', () => {
+    shallowWrapper.setProps({ categoryId: 1 });
     expect(shallowWrapper).toMatchSnapshot();
   });
 });

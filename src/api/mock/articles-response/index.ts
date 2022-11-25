@@ -12,7 +12,7 @@ export const mockGetArticleResponse: GetArticleResponse = {
     lat: -111.33,
     lng: 149.243,
     park: 'S',
-    numberOfPublicArticles: 1,
+    numberOfPublicArticles: { total: 4, eachCategory: [1, 2, 1] },
     areaNames: ['シー', 'メディテレーニアンハーバー', 'ポルトパラディーゾ'],
   },
   image: 'https://disneyparkstory.com/wp-content/uploads/2017/02/CIMG9800.jpg',

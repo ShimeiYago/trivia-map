@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { Marker } from 'types/marker';
 import { Park } from 'types/park';
-import { initialState, Marker } from '../model';
+import { initialState } from '../model';
 
 export const markersSlice = createSlice({
   name: 'markers',

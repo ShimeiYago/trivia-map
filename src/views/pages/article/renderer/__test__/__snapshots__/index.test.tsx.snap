@@ -132,7 +132,14 @@ exports[`Shallow Snapshot Tests author view 1`] = `
             "lat": 0,
             "lng": 0,
             "markerId": 1,
-            "numberOfPublicArticles": 1,
+            "numberOfPublicArticles": Object {
+              "eachCategory": Array [
+                1,
+                2,
+                1,
+              ],
+              "total": 4,
+            },
             "park": "S",
           },
         ]
@@ -148,7 +155,14 @@ exports[`Shallow Snapshot Tests author view 1`] = `
           "lat": 0,
           "lng": 0,
           "markerId": 1,
-          "numberOfPublicArticles": 1,
+          "numberOfPublicArticles": Object {
+            "eachCategory": Array [
+              1,
+              2,
+              1,
+            ],
+            "total": 4,
+          },
           "park": "S",
         }
       }
@@ -292,7 +306,14 @@ exports[`Shallow Snapshot Tests draft 1`] = `
             "lat": 0,
             "lng": 0,
             "markerId": 1,
-            "numberOfPublicArticles": 1,
+            "numberOfPublicArticles": Object {
+              "eachCategory": Array [
+                1,
+                2,
+                1,
+              ],
+              "total": 4,
+            },
             "park": "S",
           },
         ]
@@ -308,7 +329,14 @@ exports[`Shallow Snapshot Tests draft 1`] = `
           "lat": 0,
           "lng": 0,
           "markerId": 1,
-          "numberOfPublicArticles": 1,
+          "numberOfPublicArticles": Object {
+            "eachCategory": Array [
+              1,
+              2,
+              1,
+            ],
+            "total": 4,
+          },
           "park": "S",
         }
       }
@@ -447,7 +475,14 @@ exports[`Shallow Snapshot Tests with article 1`] = `
             "lat": 0,
             "lng": 0,
             "markerId": 1,
-            "numberOfPublicArticles": 1,
+            "numberOfPublicArticles": Object {
+              "eachCategory": Array [
+                1,
+                2,
+                1,
+              ],
+              "total": 4,
+            },
             "park": "S",
           },
         ]
@@ -463,7 +498,14 @@ exports[`Shallow Snapshot Tests with article 1`] = `
           "lat": 0,
           "lng": 0,
           "markerId": 1,
-          "numberOfPublicArticles": 1,
+          "numberOfPublicArticles": Object {
+            "eachCategory": Array [
+              1,
+              2,
+              1,
+            ],
+            "total": 4,
+          },
           "park": "S",
         }
       }
@@ -599,7 +641,14 @@ exports[`Shallow Snapshot Tests with image 1`] = `
             "lat": 0,
             "lng": 0,
             "markerId": 1,
-            "numberOfPublicArticles": 1,
+            "numberOfPublicArticles": Object {
+              "eachCategory": Array [
+                1,
+                2,
+                1,
+              ],
+              "total": 4,
+            },
             "park": "S",
           },
         ]
@@ -615,7 +664,14 @@ exports[`Shallow Snapshot Tests with image 1`] = `
           "lat": 0,
           "lng": 0,
           "markerId": 1,
-          "numberOfPublicArticles": 1,
+          "numberOfPublicArticles": Object {
+            "eachCategory": Array [
+              1,
+              2,
+              1,
+            ],
+            "total": 4,
+          },
           "park": "S",
         }
       }

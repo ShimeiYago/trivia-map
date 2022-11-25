@@ -51,10 +51,7 @@ export class Renderer extends React.Component<Props, State> {
       this.state.map?.setView(this.props.initCenter);
     }
 
-    if (
-      !this.props.doNotShowPostMarkers &&
-      (prevProps.park !== this.props.park || prevProps.categoryId !== this.props.categoryId)
-    ) {
+    if (!this.props.doNotShowPostMarkers && prevProps.park !== this.props.park) {
       this.props.fetchMarkers();
     }
   }
@@ -125,6 +122,7 @@ export class Renderer extends React.Component<Props, State> {
       hiddenMarkerIds,
       isFormEditting,
       isMobile,
+      categoryId,
     } = this.props;
     if (doNotShowPostMarkers || !this.state.map) {
       return null;
@@ -139,6 +137,7 @@ export class Renderer extends React.Component<Props, State> {
         openFormWithTheMarker={this.openFormWithTheMarker}
         editting={isFormEditting}
         isMobile={isMobile}
+        categoryId={categoryId}
       />
     );
   }

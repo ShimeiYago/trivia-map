@@ -10,7 +10,7 @@ import { Marker } from 'types/marker';
 
 export class PostMarkers extends React.Component<Props> {
   render() {
-    const { map, markers, popupDisabled, hiddenMarkerIds, isMobile } = this.props;
+    const { map, markers, popupDisabled, hiddenMarkerIds, isMobile, categoryId } = this.props;
 
     const markerElmList = markers.map((marker) => {
       if (hiddenMarkerIds.includes(marker.markerId)) {
@@ -19,16 +19,23 @@ export class PostMarkers extends React.Component<Props> {
 
       const popup = !popupDisabled && this.renderPopupContents(marker.markerId, marker);
 
-      // TODO
-      const numberOfContents =
-        marker.numberOfPublicArticles.total > 1 ? marker.numberOfPublicArticles : undefined;
+      const numberOfPublicArticles =
+        categoryId === undefined
+          ? marker.numberOfPublicArticles.total
+          : marker.numberOfPublicArticles.breakdown[categoryId];
+
+      if (numberOfPublicArticles === 0) {
+        return null;
+      }
+
+      const numberOfContents = numberOfPublicArticles > 1 ? numberOfPublicArticles : undefined;
 
       return (
         <MapMarker
           map={map}
           position={new LatLng(marker.lat, marker.lng)}
           popup={popup}
-          numberOfContents={numberOfContents?.total}
+          numberOfContents={numberOfContents}
           key={`post-marker-${marker.markerId}`}
           isMobile={isMobile}
         />
@@ -41,7 +48,10 @@ export class PostMarkers extends React.Component<Props> {
   protected renderPopupContents = (markerId: number, position: Position) => {
     return (
       <Box className={styles['popup-content']}>
-        <ArticlePreviewList searchConditions={{ marker: markerId }} variant="popup" />
+        <ArticlePreviewList
+          searchConditions={{ marker: markerId, category: this.props.categoryId }}
+          variant="popup"
+        />
         {this.renderAddButton(position)}
       </Box>
     );
@@ -69,6 +79,7 @@ export type Props = {
   hiddenMarkerIds: number[];
   editting: boolean;
   isMobile: boolean;
+  categoryId?: number;
 
   openFormWithTheMarker: (position: Position) => void;
 };

@@ -20,14 +20,14 @@ const mockGetMarkersResponsePage1: GetMarkersResponseWithPagination = {
       lat: -111.33,
       lng: 149.243,
       park: 'S',
-      numberOfPublicArticles: { total: 4, breakdown: [1, 2, 1] },
+      numberOfPublicArticles: { total: 2, breakdown: [0, 2, 0] },
     },
     {
       markerId: 1,
       lat: -105.184,
       lng: 138.721,
       park: 'S',
-      numberOfPublicArticles: { total: 4, breakdown: [1, 2, 1] },
+      numberOfPublicArticles: { total: 1, breakdown: [0, 0, 1] },
     },
   ],
 };
@@ -44,14 +44,14 @@ const mockGetMarkersResponsePage2: GetMarkersResponseWithPagination = {
       lat: -166.044,
       lng: 55.335,
       park: 'S',
-      numberOfPublicArticles: { total: 4, breakdown: [1, 2, 1] },
+      numberOfPublicArticles: { total: 3, breakdown: [1, 2, 0] },
     },
     {
       markerId: 3,
       lat: -132.51,
       lng: 40.566,
       park: 'S',
-      numberOfPublicArticles: { total: 4, breakdown: [1, 2, 1] },
+      numberOfPublicArticles: { total: 1, breakdown: [0, 0, 1] },
     },
   ],
 };

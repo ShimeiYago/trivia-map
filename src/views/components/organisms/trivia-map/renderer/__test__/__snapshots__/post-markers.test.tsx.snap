@@ -19,6 +19,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
         <ArticlePreviewList
           searchConditions={
             Object {
+              "category": undefined,
               "marker": 100,
             }
           }
@@ -68,6 +69,62 @@ exports[`Shallow Snapshot Tests basic 1`] = `
         <ArticlePreviewList
           searchConditions={
             Object {
+              "category": undefined,
+              "marker": 101,
+            }
+          }
+          variant="popup"
+        />
+        <ForwardRef(Box)
+          sx={
+            Object {
+              "mt": 2,
+              "textAlign": "right",
+            }
+          }
+        >
+          <ForwardRef(Button)
+            onClick={[Function]}
+            startIcon={<Memo />}
+          >
+            ここにトリビアを追加する
+          </ForwardRef(Button)>
+        </ForwardRef(Box)>
+      </ForwardRef(Box)>
+    }
+    position={
+      Object {
+        "lat": 0,
+        "lng": 0,
+      }
+    }
+    variant="blue"
+    zIndexOffset={0}
+  />
+</Fragment>
+`;
+
+exports[`Shallow Snapshot Tests category is selected 1`] = `
+<Fragment>
+  <MapMarker
+    autoOpen={false}
+    draggable={false}
+    isMobile={false}
+    key="post-marker-101"
+    map={
+      Object {
+        "setView": [MockFunction],
+      }
+    }
+    numberOfContents={2}
+    popup={
+      <ForwardRef(Box)
+        className="popup-content"
+      >
+        <ArticlePreviewList
+          searchConditions={
+            Object {
+              "category": 1,
               "marker": 101,
             }
           }
@@ -121,6 +178,7 @@ exports[`Shallow Snapshot Tests form is editting 1`] = `
         <ArticlePreviewList
           searchConditions={
             Object {
+              "category": undefined,
               "marker": 100,
             }
           }
@@ -170,6 +228,7 @@ exports[`Shallow Snapshot Tests form is editting 1`] = `
         <ArticlePreviewList
           searchConditions={
             Object {
+              "category": undefined,
               "marker": 101,
             }
           }
@@ -224,6 +283,7 @@ exports[`Shallow Snapshot Tests with hiddenMarkerIds 1`] = `
         <ArticlePreviewList
           searchConditions={
             Object {
+              "category": undefined,
               "marker": 101,
             }
           }

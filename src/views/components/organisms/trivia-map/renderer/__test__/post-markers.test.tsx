@@ -47,6 +47,11 @@ describe('Shallow Snapshot Tests', () => {
     shallowWrapper.setProps({ editting: true });
     expect(shallowWrapper).toMatchSnapshot();
   });
+
+  it('category is selected', () => {
+    shallowWrapper.setProps({ categoryId: 1 });
+    expect(shallowWrapper).toMatchSnapshot();
+  });
 });
 
 describe('handleClickAdd', () => {

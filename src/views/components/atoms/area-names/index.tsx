@@ -22,7 +22,7 @@ export const AreaNames: React.FC<Props> = (props) => {
   });
 
   return (
-    <Typography variant={props.variant} sx={wrapperStyle}>
+    <Typography variant={props.variant} sx={wrapperStyle} component="div">
       {contents}
     </Typography>
   );

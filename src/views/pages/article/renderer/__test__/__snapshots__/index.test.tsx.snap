@@ -112,7 +112,9 @@ exports[`Shallow Snapshot Tests author view 1`] = `
       text="地図"
       variant="h5"
     />
-    <ForwardRef(Typography)>
+    <ForwardRef(Typography)
+      component="div"
+    >
       エリア：
       <AreaNames
         areaNames={
@@ -286,7 +288,9 @@ exports[`Shallow Snapshot Tests draft 1`] = `
       text="地図"
       variant="h5"
     />
-    <ForwardRef(Typography)>
+    <ForwardRef(Typography)
+      component="div"
+    >
       エリア：
       <AreaNames
         areaNames={
@@ -455,7 +459,9 @@ exports[`Shallow Snapshot Tests with article 1`] = `
       text="地図"
       variant="h5"
     />
-    <ForwardRef(Typography)>
+    <ForwardRef(Typography)
+      component="div"
+    >
       エリア：
       <AreaNames
         areaNames={
@@ -621,7 +627,9 @@ exports[`Shallow Snapshot Tests with image 1`] = `
       text="地図"
       variant="h5"
     />
-    <ForwardRef(Typography)>
+    <ForwardRef(Typography)
+      component="div"
+    >
       エリア：
       <AreaNames
         areaNames={

@@ -87,16 +87,12 @@ describe('Shallow Snapshot Tests', () => {
 });
 
 describe('componentDidUpdate', () => {
-  const originalScrollTo = window.scrollTo;
-
   beforeEach(() => {
     getRemoteArticleSpy = jest.spyOn(GetRemoteArticleModule, 'getRemoteArticle');
-    window.scrollTo = jest.fn();
   });
 
   afterEach(() => {
     jest.resetAllMocks();
-    window.scrollTo = originalScrollTo;
   });
 
   it('should call fetchArticle if postId is updated', async () => {

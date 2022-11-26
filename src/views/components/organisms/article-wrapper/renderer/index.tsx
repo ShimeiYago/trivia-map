@@ -29,6 +29,10 @@ export class Renderer extends React.Component<Props> {
     super(props);
   }
 
+  componentDidMount(): void {
+    window.scrollTo({ top: 0 });
+  }
+
   render() {
     const { isMobile, children, showSidebar } = this.props;
 

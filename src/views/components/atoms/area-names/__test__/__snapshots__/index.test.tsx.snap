@@ -2,6 +2,7 @@
 
 exports[`Shallow Snapshot Tests basic 1`] = `
 <ForwardRef(Typography)
+  component="div"
   sx={
     Object {
       "alignItems": "center",

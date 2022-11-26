@@ -37,7 +37,6 @@ export class Renderer extends React.Component<Props, State> {
 
   componentDidUpdate(prevProps: Readonly<Props>) {
     if (prevProps.postId !== this.props.postId) {
-      window.scrollTo({ top: 0 });
       this.fetchArticle();
     }
   }
@@ -120,7 +119,7 @@ export class Renderer extends React.Component<Props, State> {
             iconPosition="left"
           />
 
-          <Typography>
+          <Typography component="div">
             エリア：
             <AreaNames areaNames={marker.areaNames} />
           </Typography>

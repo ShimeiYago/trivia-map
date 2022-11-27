@@ -3,7 +3,7 @@
 exports[`Shallow Snapshot Tests basic 1`] = `
 <div>
   <label
-    className="label variant-square label-active label-noimage"
+    className="label variant-photo label-active label-noimage"
   >
     <input
       accept="image/*"
@@ -56,21 +56,50 @@ exports[`Shallow Snapshot Tests basic 1`] = `
         <img />
       </u>
     </ForwardRef(Box)>
-    <ForwardRef(Typography)
-      align="right"
+    <ForwardRef(Grid)
+      container={true}
       sx={
         Object {
-          "m": 2,
+          "p": 2,
         }
       }
     >
-      <ForwardRef(Button)
-        onClick={[Function]}
-        variant="contained"
+      <ForwardRef(Grid)
+        item={true}
+        xs={6}
       >
-        決定
-      </ForwardRef(Button)>
-    </ForwardRef(Typography)>
+        <ForwardRef(Typography)
+          align="left"
+          component="div"
+        >
+          <ForwardRef(Button)
+            color="info"
+            disabled={false}
+            onClick={[Function]}
+            startIcon={<Memo />}
+            variant="outlined"
+          >
+            画像切り取り
+          </ForwardRef(Button)>
+        </ForwardRef(Typography)>
+      </ForwardRef(Grid)>
+      <ForwardRef(Grid)
+        item={true}
+        xs={6}
+      >
+        <ForwardRef(Typography)
+          align="right"
+          component="div"
+        >
+          <ForwardRef(Button)
+            onClick={[Function]}
+            variant="contained"
+          >
+            決定
+          </ForwardRef(Button)>
+        </ForwardRef(Typography)>
+      </ForwardRef(Grid)>
+    </ForwardRef(Grid)>
   </BoxModal>
 </div>
 `;
@@ -78,7 +107,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
 exports[`Shallow Snapshot Tests disabled 1`] = `
 <div>
   <label
-    className="label variant-square label-noimage"
+    className="label variant-photo label-noimage"
   />
   <BoxModal
     open={false}
@@ -112,21 +141,50 @@ exports[`Shallow Snapshot Tests disabled 1`] = `
         <img />
       </u>
     </ForwardRef(Box)>
-    <ForwardRef(Typography)
-      align="right"
+    <ForwardRef(Grid)
+      container={true}
       sx={
         Object {
-          "m": 2,
+          "p": 2,
         }
       }
     >
-      <ForwardRef(Button)
-        onClick={[Function]}
-        variant="contained"
+      <ForwardRef(Grid)
+        item={true}
+        xs={6}
       >
-        決定
-      </ForwardRef(Button)>
-    </ForwardRef(Typography)>
+        <ForwardRef(Typography)
+          align="left"
+          component="div"
+        >
+          <ForwardRef(Button)
+            color="info"
+            disabled={false}
+            onClick={[Function]}
+            startIcon={<Memo />}
+            variant="outlined"
+          >
+            画像切り取り
+          </ForwardRef(Button)>
+        </ForwardRef(Typography)>
+      </ForwardRef(Grid)>
+      <ForwardRef(Grid)
+        item={true}
+        xs={6}
+      >
+        <ForwardRef(Typography)
+          align="right"
+          component="div"
+        >
+          <ForwardRef(Button)
+            onClick={[Function]}
+            variant="contained"
+          >
+            決定
+          </ForwardRef(Button)>
+        </ForwardRef(Typography)>
+      </ForwardRef(Grid)>
+    </ForwardRef(Grid)>
   </BoxModal>
 </div>
 `;
@@ -185,21 +243,35 @@ exports[`Shallow Snapshot Tests icon 1`] = `
         <img />
       </u>
     </ForwardRef(Box)>
-    <ForwardRef(Typography)
-      align="right"
+    <ForwardRef(Grid)
+      container={true}
       sx={
         Object {
-          "m": 2,
+          "p": 2,
         }
       }
     >
-      <ForwardRef(Button)
-        onClick={[Function]}
-        variant="contained"
+      <ForwardRef(Grid)
+        item={true}
+        xs={6}
+      />
+      <ForwardRef(Grid)
+        item={true}
+        xs={6}
       >
-        決定
-      </ForwardRef(Button)>
-    </ForwardRef(Typography)>
+        <ForwardRef(Typography)
+          align="right"
+          component="div"
+        >
+          <ForwardRef(Button)
+            onClick={[Function]}
+            variant="contained"
+          >
+            決定
+          </ForwardRef(Button)>
+        </ForwardRef(Typography)>
+      </ForwardRef(Grid)>
+    </ForwardRef(Grid)>
   </BoxModal>
 </div>
 `;
@@ -207,7 +279,7 @@ exports[`Shallow Snapshot Tests icon 1`] = `
 exports[`Shallow Snapshot Tests open modal 1`] = `
 <div>
   <label
-    className="label variant-square label-active label-noimage"
+    className="label variant-photo label-active label-noimage"
   >
     <input
       accept="image/*"
@@ -260,21 +332,50 @@ exports[`Shallow Snapshot Tests open modal 1`] = `
         <img />
       </u>
     </ForwardRef(Box)>
-    <ForwardRef(Typography)
-      align="right"
+    <ForwardRef(Grid)
+      container={true}
       sx={
         Object {
-          "m": 2,
+          "p": 2,
         }
       }
     >
-      <ForwardRef(Button)
-        onClick={[Function]}
-        variant="contained"
+      <ForwardRef(Grid)
+        item={true}
+        xs={6}
       >
-        決定
-      </ForwardRef(Button)>
-    </ForwardRef(Typography)>
+        <ForwardRef(Typography)
+          align="left"
+          component="div"
+        >
+          <ForwardRef(Button)
+            color="info"
+            disabled={false}
+            onClick={[Function]}
+            startIcon={<Memo />}
+            variant="outlined"
+          >
+            画像切り取り
+          </ForwardRef(Button)>
+        </ForwardRef(Typography)>
+      </ForwardRef(Grid)>
+      <ForwardRef(Grid)
+        item={true}
+        xs={6}
+      >
+        <ForwardRef(Typography)
+          align="right"
+          component="div"
+        >
+          <ForwardRef(Button)
+            onClick={[Function]}
+            variant="contained"
+          >
+            決定
+          </ForwardRef(Button)>
+        </ForwardRef(Typography)>
+      </ForwardRef(Grid)>
+    </ForwardRef(Grid)>
   </BoxModal>
 </div>
 `;
@@ -282,7 +383,7 @@ exports[`Shallow Snapshot Tests open modal 1`] = `
 exports[`Shallow Snapshot Tests with error & helperText 1`] = `
 <div>
   <label
-    className="label variant-square label-active label-noimage"
+    className="label variant-photo label-active label-noimage"
   >
     <input
       accept="image/*"
@@ -344,21 +445,50 @@ exports[`Shallow Snapshot Tests with error & helperText 1`] = `
         <img />
       </u>
     </ForwardRef(Box)>
-    <ForwardRef(Typography)
-      align="right"
+    <ForwardRef(Grid)
+      container={true}
       sx={
         Object {
-          "m": 2,
+          "p": 2,
         }
       }
     >
-      <ForwardRef(Button)
-        onClick={[Function]}
-        variant="contained"
+      <ForwardRef(Grid)
+        item={true}
+        xs={6}
       >
-        決定
-      </ForwardRef(Button)>
-    </ForwardRef(Typography)>
+        <ForwardRef(Typography)
+          align="left"
+          component="div"
+        >
+          <ForwardRef(Button)
+            color="info"
+            disabled={false}
+            onClick={[Function]}
+            startIcon={<Memo />}
+            variant="outlined"
+          >
+            画像切り取り
+          </ForwardRef(Button)>
+        </ForwardRef(Typography)>
+      </ForwardRef(Grid)>
+      <ForwardRef(Grid)
+        item={true}
+        xs={6}
+      >
+        <ForwardRef(Typography)
+          align="right"
+          component="div"
+        >
+          <ForwardRef(Button)
+            onClick={[Function]}
+            variant="contained"
+          >
+            決定
+          </ForwardRef(Button)>
+        </ForwardRef(Typography)>
+      </ForwardRef(Grid)>
+    </ForwardRef(Grid)>
   </BoxModal>
 </div>
 `;
@@ -366,7 +496,7 @@ exports[`Shallow Snapshot Tests with error & helperText 1`] = `
 exports[`Shallow Snapshot Tests with error 1`] = `
 <div>
   <label
-    className="label variant-square label-active label-noimage"
+    className="label variant-photo label-active label-noimage"
   >
     <input
       accept="image/*"
@@ -419,21 +549,50 @@ exports[`Shallow Snapshot Tests with error 1`] = `
         <img />
       </u>
     </ForwardRef(Box)>
-    <ForwardRef(Typography)
-      align="right"
+    <ForwardRef(Grid)
+      container={true}
       sx={
         Object {
-          "m": 2,
+          "p": 2,
         }
       }
     >
-      <ForwardRef(Button)
-        onClick={[Function]}
-        variant="contained"
+      <ForwardRef(Grid)
+        item={true}
+        xs={6}
       >
-        決定
-      </ForwardRef(Button)>
-    </ForwardRef(Typography)>
+        <ForwardRef(Typography)
+          align="left"
+          component="div"
+        >
+          <ForwardRef(Button)
+            color="info"
+            disabled={false}
+            onClick={[Function]}
+            startIcon={<Memo />}
+            variant="outlined"
+          >
+            画像切り取り
+          </ForwardRef(Button)>
+        </ForwardRef(Typography)>
+      </ForwardRef(Grid)>
+      <ForwardRef(Grid)
+        item={true}
+        xs={6}
+      >
+        <ForwardRef(Typography)
+          align="right"
+          component="div"
+        >
+          <ForwardRef(Button)
+            onClick={[Function]}
+            variant="contained"
+          >
+            決定
+          </ForwardRef(Button)>
+        </ForwardRef(Typography)>
+      </ForwardRef(Grid)>
+    </ForwardRef(Grid)>
   </BoxModal>
 </div>
 `;
@@ -499,21 +658,35 @@ exports[`Shallow Snapshot Tests with helperText & icon variant 1`] = `
         <img />
       </u>
     </ForwardRef(Box)>
-    <ForwardRef(Typography)
-      align="right"
+    <ForwardRef(Grid)
+      container={true}
       sx={
         Object {
-          "m": 2,
+          "p": 2,
         }
       }
     >
-      <ForwardRef(Button)
-        onClick={[Function]}
-        variant="contained"
+      <ForwardRef(Grid)
+        item={true}
+        xs={6}
+      />
+      <ForwardRef(Grid)
+        item={true}
+        xs={6}
       >
-        決定
-      </ForwardRef(Button)>
-    </ForwardRef(Typography)>
+        <ForwardRef(Typography)
+          align="right"
+          component="div"
+        >
+          <ForwardRef(Button)
+            onClick={[Function]}
+            variant="contained"
+          >
+            決定
+          </ForwardRef(Button)>
+        </ForwardRef(Typography)>
+      </ForwardRef(Grid)>
+    </ForwardRef(Grid)>
   </BoxModal>
 </div>
 `;
@@ -521,7 +694,7 @@ exports[`Shallow Snapshot Tests with helperText & icon variant 1`] = `
 exports[`Shallow Snapshot Tests with helperText 1`] = `
 <div>
   <label
-    className="label variant-square label-active label-noimage"
+    className="label variant-photo label-active label-noimage"
   >
     <input
       accept="image/*"
@@ -581,21 +754,50 @@ exports[`Shallow Snapshot Tests with helperText 1`] = `
         <img />
       </u>
     </ForwardRef(Box)>
-    <ForwardRef(Typography)
-      align="right"
+    <ForwardRef(Grid)
+      container={true}
       sx={
         Object {
-          "m": 2,
+          "p": 2,
         }
       }
     >
-      <ForwardRef(Button)
-        onClick={[Function]}
-        variant="contained"
+      <ForwardRef(Grid)
+        item={true}
+        xs={6}
       >
-        決定
-      </ForwardRef(Button)>
-    </ForwardRef(Typography)>
+        <ForwardRef(Typography)
+          align="left"
+          component="div"
+        >
+          <ForwardRef(Button)
+            color="info"
+            disabled={false}
+            onClick={[Function]}
+            startIcon={<Memo />}
+            variant="outlined"
+          >
+            画像切り取り
+          </ForwardRef(Button)>
+        </ForwardRef(Typography)>
+      </ForwardRef(Grid)>
+      <ForwardRef(Grid)
+        item={true}
+        xs={6}
+      >
+        <ForwardRef(Typography)
+          align="right"
+          component="div"
+        >
+          <ForwardRef(Button)
+            onClick={[Function]}
+            variant="contained"
+          >
+            決定
+          </ForwardRef(Button)>
+        </ForwardRef(Typography)>
+      </ForwardRef(Grid)>
+    </ForwardRef(Grid)>
   </BoxModal>
 </div>
 `;
@@ -603,7 +805,7 @@ exports[`Shallow Snapshot Tests with helperText 1`] = `
 exports[`Shallow Snapshot Tests with src 1`] = `
 <div>
   <label
-    className="label variant-square label-active"
+    className="label variant-photo label-active"
   >
     <input
       accept="image/*"
@@ -612,7 +814,7 @@ exports[`Shallow Snapshot Tests with src 1`] = `
       type="file"
     />
     <img
-      className="img variant-square"
+      className="img variant-photo"
       src="https://xxx.image.png"
     />
     <div
@@ -660,21 +862,50 @@ exports[`Shallow Snapshot Tests with src 1`] = `
         <img />
       </u>
     </ForwardRef(Box)>
-    <ForwardRef(Typography)
-      align="right"
+    <ForwardRef(Grid)
+      container={true}
       sx={
         Object {
-          "m": 2,
+          "p": 2,
         }
       }
     >
-      <ForwardRef(Button)
-        onClick={[Function]}
-        variant="contained"
+      <ForwardRef(Grid)
+        item={true}
+        xs={6}
       >
-        決定
-      </ForwardRef(Button)>
-    </ForwardRef(Typography)>
+        <ForwardRef(Typography)
+          align="left"
+          component="div"
+        >
+          <ForwardRef(Button)
+            color="info"
+            disabled={false}
+            onClick={[Function]}
+            startIcon={<Memo />}
+            variant="outlined"
+          >
+            画像切り取り
+          </ForwardRef(Button)>
+        </ForwardRef(Typography)>
+      </ForwardRef(Grid)>
+      <ForwardRef(Grid)
+        item={true}
+        xs={6}
+      >
+        <ForwardRef(Typography)
+          align="right"
+          component="div"
+        >
+          <ForwardRef(Button)
+            onClick={[Function]}
+            variant="contained"
+          >
+            決定
+          </ForwardRef(Button)>
+        </ForwardRef(Typography)>
+      </ForwardRef(Grid)>
+    </ForwardRef(Grid)>
   </BoxModal>
 </div>
 `;

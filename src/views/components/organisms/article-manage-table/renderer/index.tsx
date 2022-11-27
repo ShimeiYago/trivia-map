@@ -18,7 +18,11 @@ import {
   Divider,
 } from '@mui/material';
 import { LoadingState } from 'types/loading-state';
-import { getMyArticles, GetMyArticlesResponseEachItem } from 'api/articles-api/get-my-articles';
+import {
+  getMyArticles,
+  GetMyArticlesResponse,
+  GetMyArticlesResponseEachItem,
+} from 'api/articles-api/get-my-articles';
 import classes from './index.module.css';
 import { CenterSpinner } from 'views/components/atoms/center-spinner';
 import { ARTICLE_PAGE_LINK, EDIT_LINK } from 'constant/links';
@@ -61,7 +65,7 @@ export class Renderer extends React.Component<Props, State> {
       return <CenterSpinner />;
     }
 
-    if (articlesPreviews?.length === 0) {
+    if (articlesPreviews?.results.length === 0) {
       return <Typography align="center">まだ記事が投稿されていません。</Typography>;
     }
 
@@ -76,7 +80,7 @@ export class Renderer extends React.Component<Props, State> {
   protected renderDesktopTable() {
     const { articlesPreviews } = this.state;
 
-    const tableRows = articlesPreviews?.map((preview) => {
+    const tableRows = articlesPreviews?.results.map((preview) => {
       const { postId, isDraft, category } = preview;
 
       return (
@@ -105,7 +109,7 @@ export class Renderer extends React.Component<Props, State> {
   protected renderMobileTable() {
     const { articlesPreviews } = this.state;
 
-    const tableRows = articlesPreviews?.map((preview) => {
+    const tableRows = articlesPreviews?.results.map((preview) => {
       const { postId, isDraft, category } = preview;
 
       return (
@@ -133,7 +137,7 @@ export class Renderer extends React.Component<Props, State> {
       <Table>
         <TableHead>
           <TableRow>
-            <TableCell>投稿名</TableCell>
+            <TableCell />
           </TableRow>
         </TableHead>
         <TableBody>{tableRows}</TableBody>
@@ -172,10 +176,33 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   protected renderPagination() {
+    if (!this.state.articlesPreviews) {
+      return null;
+    }
+
+    const { totalPages, totalRecords, currentPage, startIndex, endIndex } =
+      this.state.articlesPreviews;
+
+    const showPagination = totalPages <= 1 ? false : true;
+
     return (
-      <div className={classes['pagination-wrapper']}>
-        <Pagination count={this.state.totalPages} onChange={this.handleChangePagination} />
-      </div>
+      <Stack spacing={1}>
+        <Typography align="center" fontSize={14} component="div">
+          {startIndex}〜{endIndex}件 / 全{totalRecords}件
+        </Typography>
+
+        {showPagination && (
+          <div className={classes['pagination-wrapper']}>
+            <Pagination
+              count={totalPages}
+              page={currentPage}
+              onChange={this.handleChangePagination}
+              siblingCount={0}
+              boundaryCount={1}
+            />
+          </div>
+        )}
+      </Stack>
     );
   }
 
@@ -209,8 +236,7 @@ export class Renderer extends React.Component<Props, State> {
 
       this.setState({
         loadingState: 'success',
-        totalPages: res.totalPages,
-        articlesPreviews: res.results,
+        articlesPreviews: res,
       });
     } catch (error) {
       this.props.throwError(500);
@@ -311,8 +337,7 @@ export type State = {
     postId: number;
     title: string;
   };
-  totalPages?: number;
-  articlesPreviews?: GetMyArticlesResponseEachItem[];
+  articlesPreviews?: GetMyArticlesResponse;
   message?: {
     text: string;
     type: 'error' | 'success';

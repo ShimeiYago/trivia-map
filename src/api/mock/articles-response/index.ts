@@ -46,6 +46,8 @@ export const mockGetArticlesPreviewsResponse: GetArticlesPreviewsResponse = {
   totalRecords: 2,
   totalPages: 2,
   currentPage: 1,
+  startIndex: 1,
+  endIndex: 1,
   results: [
     {
       postId: 1,
@@ -69,6 +71,8 @@ export const mockGetMyArticlesResponse: GetMyArticlesResponse = {
   previousUrl: null,
   totalRecords: 2,
   totalPages: 2,
+  startIndex: 1,
+  endIndex: 1,
   currentPage: 1,
   results: [
     {

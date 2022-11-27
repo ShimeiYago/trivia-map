@@ -28,8 +28,7 @@ describe('Shallow Snapshot Tests', () => {
   it('with articlesPreviews', () => {
     wrapper.setState({
       loadingState: 'success',
-      articlesPreviews: mockGetMyArticlesResponse.results,
-      totalPages: 2,
+      articlesPreviews: mockGetMyArticlesResponse,
     });
     expect(wrapper).toMatchSnapshot();
   });
@@ -40,8 +39,7 @@ describe('Shallow Snapshot Tests', () => {
     });
     wrapper.setState({
       loadingState: 'success',
-      articlesPreviews: mockGetMyArticlesResponse.results,
-      totalPages: 2,
+      articlesPreviews: mockGetMyArticlesResponse,
     });
     expect(wrapper).toMatchSnapshot();
   });
@@ -49,8 +47,21 @@ describe('Shallow Snapshot Tests', () => {
   it('articlesPreviews is zero', () => {
     wrapper.setState({
       loadingState: 'success',
-      articlesPreviews: [],
-      totalPages: 0,
+      articlesPreviews: {
+        ...mockGetMyArticlesResponse,
+        results: [],
+      },
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('one page', () => {
+    wrapper.setState({
+      loadingState: 'success',
+      articlesPreviews: {
+        ...mockGetMyArticlesResponse,
+        totalPages: 1,
+      },
     });
     expect(wrapper).toMatchSnapshot();
   });

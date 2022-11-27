@@ -14,7 +14,7 @@ export class Renderer extends React.Component<Props> {
   protected renderMainContent = () => {
     return (
       <>
-        <Typography component="h2" variant="h6" align="center" sx={{ mb: 2 }}>
+        <Typography component="h2" variant="h5" align="center" sx={{ mb: 2 }}>
           <IconAndText
             iconComponent={<FolderIcon fontSize="inherit" />}
             text={categoryMapper(this.props.categoryId)}

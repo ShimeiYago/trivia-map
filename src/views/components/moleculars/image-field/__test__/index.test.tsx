@@ -9,7 +9,7 @@ let resizeAndConvertToSelializedImageFileSpy: jest.SpyInstance;
 let getImageSizeSpy: jest.SpyInstance;
 
 const props: Props = {
-  variant: 'square',
+  variant: 'photo',
   onChange: jest.fn(),
   maxLength: 100,
   onCatchError: jest.fn(),
@@ -138,30 +138,6 @@ describe('handleFileInputChange', () => {
     expect(instance.props.onChange).toBeCalledWith(null);
   });
 
-  it('set initial crop in cropable mode', async () => {
-    wrapper = shallow(<ImageField {...props} cropable />);
-
-    const blob = new Blob(['image-data']);
-    const file = new File([blob], 'test.jpeg', {
-      type: 'image/jpeg',
-    });
-    const event = {
-      target: {
-        files: [file],
-      },
-    } as unknown as React.ChangeEvent<HTMLInputElement>;
-    const instance = wrapper.instance();
-    await instance['handleFileInputChange'](event);
-
-    expect(instance.state.crop).toEqual({
-      unit: '%',
-      x: 10,
-      y: 10,
-      width: 80,
-      height: 80,
-    });
-  });
-
   it('set initial crop for icon variant', async () => {
     getImageSizeSpy.mockResolvedValue({
       width: 100,
@@ -220,6 +196,30 @@ describe('handleFileInputChange', () => {
       width: 100,
       height: 50,
     });
+  });
+
+  it('do not set initial crop for photo variant', async () => {
+    getImageSizeSpy.mockResolvedValue({
+      width: 100,
+      height: 100,
+      aspect: 0.5,
+    });
+
+    wrapper = shallow(<ImageField {...props} cropable />);
+
+    const blob = new Blob(['image-data']);
+    const file = new File([blob], 'test.jpeg', {
+      type: 'image/jpeg',
+    });
+    const event = {
+      target: {
+        files: [file],
+      },
+    } as unknown as React.ChangeEvent<HTMLInputElement>;
+    const instance = wrapper.instance();
+    await instance['handleFileInputChange'](event);
+
+    expect(instance.state.crop).toEqual(undefined);
   });
 });
 
@@ -285,5 +285,18 @@ describe('handleFinishCrop', () => {
     await instance['handleFinishCrop']();
 
     expect(instance.props.onCatchError).toBeCalled();
+  });
+});
+
+describe('handleClickEnableCrop', () => {
+  beforeEach(() => {
+    wrapper = shallow(<ImageField {...props} />);
+  });
+
+  it('should set enableCrop true', () => {
+    const instance = wrapper.instance();
+    instance['handleClickEnableCrop']();
+
+    expect(instance.state.enableCrop).toBeTruthy();
   });
 });

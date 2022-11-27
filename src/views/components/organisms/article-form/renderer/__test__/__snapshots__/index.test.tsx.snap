@@ -171,7 +171,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
         maxLength={1000}
         onCatchError={[Function]}
         onChange={[Function]}
-        variant="square"
+        variant="photo"
       />
       <ForwardRef(TextField)
         disabled={false}
@@ -382,7 +382,7 @@ exports[`Shallow Snapshot Tests draft mode 1`] = `
         maxLength={1000}
         onCatchError={[Function]}
         onChange={[Function]}
-        variant="square"
+        variant="photo"
       />
       <ForwardRef(TextField)
         disabled={false}
@@ -573,7 +573,7 @@ exports[`Shallow Snapshot Tests loading 1`] = `
         maxLength={1000}
         onCatchError={[Function]}
         onChange={[Function]}
-        variant="square"
+        variant="photo"
       />
       <ForwardRef(TextField)
         disabled={true}
@@ -777,7 +777,7 @@ exports[`Shallow Snapshot Tests position is not selected yet 1`] = `
         maxLength={1000}
         onCatchError={[Function]}
         onChange={[Function]}
-        variant="square"
+        variant="photo"
       />
       <ForwardRef(TextField)
         disabled={false}
@@ -988,7 +988,7 @@ exports[`Shallow Snapshot Tests with category 1`] = `
         maxLength={1000}
         onCatchError={[Function]}
         onChange={[Function]}
-        variant="square"
+        variant="photo"
       />
       <ForwardRef(TextField)
         disabled={false}
@@ -1214,7 +1214,7 @@ exports[`Shallow Snapshot Tests with close button 1`] = `
         maxLength={1000}
         onCatchError={[Function]}
         onChange={[Function]}
-        variant="square"
+        variant="photo"
       />
       <ForwardRef(TextField)
         disabled={false}
@@ -1849,7 +1849,7 @@ exports[`Shallow Snapshot Tests with validation error 1`] = `
         maxLength={1000}
         onCatchError={[Function]}
         onChange={[Function]}
-        variant="square"
+        variant="photo"
       />
       <ForwardRef(TextField)
         disabled={false}

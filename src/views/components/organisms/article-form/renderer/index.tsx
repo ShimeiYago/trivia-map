@@ -191,7 +191,7 @@ export class Renderer extends React.Component<Props> {
               <ImageField
                 src={imageSrc}
                 onChange={this.handleImageChange}
-                variant="square"
+                variant="photo"
                 disabled={disabled}
                 error={!!formError?.fieldErrors?.image}
                 helperText={formError?.fieldErrors?.image}

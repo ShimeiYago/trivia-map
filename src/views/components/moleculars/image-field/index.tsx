@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Button, Typography } from '@mui/material';
+import { Box, Button, Grid, Typography } from '@mui/material';
 import styles from './index.module.css';
 import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
 import { SelializedImageFile } from 'types/selialized-image-file';
@@ -10,12 +10,14 @@ import { getImageSize } from 'utils/get-image-size.ts';
 import { BoxModal } from '../box-modal';
 import { sendGa4ExceptionEvent } from 'utils/send-ga4-exception-event';
 import { HelperText } from 'views/components/atoms/helper-text';
+import CropIcon from '@mui/icons-material/Crop';
 
 export class ImageField extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
       openCropModal: false,
+      enableCrop: props.variant === 'icon' ? true : false,
     };
   }
 
@@ -45,7 +47,7 @@ export class ImageField extends React.Component<Props, State> {
               <Typography>
                 <AddAPhotoIcon fontSize="large" />
               </Typography>
-              {variant === 'square' && <Typography>タップして写真を追加</Typography>}
+              {variant === 'photo' && <Typography>タップして写真を追加</Typography>}
             </div>
           )}
         </label>
@@ -95,19 +97,22 @@ export class ImageField extends React.Component<Props, State> {
       openCropModal: true,
     });
 
-    const initialCrop = await this.getInitialCrop(objectUrl);
-    this.setState({
-      crop: initialCrop,
-    });
+    if (this.props.variant === 'icon') {
+      const squareCrop = await this.getScuareCrop(objectUrl);
+      this.setState({
+        crop: squareCrop,
+      });
+    }
 
     // initialize file input field
     e.target.value = '';
   };
 
   protected renderCropModal() {
-    const { openCropModal, uploadedImage } = this.state;
+    const { openCropModal, uploadedImage, enableCrop } = this.state;
+    const { variant } = this.props;
 
-    const aspect = this.props.variant === 'icon' ? 1 : undefined;
+    const aspect = variant === 'icon' ? 1 : undefined;
 
     return (
       <BoxModal open={openCropModal}>
@@ -122,11 +127,30 @@ export class ImageField extends React.Component<Props, State> {
             <img src={uploadedImage?.objectUrl} />
           </ReactCrop>
         </Box>
-        <Typography align="right" sx={{ m: 2 }}>
-          <Button variant="contained" onClick={this.handleFinishCrop}>
-            決定
-          </Button>
-        </Typography>
+        <Grid container sx={{ p: 2 }}>
+          <Grid item xs={6}>
+            {variant !== 'icon' && (
+              <Typography align="left" component="div">
+                <Button
+                  variant="outlined"
+                  startIcon={<CropIcon />}
+                  onClick={this.handleClickEnableCrop}
+                  color="info"
+                  disabled={enableCrop}
+                >
+                  画像切り取り
+                </Button>
+              </Typography>
+            )}
+          </Grid>
+          <Grid item xs={6}>
+            <Typography align="right" component="div">
+              <Button variant="contained" onClick={this.handleFinishCrop}>
+                決定
+              </Button>
+            </Typography>
+          </Grid>
+        </Grid>
       </BoxModal>
     );
   }
@@ -167,17 +191,7 @@ export class ImageField extends React.Component<Props, State> {
     }
   };
 
-  protected async getInitialCrop(objectUrl: string): Promise<PercentCrop> {
-    if (this.props.variant === 'square') {
-      return {
-        unit: '%',
-        x: 10,
-        y: 10,
-        width: 80,
-        height: 80,
-      };
-    }
-
+  protected async getScuareCrop(objectUrl: string): Promise<PercentCrop> {
     const aspect = (await getImageSize(objectUrl)).aspect;
     if (aspect <= 1) {
       return {
@@ -204,8 +218,8 @@ export class ImageField extends React.Component<Props, State> {
     const classNames = [styles['label']];
 
     switch (variant) {
-      case 'square':
-        classNames.push(styles['variant-square']);
+      case 'photo':
+        classNames.push(styles['variant-photo']);
         break;
       case 'icon':
         classNames.push(styles['variant-icon']);
@@ -225,8 +239,8 @@ export class ImageField extends React.Component<Props, State> {
     const classNames = [styles['img']];
 
     switch (variant) {
-      case 'square':
-        classNames.push(styles['variant-square']);
+      case 'photo':
+        classNames.push(styles['variant-photo']);
         break;
       case 'icon':
         classNames.push(styles['variant-icon']);
@@ -242,7 +256,7 @@ export class ImageField extends React.Component<Props, State> {
     const classNames = [styles['content']];
 
     switch (variant) {
-      case 'square':
+      case 'photo':
         classNames.push(styles['content-large']);
         break;
       case 'icon':
@@ -252,6 +266,21 @@ export class ImageField extends React.Component<Props, State> {
 
     return classNames;
   }
+
+  protected handleClickEnableCrop = () => {
+    const initialCrop: PercentCrop = {
+      unit: '%',
+      x: 10,
+      y: 10,
+      width: 80,
+      height: 80,
+    };
+
+    this.setState({
+      enableCrop: true,
+      crop: initialCrop,
+    });
+  };
 }
 
 export type Props = {
@@ -259,7 +288,7 @@ export type Props = {
   helperText?: React.ReactNode;
   cropable?: boolean;
   disabled?: boolean;
-  variant: 'square' | 'icon';
+  variant: 'photo' | 'icon';
   src?: string;
   maxLength: number;
 
@@ -271,4 +300,5 @@ export type State = {
   openCropModal: boolean;
   uploadedImage?: UploadedImage;
   crop?: PercentCrop;
+  enableCrop: boolean;
 };

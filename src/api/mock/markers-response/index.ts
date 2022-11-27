@@ -13,6 +13,8 @@ const mockGetMarkersResponsePage1: GetMarkersResponseWithPagination = {
   previousUrl: null,
   totalRecords: 4,
   totalPages: 2,
+  startIndex: 1,
+  endIndex: 2,
   currentPage: 1,
   results: [
     {
@@ -37,6 +39,8 @@ const mockGetMarkersResponsePage2: GetMarkersResponseWithPagination = {
   previousUrl: 'prev-url',
   totalRecords: 4,
   totalPages: 2,
+  startIndex: 1,
+  endIndex: 2,
   currentPage: 2,
   results: [
     {

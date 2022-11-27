@@ -1,12 +1,20 @@
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Props, Renderer } from './renderer';
 import { isMobile } from 'react-device-detect';
 
 export function ArticleWrapper(ownProps: OwnProps) {
+  const { pathname } = useLocation();
+
   const props: Props = {
     isMobile: isMobile,
     children: ownProps.children,
     showSidebar: !!ownProps.showSidebar,
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   return <Renderer {...props} />;
 }

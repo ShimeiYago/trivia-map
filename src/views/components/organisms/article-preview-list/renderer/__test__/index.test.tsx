@@ -6,6 +6,20 @@ import { mockGetArticlesPreviewsResponse } from 'api/mock/articles-response';
 let wrapper: ShallowWrapper<Props, State, Renderer>;
 let getArticlesPreviewsSpy: jest.SpyInstance;
 
+const articlesPreviewsZero = {
+  ...mockGetArticlesPreviewsResponse,
+  results: [],
+};
+
+const articlesPreviewsOnePage = {
+  ...mockGetArticlesPreviewsResponse,
+  totalRecords: 2,
+  totalPages: 1,
+  currentPage: 1,
+  startIndex: 1,
+  endIndex: 2,
+};
+
 const basicProps: Props = {
   searchConditions: {
     marker: 1,
@@ -28,8 +42,7 @@ describe('Shallow Snapshot Tests', () => {
   it('with articlesPreviews', () => {
     wrapper.setState({
       loadingState: 'success',
-      articlesPreviews: mockGetArticlesPreviewsResponse.results,
-      totalPages: 2,
+      articlesPreviews: mockGetArticlesPreviewsResponse,
     });
     expect(wrapper).toMatchSnapshot();
   });
@@ -37,8 +50,7 @@ describe('Shallow Snapshot Tests', () => {
   it('articlesPreviews is zero', () => {
     wrapper.setState({
       loadingState: 'success',
-      articlesPreviews: [],
-      totalPages: 0,
+      articlesPreviews: articlesPreviewsZero,
     });
     expect(wrapper).toMatchSnapshot();
   });
@@ -47,8 +59,7 @@ describe('Shallow Snapshot Tests', () => {
     wrapper.setProps({ variant: 'popup' });
     wrapper.setState({
       loadingState: 'success',
-      articlesPreviews: mockGetArticlesPreviewsResponse.results,
-      totalPages: 2,
+      articlesPreviews: mockGetArticlesPreviewsResponse,
     });
     expect(wrapper).toMatchSnapshot();
   });
@@ -57,8 +68,25 @@ describe('Shallow Snapshot Tests', () => {
     wrapper.setProps({ variant: 'sidebar' });
     wrapper.setState({
       loadingState: 'success',
-      articlesPreviews: mockGetArticlesPreviewsResponse.results,
-      totalPages: 2,
+      articlesPreviews: mockGetArticlesPreviewsResponse,
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('only one page with large', () => {
+    wrapper.setProps({ variant: 'large' });
+    wrapper.setState({
+      loadingState: 'success',
+      articlesPreviews: articlesPreviewsOnePage,
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('only one page with popup', () => {
+    wrapper.setProps({ variant: 'popup' });
+    wrapper.setState({
+      loadingState: 'success',
+      articlesPreviews: articlesPreviewsOnePage,
     });
     expect(wrapper).toMatchSnapshot();
   });
@@ -104,6 +132,21 @@ describe('handleChangePagination', () => {
 
     expect(getArticlesPreviewsSpy).toBeCalled();
   });
+
+  it('should scroll', () => {
+    wrapper = shallow(<Renderer {...basicProps} />);
+    const instance = wrapper.instance();
+
+    instance.topRef = {
+      current: {
+        scrollIntoView: jest.fn(),
+      },
+    } as unknown as React.RefObject<HTMLDivElement>;
+
+    instance['handleChangePagination']({} as React.ChangeEvent<unknown>, 1);
+
+    expect(instance.topRef.current?.scrollIntoView).toBeCalled();
+  });
 });
 
 describe('componentDidUpdate', () => {
@@ -112,7 +155,7 @@ describe('componentDidUpdate', () => {
     getArticlesPreviewsSpy = jest.spyOn(GetArticlesPreviewsApiModule, 'getArticlesPreviews');
   });
 
-  it('should re-fetch and set undefined as totalPages if searchConditions are changed', () => {
+  it('should re-fetch and set undefined as articlesPreviews if searchConditions are changed', () => {
     wrapper.setProps({
       searchConditions: {
         category: 1,
@@ -124,6 +167,6 @@ describe('componentDidUpdate', () => {
       searchConditions: {},
     } as Props);
 
-    expect(instance.state.totalPages).toBe(undefined);
+    expect(instance.state.articlesPreviews).toBe(undefined);
   });
 });

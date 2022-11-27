@@ -4,5 +4,7 @@ export type PaginationResponse<Result> = {
   totalRecords: number;
   totalPages: number;
   currentPage: number;
+  startIndex: number;
+  endIndex: number;
   results: Result[];
 };

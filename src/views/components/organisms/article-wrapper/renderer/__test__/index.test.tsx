@@ -11,12 +11,7 @@ const basicProps: Props = {
 
 describe('Shallow Snapshot Tests', () => {
   beforeEach(() => {
-    window.scrollTo = jest.fn();
     wrapper = shallow(<Renderer {...basicProps} />);
-  });
-
-  afterAll(() => {
-    jest.clearAllMocks();
   });
 
   it('basic', () => {

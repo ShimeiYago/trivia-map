@@ -14,7 +14,7 @@ import { LoadingState } from 'types/loading-state';
 import {
   getArticlesPreviews,
   GetArticlesPreviewsParam,
-  GetArticlesPreviewsResponseEachItem,
+  GetArticlesPreviewsResponse,
 } from 'api/articles-api/get-articles-previews';
 import { Link } from 'react-router-dom';
 import { Image } from 'views/components/atoms/image';
@@ -33,11 +33,15 @@ const POPUP_SCROLL_HEIGHT = '240px';
 const POPUP_SCROLL_GRADATION_HEIGHT = '50px';
 
 export class Renderer extends React.Component<Props, State> {
+  topRef: React.RefObject<HTMLDivElement>;
+
   constructor(props: Props) {
     super(props);
     this.state = {
       loadingState: 'waiting',
     };
+
+    this.topRef = React.createRef();
   }
 
   componentDidMount() {
@@ -49,18 +53,21 @@ export class Renderer extends React.Component<Props, State> {
       JSON.stringify(prevProps.searchConditions) !== JSON.stringify(this.props.searchConditions)
     ) {
       this.fetchArticlesPreviews();
-      this.setState({
-        totalPages: undefined,
-      });
     }
   }
 
   render() {
+    const { variant } = this.props;
+
     return (
-      <Stack spacing={2}>
-        {this.renderPreviewList()}
-        {this.renderPagination()}
-      </Stack>
+      <>
+        <div ref={this.topRef}></div>
+        <Stack spacing={variant === 'popup' ? 1 : 3}>
+          {variant === 'large' && this.renderPagination()}
+          {this.renderPreviewList()}
+          {this.renderPagination()}
+        </Stack>
+      </>
     );
   }
 
@@ -70,11 +77,11 @@ export class Renderer extends React.Component<Props, State> {
       return <CenterSpinner />;
     }
 
-    if (articlesPreviews?.length === 0) {
+    if (articlesPreviews?.results.length === 0) {
       return <Typography align="center">表示する投稿がありません。</Typography>;
     }
 
-    const previewList = articlesPreviews?.map((preview) => {
+    const previewList = articlesPreviews?.results.map((preview) => {
       const { postId, title, image, category, createdAt } = preview;
 
       let card = null;
@@ -229,15 +236,50 @@ export class Renderer extends React.Component<Props, State> {
   };
 
   protected renderPagination() {
-    const showPagination = this.state.totalPages && this.state.totalPages > 1;
-    if (!showPagination) {
+    const { variant } = this.props;
+
+    if (!this.state.articlesPreviews || variant === 'sidebar') {
       return null;
     }
 
+    const { totalPages, currentPage, totalRecords, startIndex, endIndex } =
+      this.state.articlesPreviews;
+
+    let showPagination = true;
+    let showPageNumbers = true;
+
+    if (totalPages <= 1) {
+      showPagination = false;
+    }
+
+    if (startIndex === endIndex) {
+      showPageNumbers = false;
+    }
+
     return (
-      <div className={classes['pagination-wrapper']}>
-        <Pagination count={this.state.totalPages} onChange={this.handleChangePagination} />
-      </div>
+      <Stack spacing={1}>
+        {showPageNumbers && (
+          <Typography
+            align={variant === 'popup' ? 'right' : 'center'}
+            fontSize={variant === 'popup' ? 14 : 16}
+            component="div"
+          >
+            {startIndex}〜{endIndex}件 / 全{totalRecords}件
+          </Typography>
+        )}
+        {showPagination && (
+          <div className={classes['pagination-wrapper']}>
+            <Pagination
+              count={this.state.articlesPreviews?.totalPages}
+              page={currentPage}
+              onChange={this.handleChangePagination}
+              size={variant === 'popup' ? 'small' : 'large'}
+              siblingCount={0}
+              boundaryCount={1}
+            />
+          </div>
+        )}
+      </Stack>
     );
   }
 
@@ -255,8 +297,7 @@ export class Renderer extends React.Component<Props, State> {
 
       this.setState({
         loadingState: 'success',
-        totalPages: res.totalPages,
-        articlesPreviews: res.results,
+        articlesPreviews: res,
       });
     } catch (error) {
       this.props.throwError(500);
@@ -265,6 +306,7 @@ export class Renderer extends React.Component<Props, State> {
 
   protected handleChangePagination = (event: React.ChangeEvent<unknown>, page: number) => {
     this.fetchArticlesPreviews(page);
+    this.topRef.current && this.topRef.current.scrollIntoView({ block: 'center' });
   };
 }
 
@@ -277,6 +319,5 @@ export type Props = {
 
 export type State = {
   loadingState: LoadingState;
-  totalPages?: number;
-  articlesPreviews?: GetArticlesPreviewsResponseEachItem[];
+  articlesPreviews?: GetArticlesPreviewsResponse;
 };

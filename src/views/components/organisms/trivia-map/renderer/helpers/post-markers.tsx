@@ -2,7 +2,6 @@ import React from 'react';
 import { Box, Button } from '@mui/material';
 import { LatLng, Map as LeafletMap } from 'leaflet';
 import { MapMarker } from 'views/components/moleculars/map-marker';
-import styles from './index.module.css';
 import { ArticlePreviewList } from 'views/components/organisms/article-preview-list';
 import AddLocationAltIcon from '@mui/icons-material/AddLocationAlt';
 import { Position } from 'types/position';
@@ -47,7 +46,7 @@ export class PostMarkers extends React.Component<Props> {
 
   protected renderPopupContents = (markerId: number, position: Position) => {
     return (
-      <Box className={styles['popup-content']}>
+      <Box width={250}>
         <ArticlePreviewList
           searchConditions={{ marker: markerId, category: this.props.categoryId }}
           variant="popup"

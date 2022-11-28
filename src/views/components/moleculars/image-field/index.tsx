@@ -123,6 +123,7 @@ export class ImageField extends React.Component<Props, State> {
             onChange={this.handleChangeCrop}
             keepSelection
             className={styles['crop']}
+            disabled={!enableCrop}
           >
             <img src={uploadedImage?.objectUrl} />
           </ReactCrop>

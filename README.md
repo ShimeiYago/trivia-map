@@ -89,6 +89,10 @@ API base URL.
 
 Google Analytics ID (G-xxx).
 
+### `REACT_APP_NO_INDEX`
+
+If true, this web site is not found by crawler.
+
 ## Author
 
 [ShimeiYago](https://github.com/ShimeiYago)

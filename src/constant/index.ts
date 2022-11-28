@@ -80,3 +80,5 @@ export const INPUT_FIELD_MAX_LENGTH = {
   nickname: 20,
   inquiryMessage: 2000,
 };
+
+export const NO_INDEX = process.env.REACT_APP_NO_INDEX;

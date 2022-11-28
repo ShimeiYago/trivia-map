@@ -63,7 +63,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
         ],
       ]
     }
-    maxZoom={4}
+    maxZoom={5}
     minZoom={1}
     tap={false}
     whenCreated={[Function]}
@@ -197,7 +197,7 @@ exports[`Shallow Snapshot Tests disabled map 1`] = `
         ],
       ]
     }
-    maxZoom={4}
+    maxZoom={5}
     minZoom={1}
     scrollWheelZoom={false}
     tap={false}
@@ -296,7 +296,7 @@ exports[`Shallow Snapshot Tests land map 1`] = `
         ],
       ]
     }
-    maxZoom={4}
+    maxZoom={5}
     minZoom={1}
     tap={false}
     whenCreated={[Function]}
@@ -426,7 +426,7 @@ exports[`Shallow Snapshot Tests with current marker 1`] = `
         ],
       ]
     }
-    maxZoom={4}
+    maxZoom={5}
     minZoom={1}
     tap={false}
     whenCreated={[Function]}
@@ -574,7 +574,7 @@ exports[`Shallow Snapshot Tests with initCenter prop 1`] = `
         ],
       ]
     }
-    maxZoom={4}
+    maxZoom={5}
     minZoom={1}
     tap={false}
     whenCreated={[Function]}
@@ -736,7 +736,7 @@ exports[`Shallow Snapshot Tests with width and height props 1`] = `
         ],
       ]
     }
-    maxZoom={4}
+    maxZoom={5}
     minZoom={1}
     tap={false}
     whenCreated={[Function]}

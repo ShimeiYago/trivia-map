@@ -501,7 +501,7 @@ exports[`Shallow Snapshot Tests with current marker 1`] = `
           "lng": 0,
         }
       }
-      variant="red"
+      variant="blue"
       zIndexOffset={999}
     />
     <ForwardRef(LeafComponent)

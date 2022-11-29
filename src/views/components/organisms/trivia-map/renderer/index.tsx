@@ -177,7 +177,6 @@ export class Renderer extends React.Component<Props, State> {
         <MapMarker
           map={this.state.map}
           position={new LatLng(articleFormPosition.lat, articleFormPosition.lng)}
-          variant="red"
           isMobile={isMobile}
           zIndexOffset={999}
         />

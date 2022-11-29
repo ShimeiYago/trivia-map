@@ -24,7 +24,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
         shouldCurrentPositionAsyncWithForm={true}
       />
       <FloatingButton
-        color="primary"
+        color="error"
         disabled={false}
         icon="add-marker"
         onClick={[Function]}
@@ -194,7 +194,7 @@ exports[`Shallow Snapshot Tests land mode 1`] = `
         shouldCurrentPositionAsyncWithForm={true}
       />
       <FloatingButton
-        color="primary"
+        color="error"
         disabled={false}
         icon="add-marker"
         onClick={[Function]}
@@ -368,7 +368,7 @@ exports[`Shallow Snapshot Tests pc view 1`] = `
         shouldCurrentPositionAsyncWithForm={true}
       />
       <FloatingButton
-        color="primary"
+        color="error"
         disabled={false}
         icon="add-marker"
         onClick={[Function]}

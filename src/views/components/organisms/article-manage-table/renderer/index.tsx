@@ -156,11 +156,13 @@ export class Renderer extends React.Component<Props, State> {
 
         <Box>
           <Stack direction="row" divider={<Divider orientation="vertical" flexItem />} spacing={1}>
-            <NonStyleLink to={ARTICLE_PAGE_LINK(String(postId))} target="_blank">
+            <NonStyleLink to={ARTICLE_PAGE_LINK(String(postId))}>
               <Button sx={{ p: 0, minWidth: 0 }}>表示</Button>
             </NonStyleLink>
-            <NonStyleLink to={EDIT_LINK(String(postId))} target="_blank">
-              <Button sx={{ p: 0, minWidth: 0 }}>編集</Button>
+            <NonStyleLink to={EDIT_LINK(String(postId))}>
+              <Button sx={{ p: 0, minWidth: 0 }} onClick={this.props.initialize}>
+                編集
+              </Button>
             </NonStyleLink>
             <Button
               onClick={this.openDeleteConfirmDialog(postId, title)}
@@ -328,6 +330,7 @@ export type Props = {
   isMobile: boolean;
   throwError: (status: number) => void;
   fetchMarkers: () => void;
+  initialize: () => void;
 };
 
 export type State = {

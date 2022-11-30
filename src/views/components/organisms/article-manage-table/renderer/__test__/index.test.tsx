@@ -12,6 +12,7 @@ const basicProps: Props = {
   throwError: jest.fn(),
   isMobile: false,
   fetchMarkers: jest.fn(),
+  initialize: jest.fn(),
 };
 
 describe('Shallow Snapshot Tests', () => {

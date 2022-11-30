@@ -8,6 +8,8 @@ const props: Props = {
   isMobile: true,
   isFormChangedFromLastSaved: false,
   park: 'S',
+  windowHeight: 100,
+  windowWidth: 100,
   updateFoocusingPark: jest.fn(),
   updateFilteringCategoryId: jest.fn(),
 };
@@ -44,6 +46,14 @@ describe('Shallow Snapshot Tests', () => {
     });
     shallowWrapper.setState({
       openFormModal: true,
+    });
+    expect(shallowWrapper).toMatchSnapshot();
+  });
+
+  it('before render map', () => {
+    shallowWrapper.setProps({
+      windowWidth: 0,
+      windowHeight: 0,
     });
     expect(shallowWrapper).toMatchSnapshot();
   });

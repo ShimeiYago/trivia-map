@@ -80,19 +80,25 @@ export class Renderer extends React.Component<Props, State> {
 
   render() {
     const { openFormModal, edittingPostId } = this.state;
-    const { isFormEditting, isMobile, park, filteringCategoryId } = this.props;
+    const { isFormEditting, isMobile, park, filteringCategoryId, windowWidth, windowHeight } =
+      this.props;
+
+    const showMap = windowWidth !== 0 && windowHeight !== 0;
+
     return (
       <Box sx={wrapper(openFormModal && !isMobile)}>
         <GlobalMenu topBarPosition="static" mapPage>
-          <Box sx={mapWrapper(isMobile, window.innerHeight)}>
-            <TriviaMap
-              newMarkerMode={this.state.newMarkerMode}
-              endToSelectPosition={this.endToSelectPosition}
-              hiddenMarkerIds={edittingPostId ? [edittingPostId] : []}
-              shouldCurrentPositionAsyncWithForm
-              park={park}
-              categoryId={filteringCategoryId}
-            />
+          <Box sx={mapWrapper(isMobile, windowWidth, windowHeight)}>
+            {showMap && (
+              <TriviaMap
+                newMarkerMode={this.state.newMarkerMode}
+                endToSelectPosition={this.endToSelectPosition}
+                hiddenMarkerIds={edittingPostId ? [edittingPostId] : []}
+                shouldCurrentPositionAsyncWithForm
+                park={park}
+                categoryId={filteringCategoryId}
+              />
+            )}
 
             {!isFormEditting && (
               <FloatingButton color="error" icon="add-marker" onClick={this.handleClickAddButton} />
@@ -309,6 +315,8 @@ export type Props = {
   isMobile: boolean;
   isFormChangedFromLastSaved: boolean;
   postIdToEdit?: number;
+  windowWidth: number;
+  windowHeight: number;
 
   updateFoocusingPark: (park: Park) => void;
   updateFilteringCategoryId: (categoryId?: number) => void;

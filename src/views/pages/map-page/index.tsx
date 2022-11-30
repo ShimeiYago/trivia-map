@@ -14,12 +14,15 @@ import { updateFilteringCategoryId, updateFocusingPark } from 'store/markers/act
 import { Park } from 'types/park';
 import { useAppDispatch } from 'store';
 import { CommonHelmet } from 'helper-components/common-helmet';
+import { useWindowSize } from 'helper-components/user-window-size';
 
 export function MapPage() {
   const { postId } = useParams();
   const postIdNumber = Number(postId);
 
   const dispatch = useAppDispatch();
+
+  const [width, height] = useWindowSize();
 
   usePageTracking();
 
@@ -36,6 +39,8 @@ export function MapPage() {
     isFormEditting: useAppSelector(selectArticleFormIsEditting),
     isMobile: isMobile,
     isFormChangedFromLastSaved: useAppSelector(selectArticleFormIsFormChangedFromLastSaved),
+    windowWidth: width,
+    windowHeight: height,
 
     updateFoocusingPark: (park: Park) => dispatch(updateFocusingPark(park)),
     updateFilteringCategoryId: (categoryId?: number) =>

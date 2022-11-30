@@ -92,7 +92,6 @@ exports[`Shallow Snapshot Tests one page 1`] = `
                   spacing={1}
                 >
                   <NonStyleLink
-                    target="_blank"
                     to="/articles/1"
                   >
                     <ForwardRef(Button)
@@ -107,10 +106,10 @@ exports[`Shallow Snapshot Tests one page 1`] = `
                     </ForwardRef(Button)>
                   </NonStyleLink>
                   <NonStyleLink
-                    target="_blank"
                     to="/map/edit/1"
                   >
                     <ForwardRef(Button)
+                      onClick={[MockFunction]}
                       sx={
                         Object {
                           "minWidth": 0,
@@ -172,7 +171,6 @@ exports[`Shallow Snapshot Tests one page 1`] = `
                   spacing={1}
                 >
                   <NonStyleLink
-                    target="_blank"
                     to="/articles/2"
                   >
                     <ForwardRef(Button)
@@ -187,10 +185,10 @@ exports[`Shallow Snapshot Tests one page 1`] = `
                     </ForwardRef(Button)>
                   </NonStyleLink>
                   <NonStyleLink
-                    target="_blank"
                     to="/map/edit/2"
                   >
                     <ForwardRef(Button)
+                      onClick={[MockFunction]}
                       sx={
                         Object {
                           "minWidth": 0,
@@ -317,7 +315,6 @@ exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
                   spacing={1}
                 >
                   <NonStyleLink
-                    target="_blank"
                     to="/articles/1"
                   >
                     <ForwardRef(Button)
@@ -332,10 +329,10 @@ exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
                     </ForwardRef(Button)>
                   </NonStyleLink>
                   <NonStyleLink
-                    target="_blank"
                     to="/map/edit/1"
                   >
                     <ForwardRef(Button)
+                      onClick={[MockFunction]}
                       sx={
                         Object {
                           "minWidth": 0,
@@ -397,7 +394,6 @@ exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
                   spacing={1}
                 >
                   <NonStyleLink
-                    target="_blank"
                     to="/articles/2"
                   >
                     <ForwardRef(Button)
@@ -412,10 +408,10 @@ exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
                     </ForwardRef(Button)>
                   </NonStyleLink>
                   <NonStyleLink
-                    target="_blank"
                     to="/map/edit/2"
                   >
                     <ForwardRef(Button)
+                      onClick={[MockFunction]}
                       sx={
                         Object {
                           "minWidth": 0,
@@ -548,7 +544,6 @@ exports[`Shallow Snapshot Tests with articlesPreviews mobile view 1`] = `
                   spacing={1}
                 >
                   <NonStyleLink
-                    target="_blank"
                     to="/articles/1"
                   >
                     <ForwardRef(Button)
@@ -563,10 +558,10 @@ exports[`Shallow Snapshot Tests with articlesPreviews mobile view 1`] = `
                     </ForwardRef(Button)>
                   </NonStyleLink>
                   <NonStyleLink
-                    target="_blank"
                     to="/map/edit/1"
                   >
                     <ForwardRef(Button)
+                      onClick={[MockFunction]}
                       sx={
                         Object {
                           "minWidth": 0,
@@ -648,7 +643,6 @@ exports[`Shallow Snapshot Tests with articlesPreviews mobile view 1`] = `
                   spacing={1}
                 >
                   <NonStyleLink
-                    target="_blank"
                     to="/articles/2"
                   >
                     <ForwardRef(Button)
@@ -663,10 +657,10 @@ exports[`Shallow Snapshot Tests with articlesPreviews mobile view 1`] = `
                     </ForwardRef(Button)>
                   </NonStyleLink>
                   <NonStyleLink
-                    target="_blank"
                     to="/map/edit/2"
                   >
                     <ForwardRef(Button)
+                      onClick={[MockFunction]}
                       sx={
                         Object {
                           "minWidth": 0,

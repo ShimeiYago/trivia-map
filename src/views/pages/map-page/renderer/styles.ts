@@ -23,11 +23,12 @@ export function wrapper(shrink: boolean): SxProps {
   };
 }
 
-export function mapWrapper(isMobile: boolean, screenHeight: number): SxProps {
+export function mapWrapper(isMobile: boolean, screenWidth: number, screenHeight: number): SxProps {
   const appBarDefaultHeight = isMobile ? appBarDefaultHeightMobile : appBarDefaultHeightPC;
 
   return {
     position: 'relative',
+    width: `${screenWidth}px`,
     height: `calc(${screenHeight}px - ${appBarDefaultHeight}px)`,
   };
 }

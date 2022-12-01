@@ -54,6 +54,10 @@ export class Renderer extends React.Component<Props, State> {
     } else {
       this.props.updateFoocusingPark(INITIAL_PARK);
     }
+
+    if (this.props.isFormChangedFromLastSaved) {
+      window.addEventListener('beforeunload', this.handleBeforeUnload);
+    }
   }
 
   componentDidUpdate(prevProps: Props, prevState: State) {
@@ -73,6 +77,10 @@ export class Renderer extends React.Component<Props, State> {
     if (!this.props.isFormEditting && prevState.openFormModal && !this.state.openFormModal) {
       history.replaceState('', '', '/');
     }
+  }
+
+  componentWillUnmount(): void {
+    window.removeEventListener('beforeunload', this.handleBeforeUnload);
   }
 
   protected handleBeforeUnload(e: BeforeUnloadEvent) {

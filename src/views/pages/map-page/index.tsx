@@ -31,7 +31,8 @@ export function MapPage() {
   }
 
   const articleFormId = useAppSelector(selectArticleFormId);
-  const postIdToEdit = Number(postId) ?? articleFormId;
+
+  const postIdToEdit = !!postIdNumber ? postIdNumber : articleFormId;
 
   let props: Props = {
     park: useAppSelector(selectFocusingPark),

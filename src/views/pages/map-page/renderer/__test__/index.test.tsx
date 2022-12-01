@@ -92,6 +92,33 @@ describe('componentDidMount', () => {
     instance.componentDidMount();
     expect(instance.state.openFormModal).toBeTruthy();
   });
+
+  it('should add eventListener if isFormChangedFromLastSaved is true', () => {
+    shallowWrapper.setProps({
+      isFormChangedFromLastSaved: true,
+    });
+    const instance = shallowWrapper.instance();
+
+    instance.componentDidMount();
+    expect(mockAddEventListener).toHaveBeenCalled();
+  });
+});
+
+describe('componentWillUnmount', () => {
+  beforeEach(() => {
+    shallowWrapper = shallow(<Renderer {...props} />);
+    jest.resetAllMocks();
+  });
+
+  it('should remove eventListener', () => {
+    shallowWrapper.setProps({
+      isFormChangedFromLastSaved: true,
+    });
+    const instance = shallowWrapper.instance();
+
+    instance.componentWillUnmount();
+    expect(mockRemoveEventListener).toHaveBeenCalled();
+  });
 });
 
 describe('componentDidUpdate', () => {

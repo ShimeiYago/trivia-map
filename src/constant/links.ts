@@ -16,7 +16,8 @@ export const DEACTIVATE_ACCOUNT_LINK = '/admin/account/deactivate';
 
 export const ARTICLE_PAGE_LINK = (postId: string) => `/articles/${postId}`;
 
-export const EDIT_LINK = (postId: string) => `/map/edit/${postId}`;
+export const MAP_ROUTE = '/map';
+export const EDIT_LINK = (postId: string) => `${MAP_ROUTE}/edit/${postId}`;
 
 export const ARTICLE_LIST_PAGE_LINK = '/articles';
 

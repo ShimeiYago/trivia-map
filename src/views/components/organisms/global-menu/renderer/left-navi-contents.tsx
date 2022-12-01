@@ -7,6 +7,7 @@ import {
   INQUIRY_PAGE_LINK,
   LOGIN_LINK,
   MAP_PAGE_LINK,
+  MAP_ROUTE,
   MY_ARTICLES_LINK,
   PRIVACY_POLICY_PAGE_LINK,
   SIGNUP_LINK,
@@ -83,7 +84,7 @@ const listItemsOthers: ListItem[] = [
 
 const listItemMapping = (items: ListItem[], pathName: string) => {
   return items.map((item, index) => {
-    if (pathName === item.link) {
+    if (matchPath(pathName, item.link)) {
       return (
         <ListItem selected key={index}>
           <ListItemIcon>{item.icon}</ListItemIcon>
@@ -112,6 +113,14 @@ export const leftNaviContents = (login: boolean, pathName: string) => (
     <List>{listItemMapping(listItemsOthers, pathName)}</List>
   </>
 );
+
+function matchPath(pathName: string, link: string) {
+  return pathName === link || (isMapPage(pathName) && isMapPage(link));
+}
+
+function isMapPage(pathName: string) {
+  return pathName === MAP_PAGE_LINK || !pathName.indexOf(MAP_ROUTE);
+}
 
 type ListItem = {
   text: string;

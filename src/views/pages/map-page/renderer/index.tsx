@@ -30,7 +30,7 @@ import {
 import { GlobalMenu } from 'views/components/organisms/global-menu';
 import { Park } from 'types/park';
 import { RoundButton } from 'views/components/atoms/round-button';
-import { CATEGORIES } from 'constant';
+import { CATEGORIES, INITIAL_PARK } from 'constant';
 import { EDIT_LINK } from 'constant/links';
 
 export class Renderer extends React.Component<Props, State> {
@@ -51,6 +51,8 @@ export class Renderer extends React.Component<Props, State> {
         openFormModal: true,
       });
       history.replaceState('', '', EDIT_LINK(`${this.props.postIdToEdit}`));
+    } else {
+      this.props.updateFoocusingPark(INITIAL_PARK);
     }
   }
 
@@ -83,22 +85,22 @@ export class Renderer extends React.Component<Props, State> {
     const { isFormEditting, isMobile, park, filteringCategoryId, windowWidth, windowHeight } =
       this.props;
 
-    const showMap = windowWidth !== 0 && windowHeight !== 0;
+    const triviaMap = windowWidth !== 0 && windowHeight !== 0 && park && (
+      <TriviaMap
+        newMarkerMode={this.state.newMarkerMode}
+        endToSelectPosition={this.endToSelectPosition}
+        hiddenMarkerIds={edittingPostId ? [edittingPostId] : []}
+        shouldCurrentPositionAsyncWithForm
+        park={park}
+        categoryId={filteringCategoryId}
+      />
+    );
 
     return (
       <Box sx={wrapper(openFormModal && !isMobile)}>
         <GlobalMenu topBarPosition="static" mapPage>
           <Box sx={mapWrapper(isMobile, windowWidth, windowHeight)}>
-            {showMap && (
-              <TriviaMap
-                newMarkerMode={this.state.newMarkerMode}
-                endToSelectPosition={this.endToSelectPosition}
-                hiddenMarkerIds={edittingPostId ? [edittingPostId] : []}
-                shouldCurrentPositionAsyncWithForm
-                park={park}
-                categoryId={filteringCategoryId}
-              />
-            )}
+            {triviaMap}
 
             {!isFormEditting && (
               <FloatingButton color="error" icon="add-marker" onClick={this.handleClickAddButton} />
@@ -124,6 +126,10 @@ export class Renderer extends React.Component<Props, State> {
   protected renderParkSelectBox = () => {
     const { isMobile, park } = this.props;
     const { openFormModal } = this.state;
+
+    if (!park) {
+      return;
+    }
 
     return (
       <Box sx={parkSelectBox(!isMobile && openFormModal, isMobile, park)}>
@@ -250,6 +256,8 @@ export class Renderer extends React.Component<Props, State> {
 
     const closeButton = <CloseFormButton onClose={this.handleCloseFormModal} />;
 
+    const formPark = park ?? INITIAL_PARK;
+
     return isMobile ? (
       <SwipeableEdgeDrawer
         show={isFormEditting || openFormModal}
@@ -263,7 +271,7 @@ export class Renderer extends React.Component<Props, State> {
         <ArticleForm
           postId={edittingPostId}
           onClickSelectPosition={this.startToSelectPosition}
-          park={park}
+          park={formPark}
         />
       </SwipeableEdgeDrawer>
     ) : (
@@ -273,7 +281,7 @@ export class Renderer extends React.Component<Props, State> {
             postId={edittingPostId}
             onClickSelectPosition={this.startToSelectPosition}
             onClose={this.handleCloseFormModal}
-            park={park}
+            park={formPark}
           />
         )}
       </Drawer>
@@ -309,7 +317,7 @@ export class Renderer extends React.Component<Props, State> {
 }
 
 export type Props = {
-  park: Park;
+  park?: Park;
   filteringCategoryId?: number;
   isFormEditting: boolean;
   isMobile: boolean;

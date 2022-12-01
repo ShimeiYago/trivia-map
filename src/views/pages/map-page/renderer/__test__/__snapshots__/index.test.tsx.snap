@@ -506,6 +506,123 @@ exports[`Shallow Snapshot Tests land mode 1`] = `
 </ForwardRef(Box)>
 `;
 
+exports[`Shallow Snapshot Tests park is undefined 1`] = `
+<ForwardRef(Box)
+  sx={Object {}}
+>
+  <GlobalMenu
+    mapPage={true}
+    topBarPosition="static"
+  >
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "height": "calc(100px - 58px)",
+          "position": "relative",
+          "width": "100px",
+        }
+      }
+    >
+      <FloatingButton
+        color="error"
+        disabled={false}
+        icon="add-marker"
+        onClick={[Function]}
+      />
+      <LoadingProgressBar />
+      <ForwardRef(Stack)
+        direction="row"
+        spacing={1}
+        sx={
+          Object {
+            "&::-webkit-scrollbar": Object {
+              "display": "none",
+            },
+            "boxSizing": "border-box",
+            "margin": 0,
+            "maxWidth": "100vw",
+            "msOverflowStyle": "none",
+            "overflowX": "scroll",
+            "position": "fixed",
+            "px": 1,
+            "py": 0,
+            "scrollbarWidth": "none",
+            "top": 68,
+            "whiteSpace": "nowrap",
+            "zIndex": 1000,
+          }
+        }
+      >
+        <RoundButton
+          key="category-button-0"
+          onClick={[Function]}
+          selected={false}
+        >
+          隠れミッキー
+        </RoundButton>
+        <RoundButton
+          key="category-button-1"
+          onClick={[Function]}
+          selected={false}
+        >
+          バックグラウンドストーリー
+        </RoundButton>
+        <RoundButton
+          key="category-button-2"
+          onClick={[Function]}
+          selected={false}
+        >
+          その他
+        </RoundButton>
+      </ForwardRef(Stack)>
+    </ForwardRef(Box)>
+  </GlobalMenu>
+  <SwipeableEdgeDrawer
+    bleedingHeight={56}
+    edgeLabel={
+      <CloseFormButton
+        onClose={[Function]}
+      />
+    }
+    edgeLabelWhenClosed="編集中"
+    heightRatio={80}
+    onClose={[Function]}
+    onOpen={[Function]}
+    open={false}
+    show={false}
+  >
+    <ArticleForm
+      onClickSelectPosition={[Function]}
+      park="S"
+    />
+  </SwipeableEdgeDrawer>
+  <GlobalMessage
+    closeFormModal={[Function]}
+  />
+  <ForwardRef(Dialog)
+    onClose={[Function]}
+    open={false}
+  >
+    <ForwardRef(DialogTitle)>
+      入力内容の変更が保存されていません。
+    </ForwardRef(DialogTitle)>
+    <ForwardRef(DialogContent)>
+      <ForwardRef(DialogContentText)>
+        現在編集中の投稿を「下書き保存」、「保存して公開」、または「編集を破棄」してからもう一度お試しください。
+      </ForwardRef(DialogContentText)>
+    </ForwardRef(DialogContent)>
+    <ForwardRef(DialogActions)>
+      <ForwardRef(Button)
+        onClick={[Function]}
+        variant="outlined"
+      >
+        閉じる
+      </ForwardRef(Button)>
+    </ForwardRef(DialogActions)>
+  </ForwardRef(Dialog)>
+</ForwardRef(Box)>
+`;
+
 exports[`Shallow Snapshot Tests pc view 1`] = `
 <ForwardRef(Box)
   sx={

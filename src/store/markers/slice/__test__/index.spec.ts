@@ -27,7 +27,6 @@ describe('markers reducer', () => {
   it('should handle initial state', () => {
     expect(markersReducer(undefined, { type: 'unknown' })).toEqual({
       markers: [],
-      focusingPark: 'S',
       fetchingState: 'waiting',
       loadedPages: 0,
     });

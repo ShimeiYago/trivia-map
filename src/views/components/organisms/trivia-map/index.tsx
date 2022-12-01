@@ -33,7 +33,7 @@ export function TriviaMap(ownProps: OwnProps) {
     categoryId: ownProps.categoryId,
     isMobile: isMobile,
 
-    fetchMarkers: () => dispatch(fetchMarkers()),
+    fetchMarkers: (park: Park) => dispatch(fetchMarkers(park)),
     updatePosition: (position: Position) => dispatch(updateFormField({ position: position })),
     endToSelectPosition: ownProps.endToSelectPosition,
     updateIsEditting: (isEditting: boolean) => dispatch(updateIsEditting(isEditting)),

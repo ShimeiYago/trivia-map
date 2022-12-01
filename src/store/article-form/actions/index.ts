@@ -21,7 +21,7 @@ import { globalAPIErrorMessage } from 'constant/global-api-error-message';
 import { Position } from 'types/position';
 import { autoRefreshApiWrapper } from 'utils/auto-refresh-api-wrapper';
 import { guessArea } from 'api/guess-area';
-import { fetchMarkers } from 'store/markers/actions';
+import { fetchMarkers, updateFocusingPark } from 'store/markers/actions';
 
 // basic actions
 export const {
@@ -85,7 +85,7 @@ export const submitArticle = (): AppThunk => async (dispatch, getState) => {
     dispatch(initialize());
 
     if (position.park === getState().markers.focusingPark) {
-      dispatch(fetchMarkers());
+      dispatch(fetchMarkers(position.park));
     }
   } catch (error) {
     const apiError = error as ApiError<ValidationError>;
@@ -116,6 +116,7 @@ export const fetchArticle =
     try {
       const res = await autoRefreshApiWrapper(() => getRemoteArticle(postId));
       dispatch(fetchSuccess(res));
+      dispatch(updateFocusingPark(res.marker.park));
       dispatch(updateLastSavedValues());
     } catch (error) {
       const apiError = error as ApiError<unknown>;

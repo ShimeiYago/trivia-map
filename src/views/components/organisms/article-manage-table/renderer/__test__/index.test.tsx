@@ -148,6 +148,16 @@ describe('deleteArticle', () => {
     expect(instance.state.message?.type).toBe('success');
   });
 
+  it('should call fetchMarkers if park is defined', async () => {
+    deleteArticleSpy.mockResolvedValue({});
+
+    wrapper = shallow(<Renderer {...basicProps} park="S" />);
+    const instance = wrapper.instance();
+    await instance['deleteArticle'](1, 'title')();
+
+    expect(instance.props.fetchMarkers).toBeCalled();
+  });
+
   it('should set error states if api calling fail', async () => {
     deleteArticleSpy.mockRejectedValue(new Error());
 

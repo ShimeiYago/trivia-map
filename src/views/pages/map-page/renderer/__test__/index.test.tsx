@@ -40,6 +40,13 @@ describe('Shallow Snapshot Tests', () => {
     expect(shallowWrapper).toMatchSnapshot();
   });
 
+  it('park is undefined', () => {
+    shallowWrapper.setProps({
+      park: undefined,
+    });
+    expect(shallowWrapper).toMatchSnapshot();
+  });
+
   it('pc view', () => {
     shallowWrapper.setProps({
       isMobile: false,

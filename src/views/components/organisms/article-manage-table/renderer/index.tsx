@@ -35,6 +35,7 @@ import { categoryMapper } from 'utils/category-mapper';
 import { IconAndText } from 'views/components/atoms/icon-and-text';
 import FolderIcon from '@mui/icons-material/Folder';
 import { LoadingButton } from '@mui/lab';
+import { Park } from 'types/park';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -288,6 +289,8 @@ export class Renderer extends React.Component<Props, State> {
   };
 
   protected deleteArticle = (postId: number, title: string) => async () => {
+    const { park, fetchMarkers } = this.props;
+
     this.setState({
       message: undefined,
       deleting: true,
@@ -295,7 +298,7 @@ export class Renderer extends React.Component<Props, State> {
 
     try {
       await autoRefreshApiWrapper(() => deleteRemoteArticle(postId));
-      this.props.fetchMarkers();
+      park && fetchMarkers(park);
 
       this.setState({
         message: {
@@ -328,8 +331,9 @@ export class Renderer extends React.Component<Props, State> {
 
 export type Props = {
   isMobile: boolean;
+  park?: Park;
   throwError: (status: number) => void;
-  fetchMarkers: () => void;
+  fetchMarkers: (park: Park) => void;
   initialize: () => void;
 };
 

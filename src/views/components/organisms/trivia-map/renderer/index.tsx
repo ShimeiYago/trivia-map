@@ -112,6 +112,10 @@ export class Renderer extends React.Component<Props, State> {
     this.setState({
       map: map,
     });
+
+    setTimeout(() => {
+      map.invalidateSize();
+    }, 0);
   }
 
   protected renderPostMarkers() {

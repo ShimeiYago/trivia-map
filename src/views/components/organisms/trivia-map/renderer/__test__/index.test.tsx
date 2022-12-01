@@ -2,6 +2,8 @@ import { shallow, ShallowWrapper } from 'enzyme';
 import { Map as LeafletMap } from 'leaflet';
 import { Renderer, Props, State } from '..';
 
+jest.useFakeTimers();
+
 const basicProps: Props = {
   postMarkers: [
     {
@@ -90,8 +92,9 @@ describe('handleMapCreated', () => {
     shallowWrapper = shallow(<Renderer {...basicProps} />);
     const instance = shallowWrapper.instance();
 
-    const map = { on: jest.fn() };
+    const map = { on: jest.fn(), invalidateSize: jest.fn() };
     instance['handleMapCreated'](map as unknown as LeafletMap);
+    jest.runAllTimers();
     expect(instance.state.map).toEqual(map);
   });
 });

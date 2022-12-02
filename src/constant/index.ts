@@ -82,3 +82,8 @@ export const INPUT_FIELD_MAX_LENGTH = {
 };
 
 export const NO_INDEX = process.env.REACT_APP_NO_INDEX;
+
+export const ATTRIBUTION = {
+  url: 'https://www.tokyodisneyresort.jp/tdl/map.html',
+  text: 'tokyodisneyresort.jp',
+};

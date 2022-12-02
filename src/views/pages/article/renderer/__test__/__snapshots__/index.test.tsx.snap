@@ -20,7 +20,7 @@ exports[`Shallow Snapshot Tests author view 1`] = `
         iconComponent={<Memo />}
         iconPosition="left"
         link="/map/edit/1"
-        target="_blank"
+        onClick={[MockFunction]}
         text="編集"
       />
     </ForwardRef(Link)>

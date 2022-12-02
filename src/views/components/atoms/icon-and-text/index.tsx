@@ -24,19 +24,27 @@ export function IconAndText(props: Props): JSX.Element {
     }
   };
 
+  const buttonWrapper = (content: React.ReactNode) => {
+    if (props.onClick) {
+      return <span onClick={props.onClick}>{content}</span>;
+    } else {
+      return content;
+    }
+  };
+
   let contents: JSX.Element;
   if (props.iconPosition === 'left') {
     contents = (
       <>
-        {linkWrapper(props.iconComponent)}
-        {linkWrapper(props.text)}
+        {linkWrapper(buttonWrapper(props.iconComponent))}
+        {linkWrapper(buttonWrapper(props.text))}
       </>
     );
   } else {
     contents = (
       <>
-        {linkWrapper(props.text)}
-        {linkWrapper(props.iconComponent)}
+        {linkWrapper(buttonWrapper(props.text))}
+        {linkWrapper(buttonWrapper(props.iconComponent))}
       </>
     );
   }
@@ -72,5 +80,6 @@ export type Props = {
   fontSize?: number;
   columnGap?: number;
   link?: string;
+  onClick?: () => void;
   target?: React.HTMLAttributeAnchorTarget;
 };

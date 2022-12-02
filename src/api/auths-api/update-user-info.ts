@@ -29,7 +29,7 @@ export async function updateUserInfo(param: {
 
   try {
     const res: AxiosResponse<User> = await axiosInstance.put(
-      `${BASE_URL}/auths/user/`,
+      `${BASE_URL}/auths/user/update/`,
       requestData,
     );
     return res.data;

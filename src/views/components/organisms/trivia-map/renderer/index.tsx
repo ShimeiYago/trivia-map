@@ -10,7 +10,14 @@ import { DialogScreen } from 'views/components/atoms/dialog-screen';
 import { LoadingState } from 'types/loading-state';
 import { PostMarkers } from './helpers/post-markers';
 import { Park } from 'types/park';
-import { MAP_MARGIN, MAP_MAX_COORINATE, TDL_TILE_URL, TDS_TILE_URL, ZOOMS } from 'constant';
+import {
+  ATTRIBUTION,
+  MAP_MARGIN,
+  MAP_MAX_COORINATE,
+  TDL_TILE_URL,
+  TDS_TILE_URL,
+  ZOOMS,
+} from 'constant';
 import TouchAppIcon from '@mui/icons-material/TouchApp';
 import { CRS } from 'leaflet';
 import selectionPosition from 'images/selection-position.png';
@@ -78,6 +85,8 @@ export class Renderer extends React.Component<Props, State> {
       boxZoom: false,
     };
 
+    const attribution = `&copy; <a target="_blank" href="${ATTRIBUTION.url}">${ATTRIBUTION.text}</a>`;
+
     return (
       <Box sx={mapWrapper}>
         {this.renderGuideDialog()}
@@ -97,8 +106,8 @@ export class Renderer extends React.Component<Props, State> {
           tap={false}
           {...(disabled ? disabledProps : {})}
         >
-          {park === 'L' && <TileLayer url={TDL_TILE_URL} noWrap />}
-          {park === 'S' && <TileLayer url={TDS_TILE_URL} noWrap />}
+          {park === 'L' && <TileLayer url={TDL_TILE_URL} noWrap attribution={attribution} />}
+          {park === 'S' && <TileLayer url={TDS_TILE_URL} noWrap attribution={attribution} />}
           {this.renderPostMarkers()}
           {this.renderAdittionalMarkers()}
           {this.renderCurrentPositionMarker()}

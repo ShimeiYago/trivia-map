@@ -83,3 +83,30 @@ exports[`Shallow Snapshot Tests with link 1`] = `
   </NonStyleLink>
 </ForwardRef(Typography)>
 `;
+
+exports[`Shallow Snapshot Tests with onClick 1`] = `
+<ForwardRef(Typography)
+  component="div"
+  sx={
+    Object {
+      "alignItems": "center",
+      "columnGap": undefined,
+      "display": "flex",
+      "flexWrap": "wrap",
+      "fontSize": undefined,
+      "justifyContent": "center",
+    }
+  }
+>
+  <span
+    onClick={[Function]}
+  >
+    <Memo(ForwardRef(MapIcon)) />
+  </span>
+  <span
+    onClick={[Function]}
+  >
+    地図
+  </span>
+</ForwardRef(Typography)>
+`;

@@ -33,4 +33,11 @@ describe('Shallow Snapshot Tests', () => {
     });
     expect(wrapper).toMatchSnapshot();
   });
+
+  it('with onClick', () => {
+    wrapper.setProps({
+      onClick: jest.fn,
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
 });

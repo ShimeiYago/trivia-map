@@ -9,6 +9,7 @@ let getRemoteArticleSpy: jest.SpyInstance;
 
 const basicProps: Props = {
   postId: 1,
+  initialize: jest.fn(),
   throwError: jest.fn(),
 };
 

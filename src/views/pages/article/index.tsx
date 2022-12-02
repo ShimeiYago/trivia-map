@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from 'store';
 import { throwError } from 'store/global-error/slice';
 import usePageTracking from 'helper-components/tracker';
 import { selectUser } from 'store/auths/selector';
+import { initialize } from 'store/article-form/actions';
 
 export function Article() {
   const dispatch = useAppDispatch();
@@ -21,6 +22,7 @@ export function Article() {
     postId: postIdNumber,
     user: useAppSelector(selectUser),
 
+    initialize: () => dispatch(initialize()),
     throwError: (errorStatus: number) => dispatch(throwError(errorStatus)),
   };
 

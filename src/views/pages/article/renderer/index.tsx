@@ -177,7 +177,7 @@ export class Renderer extends React.Component<Props, State> {
           iconPosition="left"
           align="right"
           link={EDIT_LINK(this.props.postId.toString())}
-          target="_blank"
+          onClick={this.props.initialize}
         />
       </Link>
     );
@@ -188,6 +188,7 @@ export type Props = {
   postId: number;
   user?: User;
 
+  initialize: () => void;
   throwError: (errorStatus: number) => void;
 };
 

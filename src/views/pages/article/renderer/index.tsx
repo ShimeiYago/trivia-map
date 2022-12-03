@@ -144,7 +144,10 @@ export class Renderer extends React.Component<Props, State> {
       loadingState: 'loading',
     });
     try {
-      const res = await autoRefreshApiWrapper(() => getRemoteArticle(this.props.postId));
+      const res = await autoRefreshApiWrapper(
+        () => getRemoteArticle(this.props.postId),
+        this.props.refreshUser,
+      );
       this.setState({
         article: res,
         loadingState: 'success',
@@ -190,6 +193,7 @@ export type Props = {
 
   initialize: () => void;
   throwError: (errorStatus: number) => void;
+  refreshUser: () => void;
 };
 
 export type State = {

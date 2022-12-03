@@ -22,6 +22,7 @@ import { Position } from 'types/position';
 import { autoRefreshApiWrapper } from 'utils/auto-refresh-api-wrapper';
 import { guessArea } from 'api/guess-area';
 import { fetchMarkers, updateFocusingPark } from 'store/markers/actions';
+import { updateUser } from 'store/auths/actions';
 
 // basic actions
 export const {
@@ -55,30 +56,37 @@ export const submitArticle = (): AppThunk => async (dispatch, getState) => {
   const isDraft = selectArticleFormIsDraft(getState());
   const category = selectArticleFormCategory(getState());
 
+  /* istanbul ignore next */
+  const refreshUser = () => dispatch(updateUser(undefined));
+
   let res: PostArticleResponse;
   try {
     if (postId) {
-      res = await autoRefreshApiWrapper(() =>
-        putRemoteArticle({
-          postId: postId,
-          title: title,
-          description: description,
-          marker: position,
-          image: typeof image === 'string' ? undefined : image,
-          isDraft: isDraft,
-          category: category,
-        }),
+      res = await autoRefreshApiWrapper(
+        () =>
+          putRemoteArticle({
+            postId: postId,
+            title: title,
+            description: description,
+            marker: position,
+            image: typeof image === 'string' ? undefined : image,
+            isDraft: isDraft,
+            category: category,
+          }),
+        refreshUser,
       );
     } else {
-      res = await autoRefreshApiWrapper(() =>
-        postRemoteArticle({
-          title: title,
-          description: description,
-          marker: position,
-          image: typeof image === 'string' || image === null ? undefined : image,
-          isDraft: isDraft,
-          category: category,
-        }),
+      res = await autoRefreshApiWrapper(
+        () =>
+          postRemoteArticle({
+            title: title,
+            description: description,
+            marker: position,
+            image: typeof image === 'string' || image === null ? undefined : image,
+            isDraft: isDraft,
+            category: category,
+          }),
+        refreshUser,
       );
     }
     dispatch(submitSuccess(res.postId));
@@ -113,8 +121,11 @@ export const fetchArticle =
   async (dispatch) => {
     dispatch(fetchStart(postId));
 
+    /* istanbul ignore next */
+    const refreshUser = () => dispatch(updateUser(undefined));
+
     try {
-      const res = await autoRefreshApiWrapper(() => getRemoteArticle(postId));
+      const res = await autoRefreshApiWrapper(() => getRemoteArticle(postId), refreshUser);
       dispatch(fetchSuccess(res));
       dispatch(updateFocusingPark(res.marker.park));
       dispatch(updateLastSavedValues());

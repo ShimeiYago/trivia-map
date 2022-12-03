@@ -8,9 +8,13 @@ let wrapper: ShallowWrapper<Props, State, Renderer>;
 
 let changePasswordSpy: jest.SpyInstance;
 
+const props: Props = {
+  refreshUser: jest.fn(),
+};
+
 describe('Shallow Snapshot Tests', () => {
   beforeEach(() => {
-    wrapper = shallow(<Renderer />);
+    wrapper = shallow(<Renderer {...props} />);
   });
 
   it('basic', () => {
@@ -47,7 +51,7 @@ describe('Shallow Snapshot Tests', () => {
 
 describe('handleChangeTextField', () => {
   it('should set password1', async () => {
-    wrapper = shallow(<Renderer />);
+    wrapper = shallow(<Renderer {...props} />);
     const instance = wrapper.instance();
 
     const event = {
@@ -62,7 +66,7 @@ describe('handleChangeTextField', () => {
   });
 
   it('should set password2', async () => {
-    wrapper = shallow(<Renderer />);
+    wrapper = shallow(<Renderer {...props} />);
     const instance = wrapper.instance();
 
     const event = {
@@ -86,7 +90,7 @@ describe('handleSubmit', () => {
   it('should set loadingState success when api succeed', async () => {
     changePasswordSpy.mockResolvedValue({});
 
-    wrapper = shallow(<Renderer />);
+    wrapper = shallow(<Renderer {...props} />);
     const instance = wrapper.instance();
 
     await instance['handleSubmit']();
@@ -105,7 +109,7 @@ describe('handleSubmit', () => {
     };
     changePasswordSpy.mockRejectedValue(apiError);
 
-    wrapper = shallow(<Renderer />);
+    wrapper = shallow(<Renderer {...props} />);
     const instance = wrapper.instance();
 
     await instance['handleSubmit']();
@@ -119,7 +123,7 @@ describe('handleSubmit', () => {
   it('should set loadingstate error when api fail', async () => {
     changePasswordSpy.mockRejectedValue(new Error());
 
-    wrapper = shallow(<Renderer />);
+    wrapper = shallow(<Renderer {...props} />);
     const instance = wrapper.instance();
 
     await instance['handleSubmit']();

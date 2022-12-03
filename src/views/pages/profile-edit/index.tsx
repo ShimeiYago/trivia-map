@@ -14,7 +14,7 @@ export function ProfileEdit() {
   const props: Props = {
     user: useAppSelector(selectUser),
 
-    updateUser: (user: User) => dispatch(updateUser(user)),
+    updateUser: (user: User | undefined) => dispatch(updateUser(user)),
     throwError: (errorStatus: number) => dispatch(throwError(errorStatus)),
   };
 

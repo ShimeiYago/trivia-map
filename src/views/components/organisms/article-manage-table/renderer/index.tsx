@@ -235,7 +235,7 @@ export class Renderer extends React.Component<Props, State> {
     });
 
     try {
-      const res = await autoRefreshApiWrapper(() => getMyArticles(page));
+      const res = await autoRefreshApiWrapper(() => getMyArticles(page), this.props.refreshUser);
 
       this.setState({
         loadingState: 'success',
@@ -289,7 +289,7 @@ export class Renderer extends React.Component<Props, State> {
   };
 
   protected deleteArticle = (postId: number, title: string) => async () => {
-    const { park, fetchMarkers } = this.props;
+    const { park, fetchMarkers, refreshUser } = this.props;
 
     this.setState({
       message: undefined,
@@ -297,7 +297,7 @@ export class Renderer extends React.Component<Props, State> {
     });
 
     try {
-      await autoRefreshApiWrapper(() => deleteRemoteArticle(postId));
+      await autoRefreshApiWrapper(() => deleteRemoteArticle(postId), refreshUser);
       park && fetchMarkers(park);
 
       this.setState({
@@ -335,6 +335,7 @@ export type Props = {
   throwError: (status: number) => void;
   fetchMarkers: (park: Park) => void;
   initialize: () => void;
+  refreshUser: () => void;
 };
 
 export type State = {

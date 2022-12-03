@@ -11,6 +11,7 @@ const basicProps: Props = {
   postId: 1,
   initialize: jest.fn(),
   throwError: jest.fn(),
+  refreshUser: jest.fn(),
 };
 
 const article: GetArticleResponse = {

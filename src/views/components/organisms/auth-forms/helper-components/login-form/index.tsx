@@ -21,8 +21,7 @@ export class LoginForm extends React.Component<Props, State> {
   }
 
   render() {
-    const disabled =
-      this.props.autoLoggingInState !== 'error' || this.state.localLoadingState === 'loading';
+    const disabled = !!this.props.userInfo || this.state.localLoadingState === 'loading';
 
     return (
       <Stack spacing={1} sx={{ px: 1, py: 2 }}>

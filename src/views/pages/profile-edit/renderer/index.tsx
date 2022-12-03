@@ -182,8 +182,10 @@ export class Renderer extends React.Component<Props, State> {
     const uploadIcon = typeof this.state.icon === 'string' ? undefined : this.state.icon;
 
     try {
-      const res = await autoRefreshApiWrapper(() =>
-        updateUserInfo({ nickname: this.state.nickname, icon: uploadIcon }),
+      const res = await autoRefreshApiWrapper(
+        () => updateUserInfo({ nickname: this.state.nickname, icon: uploadIcon }),
+        /* istanbul ignore next */
+        () => this.props.updateUser(undefined),
       );
       this.props.updateUser(res);
       this.setState({
@@ -220,7 +222,7 @@ export class Renderer extends React.Component<Props, State> {
 export type Props = {
   user?: User;
 
-  updateUser: (user: User) => void;
+  updateUser: (user: User | undefined) => void;
   throwError: (errorStatus: number) => void;
 };
 

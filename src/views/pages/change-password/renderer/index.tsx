@@ -129,7 +129,10 @@ export class Renderer extends React.Component<Props, State> {
     });
 
     try {
-      await autoRefreshApiWrapper(() => changePassword(password1, password2));
+      await autoRefreshApiWrapper(
+        () => changePassword(password1, password2),
+        this.props.refreshUser,
+      );
       this.setState({
         loadingState: 'success',
         password1: '',
@@ -161,6 +164,7 @@ export class Renderer extends React.Component<Props, State> {
 
 export type Props = {
   user?: User;
+  refreshUser: () => void;
 };
 
 export type State = {

@@ -10,7 +10,7 @@ describe('autoRefreshApiWrapper', () => {
   });
 
   it('return response of parameter api', async () => {
-    const res = await autoRefreshApiWrapper<number>(() => Promise.resolve(1));
+    const res = await autoRefreshApiWrapper<number>(() => Promise.resolve(1), jest.fn());
     expect(res).toBe(1);
   });
 
@@ -19,7 +19,9 @@ describe('autoRefreshApiWrapper', () => {
       status: 500,
     };
 
-    expect(autoRefreshApiWrapper<unknown>(() => Promise.reject(myError))).rejects.toEqual(myError);
+    expect(
+      autoRefreshApiWrapper<unknown>(() => Promise.reject(myError), jest.fn()),
+    ).rejects.toEqual(myError);
   });
 
   it('call refreshToken if api throw 401 error', async () => {
@@ -29,17 +31,9 @@ describe('autoRefreshApiWrapper', () => {
       status: 401,
     };
 
-    expect(autoRefreshApiWrapper<unknown>(() => Promise.reject(myError))).rejects.toEqual(myError);
-  });
-
-  it('call refreshToken if api throw 401 error', async () => {
-    refreshTokenSpy.mockResolvedValue({});
-
-    const myError = {
-      status: 401,
-    };
-
-    expect(autoRefreshApiWrapper<unknown>(() => Promise.reject(myError))).rejects.toEqual(myError);
+    expect(
+      autoRefreshApiWrapper<unknown>(() => Promise.reject(myError), jest.fn()),
+    ).rejects.toEqual(myError);
   });
 
   it('throw api error if main api throw 401 error and refreshToken fail', async () => {
@@ -49,6 +43,24 @@ describe('autoRefreshApiWrapper', () => {
       status: 401,
     };
 
-    expect(autoRefreshApiWrapper<unknown>(() => Promise.reject(myError))).rejects.toEqual(myError);
+    expect(
+      autoRefreshApiWrapper<unknown>(() => Promise.reject(myError), jest.fn()),
+    ).rejects.toEqual(myError);
+  });
+
+  it('refresh user info if main api throw 401 error and refreshToken fail with 401', async () => {
+    refreshTokenSpy.mockRejectedValue({ status: 401 });
+    const deleteUserInfo = jest.fn();
+
+    const myError = {
+      status: 401,
+    };
+
+    expect(
+      autoRefreshApiWrapper<unknown>(
+        () => Promise.reject(myError),
+        () => deleteUserInfo,
+      ),
+    ).rejects.toEqual(myError);
   });
 });

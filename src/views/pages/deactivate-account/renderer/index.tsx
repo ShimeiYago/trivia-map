@@ -123,7 +123,11 @@ export class Renderer extends React.Component<Props, State> {
     });
 
     try {
-      await autoRefreshApiWrapper(() => deactivate());
+      await autoRefreshApiWrapper(
+        () => deactivate(),
+        /* istanbul ignore next */
+        () => this.props.updateUser(undefined),
+      );
       this.setState({
         loadingState: 'success',
       });

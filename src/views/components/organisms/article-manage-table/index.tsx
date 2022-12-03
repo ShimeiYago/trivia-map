@@ -6,6 +6,7 @@ import { fetchMarkers } from 'store/markers/actions';
 import { initialize } from 'store/article-form/actions';
 import { Park } from 'types/park';
 import { selectFocusingPark } from 'store/markers/selector';
+import { updateUser } from 'store/auths/actions';
 
 export function ArticleManageTable() {
   const dispatch = useAppDispatch();
@@ -16,6 +17,7 @@ export function ArticleManageTable() {
     isMobile: isMobile,
     fetchMarkers: (park: Park) => dispatch(fetchMarkers(park)),
     initialize: () => dispatch(initialize()),
+    refreshUser: () => dispatch(updateUser(undefined)),
   };
 
   return <Renderer {...props} />;

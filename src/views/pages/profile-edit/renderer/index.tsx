@@ -143,7 +143,7 @@ export class Renderer extends React.Component<Props, State> {
     if (this.props.user?.isSocialAccount) {
       return (
         <Alert severity="info">
-          連携されたソーシャルアカウントのプロフィール情報を表示しています。プロフィールを変更する場合は、ソーシャルアカウントを編集してください。
+          ソーシャルアカウントを連携している場合、このページからプロフィール情報を変更することはできません。表示されている情報が古い場合は、一度ログアウト後再びログインしてください。
         </Alert>
       );
     }

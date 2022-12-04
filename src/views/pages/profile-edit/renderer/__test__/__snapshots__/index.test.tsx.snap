@@ -365,7 +365,7 @@ exports[`Shallow Snapshot Tests social account 1`] = `
         <ForwardRef(Alert)
           severity="info"
         >
-          連携されたソーシャルアカウントのプロフィール情報を表示しています。プロフィールを変更する場合は、ソーシャルアカウントを編集してください。
+          ソーシャルアカウントを連携している場合、このページからプロフィール情報を変更することはできません。表示されている情報が古い場合は、一度ログアウト後再びログインしてください。
         </ForwardRef(Alert)>
         <ForwardRef(Box)>
           <ImageField

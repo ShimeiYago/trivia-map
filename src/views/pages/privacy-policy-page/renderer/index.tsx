@@ -29,8 +29,8 @@ export class Renderer extends React.Component {
           また、ご本人からの個人データの開示、訂正、追加、削除、利用停止のご希望の場合には、ご本人であることを確認させていただいた上、速やかに対応させていただきます。
         </Typography>
 
-        {renderHead('広告の配信について')}
-        <Typography sx={{ mb: 3 }}>TODO</Typography>
+        {/* {renderHead('広告の配信について')}
+        <Typography sx={{ mb: 3 }}>TODO</Typography> */}
 
         {renderHead('アクセス解析ツールについて')}
         <Typography sx={{ mb: 1 }}>
@@ -42,12 +42,15 @@ export class Renderer extends React.Component {
           をご覧ください。
         </Typography>
 
-        {renderHead('当サイトへのコメントについて')}
+        {renderHead('当サイトへの投稿・コメントについて')}
         <Typography sx={{ mb: 1 }}>
           当サイトでは、スパム・荒らしへの対応として、投稿・コメントの際に使用されたIPアドレスを記録しています。
         </Typography>
         <Typography sx={{ mb: 3 }}>
-          これはブログの標準機能としてサポートされている機能で、スパム・荒らしへの対応以外にこのIPアドレスを使用することはありません。また、メールアドレスとURLの入力に関しては、任意となっております。全てのコメントは管理人が事前にその内容を確認し、承認した上での掲載となりますことをあらかじめご了承下さい。加えて、次の各号に掲げる内容を含むコメントは管理人の裁量によって承認せず、削除する事があります。
+          これはシステムの標準機能としてサポートされている機能で、スパム・荒らしへの対応以外にこのIPアドレスを使用することはありません。
+        </Typography>
+        <Typography sx={{ mb: 3 }}>
+          加えて、次の各号に掲げる内容を含む投稿・コメントは管理人の裁量によって通知なしに削除される事があります。
         </Typography>
         <ul>
           <li>特定の自然人または法人を誹謗し、中傷するもの。</li>
@@ -55,7 +58,8 @@ export class Renderer extends React.Component {
           <li>
             禁制品の取引に関するものや、他者を害する行為の依頼など、法律によって禁止されている物品、行為の依頼や斡旋などに関するもの。
           </li>
-          <li>その他、公序良俗に反し、または管理人によって承認すべきでないと認められるもの。</li>
+          <li>インターネット上からダウンロードされた写真を撮影者に無断で使用しているもの。</li>
+          <li>その他、公序良俗に反し、または管理人によって掲載すべきでないと認められるもの。</li>
         </ul>
 
         {renderHead('著作権について')}
@@ -81,8 +85,8 @@ export class Renderer extends React.Component {
         </Typography>
 
         {renderHead('制定日・最終改定日')}
-        <Typography sx={{ mb: 1 }}>制定日：2022年10月1日</Typography>
-        <Typography sx={{ mb: 3 }}>最終改定日：2022年10月1日</Typography>
+        <Typography sx={{ mb: 1 }}>制定日：2022年12月4日</Typography>
+        <Typography sx={{ mb: 3 }}>最終改定日：2022年12月4日</Typography>
       </ArticleWrapper>
     );
   }

@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react';
 import { Marker } from 'react-leaflet';
 import { LatLng, LeafletEventHandlerFnMap, Marker as MarkerType, Map as LeafletMap } from 'leaflet';
 
-import { defaultIcon, numberCircleIcon, redIcon } from './icons';
+import { defaultIcon, redIcon, redIconWithNumber } from './icons';
 import { CustomMarker } from './helpers/custom-marker';
 import { ZOOMS } from 'constant';
 
@@ -37,14 +37,9 @@ export class MapMarker extends React.Component<Props, State> {
         break;
     }
 
-    const numberCircleMarker = !this.state.dragging && this.props.numberOfContents && (
-      <Marker
-        position={this.props.position}
-        icon={numberCircleIcon(String(this.props.numberOfContents))}
-        eventHandlers={this.numberCircleEventHandlers}
-        zIndexOffset={this.props.zIndexOffset + 1}
-      />
-    );
+    if (this.props.numberOfContents) {
+      icon = redIconWithNumber(String(this.props.numberOfContents));
+    }
 
     if (!this.props.popup) {
       return (
@@ -57,7 +52,6 @@ export class MapMarker extends React.Component<Props, State> {
             eventHandlers={this.eventHandlers}
             zIndexOffset={this.props.zIndexOffset}
           />
-          {numberCircleMarker}
         </>
       );
     }
@@ -75,7 +69,6 @@ export class MapMarker extends React.Component<Props, State> {
           autoOpen={this.props.autoOpen}
           zIndexOffset={this.props.zIndexOffset}
         />
-        {numberCircleMarker}
       </>
     );
   }

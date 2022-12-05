@@ -5,34 +5,58 @@ import styles from './index.module.css';
 
 import defaultIconUrl from 'images/marker-icons/default.png';
 import redIconUrl from 'images/marker-icons/red.png';
+import redIconWithNumberUrl from 'images/marker-icons/red-with-number.png';
+import ReactDOMServer from 'react-dom/server';
 
-const iconWidth = 25;
-const iconHeight = 41;
+const singleIcon = {
+  width: 25,
+  height: 41,
+};
+const duplicatedIcon = {
+  width: 33,
+  height: 46,
+};
 
-const iconOptions: L.IconOptions = {
+const singleIconOptions: L.IconOptions = {
   iconUrl: presetIconUrl,
   shadowUrl: iconShadow,
-  iconSize: [iconWidth, iconHeight],
-  iconAnchor: [iconWidth / 2, iconHeight],
-  popupAnchor: [0, -iconHeight + 5],
-  tooltipAnchor: [0, -iconHeight + 5],
+  iconSize: [singleIcon.width, singleIcon.height],
+  iconAnchor: [singleIcon.width / 2, singleIcon.height],
+  popupAnchor: [0, -singleIcon.height + 5],
+  tooltipAnchor: [0, -singleIcon.height + 5],
+};
+
+const duplicatedIconOptions: L.IconOptions = {
+  iconUrl: presetIconUrl,
+  shadowUrl: iconShadow,
+  iconSize: [duplicatedIcon.width, duplicatedIcon.height],
+  iconAnchor: [duplicatedIcon.width / 2 + 4, duplicatedIcon.height],
+  popupAnchor: [0, -duplicatedIcon.height + 14],
+  tooltipAnchor: [0, -duplicatedIcon.height + 14],
 };
 
 // export const presetIcon = L.icon(iconOptions);
 
 export const defaultIcon = L.icon({
-  ...iconOptions,
+  ...singleIconOptions,
   iconUrl: defaultIconUrl,
 });
 export const redIcon = L.icon({
-  ...iconOptions,
+  ...singleIconOptions,
   iconUrl: redIconUrl,
 });
 
-// number circle icon
-export const numberCircleIcon = (text: string) =>
+// marker with number
+export const redIconWithNumber = (num: string) =>
   L.divIcon({
-    className: styles['number-circle-icon'],
-    iconAnchor: [iconWidth / 2 + 10, iconHeight + 5],
-    html: text,
+    ...duplicatedIconOptions,
+    iconSize: [33, 46],
+    className: styles['duplicated-marker-wrapper'],
+    html: ReactDOMServer.renderToString(
+      <>
+        <img src={iconShadow} className={styles['duplicated-marker-shadow']} />
+        <img src={redIconWithNumberUrl} className={styles['duplicated-marker-icon']} />
+        <div className={styles['duplicated-marker-text']}>{num}</div>
+      </>,
+    ),
   });

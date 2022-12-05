@@ -8,6 +8,7 @@ import {
   Map as LeafletMap,
   Marker as MarkerType,
   Icon,
+  DivIcon,
 } from 'leaflet';
 
 export const CustomMarker = React.forwardRef((props: Props, ref) => {
@@ -48,7 +49,7 @@ export const CustomMarker = React.forwardRef((props: Props, ref) => {
 
 type Props = {
   position: LatLng;
-  icon: Icon;
+  icon: Icon | DivIcon;
   popup: React.ReactNode;
   autoOpen: boolean;
   map: LeafletMap;

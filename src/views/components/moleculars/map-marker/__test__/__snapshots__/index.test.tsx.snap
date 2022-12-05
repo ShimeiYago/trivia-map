@@ -112,23 +112,25 @@ exports[`Shallow Snapshot Tests with numberOfContents 1`] = `
       NewClass {
         "_initHooksCalled": true,
         "options": Object {
+          "className": "duplicated-marker-wrapper",
+          "html": "<img src=\\"marker-shadow.png\\" class=\\"duplicated-marker-shadow\\" data-reactroot=\\"\\"/><img src=\\"red-with-number.png\\" class=\\"duplicated-marker-icon\\" data-reactroot=\\"\\"/><div class=\\"duplicated-marker-text\\" data-reactroot=\\"\\">1</div>",
           "iconAnchor": Array [
-            12.5,
-            41,
+            20.5,
+            46,
           ],
           "iconSize": Array [
-            25,
-            41,
+            33,
+            46,
           ],
-          "iconUrl": "default.png",
+          "iconUrl": "marker-icon.png",
           "popupAnchor": Array [
             0,
-            -36,
+            -32,
           ],
           "shadowUrl": "marker-shadow.png",
           "tooltipAnchor": Array [
             0,
-            -36,
+            -32,
           ],
         },
       }
@@ -140,33 +142,6 @@ exports[`Shallow Snapshot Tests with numberOfContents 1`] = `
       }
     }
     zIndexOffset={0}
-  />
-  <ForwardRef(ContainerComponent)
-    eventHandlers={
-      Object {
-        "click": [Function],
-      }
-    }
-    icon={
-      NewClass {
-        "_initHooksCalled": true,
-        "options": Object {
-          "className": "number-circle-icon",
-          "html": "1",
-          "iconAnchor": Array [
-            22.5,
-            46,
-          ],
-        },
-      }
-    }
-    position={
-      Object {
-        "lat": 0,
-        "lng": 0,
-      }
-    }
-    zIndexOffset={1}
   />
 </Fragment>
 `;

@@ -1,8 +1,23 @@
-.number-circle-icon {
-  background: #fff;
-  border-radius: 10px;
-  height: 20px !important;
-  width: 20px !important;
-  text-align: center !important;
-  vertical-align: middle;
+.duplicated-marker-wrapper {
+  position: relative;
+  background-color: transparent;
+}
+
+.duplicated-marker-text {
+  position: absolute;
+  width: 18px;
+  top: 0;
+  left: 0px;
+  text-align: center;
+}
+
+.duplicated-marker-icon {
+  position: absolute;
+  width: 100%;
+}
+
+.duplicated-marker-shadow {
+  position: absolute;
+  bottom: 0;
+  left: 8px;
 }

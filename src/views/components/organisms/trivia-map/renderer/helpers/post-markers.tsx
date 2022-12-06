@@ -1,11 +1,14 @@
 import React from 'react';
 import { Box, Button } from '@mui/material';
-import { LatLng, Map as LeafletMap } from 'leaflet';
+import { LatLng, Map as LeafletMap, MarkerCluster, DivIcon, Point } from 'leaflet';
 import { MapMarker } from 'views/components/moleculars/map-marker';
 import { ArticlePreviewList } from 'views/components/organisms/article-preview-list';
 import AddLocationAltIcon from '@mui/icons-material/AddLocationAlt';
 import { Position } from 'types/position';
 import { Marker } from 'types/marker';
+import MarkerClusterGroup from 'react-leaflet-cluster';
+import { ZOOMS } from 'constant';
+import './index.css';
 
 export class PostMarkers extends React.Component<Props> {
   render() {
@@ -42,8 +45,29 @@ export class PostMarkers extends React.Component<Props> {
       );
     });
 
-    return <>{markerElmList}</>;
+    return (
+      <MarkerClusterGroup
+        showCoverageOnHover={false}
+        removeOutsideVisibleBounds
+        disableClusteringAtZoom={ZOOMS.max}
+        iconCreateFunction={this.clusterIconCreator}
+        chunkedLoading
+        zoomToBoundsOnClick
+      >
+        {markerElmList}
+      </MarkerClusterGroup>
+    );
   }
+
+  protected clusterIconCreator = (cluster: MarkerCluster) => {
+    const childCount = cluster.getChildCount();
+
+    return new DivIcon({
+      html: '<div><span>' + childCount + '</span></div>',
+      className: 'marker-cluster marker-cluster-red',
+      iconSize: new Point(40, 40),
+    });
+  };
 
   protected renderPopupContents = (markerId: number, position: Position) => {
     return (

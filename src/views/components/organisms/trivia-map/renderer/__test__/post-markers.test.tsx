@@ -1,5 +1,5 @@
 import { shallow, ShallowWrapper } from 'enzyme';
-import { Map as LeafletMap } from 'leaflet';
+import { Map as LeafletMap, MarkerCluster } from 'leaflet';
 import { PostMarkers, Props } from '../helpers/post-markers';
 
 const basicProps: Props = {
@@ -65,5 +65,19 @@ describe('handleClickAdd', () => {
       park: 'S',
     })();
     expect(instance.props.openFormWithTheMarker).toBeCalled();
+  });
+});
+
+describe('clusterIconCreator', () => {
+  it('should return div icon', () => {
+    shallowWrapper = shallow(<PostMarkers {...basicProps} />);
+    const instance = shallowWrapper.instance();
+
+    const markerCluster = {
+      getChildCount: () => 2,
+    } as unknown as MarkerCluster;
+
+    const divIcon = instance['clusterIconCreator'](markerCluster);
+    expect(divIcon).toBeDefined();
   });
 });

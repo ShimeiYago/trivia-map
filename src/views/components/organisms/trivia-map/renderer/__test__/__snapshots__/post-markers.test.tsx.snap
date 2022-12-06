@@ -1,7 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Shallow Snapshot Tests basic 1`] = `
-<Fragment>
+<ForwardRef(ContainerComponent)
+  chunkedLoading={true}
+  disableClusteringAtZoom={4}
+  iconCreateFunction={[Function]}
+  removeOutsideVisibleBounds={true}
+  showCoverageOnHover={false}
+  zoomToBoundsOnClick={true}
+>
   <MapMarker
     autoOpen={false}
     draggable={false}
@@ -101,11 +108,18 @@ exports[`Shallow Snapshot Tests basic 1`] = `
     variant="red"
     zIndexOffset={0}
   />
-</Fragment>
+</ForwardRef(ContainerComponent)>
 `;
 
 exports[`Shallow Snapshot Tests category is selected 1`] = `
-<Fragment>
+<ForwardRef(ContainerComponent)
+  chunkedLoading={true}
+  disableClusteringAtZoom={4}
+  iconCreateFunction={[Function]}
+  removeOutsideVisibleBounds={true}
+  showCoverageOnHover={false}
+  zoomToBoundsOnClick={true}
+>
   <MapMarker
     autoOpen={false}
     draggable={false}
@@ -156,11 +170,18 @@ exports[`Shallow Snapshot Tests category is selected 1`] = `
     variant="red"
     zIndexOffset={0}
   />
-</Fragment>
+</ForwardRef(ContainerComponent)>
 `;
 
 exports[`Shallow Snapshot Tests form is editting 1`] = `
-<Fragment>
+<ForwardRef(ContainerComponent)
+  chunkedLoading={true}
+  disableClusteringAtZoom={4}
+  iconCreateFunction={[Function]}
+  removeOutsideVisibleBounds={true}
+  showCoverageOnHover={false}
+  zoomToBoundsOnClick={true}
+>
   <MapMarker
     autoOpen={false}
     draggable={false}
@@ -260,11 +281,18 @@ exports[`Shallow Snapshot Tests form is editting 1`] = `
     variant="red"
     zIndexOffset={0}
   />
-</Fragment>
+</ForwardRef(ContainerComponent)>
 `;
 
 exports[`Shallow Snapshot Tests with hiddenMarkerIds 1`] = `
-<Fragment>
+<ForwardRef(ContainerComponent)
+  chunkedLoading={true}
+  disableClusteringAtZoom={4}
+  iconCreateFunction={[Function]}
+  removeOutsideVisibleBounds={true}
+  showCoverageOnHover={false}
+  zoomToBoundsOnClick={true}
+>
   <MapMarker
     autoOpen={false}
     draggable={false}
@@ -315,5 +343,5 @@ exports[`Shallow Snapshot Tests with hiddenMarkerIds 1`] = `
     variant="red"
     zIndexOffset={0}
   />
-</Fragment>
+</ForwardRef(ContainerComponent)>
 `;

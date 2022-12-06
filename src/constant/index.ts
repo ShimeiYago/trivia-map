@@ -15,6 +15,7 @@ export const API_TIMEOUT = {
 export const MAP_MAX_COORINATE = 255;
 export const MAP_MARGIN = 50;
 
+// categoryId should be same as BE
 export const CATEGORIES = [
   {
     categoryId: 1,
@@ -23,6 +24,30 @@ export const CATEGORIES = [
   {
     categoryId: 2,
     categoryName: 'バックグラウンドストーリー',
+  },
+  {
+    categoryId: 3,
+    categoryName: 'おすすめ写真スポット',
+  },
+  {
+    categoryId: 4,
+    categoryName: 'ショーパレ',
+  },
+  {
+    categoryId: 5,
+    categoryName: 'フード情報',
+  },
+  {
+    categoryId: 6,
+    categoryName: 'グッズ情報',
+  },
+  {
+    categoryId: 7,
+    categoryName: 'キャラグリ',
+  },
+  {
+    categoryId: 8,
+    categoryName: '攻略法',
   },
   // NOTE: '0' should be at end of list
   {

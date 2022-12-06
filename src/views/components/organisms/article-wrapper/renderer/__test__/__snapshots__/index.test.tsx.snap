@@ -135,6 +135,192 @@ exports[`Shallow Snapshot Tests basic 1`] = `
                     component="li"
                   />
                   <NonStyleLink
+                    to="/categories/3"
+                  >
+                    <ForwardRef(ListItem)
+                      disablePadding={true}
+                    >
+                      <ForwardRef(ListItemButton)
+                        sx={
+                          Object {
+                            "py": 0.5,
+                          }
+                        }
+                      >
+                        <ForwardRef(ListItemIcon)
+                          sx={
+                            Object {
+                              "minWidth": "40px",
+                            }
+                          }
+                        >
+                          <Memo(ForwardRef(KeyboardArrowRightIcon)) />
+                        </ForwardRef(ListItemIcon)>
+                        <ForwardRef(ListItemText)
+                          primary="おすすめ写真スポット"
+                        />
+                      </ForwardRef(ListItemButton)>
+                    </ForwardRef(ListItem)>
+                  </NonStyleLink>
+                  <ForwardRef(Divider)
+                    component="li"
+                  />
+                  <NonStyleLink
+                    to="/categories/4"
+                  >
+                    <ForwardRef(ListItem)
+                      disablePadding={true}
+                    >
+                      <ForwardRef(ListItemButton)
+                        sx={
+                          Object {
+                            "py": 0.5,
+                          }
+                        }
+                      >
+                        <ForwardRef(ListItemIcon)
+                          sx={
+                            Object {
+                              "minWidth": "40px",
+                            }
+                          }
+                        >
+                          <Memo(ForwardRef(KeyboardArrowRightIcon)) />
+                        </ForwardRef(ListItemIcon)>
+                        <ForwardRef(ListItemText)
+                          primary="ショーパレ"
+                        />
+                      </ForwardRef(ListItemButton)>
+                    </ForwardRef(ListItem)>
+                  </NonStyleLink>
+                  <ForwardRef(Divider)
+                    component="li"
+                  />
+                  <NonStyleLink
+                    to="/categories/5"
+                  >
+                    <ForwardRef(ListItem)
+                      disablePadding={true}
+                    >
+                      <ForwardRef(ListItemButton)
+                        sx={
+                          Object {
+                            "py": 0.5,
+                          }
+                        }
+                      >
+                        <ForwardRef(ListItemIcon)
+                          sx={
+                            Object {
+                              "minWidth": "40px",
+                            }
+                          }
+                        >
+                          <Memo(ForwardRef(KeyboardArrowRightIcon)) />
+                        </ForwardRef(ListItemIcon)>
+                        <ForwardRef(ListItemText)
+                          primary="フード情報"
+                        />
+                      </ForwardRef(ListItemButton)>
+                    </ForwardRef(ListItem)>
+                  </NonStyleLink>
+                  <ForwardRef(Divider)
+                    component="li"
+                  />
+                  <NonStyleLink
+                    to="/categories/6"
+                  >
+                    <ForwardRef(ListItem)
+                      disablePadding={true}
+                    >
+                      <ForwardRef(ListItemButton)
+                        sx={
+                          Object {
+                            "py": 0.5,
+                          }
+                        }
+                      >
+                        <ForwardRef(ListItemIcon)
+                          sx={
+                            Object {
+                              "minWidth": "40px",
+                            }
+                          }
+                        >
+                          <Memo(ForwardRef(KeyboardArrowRightIcon)) />
+                        </ForwardRef(ListItemIcon)>
+                        <ForwardRef(ListItemText)
+                          primary="グッズ情報"
+                        />
+                      </ForwardRef(ListItemButton)>
+                    </ForwardRef(ListItem)>
+                  </NonStyleLink>
+                  <ForwardRef(Divider)
+                    component="li"
+                  />
+                  <NonStyleLink
+                    to="/categories/7"
+                  >
+                    <ForwardRef(ListItem)
+                      disablePadding={true}
+                    >
+                      <ForwardRef(ListItemButton)
+                        sx={
+                          Object {
+                            "py": 0.5,
+                          }
+                        }
+                      >
+                        <ForwardRef(ListItemIcon)
+                          sx={
+                            Object {
+                              "minWidth": "40px",
+                            }
+                          }
+                        >
+                          <Memo(ForwardRef(KeyboardArrowRightIcon)) />
+                        </ForwardRef(ListItemIcon)>
+                        <ForwardRef(ListItemText)
+                          primary="キャラグリ"
+                        />
+                      </ForwardRef(ListItemButton)>
+                    </ForwardRef(ListItem)>
+                  </NonStyleLink>
+                  <ForwardRef(Divider)
+                    component="li"
+                  />
+                  <NonStyleLink
+                    to="/categories/8"
+                  >
+                    <ForwardRef(ListItem)
+                      disablePadding={true}
+                    >
+                      <ForwardRef(ListItemButton)
+                        sx={
+                          Object {
+                            "py": 0.5,
+                          }
+                        }
+                      >
+                        <ForwardRef(ListItemIcon)
+                          sx={
+                            Object {
+                              "minWidth": "40px",
+                            }
+                          }
+                        >
+                          <Memo(ForwardRef(KeyboardArrowRightIcon)) />
+                        </ForwardRef(ListItemIcon)>
+                        <ForwardRef(ListItemText)
+                          primary="攻略法"
+                        />
+                      </ForwardRef(ListItemButton)>
+                    </ForwardRef(ListItem)>
+                  </NonStyleLink>
+                  <ForwardRef(Divider)
+                    component="li"
+                  />
+                  <NonStyleLink
                     to="/categories/0"
                   >
                     <ForwardRef(ListItem)
@@ -350,6 +536,192 @@ exports[`Shallow Snapshot Tests mobile 1`] = `
                         </ForwardRef(ListItemIcon)>
                         <ForwardRef(ListItemText)
                           primary="バックグラウンドストーリー"
+                        />
+                      </ForwardRef(ListItemButton)>
+                    </ForwardRef(ListItem)>
+                  </NonStyleLink>
+                  <ForwardRef(Divider)
+                    component="li"
+                  />
+                  <NonStyleLink
+                    to="/categories/3"
+                  >
+                    <ForwardRef(ListItem)
+                      disablePadding={true}
+                    >
+                      <ForwardRef(ListItemButton)
+                        sx={
+                          Object {
+                            "py": 0.5,
+                          }
+                        }
+                      >
+                        <ForwardRef(ListItemIcon)
+                          sx={
+                            Object {
+                              "minWidth": "40px",
+                            }
+                          }
+                        >
+                          <Memo(ForwardRef(KeyboardArrowRightIcon)) />
+                        </ForwardRef(ListItemIcon)>
+                        <ForwardRef(ListItemText)
+                          primary="おすすめ写真スポット"
+                        />
+                      </ForwardRef(ListItemButton)>
+                    </ForwardRef(ListItem)>
+                  </NonStyleLink>
+                  <ForwardRef(Divider)
+                    component="li"
+                  />
+                  <NonStyleLink
+                    to="/categories/4"
+                  >
+                    <ForwardRef(ListItem)
+                      disablePadding={true}
+                    >
+                      <ForwardRef(ListItemButton)
+                        sx={
+                          Object {
+                            "py": 0.5,
+                          }
+                        }
+                      >
+                        <ForwardRef(ListItemIcon)
+                          sx={
+                            Object {
+                              "minWidth": "40px",
+                            }
+                          }
+                        >
+                          <Memo(ForwardRef(KeyboardArrowRightIcon)) />
+                        </ForwardRef(ListItemIcon)>
+                        <ForwardRef(ListItemText)
+                          primary="ショーパレ"
+                        />
+                      </ForwardRef(ListItemButton)>
+                    </ForwardRef(ListItem)>
+                  </NonStyleLink>
+                  <ForwardRef(Divider)
+                    component="li"
+                  />
+                  <NonStyleLink
+                    to="/categories/5"
+                  >
+                    <ForwardRef(ListItem)
+                      disablePadding={true}
+                    >
+                      <ForwardRef(ListItemButton)
+                        sx={
+                          Object {
+                            "py": 0.5,
+                          }
+                        }
+                      >
+                        <ForwardRef(ListItemIcon)
+                          sx={
+                            Object {
+                              "minWidth": "40px",
+                            }
+                          }
+                        >
+                          <Memo(ForwardRef(KeyboardArrowRightIcon)) />
+                        </ForwardRef(ListItemIcon)>
+                        <ForwardRef(ListItemText)
+                          primary="フード情報"
+                        />
+                      </ForwardRef(ListItemButton)>
+                    </ForwardRef(ListItem)>
+                  </NonStyleLink>
+                  <ForwardRef(Divider)
+                    component="li"
+                  />
+                  <NonStyleLink
+                    to="/categories/6"
+                  >
+                    <ForwardRef(ListItem)
+                      disablePadding={true}
+                    >
+                      <ForwardRef(ListItemButton)
+                        sx={
+                          Object {
+                            "py": 0.5,
+                          }
+                        }
+                      >
+                        <ForwardRef(ListItemIcon)
+                          sx={
+                            Object {
+                              "minWidth": "40px",
+                            }
+                          }
+                        >
+                          <Memo(ForwardRef(KeyboardArrowRightIcon)) />
+                        </ForwardRef(ListItemIcon)>
+                        <ForwardRef(ListItemText)
+                          primary="グッズ情報"
+                        />
+                      </ForwardRef(ListItemButton)>
+                    </ForwardRef(ListItem)>
+                  </NonStyleLink>
+                  <ForwardRef(Divider)
+                    component="li"
+                  />
+                  <NonStyleLink
+                    to="/categories/7"
+                  >
+                    <ForwardRef(ListItem)
+                      disablePadding={true}
+                    >
+                      <ForwardRef(ListItemButton)
+                        sx={
+                          Object {
+                            "py": 0.5,
+                          }
+                        }
+                      >
+                        <ForwardRef(ListItemIcon)
+                          sx={
+                            Object {
+                              "minWidth": "40px",
+                            }
+                          }
+                        >
+                          <Memo(ForwardRef(KeyboardArrowRightIcon)) />
+                        </ForwardRef(ListItemIcon)>
+                        <ForwardRef(ListItemText)
+                          primary="キャラグリ"
+                        />
+                      </ForwardRef(ListItemButton)>
+                    </ForwardRef(ListItem)>
+                  </NonStyleLink>
+                  <ForwardRef(Divider)
+                    component="li"
+                  />
+                  <NonStyleLink
+                    to="/categories/8"
+                  >
+                    <ForwardRef(ListItem)
+                      disablePadding={true}
+                    >
+                      <ForwardRef(ListItemButton)
+                        sx={
+                          Object {
+                            "py": 0.5,
+                          }
+                        }
+                      >
+                        <ForwardRef(ListItemIcon)
+                          sx={
+                            Object {
+                              "minWidth": "40px",
+                            }
+                          }
+                        >
+                          <Memo(ForwardRef(KeyboardArrowRightIcon)) />
+                        </ForwardRef(ListItemIcon)>
+                        <ForwardRef(ListItemText)
+                          primary="攻略法"
                         />
                       </ForwardRef(ListItemButton)>
                     </ForwardRef(ListItem)>

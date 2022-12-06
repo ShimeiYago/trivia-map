@@ -5,9 +5,9 @@ exports[`Shallow Snapshot Tests basic 1`] = `
   chunkedLoading={true}
   disableClusteringAtZoom={4}
   iconCreateFunction={[Function]}
+  onClick={[Function]}
   removeOutsideVisibleBounds={true}
   showCoverageOnHover={false}
-  zoomToBoundsOnClick={true}
 >
   <MapMarker
     autoOpen={false}
@@ -116,9 +116,9 @@ exports[`Shallow Snapshot Tests category is selected 1`] = `
   chunkedLoading={true}
   disableClusteringAtZoom={4}
   iconCreateFunction={[Function]}
+  onClick={[Function]}
   removeOutsideVisibleBounds={true}
   showCoverageOnHover={false}
-  zoomToBoundsOnClick={true}
 >
   <MapMarker
     autoOpen={false}
@@ -178,9 +178,9 @@ exports[`Shallow Snapshot Tests form is editting 1`] = `
   chunkedLoading={true}
   disableClusteringAtZoom={4}
   iconCreateFunction={[Function]}
+  onClick={[Function]}
   removeOutsideVisibleBounds={true}
   showCoverageOnHover={false}
-  zoomToBoundsOnClick={true}
 >
   <MapMarker
     autoOpen={false}
@@ -289,9 +289,9 @@ exports[`Shallow Snapshot Tests with hiddenMarkerIds 1`] = `
   chunkedLoading={true}
   disableClusteringAtZoom={4}
   iconCreateFunction={[Function]}
+  onClick={[Function]}
   removeOutsideVisibleBounds={true}
   showCoverageOnHover={false}
-  zoomToBoundsOnClick={true}
 >
   <MapMarker
     autoOpen={false}

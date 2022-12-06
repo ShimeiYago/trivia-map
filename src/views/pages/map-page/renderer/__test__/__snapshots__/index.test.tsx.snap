@@ -120,6 +120,48 @@ exports[`Shallow Snapshot Tests basic 1`] = `
           onClick={[Function]}
           selected={false}
         >
+          おすすめ写真スポット
+        </RoundButton>
+        <RoundButton
+          key="category-button-3"
+          onClick={[Function]}
+          selected={false}
+        >
+          ショーパレ
+        </RoundButton>
+        <RoundButton
+          key="category-button-4"
+          onClick={[Function]}
+          selected={false}
+        >
+          フード情報
+        </RoundButton>
+        <RoundButton
+          key="category-button-5"
+          onClick={[Function]}
+          selected={false}
+        >
+          グッズ情報
+        </RoundButton>
+        <RoundButton
+          key="category-button-6"
+          onClick={[Function]}
+          selected={false}
+        >
+          キャラグリ
+        </RoundButton>
+        <RoundButton
+          key="category-button-7"
+          onClick={[Function]}
+          selected={false}
+        >
+          攻略法
+        </RoundButton>
+        <RoundButton
+          key="category-button-8"
+          onClick={[Function]}
+          selected={false}
+        >
           その他
         </RoundButton>
       </ForwardRef(Stack)>
@@ -281,6 +323,48 @@ exports[`Shallow Snapshot Tests before render map 1`] = `
         </RoundButton>
         <RoundButton
           key="category-button-2"
+          onClick={[Function]}
+          selected={false}
+        >
+          おすすめ写真スポット
+        </RoundButton>
+        <RoundButton
+          key="category-button-3"
+          onClick={[Function]}
+          selected={false}
+        >
+          ショーパレ
+        </RoundButton>
+        <RoundButton
+          key="category-button-4"
+          onClick={[Function]}
+          selected={false}
+        >
+          フード情報
+        </RoundButton>
+        <RoundButton
+          key="category-button-5"
+          onClick={[Function]}
+          selected={false}
+        >
+          グッズ情報
+        </RoundButton>
+        <RoundButton
+          key="category-button-6"
+          onClick={[Function]}
+          selected={false}
+        >
+          キャラグリ
+        </RoundButton>
+        <RoundButton
+          key="category-button-7"
+          onClick={[Function]}
+          selected={false}
+        >
+          攻略法
+        </RoundButton>
+        <RoundButton
+          key="category-button-8"
           onClick={[Function]}
           selected={false}
         >
@@ -455,6 +539,48 @@ exports[`Shallow Snapshot Tests land mode 1`] = `
           onClick={[Function]}
           selected={false}
         >
+          おすすめ写真スポット
+        </RoundButton>
+        <RoundButton
+          key="category-button-3"
+          onClick={[Function]}
+          selected={false}
+        >
+          ショーパレ
+        </RoundButton>
+        <RoundButton
+          key="category-button-4"
+          onClick={[Function]}
+          selected={false}
+        >
+          フード情報
+        </RoundButton>
+        <RoundButton
+          key="category-button-5"
+          onClick={[Function]}
+          selected={false}
+        >
+          グッズ情報
+        </RoundButton>
+        <RoundButton
+          key="category-button-6"
+          onClick={[Function]}
+          selected={false}
+        >
+          キャラグリ
+        </RoundButton>
+        <RoundButton
+          key="category-button-7"
+          onClick={[Function]}
+          selected={false}
+        >
+          攻略法
+        </RoundButton>
+        <RoundButton
+          key="category-button-8"
+          onClick={[Function]}
+          selected={false}
+        >
           その他
         </RoundButton>
       </ForwardRef(Stack)>
@@ -569,6 +695,48 @@ exports[`Shallow Snapshot Tests park is undefined 1`] = `
         </RoundButton>
         <RoundButton
           key="category-button-2"
+          onClick={[Function]}
+          selected={false}
+        >
+          おすすめ写真スポット
+        </RoundButton>
+        <RoundButton
+          key="category-button-3"
+          onClick={[Function]}
+          selected={false}
+        >
+          ショーパレ
+        </RoundButton>
+        <RoundButton
+          key="category-button-4"
+          onClick={[Function]}
+          selected={false}
+        >
+          フード情報
+        </RoundButton>
+        <RoundButton
+          key="category-button-5"
+          onClick={[Function]}
+          selected={false}
+        >
+          グッズ情報
+        </RoundButton>
+        <RoundButton
+          key="category-button-6"
+          onClick={[Function]}
+          selected={false}
+        >
+          キャラグリ
+        </RoundButton>
+        <RoundButton
+          key="category-button-7"
+          onClick={[Function]}
+          selected={false}
+        >
+          攻略法
+        </RoundButton>
+        <RoundButton
+          key="category-button-8"
           onClick={[Function]}
           selected={false}
         >
@@ -744,6 +912,48 @@ exports[`Shallow Snapshot Tests pc view 1`] = `
           </RoundButton>
           <RoundButton
             key="category-button-2"
+            onClick={[Function]}
+            selected={false}
+          >
+            おすすめ写真スポット
+          </RoundButton>
+          <RoundButton
+            key="category-button-3"
+            onClick={[Function]}
+            selected={false}
+          >
+            ショーパレ
+          </RoundButton>
+          <RoundButton
+            key="category-button-4"
+            onClick={[Function]}
+            selected={false}
+          >
+            フード情報
+          </RoundButton>
+          <RoundButton
+            key="category-button-5"
+            onClick={[Function]}
+            selected={false}
+          >
+            グッズ情報
+          </RoundButton>
+          <RoundButton
+            key="category-button-6"
+            onClick={[Function]}
+            selected={false}
+          >
+            キャラグリ
+          </RoundButton>
+          <RoundButton
+            key="category-button-7"
+            onClick={[Function]}
+            selected={false}
+          >
+            攻略法
+          </RoundButton>
+          <RoundButton
+            key="category-button-8"
             onClick={[Function]}
             selected={false}
           >

@@ -52,12 +52,7 @@ export class PostMarkers extends React.Component<Props> {
         disableClusteringAtZoom={ZOOMS.max}
         iconCreateFunction={this.clusterIconCreator}
         chunkedLoading
-        onClick={
-          /* istanbul ignore next */ () => {
-            /* istanbul ignore next */
-            return;
-          }
-        }
+        spiderfyOnMaxZoom={false}
       >
         {markerElmList}
       </MarkerClusterGroup>

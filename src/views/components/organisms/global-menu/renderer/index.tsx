@@ -146,11 +146,25 @@ export class Renderer extends React.Component<Props, State> {
         onOpen={this.toggleLeftMenu(true)}
         onClose={this.toggleLeftMenu(false)}
       >
-        <Box sx={leftNaviBox}>{leftNaviContents(!!this.props.userInfo, this.props.pathName)}</Box>
+        <Box sx={leftNaviBox}>
+          {leftNaviContents(
+            !!this.props.userInfo,
+            this.props.pathName,
+            this.props.isFormEditting,
+            this.toggleLeftMenu(false),
+          )}
+        </Box>
       </SwipeableDrawer>
     ) : (
       <Drawer open={true} variant="permanent">
-        <Box sx={leftNaviBox}>{leftNaviContents(!!this.props.userInfo, this.props.pathName)}</Box>
+        <Box sx={leftNaviBox}>
+          {leftNaviContents(
+            !!this.props.userInfo,
+            this.props.pathName,
+            this.props.isFormEditting,
+            this.toggleLeftMenu(false),
+          )}
+        </Box>
       </Drawer>
     );
   };
@@ -283,6 +297,7 @@ export type Props = {
     link: string;
   };
   pathName: string;
+  isFormEditting: boolean;
 
   toggleAuthFormModal: (open: boolean) => void;
   logout: () => void;

@@ -6,6 +6,7 @@ import { isMobile } from 'react-device-detect';
 import { useCookies } from 'react-cookie';
 import { UseAutoLogin } from 'helper-components/use-auto-login';
 import { useLocation } from 'react-router-dom';
+import { selectArticleFormIsEditting } from 'store/article-form/selector';
 
 export function GlobalMenu(ownProps: OwnProps) {
   const dispatch = useAppDispatch();
@@ -25,6 +26,7 @@ export function GlobalMenu(ownProps: OwnProps) {
     mapPage: ownProps.mapPage,
     localBackNavi: ownProps.localBackNavi,
     pathName: location.pathname,
+    isFormEditting: useAppSelector(selectArticleFormIsEditting),
 
     toggleAuthFormModal: (open: boolean) => dispatch(toggleFormModal(open)),
     logout: () => dispatch(logout(removeCookie)),

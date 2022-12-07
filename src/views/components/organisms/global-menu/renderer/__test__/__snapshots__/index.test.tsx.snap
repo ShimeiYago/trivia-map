@@ -174,10 +174,27 @@ exports[`Shallow Snapshot Tests basic 1`] = `
         </ForwardRef(ListItem)>
         <NonStyleLink
           key="1"
+          to="/map/new"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(AddLocationAltIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="新しい投稿を追加"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+        <NonStyleLink
+          key="2"
           to="/articles"
         >
           <ForwardRef(ListItem)
             button={true}
+            onClick={[Function]}
           >
             <ForwardRef(ListItemIcon)>
               <Memo(ForwardRef(ArticleIcon)) />
@@ -196,6 +213,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
         >
           <ForwardRef(ListItem)
             button={true}
+            onClick={[Function]}
           >
             <ForwardRef(ListItemIcon)>
               <Memo(ForwardRef(LoginIcon)) />
@@ -211,6 +229,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
         >
           <ForwardRef(ListItem)
             button={true}
+            onClick={[Function]}
           >
             <ForwardRef(ListItemIcon)>
               <Memo(ForwardRef(PersonAddIcon)) />
@@ -229,6 +248,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
         >
           <ForwardRef(ListItem)
             button={true}
+            onClick={[Function]}
           >
             <ForwardRef(ListItemIcon)>
               <Memo(ForwardRef(EmailIcon)) />
@@ -244,6 +264,309 @@ exports[`Shallow Snapshot Tests basic 1`] = `
         >
           <ForwardRef(ListItem)
             button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(InfoIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="プライバシーポリシー"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+      </ForwardRef(List)>
+    </ForwardRef(Box)>
+  </ForwardRef(SwipeableDrawer)>
+  <ForwardRef(Box)
+    sx={
+      Object {
+        "ml": undefined,
+        "pb": 4,
+        "pt": "64px",
+        "width": "100%",
+      }
+    }
+  >
+    contents
+  </ForwardRef(Box)>
+  <BoxModal
+    onClose={[Function]}
+    open={false}
+    showCloseButton={true}
+  >
+    <AuthForms
+      initialMode="login"
+      onLoginSucceed={[Function]}
+    />
+  </BoxModal>
+</Fragment>
+`;
+
+exports[`Shallow Snapshot Tests edit page 1`] = `
+<Fragment>
+  <ForwardRef(AppBar)
+    position="fixed"
+    sx={
+      Object {
+        "borderBottom": undefined,
+        "ml": undefined,
+        "width": undefined,
+      }
+    }
+  >
+    <ForwardRef(Toolbar)>
+      <ForwardRef(IconButton)
+        aria-label="open drawer"
+        color="inherit"
+        edge="start"
+        onClick={[Function]}
+        sx={
+          Object {
+            "mr": 2,
+          }
+        }
+      >
+        <Memo(ForwardRef(MenuIcon)) />
+      </ForwardRef(IconButton)>
+      <ForwardRef(Box)
+        sx={
+          Object {
+            "boxSizing": "border-box",
+            "flexGrow": 1,
+            "height": 64,
+            "py": 2,
+          }
+        }
+      >
+        <h1
+          hidden={true}
+        >
+          トリビアマップ
+        </h1>
+        <a
+          href="/"
+        >
+          <Image
+            height="full"
+            src="logo.png"
+          />
+        </a>
+      </ForwardRef(Box)>
+      <ForwardRef(Box)>
+        <ForwardRef(Box)
+          onClick={[Function]}
+          sx={
+            Object {
+              "cursor": "pointer",
+              "py": 2,
+            }
+          }
+        >
+          <ForwardRef(Stack)
+            alignItems="center"
+            direction="row"
+            justifyContent="flex-start"
+            spacing={0.5}
+          >
+            <ForwardRef(Typography)
+              fontSize={12}
+            >
+              ゲストさん
+            </ForwardRef(Typography)>
+            <ForwardRef(Avatar)
+              src="no-icon.jpg"
+              sx={
+                Object {
+                  "height": 25,
+                  "width": 25,
+                }
+              }
+            />
+          </ForwardRef(Stack)>
+        </ForwardRef(Box)>
+        <ForwardRef(Popover)
+          anchorEl={null}
+          anchorOrigin={
+            Object {
+              "horizontal": "right",
+              "vertical": "bottom",
+            }
+          }
+          onClose={[Function]}
+          open={false}
+        >
+          <ForwardRef(Box)
+            sx={
+              Object {
+                "p": 2,
+              }
+            }
+          >
+            <ForwardRef(Box)
+              sx={
+                Object {
+                  "width": 210,
+                }
+              }
+            >
+              <ForwardRef(Typography)
+                align="center"
+                component="div"
+                sx={
+                  Object {
+                    "mb": 1,
+                  }
+                }
+              >
+                ログインして新しいトリビアを投稿しませんか？
+              </ForwardRef(Typography)>
+              <ForwardRef(Typography)
+                align="center"
+                component="div"
+                sx={
+                  Object {
+                    "mb": 1,
+                  }
+                }
+              >
+                <ForwardRef(Button)
+                  fullWidth={true}
+                  onClick={[Function]}
+                  startIcon={<Memo />}
+                  sx={
+                    Object {
+                      "my": 2,
+                    }
+                  }
+                  variant="outlined"
+                >
+                  メールでログイン
+                </ForwardRef(Button)>
+                <TwitterLoginButton />
+              </ForwardRef(Typography)>
+            </ForwardRef(Box)>
+          </ForwardRef(Box)>
+        </ForwardRef(Popover)>
+      </ForwardRef(Box)>
+    </ForwardRef(Toolbar)>
+  </ForwardRef(AppBar)>
+  <ForwardRef(SwipeableDrawer)
+    onClose={[Function]}
+    onOpen={[Function]}
+    open={false}
+  >
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "width": 250,
+        }
+      }
+    >
+      <ForwardRef(List)>
+        <ForwardRef(ListItem)
+          key="0"
+          selected={true}
+        >
+          <ForwardRef(ListItemIcon)>
+            <Memo(ForwardRef(MapIcon)) />
+          </ForwardRef(ListItemIcon)>
+          <ForwardRef(ListItemText)
+            primary="トリビアマップ"
+          />
+        </ForwardRef(ListItem)>
+        <NonStyleLink
+          key="1"
+          to="/map/new"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(AddLocationAltIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="新しい投稿を追加"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+        <NonStyleLink
+          key="2"
+          to="/articles"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(ArticleIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="投稿一覧＆検索"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+      </ForwardRef(List)>
+      <ForwardRef(Divider) />
+      <ForwardRef(List)>
+        <NonStyleLink
+          key="0"
+          to="/login"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(LoginIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="ログイン"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+        <NonStyleLink
+          key="1"
+          to="/signup"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(PersonAddIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="アカウント作成"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+      </ForwardRef(List)>
+      <ForwardRef(Divider) />
+      <ForwardRef(List)>
+        <NonStyleLink
+          key="0"
+          to="/inquiry"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(EmailIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="お問い合わせ"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+        <NonStyleLink
+          key="1"
+          to="/privacy-policy"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
           >
             <ForwardRef(ListItemIcon)>
               <Memo(ForwardRef(InfoIcon)) />
@@ -455,10 +778,27 @@ exports[`Shallow Snapshot Tests long name with mobile 1`] = `
         </ForwardRef(ListItem)>
         <NonStyleLink
           key="1"
+          to="/map/new"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(AddLocationAltIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="新しい投稿を追加"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+        <NonStyleLink
+          key="2"
           to="/articles"
         >
           <ForwardRef(ListItem)
             button={true}
+            onClick={[Function]}
           >
             <ForwardRef(ListItemIcon)>
               <Memo(ForwardRef(ArticleIcon)) />
@@ -477,6 +817,7 @@ exports[`Shallow Snapshot Tests long name with mobile 1`] = `
         >
           <ForwardRef(ListItem)
             button={true}
+            onClick={[Function]}
           >
             <ForwardRef(ListItemIcon)>
               <Memo(ForwardRef(AccountCircleIcon)) />
@@ -492,6 +833,7 @@ exports[`Shallow Snapshot Tests long name with mobile 1`] = `
         >
           <ForwardRef(ListItem)
             button={true}
+            onClick={[Function]}
           >
             <ForwardRef(ListItemIcon)>
               <Memo(ForwardRef(ListAltIcon)) />
@@ -507,6 +849,7 @@ exports[`Shallow Snapshot Tests long name with mobile 1`] = `
         >
           <ForwardRef(ListItem)
             button={true}
+            onClick={[Function]}
           >
             <ForwardRef(ListItemIcon)>
               <Memo(ForwardRef(ManageAccountsIcon)) />
@@ -525,6 +868,7 @@ exports[`Shallow Snapshot Tests long name with mobile 1`] = `
         >
           <ForwardRef(ListItem)
             button={true}
+            onClick={[Function]}
           >
             <ForwardRef(ListItemIcon)>
               <Memo(ForwardRef(EmailIcon)) />
@@ -540,6 +884,7 @@ exports[`Shallow Snapshot Tests long name with mobile 1`] = `
         >
           <ForwardRef(ListItem)
             button={true}
+            onClick={[Function]}
           >
             <ForwardRef(ListItemIcon)>
               <Memo(ForwardRef(InfoIcon)) />
@@ -751,10 +1096,27 @@ exports[`Shallow Snapshot Tests map page 1`] = `
         </ForwardRef(ListItem)>
         <NonStyleLink
           key="1"
+          to="/map/new"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(AddLocationAltIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="新しい投稿を追加"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+        <NonStyleLink
+          key="2"
           to="/articles"
         >
           <ForwardRef(ListItem)
             button={true}
+            onClick={[Function]}
           >
             <ForwardRef(ListItemIcon)>
               <Memo(ForwardRef(ArticleIcon)) />
@@ -773,6 +1135,7 @@ exports[`Shallow Snapshot Tests map page 1`] = `
         >
           <ForwardRef(ListItem)
             button={true}
+            onClick={[Function]}
           >
             <ForwardRef(ListItemIcon)>
               <Memo(ForwardRef(LoginIcon)) />
@@ -788,6 +1151,7 @@ exports[`Shallow Snapshot Tests map page 1`] = `
         >
           <ForwardRef(ListItem)
             button={true}
+            onClick={[Function]}
           >
             <ForwardRef(ListItemIcon)>
               <Memo(ForwardRef(PersonAddIcon)) />
@@ -806,6 +1170,7 @@ exports[`Shallow Snapshot Tests map page 1`] = `
         >
           <ForwardRef(ListItem)
             button={true}
+            onClick={[Function]}
           >
             <ForwardRef(ListItemIcon)>
               <Memo(ForwardRef(EmailIcon)) />
@@ -821,6 +1186,7 @@ exports[`Shallow Snapshot Tests map page 1`] = `
         >
           <ForwardRef(ListItem)
             button={true}
+            onClick={[Function]}
           >
             <ForwardRef(ListItemIcon)>
               <Memo(ForwardRef(InfoIcon)) />
@@ -839,6 +1205,303 @@ exports[`Shallow Snapshot Tests map page 1`] = `
         "ml": undefined,
         "pb": 0,
         "pt": undefined,
+        "width": "100%",
+      }
+    }
+  >
+    contents
+  </ForwardRef(Box)>
+  <BoxModal
+    onClose={[Function]}
+    open={false}
+    showCloseButton={true}
+  >
+    <AuthForms
+      initialMode="login"
+      onLoginSucceed={[Function]}
+    />
+  </BoxModal>
+</Fragment>
+`;
+
+exports[`Shallow Snapshot Tests new page 1`] = `
+<Fragment>
+  <ForwardRef(AppBar)
+    position="fixed"
+    sx={
+      Object {
+        "borderBottom": undefined,
+        "ml": undefined,
+        "width": undefined,
+      }
+    }
+  >
+    <ForwardRef(Toolbar)>
+      <ForwardRef(IconButton)
+        aria-label="open drawer"
+        color="inherit"
+        edge="start"
+        onClick={[Function]}
+        sx={
+          Object {
+            "mr": 2,
+          }
+        }
+      >
+        <Memo(ForwardRef(MenuIcon)) />
+      </ForwardRef(IconButton)>
+      <ForwardRef(Box)
+        sx={
+          Object {
+            "boxSizing": "border-box",
+            "flexGrow": 1,
+            "height": 64,
+            "py": 2,
+          }
+        }
+      >
+        <h1
+          hidden={true}
+        >
+          トリビアマップ
+        </h1>
+        <a
+          href="/"
+        >
+          <Image
+            height="full"
+            src="logo.png"
+          />
+        </a>
+      </ForwardRef(Box)>
+      <ForwardRef(Box)>
+        <ForwardRef(Box)
+          onClick={[Function]}
+          sx={
+            Object {
+              "cursor": "pointer",
+              "py": 2,
+            }
+          }
+        >
+          <ForwardRef(Stack)
+            alignItems="center"
+            direction="row"
+            justifyContent="flex-start"
+            spacing={0.5}
+          >
+            <ForwardRef(Typography)
+              fontSize={12}
+            >
+              ゲストさん
+            </ForwardRef(Typography)>
+            <ForwardRef(Avatar)
+              src="no-icon.jpg"
+              sx={
+                Object {
+                  "height": 25,
+                  "width": 25,
+                }
+              }
+            />
+          </ForwardRef(Stack)>
+        </ForwardRef(Box)>
+        <ForwardRef(Popover)
+          anchorEl={null}
+          anchorOrigin={
+            Object {
+              "horizontal": "right",
+              "vertical": "bottom",
+            }
+          }
+          onClose={[Function]}
+          open={false}
+        >
+          <ForwardRef(Box)
+            sx={
+              Object {
+                "p": 2,
+              }
+            }
+          >
+            <ForwardRef(Box)
+              sx={
+                Object {
+                  "width": 210,
+                }
+              }
+            >
+              <ForwardRef(Typography)
+                align="center"
+                component="div"
+                sx={
+                  Object {
+                    "mb": 1,
+                  }
+                }
+              >
+                ログインして新しいトリビアを投稿しませんか？
+              </ForwardRef(Typography)>
+              <ForwardRef(Typography)
+                align="center"
+                component="div"
+                sx={
+                  Object {
+                    "mb": 1,
+                  }
+                }
+              >
+                <ForwardRef(Button)
+                  fullWidth={true}
+                  onClick={[Function]}
+                  startIcon={<Memo />}
+                  sx={
+                    Object {
+                      "my": 2,
+                    }
+                  }
+                  variant="outlined"
+                >
+                  メールでログイン
+                </ForwardRef(Button)>
+                <TwitterLoginButton />
+              </ForwardRef(Typography)>
+            </ForwardRef(Box)>
+          </ForwardRef(Box)>
+        </ForwardRef(Popover)>
+      </ForwardRef(Box)>
+    </ForwardRef(Toolbar)>
+  </ForwardRef(AppBar)>
+  <ForwardRef(SwipeableDrawer)
+    onClose={[Function]}
+    onOpen={[Function]}
+    open={false}
+  >
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "width": 250,
+        }
+      }
+    >
+      <ForwardRef(List)>
+        <ForwardRef(ListItem)
+          key="0"
+          selected={true}
+        >
+          <ForwardRef(ListItemIcon)>
+            <Memo(ForwardRef(MapIcon)) />
+          </ForwardRef(ListItemIcon)>
+          <ForwardRef(ListItemText)
+            primary="トリビアマップ"
+          />
+        </ForwardRef(ListItem)>
+        <ForwardRef(ListItem)
+          key="1"
+          selected={true}
+        >
+          <ForwardRef(ListItemIcon)>
+            <Memo(ForwardRef(AddLocationAltIcon)) />
+          </ForwardRef(ListItemIcon)>
+          <ForwardRef(ListItemText)
+            primary="新しい投稿を追加"
+          />
+        </ForwardRef(ListItem)>
+        <NonStyleLink
+          key="2"
+          to="/articles"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(ArticleIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="投稿一覧＆検索"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+      </ForwardRef(List)>
+      <ForwardRef(Divider) />
+      <ForwardRef(List)>
+        <NonStyleLink
+          key="0"
+          to="/login"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(LoginIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="ログイン"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+        <NonStyleLink
+          key="1"
+          to="/signup"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(PersonAddIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="アカウント作成"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+      </ForwardRef(List)>
+      <ForwardRef(Divider) />
+      <ForwardRef(List)>
+        <NonStyleLink
+          key="0"
+          to="/inquiry"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(EmailIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="お問い合わせ"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+        <NonStyleLink
+          key="1"
+          to="/privacy-policy"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(InfoIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="プライバシーポリシー"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+      </ForwardRef(List)>
+    </ForwardRef(Box)>
+  </ForwardRef(SwipeableDrawer)>
+  <ForwardRef(Box)
+    sx={
+      Object {
+        "ml": undefined,
+        "pb": 4,
+        "pt": "64px",
         "width": "100%",
       }
     }
@@ -1018,10 +1681,27 @@ exports[`Shallow Snapshot Tests permanent left navi 1`] = `
         </ForwardRef(ListItem)>
         <NonStyleLink
           key="1"
+          to="/map/new"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(AddLocationAltIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="新しい投稿を追加"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+        <NonStyleLink
+          key="2"
           to="/articles"
         >
           <ForwardRef(ListItem)
             button={true}
+            onClick={[Function]}
           >
             <ForwardRef(ListItemIcon)>
               <Memo(ForwardRef(ArticleIcon)) />
@@ -1040,6 +1720,7 @@ exports[`Shallow Snapshot Tests permanent left navi 1`] = `
         >
           <ForwardRef(ListItem)
             button={true}
+            onClick={[Function]}
           >
             <ForwardRef(ListItemIcon)>
               <Memo(ForwardRef(LoginIcon)) />
@@ -1055,6 +1736,7 @@ exports[`Shallow Snapshot Tests permanent left navi 1`] = `
         >
           <ForwardRef(ListItem)
             button={true}
+            onClick={[Function]}
           >
             <ForwardRef(ListItemIcon)>
               <Memo(ForwardRef(PersonAddIcon)) />
@@ -1073,6 +1755,7 @@ exports[`Shallow Snapshot Tests permanent left navi 1`] = `
         >
           <ForwardRef(ListItem)
             button={true}
+            onClick={[Function]}
           >
             <ForwardRef(ListItemIcon)>
               <Memo(ForwardRef(EmailIcon)) />
@@ -1088,6 +1771,7 @@ exports[`Shallow Snapshot Tests permanent left navi 1`] = `
         >
           <ForwardRef(ListItem)
             button={true}
+            onClick={[Function]}
           >
             <ForwardRef(ListItemIcon)>
               <Memo(ForwardRef(InfoIcon)) />
@@ -1299,10 +1983,27 @@ exports[`Shallow Snapshot Tests redirect to top page 1`] = `
         </ForwardRef(ListItem)>
         <NonStyleLink
           key="1"
+          to="/map/new"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(AddLocationAltIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="新しい投稿を追加"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+        <NonStyleLink
+          key="2"
           to="/articles"
         >
           <ForwardRef(ListItem)
             button={true}
+            onClick={[Function]}
           >
             <ForwardRef(ListItemIcon)>
               <Memo(ForwardRef(ArticleIcon)) />
@@ -1321,6 +2022,7 @@ exports[`Shallow Snapshot Tests redirect to top page 1`] = `
         >
           <ForwardRef(ListItem)
             button={true}
+            onClick={[Function]}
           >
             <ForwardRef(ListItemIcon)>
               <Memo(ForwardRef(LoginIcon)) />
@@ -1336,6 +2038,7 @@ exports[`Shallow Snapshot Tests redirect to top page 1`] = `
         >
           <ForwardRef(ListItem)
             button={true}
+            onClick={[Function]}
           >
             <ForwardRef(ListItemIcon)>
               <Memo(ForwardRef(PersonAddIcon)) />
@@ -1354,6 +2057,7 @@ exports[`Shallow Snapshot Tests redirect to top page 1`] = `
         >
           <ForwardRef(ListItem)
             button={true}
+            onClick={[Function]}
           >
             <ForwardRef(ListItemIcon)>
               <Memo(ForwardRef(EmailIcon)) />
@@ -1369,6 +2073,7 @@ exports[`Shallow Snapshot Tests redirect to top page 1`] = `
         >
           <ForwardRef(ListItem)
             button={true}
+            onClick={[Function]}
           >
             <ForwardRef(ListItemIcon)>
               <Memo(ForwardRef(InfoIcon)) />
@@ -1580,10 +2285,27 @@ exports[`Shallow Snapshot Tests static position 1`] = `
         </ForwardRef(ListItem)>
         <NonStyleLink
           key="1"
+          to="/map/new"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(AddLocationAltIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="新しい投稿を追加"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+        <NonStyleLink
+          key="2"
           to="/articles"
         >
           <ForwardRef(ListItem)
             button={true}
+            onClick={[Function]}
           >
             <ForwardRef(ListItemIcon)>
               <Memo(ForwardRef(ArticleIcon)) />
@@ -1602,6 +2324,7 @@ exports[`Shallow Snapshot Tests static position 1`] = `
         >
           <ForwardRef(ListItem)
             button={true}
+            onClick={[Function]}
           >
             <ForwardRef(ListItemIcon)>
               <Memo(ForwardRef(LoginIcon)) />
@@ -1617,6 +2340,7 @@ exports[`Shallow Snapshot Tests static position 1`] = `
         >
           <ForwardRef(ListItem)
             button={true}
+            onClick={[Function]}
           >
             <ForwardRef(ListItemIcon)>
               <Memo(ForwardRef(PersonAddIcon)) />
@@ -1635,6 +2359,7 @@ exports[`Shallow Snapshot Tests static position 1`] = `
         >
           <ForwardRef(ListItem)
             button={true}
+            onClick={[Function]}
           >
             <ForwardRef(ListItemIcon)>
               <Memo(ForwardRef(EmailIcon)) />
@@ -1650,6 +2375,7 @@ exports[`Shallow Snapshot Tests static position 1`] = `
         >
           <ForwardRef(ListItem)
             button={true}
+            onClick={[Function]}
           >
             <ForwardRef(ListItemIcon)>
               <Memo(ForwardRef(InfoIcon)) />
@@ -1861,10 +2587,27 @@ exports[`Shallow Snapshot Tests with local navi & mobile 1`] = `
         </ForwardRef(ListItem)>
         <NonStyleLink
           key="1"
+          to="/map/new"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(AddLocationAltIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="新しい投稿を追加"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+        <NonStyleLink
+          key="2"
           to="/articles"
         >
           <ForwardRef(ListItem)
             button={true}
+            onClick={[Function]}
           >
             <ForwardRef(ListItemIcon)>
               <Memo(ForwardRef(ArticleIcon)) />
@@ -1883,6 +2626,7 @@ exports[`Shallow Snapshot Tests with local navi & mobile 1`] = `
         >
           <ForwardRef(ListItem)
             button={true}
+            onClick={[Function]}
           >
             <ForwardRef(ListItemIcon)>
               <Memo(ForwardRef(LoginIcon)) />
@@ -1898,6 +2642,7 @@ exports[`Shallow Snapshot Tests with local navi & mobile 1`] = `
         >
           <ForwardRef(ListItem)
             button={true}
+            onClick={[Function]}
           >
             <ForwardRef(ListItemIcon)>
               <Memo(ForwardRef(PersonAddIcon)) />
@@ -1916,6 +2661,7 @@ exports[`Shallow Snapshot Tests with local navi & mobile 1`] = `
         >
           <ForwardRef(ListItem)
             button={true}
+            onClick={[Function]}
           >
             <ForwardRef(ListItemIcon)>
               <Memo(ForwardRef(EmailIcon)) />
@@ -1931,6 +2677,7 @@ exports[`Shallow Snapshot Tests with local navi & mobile 1`] = `
         >
           <ForwardRef(ListItem)
             button={true}
+            onClick={[Function]}
           >
             <ForwardRef(ListItemIcon)>
               <Memo(ForwardRef(InfoIcon)) />
@@ -2163,10 +2910,27 @@ exports[`Shallow Snapshot Tests with local navi 1`] = `
         </ForwardRef(ListItem)>
         <NonStyleLink
           key="1"
+          to="/map/new"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(AddLocationAltIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="新しい投稿を追加"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+        <NonStyleLink
+          key="2"
           to="/articles"
         >
           <ForwardRef(ListItem)
             button={true}
+            onClick={[Function]}
           >
             <ForwardRef(ListItemIcon)>
               <Memo(ForwardRef(ArticleIcon)) />
@@ -2185,6 +2949,7 @@ exports[`Shallow Snapshot Tests with local navi 1`] = `
         >
           <ForwardRef(ListItem)
             button={true}
+            onClick={[Function]}
           >
             <ForwardRef(ListItemIcon)>
               <Memo(ForwardRef(LoginIcon)) />
@@ -2200,6 +2965,7 @@ exports[`Shallow Snapshot Tests with local navi 1`] = `
         >
           <ForwardRef(ListItem)
             button={true}
+            onClick={[Function]}
           >
             <ForwardRef(ListItemIcon)>
               <Memo(ForwardRef(PersonAddIcon)) />
@@ -2218,6 +2984,7 @@ exports[`Shallow Snapshot Tests with local navi 1`] = `
         >
           <ForwardRef(ListItem)
             button={true}
+            onClick={[Function]}
           >
             <ForwardRef(ListItemIcon)>
               <Memo(ForwardRef(EmailIcon)) />
@@ -2233,6 +3000,7 @@ exports[`Shallow Snapshot Tests with local navi 1`] = `
         >
           <ForwardRef(ListItem)
             button={true}
+            onClick={[Function]}
           >
             <ForwardRef(ListItemIcon)>
               <Memo(ForwardRef(InfoIcon)) />
@@ -2465,10 +3233,27 @@ exports[`Shallow Snapshot Tests with userInfo 1`] = `
         </ForwardRef(ListItem)>
         <NonStyleLink
           key="1"
+          to="/map/new"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(AddLocationAltIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="新しい投稿を追加"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+        <NonStyleLink
+          key="2"
           to="/articles"
         >
           <ForwardRef(ListItem)
             button={true}
+            onClick={[Function]}
           >
             <ForwardRef(ListItemIcon)>
               <Memo(ForwardRef(ArticleIcon)) />
@@ -2487,6 +3272,7 @@ exports[`Shallow Snapshot Tests with userInfo 1`] = `
         >
           <ForwardRef(ListItem)
             button={true}
+            onClick={[Function]}
           >
             <ForwardRef(ListItemIcon)>
               <Memo(ForwardRef(AccountCircleIcon)) />
@@ -2502,6 +3288,7 @@ exports[`Shallow Snapshot Tests with userInfo 1`] = `
         >
           <ForwardRef(ListItem)
             button={true}
+            onClick={[Function]}
           >
             <ForwardRef(ListItemIcon)>
               <Memo(ForwardRef(ListAltIcon)) />
@@ -2517,6 +3304,7 @@ exports[`Shallow Snapshot Tests with userInfo 1`] = `
         >
           <ForwardRef(ListItem)
             button={true}
+            onClick={[Function]}
           >
             <ForwardRef(ListItemIcon)>
               <Memo(ForwardRef(ManageAccountsIcon)) />
@@ -2535,6 +3323,7 @@ exports[`Shallow Snapshot Tests with userInfo 1`] = `
         >
           <ForwardRef(ListItem)
             button={true}
+            onClick={[Function]}
           >
             <ForwardRef(ListItemIcon)>
               <Memo(ForwardRef(EmailIcon)) />
@@ -2550,6 +3339,7 @@ exports[`Shallow Snapshot Tests with userInfo 1`] = `
         >
           <ForwardRef(ListItem)
             button={true}
+            onClick={[Function]}
           >
             <ForwardRef(ListItemIcon)>
               <Memo(ForwardRef(InfoIcon)) />

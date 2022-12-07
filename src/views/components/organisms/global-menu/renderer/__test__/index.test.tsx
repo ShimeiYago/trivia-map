@@ -12,6 +12,7 @@ const basicProps: Props = {
   toggleAuthFormModal: jest.fn(),
   logout: jest.fn(),
   isMobile: false,
+  isFormEditting: false,
 };
 
 let wrapper: ShallowWrapper<Props, State, Renderer>;
@@ -24,6 +25,16 @@ describe('Shallow Snapshot Tests', () => {
   });
 
   it('basic', () => {
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('new page', () => {
+    wrapper.setProps({ pathName: '/map/new', isFormEditting: true });
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('edit page', () => {
+    wrapper.setProps({ pathName: '/map/edit/1' });
     expect(wrapper).toMatchSnapshot();
   });
 

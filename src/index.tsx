@@ -35,6 +35,7 @@ import {
   SIGNUP_LINK,
   TWITTER_CALLBACK_LINK,
   DEACTIVATE_ACCOUNT_LINK,
+  NEW_LINK,
 } from 'constant/links';
 import { ChangePassword } from 'views/pages/change-password';
 import { ResetPassword } from 'views/pages/reset-password';
@@ -67,6 +68,7 @@ ReactDOM.render(
             <BrowserRouter>
               <Routes>
                 <Route index element={errorHandledElement(<MapPage />)} />
+                <Route path={NEW_LINK} element={errorHandledElement(<MapPage new />)} />
                 <Route path={EDIT_LINK(':postId')} element={errorHandledElement(<MapPage />)} />
                 <Route
                   path={ARTICLE_PAGE_LINK(':postId')}

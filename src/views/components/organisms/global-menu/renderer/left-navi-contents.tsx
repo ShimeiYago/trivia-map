@@ -9,6 +9,7 @@ import {
   MAP_PAGE_LINK,
   MAP_ROUTE,
   MY_ARTICLES_LINK,
+  NEW_LINK,
   PRIVACY_POLICY_PAGE_LINK,
   SIGNUP_LINK,
 } from 'constant/links';
@@ -24,12 +25,18 @@ import { PAGE_NAMES } from 'constant/page-names';
 import { SITE_NAME } from 'constant';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import AddLocationAltIcon from '@mui/icons-material/AddLocationAlt';
 
 const listItemsForMap: ListItem[] = [
   {
     text: SITE_NAME,
     icon: <MapIcon />,
     link: MAP_PAGE_LINK,
+  },
+  {
+    text: PAGE_NAMES.new,
+    icon: <AddLocationAltIcon />,
+    link: NEW_LINK,
   },
   {
     text: PAGE_NAMES.articles,
@@ -82,9 +89,14 @@ const listItemsOthers: ListItem[] = [
   },
 ];
 
-const listItemMapping = (items: ListItem[], pathName: string) => {
+const listItemMapping = (
+  items: ListItem[],
+  pathName: string,
+  isFormEditting: boolean,
+  onClose: () => void,
+) => {
   return items.map((item, index) => {
-    if (matchPath(pathName, item.link)) {
+    if (shouldDisable(pathName, item.link, isFormEditting)) {
       return (
         <ListItem selected key={index}>
           <ListItemIcon>{item.icon}</ListItemIcon>
@@ -95,7 +107,7 @@ const listItemMapping = (items: ListItem[], pathName: string) => {
 
     return (
       <NonStyleLink to={item.link} key={index}>
-        <ListItem button>
+        <ListItem button onClick={onClose}>
           <ListItemIcon>{item.icon}</ListItemIcon>
           <ListItemText primary={item.text} />
         </ListItem>
@@ -104,22 +116,38 @@ const listItemMapping = (items: ListItem[], pathName: string) => {
   });
 };
 
-export const leftNaviContents = (login: boolean, pathName: string) => (
+export const leftNaviContents = (
+  login: boolean,
+  pathName: string,
+  isFormEditting: boolean,
+  onClose: () => void,
+) => (
   <>
-    <List>{listItemMapping(listItemsForMap, pathName)}</List>
+    <List>{listItemMapping(listItemsForMap, pathName, isFormEditting, onClose)}</List>
     <Divider />
-    <List>{listItemMapping(login ? listItemsForAdmin : listItemsForLogin, pathName)}</List>
+    <List>
+      {listItemMapping(
+        login ? listItemsForAdmin : listItemsForLogin,
+        pathName,
+        isFormEditting,
+        onClose,
+      )}
+    </List>
     <Divider />
-    <List>{listItemMapping(listItemsOthers, pathName)}</List>
+    <List>{listItemMapping(listItemsOthers, pathName, isFormEditting, onClose)}</List>
   </>
 );
 
-function matchPath(pathName: string, link: string) {
-  return pathName === link || (isMapPage(pathName) && isMapPage(link));
+function shouldDisable(pathName: string, link: string, isFormEditting: boolean) {
+  if (isMapPage(pathName) && link === NEW_LINK) {
+    return isFormEditting;
+  }
+
+  return pathName === link || (isMapPage(pathName) && link === MAP_PAGE_LINK);
 }
 
 function isMapPage(pathName: string) {
-  return pathName === MAP_PAGE_LINK || !pathName.indexOf(MAP_ROUTE);
+  return !pathName.indexOf(MAP_ROUTE) || pathName === MAP_PAGE_LINK;
 }
 
 type ListItem = {

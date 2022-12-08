@@ -13,7 +13,7 @@ import { PAGE_NAMES } from 'constant/page-names';
 import { deactivate } from 'api/auths-api/deactivate';
 import { TextList } from 'views/components/atoms/text-list';
 import { Image } from 'views/components/atoms/image';
-import logoImage from 'images/trivia-map-logo-black.png';
+import logoImage from 'images/logo-blue.png';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {

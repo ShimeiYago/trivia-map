@@ -5,7 +5,7 @@ import { verifyEmail } from 'api/auths-api/verify-email';
 import { wrapper } from '../styles';
 import { LoadingButton } from '@mui/lab';
 import { Image } from 'views/components/atoms/image';
-import logoImage from 'images/trivia-map-logo-black.png';
+import logoImage from 'images/logo-blue.png';
 import { MAP_PAGE_LINK } from 'constant/links';
 
 export class Renderer extends React.Component<Props, State> {

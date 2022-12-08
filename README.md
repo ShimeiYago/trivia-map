@@ -85,6 +85,10 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 API base URL.
 
+### `REACT_APP_SITE_URL`
+
+(ex) https://xxx.com
+
 ### `REACT_APP_ANALYTICS_ID`
 
 Google Analytics ID (G-xxx).

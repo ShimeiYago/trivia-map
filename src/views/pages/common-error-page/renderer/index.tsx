@@ -6,6 +6,8 @@ import { pageTitleGenerator } from 'utils/page-title-generator';
 import { PAGE_NAMES } from 'constant/page-names';
 import { InternalError } from 'views/components/moleculars/internal-error';
 import { CommonHelmet } from 'helper-components/common-helmet';
+import { Link } from 'react-router-dom';
+import { MAP_PAGE_LINK } from 'constant/links';
 
 export const Renderer: React.FC<Props> = (props) => {
   switch (props.errorStatus) {
@@ -31,6 +33,9 @@ const render404Error = () => {
           </Typography>
           <Typography align="center" fontSize={18}>
             URLが間違っているか、既に削除された可能性があります。
+          </Typography>
+          <Typography fontSize={20} align="center" sx={{ mt: 3 }}>
+            <Link to={MAP_PAGE_LINK}>トップへ戻る</Link>
           </Typography>
         </Box>
       </GlobalMenu>

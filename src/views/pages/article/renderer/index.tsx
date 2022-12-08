@@ -22,6 +22,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import { pageTitleGenerator } from 'utils/page-title-generator';
 import { CommonHelmet } from 'helper-components/common-helmet';
 import { NonStyleLink } from 'views/components/atoms/non-style-link';
+import { ShareButtons } from 'views/components/atoms/share-buttons';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -55,10 +56,12 @@ export class Renderer extends React.Component<Props, State> {
     const { title, description, marker, image, author, createdAt, updatedAt, isDraft, category } =
       article;
 
+    const pageTitle = pageTitleGenerator(title);
+
     return (
       <>
         <CommonHelmet
-          title={pageTitleGenerator(title)}
+          title={pageTitle}
           description={description ?? undefined}
           imageUrl={image ?? undefined}
           ogType="article"
@@ -133,6 +136,10 @@ export class Renderer extends React.Component<Props, State> {
             additinalMarkers={[marker]}
             park={marker.park}
           />
+
+          <Divider />
+
+          <ShareButtons title={pageTitle} url={window.location.href} />
         </Stack>
       </>
     );

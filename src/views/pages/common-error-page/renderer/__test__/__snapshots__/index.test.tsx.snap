@@ -49,6 +49,21 @@ exports[`Shallow Snapshot Tests 404 1`] = `
       >
         URLが間違っているか、既に削除された可能性があります。
       </ForwardRef(Typography)>
+      <ForwardRef(Typography)
+        align="center"
+        fontSize={20}
+        sx={
+          Object {
+            "mt": 3,
+          }
+        }
+      >
+        <Link
+          to="/"
+        >
+          トップへ戻る
+        </Link>
+      </ForwardRef(Typography)>
     </ForwardRef(Box)>
   </GlobalMenu>
 </Fragment>

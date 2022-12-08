@@ -10,6 +10,7 @@ const props: Props = {
   park: 'S',
   windowHeight: 100,
   windowWidth: 100,
+  new: false,
   updateFoocusingPark: jest.fn(),
   updateFilteringCategoryId: jest.fn(),
 };
@@ -83,9 +84,20 @@ describe('componentDidMount', () => {
     jest.resetAllMocks();
   });
 
-  it('should open form modal', () => {
+  it('should open form modal if postIdToEdit is provided', () => {
     shallowWrapper.setProps({
       postIdToEdit: 100,
+    });
+    const instance = shallowWrapper.instance();
+
+    instance.componentDidMount();
+    expect(instance.state.openFormModal).toBeTruthy();
+  });
+
+  it('should open form modal if new prop is provided', () => {
+    shallowWrapper.setProps({
+      new: true,
+      isFormEditting: true,
     });
     const instance = shallowWrapper.instance();
 

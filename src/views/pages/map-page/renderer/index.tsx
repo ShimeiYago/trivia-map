@@ -31,7 +31,7 @@ import { GlobalMenu } from 'views/components/organisms/global-menu';
 import { Park } from 'types/park';
 import { RoundButton } from 'views/components/atoms/round-button';
 import { CATEGORIES, INITIAL_PARK } from 'constant';
-import { EDIT_LINK } from 'constant/links';
+import { EDIT_LINK, MAP_PAGE_LINK, NEW_LINK } from 'constant/links';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -55,6 +55,16 @@ export class Renderer extends React.Component<Props, State> {
       this.props.updateFoocusingPark(INITIAL_PARK);
     }
 
+    if (this.props.new) {
+      this.setState({
+        openFormModal: true,
+      });
+    }
+
+    if (!this.props.postIdToEdit && this.props.isFormEditting) {
+      history.replaceState('', '', NEW_LINK);
+    }
+
     if (this.props.isFormChangedFromLastSaved) {
       window.addEventListener('beforeunload', this.handleBeforeUnload);
     }
@@ -76,6 +86,12 @@ export class Renderer extends React.Component<Props, State> {
 
     if (!this.props.isFormEditting && prevState.openFormModal && !this.state.openFormModal) {
       history.replaceState('', '', '/');
+    }
+
+    if (!prevProps.new && this.props.new) {
+      this.setState({
+        openFormModal: true,
+      });
     }
   }
 
@@ -195,11 +211,14 @@ export class Renderer extends React.Component<Props, State> {
     );
   };
 
-  protected handleClickAddButton = () =>
+  protected handleClickAddButton = () => {
     this.setState({
       openFormModal: true,
       edittingPostId: undefined,
     });
+
+    history.replaceState('', '', NEW_LINK);
+  };
 
   protected handleClickPostEdit = () => {
     if (this.props.isFormChangedFromLastSaved) {
@@ -236,6 +255,8 @@ export class Renderer extends React.Component<Props, State> {
       edittingPostId: undefined,
       newMarkerMode: false,
     });
+
+    history.replaceState('', '', MAP_PAGE_LINK);
   };
 
   protected handleHideFormModal = () => {
@@ -333,6 +354,7 @@ export type Props = {
   postIdToEdit?: number;
   windowWidth: number;
   windowHeight: number;
+  new: boolean;
 
   updateFoocusingPark: (park: Park) => void;
   updateFilteringCategoryId: (categoryId?: number) => void;

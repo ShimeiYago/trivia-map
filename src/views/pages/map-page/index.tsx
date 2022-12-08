@@ -16,7 +16,7 @@ import { useAppDispatch } from 'store';
 import { CommonHelmet } from 'helper-components/common-helmet';
 import { useWindowSize } from 'helper-components/user-window-size';
 
-export function MapPage() {
+export function MapPage(ownProps: { new?: boolean }) {
   const { postId } = useParams();
   const postIdNumber = Number(postId);
 
@@ -42,6 +42,7 @@ export function MapPage() {
     isFormChangedFromLastSaved: useAppSelector(selectArticleFormIsFormChangedFromLastSaved),
     windowWidth: width,
     windowHeight: height,
+    new: !!ownProps.new,
 
     updateFoocusingPark: (park: Park) => dispatch(updateFocusingPark(park)),
     updateFilteringCategoryId: (categoryId?: number) =>

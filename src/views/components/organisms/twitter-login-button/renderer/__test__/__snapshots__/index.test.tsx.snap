@@ -6,6 +6,11 @@ exports[`Shallow Snapshot Tests basic 1`] = `
   loading={false}
   onClick={[Function]}
   startIcon={<Memo />}
+  sx={
+    Object {
+      "textTransform": "none",
+    }
+  }
   variant="outlined"
 >
   Twitterでログイン

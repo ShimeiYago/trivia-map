@@ -18,6 +18,7 @@ export class Renderer extends React.Component<Props, State> {
         onClick={this.handleClick}
         loading={this.state.loading}
         fullWidth={true}
+        sx={{ textTransform: 'none' }}
       >
         Twitterでログイン
       </LoadingButton>

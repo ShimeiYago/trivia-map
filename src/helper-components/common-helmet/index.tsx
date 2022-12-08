@@ -5,10 +5,12 @@ import { useLocation } from 'react-router-dom';
 import { getDomain } from 'utils/get-domain.ts';
 
 export function CommonHelmet(props: Props): JSX.Element {
+  const domain = getDomain(window);
+
   const title = props.title ?? SITE_NAME;
   const description = props.description ?? DEFAULT_HEAD_TAGS.description;
   const ogType = props.ogType ?? DEFAULT_HEAD_TAGS.ogType;
-  const imageUrl = props.imageUrl ?? DEFAULT_HEAD_TAGS.imageUrl;
+  const imageUrl = props.imageUrl ?? `${domain}/${DEFAULT_HEAD_TAGS.imageName}`;
 
   const location = useLocation();
 
@@ -20,8 +22,6 @@ export function CommonHelmet(props: Props): JSX.Element {
       </Helmet>
     );
   }
-
-  const domain = getDomain(window);
 
   return (
     <Helmet>

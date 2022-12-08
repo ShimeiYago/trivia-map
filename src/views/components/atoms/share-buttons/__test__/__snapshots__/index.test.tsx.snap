@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shallow Snapshot Tests basic 1`] = `
+<ForwardRef(Box)
+  textAlign="center"
+>
+  <ForwardRef(ShareButton-facebook)
+    title="xxx"
+    url="https://xxx.com"
+  >
+    <Icon
+      bgStyle={Object {}}
+      borderRadius={0}
+      iconFillColor="white"
+      round={true}
+      size={50}
+    />
+  </ForwardRef(ShareButton-facebook)>
+  <ForwardRef(ShareButton-twitter)
+    title="xxx"
+    url="https://xxx.com"
+  >
+    <Icon
+      bgStyle={Object {}}
+      borderRadius={0}
+      iconFillColor="white"
+      round={true}
+      size={50}
+    />
+  </ForwardRef(ShareButton-twitter)>
+  <ForwardRef(ShareButton-line)
+    title="xxx"
+    url="https://xxx.com"
+  >
+    <Icon
+      bgStyle={Object {}}
+      borderRadius={0}
+      iconFillColor="white"
+      round={true}
+      size={50}
+    />
+  </ForwardRef(ShareButton-line)>
+</ForwardRef(Box)>
+`;

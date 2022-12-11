@@ -52,7 +52,7 @@ export class Renderer extends React.Component<Props, State> {
       });
       history.replaceState('', '', EDIT_LINK(`${this.props.postIdToEdit}`));
     } else {
-      this.props.updateFoocusingPark(INITIAL_PARK);
+      !this.props.park && this.props.updateFoocusingPark(INITIAL_PARK);
     }
 
     if (this.props.new) {

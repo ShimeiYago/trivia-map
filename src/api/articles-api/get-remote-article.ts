@@ -8,7 +8,7 @@ import { Marker } from 'types/marker';
 import { GuessAreaResponse } from 'api/guess-area';
 
 export async function getRemoteArticle(postId: number): Promise<GetArticleResponse> {
-  const axiosInstance = getAxiosInstance({ timeout: API_TIMEOUT.long }, mockGetArticleResponse);
+  const axiosInstance = getAxiosInstance({ timeout: API_TIMEOUT.short }, mockGetArticleResponse);
 
   try {
     const res: AxiosResponse<GetArticleResponse> = await axiosInstance.get(

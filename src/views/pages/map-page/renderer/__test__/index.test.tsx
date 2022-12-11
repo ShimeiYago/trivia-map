@@ -98,6 +98,7 @@ describe('componentDidMount', () => {
     shallowWrapper.setProps({
       new: true,
       isFormEditting: true,
+      park: undefined,
     });
     const instance = shallowWrapper.instance();
 

@@ -97,6 +97,7 @@ export class Renderer extends React.Component<Props, State> {
 
   componentWillUnmount(): void {
     window.removeEventListener('beforeunload', this.handleBeforeUnload);
+    this.props.updateFilteringCategoryId(undefined);
   }
 
   protected handleBeforeUnload(e: BeforeUnloadEvent) {

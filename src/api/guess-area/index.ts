@@ -7,7 +7,7 @@ import { Park } from '../../types/park';
 
 export async function guessArea(request: GuessAreaRequest): Promise<GuessAreaResponse> {
   const url = `${BASE_URL}/guess-area`;
-  const axiosInstance = getAxiosInstance({ timeout: API_TIMEOUT.long }, mockGuessAreaResponse);
+  const axiosInstance = getAxiosInstance({ timeout: API_TIMEOUT.short }, mockGuessAreaResponse);
 
   try {
     const res: AxiosResponse<GuessAreaResponse> = await axiosInstance.post(url, request);

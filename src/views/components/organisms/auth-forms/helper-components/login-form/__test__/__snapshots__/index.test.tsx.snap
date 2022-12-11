@@ -17,6 +17,14 @@ exports[`Shallow Snapshot Tests already logged in 1`] = `
   >
     ログイン
   </ForwardRef(Typography)>
+  <ForwardRef(Typography)
+    align="center"
+    color="#424242"
+    component="p"
+    fontSize={14}
+  >
+    ログインすると、新しいトリビアを投稿できるようになります。
+  </ForwardRef(Typography)>
   <ForwardRef(Alert)>
     <div>
       ログインに成功しました。
@@ -143,6 +151,14 @@ exports[`Shallow Snapshot Tests basic 1`] = `
   >
     ログイン
   </ForwardRef(Typography)>
+  <ForwardRef(Typography)
+    align="center"
+    color="#424242"
+    component="p"
+    fontSize={14}
+  >
+    ログインすると、新しいトリビアを投稿できるようになります。
+  </ForwardRef(Typography)>
   <ForwardRef(Box)
     component="form"
     noValidate={true}
@@ -258,6 +274,14 @@ exports[`Shallow Snapshot Tests error case 1`] = `
     variant="h5"
   >
     ログイン
+  </ForwardRef(Typography)>
+  <ForwardRef(Typography)
+    align="center"
+    color="#424242"
+    component="p"
+    fontSize={14}
+  >
+    ログインすると、新しいトリビアを投稿できるようになります。
   </ForwardRef(Typography)>
   <ForwardRef(Box)>
     <HeaderErrorMessages
@@ -395,6 +419,14 @@ exports[`Shallow Snapshot Tests loading 1`] = `
     variant="h5"
   >
     ログイン
+  </ForwardRef(Typography)>
+  <ForwardRef(Typography)
+    align="center"
+    color="#424242"
+    component="p"
+    fontSize={14}
+  >
+    ログインすると、新しいトリビアを投稿できるようになります。
   </ForwardRef(Typography)>
   <ForwardRef(Box)
     component="form"

@@ -7,7 +7,7 @@ import { PaginationResponse } from 'api/types/pagination-response';
 
 export async function getMyArticles(page?: number): Promise<GetMyArticlesResponse> {
   const axiosInstance = getAxiosInstance(
-    { timeout: API_TIMEOUT.long },
+    { timeout: API_TIMEOUT.short },
     mockGetArticlesPreviewsResponse,
   );
 

@@ -9,7 +9,7 @@ export const ANALYTICS_ID_ENV_KEY = 'REACT_APP_ANALYTICS_ID';
 
 export const API_TIMEOUT = {
   short: 10000,
-  long: 30000,
+  long: 20000,
 };
 
 export const MAP_MAX_COORINATE = 255;

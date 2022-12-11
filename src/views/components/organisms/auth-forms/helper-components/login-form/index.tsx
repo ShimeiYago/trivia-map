@@ -9,6 +9,7 @@ import { globalAPIErrorMessage } from 'constant/global-api-error-message';
 import { HeaderErrorMessages } from 'views/components/moleculars/header-error-messages';
 import { AuthFormMode } from '../../renderer';
 import { TwitterLoginButton } from 'views/components/organisms/twitter-login-button';
+import { grey } from '@mui/material/colors';
 
 export class LoginForm extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -27,6 +28,9 @@ export class LoginForm extends React.Component<Props, State> {
       <Stack spacing={1} sx={{ px: 1, py: 2 }}>
         <Typography component="h1" variant="h5" align="center">
           ログイン
+        </Typography>
+        <Typography component="p" align="center" fontSize={14} color={grey[800]}>
+          ログインすると、新しいトリビアを投稿できるようになります。
         </Typography>
         {this.renderHeaderInfo()}
         <Box component="form" noValidate>

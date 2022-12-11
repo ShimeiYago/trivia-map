@@ -123,6 +123,7 @@ export class Renderer extends React.Component<Props> {
               </Box>
             )}
 
+            {this.renderLoginWarningMessage()}
             {this.renderHeaderMessage()}
 
             <TextField
@@ -225,6 +226,8 @@ export class Renderer extends React.Component<Props> {
               label="下書きとして保存（非公開）"
             />
 
+            {this.renderLoginWarningMessage()}
+
             <LoadingButton
               loading={submittingState === 'loading'}
               variant="contained"
@@ -316,15 +319,21 @@ export class Renderer extends React.Component<Props> {
   }
 
   protected renderHeaderMessage() {
-    const { formError, userInfo } = this.props;
+    const { formError } = this.props;
 
     if (formError) {
       return <HeaderErrorMessages errorTitle={formError.errorTitle} />;
     }
 
+    return null;
+  }
+
+  protected renderLoginWarningMessage() {
+    const { userInfo } = this.props;
+
     if (!userInfo) {
       return (
-        <Alert severity="info">
+        <Alert severity="warning">
           新しいトリビアを投稿するには
           <Button sx={{ p: 0 }} onClick={this.openAuthModal}>
             ログイン

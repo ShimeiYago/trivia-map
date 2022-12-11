@@ -12,7 +12,7 @@ export async function getArticlesPreviews(
   param: GetArticlesPreviewsParam,
 ): Promise<GetArticlesPreviewsResponse> {
   const axiosInstance = getAxiosInstance(
-    { timeout: API_TIMEOUT.long },
+    { timeout: API_TIMEOUT.short },
     mockGetArticlesPreviewsResponse,
   );
 

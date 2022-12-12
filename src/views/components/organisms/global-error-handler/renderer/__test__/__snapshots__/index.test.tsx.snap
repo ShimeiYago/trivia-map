@@ -3,8 +3,9 @@
 exports[`Shallow Snapshot Tests basic 1`] = `"children"`;
 
 exports[`Shallow Snapshot Tests redirect to 404 1`] = `
-<Renderer
-  errorStatus={404}
+<Navigate
+  replace={true}
+  to="/error/404"
 />
 `;
 

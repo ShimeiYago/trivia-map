@@ -1,7 +1,6 @@
 import React from 'react';
-import { INTERNAL_ERROR_LINK } from 'constant/links';
+import { INTERNAL_ERROR_LINK, NOT_FOUND_LINK } from 'constant/links';
 import { Navigate } from 'react-router-dom';
-import { CommonErrorPage } from 'views/pages/common-error-page';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -20,7 +19,7 @@ export class Renderer extends React.Component<Props, State> {
   render() {
     switch (this.state.redirectTo) {
       case 404:
-        return <CommonErrorPage errorStatus={404} />;
+        return <Navigate to={NOT_FOUND_LINK} replace />;
       case 500:
         return <Navigate to={INTERNAL_ERROR_LINK} />;
       default:

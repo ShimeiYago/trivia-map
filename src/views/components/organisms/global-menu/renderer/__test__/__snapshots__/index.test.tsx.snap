@@ -127,20 +127,19 @@ exports[`Shallow Snapshot Tests basic 1`] = `
                   }
                 }
               >
-                <ForwardRef(Button)
-                  fullWidth={true}
-                  onClick={[Function]}
-                  startIcon={<Memo />}
-                  sx={
-                    Object {
-                      "my": 2,
-                    }
-                  }
-                  variant="outlined"
+                <ForwardRef(Stack)
+                  spacing={2}
                 >
-                  メールでログイン
-                </ForwardRef(Button)>
-                <TwitterLoginButton />
+                  <TwitterLoginButton />
+                  <ForwardRef(Button)
+                    fullWidth={true}
+                    onClick={[Function]}
+                    startIcon={<Memo />}
+                    variant="outlined"
+                  >
+                    メールでログイン
+                  </ForwardRef(Button)>
+                </ForwardRef(Stack)>
               </ForwardRef(Typography)>
             </ForwardRef(Box)>
           </ForwardRef(Box)>
@@ -429,20 +428,19 @@ exports[`Shallow Snapshot Tests edit page 1`] = `
                   }
                 }
               >
-                <ForwardRef(Button)
-                  fullWidth={true}
-                  onClick={[Function]}
-                  startIcon={<Memo />}
-                  sx={
-                    Object {
-                      "my": 2,
-                    }
-                  }
-                  variant="outlined"
+                <ForwardRef(Stack)
+                  spacing={2}
                 >
-                  メールでログイン
-                </ForwardRef(Button)>
-                <TwitterLoginButton />
+                  <TwitterLoginButton />
+                  <ForwardRef(Button)
+                    fullWidth={true}
+                    onClick={[Function]}
+                    startIcon={<Memo />}
+                    variant="outlined"
+                  >
+                    メールでログイン
+                  </ForwardRef(Button)>
+                </ForwardRef(Stack)>
               </ForwardRef(Typography)>
             </ForwardRef(Box)>
           </ForwardRef(Box)>
@@ -1049,20 +1047,19 @@ exports[`Shallow Snapshot Tests map page 1`] = `
                   }
                 }
               >
-                <ForwardRef(Button)
-                  fullWidth={true}
-                  onClick={[Function]}
-                  startIcon={<Memo />}
-                  sx={
-                    Object {
-                      "my": 2,
-                    }
-                  }
-                  variant="outlined"
+                <ForwardRef(Stack)
+                  spacing={2}
                 >
-                  メールでログイン
-                </ForwardRef(Button)>
-                <TwitterLoginButton />
+                  <TwitterLoginButton />
+                  <ForwardRef(Button)
+                    fullWidth={true}
+                    onClick={[Function]}
+                    startIcon={<Memo />}
+                    variant="outlined"
+                  >
+                    メールでログイン
+                  </ForwardRef(Button)>
+                </ForwardRef(Stack)>
               </ForwardRef(Typography)>
             </ForwardRef(Box)>
           </ForwardRef(Box)>
@@ -1351,20 +1348,19 @@ exports[`Shallow Snapshot Tests new page 1`] = `
                   }
                 }
               >
-                <ForwardRef(Button)
-                  fullWidth={true}
-                  onClick={[Function]}
-                  startIcon={<Memo />}
-                  sx={
-                    Object {
-                      "my": 2,
-                    }
-                  }
-                  variant="outlined"
+                <ForwardRef(Stack)
+                  spacing={2}
                 >
-                  メールでログイン
-                </ForwardRef(Button)>
-                <TwitterLoginButton />
+                  <TwitterLoginButton />
+                  <ForwardRef(Button)
+                    fullWidth={true}
+                    onClick={[Function]}
+                    startIcon={<Memo />}
+                    variant="outlined"
+                  >
+                    メールでログイン
+                  </ForwardRef(Button)>
+                </ForwardRef(Stack)>
               </ForwardRef(Typography)>
             </ForwardRef(Box)>
           </ForwardRef(Box)>
@@ -1635,20 +1631,19 @@ exports[`Shallow Snapshot Tests permanent left navi 1`] = `
                   }
                 }
               >
-                <ForwardRef(Button)
-                  fullWidth={true}
-                  onClick={[Function]}
-                  startIcon={<Memo />}
-                  sx={
-                    Object {
-                      "my": 2,
-                    }
-                  }
-                  variant="outlined"
+                <ForwardRef(Stack)
+                  spacing={2}
                 >
-                  メールでログイン
-                </ForwardRef(Button)>
-                <TwitterLoginButton />
+                  <TwitterLoginButton />
+                  <ForwardRef(Button)
+                    fullWidth={true}
+                    onClick={[Function]}
+                    startIcon={<Memo />}
+                    variant="outlined"
+                  >
+                    メールでログイン
+                  </ForwardRef(Button)>
+                </ForwardRef(Stack)>
               </ForwardRef(Typography)>
             </ForwardRef(Box)>
           </ForwardRef(Box)>
@@ -1936,20 +1931,19 @@ exports[`Shallow Snapshot Tests redirect to top page 1`] = `
                   }
                 }
               >
-                <ForwardRef(Button)
-                  fullWidth={true}
-                  onClick={[Function]}
-                  startIcon={<Memo />}
-                  sx={
-                    Object {
-                      "my": 2,
-                    }
-                  }
-                  variant="outlined"
+                <ForwardRef(Stack)
+                  spacing={2}
                 >
-                  メールでログイン
-                </ForwardRef(Button)>
-                <TwitterLoginButton />
+                  <TwitterLoginButton />
+                  <ForwardRef(Button)
+                    fullWidth={true}
+                    onClick={[Function]}
+                    startIcon={<Memo />}
+                    variant="outlined"
+                  >
+                    メールでログイン
+                  </ForwardRef(Button)>
+                </ForwardRef(Stack)>
               </ForwardRef(Typography)>
             </ForwardRef(Box)>
           </ForwardRef(Box)>
@@ -2238,20 +2232,19 @@ exports[`Shallow Snapshot Tests static position 1`] = `
                   }
                 }
               >
-                <ForwardRef(Button)
-                  fullWidth={true}
-                  onClick={[Function]}
-                  startIcon={<Memo />}
-                  sx={
-                    Object {
-                      "my": 2,
-                    }
-                  }
-                  variant="outlined"
+                <ForwardRef(Stack)
+                  spacing={2}
                 >
-                  メールでログイン
-                </ForwardRef(Button)>
-                <TwitterLoginButton />
+                  <TwitterLoginButton />
+                  <ForwardRef(Button)
+                    fullWidth={true}
+                    onClick={[Function]}
+                    startIcon={<Memo />}
+                    variant="outlined"
+                  >
+                    メールでログイン
+                  </ForwardRef(Button)>
+                </ForwardRef(Stack)>
               </ForwardRef(Typography)>
             </ForwardRef(Box)>
           </ForwardRef(Box)>
@@ -2540,20 +2533,19 @@ exports[`Shallow Snapshot Tests with local navi & mobile 1`] = `
                   }
                 }
               >
-                <ForwardRef(Button)
-                  fullWidth={true}
-                  onClick={[Function]}
-                  startIcon={<Memo />}
-                  sx={
-                    Object {
-                      "my": 2,
-                    }
-                  }
-                  variant="outlined"
+                <ForwardRef(Stack)
+                  spacing={2}
                 >
-                  メールでログイン
-                </ForwardRef(Button)>
-                <TwitterLoginButton />
+                  <TwitterLoginButton />
+                  <ForwardRef(Button)
+                    fullWidth={true}
+                    onClick={[Function]}
+                    startIcon={<Memo />}
+                    variant="outlined"
+                  >
+                    メールでログイン
+                  </ForwardRef(Button)>
+                </ForwardRef(Stack)>
               </ForwardRef(Typography)>
             </ForwardRef(Box)>
           </ForwardRef(Box)>
@@ -2863,20 +2855,19 @@ exports[`Shallow Snapshot Tests with local navi 1`] = `
                   }
                 }
               >
-                <ForwardRef(Button)
-                  fullWidth={true}
-                  onClick={[Function]}
-                  startIcon={<Memo />}
-                  sx={
-                    Object {
-                      "my": 2,
-                    }
-                  }
-                  variant="outlined"
+                <ForwardRef(Stack)
+                  spacing={2}
                 >
-                  メールでログイン
-                </ForwardRef(Button)>
-                <TwitterLoginButton />
+                  <TwitterLoginButton />
+                  <ForwardRef(Button)
+                    fullWidth={true}
+                    onClick={[Function]}
+                    startIcon={<Memo />}
+                    variant="outlined"
+                  >
+                    メールでログイン
+                  </ForwardRef(Button)>
+                </ForwardRef(Stack)>
               </ForwardRef(Typography)>
             </ForwardRef(Box)>
           </ForwardRef(Box)>

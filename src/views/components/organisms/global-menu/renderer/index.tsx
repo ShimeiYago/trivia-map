@@ -206,16 +206,18 @@ export class Renderer extends React.Component<Props, State> {
             ログインして新しいトリビアを投稿しませんか？
           </Typography>
           <Typography align="center" component="div" sx={{ mb: 1 }}>
-            <Button
-              variant="outlined"
-              onClick={this.toggleAuthModal(true, 'login')}
-              sx={{ my: 2 }}
-              startIcon={<EmailIcon />}
-              fullWidth={true}
-            >
-              メールでログイン
-            </Button>
-            <TwitterLoginButton />
+            <Stack spacing={2}>
+              <TwitterLoginButton />
+
+              <Button
+                variant="outlined"
+                onClick={this.toggleAuthModal(true, 'login')}
+                startIcon={<EmailIcon />}
+                fullWidth={true}
+              >
+                メールでログイン
+              </Button>
+            </Stack>
           </Typography>
         </Box>
       );

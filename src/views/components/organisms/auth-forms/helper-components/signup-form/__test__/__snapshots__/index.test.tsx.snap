@@ -22,7 +22,6 @@ exports[`Shallow Snapshot Tests basic 1`] = `
     noValidate={true}
   >
     <ForwardRef(TextField)
-      autoFocus={true}
       disabled={false}
       error={false}
       fullWidth={true}
@@ -134,7 +133,6 @@ exports[`Shallow Snapshot Tests error case 1`] = `
     noValidate={true}
   >
     <ForwardRef(TextField)
-      autoFocus={true}
       disabled={false}
       error={true}
       fullWidth={true}

@@ -41,7 +41,6 @@ exports[`Shallow Snapshot Tests already logged in 1`] = `
   >
     <ForwardRef(TextField)
       autoComplete="email"
-      autoFocus={true}
       disabled={true}
       error={false}
       fullWidth={true}
@@ -165,7 +164,6 @@ exports[`Shallow Snapshot Tests basic 1`] = `
   >
     <ForwardRef(TextField)
       autoComplete="email"
-      autoFocus={true}
       disabled={false}
       error={false}
       fullWidth={true}
@@ -300,7 +298,6 @@ exports[`Shallow Snapshot Tests error case 1`] = `
   >
     <ForwardRef(TextField)
       autoComplete="email"
-      autoFocus={true}
       disabled={false}
       error={true}
       fullWidth={true}
@@ -434,7 +431,6 @@ exports[`Shallow Snapshot Tests loading 1`] = `
   >
     <ForwardRef(TextField)
       autoComplete="email"
-      autoFocus={true}
       disabled={true}
       error={false}
       fullWidth={true}

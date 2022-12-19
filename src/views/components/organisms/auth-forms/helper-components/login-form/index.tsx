@@ -32,6 +32,16 @@ export class LoginForm extends React.Component<Props, State> {
         <Typography component="p" align="center" fontSize={14} color={grey[800]}>
           ログインすると、新しいトリビアを投稿できるようになります。
         </Typography>
+        <Stack spacing={2} sx={{ py: 2 }}>
+          <Typography align="center" component="div">
+            <TwitterLoginButton />
+          </Typography>
+          <Typography align="center">または</Typography>
+          <Divider />
+        </Stack>
+
+        <Typography align="center">メールアドレスでログイン</Typography>
+
         {this.renderHeaderInfo()}
         <Box component="form" noValidate>
           <TextField
@@ -85,15 +95,6 @@ export class LoginForm extends React.Component<Props, State> {
               </Button>
             </Grid>
           </Grid>
-        </Box>
-
-        <Box sx={{ textAlign: 'center' }}>
-          <Divider sx={{ my: 2 }} />
-          <Typography align="center" sx={{ my: 2 }}>
-            または
-          </Typography>
-
-          <TwitterLoginButton />
         </Box>
       </Stack>
     );

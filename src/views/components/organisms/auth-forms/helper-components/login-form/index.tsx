@@ -41,7 +41,6 @@ export class LoginForm extends React.Component<Props, State> {
             label="メールアドレス"
             name="email"
             autoComplete="email"
-            autoFocus
             disabled={disabled}
             helperText={this.state.formError?.email}
             error={!!this.state.formError?.email}

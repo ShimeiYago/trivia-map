@@ -31,7 +31,6 @@ export class SignupForm extends React.Component<Props, State> {
           id="email"
           label="メールアドレス"
           name="email"
-          autoFocus
           disabled={disabled}
           helperText={this.state.formError?.email}
           error={!!this.state.formError?.email}

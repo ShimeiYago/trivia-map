@@ -78,93 +78,118 @@ exports[`Shallow Snapshot Tests basic 1`] = `
           </ForwardRef(Typography)>
         </ForwardRef(Stack)>
       </ForwardRef(Box)>
-      <ForwardRef(Stack)
-        direction="row"
-        spacing={1}
+      <ForwardRef(Box)
         sx={
           Object {
-            "&::-webkit-scrollbar": Object {
-              "display": "none",
-            },
-            "boxSizing": "border-box",
+            "backgroundColor": "rgba(0, 0, 0, 0.5)",
+            "display": "flex",
             "margin": 0,
-            "maxWidth": "100vw",
-            "msOverflowStyle": "none",
-            "overflowX": "scroll",
             "position": "fixed",
-            "px": 1,
-            "py": 0,
-            "scrollbarWidth": "none",
-            "top": 68,
-            "whiteSpace": "nowrap",
+            "top": 61,
+            "width": "100vw",
             "zIndex": 1000,
           }
         }
       >
-        <RoundButton
-          key="category-button-0"
-          onClick={[Function]}
-          selected={false}
+        <ForwardRef(Stack)
+          direction="row"
+          spacing={1}
+          sx={
+            Object {
+              "&::-webkit-scrollbar": Object {
+                "display": "none",
+              },
+              "borderRight": "2px solid #eeeeee",
+              "boxSizing": "border-box",
+              "msOverflowStyle": "none",
+              "overflowX": "scroll",
+              "px": 1,
+              "py": 1,
+              "scrollbarWidth": "none",
+              "whiteSpace": "nowrap",
+              "width": "calc(100% - 30px)",
+            }
+          }
         >
-          隠れミッキー
-        </RoundButton>
-        <RoundButton
-          key="category-button-1"
+          <RoundButton
+            key="category-button-0"
+            onClick={[Function]}
+            selected={false}
+          >
+            隠れミッキー
+          </RoundButton>
+          <RoundButton
+            key="category-button-1"
+            onClick={[Function]}
+            selected={false}
+          >
+            バックグラウンドストーリー
+          </RoundButton>
+          <RoundButton
+            key="category-button-2"
+            onClick={[Function]}
+            selected={false}
+          >
+            おすすめ写真スポット
+          </RoundButton>
+          <RoundButton
+            key="category-button-3"
+            onClick={[Function]}
+            selected={false}
+          >
+            ショーパレ
+          </RoundButton>
+          <RoundButton
+            key="category-button-4"
+            onClick={[Function]}
+            selected={false}
+          >
+            フード情報
+          </RoundButton>
+          <RoundButton
+            key="category-button-5"
+            onClick={[Function]}
+            selected={false}
+          >
+            グッズ情報
+          </RoundButton>
+          <RoundButton
+            key="category-button-6"
+            onClick={[Function]}
+            selected={false}
+          >
+            キャラグリ
+          </RoundButton>
+          <RoundButton
+            key="category-button-7"
+            onClick={[Function]}
+            selected={false}
+          >
+            攻略法
+          </RoundButton>
+          <RoundButton
+            key="category-button-8"
+            onClick={[Function]}
+            selected={false}
+          >
+            その他
+          </RoundButton>
+        </ForwardRef(Stack)>
+        <ForwardRef(Box)
           onClick={[Function]}
-          selected={false}
+          sx={
+            Object {
+              "alignItems": "center",
+              "color": "#eeeeee",
+              "display": "flex",
+              "justifyContent": "center",
+              "width": "30px",
+            }
+          }
         >
-          バックグラウンドストーリー
-        </RoundButton>
-        <RoundButton
-          key="category-button-2"
-          onClick={[Function]}
-          selected={false}
-        >
-          おすすめ写真スポット
-        </RoundButton>
-        <RoundButton
-          key="category-button-3"
-          onClick={[Function]}
-          selected={false}
-        >
-          ショーパレ
-        </RoundButton>
-        <RoundButton
-          key="category-button-4"
-          onClick={[Function]}
-          selected={false}
-        >
-          フード情報
-        </RoundButton>
-        <RoundButton
-          key="category-button-5"
-          onClick={[Function]}
-          selected={false}
-        >
-          グッズ情報
-        </RoundButton>
-        <RoundButton
-          key="category-button-6"
-          onClick={[Function]}
-          selected={false}
-        >
-          キャラグリ
-        </RoundButton>
-        <RoundButton
-          key="category-button-7"
-          onClick={[Function]}
-          selected={false}
-        >
-          攻略法
-        </RoundButton>
-        <RoundButton
-          key="category-button-8"
-          onClick={[Function]}
-          selected={false}
-        >
-          その他
-        </RoundButton>
-      </ForwardRef(Stack)>
+          <Memo(ForwardRef(ArrowForwardIosIcon)) />
+        </ForwardRef(Box)>
+      </ForwardRef(Box)>
     </ForwardRef(Box)>
   </GlobalMenu>
   <SwipeableEdgeDrawer
@@ -284,93 +309,118 @@ exports[`Shallow Snapshot Tests before render map 1`] = `
           </ForwardRef(Typography)>
         </ForwardRef(Stack)>
       </ForwardRef(Box)>
-      <ForwardRef(Stack)
-        direction="row"
-        spacing={1}
+      <ForwardRef(Box)
         sx={
           Object {
-            "&::-webkit-scrollbar": Object {
-              "display": "none",
-            },
-            "boxSizing": "border-box",
+            "backgroundColor": "rgba(0, 0, 0, 0.5)",
+            "display": "flex",
             "margin": 0,
-            "maxWidth": "100vw",
-            "msOverflowStyle": "none",
-            "overflowX": "scroll",
             "position": "fixed",
-            "px": 1,
-            "py": 0,
-            "scrollbarWidth": "none",
-            "top": 68,
-            "whiteSpace": "nowrap",
+            "top": 61,
+            "width": "100vw",
             "zIndex": 1000,
           }
         }
       >
-        <RoundButton
-          key="category-button-0"
-          onClick={[Function]}
-          selected={false}
+        <ForwardRef(Stack)
+          direction="row"
+          spacing={1}
+          sx={
+            Object {
+              "&::-webkit-scrollbar": Object {
+                "display": "none",
+              },
+              "borderRight": "2px solid #eeeeee",
+              "boxSizing": "border-box",
+              "msOverflowStyle": "none",
+              "overflowX": "scroll",
+              "px": 1,
+              "py": 1,
+              "scrollbarWidth": "none",
+              "whiteSpace": "nowrap",
+              "width": "calc(100% - 30px)",
+            }
+          }
         >
-          隠れミッキー
-        </RoundButton>
-        <RoundButton
-          key="category-button-1"
+          <RoundButton
+            key="category-button-0"
+            onClick={[Function]}
+            selected={false}
+          >
+            隠れミッキー
+          </RoundButton>
+          <RoundButton
+            key="category-button-1"
+            onClick={[Function]}
+            selected={false}
+          >
+            バックグラウンドストーリー
+          </RoundButton>
+          <RoundButton
+            key="category-button-2"
+            onClick={[Function]}
+            selected={false}
+          >
+            おすすめ写真スポット
+          </RoundButton>
+          <RoundButton
+            key="category-button-3"
+            onClick={[Function]}
+            selected={false}
+          >
+            ショーパレ
+          </RoundButton>
+          <RoundButton
+            key="category-button-4"
+            onClick={[Function]}
+            selected={false}
+          >
+            フード情報
+          </RoundButton>
+          <RoundButton
+            key="category-button-5"
+            onClick={[Function]}
+            selected={false}
+          >
+            グッズ情報
+          </RoundButton>
+          <RoundButton
+            key="category-button-6"
+            onClick={[Function]}
+            selected={false}
+          >
+            キャラグリ
+          </RoundButton>
+          <RoundButton
+            key="category-button-7"
+            onClick={[Function]}
+            selected={false}
+          >
+            攻略法
+          </RoundButton>
+          <RoundButton
+            key="category-button-8"
+            onClick={[Function]}
+            selected={false}
+          >
+            その他
+          </RoundButton>
+        </ForwardRef(Stack)>
+        <ForwardRef(Box)
           onClick={[Function]}
-          selected={false}
+          sx={
+            Object {
+              "alignItems": "center",
+              "color": "#eeeeee",
+              "display": "flex",
+              "justifyContent": "center",
+              "width": "30px",
+            }
+          }
         >
-          バックグラウンドストーリー
-        </RoundButton>
-        <RoundButton
-          key="category-button-2"
-          onClick={[Function]}
-          selected={false}
-        >
-          おすすめ写真スポット
-        </RoundButton>
-        <RoundButton
-          key="category-button-3"
-          onClick={[Function]}
-          selected={false}
-        >
-          ショーパレ
-        </RoundButton>
-        <RoundButton
-          key="category-button-4"
-          onClick={[Function]}
-          selected={false}
-        >
-          フード情報
-        </RoundButton>
-        <RoundButton
-          key="category-button-5"
-          onClick={[Function]}
-          selected={false}
-        >
-          グッズ情報
-        </RoundButton>
-        <RoundButton
-          key="category-button-6"
-          onClick={[Function]}
-          selected={false}
-        >
-          キャラグリ
-        </RoundButton>
-        <RoundButton
-          key="category-button-7"
-          onClick={[Function]}
-          selected={false}
-        >
-          攻略法
-        </RoundButton>
-        <RoundButton
-          key="category-button-8"
-          onClick={[Function]}
-          selected={false}
-        >
-          その他
-        </RoundButton>
-      </ForwardRef(Stack)>
+          <Memo(ForwardRef(ArrowForwardIosIcon)) />
+        </ForwardRef(Box)>
+      </ForwardRef(Box)>
     </ForwardRef(Box)>
   </GlobalMenu>
   <SwipeableEdgeDrawer
@@ -497,93 +547,118 @@ exports[`Shallow Snapshot Tests land mode 1`] = `
           </ForwardRef(Typography)>
         </ForwardRef(Stack)>
       </ForwardRef(Box)>
-      <ForwardRef(Stack)
-        direction="row"
-        spacing={1}
+      <ForwardRef(Box)
         sx={
           Object {
-            "&::-webkit-scrollbar": Object {
-              "display": "none",
-            },
-            "boxSizing": "border-box",
+            "backgroundColor": "rgba(0, 0, 0, 0.5)",
+            "display": "flex",
             "margin": 0,
-            "maxWidth": "100vw",
-            "msOverflowStyle": "none",
-            "overflowX": "scroll",
             "position": "fixed",
-            "px": 1,
-            "py": 0,
-            "scrollbarWidth": "none",
-            "top": 68,
-            "whiteSpace": "nowrap",
+            "top": 61,
+            "width": "100vw",
             "zIndex": 1000,
           }
         }
       >
-        <RoundButton
-          key="category-button-0"
-          onClick={[Function]}
-          selected={false}
+        <ForwardRef(Stack)
+          direction="row"
+          spacing={1}
+          sx={
+            Object {
+              "&::-webkit-scrollbar": Object {
+                "display": "none",
+              },
+              "borderRight": "2px solid #eeeeee",
+              "boxSizing": "border-box",
+              "msOverflowStyle": "none",
+              "overflowX": "scroll",
+              "px": 1,
+              "py": 1,
+              "scrollbarWidth": "none",
+              "whiteSpace": "nowrap",
+              "width": "calc(100% - 30px)",
+            }
+          }
         >
-          隠れミッキー
-        </RoundButton>
-        <RoundButton
-          key="category-button-1"
+          <RoundButton
+            key="category-button-0"
+            onClick={[Function]}
+            selected={false}
+          >
+            隠れミッキー
+          </RoundButton>
+          <RoundButton
+            key="category-button-1"
+            onClick={[Function]}
+            selected={false}
+          >
+            バックグラウンドストーリー
+          </RoundButton>
+          <RoundButton
+            key="category-button-2"
+            onClick={[Function]}
+            selected={false}
+          >
+            おすすめ写真スポット
+          </RoundButton>
+          <RoundButton
+            key="category-button-3"
+            onClick={[Function]}
+            selected={false}
+          >
+            ショーパレ
+          </RoundButton>
+          <RoundButton
+            key="category-button-4"
+            onClick={[Function]}
+            selected={false}
+          >
+            フード情報
+          </RoundButton>
+          <RoundButton
+            key="category-button-5"
+            onClick={[Function]}
+            selected={false}
+          >
+            グッズ情報
+          </RoundButton>
+          <RoundButton
+            key="category-button-6"
+            onClick={[Function]}
+            selected={false}
+          >
+            キャラグリ
+          </RoundButton>
+          <RoundButton
+            key="category-button-7"
+            onClick={[Function]}
+            selected={false}
+          >
+            攻略法
+          </RoundButton>
+          <RoundButton
+            key="category-button-8"
+            onClick={[Function]}
+            selected={false}
+          >
+            その他
+          </RoundButton>
+        </ForwardRef(Stack)>
+        <ForwardRef(Box)
           onClick={[Function]}
-          selected={false}
+          sx={
+            Object {
+              "alignItems": "center",
+              "color": "#eeeeee",
+              "display": "flex",
+              "justifyContent": "center",
+              "width": "30px",
+            }
+          }
         >
-          バックグラウンドストーリー
-        </RoundButton>
-        <RoundButton
-          key="category-button-2"
-          onClick={[Function]}
-          selected={false}
-        >
-          おすすめ写真スポット
-        </RoundButton>
-        <RoundButton
-          key="category-button-3"
-          onClick={[Function]}
-          selected={false}
-        >
-          ショーパレ
-        </RoundButton>
-        <RoundButton
-          key="category-button-4"
-          onClick={[Function]}
-          selected={false}
-        >
-          フード情報
-        </RoundButton>
-        <RoundButton
-          key="category-button-5"
-          onClick={[Function]}
-          selected={false}
-        >
-          グッズ情報
-        </RoundButton>
-        <RoundButton
-          key="category-button-6"
-          onClick={[Function]}
-          selected={false}
-        >
-          キャラグリ
-        </RoundButton>
-        <RoundButton
-          key="category-button-7"
-          onClick={[Function]}
-          selected={false}
-        >
-          攻略法
-        </RoundButton>
-        <RoundButton
-          key="category-button-8"
-          onClick={[Function]}
-          selected={false}
-        >
-          その他
-        </RoundButton>
-      </ForwardRef(Stack)>
+          <Memo(ForwardRef(ArrowForwardIosIcon)) />
+        </ForwardRef(Box)>
+      </ForwardRef(Box)>
     </ForwardRef(Box)>
   </GlobalMenu>
   <SwipeableEdgeDrawer
@@ -656,93 +731,118 @@ exports[`Shallow Snapshot Tests park is undefined 1`] = `
         onClick={[Function]}
       />
       <LoadingProgressBar />
-      <ForwardRef(Stack)
-        direction="row"
-        spacing={1}
+      <ForwardRef(Box)
         sx={
           Object {
-            "&::-webkit-scrollbar": Object {
-              "display": "none",
-            },
-            "boxSizing": "border-box",
+            "backgroundColor": "rgba(0, 0, 0, 0.5)",
+            "display": "flex",
             "margin": 0,
-            "maxWidth": "100vw",
-            "msOverflowStyle": "none",
-            "overflowX": "scroll",
             "position": "fixed",
-            "px": 1,
-            "py": 0,
-            "scrollbarWidth": "none",
-            "top": 68,
-            "whiteSpace": "nowrap",
+            "top": 61,
+            "width": "100vw",
             "zIndex": 1000,
           }
         }
       >
-        <RoundButton
-          key="category-button-0"
-          onClick={[Function]}
-          selected={false}
+        <ForwardRef(Stack)
+          direction="row"
+          spacing={1}
+          sx={
+            Object {
+              "&::-webkit-scrollbar": Object {
+                "display": "none",
+              },
+              "borderRight": "2px solid #eeeeee",
+              "boxSizing": "border-box",
+              "msOverflowStyle": "none",
+              "overflowX": "scroll",
+              "px": 1,
+              "py": 1,
+              "scrollbarWidth": "none",
+              "whiteSpace": "nowrap",
+              "width": "calc(100% - 30px)",
+            }
+          }
         >
-          隠れミッキー
-        </RoundButton>
-        <RoundButton
-          key="category-button-1"
+          <RoundButton
+            key="category-button-0"
+            onClick={[Function]}
+            selected={false}
+          >
+            隠れミッキー
+          </RoundButton>
+          <RoundButton
+            key="category-button-1"
+            onClick={[Function]}
+            selected={false}
+          >
+            バックグラウンドストーリー
+          </RoundButton>
+          <RoundButton
+            key="category-button-2"
+            onClick={[Function]}
+            selected={false}
+          >
+            おすすめ写真スポット
+          </RoundButton>
+          <RoundButton
+            key="category-button-3"
+            onClick={[Function]}
+            selected={false}
+          >
+            ショーパレ
+          </RoundButton>
+          <RoundButton
+            key="category-button-4"
+            onClick={[Function]}
+            selected={false}
+          >
+            フード情報
+          </RoundButton>
+          <RoundButton
+            key="category-button-5"
+            onClick={[Function]}
+            selected={false}
+          >
+            グッズ情報
+          </RoundButton>
+          <RoundButton
+            key="category-button-6"
+            onClick={[Function]}
+            selected={false}
+          >
+            キャラグリ
+          </RoundButton>
+          <RoundButton
+            key="category-button-7"
+            onClick={[Function]}
+            selected={false}
+          >
+            攻略法
+          </RoundButton>
+          <RoundButton
+            key="category-button-8"
+            onClick={[Function]}
+            selected={false}
+          >
+            その他
+          </RoundButton>
+        </ForwardRef(Stack)>
+        <ForwardRef(Box)
           onClick={[Function]}
-          selected={false}
+          sx={
+            Object {
+              "alignItems": "center",
+              "color": "#eeeeee",
+              "display": "flex",
+              "justifyContent": "center",
+              "width": "30px",
+            }
+          }
         >
-          バックグラウンドストーリー
-        </RoundButton>
-        <RoundButton
-          key="category-button-2"
-          onClick={[Function]}
-          selected={false}
-        >
-          おすすめ写真スポット
-        </RoundButton>
-        <RoundButton
-          key="category-button-3"
-          onClick={[Function]}
-          selected={false}
-        >
-          ショーパレ
-        </RoundButton>
-        <RoundButton
-          key="category-button-4"
-          onClick={[Function]}
-          selected={false}
-        >
-          フード情報
-        </RoundButton>
-        <RoundButton
-          key="category-button-5"
-          onClick={[Function]}
-          selected={false}
-        >
-          グッズ情報
-        </RoundButton>
-        <RoundButton
-          key="category-button-6"
-          onClick={[Function]}
-          selected={false}
-        >
-          キャラグリ
-        </RoundButton>
-        <RoundButton
-          key="category-button-7"
-          onClick={[Function]}
-          selected={false}
-        >
-          攻略法
-        </RoundButton>
-        <RoundButton
-          key="category-button-8"
-          onClick={[Function]}
-          selected={false}
-        >
-          その他
-        </RoundButton>
-      </ForwardRef(Stack)>
+          <Memo(ForwardRef(ArrowForwardIosIcon)) />
+        </ForwardRef(Box)>
+      </ForwardRef(Box)>
     </ForwardRef(Box)>
   </GlobalMenu>
   <SwipeableEdgeDrawer
@@ -876,16 +976,11 @@ exports[`Shallow Snapshot Tests pc view 1`] = `
       <ForwardRef(Box)
         sx={
           Object {
-            "&::-webkit-scrollbar": Object {
-              "display": "none",
-            },
+            "backgroundColor": "rgba(0, 0, 0, 0.5)",
+            "display": "flex",
             "margin": 0,
-            "msOverflowStyle": "none",
-            "overflowX": "scroll",
             "position": "fixed",
-            "scrollbarWidth": "none",
-            "top": 76,
-            "whiteSpace": "nowrap",
+            "top": 69,
             "width": "calc(100% - 500px)",
             "zIndex": 1000,
           }
@@ -893,8 +988,23 @@ exports[`Shallow Snapshot Tests pc view 1`] = `
       >
         <ForwardRef(Stack)
           direction="row"
-          justifyContent="center"
           spacing={1}
+          sx={
+            Object {
+              "&::-webkit-scrollbar": Object {
+                "display": "none",
+              },
+              "borderRight": "2px solid #eeeeee",
+              "boxSizing": "border-box",
+              "msOverflowStyle": "none",
+              "overflowX": "scroll",
+              "px": 1,
+              "py": 1,
+              "scrollbarWidth": "none",
+              "whiteSpace": "nowrap",
+              "width": "calc(100% - 30px)",
+            }
+          }
         >
           <RoundButton
             key="category-button-0"
@@ -960,6 +1070,20 @@ exports[`Shallow Snapshot Tests pc view 1`] = `
             その他
           </RoundButton>
         </ForwardRef(Stack)>
+        <ForwardRef(Box)
+          onClick={[Function]}
+          sx={
+            Object {
+              "alignItems": "center",
+              "color": "#eeeeee",
+              "display": "flex",
+              "justifyContent": "center",
+              "width": "30px",
+            }
+          }
+        >
+          <Memo(ForwardRef(ArrowForwardIosIcon)) />
+        </ForwardRef(Box)>
       </ForwardRef(Box)>
     </ForwardRef(Box)>
   </GlobalMenu>

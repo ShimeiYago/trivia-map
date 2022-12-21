@@ -24,14 +24,16 @@ import {
   mapWrapper,
   wrapper,
   parkSelectBox,
-  categoryButtonsPC,
-  categoryButtonsMobile,
+  verticalScroll,
+  categoryBar,
+  categoryBarProceedButton,
 } from './styles';
 import { GlobalMenu } from 'views/components/organisms/global-menu';
 import { Park } from 'types/park';
 import { RoundButton } from 'views/components/atoms/round-button';
 import { CATEGORIES, INITIAL_PARK } from 'constant';
 import { EDIT_LINK, MAP_PAGE_LINK, NEW_LINK } from 'constant/links';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -43,7 +45,11 @@ export class Renderer extends React.Component<Props, State> {
       openDoubleEditAlartDialog: false,
       edittingPostId: props.postIdToEdit,
     };
+
+    this.categoryScrollBarRef = React.createRef();
   }
+
+  categoryScrollBarRef: React.RefObject<HTMLDivElement>;
 
   componentDidMount() {
     if (this.props.postIdToEdit) {
@@ -185,21 +191,30 @@ export class Renderer extends React.Component<Props, State> {
       </RoundButton>
     ));
 
-    if (isMobile) {
+    if (isMobile || this.state.openFormModal) {
       return (
-        <Stack direction="row" spacing={1} sx={categoryButtonsMobile}>
-          {buttons}
-        </Stack>
+        <Box sx={categoryBar(isMobile, this.state.openFormModal)}>
+          <Stack direction="row" spacing={1} sx={verticalScroll} ref={this.categoryScrollBarRef}>
+            {buttons}
+          </Stack>
+          <Box sx={categoryBarProceedButton} onClick={this.handleClickCategoryBarProceed}>
+            <ArrowForwardIosIcon />
+          </Box>
+        </Box>
       );
     }
 
     return (
-      <Box sx={categoryButtonsPC(!isMobile && this.state.openFormModal)}>
-        <Stack direction="row" spacing={1} justifyContent="center">
+      <Box sx={categoryBar(isMobile, this.state.openFormModal)}>
+        <Stack direction="row" spacing={1} justifyContent="center" sx={{ py: 1, width: '100%' }}>
           {buttons}
         </Stack>
       </Box>
     );
+  };
+
+  protected handleClickCategoryBarProceed = () => {
+    this.categoryScrollBarRef.current?.scrollBy({ left: 100, behavior: 'smooth' });
   };
 
   protected handleChangePark = (event: React.ChangeEvent<HTMLInputElement>) => {

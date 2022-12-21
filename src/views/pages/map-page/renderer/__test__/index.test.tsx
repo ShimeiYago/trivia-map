@@ -364,3 +364,20 @@ describe('handleClickCategoryButton', () => {
     expect(instance.props.updateFilteringCategoryId).toBeCalledWith(undefined);
   });
 });
+
+describe('handleClickCategoryBarProceed', () => {
+  it('should scroll category bar', () => {
+    shallowWrapper = shallow(<Renderer {...props} />);
+    const instance = shallowWrapper.instance();
+
+    instance.categoryScrollBarRef = {
+      current: {
+        scrollBy: jest.fn(),
+      },
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } as React.RefObject<any>;
+
+    instance['handleClickCategoryBarProceed']();
+    expect(instance.categoryScrollBarRef.current?.scrollBy).toBeCalled();
+  });
+});

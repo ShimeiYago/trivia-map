@@ -1,4 +1,4 @@
-import { SxProps } from '@mui/material';
+import { alpha, SxProps } from '@mui/material';
 import { grey, red, blue } from '@mui/material/colors';
 import { Park } from 'types/park';
 
@@ -6,6 +6,8 @@ const drawerWidth = 500;
 const appBarDefaultHeightPC = 66;
 const appBarDefaultHeightMobile = 58;
 const zIndex = 1000;
+const categoryBackgroundColor = alpha('#000', 0.5);
+const categoryBarProceedButtonWidth = '30px';
 
 export const rightDrawerStyle: SxProps = {
   width: drawerWidth,
@@ -58,37 +60,36 @@ export function parkSelectBox(shrink: boolean, isMobile: boolean, park: Park): S
   };
 }
 
-export function categoryButtonsPC(shrink: boolean): SxProps {
+export function categoryBar(mobile: boolean, shrink: boolean): SxProps {
+  const width = mobile ? '100vw' : shrink ? `calc(100% - ${drawerWidth}px)` : '100%';
+
   return {
     margin: 0,
+    backgroundColor: categoryBackgroundColor,
     position: 'fixed',
-    top: appBarDefaultHeightPC + 10,
+    top: (mobile ? appBarDefaultHeightMobile : appBarDefaultHeightPC) + 3,
     zIndex: zIndex,
-    width: '100%',
-    ...(shrink && {
-      width: `calc(100% - ${drawerWidth}px)`,
-    }),
-    overflowX: 'scroll',
-    whiteSpace: 'nowrap',
-    msOverflowStyle: 'none',
-    scrollbarWidth: 'none',
-    '&::-webkit-scrollbar': {
-      display: 'none',
-    },
+    width: width,
+    display: 'flex',
   };
 }
 
-export const categoryButtonsMobile: SxProps = {
-  margin: 0,
-  position: 'fixed',
-  top: appBarDefaultHeightMobile + 10,
-  zIndex: zIndex,
+export const categoryBarProceedButton: SxProps = {
+  width: categoryBarProceedButtonWidth,
+  color: grey[200],
+  alignItems: 'center',
+  justifyContent: 'center',
+  display: 'flex',
+};
+
+export const verticalScroll: SxProps = {
   overflowX: 'scroll',
   whiteSpace: 'nowrap',
+  width: `calc(100% - ${categoryBarProceedButtonWidth})`,
+  borderRight: `2px solid ${grey[200]}`,
   px: 1,
-  py: 0,
+  py: 1,
   boxSizing: 'border-box',
-  maxWidth: '100vw',
   msOverflowStyle: 'none',
   scrollbarWidth: 'none',
   '&::-webkit-scrollbar': {

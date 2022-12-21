@@ -25,6 +25,32 @@ exports[`Shallow Snapshot Tests already logged in 1`] = `
   >
     ログインすると、新しいトリビアを投稿できるようになります。
   </ForwardRef(Typography)>
+  <ForwardRef(Stack)
+    spacing={2}
+    sx={
+      Object {
+        "py": 2,
+      }
+    }
+  >
+    <ForwardRef(Typography)
+      align="center"
+      component="div"
+    >
+      <TwitterLoginButton />
+    </ForwardRef(Typography)>
+    <ForwardRef(Typography)
+      align="center"
+    >
+      または
+    </ForwardRef(Typography)>
+    <ForwardRef(Divider) />
+  </ForwardRef(Stack)>
+  <ForwardRef(Typography)
+    align="center"
+  >
+    メールアドレスでログイン
+  </ForwardRef(Typography)>
   <ForwardRef(Alert)>
     <div>
       ログインに成功しました。
@@ -104,32 +130,6 @@ exports[`Shallow Snapshot Tests already logged in 1`] = `
       </ForwardRef(Grid)>
     </ForwardRef(Grid)>
   </ForwardRef(Box)>
-  <ForwardRef(Box)
-    sx={
-      Object {
-        "textAlign": "center",
-      }
-    }
-  >
-    <ForwardRef(Divider)
-      sx={
-        Object {
-          "my": 2,
-        }
-      }
-    />
-    <ForwardRef(Typography)
-      align="center"
-      sx={
-        Object {
-          "my": 2,
-        }
-      }
-    >
-      または
-    </ForwardRef(Typography)>
-    <TwitterLoginButton />
-  </ForwardRef(Box)>
 </ForwardRef(Stack)>
 `;
 
@@ -157,6 +157,32 @@ exports[`Shallow Snapshot Tests basic 1`] = `
     fontSize={14}
   >
     ログインすると、新しいトリビアを投稿できるようになります。
+  </ForwardRef(Typography)>
+  <ForwardRef(Stack)
+    spacing={2}
+    sx={
+      Object {
+        "py": 2,
+      }
+    }
+  >
+    <ForwardRef(Typography)
+      align="center"
+      component="div"
+    >
+      <TwitterLoginButton />
+    </ForwardRef(Typography)>
+    <ForwardRef(Typography)
+      align="center"
+    >
+      または
+    </ForwardRef(Typography)>
+    <ForwardRef(Divider) />
+  </ForwardRef(Stack)>
+  <ForwardRef(Typography)
+    align="center"
+  >
+    メールアドレスでログイン
   </ForwardRef(Typography)>
   <ForwardRef(Box)
     component="form"
@@ -227,32 +253,6 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       </ForwardRef(Grid)>
     </ForwardRef(Grid)>
   </ForwardRef(Box)>
-  <ForwardRef(Box)
-    sx={
-      Object {
-        "textAlign": "center",
-      }
-    }
-  >
-    <ForwardRef(Divider)
-      sx={
-        Object {
-          "my": 2,
-        }
-      }
-    />
-    <ForwardRef(Typography)
-      align="center"
-      sx={
-        Object {
-          "my": 2,
-        }
-      }
-    >
-      または
-    </ForwardRef(Typography)>
-    <TwitterLoginButton />
-  </ForwardRef(Box)>
 </ForwardRef(Stack)>
 `;
 
@@ -280,6 +280,32 @@ exports[`Shallow Snapshot Tests error case 1`] = `
     fontSize={14}
   >
     ログインすると、新しいトリビアを投稿できるようになります。
+  </ForwardRef(Typography)>
+  <ForwardRef(Stack)
+    spacing={2}
+    sx={
+      Object {
+        "py": 2,
+      }
+    }
+  >
+    <ForwardRef(Typography)
+      align="center"
+      component="div"
+    >
+      <TwitterLoginButton />
+    </ForwardRef(Typography)>
+    <ForwardRef(Typography)
+      align="center"
+    >
+      または
+    </ForwardRef(Typography)>
+    <ForwardRef(Divider) />
+  </ForwardRef(Stack)>
+  <ForwardRef(Typography)
+    align="center"
+  >
+    メールアドレスでログイン
   </ForwardRef(Typography)>
   <ForwardRef(Box)>
     <HeaderErrorMessages
@@ -371,32 +397,6 @@ exports[`Shallow Snapshot Tests error case 1`] = `
       </ForwardRef(Grid)>
     </ForwardRef(Grid)>
   </ForwardRef(Box)>
-  <ForwardRef(Box)
-    sx={
-      Object {
-        "textAlign": "center",
-      }
-    }
-  >
-    <ForwardRef(Divider)
-      sx={
-        Object {
-          "my": 2,
-        }
-      }
-    />
-    <ForwardRef(Typography)
-      align="center"
-      sx={
-        Object {
-          "my": 2,
-        }
-      }
-    >
-      または
-    </ForwardRef(Typography)>
-    <TwitterLoginButton />
-  </ForwardRef(Box)>
 </ForwardRef(Stack)>
 `;
 
@@ -424,6 +424,32 @@ exports[`Shallow Snapshot Tests loading 1`] = `
     fontSize={14}
   >
     ログインすると、新しいトリビアを投稿できるようになります。
+  </ForwardRef(Typography)>
+  <ForwardRef(Stack)
+    spacing={2}
+    sx={
+      Object {
+        "py": 2,
+      }
+    }
+  >
+    <ForwardRef(Typography)
+      align="center"
+      component="div"
+    >
+      <TwitterLoginButton />
+    </ForwardRef(Typography)>
+    <ForwardRef(Typography)
+      align="center"
+    >
+      または
+    </ForwardRef(Typography)>
+    <ForwardRef(Divider) />
+  </ForwardRef(Stack)>
+  <ForwardRef(Typography)
+    align="center"
+  >
+    メールアドレスでログイン
   </ForwardRef(Typography)>
   <ForwardRef(Box)
     component="form"
@@ -493,32 +519,6 @@ exports[`Shallow Snapshot Tests loading 1`] = `
         </ForwardRef(Button)>
       </ForwardRef(Grid)>
     </ForwardRef(Grid)>
-  </ForwardRef(Box)>
-  <ForwardRef(Box)
-    sx={
-      Object {
-        "textAlign": "center",
-      }
-    }
-  >
-    <ForwardRef(Divider)
-      sx={
-        Object {
-          "my": 2,
-        }
-      }
-    />
-    <ForwardRef(Typography)
-      align="center"
-      sx={
-        Object {
-          "my": 2,
-        }
-      }
-    >
-      または
-    </ForwardRef(Typography)>
-    <TwitterLoginButton />
   </ForwardRef(Box)>
 </ForwardRef(Stack)>
 `;

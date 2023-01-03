@@ -1,5 +1,5 @@
 import { Box, Typography } from '@mui/material';
-import { Image } from 'views/components/atoms/image';
+import { Image } from 'views/components/moleculars/image';
 import logoImage from 'images/logo-blue.png';
 import { MAP_PAGE_LINK } from 'constant/links';
 

@@ -1,45 +1,80 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Shallow Snapshot Tests basic 1`] = `
-<img
+<Img
   alt="alt-text"
   className="image"
+  loader={
+    <div
+      className="loader"
+    >
+      <CenterSpinner />
+    </div>
+  }
   onClick={[MockFunction]}
   src="image-data"
 />
 `;
 
 exports[`Shallow Snapshot Tests border radius 1`] = `
-<img
+<Img
   alt="alt-text"
   className="image border-radius"
+  loader={
+    <div
+      className="loader"
+    >
+      <CenterSpinner />
+    </div>
+  }
   onClick={[MockFunction]}
   src="image-data"
 />
 `;
 
 exports[`Shallow Snapshot Tests height 1`] = `
-<img
+<Img
   alt="alt-text"
   className="image height-full"
+  loader={
+    <div
+      className="loader"
+    >
+      <CenterSpinner />
+    </div>
+  }
   onClick={[MockFunction]}
   src="image-data"
 />
 `;
 
 exports[`Shallow Snapshot Tests objectFit cover 1`] = `
-<img
+<Img
   alt="alt-text"
   className="image cover"
+  loader={
+    <div
+      className="loader"
+    >
+      <CenterSpinner />
+    </div>
+  }
   onClick={[MockFunction]}
   src="image-data"
 />
 `;
 
 exports[`Shallow Snapshot Tests width 1`] = `
-<img
+<Img
   alt="alt-text"
   className="image width-full"
+  loader={
+    <div
+      className="loader"
+    >
+      <CenterSpinner />
+    </div>
+  }
   onClick={[MockFunction]}
   src="image-data"
 />

@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './index.module.css';
-import { Image } from '../../atoms/image';
+import { Image } from '../image';
 import CloseIcon from '@mui/icons-material/Close';
 import { Box, IconButton } from '@mui/material';
 import { HelperText } from 'views/components/atoms/helper-text';

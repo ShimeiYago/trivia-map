@@ -1,7 +1,7 @@
 import React from 'react';
 import { Alert, Avatar, Box, Divider, Stack, Typography, Link } from '@mui/material';
 import { LoadingState } from 'types/loading-state';
-import { Image } from 'views/components/atoms/image';
+import { Image } from 'views/components/moleculars/image';
 import { TriviaMap } from 'views/components/organisms/trivia-map';
 import { createdAtBox } from '../styles';
 import MapIcon from '@mui/icons-material/Map';

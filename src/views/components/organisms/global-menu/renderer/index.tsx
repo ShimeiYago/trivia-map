@@ -27,7 +27,7 @@ import { MAP_PAGE_LINK } from 'constant/links';
 import { ArticlePaper } from 'views/components/atoms/article-paper';
 import { BackToNavi } from 'views/components/moleculars/back-to-navi';
 import logoImage from 'images/logo.png';
-import { Image } from 'views/components/atoms/image';
+import { Image } from 'views/components/moleculars/image';
 import { SITE_NAME } from 'constant';
 import { AuthFormMode } from '../../auth-forms/renderer';
 import noIcon from 'images/no-icon.jpg';

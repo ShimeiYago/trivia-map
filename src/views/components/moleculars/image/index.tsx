@@ -1,5 +1,7 @@
 import React from 'react';
 import styles from './index.module.css';
+import { Img } from 'react-image';
+import { CenterSpinner } from 'views/components/atoms/center-spinner';
 
 export class Image extends React.Component<Props> {
   render() {
@@ -12,8 +14,24 @@ export class Image extends React.Component<Props> {
     if (height) classNames.push(styles[`height-${height}`]);
     if (borderRadius) classNames.push(styles['border-radius']);
 
-    return <img src={src} className={classNames.join(' ')} alt={alt} onClick={onClick} />;
+    return (
+      <Img
+        src={src}
+        loader={renderLoader()}
+        className={classNames.join(' ')}
+        alt={alt}
+        onClick={onClick}
+      />
+    );
   }
+}
+
+function renderLoader() {
+  return (
+    <div className={styles.loader}>
+      <CenterSpinner />
+    </div>
+  );
 }
 
 export type Props = {

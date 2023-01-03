@@ -7,7 +7,7 @@ import { resetPasswordConfirm, ValidationError } from 'api/auths-api/reset-passw
 import { ApiError } from 'api/utils/handle-axios-error';
 import { globalAPIErrorMessage } from 'constant/global-api-error-message';
 import { PAGE_NAMES } from 'constant/page-names';
-import { Image } from 'views/components/atoms/image';
+import { Image } from 'views/components/moleculars/image';
 import logoImage from 'images/logo-blue.png';
 import { IconAndText } from 'views/components/atoms/icon-and-text';
 import { Link } from 'react-router-dom';

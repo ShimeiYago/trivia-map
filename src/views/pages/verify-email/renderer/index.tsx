@@ -4,7 +4,7 @@ import { LoadingState } from 'types/loading-state';
 import { verifyEmail } from 'api/auths-api/verify-email';
 import { wrapper } from '../styles';
 import { LoadingButton } from '@mui/lab';
-import { Image } from 'views/components/atoms/image';
+import { Image } from 'views/components/moleculars/image';
 import logoImage from 'images/logo-blue.png';
 import { MAP_PAGE_LINK } from 'constant/links';
 

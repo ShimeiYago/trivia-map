@@ -17,7 +17,7 @@ import {
   GetArticlesPreviewsResponse,
 } from 'api/articles-api/get-articles-previews';
 import { Link } from 'react-router-dom';
-import { Image } from 'views/components/atoms/image';
+import { Image } from 'views/components/moleculars/image';
 import classes from './index.module.css';
 import * as sxProps from './styles';
 import { IconAndText } from 'views/components/atoms/icon-and-text';

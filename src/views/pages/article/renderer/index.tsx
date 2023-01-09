@@ -27,6 +27,7 @@ import { LoadingButton } from '@mui/lab';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
 import { checkLikeStatus } from 'api/likes-api/check-like-status';
+import { toggleLike } from 'api/likes-api/toggle-like';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -216,8 +217,9 @@ export class Renderer extends React.Component<Props, State> {
           startIcon={haveLiked ? <ThumbUpIcon /> : <ThumbUpOutlinedIcon />}
           variant={haveLiked ? 'contained' : 'outlined'}
           loading={loadingLikeState === 'loading'}
+          onClick={this.handleClickLikeButton}
         >
-          {numberOfLikes ?? 'いいね'}
+          {numberOfLikes === 0 ? 'いいね' : numberOfLikes}
         </LoadingButton>
       </Box>
     );
@@ -245,6 +247,31 @@ export class Renderer extends React.Component<Props, State> {
       this.props.throwError(500);
     }
   };
+
+  protected handleClickLikeButton = async () => {
+    if (!this.props.user) {
+      this.props.toggleAuthFormModal(true);
+      return;
+    }
+
+    this.setState({
+      loadingLikeState: 'loading',
+    });
+
+    try {
+      const res = await autoRefreshApiWrapper(
+        () => toggleLike(this.props.postId),
+        this.props.refreshUser,
+      );
+      this.setState({
+        haveLiked: res.haveLiked,
+        loadingLikeState: 'success',
+        numberOfLikes: res.numberOfLikes,
+      });
+    } catch (error) {
+      this.props.throwError(500);
+    }
+  };
 }
 
 export type Props = {
@@ -254,6 +281,7 @@ export type Props = {
   initialize: () => void;
   throwError: (errorStatus: number) => void;
   refreshUser: () => void;
+  toggleAuthFormModal: (open: boolean) => void;
 };
 
 export type State = {

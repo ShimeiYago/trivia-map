@@ -177,11 +177,10 @@ exports[`Shallow Snapshot Tests author view 1`] = `
     >
       <ForwardRef(LoadingButton)
         loading={true}
+        onClick={[Function]}
         startIcon={<Memo />}
         variant="outlined"
-      >
-        いいね
-      </ForwardRef(LoadingButton)>
+      />
     </ForwardRef(Box)>
     <ShareButtons
       title="title - トリビアマップ"
@@ -369,11 +368,10 @@ exports[`Shallow Snapshot Tests draft 1`] = `
     >
       <ForwardRef(LoadingButton)
         loading={false}
+        onClick={[Function]}
         startIcon={<Memo />}
         variant="outlined"
-      >
-        いいね
-      </ForwardRef(LoadingButton)>
+      />
     </ForwardRef(Box)>
     <ShareButtons
       title="title - トリビアマップ"
@@ -548,6 +546,7 @@ exports[`Shallow Snapshot Tests have liked 1`] = `
     >
       <ForwardRef(LoadingButton)
         loading={false}
+        onClick={[Function]}
         startIcon={<Memo />}
         variant="contained"
       >
@@ -735,11 +734,10 @@ exports[`Shallow Snapshot Tests with article 1`] = `
     >
       <ForwardRef(LoadingButton)
         loading={false}
+        onClick={[Function]}
         startIcon={<Memo />}
         variant="outlined"
-      >
-        いいね
-      </ForwardRef(LoadingButton)>
+      />
     </ForwardRef(Box)>
     <ShareButtons
       title="title - トリビアマップ"
@@ -919,11 +917,10 @@ exports[`Shallow Snapshot Tests with image 1`] = `
     >
       <ForwardRef(LoadingButton)
         loading={false}
+        onClick={[Function]}
         startIcon={<Memo />}
         variant="outlined"
-      >
-        いいね
-      </ForwardRef(LoadingButton)>
+      />
     </ForwardRef(Box)>
     <ShareButtons
       title="title - トリビアマップ"

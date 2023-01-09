@@ -25,6 +25,7 @@ export const mockGetArticleResponse: GetArticleResponse = {
   createdAt: '2022/06/16 21:42',
   updatedAt: '2022/06/16 21:42',
   category: 1,
+  numberOfLikes: 1,
 };
 
 export const mockPostArticleResponse: PostArticleResponse = {

@@ -172,6 +172,16 @@ exports[`Shallow Snapshot Tests author view 1`] = `
       park="S"
     />
     <ForwardRef(Divider) />
+    <ForwardRef(Box)
+      textAlign="right"
+    >
+      <ForwardRef(LoadingButton)
+        startIcon={<Memo />}
+        variant="outlined"
+      >
+        いいね
+      </ForwardRef(LoadingButton)>
+    </ForwardRef(Box)>
     <ShareButtons
       title="title - トリビアマップ"
       url="http://localhost/"
@@ -353,6 +363,194 @@ exports[`Shallow Snapshot Tests draft 1`] = `
       park="S"
     />
     <ForwardRef(Divider) />
+    <ForwardRef(Box)
+      textAlign="right"
+    >
+      <ForwardRef(LoadingButton)
+        startIcon={<Memo />}
+        variant="outlined"
+      >
+        いいね
+      </ForwardRef(LoadingButton)>
+    </ForwardRef(Box)>
+    <ShareButtons
+      title="title - トリビアマップ"
+      url="http://localhost/"
+    />
+  </ForwardRef(Stack)>
+</ArticleWrapper>
+`;
+
+exports[`Shallow Snapshot Tests have liked 1`] = `
+<ArticleWrapper
+  showSidebar={true}
+>
+  <CommonHelmet
+    description="description"
+    ogType="article"
+    title="title - トリビアマップ"
+  />
+  <ForwardRef(Stack)
+    spacing={2}
+  >
+    <ForwardRef(Stack)
+      alignItems="center"
+      direction="row"
+      justifyContent="flex-start"
+      spacing={1}
+    >
+      <NonStyleLink
+        to="/users/1"
+      >
+        <ForwardRef(Avatar)
+          src="no-icon.jpg"
+          sx={
+            Object {
+              "height": 30,
+              "width": 30,
+            }
+          }
+        />
+      </NonStyleLink>
+      <NonStyleLink
+        to="/users/1"
+      >
+        <ForwardRef(Typography)
+          color="gray"
+          sx={
+            Object {
+              "textDecoration": "underline",
+            }
+          }
+        >
+          Axel
+        </ForwardRef(Typography)>
+      </NonStyleLink>
+    </ForwardRef(Stack)>
+    <ForwardRef(Typography)
+      align="center"
+      component="h2"
+      variant="h4"
+    >
+      title
+    </ForwardRef(Typography)>
+    <ForwardRef(Typography)
+      color="gray"
+      component="div"
+      sx={
+        Object {
+          "textDecoration": "underline",
+        }
+      }
+    >
+      <IconAndText
+        align="left"
+        iconComponent={<Memo />}
+        iconPosition="left"
+        link="/categories/1"
+        text="隠れミッキー"
+      />
+    </ForwardRef(Typography)>
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "color": "gray",
+          "textAlign": "right",
+        }
+      }
+    >
+      <ForwardRef(Typography)>
+        投稿日 2022/4/1
+      </ForwardRef(Typography)>
+      <ForwardRef(Typography)>
+        更新日 2022/5/1
+      </ForwardRef(Typography)>
+    </ForwardRef(Box)>
+    <ForwardRef(Divider) />
+    <ForwardRef(Typography)
+      fontSize={20}
+      whiteSpace="pre-wrap"
+    >
+      description
+    </ForwardRef(Typography)>
+    <ForwardRef(Divider) />
+    <IconAndText
+      component="h3"
+      iconComponent={<Memo />}
+      iconPosition="left"
+      text="地図"
+      variant="h5"
+    />
+    <ForwardRef(Typography)
+      component="div"
+    >
+      エリア：
+      <AreaNames
+        areaNames={
+          Array [
+            "シー",
+          ]
+        }
+      />
+    </ForwardRef(Typography)>
+    <TriviaMap
+      additinalMarkers={
+        Array [
+          Object {
+            "areaNames": Array [
+              "シー",
+            ],
+            "lat": 0,
+            "lng": 0,
+            "markerId": 1,
+            "numberOfPublicArticles": Object {
+              "eachCategory": Array [
+                1,
+                2,
+                1,
+              ],
+              "total": 4,
+            },
+            "park": "S",
+          },
+        ]
+      }
+      disabled={true}
+      doNotShowPostMarkers={true}
+      height={300}
+      initCenter={
+        Object {
+          "areaNames": Array [
+            "シー",
+          ],
+          "lat": 0,
+          "lng": 0,
+          "markerId": 1,
+          "numberOfPublicArticles": Object {
+            "eachCategory": Array [
+              1,
+              2,
+              1,
+            ],
+            "total": 4,
+          },
+          "park": "S",
+        }
+      }
+      initZoom={3}
+      park="S"
+    />
+    <ForwardRef(Divider) />
+    <ForwardRef(Box)
+      textAlign="right"
+    >
+      <ForwardRef(LoadingButton)
+        startIcon={<Memo />}
+        variant="contained"
+      >
+        いいね
+      </ForwardRef(LoadingButton)>
+    </ForwardRef(Box)>
     <ShareButtons
       title="title - トリビアマップ"
       url="http://localhost/"
@@ -529,6 +727,16 @@ exports[`Shallow Snapshot Tests with article 1`] = `
       park="S"
     />
     <ForwardRef(Divider) />
+    <ForwardRef(Box)
+      textAlign="right"
+    >
+      <ForwardRef(LoadingButton)
+        startIcon={<Memo />}
+        variant="outlined"
+      >
+        いいね
+      </ForwardRef(LoadingButton)>
+    </ForwardRef(Box)>
     <ShareButtons
       title="title - トリビアマップ"
       url="http://localhost/"
@@ -702,6 +910,16 @@ exports[`Shallow Snapshot Tests with image 1`] = `
       park="S"
     />
     <ForwardRef(Divider) />
+    <ForwardRef(Box)
+      textAlign="right"
+    >
+      <ForwardRef(LoadingButton)
+        startIcon={<Memo />}
+        variant="outlined"
+      >
+        いいね
+      </ForwardRef(LoadingButton)>
+    </ForwardRef(Box)>
     <ShareButtons
       title="title - トリビアマップ"
       url="http://localhost/"

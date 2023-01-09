@@ -23,12 +23,16 @@ import { pageTitleGenerator } from 'utils/page-title-generator';
 import { CommonHelmet } from 'helper-components/common-helmet';
 import { NonStyleLink } from 'views/components/atoms/non-style-link';
 import { ShareButtons } from 'views/components/atoms/share-buttons';
+import { LoadingButton } from '@mui/lab';
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
       loadingState: 'waiting',
+      haveLiked: false,
     };
   }
 
@@ -139,6 +143,8 @@ export class Renderer extends React.Component<Props, State> {
 
           <Divider />
 
+          {this.renderLikeButton()}
+
           <ShareButtons title={pageTitle} url={window.location.href} />
         </Stack>
       </>
@@ -158,6 +164,7 @@ export class Renderer extends React.Component<Props, State> {
       this.setState({
         article: res,
         loadingState: 'success',
+        numberOfLikes: res.numberOfLikes,
       });
     } catch (error) {
       const apiError = error as ApiError<unknown>;
@@ -192,6 +199,21 @@ export class Renderer extends React.Component<Props, State> {
       </Link>
     );
   };
+
+  protected renderLikeButton = () => {
+    const { haveLiked, numberOfLikes } = this.state;
+
+    return (
+      <Box textAlign="right">
+        <LoadingButton
+          startIcon={haveLiked ? <ThumbUpIcon /> : <ThumbUpOutlinedIcon />}
+          variant={haveLiked ? 'contained' : 'outlined'}
+        >
+          {numberOfLikes ?? 'いいね'}
+        </LoadingButton>
+      </Box>
+    );
+  };
 }
 
 export type Props = {
@@ -206,4 +228,6 @@ export type Props = {
 export type State = {
   article?: GetArticleResponse;
   loadingState: LoadingState;
+  numberOfLikes?: number;
+  haveLiked: boolean;
 };

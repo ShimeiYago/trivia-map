@@ -36,6 +36,7 @@ const article: GetArticleResponse = {
   updatedAt: '2022/5/1',
   isDraft: false,
   category: 1,
+  numberOfLikes: 1,
 };
 
 describe('Shallow Snapshot Tests', () => {
@@ -84,6 +85,15 @@ describe('Shallow Snapshot Tests', () => {
       },
     });
     wrapper.setState({ article: article, loadingState: 'success' });
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('have liked', () => {
+    wrapper.setState({
+      haveLiked: true,
+      loadingState: 'success',
+      article: article,
+    });
     expect(wrapper).toMatchSnapshot();
   });
 });

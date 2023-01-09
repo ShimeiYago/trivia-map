@@ -6,6 +6,8 @@ export const ADMIN_LINK = '/admin';
 
 export const MY_ARTICLES_LINK = '/admin/articles';
 
+export const LIKED_ARTICLES_LINK = '/admin/likes';
+
 export const ACCOUNT_SETTINGS_LINK = '/admin/account';
 
 export const PROFILE_SETTINGS_LINK = '/admin/account/profile';

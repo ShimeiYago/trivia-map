@@ -23,22 +23,34 @@ import { pageTitleGenerator } from 'utils/page-title-generator';
 import { CommonHelmet } from 'helper-components/common-helmet';
 import { NonStyleLink } from 'views/components/atoms/non-style-link';
 import { ShareButtons } from 'views/components/atoms/share-buttons';
+import { LoadingButton } from '@mui/lab';
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
+import { checkLikeStatus } from 'api/likes-api/check-like-status';
+import { toggleLike } from 'api/likes-api/toggle-like';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      loadingState: 'waiting',
+      loadingArticleState: 'waiting',
+      loadingLikeState: 'waiting',
+      haveLiked: false,
     };
   }
 
   componentDidMount() {
     this.fetchArticle();
+    this.checkLikeStatus();
   }
 
   componentDidUpdate(prevProps: Readonly<Props>) {
     if (prevProps.postId !== this.props.postId) {
       this.fetchArticle();
+    }
+
+    if (prevProps.user?.userId !== this.props.user?.userId) {
+      this.checkLikeStatus();
     }
   }
 
@@ -47,9 +59,9 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   protected renderMainArticle = () => {
-    const { article, loadingState } = this.state;
+    const { article, loadingArticleState } = this.state;
 
-    if (!article || loadingState === 'waiting' || loadingState === 'loading') {
+    if (!article || loadingArticleState === 'waiting' || loadingArticleState === 'loading') {
       return <CenterSpinner />;
     }
 
@@ -139,6 +151,8 @@ export class Renderer extends React.Component<Props, State> {
 
           <Divider />
 
+          {this.renderLikeButton()}
+
           <ShareButtons title={pageTitle} url={window.location.href} />
         </Stack>
       </>
@@ -148,7 +162,7 @@ export class Renderer extends React.Component<Props, State> {
   protected fetchArticle = async () => {
     this.setState({
       article: undefined,
-      loadingState: 'loading',
+      loadingArticleState: 'loading',
     });
     try {
       const res = await autoRefreshApiWrapper(
@@ -157,7 +171,8 @@ export class Renderer extends React.Component<Props, State> {
       );
       this.setState({
         article: res,
-        loadingState: 'success',
+        loadingArticleState: 'success',
+        numberOfLikes: res.numberOfLikes,
       });
     } catch (error) {
       const apiError = error as ApiError<unknown>;
@@ -192,6 +207,71 @@ export class Renderer extends React.Component<Props, State> {
       </Link>
     );
   };
+
+  protected renderLikeButton = () => {
+    const { haveLiked, numberOfLikes, loadingLikeState } = this.state;
+
+    return (
+      <Box textAlign="right">
+        <LoadingButton
+          startIcon={haveLiked ? <ThumbUpIcon /> : <ThumbUpOutlinedIcon />}
+          variant={haveLiked ? 'contained' : 'outlined'}
+          loading={loadingLikeState === 'loading'}
+          onClick={this.handleClickLikeButton}
+        >
+          {numberOfLikes === 0 ? 'いいね' : numberOfLikes}
+        </LoadingButton>
+      </Box>
+    );
+  };
+
+  protected checkLikeStatus = async () => {
+    if (!this.props.user) {
+      return;
+    }
+
+    this.setState({
+      loadingLikeState: 'loading',
+    });
+
+    try {
+      const res = await autoRefreshApiWrapper(
+        () => checkLikeStatus(this.props.postId),
+        this.props.refreshUser,
+      );
+      this.setState({
+        haveLiked: res.haveLiked,
+        loadingLikeState: 'success',
+      });
+    } catch (error) {
+      this.props.throwError(500);
+    }
+  };
+
+  protected handleClickLikeButton = async () => {
+    if (!this.props.user) {
+      this.props.toggleAuthFormModal(true);
+      return;
+    }
+
+    this.setState({
+      loadingLikeState: 'loading',
+    });
+
+    try {
+      const res = await autoRefreshApiWrapper(
+        () => toggleLike(this.props.postId),
+        this.props.refreshUser,
+      );
+      this.setState({
+        haveLiked: res.haveLiked,
+        loadingLikeState: 'success',
+        numberOfLikes: res.numberOfLikes,
+      });
+    } catch (error) {
+      this.props.throwError(500);
+    }
+  };
 }
 
 export type Props = {
@@ -201,9 +281,13 @@ export type Props = {
   initialize: () => void;
   throwError: (errorStatus: number) => void;
   refreshUser: () => void;
+  toggleAuthFormModal: (open: boolean) => void;
 };
 
 export type State = {
   article?: GetArticleResponse;
-  loadingState: LoadingState;
+  loadingArticleState: LoadingState;
+  loadingLikeState: LoadingState;
+  numberOfLikes?: number;
+  haveLiked: boolean;
 };

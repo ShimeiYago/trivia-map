@@ -36,6 +36,7 @@ import {
   TWITTER_CALLBACK_LINK,
   DEACTIVATE_ACCOUNT_LINK,
   NEW_LINK,
+  LIKED_ARTICLES_LINK,
 } from 'constant/links';
 import { ChangePassword } from 'views/pages/change-password';
 import { ResetPassword } from 'views/pages/reset-password';
@@ -50,6 +51,7 @@ import { CategoryPage } from 'views/pages/category-page';
 import { CookiesProvider } from 'react-cookie';
 import { TwitterCallbackPage } from 'views/pages/twitter-callback-page';
 import { DeactivateAccount } from 'views/pages/deactivate-account';
+import { LikedArticles } from 'views/pages/liked-articles';
 
 // Deactivate all console.log on production
 // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -91,6 +93,10 @@ ReactDOM.render(
                 <Route path={SIGNUP_LINK} element={errorHandledElement(<Login page="signup" />)} />
                 <Route path={ADMIN_LINK} element={errorHandledElement(<Admin />)} />
                 <Route path={MY_ARTICLES_LINK} element={errorHandledElement(<MyArticles />)} />
+                <Route
+                  path={LIKED_ARTICLES_LINK}
+                  element={errorHandledElement(<LikedArticles />)}
+                />
                 <Route
                   path={ACCOUNT_SETTINGS_LINK}
                   element={errorHandledElement(<AccountSettings />)}

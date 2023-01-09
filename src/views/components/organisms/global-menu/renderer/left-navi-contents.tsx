@@ -5,6 +5,7 @@ import {
   ADMIN_LINK,
   ARTICLE_LIST_PAGE_LINK,
   INQUIRY_PAGE_LINK,
+  LIKED_ARTICLES_LINK,
   LOGIN_LINK,
   MAP_PAGE_LINK,
   MAP_ROUTE,
@@ -26,6 +27,7 @@ import { SITE_NAME } from 'constant';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import AddLocationAltIcon from '@mui/icons-material/AddLocationAlt';
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 
 const listItemsForMap: ListItem[] = [
   {
@@ -68,6 +70,11 @@ const listItemsForAdmin: ListItem[] = [
     text: PAGE_NAMES.myArticles,
     icon: <ListAltIcon />,
     link: MY_ARTICLES_LINK,
+  },
+  {
+    text: PAGE_NAMES.likedArticles,
+    icon: <ThumbUpIcon />,
+    link: LIKED_ARTICLES_LINK,
   },
   {
     text: PAGE_NAMES.accountSettings,

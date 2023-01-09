@@ -3,17 +3,20 @@ import { shallow, ShallowWrapper } from 'enzyme';
 import { Renderer, Props, State } from '..';
 import * as GetRemoteArticleModule from 'api/articles-api/get-remote-article';
 import * as CheckLikeStatusModule from 'api/likes-api/check-like-status';
+import * as ToggleLikeModule from 'api/likes-api/toggle-like';
 
 let wrapper: ShallowWrapper<Props, State, Renderer>;
 
 let getRemoteArticleSpy: jest.SpyInstance;
 let checkLikeStatusSpy: jest.SpyInstance;
+let toggleLikeSpy: jest.SpyInstance;
 
 const basicProps: Props = {
   postId: 1,
   initialize: jest.fn(),
   throwError: jest.fn(),
   refreshUser: jest.fn(),
+  toggleAuthFormModal: jest.fn(),
 };
 
 const testUser = {
@@ -97,6 +100,7 @@ describe('Shallow Snapshot Tests', () => {
       haveLiked: true,
       loadingArticleState: 'success',
       article: article,
+      numberOfLikes: 0,
     });
     expect(wrapper).toMatchSnapshot();
   });
@@ -194,5 +198,46 @@ describe('checkLikeStatus', () => {
     await instance['checkLikeStatus']();
 
     expect(instance.props.throwError).toBeCalled();
+  });
+});
+
+describe('handleClickLikeButton', () => {
+  beforeEach(() => {
+    jest.resetAllMocks();
+    toggleLikeSpy = jest.spyOn(ToggleLikeModule, 'toggleLike');
+  });
+
+  it('should set loadingLikeState success when api succeed', async () => {
+    toggleLikeSpy.mockResolvedValue({
+      haveLiked: true,
+      numberOfLikes: 1,
+    });
+
+    wrapper = shallow(<Renderer {...basicProps} user={testUser} />);
+    const instance = wrapper.instance();
+
+    await instance['handleClickLikeButton']();
+
+    expect(instance.state.loadingLikeState).toBe('success');
+  });
+
+  it('should set loadingstate error when api fail', async () => {
+    toggleLikeSpy.mockRejectedValue(new Error());
+
+    wrapper = shallow(<Renderer {...basicProps} user={testUser} />);
+    const instance = wrapper.instance();
+
+    await instance['handleClickLikeButton']();
+
+    expect(instance.props.throwError).toBeCalled();
+  });
+
+  it('should call toggleAuthFormModal if user is undefined', async () => {
+    wrapper = shallow(<Renderer {...basicProps} />);
+    const instance = wrapper.instance();
+
+    await instance['handleClickLikeButton']();
+
+    expect(instance.props.toggleAuthFormModal).toBeCalled();
   });
 });

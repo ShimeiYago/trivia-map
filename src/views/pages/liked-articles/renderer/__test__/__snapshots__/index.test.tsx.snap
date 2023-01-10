@@ -9,20 +9,29 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       link="/admin"
       text="マイページ"
     />
-    <ForwardRef(Box)>
-      <ForwardRef(Typography)
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "mb": 3,
+        }
+      }
+    >
+      <IconAndText
         align="center"
         component="h2"
-        sx={
-          Object {
-            "mb": 3,
-          }
+        iconComponent={
+          <Memo
+            fontSize="inherit"
+          />
         }
+        iconPosition="left"
+        text="いいね一覧"
         variant="h4"
-      >
-        いいね一覧
-      </ForwardRef(Typography)>
+      />
     </ForwardRef(Box)>
+    <ArticlePreviewLikedList
+      variant="large"
+    />
   </ForwardRef(Stack)>
 </AdminWrapper>
 `;

@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shallow Snapshot Tests basic 1`] = `
+<AdminWrapper>
+  <ForwardRef(Stack)
+    spacing={3}
+  >
+    <BackToNavi
+      link="/admin"
+      text="マイページ"
+    />
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "mb": 3,
+        }
+      }
+    >
+      <IconAndText
+        align="center"
+        component="h2"
+        iconComponent={
+          <Memo
+            fontSize="inherit"
+          />
+        }
+        iconPosition="left"
+        text="いいね一覧"
+        variant="h4"
+      />
+    </ForwardRef(Box)>
+    <ArticlePreviewLikedList
+      variant="large"
+    />
+  </ForwardRef(Stack)>
+</AdminWrapper>
+`;

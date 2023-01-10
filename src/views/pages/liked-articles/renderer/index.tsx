@@ -1,9 +1,12 @@
 import React from 'react';
-import { Box, Stack, Typography } from '@mui/material';
+import { Box, Stack } from '@mui/material';
 import { AdminWrapper } from 'views/components/organisms/admin-wrapper';
 import { BackToNavi } from 'views/components/moleculars/back-to-navi';
 import { ADMIN_LINK } from 'constant/links';
 import { PAGE_NAMES } from 'constant/page-names';
+import { ArticlePreviewLikedList } from 'views/components/organisms/article-preview-liked-list';
+import { IconAndText } from 'views/components/atoms/icon-and-text';
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 
 export class Renderer extends React.Component {
   render() {
@@ -14,11 +17,17 @@ export class Renderer extends React.Component {
     return (
       <Stack spacing={3}>
         <BackToNavi text="マイページ" link={ADMIN_LINK} />
-        <Box>
-          <Typography align="center" component="h2" variant="h4" sx={{ mb: 3 }}>
-            {PAGE_NAMES.likedArticles}
-          </Typography>
+        <Box sx={{ mb: 3 }}>
+          <IconAndText
+            align="center"
+            component="h2"
+            variant="h4"
+            text={PAGE_NAMES.likedArticles}
+            iconComponent={<ThumbUpIcon fontSize="inherit" />}
+            iconPosition="left"
+          />
         </Box>
+        <ArticlePreviewLikedList variant="large" />
       </Stack>
     );
   };

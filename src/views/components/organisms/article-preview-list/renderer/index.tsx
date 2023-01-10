@@ -315,6 +315,7 @@ export type Props = {
   searchConditions: Omit<GetArticlesPreviewsParam, 'page'>;
 
   throwError: (status: number) => void;
+  refreshUser: () => void;
 };
 
 export type State = {

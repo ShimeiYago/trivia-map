@@ -1,15 +1,14 @@
-import { GetArticlesPreviewsParam } from 'api/articles-api/get-articles-previews';
 import { useAppDispatch } from 'store';
 import { updateUser } from 'store/auths/actions';
 import { throwError } from 'store/global-error/slice';
-import { Props, Renderer } from './renderer';
+import { Renderer, Props } from './renderer';
 
-export function ArticlePreviewList(ownProps: OwnProps) {
+export function ArticlePreviewLikedList(ownProps: OwnProps) {
   const dispatch = useAppDispatch();
 
   const props: Props = {
     variant: ownProps.variant,
-    searchConditions: ownProps.searchConditions,
+    searchConditions: {},
     throwError: (status: number) => dispatch(throwError(status)),
     refreshUser: () => dispatch(updateUser(undefined)),
   };
@@ -19,5 +18,4 @@ export function ArticlePreviewList(ownProps: OwnProps) {
 
 type OwnProps = {
   variant: 'popup' | 'large' | 'sidebar';
-  searchConditions: Omit<GetArticlesPreviewsParam, 'page'>;
 };

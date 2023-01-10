@@ -729,6 +729,17 @@ exports[`Shallow Snapshot Tests long name with mobile 1`] = `
               </Link>
               <Link
                 key="authmenu-2"
+                to="/admin/likes"
+              >
+                <IconAndText
+                  align="left"
+                  iconComponent={<Memo />}
+                  iconPosition="left"
+                  text="いいね一覧"
+                />
+              </Link>
+              <Link
+                key="authmenu-3"
                 to="/admin/account"
               >
                 <IconAndText
@@ -843,6 +854,22 @@ exports[`Shallow Snapshot Tests long name with mobile 1`] = `
         </NonStyleLink>
         <NonStyleLink
           key="2"
+          to="/admin/likes"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(ThumbUpIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="いいね一覧"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+        <NonStyleLink
+          key="3"
           to="/admin/account"
         >
           <ForwardRef(ListItem)
@@ -3177,6 +3204,17 @@ exports[`Shallow Snapshot Tests with userInfo 1`] = `
               </Link>
               <Link
                 key="authmenu-2"
+                to="/admin/likes"
+              >
+                <IconAndText
+                  align="left"
+                  iconComponent={<Memo />}
+                  iconPosition="left"
+                  text="いいね一覧"
+                />
+              </Link>
+              <Link
+                key="authmenu-3"
                 to="/admin/account"
               >
                 <IconAndText
@@ -3291,6 +3329,22 @@ exports[`Shallow Snapshot Tests with userInfo 1`] = `
         </NonStyleLink>
         <NonStyleLink
           key="2"
+          to="/admin/likes"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(ThumbUpIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="いいね一覧"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+        <NonStyleLink
+          key="3"
           to="/admin/account"
         >
           <ForwardRef(ListItem)

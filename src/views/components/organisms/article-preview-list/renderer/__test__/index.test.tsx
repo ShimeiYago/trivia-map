@@ -26,6 +26,7 @@ const basicProps: Props = {
   },
   variant: 'large',
   throwError: jest.fn(),
+  refreshUser: jest.fn(),
 };
 
 describe('Shallow Snapshot Tests', () => {

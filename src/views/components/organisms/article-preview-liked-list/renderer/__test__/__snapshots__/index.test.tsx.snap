@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shallow Snapshot Tests basic 1`] = `
+<Fragment>
+  <div />
+  <ForwardRef(Stack)
+    spacing={3}
+  >
+    <CenterSpinner />
+  </ForwardRef(Stack)>
+</Fragment>
+`;

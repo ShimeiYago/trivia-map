@@ -4,12 +4,18 @@ import { User } from 'types/user';
 import { AdminWrapper } from 'views/components/organisms/admin-wrapper';
 import noIcon from 'images/no-icon.jpg';
 import { BackToNavi } from 'views/components/moleculars/back-to-navi';
-import { ACCOUNT_SETTINGS_LINK, MAP_PAGE_LINK, MY_ARTICLES_LINK } from 'constant/links';
+import {
+  ACCOUNT_SETTINGS_LINK,
+  LIKED_ARTICLES_LINK,
+  MAP_PAGE_LINK,
+  MY_ARTICLES_LINK,
+} from 'constant/links';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import ListAltIcon from '@mui/icons-material/ListAlt';
 import { LinkList } from 'views/components/moleculars/link-list';
 import { PAGE_NAMES } from 'constant/page-names';
 import { SITE_NAME } from 'constant';
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 
 export class Renderer extends React.Component<Props> {
   render() {
@@ -26,6 +32,11 @@ export class Renderer extends React.Component<Props> {
         icon: <ListAltIcon />,
         text: PAGE_NAMES.articles,
         link: MY_ARTICLES_LINK,
+      },
+      {
+        icon: <ThumbUpIcon />,
+        text: PAGE_NAMES.likedArticles,
+        link: LIKED_ARTICLES_LINK,
       },
       {
         icon: <ManageAccountsIcon />,

@@ -25,6 +25,7 @@ import {
 } from 'api/articles-api/get-my-articles';
 import classes from './index.module.css';
 import { CenterSpinner } from 'views/components/atoms/center-spinner';
+import { Image } from 'views/components/moleculars/image';
 import { ARTICLE_PAGE_LINK, EDIT_LINK } from 'constant/links';
 import { autoRefreshApiWrapper } from 'utils/auto-refresh-api-wrapper';
 import { deleteRemoteArticle } from 'api/articles-api/delete-remote-article';
@@ -36,6 +37,7 @@ import { IconAndText } from 'views/components/atoms/icon-and-text';
 import FolderIcon from '@mui/icons-material/Folder';
 import { LoadingButton } from '@mui/lab';
 import { Park } from 'types/park';
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -82,13 +84,32 @@ export class Renderer extends React.Component<Props, State> {
     const { articlesPreviews } = this.state;
 
     const tableRows = articlesPreviews?.results.map((preview) => {
-      const { postId, isDraft, category } = preview;
+      const { postId, isDraft, category, image, numberOfLikes } = preview;
 
       return (
         <TableRow key={`preview-${postId}`}>
           <TableCell>{this.renderTitleAndButtons(preview)}</TableCell>
-          <TableCell>{categoryMapper(category)}</TableCell>
+          <TableCell>
+            <IconAndText
+              iconComponent={<FolderIcon fontSize="inherit" />}
+              iconPosition="left"
+              text={categoryMapper(category)}
+              align="left"
+              fontSize={14}
+            />
+          </TableCell>
           <TableCell>{isDraft ? '下書き' : '公開中'}</TableCell>
+          <TableCell>
+            <IconAndText
+              iconComponent={<ThumbUpIcon fontSize="inherit" />}
+              iconPosition="left"
+              text={String(numberOfLikes)}
+              align="left"
+            />
+          </TableCell>
+          <TableCell>
+            {image && <Image src={image} objectFit="cover" width="80px" height="80px" />}
+          </TableCell>
         </TableRow>
       );
     });
@@ -97,9 +118,11 @@ export class Renderer extends React.Component<Props, State> {
       <Table>
         <TableHead>
           <TableRow>
-            <TableCell>投稿名</TableCell>
-            <TableCell sx={{ minWidth: '30px' }}>カテゴリー</TableCell>
-            <TableCell sx={{ minWidth: '30px' }}>公開状態</TableCell>
+            <TableCell></TableCell>
+            <TableCell></TableCell>
+            <TableCell></TableCell>
+            <TableCell></TableCell>
+            <TableCell></TableCell>
           </TableRow>
         </TableHead>
         <TableBody>{tableRows}</TableBody>
@@ -111,14 +134,17 @@ export class Renderer extends React.Component<Props, State> {
     const { articlesPreviews } = this.state;
 
     const tableRows = articlesPreviews?.results.map((preview) => {
-      const { postId, isDraft, category } = preview;
+      const { postId, isDraft, category, image, numberOfLikes } = preview;
 
       return (
         <TableRow key={`preview-${postId}`}>
           <TableCell>
-            <Typography color="gray" component="div">
-              <Stack direction="row" spacing={1}>
-                <Typography variant="subtitle2">{isDraft ? '下書き' : '公開中'}</Typography>
+            <Typography color="gray" component="div" marginBottom={1}>
+              <Typography variant="subtitle2" marginBottom={1}>
+                {isDraft ? '下書き' : '公開中'}
+              </Typography>
+
+              <Stack direction="row" spacing={1} justifyContent="space-between">
                 <IconAndText
                   iconComponent={<FolderIcon fontSize="inherit" />}
                   iconPosition="left"
@@ -126,9 +152,21 @@ export class Renderer extends React.Component<Props, State> {
                   variant="subtitle2"
                   align="left"
                 />
+                <IconAndText
+                  iconComponent={<ThumbUpIcon fontSize="inherit" />}
+                  iconPosition="left"
+                  text={String(numberOfLikes)}
+                  variant="subtitle2"
+                  align="left"
+                />
               </Stack>
             </Typography>
-            {this.renderTitleAndButtons(preview)}
+            <Stack direction="row" spacing={1} justifyContent="space-between">
+              {this.renderTitleAndButtons(preview)}
+              <Box>
+                {image && <Image src={image} objectFit="cover" width="80px" height="80px" />}
+              </Box>
+            </Stack>
           </TableCell>
         </TableRow>
       );
@@ -150,12 +188,14 @@ export class Renderer extends React.Component<Props, State> {
     const { postId, title } = preview;
 
     return (
-      <Box>
-        <Typography component="h3" variant="body1" sx={{ my: 1 }}>
-          {title}
-        </Typography>
+      <Box height={80}>
+        <Stack height={55} justifyContent="center">
+          <Typography component="h3" variant="body1" sx={{ wordBreak: 'break-all' }}>
+            {title}
+          </Typography>
+        </Stack>
 
-        <Box>
+        <Box marginBottom={0}>
           <Stack direction="row" divider={<Divider orientation="vertical" flexItem />} spacing={1}>
             <NonStyleLink to={ARTICLE_PAGE_LINK(String(postId))}>
               <Button sx={{ p: 0, minWidth: 0 }}>表示</Button>
@@ -176,6 +216,34 @@ export class Renderer extends React.Component<Props, State> {
         </Box>
       </Box>
     );
+
+    // return (
+    //   <Stack justifyContent="space-between" height={80}>
+    //     <Typography component="h3" variant="body1" sx={{ mb: 1, wordBreak: 'break-all' }}>
+    //       {title}
+    //     </Typography>
+
+    //     <Box>
+    //       <Stack direction="row" divider={<Divider orientation="vertical" flexItem />} spacing={1}>
+    //         <NonStyleLink to={ARTICLE_PAGE_LINK(String(postId))}>
+    //           <Button sx={{ p: 0, minWidth: 0 }}>表示</Button>
+    //         </NonStyleLink>
+    //         <NonStyleLink to={EDIT_LINK(String(postId))}>
+    //           <Button sx={{ p: 0, minWidth: 0 }} onClick={this.props.initialize}>
+    //             編集
+    //           </Button>
+    //         </NonStyleLink>
+    //         <Button
+    //           onClick={this.openDeleteConfirmDialog(postId, title)}
+    //           disabled={this.state.deleting}
+    //           sx={{ p: 0, minWidth: 0 }}
+    //         >
+    //           削除
+    //         </Button>
+    //       </Stack>
+    //     </Box>
+    //   </Stack>
+    // );
   }
 
   protected renderPagination() {
@@ -258,7 +326,9 @@ export class Renderer extends React.Component<Props, State> {
 
     return (
       <Dialog open onClose={this.closeDeleteConfirmDialog}>
-        <DialogTitle>投稿「{deleteDialog.title}」を削除しますか？</DialogTitle>
+        <DialogTitle sx={{ wordBreak: 'break-all' }}>
+          投稿「{deleteDialog.title}」を削除しますか？
+        </DialogTitle>
         <DialogActions>
           <Button onClick={this.closeDeleteConfirmDialog}>削除しない</Button>
           <LoadingButton

@@ -134,6 +134,21 @@ exports[`Shallow Snapshot Tests only one page with large 1`] = `
                 component="div"
                 sx={
                   Object {
+                    "mb": 1,
+                  }
+                }
+              >
+                <IconAndText
+                  align="left"
+                  iconComponent={<Memo />}
+                  iconPosition="left"
+                  text="1"
+                />
+              </ForwardRef(Typography)>
+              <ForwardRef(Typography)
+                component="div"
+                sx={
+                  Object {
                     "mb": 2,
                   }
                 }
@@ -205,6 +220,21 @@ exports[`Shallow Snapshot Tests only one page with large 1`] = `
                   iconComponent={<Memo />}
                   iconPosition="left"
                   text="隠れミッキー"
+                />
+              </ForwardRef(Typography)>
+              <ForwardRef(Typography)
+                component="div"
+                sx={
+                  Object {
+                    "mb": 1,
+                  }
+                }
+              >
+                <IconAndText
+                  align="left"
+                  iconComponent={<Memo />}
+                  iconPosition="left"
+                  text="1"
                 />
               </ForwardRef(Typography)>
               <ForwardRef(Typography)
@@ -330,22 +360,44 @@ exports[`Shallow Snapshot Tests only one page with popup 1`] = `
                     />
                   </ForwardRef(Typography)>
                   <ForwardRef(Divider) />
-                  <ForwardRef(Typography)
-                    component="div"
-                    sx={
-                      Object {
-                        "pr": 2,
+                  <ForwardRef(Box)>
+                    <ForwardRef(Typography)
+                      component="div"
+                      sx={
+                        Object {
+                          "pr": 2,
+                        }
                       }
-                    }
-                  >
-                    <IconAndText
-                      align="right"
-                      fontSize={12}
-                      iconComponent={<Memo />}
-                      iconPosition="left"
-                      text="隠れミッキー"
-                    />
-                  </ForwardRef(Typography)>
+                    >
+                      <IconAndText
+                        align="right"
+                        fontSize={12}
+                        iconComponent={<Memo />}
+                        iconPosition="left"
+                        text="隠れミッキー"
+                      />
+                    </ForwardRef(Typography)>
+                    <ForwardRef(Typography)
+                      component="div"
+                      sx={
+                        Object {
+                          "pr": 2,
+                        }
+                      }
+                    >
+                      <IconAndText
+                        align="right"
+                        fontSize={14}
+                        iconComponent={
+                          <Memo
+                            fontSize="inherit"
+                          />
+                        }
+                        iconPosition="left"
+                        text="1"
+                      />
+                    </ForwardRef(Typography)>
+                  </ForwardRef(Box)>
                   <ForwardRef(Typography)
                     align="center"
                   >
@@ -392,22 +444,44 @@ exports[`Shallow Snapshot Tests only one page with popup 1`] = `
                     ノーチラス号の名前の由来
                   </ForwardRef(Typography)>
                   <ForwardRef(Divider) />
-                  <ForwardRef(Typography)
-                    component="div"
-                    sx={
-                      Object {
-                        "pr": 2,
+                  <ForwardRef(Box)>
+                    <ForwardRef(Typography)
+                      component="div"
+                      sx={
+                        Object {
+                          "pr": 2,
+                        }
                       }
-                    }
-                  >
-                    <IconAndText
-                      align="right"
-                      fontSize={12}
-                      iconComponent={<Memo />}
-                      iconPosition="left"
-                      text="隠れミッキー"
-                    />
-                  </ForwardRef(Typography)>
+                    >
+                      <IconAndText
+                        align="right"
+                        fontSize={12}
+                        iconComponent={<Memo />}
+                        iconPosition="left"
+                        text="隠れミッキー"
+                      />
+                    </ForwardRef(Typography)>
+                    <ForwardRef(Typography)
+                      component="div"
+                      sx={
+                        Object {
+                          "pr": 2,
+                        }
+                      }
+                    >
+                      <IconAndText
+                        align="right"
+                        fontSize={14}
+                        iconComponent={
+                          <Memo
+                            fontSize="inherit"
+                          />
+                        }
+                        iconPosition="left"
+                        text="1"
+                      />
+                    </ForwardRef(Typography)>
+                  </ForwardRef(Box)>
                   <ForwardRef(Typography)
                     align="center"
                   >
@@ -530,22 +604,44 @@ exports[`Shallow Snapshot Tests variant popup 1`] = `
                     />
                   </ForwardRef(Typography)>
                   <ForwardRef(Divider) />
-                  <ForwardRef(Typography)
-                    component="div"
-                    sx={
-                      Object {
-                        "pr": 2,
+                  <ForwardRef(Box)>
+                    <ForwardRef(Typography)
+                      component="div"
+                      sx={
+                        Object {
+                          "pr": 2,
+                        }
                       }
-                    }
-                  >
-                    <IconAndText
-                      align="right"
-                      fontSize={12}
-                      iconComponent={<Memo />}
-                      iconPosition="left"
-                      text="隠れミッキー"
-                    />
-                  </ForwardRef(Typography)>
+                    >
+                      <IconAndText
+                        align="right"
+                        fontSize={12}
+                        iconComponent={<Memo />}
+                        iconPosition="left"
+                        text="隠れミッキー"
+                      />
+                    </ForwardRef(Typography)>
+                    <ForwardRef(Typography)
+                      component="div"
+                      sx={
+                        Object {
+                          "pr": 2,
+                        }
+                      }
+                    >
+                      <IconAndText
+                        align="right"
+                        fontSize={14}
+                        iconComponent={
+                          <Memo
+                            fontSize="inherit"
+                          />
+                        }
+                        iconPosition="left"
+                        text="1"
+                      />
+                    </ForwardRef(Typography)>
+                  </ForwardRef(Box)>
                   <ForwardRef(Typography)
                     align="center"
                   >
@@ -592,22 +688,44 @@ exports[`Shallow Snapshot Tests variant popup 1`] = `
                     ノーチラス号の名前の由来
                   </ForwardRef(Typography)>
                   <ForwardRef(Divider) />
-                  <ForwardRef(Typography)
-                    component="div"
-                    sx={
-                      Object {
-                        "pr": 2,
+                  <ForwardRef(Box)>
+                    <ForwardRef(Typography)
+                      component="div"
+                      sx={
+                        Object {
+                          "pr": 2,
+                        }
                       }
-                    }
-                  >
-                    <IconAndText
-                      align="right"
-                      fontSize={12}
-                      iconComponent={<Memo />}
-                      iconPosition="left"
-                      text="隠れミッキー"
-                    />
-                  </ForwardRef(Typography)>
+                    >
+                      <IconAndText
+                        align="right"
+                        fontSize={12}
+                        iconComponent={<Memo />}
+                        iconPosition="left"
+                        text="隠れミッキー"
+                      />
+                    </ForwardRef(Typography)>
+                    <ForwardRef(Typography)
+                      component="div"
+                      sx={
+                        Object {
+                          "pr": 2,
+                        }
+                      }
+                    >
+                      <IconAndText
+                        align="right"
+                        fontSize={14}
+                        iconComponent={
+                          <Memo
+                            fontSize="inherit"
+                          />
+                        }
+                        iconPosition="left"
+                        text="1"
+                      />
+                    </ForwardRef(Typography)>
+                  </ForwardRef(Box)>
                   <ForwardRef(Typography)
                     align="center"
                   >
@@ -852,6 +970,21 @@ exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
                 component="div"
                 sx={
                   Object {
+                    "mb": 1,
+                  }
+                }
+              >
+                <IconAndText
+                  align="left"
+                  iconComponent={<Memo />}
+                  iconPosition="left"
+                  text="1"
+                />
+              </ForwardRef(Typography)>
+              <ForwardRef(Typography)
+                component="div"
+                sx={
+                  Object {
                     "mb": 2,
                   }
                 }
@@ -923,6 +1056,21 @@ exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
                   iconComponent={<Memo />}
                   iconPosition="left"
                   text="隠れミッキー"
+                />
+              </ForwardRef(Typography)>
+              <ForwardRef(Typography)
+                component="div"
+                sx={
+                  Object {
+                    "mb": 1,
+                  }
+                }
+              >
+                <IconAndText
+                  align="left"
+                  iconComponent={<Memo />}
+                  iconPosition="left"
+                  text="1"
                 />
               </ForwardRef(Typography)>
               <ForwardRef(Typography)

@@ -34,6 +34,7 @@ export type GetArticlesPreviewsResponseEachItem = {
   image: string | null;
   category: number;
   createdAt: string;
+  numberOfLikes: number;
 };
 
 export type GetArticlesPreviewsResponse = PaginationResponse<GetArticlesPreviewsResponseEachItem>;

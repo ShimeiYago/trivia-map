@@ -28,6 +28,7 @@ import { categoryMapper } from 'utils/category-mapper';
 import notImage from 'images/no-image-16x7.jpg';
 import FolderIcon from '@mui/icons-material/Folder';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 
 const POPUP_SCROLL_HEIGHT = '240px';
 const POPUP_SCROLL_GRADATION_HEIGHT = '50px';
@@ -82,15 +83,15 @@ export class Renderer extends React.Component<Props, State> {
     }
 
     const previewList = articlesPreviews?.results.map((preview) => {
-      const { postId, title, image, category, createdAt } = preview;
+      const { postId, title, image, category, createdAt, numberOfLikes } = preview;
 
       let card = null;
       switch (this.props.variant) {
         case 'popup':
-          card = this.renderPopupCard(title, image, category);
+          card = this.renderPopupCard(title, image, category, numberOfLikes);
           break;
         case 'large':
-          card = this.renderLargeCard(title, image, category, createdAt);
+          card = this.renderLargeCard(title, image, category, createdAt, numberOfLikes);
           break;
         case 'sidebar':
           card = this.renderSidebarCard(title, image);
@@ -134,7 +135,12 @@ export class Renderer extends React.Component<Props, State> {
     }
   }
 
-  protected renderPopupCard = (title: string, imageUrl: string | null, category: number) => {
+  protected renderPopupCard = (
+    title: string,
+    imageUrl: string | null,
+    category: number,
+    numberOfLikes: number,
+  ) => {
     return (
       <Card sx={{ ...sxProps.card, p: 1 }}>
         <Stack spacing={1}>
@@ -150,15 +156,29 @@ export class Renderer extends React.Component<Props, State> {
 
           <Divider />
 
-          <Typography sx={{ pr: 2 }} component="div">
-            <IconAndText
-              iconComponent={<FolderIcon />}
-              text={categoryMapper(category)}
-              iconPosition={'left'}
-              align="right"
-              fontSize={12}
-            />
-          </Typography>
+          <Box>
+            <Typography sx={{ pr: 2 }} component="div">
+              <IconAndText
+                iconComponent={<FolderIcon />}
+                text={categoryMapper(category)}
+                iconPosition={'left'}
+                align="right"
+                fontSize={12}
+              />
+            </Typography>
+
+            {numberOfLikes > 0 && (
+              <Typography sx={{ pr: 2 }} component="div">
+                <IconAndText
+                  iconComponent={<ThumbUpIcon fontSize="inherit" />}
+                  text={String(numberOfLikes)}
+                  iconPosition={'left'}
+                  align="right"
+                  fontSize={14}
+                />
+              </Typography>
+            )}
+          </Box>
 
           <Typography align="center">
             <IconAndText
@@ -179,6 +199,7 @@ export class Renderer extends React.Component<Props, State> {
     imageUrl: string | null,
     category: number,
     createdAt: string,
+    numberOfLikes: number,
   ) => {
     return (
       <Card sx={sxProps.card}>
@@ -187,6 +208,7 @@ export class Renderer extends React.Component<Props, State> {
           <Typography gutterBottom variant="h5" component="h3">
             {title}
           </Typography>
+
           <Typography sx={{ mb: 1 }} component="div">
             <IconAndText
               iconComponent={<FolderIcon />}
@@ -195,6 +217,18 @@ export class Renderer extends React.Component<Props, State> {
               align="left"
             />
           </Typography>
+
+          {numberOfLikes > 0 && (
+            <Typography sx={{ mb: 1 }} component="div">
+              <IconAndText
+                iconComponent={<ThumbUpIcon />}
+                text={String(numberOfLikes)}
+                iconPosition="left"
+                align="left"
+              />
+            </Typography>
+          )}
+
           <Typography sx={{ mb: 2 }} component="div">
             <IconAndText
               iconComponent={<AccessTimeIcon />}
@@ -203,6 +237,7 @@ export class Renderer extends React.Component<Props, State> {
               align="right"
             />
           </Typography>
+
           <Typography align="center" component="div">
             <IconAndText
               iconComponent={<ArrowRightIcon />}

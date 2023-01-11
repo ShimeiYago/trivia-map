@@ -83,12 +83,16 @@ export const mockGetMyArticlesResponse: GetMyArticlesResponse = {
       title: 'ノーチラス号のエンジン',
       isDraft: false,
       category: 1,
+      numberOfLikes: 1,
+      image: 'https://disneyparkstory.com/wp-content/uploads/2017/02/CIMG9800.jpg',
     },
     {
       postId: 2,
       title: 'ノーチラス号の名前の由来',
       isDraft: true,
       category: 1,
+      numberOfLikes: 1,
+      image: null,
     },
   ],
 };

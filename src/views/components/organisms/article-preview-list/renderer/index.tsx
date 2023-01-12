@@ -144,7 +144,7 @@ export class Renderer extends React.Component<Props, State> {
     return (
       <Card sx={{ ...sxProps.card, p: 1 }}>
         <Stack spacing={1}>
-          <Typography component="h2" variant="h6" align="center">
+          <Typography component="h2" variant="h6" align="center" sx={{ wordBreak: 'break-all' }}>
             {title}
           </Typography>
 
@@ -205,7 +205,7 @@ export class Renderer extends React.Component<Props, State> {
       <Card sx={sxProps.card}>
         <CardMedia component="img" className={classes['card-media']} image={imageUrl ?? notImage} />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="h3">
+          <Typography gutterBottom variant="h5" component="h3" sx={{ wordBreak: 'break-all' }}>
             {title}
           </Typography>
 
@@ -260,7 +260,12 @@ export class Renderer extends React.Component<Props, State> {
               <Image src={imageUrl ?? notImage} width="full" height="100px" objectFit="cover" />
             </Grid>
             <Grid item xs={7}>
-              <Typography gutterBottom variant="body1" component="h3">
+              <Typography
+                gutterBottom
+                variant="body1"
+                component="h3"
+                sx={{ wordBreak: 'break-all' }}
+              >
                 {title}
               </Typography>
             </Grid>

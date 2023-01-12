@@ -47,6 +47,7 @@ export class Renderer extends React.Component<Props, State> {
   componentDidUpdate(prevProps: Readonly<Props>) {
     if (prevProps.postId !== this.props.postId) {
       this.fetchArticle();
+      this.checkLikeStatus();
     }
 
     if (prevProps.user?.userId !== this.props.user?.userId) {
@@ -163,6 +164,7 @@ export class Renderer extends React.Component<Props, State> {
     this.setState({
       article: undefined,
       loadingArticleState: 'loading',
+      numberOfLikes: undefined,
     });
     try {
       const res = await autoRefreshApiWrapper(

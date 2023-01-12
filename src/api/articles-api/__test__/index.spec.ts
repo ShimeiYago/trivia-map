@@ -6,6 +6,7 @@ import { putRemoteArticle } from '../put-remote-article';
 import { deleteRemoteArticle } from '../delete-remote-article';
 import { getArticlesPreviews } from '../get-articles-previews';
 import { getMyArticles } from '../get-my-articles';
+import { patchRemoteArticle } from '../patch-remote-article';
 
 const newPosition: Position = {
   lat: 0,
@@ -194,6 +195,100 @@ describe('putRemoteArticle', () => {
         title: 'title',
         description: 'description',
         marker: newPosition,
+        isDraft: false,
+        category: 1,
+      }),
+    ).rejects.toEqual(expectedApiError);
+  });
+});
+
+describe('patchRemoteArticle', () => {
+  beforeEach(() => {
+    process.env.REACT_APP_MOCK = '';
+  });
+  afterEach(() => {
+    process.env.REACT_APP_MOCK = '';
+  });
+
+  it('handle nomal response', async () => {
+    process.env.REACT_APP_MOCK = 'normal';
+
+    const response = await patchRemoteArticle({
+      postId: 1,
+      title: 'title',
+      description: 'description',
+      isDraft: false,
+      category: 1,
+    });
+    expect(response.postId).toBe(1);
+  });
+
+  it('handle image', async () => {
+    process.env.REACT_APP_MOCK = 'normal';
+
+    const response = await patchRemoteArticle({
+      postId: 1,
+      title: 'title',
+      description: 'description',
+      isDraft: false,
+      category: 1,
+      image: {
+        dataUrl: 'data:image/png;base64,xxx',
+        fileName: 'filename',
+      },
+    });
+    expect(response.postId).toBe(1);
+  });
+
+  it('handle null image', async () => {
+    process.env.REACT_APP_MOCK = 'normal';
+
+    const response = await patchRemoteArticle({
+      postId: 1,
+      title: 'title',
+      description: 'description',
+      isDraft: false,
+      category: 1,
+      image: null,
+    });
+    expect(response.postId).toBe(1);
+  });
+
+  it('handle draft response', async () => {
+    process.env.REACT_APP_MOCK = 'normal';
+
+    const response = await patchRemoteArticle({
+      postId: 1,
+      title: 'title',
+      description: 'description',
+      isDraft: true,
+      category: 1,
+    });
+    expect(response.postId).toBe(1);
+  });
+
+  it('handle empty request', async () => {
+    process.env.REACT_APP_MOCK = 'normal';
+
+    const response = await patchRemoteArticle({
+      postId: 1,
+    });
+    expect(response.postId).toBe(1);
+  });
+
+  it('handle error response', async () => {
+    process.env.REACT_APP_MOCK = 'error';
+
+    const expectedApiError: ApiError<unknown> = {
+      status: 500,
+      data: {},
+      errorMsg: 'Intentional API Error with mock',
+    };
+    await expect(
+      patchRemoteArticle({
+        postId: 1,
+        title: 'title',
+        description: 'description',
         isDraft: false,
         category: 1,
       }),

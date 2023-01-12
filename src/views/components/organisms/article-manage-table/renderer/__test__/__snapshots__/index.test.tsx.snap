@@ -143,7 +143,33 @@ exports[`Shallow Snapshot Tests one page 1`] = `
             />
           </ForwardRef(TableCell)>
           <ForwardRef(TableCell)>
-            公開中
+            <ForwardRef(FormControl)
+              variant="standard"
+            >
+              <ForwardRef(Select)
+                onChange={[Function]}
+                value="false"
+              >
+                <ForwardRef(MenuItem)
+                  value="false"
+                >
+                  <ForwardRef(Typography)
+                    fontSize={14}
+                  >
+                    公開
+                  </ForwardRef(Typography)>
+                </ForwardRef(MenuItem)>
+                <ForwardRef(MenuItem)
+                  value="true"
+                >
+                  <ForwardRef(Typography)
+                    fontSize={14}
+                  >
+                    下書き
+                  </ForwardRef(Typography)>
+                </ForwardRef(MenuItem)>
+              </ForwardRef(Select)>
+            </ForwardRef(FormControl)>
           </ForwardRef(TableCell)>
           <ForwardRef(TableCell)>
             <IconAndText
@@ -261,7 +287,33 @@ exports[`Shallow Snapshot Tests one page 1`] = `
             />
           </ForwardRef(TableCell)>
           <ForwardRef(TableCell)>
-            下書き
+            <ForwardRef(FormControl)
+              variant="standard"
+            >
+              <ForwardRef(Select)
+                onChange={[Function]}
+                value="true"
+              >
+                <ForwardRef(MenuItem)
+                  value="false"
+                >
+                  <ForwardRef(Typography)
+                    fontSize={14}
+                  >
+                    公開
+                  </ForwardRef(Typography)>
+                </ForwardRef(MenuItem)>
+                <ForwardRef(MenuItem)
+                  value="true"
+                >
+                  <ForwardRef(Typography)
+                    fontSize={14}
+                  >
+                    下書き
+                  </ForwardRef(Typography)>
+                </ForwardRef(MenuItem)>
+              </ForwardRef(Select)>
+            </ForwardRef(FormControl)>
           </ForwardRef(TableCell)>
           <ForwardRef(TableCell)>
             <IconAndText
@@ -421,7 +473,33 @@ exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
             />
           </ForwardRef(TableCell)>
           <ForwardRef(TableCell)>
-            公開中
+            <ForwardRef(FormControl)
+              variant="standard"
+            >
+              <ForwardRef(Select)
+                onChange={[Function]}
+                value="false"
+              >
+                <ForwardRef(MenuItem)
+                  value="false"
+                >
+                  <ForwardRef(Typography)
+                    fontSize={14}
+                  >
+                    公開
+                  </ForwardRef(Typography)>
+                </ForwardRef(MenuItem)>
+                <ForwardRef(MenuItem)
+                  value="true"
+                >
+                  <ForwardRef(Typography)
+                    fontSize={14}
+                  >
+                    下書き
+                  </ForwardRef(Typography)>
+                </ForwardRef(MenuItem)>
+              </ForwardRef(Select)>
+            </ForwardRef(FormControl)>
           </ForwardRef(TableCell)>
           <ForwardRef(TableCell)>
             <IconAndText
@@ -539,7 +617,33 @@ exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
             />
           </ForwardRef(TableCell)>
           <ForwardRef(TableCell)>
-            下書き
+            <ForwardRef(FormControl)
+              variant="standard"
+            >
+              <ForwardRef(Select)
+                onChange={[Function]}
+                value="true"
+              >
+                <ForwardRef(MenuItem)
+                  value="false"
+                >
+                  <ForwardRef(Typography)
+                    fontSize={14}
+                  >
+                    公開
+                  </ForwardRef(Typography)>
+                </ForwardRef(MenuItem)>
+                <ForwardRef(MenuItem)
+                  value="true"
+                >
+                  <ForwardRef(Typography)
+                    fontSize={14}
+                  >
+                    下書き
+                  </ForwardRef(Typography)>
+                </ForwardRef(MenuItem)>
+              </ForwardRef(Select)>
+            </ForwardRef(FormControl)>
           </ForwardRef(TableCell)>
           <ForwardRef(TableCell)>
             <IconAndText
@@ -609,12 +713,37 @@ exports[`Shallow Snapshot Tests with articlesPreviews mobile view 1`] = `
               component="div"
               marginBottom={1}
             >
-              <ForwardRef(Typography)
-                marginBottom={1}
-                variant="subtitle2"
+              <ForwardRef(Box)
+                marginBottom={2}
               >
-                公開中
-              </ForwardRef(Typography)>
+                <ForwardRef(FormControl)
+                  variant="standard"
+                >
+                  <ForwardRef(Select)
+                    onChange={[Function]}
+                    value="false"
+                  >
+                    <ForwardRef(MenuItem)
+                      value="false"
+                    >
+                      <ForwardRef(Typography)
+                        variant="subtitle2"
+                      >
+                        公開
+                      </ForwardRef(Typography)>
+                    </ForwardRef(MenuItem)>
+                    <ForwardRef(MenuItem)
+                      value="true"
+                    >
+                      <ForwardRef(Typography)
+                        variant="subtitle2"
+                      >
+                        下書き
+                      </ForwardRef(Typography)>
+                    </ForwardRef(MenuItem)>
+                  </ForwardRef(Select)>
+                </ForwardRef(FormControl)>
+              </ForwardRef(Box)>
               <ForwardRef(Stack)
                 direction="row"
                 justifyContent="space-between"
@@ -745,12 +874,37 @@ exports[`Shallow Snapshot Tests with articlesPreviews mobile view 1`] = `
               component="div"
               marginBottom={1}
             >
-              <ForwardRef(Typography)
-                marginBottom={1}
-                variant="subtitle2"
+              <ForwardRef(Box)
+                marginBottom={2}
               >
-                下書き
-              </ForwardRef(Typography)>
+                <ForwardRef(FormControl)
+                  variant="standard"
+                >
+                  <ForwardRef(Select)
+                    onChange={[Function]}
+                    value="true"
+                  >
+                    <ForwardRef(MenuItem)
+                      value="false"
+                    >
+                      <ForwardRef(Typography)
+                        variant="subtitle2"
+                      >
+                        公開
+                      </ForwardRef(Typography)>
+                    </ForwardRef(MenuItem)>
+                    <ForwardRef(MenuItem)
+                      value="true"
+                    >
+                      <ForwardRef(Typography)
+                        variant="subtitle2"
+                      >
+                        下書き
+                      </ForwardRef(Typography)>
+                    </ForwardRef(MenuItem)>
+                  </ForwardRef(Select)>
+                </ForwardRef(FormControl)>
+              </ForwardRef(Box)>
               <ForwardRef(Stack)
                 direction="row"
                 justifyContent="space-between"
@@ -871,7 +1025,7 @@ exports[`Shallow Snapshot Tests with articlesPreviews mobile view 1`] = `
 </Fragment>
 `;
 
-exports[`Shallow Snapshot Tests with dialog 1`] = `
+exports[`Shallow Snapshot Tests with delete dialog 1`] = `
 <Fragment>
   <ForwardRef(Stack)
     spacing={1}
@@ -922,7 +1076,7 @@ exports[`Shallow Snapshot Tests with dialog 1`] = `
 </Fragment>
 `;
 
-exports[`Shallow Snapshot Tests with meesage 1`] = `
+exports[`Shallow Snapshot Tests with message 1`] = `
 <Fragment>
   <ForwardRef(Stack)
     spacing={1}
@@ -958,5 +1112,103 @@ exports[`Shallow Snapshot Tests with meesage 1`] = `
       message
     </ForwardRef(Alert)>
   </ForwardRef(Snackbar)>
+</Fragment>
+`;
+
+exports[`Shallow Snapshot Tests with switch draft dialog to switch to draft 1`] = `
+<Fragment>
+  <ForwardRef(Stack)
+    spacing={1}
+  >
+    <ForwardRef(Table)>
+      <ForwardRef(TableHead)>
+        <ForwardRef(TableRow)>
+          <ForwardRef(TableCell) />
+          <ForwardRef(TableCell) />
+          <ForwardRef(TableCell) />
+          <ForwardRef(TableCell) />
+          <ForwardRef(TableCell) />
+        </ForwardRef(TableRow)>
+      </ForwardRef(TableHead)>
+      <ForwardRef(TableBody) />
+    </ForwardRef(Table)>
+  </ForwardRef(Stack)>
+  <ForwardRef(Dialog)
+    onClose={[Function]}
+    open={true}
+  >
+    <ForwardRef(DialogTitle)
+      sx={
+        Object {
+          "wordBreak": "break-all",
+        }
+      }
+    >
+      投稿「title」を下書き（非公開）に切り替えますか？
+    </ForwardRef(DialogTitle)>
+    <ForwardRef(DialogActions)>
+      <ForwardRef(Button)
+        onClick={[Function]}
+      >
+        いいえ
+      </ForwardRef(Button)>
+      <ForwardRef(LoadingButton)
+        autoFocus={true}
+        loading={false}
+        onClick={[Function]}
+      >
+        はい
+      </ForwardRef(LoadingButton)>
+    </ForwardRef(DialogActions)>
+  </ForwardRef(Dialog)>
+</Fragment>
+`;
+
+exports[`Shallow Snapshot Tests with switch draft dialog to switch to public 1`] = `
+<Fragment>
+  <ForwardRef(Stack)
+    spacing={1}
+  >
+    <ForwardRef(Table)>
+      <ForwardRef(TableHead)>
+        <ForwardRef(TableRow)>
+          <ForwardRef(TableCell) />
+          <ForwardRef(TableCell) />
+          <ForwardRef(TableCell) />
+          <ForwardRef(TableCell) />
+          <ForwardRef(TableCell) />
+        </ForwardRef(TableRow)>
+      </ForwardRef(TableHead)>
+      <ForwardRef(TableBody) />
+    </ForwardRef(Table)>
+  </ForwardRef(Stack)>
+  <ForwardRef(Dialog)
+    onClose={[Function]}
+    open={true}
+  >
+    <ForwardRef(DialogTitle)
+      sx={
+        Object {
+          "wordBreak": "break-all",
+        }
+      }
+    >
+      投稿「title」を公開しますか？
+    </ForwardRef(DialogTitle)>
+    <ForwardRef(DialogActions)>
+      <ForwardRef(Button)
+        onClick={[Function]}
+      >
+        いいえ
+      </ForwardRef(Button)>
+      <ForwardRef(LoadingButton)
+        autoFocus={true}
+        loading={false}
+        onClick={[Function]}
+      >
+        はい
+      </ForwardRef(LoadingButton)>
+    </ForwardRef(DialogActions)>
+  </ForwardRef(Dialog)>
 </Fragment>
 `;

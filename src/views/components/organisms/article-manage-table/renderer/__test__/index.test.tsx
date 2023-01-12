@@ -2,11 +2,14 @@ import { shallow, ShallowWrapper } from 'enzyme';
 import { Renderer, Props, State } from '..';
 import * as GetMyArticlesApiModule from 'api/articles-api/get-my-articles';
 import * as DeleteArticleApiModule from 'api/articles-api/delete-remote-article';
+import * as PatchArticleApiModule from 'api/articles-api/patch-remote-article';
 import { mockGetMyArticlesResponse } from 'api/mock/articles-response';
+import { SelectChangeEvent } from '@mui/material';
 
 let wrapper: ShallowWrapper<Props, State, Renderer>;
 let getMyArticlesSpy: jest.SpyInstance;
 let deleteArticleSpy: jest.SpyInstance;
+let patchArticleSpy: jest.SpyInstance;
 
 const basicProps: Props = {
   throwError: jest.fn(),
@@ -68,7 +71,7 @@ describe('Shallow Snapshot Tests', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('with meesage', () => {
+  it('with message', () => {
     wrapper.setState({
       loadingState: 'success',
       message: {
@@ -79,12 +82,36 @@ describe('Shallow Snapshot Tests', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('with dialog', () => {
+  it('with delete dialog', () => {
     wrapper.setState({
       loadingState: 'success',
       deleteDialog: {
         postId: 1,
         title: 'title',
+      },
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('with switch draft dialog to switch to draft', () => {
+    wrapper.setState({
+      loadingState: 'success',
+      switchDraftDialog: {
+        postId: 1,
+        title: 'title',
+        isDraft: true,
+      },
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('with switch draft dialog to switch to public', () => {
+    wrapper.setState({
+      loadingState: 'success',
+      switchDraftDialog: {
+        postId: 1,
+        title: 'title',
+        isDraft: false,
       },
     });
     expect(wrapper).toMatchSnapshot();
@@ -212,5 +239,109 @@ describe('closeDeleteConfirmDialog', () => {
 
     instance['closeDeleteConfirmDialog']();
     expect(instance.state.deleteDialog).toBe(undefined);
+  });
+});
+
+describe('switchDraftStatus', () => {
+  beforeEach(() => {
+    jest.resetAllMocks();
+    patchArticleSpy = jest.spyOn(PatchArticleApiModule, 'patchRemoteArticle');
+  });
+
+  it('should set success states if api calling succeed', async () => {
+    patchArticleSpy.mockResolvedValue({});
+
+    wrapper = shallow(<Renderer {...basicProps} />);
+    const instance = wrapper.instance();
+    await instance['switchDraftStatus'](1, true, 'title')();
+
+    expect(instance.state.message?.type).toBe('success');
+  });
+
+  it('should set success states if api calling succeed with isDraft false', async () => {
+    patchArticleSpy.mockResolvedValue({});
+
+    wrapper = shallow(<Renderer {...basicProps} />);
+    const instance = wrapper.instance();
+    await instance['switchDraftStatus'](1, false, 'title')();
+
+    expect(instance.state.message?.type).toBe('success');
+  });
+
+  it('should call fetchMarkers if park is defined', async () => {
+    patchArticleSpy.mockResolvedValue({});
+
+    wrapper = shallow(<Renderer {...basicProps} park="S" />);
+    const instance = wrapper.instance();
+    await instance['switchDraftStatus'](1, true, 'title')();
+
+    expect(instance.props.fetchMarkers).toBeCalled();
+  });
+
+  it('should set error states if api calling fail', async () => {
+    patchArticleSpy.mockRejectedValue(new Error());
+
+    wrapper = shallow(<Renderer {...basicProps} />);
+    const instance = wrapper.instance();
+    await instance['switchDraftStatus'](1, true, 'title')();
+
+    expect(instance.state.message?.type).toBe('error');
+  });
+});
+
+describe('handleChangeDraftStatus', () => {
+  it('should change switchDraftDialog state to switch to draft', () => {
+    wrapper = shallow(<Renderer {...basicProps} />);
+    const instance = wrapper.instance();
+
+    instance['handleChangeDraftStatus']({
+      postId: 1,
+      isDraft: true,
+      title: 'title',
+      category: 1,
+      numberOfLikes: 1,
+      image: null,
+    })({ target: { value: 'true' } } as SelectChangeEvent);
+    expect(instance.state.switchDraftDialog).toEqual({
+      postId: 1,
+      title: 'title',
+      isDraft: true,
+    });
+  });
+
+  it('should change switchDraftDialog state to switch to public', () => {
+    wrapper = shallow(<Renderer {...basicProps} />);
+    const instance = wrapper.instance();
+
+    instance['handleChangeDraftStatus']({
+      postId: 1,
+      isDraft: false,
+      title: 'title',
+      category: 1,
+      numberOfLikes: 1,
+      image: null,
+    })({ target: { value: 'false' } } as SelectChangeEvent);
+    expect(instance.state.switchDraftDialog).toEqual({
+      postId: 1,
+      title: 'title',
+      isDraft: false,
+    });
+  });
+});
+
+describe('closeSwitchDraftConfirmDialog', () => {
+  it('should refresh switchDraftDialog state', () => {
+    wrapper = shallow(<Renderer {...basicProps} />);
+    wrapper.setState({
+      switchDraftDialog: {
+        postId: 1,
+        title: 'title',
+        isDraft: true,
+      },
+    });
+    const instance = wrapper.instance();
+
+    instance['closeSwitchDraftConfirmDialog']();
+    expect(instance.state.switchDraftDialog).toBe(undefined);
   });
 });

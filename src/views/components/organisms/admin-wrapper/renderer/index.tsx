@@ -13,19 +13,19 @@ export class Renderer extends React.Component<Props> {
   render() {
     const { autoLoggingInState, loggedOutSuccessfully } = this.props;
 
-    if (autoLoggingInState === 'error' || !this.props.user) {
-      if (loggedOutSuccessfully) {
-        return <Navigate to={MAP_PAGE_LINK} />;
-      }
-      return <Navigate to={LOGIN_LINK} />;
-    }
-
     if (autoLoggingInState === 'waiting' || autoLoggingInState === 'loading') {
       return (
         <Box sx={{ mt: 3 }}>
           <CenterSpinner />
         </Box>
       );
+    }
+
+    if (autoLoggingInState === 'error' || !this.props.user) {
+      if (loggedOutSuccessfully) {
+        return <Navigate to={MAP_PAGE_LINK} />;
+      }
+      return <Navigate to={LOGIN_LINK} />;
     }
 
     const { isMobile, children } = this.props;

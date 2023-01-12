@@ -16,6 +16,10 @@ import {
   Button,
   Box,
   Divider,
+  Select,
+  MenuItem,
+  FormControl,
+  SelectChangeEvent,
 } from '@mui/material';
 import { LoadingState } from 'types/loading-state';
 import {
@@ -38,6 +42,7 @@ import FolderIcon from '@mui/icons-material/Folder';
 import { LoadingButton } from '@mui/lab';
 import { Park } from 'types/park';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import { patchRemoteArticle } from 'api/articles-api/patch-remote-article';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -45,6 +50,7 @@ export class Renderer extends React.Component<Props, State> {
     this.state = {
       loadingState: 'waiting',
       deleting: false,
+      swichingDraft: false,
     };
   }
 
@@ -57,6 +63,7 @@ export class Renderer extends React.Component<Props, State> {
       <>
         {this.renderTable()}
         {this.renderDeleteConfirmDialog()}
+        {this.renderSwitchDraftStatusConfirmMessage()}
         {this.renderMessage()}
       </>
     );
@@ -98,7 +105,18 @@ export class Renderer extends React.Component<Props, State> {
               fontSize={14}
             />
           </TableCell>
-          <TableCell>{isDraft ? '下書き' : '公開中'}</TableCell>
+          <TableCell>
+            <FormControl variant="standard">
+              <Select value={String(isDraft)} onChange={this.handleChangeDraftStatus(preview)}>
+                <MenuItem value="false">
+                  <Typography fontSize={14}>公開</Typography>
+                </MenuItem>
+                <MenuItem value="true">
+                  <Typography fontSize={14}>下書き</Typography>
+                </MenuItem>
+              </Select>
+            </FormControl>
+          </TableCell>
           <TableCell>
             <IconAndText
               iconComponent={<ThumbUpIcon fontSize="inherit" />}
@@ -140,9 +158,18 @@ export class Renderer extends React.Component<Props, State> {
         <TableRow key={`preview-${postId}`}>
           <TableCell>
             <Typography color="gray" component="div" marginBottom={1}>
-              <Typography variant="subtitle2" marginBottom={1}>
-                {isDraft ? '下書き' : '公開中'}
-              </Typography>
+              <Box marginBottom={2}>
+                <FormControl variant="standard">
+                  <Select value={String(isDraft)} onChange={this.handleChangeDraftStatus(preview)}>
+                    <MenuItem value="false">
+                      <Typography variant="subtitle2">公開</Typography>
+                    </MenuItem>
+                    <MenuItem value="true">
+                      <Typography variant="subtitle2">下書き</Typography>
+                    </MenuItem>
+                  </Select>
+                </FormControl>
+              </Box>
 
               <Stack direction="row" spacing={1} justifyContent="space-between">
                 <IconAndText
@@ -216,34 +243,6 @@ export class Renderer extends React.Component<Props, State> {
         </Box>
       </Box>
     );
-
-    // return (
-    //   <Stack justifyContent="space-between" height={80}>
-    //     <Typography component="h3" variant="body1" sx={{ mb: 1, wordBreak: 'break-all' }}>
-    //       {title}
-    //     </Typography>
-
-    //     <Box>
-    //       <Stack direction="row" divider={<Divider orientation="vertical" flexItem />} spacing={1}>
-    //         <NonStyleLink to={ARTICLE_PAGE_LINK(String(postId))}>
-    //           <Button sx={{ p: 0, minWidth: 0 }}>表示</Button>
-    //         </NonStyleLink>
-    //         <NonStyleLink to={EDIT_LINK(String(postId))}>
-    //           <Button sx={{ p: 0, minWidth: 0 }} onClick={this.props.initialize}>
-    //             編集
-    //           </Button>
-    //         </NonStyleLink>
-    //         <Button
-    //           onClick={this.openDeleteConfirmDialog(postId, title)}
-    //           disabled={this.state.deleting}
-    //           sx={{ p: 0, minWidth: 0 }}
-    //         >
-    //           削除
-    //         </Button>
-    //       </Stack>
-    //     </Box>
-    //   </Stack>
-    // );
   }
 
   protected renderPagination() {
@@ -343,6 +342,34 @@ export class Renderer extends React.Component<Props, State> {
     );
   }
 
+  protected renderSwitchDraftStatusConfirmMessage() {
+    const { switchDraftDialog, swichingDraft } = this.state;
+    if (!switchDraftDialog) {
+      return null;
+    }
+
+    const { title, isDraft, postId } = switchDraftDialog;
+    const message = isDraft
+      ? `投稿「${title}」を下書き（非公開）に切り替えますか？`
+      : `投稿「${title}」を公開しますか？`;
+
+    return (
+      <Dialog open onClose={this.closeSwitchDraftConfirmDialog}>
+        <DialogTitle sx={{ wordBreak: 'break-all' }}>{message}</DialogTitle>
+        <DialogActions>
+          <Button onClick={this.closeSwitchDraftConfirmDialog}>いいえ</Button>
+          <LoadingButton
+            onClick={this.switchDraftStatus(postId, isDraft, title)}
+            autoFocus
+            loading={swichingDraft}
+          >
+            はい
+          </LoadingButton>
+        </DialogActions>
+      </Dialog>
+    );
+  }
+
   protected openDeleteConfirmDialog = (postId: number, title: string) => () => {
     this.setState({
       deleteDialog: {
@@ -355,6 +382,12 @@ export class Renderer extends React.Component<Props, State> {
   protected closeDeleteConfirmDialog = () => {
     this.setState({
       deleteDialog: undefined,
+    });
+  };
+
+  protected closeSwitchDraftConfirmDialog = () => {
+    this.setState({
+      switchDraftDialog: undefined,
     });
   };
 
@@ -397,6 +430,56 @@ export class Renderer extends React.Component<Props, State> {
       message: undefined,
     });
   };
+
+  protected handleChangeDraftStatus =
+    (preview: GetMyArticlesResponseEachItem) => (e: SelectChangeEvent) => {
+      const { title, postId } = preview;
+
+      this.setState({
+        switchDraftDialog: {
+          title: title,
+          isDraft: e.target.value === 'false' ? false : true,
+          postId: postId,
+        },
+      });
+    };
+
+  protected switchDraftStatus = (postId: number, isDraft: boolean, title: string) => async () => {
+    const { park, fetchMarkers, refreshUser } = this.props;
+
+    this.setState({
+      message: undefined,
+      swichingDraft: true,
+    });
+
+    try {
+      await autoRefreshApiWrapper(
+        () => patchRemoteArticle({ postId: postId, isDraft: isDraft }),
+        refreshUser,
+      );
+      park && fetchMarkers(park);
+
+      this.setState({
+        message: {
+          text: isDraft ? `「${title}」を下書きに切り替えました。` : `「${title}」を公開しました。`,
+          type: 'success',
+        },
+        swichingDraft: false,
+        switchDraftDialog: undefined,
+      });
+      this.fetchArticlesPreviews(this.state.articlesPreviews?.currentPage);
+    } catch (error) {
+      const apiError = error as ApiError<unknown>;
+      this.setState({
+        message: {
+          text: globalAPIErrorMessage(apiError.status, 'submit'),
+          type: 'error',
+        },
+        swichingDraft: false,
+        switchDraftDialog: undefined,
+      });
+    }
+  };
 }
 
 export type Props = {
@@ -414,6 +497,12 @@ export type State = {
   deleteDialog?: {
     postId: number;
     title: string;
+  };
+  swichingDraft: boolean;
+  switchDraftDialog?: {
+    postId: number;
+    title: string;
+    isDraft: boolean;
   };
   articlesPreviews?: GetMyArticlesResponse;
   message?: {

@@ -31,6 +31,8 @@ export type GetMyArticlesResponseEachItem = {
   title: string;
   category: number;
   isDraft: boolean;
+  image: string | null;
+  numberOfLikes: number;
 };
 
 export type GetMyArticlesResponse = PaginationResponse<GetMyArticlesResponseEachItem>;

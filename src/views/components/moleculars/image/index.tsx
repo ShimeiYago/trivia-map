@@ -44,4 +44,4 @@ export type Props = {
   onClick?: () => void;
 };
 
-type Sizes = 'full' | '100px' | '200px' | '300px';
+type Sizes = 'full' | '80px' | '100px' | '200px' | '300px';

@@ -2,13 +2,20 @@ import { shallow, ShallowWrapper } from 'enzyme';
 import { Renderer, Props, State } from '..';
 import * as TwitterRequestTokenModule from 'api/auths-api/twitter-request-token';
 import { mockTwitterRequestTokenResponse } from 'api/mock/auths-response/twitter-request-token';
+import * as TwitterLoginnModule from 'api/auths-api/twitter-login';
+import { mockLoginResponse } from 'api/mock/auths-response/login';
+import { mockTwitterAccessTokenResponse } from 'api/mock/auths-response/twitter-access-token';
+import { TwitterAccessTokenResponse } from 'api/auths-api/twitter-access-token';
 
 let wrapper: ShallowWrapper<Props, State, Renderer>;
 let twitterRequestTokenSpy: jest.SpyInstance;
+let twitterLoginSpy: jest.SpyInstance;
 
 const basicProps: Props = {
-  redirectTo: jest.fn(),
   throwError: jest.fn(),
+  loginSuccess: jest.fn(),
+  setAccessTokenExpiration: jest.fn(),
+  setRefreshTokenExpiration: jest.fn(),
 };
 
 describe('Shallow Snapshot Tests', () => {
@@ -22,37 +29,72 @@ describe('Shallow Snapshot Tests', () => {
 });
 
 describe('handleClick', () => {
-  const origWindowLocation = window.location;
-
   beforeEach(() => {
     twitterRequestTokenSpy = jest.spyOn(TwitterRequestTokenModule, 'twitterRequestToken');
+    wrapper = shallow(<Renderer {...basicProps} />);
+    jest.spyOn(window, 'addEventListener').mockResolvedValue({} as never);
+    jest.spyOn(window, 'open').mockResolvedValue({} as never);
   });
 
   afterEach(() => {
     jest.resetAllMocks();
-    window.location = origWindowLocation;
   });
 
-  it('should redirect to authenticateUrl', async () => {
+  it('should open window', async () => {
     twitterRequestTokenSpy.mockResolvedValue(mockTwitterRequestTokenResponse);
 
-    wrapper = shallow(<Renderer {...basicProps} />);
     const instance = wrapper.instance();
-
     await instance['handleClick']();
 
-    expect(instance.props.redirectTo).toBeCalledWith(
-      mockTwitterRequestTokenResponse.authenticateUrl,
-    );
+    expect(instance.props.throwError).not.toBeCalled();
   });
 
   it('should throw error if api is failed', async () => {
     twitterRequestTokenSpy.mockRejectedValue({});
 
-    wrapper = shallow(<Renderer {...basicProps} />);
     const instance = wrapper.instance();
 
     await instance['handleClick']();
+
+    expect(instance.props.throwError).toBeCalled();
+  });
+});
+
+describe('handleMessage', () => {
+  const event = {
+    data: mockTwitterAccessTokenResponse,
+  } as MessageEvent<TwitterAccessTokenResponse>;
+
+  beforeEach(() => {
+    twitterLoginSpy = jest.spyOn(TwitterLoginnModule, 'twitterLogin');
+    wrapper = shallow(<Renderer {...basicProps} />);
+    wrapper.setState({
+      loading: true,
+    });
+
+    jest.spyOn(window, 'addEventListener').mockResolvedValue({} as never);
+    jest.spyOn(window, 'open').mockResolvedValue({} as never);
+  });
+
+  afterEach(() => {
+    jest.resetAllMocks();
+  });
+
+  it('should set loading state false', async () => {
+    twitterLoginSpy.mockResolvedValue(mockLoginResponse);
+    const instance = wrapper.instance();
+
+    await instance['handleMessage'](event);
+
+    expect(instance.state.loading).toBeFalsy();
+  });
+
+  it('should throw error if api is failed', async () => {
+    twitterLoginSpy.mockRejectedValue({});
+
+    const instance = wrapper.instance();
+
+    await instance['handleMessage'](event);
 
     expect(instance.props.throwError).toBeCalled();
   });

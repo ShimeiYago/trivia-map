@@ -1,14 +1,12 @@
 import { shallow, ShallowWrapper } from 'enzyme';
-import { Renderer, Props, State } from '..';
+import { Renderer, Props } from '..';
 import * as TwitterAccessTokenModule from 'api/auths-api/twitter-access-token';
-import * as TwitterLoginModule from 'api/auths-api/twitter-login';
 import { mockTwitterAccessTokenResponse } from 'api/mock/auths-response/twitter-access-token';
-import { mockLoginResponse } from 'api/mock/auths-response/login';
 
-let wrapper: ShallowWrapper<Props, State, Renderer>;
+let wrapper: ShallowWrapper<Props, null, Renderer>;
 
 let twitterAccessTokenSpy: jest.SpyInstance;
-let twitterLoginSpy: jest.SpyInstance;
+let windowSpy: jest.SpyInstance;
 
 const basicProps: Props = {
   oauthToken: 'xxxxx',
@@ -23,39 +21,44 @@ describe('Shallow Snapshot Tests', () => {
   beforeEach(() => {
     wrapper = shallow(<Renderer {...basicProps} />);
     twitterAccessTokenSpy = jest.spyOn(TwitterAccessTokenModule, 'twitterAccessToken');
-    twitterLoginSpy = jest.spyOn(TwitterLoginModule, 'twitterLogin');
   });
 
   it('basic', () => {
     expect(wrapper).toMatchSnapshot();
   });
-
-  it('redirect', () => {
-    wrapper.setState({
-      redirect: true,
-    });
-    expect(wrapper).toMatchSnapshot();
-  });
 });
 
-describe('twitterLogin', () => {
-  it('should change redirect state if scceed', async () => {
-    twitterAccessTokenSpy.mockResolvedValue(mockTwitterAccessTokenResponse);
-    twitterLoginSpy.mockResolvedValue(mockLoginResponse);
+describe('getTwitterAccessToken', () => {
+  const origWindow = { ...window };
 
+  beforeEach(() => {
     wrapper = shallow(<Renderer {...basicProps} />);
+    twitterAccessTokenSpy = jest.spyOn(TwitterAccessTokenModule, 'twitterAccessToken');
+    windowSpy = jest.spyOn(global, 'window', 'get');
+    windowSpy.mockImplementation(() => ({
+      ...origWindow,
+      opener: { postMessage: jest.fn() },
+      close: jest.fn(),
+    }));
+  });
+
+  afterEach(() => {
+    jest.resetAllMocks();
+  });
+
+  it('should post message to parent window and close self window', async () => {
+    twitterAccessTokenSpy.mockResolvedValue(mockTwitterAccessTokenResponse);
+
     const instance = wrapper.instance();
-    await instance['twitterLogin']();
-    expect(instance.state.redirect).toBeTruthy();
+    await instance['getTwitterAccessToken']();
+    expect(instance.props.throwError).not.toBeCalled();
   });
 
   it('should throw error if failed', async () => {
-    twitterAccessTokenSpy.mockResolvedValue(mockTwitterAccessTokenResponse);
-    twitterLoginSpy.mockRejectedValue({});
+    twitterAccessTokenSpy.mockRejectedValue({});
 
-    wrapper = shallow(<Renderer {...basicProps} />);
     const instance = wrapper.instance();
-    await instance['twitterLogin']();
+    await instance['getTwitterAccessToken']();
     expect(instance.props.throwError).toBeCalled();
   });
 });

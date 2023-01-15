@@ -2,6 +2,7 @@
 
 exports[`Shallow Snapshot Tests basic 1`] = `
 <ForwardRef(LoadingButton)
+  disabled={false}
   fullWidth={true}
   loading={false}
   onClick={[Function]}

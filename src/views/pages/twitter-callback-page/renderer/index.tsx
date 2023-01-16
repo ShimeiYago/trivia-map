@@ -3,6 +3,7 @@ import { Box, Typography } from '@mui/material';
 import { CenterSpinner } from 'views/components/atoms/center-spinner';
 import { twitterAccessToken } from 'api/auths-api/twitter-access-token';
 import { User } from 'types/user';
+import { getDomain } from 'utils/get-domain.ts';
 
 export class Renderer extends React.Component<Props> {
   componentDidMount() {
@@ -27,7 +28,7 @@ export class Renderer extends React.Component<Props> {
         oauthVerifier: this.props.oauthVerifier,
       });
 
-      window.opener.postMessage(twitterAccessTokenResponse);
+      window.opener.postMessage(twitterAccessTokenResponse, getDomain(window));
       window.close();
     } catch (e: unknown) {
       this.props.throwError(500);

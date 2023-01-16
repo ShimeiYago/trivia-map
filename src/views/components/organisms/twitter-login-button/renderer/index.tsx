@@ -14,7 +14,11 @@ export class Renderer extends React.Component<Props, State> {
   };
 
   componentDidMount() {
-    window.addEventListener('message', this.handleMessage);
+    window.onmessage = this.handleMessage;
+  }
+
+  componentWillUnmount() {
+    window.onmessage = null;
   }
 
   render() {
@@ -34,12 +38,14 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   protected handleMessage = async (event: MessageEvent<TwitterAccessTokenResponse>) => {
+    if (event.origin !== getDomain(window) || !event.data.accessToken) {
+      return;
+    }
+
     const twitterAccessTokenResponse = event.data;
 
     try {
       const loginResponse = await twitterLogin(twitterAccessTokenResponse);
-
-      this.props.loginSuccess(loginResponse.user);
 
       this.props.setAccessTokenExpiration(new Date(loginResponse.access_token_expiration));
       this.props.setRefreshTokenExpiration(new Date(loginResponse.refresh_token_expiration));
@@ -47,6 +53,8 @@ export class Renderer extends React.Component<Props, State> {
       this.setState({
         loading: false,
       });
+
+      this.props.loginSuccess(loginResponse.user);
     } catch (error) {
       this.props.throwError(500);
     }

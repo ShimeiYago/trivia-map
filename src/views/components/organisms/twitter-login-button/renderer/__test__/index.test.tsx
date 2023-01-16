@@ -32,7 +32,6 @@ describe('handleClick', () => {
   beforeEach(() => {
     twitterRequestTokenSpy = jest.spyOn(TwitterRequestTokenModule, 'twitterRequestToken');
     wrapper = shallow(<Renderer {...basicProps} />);
-    jest.spyOn(window, 'addEventListener').mockResolvedValue({} as never);
     jest.spyOn(window, 'open').mockResolvedValue({} as never);
   });
 
@@ -60,9 +59,28 @@ describe('handleClick', () => {
   });
 });
 
+describe('componentWillUnmount', () => {
+  beforeEach(() => {
+    wrapper = shallow(<Renderer {...basicProps} />);
+  });
+
+  afterEach(() => {
+    jest.resetAllMocks();
+  });
+
+  it('should set null as onmessage', async () => {
+    const instance = wrapper.instance();
+
+    instance['componentWillUnmount']();
+
+    expect(window.onmessage).toBeNull();
+  });
+});
+
 describe('handleMessage', () => {
   const event = {
     data: mockTwitterAccessTokenResponse,
+    origin: 'http://localhost',
   } as MessageEvent<TwitterAccessTokenResponse>;
 
   beforeEach(() => {
@@ -72,7 +90,6 @@ describe('handleMessage', () => {
       loading: true,
     });
 
-    jest.spyOn(window, 'addEventListener').mockResolvedValue({} as never);
     jest.spyOn(window, 'open').mockResolvedValue({} as never);
   });
 
@@ -97,5 +114,18 @@ describe('handleMessage', () => {
     await instance['handleMessage'](event);
 
     expect(instance.props.throwError).toBeCalled();
+  });
+
+  it('should return without any process', async () => {
+    const event = {
+      data: mockTwitterAccessTokenResponse,
+      origin: 'xxx',
+    } as MessageEvent<TwitterAccessTokenResponse>;
+
+    const instance = wrapper.instance();
+
+    await instance['handleMessage'](event);
+
+    expect(instance.state.loading).toBeTruthy();
   });
 });

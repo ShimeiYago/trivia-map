@@ -20,10 +20,13 @@ import {
   MenuItem,
   FormControl,
   SelectChangeEvent,
+  Grid,
+  InputLabel,
 } from '@mui/material';
 import { LoadingState } from 'types/loading-state';
 import {
   getMyArticles,
+  GetMyArticlesParam,
   GetMyArticlesResponse,
   GetMyArticlesResponseEachItem,
 } from 'api/articles-api/get-my-articles';
@@ -43,6 +46,7 @@ import { LoadingButton } from '@mui/lab';
 import { Park } from 'types/park';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import { patchRemoteArticle } from 'api/articles-api/patch-remote-article';
+import { CATEGORIES } from 'constant';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -51,6 +55,7 @@ export class Renderer extends React.Component<Props, State> {
       loadingState: 'waiting',
       deleting: false,
       swichingDraft: false,
+      searchParam: {},
     };
   }
 
@@ -61,6 +66,8 @@ export class Renderer extends React.Component<Props, State> {
   render() {
     return (
       <>
+        {this.renderSearchOptions()}
+
         {this.renderTable()}
         {this.renderDeleteConfirmDialog()}
         {this.renderSwitchDraftStatusConfirmMessage()}
@@ -302,7 +309,10 @@ export class Renderer extends React.Component<Props, State> {
     });
 
     try {
-      const res = await autoRefreshApiWrapper(() => getMyArticles(page), this.props.refreshUser);
+      const res = await autoRefreshApiWrapper(
+        () => getMyArticles({ page, ...this.state.searchParam }),
+        this.props.refreshUser,
+      );
 
       this.setState({
         loadingState: 'success',
@@ -480,6 +490,71 @@ export class Renderer extends React.Component<Props, State> {
       });
     }
   };
+
+  protected renderSearchOptions = () => {
+    const { searchParam } = this.state;
+    const categoryValue = searchParam.category !== undefined ? String(searchParam.category) : '';
+
+    const menuItems = CATEGORIES.map((category) => (
+      <MenuItem key={`category-${category.categoryId}`} value={category.categoryId.toString()}>
+        {category.categoryName}
+      </MenuItem>
+    ));
+
+    const parkValue = searchParam.park !== undefined ? String(searchParam.park) : '';
+
+    return (
+      <Grid container spacing={2} marginBottom={3}>
+        <Grid item xs={6}>
+          <FormControl size="small" fullWidth>
+            <InputLabel>カテゴリー</InputLabel>
+            <Select value={categoryValue} label="カテゴリー" onChange={this.handleChangeCategory}>
+              <MenuItem value="">
+                <em>未選択</em>
+              </MenuItem>
+              {menuItems}
+            </Select>
+          </FormControl>
+        </Grid>
+        <Grid item xs={6}>
+          <FormControl size="small" fullWidth>
+            <InputLabel>パーク</InputLabel>
+            <Select value={parkValue} label="パーク" onChange={this.handleChangePark}>
+              <MenuItem value="">
+                <em>未選択</em>
+              </MenuItem>
+              <MenuItem value="L">ランド</MenuItem>
+              <MenuItem value="S">シー</MenuItem>
+            </Select>
+          </FormControl>
+        </Grid>
+      </Grid>
+    );
+  };
+
+  protected handleChangeCategory = (event: SelectChangeEvent) => {
+    this.setState(
+      {
+        searchParam: {
+          ...this.state.searchParam,
+          category: event.target.value === '' ? undefined : Number(event.target.value),
+        },
+      },
+      this.fetchArticlesPreviews,
+    );
+  };
+
+  protected handleChangePark = (event: SelectChangeEvent) => {
+    this.setState(
+      {
+        searchParam: {
+          ...this.state.searchParam,
+          park: event.target.value === 'L' ? 'L' : event.target.value === 'S' ? 'S' : undefined,
+        },
+      },
+      this.fetchArticlesPreviews,
+    );
+  };
 }
 
 export type Props = {
@@ -505,6 +580,7 @@ export type State = {
     isDraft: boolean;
   };
   articlesPreviews?: GetMyArticlesResponse;
+  searchParam: Omit<GetMyArticlesParam, 'page'>;
   message?: {
     text: string;
     type: 'error' | 'success';

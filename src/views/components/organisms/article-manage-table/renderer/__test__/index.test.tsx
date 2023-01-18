@@ -345,3 +345,57 @@ describe('closeSwitchDraftConfirmDialog', () => {
     expect(instance.state.switchDraftDialog).toBe(undefined);
   });
 });
+
+describe('handleChangeCategory', () => {
+  it('should change category value of searchParam state', () => {
+    wrapper = shallow(<Renderer {...basicProps} />);
+    const instance = wrapper.instance();
+
+    const event = { target: { value: '1' } } as unknown as SelectChangeEvent;
+
+    instance['handleChangeCategory'](event);
+    expect(instance.state.searchParam.category).toBe(1);
+  });
+
+  it('should set undefined category value of searchParam state', () => {
+    wrapper = shallow(<Renderer {...basicProps} />);
+    const instance = wrapper.instance();
+
+    const event = { target: { value: '' } } as unknown as SelectChangeEvent;
+
+    instance['handleChangeCategory'](event);
+    expect(instance.state.searchParam.category).toBe(undefined);
+  });
+});
+
+describe('handleChangePark', () => {
+  it('should change Land park value of searchParam state', () => {
+    wrapper = shallow(<Renderer {...basicProps} />);
+    const instance = wrapper.instance();
+
+    const event = { target: { value: 'L' } } as unknown as SelectChangeEvent;
+
+    instance['handleChangePark'](event);
+    expect(instance.state.searchParam.park).toBe('L');
+  });
+
+  it('should change Sea park value of searchParam state', () => {
+    wrapper = shallow(<Renderer {...basicProps} />);
+    const instance = wrapper.instance();
+
+    const event = { target: { value: 'S' } } as unknown as SelectChangeEvent;
+
+    instance['handleChangePark'](event);
+    expect(instance.state.searchParam.park).toBe('S');
+  });
+
+  it('should change undefined park value of searchParam state', () => {
+    wrapper = shallow(<Renderer {...basicProps} />);
+    const instance = wrapper.instance();
+
+    const event = { target: { value: '' } } as unknown as SelectChangeEvent;
+
+    instance['handleChangePark'](event);
+    expect(instance.state.searchParam.park).toBe(undefined);
+  });
+});

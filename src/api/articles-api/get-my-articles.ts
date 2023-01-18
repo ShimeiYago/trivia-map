@@ -4,18 +4,17 @@ import { handleAxiosError } from '../utils/handle-axios-error';
 import { getAxiosInstance } from 'api/utils/get-axios-instance';
 import { mockGetArticlesPreviewsResponse } from '../mock/articles-response';
 import { PaginationResponse } from 'api/types/pagination-response';
+import { Park } from 'types/park';
+import { getUrlParameters } from 'utils/get-url-parameters';
 
-export async function getMyArticles(page?: number): Promise<GetMyArticlesResponse> {
+export async function getMyArticles(param: GetMyArticlesParam): Promise<GetMyArticlesResponse> {
   const axiosInstance = getAxiosInstance(
     { timeout: API_TIMEOUT.short },
     mockGetArticlesPreviewsResponse,
   );
 
-  let url = `${BASE_URL}/articles/mine`;
-
-  if (page) {
-    url = `${url}?page=${page}`;
-  }
+  const urlParams = getUrlParameters(param);
+  const url = `${BASE_URL}/articles/mine${urlParams}`;
 
   try {
     const res: AxiosResponse<GetMyArticlesResponse> = await axiosInstance.get(url);
@@ -33,6 +32,12 @@ export type GetMyArticlesResponseEachItem = {
   isDraft: boolean;
   image: string | null;
   numberOfLikes: number;
+};
+
+export type GetMyArticlesParam = {
+  page?: number;
+  category?: number;
+  park?: Park;
 };
 
 export type GetMyArticlesResponse = PaginationResponse<GetMyArticlesResponseEachItem>;

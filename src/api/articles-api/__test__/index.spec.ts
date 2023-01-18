@@ -375,14 +375,14 @@ describe('getMyArticles', () => {
   it('should return preview list', async () => {
     process.env.REACT_APP_MOCK = 'normal';
 
-    const response = await getMyArticles();
+    const response = await getMyArticles({});
     expect(response.results[0].title).toBe('ノーチラス号のエンジン');
   });
 
   it('should return preview list with page param', async () => {
     process.env.REACT_APP_MOCK = 'normal';
 
-    const response = await getMyArticles(1);
+    const response = await getMyArticles({ page: 1 });
     expect(response.results[0].title).toBe('ノーチラス号のエンジン');
   });
 
@@ -394,6 +394,6 @@ describe('getMyArticles', () => {
       data: {},
       errorMsg: 'Intentional API Error with mock',
     };
-    await expect(getMyArticles()).rejects.toEqual(expectedApiError);
+    await expect(getMyArticles({})).rejects.toEqual(expectedApiError);
   });
 });

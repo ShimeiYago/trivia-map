@@ -7,7 +7,7 @@ import { useCookies } from 'react-cookie';
 import { COOKIE_NAME } from 'constant';
 import { selectUser } from 'store/auths/selector';
 
-export function TwitterLoginButton() {
+export function TwitterLoginButton(ownProps: OwnProps) {
   const dispatch = useAppDispatch();
   const [, setCookie] = useCookies();
 
@@ -18,8 +18,13 @@ export function TwitterLoginButton() {
       setCookie(COOKIE_NAME.hasAccessToken, 'true', { expires: expirationDate }),
     setRefreshTokenExpiration: (expirationDate: Date) =>
       setCookie(COOKIE_NAME.hasRefreshToken, 'true', { expires: expirationDate }),
+    onLoginSucceed: ownProps.onLoginSucceed,
     throwError: (errorStatus: number) => dispatch(throwError(errorStatus)),
   };
 
   return <Renderer {...props} />;
 }
+
+type OwnProps = {
+  onLoginSucceed?: () => void;
+};

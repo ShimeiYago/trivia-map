@@ -38,6 +38,7 @@ export type GetMyArticlesParam = {
   page?: number;
   category?: number;
   park?: Park;
+  isDraft?: 'true' | 'false';
 };
 
 export type GetMyArticlesResponse = PaginationResponse<GetMyArticlesResponseEachItem>;

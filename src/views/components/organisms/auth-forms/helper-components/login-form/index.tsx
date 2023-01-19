@@ -34,7 +34,7 @@ export class LoginForm extends React.Component<Props, State> {
         </Typography>
         <Stack spacing={2} sx={{ py: 2 }}>
           <Typography align="center" component="div">
-            <TwitterLoginButton />
+            <TwitterLoginButton onLoginSucceed={this.props.onLoginSuceed} />
           </Typography>
           <Typography align="center">または</Typography>
           <Divider />

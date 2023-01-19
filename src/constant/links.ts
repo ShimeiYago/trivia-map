@@ -44,3 +44,5 @@ export const INQUIRY_PAGE_LINK = '/inquiry';
 export const PRIVACY_POLICY_PAGE_LINK = '/privacy-policy';
 
 export const TWITTER_CALLBACK_LINK = '/twitter-auth-callback';
+
+export const TWITTER_LOGIN_LINK = '/twitter-login';

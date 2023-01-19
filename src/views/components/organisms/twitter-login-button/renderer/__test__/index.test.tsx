@@ -90,6 +90,18 @@ describe('handleMessage', () => {
     expect(instance.state.loading).toBeFalsy();
   });
 
+  it('should call onLoginSucceed if the prop exist', async () => {
+    twitterLoginSpy.mockResolvedValue(mockLoginResponse);
+    wrapper.setProps({
+      onLoginSucceed: jest.fn(),
+    });
+    const instance = wrapper.instance();
+
+    await instance['handleMessage'](event);
+
+    expect(instance.props.onLoginSucceed).toBeCalled();
+  });
+
   it('should throw error if api is failed', async () => {
     twitterLoginSpy.mockRejectedValue({});
 

@@ -503,20 +503,23 @@ export class Renderer extends React.Component<Props, State> {
 
     const parkValue = searchParam.park !== undefined ? String(searchParam.park) : '';
 
+    const draftValue = searchParam.isDraft !== undefined ? String(searchParam.isDraft) : '';
+
     return (
       <Grid container spacing={2} marginBottom={3}>
-        <Grid item xs={6}>
+        <Grid item xs={6} sm={4}>
           <FormControl size="small" fullWidth>
-            <InputLabel>カテゴリー</InputLabel>
-            <Select value={categoryValue} label="カテゴリー" onChange={this.handleChangeCategory}>
+            <InputLabel>公開状態</InputLabel>
+            <Select value={draftValue} label="公開状態" onChange={this.handleChangeDraft}>
               <MenuItem value="">
                 <em>未選択</em>
               </MenuItem>
-              {menuItems}
+              <MenuItem value="false">公開中</MenuItem>
+              <MenuItem value="true">下書き</MenuItem>
             </Select>
           </FormControl>
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={6} sm={4}>
           <FormControl size="small" fullWidth>
             <InputLabel>パーク</InputLabel>
             <Select value={parkValue} label="パーク" onChange={this.handleChangePark}>
@@ -525,6 +528,17 @@ export class Renderer extends React.Component<Props, State> {
               </MenuItem>
               <MenuItem value="L">ランド</MenuItem>
               <MenuItem value="S">シー</MenuItem>
+            </Select>
+          </FormControl>
+        </Grid>
+        <Grid item xs={12} sm={4}>
+          <FormControl size="small" fullWidth>
+            <InputLabel>カテゴリー</InputLabel>
+            <Select value={categoryValue} label="カテゴリー" onChange={this.handleChangeCategory}>
+              <MenuItem value="">
+                <em>未選択</em>
+              </MenuItem>
+              {menuItems}
             </Select>
           </FormControl>
         </Grid>
@@ -550,6 +564,23 @@ export class Renderer extends React.Component<Props, State> {
         searchParam: {
           ...this.state.searchParam,
           park: event.target.value === 'L' ? 'L' : event.target.value === 'S' ? 'S' : undefined,
+        },
+      },
+      this.fetchArticlesPreviews,
+    );
+  };
+
+  protected handleChangeDraft = (event: SelectChangeEvent) => {
+    this.setState(
+      {
+        searchParam: {
+          ...this.state.searchParam,
+          isDraft:
+            event.target.value === 'true'
+              ? 'true'
+              : event.target.value === 'false'
+              ? 'false'
+              : undefined,
         },
       },
       this.fetchArticlesPreviews,

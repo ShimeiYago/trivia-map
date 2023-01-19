@@ -9,7 +9,82 @@ exports[`Shallow Snapshot Tests articlesPreviews is zero 1`] = `
   >
     <ForwardRef(Grid)
       item={true}
+      sm={4}
       xs={6}
+    >
+      <ForwardRef(FormControl)
+        fullWidth={true}
+        size="small"
+      >
+        <ForwardRef(InputLabel)>
+          公開状態
+        </ForwardRef(InputLabel)>
+        <ForwardRef(Select)
+          label="公開状態"
+          onChange={[Function]}
+          value=""
+        >
+          <ForwardRef(MenuItem)
+            value=""
+          >
+            <em>
+              未選択
+            </em>
+          </ForwardRef(MenuItem)>
+          <ForwardRef(MenuItem)
+            value="false"
+          >
+            公開中
+          </ForwardRef(MenuItem)>
+          <ForwardRef(MenuItem)
+            value="true"
+          >
+            下書き
+          </ForwardRef(MenuItem)>
+        </ForwardRef(Select)>
+      </ForwardRef(FormControl)>
+    </ForwardRef(Grid)>
+    <ForwardRef(Grid)
+      item={true}
+      sm={4}
+      xs={6}
+    >
+      <ForwardRef(FormControl)
+        fullWidth={true}
+        size="small"
+      >
+        <ForwardRef(InputLabel)>
+          パーク
+        </ForwardRef(InputLabel)>
+        <ForwardRef(Select)
+          label="パーク"
+          onChange={[Function]}
+          value=""
+        >
+          <ForwardRef(MenuItem)
+            value=""
+          >
+            <em>
+              未選択
+            </em>
+          </ForwardRef(MenuItem)>
+          <ForwardRef(MenuItem)
+            value="L"
+          >
+            ランド
+          </ForwardRef(MenuItem)>
+          <ForwardRef(MenuItem)
+            value="S"
+          >
+            シー
+          </ForwardRef(MenuItem)>
+        </ForwardRef(Select)>
+      </ForwardRef(FormControl)>
+    </ForwardRef(Grid)>
+    <ForwardRef(Grid)
+      item={true}
+      sm={4}
+      xs={12}
     >
       <ForwardRef(FormControl)
         fullWidth={true}
@@ -83,42 +158,6 @@ exports[`Shallow Snapshot Tests articlesPreviews is zero 1`] = `
             value="0"
           >
             その他
-          </ForwardRef(MenuItem)>
-        </ForwardRef(Select)>
-      </ForwardRef(FormControl)>
-    </ForwardRef(Grid)>
-    <ForwardRef(Grid)
-      item={true}
-      xs={6}
-    >
-      <ForwardRef(FormControl)
-        fullWidth={true}
-        size="small"
-      >
-        <ForwardRef(InputLabel)>
-          パーク
-        </ForwardRef(InputLabel)>
-        <ForwardRef(Select)
-          label="パーク"
-          onChange={[Function]}
-          value=""
-        >
-          <ForwardRef(MenuItem)
-            value=""
-          >
-            <em>
-              未選択
-            </em>
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            value="L"
-          >
-            ランド
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            value="S"
-          >
-            シー
           </ForwardRef(MenuItem)>
         </ForwardRef(Select)>
       </ForwardRef(FormControl)>
@@ -141,7 +180,82 @@ exports[`Shallow Snapshot Tests basic 1`] = `
   >
     <ForwardRef(Grid)
       item={true}
+      sm={4}
       xs={6}
+    >
+      <ForwardRef(FormControl)
+        fullWidth={true}
+        size="small"
+      >
+        <ForwardRef(InputLabel)>
+          公開状態
+        </ForwardRef(InputLabel)>
+        <ForwardRef(Select)
+          label="公開状態"
+          onChange={[Function]}
+          value=""
+        >
+          <ForwardRef(MenuItem)
+            value=""
+          >
+            <em>
+              未選択
+            </em>
+          </ForwardRef(MenuItem)>
+          <ForwardRef(MenuItem)
+            value="false"
+          >
+            公開中
+          </ForwardRef(MenuItem)>
+          <ForwardRef(MenuItem)
+            value="true"
+          >
+            下書き
+          </ForwardRef(MenuItem)>
+        </ForwardRef(Select)>
+      </ForwardRef(FormControl)>
+    </ForwardRef(Grid)>
+    <ForwardRef(Grid)
+      item={true}
+      sm={4}
+      xs={6}
+    >
+      <ForwardRef(FormControl)
+        fullWidth={true}
+        size="small"
+      >
+        <ForwardRef(InputLabel)>
+          パーク
+        </ForwardRef(InputLabel)>
+        <ForwardRef(Select)
+          label="パーク"
+          onChange={[Function]}
+          value=""
+        >
+          <ForwardRef(MenuItem)
+            value=""
+          >
+            <em>
+              未選択
+            </em>
+          </ForwardRef(MenuItem)>
+          <ForwardRef(MenuItem)
+            value="L"
+          >
+            ランド
+          </ForwardRef(MenuItem)>
+          <ForwardRef(MenuItem)
+            value="S"
+          >
+            シー
+          </ForwardRef(MenuItem)>
+        </ForwardRef(Select)>
+      </ForwardRef(FormControl)>
+    </ForwardRef(Grid)>
+    <ForwardRef(Grid)
+      item={true}
+      sm={4}
+      xs={12}
     >
       <ForwardRef(FormControl)
         fullWidth={true}
@@ -215,42 +329,6 @@ exports[`Shallow Snapshot Tests basic 1`] = `
             value="0"
           >
             その他
-          </ForwardRef(MenuItem)>
-        </ForwardRef(Select)>
-      </ForwardRef(FormControl)>
-    </ForwardRef(Grid)>
-    <ForwardRef(Grid)
-      item={true}
-      xs={6}
-    >
-      <ForwardRef(FormControl)
-        fullWidth={true}
-        size="small"
-      >
-        <ForwardRef(InputLabel)>
-          パーク
-        </ForwardRef(InputLabel)>
-        <ForwardRef(Select)
-          label="パーク"
-          onChange={[Function]}
-          value=""
-        >
-          <ForwardRef(MenuItem)
-            value=""
-          >
-            <em>
-              未選択
-            </em>
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            value="L"
-          >
-            ランド
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            value="S"
-          >
-            シー
           </ForwardRef(MenuItem)>
         </ForwardRef(Select)>
       </ForwardRef(FormControl)>
@@ -269,7 +347,82 @@ exports[`Shallow Snapshot Tests one page 1`] = `
   >
     <ForwardRef(Grid)
       item={true}
+      sm={4}
       xs={6}
+    >
+      <ForwardRef(FormControl)
+        fullWidth={true}
+        size="small"
+      >
+        <ForwardRef(InputLabel)>
+          公開状態
+        </ForwardRef(InputLabel)>
+        <ForwardRef(Select)
+          label="公開状態"
+          onChange={[Function]}
+          value=""
+        >
+          <ForwardRef(MenuItem)
+            value=""
+          >
+            <em>
+              未選択
+            </em>
+          </ForwardRef(MenuItem)>
+          <ForwardRef(MenuItem)
+            value="false"
+          >
+            公開中
+          </ForwardRef(MenuItem)>
+          <ForwardRef(MenuItem)
+            value="true"
+          >
+            下書き
+          </ForwardRef(MenuItem)>
+        </ForwardRef(Select)>
+      </ForwardRef(FormControl)>
+    </ForwardRef(Grid)>
+    <ForwardRef(Grid)
+      item={true}
+      sm={4}
+      xs={6}
+    >
+      <ForwardRef(FormControl)
+        fullWidth={true}
+        size="small"
+      >
+        <ForwardRef(InputLabel)>
+          パーク
+        </ForwardRef(InputLabel)>
+        <ForwardRef(Select)
+          label="パーク"
+          onChange={[Function]}
+          value=""
+        >
+          <ForwardRef(MenuItem)
+            value=""
+          >
+            <em>
+              未選択
+            </em>
+          </ForwardRef(MenuItem)>
+          <ForwardRef(MenuItem)
+            value="L"
+          >
+            ランド
+          </ForwardRef(MenuItem)>
+          <ForwardRef(MenuItem)
+            value="S"
+          >
+            シー
+          </ForwardRef(MenuItem)>
+        </ForwardRef(Select)>
+      </ForwardRef(FormControl)>
+    </ForwardRef(Grid)>
+    <ForwardRef(Grid)
+      item={true}
+      sm={4}
+      xs={12}
     >
       <ForwardRef(FormControl)
         fullWidth={true}
@@ -343,42 +496,6 @@ exports[`Shallow Snapshot Tests one page 1`] = `
             value="0"
           >
             その他
-          </ForwardRef(MenuItem)>
-        </ForwardRef(Select)>
-      </ForwardRef(FormControl)>
-    </ForwardRef(Grid)>
-    <ForwardRef(Grid)
-      item={true}
-      xs={6}
-    >
-      <ForwardRef(FormControl)
-        fullWidth={true}
-        size="small"
-      >
-        <ForwardRef(InputLabel)>
-          パーク
-        </ForwardRef(InputLabel)>
-        <ForwardRef(Select)
-          label="パーク"
-          onChange={[Function]}
-          value=""
-        >
-          <ForwardRef(MenuItem)
-            value=""
-          >
-            <em>
-              未選択
-            </em>
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            value="L"
-          >
-            ランド
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            value="S"
-          >
-            シー
           </ForwardRef(MenuItem)>
         </ForwardRef(Select)>
       </ForwardRef(FormControl)>
@@ -710,7 +827,82 @@ exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
   >
     <ForwardRef(Grid)
       item={true}
+      sm={4}
       xs={6}
+    >
+      <ForwardRef(FormControl)
+        fullWidth={true}
+        size="small"
+      >
+        <ForwardRef(InputLabel)>
+          公開状態
+        </ForwardRef(InputLabel)>
+        <ForwardRef(Select)
+          label="公開状態"
+          onChange={[Function]}
+          value=""
+        >
+          <ForwardRef(MenuItem)
+            value=""
+          >
+            <em>
+              未選択
+            </em>
+          </ForwardRef(MenuItem)>
+          <ForwardRef(MenuItem)
+            value="false"
+          >
+            公開中
+          </ForwardRef(MenuItem)>
+          <ForwardRef(MenuItem)
+            value="true"
+          >
+            下書き
+          </ForwardRef(MenuItem)>
+        </ForwardRef(Select)>
+      </ForwardRef(FormControl)>
+    </ForwardRef(Grid)>
+    <ForwardRef(Grid)
+      item={true}
+      sm={4}
+      xs={6}
+    >
+      <ForwardRef(FormControl)
+        fullWidth={true}
+        size="small"
+      >
+        <ForwardRef(InputLabel)>
+          パーク
+        </ForwardRef(InputLabel)>
+        <ForwardRef(Select)
+          label="パーク"
+          onChange={[Function]}
+          value=""
+        >
+          <ForwardRef(MenuItem)
+            value=""
+          >
+            <em>
+              未選択
+            </em>
+          </ForwardRef(MenuItem)>
+          <ForwardRef(MenuItem)
+            value="L"
+          >
+            ランド
+          </ForwardRef(MenuItem)>
+          <ForwardRef(MenuItem)
+            value="S"
+          >
+            シー
+          </ForwardRef(MenuItem)>
+        </ForwardRef(Select)>
+      </ForwardRef(FormControl)>
+    </ForwardRef(Grid)>
+    <ForwardRef(Grid)
+      item={true}
+      sm={4}
+      xs={12}
     >
       <ForwardRef(FormControl)
         fullWidth={true}
@@ -784,42 +976,6 @@ exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
             value="0"
           >
             その他
-          </ForwardRef(MenuItem)>
-        </ForwardRef(Select)>
-      </ForwardRef(FormControl)>
-    </ForwardRef(Grid)>
-    <ForwardRef(Grid)
-      item={true}
-      xs={6}
-    >
-      <ForwardRef(FormControl)
-        fullWidth={true}
-        size="small"
-      >
-        <ForwardRef(InputLabel)>
-          パーク
-        </ForwardRef(InputLabel)>
-        <ForwardRef(Select)
-          label="パーク"
-          onChange={[Function]}
-          value=""
-        >
-          <ForwardRef(MenuItem)
-            value=""
-          >
-            <em>
-              未選択
-            </em>
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            value="L"
-          >
-            ランド
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            value="S"
-          >
-            シー
           </ForwardRef(MenuItem)>
         </ForwardRef(Select)>
       </ForwardRef(FormControl)>
@@ -1162,7 +1318,82 @@ exports[`Shallow Snapshot Tests with articlesPreviews mobile view 1`] = `
   >
     <ForwardRef(Grid)
       item={true}
+      sm={4}
       xs={6}
+    >
+      <ForwardRef(FormControl)
+        fullWidth={true}
+        size="small"
+      >
+        <ForwardRef(InputLabel)>
+          公開状態
+        </ForwardRef(InputLabel)>
+        <ForwardRef(Select)
+          label="公開状態"
+          onChange={[Function]}
+          value=""
+        >
+          <ForwardRef(MenuItem)
+            value=""
+          >
+            <em>
+              未選択
+            </em>
+          </ForwardRef(MenuItem)>
+          <ForwardRef(MenuItem)
+            value="false"
+          >
+            公開中
+          </ForwardRef(MenuItem)>
+          <ForwardRef(MenuItem)
+            value="true"
+          >
+            下書き
+          </ForwardRef(MenuItem)>
+        </ForwardRef(Select)>
+      </ForwardRef(FormControl)>
+    </ForwardRef(Grid)>
+    <ForwardRef(Grid)
+      item={true}
+      sm={4}
+      xs={6}
+    >
+      <ForwardRef(FormControl)
+        fullWidth={true}
+        size="small"
+      >
+        <ForwardRef(InputLabel)>
+          パーク
+        </ForwardRef(InputLabel)>
+        <ForwardRef(Select)
+          label="パーク"
+          onChange={[Function]}
+          value=""
+        >
+          <ForwardRef(MenuItem)
+            value=""
+          >
+            <em>
+              未選択
+            </em>
+          </ForwardRef(MenuItem)>
+          <ForwardRef(MenuItem)
+            value="L"
+          >
+            ランド
+          </ForwardRef(MenuItem)>
+          <ForwardRef(MenuItem)
+            value="S"
+          >
+            シー
+          </ForwardRef(MenuItem)>
+        </ForwardRef(Select)>
+      </ForwardRef(FormControl)>
+    </ForwardRef(Grid)>
+    <ForwardRef(Grid)
+      item={true}
+      sm={4}
+      xs={12}
     >
       <ForwardRef(FormControl)
         fullWidth={true}
@@ -1236,42 +1467,6 @@ exports[`Shallow Snapshot Tests with articlesPreviews mobile view 1`] = `
             value="0"
           >
             その他
-          </ForwardRef(MenuItem)>
-        </ForwardRef(Select)>
-      </ForwardRef(FormControl)>
-    </ForwardRef(Grid)>
-    <ForwardRef(Grid)
-      item={true}
-      xs={6}
-    >
-      <ForwardRef(FormControl)
-        fullWidth={true}
-        size="small"
-      >
-        <ForwardRef(InputLabel)>
-          パーク
-        </ForwardRef(InputLabel)>
-        <ForwardRef(Select)
-          label="パーク"
-          onChange={[Function]}
-          value=""
-        >
-          <ForwardRef(MenuItem)
-            value=""
-          >
-            <em>
-              未選択
-            </em>
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            value="L"
-          >
-            ランド
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            value="S"
-          >
-            シー
           </ForwardRef(MenuItem)>
         </ForwardRef(Select)>
       </ForwardRef(FormControl)>
@@ -1644,7 +1839,82 @@ exports[`Shallow Snapshot Tests with delete dialog 1`] = `
   >
     <ForwardRef(Grid)
       item={true}
+      sm={4}
       xs={6}
+    >
+      <ForwardRef(FormControl)
+        fullWidth={true}
+        size="small"
+      >
+        <ForwardRef(InputLabel)>
+          公開状態
+        </ForwardRef(InputLabel)>
+        <ForwardRef(Select)
+          label="公開状態"
+          onChange={[Function]}
+          value=""
+        >
+          <ForwardRef(MenuItem)
+            value=""
+          >
+            <em>
+              未選択
+            </em>
+          </ForwardRef(MenuItem)>
+          <ForwardRef(MenuItem)
+            value="false"
+          >
+            公開中
+          </ForwardRef(MenuItem)>
+          <ForwardRef(MenuItem)
+            value="true"
+          >
+            下書き
+          </ForwardRef(MenuItem)>
+        </ForwardRef(Select)>
+      </ForwardRef(FormControl)>
+    </ForwardRef(Grid)>
+    <ForwardRef(Grid)
+      item={true}
+      sm={4}
+      xs={6}
+    >
+      <ForwardRef(FormControl)
+        fullWidth={true}
+        size="small"
+      >
+        <ForwardRef(InputLabel)>
+          パーク
+        </ForwardRef(InputLabel)>
+        <ForwardRef(Select)
+          label="パーク"
+          onChange={[Function]}
+          value=""
+        >
+          <ForwardRef(MenuItem)
+            value=""
+          >
+            <em>
+              未選択
+            </em>
+          </ForwardRef(MenuItem)>
+          <ForwardRef(MenuItem)
+            value="L"
+          >
+            ランド
+          </ForwardRef(MenuItem)>
+          <ForwardRef(MenuItem)
+            value="S"
+          >
+            シー
+          </ForwardRef(MenuItem)>
+        </ForwardRef(Select)>
+      </ForwardRef(FormControl)>
+    </ForwardRef(Grid)>
+    <ForwardRef(Grid)
+      item={true}
+      sm={4}
+      xs={12}
     >
       <ForwardRef(FormControl)
         fullWidth={true}
@@ -1718,42 +1988,6 @@ exports[`Shallow Snapshot Tests with delete dialog 1`] = `
             value="0"
           >
             その他
-          </ForwardRef(MenuItem)>
-        </ForwardRef(Select)>
-      </ForwardRef(FormControl)>
-    </ForwardRef(Grid)>
-    <ForwardRef(Grid)
-      item={true}
-      xs={6}
-    >
-      <ForwardRef(FormControl)
-        fullWidth={true}
-        size="small"
-      >
-        <ForwardRef(InputLabel)>
-          パーク
-        </ForwardRef(InputLabel)>
-        <ForwardRef(Select)
-          label="パーク"
-          onChange={[Function]}
-          value=""
-        >
-          <ForwardRef(MenuItem)
-            value=""
-          >
-            <em>
-              未選択
-            </em>
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            value="L"
-          >
-            ランド
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            value="S"
-          >
-            シー
           </ForwardRef(MenuItem)>
         </ForwardRef(Select)>
       </ForwardRef(FormControl)>
@@ -1817,7 +2051,82 @@ exports[`Shallow Snapshot Tests with message 1`] = `
   >
     <ForwardRef(Grid)
       item={true}
+      sm={4}
       xs={6}
+    >
+      <ForwardRef(FormControl)
+        fullWidth={true}
+        size="small"
+      >
+        <ForwardRef(InputLabel)>
+          公開状態
+        </ForwardRef(InputLabel)>
+        <ForwardRef(Select)
+          label="公開状態"
+          onChange={[Function]}
+          value=""
+        >
+          <ForwardRef(MenuItem)
+            value=""
+          >
+            <em>
+              未選択
+            </em>
+          </ForwardRef(MenuItem)>
+          <ForwardRef(MenuItem)
+            value="false"
+          >
+            公開中
+          </ForwardRef(MenuItem)>
+          <ForwardRef(MenuItem)
+            value="true"
+          >
+            下書き
+          </ForwardRef(MenuItem)>
+        </ForwardRef(Select)>
+      </ForwardRef(FormControl)>
+    </ForwardRef(Grid)>
+    <ForwardRef(Grid)
+      item={true}
+      sm={4}
+      xs={6}
+    >
+      <ForwardRef(FormControl)
+        fullWidth={true}
+        size="small"
+      >
+        <ForwardRef(InputLabel)>
+          パーク
+        </ForwardRef(InputLabel)>
+        <ForwardRef(Select)
+          label="パーク"
+          onChange={[Function]}
+          value=""
+        >
+          <ForwardRef(MenuItem)
+            value=""
+          >
+            <em>
+              未選択
+            </em>
+          </ForwardRef(MenuItem)>
+          <ForwardRef(MenuItem)
+            value="L"
+          >
+            ランド
+          </ForwardRef(MenuItem)>
+          <ForwardRef(MenuItem)
+            value="S"
+          >
+            シー
+          </ForwardRef(MenuItem)>
+        </ForwardRef(Select)>
+      </ForwardRef(FormControl)>
+    </ForwardRef(Grid)>
+    <ForwardRef(Grid)
+      item={true}
+      sm={4}
+      xs={12}
     >
       <ForwardRef(FormControl)
         fullWidth={true}
@@ -1891,42 +2200,6 @@ exports[`Shallow Snapshot Tests with message 1`] = `
             value="0"
           >
             その他
-          </ForwardRef(MenuItem)>
-        </ForwardRef(Select)>
-      </ForwardRef(FormControl)>
-    </ForwardRef(Grid)>
-    <ForwardRef(Grid)
-      item={true}
-      xs={6}
-    >
-      <ForwardRef(FormControl)
-        fullWidth={true}
-        size="small"
-      >
-        <ForwardRef(InputLabel)>
-          パーク
-        </ForwardRef(InputLabel)>
-        <ForwardRef(Select)
-          label="パーク"
-          onChange={[Function]}
-          value=""
-        >
-          <ForwardRef(MenuItem)
-            value=""
-          >
-            <em>
-              未選択
-            </em>
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            value="L"
-          >
-            ランド
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            value="S"
-          >
-            シー
           </ForwardRef(MenuItem)>
         </ForwardRef(Select)>
       </ForwardRef(FormControl)>
@@ -1978,7 +2251,82 @@ exports[`Shallow Snapshot Tests with switch draft dialog to switch to draft 1`] 
   >
     <ForwardRef(Grid)
       item={true}
+      sm={4}
       xs={6}
+    >
+      <ForwardRef(FormControl)
+        fullWidth={true}
+        size="small"
+      >
+        <ForwardRef(InputLabel)>
+          公開状態
+        </ForwardRef(InputLabel)>
+        <ForwardRef(Select)
+          label="公開状態"
+          onChange={[Function]}
+          value=""
+        >
+          <ForwardRef(MenuItem)
+            value=""
+          >
+            <em>
+              未選択
+            </em>
+          </ForwardRef(MenuItem)>
+          <ForwardRef(MenuItem)
+            value="false"
+          >
+            公開中
+          </ForwardRef(MenuItem)>
+          <ForwardRef(MenuItem)
+            value="true"
+          >
+            下書き
+          </ForwardRef(MenuItem)>
+        </ForwardRef(Select)>
+      </ForwardRef(FormControl)>
+    </ForwardRef(Grid)>
+    <ForwardRef(Grid)
+      item={true}
+      sm={4}
+      xs={6}
+    >
+      <ForwardRef(FormControl)
+        fullWidth={true}
+        size="small"
+      >
+        <ForwardRef(InputLabel)>
+          パーク
+        </ForwardRef(InputLabel)>
+        <ForwardRef(Select)
+          label="パーク"
+          onChange={[Function]}
+          value=""
+        >
+          <ForwardRef(MenuItem)
+            value=""
+          >
+            <em>
+              未選択
+            </em>
+          </ForwardRef(MenuItem)>
+          <ForwardRef(MenuItem)
+            value="L"
+          >
+            ランド
+          </ForwardRef(MenuItem)>
+          <ForwardRef(MenuItem)
+            value="S"
+          >
+            シー
+          </ForwardRef(MenuItem)>
+        </ForwardRef(Select)>
+      </ForwardRef(FormControl)>
+    </ForwardRef(Grid)>
+    <ForwardRef(Grid)
+      item={true}
+      sm={4}
+      xs={12}
     >
       <ForwardRef(FormControl)
         fullWidth={true}
@@ -2052,42 +2400,6 @@ exports[`Shallow Snapshot Tests with switch draft dialog to switch to draft 1`] 
             value="0"
           >
             その他
-          </ForwardRef(MenuItem)>
-        </ForwardRef(Select)>
-      </ForwardRef(FormControl)>
-    </ForwardRef(Grid)>
-    <ForwardRef(Grid)
-      item={true}
-      xs={6}
-    >
-      <ForwardRef(FormControl)
-        fullWidth={true}
-        size="small"
-      >
-        <ForwardRef(InputLabel)>
-          パーク
-        </ForwardRef(InputLabel)>
-        <ForwardRef(Select)
-          label="パーク"
-          onChange={[Function]}
-          value=""
-        >
-          <ForwardRef(MenuItem)
-            value=""
-          >
-            <em>
-              未選択
-            </em>
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            value="L"
-          >
-            ランド
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            value="S"
-          >
-            シー
           </ForwardRef(MenuItem)>
         </ForwardRef(Select)>
       </ForwardRef(FormControl)>
@@ -2149,7 +2461,82 @@ exports[`Shallow Snapshot Tests with switch draft dialog to switch to public 1`]
   >
     <ForwardRef(Grid)
       item={true}
+      sm={4}
       xs={6}
+    >
+      <ForwardRef(FormControl)
+        fullWidth={true}
+        size="small"
+      >
+        <ForwardRef(InputLabel)>
+          公開状態
+        </ForwardRef(InputLabel)>
+        <ForwardRef(Select)
+          label="公開状態"
+          onChange={[Function]}
+          value=""
+        >
+          <ForwardRef(MenuItem)
+            value=""
+          >
+            <em>
+              未選択
+            </em>
+          </ForwardRef(MenuItem)>
+          <ForwardRef(MenuItem)
+            value="false"
+          >
+            公開中
+          </ForwardRef(MenuItem)>
+          <ForwardRef(MenuItem)
+            value="true"
+          >
+            下書き
+          </ForwardRef(MenuItem)>
+        </ForwardRef(Select)>
+      </ForwardRef(FormControl)>
+    </ForwardRef(Grid)>
+    <ForwardRef(Grid)
+      item={true}
+      sm={4}
+      xs={6}
+    >
+      <ForwardRef(FormControl)
+        fullWidth={true}
+        size="small"
+      >
+        <ForwardRef(InputLabel)>
+          パーク
+        </ForwardRef(InputLabel)>
+        <ForwardRef(Select)
+          label="パーク"
+          onChange={[Function]}
+          value=""
+        >
+          <ForwardRef(MenuItem)
+            value=""
+          >
+            <em>
+              未選択
+            </em>
+          </ForwardRef(MenuItem)>
+          <ForwardRef(MenuItem)
+            value="L"
+          >
+            ランド
+          </ForwardRef(MenuItem)>
+          <ForwardRef(MenuItem)
+            value="S"
+          >
+            シー
+          </ForwardRef(MenuItem)>
+        </ForwardRef(Select)>
+      </ForwardRef(FormControl)>
+    </ForwardRef(Grid)>
+    <ForwardRef(Grid)
+      item={true}
+      sm={4}
+      xs={12}
     >
       <ForwardRef(FormControl)
         fullWidth={true}
@@ -2223,42 +2610,6 @@ exports[`Shallow Snapshot Tests with switch draft dialog to switch to public 1`]
             value="0"
           >
             その他
-          </ForwardRef(MenuItem)>
-        </ForwardRef(Select)>
-      </ForwardRef(FormControl)>
-    </ForwardRef(Grid)>
-    <ForwardRef(Grid)
-      item={true}
-      xs={6}
-    >
-      <ForwardRef(FormControl)
-        fullWidth={true}
-        size="small"
-      >
-        <ForwardRef(InputLabel)>
-          パーク
-        </ForwardRef(InputLabel)>
-        <ForwardRef(Select)
-          label="パーク"
-          onChange={[Function]}
-          value=""
-        >
-          <ForwardRef(MenuItem)
-            value=""
-          >
-            <em>
-              未選択
-            </em>
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            value="L"
-          >
-            ランド
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            value="S"
-          >
-            シー
           </ForwardRef(MenuItem)>
         </ForwardRef(Select)>
       </ForwardRef(FormControl)>

@@ -132,10 +132,10 @@ export class Renderer extends React.Component<Props, State> {
               />
             </Typography>
             <Grid container columnSpacing={6} rowSpacing={2} sx={{ mt: 1, mb: 3 }}>
-              <Grid item xs={12} md={6}>
+              <Grid item xs={12} sm={6}>
                 {this.renderCategorySelect()}
               </Grid>
-              <Grid item xs={12} md={6}>
+              <Grid item xs={12} sm={6}>
                 {this.renderParkSelect()}
               </Grid>
               <Grid item xs={12}>

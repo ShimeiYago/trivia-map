@@ -53,7 +53,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
         >
           <ForwardRef(Grid)
             item={true}
-            md={6}
+            sm={6}
             xs={12}
           >
             <ForwardRef(FormControl)
@@ -134,7 +134,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
           </ForwardRef(Grid)>
           <ForwardRef(Grid)
             item={true}
-            md={6}
+            sm={6}
             xs={12}
           >
             <ForwardRef(FormControl)
@@ -349,7 +349,7 @@ exports[`Shallow Snapshot Tests with form conditions 1`] = `
         >
           <ForwardRef(Grid)
             item={true}
-            md={6}
+            sm={6}
             xs={12}
           >
             <ForwardRef(FormControl)
@@ -430,7 +430,7 @@ exports[`Shallow Snapshot Tests with form conditions 1`] = `
           </ForwardRef(Grid)>
           <ForwardRef(Grid)
             item={true}
-            md={6}
+            sm={6}
             xs={12}
           >
             <ForwardRef(FormControl)

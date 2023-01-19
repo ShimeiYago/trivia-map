@@ -54,6 +54,7 @@ export class Renderer extends React.Component<Props, State> {
       });
 
       this.props.loginSuccess(loginResponse.user);
+      this.props.onLoginSucceed?.();
     } catch (error) {
       this.props.throwError(500);
     }
@@ -72,6 +73,7 @@ export type Props = {
   userInfo?: User;
   throwError: (status: number) => void;
   loginSuccess: (user: User) => void;
+  onLoginSucceed?: () => void;
   setAccessTokenExpiration: (expirationDate: Date) => void;
   setRefreshTokenExpiration: (expirationDate: Date) => void;
 };

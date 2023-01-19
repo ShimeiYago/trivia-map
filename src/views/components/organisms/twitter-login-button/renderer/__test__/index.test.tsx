@@ -1,14 +1,11 @@
 import { shallow, ShallowWrapper } from 'enzyme';
 import { Renderer, Props, State } from '..';
-import * as TwitterRequestTokenModule from 'api/auths-api/twitter-request-token';
-import { mockTwitterRequestTokenResponse } from 'api/mock/auths-response/twitter-request-token';
 import * as TwitterLoginnModule from 'api/auths-api/twitter-login';
 import { mockLoginResponse } from 'api/mock/auths-response/login';
 import { mockTwitterAccessTokenResponse } from 'api/mock/auths-response/twitter-access-token';
 import { TwitterAccessTokenResponse } from 'api/auths-api/twitter-access-token';
 
 let wrapper: ShallowWrapper<Props, State, Renderer>;
-let twitterRequestTokenSpy: jest.SpyInstance;
 let twitterLoginSpy: jest.SpyInstance;
 
 const basicProps: Props = {
@@ -30,7 +27,6 @@ describe('Shallow Snapshot Tests', () => {
 
 describe('handleClick', () => {
   beforeEach(() => {
-    twitterRequestTokenSpy = jest.spyOn(TwitterRequestTokenModule, 'twitterRequestToken');
     wrapper = shallow(<Renderer {...basicProps} />);
     jest.spyOn(window, 'open').mockResolvedValue({} as never);
   });
@@ -39,23 +35,11 @@ describe('handleClick', () => {
     jest.resetAllMocks();
   });
 
-  it('should open window', async () => {
-    twitterRequestTokenSpy.mockResolvedValue(mockTwitterRequestTokenResponse);
-
+  it('should set loading state', async () => {
     const instance = wrapper.instance();
     await instance['handleClick']();
 
-    expect(instance.props.throwError).not.toBeCalled();
-  });
-
-  it('should throw error if api is failed', async () => {
-    twitterRequestTokenSpy.mockRejectedValue({});
-
-    const instance = wrapper.instance();
-
-    await instance['handleClick']();
-
-    expect(instance.props.throwError).toBeCalled();
+    expect(instance.state.loading).toBeTruthy();
   });
 });
 
@@ -104,6 +88,18 @@ describe('handleMessage', () => {
     await instance['handleMessage'](event);
 
     expect(instance.state.loading).toBeFalsy();
+  });
+
+  it('should call onLoginSucceed if the prop exist', async () => {
+    twitterLoginSpy.mockResolvedValue(mockLoginResponse);
+    wrapper.setProps({
+      onLoginSucceed: jest.fn(),
+    });
+    const instance = wrapper.instance();
+
+    await instance['handleMessage'](event);
+
+    expect(instance.props.onLoginSucceed).toBeCalled();
   });
 
   it('should throw error if api is failed', async () => {

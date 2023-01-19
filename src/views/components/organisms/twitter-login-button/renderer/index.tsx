@@ -1,7 +1,6 @@
 import React from 'react';
-import { TWITTER_CALLBACK_LINK } from 'constant/links';
+import { TWITTER_LOGIN_LINK } from 'constant/links';
 import TwitterIcon from '@mui/icons-material/Twitter';
-import { twitterRequestToken } from 'api/auths-api/twitter-request-token';
 import { LoadingButton } from '@mui/lab';
 import { getDomain } from 'utils/get-domain.ts';
 import { TwitterAccessTokenResponse } from 'api/auths-api/twitter-access-token';
@@ -55,6 +54,7 @@ export class Renderer extends React.Component<Props, State> {
       });
 
       this.props.loginSuccess(loginResponse.user);
+      this.props.onLoginSucceed?.();
     } catch (error) {
       this.props.throwError(500);
     }
@@ -65,16 +65,7 @@ export class Renderer extends React.Component<Props, State> {
       loading: true,
     });
 
-    const domain = getDomain(window);
-
-    try {
-      const twitterRequestTokenResponse = await twitterRequestToken({
-        callbackUrl: `${domain}${TWITTER_CALLBACK_LINK}`,
-      });
-      window.open(twitterRequestTokenResponse.authenticateUrl, '_blank', 'width=640, height=480');
-    } catch (error: unknown) {
-      this.props.throwError(500);
-    }
+    window.open(TWITTER_LOGIN_LINK, '_blank', 'width=640, height=480');
   };
 }
 
@@ -82,6 +73,7 @@ export type Props = {
   userInfo?: User;
   throwError: (status: number) => void;
   loginSuccess: (user: User) => void;
+  onLoginSucceed?: () => void;
   setAccessTokenExpiration: (expirationDate: Date) => void;
   setRefreshTokenExpiration: (expirationDate: Date) => void;
 };

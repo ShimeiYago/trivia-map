@@ -398,4 +398,36 @@ describe('handleChangePark', () => {
     instance['handleChangePark'](event);
     expect(instance.state.searchParam.park).toBe(undefined);
   });
+
+  describe('handleChangeDraft', () => {
+    it('should change true isDraft value of searchParam state', () => {
+      wrapper = shallow(<Renderer {...basicProps} />);
+      const instance = wrapper.instance();
+
+      const event = { target: { value: 'true' } } as unknown as SelectChangeEvent;
+
+      instance['handleChangeDraft'](event);
+      expect(instance.state.searchParam.isDraft).toBe('true');
+    });
+
+    it('should change false isDraft value of searchParam state', () => {
+      wrapper = shallow(<Renderer {...basicProps} />);
+      const instance = wrapper.instance();
+
+      const event = { target: { value: 'false' } } as unknown as SelectChangeEvent;
+
+      instance['handleChangeDraft'](event);
+      expect(instance.state.searchParam.isDraft).toBe('false');
+    });
+
+    it('should change undefined park value of searchParam state', () => {
+      wrapper = shallow(<Renderer {...basicProps} />);
+      const instance = wrapper.instance();
+
+      const event = { target: { value: '' } } as unknown as SelectChangeEvent;
+
+      instance['handleChangeDraft'](event);
+      expect(instance.state.searchParam.isDraft).toBe(undefined);
+    });
+  });
 });

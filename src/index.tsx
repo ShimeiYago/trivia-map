@@ -38,6 +38,7 @@ import {
   NEW_LINK,
   LIKED_ARTICLES_LINK,
   TWITTER_LOGIN_LINK,
+  MAP_USER_LINK,
 } from 'constant/links';
 import { ChangePassword } from 'views/pages/change-password';
 import { ResetPassword } from 'views/pages/reset-password';
@@ -72,6 +73,7 @@ ReactDOM.render(
             <BrowserRouter>
               <Routes>
                 <Route index element={errorHandledElement(<MapPage />)} />
+                <Route path={MAP_USER_LINK(':userId')} element={errorHandledElement(<MapPage />)} />
                 <Route path={NEW_LINK} element={errorHandledElement(<MapPage new />)} />
                 <Route path={EDIT_LINK(':postId')} element={errorHandledElement(<MapPage />)} />
                 <Route

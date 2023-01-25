@@ -5,6 +5,7 @@ import {
   RESET_PASSWORD_LINK,
   VERIFY_EMAIL_LINK,
   CATEGORY_PAGE_LINK,
+  MAP_USER_LINK,
 } from '../links';
 
 describe('links', () => {
@@ -16,6 +17,11 @@ describe('links', () => {
   it('EDIT_LINK return edit page link', () => {
     const link = EDIT_LINK('1');
     expect(link).toBe('/map/edit/1');
+  });
+
+  it('MAP_USER_LINK return map user page link', () => {
+    const link = MAP_USER_LINK('1');
+    expect(link).toBe('/map/user/1');
   });
 
   it('VERIFY_EMAIL_LINK return verify email page link', () => {

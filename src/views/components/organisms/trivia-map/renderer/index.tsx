@@ -40,7 +40,7 @@ export class Renderer extends React.Component<Props, State> {
 
   componentDidMount() {
     if (this.props.markersFetchingState === 'waiting' && !this.props.doNotShowPostMarkers) {
-      this.props.fetchMarkers(this.props.park);
+      this.props.fetchMarkers(this.props.park, this.props.userId);
     }
   }
 
@@ -59,7 +59,7 @@ export class Renderer extends React.Component<Props, State> {
     }
 
     if (!this.props.doNotShowPostMarkers && prevProps.park !== this.props.park) {
-      this.props.fetchMarkers(this.props.park);
+      this.props.fetchMarkers(this.props.park, this.props.userId);
     }
   }
 
@@ -312,8 +312,9 @@ export type Props = {
   park: Park;
   categoryId?: number;
   isMobile: boolean;
+  userId?: number;
 
-  fetchMarkers: (park: Park) => void;
+  fetchMarkers: (park: Park, userId?: number) => void;
   updatePosition: (position: Position) => void;
   endToSelectPosition?: () => void;
   updateIsEditting: (isEditting: boolean) => void;

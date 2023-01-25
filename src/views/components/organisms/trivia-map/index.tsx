@@ -32,8 +32,9 @@ export function TriviaMap(ownProps: OwnProps) {
     park: ownProps.park,
     categoryId: ownProps.categoryId,
     isMobile: isMobile,
+    userId: ownProps.userId,
 
-    fetchMarkers: (park: Park) => dispatch(fetchMarkers(park)),
+    fetchMarkers: (park: Park, userId?: number) => dispatch(fetchMarkers(park, userId)),
     updatePosition: (position: Position) => dispatch(updateFormField({ position: position })),
     endToSelectPosition: ownProps.endToSelectPosition,
     updateIsEditting: (isEditting: boolean) => dispatch(updateIsEditting(isEditting)),
@@ -56,4 +57,5 @@ type OwnProps = {
   additinalMarkers?: Position[];
   park: Park;
   categoryId?: number;
+  userId?: number;
 };

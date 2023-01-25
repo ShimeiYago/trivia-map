@@ -113,8 +113,15 @@ export class Renderer extends React.Component<Props, State> {
 
   render() {
     const { openFormModal, edittingPostId } = this.state;
-    const { isFormEditting, isMobile, park, filteringCategoryId, windowWidth, windowHeight } =
-      this.props;
+    const {
+      isFormEditting,
+      isMobile,
+      park,
+      filteringCategoryId,
+      windowWidth,
+      windowHeight,
+      userId,
+    } = this.props;
 
     const triviaMap = windowWidth !== 0 && windowHeight !== 0 && park && (
       <TriviaMap
@@ -124,6 +131,7 @@ export class Renderer extends React.Component<Props, State> {
         shouldCurrentPositionAsyncWithForm
         park={park}
         categoryId={filteringCategoryId}
+        userId={userId}
       />
     );
 
@@ -371,6 +379,7 @@ export type Props = {
   windowWidth: number;
   windowHeight: number;
   new: boolean;
+  userId?: number;
 
   updateFoocusingPark: (park: Park) => void;
   updateFilteringCategoryId: (categoryId?: number) => void;

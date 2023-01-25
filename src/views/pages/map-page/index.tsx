@@ -17,8 +17,9 @@ import { CommonHelmet } from 'helper-components/common-helmet';
 import { useWindowSize } from 'helper-components/user-window-size';
 
 export function MapPage(ownProps: { new?: boolean }) {
-  const { postId } = useParams();
+  const { postId, userId } = useParams();
   const postIdNumber = Number(postId);
+  const userIdNumber = Number(userId);
 
   const dispatch = useAppDispatch();
 
@@ -26,7 +27,7 @@ export function MapPage(ownProps: { new?: boolean }) {
 
   usePageTracking();
 
-  if (postId && !postIdNumber) {
+  if ((postId && !postIdNumber) || (userId && !userIdNumber)) {
     return <Navigate to={NOT_FOUND_LINK} />;
   }
 
@@ -43,6 +44,7 @@ export function MapPage(ownProps: { new?: boolean }) {
     windowWidth: width,
     windowHeight: height,
     new: !!ownProps.new,
+    userId: !!userIdNumber ? userIdNumber : undefined,
 
     updateFoocusingPark: (park: Park) => dispatch(updateFocusingPark(park)),
     updateFilteringCategoryId: (categoryId?: number) =>

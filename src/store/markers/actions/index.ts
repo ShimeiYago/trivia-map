@@ -19,7 +19,7 @@ export const {
 
 // fetchMarkers action
 export const fetchMarkers =
-  (park: Park): AppThunk =>
+  (park: Park, userId?: number): AppThunk =>
   async (dispatch) => {
     dispatch(updateFocusingPark(park));
     dispatch(fetchStart());
@@ -35,11 +35,11 @@ export const fetchMarkers =
 
         let res: GetMarkersResponseWithPagination;
         if (loadedPages === 0) {
-          res = await getRemoteMarkers({ park });
+          res = await getRemoteMarkers({ park, userId });
           totalPages = res.totalPages;
           dispatch(updateTotalPages(totalPages));
         } else {
-          res = await getRemoteMarkers({ park, nextUrl });
+          res = await getRemoteMarkers({ park, nextUrl, userId });
         }
 
         dispatch(appendMarkers(res.results));

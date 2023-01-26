@@ -1,7 +1,7 @@
 import { Props, Renderer } from './renderer';
 import { useAppDispatch, useAppSelector } from 'store';
 import { selectMarkers, selectMarkersFetchingState } from 'store/markers/selector';
-import { fetchMarkers } from 'store/markers/actions';
+import { fetchMarkers, initializeFetchingState } from 'store/markers/actions';
 import { updateFormField, updateIsEditting } from 'store/article-form/actions';
 import { Position } from 'types/position';
 import {
@@ -35,6 +35,7 @@ export function TriviaMap(ownProps: OwnProps) {
     userId: ownProps.userId,
 
     fetchMarkers: (park: Park, userId?: number) => dispatch(fetchMarkers(park, userId)),
+    initializeFetchingState: () => dispatch(initializeFetchingState()),
     updatePosition: (position: Position) => dispatch(updateFormField({ position: position })),
     endToSelectPosition: ownProps.endToSelectPosition,
     updateIsEditting: (isEditting: boolean) => dispatch(updateIsEditting(isEditting)),

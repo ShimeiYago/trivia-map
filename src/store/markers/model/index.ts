@@ -6,6 +6,7 @@ export interface MarkersState {
   markers: Marker[];
   focusingPark?: Park;
   filteringCategoryId?: number;
+  userId?: number;
   fetchingState: LoadingState;
   loadedPages: number;
   totalPages?: number;

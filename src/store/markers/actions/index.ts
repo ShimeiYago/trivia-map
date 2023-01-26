@@ -11,6 +11,7 @@ export const {
   fetchSuccess,
   fetchStart,
   updateMarkers,
+  initializeFetchingState,
   updateTotalPages,
   updateLoadedPages,
   updateFocusingPark,

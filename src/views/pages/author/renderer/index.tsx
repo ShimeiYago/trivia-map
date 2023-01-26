@@ -3,17 +3,13 @@ import { ArticleWrapper } from 'views/components/organisms/article-wrapper';
 import { ArticlePreviewList } from 'views/components/organisms/article-preview-list';
 import { Author } from 'types/author';
 import { getAuthorInfo } from 'api/users-api';
-import { Avatar, Box, Button, Stack, Typography } from '@mui/material';
+import { Avatar, Stack, Typography } from '@mui/material';
 import { CenterSpinner } from 'views/components/atoms/center-spinner';
 import noIcon from 'images/no-icon.jpg';
 import { ApiError } from 'api/utils/handle-axios-error';
 import { pageTitleGenerator } from 'utils/page-title-generator';
 import { CommonHelmet } from 'helper-components/common-helmet';
-import { NonStyleLink } from 'views/components/atoms/non-style-link';
-import { MAP_USER_LINK } from 'constant/links';
-import { IconAndText } from 'views/components/atoms/icon-and-text';
-import MapIcon from '@mui/icons-material/Map';
-import { grey } from '@mui/material/colors';
+import { MapLinkButton } from 'views/components/moleculars/map-link-button';
 
 export class Renderer extends React.Component<Props, State> {
   state: State = {
@@ -54,18 +50,7 @@ export class Renderer extends React.Component<Props, State> {
           </Typography>
         </Stack>
 
-        <Box textAlign="center" mt={2} mb={4} color={grey[800]}>
-          <NonStyleLink to={MAP_USER_LINK(String(this.props.userId))}>
-            <Button color="inherit" variant="outlined" sx={{ py: 2, px: 5 }}>
-              <IconAndText
-                iconComponent={<MapIcon fontSize="medium" />}
-                text="マップ上で確認する"
-                iconPosition="left"
-                columnGap={1}
-              />
-            </Button>
-          </NonStyleLink>
-        </Box>
+        <MapLinkButton userId={this.props.userId} />
 
         <ArticlePreviewList variant="large" searchConditions={{ user: this.props.userId }} />
       </>

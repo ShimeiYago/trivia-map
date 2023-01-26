@@ -36,7 +36,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
           Object {
             "icon": <Memo />,
             "link": "/admin/articles",
-            "text": "投稿一覧＆検索",
+            "text": "マイ投稿一覧",
           },
           Object {
             "icon": <Memo />,
@@ -91,7 +91,7 @@ exports[`Shallow Snapshot Tests no icon 1`] = `
           Object {
             "icon": <Memo />,
             "link": "/admin/articles",
-            "text": "投稿一覧＆検索",
+            "text": "マイ投稿一覧",
           },
           Object {
             "icon": <Memo />,

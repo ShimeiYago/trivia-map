@@ -30,7 +30,7 @@ export class Renderer extends React.Component<Props> {
     const listItems = [
       {
         icon: <ListAltIcon />,
-        text: PAGE_NAMES.articles,
+        text: PAGE_NAMES.myArticles,
         link: MY_ARTICLES_LINK,
       },
       {

@@ -43,7 +43,6 @@ import { categoryMapper } from 'utils/category-mapper';
 import { IconAndText } from 'views/components/atoms/icon-and-text';
 import FolderIcon from '@mui/icons-material/Folder';
 import { LoadingButton } from '@mui/lab';
-import { Park } from 'types/park';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import { patchRemoteArticle } from 'api/articles-api/patch-remote-article';
 import { CATEGORIES } from 'constant';
@@ -402,7 +401,7 @@ export class Renderer extends React.Component<Props, State> {
   };
 
   protected deleteArticle = (postId: number, title: string) => async () => {
-    const { park, fetchMarkers, refreshUser } = this.props;
+    const { initializeFetchingState, refreshUser } = this.props;
 
     this.setState({
       message: undefined,
@@ -411,7 +410,7 @@ export class Renderer extends React.Component<Props, State> {
 
     try {
       await autoRefreshApiWrapper(() => deleteRemoteArticle(postId), refreshUser);
-      park && fetchMarkers(park);
+      initializeFetchingState();
 
       this.setState({
         message: {
@@ -455,7 +454,7 @@ export class Renderer extends React.Component<Props, State> {
     };
 
   protected switchDraftStatus = (postId: number, isDraft: boolean, title: string) => async () => {
-    const { park, fetchMarkers, refreshUser } = this.props;
+    const { initializeFetchingState, refreshUser } = this.props;
 
     this.setState({
       message: undefined,
@@ -467,7 +466,7 @@ export class Renderer extends React.Component<Props, State> {
         () => patchRemoteArticle({ postId: postId, isDraft: isDraft }),
         refreshUser,
       );
-      park && fetchMarkers(park);
+      initializeFetchingState();
 
       this.setState({
         message: {
@@ -590,9 +589,8 @@ export class Renderer extends React.Component<Props, State> {
 
 export type Props = {
   isMobile: boolean;
-  park?: Park;
   throwError: (status: number) => void;
-  fetchMarkers: (park: Park) => void;
+  initializeFetchingState: () => void;
   initialize: () => void;
   refreshUser: () => void;
 };

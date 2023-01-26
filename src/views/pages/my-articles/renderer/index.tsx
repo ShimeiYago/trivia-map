@@ -5,8 +5,10 @@ import { AdminWrapper } from 'views/components/organisms/admin-wrapper';
 import { BackToNavi } from 'views/components/moleculars/back-to-navi';
 import { ADMIN_LINK } from 'constant/links';
 import { PAGE_NAMES } from 'constant/page-names';
+import { MapLinkButton } from 'views/components/moleculars/map-link-button';
+import { User } from 'types/user';
 
-export class Renderer extends React.Component {
+export class Renderer extends React.Component<Props> {
   render() {
     return <AdminWrapper>{this.renderContents()}</AdminWrapper>;
   }
@@ -14,14 +16,21 @@ export class Renderer extends React.Component {
   protected renderContents = () => {
     return (
       <Stack spacing={3}>
-        <BackToNavi text="マイページ" link={ADMIN_LINK} />
+        <BackToNavi text={PAGE_NAMES.admin} link={ADMIN_LINK} />
         <Box>
           <Typography align="center" component="h2" variant="h4" sx={{ mb: 3 }}>
             {PAGE_NAMES.myArticles}
           </Typography>
+
+          {this.props.user && <MapLinkButton userId={this.props.user.userId} />}
+
           <ArticleManageTable />
         </Box>
       </Stack>
     );
   };
 }
+
+export type Props = {
+  user?: User;
+};

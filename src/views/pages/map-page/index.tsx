@@ -15,11 +15,15 @@ import { Park } from 'types/park';
 import { useAppDispatch } from 'store';
 import { CommonHelmet } from 'helper-components/common-helmet';
 import { useWindowSize } from 'helper-components/user-window-size';
+import { throwError } from 'store/global-error/slice';
+import { useNavigate } from 'react-router-dom';
 
 export function MapPage(ownProps: { new?: boolean }) {
   const { postId, userId } = useParams();
   const postIdNumber = Number(postId);
   const userIdNumber = Number(userId);
+
+  const navigate = useNavigate();
 
   const dispatch = useAppDispatch();
 
@@ -49,6 +53,8 @@ export function MapPage(ownProps: { new?: boolean }) {
     updateFoocusingPark: (park: Park) => dispatch(updateFocusingPark(park)),
     updateFilteringCategoryId: (categoryId?: number) =>
       dispatch(updateFilteringCategoryId(categoryId)),
+    navigate: (to: string) => navigate(to),
+    throwError: (errorStatus: number) => dispatch(throwError(errorStatus)),
   };
 
   if (postIdToEdit) {

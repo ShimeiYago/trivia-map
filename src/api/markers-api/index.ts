@@ -6,6 +6,7 @@ import { getAxiosInstance } from 'api/utils/get-axios-instance';
 import { mockGetMarkersResponse } from './../mock/markers-response';
 import { Park } from './../../types/park';
 import { Marker } from 'types/marker';
+import { getUrlParameters } from 'utils/get-url-parameters';
 
 export async function getRemoteMarkers(
   params: GetRemoteMarkersParams,
@@ -15,9 +16,9 @@ export async function getRemoteMarkers(
     url = params.nextUrl;
   } else {
     url = `${BASE_URL}/markers/${params.park}`;
-    if (params.category !== undefined) {
-      url = `${url}?category=${params.category}`;
-    }
+
+    const urlParams = getUrlParameters({ category: params.category, user: params.userId });
+    url += urlParams;
   }
 
   const axiosInstance = getAxiosInstance({}, mockGetMarkersResponse(params.nextUrl));
@@ -34,6 +35,7 @@ export async function getRemoteMarkers(
 type GetRemoteMarkersParams = {
   park: Park;
   category?: number;
+  userId?: number;
   nextUrl?: string;
 };
 

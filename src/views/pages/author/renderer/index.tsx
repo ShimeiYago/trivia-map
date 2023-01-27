@@ -9,6 +9,7 @@ import noIcon from 'images/no-icon.jpg';
 import { ApiError } from 'api/utils/handle-axios-error';
 import { pageTitleGenerator } from 'utils/page-title-generator';
 import { CommonHelmet } from 'helper-components/common-helmet';
+import { MapLinkButton } from 'views/components/moleculars/map-link-button';
 
 export class Renderer extends React.Component<Props, State> {
   state: State = {
@@ -48,6 +49,8 @@ export class Renderer extends React.Component<Props, State> {
             {pageName}
           </Typography>
         </Stack>
+
+        <MapLinkButton userId={this.props.userId} />
 
         <ArticlePreviewList variant="large" searchConditions={{ user: this.props.userId }} />
       </>

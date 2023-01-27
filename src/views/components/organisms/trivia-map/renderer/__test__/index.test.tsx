@@ -32,6 +32,7 @@ const basicProps: Props = {
   isFormEditting: false,
   park: 'S',
   isMobile: false,
+  initializeFetchingState: jest.fn(),
 };
 
 let shallowWrapper: ShallowWrapper<Props, State, Renderer>;
@@ -133,6 +134,27 @@ describe('componentDidUpdate', () => {
 
     instance['componentDidUpdate'](basicProps);
     expect(instance.state.map?.setZoom).toBeCalled();
+  });
+});
+
+describe('componentWillUnmount', () => {
+  beforeEach(() => {
+    shallowWrapper = shallow(<Renderer {...basicProps} />);
+  });
+
+  it('should call initializeFetchingState if userId is set', () => {
+    shallowWrapper.setProps({ userId: 1 });
+    const instance = shallowWrapper.instance();
+
+    instance['componentWillUnmount']();
+    expect(instance.props.initializeFetchingState).toBeCalled();
+  });
+
+  it('should not call initializeFetchingState if userId is not set', () => {
+    const instance = shallowWrapper.instance();
+
+    instance['componentWillUnmount']();
+    expect(instance.props.initializeFetchingState).not.toBeCalled();
   });
 });
 

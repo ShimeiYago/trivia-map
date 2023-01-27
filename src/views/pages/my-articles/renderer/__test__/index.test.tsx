@@ -1,7 +1,7 @@
 import { shallow, ShallowWrapper } from 'enzyme';
-import { Renderer, Props } from '..';
+import { Renderer } from '..';
 
-let wrapper: ShallowWrapper<Props, null, Renderer>;
+let wrapper: ShallowWrapper<null, null, Renderer>;
 
 describe('Shallow Snapshot Tests', () => {
   beforeEach(() => {
@@ -9,19 +9,6 @@ describe('Shallow Snapshot Tests', () => {
   });
 
   it('basic', () => {
-    expect(wrapper).toMatchSnapshot();
-  });
-
-  it('with user', () => {
-    wrapper.setProps({
-      user: {
-        userId: 1,
-        email: 'xxx@example.com',
-        nickname: 'xxx',
-        icon: 'https://xxx.com/xxx.png',
-        isSocialAccount: false,
-      },
-    });
     expect(wrapper).toMatchSnapshot();
   });
 });

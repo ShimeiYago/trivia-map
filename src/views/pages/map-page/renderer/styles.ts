@@ -7,6 +7,7 @@ const appBarDefaultHeightPC = 66;
 const appBarDefaultHeightMobile = 58;
 const zIndex = 1000;
 const categoryBackgroundColor = alpha('#000', 0.5);
+const authorBackgroundColor = alpha('#fff', 0.8);
 const categoryBarProceedButtonWidth = '30px';
 
 export const rightDrawerStyle: SxProps = {
@@ -95,4 +96,21 @@ export const verticalScroll: SxProps = {
   '&::-webkit-scrollbar': {
     display: 'none',
   },
+};
+
+export const authorMapMessage: SxProps = {
+  margin: 0,
+  top: 'auto',
+  right: 20,
+  bottom: 25,
+  left: 'auto',
+  position: 'fixed',
+  zIndex: zIndex,
+  backgroundColor: authorBackgroundColor,
+  pl: 1,
+  pr: 3,
+  py: 2,
+  borderRadius: 1,
+  maxWidth: 300,
+  boxSizing: 'border-box',
 };

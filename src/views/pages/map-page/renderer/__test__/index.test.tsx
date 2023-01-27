@@ -1,7 +1,9 @@
 import { shallow, ShallowWrapper } from 'enzyme';
 import { Renderer, State, Props } from '..';
+import * as GetAuthorInfoModule from 'api/users-api';
 
 let shallowWrapper: ShallowWrapper<Props, State, Renderer>;
+let getAuthorInfoSpy: jest.SpyInstance;
 
 const props: Props = {
   isFormEditting: false,
@@ -13,6 +15,8 @@ const props: Props = {
   new: false,
   updateFoocusingPark: jest.fn(),
   updateFilteringCategoryId: jest.fn(),
+  throwError: jest.fn(),
+  navigate: jest.fn(),
 };
 
 const mockAddEventListener = jest
@@ -65,6 +69,20 @@ describe('Shallow Snapshot Tests', () => {
     });
     expect(shallowWrapper).toMatchSnapshot();
   });
+
+  it('author map', () => {
+    shallowWrapper.setProps({
+      userId: 1,
+    });
+    shallowWrapper.setState({
+      author: {
+        userId: 1,
+        nickname: 'name',
+        icon: null,
+      },
+    });
+    expect(shallowWrapper).toMatchSnapshot();
+  });
 });
 
 describe('handleClickAddButton', () => {
@@ -81,6 +99,10 @@ describe('handleClickAddButton', () => {
 describe('componentDidMount', () => {
   beforeEach(() => {
     shallowWrapper = shallow(<Renderer {...props} />);
+    getAuthorInfoSpy = jest.spyOn(GetAuthorInfoModule, 'getAuthorInfo');
+  });
+
+  afterEach(() => {
     jest.resetAllMocks();
   });
 
@@ -114,6 +136,16 @@ describe('componentDidMount', () => {
 
     instance.componentDidMount();
     expect(mockAddEventListener).toHaveBeenCalled();
+  });
+
+  it('should call getAuthorInfo if userId is set', () => {
+    shallowWrapper.setProps({
+      userId: 1,
+    });
+    const instance = shallowWrapper.instance();
+
+    instance.componentDidMount();
+    expect(getAuthorInfoSpy).toHaveBeenCalled();
   });
 });
 
@@ -379,5 +411,40 @@ describe('handleClickCategoryBarProceed', () => {
 
     instance['handleClickCategoryBarProceed']();
     expect(instance.categoryScrollBarRef.current?.scrollBy).toBeCalled();
+  });
+});
+
+describe('fetchAuthorInfo', () => {
+  it('should throw error if api is failed with 404 error', async () => {
+    shallowWrapper = shallow(<Renderer {...props} />);
+    const instance = shallowWrapper.instance();
+
+    getAuthorInfoSpy.mockRejectedValue({ status: 404 });
+
+    await instance['fetchAuthorInfo'](1);
+
+    expect(instance.props.throwError).toBeCalledWith(404);
+  });
+
+  it('should throw error if api is failed with unknown error', async () => {
+    shallowWrapper = shallow(<Renderer {...props} />);
+    const instance = shallowWrapper.instance();
+
+    getAuthorInfoSpy.mockRejectedValue({});
+
+    await instance['fetchAuthorInfo'](1);
+
+    expect(instance.props.throwError).toBeCalledWith(500);
+  });
+});
+
+describe('handleClickAuthorClose', () => {
+  it('should call navigate props', () => {
+    shallowWrapper = shallow(<Renderer {...props} />);
+    const instance = shallowWrapper.instance();
+
+    instance['handleClickAuthorClose']();
+
+    expect(instance.props.navigate).toBeCalled();
   });
 });

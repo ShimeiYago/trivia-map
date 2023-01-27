@@ -10,6 +10,7 @@ const {
   updateTotalPages,
   updateFocusingPark,
   updateFilteringCategoryId,
+  initializeFetchingState,
 } = markersSlice.actions;
 
 describe('markers reducer', () => {
@@ -35,6 +36,11 @@ describe('markers reducer', () => {
   it('should handle fetchStart', () => {
     const actual = markersReducer(initialState, fetchStart());
     expect(actual.markers).toEqual([]);
+  });
+
+  it('should handle initializeFetchingState', () => {
+    const actual = markersReducer(initialState, initializeFetchingState());
+    expect(actual.fetchingState).toEqual('waiting');
   });
 
   it('should handle fetchSuccess', () => {

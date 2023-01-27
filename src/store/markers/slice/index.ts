@@ -14,6 +14,10 @@ export const markersSlice = createSlice({
       state.totalPages = undefined;
     },
 
+    initializeFetchingState(state) {
+      state.fetchingState = 'waiting';
+    },
+
     fetchSuccess(state) {
       state.fetchingState = 'success';
     },

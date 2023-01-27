@@ -42,6 +42,8 @@ import { ApiError } from 'api/utils/handle-axios-error';
 import { Link } from 'react-router-dom';
 import CloseIcon from '@mui/icons-material/Close';
 
+const CATEGORY_BUTTON_ID = (categoryId: number) => `category-button-${categoryId}`;
+
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
@@ -85,6 +87,12 @@ export class Renderer extends React.Component<Props, State> {
     if (this.props.userId) {
       this.fetchAuthorInfo(this.props.userId);
     }
+
+    if (this.props.filteringCategoryId !== undefined) {
+      document
+        .getElementById(CATEGORY_BUTTON_ID(this.props.filteringCategoryId))
+        ?.scrollIntoView({ inline: 'center' });
+    }
   }
 
   componentDidUpdate(prevProps: Props, prevState: State) {
@@ -118,7 +126,6 @@ export class Renderer extends React.Component<Props, State> {
 
   componentWillUnmount(): void {
     window.removeEventListener('beforeunload', this.handleBeforeUnload);
-    this.props.updateFilteringCategoryId(undefined);
   }
 
   protected handleBeforeUnload(e: BeforeUnloadEvent) {
@@ -206,9 +213,10 @@ export class Renderer extends React.Component<Props, State> {
   protected renderCategoryButtons = () => {
     const { isMobile, filteringCategoryId } = this.props;
 
-    const buttons = CATEGORIES.map((category, index) => (
+    const buttons = CATEGORIES.map((category) => (
       <RoundButton
-        key={`category-button-${index}`}
+        key={CATEGORY_BUTTON_ID(category.categoryId)}
+        id={CATEGORY_BUTTON_ID(category.categoryId)}
         selected={filteringCategoryId === category.categoryId}
         onClick={this.handleClickCategoryButton(category.categoryId)}
       >

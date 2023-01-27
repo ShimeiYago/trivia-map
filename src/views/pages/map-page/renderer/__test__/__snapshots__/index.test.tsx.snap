@@ -107,63 +107,72 @@ exports[`Shallow Snapshot Tests author map 1`] = `
           }
         >
           <RoundButton
-            key="category-button-0"
+            id="category-button-1"
+            key="category-button-1"
             onClick={[Function]}
             selected={false}
           >
             隠れミッキー
           </RoundButton>
           <RoundButton
-            key="category-button-1"
+            id="category-button-2"
+            key="category-button-2"
             onClick={[Function]}
             selected={false}
           >
             バックグラウンドストーリー
           </RoundButton>
           <RoundButton
-            key="category-button-2"
+            id="category-button-3"
+            key="category-button-3"
             onClick={[Function]}
             selected={false}
           >
             おすすめ写真スポット
           </RoundButton>
           <RoundButton
-            key="category-button-3"
+            id="category-button-4"
+            key="category-button-4"
             onClick={[Function]}
             selected={false}
           >
             ショーパレ
           </RoundButton>
           <RoundButton
-            key="category-button-4"
+            id="category-button-5"
+            key="category-button-5"
             onClick={[Function]}
             selected={false}
           >
             フード情報
           </RoundButton>
           <RoundButton
-            key="category-button-5"
+            id="category-button-6"
+            key="category-button-6"
             onClick={[Function]}
             selected={false}
           >
             グッズ情報
           </RoundButton>
           <RoundButton
-            key="category-button-6"
+            id="category-button-7"
+            key="category-button-7"
             onClick={[Function]}
             selected={false}
           >
             キャラグリ
           </RoundButton>
           <RoundButton
-            key="category-button-7"
+            id="category-button-8"
+            key="category-button-8"
             onClick={[Function]}
             selected={false}
           >
             攻略法
           </RoundButton>
           <RoundButton
-            key="category-button-8"
+            id="category-button-0"
+            key="category-button-0"
             onClick={[Function]}
             selected={false}
           >
@@ -384,63 +393,72 @@ exports[`Shallow Snapshot Tests basic 1`] = `
           }
         >
           <RoundButton
-            key="category-button-0"
+            id="category-button-1"
+            key="category-button-1"
             onClick={[Function]}
             selected={false}
           >
             隠れミッキー
           </RoundButton>
           <RoundButton
-            key="category-button-1"
+            id="category-button-2"
+            key="category-button-2"
             onClick={[Function]}
             selected={false}
           >
             バックグラウンドストーリー
           </RoundButton>
           <RoundButton
-            key="category-button-2"
+            id="category-button-3"
+            key="category-button-3"
             onClick={[Function]}
             selected={false}
           >
             おすすめ写真スポット
           </RoundButton>
           <RoundButton
-            key="category-button-3"
+            id="category-button-4"
+            key="category-button-4"
             onClick={[Function]}
             selected={false}
           >
             ショーパレ
           </RoundButton>
           <RoundButton
-            key="category-button-4"
+            id="category-button-5"
+            key="category-button-5"
             onClick={[Function]}
             selected={false}
           >
             フード情報
           </RoundButton>
           <RoundButton
-            key="category-button-5"
+            id="category-button-6"
+            key="category-button-6"
             onClick={[Function]}
             selected={false}
           >
             グッズ情報
           </RoundButton>
           <RoundButton
-            key="category-button-6"
+            id="category-button-7"
+            key="category-button-7"
             onClick={[Function]}
             selected={false}
           >
             キャラグリ
           </RoundButton>
           <RoundButton
-            key="category-button-7"
+            id="category-button-8"
+            key="category-button-8"
             onClick={[Function]}
             selected={false}
           >
             攻略法
           </RoundButton>
           <RoundButton
-            key="category-button-8"
+            id="category-button-0"
+            key="category-button-0"
             onClick={[Function]}
             selected={false}
           >
@@ -615,63 +633,72 @@ exports[`Shallow Snapshot Tests before render map 1`] = `
           }
         >
           <RoundButton
-            key="category-button-0"
+            id="category-button-1"
+            key="category-button-1"
             onClick={[Function]}
             selected={false}
           >
             隠れミッキー
           </RoundButton>
           <RoundButton
-            key="category-button-1"
+            id="category-button-2"
+            key="category-button-2"
             onClick={[Function]}
             selected={false}
           >
             バックグラウンドストーリー
           </RoundButton>
           <RoundButton
-            key="category-button-2"
+            id="category-button-3"
+            key="category-button-3"
             onClick={[Function]}
             selected={false}
           >
             おすすめ写真スポット
           </RoundButton>
           <RoundButton
-            key="category-button-3"
+            id="category-button-4"
+            key="category-button-4"
             onClick={[Function]}
             selected={false}
           >
             ショーパレ
           </RoundButton>
           <RoundButton
-            key="category-button-4"
+            id="category-button-5"
+            key="category-button-5"
             onClick={[Function]}
             selected={false}
           >
             フード情報
           </RoundButton>
           <RoundButton
-            key="category-button-5"
+            id="category-button-6"
+            key="category-button-6"
             onClick={[Function]}
             selected={false}
           >
             グッズ情報
           </RoundButton>
           <RoundButton
-            key="category-button-6"
+            id="category-button-7"
+            key="category-button-7"
             onClick={[Function]}
             selected={false}
           >
             キャラグリ
           </RoundButton>
           <RoundButton
-            key="category-button-7"
+            id="category-button-8"
+            key="category-button-8"
             onClick={[Function]}
             selected={false}
           >
             攻略法
           </RoundButton>
           <RoundButton
-            key="category-button-8"
+            id="category-button-0"
+            key="category-button-0"
             onClick={[Function]}
             selected={false}
           >
@@ -853,63 +880,72 @@ exports[`Shallow Snapshot Tests land mode 1`] = `
           }
         >
           <RoundButton
-            key="category-button-0"
+            id="category-button-1"
+            key="category-button-1"
             onClick={[Function]}
             selected={false}
           >
             隠れミッキー
           </RoundButton>
           <RoundButton
-            key="category-button-1"
+            id="category-button-2"
+            key="category-button-2"
             onClick={[Function]}
             selected={false}
           >
             バックグラウンドストーリー
           </RoundButton>
           <RoundButton
-            key="category-button-2"
+            id="category-button-3"
+            key="category-button-3"
             onClick={[Function]}
             selected={false}
           >
             おすすめ写真スポット
           </RoundButton>
           <RoundButton
-            key="category-button-3"
+            id="category-button-4"
+            key="category-button-4"
             onClick={[Function]}
             selected={false}
           >
             ショーパレ
           </RoundButton>
           <RoundButton
-            key="category-button-4"
+            id="category-button-5"
+            key="category-button-5"
             onClick={[Function]}
             selected={false}
           >
             フード情報
           </RoundButton>
           <RoundButton
-            key="category-button-5"
+            id="category-button-6"
+            key="category-button-6"
             onClick={[Function]}
             selected={false}
           >
             グッズ情報
           </RoundButton>
           <RoundButton
-            key="category-button-6"
+            id="category-button-7"
+            key="category-button-7"
             onClick={[Function]}
             selected={false}
           >
             キャラグリ
           </RoundButton>
           <RoundButton
-            key="category-button-7"
+            id="category-button-8"
+            key="category-button-8"
             onClick={[Function]}
             selected={false}
           >
             攻略法
           </RoundButton>
           <RoundButton
-            key="category-button-8"
+            id="category-button-0"
+            key="category-button-0"
             onClick={[Function]}
             selected={false}
           >
@@ -1037,63 +1073,72 @@ exports[`Shallow Snapshot Tests park is undefined 1`] = `
           }
         >
           <RoundButton
-            key="category-button-0"
+            id="category-button-1"
+            key="category-button-1"
             onClick={[Function]}
             selected={false}
           >
             隠れミッキー
           </RoundButton>
           <RoundButton
-            key="category-button-1"
+            id="category-button-2"
+            key="category-button-2"
             onClick={[Function]}
             selected={false}
           >
             バックグラウンドストーリー
           </RoundButton>
           <RoundButton
-            key="category-button-2"
+            id="category-button-3"
+            key="category-button-3"
             onClick={[Function]}
             selected={false}
           >
             おすすめ写真スポット
           </RoundButton>
           <RoundButton
-            key="category-button-3"
+            id="category-button-4"
+            key="category-button-4"
             onClick={[Function]}
             selected={false}
           >
             ショーパレ
           </RoundButton>
           <RoundButton
-            key="category-button-4"
+            id="category-button-5"
+            key="category-button-5"
             onClick={[Function]}
             selected={false}
           >
             フード情報
           </RoundButton>
           <RoundButton
-            key="category-button-5"
+            id="category-button-6"
+            key="category-button-6"
             onClick={[Function]}
             selected={false}
           >
             グッズ情報
           </RoundButton>
           <RoundButton
-            key="category-button-6"
+            id="category-button-7"
+            key="category-button-7"
             onClick={[Function]}
             selected={false}
           >
             キャラグリ
           </RoundButton>
           <RoundButton
-            key="category-button-7"
+            id="category-button-8"
+            key="category-button-8"
             onClick={[Function]}
             selected={false}
           >
             攻略法
           </RoundButton>
           <RoundButton
-            key="category-button-8"
+            id="category-button-0"
+            key="category-button-0"
             onClick={[Function]}
             selected={false}
           >
@@ -1279,63 +1324,72 @@ exports[`Shallow Snapshot Tests pc view 1`] = `
           }
         >
           <RoundButton
-            key="category-button-0"
+            id="category-button-1"
+            key="category-button-1"
             onClick={[Function]}
             selected={false}
           >
             隠れミッキー
           </RoundButton>
           <RoundButton
-            key="category-button-1"
+            id="category-button-2"
+            key="category-button-2"
             onClick={[Function]}
             selected={false}
           >
             バックグラウンドストーリー
           </RoundButton>
           <RoundButton
-            key="category-button-2"
+            id="category-button-3"
+            key="category-button-3"
             onClick={[Function]}
             selected={false}
           >
             おすすめ写真スポット
           </RoundButton>
           <RoundButton
-            key="category-button-3"
+            id="category-button-4"
+            key="category-button-4"
             onClick={[Function]}
             selected={false}
           >
             ショーパレ
           </RoundButton>
           <RoundButton
-            key="category-button-4"
+            id="category-button-5"
+            key="category-button-5"
             onClick={[Function]}
             selected={false}
           >
             フード情報
           </RoundButton>
           <RoundButton
-            key="category-button-5"
+            id="category-button-6"
+            key="category-button-6"
             onClick={[Function]}
             selected={false}
           >
             グッズ情報
           </RoundButton>
           <RoundButton
-            key="category-button-6"
+            id="category-button-7"
+            key="category-button-7"
             onClick={[Function]}
             selected={false}
           >
             キャラグリ
           </RoundButton>
           <RoundButton
-            key="category-button-7"
+            id="category-button-8"
+            key="category-button-8"
             onClick={[Function]}
             selected={false}
           >
             攻略法
           </RoundButton>
           <RoundButton
-            key="category-button-8"
+            id="category-button-0"
+            key="category-button-0"
             onClick={[Function]}
             selected={false}
           >

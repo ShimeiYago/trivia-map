@@ -9,7 +9,7 @@ export const RoundButton: React.FC<Props> = (props) => {
   }
 
   return (
-    <button className={`${classNames.join(' ')}`} onClick={props.onClick}>
+    <button className={`${classNames.join(' ')}`} onClick={props.onClick} id={props.id}>
       <Typography variant="button" component="div" color={props.selected ? 'white' : 'black'}>
         {props.children}
       </Typography>
@@ -20,6 +20,7 @@ export const RoundButton: React.FC<Props> = (props) => {
 export type Props = {
   children: React.ReactNode;
   selected?: boolean;
+  id?: string;
 
   onClick?: () => void;
 };

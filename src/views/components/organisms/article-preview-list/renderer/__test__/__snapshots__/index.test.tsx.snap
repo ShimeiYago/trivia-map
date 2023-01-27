@@ -363,8 +363,8 @@ exports[`Shallow Snapshot Tests only one page with popup 1`] = `
                   >
                     ノーチラス号のエンジン
                   </ForwardRef(Typography)>
-                  <ForwardRef(Typography)
-                    align="center"
+                  <ForwardRef(Box)
+                    textAlign="center"
                   >
                     <Image
                       borderRadius={true}
@@ -373,7 +373,7 @@ exports[`Shallow Snapshot Tests only one page with popup 1`] = `
                       src="https://disneyparkstory.com/wp-content/uploads/2017/02/CIMG9800.jpg"
                       width="200px"
                     />
-                  </ForwardRef(Typography)>
+                  </ForwardRef(Box)>
                   <ForwardRef(Divider) />
                   <ForwardRef(Box)>
                     <ForwardRef(Typography)
@@ -617,8 +617,8 @@ exports[`Shallow Snapshot Tests variant popup 1`] = `
                   >
                     ノーチラス号のエンジン
                   </ForwardRef(Typography)>
-                  <ForwardRef(Typography)
-                    align="center"
+                  <ForwardRef(Box)
+                    textAlign="center"
                   >
                     <Image
                       borderRadius={true}
@@ -627,7 +627,7 @@ exports[`Shallow Snapshot Tests variant popup 1`] = `
                       src="https://disneyparkstory.com/wp-content/uploads/2017/02/CIMG9800.jpg"
                       width="200px"
                     />
-                  </ForwardRef(Typography)>
+                  </ForwardRef(Box)>
                   <ForwardRef(Divider) />
                   <ForwardRef(Box)>
                     <ForwardRef(Typography)

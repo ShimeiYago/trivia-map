@@ -8,6 +8,7 @@ import {
   DialogContentText,
   DialogTitle,
   Drawer,
+  IconButton,
   Stack,
   Switch,
   Typography,
@@ -27,13 +28,19 @@ import {
   verticalScroll,
   categoryBar,
   categoryBarProceedButton,
+  authorMapMessage,
 } from './styles';
 import { GlobalMenu } from 'views/components/organisms/global-menu';
 import { Park } from 'types/park';
 import { RoundButton } from 'views/components/atoms/round-button';
 import { CATEGORIES, INITIAL_PARK } from 'constant';
-import { EDIT_LINK, MAP_PAGE_LINK, NEW_LINK } from 'constant/links';
+import { AUTHER_PAGE_LINK, EDIT_LINK, MAP_PAGE_LINK, NEW_LINK } from 'constant/links';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import { Author } from 'types/author';
+import { getAuthorInfo } from 'api/users-api';
+import { ApiError } from 'api/utils/handle-axios-error';
+import { Link } from 'react-router-dom';
+import CloseIcon from '@mui/icons-material/Close';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -74,6 +81,10 @@ export class Renderer extends React.Component<Props, State> {
     if (this.props.isFormChangedFromLastSaved) {
       window.addEventListener('beforeunload', this.handleBeforeUnload);
     }
+
+    if (this.props.userId) {
+      this.fetchAuthorInfo(this.props.userId);
+    }
   }
 
   componentDidUpdate(prevProps: Props, prevState: State) {
@@ -98,6 +109,10 @@ export class Renderer extends React.Component<Props, State> {
       this.setState({
         openFormModal: true,
       });
+    }
+
+    if (!prevProps.userId && this.props.userId) {
+      this.fetchAuthorInfo(this.props.userId);
     }
   }
 
@@ -141,7 +156,7 @@ export class Renderer extends React.Component<Props, State> {
           <Box sx={mapWrapper(isMobile, windowWidth, windowHeight)}>
             {triviaMap}
 
-            {!isFormEditting && (
+            {!isFormEditting && !this.props.userId && (
               <FloatingButton color="error" icon="add-marker" onClick={this.handleClickAddButton} />
             )}
 
@@ -150,6 +165,8 @@ export class Renderer extends React.Component<Props, State> {
             {this.renderParkSelectBox()}
 
             {this.renderCategoryButtons()}
+
+            {this.renderAuthorMapMessage()}
           </Box>
         </GlobalMenu>
 
@@ -219,6 +236,44 @@ export class Renderer extends React.Component<Props, State> {
         </Stack>
       </Box>
     );
+  };
+
+  protected renderAuthorMapMessage = () => {
+    if (!this.props.userId || !this.state.author) {
+      return null;
+    }
+
+    return (
+      <Box sx={authorMapMessage}>
+        <Stack direction="row" alignItems="center">
+          <IconButton onClick={this.handleClickAuthorClose}>
+            <CloseIcon />
+          </IconButton>
+          <Typography>
+            <Link to={AUTHER_PAGE_LINK(String(this.props.userId))}>
+              {this.state.author?.nickname}
+            </Link>
+            さんの投稿
+          </Typography>
+        </Stack>
+      </Box>
+    );
+  };
+
+  protected handleClickAuthorClose = () => {
+    return this.props.navigate(MAP_PAGE_LINK);
+  };
+
+  protected fetchAuthorInfo = async (userId: number) => {
+    try {
+      const author = await getAuthorInfo(userId);
+      this.setState({
+        author: author,
+      });
+    } catch (error) {
+      const apiError = error as ApiError<unknown>;
+      this.props.throwError(apiError.status ?? 500);
+    }
   };
 
   protected handleClickCategoryBarProceed = () => {
@@ -383,6 +438,8 @@ export type Props = {
 
   updateFoocusingPark: (park: Park) => void;
   updateFilteringCategoryId: (categoryId?: number) => void;
+  navigate: (to: string) => void;
+  throwError: (errorStatus: number) => void;
 };
 
 export type State = {
@@ -392,4 +449,5 @@ export type State = {
   newMarkerMode: boolean;
   openDialogToConfirmDeleting: boolean;
   openDoubleEditAlartDialog: boolean;
+  author?: Author;
 };

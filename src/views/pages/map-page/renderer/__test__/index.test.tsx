@@ -147,6 +147,17 @@ describe('componentDidMount', () => {
     instance.componentDidMount();
     expect(getAuthorInfoSpy).toHaveBeenCalled();
   });
+
+  it('should call getElementById if category id is set', () => {
+    const getElementByIdSpy = jest.spyOn(document, 'getElementById');
+    shallowWrapper.setProps({
+      filteringCategoryId: 1,
+    });
+    const instance = shallowWrapper.instance();
+
+    instance.componentDidMount();
+    expect(getElementByIdSpy).toHaveBeenCalledWith('category-button-1');
+  });
 });
 
 describe('componentWillUnmount', () => {

@@ -149,9 +149,9 @@ export class Renderer extends React.Component<Props, State> {
           </Typography>
 
           {imageUrl && (
-            <Typography align="center">
+            <Box textAlign="center">
               <Image src={imageUrl} width="200px" height="100px" objectFit="cover" borderRadius />
-            </Typography>
+            </Box>
           )}
 
           <Divider />

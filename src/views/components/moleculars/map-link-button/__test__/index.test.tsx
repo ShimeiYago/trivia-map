@@ -1,11 +1,11 @@
 import { shallow, ShallowWrapper } from 'enzyme';
-import { Renderer } from '..';
+import { MapLinkButton, Props } from '..';
 
-let wrapper: ShallowWrapper<null, null, Renderer>;
+let wrapper: ShallowWrapper<Props, null, MapLinkButton>;
 
 describe('Shallow Snapshot Tests', () => {
   beforeEach(() => {
-    wrapper = shallow(<Renderer />);
+    wrapper = shallow(<MapLinkButton userId={1} />);
   });
 
   it('basic', () => {

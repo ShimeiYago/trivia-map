@@ -14,11 +14,12 @@ export class Renderer extends React.Component {
   protected renderContents = () => {
     return (
       <Stack spacing={3}>
-        <BackToNavi text="マイページ" link={ADMIN_LINK} />
+        <BackToNavi text={PAGE_NAMES.admin} link={ADMIN_LINK} />
         <Box>
           <Typography align="center" component="h2" variant="h4" sx={{ mb: 3 }}>
             {PAGE_NAMES.myArticles}
           </Typography>
+
           <ArticleManageTable />
         </Box>
       </Stack>

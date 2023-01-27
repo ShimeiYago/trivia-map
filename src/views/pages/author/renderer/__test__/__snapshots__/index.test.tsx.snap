@@ -34,6 +34,9 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       Axelさんの投稿一覧
     </ForwardRef(Typography)>
   </ForwardRef(Stack)>
+  <MapLinkButton
+    userId={1}
+  />
   <ArticlePreviewList
     searchConditions={
       Object {
@@ -87,6 +90,9 @@ exports[`Shallow Snapshot Tests no icon 1`] = `
       Axelさんの投稿一覧
     </ForwardRef(Typography)>
   </ForwardRef(Stack)>
+  <MapLinkButton
+    userId={1}
+  />
   <ArticlePreviewList
     searchConditions={
       Object {

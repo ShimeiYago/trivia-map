@@ -345,3 +345,113 @@ exports[`Shallow Snapshot Tests with hiddenMarkerIds 1`] = `
   />
 </ForwardRef(ContainerComponent)>
 `;
+
+exports[`Shallow Snapshot Tests without number of articles 1`] = `
+<ForwardRef(ContainerComponent)
+  chunkedLoading={true}
+  disableClusteringAtZoom={4}
+  iconCreateFunction={[Function]}
+  removeOutsideVisibleBounds={true}
+  showCoverageOnHover={false}
+  spiderfyOnMaxZoom={false}
+>
+  <MapMarker
+    autoOpen={false}
+    draggable={false}
+    isMobile={false}
+    key="post-marker-100"
+    map={
+      Object {
+        "setView": [MockFunction],
+      }
+    }
+    popup={
+      <ForwardRef(Box)
+        width={250}
+      >
+        <ArticlePreviewList
+          searchConditions={
+            Object {
+              "category": undefined,
+              "marker": 100,
+            }
+          }
+          variant="popup"
+        />
+        <ForwardRef(Box)
+          sx={
+            Object {
+              "mt": 2,
+              "textAlign": "right",
+            }
+          }
+        >
+          <ForwardRef(Button)
+            onClick={[Function]}
+            startIcon={<Memo />}
+          >
+            ここにトリビアを追加する
+          </ForwardRef(Button)>
+        </ForwardRef(Box)>
+      </ForwardRef(Box)>
+    }
+    position={
+      Object {
+        "lat": 0,
+        "lng": 0,
+      }
+    }
+    variant="red"
+    zIndexOffset={0}
+  />
+  <MapMarker
+    autoOpen={false}
+    draggable={false}
+    isMobile={false}
+    key="post-marker-101"
+    map={
+      Object {
+        "setView": [MockFunction],
+      }
+    }
+    popup={
+      <ForwardRef(Box)
+        width={250}
+      >
+        <ArticlePreviewList
+          searchConditions={
+            Object {
+              "category": undefined,
+              "marker": 101,
+            }
+          }
+          variant="popup"
+        />
+        <ForwardRef(Box)
+          sx={
+            Object {
+              "mt": 2,
+              "textAlign": "right",
+            }
+          }
+        >
+          <ForwardRef(Button)
+            onClick={[Function]}
+            startIcon={<Memo />}
+          >
+            ここにトリビアを追加する
+          </ForwardRef(Button)>
+        </ForwardRef(Box)>
+      </ForwardRef(Box)>
+    }
+    position={
+      Object {
+        "lat": 0,
+        "lng": 0,
+      }
+    }
+    variant="red"
+    zIndexOffset={0}
+  />
+</ForwardRef(ContainerComponent)>
+`;

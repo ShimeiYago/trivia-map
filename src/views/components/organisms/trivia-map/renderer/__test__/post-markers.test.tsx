@@ -25,6 +25,7 @@ const basicProps: Props = {
   openFormWithTheMarker: jest.fn(),
   editting: false,
   isMobile: false,
+  showNumberOfArticles: true,
 };
 
 let shallowWrapper: ShallowWrapper<Props, unknown, PostMarkers>;
@@ -50,6 +51,11 @@ describe('Shallow Snapshot Tests', () => {
 
   it('category is selected', () => {
     shallowWrapper.setProps({ categoryId: 1 });
+    expect(shallowWrapper).toMatchSnapshot();
+  });
+
+  it('without number of articles', () => {
+    shallowWrapper.setProps({ showNumberOfArticles: false });
     expect(shallowWrapper).toMatchSnapshot();
   });
 });

@@ -12,7 +12,15 @@ import './index.css';
 
 export class PostMarkers extends React.Component<Props> {
   render() {
-    const { map, markers, popupDisabled, hiddenMarkerIds, isMobile, categoryId } = this.props;
+    const {
+      map,
+      markers,
+      popupDisabled,
+      hiddenMarkerIds,
+      isMobile,
+      categoryId,
+      showNumberOfArticles,
+    } = this.props;
 
     const markerElmList = markers.map((marker) => {
       if (hiddenMarkerIds.includes(marker.markerId)) {
@@ -30,7 +38,8 @@ export class PostMarkers extends React.Component<Props> {
         return null;
       }
 
-      const numberOfContents = numberOfPublicArticles > 1 ? numberOfPublicArticles : undefined;
+      const numberOfContents =
+        showNumberOfArticles && numberOfPublicArticles > 1 ? numberOfPublicArticles : undefined;
 
       return (
         <MapMarker
@@ -104,6 +113,7 @@ export type Props = {
   editting: boolean;
   isMobile: boolean;
   categoryId?: number;
+  showNumberOfArticles: boolean;
 
   openFormWithTheMarker: (position: Position) => void;
 };

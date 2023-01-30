@@ -163,6 +163,7 @@ export class Renderer extends React.Component<Props, State> {
         editting={isFormEditting}
         isMobile={isMobile}
         categoryId={categoryId}
+        showNumberOfArticles={!this.props.userId}
       />
     );
   }

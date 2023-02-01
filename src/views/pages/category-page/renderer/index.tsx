@@ -5,6 +5,7 @@ import { Typography } from '@mui/material';
 import { IconAndText } from 'views/components/atoms/icon-and-text';
 import FolderIcon from '@mui/icons-material/Folder';
 import { categoryMapper } from 'utils/category-mapper';
+import { MapLinkButton } from 'views/components/moleculars/map-link-button';
 
 export class Renderer extends React.Component<Props> {
   render() {
@@ -22,6 +23,8 @@ export class Renderer extends React.Component<Props> {
             variant="inherit"
           />
         </Typography>
+
+        <MapLinkButton categoryId={this.props.categoryId} />
 
         <ArticlePreviewList
           variant="large"

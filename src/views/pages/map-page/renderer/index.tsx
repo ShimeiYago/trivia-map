@@ -77,7 +77,7 @@ export class Renderer extends React.Component<Props, State> {
     }
 
     if (!this.props.postIdToEdit && this.props.isFormEditting) {
-      history.replaceState('', '', EDIT_LINK(`${this.props.postIdToEdit}`));
+      history.replaceState('', '', NEW_LINK);
     }
 
     if (this.props.isFormChangedFromLastSaved) {
@@ -88,7 +88,9 @@ export class Renderer extends React.Component<Props, State> {
       this.fetchAuthorInfo(this.props.userId);
     }
 
-    this.initializeCategoryStatus();
+    if (!this.props.new && !this.props.postIdToEdit && !this.props.isFormEditting) {
+      this.initializeCategoryStatus();
+    }
   }
 
   componentDidUpdate(prevProps: Props, prevState: State) {
@@ -192,26 +194,20 @@ export class Renderer extends React.Component<Props, State> {
   protected initializeCategoryStatus = () => {
     const { filteringCategoryId, queryCategoryId, updateFilteringCategoryId } = this.props;
 
-    if (filteringCategoryId !== undefined && queryCategoryId !== undefined) {
+    let categoryId = undefined;
+
+    if (queryCategoryId !== undefined) {
       updateFilteringCategoryId(queryCategoryId);
-      document
-        .getElementById(CATEGORY_BUTTON_ID(queryCategoryId))
-        ?.scrollIntoView({ inline: 'center' });
+      categoryId = queryCategoryId;
     }
 
     if (filteringCategoryId !== undefined && queryCategoryId === undefined) {
-      document
-        .getElementById(CATEGORY_BUTTON_ID(filteringCategoryId))
-        ?.scrollIntoView({ inline: 'center' });
+      categoryId = filteringCategoryId;
       this.replaceUrlWithParam(window.location.pathname);
     }
 
-    if (filteringCategoryId === undefined && queryCategoryId !== undefined) {
-      updateFilteringCategoryId(queryCategoryId);
-      document
-        .getElementById(CATEGORY_BUTTON_ID(queryCategoryId))
-        ?.scrollIntoView({ inline: 'center' });
-    }
+    categoryId &&
+      document.getElementById(CATEGORY_BUTTON_ID(categoryId))?.scrollIntoView({ inline: 'center' });
   };
 
   protected renderParkSelectBox = () => {

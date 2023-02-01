@@ -50,7 +50,7 @@ type OwnProps = {
   width?: number;
   height?: number;
   initZoom?: number;
-  initCenter?: Position;
+  initCenter?: Omit<Position, 'park'>;
   disabled?: boolean;
   doNotShowPostMarkers?: boolean;
   hiddenMarkerIds?: number[];

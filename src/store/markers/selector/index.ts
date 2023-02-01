@@ -9,3 +9,4 @@ export const selectMarkersTotalPages = (state: MarkersRootState) => state.marker
 export const selectFocusingPark = (state: MarkersRootState) => state.markers.focusingPark;
 export const selectFilteringCategoryId = (state: MarkersRootState) =>
   state.markers.filteringCategoryId;
+export const selectInitZoomCenter = (state: MarkersRootState) => state.markers.initZoomCenter;

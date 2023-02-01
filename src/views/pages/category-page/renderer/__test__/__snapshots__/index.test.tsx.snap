@@ -25,6 +25,9 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       variant="inherit"
     />
   </ForwardRef(Typography)>
+  <MapLinkButton
+    categoryId={1}
+  />
   <ArticlePreviewList
     searchConditions={
       Object {

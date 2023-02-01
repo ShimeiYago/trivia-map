@@ -9,7 +9,11 @@ import { isMobile } from 'react-device-detect';
 import { Navigate, useLocation, useParams } from 'react-router-dom';
 import { NOT_FOUND_LINK } from 'constant/links';
 import usePageTracking from 'helper-components/tracker';
-import { selectFilteringCategoryId, selectFocusingPark } from 'store/markers/selector';
+import {
+  selectFilteringCategoryId,
+  selectFocusingPark,
+  selectInitZoomCenter,
+} from 'store/markers/selector';
 import { updateFilteringCategoryId, updateFocusingPark } from 'store/markers/actions';
 import { Park } from 'types/park';
 import { useAppDispatch } from 'store';
@@ -54,6 +58,7 @@ export function MapPage(ownProps: { new?: boolean }) {
     windowHeight: height,
     new: !!ownProps.new,
     userId: !!userIdNumber ? userIdNumber : undefined,
+    initZoomCenter: useAppSelector(selectInitZoomCenter),
 
     updateFoocusingPark: (park: Park) => dispatch(updateFocusingPark(park)),
     updateFilteringCategoryId: (categoryId?: number) =>

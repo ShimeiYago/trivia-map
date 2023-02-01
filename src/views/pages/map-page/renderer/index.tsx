@@ -88,10 +88,8 @@ export class Renderer extends React.Component<Props, State> {
       this.fetchAuthorInfo(this.props.userId);
     }
 
-    if (this.props.filteringCategoryId !== undefined) {
-      document
-        .getElementById(CATEGORY_BUTTON_ID(this.props.filteringCategoryId))
-        ?.scrollIntoView({ inline: 'center' });
+    if (!this.props.new && !this.props.postIdToEdit && !this.props.isFormEditting) {
+      this.initializeCategoryStatus();
     }
   }
 
@@ -110,7 +108,7 @@ export class Renderer extends React.Component<Props, State> {
     }
 
     if (!this.props.isFormEditting && prevState.openFormModal && !this.state.openFormModal) {
-      history.replaceState('', '', '/');
+      this.replaceUrlWithParam('/');
     }
 
     if (!prevProps.new && this.props.new) {
@@ -121,6 +119,13 @@ export class Renderer extends React.Component<Props, State> {
 
     if (!prevProps.userId && this.props.userId) {
       this.fetchAuthorInfo(this.props.userId);
+    }
+
+    if (
+      !this.props.isFormEditting &&
+      prevProps.filteringCategoryId !== this.props.filteringCategoryId
+    ) {
+      this.replaceUrlWithParam(window.location.pathname);
     }
   }
 
@@ -185,6 +190,25 @@ export class Renderer extends React.Component<Props, State> {
       </Box>
     );
   }
+
+  protected initializeCategoryStatus = () => {
+    const { filteringCategoryId, queryCategoryId, updateFilteringCategoryId } = this.props;
+
+    let categoryId = undefined;
+
+    if (queryCategoryId !== undefined) {
+      updateFilteringCategoryId(queryCategoryId);
+      categoryId = queryCategoryId;
+    }
+
+    if (filteringCategoryId !== undefined && queryCategoryId === undefined) {
+      categoryId = filteringCategoryId;
+      this.replaceUrlWithParam(window.location.pathname);
+    }
+
+    categoryId &&
+      document.getElementById(CATEGORY_BUTTON_ID(categoryId))?.scrollIntoView({ inline: 'center' });
+  };
 
   protected renderParkSelectBox = () => {
     const { isMobile, park } = this.props;
@@ -343,7 +367,7 @@ export class Renderer extends React.Component<Props, State> {
       newMarkerMode: false,
     });
 
-    history.replaceState('', '', MAP_PAGE_LINK);
+    this.replaceUrlWithParam(MAP_PAGE_LINK);
   };
 
   protected handleHideFormModal = () => {
@@ -430,11 +454,21 @@ export class Renderer extends React.Component<Props, State> {
       openDoubleEditAlartDialog: false,
     });
   };
+
+  protected replaceUrlWithParam = (url: string) => {
+    let params = '';
+    if (this.props.filteringCategoryId !== undefined) {
+      params = `?category=${this.props.filteringCategoryId}`;
+    }
+
+    history.replaceState('', '', url + params);
+  };
 }
 
 export type Props = {
   park?: Park;
   filteringCategoryId?: number;
+  queryCategoryId?: number;
   isFormEditting: boolean;
   isMobile: boolean;
   isFormChangedFromLastSaved: boolean;

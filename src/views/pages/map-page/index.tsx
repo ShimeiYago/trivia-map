@@ -6,7 +6,7 @@ import {
 } from 'store/article-form/selector';
 import { Renderer, Props } from './renderer';
 import { isMobile } from 'react-device-detect';
-import { Navigate, useParams } from 'react-router-dom';
+import { Navigate, useLocation, useParams } from 'react-router-dom';
 import { NOT_FOUND_LINK } from 'constant/links';
 import usePageTracking from 'helper-components/tracker';
 import { selectFilteringCategoryId, selectFocusingPark } from 'store/markers/selector';
@@ -22,6 +22,10 @@ export function MapPage(ownProps: { new?: boolean }) {
   const { postId, userId } = useParams();
   const postIdNumber = Number(postId);
   const userIdNumber = Number(userId);
+
+  const search = useLocation().search;
+  const query = new URLSearchParams(search);
+  const queryCategoryId = query.get('category') ? Number(query.get('category')) : undefined;
 
   const navigate = useNavigate();
 
@@ -42,6 +46,7 @@ export function MapPage(ownProps: { new?: boolean }) {
   let props: Props = {
     park: useAppSelector(selectFocusingPark),
     filteringCategoryId: useAppSelector(selectFilteringCategoryId),
+    queryCategoryId: queryCategoryId,
     isFormEditting: useAppSelector(selectArticleFormIsEditting),
     isMobile: isMobile,
     isFormChangedFromLastSaved: useAppSelector(selectArticleFormIsFormChangedFromLastSaved),

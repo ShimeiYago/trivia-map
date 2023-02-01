@@ -8,6 +8,76 @@ exports[`Shallow Snapshot Tests basic 1`] = `
   textAlign="center"
 >
   <NonStyleLink
+    to="/"
+  >
+    <ForwardRef(Button)
+      color="inherit"
+      sx={
+        Object {
+          "px": 5,
+          "py": 2,
+        }
+      }
+      variant="outlined"
+    >
+      <IconAndText
+        columnGap={1}
+        iconComponent={
+          <Memo
+            fontSize="medium"
+          />
+        }
+        iconPosition="left"
+        text="マップ上で確認する"
+      />
+    </ForwardRef(Button)>
+  </NonStyleLink>
+</ForwardRef(Box)>
+`;
+
+exports[`Shallow Snapshot Tests category 1`] = `
+<ForwardRef(Box)
+  color="#424242"
+  mb={4}
+  mt={2}
+  textAlign="center"
+>
+  <NonStyleLink
+    to="/?category=1"
+  >
+    <ForwardRef(Button)
+      color="inherit"
+      sx={
+        Object {
+          "px": 5,
+          "py": 2,
+        }
+      }
+      variant="outlined"
+    >
+      <IconAndText
+        columnGap={1}
+        iconComponent={
+          <Memo
+            fontSize="medium"
+          />
+        }
+        iconPosition="left"
+        text="マップ上で確認する"
+      />
+    </ForwardRef(Button)>
+  </NonStyleLink>
+</ForwardRef(Box)>
+`;
+
+exports[`Shallow Snapshot Tests user 1`] = `
+<ForwardRef(Box)
+  color="#424242"
+  mb={4}
+  mt={2}
+  textAlign="center"
+>
+  <NonStyleLink
     to="/map/user/1"
   >
     <ForwardRef(Button)

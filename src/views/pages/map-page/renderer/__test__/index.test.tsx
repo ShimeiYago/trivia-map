@@ -218,6 +218,26 @@ describe('componentDidUpdate', () => {
   });
 });
 
+describe('initializeCategoryStatus', () => {
+  beforeEach(() => {
+    shallowWrapper = shallow(<Renderer {...props} />);
+  });
+
+  afterEach(() => {
+    jest.resetAllMocks();
+  });
+
+  it('should call updateFilteringCategoryId if queryCategoryId is defined', () => {
+    shallowWrapper.setProps({
+      queryCategoryId: 1,
+    });
+    const instance = shallowWrapper.instance();
+
+    instance['initializeCategoryStatus']();
+    expect(instance.props.updateFilteringCategoryId).toBeCalled();
+  });
+});
+
 describe('handleBeforeUnload', () => {
   it('should add beforeunload eventListener when form open', () => {
     shallowWrapper = shallow(<Renderer {...props} />);

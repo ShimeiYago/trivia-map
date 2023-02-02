@@ -1,3 +1,4 @@
+import { MapFocus } from './../../../types/map-focus';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Marker } from 'types/marker';
 import { Park } from 'types/park';
@@ -40,6 +41,10 @@ export const markersSlice = createSlice({
 
     updateFilteringCategoryId(state, action: PayloadAction<number | undefined>) {
       state.filteringCategoryId = action.payload;
+    },
+
+    updateInitMapFocus(state, action: PayloadAction<MapFocus>) {
+      state.initMapFocus = action.payload;
     },
   },
 });

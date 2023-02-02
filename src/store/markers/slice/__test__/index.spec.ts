@@ -1,4 +1,5 @@
-import { updateLoadedPages } from 'store/markers/actions';
+import { MAP_MAX_COORINATE } from 'constant';
+import { updateInitMapFocus, updateLoadedPages } from 'store/markers/actions';
 import { Marker } from 'types/marker';
 import { markersReducer, markersSlice } from '..';
 import { MarkersState } from '../../model';
@@ -19,6 +20,11 @@ describe('markers reducer', () => {
     focusingPark: 'S',
     fetchingState: 'waiting',
     loadedPages: 0,
+    initMapFocus: {
+      zoom: 1,
+      lat: 1,
+      lng: 1,
+    },
   };
   const loadingState: MarkersState = {
     ...initialState,
@@ -30,6 +36,11 @@ describe('markers reducer', () => {
       markers: [],
       fetchingState: 'waiting',
       loadedPages: 0,
+      initMapFocus: {
+        zoom: 2,
+        lat: -MAP_MAX_COORINATE / 2,
+        lng: MAP_MAX_COORINATE / 2,
+      },
     });
   });
 
@@ -80,5 +91,10 @@ describe('markers reducer', () => {
   it('should handle updateFilteringCategoryId', () => {
     const actual = markersReducer(initialState, updateFilteringCategoryId(1));
     expect(actual.filteringCategoryId).toEqual(1);
+  });
+
+  it('should handle updateInitMapFocus', () => {
+    const actual = markersReducer(initialState, updateInitMapFocus({ zoom: 1, lat: 1, lng: 1 }));
+    expect(actual.initMapFocus).toEqual({ zoom: 1, lat: 1, lng: 1 });
   });
 });

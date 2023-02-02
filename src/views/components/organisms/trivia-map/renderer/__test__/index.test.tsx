@@ -33,6 +33,7 @@ const basicProps: Props = {
   park: 'S',
   isMobile: false,
   initializeFetchingState: jest.fn(),
+  updateInitMapFocus: jest.fn(),
 };
 
 let shallowWrapper: ShallowWrapper<Props, State, Renderer>;
@@ -74,7 +75,7 @@ describe('Shallow Snapshot Tests', () => {
 
   it('with initCenter prop', () => {
     shallowWrapper.setProps({
-      initCenter: { lat: 1, lng: 1, park: 'S' },
+      initCenter: { lat: 1, lng: 1 },
     });
     expect(shallowWrapper).toMatchSnapshot();
   });
@@ -151,6 +152,25 @@ describe('componentWillUnmount', () => {
   });
 
   it('should not call initializeFetchingState if userId is not set', () => {
+    const instance = shallowWrapper.instance();
+
+    instance['componentWillUnmount']();
+    expect(instance.props.initializeFetchingState).not.toBeCalled();
+  });
+
+  it('should call updateInitMapFocus if keepMapFocus is true', () => {
+    shallowWrapper.setProps({
+      keepMapFocus: true,
+    });
+    shallowWrapper.setState({
+      map: {
+        getZoom: jest.fn(),
+        getCenter: () => {
+          return { lat: 1, lng: 1 };
+        },
+      } as unknown as LeafletMap,
+    });
+
     const instance = shallowWrapper.instance();
 
     instance['componentWillUnmount']();

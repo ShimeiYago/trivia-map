@@ -41,6 +41,7 @@ import { getAuthorInfo } from 'api/users-api';
 import { ApiError } from 'api/utils/handle-axios-error';
 import { Link } from 'react-router-dom';
 import CloseIcon from '@mui/icons-material/Close';
+import { MapFocus } from 'types/map-focus';
 
 const CATEGORY_BUTTON_ID = (categoryId: number) => `category-button-${categoryId}`;
 
@@ -148,7 +149,7 @@ export class Renderer extends React.Component<Props, State> {
       windowWidth,
       windowHeight,
       userId,
-      initZoomCenter,
+      initMapFocus,
     } = this.props;
 
     const triviaMap = windowWidth !== 0 && windowHeight !== 0 && park && (
@@ -160,8 +161,9 @@ export class Renderer extends React.Component<Props, State> {
         park={park}
         categoryId={filteringCategoryId}
         userId={userId}
-        initZoom={initZoomCenter.zoom}
-        initCenter={{ lat: initZoomCenter.lat, lng: initZoomCenter.lng }}
+        initZoom={initMapFocus.zoom}
+        initCenter={{ lat: initMapFocus.lat, lng: initMapFocus.lng }}
+        keepMapFocus
       />
     );
 
@@ -480,11 +482,7 @@ export type Props = {
   windowHeight: number;
   new: boolean;
   userId?: number;
-  initZoomCenter: {
-    zoom: number;
-    lat: number;
-    lng: number;
-  };
+  initMapFocus: MapFocus;
 
   updateFoocusingPark: (park: Park) => void;
   updateFilteringCategoryId: (categoryId?: number) => void;

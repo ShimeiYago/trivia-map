@@ -605,7 +605,6 @@ exports[`Shallow Snapshot Tests with initCenter prop 1`] = `
                 Object {
                   "lat": 1,
                   "lng": 1,
-                  "park": "S",
                 },
               ],
             ],
@@ -653,7 +652,6 @@ exports[`Shallow Snapshot Tests with initCenter prop 1`] = `
                 Object {
                   "lat": 1,
                   "lng": 1,
-                  "park": "S",
                 },
               ],
             ],

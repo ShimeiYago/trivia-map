@@ -1,3 +1,4 @@
+import { selectInitMapFocus } from './../index';
 import {
   selectMarkersFetchingState,
   selectMarkersTotalPages,
@@ -26,6 +27,11 @@ describe('markers selector', () => {
       errorMsg: 'error',
       totalPages: 2,
       loadedPages: 1,
+      initMapFocus: {
+        zoom: 1,
+        lat: 1,
+        lng: 1,
+      },
     } as MarkersState,
   };
 
@@ -59,5 +65,13 @@ describe('markers selector', () => {
 
   it('selectFilteringCategoryId should return markers filteringCategoryId', () => {
     expect(selectFilteringCategoryId(rootState)).toEqual(1);
+  });
+
+  it('selectInitMapFocus should return markers initMapFocus', () => {
+    expect(selectInitMapFocus(rootState)).toEqual({
+      zoom: 1,
+      lat: 1,
+      lng: 1,
+    });
   });
 });

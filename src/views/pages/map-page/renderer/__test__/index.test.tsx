@@ -13,6 +13,11 @@ const props: Props = {
   windowHeight: 100,
   windowWidth: 100,
   new: false,
+  initMapFocus: {
+    zoom: 1,
+    lat: 1,
+    lng: 1,
+  },
   updateFoocusingPark: jest.fn(),
   updateFilteringCategoryId: jest.fn(),
   throwError: jest.fn(),

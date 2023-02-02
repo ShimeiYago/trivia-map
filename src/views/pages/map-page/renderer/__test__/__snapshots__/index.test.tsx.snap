@@ -20,6 +20,14 @@ exports[`Shallow Snapshot Tests author map 1`] = `
       <TriviaMap
         endToSelectPosition={[Function]}
         hiddenMarkerIds={Array []}
+        initCenter={
+          Object {
+            "lat": 1,
+            "lng": 1,
+          }
+        }
+        initZoom={1}
+        keepMapFocus={true}
         newMarkerMode={false}
         park="S"
         shouldCurrentPositionAsyncWithForm={true}
@@ -301,6 +309,14 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       <TriviaMap
         endToSelectPosition={[Function]}
         hiddenMarkerIds={Array []}
+        initCenter={
+          Object {
+            "lat": 1,
+            "lng": 1,
+          }
+        }
+        initZoom={1}
+        keepMapFocus={true}
         newMarkerMode={false}
         park="S"
         shouldCurrentPositionAsyncWithForm={true}
@@ -788,6 +804,14 @@ exports[`Shallow Snapshot Tests land mode 1`] = `
       <TriviaMap
         endToSelectPosition={[Function]}
         hiddenMarkerIds={Array []}
+        initCenter={
+          Object {
+            "lat": 1,
+            "lng": 1,
+          }
+        }
+        initZoom={1}
+        keepMapFocus={true}
         newMarkerMode={false}
         park="L"
         shouldCurrentPositionAsyncWithForm={true}
@@ -1232,6 +1256,14 @@ exports[`Shallow Snapshot Tests pc view 1`] = `
       <TriviaMap
         endToSelectPosition={[Function]}
         hiddenMarkerIds={Array []}
+        initCenter={
+          Object {
+            "lat": 1,
+            "lng": 1,
+          }
+        }
+        initZoom={1}
+        keepMapFocus={true}
         newMarkerMode={false}
         park="S"
         shouldCurrentPositionAsyncWithForm={true}

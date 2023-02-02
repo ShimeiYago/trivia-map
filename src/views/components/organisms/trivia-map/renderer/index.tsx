@@ -49,13 +49,13 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   componentDidUpdate(prevProps: Props) {
-    if (
-      !prevProps.newMarkerMode &&
-      this.props.newMarkerMode &&
-      this.state.map &&
-      this.state.map.getZoom() < ZOOMS.popupOpen
-    ) {
-      this.state.map.setZoom(ZOOMS.popupOpen);
+    if (!prevProps.newMarkerMode && this.props.newMarkerMode && this.state.map) {
+      this.state.map.getZoom() < ZOOMS.popupOpen && this.state.map.setZoom(ZOOMS.popupOpen);
+      this.props.articleFormPosition &&
+        this.state.map.setView({
+          lat: this.props.articleFormPosition.lat,
+          lng: this.props.articleFormPosition.lng,
+        });
     }
 
     if (
@@ -200,12 +200,19 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   protected renderCurrentPositionMarker() {
-    const { park, isMobile, articleFormPosition, shouldCurrentPositionAsyncWithForm } = this.props;
+    const {
+      park,
+      isMobile,
+      articleFormPosition,
+      shouldCurrentPositionAsyncWithForm,
+      newMarkerMode,
+    } = this.props;
 
     if (
       !shouldCurrentPositionAsyncWithForm ||
       !articleFormPosition ||
-      articleFormPosition.park !== park
+      articleFormPosition.park !== park ||
+      newMarkerMode
     ) {
       return null;
     }

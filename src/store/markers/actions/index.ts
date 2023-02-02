@@ -16,6 +16,7 @@ export const {
   updateLoadedPages,
   updateFocusingPark,
   updateFilteringCategoryId,
+  updateInitMapFocus,
 } = markersSlice.actions;
 
 // fetchMarkers action

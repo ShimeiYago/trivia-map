@@ -23,6 +23,7 @@ import { CRS } from 'leaflet';
 import selectionPosition from 'images/selection-position.png';
 import { blue } from '@mui/material/colors';
 import { Marker } from 'types/marker';
+import { MapFocus } from 'types/map-focus';
 
 export class Renderer extends React.Component<Props, State> {
   static readonly defaultProps: Pick<Props, 'newMarkerMode' | 'initZoom'> = {
@@ -57,7 +58,10 @@ export class Renderer extends React.Component<Props, State> {
       this.state.map.setZoom(ZOOMS.popupOpen);
     }
 
-    if (this.props.initCenter && prevProps.initCenter !== this.props.initCenter) {
+    if (
+      this.props.initCenter &&
+      JSON.stringify(prevProps.initCenter) !== JSON.stringify(this.props.initCenter)
+    ) {
       this.state.map?.setView(this.props.initCenter);
     }
 
@@ -72,6 +76,14 @@ export class Renderer extends React.Component<Props, State> {
   componentWillUnmount() {
     if (this.props.userId) {
       this.props.initializeFetchingState();
+    }
+
+    if (this.props.keepMapFocus && this.state.map) {
+      this.props.updateInitMapFocus({
+        zoom: this.state.map.getZoom(),
+        lat: this.state.map.getCenter().lat,
+        lng: this.state.map.getCenter().lng,
+      });
     }
   }
 
@@ -326,12 +338,14 @@ export type Props = {
   categoryId?: number;
   isMobile: boolean;
   userId?: number;
+  keepMapFocus?: boolean;
 
   fetchMarkers: (park: Park, userId?: number) => void;
   initializeFetchingState: () => void;
   updatePosition: (position: Position) => void;
   endToSelectPosition?: () => void;
   updateIsEditting: (isEditting: boolean) => void;
+  updateInitMapFocus: (mapFocus: MapFocus) => void;
 };
 
 export type State = {

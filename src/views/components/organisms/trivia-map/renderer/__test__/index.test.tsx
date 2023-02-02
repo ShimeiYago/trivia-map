@@ -126,10 +126,16 @@ describe('componentDidUpdate', () => {
       map: {
         getZoom: () => 1,
         setZoom: jest.fn(),
+        setView: jest.fn(),
       } as unknown as LeafletMap,
     });
     shallowWrapper.setProps({
       newMarkerMode: true,
+      articleFormPosition: {
+        lat: 1,
+        lng: 1,
+        park: 'S',
+      },
     });
     const instance = shallowWrapper.instance();
 

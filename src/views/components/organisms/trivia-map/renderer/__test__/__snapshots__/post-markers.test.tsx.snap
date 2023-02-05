@@ -28,6 +28,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
             Object {
               "category": undefined,
               "marker": 100,
+              "user": undefined,
             }
           }
           variant="popup"
@@ -78,6 +79,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
             Object {
               "category": undefined,
               "marker": 101,
+              "user": undefined,
             }
           }
           variant="popup"
@@ -140,6 +142,7 @@ exports[`Shallow Snapshot Tests category is selected 1`] = `
             Object {
               "category": 1,
               "marker": 101,
+              "user": undefined,
             }
           }
           variant="popup"
@@ -201,6 +204,7 @@ exports[`Shallow Snapshot Tests form is editting 1`] = `
             Object {
               "category": undefined,
               "marker": 100,
+              "user": undefined,
             }
           }
           variant="popup"
@@ -251,6 +255,7 @@ exports[`Shallow Snapshot Tests form is editting 1`] = `
             Object {
               "category": undefined,
               "marker": 101,
+              "user": undefined,
             }
           }
           variant="popup"
@@ -313,6 +318,7 @@ exports[`Shallow Snapshot Tests with hiddenMarkerIds 1`] = `
             Object {
               "category": undefined,
               "marker": 101,
+              "user": undefined,
             }
           }
           variant="popup"
@@ -374,6 +380,7 @@ exports[`Shallow Snapshot Tests without number of articles 1`] = `
             Object {
               "category": undefined,
               "marker": 100,
+              "user": undefined,
             }
           }
           variant="popup"
@@ -423,6 +430,7 @@ exports[`Shallow Snapshot Tests without number of articles 1`] = `
             Object {
               "category": undefined,
               "marker": 101,
+              "user": undefined,
             }
           }
           variant="popup"

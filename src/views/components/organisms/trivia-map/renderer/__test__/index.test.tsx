@@ -126,7 +126,24 @@ describe('componentDidUpdate', () => {
       map: {
         getZoom: () => 1,
         setZoom: jest.fn(),
-        setView: jest.fn(),
+        flyTo: jest.fn(),
+      } as unknown as LeafletMap,
+    });
+    shallowWrapper.setProps({
+      newMarkerMode: true,
+    });
+    const instance = shallowWrapper.instance();
+
+    instance['componentDidUpdate'](basicProps);
+    expect(instance.state.map?.setZoom).toBeCalled();
+  });
+
+  it('should flyTo if changed to newMarker mode with articleFormPosition', () => {
+    shallowWrapper.setState({
+      map: {
+        getZoom: () => 3,
+        setZoom: jest.fn(),
+        flyTo: jest.fn(),
       } as unknown as LeafletMap,
     });
     shallowWrapper.setProps({
@@ -140,7 +157,7 @@ describe('componentDidUpdate', () => {
     const instance = shallowWrapper.instance();
 
     instance['componentDidUpdate'](basicProps);
-    expect(instance.state.map?.setZoom).toBeCalled();
+    expect(instance.state.map?.flyTo).toBeCalled();
   });
 });
 

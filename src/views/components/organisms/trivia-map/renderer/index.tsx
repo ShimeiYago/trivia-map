@@ -184,6 +184,7 @@ export class Renderer extends React.Component<Props, State> {
         isMobile={isMobile}
         categoryId={categoryId}
         showNumberOfArticles={!this.props.userId}
+        userId={this.props.userId}
       />
     );
   }

@@ -82,7 +82,11 @@ export class PostMarkers extends React.Component<Props> {
     return (
       <Box width={250}>
         <ArticlePreviewList
-          searchConditions={{ marker: markerId, category: this.props.categoryId }}
+          searchConditions={{
+            marker: markerId,
+            category: this.props.categoryId,
+            user: this.props.userId,
+          }}
           variant="popup"
         />
         {this.renderAddButton(position)}
@@ -114,6 +118,7 @@ export type Props = {
   isMobile: boolean;
   categoryId?: number;
   showNumberOfArticles: boolean;
+  userId?: number;
 
   openFormWithTheMarker: (position: Position) => void;
 };

@@ -50,12 +50,20 @@ export class Renderer extends React.Component<Props, State> {
 
   componentDidUpdate(prevProps: Props) {
     if (!prevProps.newMarkerMode && this.props.newMarkerMode && this.state.map) {
-      this.state.map.getZoom() < ZOOMS.popupOpen && this.state.map.setZoom(ZOOMS.popupOpen);
-      this.props.articleFormPosition &&
-        this.state.map.setView({
-          lat: this.props.articleFormPosition.lat,
-          lng: this.props.articleFormPosition.lng,
-        });
+      const zoom = this.state.map.getZoom() < ZOOMS.popupOpen ? ZOOMS.popupOpen : undefined;
+
+      if (this.props.articleFormPosition) {
+        this.state.map.flyTo(
+          {
+            lat: this.props.articleFormPosition.lat,
+            lng: this.props.articleFormPosition.lng,
+          },
+          zoom,
+          { animate: false },
+        );
+      } else {
+        zoom && this.state.map.setZoom(zoom);
+      }
     }
 
     if (

@@ -5,7 +5,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
   showSidebar={true}
 >
   <CommonHelmet
-    title="Axelさんの投稿一覧 - トリビアマップ"
+    title="Axelさん - トリビアマップ"
   />
   <ForwardRef(Stack)
     alignItems="center"
@@ -31,9 +31,30 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       component="h2"
       variant="h4"
     >
-      Axelさんの投稿一覧
+      Axelさん
     </ForwardRef(Typography)>
   </ForwardRef(Stack)>
+  <IconAndText
+    align="center"
+    href="https://twitter.com"
+    iconComponent={<Memo />}
+    iconPosition="left"
+    text="https://twitter.com"
+  />
+  <ForwardRef(Divider)
+    sx={
+      Object {
+        "my": 3,
+      }
+    }
+  />
+  <ForwardRef(Typography)
+    align="center"
+    component="h3"
+    variant="h4"
+  >
+    投稿一覧
+  </ForwardRef(Typography)>
   <MapLinkButton
     userId={1}
   />
@@ -61,7 +82,7 @@ exports[`Shallow Snapshot Tests no icon 1`] = `
   showSidebar={true}
 >
   <CommonHelmet
-    title="Axelさんの投稿一覧 - トリビアマップ"
+    title="Axelさん - トリビアマップ"
   />
   <ForwardRef(Stack)
     alignItems="center"
@@ -87,9 +108,30 @@ exports[`Shallow Snapshot Tests no icon 1`] = `
       component="h2"
       variant="h4"
     >
-      Axelさんの投稿一覧
+      Axelさん
     </ForwardRef(Typography)>
   </ForwardRef(Stack)>
+  <IconAndText
+    align="center"
+    href="https://twitter.com"
+    iconComponent={<Memo />}
+    iconPosition="left"
+    text="https://twitter.com"
+  />
+  <ForwardRef(Divider)
+    sx={
+      Object {
+        "my": 3,
+      }
+    }
+  />
+  <ForwardRef(Typography)
+    align="center"
+    component="h3"
+    variant="h4"
+  >
+    投稿一覧
+  </ForwardRef(Typography)>
   <MapLinkButton
     userId={1}
   />

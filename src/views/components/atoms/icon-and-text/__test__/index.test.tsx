@@ -27,9 +27,16 @@ describe('Shallow Snapshot Tests', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('with link', () => {
+  it('with to', () => {
     wrapper.setProps({
-      link: './',
+      to: './',
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('with href', () => {
+    wrapper.setProps({
+      href: './',
     });
     expect(wrapper).toMatchSnapshot();
   });

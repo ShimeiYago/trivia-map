@@ -57,7 +57,7 @@ exports[`Shallow Snapshot Tests right icon 1`] = `
 </ForwardRef(Typography)>
 `;
 
-exports[`Shallow Snapshot Tests with link 1`] = `
+exports[`Shallow Snapshot Tests with href 1`] = `
 <ForwardRef(Typography)
   component="div"
   sx={
@@ -71,16 +71,16 @@ exports[`Shallow Snapshot Tests with link 1`] = `
     }
   }
 >
-  <NonStyleLink
-    to="./"
+  <a
+    href="./"
   >
     <Memo(ForwardRef(MapIcon)) />
-  </NonStyleLink>
-  <NonStyleLink
-    to="./"
+  </a>
+  <a
+    href="./"
   >
     地図
-  </NonStyleLink>
+  </a>
 </ForwardRef(Typography)>
 `;
 
@@ -108,5 +108,32 @@ exports[`Shallow Snapshot Tests with onClick 1`] = `
   >
     地図
   </span>
+</ForwardRef(Typography)>
+`;
+
+exports[`Shallow Snapshot Tests with to 1`] = `
+<ForwardRef(Typography)
+  component="div"
+  sx={
+    Object {
+      "alignItems": "normal",
+      "columnGap": undefined,
+      "display": "flex",
+      "flexWrap": "wrap",
+      "fontSize": undefined,
+      "justifyContent": "center",
+    }
+  }
+>
+  <NonStyleLink
+    to="./"
+  >
+    <Memo(ForwardRef(MapIcon)) />
+  </NonStyleLink>
+  <NonStyleLink
+    to="./"
+  >
+    地図
+  </NonStyleLink>
 </ForwardRef(Typography)>
 `;

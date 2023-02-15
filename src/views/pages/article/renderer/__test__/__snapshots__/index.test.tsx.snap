@@ -120,7 +120,12 @@ exports[`Shallow Snapshot Tests author view 1`] = `
     <ForwardRef(Typography)
       component="div"
     >
-      エリア：
+      <ForwardRef(Typography)
+        component="div"
+        fontWeight="bold"
+      >
+        エリア
+      </ForwardRef(Typography)>
       <AreaNames
         areaNames={
           Array [
@@ -129,9 +134,35 @@ exports[`Shallow Snapshot Tests author view 1`] = `
         }
       />
     </ForwardRef(Typography)>
-    <TriviaMap
-      additinalMarkers={
-        Array [
+    <NonStyleLink
+      to="/"
+    >
+      <TriviaMap
+        additinalMarkers={
+          Array [
+            Object {
+              "areaNames": Array [
+                "シー",
+              ],
+              "lat": 0,
+              "lng": 0,
+              "markerId": 1,
+              "numberOfPublicArticles": Object {
+                "eachCategory": Array [
+                  1,
+                  2,
+                  1,
+                ],
+                "total": 4,
+              },
+              "park": "S",
+            },
+          ]
+        }
+        disabled={true}
+        doNotShowPostMarkers={true}
+        height={300}
+        initCenter={
           Object {
             "areaNames": Array [
               "シー",
@@ -148,34 +179,12 @@ exports[`Shallow Snapshot Tests author view 1`] = `
               "total": 4,
             },
             "park": "S",
-          },
-        ]
-      }
-      disabled={true}
-      doNotShowPostMarkers={true}
-      height={300}
-      initCenter={
-        Object {
-          "areaNames": Array [
-            "シー",
-          ],
-          "lat": 0,
-          "lng": 0,
-          "markerId": 1,
-          "numberOfPublicArticles": Object {
-            "eachCategory": Array [
-              1,
-              2,
-              1,
-            ],
-            "total": 4,
-          },
-          "park": "S",
+          }
         }
-      }
-      initZoom={3}
-      park="S"
-    />
+        initZoom={3}
+        park="S"
+      />
+    </NonStyleLink>
     <ForwardRef(Divider) />
     <ForwardRef(Box)
       textAlign="right"
@@ -316,7 +325,12 @@ exports[`Shallow Snapshot Tests draft 1`] = `
     <ForwardRef(Typography)
       component="div"
     >
-      エリア：
+      <ForwardRef(Typography)
+        component="div"
+        fontWeight="bold"
+      >
+        エリア
+      </ForwardRef(Typography)>
       <AreaNames
         areaNames={
           Array [
@@ -325,9 +339,35 @@ exports[`Shallow Snapshot Tests draft 1`] = `
         }
       />
     </ForwardRef(Typography)>
-    <TriviaMap
-      additinalMarkers={
-        Array [
+    <NonStyleLink
+      to="/"
+    >
+      <TriviaMap
+        additinalMarkers={
+          Array [
+            Object {
+              "areaNames": Array [
+                "シー",
+              ],
+              "lat": 0,
+              "lng": 0,
+              "markerId": 1,
+              "numberOfPublicArticles": Object {
+                "eachCategory": Array [
+                  1,
+                  2,
+                  1,
+                ],
+                "total": 4,
+              },
+              "park": "S",
+            },
+          ]
+        }
+        disabled={true}
+        doNotShowPostMarkers={true}
+        height={300}
+        initCenter={
           Object {
             "areaNames": Array [
               "シー",
@@ -344,34 +384,12 @@ exports[`Shallow Snapshot Tests draft 1`] = `
               "total": 4,
             },
             "park": "S",
-          },
-        ]
-      }
-      disabled={true}
-      doNotShowPostMarkers={true}
-      height={300}
-      initCenter={
-        Object {
-          "areaNames": Array [
-            "シー",
-          ],
-          "lat": 0,
-          "lng": 0,
-          "markerId": 1,
-          "numberOfPublicArticles": Object {
-            "eachCategory": Array [
-              1,
-              2,
-              1,
-            ],
-            "total": 4,
-          },
-          "park": "S",
+          }
         }
-      }
-      initZoom={3}
-      park="S"
-    />
+        initZoom={3}
+        park="S"
+      />
+    </NonStyleLink>
     <ForwardRef(Divider) />
     <ForwardRef(Box)
       textAlign="right"
@@ -499,7 +517,12 @@ exports[`Shallow Snapshot Tests have liked 1`] = `
     <ForwardRef(Typography)
       component="div"
     >
-      エリア：
+      <ForwardRef(Typography)
+        component="div"
+        fontWeight="bold"
+      >
+        エリア
+      </ForwardRef(Typography)>
       <AreaNames
         areaNames={
           Array [
@@ -508,9 +531,35 @@ exports[`Shallow Snapshot Tests have liked 1`] = `
         }
       />
     </ForwardRef(Typography)>
-    <TriviaMap
-      additinalMarkers={
-        Array [
+    <NonStyleLink
+      to="/"
+    >
+      <TriviaMap
+        additinalMarkers={
+          Array [
+            Object {
+              "areaNames": Array [
+                "シー",
+              ],
+              "lat": 0,
+              "lng": 0,
+              "markerId": 1,
+              "numberOfPublicArticles": Object {
+                "eachCategory": Array [
+                  1,
+                  2,
+                  1,
+                ],
+                "total": 4,
+              },
+              "park": "S",
+            },
+          ]
+        }
+        disabled={true}
+        doNotShowPostMarkers={true}
+        height={300}
+        initCenter={
           Object {
             "areaNames": Array [
               "シー",
@@ -527,34 +576,12 @@ exports[`Shallow Snapshot Tests have liked 1`] = `
               "total": 4,
             },
             "park": "S",
-          },
-        ]
-      }
-      disabled={true}
-      doNotShowPostMarkers={true}
-      height={300}
-      initCenter={
-        Object {
-          "areaNames": Array [
-            "シー",
-          ],
-          "lat": 0,
-          "lng": 0,
-          "markerId": 1,
-          "numberOfPublicArticles": Object {
-            "eachCategory": Array [
-              1,
-              2,
-              1,
-            ],
-            "total": 4,
-          },
-          "park": "S",
+          }
         }
-      }
-      initZoom={3}
-      park="S"
-    />
+        initZoom={3}
+        park="S"
+      />
+    </NonStyleLink>
     <ForwardRef(Divider) />
     <ForwardRef(Box)
       textAlign="right"
@@ -692,7 +719,12 @@ exports[`Shallow Snapshot Tests with article 1`] = `
     <ForwardRef(Typography)
       component="div"
     >
-      エリア：
+      <ForwardRef(Typography)
+        component="div"
+        fontWeight="bold"
+      >
+        エリア
+      </ForwardRef(Typography)>
       <AreaNames
         areaNames={
           Array [
@@ -701,9 +733,35 @@ exports[`Shallow Snapshot Tests with article 1`] = `
         }
       />
     </ForwardRef(Typography)>
-    <TriviaMap
-      additinalMarkers={
-        Array [
+    <NonStyleLink
+      to="/"
+    >
+      <TriviaMap
+        additinalMarkers={
+          Array [
+            Object {
+              "areaNames": Array [
+                "シー",
+              ],
+              "lat": 0,
+              "lng": 0,
+              "markerId": 1,
+              "numberOfPublicArticles": Object {
+                "eachCategory": Array [
+                  1,
+                  2,
+                  1,
+                ],
+                "total": 4,
+              },
+              "park": "S",
+            },
+          ]
+        }
+        disabled={true}
+        doNotShowPostMarkers={true}
+        height={300}
+        initCenter={
           Object {
             "areaNames": Array [
               "シー",
@@ -720,34 +778,12 @@ exports[`Shallow Snapshot Tests with article 1`] = `
               "total": 4,
             },
             "park": "S",
-          },
-        ]
-      }
-      disabled={true}
-      doNotShowPostMarkers={true}
-      height={300}
-      initCenter={
-        Object {
-          "areaNames": Array [
-            "シー",
-          ],
-          "lat": 0,
-          "lng": 0,
-          "markerId": 1,
-          "numberOfPublicArticles": Object {
-            "eachCategory": Array [
-              1,
-              2,
-              1,
-            ],
-            "total": 4,
-          },
-          "park": "S",
+          }
         }
-      }
-      initZoom={3}
-      park="S"
-    />
+        initZoom={3}
+        park="S"
+      />
+    </NonStyleLink>
     <ForwardRef(Divider) />
     <ForwardRef(Box)
       textAlign="right"
@@ -880,7 +916,12 @@ exports[`Shallow Snapshot Tests with image 1`] = `
     <ForwardRef(Typography)
       component="div"
     >
-      エリア：
+      <ForwardRef(Typography)
+        component="div"
+        fontWeight="bold"
+      >
+        エリア
+      </ForwardRef(Typography)>
       <AreaNames
         areaNames={
           Array [
@@ -889,9 +930,35 @@ exports[`Shallow Snapshot Tests with image 1`] = `
         }
       />
     </ForwardRef(Typography)>
-    <TriviaMap
-      additinalMarkers={
-        Array [
+    <NonStyleLink
+      to="/"
+    >
+      <TriviaMap
+        additinalMarkers={
+          Array [
+            Object {
+              "areaNames": Array [
+                "シー",
+              ],
+              "lat": 0,
+              "lng": 0,
+              "markerId": 1,
+              "numberOfPublicArticles": Object {
+                "eachCategory": Array [
+                  1,
+                  2,
+                  1,
+                ],
+                "total": 4,
+              },
+              "park": "S",
+            },
+          ]
+        }
+        disabled={true}
+        doNotShowPostMarkers={true}
+        height={300}
+        initCenter={
           Object {
             "areaNames": Array [
               "シー",
@@ -908,34 +975,12 @@ exports[`Shallow Snapshot Tests with image 1`] = `
               "total": 4,
             },
             "park": "S",
-          },
-        ]
-      }
-      disabled={true}
-      doNotShowPostMarkers={true}
-      height={300}
-      initCenter={
-        Object {
-          "areaNames": Array [
-            "シー",
-          ],
-          "lat": 0,
-          "lng": 0,
-          "markerId": 1,
-          "numberOfPublicArticles": Object {
-            "eachCategory": Array [
-              1,
-              2,
-              1,
-            ],
-            "total": 4,
-          },
-          "park": "S",
+          }
         }
-      }
-      initZoom={3}
-      park="S"
-    />
+        initZoom={3}
+        park="S"
+      />
+    </NonStyleLink>
     <ForwardRef(Divider) />
     <ForwardRef(Box)
       textAlign="right"

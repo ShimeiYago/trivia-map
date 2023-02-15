@@ -203,6 +203,7 @@ export class Renderer extends React.Component<Props, State> {
           position={new LatLng(position.lat, position.lng)}
           key={`additional-marker-${index}`}
           isMobile={isMobile}
+          variant="red"
         />
       );
     });

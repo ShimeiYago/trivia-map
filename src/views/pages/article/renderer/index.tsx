@@ -14,7 +14,7 @@ import { autoRefreshApiWrapper } from 'utils/auto-refresh-api-wrapper';
 import { AreaNames } from 'views/components/atoms/area-names';
 import { ZOOMS } from 'constant';
 import noIcon from 'images/no-icon.jpg';
-import { AUTHER_PAGE_LINK, CATEGORY_PAGE_LINK, EDIT_LINK } from 'constant/links';
+import { AUTHER_PAGE_LINK, CATEGORY_PAGE_LINK, EDIT_LINK, MAP_PAGE_LINK } from 'constant/links';
 import { categoryMapper } from 'utils/category-mapper';
 import FolderIcon from '@mui/icons-material/Folder';
 import { User } from 'types/user';
@@ -28,6 +28,8 @@ import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
 import { checkLikeStatus } from 'api/likes-api/check-like-status';
 import { toggleLike } from 'api/likes-api/toggle-like';
+import { MapFocus } from 'types/map-focus';
+import { Park } from 'types/park';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -136,19 +138,23 @@ export class Renderer extends React.Component<Props, State> {
           />
 
           <Typography component="div">
-            エリア：
+            <Typography component="div" fontWeight="bold">
+              エリア
+            </Typography>
             <AreaNames areaNames={marker.areaNames} />
           </Typography>
 
-          <TriviaMap
-            height={300}
-            initZoom={ZOOMS.miniMap}
-            initCenter={marker}
-            disabled
-            doNotShowPostMarkers
-            additinalMarkers={[marker]}
-            park={marker.park}
-          />
+          <NonStyleLink to={MAP_PAGE_LINK}>
+            <TriviaMap
+              height={300}
+              initZoom={ZOOMS.miniMap}
+              initCenter={marker}
+              disabled
+              doNotShowPostMarkers
+              additinalMarkers={[marker]}
+              park={marker.park}
+            />
+          </NonStyleLink>
 
           <Divider />
 
@@ -176,6 +182,16 @@ export class Renderer extends React.Component<Props, State> {
         loadingArticleState: 'success',
         numberOfLikes: res.numberOfLikes,
       });
+
+      this.props.updateInitMapFocus({
+        lat: res.marker.lat,
+        lng: res.marker.lng,
+        zoom: ZOOMS.popupOpen,
+      });
+      if (this.props.focusingPark !== res.marker.park) {
+        this.props.initializeFetchingState();
+      }
+      this.props.updateFocusingPark(res.marker.park);
     } catch (error) {
       const apiError = error as ApiError<unknown>;
 
@@ -279,11 +295,15 @@ export class Renderer extends React.Component<Props, State> {
 export type Props = {
   postId: number;
   user?: User;
+  focusingPark?: Park;
 
   initialize: () => void;
   throwError: (errorStatus: number) => void;
   refreshUser: () => void;
   toggleAuthFormModal: (open: boolean) => void;
+  updateInitMapFocus: (mapFocus: MapFocus) => void;
+  updateFocusingPark: (park: Park) => void;
+  initializeFetchingState: () => void;
 };
 
 export type State = {

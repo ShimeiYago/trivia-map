@@ -122,7 +122,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
           "lng": 1,
         }
       }
-      variant="blue"
+      variant="red"
       zIndexOffset={0}
     />
     <ForwardRef(LeafComponent)
@@ -229,7 +229,7 @@ exports[`Shallow Snapshot Tests disabled map 1`] = `
           "lng": 1,
         }
       }
-      variant="blue"
+      variant="red"
       zIndexOffset={0}
     />
   </MapContainer>
@@ -358,7 +358,7 @@ exports[`Shallow Snapshot Tests land map 1`] = `
           "lng": 1,
         }
       }
-      variant="blue"
+      variant="red"
       zIndexOffset={0}
     />
     <ForwardRef(LeafComponent)
@@ -490,7 +490,7 @@ exports[`Shallow Snapshot Tests with current marker 1`] = `
           "lng": 1,
         }
       }
-      variant="blue"
+      variant="red"
       zIndexOffset={0}
     />
     <MapMarker
@@ -670,7 +670,7 @@ exports[`Shallow Snapshot Tests with initCenter prop 1`] = `
           "lng": 1,
         }
       }
-      variant="blue"
+      variant="red"
       zIndexOffset={0}
     />
     <ForwardRef(LeafComponent)
@@ -802,7 +802,7 @@ exports[`Shallow Snapshot Tests with width and height props 1`] = `
           "lng": 1,
         }
       }
-      variant="blue"
+      variant="red"
       zIndexOffset={0}
     />
     <ForwardRef(LeafComponent)

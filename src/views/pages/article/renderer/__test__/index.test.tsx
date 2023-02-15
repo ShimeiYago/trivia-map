@@ -4,6 +4,7 @@ import { Renderer, Props, State } from '..';
 import * as GetRemoteArticleModule from 'api/articles-api/get-remote-article';
 import * as CheckLikeStatusModule from 'api/likes-api/check-like-status';
 import * as ToggleLikeModule from 'api/likes-api/toggle-like';
+import { mockGetArticleResponse } from 'api/mock/articles-response';
 
 let wrapper: ShallowWrapper<Props, State, Renderer>;
 
@@ -13,10 +14,14 @@ let toggleLikeSpy: jest.SpyInstance;
 
 const basicProps: Props = {
   postId: 1,
+  focusingPark: 'S',
   initialize: jest.fn(),
   throwError: jest.fn(),
   refreshUser: jest.fn(),
   toggleAuthFormModal: jest.fn(),
+  updateInitMapFocus: jest.fn(),
+  updateFocusingPark: jest.fn(),
+  initializeFetchingState: jest.fn(),
 };
 
 const testUser = {
@@ -116,7 +121,7 @@ describe('componentDidUpdate', () => {
   });
 
   it('should call fetchArticle if postId is updated', async () => {
-    getRemoteArticleSpy.mockResolvedValue({});
+    getRemoteArticleSpy.mockResolvedValue(mockGetArticleResponse);
 
     wrapper = shallow(<Renderer {...basicProps} />);
     const instance = wrapper.instance();
@@ -167,6 +172,17 @@ describe('fetchArticle', () => {
     await instance['fetchArticle']();
 
     expect(instance.props.throwError).toBeCalled();
+  });
+
+  it('should call initializeFetchingState if focusingPark is changed', async () => {
+    getRemoteArticleSpy.mockResolvedValue(mockGetArticleResponse);
+
+    wrapper = shallow(<Renderer {...basicProps} focusingPark="L" />);
+    const instance = wrapper.instance();
+
+    await instance['fetchArticle']();
+
+    expect(instance.props.initializeFetchingState).toBeCalled();
   });
 });
 

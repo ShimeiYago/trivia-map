@@ -3,13 +3,15 @@ import { ArticleWrapper } from 'views/components/organisms/article-wrapper';
 import { ArticlePreviewList } from 'views/components/organisms/article-preview-list';
 import { Author } from 'types/author';
 import { getAuthorInfo } from 'api/users-api';
-import { Avatar, Stack, Typography } from '@mui/material';
+import { Avatar, Divider, Stack, Typography } from '@mui/material';
 import { CenterSpinner } from 'views/components/atoms/center-spinner';
 import noIcon from 'images/no-icon.jpg';
 import { ApiError } from 'api/utils/handle-axios-error';
 import { pageTitleGenerator } from 'utils/page-title-generator';
 import { CommonHelmet } from 'helper-components/common-helmet';
 import { MapLinkButton } from 'views/components/moleculars/map-link-button';
+import LinkIcon from '@mui/icons-material/Link';
+import { IconAndText } from 'views/components/atoms/icon-and-text';
 
 export class Renderer extends React.Component<Props, State> {
   state: State = {
@@ -31,7 +33,7 @@ export class Renderer extends React.Component<Props, State> {
       return <CenterSpinner />;
     }
 
-    const pageName = `${author.nickname}さんの投稿一覧`;
+    const pageName = `${author.nickname}さん`;
 
     return (
       <>
@@ -49,6 +51,20 @@ export class Renderer extends React.Component<Props, State> {
             {pageName}
           </Typography>
         </Stack>
+
+        <IconAndText
+          iconComponent={<LinkIcon />}
+          text="https://twitter.com"
+          iconPosition="left"
+          align="center"
+          href="https://twitter.com"
+        />
+
+        <Divider sx={{ my: 3 }} />
+
+        <Typography component="h3" variant="h4" align="center">
+          投稿一覧
+        </Typography>
 
         <MapLinkButton userId={this.props.userId} />
 

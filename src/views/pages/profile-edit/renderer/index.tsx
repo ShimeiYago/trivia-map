@@ -14,7 +14,7 @@ import { SelializedImageFile } from 'types/selialized-image-file';
 import { ImageField } from 'views/components/moleculars/image-field';
 import 'react-image-crop/dist/ReactCrop.css';
 import { INPUT_FIELD_MAX_LENGTH, UPLOAD_IMAGE_MAX_LENGTH } from 'constant';
-import { ACCOUNT_SETTINGS_LINK } from 'constant/links';
+import { ACCOUNT_SETTINGS_LINK, AUTHER_PAGE_LINK } from 'constant/links';
 import { PAGE_NAMES } from 'constant/page-names';
 
 export class Renderer extends React.Component<Props, State> {
@@ -22,6 +22,7 @@ export class Renderer extends React.Component<Props, State> {
     super(props);
     this.state = {
       nickname: props.user?.nickname ?? '',
+      url: props.user?.url ?? '',
       loadingState: 'waiting',
       icon: props.user?.icon ?? null,
     };
@@ -32,6 +33,7 @@ export class Renderer extends React.Component<Props, State> {
       this.setState({
         nickname: this.props.user?.nickname ?? '',
         icon: this.props.user?.icon ?? null,
+        url: this.props.user?.url ?? '',
       });
     }
   }
@@ -58,6 +60,11 @@ export class Renderer extends React.Component<Props, State> {
           <Typography component="h2" variant="h5" align="center">
             {PAGE_NAMES.profileEdit}
           </Typography>
+
+          <Typography align="right">
+            <a href={AUTHER_PAGE_LINK(`${this.props.user?.userId}`)}>プロフィール</a>
+          </Typography>
+
           {this.renderHeaderInfo()}
 
           <Box>
@@ -90,6 +97,20 @@ export class Renderer extends React.Component<Props, State> {
               value={this.state.nickname}
               required
               inputProps={{ maxLength: INPUT_FIELD_MAX_LENGTH.nickname }}
+            />
+
+            <TextField
+              margin="normal"
+              fullWidth
+              name="url"
+              label="Webサイト"
+              type="url"
+              id="url"
+              disabled={disabled}
+              helperText={this.state.formError?.url}
+              error={!!this.state.formError?.url}
+              onChange={this.handleChangeUrl}
+              value={this.state.url}
             />
 
             <LoadingButton
@@ -165,6 +186,12 @@ export class Renderer extends React.Component<Props, State> {
     });
   };
 
+  protected handleChangeUrl = (e: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({
+      url: e.target.value,
+    });
+  };
+
   protected handleChangeImage = (src: SelializedImageFile | null) => {
     this.setState({
       icon: src,
@@ -183,7 +210,8 @@ export class Renderer extends React.Component<Props, State> {
 
     try {
       const res = await autoRefreshApiWrapper(
-        () => updateUserInfo({ nickname: this.state.nickname, icon: uploadIcon }),
+        () =>
+          updateUserInfo({ nickname: this.state.nickname, icon: uploadIcon, url: this.state.url }),
         /* istanbul ignore next */
         () => this.props.updateUser(undefined),
       );
@@ -204,6 +232,7 @@ export class Renderer extends React.Component<Props, State> {
           formError: {
             nickname: apiError.data.nickname,
             icon: apiError.data.icon,
+            url: apiError.data.url,
           },
         });
       }
@@ -229,13 +258,9 @@ export type Props = {
 export type State = {
   nickname: string;
   icon: string | SelializedImageFile | null;
+  url: string;
   loadingState: LoadingState;
   errorTitle?: string;
   errorMessages?: string[];
-  formError?: FormError;
-};
-
-type FormError = {
-  nickname?: string[];
-  icon?: string[];
+  formError?: ValidationError;
 };

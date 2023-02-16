@@ -9,19 +9,26 @@ export function IconAndText(props: Props): JSX.Element {
     justifyContent: props.align ?? 'center',
     fontSize: props.fontSize,
     columnGap: props.columnGap,
-    alignItems: props.link ? 'normal' : 'center',
+    alignItems: props.to || props.href ? 'normal' : 'center',
   };
 
   const linkWrapper = (content: React.ReactNode) => {
-    if (props.link) {
+    if (props.to) {
       return (
-        <NonStyleLink to={props.link} target={props.target}>
+        <NonStyleLink to={props.to} target={props.target}>
           {content}
         </NonStyleLink>
       );
-    } else {
-      return content;
     }
+    if (props.href) {
+      return (
+        <a href={props.href} target={props.target}>
+          {content}
+        </a>
+      );
+    }
+
+    return content;
   };
 
   const buttonWrapper = (content: React.ReactNode) => {
@@ -79,7 +86,8 @@ export type Props = {
   align?: 'left' | 'right' | 'center';
   fontSize?: number;
   columnGap?: number;
-  link?: string;
+  to?: string;
+  href?: string;
   onClick?: () => void;
   target?: React.HTMLAttributeAnchorTarget;
 };

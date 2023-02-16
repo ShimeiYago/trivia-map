@@ -746,7 +746,7 @@ exports[`Shallow Snapshot Tests long name with mobile 1`] = `
                   align="left"
                   iconComponent={<Memo />}
                   iconPosition="left"
-                  text="アカウント管理"
+                  text="アカウント設定"
                 />
               </Link>
               <ForwardRef(Button)
@@ -880,7 +880,7 @@ exports[`Shallow Snapshot Tests long name with mobile 1`] = `
               <Memo(ForwardRef(ManageAccountsIcon)) />
             </ForwardRef(ListItemIcon)>
             <ForwardRef(ListItemText)
-              primary="アカウント管理"
+              primary="アカウント設定"
             />
           </ForwardRef(ListItem)>
         </NonStyleLink>
@@ -3221,7 +3221,7 @@ exports[`Shallow Snapshot Tests with userInfo 1`] = `
                   align="left"
                   iconComponent={<Memo />}
                   iconPosition="left"
-                  text="アカウント管理"
+                  text="アカウント設定"
                 />
               </Link>
               <ForwardRef(Button)
@@ -3355,7 +3355,7 @@ exports[`Shallow Snapshot Tests with userInfo 1`] = `
               <Memo(ForwardRef(ManageAccountsIcon)) />
             </ForwardRef(ListItemIcon)>
             <ForwardRef(ListItemText)
-              primary="アカウント管理"
+              primary="アカウント設定"
             />
           </ForwardRef(ListItem)>
         </NonStyleLink>

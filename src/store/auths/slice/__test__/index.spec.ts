@@ -39,6 +39,7 @@ describe('auths reducer', () => {
         email: 'user@example.com',
         nickname: 'Axel',
         icon: 'https://...',
+        url: 'https://...',
         isSocialAccount: false,
       }),
     );
@@ -47,6 +48,7 @@ describe('auths reducer', () => {
       email: 'user@example.com',
       nickname: 'Axel',
       icon: 'https://...',
+      url: 'https://...',
       isSocialAccount: false,
     });
   });
@@ -59,6 +61,7 @@ describe('auths reducer', () => {
         email: 'user@example.com',
         nickname: 'Axel',
         icon: 'https://...',
+        url: 'https://...',
         isSocialAccount: false,
       }),
     );
@@ -67,6 +70,7 @@ describe('auths reducer', () => {
       email: 'user@example.com',
       nickname: 'Axel',
       icon: 'https://...',
+      url: 'https://...',
       isSocialAccount: false,
     });
   });

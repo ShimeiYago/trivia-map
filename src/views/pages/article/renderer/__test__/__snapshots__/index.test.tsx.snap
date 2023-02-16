@@ -19,9 +19,9 @@ exports[`Shallow Snapshot Tests author view 1`] = `
         align="right"
         iconComponent={<Memo />}
         iconPosition="left"
-        link="/map/edit/1"
         onClick={[MockFunction]}
         text="編集"
+        to="/map/edit/1"
       />
     </ForwardRef(Link)>
     <ForwardRef(Stack)
@@ -83,8 +83,8 @@ exports[`Shallow Snapshot Tests author view 1`] = `
         align="left"
         iconComponent={<Memo />}
         iconPosition="left"
-        link="/categories/1"
         text="隠れミッキー"
+        to="/categories/1"
       />
     </ForwardRef(Typography)>
     <ForwardRef(Box)
@@ -117,23 +117,13 @@ exports[`Shallow Snapshot Tests author view 1`] = `
       text="地図"
       variant="h5"
     />
-    <ForwardRef(Typography)
-      component="div"
-    >
-      <ForwardRef(Typography)
-        component="div"
-        fontWeight="bold"
-      >
-        エリア
-      </ForwardRef(Typography)>
-      <AreaNames
-        areaNames={
-          Array [
-            "シー",
-          ]
-        }
-      />
-    </ForwardRef(Typography)>
+    <AreaNames
+      areaNames={
+        Array [
+          "シー",
+        ]
+      }
+    />
     <NonStyleLink
       to="/"
     >
@@ -288,8 +278,8 @@ exports[`Shallow Snapshot Tests draft 1`] = `
         align="left"
         iconComponent={<Memo />}
         iconPosition="left"
-        link="/categories/1"
         text="隠れミッキー"
+        to="/categories/1"
       />
     </ForwardRef(Typography)>
     <ForwardRef(Box)
@@ -322,23 +312,13 @@ exports[`Shallow Snapshot Tests draft 1`] = `
       text="地図"
       variant="h5"
     />
-    <ForwardRef(Typography)
-      component="div"
-    >
-      <ForwardRef(Typography)
-        component="div"
-        fontWeight="bold"
-      >
-        エリア
-      </ForwardRef(Typography)>
-      <AreaNames
-        areaNames={
-          Array [
-            "シー",
-          ]
-        }
-      />
-    </ForwardRef(Typography)>
+    <AreaNames
+      areaNames={
+        Array [
+          "シー",
+        ]
+      }
+    />
     <NonStyleLink
       to="/"
     >
@@ -480,8 +460,8 @@ exports[`Shallow Snapshot Tests have liked 1`] = `
         align="left"
         iconComponent={<Memo />}
         iconPosition="left"
-        link="/categories/1"
         text="隠れミッキー"
+        to="/categories/1"
       />
     </ForwardRef(Typography)>
     <ForwardRef(Box)
@@ -514,23 +494,13 @@ exports[`Shallow Snapshot Tests have liked 1`] = `
       text="地図"
       variant="h5"
     />
-    <ForwardRef(Typography)
-      component="div"
-    >
-      <ForwardRef(Typography)
-        component="div"
-        fontWeight="bold"
-      >
-        エリア
-      </ForwardRef(Typography)>
-      <AreaNames
-        areaNames={
-          Array [
-            "シー",
-          ]
-        }
-      />
-    </ForwardRef(Typography)>
+    <AreaNames
+      areaNames={
+        Array [
+          "シー",
+        ]
+      }
+    />
     <NonStyleLink
       to="/"
     >
@@ -682,8 +652,8 @@ exports[`Shallow Snapshot Tests with article 1`] = `
         align="left"
         iconComponent={<Memo />}
         iconPosition="left"
-        link="/categories/1"
         text="隠れミッキー"
+        to="/categories/1"
       />
     </ForwardRef(Typography)>
     <ForwardRef(Box)
@@ -716,23 +686,13 @@ exports[`Shallow Snapshot Tests with article 1`] = `
       text="地図"
       variant="h5"
     />
-    <ForwardRef(Typography)
-      component="div"
-    >
-      <ForwardRef(Typography)
-        component="div"
-        fontWeight="bold"
-      >
-        エリア
-      </ForwardRef(Typography)>
-      <AreaNames
-        areaNames={
-          Array [
-            "シー",
-          ]
-        }
-      />
-    </ForwardRef(Typography)>
+    <AreaNames
+      areaNames={
+        Array [
+          "シー",
+        ]
+      }
+    />
     <NonStyleLink
       to="/"
     >
@@ -875,8 +835,8 @@ exports[`Shallow Snapshot Tests with image 1`] = `
         align="left"
         iconComponent={<Memo />}
         iconPosition="left"
-        link="/categories/1"
         text="隠れミッキー"
+        to="/categories/1"
       />
     </ForwardRef(Typography)>
     <ForwardRef(Box)
@@ -913,23 +873,13 @@ exports[`Shallow Snapshot Tests with image 1`] = `
       text="地図"
       variant="h5"
     />
-    <ForwardRef(Typography)
-      component="div"
-    >
-      <ForwardRef(Typography)
-        component="div"
-        fontWeight="bold"
-      >
-        エリア
-      </ForwardRef(Typography)>
-      <AreaNames
-        areaNames={
-          Array [
-            "シー",
-          ]
-        }
-      />
-    </ForwardRef(Typography)>
+    <AreaNames
+      areaNames={
+        Array [
+          "シー",
+        ]
+      }
+    />
     <NonStyleLink
       to="/"
     >

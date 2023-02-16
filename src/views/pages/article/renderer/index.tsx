@@ -110,7 +110,7 @@ export class Renderer extends React.Component<Props, State> {
               text={categoryMapper(category)}
               align="left"
               iconPosition="left"
-              link={CATEGORY_PAGE_LINK(category.toString())}
+              to={CATEGORY_PAGE_LINK(category.toString())}
             />
           </Typography>
 
@@ -214,7 +214,7 @@ export class Renderer extends React.Component<Props, State> {
           text="編集"
           iconPosition="left"
           align="right"
-          link={EDIT_LINK(this.props.postId.toString())}
+          to={EDIT_LINK(this.props.postId.toString())}
           onClick={this.props.initialize}
         />
       </Link>

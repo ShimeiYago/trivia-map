@@ -218,6 +218,7 @@ const mockGetResponse: GetArticleApiModule.GetArticleResponse = {
     userId: 1,
     nickname: 'nickname',
     icon: null,
+    url: null,
   },
   category: 1,
   createdAt: '2022/4/1',

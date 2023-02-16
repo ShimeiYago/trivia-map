@@ -14,7 +14,7 @@ import { SelializedImageFile } from 'types/selialized-image-file';
 import { ImageField } from 'views/components/moleculars/image-field';
 import 'react-image-crop/dist/ReactCrop.css';
 import { INPUT_FIELD_MAX_LENGTH, UPLOAD_IMAGE_MAX_LENGTH } from 'constant';
-import { ACCOUNT_SETTINGS_LINK } from 'constant/links';
+import { ACCOUNT_SETTINGS_LINK, AUTHER_PAGE_LINK } from 'constant/links';
 import { PAGE_NAMES } from 'constant/page-names';
 
 export class Renderer extends React.Component<Props, State> {
@@ -60,6 +60,11 @@ export class Renderer extends React.Component<Props, State> {
           <Typography component="h2" variant="h5" align="center">
             {PAGE_NAMES.profileEdit}
           </Typography>
+
+          <Typography align="right">
+            <a href={AUTHER_PAGE_LINK(`${this.props.user?.userId}`)}>プロフィール</a>
+          </Typography>
+
           {this.renderHeaderInfo()}
 
           <Box>

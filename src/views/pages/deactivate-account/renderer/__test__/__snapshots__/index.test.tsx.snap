@@ -7,7 +7,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
   >
     <BackToNavi
       link="/admin/account"
-      text="アカウント管理"
+      text="アカウント設定"
     />
     <ForwardRef(Stack)
       spacing={3}
@@ -51,7 +51,7 @@ exports[`Shallow Snapshot Tests loading 1`] = `
   >
     <BackToNavi
       link="/admin/account"
-      text="アカウント管理"
+      text="アカウント設定"
     />
     <ForwardRef(Stack)
       spacing={3}

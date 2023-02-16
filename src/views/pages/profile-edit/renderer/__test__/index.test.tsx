@@ -14,6 +14,7 @@ const basicProps: Props = {
     email: 'xxx@example.com',
     nickname: 'Axel',
     icon: 'https://...',
+    url: 'https://...',
     isSocialAccount: false,
   },
   updateUser: jest.fn(),
@@ -78,6 +79,7 @@ describe('Shallow Snapshot Tests', () => {
         email: '',
         nickname: 'Axel',
         icon: null,
+        url: null,
         isSocialAccount: true,
       },
     });
@@ -113,7 +115,7 @@ describe('componentDidUpdate', () => {
   });
 });
 
-describe('handleChangenickname', () => {
+describe('handleChangeNickname', () => {
   it('should set nickname', async () => {
     wrapper = shallow(<Renderer {...basicProps} />);
     const instance = wrapper.instance();
@@ -127,6 +129,23 @@ describe('handleChangenickname', () => {
     instance['handleChangeNickname'](event);
 
     expect(instance.state.nickname).toBe('xxxxx');
+  });
+});
+
+describe('handleChangeUrl', () => {
+  it('should set url', async () => {
+    wrapper = shallow(<Renderer {...basicProps} />);
+    const instance = wrapper.instance();
+
+    const event = {
+      target: {
+        value: 'https://...',
+      },
+    } as React.ChangeEvent<HTMLInputElement>;
+
+    instance['handleChangeUrl'](event);
+
+    expect(instance.state.url).toBe('https://...');
   });
 });
 
@@ -170,7 +189,7 @@ describe('handleSubmit', () => {
 
     await instance['handleSubmit']();
 
-    expect(updateUserInfoSpy).toBeCalledWith({ icon: null, nickname: 'xxx' });
+    expect(updateUserInfoSpy).toBeCalledWith({ icon: null, nickname: 'xxx', url: 'https://...' });
   });
 
   it('should set form error when api have validation error', async () => {

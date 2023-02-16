@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Grid } from '@mui/material';
+import { Box } from '@mui/material';
 import { LoadingState } from 'types/loading-state';
 import { GlobalMenu } from 'views/components/organisms/global-menu';
 import { ArticlePaper } from 'views/components/atoms/article-paper';
@@ -34,11 +34,7 @@ export class Renderer extends React.Component<Props> {
       <Box sx={wrapper}>
         <GlobalMenu topBarPosition="static" permanentLeftNavi={!isMobile}>
           <Box sx={contentWrapper(isMobile)}>
-            <Grid container spacing={isMobile ? 2 : 4}>
-              <Grid item xs={12}>
-                <ArticlePaper variant="main">{children}</ArticlePaper>
-              </Grid>
-            </Grid>
+            <ArticlePaper variant="main">{children}</ArticlePaper>
           </Box>
         </GlobalMenu>
       </Box>

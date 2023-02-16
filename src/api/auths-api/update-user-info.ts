@@ -10,11 +10,13 @@ import { convertToFile } from 'utils/convert-to-file';
 export async function updateUserInfo(param: {
   nickname: string;
   icon?: SelializedImageFile | null;
+  url: string;
 }): Promise<User> {
   const axiosInstance = getAxiosInstance({ timeout: API_TIMEOUT.long }, mockGetUserInfoResponse);
 
   const requestData = new FormData();
   requestData.append('nickname', param.nickname);
+  requestData.append('url', param.url);
 
   switch (param.icon) {
     case undefined:
@@ -42,4 +44,5 @@ export async function updateUserInfo(param: {
 export type ValidationError = {
   nickname?: string[];
   icon?: string[];
+  url?: string[];
 };

@@ -30,6 +30,15 @@ exports[`Shallow Snapshot Tests basic 1`] = `
         }
       />
     </ForwardRef(Stack)>
+    <ForwardRef(Typography)
+      align="center"
+    >
+      <a
+        href="/users/1"
+      >
+        プロフィール
+      </a>
+    </ForwardRef(Typography)>
     <LinkList
       list={
         Array [
@@ -85,6 +94,15 @@ exports[`Shallow Snapshot Tests no icon 1`] = `
         }
       />
     </ForwardRef(Stack)>
+    <ForwardRef(Typography)
+      align="center"
+    >
+      <a
+        href="/users/1"
+      >
+        プロフィール
+      </a>
+    </ForwardRef(Typography)>
     <LinkList
       list={
         Array [

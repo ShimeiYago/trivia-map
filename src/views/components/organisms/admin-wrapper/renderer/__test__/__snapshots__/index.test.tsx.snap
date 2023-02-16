@@ -20,21 +20,11 @@ exports[`Shallow Snapshot Tests basic 1`] = `
         }
       }
     >
-      <ForwardRef(Grid)
-        container={true}
-        spacing={4}
+      <ArticlePaper
+        variant="main"
       >
-        <ForwardRef(Grid)
-          item={true}
-          xs={12}
-        >
-          <ArticlePaper
-            variant="main"
-          >
-            <div />
-          </ArticlePaper>
-        </ForwardRef(Grid)>
-      </ForwardRef(Grid)>
+        <div />
+      </ArticlePaper>
     </ForwardRef(Box)>
   </GlobalMenu>
 </ForwardRef(Box)>
@@ -72,21 +62,11 @@ exports[`Shallow Snapshot Tests mobile 1`] = `
         }
       }
     >
-      <ForwardRef(Grid)
-        container={true}
-        spacing={2}
+      <ArticlePaper
+        variant="main"
       >
-        <ForwardRef(Grid)
-          item={true}
-          xs={12}
-        >
-          <ArticlePaper
-            variant="main"
-          >
-            <div />
-          </ArticlePaper>
-        </ForwardRef(Grid)>
-      </ForwardRef(Grid)>
+        <div />
+      </ArticlePaper>
     </ForwardRef(Box)>
   </GlobalMenu>
 </ForwardRef(Box)>

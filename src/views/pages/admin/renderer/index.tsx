@@ -6,6 +6,7 @@ import noIcon from 'images/no-icon.jpg';
 import { BackToNavi } from 'views/components/moleculars/back-to-navi';
 import {
   ACCOUNT_SETTINGS_LINK,
+  AUTHER_PAGE_LINK,
   LIKED_ARTICLES_LINK,
   MAP_PAGE_LINK,
   MY_ARTICLES_LINK,
@@ -53,6 +54,9 @@ export class Renderer extends React.Component<Props> {
         <Stack direction="row">
           <Avatar sx={{ width: 80, height: 80, mx: 'auto' }} src={src} />
         </Stack>
+        <Typography align="center">
+          <a href={AUTHER_PAGE_LINK(`${user?.userId}`)}>プロフィール</a>
+        </Typography>
 
         <LinkList list={listItems} />
       </Stack>

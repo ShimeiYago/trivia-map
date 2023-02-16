@@ -55,7 +55,9 @@ export function logoImageBox(isMobile: boolean): SxProps {
   return {
     height: isMobile ? mobileHeight : PCHeight,
     flexGrow: 1,
-    py: isMobile ? 1.5 : 2,
+    // py: isMobile ? 1.5 : 2,
+    pt: 1,
+    pb: 1.5,
     boxSizing: 'border-box',
   };
 }

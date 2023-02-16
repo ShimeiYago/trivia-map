@@ -8,6 +8,7 @@ export const mockLoginResponse: LoginResponse = {
     email: 'user@example.com',
     nickname: 'Axel',
     icon: 'https://disneyparkstory.com/wp-content/uploads/2017/09/apple-touch-icon.png',
+    url: 'https://disneyparkstory.com',
     isSocialAccount: false,
   },
   access_token_expiration: '2023-10-05T01:31:10.861050+09:00',

@@ -183,7 +183,7 @@ export class Renderer extends React.Component<Props, State> {
 
     try {
       const res = await autoRefreshApiWrapper(
-        () => updateUserInfo({ nickname: this.state.nickname, icon: uploadIcon }),
+        () => updateUserInfo({ nickname: this.state.nickname, icon: uploadIcon, url: '' }),
         /* istanbul ignore next */
         () => this.props.updateUser(undefined),
       );

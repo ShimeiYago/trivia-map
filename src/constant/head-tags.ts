@@ -1,5 +1,5 @@
 export const DEFAULT_HEAD_TAGS = {
-  description: 'ディズニーの隠れミッキーやストーリーなどの豆知識を地図上で自由に共有できるアプリ',
+  description: 'ディズニーマニアの知識共有サイト',
   ogType: 'website',
   imageName: 'site-image.png',
   ogLocale: 'ja_JP',

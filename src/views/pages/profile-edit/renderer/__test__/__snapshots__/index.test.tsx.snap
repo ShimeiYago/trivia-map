@@ -85,6 +85,18 @@ exports[`Shallow Snapshot Tests basic 1`] = `
             type="nickname"
             value="Axel"
           />
+          <ForwardRef(TextField)
+            disabled={false}
+            error={false}
+            fullWidth={true}
+            id="url"
+            label="Webサイト"
+            margin="normal"
+            name="url"
+            onChange={[Function]}
+            type="url"
+            value="https://..."
+          />
           <ForwardRef(LoadingButton)
             disabled={false}
             fullWidth={true}
@@ -206,6 +218,18 @@ exports[`Shallow Snapshot Tests error case 1`] = `
             type="nickname"
             value="Axel"
           />
+          <ForwardRef(TextField)
+            disabled={false}
+            error={false}
+            fullWidth={true}
+            id="url"
+            label="Webサイト"
+            margin="normal"
+            name="url"
+            onChange={[Function]}
+            type="url"
+            value="https://..."
+          />
           <ForwardRef(LoadingButton)
             disabled={false}
             fullWidth={true}
@@ -313,6 +337,18 @@ exports[`Shallow Snapshot Tests loading 1`] = `
             type="nickname"
             value="Axel"
           />
+          <ForwardRef(TextField)
+            disabled={true}
+            error={false}
+            fullWidth={true}
+            id="url"
+            label="Webサイト"
+            margin="normal"
+            name="url"
+            onChange={[Function]}
+            type="url"
+            value="https://..."
+          />
           <ForwardRef(LoadingButton)
             disabled={true}
             fullWidth={true}
@@ -399,6 +435,18 @@ exports[`Shallow Snapshot Tests social account 1`] = `
             required={true}
             type="nickname"
             value="Axel"
+          />
+          <ForwardRef(TextField)
+            disabled={true}
+            error={false}
+            fullWidth={true}
+            id="url"
+            label="Webサイト"
+            margin="normal"
+            name="url"
+            onChange={[Function]}
+            type="url"
+            value=""
           />
           <ForwardRef(LoadingButton)
             disabled={true}
@@ -510,6 +558,18 @@ exports[`Shallow Snapshot Tests success 1`] = `
             type="nickname"
             value="Axel"
           />
+          <ForwardRef(TextField)
+            disabled={false}
+            error={false}
+            fullWidth={true}
+            id="url"
+            label="Webサイト"
+            margin="normal"
+            name="url"
+            onChange={[Function]}
+            type="url"
+            value="https://..."
+          />
           <ForwardRef(LoadingButton)
             disabled={false}
             fullWidth={true}
@@ -617,6 +677,18 @@ exports[`Shallow Snapshot Tests with icon as file 1`] = `
             type="nickname"
             value="Axel"
           />
+          <ForwardRef(TextField)
+            disabled={false}
+            error={false}
+            fullWidth={true}
+            id="url"
+            label="Webサイト"
+            margin="normal"
+            name="url"
+            onChange={[Function]}
+            type="url"
+            value="https://..."
+          />
           <ForwardRef(LoadingButton)
             disabled={false}
             fullWidth={true}
@@ -722,6 +794,18 @@ exports[`Shallow Snapshot Tests with icon as null 1`] = `
             required={true}
             type="nickname"
             value="Axel"
+          />
+          <ForwardRef(TextField)
+            disabled={false}
+            error={false}
+            fullWidth={true}
+            id="url"
+            label="Webサイト"
+            margin="normal"
+            name="url"
+            onChange={[Function]}
+            type="url"
+            value="https://..."
           />
           <ForwardRef(LoadingButton)
             disabled={false}

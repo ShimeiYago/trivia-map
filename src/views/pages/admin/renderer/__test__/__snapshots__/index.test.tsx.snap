@@ -55,7 +55,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
           Object {
             "icon": <Memo />,
             "link": "/admin/account",
-            "text": "アカウント管理",
+            "text": "アカウント設定",
           },
         ]
       }
@@ -119,7 +119,7 @@ exports[`Shallow Snapshot Tests no icon 1`] = `
           Object {
             "icon": <Memo />,
             "link": "/admin/account",
-            "text": "アカウント管理",
+            "text": "アカウント設定",
           },
         ]
       }

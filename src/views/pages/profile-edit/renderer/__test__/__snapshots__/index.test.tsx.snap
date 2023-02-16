@@ -27,6 +27,15 @@ exports[`Shallow Snapshot Tests basic 1`] = `
         >
           プロフィール変更
         </ForwardRef(Typography)>
+        <ForwardRef(Typography)
+          align="right"
+        >
+          <a
+            href="/users/1"
+          >
+            プロフィール
+          </a>
+        </ForwardRef(Typography)>
         <ForwardRef(Box)>
           <ImageField
             cropable={true}
@@ -145,6 +154,15 @@ exports[`Shallow Snapshot Tests error case 1`] = `
           variant="h5"
         >
           プロフィール変更
+        </ForwardRef(Typography)>
+        <ForwardRef(Typography)
+          align="right"
+        >
+          <a
+            href="/users/1"
+          >
+            プロフィール
+          </a>
         </ForwardRef(Typography)>
         <HeaderErrorMessages
           errorMessages={
@@ -279,6 +297,15 @@ exports[`Shallow Snapshot Tests loading 1`] = `
         >
           プロフィール変更
         </ForwardRef(Typography)>
+        <ForwardRef(Typography)
+          align="right"
+        >
+          <a
+            href="/users/1"
+          >
+            プロフィール
+          </a>
+        </ForwardRef(Typography)>
         <ForwardRef(Box)>
           <ImageField
             cropable={true}
@@ -398,6 +425,15 @@ exports[`Shallow Snapshot Tests social account 1`] = `
         >
           プロフィール変更
         </ForwardRef(Typography)>
+        <ForwardRef(Typography)
+          align="right"
+        >
+          <a
+            href="/users/1"
+          >
+            プロフィール
+          </a>
+        </ForwardRef(Typography)>
         <ForwardRef(Alert)
           severity="info"
         >
@@ -496,6 +532,15 @@ exports[`Shallow Snapshot Tests success 1`] = `
           variant="h5"
         >
           プロフィール変更
+        </ForwardRef(Typography)>
+        <ForwardRef(Typography)
+          align="right"
+        >
+          <a
+            href="/users/1"
+          >
+            プロフィール
+          </a>
         </ForwardRef(Typography)>
         <ForwardRef(Alert)>
           ユーザー情報を変更しました。
@@ -619,6 +664,15 @@ exports[`Shallow Snapshot Tests with icon as file 1`] = `
         >
           プロフィール変更
         </ForwardRef(Typography)>
+        <ForwardRef(Typography)
+          align="right"
+        >
+          <a
+            href="/users/1"
+          >
+            プロフィール
+          </a>
+        </ForwardRef(Typography)>
         <ForwardRef(Box)>
           <ImageField
             cropable={true}
@@ -737,6 +791,15 @@ exports[`Shallow Snapshot Tests with icon as null 1`] = `
           variant="h5"
         >
           プロフィール変更
+        </ForwardRef(Typography)>
+        <ForwardRef(Typography)
+          align="right"
+        >
+          <a
+            href="/users/1"
+          >
+            プロフィール
+          </a>
         </ForwardRef(Typography)>
         <ForwardRef(Box)>
           <ImageField

@@ -21,6 +21,7 @@ describe('Shallow Snapshot Tests', () => {
         userId: 1,
         nickname: 'Axel',
         icon: 'https://xxx/xxx.jpg',
+        url: 'https://...',
       },
     });
     expect(wrapper).toMatchSnapshot();
@@ -36,6 +37,19 @@ describe('Shallow Snapshot Tests', () => {
         userId: 1,
         nickname: 'Axel',
         icon: null,
+        url: null,
+      },
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('twitter url', () => {
+    wrapper.setState({
+      author: {
+        userId: 1,
+        nickname: 'Axel',
+        icon: 'https://xxx/xxx.jpg',
+        url: 'https://twitter.com/...',
       },
     });
     expect(wrapper).toMatchSnapshot();

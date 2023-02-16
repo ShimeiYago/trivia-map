@@ -12,6 +12,7 @@ import { CommonHelmet } from 'helper-components/common-helmet';
 import { MapLinkButton } from 'views/components/moleculars/map-link-button';
 import LinkIcon from '@mui/icons-material/Link';
 import { IconAndText } from 'views/components/atoms/icon-and-text';
+import TwitterIcon from '@mui/icons-material/Twitter';
 
 export class Renderer extends React.Component<Props, State> {
   state: State = {
@@ -52,13 +53,15 @@ export class Renderer extends React.Component<Props, State> {
           </Typography>
         </Stack>
 
-        <IconAndText
-          iconComponent={<LinkIcon />}
-          text="https://twitter.com"
-          iconPosition="left"
-          align="center"
-          href="https://twitter.com"
-        />
+        {author.url && (
+          <IconAndText
+            iconComponent={author.url.includes('twitter.com') ? <TwitterIcon /> : <LinkIcon />}
+            text={author.url}
+            iconPosition="left"
+            align="center"
+            href={author.url}
+          />
+        )}
 
         <Divider sx={{ my: 3 }} />
 

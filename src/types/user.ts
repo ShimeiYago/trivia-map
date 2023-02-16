@@ -3,5 +3,6 @@ export type User = {
   email: string;
   nickname: string;
   icon: string | null;
+  url: string | null;
   isSocialAccount: boolean;
 };

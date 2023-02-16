@@ -36,10 +36,10 @@ exports[`Shallow Snapshot Tests basic 1`] = `
   </ForwardRef(Stack)>
   <IconAndText
     align="center"
-    href="https://twitter.com"
+    href="https://..."
     iconComponent={<Memo />}
     iconPosition="left"
-    text="https://twitter.com"
+    text="https://..."
   />
   <ForwardRef(Divider)
     sx={
@@ -111,12 +111,74 @@ exports[`Shallow Snapshot Tests no icon 1`] = `
       Axelさん
     </ForwardRef(Typography)>
   </ForwardRef(Stack)>
+  <ForwardRef(Divider)
+    sx={
+      Object {
+        "my": 3,
+      }
+    }
+  />
+  <ForwardRef(Typography)
+    align="center"
+    component="h3"
+    variant="h4"
+  >
+    投稿一覧
+  </ForwardRef(Typography)>
+  <MapLinkButton
+    userId={1}
+  />
+  <ArticlePreviewList
+    searchConditions={
+      Object {
+        "user": 1,
+      }
+    }
+    variant="large"
+  />
+</ArticleWrapper>
+`;
+
+exports[`Shallow Snapshot Tests twitter url 1`] = `
+<ArticleWrapper
+  showSidebar={true}
+>
+  <CommonHelmet
+    title="Axelさん - トリビアマップ"
+  />
+  <ForwardRef(Stack)
+    alignItems="center"
+    direction="row"
+    justifyContent="center"
+    spacing={1}
+    sx={
+      Object {
+        "mb": 3,
+      }
+    }
+  >
+    <ForwardRef(Avatar)
+      src="https://xxx/xxx.jpg"
+      sx={
+        Object {
+          "height": 50,
+          "width": 50,
+        }
+      }
+    />
+    <ForwardRef(Typography)
+      component="h2"
+      variant="h4"
+    >
+      Axelさん
+    </ForwardRef(Typography)>
+  </ForwardRef(Stack)>
   <IconAndText
     align="center"
-    href="https://twitter.com"
+    href="https://twitter.com/..."
     iconComponent={<Memo />}
     iconPosition="left"
-    text="https://twitter.com"
+    text="https://twitter.com/..."
   />
   <ForwardRef(Divider)
     sx={

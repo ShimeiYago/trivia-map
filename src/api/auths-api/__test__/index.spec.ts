@@ -227,6 +227,7 @@ describe('update-user-info', () => {
         dataUrl: 'data:image/png;base64,xxx',
         fileName: 'filename',
       },
+      url: 'https://...',
     });
     expect(response.userId).toBe(1);
   });
@@ -237,6 +238,7 @@ describe('update-user-info', () => {
     const response = await updateUserInfo({
       nickname: 'Axel',
       icon: null,
+      url: '',
     });
     expect(response.userId).toBe(1);
   });
@@ -249,7 +251,7 @@ describe('update-user-info', () => {
       data: {},
       errorMsg: 'Intentional API Error with mock',
     };
-    await expect(updateUserInfo({ nickname: 'Axel' })).rejects.toEqual(expectedApiError);
+    await expect(updateUserInfo({ nickname: 'Axel', url: '' })).rejects.toEqual(expectedApiError);
   });
 });
 

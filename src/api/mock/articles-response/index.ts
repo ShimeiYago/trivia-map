@@ -21,6 +21,7 @@ export const mockGetArticleResponse: GetArticleResponse = {
     userId: 1,
     nickname: 'Axel',
     icon: 'https://disneyparkstory.com/wp-content/uploads/2017/09/apple-touch-icon.png',
+    url: 'https://disneyparkstory.com',
   },
   createdAt: '2022/06/16 21:42',
   updatedAt: '2022/06/16 21:42',

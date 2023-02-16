@@ -9,6 +9,7 @@ const basicProps: Props = {
     nickname: 'Axel',
     email: 'xxx@example.com',
     icon: 'https://...',
+    url: 'https://...',
     isSocialAccount: false,
   },
 };
@@ -29,6 +30,7 @@ describe('Shallow Snapshot Tests', () => {
         nickname: 'Axel',
         email: 'xxx@example.com',
         icon: null,
+        url: null,
         isSocialAccount: false,
       },
     };

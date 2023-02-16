@@ -84,6 +84,7 @@ describe('Shallow Snapshot Tests', () => {
         userId: 1,
         nickname: 'name',
         icon: null,
+        url: null,
       },
     });
     expect(shallowWrapper).toMatchSnapshot();

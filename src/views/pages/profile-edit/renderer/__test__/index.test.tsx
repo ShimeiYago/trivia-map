@@ -14,6 +14,7 @@ const basicProps: Props = {
     email: 'xxx@example.com',
     nickname: 'Axel',
     icon: 'https://...',
+    url: 'https://...',
     isSocialAccount: false,
   },
   updateUser: jest.fn(),
@@ -78,6 +79,7 @@ describe('Shallow Snapshot Tests', () => {
         email: '',
         nickname: 'Axel',
         icon: null,
+        url: null,
         isSocialAccount: true,
       },
     });
@@ -170,7 +172,7 @@ describe('handleSubmit', () => {
 
     await instance['handleSubmit']();
 
-    expect(updateUserInfoSpy).toBeCalledWith({ icon: null, nickname: 'xxx' });
+    expect(updateUserInfoSpy).toBeCalledWith({ icon: null, nickname: 'xxx', url: '' });
   });
 
   it('should set form error when api have validation error', async () => {

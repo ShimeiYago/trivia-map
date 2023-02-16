@@ -22,6 +22,7 @@ const basicProps: Props = {
     email: 'xxx@example.com',
     nickname: 'Axel',
     icon: 'https://...',
+    url: 'https://...',
     isSocialAccount: false,
   },
   park: 'S',

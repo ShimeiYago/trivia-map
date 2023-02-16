@@ -55,6 +55,7 @@ describe('Shallow Snapshot Tests', () => {
         userId: 1,
         nickname: 'Axel',
         icon: 'https://...',
+        url: 'https://...',
         isSocialAccount: false,
       },
     });
@@ -103,6 +104,7 @@ describe('Shallow Snapshot Tests', () => {
         userId: 1,
         nickname: 'xxxxxxxxxxxxxxx',
         icon: 'https://...',
+        url: 'https://...',
         isSocialAccount: false,
       },
       isMobile: true,

@@ -814,6 +814,22 @@ exports[`Shallow Snapshot Tests one page 1`] = `
         </ForwardRef(TableRow)>
       </ForwardRef(TableBody)>
     </ForwardRef(Table)>
+    <ForwardRef(Stack)
+      spacing={1}
+    >
+      <ForwardRef(Typography)
+        align="center"
+        component="div"
+        fontSize={14}
+      >
+        1
+        〜
+        1
+        件 / 全
+        2
+        件
+      </ForwardRef(Typography)>
+    </ForwardRef(Stack)>
   </ForwardRef(Stack)>
 </Fragment>
 `;
@@ -1305,6 +1321,33 @@ exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
         </ForwardRef(TableRow)>
       </ForwardRef(TableBody)>
     </ForwardRef(Table)>
+    <ForwardRef(Stack)
+      spacing={1}
+    >
+      <ForwardRef(Typography)
+        align="center"
+        component="div"
+        fontSize={14}
+      >
+        1
+        〜
+        1
+        件 / 全
+        2
+        件
+      </ForwardRef(Typography)>
+      <div
+        className="pagination-wrapper"
+      >
+        <ForwardRef(Pagination)
+          boundaryCount={1}
+          count={2}
+          onChange={[Function]}
+          page={1}
+          siblingCount={0}
+        />
+      </div>
+    </ForwardRef(Stack)>
   </ForwardRef(Stack)>
 </Fragment>
 `;
@@ -1826,6 +1869,33 @@ exports[`Shallow Snapshot Tests with articlesPreviews mobile view 1`] = `
         </ForwardRef(TableRow)>
       </ForwardRef(TableBody)>
     </ForwardRef(Table)>
+    <ForwardRef(Stack)
+      spacing={1}
+    >
+      <ForwardRef(Typography)
+        align="center"
+        component="div"
+        fontSize={14}
+      >
+        1
+        〜
+        1
+        件 / 全
+        2
+        件
+      </ForwardRef(Typography)>
+      <div
+        className="pagination-wrapper"
+      >
+        <ForwardRef(Pagination)
+          boundaryCount={1}
+          count={2}
+          onChange={[Function]}
+          page={1}
+          siblingCount={0}
+        />
+      </div>
+    </ForwardRef(Stack)>
   </ForwardRef(Stack)>
 </Fragment>
 `;

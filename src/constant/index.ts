@@ -74,7 +74,13 @@ export const ARTICLES_ORDER_OPTIONS: {
   },
 ];
 
-export const INQUIRY_CATEGORIES = ['不具合の報告', 'ご要望', 'アカウント関連', 'その他'];
+export const INQUIRY_CATEGORIES = [
+  '不具合の報告',
+  'ご要望',
+  'アカウント関連',
+  '不正行為の報告',
+  'その他',
+];
 
 export const UPLOAD_IMAGE_MAX_LENGTH = {
   article: 1000,

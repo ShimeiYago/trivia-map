@@ -90,6 +90,12 @@ exports[`Shallow Snapshot Tests basic 1`] = `
             key="category-3"
             value={3}
           >
+            不正行為の報告
+          </ForwardRef(MenuItem)>
+          <ForwardRef(MenuItem)
+            key="category-4"
+            value={4}
+          >
             その他
           </ForwardRef(MenuItem)>
         </ForwardRef(Select)>
@@ -243,6 +249,12 @@ exports[`Shallow Snapshot Tests error case 1`] = `
             key="category-3"
             value={3}
           >
+            不正行為の報告
+          </ForwardRef(MenuItem)>
+          <ForwardRef(MenuItem)
+            key="category-4"
+            value={4}
+          >
             その他
           </ForwardRef(MenuItem)>
         </ForwardRef(Select)>
@@ -382,6 +394,12 @@ exports[`Shallow Snapshot Tests loading 1`] = `
             key="category-3"
             value={3}
           >
+            不正行為の報告
+          </ForwardRef(MenuItem)>
+          <ForwardRef(MenuItem)
+            key="category-4"
+            value={4}
+          >
             その他
           </ForwardRef(MenuItem)>
         </ForwardRef(Select)>
@@ -518,6 +536,12 @@ exports[`Shallow Snapshot Tests success 1`] = `
           <ForwardRef(MenuItem)
             key="category-3"
             value={3}
+          >
+            不正行為の報告
+          </ForwardRef(MenuItem)>
+          <ForwardRef(MenuItem)
+            key="category-4"
+            value={4}
           >
             その他
           </ForwardRef(MenuItem)>

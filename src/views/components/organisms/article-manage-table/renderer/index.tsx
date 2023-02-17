@@ -89,6 +89,7 @@ export class Renderer extends React.Component<Props, State> {
       <Stack spacing={1}>
         {this.renderPagination()}
         {this.props.isMobile ? this.renderMobileTable() : this.renderDesktopTable()}
+        {this.renderPagination()}
       </Stack>
     );
   }

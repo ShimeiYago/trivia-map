@@ -309,7 +309,7 @@ exports[`Shallow Snapshot Tests land map 1`] = `
     <ForwardRef(LeafComponent)
       attribution="&copy; <a target=\\"_blank\\" href=\\"https://www.tokyodisneyresort.jp/tdl/map.html\\">tokyodisneyresort.jp</a>"
       noWrap={true}
-      url="/tdl-map-tiles/{z}/{x}/{y}.png"
+      url="/l-tiles/{z}/{x}/{y}.png"
     />
     <PostMarkers
       editting={false}

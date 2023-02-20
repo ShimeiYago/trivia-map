@@ -16,6 +16,7 @@ import 'react-image-crop/dist/ReactCrop.css';
 import { INPUT_FIELD_MAX_LENGTH, UPLOAD_IMAGE_MAX_LENGTH } from 'constant';
 import { ACCOUNT_SETTINGS_LINK, AUTHER_PAGE_LINK } from 'constant/links';
 import { PAGE_NAMES } from 'constant/page-names';
+import { Link } from 'react-router-dom';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -59,10 +60,6 @@ export class Renderer extends React.Component<Props, State> {
         <Stack spacing={1} sx={{ px: 1, maxWidth: '400px', mx: 'auto' }}>
           <Typography component="h2" variant="h5" align="center">
             {PAGE_NAMES.profileEdit}
-          </Typography>
-
-          <Typography align="right">
-            <a href={AUTHER_PAGE_LINK(`${this.props.user?.userId}`)}>プロフィール</a>
           </Typography>
 
           {this.renderHeaderInfo()}
@@ -124,6 +121,10 @@ export class Renderer extends React.Component<Props, State> {
               更新
             </LoadingButton>
           </Box>
+
+          <Typography align="right">
+            <Link to={AUTHER_PAGE_LINK(`${this.props.user?.userId}`)}>プロフィール</Link>
+          </Typography>
         </Stack>
       </Box>
     );

@@ -27,15 +27,6 @@ exports[`Shallow Snapshot Tests basic 1`] = `
         >
           プロフィール変更
         </ForwardRef(Typography)>
-        <ForwardRef(Typography)
-          align="right"
-        >
-          <a
-            href="/users/1"
-          >
-            プロフィール
-          </a>
-        </ForwardRef(Typography)>
         <ForwardRef(Box)>
           <ImageField
             cropable={true}
@@ -122,6 +113,15 @@ exports[`Shallow Snapshot Tests basic 1`] = `
             更新
           </ForwardRef(LoadingButton)>
         </ForwardRef(Box)>
+        <ForwardRef(Typography)
+          align="right"
+        >
+          <Link
+            to="/users/1"
+          >
+            プロフィール
+          </Link>
+        </ForwardRef(Typography)>
       </ForwardRef(Stack)>
     </ForwardRef(Box)>
   </ForwardRef(Stack)>
@@ -154,15 +154,6 @@ exports[`Shallow Snapshot Tests error case 1`] = `
           variant="h5"
         >
           プロフィール変更
-        </ForwardRef(Typography)>
-        <ForwardRef(Typography)
-          align="right"
-        >
-          <a
-            href="/users/1"
-          >
-            プロフィール
-          </a>
         </ForwardRef(Typography)>
         <HeaderErrorMessages
           errorMessages={
@@ -264,6 +255,15 @@ exports[`Shallow Snapshot Tests error case 1`] = `
             更新
           </ForwardRef(LoadingButton)>
         </ForwardRef(Box)>
+        <ForwardRef(Typography)
+          align="right"
+        >
+          <Link
+            to="/users/1"
+          >
+            プロフィール
+          </Link>
+        </ForwardRef(Typography)>
       </ForwardRef(Stack)>
     </ForwardRef(Box)>
   </ForwardRef(Stack)>
@@ -296,15 +296,6 @@ exports[`Shallow Snapshot Tests loading 1`] = `
           variant="h5"
         >
           プロフィール変更
-        </ForwardRef(Typography)>
-        <ForwardRef(Typography)
-          align="right"
-        >
-          <a
-            href="/users/1"
-          >
-            プロフィール
-          </a>
         </ForwardRef(Typography)>
         <ForwardRef(Box)>
           <ImageField
@@ -392,6 +383,15 @@ exports[`Shallow Snapshot Tests loading 1`] = `
             更新
           </ForwardRef(LoadingButton)>
         </ForwardRef(Box)>
+        <ForwardRef(Typography)
+          align="right"
+        >
+          <Link
+            to="/users/1"
+          >
+            プロフィール
+          </Link>
+        </ForwardRef(Typography)>
       </ForwardRef(Stack)>
     </ForwardRef(Box)>
   </ForwardRef(Stack)>
@@ -424,15 +424,6 @@ exports[`Shallow Snapshot Tests social account 1`] = `
           variant="h5"
         >
           プロフィール変更
-        </ForwardRef(Typography)>
-        <ForwardRef(Typography)
-          align="right"
-        >
-          <a
-            href="/users/1"
-          >
-            プロフィール
-          </a>
         </ForwardRef(Typography)>
         <ForwardRef(Alert)
           severity="info"
@@ -500,6 +491,15 @@ exports[`Shallow Snapshot Tests social account 1`] = `
             更新
           </ForwardRef(LoadingButton)>
         </ForwardRef(Box)>
+        <ForwardRef(Typography)
+          align="right"
+        >
+          <Link
+            to="/users/1"
+          >
+            プロフィール
+          </Link>
+        </ForwardRef(Typography)>
       </ForwardRef(Stack)>
     </ForwardRef(Box)>
   </ForwardRef(Stack)>
@@ -532,15 +532,6 @@ exports[`Shallow Snapshot Tests success 1`] = `
           variant="h5"
         >
           プロフィール変更
-        </ForwardRef(Typography)>
-        <ForwardRef(Typography)
-          align="right"
-        >
-          <a
-            href="/users/1"
-          >
-            プロフィール
-          </a>
         </ForwardRef(Typography)>
         <ForwardRef(Alert)>
           ユーザー情報を変更しました。
@@ -631,6 +622,15 @@ exports[`Shallow Snapshot Tests success 1`] = `
             更新
           </ForwardRef(LoadingButton)>
         </ForwardRef(Box)>
+        <ForwardRef(Typography)
+          align="right"
+        >
+          <Link
+            to="/users/1"
+          >
+            プロフィール
+          </Link>
+        </ForwardRef(Typography)>
       </ForwardRef(Stack)>
     </ForwardRef(Box)>
   </ForwardRef(Stack)>
@@ -663,15 +663,6 @@ exports[`Shallow Snapshot Tests with icon as file 1`] = `
           variant="h5"
         >
           プロフィール変更
-        </ForwardRef(Typography)>
-        <ForwardRef(Typography)
-          align="right"
-        >
-          <a
-            href="/users/1"
-          >
-            プロフィール
-          </a>
         </ForwardRef(Typography)>
         <ForwardRef(Box)>
           <ImageField
@@ -759,6 +750,15 @@ exports[`Shallow Snapshot Tests with icon as file 1`] = `
             更新
           </ForwardRef(LoadingButton)>
         </ForwardRef(Box)>
+        <ForwardRef(Typography)
+          align="right"
+        >
+          <Link
+            to="/users/1"
+          >
+            プロフィール
+          </Link>
+        </ForwardRef(Typography)>
       </ForwardRef(Stack)>
     </ForwardRef(Box)>
   </ForwardRef(Stack)>
@@ -791,15 +791,6 @@ exports[`Shallow Snapshot Tests with icon as null 1`] = `
           variant="h5"
         >
           プロフィール変更
-        </ForwardRef(Typography)>
-        <ForwardRef(Typography)
-          align="right"
-        >
-          <a
-            href="/users/1"
-          >
-            プロフィール
-          </a>
         </ForwardRef(Typography)>
         <ForwardRef(Box)>
           <ImageField
@@ -886,6 +877,15 @@ exports[`Shallow Snapshot Tests with icon as null 1`] = `
             更新
           </ForwardRef(LoadingButton)>
         </ForwardRef(Box)>
+        <ForwardRef(Typography)
+          align="right"
+        >
+          <Link
+            to="/users/1"
+          >
+            プロフィール
+          </Link>
+        </ForwardRef(Typography)>
       </ForwardRef(Stack)>
     </ForwardRef(Box)>
   </ForwardRef(Stack)>

@@ -4,7 +4,6 @@ import { LoadingState } from 'types/loading-state';
 import { Image } from 'views/components/moleculars/image';
 import { TriviaMap } from 'views/components/organisms/trivia-map';
 import { createdAtBox } from '../styles';
-import MapIcon from '@mui/icons-material/Map';
 import { IconAndText } from 'views/components/atoms/icon-and-text';
 import { CenterSpinner } from 'views/components/atoms/center-spinner';
 import { GetArticleResponse, getRemoteArticle } from 'api/articles-api/get-remote-article';
@@ -30,6 +29,7 @@ import { checkLikeStatus } from 'api/likes-api/check-like-status';
 import { toggleLike } from 'api/likes-api/toggle-like';
 import { MapFocus } from 'types/map-focus';
 import { Park } from 'types/park';
+import { MyIcon } from 'views/components/atoms/my-icon';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -130,7 +130,7 @@ export class Renderer extends React.Component<Props, State> {
           <Divider />
 
           <IconAndText
-            iconComponent={<MapIcon />}
+            iconComponent={<MyIcon variant="map-marker" />}
             text="地図"
             component="h3"
             variant="h5"

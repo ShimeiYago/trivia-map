@@ -3,8 +3,8 @@ import { NonStyleLink } from 'views/components/atoms/non-style-link';
 import { IconAndText } from 'views/components/atoms/icon-and-text';
 import { MAP_PAGE_LINK, MAP_PAGE_LINK_WITH_CATEGORY, MAP_USER_LINK } from 'constant/links';
 import { Box, Button } from '@mui/material';
-import MapIcon from '@mui/icons-material/Map';
 import { grey } from '@mui/material/colors';
+import { MyIcon } from 'views/components/atoms/my-icon';
 
 export class MapLinkButton extends React.Component<Props> {
   render() {
@@ -21,7 +21,7 @@ export class MapLinkButton extends React.Component<Props> {
         <NonStyleLink to={link}>
           <Button color="inherit" variant="outlined" sx={{ py: 2, px: 5 }}>
             <IconAndText
-              iconComponent={<MapIcon fontSize="medium" />}
+              iconComponent={<MyIcon variant="map-marker" />}
               text="マップ上で確認する"
               iconPosition="left"
               columnGap={1}

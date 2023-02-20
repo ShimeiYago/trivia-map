@@ -23,8 +23,8 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       <IconAndText
         columnGap={1}
         iconComponent={
-          <Memo
-            fontSize="medium"
+          <MyIcon
+            variant="map-marker"
           />
         }
         iconPosition="left"
@@ -58,8 +58,8 @@ exports[`Shallow Snapshot Tests category 1`] = `
       <IconAndText
         columnGap={1}
         iconComponent={
-          <Memo
-            fontSize="medium"
+          <MyIcon
+            variant="map-marker"
           />
         }
         iconPosition="left"
@@ -93,8 +93,8 @@ exports[`Shallow Snapshot Tests user 1`] = `
       <IconAndText
         columnGap={1}
         iconComponent={
-          <Memo
-            fontSize="medium"
+          <MyIcon
+            variant="map-marker"
           />
         }
         iconPosition="left"

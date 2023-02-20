@@ -112,7 +112,11 @@ exports[`Shallow Snapshot Tests author view 1`] = `
     <ForwardRef(Divider) />
     <IconAndText
       component="h3"
-      iconComponent={<Memo />}
+      iconComponent={
+        <MyIcon
+          variant="map-marker"
+        />
+      }
       iconPosition="left"
       text="地図"
       variant="h5"
@@ -307,7 +311,11 @@ exports[`Shallow Snapshot Tests draft 1`] = `
     <ForwardRef(Divider) />
     <IconAndText
       component="h3"
-      iconComponent={<Memo />}
+      iconComponent={
+        <MyIcon
+          variant="map-marker"
+        />
+      }
       iconPosition="left"
       text="地図"
       variant="h5"
@@ -489,7 +497,11 @@ exports[`Shallow Snapshot Tests have liked 1`] = `
     <ForwardRef(Divider) />
     <IconAndText
       component="h3"
-      iconComponent={<Memo />}
+      iconComponent={
+        <MyIcon
+          variant="map-marker"
+        />
+      }
       iconPosition="left"
       text="地図"
       variant="h5"
@@ -681,7 +693,11 @@ exports[`Shallow Snapshot Tests with article 1`] = `
     <ForwardRef(Divider) />
     <IconAndText
       component="h3"
-      iconComponent={<Memo />}
+      iconComponent={
+        <MyIcon
+          variant="map-marker"
+        />
+      }
       iconPosition="left"
       text="地図"
       variant="h5"
@@ -868,7 +884,11 @@ exports[`Shallow Snapshot Tests with image 1`] = `
     <ForwardRef(Divider) />
     <IconAndText
       component="h3"
-      iconComponent={<Memo />}
+      iconComponent={
+        <MyIcon
+          variant="map-marker"
+        />
+      }
       iconPosition="left"
       text="地図"
       variant="h5"

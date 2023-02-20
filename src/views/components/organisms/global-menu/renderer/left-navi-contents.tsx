@@ -14,7 +14,6 @@ import {
   PRIVACY_POLICY_PAGE_LINK,
   SIGNUP_LINK,
 } from 'constant/links';
-import MapIcon from '@mui/icons-material/Map';
 import ArticleIcon from '@mui/icons-material/Article';
 import { NonStyleLink } from 'views/components/atoms/non-style-link';
 import LoginIcon from '@mui/icons-material/Login';
@@ -28,11 +27,12 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import AddLocationAltIcon from '@mui/icons-material/AddLocationAlt';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import { MyIcon } from 'views/components/atoms/my-icon';
 
 const listItemsForMap: ListItem[] = [
   {
     text: SITE_NAME,
-    icon: <MapIcon />,
+    icon: <MyIcon variant="map-marker" />,
     link: MAP_PAGE_LINK,
   },
   {

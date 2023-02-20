@@ -33,11 +33,11 @@ exports[`Shallow Snapshot Tests basic 1`] = `
     <ForwardRef(Typography)
       align="center"
     >
-      <a
-        href="/users/1"
+      <Link
+        to="/users/1"
       >
         プロフィール
-      </a>
+      </Link>
     </ForwardRef(Typography)>
     <LinkList
       list={
@@ -97,11 +97,11 @@ exports[`Shallow Snapshot Tests no icon 1`] = `
     <ForwardRef(Typography)
       align="center"
     >
-      <a
-        href="/users/1"
+      <Link
+        to="/users/1"
       >
         プロフィール
-      </a>
+      </Link>
     </ForwardRef(Typography)>
     <LinkList
       list={

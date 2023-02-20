@@ -17,6 +17,7 @@ import { LinkList } from 'views/components/moleculars/link-list';
 import { PAGE_NAMES } from 'constant/page-names';
 import { SITE_NAME } from 'constant';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import { Link } from 'react-router-dom';
 
 export class Renderer extends React.Component<Props> {
   render() {
@@ -55,7 +56,7 @@ export class Renderer extends React.Component<Props> {
           <Avatar sx={{ width: 80, height: 80, mx: 'auto' }} src={src} />
         </Stack>
         <Typography align="center">
-          <a href={AUTHER_PAGE_LINK(`${user?.userId}`)}>プロフィール</a>
+          <Link to={AUTHER_PAGE_LINK(`${user?.userId}`)}>プロフィール</Link>
         </Typography>
 
         <LinkList list={listItems} />

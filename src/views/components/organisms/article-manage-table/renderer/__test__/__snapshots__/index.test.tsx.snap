@@ -613,7 +613,7 @@ exports[`Shallow Snapshot Tests one page 1`] = `
             </ForwardRef(Box)>
           </ForwardRef(TableCell)>
           <ForwardRef(TableCell)
-            width={300}
+            width={200}
           >
             <IconAndText
               align="left"
@@ -628,7 +628,7 @@ exports[`Shallow Snapshot Tests one page 1`] = `
             />
           </ForwardRef(TableCell)>
           <ForwardRef(TableCell)
-            width={100}
+            width={70}
           >
             <ForwardRef(FormControl)
               variant="standard"
@@ -659,7 +659,7 @@ exports[`Shallow Snapshot Tests one page 1`] = `
             </ForwardRef(FormControl)>
           </ForwardRef(TableCell)>
           <ForwardRef(TableCell)
-            width={50}
+            width={40}
           >
             <IconAndText
               align="left"
@@ -763,7 +763,7 @@ exports[`Shallow Snapshot Tests one page 1`] = `
             </ForwardRef(Box)>
           </ForwardRef(TableCell)>
           <ForwardRef(TableCell)
-            width={300}
+            width={200}
           >
             <IconAndText
               align="left"
@@ -778,7 +778,7 @@ exports[`Shallow Snapshot Tests one page 1`] = `
             />
           </ForwardRef(TableCell)>
           <ForwardRef(TableCell)
-            width={100}
+            width={70}
           >
             <ForwardRef(FormControl)
               variant="standard"
@@ -809,7 +809,7 @@ exports[`Shallow Snapshot Tests one page 1`] = `
             </ForwardRef(FormControl)>
           </ForwardRef(TableCell)>
           <ForwardRef(TableCell)
-            width={50}
+            width={40}
           >
             <IconAndText
               align="left"
@@ -1132,7 +1132,7 @@ exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
             </ForwardRef(Box)>
           </ForwardRef(TableCell)>
           <ForwardRef(TableCell)
-            width={300}
+            width={200}
           >
             <IconAndText
               align="left"
@@ -1147,7 +1147,7 @@ exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
             />
           </ForwardRef(TableCell)>
           <ForwardRef(TableCell)
-            width={100}
+            width={70}
           >
             <ForwardRef(FormControl)
               variant="standard"
@@ -1178,7 +1178,7 @@ exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
             </ForwardRef(FormControl)>
           </ForwardRef(TableCell)>
           <ForwardRef(TableCell)
-            width={50}
+            width={40}
           >
             <IconAndText
               align="left"
@@ -1282,7 +1282,7 @@ exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
             </ForwardRef(Box)>
           </ForwardRef(TableCell)>
           <ForwardRef(TableCell)
-            width={300}
+            width={200}
           >
             <IconAndText
               align="left"
@@ -1297,7 +1297,7 @@ exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
             />
           </ForwardRef(TableCell)>
           <ForwardRef(TableCell)
-            width={100}
+            width={70}
           >
             <ForwardRef(FormControl)
               variant="standard"
@@ -1328,7 +1328,7 @@ exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
             </ForwardRef(FormControl)>
           </ForwardRef(TableCell)>
           <ForwardRef(TableCell)
-            width={50}
+            width={40}
           >
             <IconAndText
               align="left"

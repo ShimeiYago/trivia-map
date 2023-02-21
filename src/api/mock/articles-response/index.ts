@@ -91,7 +91,7 @@ export const mockGetMyArticlesResponse: GetMyArticlesResponse = {
       postId: 2,
       title: 'ノーチラス号の名前の由来',
       isDraft: true,
-      category: 1,
+      category: 2,
       numberOfLikes: 1,
       image: null,
     },

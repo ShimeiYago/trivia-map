@@ -103,7 +103,7 @@ export class Renderer extends React.Component<Props, State> {
       return (
         <TableRow key={`preview-${postId}`}>
           <TableCell>{this.renderTitleAndButtons(preview)}</TableCell>
-          <TableCell width={300}>
+          <TableCell width={200}>
             <IconAndText
               iconComponent={<FolderIcon fontSize="inherit" />}
               iconPosition="left"
@@ -112,7 +112,7 @@ export class Renderer extends React.Component<Props, State> {
               fontSize={14}
             />
           </TableCell>
-          <TableCell width={100}>
+          <TableCell width={70}>
             <FormControl variant="standard">
               <Select value={String(isDraft)} onChange={this.handleChangeDraftStatus(preview)}>
                 <MenuItem value="false">
@@ -124,7 +124,7 @@ export class Renderer extends React.Component<Props, State> {
               </Select>
             </FormControl>
           </TableCell>
-          <TableCell width={50}>
+          <TableCell width={40}>
             <IconAndText
               iconComponent={<ThumbUpIcon fontSize="inherit" />}
               iconPosition="left"

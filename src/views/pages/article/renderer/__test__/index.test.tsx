@@ -4,6 +4,8 @@ import { Renderer, Props, State } from '..';
 import * as GetRemoteArticleModule from 'api/articles-api/get-remote-article';
 import * as CheckGoodStatusModule from 'api/goods-api/check-good-status';
 import * as ToggleGoodModule from 'api/goods-api/toggle-good';
+import * as CheckLikeStatusModule from 'api/likes-api/check-like-status';
+import * as ToggleLikeModule from 'api/likes-api/toggle-like';
 import { mockGetArticleResponse } from 'api/mock/articles-response';
 
 let wrapper: ShallowWrapper<Props, State, Renderer>;
@@ -11,6 +13,8 @@ let wrapper: ShallowWrapper<Props, State, Renderer>;
 let getRemoteArticleSpy: jest.SpyInstance;
 let checkGoodStatusSpy: jest.SpyInstance;
 let toggleGoodSpy: jest.SpyInstance;
+let checkLikeStatusSpy: jest.SpyInstance;
+let toggleLikeSpy: jest.SpyInstance;
 
 const basicProps: Props = {
   postId: 1,
@@ -18,7 +22,6 @@ const basicProps: Props = {
   initialize: jest.fn(),
   throwError: jest.fn(),
   refreshUser: jest.fn(),
-  toggleAuthFormModal: jest.fn(),
   updateInitMapFocus: jest.fn(),
   updateFocusingPark: jest.fn(),
   initializeFetchingState: jest.fn(),
@@ -102,12 +105,25 @@ describe('Shallow Snapshot Tests', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('have liked', () => {
+  it('have added good', () => {
     wrapper.setState({
       haveAddedGood: true,
       loadingArticleState: 'success',
       article: article,
       numberOfGoods: 0,
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('have liked', () => {
+    wrapper.setProps({
+      user: testUser,
+    });
+
+    wrapper.setState({
+      haveLiked: true,
+      loadingArticleState: 'success',
+      article: article,
     });
     expect(wrapper).toMatchSnapshot();
   });
@@ -194,12 +210,12 @@ describe('checkGoodStatus', () => {
     checkGoodStatusSpy = jest.spyOn(CheckGoodStatusModule, 'checkGoodStatus');
   });
 
-  it('should set loadingLikeState success when api succeed', async () => {
+  it('should set loadingGoodState success when api succeed', async () => {
     checkGoodStatusSpy.mockResolvedValue({
       haveAddedGood: true,
     });
 
-    wrapper = shallow(<Renderer {...basicProps} user={testUser} />);
+    wrapper = shallow(<Renderer {...basicProps} />);
     const instance = wrapper.instance();
 
     await instance['checkGoodStatus']();
@@ -210,10 +226,41 @@ describe('checkGoodStatus', () => {
   it('should set loadingstate error when api fail', async () => {
     checkGoodStatusSpy.mockRejectedValue(new Error());
 
-    wrapper = shallow(<Renderer {...basicProps} user={testUser} />);
+    wrapper = shallow(<Renderer {...basicProps} />);
     const instance = wrapper.instance();
 
     await instance['checkGoodStatus']();
+
+    expect(instance.props.throwError).toBeCalled();
+  });
+});
+
+describe('checkLikeStatus', () => {
+  beforeEach(() => {
+    jest.resetAllMocks();
+    checkLikeStatusSpy = jest.spyOn(CheckLikeStatusModule, 'checkLikeStatus');
+  });
+
+  it('should set loadingLikeState success when api succeed', async () => {
+    checkLikeStatusSpy.mockResolvedValue({
+      haveLiked: true,
+    });
+
+    wrapper = shallow(<Renderer {...basicProps} user={testUser} />);
+    const instance = wrapper.instance();
+
+    await instance['checkLikeStatus']();
+
+    expect(instance.state.loadingLikeState).toBe('success');
+  });
+
+  it('should set loadingstate error when api fail', async () => {
+    checkLikeStatusSpy.mockRejectedValue(new Error());
+
+    wrapper = shallow(<Renderer {...basicProps} user={testUser} />);
+    const instance = wrapper.instance();
+
+    await instance['checkLikeStatus']();
 
     expect(instance.props.throwError).toBeCalled();
   });
@@ -249,13 +296,35 @@ describe('handleClickGoodButton', () => {
 
     expect(instance.props.throwError).toBeCalled();
   });
+});
 
-  it('should call toggleAuthFormModal if user is undefined', async () => {
-    wrapper = shallow(<Renderer {...basicProps} />);
+describe('handleClickLikeButton', () => {
+  beforeEach(() => {
+    jest.resetAllMocks();
+    toggleLikeSpy = jest.spyOn(ToggleLikeModule, 'toggleLike');
+  });
+
+  it('should set loadingLikeState success when api succeed', async () => {
+    toggleLikeSpy.mockResolvedValue({
+      haveLiked: true,
+    });
+
+    wrapper = shallow(<Renderer {...basicProps} user={testUser} />);
     const instance = wrapper.instance();
 
-    await instance['handleClickGoodButton']();
+    await instance['handleClickLikeButton']();
 
-    expect(instance.props.toggleAuthFormModal).toBeCalled();
+    expect(instance.state.loadingLikeState).toBe('success');
+  });
+
+  it('should set loadingstate error when api fail', async () => {
+    toggleLikeSpy.mockRejectedValue(new Error());
+
+    wrapper = shallow(<Renderer {...basicProps} user={testUser} />);
+    const instance = wrapper.instance();
+
+    await instance['handleClickLikeButton']();
+
+    expect(instance.props.throwError).toBeCalled();
   });
 });

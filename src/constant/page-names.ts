@@ -4,7 +4,7 @@ export const PAGE_NAMES = {
   signup: 'アカウント作成',
   admin: 'マイページ',
   myArticles: 'マイ投稿一覧',
-  likedArticles: 'いいね一覧',
+  likedArticles: 'お気に入り一覧',
   accountSettings: 'アカウント設定',
   profileEdit: 'プロフィール変更',
   passwordChange: 'パスワード変更',

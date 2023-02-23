@@ -1,5 +1,5 @@
 import React from 'react';
-import { Alert, Avatar, Box, Divider, Stack, Typography, Link } from '@mui/material';
+import { Alert, Avatar, Box, Divider, Stack, Typography, Link, Grid } from '@mui/material';
 import { LoadingState } from 'types/loading-state';
 import { Image } from 'views/components/moleculars/image';
 import { TriviaMap } from 'views/components/organisms/trivia-map';
@@ -27,9 +27,13 @@ import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
 import { checkGoodStatus } from 'api/goods-api/check-good-status';
 import { toggleGood } from 'api/goods-api/toggle-good';
+import { checkLikeStatus } from 'api/likes-api/check-like-status';
+import { toggleLike } from 'api/likes-api/toggle-like';
 import { MapFocus } from 'types/map-focus';
 import { Park } from 'types/park';
 import { MyIcon } from 'views/components/atoms/my-icon';
+import BookmarkIcon from '@mui/icons-material/Bookmark';
+import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -38,22 +42,26 @@ export class Renderer extends React.Component<Props, State> {
       loadingArticleState: 'waiting',
       loadingGoodState: 'waiting',
       haveAddedGood: false,
+      loadingLikeState: 'waiting',
+      haveLiked: false,
     };
   }
 
   componentDidMount() {
     this.fetchArticle();
     this.checkGoodStatus();
+    this.checkLikeStatus();
   }
 
   componentDidUpdate(prevProps: Readonly<Props>) {
     if (prevProps.postId !== this.props.postId) {
       this.fetchArticle();
       this.checkGoodStatus();
+      this.checkLikeStatus();
     }
 
     if (prevProps.user?.userId !== this.props.user?.userId) {
-      this.checkGoodStatus();
+      this.checkLikeStatus();
     }
   }
 
@@ -153,7 +161,10 @@ export class Renderer extends React.Component<Props, State> {
 
           <Divider />
 
-          {this.renderGoodButton()}
+          <Grid container pb={5} justifyContent="space-between">
+            <Grid item>{this.renderLikeButton()}</Grid>
+            <Grid item>{this.renderGoodButton()}</Grid>
+          </Grid>
 
           <ShareButtons title={pageTitle} url={window.location.href} />
         </Stack>
@@ -238,20 +249,35 @@ export class Renderer extends React.Component<Props, State> {
     );
   };
 
-  protected checkGoodStatus = async () => {
+  protected renderLikeButton = () => {
+    const { haveLiked, loadingLikeState } = this.state;
+
     if (!this.props.user) {
-      return;
+      return null;
     }
 
+    return (
+      <Box textAlign="right">
+        <LoadingButton
+          startIcon={haveLiked ? <BookmarkIcon /> : <BookmarkBorderOutlinedIcon />}
+          variant={haveLiked ? 'contained' : 'outlined'}
+          loading={loadingLikeState === 'loading'}
+          onClick={this.handleClickLikeButton}
+          color="warning"
+        >
+          {haveLiked ? 'お気に入り済み' : 'お気に入り'}
+        </LoadingButton>
+      </Box>
+    );
+  };
+
+  protected checkGoodStatus = async () => {
     this.setState({
       loadingGoodState: 'loading',
     });
 
     try {
-      const res = await autoRefreshApiWrapper(
-        () => checkGoodStatus(this.props.postId),
-        this.props.refreshUser,
-      );
+      const res = await checkGoodStatus(this.props.postId);
       this.setState({
         haveAddedGood: res.haveAddedGood,
         loadingGoodState: 'success',
@@ -262,24 +288,58 @@ export class Renderer extends React.Component<Props, State> {
   };
 
   protected handleClickGoodButton = async () => {
-    if (!this.props.user) {
-      this.props.toggleAuthFormModal(true);
-      return;
-    }
-
     this.setState({
       loadingGoodState: 'loading',
     });
 
     try {
-      const res = await autoRefreshApiWrapper(
-        () => toggleGood(this.props.postId),
-        this.props.refreshUser,
-      );
+      const res = await toggleGood(this.props.postId);
       this.setState({
         haveAddedGood: res.haveAddedGood,
         loadingGoodState: 'success',
         numberOfGoods: res.numberOfGoods,
+      });
+    } catch (error) {
+      this.props.throwError(500);
+    }
+  };
+
+  protected checkLikeStatus = async () => {
+    if (!this.props.user) {
+      return;
+    }
+
+    this.setState({
+      loadingLikeState: 'loading',
+    });
+
+    try {
+      const res = await autoRefreshApiWrapper(
+        () => checkLikeStatus(this.props.postId),
+        this.props.refreshUser,
+      );
+      this.setState({
+        haveLiked: res.haveLiked,
+        loadingLikeState: 'success',
+      });
+    } catch (error) {
+      this.props.throwError(500);
+    }
+  };
+
+  protected handleClickLikeButton = async () => {
+    this.setState({
+      loadingLikeState: 'loading',
+    });
+
+    try {
+      const res = await autoRefreshApiWrapper(
+        () => toggleLike(this.props.postId),
+        this.props.refreshUser,
+      );
+      this.setState({
+        haveLiked: res.haveLiked,
+        loadingLikeState: 'success',
       });
     } catch (error) {
       this.props.throwError(500);
@@ -295,7 +355,6 @@ export type Props = {
   initialize: () => void;
   throwError: (errorStatus: number) => void;
   refreshUser: () => void;
-  toggleAuthFormModal: (open: boolean) => void;
   updateInitMapFocus: (mapFocus: MapFocus) => void;
   updateFocusingPark: (park: Park) => void;
   initializeFetchingState: () => void;
@@ -307,4 +366,6 @@ export type State = {
   loadingGoodState: LoadingState;
   numberOfGoods?: number;
   haveAddedGood: boolean;
+  loadingLikeState: LoadingState;
+  haveLiked: boolean;
 };

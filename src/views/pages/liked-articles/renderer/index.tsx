@@ -6,7 +6,7 @@ import { ADMIN_LINK } from 'constant/links';
 import { PAGE_NAMES } from 'constant/page-names';
 import { ArticlePreviewLikedList } from 'views/components/organisms/article-preview-liked-list';
 import { IconAndText } from 'views/components/atoms/icon-and-text';
-import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import BookmarkIcon from '@mui/icons-material/Bookmark';
 
 export class Renderer extends React.Component {
   render() {
@@ -23,7 +23,7 @@ export class Renderer extends React.Component {
             component="h2"
             variant="h4"
             text={PAGE_NAMES.likedArticles}
-            iconComponent={<ThumbUpIcon fontSize="inherit" />}
+            iconComponent={<BookmarkIcon fontSize="inherit" />}
             iconPosition="left"
           />
         </Box>

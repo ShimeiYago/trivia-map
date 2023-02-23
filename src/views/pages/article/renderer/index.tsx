@@ -1,5 +1,5 @@
 import React from 'react';
-import { Alert, Avatar, Box, Divider, Stack, Typography, Link } from '@mui/material';
+import { Alert, Avatar, Box, Divider, Stack, Typography, Link, Grid } from '@mui/material';
 import { LoadingState } from 'types/loading-state';
 import { Image } from 'views/components/moleculars/image';
 import { TriviaMap } from 'views/components/organisms/trivia-map';
@@ -25,17 +25,22 @@ import { ShareButtons } from 'views/components/atoms/share-buttons';
 import { LoadingButton } from '@mui/lab';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
+import { toggleGood } from 'api/goods-api/toggle-good';
 import { checkLikeStatus } from 'api/likes-api/check-like-status';
 import { toggleLike } from 'api/likes-api/toggle-like';
 import { MapFocus } from 'types/map-focus';
 import { Park } from 'types/park';
 import { MyIcon } from 'views/components/atoms/my-icon';
+import BookmarkIcon from '@mui/icons-material/Bookmark';
+import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
       loadingArticleState: 'waiting',
+      loadingGoodState: 'waiting',
+      haveAddedGood: false,
       loadingLikeState: 'waiting',
       haveLiked: false,
     };
@@ -153,7 +158,10 @@ export class Renderer extends React.Component<Props, State> {
 
           <Divider />
 
-          {this.renderLikeButton()}
+          <Grid container pb={5} justifyContent="space-between">
+            <Grid item>{this.renderLikeButton()}</Grid>
+            <Grid item>{this.renderGoodButton()}</Grid>
+          </Grid>
 
           <ShareButtons title={pageTitle} url={window.location.href} />
         </Stack>
@@ -165,7 +173,7 @@ export class Renderer extends React.Component<Props, State> {
     this.setState({
       article: undefined,
       loadingArticleState: 'loading',
-      numberOfLikes: undefined,
+      numberOfGoods: undefined,
     });
     try {
       const res = await autoRefreshApiWrapper(
@@ -175,7 +183,8 @@ export class Renderer extends React.Component<Props, State> {
       this.setState({
         article: res,
         loadingArticleState: 'success',
-        numberOfLikes: res.numberOfLikes,
+        numberOfGoods: res.numberOfGoods,
+        haveAddedGood: res.haveAddedGood,
       });
 
       this.props.updateInitMapFocus({
@@ -221,21 +230,60 @@ export class Renderer extends React.Component<Props, State> {
     );
   };
 
-  protected renderLikeButton = () => {
-    const { haveLiked, numberOfLikes, loadingLikeState } = this.state;
+  protected renderGoodButton = () => {
+    const { haveAddedGood, numberOfGoods, loadingGoodState } = this.state;
 
     return (
       <Box textAlign="right">
         <LoadingButton
-          startIcon={haveLiked ? <ThumbUpIcon /> : <ThumbUpOutlinedIcon />}
-          variant={haveLiked ? 'contained' : 'outlined'}
-          loading={loadingLikeState === 'loading'}
-          onClick={this.handleClickLikeButton}
+          startIcon={haveAddedGood ? <ThumbUpIcon /> : <ThumbUpOutlinedIcon />}
+          variant={haveAddedGood ? 'contained' : 'outlined'}
+          loading={loadingGoodState === 'loading'}
+          onClick={this.handleClickGoodButton}
         >
-          {numberOfLikes === 0 ? 'いいね' : numberOfLikes}
+          {numberOfGoods === 0 ? 'いいね' : numberOfGoods}
         </LoadingButton>
       </Box>
     );
+  };
+
+  protected renderLikeButton = () => {
+    const { haveLiked, loadingLikeState } = this.state;
+
+    if (!this.props.user) {
+      return null;
+    }
+
+    return (
+      <Box textAlign="right">
+        <LoadingButton
+          startIcon={haveLiked ? <BookmarkIcon /> : <BookmarkBorderOutlinedIcon />}
+          variant={haveLiked ? 'contained' : 'outlined'}
+          loading={loadingLikeState === 'loading'}
+          onClick={this.handleClickLikeButton}
+          color="warning"
+        >
+          {haveLiked ? 'お気に入り済み' : 'お気に入り'}
+        </LoadingButton>
+      </Box>
+    );
+  };
+
+  protected handleClickGoodButton = async () => {
+    this.setState({
+      loadingGoodState: 'loading',
+    });
+
+    try {
+      const res = await toggleGood(this.props.postId);
+      this.setState({
+        haveAddedGood: res.haveAddedGood,
+        loadingGoodState: 'success',
+        numberOfGoods: res.numberOfGoods,
+      });
+    } catch (error) {
+      this.props.throwError(500);
+    }
   };
 
   protected checkLikeStatus = async () => {
@@ -262,11 +310,6 @@ export class Renderer extends React.Component<Props, State> {
   };
 
   protected handleClickLikeButton = async () => {
-    if (!this.props.user) {
-      this.props.toggleAuthFormModal(true);
-      return;
-    }
-
     this.setState({
       loadingLikeState: 'loading',
     });
@@ -279,7 +322,6 @@ export class Renderer extends React.Component<Props, State> {
       this.setState({
         haveLiked: res.haveLiked,
         loadingLikeState: 'success',
-        numberOfLikes: res.numberOfLikes,
       });
     } catch (error) {
       this.props.throwError(500);
@@ -295,7 +337,6 @@ export type Props = {
   initialize: () => void;
   throwError: (errorStatus: number) => void;
   refreshUser: () => void;
-  toggleAuthFormModal: (open: boolean) => void;
   updateInitMapFocus: (mapFocus: MapFocus) => void;
   updateFocusingPark: (park: Park) => void;
   initializeFetchingState: () => void;
@@ -304,7 +345,9 @@ export type Props = {
 export type State = {
   article?: GetArticleResponse;
   loadingArticleState: LoadingState;
+  loadingGoodState: LoadingState;
+  numberOfGoods?: number;
+  haveAddedGood: boolean;
   loadingLikeState: LoadingState;
-  numberOfLikes?: number;
   haveLiked: boolean;
 };

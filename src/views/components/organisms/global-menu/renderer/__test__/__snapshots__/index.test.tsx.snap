@@ -742,7 +742,7 @@ exports[`Shallow Snapshot Tests long name with mobile 1`] = `
                   align="left"
                   iconComponent={<Memo />}
                   iconPosition="left"
-                  text="いいね一覧"
+                  text="お気に入り一覧"
                 />
               </Link>
               <Link
@@ -870,10 +870,10 @@ exports[`Shallow Snapshot Tests long name with mobile 1`] = `
             onClick={[Function]}
           >
             <ForwardRef(ListItemIcon)>
-              <Memo(ForwardRef(ThumbUpIcon)) />
+              <Memo(ForwardRef(BookmarkIcon)) />
             </ForwardRef(ListItemIcon)>
             <ForwardRef(ListItemText)
-              primary="いいね一覧"
+              primary="お気に入り一覧"
             />
           </ForwardRef(ListItem)>
         </NonStyleLink>
@@ -3241,7 +3241,7 @@ exports[`Shallow Snapshot Tests with userInfo 1`] = `
                   align="left"
                   iconComponent={<Memo />}
                   iconPosition="left"
-                  text="いいね一覧"
+                  text="お気に入り一覧"
                 />
               </Link>
               <Link
@@ -3369,10 +3369,10 @@ exports[`Shallow Snapshot Tests with userInfo 1`] = `
             onClick={[Function]}
           >
             <ForwardRef(ListItemIcon)>
-              <Memo(ForwardRef(ThumbUpIcon)) />
+              <Memo(ForwardRef(BookmarkIcon)) />
             </ForwardRef(ListItemIcon)>
             <ForwardRef(ListItemText)
-              primary="いいね一覧"
+              primary="お気に入り一覧"
             />
           </ForwardRef(ListItem)>
         </NonStyleLink>

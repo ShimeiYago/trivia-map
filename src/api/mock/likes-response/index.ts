@@ -8,7 +8,6 @@ export const mockCheckLikeStatusResponse: CheckLikeStatusResponse = {
 
 export const mockToggleLikeResponse: ToggleLikeResponse = {
   haveLiked: true,
-  numberOfLikes: 2,
 };
 
 export const mockGetLikedArticlesPreviewsResponse: GetLikedArticlesPreviewsResponse = {
@@ -27,7 +26,7 @@ export const mockGetLikedArticlesPreviewsResponse: GetLikedArticlesPreviewsRespo
         image: 'https://disneyparkstory.com/wp-content/uploads/2017/02/CIMG9800.jpg',
         category: 1,
         createdAt: '2022/06/16 21:42',
-        numberOfLikes: 1,
+        numberOfGoods: 1,
       },
     },
     {
@@ -37,7 +36,7 @@ export const mockGetLikedArticlesPreviewsResponse: GetLikedArticlesPreviewsRespo
         image: null,
         category: 1,
         createdAt: '2022/06/16 21:42',
-        numberOfLikes: 1,
+        numberOfGoods: 1,
       },
     },
   ],

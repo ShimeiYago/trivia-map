@@ -26,8 +26,8 @@ import { SITE_NAME } from 'constant';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import AddLocationAltIcon from '@mui/icons-material/AddLocationAlt';
-import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import { MyIcon } from 'views/components/atoms/my-icon';
+import BookmarkIcon from '@mui/icons-material/Bookmark';
 
 const listItemsForMap: ListItem[] = [
   {
@@ -73,7 +73,7 @@ const listItemsForAdmin: ListItem[] = [
   },
   {
     text: PAGE_NAMES.likedArticles,
-    icon: <ThumbUpIcon />,
+    icon: <BookmarkIcon />,
     link: LIKED_ARTICLES_LINK,
   },
   {

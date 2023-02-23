@@ -28,7 +28,7 @@ export type GetMyArticlesResponseEachItem = {
   category: number;
   isDraft: boolean;
   image: string | null;
-  numberOfLikes: number;
+  numberOfGoods: number;
 };
 
 export type GetMyArticlesParam = {

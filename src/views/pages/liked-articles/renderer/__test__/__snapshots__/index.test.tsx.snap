@@ -25,7 +25,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
           />
         }
         iconPosition="left"
-        text="いいね一覧"
+        text="お気に入り一覧"
         variant="h4"
       />
     </ForwardRef(Box)>

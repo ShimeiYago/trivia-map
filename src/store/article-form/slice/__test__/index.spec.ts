@@ -187,7 +187,8 @@ describe('articleForm reducer', () => {
       category: 1,
       createdAt: '2022/4/1',
       updatedAt: '2022/5/1',
-      numberOfLikes: 1,
+      numberOfGoods: 1,
+      haveAddedGood: true,
     };
     const actual = articleFormReducer(fetchingLoadingState, fetchSuccess(res));
     expect(actual.fetchingState).toEqual('success');

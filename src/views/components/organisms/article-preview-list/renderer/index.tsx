@@ -83,15 +83,15 @@ export class Renderer extends React.Component<Props, State> {
     }
 
     const previewList = articlesPreviews?.results.map((preview) => {
-      const { postId, title, image, category, createdAt, numberOfLikes } = preview;
+      const { postId, title, image, category, createdAt, numberOfGoods } = preview;
 
       let card = null;
       switch (this.props.variant) {
         case 'popup':
-          card = this.renderPopupCard(title, image, category, numberOfLikes);
+          card = this.renderPopupCard(title, image, category, numberOfGoods);
           break;
         case 'large':
-          card = this.renderLargeCard(title, image, category, createdAt, numberOfLikes);
+          card = this.renderLargeCard(title, image, category, createdAt, numberOfGoods);
           break;
         case 'sidebar':
           card = this.renderSidebarCard(title, image);
@@ -139,7 +139,7 @@ export class Renderer extends React.Component<Props, State> {
     title: string,
     imageUrl: string | null,
     category: number,
-    numberOfLikes: number,
+    numberOfGoods: number,
   ) => {
     return (
       <Card sx={{ ...sxProps.card, p: 1 }}>
@@ -167,11 +167,11 @@ export class Renderer extends React.Component<Props, State> {
               />
             </Typography>
 
-            {numberOfLikes > 0 && (
+            {numberOfGoods > 0 && (
               <Typography sx={{ pr: 2 }} component="div">
                 <IconAndText
                   iconComponent={<ThumbUpIcon fontSize="inherit" />}
-                  text={String(numberOfLikes)}
+                  text={String(numberOfGoods)}
                   iconPosition={'left'}
                   align="right"
                   fontSize={14}
@@ -199,7 +199,7 @@ export class Renderer extends React.Component<Props, State> {
     imageUrl: string | null,
     category: number,
     createdAt: string,
-    numberOfLikes: number,
+    numberOfGoods: number,
   ) => {
     return (
       <Card sx={sxProps.card}>
@@ -218,11 +218,11 @@ export class Renderer extends React.Component<Props, State> {
             />
           </Typography>
 
-          {numberOfLikes > 0 && (
+          {numberOfGoods > 0 && (
             <Typography sx={{ mb: 1 }} component="div">
               <IconAndText
                 iconComponent={<ThumbUpIcon />}
-                text={String(numberOfLikes)}
+                text={String(numberOfGoods)}
                 iconPosition="left"
                 align="left"
               />

@@ -2,6 +2,7 @@ import { GetArticleResponse } from 'api/articles-api/get-remote-article';
 import { shallow, ShallowWrapper } from 'enzyme';
 import { Renderer, Props, State } from '..';
 import * as GetRemoteArticleModule from 'api/articles-api/get-remote-article';
+import * as ToggleGoodModule from 'api/goods-api/toggle-good';
 import * as CheckLikeStatusModule from 'api/likes-api/check-like-status';
 import * as ToggleLikeModule from 'api/likes-api/toggle-like';
 import { mockGetArticleResponse } from 'api/mock/articles-response';
@@ -9,6 +10,7 @@ import { mockGetArticleResponse } from 'api/mock/articles-response';
 let wrapper: ShallowWrapper<Props, State, Renderer>;
 
 let getRemoteArticleSpy: jest.SpyInstance;
+let toggleGoodSpy: jest.SpyInstance;
 let checkLikeStatusSpy: jest.SpyInstance;
 let toggleLikeSpy: jest.SpyInstance;
 
@@ -18,7 +20,6 @@ const basicProps: Props = {
   initialize: jest.fn(),
   throwError: jest.fn(),
   refreshUser: jest.fn(),
-  toggleAuthFormModal: jest.fn(),
   updateInitMapFocus: jest.fn(),
   updateFocusingPark: jest.fn(),
   initializeFetchingState: jest.fn(),
@@ -56,7 +57,8 @@ const article: GetArticleResponse = {
   updatedAt: '2022/5/1',
   isDraft: false,
   category: 1,
-  numberOfLikes: 1,
+  numberOfGoods: 1,
+  haveAddedGood: true,
 };
 
 describe('Shallow Snapshot Tests', () => {
@@ -102,12 +104,25 @@ describe('Shallow Snapshot Tests', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
+  it('have added good', () => {
+    wrapper.setState({
+      haveAddedGood: true,
+      loadingArticleState: 'success',
+      article: article,
+      numberOfGoods: 0,
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+
   it('have liked', () => {
+    wrapper.setProps({
+      user: testUser,
+    });
+
     wrapper.setState({
       haveLiked: true,
       loadingArticleState: 'success',
       article: article,
-      numberOfLikes: 0,
     });
     expect(wrapper).toMatchSnapshot();
   });
@@ -219,6 +234,38 @@ describe('checkLikeStatus', () => {
   });
 });
 
+describe('handleClickGoodButton', () => {
+  beforeEach(() => {
+    jest.resetAllMocks();
+    toggleGoodSpy = jest.spyOn(ToggleGoodModule, 'toggleGood');
+  });
+
+  it('should set loadingLikeState success when api succeed', async () => {
+    toggleGoodSpy.mockResolvedValue({
+      haveAddedGood: true,
+      numberOfGoods: 1,
+    });
+
+    wrapper = shallow(<Renderer {...basicProps} user={testUser} />);
+    const instance = wrapper.instance();
+
+    await instance['handleClickGoodButton']();
+
+    expect(instance.state.loadingGoodState).toBe('success');
+  });
+
+  it('should set loadingstate error when api fail', async () => {
+    toggleGoodSpy.mockRejectedValue(new Error());
+
+    wrapper = shallow(<Renderer {...basicProps} user={testUser} />);
+    const instance = wrapper.instance();
+
+    await instance['handleClickGoodButton']();
+
+    expect(instance.props.throwError).toBeCalled();
+  });
+});
+
 describe('handleClickLikeButton', () => {
   beforeEach(() => {
     jest.resetAllMocks();
@@ -228,7 +275,6 @@ describe('handleClickLikeButton', () => {
   it('should set loadingLikeState success when api succeed', async () => {
     toggleLikeSpy.mockResolvedValue({
       haveLiked: true,
-      numberOfLikes: 1,
     });
 
     wrapper = shallow(<Renderer {...basicProps} user={testUser} />);
@@ -248,14 +294,5 @@ describe('handleClickLikeButton', () => {
     await instance['handleClickLikeButton']();
 
     expect(instance.props.throwError).toBeCalled();
-  });
-
-  it('should call toggleAuthFormModal if user is undefined', async () => {
-    wrapper = shallow(<Renderer {...basicProps} />);
-    const instance = wrapper.instance();
-
-    await instance['handleClickLikeButton']();
-
-    expect(instance.props.toggleAuthFormModal).toBeCalled();
   });
 });

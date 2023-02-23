@@ -209,7 +209,7 @@ exports[`Shallow Snapshot Tests author view 1`] = `
           textAlign="right"
         >
           <ForwardRef(LoadingButton)
-            loading={true}
+            loading={false}
             onClick={[Function]}
             startIcon={<Memo />}
             variant="outlined"
@@ -421,7 +421,7 @@ exports[`Shallow Snapshot Tests draft 1`] = `
           textAlign="right"
         >
           <ForwardRef(LoadingButton)
-            loading={true}
+            loading={false}
             onClick={[Function]}
             startIcon={<Memo />}
             variant="outlined"
@@ -620,7 +620,7 @@ exports[`Shallow Snapshot Tests have added good 1`] = `
           textAlign="right"
         >
           <ForwardRef(LoadingButton)
-            loading={true}
+            loading={false}
             onClick={[Function]}
             startIcon={<Memo />}
             variant="contained"
@@ -847,7 +847,7 @@ exports[`Shallow Snapshot Tests have liked 1`] = `
           textAlign="right"
         >
           <ForwardRef(LoadingButton)
-            loading={true}
+            loading={false}
             onClick={[Function]}
             startIcon={<Memo />}
             variant="outlined"
@@ -1054,7 +1054,7 @@ exports[`Shallow Snapshot Tests with article 1`] = `
           textAlign="right"
         >
           <ForwardRef(LoadingButton)
-            loading={true}
+            loading={false}
             onClick={[Function]}
             startIcon={<Memo />}
             variant="outlined"
@@ -1258,7 +1258,7 @@ exports[`Shallow Snapshot Tests with image 1`] = `
           textAlign="right"
         >
           <ForwardRef(LoadingButton)
-            loading={true}
+            loading={false}
             onClick={[Function]}
             startIcon={<Memo />}
             variant="outlined"

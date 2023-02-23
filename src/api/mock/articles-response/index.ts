@@ -27,6 +27,7 @@ export const mockGetArticleResponse: GetArticleResponse = {
   updatedAt: '2022/06/16 21:42',
   category: 1,
   numberOfGoods: 1,
+  haveAddedGood: true,
 };
 
 export const mockPostArticleResponse: PostArticleResponse = {

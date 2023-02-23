@@ -25,7 +25,6 @@ import { ShareButtons } from 'views/components/atoms/share-buttons';
 import { LoadingButton } from '@mui/lab';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
-import { checkGoodStatus } from 'api/goods-api/check-good-status';
 import { toggleGood } from 'api/goods-api/toggle-good';
 import { checkLikeStatus } from 'api/likes-api/check-like-status';
 import { toggleLike } from 'api/likes-api/toggle-like';
@@ -49,14 +48,12 @@ export class Renderer extends React.Component<Props, State> {
 
   componentDidMount() {
     this.fetchArticle();
-    this.checkGoodStatus();
     this.checkLikeStatus();
   }
 
   componentDidUpdate(prevProps: Readonly<Props>) {
     if (prevProps.postId !== this.props.postId) {
       this.fetchArticle();
-      this.checkGoodStatus();
       this.checkLikeStatus();
     }
 
@@ -187,6 +184,7 @@ export class Renderer extends React.Component<Props, State> {
         article: res,
         loadingArticleState: 'success',
         numberOfGoods: res.numberOfGoods,
+        haveAddedGood: res.haveAddedGood,
       });
 
       this.props.updateInitMapFocus({
@@ -269,22 +267,6 @@ export class Renderer extends React.Component<Props, State> {
         </LoadingButton>
       </Box>
     );
-  };
-
-  protected checkGoodStatus = async () => {
-    this.setState({
-      loadingGoodState: 'loading',
-    });
-
-    try {
-      const res = await checkGoodStatus(this.props.postId);
-      this.setState({
-        haveAddedGood: res.haveAddedGood,
-        loadingGoodState: 'success',
-      });
-    } catch (error) {
-      this.props.throwError(500);
-    }
   };
 
   protected handleClickGoodButton = async () => {

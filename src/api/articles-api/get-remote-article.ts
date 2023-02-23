@@ -33,4 +33,5 @@ export type GetArticleResponse = {
   createdAt: string;
   updatedAt: string;
   numberOfGoods: number;
+  haveAddedGood: boolean;
 };

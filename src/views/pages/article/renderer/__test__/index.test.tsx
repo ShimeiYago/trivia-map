@@ -2,7 +2,6 @@ import { GetArticleResponse } from 'api/articles-api/get-remote-article';
 import { shallow, ShallowWrapper } from 'enzyme';
 import { Renderer, Props, State } from '..';
 import * as GetRemoteArticleModule from 'api/articles-api/get-remote-article';
-import * as CheckGoodStatusModule from 'api/goods-api/check-good-status';
 import * as ToggleGoodModule from 'api/goods-api/toggle-good';
 import * as CheckLikeStatusModule from 'api/likes-api/check-like-status';
 import * as ToggleLikeModule from 'api/likes-api/toggle-like';
@@ -11,7 +10,6 @@ import { mockGetArticleResponse } from 'api/mock/articles-response';
 let wrapper: ShallowWrapper<Props, State, Renderer>;
 
 let getRemoteArticleSpy: jest.SpyInstance;
-let checkGoodStatusSpy: jest.SpyInstance;
 let toggleGoodSpy: jest.SpyInstance;
 let checkLikeStatusSpy: jest.SpyInstance;
 let toggleLikeSpy: jest.SpyInstance;
@@ -60,6 +58,7 @@ const article: GetArticleResponse = {
   isDraft: false,
   category: 1,
   numberOfGoods: 1,
+  haveAddedGood: true,
 };
 
 describe('Shallow Snapshot Tests', () => {
@@ -201,37 +200,6 @@ describe('fetchArticle', () => {
     await instance['fetchArticle']();
 
     expect(instance.props.initializeFetchingState).toBeCalled();
-  });
-});
-
-describe('checkGoodStatus', () => {
-  beforeEach(() => {
-    jest.resetAllMocks();
-    checkGoodStatusSpy = jest.spyOn(CheckGoodStatusModule, 'checkGoodStatus');
-  });
-
-  it('should set loadingGoodState success when api succeed', async () => {
-    checkGoodStatusSpy.mockResolvedValue({
-      haveAddedGood: true,
-    });
-
-    wrapper = shallow(<Renderer {...basicProps} />);
-    const instance = wrapper.instance();
-
-    await instance['checkGoodStatus']();
-
-    expect(instance.state.loadingGoodState).toBe('success');
-  });
-
-  it('should set loadingstate error when api fail', async () => {
-    checkGoodStatusSpy.mockRejectedValue(new Error());
-
-    wrapper = shallow(<Renderer {...basicProps} />);
-    const instance = wrapper.instance();
-
-    await instance['checkGoodStatus']();
-
-    expect(instance.props.throwError).toBeCalled();
   });
 });
 

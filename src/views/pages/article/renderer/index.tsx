@@ -25,8 +25,8 @@ import { ShareButtons } from 'views/components/atoms/share-buttons';
 import { LoadingButton } from '@mui/lab';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
-import { checkLikeStatus } from 'api/likes-api/check-like-status';
-import { toggleLike } from 'api/likes-api/toggle-like';
+import { checkGoodStatus } from 'api/goods-api/check-good-status';
+import { toggleGood } from 'api/goods-api/toggle-good';
 import { MapFocus } from 'types/map-focus';
 import { Park } from 'types/park';
 import { MyIcon } from 'views/components/atoms/my-icon';
@@ -36,24 +36,24 @@ export class Renderer extends React.Component<Props, State> {
     super(props);
     this.state = {
       loadingArticleState: 'waiting',
-      loadingLikeState: 'waiting',
-      haveLiked: false,
+      loadingGoodState: 'waiting',
+      haveAddedGood: false,
     };
   }
 
   componentDidMount() {
     this.fetchArticle();
-    this.checkLikeStatus();
+    this.checkGoodStatus();
   }
 
   componentDidUpdate(prevProps: Readonly<Props>) {
     if (prevProps.postId !== this.props.postId) {
       this.fetchArticle();
-      this.checkLikeStatus();
+      this.checkGoodStatus();
     }
 
     if (prevProps.user?.userId !== this.props.user?.userId) {
-      this.checkLikeStatus();
+      this.checkGoodStatus();
     }
   }
 
@@ -153,7 +153,7 @@ export class Renderer extends React.Component<Props, State> {
 
           <Divider />
 
-          {this.renderLikeButton()}
+          {this.renderGoodButton()}
 
           <ShareButtons title={pageTitle} url={window.location.href} />
         </Stack>
@@ -165,7 +165,7 @@ export class Renderer extends React.Component<Props, State> {
     this.setState({
       article: undefined,
       loadingArticleState: 'loading',
-      numberOfLikes: undefined,
+      numberOfGoods: undefined,
     });
     try {
       const res = await autoRefreshApiWrapper(
@@ -175,7 +175,7 @@ export class Renderer extends React.Component<Props, State> {
       this.setState({
         article: res,
         loadingArticleState: 'success',
-        numberOfLikes: res.numberOfLikes,
+        numberOfGoods: res.numberOfGoods,
       });
 
       this.props.updateInitMapFocus({
@@ -221,65 +221,65 @@ export class Renderer extends React.Component<Props, State> {
     );
   };
 
-  protected renderLikeButton = () => {
-    const { haveLiked, numberOfLikes, loadingLikeState } = this.state;
+  protected renderGoodButton = () => {
+    const { haveAddedGood, numberOfGoods, loadingGoodState } = this.state;
 
     return (
       <Box textAlign="right">
         <LoadingButton
-          startIcon={haveLiked ? <ThumbUpIcon /> : <ThumbUpOutlinedIcon />}
-          variant={haveLiked ? 'contained' : 'outlined'}
-          loading={loadingLikeState === 'loading'}
-          onClick={this.handleClickLikeButton}
+          startIcon={haveAddedGood ? <ThumbUpIcon /> : <ThumbUpOutlinedIcon />}
+          variant={haveAddedGood ? 'contained' : 'outlined'}
+          loading={loadingGoodState === 'loading'}
+          onClick={this.handleClickGoodButton}
         >
-          {numberOfLikes === 0 ? 'いいね' : numberOfLikes}
+          {numberOfGoods === 0 ? 'いいね' : numberOfGoods}
         </LoadingButton>
       </Box>
     );
   };
 
-  protected checkLikeStatus = async () => {
+  protected checkGoodStatus = async () => {
     if (!this.props.user) {
       return;
     }
 
     this.setState({
-      loadingLikeState: 'loading',
+      loadingGoodState: 'loading',
     });
 
     try {
       const res = await autoRefreshApiWrapper(
-        () => checkLikeStatus(this.props.postId),
+        () => checkGoodStatus(this.props.postId),
         this.props.refreshUser,
       );
       this.setState({
-        haveLiked: res.haveLiked,
-        loadingLikeState: 'success',
+        haveAddedGood: res.haveAddedGood,
+        loadingGoodState: 'success',
       });
     } catch (error) {
       this.props.throwError(500);
     }
   };
 
-  protected handleClickLikeButton = async () => {
+  protected handleClickGoodButton = async () => {
     if (!this.props.user) {
       this.props.toggleAuthFormModal(true);
       return;
     }
 
     this.setState({
-      loadingLikeState: 'loading',
+      loadingGoodState: 'loading',
     });
 
     try {
       const res = await autoRefreshApiWrapper(
-        () => toggleLike(this.props.postId),
+        () => toggleGood(this.props.postId),
         this.props.refreshUser,
       );
       this.setState({
-        haveLiked: res.haveLiked,
-        loadingLikeState: 'success',
-        numberOfLikes: res.numberOfLikes,
+        haveAddedGood: res.haveAddedGood,
+        loadingGoodState: 'success',
+        numberOfGoods: res.numberOfGoods,
       });
     } catch (error) {
       this.props.throwError(500);
@@ -304,7 +304,7 @@ export type Props = {
 export type State = {
   article?: GetArticleResponse;
   loadingArticleState: LoadingState;
-  loadingLikeState: LoadingState;
-  numberOfLikes?: number;
-  haveLiked: boolean;
+  loadingGoodState: LoadingState;
+  numberOfGoods?: number;
+  haveAddedGood: boolean;
 };

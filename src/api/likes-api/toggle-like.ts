@@ -2,13 +2,10 @@ import { API_TIMEOUT, BASE_URL } from 'constant';
 import { AxiosError, AxiosResponse } from 'axios';
 import { handleAxiosError } from '../utils/handle-axios-error';
 import { getAxiosInstance } from 'api/utils/get-axios-instance';
-import { mockCheckLikeStatusResponse } from '../mock/likes-response';
+import { mockToggleLikeResponse } from '../mock/likes-response';
 
 export async function toggleLike(postId: number): Promise<ToggleLikeResponse> {
-  const axiosInstance = getAxiosInstance(
-    { timeout: API_TIMEOUT.long },
-    mockCheckLikeStatusResponse,
-  );
+  const axiosInstance = getAxiosInstance({ timeout: API_TIMEOUT.long }, mockToggleLikeResponse);
 
   const url = `${BASE_URL}/likes/toggle/${postId}`;
 

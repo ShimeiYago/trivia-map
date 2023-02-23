@@ -223,7 +223,7 @@ const mockGetResponse: GetArticleApiModule.GetArticleResponse = {
   category: 1,
   createdAt: '2022/4/1',
   updatedAt: '2022/5/1',
-  numberOfLikes: 1,
+  numberOfGoods: 1,
 };
 
 describe('fetchArticle', () => {

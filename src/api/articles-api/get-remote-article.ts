@@ -32,5 +32,5 @@ export type GetArticleResponse = {
   author: Author;
   createdAt: string;
   updatedAt: string;
-  numberOfLikes: number;
+  numberOfGoods: number;
 };

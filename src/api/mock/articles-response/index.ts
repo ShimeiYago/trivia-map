@@ -26,7 +26,7 @@ export const mockGetArticleResponse: GetArticleResponse = {
   createdAt: '2022/06/16 21:42',
   updatedAt: '2022/06/16 21:42',
   category: 1,
-  numberOfLikes: 1,
+  numberOfGoods: 1,
 };
 
 export const mockPostArticleResponse: PostArticleResponse = {
@@ -57,7 +57,7 @@ export const mockGetArticlesPreviewsResponse: GetArticlesPreviewsResponse = {
       image: 'https://disneyparkstory.com/wp-content/uploads/2017/02/CIMG9800.jpg',
       category: 1,
       createdAt: '2022/06/16 21:42',
-      numberOfLikes: 1,
+      numberOfGoods: 1,
     },
     {
       postId: 2,
@@ -65,7 +65,7 @@ export const mockGetArticlesPreviewsResponse: GetArticlesPreviewsResponse = {
       image: null,
       category: 1,
       createdAt: '2022/06/16 21:42',
-      numberOfLikes: 1,
+      numberOfGoods: 1,
     },
   ],
 };
@@ -84,7 +84,7 @@ export const mockGetMyArticlesResponse: GetMyArticlesResponse = {
       title: 'ノーチラス号のエンジン',
       isDraft: false,
       category: 1,
-      numberOfLikes: 1,
+      numberOfGoods: 1,
       image: 'https://disneyparkstory.com/wp-content/uploads/2017/02/CIMG9800.jpg',
     },
     {
@@ -92,7 +92,7 @@ export const mockGetMyArticlesResponse: GetMyArticlesResponse = {
       title: 'ノーチラス号の名前の由来',
       isDraft: true,
       category: 2,
-      numberOfLikes: 1,
+      numberOfGoods: 1,
       image: null,
     },
   ],

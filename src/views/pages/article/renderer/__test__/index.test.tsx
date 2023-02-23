@@ -2,15 +2,15 @@ import { GetArticleResponse } from 'api/articles-api/get-remote-article';
 import { shallow, ShallowWrapper } from 'enzyme';
 import { Renderer, Props, State } from '..';
 import * as GetRemoteArticleModule from 'api/articles-api/get-remote-article';
-import * as CheckLikeStatusModule from 'api/likes-api/check-like-status';
-import * as ToggleLikeModule from 'api/likes-api/toggle-like';
+import * as CheckGoodStatusModule from 'api/goods-api/check-good-status';
+import * as ToggleGoodModule from 'api/goods-api/toggle-good';
 import { mockGetArticleResponse } from 'api/mock/articles-response';
 
 let wrapper: ShallowWrapper<Props, State, Renderer>;
 
 let getRemoteArticleSpy: jest.SpyInstance;
-let checkLikeStatusSpy: jest.SpyInstance;
-let toggleLikeSpy: jest.SpyInstance;
+let checkGoodStatusSpy: jest.SpyInstance;
+let toggleGoodSpy: jest.SpyInstance;
 
 const basicProps: Props = {
   postId: 1,
@@ -56,7 +56,7 @@ const article: GetArticleResponse = {
   updatedAt: '2022/5/1',
   isDraft: false,
   category: 1,
-  numberOfLikes: 1,
+  numberOfGoods: 1,
 };
 
 describe('Shallow Snapshot Tests', () => {
@@ -104,10 +104,10 @@ describe('Shallow Snapshot Tests', () => {
 
   it('have liked', () => {
     wrapper.setState({
-      haveLiked: true,
+      haveAddedGood: true,
       loadingArticleState: 'success',
       article: article,
-      numberOfLikes: 0,
+      numberOfGoods: 0,
     });
     expect(wrapper).toMatchSnapshot();
   });
@@ -188,64 +188,64 @@ describe('fetchArticle', () => {
   });
 });
 
-describe('checkLikeStatus', () => {
+describe('checkGoodStatus', () => {
   beforeEach(() => {
     jest.resetAllMocks();
-    checkLikeStatusSpy = jest.spyOn(CheckLikeStatusModule, 'checkLikeStatus');
+    checkGoodStatusSpy = jest.spyOn(CheckGoodStatusModule, 'checkGoodStatus');
   });
 
   it('should set loadingLikeState success when api succeed', async () => {
-    checkLikeStatusSpy.mockResolvedValue({
-      haveLiked: true,
+    checkGoodStatusSpy.mockResolvedValue({
+      haveAddedGood: true,
     });
 
     wrapper = shallow(<Renderer {...basicProps} user={testUser} />);
     const instance = wrapper.instance();
 
-    await instance['checkLikeStatus']();
+    await instance['checkGoodStatus']();
 
-    expect(instance.state.loadingLikeState).toBe('success');
+    expect(instance.state.loadingGoodState).toBe('success');
   });
 
   it('should set loadingstate error when api fail', async () => {
-    checkLikeStatusSpy.mockRejectedValue(new Error());
+    checkGoodStatusSpy.mockRejectedValue(new Error());
 
     wrapper = shallow(<Renderer {...basicProps} user={testUser} />);
     const instance = wrapper.instance();
 
-    await instance['checkLikeStatus']();
+    await instance['checkGoodStatus']();
 
     expect(instance.props.throwError).toBeCalled();
   });
 });
 
-describe('handleClickLikeButton', () => {
+describe('handleClickGoodButton', () => {
   beforeEach(() => {
     jest.resetAllMocks();
-    toggleLikeSpy = jest.spyOn(ToggleLikeModule, 'toggleLike');
+    toggleGoodSpy = jest.spyOn(ToggleGoodModule, 'toggleGood');
   });
 
   it('should set loadingLikeState success when api succeed', async () => {
-    toggleLikeSpy.mockResolvedValue({
-      haveLiked: true,
-      numberOfLikes: 1,
+    toggleGoodSpy.mockResolvedValue({
+      haveAddedGood: true,
+      numberOfGoods: 1,
     });
 
     wrapper = shallow(<Renderer {...basicProps} user={testUser} />);
     const instance = wrapper.instance();
 
-    await instance['handleClickLikeButton']();
+    await instance['handleClickGoodButton']();
 
-    expect(instance.state.loadingLikeState).toBe('success');
+    expect(instance.state.loadingGoodState).toBe('success');
   });
 
   it('should set loadingstate error when api fail', async () => {
-    toggleLikeSpy.mockRejectedValue(new Error());
+    toggleGoodSpy.mockRejectedValue(new Error());
 
     wrapper = shallow(<Renderer {...basicProps} user={testUser} />);
     const instance = wrapper.instance();
 
-    await instance['handleClickLikeButton']();
+    await instance['handleClickGoodButton']();
 
     expect(instance.props.throwError).toBeCalled();
   });
@@ -254,7 +254,7 @@ describe('handleClickLikeButton', () => {
     wrapper = shallow(<Renderer {...basicProps} />);
     const instance = wrapper.instance();
 
-    await instance['handleClickLikeButton']();
+    await instance['handleClickGoodButton']();
 
     expect(instance.props.toggleAuthFormModal).toBeCalled();
   });

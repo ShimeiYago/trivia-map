@@ -98,7 +98,7 @@ export class Renderer extends React.Component<Props, State> {
     const { articlesPreviews } = this.state;
 
     const tableRows = articlesPreviews?.results.map((preview) => {
-      const { postId, isDraft, category, image, numberOfLikes } = preview;
+      const { postId, isDraft, category, image, numberOfGoods } = preview;
 
       return (
         <TableRow key={`preview-${postId}`}>
@@ -128,7 +128,7 @@ export class Renderer extends React.Component<Props, State> {
             <IconAndText
               iconComponent={<ThumbUpIcon fontSize="inherit" />}
               iconPosition="left"
-              text={String(numberOfLikes)}
+              text={String(numberOfGoods)}
               align="left"
             />
           </TableCell>
@@ -159,7 +159,7 @@ export class Renderer extends React.Component<Props, State> {
     const { articlesPreviews } = this.state;
 
     const tableRows = articlesPreviews?.results.map((preview) => {
-      const { postId, isDraft, category, image, numberOfLikes } = preview;
+      const { postId, isDraft, category, image, numberOfGoods } = preview;
 
       return (
         <TableRow key={`preview-${postId}`}>
@@ -189,7 +189,7 @@ export class Renderer extends React.Component<Props, State> {
                 <IconAndText
                   iconComponent={<ThumbUpIcon fontSize="inherit" />}
                   iconPosition="left"
-                  text={String(numberOfLikes)}
+                  text={String(numberOfGoods)}
                   variant="subtitle2"
                   align="left"
                 />

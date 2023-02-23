@@ -279,7 +279,7 @@ describe('handleChangeDraftStatus', () => {
       isDraft: true,
       title: 'title',
       category: 1,
-      numberOfLikes: 1,
+      numberOfGoods: 1,
       image: null,
     })({ target: { value: 'true' } } as SelectChangeEvent);
     expect(instance.state.switchDraftDialog).toEqual({
@@ -298,7 +298,7 @@ describe('handleChangeDraftStatus', () => {
       isDraft: false,
       title: 'title',
       category: 1,
-      numberOfLikes: 1,
+      numberOfGoods: 1,
       image: null,
     })({ target: { value: 'false' } } as SelectChangeEvent);
     expect(instance.state.switchDraftDialog).toEqual({

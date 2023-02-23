@@ -8,7 +8,6 @@ export const mockCheckLikeStatusResponse: CheckLikeStatusResponse = {
 
 export const mockToggleLikeResponse: ToggleLikeResponse = {
   haveLiked: true,
-  numberOfLikes: 2,
 };
 
 export const mockGetLikedArticlesPreviewsResponse: GetLikedArticlesPreviewsResponse = {

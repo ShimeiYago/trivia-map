@@ -50,7 +50,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
           Object {
             "icon": <Memo />,
             "link": "/admin/likes",
-            "text": "いいね一覧",
+            "text": "お気に入り一覧",
           },
           Object {
             "icon": <Memo />,
@@ -114,7 +114,7 @@ exports[`Shallow Snapshot Tests no icon 1`] = `
           Object {
             "icon": <Memo />,
             "link": "/admin/likes",
-            "text": "いいね一覧",
+            "text": "お気に入り一覧",
           },
           Object {
             "icon": <Memo />,

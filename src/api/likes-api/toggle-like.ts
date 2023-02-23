@@ -20,5 +20,4 @@ export async function toggleLike(postId: number): Promise<ToggleLikeResponse> {
 
 export type ToggleLikeResponse = {
   haveLiked: boolean;
-  numberOfLikes: number;
 };

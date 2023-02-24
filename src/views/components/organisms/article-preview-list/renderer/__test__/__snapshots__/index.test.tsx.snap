@@ -351,8 +351,7 @@ exports[`Shallow Snapshot Tests only one page with popup 1`] = `
                 <ForwardRef(Stack)
                   spacing={1}
                 >
-                  <ForwardRef(Typography)
-                    align="center"
+                  <DynamicAlignedText
                     component="h2"
                     sx={
                       Object {
@@ -362,7 +361,7 @@ exports[`Shallow Snapshot Tests only one page with popup 1`] = `
                     variant="h6"
                   >
                     ノーチラス号のエンジン
-                  </ForwardRef(Typography)>
+                  </DynamicAlignedText>
                   <ForwardRef(Box)
                     textAlign="center"
                   >
@@ -451,8 +450,7 @@ exports[`Shallow Snapshot Tests only one page with popup 1`] = `
                 <ForwardRef(Stack)
                   spacing={1}
                 >
-                  <ForwardRef(Typography)
-                    align="center"
+                  <DynamicAlignedText
                     component="h2"
                     sx={
                       Object {
@@ -462,7 +460,7 @@ exports[`Shallow Snapshot Tests only one page with popup 1`] = `
                     variant="h6"
                   >
                     ノーチラス号の名前の由来
-                  </ForwardRef(Typography)>
+                  </DynamicAlignedText>
                   <ForwardRef(Divider) />
                   <ForwardRef(Box)>
                     <ForwardRef(Typography)
@@ -605,8 +603,7 @@ exports[`Shallow Snapshot Tests variant popup 1`] = `
                 <ForwardRef(Stack)
                   spacing={1}
                 >
-                  <ForwardRef(Typography)
-                    align="center"
+                  <DynamicAlignedText
                     component="h2"
                     sx={
                       Object {
@@ -616,7 +613,7 @@ exports[`Shallow Snapshot Tests variant popup 1`] = `
                     variant="h6"
                   >
                     ノーチラス号のエンジン
-                  </ForwardRef(Typography)>
+                  </DynamicAlignedText>
                   <ForwardRef(Box)
                     textAlign="center"
                   >
@@ -705,8 +702,7 @@ exports[`Shallow Snapshot Tests variant popup 1`] = `
                 <ForwardRef(Stack)
                   spacing={1}
                 >
-                  <ForwardRef(Typography)
-                    align="center"
+                  <DynamicAlignedText
                     component="h2"
                     sx={
                       Object {
@@ -716,7 +712,7 @@ exports[`Shallow Snapshot Tests variant popup 1`] = `
                     variant="h6"
                   >
                     ノーチラス号の名前の由来
-                  </ForwardRef(Typography)>
+                  </DynamicAlignedText>
                   <ForwardRef(Divider) />
                   <ForwardRef(Box)>
                     <ForwardRef(Typography)

@@ -58,8 +58,7 @@ exports[`Shallow Snapshot Tests author view 1`] = `
         </ForwardRef(Typography)>
       </NonStyleLink>
     </ForwardRef(Stack)>
-    <ForwardRef(Typography)
-      align="center"
+    <DynamicAlignedText
       component="h2"
       sx={
         Object {
@@ -69,7 +68,7 @@ exports[`Shallow Snapshot Tests author view 1`] = `
       variant="h4"
     >
       title
-    </ForwardRef(Typography)>
+    </DynamicAlignedText>
     <ForwardRef(Typography)
       color="gray"
       component="div"
@@ -104,7 +103,7 @@ exports[`Shallow Snapshot Tests author view 1`] = `
     </ForwardRef(Box)>
     <ForwardRef(Divider) />
     <ForwardRef(Typography)
-      fontSize={20}
+      fontSize={18}
       whiteSpace="pre-wrap"
     >
       description
@@ -198,7 +197,7 @@ exports[`Shallow Snapshot Tests author view 1`] = `
             startIcon={<Memo />}
             variant="outlined"
           >
-            お気に入り
+            お気に入り追加
           </ForwardRef(LoadingButton)>
         </ForwardRef(Box)>
       </ForwardRef(Grid)>
@@ -284,8 +283,7 @@ exports[`Shallow Snapshot Tests draft 1`] = `
         </ForwardRef(Typography)>
       </NonStyleLink>
     </ForwardRef(Stack)>
-    <ForwardRef(Typography)
-      align="center"
+    <DynamicAlignedText
       component="h2"
       sx={
         Object {
@@ -295,7 +293,7 @@ exports[`Shallow Snapshot Tests draft 1`] = `
       variant="h4"
     >
       title
-    </ForwardRef(Typography)>
+    </DynamicAlignedText>
     <ForwardRef(Typography)
       color="gray"
       component="div"
@@ -330,7 +328,7 @@ exports[`Shallow Snapshot Tests draft 1`] = `
     </ForwardRef(Box)>
     <ForwardRef(Divider) />
     <ForwardRef(Typography)
-      fontSize={20}
+      fontSize={18}
       whiteSpace="pre-wrap"
     >
       description
@@ -483,8 +481,7 @@ exports[`Shallow Snapshot Tests have added good 1`] = `
         </ForwardRef(Typography)>
       </NonStyleLink>
     </ForwardRef(Stack)>
-    <ForwardRef(Typography)
-      align="center"
+    <DynamicAlignedText
       component="h2"
       sx={
         Object {
@@ -494,7 +491,7 @@ exports[`Shallow Snapshot Tests have added good 1`] = `
       variant="h4"
     >
       title
-    </ForwardRef(Typography)>
+    </DynamicAlignedText>
     <ForwardRef(Typography)
       color="gray"
       component="div"
@@ -529,7 +526,7 @@ exports[`Shallow Snapshot Tests have added good 1`] = `
     </ForwardRef(Box)>
     <ForwardRef(Divider) />
     <ForwardRef(Typography)
-      fontSize={20}
+      fontSize={18}
       whiteSpace="pre-wrap"
     >
       description
@@ -696,8 +693,7 @@ exports[`Shallow Snapshot Tests have liked 1`] = `
         </ForwardRef(Typography)>
       </NonStyleLink>
     </ForwardRef(Stack)>
-    <ForwardRef(Typography)
-      align="center"
+    <DynamicAlignedText
       component="h2"
       sx={
         Object {
@@ -707,7 +703,7 @@ exports[`Shallow Snapshot Tests have liked 1`] = `
       variant="h4"
     >
       title
-    </ForwardRef(Typography)>
+    </DynamicAlignedText>
     <ForwardRef(Typography)
       color="gray"
       component="div"
@@ -742,7 +738,7 @@ exports[`Shallow Snapshot Tests have liked 1`] = `
     </ForwardRef(Box)>
     <ForwardRef(Divider) />
     <ForwardRef(Typography)
-      fontSize={20}
+      fontSize={18}
       whiteSpace="pre-wrap"
     >
       description
@@ -917,8 +913,7 @@ exports[`Shallow Snapshot Tests with article 1`] = `
         </ForwardRef(Typography)>
       </NonStyleLink>
     </ForwardRef(Stack)>
-    <ForwardRef(Typography)
-      align="center"
+    <DynamicAlignedText
       component="h2"
       sx={
         Object {
@@ -928,7 +923,7 @@ exports[`Shallow Snapshot Tests with article 1`] = `
       variant="h4"
     >
       title
-    </ForwardRef(Typography)>
+    </DynamicAlignedText>
     <ForwardRef(Typography)
       color="gray"
       component="div"
@@ -963,7 +958,7 @@ exports[`Shallow Snapshot Tests with article 1`] = `
     </ForwardRef(Box)>
     <ForwardRef(Divider) />
     <ForwardRef(Typography)
-      fontSize={20}
+      fontSize={18}
       whiteSpace="pre-wrap"
     >
       description
@@ -1117,8 +1112,7 @@ exports[`Shallow Snapshot Tests with image 1`] = `
         </ForwardRef(Typography)>
       </NonStyleLink>
     </ForwardRef(Stack)>
-    <ForwardRef(Typography)
-      align="center"
+    <DynamicAlignedText
       component="h2"
       sx={
         Object {
@@ -1128,7 +1122,7 @@ exports[`Shallow Snapshot Tests with image 1`] = `
       variant="h4"
     >
       title
-    </ForwardRef(Typography)>
+    </DynamicAlignedText>
     <ForwardRef(Typography)
       color="gray"
       component="div"
@@ -1167,7 +1161,7 @@ exports[`Shallow Snapshot Tests with image 1`] = `
       width="full"
     />
     <ForwardRef(Typography)
-      fontSize={20}
+      fontSize={18}
       whiteSpace="pre-wrap"
     >
       description

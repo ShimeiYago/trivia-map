@@ -29,6 +29,7 @@ import notImage from 'images/no-image-16x7.jpg';
 import FolderIcon from '@mui/icons-material/Folder';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import { DynamicAlignedText } from 'views/components/atoms/dynamic-aligned-text';
 
 const POPUP_SCROLL_HEIGHT = '240px';
 const POPUP_SCROLL_GRADATION_HEIGHT = '50px';
@@ -144,9 +145,9 @@ export class Renderer extends React.Component<Props, State> {
     return (
       <Card sx={{ ...sxProps.card, p: 1 }}>
         <Stack spacing={1}>
-          <Typography component="h2" variant="h6" align="center" sx={{ wordBreak: 'break-all' }}>
+          <DynamicAlignedText component="h2" variant="h6" sx={{ wordBreak: 'break-all' }}>
             {title}
-          </Typography>
+          </DynamicAlignedText>
 
           {imageUrl && (
             <Box textAlign="center">

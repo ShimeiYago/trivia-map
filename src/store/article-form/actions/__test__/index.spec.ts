@@ -371,7 +371,7 @@ describe('getAndUpdateAreaNames', () => {
     const appThunk = getAndUpdateAreaNames() as any;
     await appThunk(dispatch, getState);
 
-    expect(dispatch.mock.calls[0][0].payload).toEqual(['xxx']);
+    expect(dispatch.mock.calls[1][0].payload).toEqual(['xxx']);
   });
 
   it('call updateAreaNames with undefined if position is undefined', async () => {
@@ -383,6 +383,6 @@ describe('getAndUpdateAreaNames', () => {
     const appThunk = getAndUpdateAreaNames() as any;
     await appThunk(dispatch, getStatewithoutPosition);
 
-    expect(dispatch.mock.calls[0][0].payload).toBe(undefined);
+    expect(dispatch.mock.calls[1][0].payload).toBe(undefined);
   });
 });

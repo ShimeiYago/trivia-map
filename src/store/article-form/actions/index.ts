@@ -180,6 +180,8 @@ export type UpdateFormFieldParam = {
 
 // getAndUpdateAreaNames action
 export const getAndUpdateAreaNames = (): AppThunk => async (dispatch, getState) => {
+  dispatch(updateAreaNames([]));
+
   const position = getState().articleForm.position;
 
   if (!position) {

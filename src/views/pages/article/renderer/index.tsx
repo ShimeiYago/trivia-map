@@ -33,6 +33,7 @@ import { Park } from 'types/park';
 import { MyIcon } from 'views/components/atoms/my-icon';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
+import { DynamicAlignedText } from 'views/components/atoms/dynamic-aligned-text';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -105,9 +106,15 @@ export class Renderer extends React.Component<Props, State> {
             </NonStyleLink>
           </Stack>
 
-          <Typography component="h2" variant="h4" align="center" sx={{ wordBreak: 'break-all' }}>
+          <DynamicAlignedText
+            component="h2"
+            variant="h4"
+            sx={{
+              wordBreak: 'break-all',
+            }}
+          >
             {title}
-          </Typography>
+          </DynamicAlignedText>
 
           <Typography component="div" color="gray" sx={{ textDecoration: 'underline' }}>
             <IconAndText
@@ -128,7 +135,7 @@ export class Renderer extends React.Component<Props, State> {
 
           {image && <Image src={image} width="full" />}
 
-          <Typography whiteSpace="pre-wrap" fontSize={20}>
+          <Typography whiteSpace="pre-wrap" fontSize={18}>
             {description}
           </Typography>
 
@@ -263,7 +270,7 @@ export class Renderer extends React.Component<Props, State> {
           onClick={this.handleClickLikeButton}
           color="warning"
         >
-          {haveLiked ? 'お気に入り済み' : 'お気に入り'}
+          {haveLiked ? 'お気に入り済み' : 'お気に入り追加'}
         </LoadingButton>
       </Box>
     );

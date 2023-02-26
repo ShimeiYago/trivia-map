@@ -73,7 +73,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
     <ForwardRef(LeafComponent)
       attribution="&copy; <a target=\\"_blank\\" href=\\"https://www.tokyodisneyresort.jp/tdl/map.html\\">tokyodisneyresort.jp</a>"
       noWrap={true}
-      url="/tds-map-tiles/{z}/{x}/{y}.png"
+      url="/s-tiles/{z}/{x}/{y}.png"
     />
     <PostMarkers
       editting={false}
@@ -211,7 +211,7 @@ exports[`Shallow Snapshot Tests disabled map 1`] = `
     <ForwardRef(LeafComponent)
       attribution="&copy; <a target=\\"_blank\\" href=\\"https://www.tokyodisneyresort.jp/tdl/map.html\\">tokyodisneyresort.jp</a>"
       noWrap={true}
-      url="/tds-map-tiles/{z}/{x}/{y}.png"
+      url="/s-tiles/{z}/{x}/{y}.png"
     />
     <MapMarker
       autoOpen={false}
@@ -441,7 +441,7 @@ exports[`Shallow Snapshot Tests with current marker 1`] = `
     <ForwardRef(LeafComponent)
       attribution="&copy; <a target=\\"_blank\\" href=\\"https://www.tokyodisneyresort.jp/tdl/map.html\\">tokyodisneyresort.jp</a>"
       noWrap={true}
-      url="/tds-map-tiles/{z}/{x}/{y}.png"
+      url="/s-tiles/{z}/{x}/{y}.png"
     />
     <PostMarkers
       editting={false}
@@ -591,7 +591,7 @@ exports[`Shallow Snapshot Tests with initCenter prop 1`] = `
     <ForwardRef(LeafComponent)
       attribution="&copy; <a target=\\"_blank\\" href=\\"https://www.tokyodisneyresort.jp/tdl/map.html\\">tokyodisneyresort.jp</a>"
       noWrap={true}
-      url="/tds-map-tiles/{z}/{x}/{y}.png"
+      url="/s-tiles/{z}/{x}/{y}.png"
     />
     <PostMarkers
       editting={false}
@@ -753,7 +753,7 @@ exports[`Shallow Snapshot Tests with width and height props 1`] = `
     <ForwardRef(LeafComponent)
       attribution="&copy; <a target=\\"_blank\\" href=\\"https://www.tokyodisneyresort.jp/tdl/map.html\\">tokyodisneyresort.jp</a>"
       noWrap={true}
-      url="/tds-map-tiles/{z}/{x}/{y}.png"
+      url="/s-tiles/{z}/{x}/{y}.png"
     />
     <PostMarkers
       editting={false}

@@ -152,7 +152,7 @@ exports[`Shallow Snapshot Tests author map 1`] = `
             onClick={[Function]}
             selected={false}
           >
-            フード情報
+            キャラグリ
           </RoundButton>
           <RoundButton
             id="category-button-6"
@@ -160,23 +160,7 @@ exports[`Shallow Snapshot Tests author map 1`] = `
             onClick={[Function]}
             selected={false}
           >
-            グッズ情報
-          </RoundButton>
-          <RoundButton
-            id="category-button-7"
-            key="category-button-7"
-            onClick={[Function]}
-            selected={false}
-          >
-            キャラグリ
-          </RoundButton>
-          <RoundButton
-            id="category-button-8"
-            key="category-button-8"
-            onClick={[Function]}
-            selected={false}
-          >
-            攻略法
+            パーク攻略法
           </RoundButton>
           <RoundButton
             id="category-button-0"
@@ -446,7 +430,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
             onClick={[Function]}
             selected={false}
           >
-            フード情報
+            キャラグリ
           </RoundButton>
           <RoundButton
             id="category-button-6"
@@ -454,23 +438,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
             onClick={[Function]}
             selected={false}
           >
-            グッズ情報
-          </RoundButton>
-          <RoundButton
-            id="category-button-7"
-            key="category-button-7"
-            onClick={[Function]}
-            selected={false}
-          >
-            キャラグリ
-          </RoundButton>
-          <RoundButton
-            id="category-button-8"
-            key="category-button-8"
-            onClick={[Function]}
-            selected={false}
-          >
-            攻略法
+            パーク攻略法
           </RoundButton>
           <RoundButton
             id="category-button-0"
@@ -686,7 +654,7 @@ exports[`Shallow Snapshot Tests before render map 1`] = `
             onClick={[Function]}
             selected={false}
           >
-            フード情報
+            キャラグリ
           </RoundButton>
           <RoundButton
             id="category-button-6"
@@ -694,23 +662,7 @@ exports[`Shallow Snapshot Tests before render map 1`] = `
             onClick={[Function]}
             selected={false}
           >
-            グッズ情報
-          </RoundButton>
-          <RoundButton
-            id="category-button-7"
-            key="category-button-7"
-            onClick={[Function]}
-            selected={false}
-          >
-            キャラグリ
-          </RoundButton>
-          <RoundButton
-            id="category-button-8"
-            key="category-button-8"
-            onClick={[Function]}
-            selected={false}
-          >
-            攻略法
+            パーク攻略法
           </RoundButton>
           <RoundButton
             id="category-button-0"
@@ -941,7 +893,7 @@ exports[`Shallow Snapshot Tests land mode 1`] = `
             onClick={[Function]}
             selected={false}
           >
-            フード情報
+            キャラグリ
           </RoundButton>
           <RoundButton
             id="category-button-6"
@@ -949,23 +901,7 @@ exports[`Shallow Snapshot Tests land mode 1`] = `
             onClick={[Function]}
             selected={false}
           >
-            グッズ情報
-          </RoundButton>
-          <RoundButton
-            id="category-button-7"
-            key="category-button-7"
-            onClick={[Function]}
-            selected={false}
-          >
-            キャラグリ
-          </RoundButton>
-          <RoundButton
-            id="category-button-8"
-            key="category-button-8"
-            onClick={[Function]}
-            selected={false}
-          >
-            攻略法
+            パーク攻略法
           </RoundButton>
           <RoundButton
             id="category-button-0"
@@ -1134,7 +1070,7 @@ exports[`Shallow Snapshot Tests park is undefined 1`] = `
             onClick={[Function]}
             selected={false}
           >
-            フード情報
+            キャラグリ
           </RoundButton>
           <RoundButton
             id="category-button-6"
@@ -1142,23 +1078,7 @@ exports[`Shallow Snapshot Tests park is undefined 1`] = `
             onClick={[Function]}
             selected={false}
           >
-            グッズ情報
-          </RoundButton>
-          <RoundButton
-            id="category-button-7"
-            key="category-button-7"
-            onClick={[Function]}
-            selected={false}
-          >
-            キャラグリ
-          </RoundButton>
-          <RoundButton
-            id="category-button-8"
-            key="category-button-8"
-            onClick={[Function]}
-            selected={false}
-          >
-            攻略法
+            パーク攻略法
           </RoundButton>
           <RoundButton
             id="category-button-0"
@@ -1393,7 +1313,7 @@ exports[`Shallow Snapshot Tests pc view 1`] = `
             onClick={[Function]}
             selected={false}
           >
-            フード情報
+            キャラグリ
           </RoundButton>
           <RoundButton
             id="category-button-6"
@@ -1401,23 +1321,7 @@ exports[`Shallow Snapshot Tests pc view 1`] = `
             onClick={[Function]}
             selected={false}
           >
-            グッズ情報
-          </RoundButton>
-          <RoundButton
-            id="category-button-7"
-            key="category-button-7"
-            onClick={[Function]}
-            selected={false}
-          >
-            キャラグリ
-          </RoundButton>
-          <RoundButton
-            id="category-button-8"
-            key="category-button-8"
-            onClick={[Function]}
-            selected={false}
-          >
-            攻略法
+            パーク攻略法
           </RoundButton>
           <RoundButton
             id="category-button-0"

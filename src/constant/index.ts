@@ -35,19 +35,11 @@ export const CATEGORIES = [
   },
   {
     categoryId: 5,
-    categoryName: 'フード情報',
-  },
-  {
-    categoryId: 6,
-    categoryName: 'グッズ情報',
-  },
-  {
-    categoryId: 7,
     categoryName: 'キャラグリ',
   },
   {
-    categoryId: 8,
-    categoryName: '攻略法',
+    categoryId: 6,
+    categoryName: 'パーク攻略法',
   },
   // NOTE: '0' should be at end of list
   {

@@ -103,25 +103,13 @@ exports[`Shallow Snapshot Tests basic 1`] = `
                   key="category-5"
                   value="5"
                 >
-                  フード情報
+                  キャラグリ
                 </ForwardRef(MenuItem)>
                 <ForwardRef(MenuItem)
                   key="category-6"
                   value="6"
                 >
-                  グッズ情報
-                </ForwardRef(MenuItem)>
-                <ForwardRef(MenuItem)
-                  key="category-7"
-                  value="7"
-                >
-                  キャラグリ
-                </ForwardRef(MenuItem)>
-                <ForwardRef(MenuItem)
-                  key="category-8"
-                  value="8"
-                >
-                  攻略法
+                  パーク攻略法
                 </ForwardRef(MenuItem)>
                 <ForwardRef(MenuItem)
                   key="category-0"
@@ -399,25 +387,13 @@ exports[`Shallow Snapshot Tests with form conditions 1`] = `
                   key="category-5"
                   value="5"
                 >
-                  フード情報
+                  キャラグリ
                 </ForwardRef(MenuItem)>
                 <ForwardRef(MenuItem)
                   key="category-6"
                   value="6"
                 >
-                  グッズ情報
-                </ForwardRef(MenuItem)>
-                <ForwardRef(MenuItem)
-                  key="category-7"
-                  value="7"
-                >
-                  キャラグリ
-                </ForwardRef(MenuItem)>
-                <ForwardRef(MenuItem)
-                  key="category-8"
-                  value="8"
-                >
-                  攻略法
+                  パーク攻略法
                 </ForwardRef(MenuItem)>
                 <ForwardRef(MenuItem)
                   key="category-0"

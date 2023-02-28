@@ -133,25 +133,13 @@ exports[`Shallow Snapshot Tests articlesPreviews is zero 1`] = `
             key="category-5"
             value="5"
           >
-            フード情報
+            キャラグリ
           </ForwardRef(MenuItem)>
           <ForwardRef(MenuItem)
             key="category-6"
             value="6"
           >
-            グッズ情報
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-7"
-            value="7"
-          >
-            キャラグリ
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-8"
-            value="8"
-          >
-            攻略法
+            パーク攻略法
           </ForwardRef(MenuItem)>
           <ForwardRef(MenuItem)
             key="category-0"
@@ -304,25 +292,13 @@ exports[`Shallow Snapshot Tests basic 1`] = `
             key="category-5"
             value="5"
           >
-            フード情報
+            キャラグリ
           </ForwardRef(MenuItem)>
           <ForwardRef(MenuItem)
             key="category-6"
             value="6"
           >
-            グッズ情報
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-7"
-            value="7"
-          >
-            キャラグリ
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-8"
-            value="8"
-          >
-            攻略法
+            パーク攻略法
           </ForwardRef(MenuItem)>
           <ForwardRef(MenuItem)
             key="category-0"
@@ -471,25 +447,13 @@ exports[`Shallow Snapshot Tests one page 1`] = `
             key="category-5"
             value="5"
           >
-            フード情報
+            キャラグリ
           </ForwardRef(MenuItem)>
           <ForwardRef(MenuItem)
             key="category-6"
             value="6"
           >
-            グッズ情報
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-7"
-            value="7"
-          >
-            キャラグリ
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-8"
-            value="8"
-          >
-            攻略法
+            パーク攻略法
           </ForwardRef(MenuItem)>
           <ForwardRef(MenuItem)
             key="category-0"
@@ -979,25 +943,13 @@ exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
             key="category-5"
             value="5"
           >
-            フード情報
+            キャラグリ
           </ForwardRef(MenuItem)>
           <ForwardRef(MenuItem)
             key="category-6"
             value="6"
           >
-            グッズ情報
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-7"
-            value="7"
-          >
-            キャラグリ
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-8"
-            value="8"
-          >
-            攻略法
+            パーク攻略法
           </ForwardRef(MenuItem)>
           <ForwardRef(MenuItem)
             key="category-0"
@@ -1509,25 +1461,13 @@ exports[`Shallow Snapshot Tests with articlesPreviews mobile view 1`] = `
             key="category-5"
             value="5"
           >
-            フード情報
+            キャラグリ
           </ForwardRef(MenuItem)>
           <ForwardRef(MenuItem)
             key="category-6"
             value="6"
           >
-            グッズ情報
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-7"
-            value="7"
-          >
-            キャラグリ
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-8"
-            value="8"
-          >
-            攻略法
+            パーク攻略法
           </ForwardRef(MenuItem)>
           <ForwardRef(MenuItem)
             key="category-0"
@@ -2057,25 +1997,13 @@ exports[`Shallow Snapshot Tests with delete dialog 1`] = `
             key="category-5"
             value="5"
           >
-            フード情報
+            キャラグリ
           </ForwardRef(MenuItem)>
           <ForwardRef(MenuItem)
             key="category-6"
             value="6"
           >
-            グッズ情報
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-7"
-            value="7"
-          >
-            キャラグリ
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-8"
-            value="8"
-          >
-            攻略法
+            パーク攻略法
           </ForwardRef(MenuItem)>
           <ForwardRef(MenuItem)
             key="category-0"
@@ -2269,25 +2197,13 @@ exports[`Shallow Snapshot Tests with message 1`] = `
             key="category-5"
             value="5"
           >
-            フード情報
+            キャラグリ
           </ForwardRef(MenuItem)>
           <ForwardRef(MenuItem)
             key="category-6"
             value="6"
           >
-            グッズ情報
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-7"
-            value="7"
-          >
-            キャラグリ
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-8"
-            value="8"
-          >
-            攻略法
+            パーク攻略法
           </ForwardRef(MenuItem)>
           <ForwardRef(MenuItem)
             key="category-0"
@@ -2469,25 +2385,13 @@ exports[`Shallow Snapshot Tests with switch draft dialog to switch to draft 1`] 
             key="category-5"
             value="5"
           >
-            フード情報
+            キャラグリ
           </ForwardRef(MenuItem)>
           <ForwardRef(MenuItem)
             key="category-6"
             value="6"
           >
-            グッズ情報
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-7"
-            value="7"
-          >
-            キャラグリ
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-8"
-            value="8"
-          >
-            攻略法
+            パーク攻略法
           </ForwardRef(MenuItem)>
           <ForwardRef(MenuItem)
             key="category-0"
@@ -2679,25 +2583,13 @@ exports[`Shallow Snapshot Tests with switch draft dialog to switch to public 1`]
             key="category-5"
             value="5"
           >
-            フード情報
+            キャラグリ
           </ForwardRef(MenuItem)>
           <ForwardRef(MenuItem)
             key="category-6"
             value="6"
           >
-            グッズ情報
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-7"
-            value="7"
-          >
-            キャラグリ
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-8"
-            value="8"
-          >
-            攻略法
+            パーク攻略法
           </ForwardRef(MenuItem)>
           <ForwardRef(MenuItem)
             key="category-0"

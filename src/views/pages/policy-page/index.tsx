@@ -4,7 +4,7 @@ import { CommonHelmet } from 'helper-components/common-helmet';
 import { pageTitleGenerator } from 'utils/page-title-generator';
 import { PAGE_NAMES } from 'constant/page-names';
 
-export const PrivacyPolicyPage = () => {
+export const PolicyPage = () => {
   usePageTracking();
   return (
     <>

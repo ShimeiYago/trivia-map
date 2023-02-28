@@ -272,7 +272,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
               <Memo(ForwardRef(InfoIcon)) />
             </ForwardRef(ListItemIcon)>
             <ForwardRef(ListItemText)
-              primary="プライバシーポリシー"
+              primary="利用規約"
             />
           </ForwardRef(ListItem)>
         </NonStyleLink>
@@ -576,7 +576,7 @@ exports[`Shallow Snapshot Tests edit page 1`] = `
               <Memo(ForwardRef(InfoIcon)) />
             </ForwardRef(ListItemIcon)>
             <ForwardRef(ListItemText)
-              primary="プライバシーポリシー"
+              primary="利用規約"
             />
           </ForwardRef(ListItem)>
         </NonStyleLink>
@@ -924,7 +924,7 @@ exports[`Shallow Snapshot Tests long name with mobile 1`] = `
               <Memo(ForwardRef(InfoIcon)) />
             </ForwardRef(ListItemIcon)>
             <ForwardRef(ListItemText)
-              primary="プライバシーポリシー"
+              primary="利用規約"
             />
           </ForwardRef(ListItem)>
         </NonStyleLink>
@@ -1228,7 +1228,7 @@ exports[`Shallow Snapshot Tests map page 1`] = `
               <Memo(ForwardRef(InfoIcon)) />
             </ForwardRef(ListItemIcon)>
             <ForwardRef(ListItemText)
-              primary="プライバシーポリシー"
+              primary="利用規約"
             />
           </ForwardRef(ListItem)>
         </NonStyleLink>
@@ -1527,7 +1527,7 @@ exports[`Shallow Snapshot Tests new page 1`] = `
               <Memo(ForwardRef(InfoIcon)) />
             </ForwardRef(ListItemIcon)>
             <ForwardRef(ListItemText)
-              primary="プライバシーポリシー"
+              primary="利用規約"
             />
           </ForwardRef(ListItem)>
         </NonStyleLink>
@@ -1817,7 +1817,7 @@ exports[`Shallow Snapshot Tests permanent left navi 1`] = `
               <Memo(ForwardRef(InfoIcon)) />
             </ForwardRef(ListItemIcon)>
             <ForwardRef(ListItemText)
-              primary="プライバシーポリシー"
+              primary="利用規約"
             />
           </ForwardRef(ListItem)>
         </NonStyleLink>
@@ -2121,7 +2121,7 @@ exports[`Shallow Snapshot Tests redirect to top page 1`] = `
               <Memo(ForwardRef(InfoIcon)) />
             </ForwardRef(ListItemIcon)>
             <ForwardRef(ListItemText)
-              primary="プライバシーポリシー"
+              primary="利用規約"
             />
           </ForwardRef(ListItem)>
         </NonStyleLink>
@@ -2425,7 +2425,7 @@ exports[`Shallow Snapshot Tests static position 1`] = `
               <Memo(ForwardRef(InfoIcon)) />
             </ForwardRef(ListItemIcon)>
             <ForwardRef(ListItemText)
-              primary="プライバシーポリシー"
+              primary="利用規約"
             />
           </ForwardRef(ListItem)>
         </NonStyleLink>
@@ -2729,7 +2729,7 @@ exports[`Shallow Snapshot Tests with local navi & mobile 1`] = `
               <Memo(ForwardRef(InfoIcon)) />
             </ForwardRef(ListItemIcon)>
             <ForwardRef(ListItemText)
-              primary="プライバシーポリシー"
+              primary="利用規約"
             />
           </ForwardRef(ListItem)>
         </NonStyleLink>
@@ -3054,7 +3054,7 @@ exports[`Shallow Snapshot Tests with local navi 1`] = `
               <Memo(ForwardRef(InfoIcon)) />
             </ForwardRef(ListItemIcon)>
             <ForwardRef(ListItemText)
-              primary="プライバシーポリシー"
+              primary="利用規約"
             />
           </ForwardRef(ListItem)>
         </NonStyleLink>
@@ -3423,7 +3423,7 @@ exports[`Shallow Snapshot Tests with userInfo 1`] = `
               <Memo(ForwardRef(InfoIcon)) />
             </ForwardRef(ListItemIcon)>
             <ForwardRef(ListItemText)
-              primary="プライバシーポリシー"
+              primary="利用規約"
             />
           </ForwardRef(ListItem)>
         </NonStyleLink>

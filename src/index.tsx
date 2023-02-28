@@ -30,7 +30,7 @@ import {
   ARTICLE_LIST_PAGE_LINK,
   MY_ARTICLES_LINK,
   INQUIRY_PAGE_LINK,
-  PRIVACY_POLICY_PAGE_LINK,
+  POLICY_PAGE_LINK,
   CATEGORY_PAGE_LINK,
   SIGNUP_LINK,
   TWITTER_CALLBACK_LINK,
@@ -48,7 +48,7 @@ import { ArticleList } from 'views/pages/article-list';
 import { AuthorPage } from 'views/pages/author';
 import { MyArticles } from 'views/pages/my-articles';
 import { InquiryPage } from 'views/pages/inquiry-page';
-import { PrivacyPolicyPage } from 'views/pages/privacy-policy-page';
+import { PolicyPage } from 'views/pages/policy-page';
 import { CategoryPage } from 'views/pages/category-page';
 import { CookiesProvider } from 'react-cookie';
 import { TwitterCallbackPage } from 'views/pages/twitter-callback-page';
@@ -127,10 +127,7 @@ ReactDOM.render(
                 />
                 <Route path={NOT_FOUND_LINK} element={<CommonErrorPage errorStatus={404} />} />
                 <Route path={INQUIRY_PAGE_LINK} element={errorHandledElement(<InquiryPage />)} />
-                <Route
-                  path={PRIVACY_POLICY_PAGE_LINK}
-                  element={errorHandledElement(<PrivacyPolicyPage />)}
-                />
+                <Route path={POLICY_PAGE_LINK} element={errorHandledElement(<PolicyPage />)} />
                 <Route
                   path={TWITTER_LOGIN_LINK}
                   element={errorHandledElement(<TwitterLoginPage />)}

@@ -11,7 +11,7 @@ import {
   MAP_ROUTE,
   MY_ARTICLES_LINK,
   NEW_LINK,
-  PRIVACY_POLICY_PAGE_LINK,
+  POLICY_PAGE_LINK,
   SIGNUP_LINK,
 } from 'constant/links';
 import ArticleIcon from '@mui/icons-material/Article';
@@ -92,7 +92,7 @@ const listItemsOthers: ListItem[] = [
   {
     text: PAGE_NAMES.policy,
     icon: <InfoIcon />,
-    link: PRIVACY_POLICY_PAGE_LINK,
+    link: POLICY_PAGE_LINK,
   },
 ];
 

@@ -172,13 +172,14 @@ export class ImageField extends React.Component<Props, State> {
         this.props.maxLength,
         crop,
       );
-      this.props.onChange(selializedImageFile);
 
       this.setState({
         openCropModal: false,
         uploadedImage: undefined,
         crop: undefined,
       });
+
+      this.props.onChange(selializedImageFile);
     } catch (e) {
       const error = e as { message: string };
 

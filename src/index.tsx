@@ -39,6 +39,7 @@ import {
   LIKED_ARTICLES_LINK,
   TWITTER_LOGIN_LINK,
   MAP_USER_LINK,
+  PRIVACY_POLICY_PAGE_LINK,
 } from 'constant/links';
 import { ChangePassword } from 'views/pages/change-password';
 import { ResetPassword } from 'views/pages/reset-password';
@@ -55,6 +56,7 @@ import { TwitterCallbackPage } from 'views/pages/twitter-callback-page';
 import { DeactivateAccount } from 'views/pages/deactivate-account';
 import { LikedArticles } from 'views/pages/liked-articles';
 import { TwitterLoginPage } from 'views/pages/twitter-login-page';
+import { PrivacyPage } from 'views/pages/privacy-page';
 
 // Deactivate all console.log on production
 // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -128,6 +130,10 @@ ReactDOM.render(
                 <Route path={NOT_FOUND_LINK} element={<CommonErrorPage errorStatus={404} />} />
                 <Route path={INQUIRY_PAGE_LINK} element={errorHandledElement(<InquiryPage />)} />
                 <Route path={TERMS_PAGE_LINK} element={errorHandledElement(<TermsPage />)} />
+                <Route
+                  path={PRIVACY_POLICY_PAGE_LINK}
+                  element={errorHandledElement(<PrivacyPage />)}
+                />
                 <Route
                   path={TWITTER_LOGIN_LINK}
                   element={errorHandledElement(<TwitterLoginPage />)}

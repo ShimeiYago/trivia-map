@@ -46,6 +46,8 @@ export const INQUIRY_PAGE_LINK = '/inquiry';
 
 export const TERMS_PAGE_LINK = '/terms-of-service';
 
+export const PRIVACY_POLICY_PAGE_LINK = '/privacy-policy';
+
 export const TWITTER_CALLBACK_LINK = '/twitter-auth-callback';
 
 export const TWITTER_LOGIN_LINK = '/twitter-login';

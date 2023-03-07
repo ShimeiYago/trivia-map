@@ -13,6 +13,7 @@ import {
   NEW_LINK,
   TERMS_PAGE_LINK,
   SIGNUP_LINK,
+  PRIVACY_POLICY_PAGE_LINK,
 } from 'constant/links';
 import ArticleIcon from '@mui/icons-material/Article';
 import { NonStyleLink } from 'views/components/atoms/non-style-link';
@@ -28,6 +29,7 @@ import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import AddLocationAltIcon from '@mui/icons-material/AddLocationAlt';
 import { MyIcon } from 'views/components/atoms/my-icon';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
+import PrivacyTipIcon from '@mui/icons-material/PrivacyTip';
 
 const listItemsForMap: ListItem[] = [
   {
@@ -93,6 +95,11 @@ const listItemsOthers: ListItem[] = [
     text: PAGE_NAMES.terms,
     icon: <InfoIcon />,
     link: TERMS_PAGE_LINK,
+  },
+  {
+    text: PAGE_NAMES.privacy,
+    icon: <PrivacyTipIcon />,
+    link: PRIVACY_POLICY_PAGE_LINK,
   },
 ];
 

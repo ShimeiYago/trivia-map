@@ -11,8 +11,9 @@ import {
   MAP_ROUTE,
   MY_ARTICLES_LINK,
   NEW_LINK,
-  POLICY_PAGE_LINK,
+  TERMS_PAGE_LINK,
   SIGNUP_LINK,
+  PRIVACY_POLICY_PAGE_LINK,
 } from 'constant/links';
 import ArticleIcon from '@mui/icons-material/Article';
 import { NonStyleLink } from 'views/components/atoms/non-style-link';
@@ -28,6 +29,7 @@ import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import AddLocationAltIcon from '@mui/icons-material/AddLocationAlt';
 import { MyIcon } from 'views/components/atoms/my-icon';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
+import PrivacyTipIcon from '@mui/icons-material/PrivacyTip';
 
 const listItemsForMap: ListItem[] = [
   {
@@ -90,9 +92,14 @@ const listItemsOthers: ListItem[] = [
     link: INQUIRY_PAGE_LINK,
   },
   {
-    text: PAGE_NAMES.policy,
+    text: PAGE_NAMES.terms,
     icon: <InfoIcon />,
-    link: POLICY_PAGE_LINK,
+    link: TERMS_PAGE_LINK,
+  },
+  {
+    text: PAGE_NAMES.privacy,
+    icon: <PrivacyTipIcon />,
+    link: PRIVACY_POLICY_PAGE_LINK,
   },
 ];
 

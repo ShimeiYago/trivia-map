@@ -4,7 +4,7 @@ exports[`Shallow Snapshot Tests 404 1`] = `
 <Fragment>
   <CommonHelmet
     noindex={true}
-    title="Page not found - トリビアマップ"
+    title="ページが見つかりません - トリビアマップ"
   />
   <GlobalMenu
     topBarPosition="static"
@@ -73,7 +73,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
 <Fragment>
   <CommonHelmet
     noindex={true}
-    title="Internal server error - トリビアマップ"
+    title="エラーが発生しました - トリビアマップ"
   />
   <InternalError />
 </Fragment>

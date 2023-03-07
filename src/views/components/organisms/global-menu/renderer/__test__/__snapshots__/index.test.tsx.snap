@@ -262,7 +262,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
         </NonStyleLink>
         <NonStyleLink
           key="1"
-          to="/privacy-policy"
+          to="/terms-of-service"
         >
           <ForwardRef(ListItem)
             button={true}
@@ -273,6 +273,22 @@ exports[`Shallow Snapshot Tests basic 1`] = `
             </ForwardRef(ListItemIcon)>
             <ForwardRef(ListItemText)
               primary="利用規約"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+        <NonStyleLink
+          key="2"
+          to="/privacy-policy"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(PrivacyTipIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="プライバシーポリシー"
             />
           </ForwardRef(ListItem)>
         </NonStyleLink>
@@ -566,7 +582,7 @@ exports[`Shallow Snapshot Tests edit page 1`] = `
         </NonStyleLink>
         <NonStyleLink
           key="1"
-          to="/privacy-policy"
+          to="/terms-of-service"
         >
           <ForwardRef(ListItem)
             button={true}
@@ -577,6 +593,22 @@ exports[`Shallow Snapshot Tests edit page 1`] = `
             </ForwardRef(ListItemIcon)>
             <ForwardRef(ListItemText)
               primary="利用規約"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+        <NonStyleLink
+          key="2"
+          to="/privacy-policy"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(PrivacyTipIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="プライバシーポリシー"
             />
           </ForwardRef(ListItem)>
         </NonStyleLink>
@@ -914,7 +946,7 @@ exports[`Shallow Snapshot Tests long name with mobile 1`] = `
         </NonStyleLink>
         <NonStyleLink
           key="1"
-          to="/privacy-policy"
+          to="/terms-of-service"
         >
           <ForwardRef(ListItem)
             button={true}
@@ -925,6 +957,22 @@ exports[`Shallow Snapshot Tests long name with mobile 1`] = `
             </ForwardRef(ListItemIcon)>
             <ForwardRef(ListItemText)
               primary="利用規約"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+        <NonStyleLink
+          key="2"
+          to="/privacy-policy"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(PrivacyTipIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="プライバシーポリシー"
             />
           </ForwardRef(ListItem)>
         </NonStyleLink>
@@ -1218,7 +1266,7 @@ exports[`Shallow Snapshot Tests map page 1`] = `
         </NonStyleLink>
         <NonStyleLink
           key="1"
-          to="/privacy-policy"
+          to="/terms-of-service"
         >
           <ForwardRef(ListItem)
             button={true}
@@ -1229,6 +1277,22 @@ exports[`Shallow Snapshot Tests map page 1`] = `
             </ForwardRef(ListItemIcon)>
             <ForwardRef(ListItemText)
               primary="利用規約"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+        <NonStyleLink
+          key="2"
+          to="/privacy-policy"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(PrivacyTipIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="プライバシーポリシー"
             />
           </ForwardRef(ListItem)>
         </NonStyleLink>
@@ -1517,7 +1581,7 @@ exports[`Shallow Snapshot Tests new page 1`] = `
         </NonStyleLink>
         <NonStyleLink
           key="1"
-          to="/privacy-policy"
+          to="/terms-of-service"
         >
           <ForwardRef(ListItem)
             button={true}
@@ -1528,6 +1592,22 @@ exports[`Shallow Snapshot Tests new page 1`] = `
             </ForwardRef(ListItemIcon)>
             <ForwardRef(ListItemText)
               primary="利用規約"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+        <NonStyleLink
+          key="2"
+          to="/privacy-policy"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(PrivacyTipIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="プライバシーポリシー"
             />
           </ForwardRef(ListItem)>
         </NonStyleLink>
@@ -1807,7 +1887,7 @@ exports[`Shallow Snapshot Tests permanent left navi 1`] = `
         </NonStyleLink>
         <NonStyleLink
           key="1"
-          to="/privacy-policy"
+          to="/terms-of-service"
         >
           <ForwardRef(ListItem)
             button={true}
@@ -1818,6 +1898,22 @@ exports[`Shallow Snapshot Tests permanent left navi 1`] = `
             </ForwardRef(ListItemIcon)>
             <ForwardRef(ListItemText)
               primary="利用規約"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+        <NonStyleLink
+          key="2"
+          to="/privacy-policy"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(PrivacyTipIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="プライバシーポリシー"
             />
           </ForwardRef(ListItem)>
         </NonStyleLink>
@@ -2111,7 +2207,7 @@ exports[`Shallow Snapshot Tests redirect to top page 1`] = `
         </NonStyleLink>
         <NonStyleLink
           key="1"
-          to="/privacy-policy"
+          to="/terms-of-service"
         >
           <ForwardRef(ListItem)
             button={true}
@@ -2122,6 +2218,22 @@ exports[`Shallow Snapshot Tests redirect to top page 1`] = `
             </ForwardRef(ListItemIcon)>
             <ForwardRef(ListItemText)
               primary="利用規約"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+        <NonStyleLink
+          key="2"
+          to="/privacy-policy"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(PrivacyTipIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="プライバシーポリシー"
             />
           </ForwardRef(ListItem)>
         </NonStyleLink>
@@ -2415,7 +2527,7 @@ exports[`Shallow Snapshot Tests static position 1`] = `
         </NonStyleLink>
         <NonStyleLink
           key="1"
-          to="/privacy-policy"
+          to="/terms-of-service"
         >
           <ForwardRef(ListItem)
             button={true}
@@ -2426,6 +2538,22 @@ exports[`Shallow Snapshot Tests static position 1`] = `
             </ForwardRef(ListItemIcon)>
             <ForwardRef(ListItemText)
               primary="利用規約"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+        <NonStyleLink
+          key="2"
+          to="/privacy-policy"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(PrivacyTipIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="プライバシーポリシー"
             />
           </ForwardRef(ListItem)>
         </NonStyleLink>
@@ -2719,7 +2847,7 @@ exports[`Shallow Snapshot Tests with local navi & mobile 1`] = `
         </NonStyleLink>
         <NonStyleLink
           key="1"
-          to="/privacy-policy"
+          to="/terms-of-service"
         >
           <ForwardRef(ListItem)
             button={true}
@@ -2730,6 +2858,22 @@ exports[`Shallow Snapshot Tests with local navi & mobile 1`] = `
             </ForwardRef(ListItemIcon)>
             <ForwardRef(ListItemText)
               primary="利用規約"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+        <NonStyleLink
+          key="2"
+          to="/privacy-policy"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(PrivacyTipIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="プライバシーポリシー"
             />
           </ForwardRef(ListItem)>
         </NonStyleLink>
@@ -3044,7 +3188,7 @@ exports[`Shallow Snapshot Tests with local navi 1`] = `
         </NonStyleLink>
         <NonStyleLink
           key="1"
-          to="/privacy-policy"
+          to="/terms-of-service"
         >
           <ForwardRef(ListItem)
             button={true}
@@ -3055,6 +3199,22 @@ exports[`Shallow Snapshot Tests with local navi 1`] = `
             </ForwardRef(ListItemIcon)>
             <ForwardRef(ListItemText)
               primary="利用規約"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+        <NonStyleLink
+          key="2"
+          to="/privacy-policy"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(PrivacyTipIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="プライバシーポリシー"
             />
           </ForwardRef(ListItem)>
         </NonStyleLink>
@@ -3413,7 +3573,7 @@ exports[`Shallow Snapshot Tests with userInfo 1`] = `
         </NonStyleLink>
         <NonStyleLink
           key="1"
-          to="/privacy-policy"
+          to="/terms-of-service"
         >
           <ForwardRef(ListItem)
             button={true}
@@ -3424,6 +3584,22 @@ exports[`Shallow Snapshot Tests with userInfo 1`] = `
             </ForwardRef(ListItemIcon)>
             <ForwardRef(ListItemText)
               primary="利用規約"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+        <NonStyleLink
+          key="2"
+          to="/privacy-policy"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(PrivacyTipIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="プライバシーポリシー"
             />
           </ForwardRef(ListItem)>
         </NonStyleLink>

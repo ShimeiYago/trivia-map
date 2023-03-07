@@ -9,7 +9,7 @@ export class Renderer extends React.Component {
     return (
       <ArticleWrapper>
         <Typography component="h2" variant="h4" mb={3}>
-          {PAGE_NAMES.policy}
+          {PAGE_NAMES.terms}
         </Typography>
 
         <Typography sx={{ mb: 1 }}>

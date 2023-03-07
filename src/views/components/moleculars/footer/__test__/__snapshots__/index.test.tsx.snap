@@ -1,0 +1,159 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shallow Snapshot Tests basic 1`] = `
+<ForwardRef(Paper)
+  elevation={2}
+  square={true}
+>
+  <ForwardRef(Stack)
+    py={3}
+    spacing={3}
+  >
+    <ForwardRef(Typography)
+      align="center"
+      component="div"
+    >
+      <Image
+        src="logo-blue.png"
+        width="100px"
+      />
+    </ForwardRef(Typography)>
+    <ForwardRef(Stack)
+      component="nav"
+      direction="row"
+      divider={
+        <ForwardRef(Divider)
+          flexItem={true}
+          orientation="vertical"
+        />
+      }
+      justifyContent="center"
+      spacing={2}
+      sx={
+        Object {
+          "fontSize": 14,
+        }
+      }
+    >
+      <Link
+        key="footer-navi-マップ"
+        to="/"
+      >
+        マップ
+      </Link>
+      <Link
+        key="footer-navi-投稿一覧＆検索"
+        to="/articles"
+      >
+        投稿一覧＆検索
+      </Link>
+      <Link
+        key="footer-navi-お問い合わせ"
+        to="/inquiry"
+      >
+        お問い合わせ
+      </Link>
+      <Link
+        key="footer-navi-利用規約"
+        to="/terms-of-service"
+      >
+        利用規約
+      </Link>
+      <Link
+        key="footer-navi-プライバシーポリシー"
+        to="/privacy-policy"
+      >
+        プライバシーポリシー
+      </Link>
+    </ForwardRef(Stack)>
+  </ForwardRef(Stack)>
+</ForwardRef(Paper)>
+`;
+
+exports[`Shallow Snapshot Tests mobile 1`] = `
+<ForwardRef(Paper)
+  elevation={2}
+  square={true}
+>
+  <ForwardRef(Stack)
+    py={3}
+    spacing={3}
+  >
+    <ForwardRef(Typography)
+      align="center"
+      component="div"
+    >
+      <Image
+        src="logo-blue.png"
+        width="100px"
+      />
+    </ForwardRef(Typography)>
+    <ForwardRef(Stack)
+      component="nav"
+      direction="row"
+      divider={
+        <ForwardRef(Divider)
+          flexItem={true}
+          orientation="vertical"
+        />
+      }
+      justifyContent="center"
+      spacing={2}
+      sx={
+        Object {
+          "fontSize": 14,
+        }
+      }
+    >
+      <Link
+        key="footer-navi-マップ"
+        to="/"
+      >
+        マップ
+      </Link>
+      <Link
+        key="footer-navi-投稿一覧＆検索"
+        to="/articles"
+      >
+        投稿一覧＆検索
+      </Link>
+      <Link
+        key="footer-navi-お問い合わせ"
+        to="/inquiry"
+      >
+        お問い合わせ
+      </Link>
+    </ForwardRef(Stack)>
+    <ForwardRef(Stack)
+      component="nav"
+      direction="row"
+      divider={
+        <ForwardRef(Divider)
+          flexItem={true}
+          orientation="vertical"
+        />
+      }
+      justifyContent="center"
+      spacing={2}
+      sx={
+        Object {
+          "fontSize": 14,
+        }
+      }
+    >
+      <Link
+        key="footer-navi-利用規約"
+        to="/terms-of-service"
+      >
+        利用規約
+      </Link>
+      <Link
+        key="footer-navi-プライバシーポリシー"
+        to="/privacy-policy"
+      >
+        プライバシーポリシー
+      </Link>
+    </ForwardRef(Stack)>
+  </ForwardRef(Stack)>
+</ForwardRef(Paper)>
+`;

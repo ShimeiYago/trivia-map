@@ -154,6 +154,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
     open={false}
   >
     <ForwardRef(Box)
+      component="nav"
       sx={
         Object {
           "width": 250,
@@ -299,13 +300,19 @@ exports[`Shallow Snapshot Tests basic 1`] = `
     sx={
       Object {
         "ml": undefined,
-        "pb": 4,
         "pt": "64px",
         "width": "100%",
       }
     }
   >
     contents
+    <ForwardRef(Box)
+      mt={3}
+    >
+      <Footer
+        isMobile={false}
+      />
+    </ForwardRef(Box)>
   </ForwardRef(Box)>
   <BoxModal
     onClose={[Function]}
@@ -474,6 +481,7 @@ exports[`Shallow Snapshot Tests edit page 1`] = `
     open={false}
   >
     <ForwardRef(Box)
+      component="nav"
       sx={
         Object {
           "width": 250,
@@ -619,13 +627,19 @@ exports[`Shallow Snapshot Tests edit page 1`] = `
     sx={
       Object {
         "ml": undefined,
-        "pb": 4,
         "pt": "64px",
         "width": "100%",
       }
     }
   >
     contents
+    <ForwardRef(Box)
+      mt={3}
+    >
+      <Footer
+        isMobile={false}
+      />
+    </ForwardRef(Box)>
   </ForwardRef(Box)>
   <BoxModal
     onClose={[Function]}
@@ -806,6 +820,7 @@ exports[`Shallow Snapshot Tests long name with mobile 1`] = `
     open={false}
   >
     <ForwardRef(Box)
+      component="nav"
       sx={
         Object {
           "width": 250,
@@ -983,13 +998,19 @@ exports[`Shallow Snapshot Tests long name with mobile 1`] = `
     sx={
       Object {
         "ml": undefined,
-        "pb": 4,
         "pt": "56px",
         "width": "100%",
       }
     }
   >
     contents
+    <ForwardRef(Box)
+      mt={3}
+    >
+      <Footer
+        isMobile={true}
+      />
+    </ForwardRef(Box)>
   </ForwardRef(Box)>
   <BoxModal
     onClose={[Function]}
@@ -1158,6 +1179,7 @@ exports[`Shallow Snapshot Tests map page 1`] = `
     open={false}
   >
     <ForwardRef(Box)
+      component="nav"
       sx={
         Object {
           "width": 250,
@@ -1303,7 +1325,6 @@ exports[`Shallow Snapshot Tests map page 1`] = `
     sx={
       Object {
         "ml": undefined,
-        "pb": 0,
         "pt": undefined,
         "width": "100%",
       }
@@ -1478,6 +1499,7 @@ exports[`Shallow Snapshot Tests new page 1`] = `
     open={false}
   >
     <ForwardRef(Box)
+      component="nav"
       sx={
         Object {
           "width": 250,
@@ -1618,13 +1640,19 @@ exports[`Shallow Snapshot Tests new page 1`] = `
     sx={
       Object {
         "ml": undefined,
-        "pb": 4,
         "pt": "64px",
         "width": "100%",
       }
     }
   >
     contents
+    <ForwardRef(Box)
+      mt={3}
+    >
+      <Footer
+        isMobile={false}
+      />
+    </ForwardRef(Box)>
   </ForwardRef(Box)>
   <BoxModal
     onClose={[Function]}
@@ -1924,13 +1952,19 @@ exports[`Shallow Snapshot Tests permanent left navi 1`] = `
     sx={
       Object {
         "ml": "250px",
-        "pb": 4,
         "pt": "64px",
         "width": "calc(100% - 250px)",
       }
     }
   >
     contents
+    <ForwardRef(Box)
+      mt={3}
+    >
+      <Footer
+        isMobile={false}
+      />
+    </ForwardRef(Box)>
   </ForwardRef(Box)>
   <BoxModal
     onClose={[Function]}
@@ -2099,6 +2133,7 @@ exports[`Shallow Snapshot Tests redirect to top page 1`] = `
     open={false}
   >
     <ForwardRef(Box)
+      component="nav"
       sx={
         Object {
           "width": 250,
@@ -2244,13 +2279,19 @@ exports[`Shallow Snapshot Tests redirect to top page 1`] = `
     sx={
       Object {
         "ml": undefined,
-        "pb": 4,
         "pt": "64px",
         "width": "100%",
       }
     }
   >
     contents
+    <ForwardRef(Box)
+      mt={3}
+    >
+      <Footer
+        isMobile={false}
+      />
+    </ForwardRef(Box)>
   </ForwardRef(Box)>
   <BoxModal
     onClose={[Function]}
@@ -2419,6 +2460,7 @@ exports[`Shallow Snapshot Tests static position 1`] = `
     open={false}
   >
     <ForwardRef(Box)
+      component="nav"
       sx={
         Object {
           "width": 250,
@@ -2564,13 +2606,19 @@ exports[`Shallow Snapshot Tests static position 1`] = `
     sx={
       Object {
         "ml": undefined,
-        "pb": 4,
         "pt": "0px",
         "width": "100%",
       }
     }
   >
     contents
+    <ForwardRef(Box)
+      mt={3}
+    >
+      <Footer
+        isMobile={false}
+      />
+    </ForwardRef(Box)>
   </ForwardRef(Box)>
   <BoxModal
     onClose={[Function]}
@@ -2739,6 +2787,7 @@ exports[`Shallow Snapshot Tests with local navi & mobile 1`] = `
     open={false}
   >
     <ForwardRef(Box)
+      component="nav"
       sx={
         Object {
           "width": 250,
@@ -2884,7 +2933,6 @@ exports[`Shallow Snapshot Tests with local navi & mobile 1`] = `
     sx={
       Object {
         "ml": undefined,
-        "pb": 4,
         "position": "fixed",
         "pt": "56px",
         "width": "100%",
@@ -2905,13 +2953,19 @@ exports[`Shallow Snapshot Tests with local navi & mobile 1`] = `
     sx={
       Object {
         "ml": undefined,
-        "pb": 4,
         "pt": "96px",
         "width": "100%",
       }
     }
   >
     contents
+    <ForwardRef(Box)
+      mt={3}
+    >
+      <Footer
+        isMobile={true}
+      />
+    </ForwardRef(Box)>
   </ForwardRef(Box)>
   <BoxModal
     onClose={[Function]}
@@ -3080,6 +3134,7 @@ exports[`Shallow Snapshot Tests with local navi 1`] = `
     open={false}
   >
     <ForwardRef(Box)
+      component="nav"
       sx={
         Object {
           "width": 250,
@@ -3225,7 +3280,6 @@ exports[`Shallow Snapshot Tests with local navi 1`] = `
     sx={
       Object {
         "ml": undefined,
-        "pb": 4,
         "position": "fixed",
         "pt": "64px",
         "width": "100%",
@@ -3246,13 +3300,19 @@ exports[`Shallow Snapshot Tests with local navi 1`] = `
     sx={
       Object {
         "ml": undefined,
-        "pb": 4,
         "pt": "104px",
         "width": "100%",
       }
     }
   >
     contents
+    <ForwardRef(Box)
+      mt={3}
+    >
+      <Footer
+        isMobile={false}
+      />
+    </ForwardRef(Box)>
   </ForwardRef(Box)>
   <BoxModal
     onClose={[Function]}
@@ -3433,6 +3493,7 @@ exports[`Shallow Snapshot Tests with userInfo 1`] = `
     open={false}
   >
     <ForwardRef(Box)
+      component="nav"
       sx={
         Object {
           "width": 250,
@@ -3610,13 +3671,19 @@ exports[`Shallow Snapshot Tests with userInfo 1`] = `
     sx={
       Object {
         "ml": undefined,
-        "pb": 4,
         "pt": "64px",
         "width": "100%",
       }
     }
   >
     contents
+    <ForwardRef(Box)
+      mt={3}
+    >
+      <Footer
+        isMobile={false}
+      />
+    </ForwardRef(Box)>
   </ForwardRef(Box)>
   <BoxModal
     onClose={[Function]}

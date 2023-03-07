@@ -33,6 +33,7 @@ import { AuthFormMode } from '../../auth-forms/renderer';
 import noIcon from 'images/no-icon.jpg';
 import { TwitterLoginButton } from '../../twitter-login-button';
 import EmailIcon from '@mui/icons-material/Email';
+import { Footer } from 'views/components/moleculars/footer';
 export class Renderer extends React.Component<Props, State> {
   static readonly defaultProps: Pick<Props, 'topBarPosition'> = {
     topBarPosition: 'fixed',
@@ -123,6 +124,12 @@ export class Renderer extends React.Component<Props, State> {
           )}
         >
           {this.props.children}
+
+          {!this.props.mapPage && (
+            <Box mt={3}>
+              <Footer isMobile={this.props.isMobile} />
+            </Box>
+          )}
         </Box>
 
         <BoxModal
@@ -146,7 +153,7 @@ export class Renderer extends React.Component<Props, State> {
         onOpen={this.toggleLeftMenu(true)}
         onClose={this.toggleLeftMenu(false)}
       >
-        <Box sx={leftNaviBox}>
+        <Box sx={leftNaviBox} component="nav">
           {leftNaviContents(
             !!this.props.userInfo,
             this.props.pathName,

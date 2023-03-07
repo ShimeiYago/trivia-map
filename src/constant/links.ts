@@ -44,7 +44,7 @@ export const INTERNAL_ERROR_LINK = '/error/500';
 
 export const INQUIRY_PAGE_LINK = '/inquiry';
 
-export const POLICY_PAGE_LINK = '/privacy-policy';
+export const TERMS_PAGE_LINK = '/terms-of-service';
 
 export const TWITTER_CALLBACK_LINK = '/twitter-auth-callback';
 

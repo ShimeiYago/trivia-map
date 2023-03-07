@@ -15,5 +15,5 @@ export const PAGE_NAMES = {
   notFound: 'Page not found',
   internalError: 'Internal server error',
   inquiry: 'お問い合わせ',
-  policy: '利用規約',
+  terms: '利用規約',
 };

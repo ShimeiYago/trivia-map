@@ -12,8 +12,9 @@ export const PAGE_NAMES = {
   articles: '投稿一覧＆検索',
   passwordInitialize: 'パスワード初期化',
   verifyEmail: 'メールアドレス確認',
-  notFound: 'Page not found',
-  internalError: 'Internal server error',
+  notFound: 'ページが見つかりません',
+  internalError: 'エラーが発生しました',
   inquiry: 'お問い合わせ',
-  policy: '利用規約',
+  terms: '利用規約',
+  privacy: 'プライバシーポリシー',
 };

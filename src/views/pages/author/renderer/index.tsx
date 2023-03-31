@@ -34,11 +34,12 @@ export class Renderer extends React.Component<Props, State> {
       return <CenterSpinner />;
     }
 
-    const pageName = `${author.nickname}さん`;
+    const pageName = `${author.nickname}さんの投稿一覧`;
+    const description = `${author.nickname}さんが投稿した全投稿を確認することができます。`;
 
     return (
       <>
-        <CommonHelmet title={pageTitleGenerator(pageName)} />
+        <CommonHelmet title={pageTitleGenerator(pageName)} description={description} />
 
         <Stack
           direction="row"

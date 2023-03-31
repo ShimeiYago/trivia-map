@@ -5,7 +5,8 @@ exports[`Shallow Snapshot Tests basic 1`] = `
   showSidebar={true}
 >
   <CommonHelmet
-    title="Axelさん - トリビアマップ"
+    description="Axelさんが投稿した全投稿を確認することができます。"
+    title="Axelさんの投稿一覧 - トリビアマップ"
   />
   <ForwardRef(Stack)
     alignItems="center"
@@ -31,7 +32,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       component="h2"
       variant="h4"
     >
-      Axelさん
+      Axelさんの投稿一覧
     </ForwardRef(Typography)>
   </ForwardRef(Stack)>
   <IconAndText
@@ -82,7 +83,8 @@ exports[`Shallow Snapshot Tests no icon 1`] = `
   showSidebar={true}
 >
   <CommonHelmet
-    title="Axelさん - トリビアマップ"
+    description="Axelさんが投稿した全投稿を確認することができます。"
+    title="Axelさんの投稿一覧 - トリビアマップ"
   />
   <ForwardRef(Stack)
     alignItems="center"
@@ -108,7 +110,7 @@ exports[`Shallow Snapshot Tests no icon 1`] = `
       component="h2"
       variant="h4"
     >
-      Axelさん
+      Axelさんの投稿一覧
     </ForwardRef(Typography)>
   </ForwardRef(Stack)>
   <ForwardRef(Divider)
@@ -144,7 +146,8 @@ exports[`Shallow Snapshot Tests twitter url 1`] = `
   showSidebar={true}
 >
   <CommonHelmet
-    title="Axelさん - トリビアマップ"
+    description="Axelさんが投稿した全投稿を確認することができます。"
+    title="Axelさんの投稿一覧 - トリビアマップ"
   />
   <ForwardRef(Stack)
     alignItems="center"
@@ -170,7 +173,7 @@ exports[`Shallow Snapshot Tests twitter url 1`] = `
       component="h2"
       variant="h4"
     >
-      Axelさん
+      Axelさんの投稿一覧
     </ForwardRef(Typography)>
   </ForwardRef(Stack)>
   <IconAndText

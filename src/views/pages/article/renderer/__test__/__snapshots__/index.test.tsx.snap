@@ -7,7 +7,7 @@ exports[`Shallow Snapshot Tests author view 1`] = `
   <CommonHelmet
     description="description"
     ogType="article"
-    title="title - トリビアマップ"
+    title="【隠れミッキー】title"
   />
   <ForwardRef(Stack)
     spacing={2}
@@ -217,7 +217,7 @@ exports[`Shallow Snapshot Tests author view 1`] = `
       </ForwardRef(Grid)>
     </ForwardRef(Grid)>
     <ShareButtons
-      title="title - トリビアマップ"
+      title="【隠れミッキー】title"
       url="http://localhost/"
     />
   </ForwardRef(Stack)>
@@ -239,7 +239,7 @@ exports[`Shallow Snapshot Tests draft 1`] = `
   <CommonHelmet
     description="description"
     ogType="article"
-    title="title - トリビアマップ"
+    title="【隠れミッキー】title"
   />
   <ForwardRef(Stack)
     spacing={2}
@@ -428,7 +428,7 @@ exports[`Shallow Snapshot Tests draft 1`] = `
       </ForwardRef(Grid)>
     </ForwardRef(Grid)>
     <ShareButtons
-      title="title - トリビアマップ"
+      title="【隠れミッキー】title"
       url="http://localhost/"
     />
   </ForwardRef(Stack)>
@@ -442,7 +442,7 @@ exports[`Shallow Snapshot Tests have added good 1`] = `
   <CommonHelmet
     description="description"
     ogType="article"
-    title="title - トリビアマップ"
+    title="【隠れミッキー】title"
   />
   <ForwardRef(Stack)
     spacing={2}
@@ -628,7 +628,7 @@ exports[`Shallow Snapshot Tests have added good 1`] = `
       </ForwardRef(Grid)>
     </ForwardRef(Grid)>
     <ShareButtons
-      title="title - トリビアマップ"
+      title="【隠れミッキー】title"
       url="http://localhost/"
     />
   </ForwardRef(Stack)>
@@ -642,7 +642,7 @@ exports[`Shallow Snapshot Tests have liked 1`] = `
   <CommonHelmet
     description="description"
     ogType="article"
-    title="title - トリビアマップ"
+    title="【隠れミッキー】title"
   />
   <ForwardRef(Stack)
     spacing={2}
@@ -852,7 +852,7 @@ exports[`Shallow Snapshot Tests have liked 1`] = `
       </ForwardRef(Grid)>
     </ForwardRef(Grid)>
     <ShareButtons
-      title="title - トリビアマップ"
+      title="【隠れミッキー】title"
       url="http://localhost/"
     />
   </ForwardRef(Stack)>
@@ -874,7 +874,7 @@ exports[`Shallow Snapshot Tests with article 1`] = `
   <CommonHelmet
     description="description"
     ogType="article"
-    title="title - トリビアマップ"
+    title="【隠れミッキー】title"
   />
   <ForwardRef(Stack)
     spacing={2}
@@ -1058,7 +1058,7 @@ exports[`Shallow Snapshot Tests with article 1`] = `
       </ForwardRef(Grid)>
     </ForwardRef(Grid)>
     <ShareButtons
-      title="title - トリビアマップ"
+      title="【隠れミッキー】title"
       url="http://localhost/"
     />
   </ForwardRef(Stack)>
@@ -1073,7 +1073,7 @@ exports[`Shallow Snapshot Tests with image 1`] = `
     description="description"
     imageUrl="image.jpg"
     ogType="article"
-    title="title - トリビアマップ"
+    title="【隠れミッキー】title"
   />
   <ForwardRef(Stack)
     spacing={2}
@@ -1261,7 +1261,7 @@ exports[`Shallow Snapshot Tests with image 1`] = `
       </ForwardRef(Grid)>
     </ForwardRef(Grid)>
     <ShareButtons
-      title="title - トリビアマップ"
+      title="【隠れミッキー】title"
       url="http://localhost/"
     />
   </ForwardRef(Stack)>

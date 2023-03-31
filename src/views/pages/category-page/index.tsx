@@ -5,7 +5,6 @@ import { throwError } from 'store/global-error/slice';
 import { useAppDispatch } from 'store';
 import { CATEGORIES } from 'constant';
 import { CommonHelmet } from 'helper-components/common-helmet';
-import { pageTitleGenerator } from 'utils/page-title-generator';
 import { categoryMapper } from 'utils/category-mapper';
 
 export function CategoryPage() {
@@ -22,9 +21,12 @@ export function CategoryPage() {
 
   for (const category of CATEGORIES) {
     if (category.categoryId === categoryIdNumber) {
+      const categoryName = categoryMapper(categoryIdNumber);
+      const pageName = `${categoryName}の記事一覧`;
+      const description = `${categoryName}の全記事を確認することができます。`;
       return (
         <>
-          <CommonHelmet title={pageTitleGenerator(categoryMapper(categoryIdNumber))} />
+          <CommonHelmet title={pageName} description={description} />
 
           <Renderer categoryId={categoryIdNumber} />
         </>

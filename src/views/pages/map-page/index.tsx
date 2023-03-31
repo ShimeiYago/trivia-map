@@ -17,7 +17,6 @@ import {
 import { updateFilteringCategoryId, updateFocusingPark } from 'store/markers/actions';
 import { Park } from 'types/park';
 import { useAppDispatch } from 'store';
-import { CommonHelmet } from 'helper-components/common-helmet';
 import { useWindowSize } from 'helper-components/user-window-size';
 import { throwError } from 'store/global-error/slice';
 import { useNavigate } from 'react-router-dom';
@@ -74,10 +73,5 @@ export function MapPage(ownProps: { new?: boolean }) {
     };
   }
 
-  return (
-    <>
-      <CommonHelmet />
-      <Renderer {...props} />
-    </>
-  );
+  return <Renderer {...props} />;
 }

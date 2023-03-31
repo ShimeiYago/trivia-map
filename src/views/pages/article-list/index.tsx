@@ -2,8 +2,8 @@ import { Renderer, Conditions } from './renderer';
 import { useLocation } from 'react-router-dom';
 import usePageTracking from 'helper-components/tracker';
 import { CommonHelmet } from 'helper-components/common-helmet';
-import { pageTitleGenerator } from 'utils/page-title-generator';
 import { PAGE_NAMES } from 'constant/page-names';
+import { PAGE_DESCRIPTIONS } from 'constant/head-tags';
 
 export function ArticleList() {
   const search = useLocation().search;
@@ -21,7 +21,7 @@ export function ArticleList() {
 
   return (
     <>
-      <CommonHelmet title={pageTitleGenerator(PAGE_NAMES.articles)} />
+      <CommonHelmet title={PAGE_NAMES.articles} description={PAGE_DESCRIPTIONS.articles} />
 
       <Renderer initialSearchConditions={conditions} />
     </>

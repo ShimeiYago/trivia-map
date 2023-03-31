@@ -6,7 +6,7 @@ import { Renderer } from './renderer';
 export function LikedArticles() {
   return (
     <>
-      <CommonHelmet title={pageTitleGenerator(PAGE_NAMES.myArticles)} noindex />
+      <CommonHelmet title={pageTitleGenerator(PAGE_NAMES.likedArticles)} noindex />
 
       <Renderer />
     </>

@@ -33,7 +33,7 @@ import {
 import { GlobalMenu } from 'views/components/organisms/global-menu';
 import { Park } from 'types/park';
 import { RoundButton } from 'views/components/atoms/round-button';
-import { CATEGORIES, INITIAL_PARK } from 'constant';
+import { CATEGORIES, INITIAL_PARK, SITE_NAME } from 'constant';
 import { AUTHER_PAGE_LINK, EDIT_LINK, MAP_PAGE_LINK, NEW_LINK } from 'constant/links';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { Author } from 'types/author';
@@ -42,6 +42,8 @@ import { ApiError } from 'api/utils/handle-axios-error';
 import { Link } from 'react-router-dom';
 import CloseIcon from '@mui/icons-material/Close';
 import { MapFocus } from 'types/map-focus';
+import { CommonHelmet } from 'helper-components/common-helmet';
+import { PAGE_DESCRIPTIONS } from 'constant/head-tags';
 
 const CATEGORY_BUTTON_ID = (categoryId: number) => `category-button-${categoryId}`;
 
@@ -150,6 +152,7 @@ export class Renderer extends React.Component<Props, State> {
       windowHeight,
       userId,
       initMapFocus,
+      postIdToEdit,
     } = this.props;
 
     const triviaMap = windowWidth !== 0 && windowHeight !== 0 && park && (
@@ -167,32 +170,46 @@ export class Renderer extends React.Component<Props, State> {
       />
     );
 
+    const canonical = this.props.new || !!postIdToEdit || !!userId;
+
     return (
-      <Box sx={wrapper(openFormModal && !isMobile)}>
-        <GlobalMenu topBarPosition="static" mapPage>
-          <Box sx={mapWrapper(isMobile, windowWidth, windowHeight)}>
-            {triviaMap}
+      <>
+        <CommonHelmet
+          title={SITE_NAME}
+          description={PAGE_DESCRIPTIONS.main}
+          canonicalUrlPath={canonical ? MAP_PAGE_LINK : undefined}
+        />
 
-            {!isFormEditting && !this.props.userId && (
-              <FloatingButton color="error" icon="add-marker" onClick={this.handleClickAddButton} />
-            )}
+        <Box sx={wrapper(openFormModal && !isMobile)}>
+          <GlobalMenu topBarPosition="static" mapPage>
+            <Box sx={mapWrapper(isMobile, windowWidth, windowHeight)}>
+              {triviaMap}
 
-            <LoadingProgressBar />
+              {!isFormEditting && !this.props.userId && (
+                <FloatingButton
+                  color="error"
+                  icon="add-marker"
+                  onClick={this.handleClickAddButton}
+                />
+              )}
 
-            {this.renderParkSelectBox()}
+              <LoadingProgressBar />
 
-            {this.renderCategoryButtons()}
+              {this.renderParkSelectBox()}
 
-            {this.renderAuthorMapMessage()}
-          </Box>
-        </GlobalMenu>
+              {this.renderCategoryButtons()}
 
-        {this.renderEditForm()}
+              {this.renderAuthorMapMessage()}
+            </Box>
+          </GlobalMenu>
 
-        <GlobalMessage closeFormModal={this.handleCloseFormModal} />
+          {this.renderEditForm()}
 
-        {this.renderDoubleEditAlartDialog()}
-      </Box>
+          <GlobalMessage closeFormModal={this.handleCloseFormModal} />
+
+          {this.renderDoubleEditAlartDialog()}
+        </Box>
+      </>
     );
   }
 

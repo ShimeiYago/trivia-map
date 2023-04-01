@@ -7,7 +7,6 @@ import { Avatar, Divider, Stack, Typography } from '@mui/material';
 import { CenterSpinner } from 'views/components/atoms/center-spinner';
 import noIcon from 'images/no-icon.jpg';
 import { ApiError } from 'api/utils/handle-axios-error';
-import { pageTitleGenerator } from 'utils/page-title-generator';
 import { CommonHelmet } from 'helper-components/common-helmet';
 import { MapLinkButton } from 'views/components/moleculars/map-link-button';
 import LinkIcon from '@mui/icons-material/Link';
@@ -34,11 +33,12 @@ export class Renderer extends React.Component<Props, State> {
       return <CenterSpinner />;
     }
 
-    const pageName = `${author.nickname}さん`;
+    const pageName = `${author.nickname}さんの投稿一覧`;
+    const description = `${author.nickname}さんのプロフィールと、全投稿を確認することができます。`;
 
     return (
       <>
-        <CommonHelmet title={pageTitleGenerator(pageName)} />
+        <CommonHelmet title={pageName} description={description} />
 
         <Stack
           direction="row"
@@ -49,7 +49,7 @@ export class Renderer extends React.Component<Props, State> {
         >
           <Avatar sx={{ width: 50, height: 50 }} src={author.icon ?? noIcon} />
           <Typography component="h2" variant="h4">
-            {pageName}
+            {`${author.nickname}さん`}
           </Typography>
         </Stack>
 

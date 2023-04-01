@@ -7,7 +7,6 @@ import { getDomain } from 'utils/get-domain.ts';
 export function CommonHelmet(props: Props): JSX.Element {
   const domain = getDomain(window);
 
-  const title = props.title ?? SITE_NAME;
   const description = props.description ?? DEFAULT_HEAD_TAGS.description;
   const ogType = props.ogType ?? DEFAULT_HEAD_TAGS.ogType;
   const imageUrl = props.imageUrl ?? `${domain}/${DEFAULT_HEAD_TAGS.imageName}`;
@@ -17,17 +16,26 @@ export function CommonHelmet(props: Props): JSX.Element {
   if (props.noindex || NO_INDEX) {
     return (
       <Helmet>
-        <title>{title}</title>
+        <title>{props.title}</title>
         <meta name="robots" content="noindex,nofollow" />
+      </Helmet>
+    );
+  }
+
+  if (props.canonicalUrlPath) {
+    return (
+      <Helmet>
+        <title>{props.title}</title>
+        <link rel="canonical" href={`${domain}${props.canonicalUrlPath}`} />
       </Helmet>
     );
   }
 
   return (
     <Helmet>
-      <title>{title}</title>
-      <meta property="og:title" content={SITE_NAME} />
+      <title>{props.title}</title>
       <meta name="description" content={description} />
+      <meta property="og:title" content={props.title} />
       <meta property="og:description" content={description} />
       <meta property="og:type" content={ogType} />
       <meta property="og:url" content={`${domain}${location.pathname}`} />
@@ -41,9 +49,10 @@ export function CommonHelmet(props: Props): JSX.Element {
 }
 
 export type Props = {
-  title?: string;
+  title: string;
   description?: string;
   ogType?: 'website' | 'article';
   imageUrl?: string;
   noindex?: boolean;
+  canonicalUrlPath?: string;
 };

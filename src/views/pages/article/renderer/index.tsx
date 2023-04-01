@@ -18,7 +18,6 @@ import { categoryMapper } from 'utils/category-mapper';
 import FolderIcon from '@mui/icons-material/Folder';
 import { User } from 'types/user';
 import EditIcon from '@mui/icons-material/Edit';
-import { pageTitleGenerator } from 'utils/page-title-generator';
 import { CommonHelmet } from 'helper-components/common-helmet';
 import { NonStyleLink } from 'views/components/atoms/non-style-link';
 import { ShareButtons } from 'views/components/atoms/share-buttons';
@@ -77,13 +76,15 @@ export class Renderer extends React.Component<Props, State> {
     const { title, description, marker, image, author, createdAt, updatedAt, isDraft, category } =
       article;
 
-    const pageTitle = pageTitleGenerator(title);
+    const categoryName = categoryMapper(category);
+
+    const pageTitle = `【${categoryName}】${title}`;
 
     return (
       <>
         <CommonHelmet
           title={pageTitle}
-          description={description ?? undefined}
+          description={description}
           imageUrl={image ?? undefined}
           ogType="article"
         />
@@ -119,7 +120,7 @@ export class Renderer extends React.Component<Props, State> {
           <Typography component="div" color="gray" sx={{ textDecoration: 'underline' }}>
             <IconAndText
               iconComponent={<FolderIcon />}
-              text={categoryMapper(category)}
+              text={categoryName}
               align="left"
               iconPosition="left"
               to={CATEGORY_PAGE_LINK(category.toString())}

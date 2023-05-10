@@ -14,6 +14,7 @@ import {
   selectArticleFormImage,
   selectArticleFormLastSavedImage,
   selectArticleFormIsDraft,
+  selectArticleFormLastSavedIsDraft,
   selectArticleFormCategory,
   selectArticleFormLastSavedCategory,
   selectArticleFormAreaNames,
@@ -46,6 +47,7 @@ describe('readingArticle selector', () => {
       isEditting: false,
       isFormChangedFromLastSaved: false,
       isDraft: true,
+      lastSavedIsDraft: true,
       submitSuccessId: 1,
     } as ArticleFormState,
   };
@@ -127,6 +129,10 @@ describe('readingArticle selector', () => {
 
   it('selectArticleFormIsDraft should return articleForm isDraft state', () => {
     expect(selectArticleFormIsDraft(rootState)).toEqual(true);
+  });
+
+  it('selectArticleFormLastSavedIsDraft should return articleForm lastSavedIsDraft state', () => {
+    expect(selectArticleFormLastSavedIsDraft(rootState)).toEqual(true);
   });
 
   it('selectSubmitSuccessId should return articleForm submitSuccessId state', () => {

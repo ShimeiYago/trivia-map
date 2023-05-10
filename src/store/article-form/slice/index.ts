@@ -128,6 +128,7 @@ export const articleFormSlice = createSlice({
       state.lastSavedImage = initialState.lastSavedImage;
       state.lastSavedCategory = initialState.lastSavedCategory;
       state.isFormChangedFromLastSaved = initialState.isFormChangedFromLastSaved;
+      state.lastSavedIsDraft = initialState.lastSavedIsDraft;
     },
 
     updateIsEditting(state, action: PayloadAction<boolean>) {
@@ -140,6 +141,7 @@ export const articleFormSlice = createSlice({
       state.lastSavedPosition = state.position;
       state.lastSavedImage = state.image;
       state.lastSavedCategory = state.category;
+      state.lastSavedIsDraft = state.isDraft;
       state.isFormChangedFromLastSaved = false;
     },
 
@@ -150,7 +152,8 @@ export const articleFormSlice = createSlice({
         state.lastSavedPosition?.lat === state.position?.lat &&
         state.lastSavedPosition?.lng === state.position?.lng &&
         state.lastSavedImage === state.image &&
-        state.lastSavedCategory === state.category
+        state.lastSavedCategory === state.category &&
+        state.lastSavedIsDraft === state.isDraft
       );
     },
   },

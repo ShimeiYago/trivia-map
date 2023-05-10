@@ -58,6 +58,7 @@ describe('articleForm reducer', () => {
       isEditting: false,
       isFormChangedFromLastSaved: false,
       isDraft: false,
+      lastSavedIsDraft: false,
     });
   });
 

@@ -90,6 +90,7 @@ export class Renderer extends React.Component<Props> {
       position,
       areaNames,
       isDraft,
+      lastSavedIsDraft,
       submittingState,
       fetchingState,
       formError,
@@ -107,6 +108,8 @@ export class Renderer extends React.Component<Props> {
       : 'normal';
 
     const imageSrc = this.getImageSrc();
+
+    const showIsDraftCheckbox = newMode || lastSavedIsDraft;
 
     return (
       <>
@@ -215,16 +218,18 @@ export class Renderer extends React.Component<Props> {
               required
             />
 
-            <FormControlLabel
-              control={
-                <Checkbox
-                  onChange={this.handleChangeIsDraft}
-                  checked={isDraft}
-                  disabled={disabled}
-                />
-              }
-              label="下書きとして保存（非公開）"
-            />
+            {showIsDraftCheckbox && (
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    onChange={this.handleChangeIsDraft}
+                    checked={isDraft}
+                    disabled={disabled}
+                  />
+                }
+                label="下書きとして保存（非公開）"
+              />
+            )}
 
             {this.renderLoginWarningMessage()}
 
@@ -385,6 +390,7 @@ export type Props = {
   position?: Position;
   areaNames?: string[];
   isDraft: boolean;
+  lastSavedIsDraft: boolean;
   submittingState: LoadingState;
   fetchingState: LoadingState;
   formError?: FormError;

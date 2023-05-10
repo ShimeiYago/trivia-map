@@ -10,6 +10,7 @@ import {
   selectArticleFormIsEditting,
   selectArticleFormImage,
   selectArticleFormIsDraft,
+  selectArticleFormLastSavedIsDraft,
   selectArticleFormCategory,
   selectArticleFormAreaNames,
 } from 'store/article-form/selector';
@@ -36,6 +37,7 @@ export function ArticleForm(ownProps: OwnProps) {
     position: useAppSelector(selectArticleFormPosition),
     areaNames: useAppSelector(selectArticleFormAreaNames),
     isDraft: useAppSelector(selectArticleFormIsDraft),
+    lastSavedIsDraft: useAppSelector(selectArticleFormLastSavedIsDraft),
     image: useAppSelector(selectArticleFormImage),
     category: useAppSelector(selectArticleFormCategory),
     submittingState: useAppSelector(selectArticleFormSubmittingState),

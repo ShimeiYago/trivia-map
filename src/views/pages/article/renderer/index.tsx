@@ -73,8 +73,7 @@ export class Renderer extends React.Component<Props, State> {
       return <CenterSpinner />;
     }
 
-    const { title, description, marker, image, author, createdAt, updatedAt, isDraft, category } =
-      article;
+    const { title, description, marker, image, author, isDraft, category } = article;
 
     const categoryName = categoryMapper(category);
 
@@ -127,10 +126,7 @@ export class Renderer extends React.Component<Props, State> {
             />
           </Typography>
 
-          <Box sx={createdAtBox}>
-            <Typography>{`投稿日 ${createdAt}`}</Typography>
-            {createdAt !== updatedAt && <Typography>{`更新日 ${updatedAt}`}</Typography>}
-          </Box>
+          <Box sx={createdAtBox}>{this.renderDates(article)}</Box>
 
           <Divider />
 
@@ -334,6 +330,25 @@ export class Renderer extends React.Component<Props, State> {
     } catch (error) {
       this.props.throwError(500);
     }
+  };
+
+  protected renderDates = (article: GetArticleResponse) => {
+    const { createdAt, updatedAt, isDraft } = article;
+
+    if (isDraft) {
+      if (createdAt === updatedAt) {
+        return <Typography>{`投稿日 ${createdAt}`}</Typography>;
+      } else {
+        return <Typography>{`投稿日 ${updatedAt}`}</Typography>;
+      }
+    }
+
+    return (
+      <>
+        <Typography>{`投稿日 ${createdAt}`}</Typography>
+        {createdAt !== updatedAt && <Typography>{`更新日 ${updatedAt}`}</Typography>}
+      </>
+    );
   };
 }
 

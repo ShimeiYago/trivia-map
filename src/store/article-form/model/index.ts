@@ -21,6 +21,7 @@ export interface ArticleFormState {
   lastSavedCategory?: number;
   isFormChangedFromLastSaved: boolean;
   isDraft: boolean;
+  lastSavedIsDraft: boolean;
   submitSuccessId?: number;
 }
 
@@ -36,6 +37,7 @@ export const initialState: ArticleFormState = {
   isEditting: false,
   isFormChangedFromLastSaved: false,
   isDraft: false,
+  lastSavedIsDraft: false,
 };
 
 export type FormError = {

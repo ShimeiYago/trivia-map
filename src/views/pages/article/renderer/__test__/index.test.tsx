@@ -96,6 +96,14 @@ describe('Shallow Snapshot Tests', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
+  it('draft with same created & updated', () => {
+    wrapper.setState({
+      article: { ...article, isDraft: true, updatedAt: article.createdAt },
+      loadingArticleState: 'success',
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+
   it('author view', () => {
     wrapper.setProps({
       user: testUser,

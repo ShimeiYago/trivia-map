@@ -14,6 +14,7 @@ const basicProps: Props = {
   },
   areaNames: ['シー', 'メディテレーニアンハーバー', 'ポルトパラディーゾ'],
   isDraft: false,
+  lastSavedIsDraft: false,
   submittingState: 'waiting',
   fetchingState: 'waiting',
   isFormEditting: false,

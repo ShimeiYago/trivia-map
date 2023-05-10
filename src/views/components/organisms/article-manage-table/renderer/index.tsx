@@ -113,16 +113,20 @@ export class Renderer extends React.Component<Props, State> {
             />
           </TableCell>
           <TableCell width={70}>
-            <FormControl variant="standard">
-              <Select value={String(isDraft)} onChange={this.handleChangeDraftStatus(preview)}>
-                <MenuItem value="false">
-                  <Typography fontSize={14}>公開</Typography>
-                </MenuItem>
-                <MenuItem value="true">
-                  <Typography fontSize={14}>下書き</Typography>
-                </MenuItem>
-              </Select>
-            </FormControl>
+            {isDraft ? (
+              <FormControl variant="standard">
+                <Select value={String(isDraft)} onChange={this.handleChangeDraftStatus(preview)}>
+                  <MenuItem value="false">
+                    <Typography fontSize={14}>公開</Typography>
+                  </MenuItem>
+                  <MenuItem value="true">
+                    <Typography fontSize={14}>下書き</Typography>
+                  </MenuItem>
+                </Select>
+              </FormControl>
+            ) : (
+              '公開中'
+            )}
           </TableCell>
           <TableCell width={40}>
             <IconAndText
@@ -166,16 +170,23 @@ export class Renderer extends React.Component<Props, State> {
           <TableCell>
             <Typography color="gray" component="div" marginBottom={1}>
               <Box marginBottom={2}>
-                <FormControl variant="standard">
-                  <Select value={String(isDraft)} onChange={this.handleChangeDraftStatus(preview)}>
-                    <MenuItem value="false">
-                      <Typography variant="subtitle2">公開</Typography>
-                    </MenuItem>
-                    <MenuItem value="true">
-                      <Typography variant="subtitle2">下書き</Typography>
-                    </MenuItem>
-                  </Select>
-                </FormControl>
+                {isDraft ? (
+                  <FormControl variant="standard">
+                    <Select
+                      value={String(isDraft)}
+                      onChange={this.handleChangeDraftStatus(preview)}
+                    >
+                      <MenuItem value="false">
+                        <Typography variant="subtitle2">公開</Typography>
+                      </MenuItem>
+                      <MenuItem value="true">
+                        <Typography variant="subtitle2">下書き</Typography>
+                      </MenuItem>
+                    </Select>
+                  </FormControl>
+                ) : (
+                  <Typography fontSize={14}>公開中</Typography>
+                )}
               </Box>
 
               <Stack direction="row" spacing={1} justifyContent="space-between">

@@ -17,4 +17,5 @@ export const PAGE_NAMES = {
   inquiry: 'お問い合わせ',
   terms: '利用規約',
   privacy: 'プライバシーポリシー',
+  specialMap: '特別なマップ',
 };

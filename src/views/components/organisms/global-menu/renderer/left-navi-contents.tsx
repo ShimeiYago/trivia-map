@@ -14,6 +14,7 @@ import {
   TERMS_PAGE_LINK,
   SIGNUP_LINK,
   PRIVACY_POLICY_PAGE_LINK,
+  SPECIAL_MAP_LIST_PAGE_LINK,
 } from 'constant/links';
 import ArticleIcon from '@mui/icons-material/Article';
 import { NonStyleLink } from 'views/components/atoms/non-style-link';
@@ -30,6 +31,7 @@ import AddLocationAltIcon from '@mui/icons-material/AddLocationAlt';
 import { MyIcon } from 'views/components/atoms/my-icon';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import PrivacyTipIcon from '@mui/icons-material/PrivacyTip';
+import StarIcon from '@mui/icons-material/Star';
 
 const listItemsForMap: ListItem[] = [
   {
@@ -82,6 +84,14 @@ const listItemsForAdmin: ListItem[] = [
     text: PAGE_NAMES.accountSettings,
     icon: <ManageAccountsIcon />,
     link: ACCOUNT_SETTINGS_LINK,
+  },
+];
+
+const listItemsSpecialMap: ListItem[] = [
+  {
+    text: PAGE_NAMES.specialMap,
+    icon: <StarIcon />,
+    link: SPECIAL_MAP_LIST_PAGE_LINK,
   },
 ];
 
@@ -147,6 +157,8 @@ export const leftNaviContents = (
         onClose,
       )}
     </List>
+    <Divider />
+    <List>{listItemMapping(listItemsSpecialMap, pathName, isFormEditting, onClose)}</List>
     <Divider />
     <List>{listItemMapping(listItemsOthers, pathName, isFormEditting, onClose)}</List>
   </>

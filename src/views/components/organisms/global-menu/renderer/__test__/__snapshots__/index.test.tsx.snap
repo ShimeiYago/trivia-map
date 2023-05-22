@@ -247,6 +247,25 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       <ForwardRef(List)>
         <NonStyleLink
           key="0"
+          to="/special-maps"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(StarIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="特別なマップ"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+      </ForwardRef(List)>
+      <ForwardRef(Divider) />
+      <ForwardRef(List)>
+        <NonStyleLink
+          key="0"
           to="/inquiry"
         >
           <ForwardRef(ListItem)
@@ -566,6 +585,25 @@ exports[`Shallow Snapshot Tests edit page 1`] = `
             </ForwardRef(ListItemIcon)>
             <ForwardRef(ListItemText)
               primary="アカウント作成"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+      </ForwardRef(List)>
+      <ForwardRef(Divider) />
+      <ForwardRef(List)>
+        <NonStyleLink
+          key="0"
+          to="/special-maps"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(StarIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="特別なマップ"
             />
           </ForwardRef(ListItem)>
         </NonStyleLink>
@@ -945,6 +983,25 @@ exports[`Shallow Snapshot Tests long name with mobile 1`] = `
       <ForwardRef(List)>
         <NonStyleLink
           key="0"
+          to="/special-maps"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(StarIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="特別なマップ"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+      </ForwardRef(List)>
+      <ForwardRef(Divider) />
+      <ForwardRef(List)>
+        <NonStyleLink
+          key="0"
           to="/inquiry"
         >
           <ForwardRef(ListItem)
@@ -1272,6 +1329,25 @@ exports[`Shallow Snapshot Tests map page 1`] = `
       <ForwardRef(List)>
         <NonStyleLink
           key="0"
+          to="/special-maps"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(StarIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="特別なマップ"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+      </ForwardRef(List)>
+      <ForwardRef(Divider) />
+      <ForwardRef(List)>
+        <NonStyleLink
+          key="0"
           to="/inquiry"
         >
           <ForwardRef(ListItem)
@@ -1587,6 +1663,25 @@ exports[`Shallow Snapshot Tests new page 1`] = `
       <ForwardRef(List)>
         <NonStyleLink
           key="0"
+          to="/special-maps"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(StarIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="特別なマップ"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+      </ForwardRef(List)>
+      <ForwardRef(Divider) />
+      <ForwardRef(List)>
+        <NonStyleLink
+          key="0"
           to="/inquiry"
         >
           <ForwardRef(ListItem)
@@ -1891,6 +1986,25 @@ exports[`Shallow Snapshot Tests permanent left navi 1`] = `
             </ForwardRef(ListItemIcon)>
             <ForwardRef(ListItemText)
               primary="アカウント作成"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+      </ForwardRef(List)>
+      <ForwardRef(Divider) />
+      <ForwardRef(List)>
+        <NonStyleLink
+          key="0"
+          to="/special-maps"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(StarIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="特別なマップ"
             />
           </ForwardRef(ListItem)>
         </NonStyleLink>
@@ -2226,6 +2340,25 @@ exports[`Shallow Snapshot Tests redirect to top page 1`] = `
       <ForwardRef(List)>
         <NonStyleLink
           key="0"
+          to="/special-maps"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(StarIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="特別なマップ"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+      </ForwardRef(List)>
+      <ForwardRef(Divider) />
+      <ForwardRef(List)>
+        <NonStyleLink
+          key="0"
           to="/inquiry"
         >
           <ForwardRef(ListItem)
@@ -2553,6 +2686,25 @@ exports[`Shallow Snapshot Tests static position 1`] = `
       <ForwardRef(List)>
         <NonStyleLink
           key="0"
+          to="/special-maps"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(StarIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="特別なマップ"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+      </ForwardRef(List)>
+      <ForwardRef(Divider) />
+      <ForwardRef(List)>
+        <NonStyleLink
+          key="0"
           to="/inquiry"
         >
           <ForwardRef(ListItem)
@@ -2872,6 +3024,25 @@ exports[`Shallow Snapshot Tests with local navi & mobile 1`] = `
             </ForwardRef(ListItemIcon)>
             <ForwardRef(ListItemText)
               primary="アカウント作成"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+      </ForwardRef(List)>
+      <ForwardRef(Divider) />
+      <ForwardRef(List)>
+        <NonStyleLink
+          key="0"
+          to="/special-maps"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(StarIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="特別なマップ"
             />
           </ForwardRef(ListItem)>
         </NonStyleLink>
@@ -3219,6 +3390,25 @@ exports[`Shallow Snapshot Tests with local navi 1`] = `
             </ForwardRef(ListItemIcon)>
             <ForwardRef(ListItemText)
               primary="アカウント作成"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+      </ForwardRef(List)>
+      <ForwardRef(Divider) />
+      <ForwardRef(List)>
+        <NonStyleLink
+          key="0"
+          to="/special-maps"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(StarIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="特別なマップ"
             />
           </ForwardRef(ListItem)>
         </NonStyleLink>
@@ -3610,6 +3800,25 @@ exports[`Shallow Snapshot Tests with userInfo 1`] = `
             </ForwardRef(ListItemIcon)>
             <ForwardRef(ListItemText)
               primary="アカウント設定"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+      </ForwardRef(List)>
+      <ForwardRef(Divider) />
+      <ForwardRef(List)>
+        <NonStyleLink
+          key="0"
+          to="/special-maps"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <Memo(ForwardRef(StarIcon)) />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="特別なマップ"
             />
           </ForwardRef(ListItem)>
         </NonStyleLink>

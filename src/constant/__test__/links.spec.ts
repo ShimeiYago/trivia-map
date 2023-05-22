@@ -6,6 +6,7 @@ import {
   VERIFY_EMAIL_LINK,
   CATEGORY_PAGE_LINK,
   MAP_USER_LINK,
+  SPECIAL_MAP_PAGE_LINK,
 } from '../links';
 
 describe('links', () => {
@@ -42,5 +43,10 @@ describe('links', () => {
   it('CATEGORY_PAGE_LINK return category page link', () => {
     const link = CATEGORY_PAGE_LINK('1');
     expect(link).toBe('/categories/1');
+  });
+
+  it('SPECIAL_MAP_PAGE_LINK return special map page link', () => {
+    const link = SPECIAL_MAP_PAGE_LINK('1');
+    expect(link).toBe('/special-maps/1');
   });
 });

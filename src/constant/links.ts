@@ -51,3 +51,7 @@ export const PRIVACY_POLICY_PAGE_LINK = '/privacy-policy';
 export const TWITTER_CALLBACK_LINK = '/twitter-auth-callback';
 
 export const TWITTER_LOGIN_LINK = '/twitter-login';
+
+export const SPECIAL_MAP_LIST_PAGE_LINK = '/special-maps';
+
+export const SPECIAL_MAP_PAGE_LINK = (mapId: string) => `/special-maps/${mapId}`;

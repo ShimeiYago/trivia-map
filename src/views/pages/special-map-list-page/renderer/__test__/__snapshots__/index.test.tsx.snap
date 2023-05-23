@@ -100,16 +100,108 @@ exports[`Shallow Snapshot Tests with special maps 1`] = `
       page={1}
       size="large"
     />
-    <div
-      key="special-map-1"
+    <ForwardRef(Box)
+      key="special-map-preview-1"
     >
-      トイレマップ
-    </div>
-    <div
-      key="special-map-2"
+      <Link
+        className="preview-link"
+        to="/special-maps/1"
+      >
+        <ForwardRef(Card)
+          sx={
+            Object {
+              "&:hover": Object {
+                "transform": "translate(0,-5px)",
+              },
+              "backgroundColor": "#f5f8fa",
+              "transition": "all 0.3s",
+            }
+          }
+        >
+          <ForwardRef(CardMedia)
+            className="card-media"
+            component="img"
+            image="https://www.yuu-diaryblog.com/wp-content/uploads/2017/06/disney-wc.jpg"
+          />
+          <ForwardRef(CardContent)>
+            <ForwardRef(Typography)
+              component="h3"
+              gutterBottom={true}
+              sx={
+                Object {
+                  "wordBreak": "break-all",
+                }
+              }
+              variant="h5"
+            >
+              トイレマップ
+            </ForwardRef(Typography)>
+            <ForwardRef(Typography)
+              align="center"
+              component="div"
+            >
+              <IconAndText
+                component="span"
+                iconComponent={<Memo />}
+                iconPosition="left"
+                text="くわしく読む"
+              />
+            </ForwardRef(Typography)>
+          </ForwardRef(CardContent)>
+        </ForwardRef(Card)>
+      </Link>
+    </ForwardRef(Box)>
+    <ForwardRef(Box)
+      key="special-map-preview-2"
     >
-      「関係者以外立ち入り禁止」看板マップ
-    </div>
+      <Link
+        className="preview-link"
+        to="/special-maps/2"
+      >
+        <ForwardRef(Card)
+          sx={
+            Object {
+              "&:hover": Object {
+                "transform": "translate(0,-5px)",
+              },
+              "backgroundColor": "#f5f8fa",
+              "transition": "all 0.3s",
+            }
+          }
+        >
+          <ForwardRef(CardMedia)
+            className="card-media"
+            component="img"
+            image="no-image-16x7.jpg"
+          />
+          <ForwardRef(CardContent)>
+            <ForwardRef(Typography)
+              component="h3"
+              gutterBottom={true}
+              sx={
+                Object {
+                  "wordBreak": "break-all",
+                }
+              }
+              variant="h5"
+            >
+              「関係者以外立ち入り禁止」看板マップ
+            </ForwardRef(Typography)>
+            <ForwardRef(Typography)
+              align="center"
+              component="div"
+            >
+              <IconAndText
+                component="span"
+                iconComponent={<Memo />}
+                iconPosition="left"
+                text="くわしく読む"
+              />
+            </ForwardRef(Typography)>
+          </ForwardRef(CardContent)>
+        </ForwardRef(Card)>
+      </Link>
+    </ForwardRef(Box)>
     <CenterPagination
       count={2}
       onChange={[Function]}

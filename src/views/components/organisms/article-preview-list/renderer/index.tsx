@@ -8,8 +8,6 @@ import {
 } from 'api/articles-api/get-articles-previews';
 import { Link } from 'react-router-dom';
 import { Image } from 'views/components/moleculars/image';
-import classes from './index.module.css';
-import * as sxProps from './styles';
 import { IconAndText } from 'views/components/atoms/icon-and-text';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import { CenterSpinner } from 'views/components/atoms/center-spinner';
@@ -21,6 +19,8 @@ import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import { DynamicAlignedText } from 'views/components/atoms/dynamic-aligned-text';
 import { CenterPagination } from 'views/components/atoms/center-pagination';
+import cardClasses from 'views/common-styles/preview-card.module.css';
+import { cardStyle } from 'views/common-styles/card';
 
 const POPUP_SCROLL_HEIGHT = '240px';
 const POPUP_SCROLL_GRADATION_HEIGHT = '50px';
@@ -91,11 +91,7 @@ export class Renderer extends React.Component<Props, State> {
 
       return (
         <Box key={`preview-list-${postId}`}>
-          <Link
-            to={ARTICLE_PAGE_LINK(String(postId))}
-            key={`preview-${postId}`}
-            className={classes['preview-link']}
-          >
+          <Link to={ARTICLE_PAGE_LINK(String(postId))} className={cardClasses['preview-link']}>
             {card}
           </Link>
         </Box>
@@ -134,7 +130,7 @@ export class Renderer extends React.Component<Props, State> {
     numberOfGoods: number,
   ) => {
     return (
-      <Card sx={{ ...sxProps.card, p: 1 }}>
+      <Card sx={{ ...cardStyle, p: 1 }}>
         <Stack spacing={1}>
           <DynamicAlignedText component="h2" variant="h6" sx={{ wordBreak: 'break-all' }}>
             {title}
@@ -194,8 +190,12 @@ export class Renderer extends React.Component<Props, State> {
     numberOfGoods: number,
   ) => {
     return (
-      <Card sx={sxProps.card}>
-        <CardMedia component="img" className={classes['card-media']} image={imageUrl ?? notImage} />
+      <Card sx={cardStyle}>
+        <CardMedia
+          component="img"
+          className={cardClasses['card-media']}
+          image={imageUrl ?? notImage}
+        />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h3" sx={{ wordBreak: 'break-all' }}>
             {title}
@@ -245,7 +245,7 @@ export class Renderer extends React.Component<Props, State> {
 
   protected renderSidebarCard = (title: string, imageUrl: string | null) => {
     return (
-      <Card sx={sxProps.card}>
+      <Card sx={cardStyle}>
         <CardContent>
           <Grid container spacing={1}>
             <Grid item xs={5}>

@@ -1,5 +1,5 @@
 import { ApiError } from 'api/utils/handle-axios-error';
-import { getspecialMaps } from '..';
+import { getSpecialMaps } from '../get-special-maps';
 
 describe('getspecialMaps', () => {
   beforeEach(() => {
@@ -9,7 +9,7 @@ describe('getspecialMaps', () => {
   it('handle nomal response', async () => {
     process.env.REACT_APP_MOCK = 'normal';
 
-    const response = await getspecialMaps();
+    const response = await getSpecialMaps({});
     expect(response.results[0].specialMapId).toBe(1);
   });
 
@@ -21,6 +21,6 @@ describe('getspecialMaps', () => {
       data: {},
       errorMsg: 'Intentional API Error with mock',
     };
-    await expect(getspecialMaps()).rejects.toEqual(expectedApiError);
+    await expect(getSpecialMaps({})).rejects.toEqual(expectedApiError);
   });
 });

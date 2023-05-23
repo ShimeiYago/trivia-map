@@ -1,11 +1,121 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Shallow Snapshot Tests basic 1`] = `
-<Fragment>
-  <CommonHelmet
-    description="TODO"
-    title="TODO"
-  />
-  TODO
-</Fragment>
+<ArticleWrapper
+  showSidebar={true}
+>
+  <ForwardRef(Typography)
+    align="center"
+    component="h2"
+    sx={
+      Object {
+        "mb": 4,
+        "mt": 3,
+      }
+    }
+    variant="h4"
+  >
+    <IconAndText
+      iconComponent={
+        <Memo
+          fontSize="inherit"
+        />
+      }
+      iconPosition="left"
+      text="特別なマップ"
+      variant="inherit"
+    />
+  </ForwardRef(Typography)>
+  <CenterSpinner />
+</ArticleWrapper>
+`;
+
+exports[`Shallow Snapshot Tests with no special maps 1`] = `
+<ArticleWrapper
+  showSidebar={true}
+>
+  <ForwardRef(Typography)
+    align="center"
+    component="h2"
+    sx={
+      Object {
+        "mb": 4,
+        "mt": 3,
+      }
+    }
+    variant="h4"
+  >
+    <IconAndText
+      iconComponent={
+        <Memo
+          fontSize="inherit"
+        />
+      }
+      iconPosition="left"
+      text="特別なマップ"
+      variant="inherit"
+    />
+  </ForwardRef(Typography)>
+  <ForwardRef(Typography)
+    align="center"
+  >
+    表示する投稿がありません。
+  </ForwardRef(Typography)>
+</ArticleWrapper>
+`;
+
+exports[`Shallow Snapshot Tests with special maps 1`] = `
+<ArticleWrapper
+  showSidebar={true}
+>
+  <ForwardRef(Typography)
+    align="center"
+    component="h2"
+    sx={
+      Object {
+        "mb": 4,
+        "mt": 3,
+      }
+    }
+    variant="h4"
+  >
+    <IconAndText
+      iconComponent={
+        <Memo
+          fontSize="inherit"
+        />
+      }
+      iconPosition="left"
+      text="特別なマップ"
+      variant="inherit"
+    />
+  </ForwardRef(Typography)>
+  <div />
+  <ForwardRef(Stack)
+    spacing={3}
+  >
+    <CenterPagination
+      count={2}
+      onChange={[Function]}
+      page={1}
+      size="large"
+    />
+    <div
+      key="special-map-1"
+    >
+      トイレマップ
+    </div>
+    <div
+      key="special-map-2"
+    >
+      「関係者以外立ち入り禁止」看板マップ
+    </div>
+    <CenterPagination
+      count={2}
+      onChange={[Function]}
+      page={1}
+      size="large"
+    />
+  </ForwardRef(Stack)>
+</ArticleWrapper>
 `;

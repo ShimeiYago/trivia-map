@@ -1,4 +1,4 @@
-import { GetSpecialMapsResponseWithPagination } from 'api/special-map-api';
+import { GetSpecialMapsResponseWithPagination } from 'api/special-map-api/get-special-maps';
 
 export const mockGetSpecialMapsResponseWithPagination: GetSpecialMapsResponseWithPagination = {
   nextUrl: null,

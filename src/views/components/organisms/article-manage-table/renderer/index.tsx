@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Pagination,
   Stack,
   Typography,
   Table,
@@ -30,7 +29,6 @@ import {
   GetMyArticlesResponse,
   GetMyArticlesResponseEachItem,
 } from 'api/articles-api/get-my-articles';
-import classes from './index.module.css';
 import { CenterSpinner } from 'views/components/atoms/center-spinner';
 import { Image } from 'views/components/moleculars/image';
 import { ARTICLE_PAGE_LINK, EDIT_LINK } from 'constant/links';
@@ -46,6 +44,7 @@ import { LoadingButton } from '@mui/lab';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import { patchRemoteArticle } from 'api/articles-api/patch-remote-article';
 import { CATEGORIES } from 'constant';
+import { CenterPagination } from 'views/components/atoms/center-pagination';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -280,15 +279,11 @@ export class Renderer extends React.Component<Props, State> {
         </Typography>
 
         {showPagination && (
-          <div className={classes['pagination-wrapper']}>
-            <Pagination
-              count={totalPages}
-              page={currentPage}
-              onChange={this.handleChangePagination}
-              siblingCount={0}
-              boundaryCount={1}
-            />
-          </div>
+          <CenterPagination
+            count={totalPages}
+            page={currentPage}
+            onChange={this.handleChangePagination}
+          />
         )}
       </Stack>
     );

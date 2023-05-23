@@ -76,7 +76,6 @@ exports[`Shallow Snapshot Tests only one page with large 1`] = `
       >
         <Link
           className="preview-link"
-          key="preview-1"
           to="/articles/1"
         >
           <ForwardRef(Card)
@@ -173,7 +172,6 @@ exports[`Shallow Snapshot Tests only one page with large 1`] = `
       >
         <Link
           className="preview-link"
-          key="preview-2"
           to="/articles/2"
         >
           <ForwardRef(Card)
@@ -321,7 +319,6 @@ exports[`Shallow Snapshot Tests only one page with popup 1`] = `
           >
             <Link
               className="preview-link"
-              key="preview-1"
               to="/articles/1"
             >
               <ForwardRef(Card)
@@ -420,7 +417,6 @@ exports[`Shallow Snapshot Tests only one page with popup 1`] = `
           >
             <Link
               className="preview-link"
-              key="preview-2"
               to="/articles/2"
             >
               <ForwardRef(Card)
@@ -573,7 +569,6 @@ exports[`Shallow Snapshot Tests variant popup 1`] = `
           >
             <Link
               className="preview-link"
-              key="preview-1"
               to="/articles/1"
             >
               <ForwardRef(Card)
@@ -672,7 +667,6 @@ exports[`Shallow Snapshot Tests variant popup 1`] = `
           >
             <Link
               className="preview-link"
-              key="preview-2"
               to="/articles/2"
             >
               <ForwardRef(Card)
@@ -798,7 +792,6 @@ exports[`Shallow Snapshot Tests variant sidebar 1`] = `
       >
         <Link
           className="preview-link"
-          key="preview-1"
           to="/articles/1"
         >
           <ForwardRef(Card)
@@ -855,7 +848,6 @@ exports[`Shallow Snapshot Tests variant sidebar 1`] = `
       >
         <Link
           className="preview-link"
-          key="preview-2"
           to="/articles/2"
         >
           <ForwardRef(Card)
@@ -936,7 +928,6 @@ exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
       >
         <Link
           className="preview-link"
-          key="preview-1"
           to="/articles/1"
         >
           <ForwardRef(Card)
@@ -1033,7 +1024,6 @@ exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
       >
         <Link
           className="preview-link"
-          key="preview-2"
           to="/articles/2"
         >
           <ForwardRef(Card)

@@ -4,6 +4,9 @@ import usePageTracking from 'helper-components/tracker';
 import { useAppDispatch } from 'store';
 import { throwError } from 'store/global-error/slice';
 import { useNavigate } from 'react-router-dom';
+import { CommonHelmet } from 'helper-components/common-helmet';
+import { PAGE_NAMES } from 'constant/page-names';
+import { PAGE_DESCRIPTIONS } from 'constant/head-tags';
 
 export function SpecialMapListPage() {
   const navigate = useNavigate();
@@ -19,5 +22,10 @@ export function SpecialMapListPage() {
     throwError: (errorStatus: number) => dispatch(throwError(errorStatus)),
   };
 
-  return <Renderer {...props} />;
+  return (
+    <>
+      <CommonHelmet title={PAGE_NAMES.specialMap} description={PAGE_DESCRIPTIONS.specialMaps} />
+      <Renderer {...props} />
+    </>
+  );
 }

@@ -1,15 +1,5 @@
 import React from 'react';
-import {
-  Pagination,
-  Stack,
-  Typography,
-  Card,
-  Box,
-  CardMedia,
-  CardContent,
-  Grid,
-  Divider,
-} from '@mui/material';
+import { Stack, Typography, Card, Box, CardMedia, CardContent, Grid, Divider } from '@mui/material';
 import { LoadingState } from 'types/loading-state';
 import {
   getArticlesPreviews,
@@ -30,6 +20,7 @@ import FolderIcon from '@mui/icons-material/Folder';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import { DynamicAlignedText } from 'views/components/atoms/dynamic-aligned-text';
+import { CenterPagination } from 'views/components/atoms/center-pagination';
 
 const POPUP_SCROLL_HEIGHT = '240px';
 const POPUP_SCROLL_GRADATION_HEIGHT = '50px';
@@ -309,16 +300,12 @@ export class Renderer extends React.Component<Props, State> {
           </Typography>
         )}
         {showPagination && (
-          <div className={classes['pagination-wrapper']}>
-            <Pagination
-              count={this.state.articlesPreviews?.totalPages}
-              page={currentPage}
-              onChange={this.handleChangePagination}
-              size={variant === 'popup' ? 'small' : 'large'}
-              siblingCount={0}
-              boundaryCount={1}
-            />
-          </div>
+          <CenterPagination
+            count={this.state.articlesPreviews?.totalPages}
+            page={currentPage}
+            onChange={this.handleChangePagination}
+            size={variant === 'popup' ? 'small' : 'large'}
+          />
         )}
       </Stack>
     );

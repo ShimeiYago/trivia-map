@@ -9,18 +9,12 @@ exports[`Shallow Snapshot Tests articlesPreviews is zero 1`] = `
     <ForwardRef(Stack)
       spacing={1}
     >
-      <div
-        className="pagination-wrapper"
-      >
-        <ForwardRef(Pagination)
-          boundaryCount={1}
-          count={2}
-          onChange={[Function]}
-          page={1}
-          siblingCount={0}
-          size="large"
-        />
-      </div>
+      <CenterPagination
+        count={2}
+        onChange={[Function]}
+        page={1}
+        size="large"
+      />
     </ForwardRef(Stack)>
     <ForwardRef(Typography)
       align="center"
@@ -30,18 +24,12 @@ exports[`Shallow Snapshot Tests articlesPreviews is zero 1`] = `
     <ForwardRef(Stack)
       spacing={1}
     >
-      <div
-        className="pagination-wrapper"
-      >
-        <ForwardRef(Pagination)
-          boundaryCount={1}
-          count={2}
-          onChange={[Function]}
-          page={1}
-          siblingCount={0}
-          size="large"
-        />
-      </div>
+      <CenterPagination
+        count={2}
+        onChange={[Function]}
+        page={1}
+        size="large"
+      />
     </ForwardRef(Stack)>
   </ForwardRef(Stack)>
 </Fragment>
@@ -785,18 +773,12 @@ exports[`Shallow Snapshot Tests variant popup 1`] = `
     <ForwardRef(Stack)
       spacing={1}
     >
-      <div
-        className="pagination-wrapper"
-      >
-        <ForwardRef(Pagination)
-          boundaryCount={1}
-          count={2}
-          onChange={[Function]}
-          page={1}
-          siblingCount={0}
-          size="small"
-        />
-      </div>
+      <CenterPagination
+        count={2}
+        onChange={[Function]}
+        page={1}
+        size="small"
+      />
     </ForwardRef(Stack)>
   </ForwardRef(Stack)>
 </Fragment>
@@ -939,18 +921,12 @@ exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
     <ForwardRef(Stack)
       spacing={1}
     >
-      <div
-        className="pagination-wrapper"
-      >
-        <ForwardRef(Pagination)
-          boundaryCount={1}
-          count={2}
-          onChange={[Function]}
-          page={1}
-          siblingCount={0}
-          size="large"
-        />
-      </div>
+      <CenterPagination
+        count={2}
+        onChange={[Function]}
+        page={1}
+        size="large"
+      />
     </ForwardRef(Stack)>
     <ForwardRef(Stack)
       spacing={3}
@@ -1153,18 +1129,12 @@ exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
     <ForwardRef(Stack)
       spacing={1}
     >
-      <div
-        className="pagination-wrapper"
-      >
-        <ForwardRef(Pagination)
-          boundaryCount={1}
-          count={2}
-          onChange={[Function]}
-          page={1}
-          siblingCount={0}
-          size="large"
-        />
-      </div>
+      <CenterPagination
+        count={2}
+        onChange={[Function]}
+        page={1}
+        size="large"
+      />
     </ForwardRef(Stack)>
   </ForwardRef(Stack)>
 </Fragment>

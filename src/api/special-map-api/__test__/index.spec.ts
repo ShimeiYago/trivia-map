@@ -1,6 +1,7 @@
 import { ApiError } from 'api/utils/handle-axios-error';
 import { getSpecialMaps } from '../get-special-maps';
 import { getSpecialMapMarkers } from '../get-special-map-markers';
+import { getSpecialMap } from '../get-special-map';
 
 describe('getspecialMaps', () => {
   beforeEach(() => {
@@ -47,5 +48,29 @@ describe('getSpecialMapMarkers', () => {
       errorMsg: 'Intentional API Error with mock',
     };
     await expect(getSpecialMapMarkers({ mapId: 1 })).rejects.toEqual(expectedApiError);
+  });
+});
+
+describe('getSpecialMap', () => {
+  beforeEach(() => {
+    process.env.REACT_APP_MOCK = '';
+  });
+
+  it('handle nomal response', async () => {
+    process.env.REACT_APP_MOCK = 'normal';
+
+    const response = await getSpecialMap(1);
+    expect(response.specialMapId).toBe(1);
+  });
+
+  it('handle error response', async () => {
+    process.env.REACT_APP_MOCK = 'error';
+
+    const expectedApiError: ApiError<unknown> = {
+      status: 500,
+      data: {},
+      errorMsg: 'Intentional API Error with mock',
+    };
+    await expect(getSpecialMap(1)).rejects.toEqual(expectedApiError);
   });
 });

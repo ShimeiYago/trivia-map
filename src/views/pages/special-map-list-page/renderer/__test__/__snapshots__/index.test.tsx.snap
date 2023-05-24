@@ -124,7 +124,7 @@ exports[`Shallow Snapshot Tests with special maps 1`] = `
             image="https://www.yuu-diaryblog.com/wp-content/uploads/2017/06/disney-wc.jpg"
           />
           <ForwardRef(CardContent)>
-            <ForwardRef(Typography)
+            <DynamicAlignedText
               component="h3"
               gutterBottom={true}
               sx={
@@ -135,10 +135,18 @@ exports[`Shallow Snapshot Tests with special maps 1`] = `
               variant="h5"
             >
               トイレマップ
-            </ForwardRef(Typography)>
+            </DynamicAlignedText>
+            <DynamicAlignedText>
+              定番から穴場まで、ディズニーのトイレマップです。
+            </DynamicAlignedText>
             <ForwardRef(Typography)
               align="center"
               component="div"
+              sx={
+                Object {
+                  "mt": 2,
+                }
+              }
             >
               <IconAndText
                 component="span"
@@ -175,7 +183,7 @@ exports[`Shallow Snapshot Tests with special maps 1`] = `
             image="no-image-16x7.jpg"
           />
           <ForwardRef(CardContent)>
-            <ForwardRef(Typography)
+            <DynamicAlignedText
               component="h3"
               gutterBottom={true}
               sx={
@@ -186,10 +194,18 @@ exports[`Shallow Snapshot Tests with special maps 1`] = `
               variant="h5"
             >
               「関係者以外立ち入り禁止」看板マップ
-            </ForwardRef(Typography)>
+            </DynamicAlignedText>
+            <DynamicAlignedText>
+              パーク中の「関係者以外立ち入り禁止」の看板のまとめです。
+            </DynamicAlignedText>
             <ForwardRef(Typography)
               align="center"
               component="div"
+              sx={
+                Object {
+                  "mt": 2,
+                }
+              }
             >
               <IconAndText
                 component="span"

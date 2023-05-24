@@ -17,6 +17,7 @@ import { cardStyle } from 'views/common-styles/card';
 import cardClasses from 'views/common-styles/preview-card.module.css';
 import { SPECIAL_MAP_PAGE_LINK } from 'constant/links';
 import { Link } from 'react-router-dom';
+import { DynamicAlignedText } from 'views/components/atoms/dynamic-aligned-text';
 
 export class Renderer extends React.Component<Props, State> {
   topRef: React.RefObject<HTMLDivElement>;
@@ -80,7 +81,7 @@ export class Renderer extends React.Component<Props, State> {
   };
 
   protected renderLargeCard = (specialMap: GetSpecialMapsResponse) => {
-    const { specialMapId, title, thumbnail } = specialMap;
+    const { specialMapId, title, thumbnail, description } = specialMap;
 
     return (
       <Box key={`special-map-preview-${specialMapId}`}>
@@ -95,11 +96,18 @@ export class Renderer extends React.Component<Props, State> {
               image={thumbnail ?? notImage}
             />
             <CardContent>
-              <Typography gutterBottom variant="h5" component="h3" sx={{ wordBreak: 'break-all' }}>
+              <DynamicAlignedText
+                gutterBottom
+                variant="h5"
+                component="h3"
+                sx={{ wordBreak: 'break-all' }}
+              >
                 {title}
-              </Typography>
+              </DynamicAlignedText>
 
-              <Typography align="center" component="div">
+              <DynamicAlignedText>{description}</DynamicAlignedText>
+
+              <Typography align="center" component="div" sx={{ mt: 2 }}>
                 <IconAndText
                   iconComponent={<ArrowRightIcon />}
                   text="くわしく読む"

@@ -5,6 +5,7 @@ import { handleAxiosError } from '../utils/handle-axios-error';
 import { getAxiosInstance } from 'api/utils/get-axios-instance';
 import { mockGetSpecialMapsResponseWithPagination } from 'api/mock/special-map-response';
 import { getUrlParameters } from 'utils/get-url-parameters';
+import { GetSpecialMapResponse } from './get-special-map';
 
 export async function getSpecialMaps(param: {
   page?: number;
@@ -23,12 +24,4 @@ export async function getSpecialMaps(param: {
   }
 }
 
-export type GetSpecialMapsResponse = {
-  specialMapId: number;
-  title: string;
-  thumbnail: string | null;
-  isPublic: boolean;
-  description: string;
-};
-
-export type GetSpecialMapsResponseWithPagination = PaginationResponse<GetSpecialMapsResponse>;
+export type GetSpecialMapsResponseWithPagination = PaginationResponse<GetSpecialMapResponse>;

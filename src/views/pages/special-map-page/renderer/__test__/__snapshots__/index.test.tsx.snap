@@ -1,20 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Shallow Snapshot Tests basic 1`] = `
-<Fragment>
-  <CommonHelmet
-    description="TODO"
-    title="TODO"
-  />
-  TODO
-</Fragment>
-`;
+exports[`Shallow Snapshot Tests basic 1`] = `""`;
 
-exports[`Shallow Snapshot Tests without height 1`] = `
-<Fragment>
-  <CommonHelmet
-    description="TODO"
-    title="TODO"
-  />
-</Fragment>
-`;
+exports[`Shallow Snapshot Tests without height 1`] = `""`;

@@ -5,6 +5,7 @@ import { LatLng, LeafletEventHandlerFnMap, Marker as MarkerType, Map as LeafletM
 import { defaultIcon, redIcon, redIconWithNumber } from './icons';
 import { CustomMarker } from './helpers/custom-marker';
 import { ZOOMS } from 'constant';
+import { MapMarkerVariant } from 'types/marker-icon';
 
 export class MapMarker extends React.Component<Props, State> {
   static defaultProps: Pick<Props, 'variant' | 'draggable' | 'autoOpen' | 'zIndexOffset'> = {
@@ -129,7 +130,7 @@ export class MapMarker extends React.Component<Props, State> {
 export type Props = {
   position: LatLng;
   zIndexOffset: number;
-  variant: 'blue' | 'red';
+  variant: MapMarkerVariant;
   popup?: ReactNode;
   autoOpen: boolean;
   map: LeafletMap;

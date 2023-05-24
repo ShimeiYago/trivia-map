@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   getSpecialMaps,
-  GetSpecialMapsResponse,
   GetSpecialMapsResponseWithPagination,
 } from 'api/special-map-api/get-special-maps';
 import { CenterSpinner } from 'views/components/atoms/center-spinner';
@@ -18,6 +17,7 @@ import cardClasses from 'views/common-styles/preview-card.module.css';
 import { SPECIAL_MAP_PAGE_LINK } from 'constant/links';
 import { Link } from 'react-router-dom';
 import { DynamicAlignedText } from 'views/components/atoms/dynamic-aligned-text';
+import { GetSpecialMapResponse } from 'api/special-map-api/get-special-map';
 
 export class Renderer extends React.Component<Props, State> {
   topRef: React.RefObject<HTMLDivElement>;
@@ -80,7 +80,7 @@ export class Renderer extends React.Component<Props, State> {
     );
   };
 
-  protected renderLargeCard = (specialMap: GetSpecialMapsResponse) => {
+  protected renderLargeCard = (specialMap: GetSpecialMapResponse) => {
     const { specialMapId, title, thumbnail, description } = specialMap;
 
     return (

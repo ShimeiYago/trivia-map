@@ -1,10 +1,13 @@
 import { shallow, ShallowWrapper } from 'enzyme';
 import { Renderer, State, Props } from '..';
 import * as GetSpecialMapApiModule from 'api/special-map-api/get-special-map';
+import * as GetSpecialMapMarkersApiModule from 'api/special-map-api/get-special-map-markers';
 import { mockGetSpecialMapResponse } from 'api/mock/special-map-response';
+import { mockGetSpecialMapMarkersResponseWithPagination } from 'api/mock/special-map-response';
 
 let shallowWrapper: ShallowWrapper<Props, State, Renderer>;
 let getSpecialMapSpy: jest.SpyInstance;
+let getSpecialMapMarkersSpy: jest.SpyInstance;
 
 const props: Props = {
   isMobile: true,
@@ -53,6 +56,32 @@ describe('fetchSpecialMap', () => {
 
     const instance = shallowWrapper.instance();
     await instance['fetchSpecialMap']();
+
+    expect(instance.props.throwError).toBeCalled();
+  });
+});
+
+describe('fetchSpecialMapMarkers', () => {
+  beforeEach(() => {
+    jest.resetAllMocks();
+    shallowWrapper = shallow(<Renderer {...props} />);
+    getSpecialMapMarkersSpy = jest.spyOn(GetSpecialMapMarkersApiModule, 'getSpecialMapMarkers');
+  });
+
+  it('should set markers if api calling succeed', async () => {
+    getSpecialMapMarkersSpy.mockResolvedValue(mockGetSpecialMapMarkersResponseWithPagination);
+
+    const instance = shallowWrapper.instance();
+    await instance['fetchSpecialMapMarkers']();
+
+    expect(instance.state.loadingMarkers).toBeFalsy();
+  });
+
+  it('should call throwError if api calling fail', async () => {
+    getSpecialMapMarkersSpy.mockRejectedValue(new Error());
+
+    const instance = shallowWrapper.instance();
+    await instance['fetchSpecialMapMarkers']();
 
     expect(instance.props.throwError).toBeCalled();
   });

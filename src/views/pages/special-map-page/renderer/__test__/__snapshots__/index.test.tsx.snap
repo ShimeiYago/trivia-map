@@ -2,4 +2,38 @@
 
 exports[`Shallow Snapshot Tests basic 1`] = `""`;
 
+exports[`Shallow Snapshot Tests loaded 1`] = `
+<Fragment>
+  <CommonHelmet
+    description="定番から穴場まで、ディズニーのトイレマップです。"
+    title="トイレマップ"
+  />
+  <div>
+    TODO (100, 100)
+  </div>
+  <LoadingProgressBar
+    fetchingState="success"
+    isMobile={true}
+    loadedPages={0}
+  />
+</Fragment>
+`;
+
+exports[`Shallow Snapshot Tests loading markers 1`] = `
+<Fragment>
+  <CommonHelmet
+    description="定番から穴場まで、ディズニーのトイレマップです。"
+    title="トイレマップ"
+  />
+  <div>
+    TODO (100, 100)
+  </div>
+  <LoadingProgressBar
+    fetchingState="loading"
+    isMobile={true}
+    loadedPages={0}
+  />
+</Fragment>
+`;
+
 exports[`Shallow Snapshot Tests without height 1`] = `""`;

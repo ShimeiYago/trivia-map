@@ -4,41 +4,36 @@ import { LoadingState } from 'types/loading-state';
 import { sleep } from 'utils/sleep';
 import { DialogScreen } from 'views/components/atoms/dialog-screen';
 
-export class Renderer extends React.Component<Props, State> {
+export class LoadingProgressBar extends React.Component<Props, State> {
   closeTimeMs = 1000;
 
   constructor(props: Props) {
     super(props);
     this.state = {
-      showLoadingProgressBar: props.markersFetchingState === 'loading',
+      showLoadingProgressBar: props.fetchingState === 'loading',
     };
   }
 
   componentDidUpdate(prevProps: Props) {
-    const { markersFetchingState } = this.props;
-    if (
-      prevProps.markersFetchingState !== markersFetchingState &&
-      markersFetchingState === 'loading'
-    ) {
+    const { fetchingState } = this.props;
+    if (prevProps.fetchingState !== fetchingState && fetchingState === 'loading') {
       this.setState({
         showLoadingProgressBar: true,
       });
     }
-    if (prevProps.markersFetchingState === 'loading' && markersFetchingState === 'success') {
+    if (prevProps.fetchingState === 'loading' && fetchingState === 'success') {
       this.closeLoadingProgressBar();
     }
   }
 
   render() {
-    const { markersLoadedPages, markersTotalPages, isMobile } = this.props;
+    const { loadedPages, totalPages, isMobile } = this.props;
 
     if (!this.state.showLoadingProgressBar) {
       return null;
     }
 
-    const progressValue = markersTotalPages
-      ? parseInt(((markersLoadedPages / markersTotalPages) * 100).toFixed())
-      : 0;
+    const progressValue = totalPages ? parseInt(((loadedPages / totalPages) * 100).toFixed()) : 0;
 
     return (
       <DialogScreen theme="white" position={isMobile ? 75 : 'bottom'}>
@@ -89,9 +84,9 @@ export class Renderer extends React.Component<Props, State> {
 }
 
 export type Props = {
-  markersLoadedPages: number;
-  markersTotalPages?: number;
-  markersFetchingState: LoadingState;
+  loadedPages: number;
+  totalPages?: number;
+  fetchingState: LoadingState;
   isMobile: boolean;
 };
 

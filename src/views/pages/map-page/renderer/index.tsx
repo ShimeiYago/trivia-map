@@ -18,7 +18,7 @@ import { SwipeableEdgeDrawer } from 'views/components/moleculars/swipeable-edge-
 import { ArticleForm } from 'views/components/organisms/article-form';
 import { CloseFormButton } from 'views/components/organisms/close-form-button';
 import { GlobalMessage } from 'views/components/organisms/global-messge';
-import { LoadingProgressBar } from 'views/components/organisms/loading-progress-bar';
+import { TriviaMapMarkersLoadingProgressBar } from 'views/components/organisms/loading-progress-bar';
 import { TriviaMap } from 'views/components/organisms/trivia-map';
 import {
   rightDrawerStyle,
@@ -193,7 +193,7 @@ export class Renderer extends React.Component<Props, State> {
                 />
               )}
 
-              <LoadingProgressBar />
+              <TriviaMapMarkersLoadingProgressBar />
 
               {this.renderParkSelectBox()}
 

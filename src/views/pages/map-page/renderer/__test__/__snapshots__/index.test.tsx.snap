@@ -39,7 +39,7 @@ exports[`Shallow Snapshot Tests author map 1`] = `
           shouldCurrentPositionAsyncWithForm={true}
           userId={1}
         />
-        <LoadingProgressBar />
+        <TriviaMapMarkersLoadingProgressBar />
         <ForwardRef(Box)
           sx={
             Object {
@@ -323,7 +323,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
           icon="add-marker"
           onClick={[Function]}
         />
-        <LoadingProgressBar />
+        <TriviaMapMarkersLoadingProgressBar />
         <ForwardRef(Box)
           sx={
             Object {
@@ -553,7 +553,7 @@ exports[`Shallow Snapshot Tests before render map 1`] = `
           icon="add-marker"
           onClick={[Function]}
         />
-        <LoadingProgressBar />
+        <TriviaMapMarkersLoadingProgressBar />
         <ForwardRef(Box)
           sx={
             Object {
@@ -798,7 +798,7 @@ exports[`Shallow Snapshot Tests land mode 1`] = `
           icon="add-marker"
           onClick={[Function]}
         />
-        <LoadingProgressBar />
+        <TriviaMapMarkersLoadingProgressBar />
         <ForwardRef(Box)
           sx={
             Object {
@@ -1028,7 +1028,7 @@ exports[`Shallow Snapshot Tests park is undefined 1`] = `
           icon="add-marker"
           onClick={[Function]}
         />
-        <LoadingProgressBar />
+        <TriviaMapMarkersLoadingProgressBar />
         <ForwardRef(Box)
           sx={
             Object {
@@ -1230,7 +1230,7 @@ exports[`Shallow Snapshot Tests pc view 1`] = `
           icon="add-marker"
           onClick={[Function]}
         />
-        <LoadingProgressBar />
+        <TriviaMapMarkersLoadingProgressBar />
         <ForwardRef(Box)
           sx={
             Object {

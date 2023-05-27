@@ -7,6 +7,7 @@ import {
   GetSpecialMapMarkersResponseWithPagination,
   getSpecialMapMarkers,
 } from 'api/special-map-api/get-special-map-markers';
+import { LoadingProgressBar } from 'views/components/moleculars/loading-progress-bar';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -45,8 +46,13 @@ export class Renderer extends React.Component<Props, State> {
   protected renderSpecialMap = (windowWidth: number, windowHeight: number) => {
     return (
       <>
-        {`TODO (${windowWidth}, ${windowHeight})`} {this.state.loadedMarkerPages}/
-        {this.state.totalMarkerPages}
+        <div>{`TODO (${windowWidth}, ${windowHeight})`}</div>
+        <LoadingProgressBar
+          loadedPages={this.state.loadedMarkerPages}
+          totalPages={this.state.totalMarkerPages}
+          fetchingState={this.state.loadingMarkers ? 'loading' : 'success'}
+          isMobile={this.props.isMobile}
+        />
       </>
     );
   };

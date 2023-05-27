@@ -33,6 +33,24 @@ describe('Shallow Snapshot Tests', () => {
     });
     expect(shallowWrapper).toMatchSnapshot();
   });
+
+  it('loading markers', () => {
+    shallowWrapper.setState({
+      loadingSpecialMap: false,
+      specialMap: mockGetSpecialMapResponse,
+      loadingMarkers: true,
+    });
+    expect(shallowWrapper).toMatchSnapshot();
+  });
+
+  it('loaded', () => {
+    shallowWrapper.setState({
+      loadingSpecialMap: false,
+      specialMap: mockGetSpecialMapResponse,
+      loadingMarkers: false,
+    });
+    expect(shallowWrapper).toMatchSnapshot();
+  });
 });
 
 describe('fetchSpecialMap', () => {

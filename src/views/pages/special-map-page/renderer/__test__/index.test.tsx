@@ -51,6 +51,18 @@ describe('Shallow Snapshot Tests', () => {
     });
     expect(shallowWrapper).toMatchSnapshot();
   });
+
+  it('loaded (pc)', () => {
+    shallowWrapper.setProps({
+      isMobile: false,
+    });
+    shallowWrapper.setState({
+      loadingSpecialMap: false,
+      specialMap: mockGetSpecialMapResponse,
+      loadingMarkers: false,
+    });
+    expect(shallowWrapper).toMatchSnapshot();
+  });
 });
 
 describe('fetchSpecialMap', () => {
@@ -102,5 +114,18 @@ describe('fetchSpecialMapMarkers', () => {
     await instance['fetchSpecialMapMarkers']();
 
     expect(instance.props.throwError).toBeCalled();
+  });
+});
+
+describe('handleChangePark', () => {
+  beforeEach(() => {
+    shallowWrapper = shallow(<Renderer {...props} />);
+  });
+
+  it('should update park state', async () => {
+    const instance = shallowWrapper.instance();
+    instance['handleChangePark']('S');
+
+    expect(instance.state.park).toBe('S');
   });
 });

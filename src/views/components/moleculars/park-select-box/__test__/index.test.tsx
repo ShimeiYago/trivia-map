@@ -16,6 +16,13 @@ describe('Shallow Snapshot Tests', () => {
   it('basic', () => {
     expect(wrapper).toMatchSnapshot();
   });
+
+  it('sea', () => {
+    wrapper.setProps({
+      park: 'S',
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
 });
 
 describe('handleChange', () => {

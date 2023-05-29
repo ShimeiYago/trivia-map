@@ -1,159 +1,87 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Shallow Snapshot Tests basic 1`] = `
-<ForwardRef(Paper)
-  elevation={2}
-  square={true}
+<ForwardRef(Box)
+  sx={
+    Object {
+      "& .MuiSwitch-thumb": Object {
+        "backgroundColor": "#d32f2f",
+      },
+      "& .MuiSwitch-track": Object {
+        "backgroundColor": "#d32f2f",
+      },
+      "backgroundColor": "white",
+      "borderColor": "#9e9e9e",
+      "borderRadius": 2,
+      "borderStyle": "solid",
+      "padding": 1,
+    }
+  }
 >
   <ForwardRef(Stack)
-    py={3}
-    spacing={3}
+    alignItems="center"
+    direction="row"
+    spacing={1}
   >
     <ForwardRef(Typography)
-      align="center"
-      component="div"
+      fontSize="0.875rem"
     >
-      <Image
-        src="logo-blue.png"
-        width="100px"
-      />
+      ランド
     </ForwardRef(Typography)>
-    <ForwardRef(Stack)
-      component="nav"
-      direction="row"
-      divider={
-        <ForwardRef(Divider)
-          flexItem={true}
-          orientation="vertical"
-        />
-      }
-      justifyContent="center"
-      spacing={2}
-      sx={
-        Object {
-          "fontSize": 14,
-        }
-      }
+    <ForwardRef(Switch)
+      checked={false}
+      color="primary"
+      onChange={[Function]}
+      size="small"
+    />
+    <ForwardRef(Typography)
+      fontSize="0.875rem"
     >
-      <Link
-        key="footer-navi-マップ"
-        to="/"
-      >
-        マップ
-      </Link>
-      <Link
-        key="footer-navi-投稿一覧＆検索"
-        to="/articles"
-      >
-        投稿一覧＆検索
-      </Link>
-      <Link
-        key="footer-navi-お問い合わせ"
-        to="/inquiry"
-      >
-        お問い合わせ
-      </Link>
-      <Link
-        key="footer-navi-利用規約"
-        to="/terms-of-service"
-      >
-        利用規約
-      </Link>
-      <Link
-        key="footer-navi-プライバシーポリシー"
-        to="/privacy-policy"
-      >
-        プライバシーポリシー
-      </Link>
-    </ForwardRef(Stack)>
+      シー
+    </ForwardRef(Typography)>
   </ForwardRef(Stack)>
-</ForwardRef(Paper)>
+</ForwardRef(Box)>
 `;
 
-exports[`Shallow Snapshot Tests mobile 1`] = `
-<ForwardRef(Paper)
-  elevation={2}
-  square={true}
+exports[`Shallow Snapshot Tests sea 1`] = `
+<ForwardRef(Box)
+  sx={
+    Object {
+      "& .MuiSwitch-thumb": Object {
+        "backgroundColor": "#1976d2",
+      },
+      "& .MuiSwitch-track": Object {
+        "backgroundColor": "#1976d2",
+      },
+      "backgroundColor": "white",
+      "borderColor": "#9e9e9e",
+      "borderRadius": 2,
+      "borderStyle": "solid",
+      "padding": 1,
+    }
+  }
 >
   <ForwardRef(Stack)
-    py={3}
-    spacing={3}
+    alignItems="center"
+    direction="row"
+    spacing={1}
   >
     <ForwardRef(Typography)
-      align="center"
-      component="div"
+      fontSize="0.875rem"
     >
-      <Image
-        src="logo-blue.png"
-        width="100px"
-      />
+      ランド
     </ForwardRef(Typography)>
-    <ForwardRef(Stack)
-      component="nav"
-      direction="row"
-      divider={
-        <ForwardRef(Divider)
-          flexItem={true}
-          orientation="vertical"
-        />
-      }
-      justifyContent="center"
-      spacing={2}
-      sx={
-        Object {
-          "fontSize": 14,
-        }
-      }
+    <ForwardRef(Switch)
+      checked={true}
+      color="primary"
+      onChange={[Function]}
+      size="small"
+    />
+    <ForwardRef(Typography)
+      fontSize="0.875rem"
     >
-      <Link
-        key="footer-navi-マップ"
-        to="/"
-      >
-        マップ
-      </Link>
-      <Link
-        key="footer-navi-投稿一覧＆検索"
-        to="/articles"
-      >
-        投稿一覧＆検索
-      </Link>
-      <Link
-        key="footer-navi-お問い合わせ"
-        to="/inquiry"
-      >
-        お問い合わせ
-      </Link>
-    </ForwardRef(Stack)>
-    <ForwardRef(Stack)
-      component="nav"
-      direction="row"
-      divider={
-        <ForwardRef(Divider)
-          flexItem={true}
-          orientation="vertical"
-        />
-      }
-      justifyContent="center"
-      spacing={2}
-      sx={
-        Object {
-          "fontSize": 14,
-        }
-      }
-    >
-      <Link
-        key="footer-navi-利用規約"
-        to="/terms-of-service"
-      >
-        利用規約
-      </Link>
-      <Link
-        key="footer-navi-プライバシーポリシー"
-        to="/privacy-policy"
-      >
-        プライバシーポリシー
-      </Link>
-    </ForwardRef(Stack)>
+      シー
+    </ForwardRef(Typography)>
   </ForwardRef(Stack)>
-</ForwardRef(Paper)>
+</ForwardRef(Box)>
 `;

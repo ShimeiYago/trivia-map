@@ -1,13 +1,12 @@
 import { alpha, SxProps } from '@mui/material';
-import { grey, red, blue } from '@mui/material/colors';
-import { Park } from 'types/park';
+import { grey } from '@mui/material/colors';
+import { mapPageCommonStyle } from 'views/common-styles/map-page';
+
+const { appBarDefaultHeightPC, appBarDefaultHeightMobile, zIndex, authorBackgroundColor } =
+  mapPageCommonStyle;
 
 const drawerWidth = 500;
-const appBarDefaultHeightPC = 66;
-const appBarDefaultHeightMobile = 58;
-const zIndex = 1000;
 const categoryBackgroundColor = alpha('#000', 0.5);
-const authorBackgroundColor = alpha('#fff', 0.8);
 const categoryBarProceedButtonWidth = '30px';
 
 export const rightDrawerStyle: SxProps = {
@@ -36,9 +35,7 @@ export function mapWrapper(isMobile: boolean, screenWidth: number, screenHeight:
   };
 }
 
-export function parkSelectBox(shrink: boolean, isMobile: boolean, park: Park): SxProps {
-  const switchColor = park === 'L' ? red[700] : blue[700];
-
+export function parkSelectBox(shrink: boolean, isMobile: boolean): SxProps {
   return {
     margin: 0,
     bottom: 'auto',
@@ -47,17 +44,6 @@ export function parkSelectBox(shrink: boolean, isMobile: boolean, park: Park): S
     left: 'auto',
     position: 'fixed',
     zIndex: zIndex,
-    backgroundColor: 'white',
-    borderStyle: 'solid',
-    borderColor: grey[500],
-    borderRadius: 2,
-    padding: 1,
-    '& .MuiSwitch-thumb': {
-      backgroundColor: switchColor,
-    },
-    '& .MuiSwitch-track': {
-      backgroundColor: switchColor,
-    },
   };
 }
 

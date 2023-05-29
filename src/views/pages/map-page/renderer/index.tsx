@@ -10,7 +10,6 @@ import {
   Drawer,
   IconButton,
   Stack,
-  Switch,
   Typography,
 } from '@mui/material';
 import { FloatingButton } from 'views/components/atoms/floating-button';
@@ -44,6 +43,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import { MapFocus } from 'types/map-focus';
 import { CommonHelmet } from 'helper-components/common-helmet';
 import { PAGE_DESCRIPTIONS } from 'constant/head-tags';
+import { ParkSelectBox } from 'views/components/moleculars/park-select-box';
 
 const CATEGORY_BUTTON_ID = (categoryId: number) => `category-button-${categoryId}`;
 
@@ -241,17 +241,8 @@ export class Renderer extends React.Component<Props, State> {
     }
 
     return (
-      <Box sx={parkSelectBox(!isMobile && openFormModal, isMobile, park)}>
-        <Stack direction="row" spacing={1} alignItems="center">
-          <Typography fontSize="0.875rem">ランド</Typography>
-          <Switch
-            checked={park === 'S'}
-            onChange={this.handleChangePark}
-            size="small"
-            color="primary"
-          />
-          <Typography fontSize="0.875rem">シー</Typography>
-        </Stack>
+      <Box sx={parkSelectBox(!isMobile && openFormModal, isMobile)}>
+        <ParkSelectBox park={park} onChangePark={this.props.updateFoocusingPark} />
       </Box>
     );
   };
@@ -332,10 +323,6 @@ export class Renderer extends React.Component<Props, State> {
 
   protected handleClickCategoryBarProceed = () => {
     this.categoryScrollBarRef.current?.scrollBy({ left: 100, behavior: 'smooth' });
-  };
-
-  protected handleChangePark = (event: React.ChangeEvent<HTMLInputElement>) => {
-    this.props.updateFoocusingPark(event.target.checked ? 'S' : 'L');
   };
 
   protected handleClickCategoryButton = (categoryId: number) => () => {

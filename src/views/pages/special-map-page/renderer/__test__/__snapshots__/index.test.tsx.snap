@@ -1,6 +1,63 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Shallow Snapshot Tests basic 1`] = `""`;
+exports[`Shallow Snapshot Tests basic 1`] = `
+<ForwardRef(Box)
+  my={1}
+>
+  <CenterSpinner />
+</ForwardRef(Box)>
+`;
+
+exports[`Shallow Snapshot Tests loaded (pc) 1`] = `
+<Fragment>
+  <CommonHelmet
+    description="定番から穴場まで、ディズニーのトイレマップです。"
+    title="トイレマップ"
+  />
+  <GlobalMenu
+    mapPage={true}
+    topBarPosition="static"
+  >
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "height": "calc(100px - 66px)",
+          "position": "relative",
+          "width": "100px",
+        }
+      }
+    >
+      <ParkMap
+        initZoom={2}
+        park="L"
+      />
+      <ForwardRef(Box)
+        sx={
+          Object {
+            "bottom": "auto",
+            "left": "auto",
+            "margin": 0,
+            "position": "fixed",
+            "right": 20,
+            "top": 116,
+            "zIndex": 1000,
+          }
+        }
+      >
+        <ParkSelectBox
+          onChangePark={[Function]}
+          park="L"
+        />
+      </ForwardRef(Box)>
+      <LoadingProgressBar
+        fetchingState="success"
+        isMobile={false}
+        loadedPages={0}
+      />
+    </ForwardRef(Box)>
+  </GlobalMenu>
+</Fragment>
+`;
 
 exports[`Shallow Snapshot Tests loaded 1`] = `
 <Fragment>
@@ -8,14 +65,48 @@ exports[`Shallow Snapshot Tests loaded 1`] = `
     description="定番から穴場まで、ディズニーのトイレマップです。"
     title="トイレマップ"
   />
-  <div>
-    TODO (100, 100)
-  </div>
-  <LoadingProgressBar
-    fetchingState="success"
-    isMobile={true}
-    loadedPages={0}
-  />
+  <GlobalMenu
+    mapPage={true}
+    topBarPosition="static"
+  >
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "height": "calc(100px - 58px)",
+          "position": "relative",
+          "width": "100px",
+        }
+      }
+    >
+      <ParkMap
+        initZoom={2}
+        park="L"
+      />
+      <ForwardRef(Box)
+        sx={
+          Object {
+            "bottom": "auto",
+            "left": "auto",
+            "margin": 0,
+            "position": "fixed",
+            "right": 20,
+            "top": 108,
+            "zIndex": 1000,
+          }
+        }
+      >
+        <ParkSelectBox
+          onChangePark={[Function]}
+          park="L"
+        />
+      </ForwardRef(Box)>
+      <LoadingProgressBar
+        fetchingState="success"
+        isMobile={true}
+        loadedPages={0}
+      />
+    </ForwardRef(Box)>
+  </GlobalMenu>
 </Fragment>
 `;
 
@@ -25,15 +116,55 @@ exports[`Shallow Snapshot Tests loading markers 1`] = `
     description="定番から穴場まで、ディズニーのトイレマップです。"
     title="トイレマップ"
   />
-  <div>
-    TODO (100, 100)
-  </div>
-  <LoadingProgressBar
-    fetchingState="loading"
-    isMobile={true}
-    loadedPages={0}
-  />
+  <GlobalMenu
+    mapPage={true}
+    topBarPosition="static"
+  >
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "height": "calc(100px - 58px)",
+          "position": "relative",
+          "width": "100px",
+        }
+      }
+    >
+      <ParkMap
+        initZoom={2}
+        park="L"
+      />
+      <ForwardRef(Box)
+        sx={
+          Object {
+            "bottom": "auto",
+            "left": "auto",
+            "margin": 0,
+            "position": "fixed",
+            "right": 20,
+            "top": 108,
+            "zIndex": 1000,
+          }
+        }
+      >
+        <ParkSelectBox
+          onChangePark={[Function]}
+          park="L"
+        />
+      </ForwardRef(Box)>
+      <LoadingProgressBar
+        fetchingState="loading"
+        isMobile={true}
+        loadedPages={0}
+      />
+    </ForwardRef(Box)>
+  </GlobalMenu>
 </Fragment>
 `;
 
-exports[`Shallow Snapshot Tests without height 1`] = `""`;
+exports[`Shallow Snapshot Tests without height 1`] = `
+<ForwardRef(Box)
+  my={1}
+>
+  <CenterSpinner />
+</ForwardRef(Box)>
+`;

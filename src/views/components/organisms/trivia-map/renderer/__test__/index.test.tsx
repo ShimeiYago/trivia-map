@@ -89,13 +89,13 @@ describe('Shallow Snapshot Tests', () => {
   });
 });
 
-describe('handleMapCreated', () => {
+describe('handleSetMap', () => {
   it('should set map state', () => {
     shallowWrapper = shallow(<Renderer {...basicProps} />);
     const instance = shallowWrapper.instance();
 
     const map = { on: jest.fn(), invalidateSize: jest.fn() };
-    instance['handleMapCreated'](map as unknown as LeafletMap);
+    instance['handleSetMap'](map as unknown as LeafletMap);
     jest.runAllTimers();
     expect(instance.state.map).toEqual(map);
   });

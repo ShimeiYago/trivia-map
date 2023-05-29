@@ -4,10 +4,13 @@ import * as GetSpecialMapApiModule from 'api/special-map-api/get-special-map';
 import * as GetSpecialMapMarkersApiModule from 'api/special-map-api/get-special-map-markers';
 import { mockGetSpecialMapResponse } from 'api/mock/special-map-response';
 import { mockGetSpecialMapMarkersResponseWithPagination } from 'api/mock/special-map-response';
+import { Map as LeafletMap } from 'leaflet';
 
 let shallowWrapper: ShallowWrapper<Props, State, Renderer>;
 let getSpecialMapSpy: jest.SpyInstance;
 let getSpecialMapMarkersSpy: jest.SpyInstance;
+
+const testMap = { on: jest.fn(), invalidateSize: jest.fn() } as unknown as LeafletMap;
 
 const props: Props = {
   isMobile: true,
@@ -48,6 +51,8 @@ describe('Shallow Snapshot Tests', () => {
       loadingSpecialMap: false,
       specialMap: mockGetSpecialMapResponse,
       loadingMarkers: false,
+      markers: mockGetSpecialMapMarkersResponseWithPagination.results,
+      map: testMap,
     });
     expect(shallowWrapper).toMatchSnapshot();
   });
@@ -127,5 +132,19 @@ describe('handleChangePark', () => {
     instance['handleChangePark']('S');
 
     expect(instance.state.park).toBe('S');
+  });
+});
+
+describe('setMap', () => {
+  beforeEach(() => {
+    shallowWrapper = shallow(<Renderer {...props} />);
+  });
+
+  it('should update map state', () => {
+    const instance = shallowWrapper.instance();
+
+    instance['setMap'](testMap);
+
+    expect(instance.state.map).toBe(testMap);
   });
 });

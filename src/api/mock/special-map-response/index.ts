@@ -41,8 +41,8 @@ export const mockGetSpecialMapMarkersResponseWithPagination: GetSpecialMapMarker
     endIndex: 1,
     results: [
       {
-        lat: 1,
-        lng: 1,
+        lat: -67.6875,
+        lng: 140.75,
         park: 'L',
         image:
           'https://cdn-ak.f.st-hatena.com/images/fotolife/n/nats-co/20160323/20160323164220.jpg',
@@ -50,9 +50,9 @@ export const mockGetSpecialMapMarkersResponseWithPagination: GetSpecialMapMarker
         variant: 'blue',
       },
       {
-        lat: 5,
-        lng: 5,
-        park: 'L',
+        lat: -202.34375,
+        lng: 163.1875,
+        park: 'S',
         image: null,
         description: 'エントランスのトイレならここ。',
         variant: 'blue',

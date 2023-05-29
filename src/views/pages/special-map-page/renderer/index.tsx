@@ -14,6 +14,10 @@ import { Box } from '@mui/material';
 import { GlobalMenu } from 'views/components/organisms/global-menu';
 import { mapWrapper, parkSelectBox } from './styles';
 import { ParkSelectBox } from 'views/components/moleculars/park-select-box';
+import { MapMarker } from 'views/components/moleculars/map-marker';
+import { LatLng, Map as LeafletMap } from 'leaflet';
+import { Image } from 'views/components/moleculars/image';
+import { DynamicAlignedText } from 'views/components/atoms/dynamic-aligned-text';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -59,7 +63,9 @@ export class Renderer extends React.Component<Props, State> {
 
     return (
       <Box sx={mapWrapper(isMobile, windowWidth, windowHeight)}>
-        <ParkMap park={this.state.park} />
+        <ParkMap park={this.state.park} setMap={this.setMap}>
+          {this.renderMarkers()}
+        </ParkMap>
 
         <Box sx={parkSelectBox(isMobile)}>
           <ParkSelectBox park={this.state.park} onChangePark={this.handleChangePark} />
@@ -75,6 +81,37 @@ export class Renderer extends React.Component<Props, State> {
     );
   };
 
+  protected renderMarkers = () => {
+    const { markers, map, park } = this.state;
+
+    if (!map) {
+      return null;
+    }
+
+    return markers.map((marker) => {
+      if (marker.park !== park) {
+        return null;
+      }
+
+      const popup = (
+        <>
+          {marker.image && <Image src={marker.image} width="full" />}
+          <DynamicAlignedText>{marker.description}</DynamicAlignedText>
+        </>
+      );
+
+      return (
+        <MapMarker
+          position={new LatLng(marker.lat, marker.lng)}
+          map={map}
+          popup={popup}
+          variant={marker.variant}
+          key={`special-map-${marker.lat}-${marker.lng}`}
+        />
+      );
+    });
+  };
+
   protected fetchSpecialMap = async () => {
     try {
       const res = await getSpecialMap(this.props.mapId);
@@ -85,6 +122,12 @@ export class Renderer extends React.Component<Props, State> {
     } catch (error) {
       this.props.throwError(500);
     }
+  };
+
+  protected setMap = (map: LeafletMap) => {
+    this.setState({
+      map,
+    });
   };
 
   protected fetchSpecialMapMarkers = async () => {
@@ -143,4 +186,5 @@ export type State = {
   park: Park;
   loadedMarkerPages: number;
   totalMarkerPages?: number;
+  map?: LeafletMap;
 };

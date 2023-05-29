@@ -30,6 +30,7 @@ exports[`Shallow Snapshot Tests loaded (pc) 1`] = `
       <ParkMap
         initZoom={2}
         park="L"
+        setMap={[Function]}
       />
       <ForwardRef(Box)
         sx={
@@ -81,7 +82,39 @@ exports[`Shallow Snapshot Tests loaded 1`] = `
       <ParkMap
         initZoom={2}
         park="L"
-      />
+        setMap={[Function]}
+      >
+        <MapMarker
+          autoOpen={false}
+          draggable={false}
+          key="special-map--67.6875-140.75"
+          map={
+            Object {
+              "invalidateSize": [MockFunction],
+              "on": [MockFunction],
+            }
+          }
+          popup={
+            <React.Fragment>
+              <Image
+                src="https://cdn-ak.f.st-hatena.com/images/fotolife/n/nats-co/20160323/20160323164220.jpg"
+                width="full"
+              />
+              <DynamicAlignedText>
+                アリスモチーフのトイレです。トランプ模様の扉がかわいい。
+              </DynamicAlignedText>
+            </React.Fragment>
+          }
+          position={
+            Object {
+              "lat": -67.6875,
+              "lng": 140.75,
+            }
+          }
+          variant="blue"
+          zIndexOffset={0}
+        />
+      </ParkMap>
       <ForwardRef(Box)
         sx={
           Object {
@@ -132,6 +165,7 @@ exports[`Shallow Snapshot Tests loading markers 1`] = `
       <ParkMap
         initZoom={2}
         park="L"
+        setMap={[Function]}
       />
       <ForwardRef(Box)
         sx={

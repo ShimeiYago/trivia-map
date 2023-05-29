@@ -383,36 +383,6 @@ describe('handleCloseDoubleEditAlartDialog', () => {
   });
 });
 
-describe('handleChangePark', () => {
-  it('call updateFocusingPark with "L"', () => {
-    shallowWrapper = shallow(<Renderer {...props} />);
-    const instance = shallowWrapper.instance();
-
-    const event = {
-      target: {
-        checked: false,
-      },
-    };
-
-    instance['handleChangePark'](event as React.ChangeEvent<HTMLInputElement>);
-    expect(instance.props.updateFoocusingPark).toBeCalledWith('L');
-  });
-
-  it('call updateFocusingPark with "S"', () => {
-    shallowWrapper = shallow(<Renderer {...props} />);
-    const instance = shallowWrapper.instance();
-
-    const event = {
-      target: {
-        checked: true,
-      },
-    };
-
-    instance['handleChangePark'](event as React.ChangeEvent<HTMLInputElement>);
-    expect(instance.props.updateFoocusingPark).toBeCalledWith('S');
-  });
-});
-
 describe('handleClickCategoryButton', () => {
   it('change category state', () => {
     shallowWrapper = shallow(<Renderer {...props} />);

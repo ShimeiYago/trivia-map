@@ -8,6 +8,9 @@ import {
   getSpecialMapMarkers,
 } from 'api/special-map-api/get-special-map-markers';
 import { LoadingProgressBar } from 'views/components/moleculars/loading-progress-bar';
+import { ParkMap } from 'views/components/moleculars/park-map';
+import { CenterSpinner } from 'views/components/atoms/center-spinner';
+import { Box } from '@mui/material';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -31,7 +34,11 @@ export class Renderer extends React.Component<Props, State> {
     const { specialMap } = this.state;
 
     if (!windowWidth || !windowHeight || !specialMap) {
-      return null;
+      return (
+        <Box my={1}>
+          <CenterSpinner />
+        </Box>
+      );
     }
 
     return (
@@ -46,7 +53,7 @@ export class Renderer extends React.Component<Props, State> {
   protected renderSpecialMap = (windowWidth: number, windowHeight: number) => {
     return (
       <>
-        <div>{`TODO (${windowWidth}, ${windowHeight})`}</div>
+        <ParkMap width={windowWidth} height={windowHeight} park={this.state.park} />
         <LoadingProgressBar
           loadedPages={this.state.loadedMarkerPages}
           totalPages={this.state.totalMarkerPages}

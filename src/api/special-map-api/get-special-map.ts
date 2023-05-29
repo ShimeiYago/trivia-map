@@ -3,6 +3,9 @@ import { AxiosError, AxiosResponse } from 'axios';
 import { handleAxiosError } from '../utils/handle-axios-error';
 import { getAxiosInstance } from 'api/utils/get-axios-instance';
 import { mockGetSpecialMapResponse } from 'api/mock/special-map-response';
+import { Park } from 'types/park';
+
+const BOTH_PARK = 'both';
 
 export async function getSpecialMap(mapId: number): Promise<GetSpecialMapResponse> {
   const url = `${BASE_URL}/special-map/maps/${mapId}`;
@@ -24,4 +27,5 @@ export type GetSpecialMapResponse = {
   thumbnail: string | null;
   isPublic: boolean;
   description: string;
+  selectablePark: Park | typeof BOTH_PARK;
 };

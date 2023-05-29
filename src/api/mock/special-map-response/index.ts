@@ -8,6 +8,7 @@ export const mockGetSpecialMapResponse: GetSpecialMapResponse = {
   thumbnail: 'https://www.yuu-diaryblog.com/wp-content/uploads/2017/06/disney-wc.jpg',
   isPublic: true,
   description: '定番から穴場まで、ディズニーのトイレマップです。',
+  selectablePark: 'both',
 };
 
 export const mockGetSpecialMapsResponseWithPagination: GetSpecialMapsResponseWithPagination = {
@@ -26,6 +27,7 @@ export const mockGetSpecialMapsResponseWithPagination: GetSpecialMapsResponseWit
       thumbnail: null,
       isPublic: true,
       description: 'パーク中の「関係者以外立ち入り禁止」の看板のまとめです。',
+      selectablePark: 'L',
     },
   ],
 };

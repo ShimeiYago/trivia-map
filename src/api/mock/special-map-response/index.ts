@@ -37,7 +37,7 @@ export const mockGetSpecialMapMarkersResponseWithPagination: GetSpecialMapMarker
     nextUrl: null,
     previousUrl: null,
     totalRecords: 2,
-    totalPages: 2,
+    totalPages: 1,
     currentPage: 1,
     startIndex: 1,
     endIndex: 1,

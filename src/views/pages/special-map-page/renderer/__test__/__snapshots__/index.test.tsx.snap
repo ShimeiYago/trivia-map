@@ -96,10 +96,14 @@ exports[`Shallow Snapshot Tests loaded 1`] = `
           }
           popup={
             <React.Fragment>
-              <Image
-                src="https://cdn-ak.f.st-hatena.com/images/fotolife/n/nats-co/20160323/20160323164220.jpg"
-                width="full"
-              />
+              <ForwardRef(Typography)
+                align="center"
+              >
+                <Image
+                  height="300px"
+                  src="https://cdn-ak.f.st-hatena.com/images/fotolife/n/nats-co/20160323/20160323164220.jpg"
+                />
+              </ForwardRef(Typography)>
               <DynamicAlignedText>
                 アリスモチーフのトイレです。トランプ模様の扉がかわいい。
               </DynamicAlignedText>

@@ -10,7 +10,7 @@ import {
 import { LoadingProgressBar } from 'views/components/moleculars/loading-progress-bar';
 import { ParkMap } from 'views/components/moleculars/park-map';
 import { CenterSpinner } from 'views/components/atoms/center-spinner';
-import { Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { GlobalMenu } from 'views/components/organisms/global-menu';
 import { mapWrapper, parkSelectBox } from './styles';
 import { ParkSelectBox } from 'views/components/moleculars/park-select-box';
@@ -67,9 +67,11 @@ export class Renderer extends React.Component<Props, State> {
           {this.renderMarkers()}
         </ParkMap>
 
-        <Box sx={parkSelectBox(isMobile)}>
-          <ParkSelectBox park={this.state.park} onChangePark={this.handleChangePark} />
-        </Box>
+        {this.state.specialMap?.selectablePark === 'both' && (
+          <Box sx={parkSelectBox(isMobile)}>
+            <ParkSelectBox park={this.state.park} onChangePark={this.handleChangePark} />
+          </Box>
+        )}
 
         <LoadingProgressBar
           loadedPages={this.state.loadedMarkerPages}
@@ -95,7 +97,11 @@ export class Renderer extends React.Component<Props, State> {
 
       const popup = (
         <>
-          {marker.image && <Image src={marker.image} width="full" />}
+          {marker.image && (
+            <Typography align="center">
+              <Image src={marker.image} height="300px" />
+            </Typography>
+          )}
           <DynamicAlignedText>{marker.description}</DynamicAlignedText>
         </>
       );
@@ -115,9 +121,11 @@ export class Renderer extends React.Component<Props, State> {
   protected fetchSpecialMap = async () => {
     try {
       const res = await getSpecialMap(this.props.mapId);
+
       this.setState({
         loadingSpecialMap: false,
         specialMap: res,
+        park: res.selectablePark !== 'both' ? res.selectablePark : this.state.park,
       });
     } catch (error) {
       this.props.throwError(500);

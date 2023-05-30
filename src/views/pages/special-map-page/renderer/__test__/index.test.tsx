@@ -86,6 +86,15 @@ describe('fetchSpecialMap', () => {
     expect(instance.state.specialMap?.isPublic).toBeTruthy();
   });
 
+  it('should update park state if selectablePark in api response is specific park', async () => {
+    getSpecialMapSpy.mockResolvedValue({ ...mockGetSpecialMapResponse, selectablePark: 'S' });
+
+    const instance = shallowWrapper.instance();
+    await instance['fetchSpecialMap']();
+
+    expect(instance.state.park).toBe('S');
+  });
+
   it('should call throwError if api calling fail', async () => {
     getSpecialMapSpy.mockRejectedValue(new Error());
 
@@ -104,7 +113,10 @@ describe('fetchSpecialMapMarkers', () => {
   });
 
   it('should set markers if api calling succeed', async () => {
-    getSpecialMapMarkersSpy.mockResolvedValue(mockGetSpecialMapMarkersResponseWithPagination);
+    getSpecialMapMarkersSpy.mockResolvedValue({
+      ...mockGetSpecialMapMarkersResponseWithPagination,
+      totalPages: 2,
+    });
 
     const instance = shallowWrapper.instance();
     await instance['fetchSpecialMapMarkers']();

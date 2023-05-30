@@ -2,7 +2,7 @@ import { alpha, SxProps } from '@mui/material';
 import { grey } from '@mui/material/colors';
 import { mapPageCommonStyle } from 'views/common-styles/map-page';
 
-const { appBarDefaultHeightPC, appBarDefaultHeightMobile, zIndex, authorBackgroundColor } =
+const { appBarDefaultHeightPC, appBarDefaultHeightMobile, zIndex, floatingBackgroundColor } =
   mapPageCommonStyle;
 
 const drawerWidth = 500;
@@ -92,7 +92,7 @@ export const authorMapMessage: SxProps = {
   left: 'auto',
   position: 'fixed',
   zIndex: zIndex,
-  backgroundColor: authorBackgroundColor,
+  backgroundColor: floatingBackgroundColor,
   pl: 1,
   pr: 3,
   py: 2,

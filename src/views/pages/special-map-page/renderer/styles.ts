@@ -1,7 +1,7 @@
 import { SxProps } from '@mui/material';
 import { mapPageCommonStyle } from 'views/common-styles/map-page';
 
-const { appBarDefaultHeightPC, appBarDefaultHeightMobile, zIndex, authorBackgroundColor } =
+const { appBarDefaultHeightPC, appBarDefaultHeightMobile, zIndex, floatingBackgroundColor } =
   mapPageCommonStyle;
 
 export function mapWrapper(isMobile: boolean, screenWidth: number, screenHeight: number): SxProps {
@@ -14,31 +14,24 @@ export function mapWrapper(isMobile: boolean, screenWidth: number, screenHeight:
   };
 }
 
-export function parkSelectBox(isMobile: boolean): SxProps {
+export const mapTopArea = (isMobile: boolean): SxProps => {
   return {
     margin: 0,
-    bottom: 'auto',
-    right: 20,
-    top: (isMobile ? appBarDefaultHeightMobile : appBarDefaultHeightPC) + 50,
-    left: 'auto',
     position: 'fixed',
+    left: '50%',
+    top: (isMobile ? appBarDefaultHeightMobile : appBarDefaultHeightPC) + 10,
+    transform: 'translate(-50%, 0)',
     zIndex: zIndex,
+    width: '95%',
   };
-}
+};
 
-export const authorMapMessage: SxProps = {
-  margin: 0,
-  top: 'auto',
-  right: 20,
-  bottom: 25,
-  left: 'auto',
-  position: 'fixed',
-  zIndex: zIndex,
-  backgroundColor: authorBackgroundColor,
-  pl: 1,
-  pr: 3,
-  py: 2,
+export const metaInfoBox: SxProps = {
+  backgroundColor: floatingBackgroundColor,
+  mb: 1,
+  mx: 'auto',
   borderRadius: 1,
-  maxWidth: 300,
+  p: 1,
   boxSizing: 'border-box',
+  maxWidth: '800px',
 };

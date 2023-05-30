@@ -10,14 +10,15 @@ import {
 import { LoadingProgressBar } from 'views/components/moleculars/loading-progress-bar';
 import { ParkMap } from 'views/components/moleculars/park-map';
 import { CenterSpinner } from 'views/components/atoms/center-spinner';
-import { Box, Typography } from '@mui/material';
+import { Box, Grid, IconButton, Typography } from '@mui/material';
 import { GlobalMenu } from 'views/components/organisms/global-menu';
-import { mapWrapper, parkSelectBox } from './styles';
+import { mapWrapper, metaInfoBox, mapTopArea } from './styles';
 import { ParkSelectBox } from 'views/components/moleculars/park-select-box';
 import { MapMarker } from 'views/components/moleculars/map-marker';
 import { LatLng, Map as LeafletMap } from 'leaflet';
 import { Image } from 'views/components/moleculars/image';
 import { DynamicAlignedText } from 'views/components/atoms/dynamic-aligned-text';
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -52,13 +53,17 @@ export class Renderer extends React.Component<Props, State> {
       <>
         <CommonHelmet title={specialMap.title} description={specialMap.description} />
         <GlobalMenu topBarPosition="static" mapPage>
-          {this.renderSpecialMap(windowWidth, windowHeight)}
+          {this.renderSpecialMap(windowWidth, windowHeight, specialMap)}
         </GlobalMenu>
       </>
     );
   }
 
-  protected renderSpecialMap = (windowWidth: number, windowHeight: number) => {
+  protected renderSpecialMap = (
+    windowWidth: number,
+    windowHeight: number,
+    specialMap: GetSpecialMapResponse,
+  ) => {
     const { isMobile } = this.props;
 
     return (
@@ -67,11 +72,17 @@ export class Renderer extends React.Component<Props, State> {
           {this.renderMarkers()}
         </ParkMap>
 
-        {this.state.specialMap?.selectablePark === 'both' && (
-          <Box sx={parkSelectBox(isMobile)}>
-            <ParkSelectBox park={this.state.park} onChangePark={this.handleChangePark} />
-          </Box>
-        )}
+        <Box sx={mapTopArea(isMobile)}>
+          {this.renderMetaInfo(specialMap)}
+
+          {this.state.specialMap?.selectablePark === 'both' && (
+            <Box textAlign="right">
+              <Box display="inline-block">
+                <ParkSelectBox park={this.state.park} onChangePark={this.handleChangePark} />
+              </Box>
+            </Box>
+          )}
+        </Box>
 
         <LoadingProgressBar
           loadedPages={this.state.loadedMarkerPages}
@@ -98,11 +109,11 @@ export class Renderer extends React.Component<Props, State> {
       const popup = (
         <>
           {marker.image && (
-            <Typography align="center">
-              <Image src={marker.image} height="300px" />
+            <Typography align="center" component="div" mb={2}>
+              <Image src={marker.image} height="200px" />
             </Typography>
           )}
-          <DynamicAlignedText>{marker.description}</DynamicAlignedText>
+          <DynamicAlignedText component="div">{marker.description}</DynamicAlignedText>
         </>
       );
 
@@ -116,6 +127,26 @@ export class Renderer extends React.Component<Props, State> {
         />
       );
     });
+  };
+
+  protected renderMetaInfo = (specialMap: GetSpecialMapResponse) => {
+    return (
+      <Box sx={metaInfoBox}>
+        <Grid container spacing={0}>
+          <Grid item xs={1} pt={0.4}>
+            <IconButton color="primary">
+              <HelpOutlineIcon />
+            </IconButton>
+          </Grid>
+          <Grid item xs={10}>
+            <Typography component="h2" variant="h6" py={1} align="center">
+              {specialMap.title}
+            </Typography>
+          </Grid>
+          <Grid item xs={1}></Grid>
+        </Grid>
+      </Box>
+    );
   };
 
   protected fetchSpecialMap = async () => {

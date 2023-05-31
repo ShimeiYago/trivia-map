@@ -44,6 +44,13 @@ describe('Shallow Snapshot Tests', () => {
     });
     expect(wrapper).toMatchSnapshot();
   });
+
+  it('without map', () => {
+    wrapper.setProps({
+      map: undefined,
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
 });
 
 describe('eventHandlers dragstart', () => {
@@ -56,7 +63,7 @@ describe('eventHandlers dragstart', () => {
     const instance = wrapper.instance();
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (instance['eventHandlers'] as any).dragstart();
+    (instance['eventHandlers'] as any)(instance.props.map).dragstart();
     expect(instance.props.onDragStart).toHaveBeenCalled();
   });
 
@@ -64,7 +71,7 @@ describe('eventHandlers dragstart', () => {
     const instance = wrapper.instance();
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (instance['eventHandlers'] as any).dragstart();
+    (instance['eventHandlers'] as any)(instance.props.map).dragstart();
   });
 });
 
@@ -85,7 +92,7 @@ describe('eventHandlers dragend', () => {
     } as React.RefObject<any>;
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (instance['eventHandlers'] as any).dragend();
+    (instance['eventHandlers'] as any)(instance.props.map).dragend();
     expect(instance.props.onDragEnd).toHaveBeenCalled();
   });
 
@@ -93,7 +100,7 @@ describe('eventHandlers dragend', () => {
     const instance = wrapper.instance();
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (instance['eventHandlers'] as any).dragend();
+    (instance['eventHandlers'] as any)(instance.props.map).dragend();
   });
 });
 
@@ -109,7 +116,7 @@ describe('eventHandlers popupopen & popupclose', () => {
     });
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (instance['eventHandlers'] as any).popupopen();
+    (instance['eventHandlers'] as any)(instance.props.map).popupopen();
     expect(instance.state.isPopupOpened).toBeTruthy();
   });
 
@@ -124,8 +131,8 @@ describe('eventHandlers popupopen & popupclose', () => {
     });
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (instance['eventHandlers'] as any).popupopen();
-    expect(instance.props.map.flyTo).toBeCalledWith({ lat: 10, lng: 0 }, undefined);
+    (instance['eventHandlers'] as any)(instance.props.map).popupopen();
+    expect(instance.props.map?.flyTo).toBeCalledWith({ lat: 10, lng: 0 }, undefined);
   });
 
   it('popupopen should call flyTo with zoom and gap move', () => {
@@ -139,8 +146,8 @@ describe('eventHandlers popupopen & popupclose', () => {
     });
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (instance['eventHandlers'] as any).popupopen();
-    expect(instance.props.map.flyTo).toBeCalledWith({ lat: 30, lng: 0 }, 3);
+    (instance['eventHandlers'] as any)(instance.props.map).popupopen();
+    expect(instance.props.map?.flyTo).toBeCalledWith({ lat: 30, lng: 0 }, 3);
   });
 
   it('popupclose should set isPopupOpened state false', async () => {
@@ -150,7 +157,7 @@ describe('eventHandlers popupopen & popupclose', () => {
     });
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    await (instance['eventHandlers'] as any).popupclose();
+    await (instance['eventHandlers'] as any)(instance.props.map).popupclose();
     expect(instance.state.isPopupOpened).toBeFalsy();
   });
 });

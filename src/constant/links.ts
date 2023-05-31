@@ -55,3 +55,5 @@ export const TWITTER_LOGIN_LINK = '/twitter-login';
 export const SPECIAL_MAP_LIST_PAGE_LINK = '/special-maps';
 
 export const SPECIAL_MAP_PAGE_LINK = (mapId: string) => `/special-maps/${mapId}`;
+
+export const SPECIAL_MAP_DETAIL_PAGE_LINK = (mapId: string) => `/special-maps/detail/${mapId}`;

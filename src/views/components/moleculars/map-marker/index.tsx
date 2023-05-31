@@ -42,7 +42,7 @@ export class MapMarker extends React.Component<Props, State> {
       icon = redIconWithNumber(String(this.props.numberOfContents));
     }
 
-    if (!this.props.popup) {
+    if (!this.props.popup || !this.props.map) {
       return (
         <>
           <Marker
@@ -50,7 +50,7 @@ export class MapMarker extends React.Component<Props, State> {
             icon={icon}
             draggable={this.props.draggable}
             ref={this.markerRef}
-            eventHandlers={this.eventHandlers}
+            eventHandlers={this.props.map ? this.eventHandlers(this.props.map) : undefined}
             zIndexOffset={this.props.zIndexOffset}
           />
         </>
@@ -65,7 +65,7 @@ export class MapMarker extends React.Component<Props, State> {
           icon={icon}
           draggable={this.props.draggable}
           ref={this.markerRef}
-          eventHandlers={this.eventHandlers}
+          eventHandlers={this.eventHandlers(this.props.map)}
           popup={this.state.isPopupOpened && this.props.popup}
           autoOpen={this.props.autoOpen}
           zIndexOffset={this.props.zIndexOffset}
@@ -74,48 +74,50 @@ export class MapMarker extends React.Component<Props, State> {
     );
   }
 
-  protected eventHandlers: LeafletEventHandlerFnMap = {
-    dragstart: () => {
-      if (this.props.onDragStart) {
-        this.props.onDragStart();
-      }
-      this.setState({
-        dragging: true,
-      });
-    },
+  protected eventHandlers(leafletMap: LeafletMap): LeafletEventHandlerFnMap {
+    return {
+      dragstart: () => {
+        if (this.props.onDragStart) {
+          this.props.onDragStart();
+        }
+        this.setState({
+          dragging: true,
+        });
+      },
 
-    dragend: () => {
-      const marker = this.markerRef.current;
-      if (marker != null && this.props.onDragEnd) {
-        this.props.onDragEnd(marker.getLatLng());
-      }
-      this.setState({
-        dragging: false,
-      });
-    },
+      dragend: () => {
+        const marker = this.markerRef.current;
+        if (marker != null && this.props.onDragEnd) {
+          this.props.onDragEnd(marker.getLatLng());
+        }
+        this.setState({
+          dragging: false,
+        });
+      },
 
-    popupopen: () => {
-      this.setState({
-        isPopupOpened: true,
-      });
+      popupopen: () => {
+        this.setState({
+          isPopupOpened: true,
+        });
 
-      const latGap =
-        this.props.map.getZoom() <= ZOOMS.popupOpen
-          ? 30
-          : 30 / (this.props.map.getZoom() - ZOOMS.popupOpen + 1);
-      const lat = this.props.position.lat + latGap;
+        const latGap =
+          leafletMap.getZoom() <= ZOOMS.popupOpen
+            ? 30
+            : 30 / (leafletMap.getZoom() - ZOOMS.popupOpen + 1);
+        const lat = this.props.position.lat + latGap;
 
-      const position = new LatLng(lat, this.props.position.lng);
-      const zoom = this.props.map.getZoom() >= ZOOMS.popupOpen ? undefined : ZOOMS.popupOpen;
-      this.props.map.flyTo(position, zoom);
-    },
+        const position = new LatLng(lat, this.props.position.lng);
+        const zoom = leafletMap.getZoom() >= ZOOMS.popupOpen ? undefined : ZOOMS.popupOpen;
+        leafletMap.flyTo(position, zoom);
+      },
 
-    popupclose: async () => {
-      this.setState({
-        isPopupOpened: false,
-      });
-    },
-  };
+      popupclose: async () => {
+        this.setState({
+          isPopupOpened: false,
+        });
+      },
+    };
+  }
 
   protected numberCircleEventHandlers: LeafletEventHandlerFnMap = {
     click: () => {
@@ -133,7 +135,7 @@ export type Props = {
   variant: MapMarkerVariant;
   popup?: ReactNode;
   autoOpen: boolean;
-  map: LeafletMap;
+  map?: LeafletMap;
   draggable?: boolean;
   numberOfContents?: number;
   isMobile?: boolean;

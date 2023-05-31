@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { Props, Renderer } from './renderer';
+import { LocalBackNavi, Props, Renderer } from './renderer';
 import { isMobile } from 'react-device-detect';
 
 export function ArticleWrapper(ownProps: OwnProps) {
@@ -10,6 +10,7 @@ export function ArticleWrapper(ownProps: OwnProps) {
     isMobile: isMobile,
     children: ownProps.children,
     showSidebar: !!ownProps.showSidebar,
+    localBackNavi: ownProps.localBackNavi,
   };
 
   useEffect(() => {
@@ -22,4 +23,5 @@ export function ArticleWrapper(ownProps: OwnProps) {
 type OwnProps = {
   children: React.ReactNode;
   showSidebar?: boolean;
+  localBackNavi?: LocalBackNavi;
 };

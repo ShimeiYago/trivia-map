@@ -24,22 +24,26 @@ import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import { CATEGORIES, SITE_NAME } from 'constant';
 import { NonStyleLink } from 'views/components/atoms/non-style-link';
 
+const DEFAULT_LOCAL_BACK_NAVI = {
+  text: SITE_NAME,
+  link: MAP_PAGE_LINK,
+};
+
 export class Renderer extends React.Component<Props> {
   constructor(props: Props) {
     super(props);
   }
 
   render() {
-    const { isMobile, children, showSidebar } = this.props;
-
-    const localNavi = {
-      text: SITE_NAME,
-      link: MAP_PAGE_LINK,
-    };
+    const { isMobile, children, showSidebar, localBackNavi } = this.props;
 
     return (
       <Box sx={wrapper}>
-        <GlobalMenu topBarPosition="fixed" permanentLeftNavi={!isMobile} localBackNavi={localNavi}>
+        <GlobalMenu
+          topBarPosition="fixed"
+          permanentLeftNavi={!isMobile}
+          localBackNavi={localBackNavi ?? DEFAULT_LOCAL_BACK_NAVI}
+        >
           <Box sx={contentWrapper(isMobile)}>
             <Grid container spacing={isMobile || !showSidebar ? 2 : 4}>
               <Grid item xs={isMobile || !showSidebar ? 12 : 8}>
@@ -135,4 +139,10 @@ export type Props = {
   isMobile: boolean;
   children: React.ReactNode;
   showSidebar: boolean;
+  localBackNavi?: LocalBackNavi;
+};
+
+export type LocalBackNavi = {
+  text: string;
+  link: string;
 };

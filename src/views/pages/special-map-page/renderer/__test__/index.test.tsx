@@ -10,7 +10,11 @@ let shallowWrapper: ShallowWrapper<Props, State, Renderer>;
 let getSpecialMapSpy: jest.SpyInstance;
 let getSpecialMapMarkersSpy: jest.SpyInstance;
 
-const testMap = { on: jest.fn(), invalidateSize: jest.fn() } as unknown as LeafletMap;
+const testMap = {
+  on: jest.fn(),
+  invalidateSize: jest.fn(),
+  flyTo: jest.fn(),
+} as unknown as LeafletMap;
 
 const props: Props = {
   isMobile: true,
@@ -66,6 +70,30 @@ describe('Shallow Snapshot Tests', () => {
       loadingMarkers: false,
     });
     expect(shallowWrapper).toMatchSnapshot();
+  });
+
+  it('focusing a marker', () => {
+    shallowWrapper.setProps({
+      markerId: 1,
+    });
+
+    shallowWrapper.setState({
+      loadingSpecialMap: false,
+      specialMap: mockGetSpecialMapResponse,
+      loadingMarkers: false,
+      markers: mockGetSpecialMapMarkersResponseWithPagination.results,
+      map: testMap,
+    });
+    expect(shallowWrapper).toMatchSnapshot();
+  });
+});
+
+describe('constructor', () => {
+  it('should set initial park from props', () => {
+    shallowWrapper = shallow(<Renderer {...props} park="S" />);
+    const instance = shallowWrapper.instance();
+
+    expect(instance.state.park).toBe('S');
   });
 });
 

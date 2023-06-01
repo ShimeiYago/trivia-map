@@ -29,6 +29,7 @@ export async function getSpecialMapMarkers(param: {
 }
 
 export type GetSpecialMapMarkersResponse = {
+  specialMapMarkerId: number;
   lat: number;
   lng: number;
   park: Park;

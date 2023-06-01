@@ -127,7 +127,7 @@ exports[`Shallow Snapshot Tests loaded (without thumbnail) 1`] = `
             />
           </ForwardRef(Typography)>
           <NonStyleLink
-            to="/special-maps/0"
+            to="/special-maps/0?marker=1&park=L"
           >
             <ForwardRef(Typography)
               align="right"
@@ -192,7 +192,7 @@ exports[`Shallow Snapshot Tests loaded (without thumbnail) 1`] = `
             エントランスのトイレならここ。
           </DynamicAlignedText>
           <NonStyleLink
-            to="/special-maps/0"
+            to="/special-maps/0?marker=2&park=S"
           >
             <ForwardRef(Typography)
               align="right"
@@ -328,7 +328,7 @@ exports[`Shallow Snapshot Tests loaded 1`] = `
             />
           </ForwardRef(Typography)>
           <NonStyleLink
-            to="/special-maps/0"
+            to="/special-maps/0?marker=1&park=L"
           >
             <ForwardRef(Typography)
               align="right"
@@ -393,7 +393,7 @@ exports[`Shallow Snapshot Tests loaded 1`] = `
             エントランスのトイレならここ。
           </DynamicAlignedText>
           <NonStyleLink
-            to="/special-maps/0"
+            to="/special-maps/0?marker=2&park=S"
           >
             <ForwardRef(Typography)
               align="right"

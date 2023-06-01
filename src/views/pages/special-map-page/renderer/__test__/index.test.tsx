@@ -69,6 +69,15 @@ describe('Shallow Snapshot Tests', () => {
   });
 });
 
+describe('constructor', () => {
+  it('should set initial park from props', () => {
+    shallowWrapper = shallow(<Renderer {...props} park="S" />);
+    const instance = shallowWrapper.instance();
+
+    expect(instance.state.park).toBe('S');
+  });
+});
+
 describe('fetchSpecialMap', () => {
   beforeEach(() => {
     jest.resetAllMocks();

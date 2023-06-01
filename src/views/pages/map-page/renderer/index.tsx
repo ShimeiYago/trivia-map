@@ -32,7 +32,7 @@ import {
 import { GlobalMenu } from 'views/components/organisms/global-menu';
 import { Park } from 'types/park';
 import { RoundButton } from 'views/components/atoms/round-button';
-import { CATEGORIES, INITIAL_PARK, SITE_NAME } from 'constant';
+import { CATEGORIES, PARKS, SITE_NAME } from 'constant';
 import { AUTHER_PAGE_LINK, EDIT_LINK, MAP_PAGE_LINK, NEW_LINK } from 'constant/links';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { Author } from 'types/author';
@@ -46,6 +46,7 @@ import { PAGE_DESCRIPTIONS } from 'constant/head-tags';
 import { ParkSelectBox } from 'views/components/moleculars/park-select-box';
 
 const CATEGORY_BUTTON_ID = (categoryId: number) => `category-button-${categoryId}`;
+const INITIAL_PARK = PARKS.sea;
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {

@@ -22,6 +22,7 @@ import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import { NonStyleLink } from 'views/components/atoms/non-style-link';
 import { SPECIAL_MAP_DETAIL_PAGE_LINK } from 'constant/links';
 import { ApiError } from 'api/utils/handle-axios-error';
+import { PARKS } from 'constant';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -29,7 +30,7 @@ export class Renderer extends React.Component<Props, State> {
     this.state = {
       loadingSpecialMap: true,
       loadingMarkers: true,
-      park: 'L',
+      park: props.park === PARKS.land || props.park === PARKS.sea ? props.park : PARKS.land,
       markers: [],
       loadedMarkerPages: 0,
     };
@@ -214,6 +215,12 @@ export class Renderer extends React.Component<Props, State> {
     this.setState({
       park,
     });
+
+    // update url param
+    const pathname = window.location.pathname;
+    const params = `?park=${park}`;
+
+    history.replaceState('', '', pathname + params);
   };
 }
 
@@ -222,6 +229,8 @@ export type Props = {
   isMobile: boolean;
   windowWidth: number;
   windowHeight: number;
+  markerId?: number;
+  park?: string;
 
   throwError: (errorStatus: number) => void;
 };

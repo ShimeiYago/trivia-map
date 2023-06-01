@@ -67,11 +67,15 @@ exports[`Shallow Snapshot Tests loaded (pc) 1`] = `
               pt={0.4}
               xs={1}
             >
-              <ForwardRef(IconButton)
-                color="primary"
+              <NonStyleLink
+                to="/special-maps/detail/0"
               >
-                <Memo(ForwardRef(HelpOutlineIcon)) />
-              </ForwardRef(IconButton)>
+                <ForwardRef(IconButton)
+                  color="primary"
+                >
+                  <Memo(ForwardRef(HelpOutlineIcon)) />
+                </ForwardRef(IconButton)>
+              </NonStyleLink>
             </ForwardRef(Grid)>
             <ForwardRef(Grid)
               item={true}
@@ -213,11 +217,15 @@ exports[`Shallow Snapshot Tests loaded 1`] = `
               pt={0.4}
               xs={1}
             >
-              <ForwardRef(IconButton)
-                color="primary"
+              <NonStyleLink
+                to="/special-maps/detail/0"
               >
-                <Memo(ForwardRef(HelpOutlineIcon)) />
-              </ForwardRef(IconButton)>
+                <ForwardRef(IconButton)
+                  color="primary"
+                >
+                  <Memo(ForwardRef(HelpOutlineIcon)) />
+                </ForwardRef(IconButton)>
+              </NonStyleLink>
             </ForwardRef(Grid)>
             <ForwardRef(Grid)
               item={true}
@@ -320,11 +328,15 @@ exports[`Shallow Snapshot Tests loading markers 1`] = `
               pt={0.4}
               xs={1}
             >
-              <ForwardRef(IconButton)
-                color="primary"
+              <NonStyleLink
+                to="/special-maps/detail/0"
               >
-                <Memo(ForwardRef(HelpOutlineIcon)) />
-              </ForwardRef(IconButton)>
+                <ForwardRef(IconButton)
+                  color="primary"
+                >
+                  <Memo(ForwardRef(HelpOutlineIcon)) />
+                </ForwardRef(IconButton)>
+              </NonStyleLink>
             </ForwardRef(Grid)>
             <ForwardRef(Grid)
               item={true}

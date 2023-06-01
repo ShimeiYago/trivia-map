@@ -201,3 +201,43 @@ exports[`Shallow Snapshot Tests with popup 1`] = `
   />
 </Fragment>
 `;
+
+exports[`Shallow Snapshot Tests without map 1`] = `
+<Fragment>
+  <ForwardRef(ContainerComponent)
+    draggable={false}
+    icon={
+      NewClass {
+        "_initHooksCalled": true,
+        "options": Object {
+          "iconAnchor": Array [
+            12.5,
+            41,
+          ],
+          "iconSize": Array [
+            25,
+            41,
+          ],
+          "iconUrl": "default.png",
+          "popupAnchor": Array [
+            0,
+            -36,
+          ],
+          "shadowUrl": "marker-shadow.png",
+          "tooltipAnchor": Array [
+            0,
+            -36,
+          ],
+        },
+      }
+    }
+    position={
+      Object {
+        "lat": 0,
+        "lng": 0,
+      }
+    }
+    zIndexOffset={0}
+  />
+</Fragment>
+`;

@@ -19,6 +19,8 @@ import { LatLng, Map as LeafletMap } from 'leaflet';
 import { Image } from 'views/components/moleculars/image';
 import { DynamicAlignedText } from 'views/components/atoms/dynamic-aligned-text';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
+import { NonStyleLink } from 'views/components/atoms/non-style-link';
+import { SPECIAL_MAP_DETAIL_PAGE_LINK } from 'constant/links';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -134,9 +136,11 @@ export class Renderer extends React.Component<Props, State> {
       <Box sx={metaInfoBox}>
         <Grid container spacing={0}>
           <Grid item xs={1} pt={0.4}>
-            <IconButton color="primary">
-              <HelpOutlineIcon />
-            </IconButton>
+            <NonStyleLink to={SPECIAL_MAP_DETAIL_PAGE_LINK(String(this.props.mapId))}>
+              <IconButton color="primary">
+                <HelpOutlineIcon />
+              </IconButton>
+            </NonStyleLink>
           </Grid>
           <Grid item xs={10}>
             <Typography component="h2" variant="h6" py={1} align="center">
@@ -213,7 +217,6 @@ export type Props = {
   windowWidth: number;
   windowHeight: number;
 
-  navigate: (to: string) => void;
   throwError: (errorStatus: number) => void;
 };
 

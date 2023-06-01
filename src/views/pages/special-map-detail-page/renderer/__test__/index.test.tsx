@@ -4,18 +4,12 @@ import * as GetSpecialMapApiModule from 'api/special-map-api/get-special-map';
 import * as GetSpecialMapMarkersApiModule from 'api/special-map-api/get-special-map-markers';
 import { mockGetSpecialMapResponse } from 'api/mock/special-map-response';
 import { mockGetSpecialMapMarkersResponseWithPagination } from 'api/mock/special-map-response';
-import { Map as LeafletMap } from 'leaflet';
 
 let shallowWrapper: ShallowWrapper<Props, State, Renderer>;
 let getSpecialMapSpy: jest.SpyInstance;
 let getSpecialMapMarkersSpy: jest.SpyInstance;
 
-const testMap = { on: jest.fn(), invalidateSize: jest.fn() } as unknown as LeafletMap;
-
 const props: Props = {
-  isMobile: true,
-  windowHeight: 100,
-  windowWidth: 100,
   throwError: jest.fn(),
   mapId: 0,
 };
@@ -26,13 +20,6 @@ describe('Shallow Snapshot Tests', () => {
   });
 
   it('basic', () => {
-    expect(shallowWrapper).toMatchSnapshot();
-  });
-
-  it('without height', () => {
-    shallowWrapper.setProps({
-      windowHeight: 0,
-    });
     expect(shallowWrapper).toMatchSnapshot();
   });
 
@@ -51,19 +38,16 @@ describe('Shallow Snapshot Tests', () => {
       specialMap: mockGetSpecialMapResponse,
       loadingMarkers: false,
       markers: mockGetSpecialMapMarkersResponseWithPagination.results,
-      map: testMap,
     });
     expect(shallowWrapper).toMatchSnapshot();
   });
 
-  it('loaded (pc)', () => {
-    shallowWrapper.setProps({
-      isMobile: false,
-    });
+  it('loaded (without thumbnail)', () => {
     shallowWrapper.setState({
       loadingSpecialMap: false,
-      specialMap: mockGetSpecialMapResponse,
+      specialMap: { ...mockGetSpecialMapResponse, thumbnail: null },
       loadingMarkers: false,
+      markers: mockGetSpecialMapMarkersResponseWithPagination.results,
     });
     expect(shallowWrapper).toMatchSnapshot();
   });
@@ -83,15 +67,6 @@ describe('fetchSpecialMap', () => {
     await instance['fetchSpecialMap']();
 
     expect(instance.state.specialMap?.isPublic).toBeTruthy();
-  });
-
-  it('should update park state if selectablePark in api response is specific park', async () => {
-    getSpecialMapSpy.mockResolvedValue({ ...mockGetSpecialMapResponse, selectablePark: 'S' });
-
-    const instance = shallowWrapper.instance();
-    await instance['fetchSpecialMap']();
-
-    expect(instance.state.park).toBe('S');
   });
 
   it('should call throwError if api calling fail', async () => {
@@ -130,32 +105,5 @@ describe('fetchSpecialMapMarkers', () => {
     await instance['fetchSpecialMapMarkers']();
 
     expect(instance.props.throwError).toBeCalled();
-  });
-});
-
-describe('handleChangePark', () => {
-  beforeEach(() => {
-    shallowWrapper = shallow(<Renderer {...props} />);
-  });
-
-  it('should update park state', async () => {
-    const instance = shallowWrapper.instance();
-    instance['handleChangePark']('S');
-
-    expect(instance.state.park).toBe('S');
-  });
-});
-
-describe('setMap', () => {
-  beforeEach(() => {
-    shallowWrapper = shallow(<Renderer {...props} />);
-  });
-
-  it('should update map state', () => {
-    const instance = shallowWrapper.instance();
-
-    instance['setMap'](testMap);
-
-    expect(instance.state.map).toBe(testMap);
   });
 });

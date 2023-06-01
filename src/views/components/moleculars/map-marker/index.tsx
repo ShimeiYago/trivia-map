@@ -42,31 +42,41 @@ export class MapMarker extends React.Component<Props, State> {
       icon = redIconWithNumber(String(this.props.numberOfContents));
     }
 
-    if (!this.props.popup || !this.props.map) {
+    if (!this.props.mapController) {
       return (
-        <>
-          <Marker
-            position={this.props.position}
-            icon={icon}
-            draggable={this.props.draggable}
-            ref={this.markerRef}
-            eventHandlers={this.props.map ? this.eventHandlers(this.props.map) : undefined}
-            zIndexOffset={this.props.zIndexOffset}
-          />
-        </>
+        <Marker
+          position={this.props.position}
+          icon={icon}
+          draggable={this.props.draggable}
+          ref={this.markerRef}
+          zIndexOffset={this.props.zIndexOffset}
+        />
+      );
+    }
+
+    if (!this.props.mapController.popup) {
+      return (
+        <Marker
+          position={this.props.position}
+          icon={icon}
+          draggable={this.props.draggable}
+          ref={this.markerRef}
+          eventHandlers={this.eventHandlers(this.props.mapController.map)}
+          zIndexOffset={this.props.zIndexOffset}
+        />
       );
     }
 
     return (
       <>
         <CustomMarker
-          map={this.props.map}
+          map={this.props.mapController.map}
           position={this.props.position}
           icon={icon}
           draggable={this.props.draggable}
           ref={this.markerRef}
-          eventHandlers={this.eventHandlers(this.props.map)}
-          popup={this.state.isPopupOpened && this.props.popup}
+          eventHandlers={this.eventHandlers(this.props.mapController.map)}
+          popup={this.state.isPopupOpened && this.props.mapController.popup}
           autoOpen={this.props.autoOpen}
           zIndexOffset={this.props.zIndexOffset}
         />
@@ -133,12 +143,11 @@ export type Props = {
   position: LatLng;
   zIndexOffset: number;
   variant: MapMarkerVariant;
-  popup?: ReactNode;
   autoOpen: boolean;
-  map?: LeafletMap;
   draggable?: boolean;
   numberOfContents?: number;
   isMobile?: boolean;
+  mapController?: MapController;
   onDragStart?: () => void;
   onDragEnd?: (position: LatLng) => void;
 };
@@ -146,4 +155,9 @@ export type Props = {
 export type State = {
   isPopupOpened: boolean;
   dragging: boolean;
+};
+
+type MapController = {
+  popup?: ReactNode;
+  map: LeafletMap;
 };

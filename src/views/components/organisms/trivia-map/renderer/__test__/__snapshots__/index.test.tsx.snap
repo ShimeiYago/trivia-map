@@ -49,9 +49,11 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       draggable={false}
       isMobile={false}
       key="additional-marker-0"
-      map={
+      mapController={
         Object {
-          "setView": [MockFunction],
+          "map": Object {
+            "setView": [MockFunction],
+          },
         }
       }
       position={
@@ -86,9 +88,11 @@ exports[`Shallow Snapshot Tests disabled map 1`] = `
       draggable={false}
       isMobile={false}
       key="additional-marker-0"
-      map={
+      mapController={
         Object {
-          "setView": [MockFunction],
+          "map": Object {
+            "setView": [MockFunction],
+          },
         }
       }
       position={
@@ -153,9 +157,11 @@ exports[`Shallow Snapshot Tests land map 1`] = `
       draggable={false}
       isMobile={false}
       key="additional-marker-0"
-      map={
+      mapController={
         Object {
-          "setView": [MockFunction],
+          "map": Object {
+            "setView": [MockFunction],
+          },
         }
       }
       position={
@@ -220,9 +226,11 @@ exports[`Shallow Snapshot Tests with current marker 1`] = `
       draggable={false}
       isMobile={false}
       key="additional-marker-0"
-      map={
+      mapController={
         Object {
-          "setView": [MockFunction],
+          "map": Object {
+            "setView": [MockFunction],
+          },
         }
       }
       position={
@@ -238,9 +246,11 @@ exports[`Shallow Snapshot Tests with current marker 1`] = `
       autoOpen={false}
       draggable={false}
       isMobile={false}
-      map={
+      mapController={
         Object {
-          "setView": [MockFunction],
+          "map": Object {
+            "setView": [MockFunction],
+          },
         }
       }
       position={
@@ -320,23 +330,25 @@ exports[`Shallow Snapshot Tests with initCenter prop 1`] = `
       draggable={false}
       isMobile={false}
       key="additional-marker-0"
-      map={
+      mapController={
         Object {
-          "setView": [MockFunction] {
-            "calls": Array [
-              Array [
+          "map": Object {
+            "setView": [MockFunction] {
+              "calls": Array [
+                Array [
+                  Object {
+                    "lat": 1,
+                    "lng": 1,
+                  },
+                ],
+              ],
+              "results": Array [
                 Object {
-                  "lat": 1,
-                  "lng": 1,
+                  "type": "return",
+                  "value": undefined,
                 },
               ],
-            ],
-            "results": Array [
-              Object {
-                "type": "return",
-                "value": undefined,
-              },
-            ],
+            },
           },
         }
       }
@@ -404,9 +416,11 @@ exports[`Shallow Snapshot Tests with width and height props 1`] = `
       draggable={false}
       isMobile={false}
       key="additional-marker-0"
-      map={
+      mapController={
         Object {
-          "setView": [MockFunction],
+          "map": Object {
+            "setView": [MockFunction],
+          },
         }
       }
       position={

@@ -14,41 +14,41 @@ exports[`Shallow Snapshot Tests basic 1`] = `
     draggable={false}
     isMobile={false}
     key="post-marker-100"
-    map={
+    mapController={
       Object {
-        "setView": [MockFunction],
-      }
-    }
-    popup={
-      <ForwardRef(Box)
-        width={250}
-      >
-        <ArticlePreviewList
-          searchConditions={
-            Object {
-              "category": undefined,
-              "marker": 100,
-              "user": undefined,
-            }
-          }
-          variant="popup"
-        />
-        <ForwardRef(Box)
-          sx={
-            Object {
-              "mt": 2,
-              "textAlign": "right",
-            }
-          }
+        "map": Object {
+          "setView": [MockFunction],
+        },
+        "popup": <ForwardRef(Box)
+          width={250}
         >
-          <ForwardRef(Button)
-            onClick={[Function]}
-            startIcon={<Memo />}
+          <ArticlePreviewList
+            searchConditions={
+              Object {
+                "category": undefined,
+                "marker": 100,
+                "user": undefined,
+              }
+            }
+            variant="popup"
+          />
+          <ForwardRef(Box)
+            sx={
+              Object {
+                "mt": 2,
+                "textAlign": "right",
+              }
+            }
           >
-            ここにトリビアを追加する
-          </ForwardRef(Button)>
-        </ForwardRef(Box)>
-      </ForwardRef(Box)>
+            <ForwardRef(Button)
+              onClick={[Function]}
+              startIcon={<Memo />}
+            >
+              ここにトリビアを追加する
+            </ForwardRef(Button)>
+          </ForwardRef(Box)>
+        </ForwardRef(Box)>,
+      }
     }
     position={
       Object {
@@ -64,43 +64,43 @@ exports[`Shallow Snapshot Tests basic 1`] = `
     draggable={false}
     isMobile={false}
     key="post-marker-101"
-    map={
+    mapController={
       Object {
-        "setView": [MockFunction],
+        "map": Object {
+          "setView": [MockFunction],
+        },
+        "popup": <ForwardRef(Box)
+          width={250}
+        >
+          <ArticlePreviewList
+            searchConditions={
+              Object {
+                "category": undefined,
+                "marker": 101,
+                "user": undefined,
+              }
+            }
+            variant="popup"
+          />
+          <ForwardRef(Box)
+            sx={
+              Object {
+                "mt": 2,
+                "textAlign": "right",
+              }
+            }
+          >
+            <ForwardRef(Button)
+              onClick={[Function]}
+              startIcon={<Memo />}
+            >
+              ここにトリビアを追加する
+            </ForwardRef(Button)>
+          </ForwardRef(Box)>
+        </ForwardRef(Box)>,
       }
     }
     numberOfContents={4}
-    popup={
-      <ForwardRef(Box)
-        width={250}
-      >
-        <ArticlePreviewList
-          searchConditions={
-            Object {
-              "category": undefined,
-              "marker": 101,
-              "user": undefined,
-            }
-          }
-          variant="popup"
-        />
-        <ForwardRef(Box)
-          sx={
-            Object {
-              "mt": 2,
-              "textAlign": "right",
-            }
-          }
-        >
-          <ForwardRef(Button)
-            onClick={[Function]}
-            startIcon={<Memo />}
-          >
-            ここにトリビアを追加する
-          </ForwardRef(Button)>
-        </ForwardRef(Box)>
-      </ForwardRef(Box)>
-    }
     position={
       Object {
         "lat": 0,
@@ -127,43 +127,43 @@ exports[`Shallow Snapshot Tests category is selected 1`] = `
     draggable={false}
     isMobile={false}
     key="post-marker-101"
-    map={
+    mapController={
       Object {
-        "setView": [MockFunction],
+        "map": Object {
+          "setView": [MockFunction],
+        },
+        "popup": <ForwardRef(Box)
+          width={250}
+        >
+          <ArticlePreviewList
+            searchConditions={
+              Object {
+                "category": 1,
+                "marker": 101,
+                "user": undefined,
+              }
+            }
+            variant="popup"
+          />
+          <ForwardRef(Box)
+            sx={
+              Object {
+                "mt": 2,
+                "textAlign": "right",
+              }
+            }
+          >
+            <ForwardRef(Button)
+              onClick={[Function]}
+              startIcon={<Memo />}
+            >
+              ここにトリビアを追加する
+            </ForwardRef(Button)>
+          </ForwardRef(Box)>
+        </ForwardRef(Box)>,
       }
     }
     numberOfContents={2}
-    popup={
-      <ForwardRef(Box)
-        width={250}
-      >
-        <ArticlePreviewList
-          searchConditions={
-            Object {
-              "category": 1,
-              "marker": 101,
-              "user": undefined,
-            }
-          }
-          variant="popup"
-        />
-        <ForwardRef(Box)
-          sx={
-            Object {
-              "mt": 2,
-              "textAlign": "right",
-            }
-          }
-        >
-          <ForwardRef(Button)
-            onClick={[Function]}
-            startIcon={<Memo />}
-          >
-            ここにトリビアを追加する
-          </ForwardRef(Button)>
-        </ForwardRef(Box)>
-      </ForwardRef(Box)>
-    }
     position={
       Object {
         "lat": 0,
@@ -190,41 +190,41 @@ exports[`Shallow Snapshot Tests form is editting 1`] = `
     draggable={false}
     isMobile={false}
     key="post-marker-100"
-    map={
+    mapController={
       Object {
-        "setView": [MockFunction],
-      }
-    }
-    popup={
-      <ForwardRef(Box)
-        width={250}
-      >
-        <ArticlePreviewList
-          searchConditions={
-            Object {
-              "category": undefined,
-              "marker": 100,
-              "user": undefined,
-            }
-          }
-          variant="popup"
-        />
-        <ForwardRef(Box)
-          sx={
-            Object {
-              "mt": 2,
-              "textAlign": "right",
-            }
-          }
+        "map": Object {
+          "setView": [MockFunction],
+        },
+        "popup": <ForwardRef(Box)
+          width={250}
         >
-          <ForwardRef(Button)
-            onClick={[Function]}
-            startIcon={<Memo />}
+          <ArticlePreviewList
+            searchConditions={
+              Object {
+                "category": undefined,
+                "marker": 100,
+                "user": undefined,
+              }
+            }
+            variant="popup"
+          />
+          <ForwardRef(Box)
+            sx={
+              Object {
+                "mt": 2,
+                "textAlign": "right",
+              }
+            }
           >
-            ここにマーカーを置く
-          </ForwardRef(Button)>
-        </ForwardRef(Box)>
-      </ForwardRef(Box)>
+            <ForwardRef(Button)
+              onClick={[Function]}
+              startIcon={<Memo />}
+            >
+              ここにマーカーを置く
+            </ForwardRef(Button)>
+          </ForwardRef(Box)>
+        </ForwardRef(Box)>,
+      }
     }
     position={
       Object {
@@ -240,43 +240,43 @@ exports[`Shallow Snapshot Tests form is editting 1`] = `
     draggable={false}
     isMobile={false}
     key="post-marker-101"
-    map={
+    mapController={
       Object {
-        "setView": [MockFunction],
+        "map": Object {
+          "setView": [MockFunction],
+        },
+        "popup": <ForwardRef(Box)
+          width={250}
+        >
+          <ArticlePreviewList
+            searchConditions={
+              Object {
+                "category": undefined,
+                "marker": 101,
+                "user": undefined,
+              }
+            }
+            variant="popup"
+          />
+          <ForwardRef(Box)
+            sx={
+              Object {
+                "mt": 2,
+                "textAlign": "right",
+              }
+            }
+          >
+            <ForwardRef(Button)
+              onClick={[Function]}
+              startIcon={<Memo />}
+            >
+              ここにマーカーを置く
+            </ForwardRef(Button)>
+          </ForwardRef(Box)>
+        </ForwardRef(Box)>,
       }
     }
     numberOfContents={4}
-    popup={
-      <ForwardRef(Box)
-        width={250}
-      >
-        <ArticlePreviewList
-          searchConditions={
-            Object {
-              "category": undefined,
-              "marker": 101,
-              "user": undefined,
-            }
-          }
-          variant="popup"
-        />
-        <ForwardRef(Box)
-          sx={
-            Object {
-              "mt": 2,
-              "textAlign": "right",
-            }
-          }
-        >
-          <ForwardRef(Button)
-            onClick={[Function]}
-            startIcon={<Memo />}
-          >
-            ここにマーカーを置く
-          </ForwardRef(Button)>
-        </ForwardRef(Box)>
-      </ForwardRef(Box)>
-    }
     position={
       Object {
         "lat": 0,
@@ -303,43 +303,43 @@ exports[`Shallow Snapshot Tests with hiddenMarkerIds 1`] = `
     draggable={false}
     isMobile={false}
     key="post-marker-101"
-    map={
+    mapController={
       Object {
-        "setView": [MockFunction],
+        "map": Object {
+          "setView": [MockFunction],
+        },
+        "popup": <ForwardRef(Box)
+          width={250}
+        >
+          <ArticlePreviewList
+            searchConditions={
+              Object {
+                "category": undefined,
+                "marker": 101,
+                "user": undefined,
+              }
+            }
+            variant="popup"
+          />
+          <ForwardRef(Box)
+            sx={
+              Object {
+                "mt": 2,
+                "textAlign": "right",
+              }
+            }
+          >
+            <ForwardRef(Button)
+              onClick={[Function]}
+              startIcon={<Memo />}
+            >
+              ここにトリビアを追加する
+            </ForwardRef(Button)>
+          </ForwardRef(Box)>
+        </ForwardRef(Box)>,
       }
     }
     numberOfContents={4}
-    popup={
-      <ForwardRef(Box)
-        width={250}
-      >
-        <ArticlePreviewList
-          searchConditions={
-            Object {
-              "category": undefined,
-              "marker": 101,
-              "user": undefined,
-            }
-          }
-          variant="popup"
-        />
-        <ForwardRef(Box)
-          sx={
-            Object {
-              "mt": 2,
-              "textAlign": "right",
-            }
-          }
-        >
-          <ForwardRef(Button)
-            onClick={[Function]}
-            startIcon={<Memo />}
-          >
-            ここにトリビアを追加する
-          </ForwardRef(Button)>
-        </ForwardRef(Box)>
-      </ForwardRef(Box)>
-    }
     position={
       Object {
         "lat": 0,
@@ -366,41 +366,41 @@ exports[`Shallow Snapshot Tests without number of articles 1`] = `
     draggable={false}
     isMobile={false}
     key="post-marker-100"
-    map={
+    mapController={
       Object {
-        "setView": [MockFunction],
-      }
-    }
-    popup={
-      <ForwardRef(Box)
-        width={250}
-      >
-        <ArticlePreviewList
-          searchConditions={
-            Object {
-              "category": undefined,
-              "marker": 100,
-              "user": undefined,
-            }
-          }
-          variant="popup"
-        />
-        <ForwardRef(Box)
-          sx={
-            Object {
-              "mt": 2,
-              "textAlign": "right",
-            }
-          }
+        "map": Object {
+          "setView": [MockFunction],
+        },
+        "popup": <ForwardRef(Box)
+          width={250}
         >
-          <ForwardRef(Button)
-            onClick={[Function]}
-            startIcon={<Memo />}
+          <ArticlePreviewList
+            searchConditions={
+              Object {
+                "category": undefined,
+                "marker": 100,
+                "user": undefined,
+              }
+            }
+            variant="popup"
+          />
+          <ForwardRef(Box)
+            sx={
+              Object {
+                "mt": 2,
+                "textAlign": "right",
+              }
+            }
           >
-            ここにトリビアを追加する
-          </ForwardRef(Button)>
-        </ForwardRef(Box)>
-      </ForwardRef(Box)>
+            <ForwardRef(Button)
+              onClick={[Function]}
+              startIcon={<Memo />}
+            >
+              ここにトリビアを追加する
+            </ForwardRef(Button)>
+          </ForwardRef(Box)>
+        </ForwardRef(Box)>,
+      }
     }
     position={
       Object {
@@ -416,41 +416,41 @@ exports[`Shallow Snapshot Tests without number of articles 1`] = `
     draggable={false}
     isMobile={false}
     key="post-marker-101"
-    map={
+    mapController={
       Object {
-        "setView": [MockFunction],
-      }
-    }
-    popup={
-      <ForwardRef(Box)
-        width={250}
-      >
-        <ArticlePreviewList
-          searchConditions={
-            Object {
-              "category": undefined,
-              "marker": 101,
-              "user": undefined,
-            }
-          }
-          variant="popup"
-        />
-        <ForwardRef(Box)
-          sx={
-            Object {
-              "mt": 2,
-              "textAlign": "right",
-            }
-          }
+        "map": Object {
+          "setView": [MockFunction],
+        },
+        "popup": <ForwardRef(Box)
+          width={250}
         >
-          <ForwardRef(Button)
-            onClick={[Function]}
-            startIcon={<Memo />}
+          <ArticlePreviewList
+            searchConditions={
+              Object {
+                "category": undefined,
+                "marker": 101,
+                "user": undefined,
+              }
+            }
+            variant="popup"
+          />
+          <ForwardRef(Box)
+            sx={
+              Object {
+                "mt": 2,
+                "textAlign": "right",
+              }
+            }
           >
-            ここにトリビアを追加する
-          </ForwardRef(Button)>
-        </ForwardRef(Box)>
-      </ForwardRef(Box)>
+            <ForwardRef(Button)
+              onClick={[Function]}
+              startIcon={<Memo />}
+            >
+              ここにトリビアを追加する
+            </ForwardRef(Button)>
+          </ForwardRef(Box)>
+        </ForwardRef(Box)>,
+      }
     }
     position={
       Object {

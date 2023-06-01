@@ -158,7 +158,7 @@ export class Renderer extends React.Component<Props, State> {
     return additinalMarkers.map((position, index) => {
       return (
         <MapMarker
-          map={map}
+          mapController={{ map }}
           position={new LatLng(position.lat, position.lng)}
           key={`additional-marker-${index}`}
           isMobile={isMobile}
@@ -189,7 +189,7 @@ export class Renderer extends React.Component<Props, State> {
     return (
       this.state.map && (
         <MapMarker
-          map={this.state.map}
+          mapController={{ map: this.state.map }}
           position={new LatLng(articleFormPosition.lat, articleFormPosition.lng)}
           isMobile={isMobile}
           zIndexOffset={999}

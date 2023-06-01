@@ -77,6 +77,15 @@ describe('fetchSpecialMap', () => {
 
     expect(instance.props.throwError).toBeCalled();
   });
+
+  it('should call throwError 404 when api fail with 404', async () => {
+    getSpecialMapSpy.mockRejectedValue({ status: 404 });
+
+    const instance = shallowWrapper.instance();
+    await instance['fetchSpecialMap']();
+
+    expect(instance.props.throwError).toHaveBeenCalledWith(404);
+  });
 });
 
 describe('fetchSpecialMapMarkers', () => {

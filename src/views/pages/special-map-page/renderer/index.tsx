@@ -21,6 +21,7 @@ import { DynamicAlignedText } from 'views/components/atoms/dynamic-aligned-text'
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import { NonStyleLink } from 'views/components/atoms/non-style-link';
 import { SPECIAL_MAP_DETAIL_PAGE_LINK } from 'constant/links';
+import { ApiError } from 'api/utils/handle-axios-error';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -162,7 +163,13 @@ export class Renderer extends React.Component<Props, State> {
         park: res.selectablePark !== 'both' ? res.selectablePark : this.state.park,
       });
     } catch (error) {
-      this.props.throwError(500);
+      const apiError = error as ApiError<unknown>;
+
+      if (apiError.status === 404 || apiError.status === 401 || apiError.status === 403) {
+        this.props.throwError(404);
+      } else {
+        this.props.throwError(500);
+      }
     }
   };
 

@@ -19,6 +19,7 @@ import { MyIcon } from 'views/components/atoms/my-icon';
 import { SPECIAL_MAP_PAGE_LINK } from 'constant/links';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import { NonStyleLink } from 'views/components/atoms/non-style-link';
+import { ApiError } from 'api/utils/handle-axios-error';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -172,7 +173,13 @@ export class Renderer extends React.Component<Props, State> {
         specialMap: res,
       });
     } catch (error) {
-      this.props.throwError(500);
+      const apiError = error as ApiError<unknown>;
+
+      if (apiError.status === 404 || apiError.status === 401 || apiError.status === 403) {
+        this.props.throwError(404);
+      } else {
+        this.props.throwError(500);
+      }
     }
   };
 

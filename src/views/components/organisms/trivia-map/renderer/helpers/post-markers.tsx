@@ -43,9 +43,8 @@ export class PostMarkers extends React.Component<Props> {
 
       return (
         <MapMarker
-          map={map}
+          mapController={{ map, popup }}
           position={new LatLng(marker.lat, marker.lng)}
-          popup={popup}
           variant="red"
           numberOfContents={numberOfContents}
           key={`post-marker-${marker.markerId}`}

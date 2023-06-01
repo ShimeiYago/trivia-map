@@ -147,30 +147,30 @@ exports[`Shallow Snapshot Tests loaded 1`] = `
           autoOpen={false}
           draggable={false}
           key="special-map--67.6875-140.75"
-          map={
+          mapController={
             Object {
-              "invalidateSize": [MockFunction],
-              "on": [MockFunction],
+              "map": Object {
+                "invalidateSize": [MockFunction],
+                "on": [MockFunction],
+              },
+              "popup": <React.Fragment>
+                <ForwardRef(Typography)
+                  align="center"
+                  component="div"
+                  mb={2}
+                >
+                  <Image
+                    height="200px"
+                    src="https://cdn-ak.f.st-hatena.com/images/fotolife/n/nats-co/20160323/20160323164220.jpg"
+                  />
+                </ForwardRef(Typography)>
+                <DynamicAlignedText
+                  component="div"
+                >
+                  アリスモチーフのトイレです。トランプ模様の扉がかわいい。
+                </DynamicAlignedText>
+              </React.Fragment>,
             }
-          }
-          popup={
-            <React.Fragment>
-              <ForwardRef(Typography)
-                align="center"
-                component="div"
-                mb={2}
-              >
-                <Image
-                  height="200px"
-                  src="https://cdn-ak.f.st-hatena.com/images/fotolife/n/nats-co/20160323/20160323164220.jpg"
-                />
-              </ForwardRef(Typography)>
-              <DynamicAlignedText
-                component="div"
-              >
-                アリスモチーフのトイレです。トランプ模様の扉がかわいい。
-              </DynamicAlignedText>
-            </React.Fragment>
           }
           position={
             Object {

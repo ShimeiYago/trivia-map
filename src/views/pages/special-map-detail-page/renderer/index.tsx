@@ -139,7 +139,12 @@ export class Renderer extends React.Component<Props, State> {
               </Typography>
             )}
 
-            <NonStyleLink to={SPECIAL_MAP_PAGE_LINK(String(this.props.mapId))}>
+            <NonStyleLink
+              to={SPECIAL_MAP_PAGE_LINK(String(this.props.mapId), {
+                marker: marker.specialMapMarkerId,
+                park: marker.park,
+              })}
+            >
               <Typography align="right">
                 <Button>
                   <IconAndText

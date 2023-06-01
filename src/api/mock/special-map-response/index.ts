@@ -43,6 +43,7 @@ export const mockGetSpecialMapMarkersResponseWithPagination: GetSpecialMapMarker
     endIndex: 1,
     results: [
       {
+        specialMapMarkerId: 1,
         lat: -67.6875,
         lng: 140.75,
         park: 'L',
@@ -52,6 +53,7 @@ export const mockGetSpecialMapMarkersResponseWithPagination: GetSpecialMapMarker
         variant: 'blue',
       },
       {
+        specialMapMarkerId: 2,
         lat: -202.34375,
         lng: 163.1875,
         park: 'S',

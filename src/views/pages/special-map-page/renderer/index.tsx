@@ -22,7 +22,7 @@ import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import { NonStyleLink } from 'views/components/atoms/non-style-link';
 import { SPECIAL_MAP_DETAIL_PAGE_LINK } from 'constant/links';
 import { ApiError } from 'api/utils/handle-axios-error';
-import { PARKS } from 'constant';
+import { PARKS, ZOOMS } from 'constant';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -108,6 +108,10 @@ export class Renderer extends React.Component<Props, State> {
     return markers.map((marker) => {
       if (marker.park !== park) {
         return null;
+      }
+
+      if (marker.specialMapMarkerId === this.props.markerId) {
+        map.flyTo(new LatLng(marker.lat, marker.lng), ZOOMS.popupOpen, { animate: false });
       }
 
       const popup = (

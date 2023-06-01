@@ -130,30 +130,8 @@ exports[`Shallow Snapshot Tests author view 1`] = `
     <NonStyleLink
       to="/"
     >
-      <TriviaMap
-        additinalMarkers={
-          Array [
-            Object {
-              "areaNames": Array [
-                "シー",
-              ],
-              "lat": 0,
-              "lng": 0,
-              "markerId": 1,
-              "numberOfPublicArticles": Object {
-                "eachCategory": Array [
-                  1,
-                  2,
-                  1,
-                ],
-                "total": 4,
-              },
-              "park": "S",
-            },
-          ]
-        }
+      <ParkMap
         disabled={true}
-        doNotShowPostMarkers={true}
         height={300}
         initCenter={
           Object {
@@ -176,7 +154,20 @@ exports[`Shallow Snapshot Tests author view 1`] = `
         }
         initZoom={3}
         park="S"
-      />
+      >
+        <MapMarker
+          autoOpen={false}
+          draggable={false}
+          position={
+            Object {
+              "lat": 0,
+              "lng": 0,
+            }
+          }
+          variant="red"
+          zIndexOffset={0}
+        />
+      </ParkMap>
     </NonStyleLink>
     <ForwardRef(Divider) />
     <ForwardRef(Grid)
@@ -352,30 +343,8 @@ exports[`Shallow Snapshot Tests draft 1`] = `
     <NonStyleLink
       to="/"
     >
-      <TriviaMap
-        additinalMarkers={
-          Array [
-            Object {
-              "areaNames": Array [
-                "シー",
-              ],
-              "lat": 0,
-              "lng": 0,
-              "markerId": 1,
-              "numberOfPublicArticles": Object {
-                "eachCategory": Array [
-                  1,
-                  2,
-                  1,
-                ],
-                "total": 4,
-              },
-              "park": "S",
-            },
-          ]
-        }
+      <ParkMap
         disabled={true}
-        doNotShowPostMarkers={true}
         height={300}
         initCenter={
           Object {
@@ -398,7 +367,20 @@ exports[`Shallow Snapshot Tests draft 1`] = `
         }
         initZoom={3}
         park="S"
-      />
+      >
+        <MapMarker
+          autoOpen={false}
+          draggable={false}
+          position={
+            Object {
+              "lat": 0,
+              "lng": 0,
+            }
+          }
+          variant="red"
+          zIndexOffset={0}
+        />
+      </ParkMap>
     </NonStyleLink>
     <ForwardRef(Divider) />
     <ForwardRef(Grid)
@@ -552,30 +534,8 @@ exports[`Shallow Snapshot Tests draft with same created & updated 1`] = `
     <NonStyleLink
       to="/"
     >
-      <TriviaMap
-        additinalMarkers={
-          Array [
-            Object {
-              "areaNames": Array [
-                "シー",
-              ],
-              "lat": 0,
-              "lng": 0,
-              "markerId": 1,
-              "numberOfPublicArticles": Object {
-                "eachCategory": Array [
-                  1,
-                  2,
-                  1,
-                ],
-                "total": 4,
-              },
-              "park": "S",
-            },
-          ]
-        }
+      <ParkMap
         disabled={true}
-        doNotShowPostMarkers={true}
         height={300}
         initCenter={
           Object {
@@ -598,7 +558,20 @@ exports[`Shallow Snapshot Tests draft with same created & updated 1`] = `
         }
         initZoom={3}
         park="S"
-      />
+      >
+        <MapMarker
+          autoOpen={false}
+          draggable={false}
+          position={
+            Object {
+              "lat": 0,
+              "lng": 0,
+            }
+          }
+          variant="red"
+          zIndexOffset={0}
+        />
+      </ParkMap>
     </NonStyleLink>
     <ForwardRef(Divider) />
     <ForwardRef(Grid)
@@ -750,30 +723,8 @@ exports[`Shallow Snapshot Tests have added good 1`] = `
     <NonStyleLink
       to="/"
     >
-      <TriviaMap
-        additinalMarkers={
-          Array [
-            Object {
-              "areaNames": Array [
-                "シー",
-              ],
-              "lat": 0,
-              "lng": 0,
-              "markerId": 1,
-              "numberOfPublicArticles": Object {
-                "eachCategory": Array [
-                  1,
-                  2,
-                  1,
-                ],
-                "total": 4,
-              },
-              "park": "S",
-            },
-          ]
-        }
+      <ParkMap
         disabled={true}
-        doNotShowPostMarkers={true}
         height={300}
         initCenter={
           Object {
@@ -796,7 +747,20 @@ exports[`Shallow Snapshot Tests have added good 1`] = `
         }
         initZoom={3}
         park="S"
-      />
+      >
+        <MapMarker
+          autoOpen={false}
+          draggable={false}
+          position={
+            Object {
+              "lat": 0,
+              "lng": 0,
+            }
+          }
+          variant="red"
+          zIndexOffset={0}
+        />
+      </ParkMap>
     </NonStyleLink>
     <ForwardRef(Divider) />
     <ForwardRef(Grid)
@@ -962,30 +926,8 @@ exports[`Shallow Snapshot Tests have liked 1`] = `
     <NonStyleLink
       to="/"
     >
-      <TriviaMap
-        additinalMarkers={
-          Array [
-            Object {
-              "areaNames": Array [
-                "シー",
-              ],
-              "lat": 0,
-              "lng": 0,
-              "markerId": 1,
-              "numberOfPublicArticles": Object {
-                "eachCategory": Array [
-                  1,
-                  2,
-                  1,
-                ],
-                "total": 4,
-              },
-              "park": "S",
-            },
-          ]
-        }
+      <ParkMap
         disabled={true}
-        doNotShowPostMarkers={true}
         height={300}
         initCenter={
           Object {
@@ -1008,7 +950,20 @@ exports[`Shallow Snapshot Tests have liked 1`] = `
         }
         initZoom={3}
         park="S"
-      />
+      >
+        <MapMarker
+          autoOpen={false}
+          draggable={false}
+          position={
+            Object {
+              "lat": 0,
+              "lng": 0,
+            }
+          }
+          variant="red"
+          zIndexOffset={0}
+        />
+      </ParkMap>
     </NonStyleLink>
     <ForwardRef(Divider) />
     <ForwardRef(Grid)
@@ -1182,30 +1137,8 @@ exports[`Shallow Snapshot Tests with article 1`] = `
     <NonStyleLink
       to="/"
     >
-      <TriviaMap
-        additinalMarkers={
-          Array [
-            Object {
-              "areaNames": Array [
-                "シー",
-              ],
-              "lat": 0,
-              "lng": 0,
-              "markerId": 1,
-              "numberOfPublicArticles": Object {
-                "eachCategory": Array [
-                  1,
-                  2,
-                  1,
-                ],
-                "total": 4,
-              },
-              "park": "S",
-            },
-          ]
-        }
+      <ParkMap
         disabled={true}
-        doNotShowPostMarkers={true}
         height={300}
         initCenter={
           Object {
@@ -1228,7 +1161,20 @@ exports[`Shallow Snapshot Tests with article 1`] = `
         }
         initZoom={3}
         park="S"
-      />
+      >
+        <MapMarker
+          autoOpen={false}
+          draggable={false}
+          position={
+            Object {
+              "lat": 0,
+              "lng": 0,
+            }
+          }
+          variant="red"
+          zIndexOffset={0}
+        />
+      </ParkMap>
     </NonStyleLink>
     <ForwardRef(Divider) />
     <ForwardRef(Grid)
@@ -1385,30 +1331,8 @@ exports[`Shallow Snapshot Tests with image 1`] = `
     <NonStyleLink
       to="/"
     >
-      <TriviaMap
-        additinalMarkers={
-          Array [
-            Object {
-              "areaNames": Array [
-                "シー",
-              ],
-              "lat": 0,
-              "lng": 0,
-              "markerId": 1,
-              "numberOfPublicArticles": Object {
-                "eachCategory": Array [
-                  1,
-                  2,
-                  1,
-                ],
-                "total": 4,
-              },
-              "park": "S",
-            },
-          ]
-        }
+      <ParkMap
         disabled={true}
-        doNotShowPostMarkers={true}
         height={300}
         initCenter={
           Object {
@@ -1431,7 +1355,20 @@ exports[`Shallow Snapshot Tests with image 1`] = `
         }
         initZoom={3}
         park="S"
-      />
+      >
+        <MapMarker
+          autoOpen={false}
+          draggable={false}
+          position={
+            Object {
+              "lat": 0,
+              "lng": 0,
+            }
+          }
+          variant="red"
+          zIndexOffset={0}
+        />
+      </ParkMap>
     </NonStyleLink>
     <ForwardRef(Divider) />
     <ForwardRef(Grid)

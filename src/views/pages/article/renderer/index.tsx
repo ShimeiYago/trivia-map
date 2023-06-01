@@ -2,7 +2,6 @@ import React from 'react';
 import { Alert, Avatar, Box, Divider, Stack, Typography, Link, Grid } from '@mui/material';
 import { LoadingState } from 'types/loading-state';
 import { Image } from 'views/components/moleculars/image';
-import { TriviaMap } from 'views/components/organisms/trivia-map';
 import { createdAtBox } from '../styles';
 import { IconAndText } from 'views/components/atoms/icon-and-text';
 import { CenterSpinner } from 'views/components/atoms/center-spinner';
@@ -33,6 +32,9 @@ import { MyIcon } from 'views/components/atoms/my-icon';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
 import { DynamicAlignedText } from 'views/components/atoms/dynamic-aligned-text';
+import { ParkMap } from 'views/components/moleculars/park-map';
+import { MapMarker } from 'views/components/moleculars/map-marker';
+import { LatLng } from 'leaflet';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -149,15 +151,15 @@ export class Renderer extends React.Component<Props, State> {
           <AreaNames areaNames={marker.areaNames} />
 
           <NonStyleLink to={MAP_PAGE_LINK}>
-            <TriviaMap
+            <ParkMap
               height={300}
               initZoom={ZOOMS.miniMap}
               initCenter={marker}
               disabled
-              doNotShowPostMarkers
-              additinalMarkers={[marker]}
               park={marker.park}
-            />
+            >
+              <MapMarker position={new LatLng(marker.lat, marker.lng)} variant="red" />
+            </ParkMap>
           </NonStyleLink>
 
           <Divider />

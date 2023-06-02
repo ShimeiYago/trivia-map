@@ -5,7 +5,7 @@ let shallowWrapper: ShallowWrapper<Props, State, Renderer>;
 
 const props: Props = {
   articleFormSubmittingState: 'waiting',
-  submitSuccessInfo: { postId: 1, title: 'title', description: 'description' },
+  submitSuccessInfo: { postId: 1, title: 'title', description: 'description', isDraft: false },
 };
 
 describe('Shallow Snapshot Tests', () => {
@@ -20,6 +20,13 @@ describe('Shallow Snapshot Tests', () => {
   it('without submitSuccessInfo', () => {
     shallowWrapper.setProps({
       submitSuccessInfo: undefined,
+    });
+    expect(shallowWrapper).toMatchSnapshot();
+  });
+
+  it('draft', () => {
+    shallowWrapper.setProps({
+      submitSuccessInfo: { postId: 1, title: 'title', description: 'description', isDraft: true },
     });
     expect(shallowWrapper).toMatchSnapshot();
   });

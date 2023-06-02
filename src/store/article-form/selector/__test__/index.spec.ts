@@ -52,6 +52,7 @@ describe('readingArticle selector', () => {
         postId: 100,
         title: 'title',
         description: 'description',
+        isDraft: false,
       },
     } as ArticleFormState,
   };
@@ -144,6 +145,7 @@ describe('readingArticle selector', () => {
       postId: 100,
       title: 'title',
       description: 'description',
+      isDraft: false,
     });
   });
 });

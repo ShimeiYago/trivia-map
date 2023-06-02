@@ -1,4 +1,4 @@
-import { Box, Stack, Typography } from '@mui/material';
+import { Alert, Box, Stack, Typography } from '@mui/material';
 import { ARTICLE_PAGE_LINK } from 'constant/links';
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -34,29 +34,32 @@ export class Renderer extends React.Component<Props, State> {
       return null;
     }
 
-    const { postId, title, description } = this.props.submitSuccessInfo;
+    const { postId, title, description, isDraft } = this.props.submitSuccessInfo;
 
     const domain = getDomain(window);
     const path = ARTICLE_PAGE_LINK(String(postId));
 
     return (
       <BoxModal open={this.state.show} onClose={this.handleCloseMessage} showCloseButton>
-        <Stack spacing={2} px={2} pb={3}>
-          <Typography variant="h5" align="center">
-            投稿が完了しました！
-          </Typography>
+        <Stack spacing={3} px={2} pb={3}>
+          <Alert severity="success" sx={{ fontWeight: 'bold', fontSize: 18 }}>
+            {isDraft ? '下書きに保存されました！' : '投稿が完了しました！'}
+          </Alert>
 
           <Typography align="center">
+            {isDraft && <Typography component="div">（あなただけが閲覧できます）</Typography>}
             <Link to={path}>{title}</Link>
           </Typography>
 
-          <Box>
-            <Typography variant="h6" align="center">
-              SNSでシェアしませんか？
-            </Typography>
+          {!isDraft && (
+            <Box>
+              <Typography variant="h6" align="center">
+                SNSでシェアしませんか？
+              </Typography>
 
-            <ShareButtons title={title} description={description} url={`${domain}${path}`} />
-          </Box>
+              <ShareButtons title={title} description={description} url={`${domain}${path}`} />
+            </Box>
+          )}
         </Stack>
       </BoxModal>
     );

@@ -292,6 +292,8 @@ exports[`Shallow Snapshot Tests basic 1`] = `
           disabled={false}
           icon="add-marker"
           onClick={[Function]}
+          size="large"
+          text="新しい投稿を追加"
         />
         <TriviaMapMarkersLoadingProgressBar />
         <ForwardRef(Box)
@@ -492,6 +494,8 @@ exports[`Shallow Snapshot Tests before render map 1`] = `
           disabled={false}
           icon="add-marker"
           onClick={[Function]}
+          size="large"
+          text="新しい投稿を追加"
         />
         <TriviaMapMarkersLoadingProgressBar />
         <ForwardRef(Box)
@@ -707,6 +711,8 @@ exports[`Shallow Snapshot Tests land mode 1`] = `
           disabled={false}
           icon="add-marker"
           onClick={[Function]}
+          size="large"
+          text="新しい投稿を追加"
         />
         <TriviaMapMarkersLoadingProgressBar />
         <ForwardRef(Box)
@@ -907,6 +913,8 @@ exports[`Shallow Snapshot Tests park is undefined 1`] = `
           disabled={false}
           icon="add-marker"
           onClick={[Function]}
+          size="large"
+          text="新しい投稿を追加"
         />
         <TriviaMapMarkersLoadingProgressBar />
         <ForwardRef(Box)
@@ -1108,6 +1116,8 @@ exports[`Shallow Snapshot Tests pc view 1`] = `
           disabled={false}
           icon="add-marker"
           onClick={[Function]}
+          size="large"
+          text="新しい投稿を追加"
         />
         <TriviaMapMarkersLoadingProgressBar />
         <ForwardRef(Box)

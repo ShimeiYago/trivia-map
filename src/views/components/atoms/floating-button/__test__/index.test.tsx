@@ -12,6 +12,13 @@ describe('Shallow Snapshot Tests', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
+  it('with text', () => {
+    wrapper.setProps({
+      text: 'text',
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+
   it('edit icon', () => {
     wrapper.setProps({
       icon: 'edit',

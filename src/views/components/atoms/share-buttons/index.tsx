@@ -1,5 +1,5 @@
 import { Box } from '@mui/material';
-import { countByteLength } from 'api/utils/count-byte-length';
+import { countByteLength } from 'utils/count-byte-length';
 import {
   FacebookIcon,
   FacebookShareButton,

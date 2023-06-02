@@ -156,7 +156,7 @@ describe('articleForm reducer', () => {
   it('should handle submitSuccess', () => {
     const actual = articleFormReducer(
       submittingLoadingState,
-      submitSuccess({ postId: 100, title: 'title', description: 'description' }),
+      submitSuccess({ postId: 100, title: 'title', description: 'description', isDraft: false }),
     );
     expect(actual.submittingState).toEqual('success');
     expect(actual.submitSuccessInfo?.postId).toEqual(100);

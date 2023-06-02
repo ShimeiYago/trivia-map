@@ -54,4 +54,5 @@ export type SubmitSuccessInfo = {
   postId: number;
   title: string;
   description: string;
+  isDraft: boolean;
 };

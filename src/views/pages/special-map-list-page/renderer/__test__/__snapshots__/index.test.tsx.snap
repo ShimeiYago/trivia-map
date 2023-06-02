@@ -22,7 +22,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
         />
       }
       iconPosition="left"
-      text="特別なマップ"
+      text="オリジナルマップ"
       variant="inherit"
     />
   </ForwardRef(Typography)>
@@ -52,7 +52,7 @@ exports[`Shallow Snapshot Tests with no special maps 1`] = `
         />
       }
       iconPosition="left"
-      text="特別なマップ"
+      text="オリジナルマップ"
       variant="inherit"
     />
   </ForwardRef(Typography)>
@@ -86,7 +86,7 @@ exports[`Shallow Snapshot Tests with special maps 1`] = `
         />
       }
       iconPosition="left"
-      text="特別なマップ"
+      text="オリジナルマップ"
       variant="inherit"
     />
   </ForwardRef(Typography)>

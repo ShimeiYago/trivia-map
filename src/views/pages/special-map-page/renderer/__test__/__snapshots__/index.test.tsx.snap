@@ -69,7 +69,8 @@ exports[`Shallow Snapshot Tests focusing a marker 1`] = `
                   mb={2}
                 >
                   <Image
-                    height="200px"
+                    maxHeight="200px"
+                    maxWidth="full"
                     src="https://cdn-ak.f.st-hatena.com/images/fotolife/n/nats-co/20160323/20160323164220.jpg"
                   />
                 </ForwardRef(Typography)>
@@ -331,7 +332,8 @@ exports[`Shallow Snapshot Tests loaded 1`] = `
                   mb={2}
                 >
                   <Image
-                    height="200px"
+                    maxHeight="200px"
+                    maxWidth="full"
                     src="https://cdn-ak.f.st-hatena.com/images/fotolife/n/nats-co/20160323/20160323164220.jpg"
                   />
                 </ForwardRef(Typography)>

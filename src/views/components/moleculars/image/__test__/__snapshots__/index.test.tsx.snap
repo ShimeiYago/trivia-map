@@ -48,6 +48,22 @@ exports[`Shallow Snapshot Tests height 1`] = `
 />
 `;
 
+exports[`Shallow Snapshot Tests max width and height 1`] = `
+<Img
+  alt="alt-text"
+  className="image max-width-full max-height-full"
+  loader={
+    <div
+      className="loader"
+    >
+      <CenterSpinner />
+    </div>
+  }
+  onClick={[MockFunction]}
+  src="image-data"
+/>
+`;
+
 exports[`Shallow Snapshot Tests objectFit cover 1`] = `
 <Img
   alt="alt-text"

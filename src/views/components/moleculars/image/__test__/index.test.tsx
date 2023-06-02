@@ -32,6 +32,14 @@ describe('Shallow Snapshot Tests', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
+  it('max width and height', () => {
+    wrapper.setProps({
+      maxHeight: 'full',
+      maxWidth: 'full',
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+
   it('objectFit cover', () => {
     wrapper.setProps({
       objectFit: 'cover',

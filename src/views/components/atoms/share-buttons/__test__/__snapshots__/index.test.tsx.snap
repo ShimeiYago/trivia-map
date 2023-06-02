@@ -5,7 +5,8 @@ exports[`Shallow Snapshot Tests basic 1`] = `
   textAlign="center"
 >
   <ForwardRef(ShareButton-facebook)
-    title="xxx"
+    title="xxx
+xxx"
     url="https://xxx.com"
   >
     <Icon
@@ -17,7 +18,8 @@ exports[`Shallow Snapshot Tests basic 1`] = `
     />
   </ForwardRef(ShareButton-facebook)>
   <ForwardRef(ShareButton-twitter)
-    title="xxx"
+    title="xxx
+xxx"
     url="https://xxx.com"
   >
     <Icon
@@ -29,7 +31,54 @@ exports[`Shallow Snapshot Tests basic 1`] = `
     />
   </ForwardRef(ShareButton-twitter)>
   <ForwardRef(ShareButton-line)
-    title="xxx"
+    title="xxx
+xxx"
+    url="https://xxx.com"
+  >
+    <Icon
+      bgStyle={Object {}}
+      borderRadius={0}
+      iconFillColor="white"
+      round={true}
+      size={50}
+    />
+  </ForwardRef(ShareButton-line)>
+</ForwardRef(Box)>
+`;
+
+exports[`Shallow Snapshot Tests long description 1`] = `
+<ForwardRef(Box)
+  textAlign="center"
+>
+  <ForwardRef(ShareButton-facebook)
+    title="日本語付きtitle
+long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-text-long..."
+    url="https://xxx.com"
+  >
+    <Icon
+      bgStyle={Object {}}
+      borderRadius={0}
+      iconFillColor="white"
+      round={true}
+      size={50}
+    />
+  </ForwardRef(ShareButton-facebook)>
+  <ForwardRef(ShareButton-twitter)
+    title="日本語付きtitle
+long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-text-long..."
+    url="https://xxx.com"
+  >
+    <Icon
+      bgStyle={Object {}}
+      borderRadius={0}
+      iconFillColor="white"
+      round={true}
+      size={50}
+    />
+  </ForwardRef(ShareButton-twitter)>
+  <ForwardRef(ShareButton-line)
+    title="日本語付きtitle
+long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-text-long..."
     url="https://xxx.com"
   >
     <Icon

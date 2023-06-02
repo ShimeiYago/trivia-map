@@ -1,7 +1,6 @@
 import { SxProps } from '@mui/material';
 
 export const style: SxProps = {
-  margin: 0,
   top: 'auto',
   right: 20,
   bottom: 20,

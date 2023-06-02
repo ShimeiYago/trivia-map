@@ -13,8 +13,6 @@ import {
   Select,
   MenuItem,
   SelectChangeEvent,
-  Alert,
-  Button,
 } from '@mui/material';
 import { LoadingState } from 'types/loading-state';
 import { Position } from 'types/position';
@@ -126,7 +124,6 @@ export class Renderer extends React.Component<Props> {
               </Box>
             )}
 
-            {this.renderLoginWarningMessage()}
             {this.renderHeaderMessage()}
 
             <TextField
@@ -231,8 +228,6 @@ export class Renderer extends React.Component<Props> {
               />
             )}
 
-            {this.renderLoginWarningMessage()}
-
             <LoadingButton
               loading={submittingState === 'loading'}
               variant="contained"
@@ -333,23 +328,23 @@ export class Renderer extends React.Component<Props> {
     return null;
   }
 
-  protected renderLoginWarningMessage() {
-    const { userInfo } = this.props;
+  // protected renderLoginWarningMessage() {
+  //   const { userInfo } = this.props;
 
-    if (!userInfo) {
-      return (
-        <Alert severity="warning">
-          新しいトリビアを投稿するには
-          <Button sx={{ p: 0 }} onClick={this.openAuthModal}>
-            ログイン
-          </Button>
-          が必要です。
-        </Alert>
-      );
-    }
+  //   if (!userInfo) {
+  //     return (
+  //       <Alert severity='warning'>
+  //         新しいトリビアを投稿するには
+  //         <Button sx={{ p: 0 }} onClick={this.openAuthModal}>
+  //           ログイン
+  //         </Button>
+  //         が必要です。
+  //       </Alert>
+  //     );
+  //   }
 
-    return null;
-  }
+  //   return null;
+  // }
 
   protected handleImageChange = (src: SelializedImageFile | null) => {
     this.props.updateFormField({ image: src });

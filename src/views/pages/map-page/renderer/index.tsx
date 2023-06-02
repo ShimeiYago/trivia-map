@@ -191,6 +191,8 @@ export class Renderer extends React.Component<Props, State> {
                 <FloatingButton
                   color="error"
                   icon="add-marker"
+                  text="新しい投稿を追加"
+                  size="large"
                   onClick={this.handleClickAddButton}
                 />
               )}

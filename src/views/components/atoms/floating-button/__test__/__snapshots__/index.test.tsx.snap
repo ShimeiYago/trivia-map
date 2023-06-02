@@ -4,17 +4,18 @@ exports[`Shallow Snapshot Tests add-marker icon 1`] = `
 <ForwardRef(Fab)
   color="primary"
   disabled={false}
+  size="medium"
   sx={
     Object {
       "bottom": 20,
       "left": "auto",
-      "margin": 0,
       "position": "fixed",
       "right": 20,
       "top": "auto",
       "zIndex": 1000,
     }
   }
+  variant="circular"
 >
   <Memo(ForwardRef(AddLocationAltIcon)) />
 </ForwardRef(Fab)>
@@ -24,17 +25,18 @@ exports[`Shallow Snapshot Tests basic 1`] = `
 <ForwardRef(Fab)
   color="primary"
   disabled={false}
+  size="medium"
   sx={
     Object {
       "bottom": 20,
       "left": "auto",
-      "margin": 0,
       "position": "fixed",
       "right": 20,
       "top": "auto",
       "zIndex": 1000,
     }
   }
+  variant="circular"
 >
   <Memo(ForwardRef(AddIcon)) />
 </ForwardRef(Fab)>
@@ -44,18 +46,45 @@ exports[`Shallow Snapshot Tests edit icon 1`] = `
 <ForwardRef(Fab)
   color="primary"
   disabled={false}
+  size="medium"
   sx={
     Object {
       "bottom": 20,
       "left": "auto",
-      "margin": 0,
       "position": "fixed",
       "right": 20,
       "top": "auto",
       "zIndex": 1000,
     }
   }
+  variant="circular"
 >
   <Memo(ForwardRef(EditIcon)) />
+</ForwardRef(Fab)>
+`;
+
+exports[`Shallow Snapshot Tests with text 1`] = `
+<ForwardRef(Fab)
+  color="primary"
+  disabled={false}
+  size="medium"
+  sx={
+    Object {
+      "bottom": 20,
+      "left": "auto",
+      "position": "fixed",
+      "right": 20,
+      "top": "auto",
+      "zIndex": 1000,
+    }
+  }
+  variant="extended"
+>
+  <Memo(ForwardRef(AddIcon)) />
+  <ForwardRef(Typography)
+    ml={1}
+  >
+    text
+  </ForwardRef(Typography)>
 </ForwardRef(Fab)>
 `;

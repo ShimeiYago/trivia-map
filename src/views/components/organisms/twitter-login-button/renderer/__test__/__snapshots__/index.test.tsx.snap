@@ -14,6 +14,6 @@ exports[`Shallow Snapshot Tests basic 1`] = `
   }
   variant="outlined"
 >
-  Twitterでログイン
+  Twitterで簡単ログイン
 </ForwardRef(LoadingButton)>
 `;

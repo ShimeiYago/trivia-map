@@ -1,5 +1,5 @@
 import React from 'react';
-import { Fab } from '@mui/material';
+import { Fab, Typography } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import EditIcon from '@mui/icons-material/Edit';
 import AddLocationAltIcon from '@mui/icons-material/AddLocationAlt';
@@ -10,10 +10,11 @@ export class FloatingButton extends React.Component<Props> {
     icon: 'add',
     color: 'primary',
     disabled: false,
+    size: 'medium',
   };
 
   render() {
-    const { icon, color, disabled, onClick } = this.props;
+    const { icon, color, disabled, text, size, onClick } = this.props;
 
     let iconComponent: JSX.Element;
     switch (icon) {
@@ -29,8 +30,16 @@ export class FloatingButton extends React.Component<Props> {
     }
 
     return (
-      <Fab color={color} disabled={disabled} onClick={onClick} sx={style}>
+      <Fab
+        color={color}
+        disabled={disabled}
+        size={size}
+        onClick={onClick}
+        variant={text ? 'extended' : 'circular'}
+        sx={style}
+      >
         {iconComponent}
+        {text && <Typography ml={1}>{text}</Typography>}
       </Fab>
     );
   }
@@ -40,6 +49,8 @@ export type Props = {
   icon: Icon;
   color: Color;
   disabled: boolean;
+  size: 'small' | 'medium' | 'large';
+  text?: string;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 };
 

@@ -31,7 +31,7 @@ export class Renderer extends React.Component<Props, State> {
         disabled={!!this.props.userInfo}
         sx={{ textTransform: 'none' }}
       >
-        Twitterでログイン
+        Twitterで簡単ログイン
       </LoadingButton>
     );
   }

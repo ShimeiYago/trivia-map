@@ -44,6 +44,7 @@ import { MapFocus } from 'types/map-focus';
 import { CommonHelmet } from 'helper-components/common-helmet';
 import { PAGE_DESCRIPTIONS } from 'constant/head-tags';
 import { ParkSelectBox } from 'views/components/moleculars/park-select-box';
+import { SubmitSuccessModal } from 'views/components/organisms/submit-success-modal';
 
 const CATEGORY_BUTTON_ID = (categoryId: number) => `category-button-${categoryId}`;
 const INITIAL_PARK = PARKS.sea;
@@ -206,7 +207,9 @@ export class Renderer extends React.Component<Props, State> {
 
           {this.renderEditForm()}
 
-          <GlobalMessage closeFormModal={this.handleCloseFormModal} />
+          <GlobalMessage />
+
+          <SubmitSuccessModal />
 
           {this.renderDoubleEditAlartDialog()}
         </Box>

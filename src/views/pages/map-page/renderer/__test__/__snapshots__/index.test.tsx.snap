@@ -223,9 +223,8 @@ exports[`Shallow Snapshot Tests author map 1`] = `
         park="S"
       />
     </SwipeableEdgeDrawer>
-    <GlobalMessage
-      closeFormModal={[Function]}
-    />
+    <GlobalMessage />
+    <SubmitSuccessModal />
     <ForwardRef(Dialog)
       onClose={[Function]}
       open={false}
@@ -439,9 +438,8 @@ exports[`Shallow Snapshot Tests basic 1`] = `
         park="S"
       />
     </SwipeableEdgeDrawer>
-    <GlobalMessage
-      closeFormModal={[Function]}
-    />
+    <GlobalMessage />
+    <SubmitSuccessModal />
     <ForwardRef(Dialog)
       onClose={[Function]}
       open={false}
@@ -640,9 +638,8 @@ exports[`Shallow Snapshot Tests before render map 1`] = `
         park="S"
       />
     </SwipeableEdgeDrawer>
-    <GlobalMessage
-      closeFormModal={[Function]}
-    />
+    <GlobalMessage />
+    <SubmitSuccessModal />
     <ForwardRef(Dialog)
       onClose={[Function]}
       open={false}
@@ -856,9 +853,8 @@ exports[`Shallow Snapshot Tests land mode 1`] = `
         park="L"
       />
     </SwipeableEdgeDrawer>
-    <GlobalMessage
-      closeFormModal={[Function]}
-    />
+    <GlobalMessage />
+    <SubmitSuccessModal />
     <ForwardRef(Dialog)
       onClose={[Function]}
       open={false}
@@ -1039,9 +1035,8 @@ exports[`Shallow Snapshot Tests park is undefined 1`] = `
         park="S"
       />
     </SwipeableEdgeDrawer>
-    <GlobalMessage
-      closeFormModal={[Function]}
-    />
+    <GlobalMessage />
+    <SubmitSuccessModal />
     <ForwardRef(Dialog)
       onClose={[Function]}
       open={false}
@@ -1260,9 +1255,8 @@ exports[`Shallow Snapshot Tests pc view 1`] = `
         park="S"
       />
     </ForwardRef(Drawer)>
-    <GlobalMessage
-      closeFormModal={[Function]}
-    />
+    <GlobalMessage />
+    <SubmitSuccessModal />
     <ForwardRef(Dialog)
       onClose={[Function]}
       open={false}

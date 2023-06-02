@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shallow Snapshot Tests basic 1`] = `
+<BoxModal
+  onClose={[Function]}
+  open={false}
+  showCloseButton={true}
+>
+  <ForwardRef(Stack)
+    pb={3}
+    px={2}
+    spacing={2}
+  >
+    <ForwardRef(Typography)
+      align="center"
+      variant="h5"
+    >
+      投稿が完了しました！
+    </ForwardRef(Typography)>
+    <ForwardRef(Typography)
+      align="center"
+    >
+      <Link
+        to="/articles/1"
+      >
+        title
+      </Link>
+    </ForwardRef(Typography)>
+    <ForwardRef(Box)>
+      <ForwardRef(Typography)
+        align="center"
+        variant="h6"
+      >
+        SNSでシェアしませんか？
+      </ForwardRef(Typography)>
+      <ShareButtons
+        description="description"
+        title="title"
+        url="http://localhost/articles/1"
+      />
+    </ForwardRef(Box)>
+  </ForwardRef(Stack)>
+</BoxModal>
+`;
+
+exports[`Shallow Snapshot Tests without submitSuccessInfo 1`] = `""`;

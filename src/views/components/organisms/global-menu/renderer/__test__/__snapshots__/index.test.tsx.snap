@@ -334,6 +334,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
     </ForwardRef(Box)>
   </ForwardRef(Box)>
   <BoxModal
+    disableClickOutside={true}
     onClose={[Function]}
     open={false}
     showCloseButton={true}
@@ -680,6 +681,7 @@ exports[`Shallow Snapshot Tests edit page 1`] = `
     </ForwardRef(Box)>
   </ForwardRef(Box)>
   <BoxModal
+    disableClickOutside={true}
     onClose={[Function]}
     open={false}
     showCloseButton={true}
@@ -1070,6 +1072,7 @@ exports[`Shallow Snapshot Tests long name with mobile 1`] = `
     </ForwardRef(Box)>
   </ForwardRef(Box)>
   <BoxModal
+    disableClickOutside={true}
     onClose={[Function]}
     open={false}
     showCloseButton={true}
@@ -1409,6 +1412,7 @@ exports[`Shallow Snapshot Tests map page 1`] = `
     contents
   </ForwardRef(Box)>
   <BoxModal
+    disableClickOutside={true}
     onClose={[Function]}
     open={false}
     showCloseButton={true}
@@ -1750,6 +1754,7 @@ exports[`Shallow Snapshot Tests new page 1`] = `
     </ForwardRef(Box)>
   </ForwardRef(Box)>
   <BoxModal
+    disableClickOutside={true}
     onClose={[Function]}
     open={false}
     showCloseButton={true}
@@ -2081,6 +2086,7 @@ exports[`Shallow Snapshot Tests permanent left navi 1`] = `
     </ForwardRef(Box)>
   </ForwardRef(Box)>
   <BoxModal
+    disableClickOutside={true}
     onClose={[Function]}
     open={false}
     showCloseButton={true}
@@ -2427,6 +2433,7 @@ exports[`Shallow Snapshot Tests redirect to top page 1`] = `
     </ForwardRef(Box)>
   </ForwardRef(Box)>
   <BoxModal
+    disableClickOutside={true}
     onClose={[Function]}
     open={false}
     showCloseButton={true}
@@ -2773,6 +2780,7 @@ exports[`Shallow Snapshot Tests static position 1`] = `
     </ForwardRef(Box)>
   </ForwardRef(Box)>
   <BoxModal
+    disableClickOutside={true}
     onClose={[Function]}
     open={false}
     showCloseButton={true}
@@ -3139,6 +3147,7 @@ exports[`Shallow Snapshot Tests with local navi & mobile 1`] = `
     </ForwardRef(Box)>
   </ForwardRef(Box)>
   <BoxModal
+    disableClickOutside={true}
     onClose={[Function]}
     open={false}
     showCloseButton={true}
@@ -3505,6 +3514,7 @@ exports[`Shallow Snapshot Tests with local navi 1`] = `
     </ForwardRef(Box)>
   </ForwardRef(Box)>
   <BoxModal
+    disableClickOutside={true}
     onClose={[Function]}
     open={false}
     showCloseButton={true}
@@ -3895,6 +3905,7 @@ exports[`Shallow Snapshot Tests with userInfo 1`] = `
     </ForwardRef(Box)>
   </ForwardRef(Box)>
   <BoxModal
+    disableClickOutside={true}
     onClose={[Function]}
     open={false}
     showCloseButton={true}

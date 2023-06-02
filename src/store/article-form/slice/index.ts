@@ -1,6 +1,6 @@
 import { GetArticleResponse } from '../../../api/articles-api/get-remote-article';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { FormError, initialState } from '../model';
+import { FormError, initialState, SubmitSuccessInfo } from '../model';
 import { Position } from 'types/position';
 import { SelializedImageFile } from 'types/selialized-image-file';
 
@@ -86,9 +86,9 @@ export const articleFormSlice = createSlice({
       state.formError = action.payload;
     },
 
-    submitSuccess(state, action: PayloadAction<number>) {
+    submitSuccess(state, action: PayloadAction<SubmitSuccessInfo>) {
       state.submittingState = 'success';
-      state.submitSuccessId = action.payload;
+      state.submitSuccessInfo = action.payload;
       state.isEditting = false;
     },
 

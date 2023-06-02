@@ -22,7 +22,7 @@ export interface ArticleFormState {
   isFormChangedFromLastSaved: boolean;
   isDraft: boolean;
   lastSavedIsDraft: boolean;
-  submitSuccessId?: number;
+  submitSuccessInfo?: SubmitSuccessInfo;
 }
 
 export const initialState: ArticleFormState = {
@@ -48,4 +48,10 @@ export type FormError = {
     marker?: string[];
     image?: string[];
   };
+};
+
+export type SubmitSuccessInfo = {
+  postId: number;
+  title: string;
+  description: string;
 };

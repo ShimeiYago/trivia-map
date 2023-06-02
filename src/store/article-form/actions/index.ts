@@ -89,7 +89,7 @@ export const submitArticle = (): AppThunk => async (dispatch, getState) => {
         refreshUser,
       );
     }
-    dispatch(submitSuccess(res.postId));
+    dispatch(submitSuccess({ postId: res.postId, title: res.title, description: res.description }));
     dispatch(initialize());
 
     if (position.park === getState().markers.focusingPark) {

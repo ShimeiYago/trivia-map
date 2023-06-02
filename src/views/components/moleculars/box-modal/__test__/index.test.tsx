@@ -24,4 +24,12 @@ describe('Shallow Snapshot Tests', () => {
     });
     expect(wrapper).toMatchSnapshot();
   });
+
+  it('disable click out of modal', () => {
+    wrapper.setProps({
+      showCloseButton: true,
+      disableClickOutside: true,
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
 });

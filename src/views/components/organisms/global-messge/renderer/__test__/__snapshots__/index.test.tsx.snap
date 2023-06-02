@@ -19,20 +19,6 @@ exports[`Shallow Snapshot Tests basic 1`] = `
     <ForwardRef(Typography)
       fontSize="inherit"
     />
-    <NonStyleLink
-      to="/articles/1"
-    >
-      <ForwardRef(Typography)
-        fontSize="inherit"
-        sx={
-          Object {
-            "textDecoration": "underline",
-          }
-        }
-      >
-        投稿内容を確認する
-      </ForwardRef(Typography)>
-    </NonStyleLink>
   </ForwardRef(Alert)>
 </ForwardRef(Snackbar)>
 `;

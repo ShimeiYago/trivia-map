@@ -136,6 +136,7 @@ export class Renderer extends React.Component<Props, State> {
           open={this.props.openAuthFormModal}
           onClose={this.toggleAuthModal(false, 'login')}
           showCloseButton
+          disableClickOutside
         >
           <AuthForms
             initialMode={this.state.authFormInitialMode}

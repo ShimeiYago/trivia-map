@@ -18,7 +18,7 @@ import {
   selectArticleFormCategory,
   selectArticleFormLastSavedCategory,
   selectArticleFormAreaNames,
-  selectArticleFormSubmitSuccessId,
+  selectArticleFormSubmitSuccessInfo,
 } from '..';
 import { ArticleFormState, FormError } from '../../model';
 
@@ -48,7 +48,11 @@ describe('readingArticle selector', () => {
       isFormChangedFromLastSaved: false,
       isDraft: true,
       lastSavedIsDraft: true,
-      submitSuccessId: 1,
+      submitSuccessInfo: {
+        postId: 100,
+        title: 'title',
+        description: 'description',
+      },
     } as ArticleFormState,
   };
 
@@ -136,6 +140,10 @@ describe('readingArticle selector', () => {
   });
 
   it('selectSubmitSuccessId should return articleForm submitSuccessId state', () => {
-    expect(selectArticleFormSubmitSuccessId(rootState)).toEqual(1);
+    expect(selectArticleFormSubmitSuccessInfo(rootState)).toEqual({
+      postId: 100,
+      title: 'title',
+      description: 'description',
+    });
   });
 });

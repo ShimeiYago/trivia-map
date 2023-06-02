@@ -4,7 +4,8 @@ import { Renderer, State, Props } from '..';
 let shallowWrapper: ShallowWrapper<Props, State, Renderer>;
 
 const props: Props = {
-  loggedOutSuccessfully: false,
+  articleFormSubmittingState: 'waiting',
+  submitSuccessInfo: { postId: 1, title: 'title', description: 'description' },
 };
 
 describe('Shallow Snapshot Tests', () => {
@@ -15,16 +16,12 @@ describe('Shallow Snapshot Tests', () => {
   it('basic', () => {
     expect(shallowWrapper).toMatchSnapshot();
   });
-});
 
-describe('componentDidMount', () => {
-  it('should change states to show logout success message', () => {
-    shallowWrapper = shallow(<Renderer {...props} />);
-    shallowWrapper.setProps({ loggedOutSuccessfully: true });
-    const instance = shallowWrapper.instance();
-
-    instance['componentDidMount']();
-    expect(instance.state.message).toBe('ログアウトしました。');
+  it('without submitSuccessInfo', () => {
+    shallowWrapper.setProps({
+      submitSuccessInfo: undefined,
+    });
+    expect(shallowWrapper).toMatchSnapshot();
   });
 });
 
@@ -33,17 +30,17 @@ describe('componentDidUpdate', () => {
     shallowWrapper = shallow(<Renderer {...props} />);
   });
 
-  it('should change states to show logout success message', () => {
+  it('should change states to show post success message', () => {
     shallowWrapper.setProps({
-      loggedOutSuccessfully: true,
+      articleFormSubmittingState: 'success',
     });
     const instance = shallowWrapper.instance();
 
     instance.componentDidUpdate({
       ...props,
-      loggedOutSuccessfully: false,
+      articleFormSubmittingState: 'loading',
     });
-    expect(instance.state.message).toBe('ログアウトしました。');
+    expect(instance.state.show).toBeTruthy();
   });
 });
 

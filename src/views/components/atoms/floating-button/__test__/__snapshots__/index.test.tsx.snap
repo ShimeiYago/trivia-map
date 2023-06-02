@@ -7,10 +7,10 @@ exports[`Shallow Snapshot Tests add-marker icon 1`] = `
   size="medium"
   sx={
     Object {
-      "bottom": 20,
+      "bottom": 25,
       "left": "auto",
       "position": "fixed",
-      "right": 20,
+      "right": 10,
       "top": "auto",
       "zIndex": 1000,
     }
@@ -28,10 +28,10 @@ exports[`Shallow Snapshot Tests basic 1`] = `
   size="medium"
   sx={
     Object {
-      "bottom": 20,
+      "bottom": 25,
       "left": "auto",
       "position": "fixed",
-      "right": 20,
+      "right": 10,
       "top": "auto",
       "zIndex": 1000,
     }
@@ -49,10 +49,10 @@ exports[`Shallow Snapshot Tests edit icon 1`] = `
   size="medium"
   sx={
     Object {
-      "bottom": 20,
+      "bottom": 25,
       "left": "auto",
       "position": "fixed",
-      "right": 20,
+      "right": 10,
       "top": "auto",
       "zIndex": 1000,
     }
@@ -70,10 +70,10 @@ exports[`Shallow Snapshot Tests with text 1`] = `
   size="medium"
   sx={
     Object {
-      "bottom": 20,
+      "bottom": 25,
       "left": "auto",
       "position": "fixed",
-      "right": 20,
+      "right": 10,
       "top": "auto",
       "zIndex": 1000,
     }

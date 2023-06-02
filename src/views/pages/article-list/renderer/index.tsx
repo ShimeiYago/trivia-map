@@ -24,11 +24,13 @@ import SearchIcon from '@mui/icons-material/Search';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ArticleIcon from '@mui/icons-material/Article';
 import { Park } from 'types/park';
-import { ARTICLE_LIST_PAGE_LINK } from 'constant/links';
+import { ARTICLE_LIST_PAGE_LINK, NEW_LINK } from 'constant/links';
 import { getUrlParameters } from 'utils/get-url-parameters';
 import { PreviewListOrder } from 'api/articles-api/get-articles-previews';
 import { PAGE_NAMES } from 'constant/page-names';
-
+import { NonStyleLink } from 'views/components/atoms/non-style-link';
+import recommendImage from 'images/recommend.png';
+import { Image } from 'views/components/moleculars/image';
 export class Renderer extends React.Component<Props, State> {
   headingRef: React.RefObject<HTMLHeadingElement>;
 
@@ -93,6 +95,12 @@ export class Renderer extends React.Component<Props, State> {
             order: this.state.order,
           }}
         />
+
+        <Typography align="center" mt={8} mb={5}>
+          <NonStyleLink to={NEW_LINK}>
+            <Image src={recommendImage} width="300px" />
+          </NonStyleLink>
+        </Typography>
       </>
     );
   };

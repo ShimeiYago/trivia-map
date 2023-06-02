@@ -281,6 +281,20 @@ exports[`Shallow Snapshot Tests basic 1`] = `
     }
     variant="large"
   />
+  <ForwardRef(Typography)
+    align="center"
+    mb={5}
+    mt={8}
+  >
+    <NonStyleLink
+      to="/map/new"
+    >
+      <Image
+        src="recommend.png"
+        width="300px"
+      />
+    </NonStyleLink>
+  </ForwardRef(Typography)>
 </ArticleWrapper>
 `;
 
@@ -566,5 +580,19 @@ exports[`Shallow Snapshot Tests with form conditions 1`] = `
     }
     variant="large"
   />
+  <ForwardRef(Typography)
+    align="center"
+    mb={5}
+    mt={8}
+  >
+    <NonStyleLink
+      to="/map/new"
+    >
+      <Image
+        src="recommend.png"
+        width="300px"
+      />
+    </NonStyleLink>
+  </ForwardRef(Typography)>
 </ArticleWrapper>
 `;

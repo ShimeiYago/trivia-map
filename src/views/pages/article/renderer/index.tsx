@@ -12,7 +12,14 @@ import { autoRefreshApiWrapper } from 'utils/auto-refresh-api-wrapper';
 import { AreaNames } from 'views/components/atoms/area-names';
 import { ZOOMS } from 'constant';
 import noIcon from 'images/no-icon.jpg';
-import { AUTHER_PAGE_LINK, CATEGORY_PAGE_LINK, EDIT_LINK, MAP_PAGE_LINK } from 'constant/links';
+import recommendImage from 'images/recommend.png';
+import {
+  AUTHER_PAGE_LINK,
+  CATEGORY_PAGE_LINK,
+  EDIT_LINK,
+  MAP_PAGE_LINK,
+  NEW_LINK,
+} from 'constant/links';
 import { categoryMapper } from 'utils/category-mapper';
 import FolderIcon from '@mui/icons-material/Folder';
 import { User } from 'types/user';
@@ -179,6 +186,12 @@ export class Renderer extends React.Component<Props, State> {
             <ShareButtons title={pageTitle} url={window.location.href} description={description} />
           )}
         </Stack>
+
+        <Typography align="center" mt={8} mb={5}>
+          <NonStyleLink to={NEW_LINK}>
+            <Image src={recommendImage} width="300px" />
+          </NonStyleLink>
+        </Typography>
       </>
     );
   };

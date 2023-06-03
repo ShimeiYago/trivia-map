@@ -42,6 +42,13 @@ describe('Shallow Snapshot Tests', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
+  it('variant restroom', () => {
+    wrapper.setProps({
+      variant: 'restroom',
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+
   it('with numberOfContents', () => {
     wrapper.setProps({
       numberOfContents: 1,

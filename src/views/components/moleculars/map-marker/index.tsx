@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react';
 import { Marker } from 'react-leaflet';
 import { LatLng, LeafletEventHandlerFnMap, Marker as MarkerType, Map as LeafletMap } from 'leaflet';
 
-import { defaultIcon, redIcon, redIconWithNumber } from './icons';
+import { defaultIcon, redIcon, redIconWithNumber, restroomIcon } from './icons';
 import { CustomMarker } from './helpers/custom-marker';
 import { ZOOMS } from 'constant';
 import { MapMarkerVariant } from 'types/marker-icon';
@@ -35,6 +35,9 @@ export class MapMarker extends React.Component<Props, State> {
         break;
       case 'red':
         icon = redIcon;
+        break;
+      case 'restroom':
+        icon = restroomIcon;
         break;
     }
 

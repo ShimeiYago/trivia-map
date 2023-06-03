@@ -92,6 +92,51 @@ exports[`Shallow Snapshot Tests variant red 1`] = `
 />
 `;
 
+exports[`Shallow Snapshot Tests variant restroom 1`] = `
+<ForwardRef(ContainerComponent)
+  draggable={false}
+  eventHandlers={
+    Object {
+      "dragend": [Function],
+      "dragstart": [Function],
+      "popupclose": [Function],
+      "popupopen": [Function],
+    }
+  }
+  icon={
+    NewClass {
+      "_initHooksCalled": true,
+      "options": Object {
+        "iconAnchor": Array [
+          30,
+          35,
+        ],
+        "iconSize": Array [
+          60,
+          70,
+        ],
+        "iconUrl": "restroom.png",
+        "popupAnchor": Array [
+          0,
+          -10,
+        ],
+        "tooltipAnchor": Array [
+          0,
+          -10,
+        ],
+      },
+    }
+  }
+  position={
+    Object {
+      "lat": 0,
+      "lng": 0,
+    }
+  }
+  zIndexOffset={0}
+/>
+`;
+
 exports[`Shallow Snapshot Tests with numberOfContents 1`] = `
 <ForwardRef(ContainerComponent)
   draggable={false}

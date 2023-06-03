@@ -1,1 +1,1 @@
-export type MapMarkerVariant = 'blue' | 'red';
+export type MapMarkerVariant = 'blue' | 'red' | 'restroom';

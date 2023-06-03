@@ -42,7 +42,17 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   render() {
-    const { windowWidth, windowHeight } = this.props;
+    return (
+      <>
+        <GlobalMenu topBarPosition="static" mapPage>
+          {this.renderSpecialMap()}
+        </GlobalMenu>
+      </>
+    );
+  }
+
+  protected renderSpecialMap = () => {
+    const { windowWidth, windowHeight, isMobile } = this.props;
     const { specialMap } = this.state;
 
     if (!windowWidth || !windowHeight || !specialMap) {
@@ -56,45 +66,32 @@ export class Renderer extends React.Component<Props, State> {
     return (
       <>
         <CommonHelmet title={specialMap.title} description={specialMap.description} />
-        <GlobalMenu topBarPosition="static" mapPage>
-          {this.renderSpecialMap(windowWidth, windowHeight, specialMap)}
-        </GlobalMenu>
-      </>
-    );
-  }
 
-  protected renderSpecialMap = (
-    windowWidth: number,
-    windowHeight: number,
-    specialMap: GetSpecialMapResponse,
-  ) => {
-    const { isMobile } = this.props;
+        <Box sx={mapWrapper(isMobile, windowWidth, windowHeight)}>
+          <ParkMap park={this.state.park} setMap={this.setMap}>
+            {this.renderMarkers()}
+          </ParkMap>
 
-    return (
-      <Box sx={mapWrapper(isMobile, windowWidth, windowHeight)}>
-        <ParkMap park={this.state.park} setMap={this.setMap}>
-          {this.renderMarkers()}
-        </ParkMap>
+          <Box sx={mapTopArea(isMobile)}>
+            {this.renderMetaInfo(specialMap)}
 
-        <Box sx={mapTopArea(isMobile)}>
-          {this.renderMetaInfo(specialMap)}
-
-          {this.state.specialMap?.selectablePark === 'both' && (
-            <Box textAlign="right">
-              <Box display="inline-block">
-                <ParkSelectBox park={this.state.park} onChangePark={this.handleChangePark} />
+            {this.state.specialMap?.selectablePark === 'both' && (
+              <Box textAlign="right">
+                <Box display="inline-block">
+                  <ParkSelectBox park={this.state.park} onChangePark={this.handleChangePark} />
+                </Box>
               </Box>
-            </Box>
-          )}
-        </Box>
+            )}
+          </Box>
 
-        <LoadingProgressBar
-          loadedPages={this.state.loadedMarkerPages}
-          totalPages={this.state.totalMarkerPages}
-          fetchingState={this.state.loadingMarkers ? 'loading' : 'success'}
-          isMobile={this.props.isMobile}
-        />
-      </Box>
+          <LoadingProgressBar
+            loadedPages={this.state.loadedMarkerPages}
+            totalPages={this.state.totalMarkerPages}
+            fetchingState={this.state.loadingMarkers ? 'loading' : 'success'}
+            isMobile={this.props.isMobile}
+          />
+        </Box>
+      </>
     );
   };
 

@@ -38,6 +38,7 @@ export const articleFormSlice = createSlice({
 
     updatePosition(state, action: PayloadAction<Position>) {
       state.position = action.payload;
+      console.log(action.payload);
 
       if (state.formError?.fieldErrors?.marker) {
         state.formError = {

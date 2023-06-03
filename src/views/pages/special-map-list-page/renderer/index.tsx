@@ -105,7 +105,7 @@ export class Renderer extends React.Component<Props, State> {
                 {title}
               </DynamicAlignedText>
 
-              <DynamicAlignedText>{description}</DynamicAlignedText>
+              <DynamicAlignedText whiteSpace="pre-wrap">{description}</DynamicAlignedText>
 
               <Typography align="center" component="div" sx={{ mt: 2 }}>
                 <IconAndText

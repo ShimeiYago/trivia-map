@@ -187,11 +187,11 @@ export class Renderer extends React.Component<Props, State> {
           )}
         </Stack>
 
-        <Typography align="center" mt={8} mb={5}>
+        <Box textAlign="center" mt={8} mb={5}>
           <NonStyleLink to={NEW_LINK}>
             <Image src={recommendImage} width="300px" />
           </NonStyleLink>
-        </Typography>
+        </Box>
       </>
     );
   };

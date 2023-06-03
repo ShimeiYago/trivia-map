@@ -65,7 +65,11 @@ export class Renderer extends React.Component<Props, State> {
 
     return (
       <>
-        <CommonHelmet title={specialMap.title} description={specialMap.description} />
+        <CommonHelmet
+          title={specialMap.title}
+          description={specialMap.description}
+          canonicalUrlPath={SPECIAL_MAP_DETAIL_PAGE_LINK(String(specialMap.specialMapId))}
+        />
 
         <Box sx={mapWrapper(isMobile, windowWidth, windowHeight)}>
           <ParkMap park={this.state.park} setMap={this.setMap}>

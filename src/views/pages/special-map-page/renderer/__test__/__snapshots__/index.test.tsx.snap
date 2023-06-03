@@ -22,6 +22,7 @@ exports[`Shallow Snapshot Tests focusing a marker 1`] = `
     topBarPosition="static"
   >
     <CommonHelmet
+      canonicalUrlPath="/special-maps/detail/1"
       description="定番から穴場まで、ディズニーのトイレマップです。"
       title="トイレマップ"
     />
@@ -193,6 +194,7 @@ exports[`Shallow Snapshot Tests loaded (pc) 1`] = `
     topBarPosition="static"
   >
     <CommonHelmet
+      canonicalUrlPath="/special-maps/detail/1"
       description="定番から穴場まで、ディズニーのトイレマップです。"
       title="トイレマップ"
     />
@@ -304,6 +306,7 @@ exports[`Shallow Snapshot Tests loaded 1`] = `
     topBarPosition="static"
   >
     <CommonHelmet
+      canonicalUrlPath="/special-maps/detail/1"
       description="定番から穴場まで、ディズニーのトイレマップです。"
       title="トイレマップ"
     />
@@ -456,6 +459,7 @@ exports[`Shallow Snapshot Tests loading markers 1`] = `
     topBarPosition="static"
   >
     <CommonHelmet
+      canonicalUrlPath="/special-maps/detail/1"
       description="定番から穴場まで、ディズニーのトイレマップです。"
       title="トイレマップ"
     />

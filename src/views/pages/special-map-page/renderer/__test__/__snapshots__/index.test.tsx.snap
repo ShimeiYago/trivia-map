@@ -1,23 +1,31 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Shallow Snapshot Tests basic 1`] = `
-<ForwardRef(Box)
-  my={1}
->
-  <CenterSpinner />
-</ForwardRef(Box)>
-`;
-
-exports[`Shallow Snapshot Tests focusing a marker 1`] = `
 <Fragment>
-  <CommonHelmet
-    description="定番から穴場まで、ディズニーのトイレマップです。"
-    title="トイレマップ"
-  />
   <GlobalMenu
     mapPage={true}
     topBarPosition="static"
   >
+    <ForwardRef(Box)
+      my={1}
+    >
+      <CenterSpinner />
+    </ForwardRef(Box)>
+  </GlobalMenu>
+</Fragment>
+`;
+
+exports[`Shallow Snapshot Tests focusing a marker 1`] = `
+<Fragment>
+  <GlobalMenu
+    mapPage={true}
+    topBarPosition="static"
+  >
+    <CommonHelmet
+      canonicalUrlPath="/special-maps/detail/1"
+      description="定番から穴場まで、ディズニーのトイレマップです。"
+      title="トイレマップ"
+    />
     <ForwardRef(Box)
       sx={
         Object {
@@ -181,14 +189,15 @@ exports[`Shallow Snapshot Tests focusing a marker 1`] = `
 
 exports[`Shallow Snapshot Tests loaded (pc) 1`] = `
 <Fragment>
-  <CommonHelmet
-    description="定番から穴場まで、ディズニーのトイレマップです。"
-    title="トイレマップ"
-  />
   <GlobalMenu
     mapPage={true}
     topBarPosition="static"
   >
+    <CommonHelmet
+      canonicalUrlPath="/special-maps/detail/1"
+      description="定番から穴場まで、ディズニーのトイレマップです。"
+      title="トイレマップ"
+    />
     <ForwardRef(Box)
       sx={
         Object {
@@ -292,14 +301,15 @@ exports[`Shallow Snapshot Tests loaded (pc) 1`] = `
 
 exports[`Shallow Snapshot Tests loaded 1`] = `
 <Fragment>
-  <CommonHelmet
-    description="定番から穴場まで、ディズニーのトイレマップです。"
-    title="トイレマップ"
-  />
   <GlobalMenu
     mapPage={true}
     topBarPosition="static"
   >
+    <CommonHelmet
+      canonicalUrlPath="/special-maps/detail/1"
+      description="定番から穴場まで、ディズニーのトイレマップです。"
+      title="トイレマップ"
+    />
     <ForwardRef(Box)
       sx={
         Object {
@@ -444,14 +454,15 @@ exports[`Shallow Snapshot Tests loaded 1`] = `
 
 exports[`Shallow Snapshot Tests loading markers 1`] = `
 <Fragment>
-  <CommonHelmet
-    description="定番から穴場まで、ディズニーのトイレマップです。"
-    title="トイレマップ"
-  />
   <GlobalMenu
     mapPage={true}
     topBarPosition="static"
   >
+    <CommonHelmet
+      canonicalUrlPath="/special-maps/detail/1"
+      description="定番から穴場まで、ディズニーのトイレマップです。"
+      title="トイレマップ"
+    />
     <ForwardRef(Box)
       sx={
         Object {
@@ -554,9 +565,16 @@ exports[`Shallow Snapshot Tests loading markers 1`] = `
 `;
 
 exports[`Shallow Snapshot Tests without height 1`] = `
-<ForwardRef(Box)
-  my={1}
->
-  <CenterSpinner />
-</ForwardRef(Box)>
+<Fragment>
+  <GlobalMenu
+    mapPage={true}
+    topBarPosition="static"
+  >
+    <ForwardRef(Box)
+      my={1}
+    >
+      <CenterSpinner />
+    </ForwardRef(Box)>
+  </GlobalMenu>
+</Fragment>
 `;

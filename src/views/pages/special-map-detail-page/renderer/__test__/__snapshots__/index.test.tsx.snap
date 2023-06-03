@@ -101,7 +101,7 @@ exports[`Shallow Snapshot Tests loaded (without thumbnail) 1`] = `
                     "lng": 140.75,
                   }
                 }
-                variant="blue"
+                variant="restroom"
                 zIndexOffset={0}
               />
             </ParkMap>
@@ -149,7 +149,7 @@ exports[`Shallow Snapshot Tests loaded (without thumbnail) 1`] = `
       <ForwardRef(Box)
         bgcolor="#f5f8fa"
         border="3px solid #424242"
-        key="special-map-marker--202.34375-163.1875"
+        key="special-map-marker--140.46875-111.0625"
       >
         <NonStyleLink
           to="/special-maps/0"
@@ -162,8 +162,8 @@ exports[`Shallow Snapshot Tests loaded (without thumbnail) 1`] = `
               disabled={true}
               initCenter={
                 Object {
-                  "lat": -202.34375,
-                  "lng": 163.1875,
+                  "lat": -140.46875,
+                  "lng": 111.0625,
                 }
               }
               initZoom={2}
@@ -174,11 +174,11 @@ exports[`Shallow Snapshot Tests loaded (without thumbnail) 1`] = `
                 draggable={false}
                 position={
                   Object {
-                    "lat": -202.34375,
-                    "lng": 163.1875,
+                    "lat": -140.46875,
+                    "lng": 111.0625,
                   }
                 }
-                variant="blue"
+                variant="restroom"
                 zIndexOffset={0}
               />
             </ParkMap>
@@ -305,7 +305,7 @@ exports[`Shallow Snapshot Tests loaded 1`] = `
                     "lng": 140.75,
                   }
                 }
-                variant="blue"
+                variant="restroom"
                 zIndexOffset={0}
               />
             </ParkMap>
@@ -353,7 +353,7 @@ exports[`Shallow Snapshot Tests loaded 1`] = `
       <ForwardRef(Box)
         bgcolor="#f5f8fa"
         border="3px solid #424242"
-        key="special-map-marker--202.34375-163.1875"
+        key="special-map-marker--140.46875-111.0625"
       >
         <NonStyleLink
           to="/special-maps/0"
@@ -366,8 +366,8 @@ exports[`Shallow Snapshot Tests loaded 1`] = `
               disabled={true}
               initCenter={
                 Object {
-                  "lat": -202.34375,
-                  "lng": 163.1875,
+                  "lat": -140.46875,
+                  "lng": 111.0625,
                 }
               }
               initZoom={2}
@@ -378,11 +378,11 @@ exports[`Shallow Snapshot Tests loaded 1`] = `
                 draggable={false}
                 position={
                   Object {
-                    "lat": -202.34375,
-                    "lng": 163.1875,
+                    "lat": -140.46875,
+                    "lng": 111.0625,
                   }
                 }
-                variant="blue"
+                variant="restroom"
                 zIndexOffset={0}
               />
             </ParkMap>

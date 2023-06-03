@@ -88,7 +88,7 @@ exports[`Shallow Snapshot Tests focusing a marker 1`] = `
               "lng": 140.75,
             }
           }
-          variant="blue"
+          variant="restroom"
           zIndexOffset={0}
         />
       </ParkMap>
@@ -351,7 +351,7 @@ exports[`Shallow Snapshot Tests loaded 1`] = `
               "lng": 140.75,
             }
           }
-          variant="blue"
+          variant="restroom"
           zIndexOffset={0}
         />
       </ParkMap>

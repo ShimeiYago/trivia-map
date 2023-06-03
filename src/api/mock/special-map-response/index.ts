@@ -50,16 +50,16 @@ export const mockGetSpecialMapMarkersResponseWithPagination: GetSpecialMapMarker
         image:
           'https://cdn-ak.f.st-hatena.com/images/fotolife/n/nats-co/20160323/20160323164220.jpg',
         description: 'アリスモチーフのトイレです。トランプ模様の扉がかわいい。',
-        variant: 'blue',
+        variant: 'restroom',
       },
       {
         specialMapMarkerId: 2,
-        lat: -202.34375,
-        lng: 163.1875,
+        lat: -140.46875,
+        lng: 111.0625,
         park: 'S',
         image: null,
         description: 'エントランスのトイレならここ。',
-        variant: 'blue',
+        variant: 'restroom',
       },
     ],
   };

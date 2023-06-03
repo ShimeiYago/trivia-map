@@ -1,29 +1,19 @@
 import React from 'react';
-import { MapContainer, MapContainerProps, TileLayer, ZoomControl } from 'react-leaflet';
 import { MapMarker } from 'views/components/moleculars/map-marker';
 import { LatLng, Map as LeafletMap } from 'leaflet';
-import 'leaflet/dist/leaflet.css';
-import './index.css';
-import { Box, Button, Grid, SxProps, Typography } from '@mui/material';
+import { Box, Button, Grid, Typography } from '@mui/material';
 import { Position } from 'types/position';
 import { DialogScreen } from 'views/components/atoms/dialog-screen';
 import { LoadingState } from 'types/loading-state';
 import { PostMarkers } from './helpers/post-markers';
 import { Park } from 'types/park';
-import {
-  ATTRIBUTION,
-  MAP_MARGIN,
-  MAP_MAX_COORINATE,
-  TDL_TILE_URL,
-  TDS_TILE_URL,
-  ZOOMS,
-} from 'constant';
+import { MAP_MAX_COORINATE, ZOOMS } from 'constant';
 import TouchAppIcon from '@mui/icons-material/TouchApp';
-import { CRS } from 'leaflet';
 import selectionPosition from 'images/selection-position.png';
 import { blue } from '@mui/material/colors';
 import { Marker } from 'types/marker';
 import { MapFocus } from 'types/map-focus';
+import { ParkMap } from 'views/components/moleculars/park-map';
 
 export class Renderer extends React.Component<Props, State> {
   static readonly defaultProps: Pick<Props, 'newMarkerMode' | 'initZoom'> = {
@@ -33,7 +23,6 @@ export class Renderer extends React.Component<Props, State> {
 
   constructor(props: Props) {
     super(props);
-    this.handleMapCreated = this.handleMapCreated.bind(this);
     this.state = {
       openableNewMarkerPopup: true,
     };
@@ -98,66 +87,36 @@ export class Renderer extends React.Component<Props, State> {
   render() {
     const { width, height, initZoom, initCenter, disabled, park } = this.props;
 
-    const mapWrapper: SxProps = {
-      width: width ?? '100%',
-      height: height ?? '100%',
-    };
-
     const centerCoord = MAP_MAX_COORINATE / 2;
     const center = initCenter
       ? new LatLng(initCenter.lat, initCenter.lng)
       : new LatLng(-centerCoord, centerCoord);
 
-    const disabledProps: MapContainerProps = {
-      dragging: false,
-      keyboard: false,
-      touchZoom: false,
-      doubleClickZoom: false,
-      scrollWheelZoom: false,
-      boxZoom: false,
-    };
-
-    const attribution = `&copy; <a target="_blank" href="${ATTRIBUTION.url}">${ATTRIBUTION.text}</a>`;
-
     return (
-      <Box sx={mapWrapper}>
+      <>
         {this.renderGuideDialog()}
-
-        <MapContainer
-          center={center}
-          zoom={initZoom}
-          zoomControl={false}
-          minZoom={ZOOMS.min}
-          maxZoom={ZOOMS.max}
-          crs={CRS.Simple}
-          maxBounds={[
-            [MAP_MARGIN, -MAP_MARGIN],
-            [-MAP_MAX_COORINATE - MAP_MARGIN, MAP_MAX_COORINATE + MAP_MARGIN],
-          ]}
-          whenCreated={this.handleMapCreated}
-          tap={false}
-          {...(disabled ? disabledProps : {})}
+        <ParkMap
+          width={width}
+          height={height}
+          initZoom={initZoom}
+          initCenter={center}
+          disabled={disabled}
+          park={park}
+          setMap={this.handleSetMap}
         >
-          {park === 'L' && <TileLayer url={TDL_TILE_URL} noWrap attribution={attribution} />}
-          {park === 'S' && <TileLayer url={TDS_TILE_URL} noWrap attribution={attribution} />}
           {this.renderPostMarkers()}
           {this.renderAdittionalMarkers()}
           {this.renderCurrentPositionMarker()}
-          {!disabled && <ZoomControl position="bottomleft" />}
-        </MapContainer>
-      </Box>
+        </ParkMap>
+      </>
     );
   }
 
-  protected handleMapCreated(map: LeafletMap) {
+  protected handleSetMap = (map: LeafletMap) => {
     this.setState({
-      map: map,
+      map,
     });
-
-    setTimeout(() => {
-      map.invalidateSize();
-    }, 0);
-  }
+  };
 
   protected renderPostMarkers() {
     const {
@@ -199,7 +158,7 @@ export class Renderer extends React.Component<Props, State> {
     return additinalMarkers.map((position, index) => {
       return (
         <MapMarker
-          map={map}
+          mapController={{ map }}
           position={new LatLng(position.lat, position.lng)}
           key={`additional-marker-${index}`}
           isMobile={isMobile}
@@ -230,7 +189,7 @@ export class Renderer extends React.Component<Props, State> {
     return (
       this.state.map && (
         <MapMarker
-          map={this.state.map}
+          mapController={{ map: this.state.map }}
           position={new LatLng(articleFormPosition.lat, articleFormPosition.lng)}
           isMobile={isMobile}
           zIndexOffset={999}

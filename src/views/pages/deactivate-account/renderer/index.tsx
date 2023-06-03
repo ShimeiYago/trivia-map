@@ -6,7 +6,6 @@ import { LoadingButton } from '@mui/lab';
 import { LoadingState } from 'types/loading-state';
 import { autoRefreshApiWrapper } from 'utils/auto-refresh-api-wrapper';
 import { BackToNavi } from 'views/components/moleculars/back-to-navi';
-import 'react-image-crop/dist/ReactCrop.css';
 import { COOKIE_NAME } from 'constant';
 import { ACCOUNT_SETTINGS_LINK, MAP_PAGE_LINK } from 'constant/links';
 import { PAGE_NAMES } from 'constant/page-names';

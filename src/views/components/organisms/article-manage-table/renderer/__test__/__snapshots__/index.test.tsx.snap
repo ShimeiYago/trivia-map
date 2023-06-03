@@ -594,33 +594,7 @@ exports[`Shallow Snapshot Tests one page 1`] = `
           <ForwardRef(TableCell)
             width={70}
           >
-            <ForwardRef(FormControl)
-              variant="standard"
-            >
-              <ForwardRef(Select)
-                onChange={[Function]}
-                value="false"
-              >
-                <ForwardRef(MenuItem)
-                  value="false"
-                >
-                  <ForwardRef(Typography)
-                    fontSize={14}
-                  >
-                    公開
-                  </ForwardRef(Typography)>
-                </ForwardRef(MenuItem)>
-                <ForwardRef(MenuItem)
-                  value="true"
-                >
-                  <ForwardRef(Typography)
-                    fontSize={14}
-                  >
-                    下書き
-                  </ForwardRef(Typography)>
-                </ForwardRef(MenuItem)>
-              </ForwardRef(Select)>
-            </ForwardRef(FormControl)>
+            公開中
           </ForwardRef(TableCell)>
           <ForwardRef(TableCell)
             width={40}
@@ -979,17 +953,11 @@ exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
         2
         件
       </ForwardRef(Typography)>
-      <div
-        className="pagination-wrapper"
-      >
-        <ForwardRef(Pagination)
-          boundaryCount={1}
-          count={2}
-          onChange={[Function]}
-          page={1}
-          siblingCount={0}
-        />
-      </div>
+      <CenterPagination
+        count={2}
+        onChange={[Function]}
+        page={1}
+      />
     </ForwardRef(Stack)>
     <ForwardRef(Table)>
       <ForwardRef(TableHead)>
@@ -1101,33 +1069,7 @@ exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
           <ForwardRef(TableCell)
             width={70}
           >
-            <ForwardRef(FormControl)
-              variant="standard"
-            >
-              <ForwardRef(Select)
-                onChange={[Function]}
-                value="false"
-              >
-                <ForwardRef(MenuItem)
-                  value="false"
-                >
-                  <ForwardRef(Typography)
-                    fontSize={14}
-                  >
-                    公開
-                  </ForwardRef(Typography)>
-                </ForwardRef(MenuItem)>
-                <ForwardRef(MenuItem)
-                  value="true"
-                >
-                  <ForwardRef(Typography)
-                    fontSize={14}
-                  >
-                    下書き
-                  </ForwardRef(Typography)>
-                </ForwardRef(MenuItem)>
-              </ForwardRef(Select)>
-            </ForwardRef(FormControl)>
+            公開中
           </ForwardRef(TableCell)>
           <ForwardRef(TableCell)
             width={40}
@@ -1312,17 +1254,11 @@ exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
         2
         件
       </ForwardRef(Typography)>
-      <div
-        className="pagination-wrapper"
-      >
-        <ForwardRef(Pagination)
-          boundaryCount={1}
-          count={2}
-          onChange={[Function]}
-          page={1}
-          siblingCount={0}
-        />
-      </div>
+      <CenterPagination
+        count={2}
+        onChange={[Function]}
+        page={1}
+      />
     </ForwardRef(Stack)>
   </ForwardRef(Stack)>
 </Fragment>
@@ -1497,17 +1433,11 @@ exports[`Shallow Snapshot Tests with articlesPreviews mobile view 1`] = `
         2
         件
       </ForwardRef(Typography)>
-      <div
-        className="pagination-wrapper"
-      >
-        <ForwardRef(Pagination)
-          boundaryCount={1}
-          count={2}
-          onChange={[Function]}
-          page={1}
-          siblingCount={0}
-        />
-      </div>
+      <CenterPagination
+        count={2}
+        onChange={[Function]}
+        page={1}
+      />
     </ForwardRef(Stack)>
     <ForwardRef(Table)>
       <ForwardRef(TableHead)>
@@ -1528,33 +1458,11 @@ exports[`Shallow Snapshot Tests with articlesPreviews mobile view 1`] = `
               <ForwardRef(Box)
                 marginBottom={2}
               >
-                <ForwardRef(FormControl)
-                  variant="standard"
+                <ForwardRef(Typography)
+                  fontSize={14}
                 >
-                  <ForwardRef(Select)
-                    onChange={[Function]}
-                    value="false"
-                  >
-                    <ForwardRef(MenuItem)
-                      value="false"
-                    >
-                      <ForwardRef(Typography)
-                        variant="subtitle2"
-                      >
-                        公開
-                      </ForwardRef(Typography)>
-                    </ForwardRef(MenuItem)>
-                    <ForwardRef(MenuItem)
-                      value="true"
-                    >
-                      <ForwardRef(Typography)
-                        variant="subtitle2"
-                      >
-                        下書き
-                      </ForwardRef(Typography)>
-                    </ForwardRef(MenuItem)>
-                  </ForwardRef(Select)>
-                </ForwardRef(FormControl)>
+                  公開中
+                </ForwardRef(Typography)>
               </ForwardRef(Box)>
               <ForwardRef(Stack)
                 direction="row"
@@ -1848,17 +1756,11 @@ exports[`Shallow Snapshot Tests with articlesPreviews mobile view 1`] = `
         2
         件
       </ForwardRef(Typography)>
-      <div
-        className="pagination-wrapper"
-      >
-        <ForwardRef(Pagination)
-          boundaryCount={1}
-          count={2}
-          onChange={[Function]}
-          page={1}
-          siblingCount={0}
-        />
-      </div>
+      <CenterPagination
+        count={2}
+        onChange={[Function]}
+        page={1}
+      />
     </ForwardRef(Stack)>
   </ForwardRef(Stack)>
 </Fragment>

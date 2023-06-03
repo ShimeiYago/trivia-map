@@ -21,7 +21,8 @@ export interface ArticleFormState {
   lastSavedCategory?: number;
   isFormChangedFromLastSaved: boolean;
   isDraft: boolean;
-  submitSuccessId?: number;
+  lastSavedIsDraft: boolean;
+  submitSuccessInfo?: SubmitSuccessInfo;
 }
 
 export const initialState: ArticleFormState = {
@@ -36,6 +37,7 @@ export const initialState: ArticleFormState = {
   isEditting: false,
   isFormChangedFromLastSaved: false,
   isDraft: false,
+  lastSavedIsDraft: false,
 };
 
 export type FormError = {
@@ -46,4 +48,11 @@ export type FormError = {
     marker?: string[];
     image?: string[];
   };
+};
+
+export type SubmitSuccessInfo = {
+  postId: number;
+  title: string;
+  description: string;
+  isDraft: boolean;
 };

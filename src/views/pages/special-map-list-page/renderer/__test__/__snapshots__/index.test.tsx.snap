@@ -1,0 +1,233 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shallow Snapshot Tests basic 1`] = `
+<ArticleWrapper
+  showSidebar={true}
+>
+  <ForwardRef(Typography)
+    align="center"
+    component="h2"
+    sx={
+      Object {
+        "mb": 4,
+        "mt": 3,
+      }
+    }
+    variant="h4"
+  >
+    <IconAndText
+      iconComponent={
+        <Memo
+          fontSize="inherit"
+        />
+      }
+      iconPosition="left"
+      text="オリジナルマップ"
+      variant="inherit"
+    />
+  </ForwardRef(Typography)>
+  <CenterSpinner />
+</ArticleWrapper>
+`;
+
+exports[`Shallow Snapshot Tests with no special maps 1`] = `
+<ArticleWrapper
+  showSidebar={true}
+>
+  <ForwardRef(Typography)
+    align="center"
+    component="h2"
+    sx={
+      Object {
+        "mb": 4,
+        "mt": 3,
+      }
+    }
+    variant="h4"
+  >
+    <IconAndText
+      iconComponent={
+        <Memo
+          fontSize="inherit"
+        />
+      }
+      iconPosition="left"
+      text="オリジナルマップ"
+      variant="inherit"
+    />
+  </ForwardRef(Typography)>
+  <ForwardRef(Typography)
+    align="center"
+  >
+    表示する投稿がありません。
+  </ForwardRef(Typography)>
+</ArticleWrapper>
+`;
+
+exports[`Shallow Snapshot Tests with special maps 1`] = `
+<ArticleWrapper
+  showSidebar={true}
+>
+  <ForwardRef(Typography)
+    align="center"
+    component="h2"
+    sx={
+      Object {
+        "mb": 4,
+        "mt": 3,
+      }
+    }
+    variant="h4"
+  >
+    <IconAndText
+      iconComponent={
+        <Memo
+          fontSize="inherit"
+        />
+      }
+      iconPosition="left"
+      text="オリジナルマップ"
+      variant="inherit"
+    />
+  </ForwardRef(Typography)>
+  <div />
+  <ForwardRef(Stack)
+    spacing={3}
+  >
+    <CenterPagination
+      count={2}
+      onChange={[Function]}
+      page={1}
+      size="large"
+    />
+    <ForwardRef(Box)
+      key="special-map-preview-1"
+    >
+      <Link
+        className="preview-link"
+        to="/special-maps/1"
+      >
+        <ForwardRef(Card)
+          sx={
+            Object {
+              "&:hover": Object {
+                "transform": "translate(0,-5px)",
+              },
+              "backgroundColor": "#f5f8fa",
+              "transition": "all 0.3s",
+            }
+          }
+        >
+          <ForwardRef(CardMedia)
+            className="card-media"
+            component="img"
+            image="https://www.yuu-diaryblog.com/wp-content/uploads/2017/06/disney-wc.jpg"
+          />
+          <ForwardRef(CardContent)>
+            <DynamicAlignedText
+              component="h3"
+              gutterBottom={true}
+              sx={
+                Object {
+                  "wordBreak": "break-all",
+                }
+              }
+              variant="h5"
+            >
+              トイレマップ
+            </DynamicAlignedText>
+            <DynamicAlignedText
+              whiteSpace="pre-wrap"
+            >
+              定番から穴場まで、ディズニーのトイレマップです。
+            </DynamicAlignedText>
+            <ForwardRef(Typography)
+              align="center"
+              component="div"
+              sx={
+                Object {
+                  "mt": 2,
+                }
+              }
+            >
+              <IconAndText
+                component="span"
+                iconComponent={<Memo />}
+                iconPosition="left"
+                text="くわしく読む"
+              />
+            </ForwardRef(Typography)>
+          </ForwardRef(CardContent)>
+        </ForwardRef(Card)>
+      </Link>
+    </ForwardRef(Box)>
+    <ForwardRef(Box)
+      key="special-map-preview-2"
+    >
+      <Link
+        className="preview-link"
+        to="/special-maps/2"
+      >
+        <ForwardRef(Card)
+          sx={
+            Object {
+              "&:hover": Object {
+                "transform": "translate(0,-5px)",
+              },
+              "backgroundColor": "#f5f8fa",
+              "transition": "all 0.3s",
+            }
+          }
+        >
+          <ForwardRef(CardMedia)
+            className="card-media"
+            component="img"
+            image="no-image-16x7.jpg"
+          />
+          <ForwardRef(CardContent)>
+            <DynamicAlignedText
+              component="h3"
+              gutterBottom={true}
+              sx={
+                Object {
+                  "wordBreak": "break-all",
+                }
+              }
+              variant="h5"
+            >
+              「関係者以外立ち入り禁止」看板マップ
+            </DynamicAlignedText>
+            <DynamicAlignedText
+              whiteSpace="pre-wrap"
+            >
+              パーク中の「関係者以外立ち入り禁止」の看板のまとめです。
+            </DynamicAlignedText>
+            <ForwardRef(Typography)
+              align="center"
+              component="div"
+              sx={
+                Object {
+                  "mt": 2,
+                }
+              }
+            >
+              <IconAndText
+                component="span"
+                iconComponent={<Memo />}
+                iconPosition="left"
+                text="くわしく読む"
+              />
+            </ForwardRef(Typography)>
+          </ForwardRef(CardContent)>
+        </ForwardRef(Card)>
+      </Link>
+    </ForwardRef(Box)>
+    <CenterPagination
+      count={2}
+      onChange={[Function]}
+      page={1}
+      size="large"
+    />
+  </ForwardRef(Stack)>
+</ArticleWrapper>
+`;

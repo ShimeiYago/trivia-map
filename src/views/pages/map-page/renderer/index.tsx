@@ -10,7 +10,6 @@ import {
   Drawer,
   IconButton,
   Stack,
-  Switch,
   Typography,
 } from '@mui/material';
 import { FloatingButton } from 'views/components/atoms/floating-button';
@@ -18,7 +17,7 @@ import { SwipeableEdgeDrawer } from 'views/components/moleculars/swipeable-edge-
 import { ArticleForm } from 'views/components/organisms/article-form';
 import { CloseFormButton } from 'views/components/organisms/close-form-button';
 import { GlobalMessage } from 'views/components/organisms/global-messge';
-import { LoadingProgressBar } from 'views/components/organisms/loading-progress-bar';
+import { TriviaMapMarkersLoadingProgressBar } from 'views/components/organisms/loading-progress-bar';
 import { TriviaMap } from 'views/components/organisms/trivia-map';
 import {
   rightDrawerStyle,
@@ -33,7 +32,7 @@ import {
 import { GlobalMenu } from 'views/components/organisms/global-menu';
 import { Park } from 'types/park';
 import { RoundButton } from 'views/components/atoms/round-button';
-import { CATEGORIES, INITIAL_PARK, SITE_NAME } from 'constant';
+import { CATEGORIES, PARKS, SITE_NAME } from 'constant';
 import { AUTHER_PAGE_LINK, EDIT_LINK, MAP_PAGE_LINK, NEW_LINK } from 'constant/links';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { Author } from 'types/author';
@@ -44,8 +43,11 @@ import CloseIcon from '@mui/icons-material/Close';
 import { MapFocus } from 'types/map-focus';
 import { CommonHelmet } from 'helper-components/common-helmet';
 import { PAGE_DESCRIPTIONS } from 'constant/head-tags';
+import { ParkSelectBox } from 'views/components/moleculars/park-select-box';
+import { SubmitSuccessModal } from 'views/components/organisms/submit-success-modal';
 
 const CATEGORY_BUTTON_ID = (categoryId: number) => `category-button-${categoryId}`;
+const INITIAL_PARK = PARKS.sea;
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -189,11 +191,13 @@ export class Renderer extends React.Component<Props, State> {
                 <FloatingButton
                   color="error"
                   icon="add-marker"
+                  text="新しい投稿を追加"
+                  size="large"
                   onClick={this.handleClickAddButton}
                 />
               )}
 
-              <LoadingProgressBar />
+              <TriviaMapMarkersLoadingProgressBar />
 
               {this.renderParkSelectBox()}
 
@@ -205,7 +209,9 @@ export class Renderer extends React.Component<Props, State> {
 
           {this.renderEditForm()}
 
-          <GlobalMessage closeFormModal={this.handleCloseFormModal} />
+          <GlobalMessage />
+
+          <SubmitSuccessModal />
 
           {this.renderDoubleEditAlartDialog()}
         </Box>
@@ -241,17 +247,8 @@ export class Renderer extends React.Component<Props, State> {
     }
 
     return (
-      <Box sx={parkSelectBox(!isMobile && openFormModal, isMobile, park)}>
-        <Stack direction="row" spacing={1} alignItems="center">
-          <Typography fontSize="0.875rem">ランド</Typography>
-          <Switch
-            checked={park === 'S'}
-            onChange={this.handleChangePark}
-            size="small"
-            color="primary"
-          />
-          <Typography fontSize="0.875rem">シー</Typography>
-        </Stack>
+      <Box sx={parkSelectBox(!isMobile && openFormModal, isMobile)}>
+        <ParkSelectBox park={park} onChangePark={this.props.updateFoocusingPark} />
       </Box>
     );
   };
@@ -332,10 +329,6 @@ export class Renderer extends React.Component<Props, State> {
 
   protected handleClickCategoryBarProceed = () => {
     this.categoryScrollBarRef.current?.scrollBy({ left: 100, behavior: 'smooth' });
-  };
-
-  protected handleChangePark = (event: React.ChangeEvent<HTMLInputElement>) => {
-    this.props.updateFoocusingPark(event.target.checked ? 'S' : 'L');
   };
 
   protected handleClickCategoryButton = (categoryId: number) => () => {

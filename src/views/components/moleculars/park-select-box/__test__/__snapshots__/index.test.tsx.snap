@@ -1,0 +1,87 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shallow Snapshot Tests basic 1`] = `
+<ForwardRef(Box)
+  sx={
+    Object {
+      "& .MuiSwitch-thumb": Object {
+        "backgroundColor": "#d32f2f",
+      },
+      "& .MuiSwitch-track": Object {
+        "backgroundColor": "#d32f2f",
+      },
+      "backgroundColor": "white",
+      "borderColor": "#9e9e9e",
+      "borderRadius": 2,
+      "borderStyle": "solid",
+      "padding": 1,
+    }
+  }
+>
+  <ForwardRef(Stack)
+    alignItems="center"
+    direction="row"
+    spacing={1}
+  >
+    <ForwardRef(Typography)
+      fontSize="0.875rem"
+    >
+      ランド
+    </ForwardRef(Typography)>
+    <ForwardRef(Switch)
+      checked={false}
+      color="primary"
+      onChange={[Function]}
+      size="small"
+    />
+    <ForwardRef(Typography)
+      fontSize="0.875rem"
+    >
+      シー
+    </ForwardRef(Typography)>
+  </ForwardRef(Stack)>
+</ForwardRef(Box)>
+`;
+
+exports[`Shallow Snapshot Tests sea 1`] = `
+<ForwardRef(Box)
+  sx={
+    Object {
+      "& .MuiSwitch-thumb": Object {
+        "backgroundColor": "#1976d2",
+      },
+      "& .MuiSwitch-track": Object {
+        "backgroundColor": "#1976d2",
+      },
+      "backgroundColor": "white",
+      "borderColor": "#9e9e9e",
+      "borderRadius": 2,
+      "borderStyle": "solid",
+      "padding": 1,
+    }
+  }
+>
+  <ForwardRef(Stack)
+    alignItems="center"
+    direction="row"
+    spacing={1}
+  >
+    <ForwardRef(Typography)
+      fontSize="0.875rem"
+    >
+      ランド
+    </ForwardRef(Typography)>
+    <ForwardRef(Switch)
+      checked={true}
+      color="primary"
+      onChange={[Function]}
+      size="small"
+    />
+    <ForwardRef(Typography)
+      fontSize="0.875rem"
+    >
+      シー
+    </ForwardRef(Typography)>
+  </ForwardRef(Stack)>
+</ForwardRef(Box)>
+`;

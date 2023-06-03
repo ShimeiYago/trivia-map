@@ -1,80 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Shallow Snapshot Tests basic 1`] = `
-<ForwardRef(Box)
-  sx={
-    Object {
-      "height": "100%",
-      "width": "100%",
-    }
-  }
->
-  <MapContainer
-    center={
+<Fragment>
+  <ParkMap
+    initCenter={
       Object {
         "lat": -127.5,
         "lng": 127.5,
       }
     }
-    crs={
-      Object {
-        "distance": [Function],
-        "getProjectedBounds": [Function],
-        "infinite": true,
-        "latLngToPoint": [Function],
-        "pointToLatLng": [Function],
-        "project": [Function],
-        "projection": Object {
-          "bounds": Object {
-            "max": Object {
-              "x": 180,
-              "y": 90,
-            },
-            "min": Object {
-              "x": -180,
-              "y": -90,
-            },
-          },
-          "project": [Function],
-          "unproject": [Function],
-        },
-        "scale": [Function],
-        "transformation": Object {
-          "_a": 1,
-          "_b": 0,
-          "_c": -1,
-          "_d": 0,
-        },
-        "unproject": [Function],
-        "wrapLatLng": [Function],
-        "wrapLatLngBounds": [Function],
-        "zoom": [Function],
-      }
-    }
-    maxBounds={
-      Array [
-        Array [
-          50,
-          -50,
-        ],
-        Array [
-          -305,
-          305,
-        ],
-      ]
-    }
-    maxZoom={4}
-    minZoom={1}
-    tap={false}
-    whenCreated={[Function]}
-    zoom={1}
-    zoomControl={false}
+    initZoom={1}
+    park="S"
+    setMap={[Function]}
   >
-    <ForwardRef(LeafComponent)
-      attribution="&copy; <a target=\\"_blank\\" href=\\"https://www.tokyodisneyresort.jp/tdl/map.html\\">tokyodisneyresort.jp</a>"
-      noWrap={true}
-      url="/s-tiles/{z}/{x}/{y}.png"
-    />
     <PostMarkers
       editting={false}
       hiddenMarkerIds={Array []}
@@ -111,9 +49,11 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       draggable={false}
       isMobile={false}
       key="additional-marker-0"
-      map={
+      mapController={
         Object {
-          "setView": [MockFunction],
+          "map": Object {
+            "setView": [MockFunction],
+          },
         }
       }
       position={
@@ -125,102 +65,34 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       variant="red"
       zIndexOffset={0}
     />
-    <ForwardRef(LeafComponent)
-      position="bottomleft"
-    />
-  </MapContainer>
-</ForwardRef(Box)>
+  </ParkMap>
+</Fragment>
 `;
 
 exports[`Shallow Snapshot Tests disabled map 1`] = `
-<ForwardRef(Box)
-  sx={
-    Object {
-      "height": "100%",
-      "width": "100%",
-    }
-  }
->
-  <MapContainer
-    boxZoom={false}
-    center={
+<Fragment>
+  <ParkMap
+    disabled={true}
+    initCenter={
       Object {
         "lat": -127.5,
         "lng": 127.5,
       }
     }
-    crs={
-      Object {
-        "distance": [Function],
-        "getProjectedBounds": [Function],
-        "infinite": true,
-        "latLngToPoint": [Function],
-        "pointToLatLng": [Function],
-        "project": [Function],
-        "projection": Object {
-          "bounds": Object {
-            "max": Object {
-              "x": 180,
-              "y": 90,
-            },
-            "min": Object {
-              "x": -180,
-              "y": -90,
-            },
-          },
-          "project": [Function],
-          "unproject": [Function],
-        },
-        "scale": [Function],
-        "transformation": Object {
-          "_a": 1,
-          "_b": 0,
-          "_c": -1,
-          "_d": 0,
-        },
-        "unproject": [Function],
-        "wrapLatLng": [Function],
-        "wrapLatLngBounds": [Function],
-        "zoom": [Function],
-      }
-    }
-    doubleClickZoom={false}
-    dragging={false}
-    keyboard={false}
-    maxBounds={
-      Array [
-        Array [
-          50,
-          -50,
-        ],
-        Array [
-          -305,
-          305,
-        ],
-      ]
-    }
-    maxZoom={4}
-    minZoom={1}
-    scrollWheelZoom={false}
-    tap={false}
-    touchZoom={false}
-    whenCreated={[Function]}
-    zoom={1}
-    zoomControl={false}
+    initZoom={1}
+    park="S"
+    setMap={[Function]}
   >
-    <ForwardRef(LeafComponent)
-      attribution="&copy; <a target=\\"_blank\\" href=\\"https://www.tokyodisneyresort.jp/tdl/map.html\\">tokyodisneyresort.jp</a>"
-      noWrap={true}
-      url="/s-tiles/{z}/{x}/{y}.png"
-    />
     <MapMarker
       autoOpen={false}
       draggable={false}
       isMobile={false}
       key="additional-marker-0"
-      map={
+      mapController={
         Object {
-          "setView": [MockFunction],
+          "map": Object {
+            "setView": [MockFunction],
+          },
         }
       }
       position={
@@ -232,85 +104,23 @@ exports[`Shallow Snapshot Tests disabled map 1`] = `
       variant="red"
       zIndexOffset={0}
     />
-  </MapContainer>
-</ForwardRef(Box)>
+  </ParkMap>
+</Fragment>
 `;
 
 exports[`Shallow Snapshot Tests land map 1`] = `
-<ForwardRef(Box)
-  sx={
-    Object {
-      "height": "100%",
-      "width": "100%",
-    }
-  }
->
-  <MapContainer
-    center={
+<Fragment>
+  <ParkMap
+    initCenter={
       Object {
         "lat": -127.5,
         "lng": 127.5,
       }
     }
-    crs={
-      Object {
-        "distance": [Function],
-        "getProjectedBounds": [Function],
-        "infinite": true,
-        "latLngToPoint": [Function],
-        "pointToLatLng": [Function],
-        "project": [Function],
-        "projection": Object {
-          "bounds": Object {
-            "max": Object {
-              "x": 180,
-              "y": 90,
-            },
-            "min": Object {
-              "x": -180,
-              "y": -90,
-            },
-          },
-          "project": [Function],
-          "unproject": [Function],
-        },
-        "scale": [Function],
-        "transformation": Object {
-          "_a": 1,
-          "_b": 0,
-          "_c": -1,
-          "_d": 0,
-        },
-        "unproject": [Function],
-        "wrapLatLng": [Function],
-        "wrapLatLngBounds": [Function],
-        "zoom": [Function],
-      }
-    }
-    maxBounds={
-      Array [
-        Array [
-          50,
-          -50,
-        ],
-        Array [
-          -305,
-          305,
-        ],
-      ]
-    }
-    maxZoom={4}
-    minZoom={1}
-    tap={false}
-    whenCreated={[Function]}
-    zoom={1}
-    zoomControl={false}
+    initZoom={1}
+    park="L"
+    setMap={[Function]}
   >
-    <ForwardRef(LeafComponent)
-      attribution="&copy; <a target=\\"_blank\\" href=\\"https://www.tokyodisneyresort.jp/tdl/map.html\\">tokyodisneyresort.jp</a>"
-      noWrap={true}
-      url="/l-tiles/{z}/{x}/{y}.png"
-    />
     <PostMarkers
       editting={false}
       hiddenMarkerIds={Array []}
@@ -347,9 +157,11 @@ exports[`Shallow Snapshot Tests land map 1`] = `
       draggable={false}
       isMobile={false}
       key="additional-marker-0"
-      map={
+      mapController={
         Object {
-          "setView": [MockFunction],
+          "map": Object {
+            "setView": [MockFunction],
+          },
         }
       }
       position={
@@ -361,88 +173,23 @@ exports[`Shallow Snapshot Tests land map 1`] = `
       variant="red"
       zIndexOffset={0}
     />
-    <ForwardRef(LeafComponent)
-      position="bottomleft"
-    />
-  </MapContainer>
-</ForwardRef(Box)>
+  </ParkMap>
+</Fragment>
 `;
 
 exports[`Shallow Snapshot Tests with current marker 1`] = `
-<ForwardRef(Box)
-  sx={
-    Object {
-      "height": "100%",
-      "width": "100%",
-    }
-  }
->
-  <MapContainer
-    center={
+<Fragment>
+  <ParkMap
+    initCenter={
       Object {
         "lat": -127.5,
         "lng": 127.5,
       }
     }
-    crs={
-      Object {
-        "distance": [Function],
-        "getProjectedBounds": [Function],
-        "infinite": true,
-        "latLngToPoint": [Function],
-        "pointToLatLng": [Function],
-        "project": [Function],
-        "projection": Object {
-          "bounds": Object {
-            "max": Object {
-              "x": 180,
-              "y": 90,
-            },
-            "min": Object {
-              "x": -180,
-              "y": -90,
-            },
-          },
-          "project": [Function],
-          "unproject": [Function],
-        },
-        "scale": [Function],
-        "transformation": Object {
-          "_a": 1,
-          "_b": 0,
-          "_c": -1,
-          "_d": 0,
-        },
-        "unproject": [Function],
-        "wrapLatLng": [Function],
-        "wrapLatLngBounds": [Function],
-        "zoom": [Function],
-      }
-    }
-    maxBounds={
-      Array [
-        Array [
-          50,
-          -50,
-        ],
-        Array [
-          -305,
-          305,
-        ],
-      ]
-    }
-    maxZoom={4}
-    minZoom={1}
-    tap={false}
-    whenCreated={[Function]}
-    zoom={1}
-    zoomControl={false}
+    initZoom={1}
+    park="S"
+    setMap={[Function]}
   >
-    <ForwardRef(LeafComponent)
-      attribution="&copy; <a target=\\"_blank\\" href=\\"https://www.tokyodisneyresort.jp/tdl/map.html\\">tokyodisneyresort.jp</a>"
-      noWrap={true}
-      url="/s-tiles/{z}/{x}/{y}.png"
-    />
     <PostMarkers
       editting={false}
       hiddenMarkerIds={Array []}
@@ -479,9 +226,11 @@ exports[`Shallow Snapshot Tests with current marker 1`] = `
       draggable={false}
       isMobile={false}
       key="additional-marker-0"
-      map={
+      mapController={
         Object {
-          "setView": [MockFunction],
+          "map": Object {
+            "setView": [MockFunction],
+          },
         }
       }
       position={
@@ -497,9 +246,11 @@ exports[`Shallow Snapshot Tests with current marker 1`] = `
       autoOpen={false}
       draggable={false}
       isMobile={false}
-      map={
+      mapController={
         Object {
-          "setView": [MockFunction],
+          "map": Object {
+            "setView": [MockFunction],
+          },
         }
       }
       position={
@@ -511,88 +262,23 @@ exports[`Shallow Snapshot Tests with current marker 1`] = `
       variant="blue"
       zIndexOffset={999}
     />
-    <ForwardRef(LeafComponent)
-      position="bottomleft"
-    />
-  </MapContainer>
-</ForwardRef(Box)>
+  </ParkMap>
+</Fragment>
 `;
 
 exports[`Shallow Snapshot Tests with initCenter prop 1`] = `
-<ForwardRef(Box)
-  sx={
-    Object {
-      "height": "100%",
-      "width": "100%",
-    }
-  }
->
-  <MapContainer
-    center={
+<Fragment>
+  <ParkMap
+    initCenter={
       Object {
         "lat": 1,
         "lng": 1,
       }
     }
-    crs={
-      Object {
-        "distance": [Function],
-        "getProjectedBounds": [Function],
-        "infinite": true,
-        "latLngToPoint": [Function],
-        "pointToLatLng": [Function],
-        "project": [Function],
-        "projection": Object {
-          "bounds": Object {
-            "max": Object {
-              "x": 180,
-              "y": 90,
-            },
-            "min": Object {
-              "x": -180,
-              "y": -90,
-            },
-          },
-          "project": [Function],
-          "unproject": [Function],
-        },
-        "scale": [Function],
-        "transformation": Object {
-          "_a": 1,
-          "_b": 0,
-          "_c": -1,
-          "_d": 0,
-        },
-        "unproject": [Function],
-        "wrapLatLng": [Function],
-        "wrapLatLngBounds": [Function],
-        "zoom": [Function],
-      }
-    }
-    maxBounds={
-      Array [
-        Array [
-          50,
-          -50,
-        ],
-        Array [
-          -305,
-          305,
-        ],
-      ]
-    }
-    maxZoom={4}
-    minZoom={1}
-    tap={false}
-    whenCreated={[Function]}
-    zoom={1}
-    zoomControl={false}
+    initZoom={1}
+    park="S"
+    setMap={[Function]}
   >
-    <ForwardRef(LeafComponent)
-      attribution="&copy; <a target=\\"_blank\\" href=\\"https://www.tokyodisneyresort.jp/tdl/map.html\\">tokyodisneyresort.jp</a>"
-      noWrap={true}
-      url="/s-tiles/{z}/{x}/{y}.png"
-    />
     <PostMarkers
       editting={false}
       hiddenMarkerIds={Array []}
@@ -644,23 +330,25 @@ exports[`Shallow Snapshot Tests with initCenter prop 1`] = `
       draggable={false}
       isMobile={false}
       key="additional-marker-0"
-      map={
+      mapController={
         Object {
-          "setView": [MockFunction] {
-            "calls": Array [
-              Array [
+          "map": Object {
+            "setView": [MockFunction] {
+              "calls": Array [
+                Array [
+                  Object {
+                    "lat": 1,
+                    "lng": 1,
+                  },
+                ],
+              ],
+              "results": Array [
                 Object {
-                  "lat": 1,
-                  "lng": 1,
+                  "type": "return",
+                  "value": undefined,
                 },
               ],
-            ],
-            "results": Array [
-              Object {
-                "type": "return",
-                "value": undefined,
-              },
-            ],
+            },
           },
         }
       }
@@ -673,88 +361,25 @@ exports[`Shallow Snapshot Tests with initCenter prop 1`] = `
       variant="red"
       zIndexOffset={0}
     />
-    <ForwardRef(LeafComponent)
-      position="bottomleft"
-    />
-  </MapContainer>
-</ForwardRef(Box)>
+  </ParkMap>
+</Fragment>
 `;
 
 exports[`Shallow Snapshot Tests with width and height props 1`] = `
-<ForwardRef(Box)
-  sx={
-    Object {
-      "height": 100,
-      "width": 100,
-    }
-  }
->
-  <MapContainer
-    center={
+<Fragment>
+  <ParkMap
+    height={100}
+    initCenter={
       Object {
         "lat": -127.5,
         "lng": 127.5,
       }
     }
-    crs={
-      Object {
-        "distance": [Function],
-        "getProjectedBounds": [Function],
-        "infinite": true,
-        "latLngToPoint": [Function],
-        "pointToLatLng": [Function],
-        "project": [Function],
-        "projection": Object {
-          "bounds": Object {
-            "max": Object {
-              "x": 180,
-              "y": 90,
-            },
-            "min": Object {
-              "x": -180,
-              "y": -90,
-            },
-          },
-          "project": [Function],
-          "unproject": [Function],
-        },
-        "scale": [Function],
-        "transformation": Object {
-          "_a": 1,
-          "_b": 0,
-          "_c": -1,
-          "_d": 0,
-        },
-        "unproject": [Function],
-        "wrapLatLng": [Function],
-        "wrapLatLngBounds": [Function],
-        "zoom": [Function],
-      }
-    }
-    maxBounds={
-      Array [
-        Array [
-          50,
-          -50,
-        ],
-        Array [
-          -305,
-          305,
-        ],
-      ]
-    }
-    maxZoom={4}
-    minZoom={1}
-    tap={false}
-    whenCreated={[Function]}
-    zoom={1}
-    zoomControl={false}
+    initZoom={1}
+    park="S"
+    setMap={[Function]}
+    width={100}
   >
-    <ForwardRef(LeafComponent)
-      attribution="&copy; <a target=\\"_blank\\" href=\\"https://www.tokyodisneyresort.jp/tdl/map.html\\">tokyodisneyresort.jp</a>"
-      noWrap={true}
-      url="/s-tiles/{z}/{x}/{y}.png"
-    />
     <PostMarkers
       editting={false}
       hiddenMarkerIds={Array []}
@@ -791,9 +416,11 @@ exports[`Shallow Snapshot Tests with width and height props 1`] = `
       draggable={false}
       isMobile={false}
       key="additional-marker-0"
-      map={
+      mapController={
         Object {
-          "setView": [MockFunction],
+          "map": Object {
+            "setView": [MockFunction],
+          },
         }
       }
       position={
@@ -805,9 +432,6 @@ exports[`Shallow Snapshot Tests with width and height props 1`] = `
       variant="red"
       zIndexOffset={0}
     />
-    <ForwardRef(LeafComponent)
-      position="bottomleft"
-    />
-  </MapContainer>
-</ForwardRef(Box)>
+  </ParkMap>
+</Fragment>
 `;

@@ -58,6 +58,7 @@ describe('articleForm reducer', () => {
       isEditting: false,
       isFormChangedFromLastSaved: false,
       isDraft: false,
+      lastSavedIsDraft: false,
     });
   });
 
@@ -153,9 +154,12 @@ describe('articleForm reducer', () => {
   });
 
   it('should handle submitSuccess', () => {
-    const actual = articleFormReducer(submittingLoadingState, submitSuccess(100));
+    const actual = articleFormReducer(
+      submittingLoadingState,
+      submitSuccess({ postId: 100, title: 'title', description: 'description', isDraft: false }),
+    );
     expect(actual.submittingState).toEqual('success');
-    expect(actual.submitSuccessId).toEqual(100);
+    expect(actual.submitSuccessInfo?.postId).toEqual(100);
   });
 
   it('should handle fetchStart', () => {

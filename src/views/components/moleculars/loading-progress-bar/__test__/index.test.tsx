@@ -1,18 +1,18 @@
 import { shallow, ShallowWrapper } from 'enzyme';
-import { Renderer, State, Props } from '..';
+import { LoadingProgressBar, State, Props } from '..';
 
-let shallowWrapper: ShallowWrapper<Props, State, Renderer>;
+let shallowWrapper: ShallowWrapper<Props, State, LoadingProgressBar>;
 
 const props: Props = {
-  markersLoadedPages: 1,
-  markersTotalPages: 5,
-  markersFetchingState: 'waiting',
+  loadedPages: 1,
+  totalPages: 5,
+  fetchingState: 'waiting',
   isMobile: false,
 };
 
 describe('Shallow Snapshot Tests', () => {
   beforeEach(() => {
-    shallowWrapper = shallow(<Renderer {...props} />);
+    shallowWrapper = shallow(<LoadingProgressBar {...props} />);
   });
 
   it('basic', () => {
@@ -20,14 +20,14 @@ describe('Shallow Snapshot Tests', () => {
   });
 
   it('on loading', () => {
-    shallowWrapper.setProps({ markersFetchingState: 'loading' });
+    shallowWrapper.setProps({ fetchingState: 'loading' });
     expect(shallowWrapper).toMatchSnapshot();
   });
 
   it('init of loading', () => {
     shallowWrapper.setProps({
-      markersTotalPages: undefined,
-      markersFetchingState: 'loading',
+      totalPages: undefined,
+      fetchingState: 'loading',
     });
     expect(shallowWrapper).toMatchSnapshot();
   });
@@ -45,12 +45,12 @@ describe('Shallow Snapshot Tests', () => {
 
 describe('componentDidUpdate', () => {
   beforeEach(() => {
-    shallowWrapper = shallow(<Renderer {...props} />);
+    shallowWrapper = shallow(<LoadingProgressBar {...props} />);
   });
 
   it('should show loading progress bar if markersLoading changes to loading', () => {
     const prevProps: Props = props;
-    shallowWrapper.setProps({ markersFetchingState: 'loading' });
+    shallowWrapper.setProps({ fetchingState: 'loading' });
     const instance = shallowWrapper.instance();
 
     instance.componentDidUpdate(prevProps);
@@ -58,8 +58,8 @@ describe('componentDidUpdate', () => {
   });
 
   it('do not close loading progress bar soon even if markersLoading changes from loading', () => {
-    const prevProps: Props = { ...props, markersFetchingState: 'loading' };
-    shallowWrapper.setProps({ markersFetchingState: 'success' });
+    const prevProps: Props = { ...props, fetchingState: 'loading' };
+    shallowWrapper.setProps({ fetchingState: 'success' });
     shallowWrapper.setState({ showLoadingProgressBar: true });
     const instance = shallowWrapper.instance();
 
@@ -70,7 +70,7 @@ describe('componentDidUpdate', () => {
 
 describe('closeLoadingProgressBar', () => {
   beforeEach(() => {
-    shallowWrapper = shallow(<Renderer {...props} />);
+    shallowWrapper = shallow(<LoadingProgressBar {...props} />);
   });
 
   it('should close loading progress bar', async () => {

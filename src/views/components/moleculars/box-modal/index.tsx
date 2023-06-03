@@ -16,7 +16,11 @@ export class BoxModal extends React.Component<Props> {
     return (
       <Modal
         open={this.props.open}
-        onClose={this.props.showCloseButton ? undefined : this.props.onClose}
+        onClose={
+          this.props.showCloseButton && this.props.disableClickOutside
+            ? undefined
+            : this.props.onClose
+        }
       >
         <Box sx={boxStyle}>
           {this.props.showCloseButton && closeButton}
@@ -32,4 +36,5 @@ export type Props = {
   onClose?: () => void;
   children: ReactNode;
   showCloseButton?: boolean;
+  disableClickOutside?: boolean;
 };

@@ -6,6 +6,7 @@ import { SelializedImageFile } from 'types/selialized-image-file';
 import { resizeAndConvertToSelializedImageFile } from 'utils/resize-and-convert-to-selialized-image-file.ts';
 import { UploadedImage } from 'types/uploaded-image';
 import ReactCrop, { PercentCrop, PixelCrop } from 'react-image-crop';
+import 'react-image-crop/dist/ReactCrop.css';
 import { getImageSize } from 'utils/get-image-size.ts';
 import { BoxModal } from '../box-modal';
 import { sendGa4ExceptionEvent } from 'utils/send-ga4-exception-event';

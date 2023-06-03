@@ -39,24 +39,13 @@ exports[`Shallow Snapshot Tests author map 1`] = `
           shouldCurrentPositionAsyncWithForm={true}
           userId={1}
         />
-        <LoadingProgressBar />
+        <TriviaMapMarkersLoadingProgressBar />
         <ForwardRef(Box)
           sx={
             Object {
-              "& .MuiSwitch-thumb": Object {
-                "backgroundColor": "#1976d2",
-              },
-              "& .MuiSwitch-track": Object {
-                "backgroundColor": "#1976d2",
-              },
-              "backgroundColor": "white",
-              "borderColor": "#9e9e9e",
-              "borderRadius": 2,
-              "borderStyle": "solid",
               "bottom": "auto",
               "left": "auto",
               "margin": 0,
-              "padding": 1,
               "position": "fixed",
               "right": 20,
               "top": 108,
@@ -64,28 +53,10 @@ exports[`Shallow Snapshot Tests author map 1`] = `
             }
           }
         >
-          <ForwardRef(Stack)
-            alignItems="center"
-            direction="row"
-            spacing={1}
-          >
-            <ForwardRef(Typography)
-              fontSize="0.875rem"
-            >
-              ランド
-            </ForwardRef(Typography)>
-            <ForwardRef(Switch)
-              checked={true}
-              color="primary"
-              onChange={[Function]}
-              size="small"
-            />
-            <ForwardRef(Typography)
-              fontSize="0.875rem"
-            >
-              シー
-            </ForwardRef(Typography)>
-          </ForwardRef(Stack)>
+          <ParkSelectBox
+            onChangePark={[MockFunction]}
+            park="S"
+          />
         </ForwardRef(Box)>
         <ForwardRef(Box)
           sx={
@@ -195,7 +166,7 @@ exports[`Shallow Snapshot Tests author map 1`] = `
         <ForwardRef(Box)
           sx={
             Object {
-              "backgroundColor": "rgba(255, 255, 255, 0.8)",
+              "backgroundColor": "rgba(255, 255, 255, 0.9)",
               "borderRadius": 1,
               "bottom": 25,
               "boxSizing": "border-box",
@@ -252,9 +223,8 @@ exports[`Shallow Snapshot Tests author map 1`] = `
         park="S"
       />
     </SwipeableEdgeDrawer>
-    <GlobalMessage
-      closeFormModal={[Function]}
-    />
+    <GlobalMessage />
+    <SubmitSuccessModal />
     <ForwardRef(Dialog)
       onClose={[Function]}
       open={false}
@@ -322,25 +292,16 @@ exports[`Shallow Snapshot Tests basic 1`] = `
           disabled={false}
           icon="add-marker"
           onClick={[Function]}
+          size="large"
+          text="新しい投稿を追加"
         />
-        <LoadingProgressBar />
+        <TriviaMapMarkersLoadingProgressBar />
         <ForwardRef(Box)
           sx={
             Object {
-              "& .MuiSwitch-thumb": Object {
-                "backgroundColor": "#1976d2",
-              },
-              "& .MuiSwitch-track": Object {
-                "backgroundColor": "#1976d2",
-              },
-              "backgroundColor": "white",
-              "borderColor": "#9e9e9e",
-              "borderRadius": 2,
-              "borderStyle": "solid",
               "bottom": "auto",
               "left": "auto",
               "margin": 0,
-              "padding": 1,
               "position": "fixed",
               "right": 20,
               "top": 108,
@@ -348,28 +309,10 @@ exports[`Shallow Snapshot Tests basic 1`] = `
             }
           }
         >
-          <ForwardRef(Stack)
-            alignItems="center"
-            direction="row"
-            spacing={1}
-          >
-            <ForwardRef(Typography)
-              fontSize="0.875rem"
-            >
-              ランド
-            </ForwardRef(Typography)>
-            <ForwardRef(Switch)
-              checked={true}
-              color="primary"
-              onChange={[Function]}
-              size="small"
-            />
-            <ForwardRef(Typography)
-              fontSize="0.875rem"
-            >
-              シー
-            </ForwardRef(Typography)>
-          </ForwardRef(Stack)>
+          <ParkSelectBox
+            onChangePark={[MockFunction]}
+            park="S"
+          />
         </ForwardRef(Box)>
         <ForwardRef(Box)
           sx={
@@ -497,9 +440,8 @@ exports[`Shallow Snapshot Tests basic 1`] = `
         park="S"
       />
     </SwipeableEdgeDrawer>
-    <GlobalMessage
-      closeFormModal={[Function]}
-    />
+    <GlobalMessage />
+    <SubmitSuccessModal />
     <ForwardRef(Dialog)
       onClose={[Function]}
       open={false}
@@ -552,25 +494,16 @@ exports[`Shallow Snapshot Tests before render map 1`] = `
           disabled={false}
           icon="add-marker"
           onClick={[Function]}
+          size="large"
+          text="新しい投稿を追加"
         />
-        <LoadingProgressBar />
+        <TriviaMapMarkersLoadingProgressBar />
         <ForwardRef(Box)
           sx={
             Object {
-              "& .MuiSwitch-thumb": Object {
-                "backgroundColor": "#1976d2",
-              },
-              "& .MuiSwitch-track": Object {
-                "backgroundColor": "#1976d2",
-              },
-              "backgroundColor": "white",
-              "borderColor": "#9e9e9e",
-              "borderRadius": 2,
-              "borderStyle": "solid",
               "bottom": "auto",
               "left": "auto",
               "margin": 0,
-              "padding": 1,
               "position": "fixed",
               "right": 20,
               "top": 108,
@@ -578,28 +511,10 @@ exports[`Shallow Snapshot Tests before render map 1`] = `
             }
           }
         >
-          <ForwardRef(Stack)
-            alignItems="center"
-            direction="row"
-            spacing={1}
-          >
-            <ForwardRef(Typography)
-              fontSize="0.875rem"
-            >
-              ランド
-            </ForwardRef(Typography)>
-            <ForwardRef(Switch)
-              checked={true}
-              color="primary"
-              onChange={[Function]}
-              size="small"
-            />
-            <ForwardRef(Typography)
-              fontSize="0.875rem"
-            >
-              シー
-            </ForwardRef(Typography)>
-          </ForwardRef(Stack)>
+          <ParkSelectBox
+            onChangePark={[MockFunction]}
+            park="S"
+          />
         </ForwardRef(Box)>
         <ForwardRef(Box)
           sx={
@@ -727,9 +642,8 @@ exports[`Shallow Snapshot Tests before render map 1`] = `
         park="S"
       />
     </SwipeableEdgeDrawer>
-    <GlobalMessage
-      closeFormModal={[Function]}
-    />
+    <GlobalMessage />
+    <SubmitSuccessModal />
     <ForwardRef(Dialog)
       onClose={[Function]}
       open={false}
@@ -797,25 +711,16 @@ exports[`Shallow Snapshot Tests land mode 1`] = `
           disabled={false}
           icon="add-marker"
           onClick={[Function]}
+          size="large"
+          text="新しい投稿を追加"
         />
-        <LoadingProgressBar />
+        <TriviaMapMarkersLoadingProgressBar />
         <ForwardRef(Box)
           sx={
             Object {
-              "& .MuiSwitch-thumb": Object {
-                "backgroundColor": "#d32f2f",
-              },
-              "& .MuiSwitch-track": Object {
-                "backgroundColor": "#d32f2f",
-              },
-              "backgroundColor": "white",
-              "borderColor": "#9e9e9e",
-              "borderRadius": 2,
-              "borderStyle": "solid",
               "bottom": "auto",
               "left": "auto",
               "margin": 0,
-              "padding": 1,
               "position": "fixed",
               "right": 20,
               "top": 108,
@@ -823,28 +728,10 @@ exports[`Shallow Snapshot Tests land mode 1`] = `
             }
           }
         >
-          <ForwardRef(Stack)
-            alignItems="center"
-            direction="row"
-            spacing={1}
-          >
-            <ForwardRef(Typography)
-              fontSize="0.875rem"
-            >
-              ランド
-            </ForwardRef(Typography)>
-            <ForwardRef(Switch)
-              checked={false}
-              color="primary"
-              onChange={[Function]}
-              size="small"
-            />
-            <ForwardRef(Typography)
-              fontSize="0.875rem"
-            >
-              シー
-            </ForwardRef(Typography)>
-          </ForwardRef(Stack)>
+          <ParkSelectBox
+            onChangePark={[MockFunction]}
+            park="L"
+          />
         </ForwardRef(Box)>
         <ForwardRef(Box)
           sx={
@@ -972,9 +859,8 @@ exports[`Shallow Snapshot Tests land mode 1`] = `
         park="L"
       />
     </SwipeableEdgeDrawer>
-    <GlobalMessage
-      closeFormModal={[Function]}
-    />
+    <GlobalMessage />
+    <SubmitSuccessModal />
     <ForwardRef(Dialog)
       onClose={[Function]}
       open={false}
@@ -1027,8 +913,10 @@ exports[`Shallow Snapshot Tests park is undefined 1`] = `
           disabled={false}
           icon="add-marker"
           onClick={[Function]}
+          size="large"
+          text="新しい投稿を追加"
         />
-        <LoadingProgressBar />
+        <TriviaMapMarkersLoadingProgressBar />
         <ForwardRef(Box)
           sx={
             Object {
@@ -1155,9 +1043,8 @@ exports[`Shallow Snapshot Tests park is undefined 1`] = `
         park="S"
       />
     </SwipeableEdgeDrawer>
-    <GlobalMessage
-      closeFormModal={[Function]}
-    />
+    <GlobalMessage />
+    <SubmitSuccessModal />
     <ForwardRef(Dialog)
       onClose={[Function]}
       open={false}
@@ -1229,25 +1116,16 @@ exports[`Shallow Snapshot Tests pc view 1`] = `
           disabled={false}
           icon="add-marker"
           onClick={[Function]}
+          size="large"
+          text="新しい投稿を追加"
         />
-        <LoadingProgressBar />
+        <TriviaMapMarkersLoadingProgressBar />
         <ForwardRef(Box)
           sx={
             Object {
-              "& .MuiSwitch-thumb": Object {
-                "backgroundColor": "#1976d2",
-              },
-              "& .MuiSwitch-track": Object {
-                "backgroundColor": "#1976d2",
-              },
-              "backgroundColor": "white",
-              "borderColor": "#9e9e9e",
-              "borderRadius": 2,
-              "borderStyle": "solid",
               "bottom": "auto",
               "left": "auto",
               "margin": 0,
-              "padding": 1,
               "position": "fixed",
               "right": 520,
               "top": 116,
@@ -1255,28 +1133,10 @@ exports[`Shallow Snapshot Tests pc view 1`] = `
             }
           }
         >
-          <ForwardRef(Stack)
-            alignItems="center"
-            direction="row"
-            spacing={1}
-          >
-            <ForwardRef(Typography)
-              fontSize="0.875rem"
-            >
-              ランド
-            </ForwardRef(Typography)>
-            <ForwardRef(Switch)
-              checked={true}
-              color="primary"
-              onChange={[Function]}
-              size="small"
-            />
-            <ForwardRef(Typography)
-              fontSize="0.875rem"
-            >
-              シー
-            </ForwardRef(Typography)>
-          </ForwardRef(Stack)>
+          <ParkSelectBox
+            onChangePark={[MockFunction]}
+            park="S"
+          />
         </ForwardRef(Box)>
         <ForwardRef(Box)
           sx={
@@ -1405,9 +1265,8 @@ exports[`Shallow Snapshot Tests pc view 1`] = `
         park="S"
       />
     </ForwardRef(Drawer)>
-    <GlobalMessage
-      closeFormModal={[Function]}
-    />
+    <GlobalMessage />
+    <SubmitSuccessModal />
     <ForwardRef(Dialog)
       onClose={[Function]}
       open={false}

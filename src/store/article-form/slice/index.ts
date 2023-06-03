@@ -1,6 +1,6 @@
 import { GetArticleResponse } from '../../../api/articles-api/get-remote-article';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { FormError, initialState } from '../model';
+import { FormError, initialState, SubmitSuccessInfo } from '../model';
 import { Position } from 'types/position';
 import { SelializedImageFile } from 'types/selialized-image-file';
 
@@ -38,6 +38,7 @@ export const articleFormSlice = createSlice({
 
     updatePosition(state, action: PayloadAction<Position>) {
       state.position = action.payload;
+      console.log(action.payload);
 
       if (state.formError?.fieldErrors?.marker) {
         state.formError = {
@@ -86,9 +87,9 @@ export const articleFormSlice = createSlice({
       state.formError = action.payload;
     },
 
-    submitSuccess(state, action: PayloadAction<number>) {
+    submitSuccess(state, action: PayloadAction<SubmitSuccessInfo>) {
       state.submittingState = 'success';
-      state.submitSuccessId = action.payload;
+      state.submitSuccessInfo = action.payload;
       state.isEditting = false;
     },
 
@@ -128,6 +129,7 @@ export const articleFormSlice = createSlice({
       state.lastSavedImage = initialState.lastSavedImage;
       state.lastSavedCategory = initialState.lastSavedCategory;
       state.isFormChangedFromLastSaved = initialState.isFormChangedFromLastSaved;
+      state.lastSavedIsDraft = initialState.lastSavedIsDraft;
     },
 
     updateIsEditting(state, action: PayloadAction<boolean>) {
@@ -140,6 +142,7 @@ export const articleFormSlice = createSlice({
       state.lastSavedPosition = state.position;
       state.lastSavedImage = state.image;
       state.lastSavedCategory = state.category;
+      state.lastSavedIsDraft = state.isDraft;
       state.isFormChangedFromLastSaved = false;
     },
 
@@ -150,7 +153,8 @@ export const articleFormSlice = createSlice({
         state.lastSavedPosition?.lat === state.position?.lat &&
         state.lastSavedPosition?.lng === state.position?.lng &&
         state.lastSavedImage === state.image &&
-        state.lastSavedCategory === state.category
+        state.lastSavedCategory === state.category &&
+        state.lastSavedIsDraft === state.isDraft
       );
     },
   },

@@ -13,8 +13,6 @@ import {
   Select,
   MenuItem,
   SelectChangeEvent,
-  Alert,
-  Button,
 } from '@mui/material';
 import { LoadingState } from 'types/loading-state';
 import { Position } from 'types/position';
@@ -90,6 +88,7 @@ export class Renderer extends React.Component<Props> {
       position,
       areaNames,
       isDraft,
+      lastSavedIsDraft,
       submittingState,
       fetchingState,
       formError,
@@ -108,6 +107,8 @@ export class Renderer extends React.Component<Props> {
 
     const imageSrc = this.getImageSrc();
 
+    const showIsDraftCheckbox = newMode || lastSavedIsDraft;
+
     return (
       <>
         {this.renderHeader()}
@@ -123,7 +124,6 @@ export class Renderer extends React.Component<Props> {
               </Box>
             )}
 
-            {this.renderLoginWarningMessage()}
             {this.renderHeaderMessage()}
 
             <TextField
@@ -215,18 +215,18 @@ export class Renderer extends React.Component<Props> {
               required
             />
 
-            <FormControlLabel
-              control={
-                <Checkbox
-                  onChange={this.handleChangeIsDraft}
-                  checked={isDraft}
-                  disabled={disabled}
-                />
-              }
-              label="下書きとして保存（非公開）"
-            />
-
-            {this.renderLoginWarningMessage()}
+            {showIsDraftCheckbox && (
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    onChange={this.handleChangeIsDraft}
+                    checked={isDraft}
+                    disabled={disabled}
+                  />
+                }
+                label="下書きとして保存（非公開）"
+              />
+            )}
 
             <LoadingButton
               loading={submittingState === 'loading'}
@@ -328,23 +328,23 @@ export class Renderer extends React.Component<Props> {
     return null;
   }
 
-  protected renderLoginWarningMessage() {
-    const { userInfo } = this.props;
+  // protected renderLoginWarningMessage() {
+  //   const { userInfo } = this.props;
 
-    if (!userInfo) {
-      return (
-        <Alert severity="warning">
-          新しいトリビアを投稿するには
-          <Button sx={{ p: 0 }} onClick={this.openAuthModal}>
-            ログイン
-          </Button>
-          が必要です。
-        </Alert>
-      );
-    }
+  //   if (!userInfo) {
+  //     return (
+  //       <Alert severity='warning'>
+  //         新しいトリビアを投稿するには
+  //         <Button sx={{ p: 0 }} onClick={this.openAuthModal}>
+  //           ログイン
+  //         </Button>
+  //         が必要です。
+  //       </Alert>
+  //     );
+  //   }
 
-    return null;
-  }
+  //   return null;
+  // }
 
   protected handleImageChange = (src: SelializedImageFile | null) => {
     this.props.updateFormField({ image: src });
@@ -385,6 +385,7 @@ export type Props = {
   position?: Position;
   areaNames?: string[];
   isDraft: boolean;
+  lastSavedIsDraft: boolean;
   submittingState: LoadingState;
   fetchingState: LoadingState;
   formError?: FormError;

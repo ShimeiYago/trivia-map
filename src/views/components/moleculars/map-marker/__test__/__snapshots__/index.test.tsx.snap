@@ -1,149 +1,188 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Shallow Snapshot Tests basic 1`] = `
-<Fragment>
-  <ForwardRef(ContainerComponent)
-    draggable={false}
-    eventHandlers={
-      Object {
-        "dragend": [Function],
-        "dragstart": [Function],
-        "popupclose": [Function],
-        "popupopen": [Function],
-      }
+<ForwardRef(ContainerComponent)
+  draggable={false}
+  eventHandlers={
+    Object {
+      "dragend": [Function],
+      "dragstart": [Function],
+      "popupclose": [Function],
+      "popupopen": [Function],
     }
-    icon={
-      NewClass {
-        "_initHooksCalled": true,
-        "options": Object {
-          "iconAnchor": Array [
-            12.5,
-            41,
-          ],
-          "iconSize": Array [
-            25,
-            41,
-          ],
-          "iconUrl": "default.png",
-          "popupAnchor": Array [
-            0,
-            -36,
-          ],
-          "shadowUrl": "marker-shadow.png",
-          "tooltipAnchor": Array [
-            0,
-            -36,
-          ],
-        },
-      }
+  }
+  icon={
+    NewClass {
+      "_initHooksCalled": true,
+      "options": Object {
+        "iconAnchor": Array [
+          12.5,
+          41,
+        ],
+        "iconSize": Array [
+          25,
+          41,
+        ],
+        "iconUrl": "default.png",
+        "popupAnchor": Array [
+          0,
+          -36,
+        ],
+        "shadowUrl": "marker-shadow.png",
+        "tooltipAnchor": Array [
+          0,
+          -36,
+        ],
+      },
     }
-    position={
-      Object {
-        "lat": 0,
-        "lng": 0,
-      }
+  }
+  position={
+    Object {
+      "lat": 0,
+      "lng": 0,
     }
-    zIndexOffset={0}
-  />
-</Fragment>
+  }
+  zIndexOffset={0}
+/>
 `;
 
 exports[`Shallow Snapshot Tests variant red 1`] = `
-<Fragment>
-  <ForwardRef(ContainerComponent)
-    draggable={false}
-    eventHandlers={
-      Object {
-        "dragend": [Function],
-        "dragstart": [Function],
-        "popupclose": [Function],
-        "popupopen": [Function],
-      }
+<ForwardRef(ContainerComponent)
+  draggable={false}
+  eventHandlers={
+    Object {
+      "dragend": [Function],
+      "dragstart": [Function],
+      "popupclose": [Function],
+      "popupopen": [Function],
     }
-    icon={
-      NewClass {
-        "_initHooksCalled": true,
-        "options": Object {
-          "iconAnchor": Array [
-            12.5,
-            41,
-          ],
-          "iconSize": Array [
-            25,
-            41,
-          ],
-          "iconUrl": "red.png",
-          "popupAnchor": Array [
-            0,
-            -36,
-          ],
-          "shadowUrl": "marker-shadow.png",
-          "tooltipAnchor": Array [
-            0,
-            -36,
-          ],
-        },
-      }
+  }
+  icon={
+    NewClass {
+      "_initHooksCalled": true,
+      "options": Object {
+        "iconAnchor": Array [
+          12.5,
+          41,
+        ],
+        "iconSize": Array [
+          25,
+          41,
+        ],
+        "iconUrl": "red.png",
+        "popupAnchor": Array [
+          0,
+          -36,
+        ],
+        "shadowUrl": "marker-shadow.png",
+        "tooltipAnchor": Array [
+          0,
+          -36,
+        ],
+      },
     }
-    position={
-      Object {
-        "lat": 0,
-        "lng": 0,
-      }
+  }
+  position={
+    Object {
+      "lat": 0,
+      "lng": 0,
     }
-    zIndexOffset={0}
-  />
-</Fragment>
+  }
+  zIndexOffset={0}
+/>
+`;
+
+exports[`Shallow Snapshot Tests variant restroom 1`] = `
+<ForwardRef(ContainerComponent)
+  draggable={false}
+  eventHandlers={
+    Object {
+      "dragend": [Function],
+      "dragstart": [Function],
+      "popupclose": [Function],
+      "popupopen": [Function],
+    }
+  }
+  icon={
+    NewClass {
+      "_initHooksCalled": true,
+      "options": Object {
+        "iconAnchor": Array [
+          30,
+          35,
+        ],
+        "iconSize": Array [
+          60,
+          70,
+        ],
+        "iconUrl": "restroom.png",
+        "popupAnchor": Array [
+          0,
+          -10,
+        ],
+        "tooltipAnchor": Array [
+          0,
+          -10,
+        ],
+      },
+    }
+  }
+  position={
+    Object {
+      "lat": 0,
+      "lng": 0,
+    }
+  }
+  zIndexOffset={0}
+/>
 `;
 
 exports[`Shallow Snapshot Tests with numberOfContents 1`] = `
-<Fragment>
-  <ForwardRef(ContainerComponent)
-    draggable={false}
-    eventHandlers={
-      Object {
-        "dragend": [Function],
-        "dragstart": [Function],
-        "popupclose": [Function],
-        "popupopen": [Function],
-      }
+<ForwardRef(ContainerComponent)
+  draggable={false}
+  eventHandlers={
+    Object {
+      "dragend": [Function],
+      "dragstart": [Function],
+      "popupclose": [Function],
+      "popupopen": [Function],
     }
-    icon={
-      NewClass {
-        "_initHooksCalled": true,
-        "options": Object {
-          "className": "duplicated-marker-wrapper",
-          "html": "<img src=\\"marker-shadow.png\\" class=\\"duplicated-marker-shadow\\" data-reactroot=\\"\\"/><img src=\\"red-with-number.png\\" class=\\"duplicated-marker-icon\\" data-reactroot=\\"\\"/><div class=\\"duplicated-marker-text\\" data-reactroot=\\"\\">1</div>",
-          "iconAnchor": Array [
-            20.5,
-            46,
-          ],
-          "iconSize": Array [
-            33,
-            46,
-          ],
-          "iconUrl": "marker-icon.png",
-          "popupAnchor": Array [
-            0,
-            -32,
-          ],
-          "shadowUrl": "marker-shadow.png",
-          "tooltipAnchor": Array [
-            0,
-            -32,
-          ],
-        },
-      }
+  }
+  icon={
+    NewClass {
+      "_initHooksCalled": true,
+      "options": Object {
+        "className": "duplicated-marker-wrapper",
+        "html": "<img src=\\"marker-shadow.png\\" class=\\"duplicated-marker-shadow\\" data-reactroot=\\"\\"/><img src=\\"red-with-number.png\\" class=\\"duplicated-marker-icon\\" data-reactroot=\\"\\"/><div class=\\"duplicated-marker-text\\" data-reactroot=\\"\\">1</div>",
+        "iconAnchor": Array [
+          20.5,
+          46,
+        ],
+        "iconSize": Array [
+          33,
+          46,
+        ],
+        "iconUrl": "marker-icon.png",
+        "popupAnchor": Array [
+          0,
+          -32,
+        ],
+        "shadowUrl": "marker-shadow.png",
+        "tooltipAnchor": Array [
+          0,
+          -32,
+        ],
+      },
     }
-    position={
-      Object {
-        "lat": 0,
-        "lng": 0,
-      }
+  }
+  position={
+    Object {
+      "lat": 0,
+      "lng": 0,
     }
-    zIndexOffset={0}
-  />
-</Fragment>
+  }
+  zIndexOffset={0}
+/>
 `;
 
 exports[`Shallow Snapshot Tests with popup 1`] = `
@@ -200,4 +239,42 @@ exports[`Shallow Snapshot Tests with popup 1`] = `
     zIndexOffset={0}
   />
 </Fragment>
+`;
+
+exports[`Shallow Snapshot Tests without map 1`] = `
+<ForwardRef(ContainerComponent)
+  draggable={false}
+  icon={
+    NewClass {
+      "_initHooksCalled": true,
+      "options": Object {
+        "iconAnchor": Array [
+          12.5,
+          41,
+        ],
+        "iconSize": Array [
+          25,
+          41,
+        ],
+        "iconUrl": "default.png",
+        "popupAnchor": Array [
+          0,
+          -36,
+        ],
+        "shadowUrl": "marker-shadow.png",
+        "tooltipAnchor": Array [
+          0,
+          -36,
+        ],
+      },
+    }
+  }
+  position={
+    Object {
+      "lat": 0,
+      "lng": 0,
+    }
+  }
+  zIndexOffset={0}
+/>
 `;

@@ -12,6 +12,12 @@ exports[`Shallow Snapshot Tests author view 1`] = `
   <ForwardRef(Stack)
     spacing={2}
   >
+    <ShareButtons
+      description="description"
+      title="【隠れミッキー】title"
+      url="http://localhost/"
+    />
+    <ForwardRef(Divider) />
     <ForwardRef(Link)
       component="div"
     >
@@ -130,30 +136,8 @@ exports[`Shallow Snapshot Tests author view 1`] = `
     <NonStyleLink
       to="/"
     >
-      <TriviaMap
-        additinalMarkers={
-          Array [
-            Object {
-              "areaNames": Array [
-                "シー",
-              ],
-              "lat": 0,
-              "lng": 0,
-              "markerId": 1,
-              "numberOfPublicArticles": Object {
-                "eachCategory": Array [
-                  1,
-                  2,
-                  1,
-                ],
-                "total": 4,
-              },
-              "park": "S",
-            },
-          ]
-        }
+      <ParkMap
         disabled={true}
-        doNotShowPostMarkers={true}
         height={300}
         initCenter={
           Object {
@@ -176,7 +160,20 @@ exports[`Shallow Snapshot Tests author view 1`] = `
         }
         initZoom={3}
         park="S"
-      />
+      >
+        <MapMarker
+          autoOpen={false}
+          draggable={false}
+          position={
+            Object {
+              "lat": 0,
+              "lng": 0,
+            }
+          }
+          variant="red"
+          zIndexOffset={0}
+        />
+      </ParkMap>
     </NonStyleLink>
     <ForwardRef(Divider) />
     <ForwardRef(Grid)
@@ -217,10 +214,25 @@ exports[`Shallow Snapshot Tests author view 1`] = `
       </ForwardRef(Grid)>
     </ForwardRef(Grid)>
     <ShareButtons
+      description="description"
       title="【隠れミッキー】title"
       url="http://localhost/"
     />
   </ForwardRef(Stack)>
+  <ForwardRef(Box)
+    mb={5}
+    mt={8}
+    textAlign="center"
+  >
+    <NonStyleLink
+      to="/map/new"
+    >
+      <Image
+        src="recommend.png"
+        width="300px"
+      />
+    </NonStyleLink>
+  </ForwardRef(Box)>
 </ArticleWrapper>
 `;
 
@@ -249,6 +261,7 @@ exports[`Shallow Snapshot Tests draft 1`] = `
     >
       この記事は下書きです。あなただけが閲覧できます。
     </ForwardRef(Alert)>
+    <ForwardRef(Divider) />
     <ForwardRef(Stack)
       alignItems="center"
       direction="row"
@@ -320,10 +333,7 @@ exports[`Shallow Snapshot Tests draft 1`] = `
       }
     >
       <ForwardRef(Typography)>
-        投稿日 2022/4/1
-      </ForwardRef(Typography)>
-      <ForwardRef(Typography)>
-        更新日 2022/5/1
+        投稿日 2022/5/1
       </ForwardRef(Typography)>
     </ForwardRef(Box)>
     <ForwardRef(Divider) />
@@ -355,30 +365,8 @@ exports[`Shallow Snapshot Tests draft 1`] = `
     <NonStyleLink
       to="/"
     >
-      <TriviaMap
-        additinalMarkers={
-          Array [
-            Object {
-              "areaNames": Array [
-                "シー",
-              ],
-              "lat": 0,
-              "lng": 0,
-              "markerId": 1,
-              "numberOfPublicArticles": Object {
-                "eachCategory": Array [
-                  1,
-                  2,
-                  1,
-                ],
-                "total": 4,
-              },
-              "park": "S",
-            },
-          ]
-        }
+      <ParkMap
         disabled={true}
-        doNotShowPostMarkers={true}
         height={300}
         initCenter={
           Object {
@@ -401,7 +389,20 @@ exports[`Shallow Snapshot Tests draft 1`] = `
         }
         initZoom={3}
         park="S"
-      />
+      >
+        <MapMarker
+          autoOpen={false}
+          draggable={false}
+          position={
+            Object {
+              "lat": 0,
+              "lng": 0,
+            }
+          }
+          variant="red"
+          zIndexOffset={0}
+        />
+      </ParkMap>
     </NonStyleLink>
     <ForwardRef(Divider) />
     <ForwardRef(Grid)
@@ -427,11 +428,223 @@ exports[`Shallow Snapshot Tests draft 1`] = `
         </ForwardRef(Box)>
       </ForwardRef(Grid)>
     </ForwardRef(Grid)>
-    <ShareButtons
-      title="【隠れミッキー】title"
-      url="http://localhost/"
-    />
   </ForwardRef(Stack)>
+  <ForwardRef(Box)
+    mb={5}
+    mt={8}
+    textAlign="center"
+  >
+    <NonStyleLink
+      to="/map/new"
+    >
+      <Image
+        src="recommend.png"
+        width="300px"
+      />
+    </NonStyleLink>
+  </ForwardRef(Box)>
+</ArticleWrapper>
+`;
+
+exports[`Shallow Snapshot Tests draft with same created & updated 1`] = `
+<ArticleWrapper
+  showSidebar={true}
+>
+  <CommonHelmet
+    description="description"
+    ogType="article"
+    title="【隠れミッキー】title"
+  />
+  <ForwardRef(Stack)
+    spacing={2}
+  >
+    <ForwardRef(Alert)
+      severity="info"
+    >
+      この記事は下書きです。あなただけが閲覧できます。
+    </ForwardRef(Alert)>
+    <ForwardRef(Divider) />
+    <ForwardRef(Stack)
+      alignItems="center"
+      direction="row"
+      justifyContent="flex-start"
+      spacing={1}
+    >
+      <NonStyleLink
+        to="/users/1"
+      >
+        <ForwardRef(Avatar)
+          src="no-icon.jpg"
+          sx={
+            Object {
+              "height": 30,
+              "width": 30,
+            }
+          }
+        />
+      </NonStyleLink>
+      <NonStyleLink
+        to="/users/1"
+      >
+        <ForwardRef(Typography)
+          color="gray"
+          sx={
+            Object {
+              "textDecoration": "underline",
+            }
+          }
+        >
+          Axel
+        </ForwardRef(Typography)>
+      </NonStyleLink>
+    </ForwardRef(Stack)>
+    <DynamicAlignedText
+      component="h2"
+      sx={
+        Object {
+          "wordBreak": "break-all",
+        }
+      }
+      variant="h4"
+    >
+      title
+    </DynamicAlignedText>
+    <ForwardRef(Typography)
+      color="gray"
+      component="div"
+      sx={
+        Object {
+          "textDecoration": "underline",
+        }
+      }
+    >
+      <IconAndText
+        align="left"
+        iconComponent={<Memo />}
+        iconPosition="left"
+        text="隠れミッキー"
+        to="/categories/1"
+      />
+    </ForwardRef(Typography)>
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "color": "gray",
+          "textAlign": "right",
+        }
+      }
+    >
+      <ForwardRef(Typography)>
+        投稿日 2022/4/1
+      </ForwardRef(Typography)>
+    </ForwardRef(Box)>
+    <ForwardRef(Divider) />
+    <ForwardRef(Typography)
+      fontSize={18}
+      whiteSpace="pre-wrap"
+    >
+      description
+    </ForwardRef(Typography)>
+    <ForwardRef(Divider) />
+    <IconAndText
+      component="h3"
+      iconComponent={
+        <MyIcon
+          variant="map-marker"
+        />
+      }
+      iconPosition="left"
+      text="地図"
+      variant="h5"
+    />
+    <AreaNames
+      areaNames={
+        Array [
+          "シー",
+        ]
+      }
+    />
+    <NonStyleLink
+      to="/"
+    >
+      <ParkMap
+        disabled={true}
+        height={300}
+        initCenter={
+          Object {
+            "areaNames": Array [
+              "シー",
+            ],
+            "lat": 0,
+            "lng": 0,
+            "markerId": 1,
+            "numberOfPublicArticles": Object {
+              "eachCategory": Array [
+                1,
+                2,
+                1,
+              ],
+              "total": 4,
+            },
+            "park": "S",
+          }
+        }
+        initZoom={3}
+        park="S"
+      >
+        <MapMarker
+          autoOpen={false}
+          draggable={false}
+          position={
+            Object {
+              "lat": 0,
+              "lng": 0,
+            }
+          }
+          variant="red"
+          zIndexOffset={0}
+        />
+      </ParkMap>
+    </NonStyleLink>
+    <ForwardRef(Divider) />
+    <ForwardRef(Grid)
+      container={true}
+      justifyContent="space-between"
+      pb={5}
+    >
+      <ForwardRef(Grid)
+        item={true}
+      />
+      <ForwardRef(Grid)
+        item={true}
+      >
+        <ForwardRef(Box)
+          textAlign="right"
+        >
+          <ForwardRef(LoadingButton)
+            loading={false}
+            onClick={[Function]}
+            startIcon={<Memo />}
+            variant="outlined"
+          />
+        </ForwardRef(Box)>
+      </ForwardRef(Grid)>
+    </ForwardRef(Grid)>
+  </ForwardRef(Stack)>
+  <ForwardRef(Box)
+    mb={5}
+    mt={8}
+    textAlign="center"
+  >
+    <NonStyleLink
+      to="/map/new"
+    >
+      <Image
+        src="recommend.png"
+        width="300px"
+      />
+    </NonStyleLink>
+  </ForwardRef(Box)>
 </ArticleWrapper>
 `;
 
@@ -447,6 +660,12 @@ exports[`Shallow Snapshot Tests have added good 1`] = `
   <ForwardRef(Stack)
     spacing={2}
   >
+    <ShareButtons
+      description="description"
+      title="【隠れミッキー】title"
+      url="http://localhost/"
+    />
+    <ForwardRef(Divider) />
     <ForwardRef(Stack)
       alignItems="center"
       direction="row"
@@ -553,30 +772,8 @@ exports[`Shallow Snapshot Tests have added good 1`] = `
     <NonStyleLink
       to="/"
     >
-      <TriviaMap
-        additinalMarkers={
-          Array [
-            Object {
-              "areaNames": Array [
-                "シー",
-              ],
-              "lat": 0,
-              "lng": 0,
-              "markerId": 1,
-              "numberOfPublicArticles": Object {
-                "eachCategory": Array [
-                  1,
-                  2,
-                  1,
-                ],
-                "total": 4,
-              },
-              "park": "S",
-            },
-          ]
-        }
+      <ParkMap
         disabled={true}
-        doNotShowPostMarkers={true}
         height={300}
         initCenter={
           Object {
@@ -599,7 +796,20 @@ exports[`Shallow Snapshot Tests have added good 1`] = `
         }
         initZoom={3}
         park="S"
-      />
+      >
+        <MapMarker
+          autoOpen={false}
+          draggable={false}
+          position={
+            Object {
+              "lat": 0,
+              "lng": 0,
+            }
+          }
+          variant="red"
+          zIndexOffset={0}
+        />
+      </ParkMap>
     </NonStyleLink>
     <ForwardRef(Divider) />
     <ForwardRef(Grid)
@@ -628,10 +838,25 @@ exports[`Shallow Snapshot Tests have added good 1`] = `
       </ForwardRef(Grid)>
     </ForwardRef(Grid)>
     <ShareButtons
+      description="description"
       title="【隠れミッキー】title"
       url="http://localhost/"
     />
   </ForwardRef(Stack)>
+  <ForwardRef(Box)
+    mb={5}
+    mt={8}
+    textAlign="center"
+  >
+    <NonStyleLink
+      to="/map/new"
+    >
+      <Image
+        src="recommend.png"
+        width="300px"
+      />
+    </NonStyleLink>
+  </ForwardRef(Box)>
 </ArticleWrapper>
 `;
 
@@ -647,6 +872,12 @@ exports[`Shallow Snapshot Tests have liked 1`] = `
   <ForwardRef(Stack)
     spacing={2}
   >
+    <ShareButtons
+      description="description"
+      title="【隠れミッキー】title"
+      url="http://localhost/"
+    />
+    <ForwardRef(Divider) />
     <ForwardRef(Link)
       component="div"
     >
@@ -765,30 +996,8 @@ exports[`Shallow Snapshot Tests have liked 1`] = `
     <NonStyleLink
       to="/"
     >
-      <TriviaMap
-        additinalMarkers={
-          Array [
-            Object {
-              "areaNames": Array [
-                "シー",
-              ],
-              "lat": 0,
-              "lng": 0,
-              "markerId": 1,
-              "numberOfPublicArticles": Object {
-                "eachCategory": Array [
-                  1,
-                  2,
-                  1,
-                ],
-                "total": 4,
-              },
-              "park": "S",
-            },
-          ]
-        }
+      <ParkMap
         disabled={true}
-        doNotShowPostMarkers={true}
         height={300}
         initCenter={
           Object {
@@ -811,7 +1020,20 @@ exports[`Shallow Snapshot Tests have liked 1`] = `
         }
         initZoom={3}
         park="S"
-      />
+      >
+        <MapMarker
+          autoOpen={false}
+          draggable={false}
+          position={
+            Object {
+              "lat": 0,
+              "lng": 0,
+            }
+          }
+          variant="red"
+          zIndexOffset={0}
+        />
+      </ParkMap>
     </NonStyleLink>
     <ForwardRef(Divider) />
     <ForwardRef(Grid)
@@ -852,10 +1074,25 @@ exports[`Shallow Snapshot Tests have liked 1`] = `
       </ForwardRef(Grid)>
     </ForwardRef(Grid)>
     <ShareButtons
+      description="description"
       title="【隠れミッキー】title"
       url="http://localhost/"
     />
   </ForwardRef(Stack)>
+  <ForwardRef(Box)
+    mb={5}
+    mt={8}
+    textAlign="center"
+  >
+    <NonStyleLink
+      to="/map/new"
+    >
+      <Image
+        src="recommend.png"
+        width="300px"
+      />
+    </NonStyleLink>
+  </ForwardRef(Box)>
 </ArticleWrapper>
 `;
 
@@ -879,6 +1116,12 @@ exports[`Shallow Snapshot Tests with article 1`] = `
   <ForwardRef(Stack)
     spacing={2}
   >
+    <ShareButtons
+      description="description"
+      title="【隠れミッキー】title"
+      url="http://localhost/"
+    />
+    <ForwardRef(Divider) />
     <ForwardRef(Stack)
       alignItems="center"
       direction="row"
@@ -985,30 +1228,8 @@ exports[`Shallow Snapshot Tests with article 1`] = `
     <NonStyleLink
       to="/"
     >
-      <TriviaMap
-        additinalMarkers={
-          Array [
-            Object {
-              "areaNames": Array [
-                "シー",
-              ],
-              "lat": 0,
-              "lng": 0,
-              "markerId": 1,
-              "numberOfPublicArticles": Object {
-                "eachCategory": Array [
-                  1,
-                  2,
-                  1,
-                ],
-                "total": 4,
-              },
-              "park": "S",
-            },
-          ]
-        }
+      <ParkMap
         disabled={true}
-        doNotShowPostMarkers={true}
         height={300}
         initCenter={
           Object {
@@ -1031,7 +1252,20 @@ exports[`Shallow Snapshot Tests with article 1`] = `
         }
         initZoom={3}
         park="S"
-      />
+      >
+        <MapMarker
+          autoOpen={false}
+          draggable={false}
+          position={
+            Object {
+              "lat": 0,
+              "lng": 0,
+            }
+          }
+          variant="red"
+          zIndexOffset={0}
+        />
+      </ParkMap>
     </NonStyleLink>
     <ForwardRef(Divider) />
     <ForwardRef(Grid)
@@ -1058,10 +1292,25 @@ exports[`Shallow Snapshot Tests with article 1`] = `
       </ForwardRef(Grid)>
     </ForwardRef(Grid)>
     <ShareButtons
+      description="description"
       title="【隠れミッキー】title"
       url="http://localhost/"
     />
   </ForwardRef(Stack)>
+  <ForwardRef(Box)
+    mb={5}
+    mt={8}
+    textAlign="center"
+  >
+    <NonStyleLink
+      to="/map/new"
+    >
+      <Image
+        src="recommend.png"
+        width="300px"
+      />
+    </NonStyleLink>
+  </ForwardRef(Box)>
 </ArticleWrapper>
 `;
 
@@ -1078,6 +1327,12 @@ exports[`Shallow Snapshot Tests with image 1`] = `
   <ForwardRef(Stack)
     spacing={2}
   >
+    <ShareButtons
+      description="description"
+      title="【隠れミッキー】title"
+      url="http://localhost/"
+    />
+    <ForwardRef(Divider) />
     <ForwardRef(Stack)
       alignItems="center"
       direction="row"
@@ -1188,30 +1443,8 @@ exports[`Shallow Snapshot Tests with image 1`] = `
     <NonStyleLink
       to="/"
     >
-      <TriviaMap
-        additinalMarkers={
-          Array [
-            Object {
-              "areaNames": Array [
-                "シー",
-              ],
-              "lat": 0,
-              "lng": 0,
-              "markerId": 1,
-              "numberOfPublicArticles": Object {
-                "eachCategory": Array [
-                  1,
-                  2,
-                  1,
-                ],
-                "total": 4,
-              },
-              "park": "S",
-            },
-          ]
-        }
+      <ParkMap
         disabled={true}
-        doNotShowPostMarkers={true}
         height={300}
         initCenter={
           Object {
@@ -1234,7 +1467,20 @@ exports[`Shallow Snapshot Tests with image 1`] = `
         }
         initZoom={3}
         park="S"
-      />
+      >
+        <MapMarker
+          autoOpen={false}
+          draggable={false}
+          position={
+            Object {
+              "lat": 0,
+              "lng": 0,
+            }
+          }
+          variant="red"
+          zIndexOffset={0}
+        />
+      </ParkMap>
     </NonStyleLink>
     <ForwardRef(Divider) />
     <ForwardRef(Grid)
@@ -1261,9 +1507,24 @@ exports[`Shallow Snapshot Tests with image 1`] = `
       </ForwardRef(Grid)>
     </ForwardRef(Grid)>
     <ShareButtons
+      description="description"
       title="【隠れミッキー】title"
       url="http://localhost/"
     />
   </ForwardRef(Stack)>
+  <ForwardRef(Box)
+    mb={5}
+    mt={8}
+    textAlign="center"
+  >
+    <NonStyleLink
+      to="/map/new"
+    >
+      <Image
+        src="recommend.png"
+        width="300px"
+      />
+    </NonStyleLink>
+  </ForwardRef(Box)>
 </ArticleWrapper>
 `;

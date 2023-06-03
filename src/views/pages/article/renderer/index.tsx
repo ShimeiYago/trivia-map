@@ -2,7 +2,6 @@ import React from 'react';
 import { Alert, Avatar, Box, Divider, Stack, Typography, Link, Grid } from '@mui/material';
 import { LoadingState } from 'types/loading-state';
 import { Image } from 'views/components/moleculars/image';
-import { TriviaMap } from 'views/components/organisms/trivia-map';
 import { createdAtBox } from '../styles';
 import { IconAndText } from 'views/components/atoms/icon-and-text';
 import { CenterSpinner } from 'views/components/atoms/center-spinner';
@@ -13,7 +12,14 @@ import { autoRefreshApiWrapper } from 'utils/auto-refresh-api-wrapper';
 import { AreaNames } from 'views/components/atoms/area-names';
 import { ZOOMS } from 'constant';
 import noIcon from 'images/no-icon.jpg';
-import { AUTHER_PAGE_LINK, CATEGORY_PAGE_LINK, EDIT_LINK, MAP_PAGE_LINK } from 'constant/links';
+import recommendImage from 'images/recommend.png';
+import {
+  AUTHER_PAGE_LINK,
+  CATEGORY_PAGE_LINK,
+  EDIT_LINK,
+  MAP_PAGE_LINK,
+  NEW_LINK,
+} from 'constant/links';
 import { categoryMapper } from 'utils/category-mapper';
 import FolderIcon from '@mui/icons-material/Folder';
 import { User } from 'types/user';
@@ -33,6 +39,9 @@ import { MyIcon } from 'views/components/atoms/my-icon';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
 import { DynamicAlignedText } from 'views/components/atoms/dynamic-aligned-text';
+import { ParkMap } from 'views/components/moleculars/park-map';
+import { MapMarker } from 'views/components/moleculars/map-marker';
+import { LatLng } from 'leaflet';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -73,8 +82,7 @@ export class Renderer extends React.Component<Props, State> {
       return <CenterSpinner />;
     }
 
-    const { title, description, marker, image, author, createdAt, updatedAt, isDraft, category } =
-      article;
+    const { title, description, marker, image, author, isDraft, category } = article;
 
     const categoryName = categoryMapper(category);
 
@@ -93,6 +101,12 @@ export class Renderer extends React.Component<Props, State> {
           {isDraft && (
             <Alert severity="info">この記事は下書きです。あなただけが閲覧できます。</Alert>
           )}
+
+          {!isDraft && (
+            <ShareButtons title={pageTitle} url={window.location.href} description={description} />
+          )}
+
+          <Divider />
 
           {this.renderEditLink()}
 
@@ -127,10 +141,7 @@ export class Renderer extends React.Component<Props, State> {
             />
           </Typography>
 
-          <Box sx={createdAtBox}>
-            <Typography>{`投稿日 ${createdAt}`}</Typography>
-            {createdAt !== updatedAt && <Typography>{`更新日 ${updatedAt}`}</Typography>}
-          </Box>
+          <Box sx={createdAtBox}>{this.renderDates(article)}</Box>
 
           <Divider />
 
@@ -153,15 +164,15 @@ export class Renderer extends React.Component<Props, State> {
           <AreaNames areaNames={marker.areaNames} />
 
           <NonStyleLink to={MAP_PAGE_LINK}>
-            <TriviaMap
+            <ParkMap
               height={300}
               initZoom={ZOOMS.miniMap}
               initCenter={marker}
               disabled
-              doNotShowPostMarkers
-              additinalMarkers={[marker]}
               park={marker.park}
-            />
+            >
+              <MapMarker position={new LatLng(marker.lat, marker.lng)} variant="red" />
+            </ParkMap>
           </NonStyleLink>
 
           <Divider />
@@ -171,8 +182,16 @@ export class Renderer extends React.Component<Props, State> {
             <Grid item>{this.renderGoodButton()}</Grid>
           </Grid>
 
-          <ShareButtons title={pageTitle} url={window.location.href} />
+          {!isDraft && (
+            <ShareButtons title={pageTitle} url={window.location.href} description={description} />
+          )}
         </Stack>
+
+        <Box textAlign="center" mt={8} mb={5}>
+          <NonStyleLink to={NEW_LINK}>
+            <Image src={recommendImage} width="300px" />
+          </NonStyleLink>
+        </Box>
       </>
     );
   };
@@ -334,6 +353,25 @@ export class Renderer extends React.Component<Props, State> {
     } catch (error) {
       this.props.throwError(500);
     }
+  };
+
+  protected renderDates = (article: GetArticleResponse) => {
+    const { createdAt, updatedAt, isDraft } = article;
+
+    if (isDraft) {
+      if (createdAt === updatedAt) {
+        return <Typography>{`投稿日 ${createdAt}`}</Typography>;
+      } else {
+        return <Typography>{`投稿日 ${updatedAt}`}</Typography>;
+      }
+    }
+
+    return (
+      <>
+        <Typography>{`投稿日 ${createdAt}`}</Typography>
+        {createdAt !== updatedAt && <Typography>{`更新日 ${updatedAt}`}</Typography>}
+      </>
+    );
   };
 }
 

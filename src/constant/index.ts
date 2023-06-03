@@ -90,7 +90,10 @@ export const ZOOMS = {
   popupOpen: 3,
 };
 
-export const INITIAL_PARK: Park = 'S';
+export const PARKS = {
+  land: 'L' as Park,
+  sea: 'S' as Park,
+};
 
 export const COOKIE_NAME = {
   hasAccessToken: 'has-trivia-map-access-token',

@@ -12,4 +12,5 @@ export const PAGE_DESCRIPTIONS = {
   articles: '全ての投稿を一覧で確認、または記事の検索ができます。',
   login: 'ログインすると、新しいトリビアを投稿できるようになります。',
   inquiry: 'サイト管理者へのお問い合わせはこちらです。',
+  specialMaps: '特別に作成されたマップを一覧で確認できます。',
 };

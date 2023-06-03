@@ -24,8 +24,44 @@ exports[`Shallow Snapshot Tests basic 1`] = `
 </ForwardRef(Modal)>
 `;
 
+exports[`Shallow Snapshot Tests disable click out of modal 1`] = `
+<ForwardRef(Modal)
+  open={true}
+>
+  <ForwardRef(Box)
+    sx={
+      Object {
+        "bgcolor": "background.paper",
+        "borderRadius": 1,
+        "boxShadow": 24,
+        "left": "50%",
+        "position": "absolute",
+        "top": "50%",
+        "transform": "translate(-50%, -50%)",
+        "width": "360px",
+      }
+    }
+  >
+    <ForwardRef(Typography)
+      align="right"
+      color="gray"
+    >
+      <ForwardRef(IconButton)
+        color="inherit"
+        onClick={[MockFunction]}
+        size="large"
+      >
+        <Memo(ForwardRef(CloseIcon)) />
+      </ForwardRef(IconButton)>
+    </ForwardRef(Typography)>
+    Test
+  </ForwardRef(Box)>
+</ForwardRef(Modal)>
+`;
+
 exports[`Shallow Snapshot Tests show close button 1`] = `
 <ForwardRef(Modal)
+  onClose={[MockFunction]}
   open={true}
 >
   <ForwardRef(Box)

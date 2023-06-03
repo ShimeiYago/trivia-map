@@ -4,9 +4,6 @@ import { Renderer, State, Props } from '..';
 let shallowWrapper: ShallowWrapper<Props, State, Renderer>;
 
 const props: Props = {
-  articleFormSubmittingState: 'waiting',
-  submitSuccessId: 1,
-  closeFormModal: jest.fn(),
   loggedOutSuccessfully: false,
 };
 
@@ -34,19 +31,6 @@ describe('componentDidMount', () => {
 describe('componentDidUpdate', () => {
   beforeEach(() => {
     shallowWrapper = shallow(<Renderer {...props} />);
-  });
-
-  it('should change states to show post success message', () => {
-    shallowWrapper.setProps({
-      articleFormSubmittingState: 'success',
-    });
-    const instance = shallowWrapper.instance();
-
-    instance.componentDidUpdate({
-      ...props,
-      articleFormSubmittingState: 'loading',
-    });
-    expect(instance.state.message).toBe('投稿が完了しました！');
   });
 
   it('should change states to show logout success message', () => {

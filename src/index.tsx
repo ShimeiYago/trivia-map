@@ -40,6 +40,9 @@ import {
   TWITTER_LOGIN_LINK,
   MAP_USER_LINK,
   PRIVACY_POLICY_PAGE_LINK,
+  SPECIAL_MAP_PAGE_LINK,
+  SPECIAL_MAP_LIST_PAGE_LINK,
+  SPECIAL_MAP_DETAIL_PAGE_LINK,
 } from 'constant/links';
 import { ChangePassword } from 'views/pages/change-password';
 import { ResetPassword } from 'views/pages/reset-password';
@@ -57,6 +60,9 @@ import { DeactivateAccount } from 'views/pages/deactivate-account';
 import { LikedArticles } from 'views/pages/liked-articles';
 import { TwitterLoginPage } from 'views/pages/twitter-login-page';
 import { PrivacyPage } from 'views/pages/privacy-page';
+import { SpecialMapPage } from 'views/pages/special-map-page';
+import { SpecialMapListPage } from 'views/pages/special-map-list-page';
+import { SpecialMapDetailPage } from 'views/pages/special-map-detail-page';
 
 // Deactivate all console.log on production
 // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -93,6 +99,18 @@ ReactDOM.render(
                 <Route
                   path={CATEGORY_PAGE_LINK(':categoryId')}
                   element={errorHandledElement(<CategoryPage />)}
+                />
+                <Route
+                  path={SPECIAL_MAP_LIST_PAGE_LINK}
+                  element={errorHandledElement(<SpecialMapListPage />)}
+                />
+                <Route
+                  path={SPECIAL_MAP_PAGE_LINK(':mapId')}
+                  element={errorHandledElement(<SpecialMapPage />)}
+                />
+                <Route
+                  path={SPECIAL_MAP_DETAIL_PAGE_LINK(':mapId')}
+                  element={errorHandledElement(<SpecialMapDetailPage />)}
                 />
 
                 <Route path={LOGIN_LINK} element={errorHandledElement(<Login page="login" />)} />

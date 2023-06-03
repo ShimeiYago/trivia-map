@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Pagination,
   Stack,
   Typography,
   Table,
@@ -30,7 +29,6 @@ import {
   GetMyArticlesResponse,
   GetMyArticlesResponseEachItem,
 } from 'api/articles-api/get-my-articles';
-import classes from './index.module.css';
 import { CenterSpinner } from 'views/components/atoms/center-spinner';
 import { Image } from 'views/components/moleculars/image';
 import { ARTICLE_PAGE_LINK, EDIT_LINK } from 'constant/links';
@@ -46,6 +44,7 @@ import { LoadingButton } from '@mui/lab';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import { patchRemoteArticle } from 'api/articles-api/patch-remote-article';
 import { CATEGORIES } from 'constant';
+import { CenterPagination } from 'views/components/atoms/center-pagination';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -113,16 +112,20 @@ export class Renderer extends React.Component<Props, State> {
             />
           </TableCell>
           <TableCell width={70}>
-            <FormControl variant="standard">
-              <Select value={String(isDraft)} onChange={this.handleChangeDraftStatus(preview)}>
-                <MenuItem value="false">
-                  <Typography fontSize={14}>公開</Typography>
-                </MenuItem>
-                <MenuItem value="true">
-                  <Typography fontSize={14}>下書き</Typography>
-                </MenuItem>
-              </Select>
-            </FormControl>
+            {isDraft ? (
+              <FormControl variant="standard">
+                <Select value={String(isDraft)} onChange={this.handleChangeDraftStatus(preview)}>
+                  <MenuItem value="false">
+                    <Typography fontSize={14}>公開</Typography>
+                  </MenuItem>
+                  <MenuItem value="true">
+                    <Typography fontSize={14}>下書き</Typography>
+                  </MenuItem>
+                </Select>
+              </FormControl>
+            ) : (
+              '公開中'
+            )}
           </TableCell>
           <TableCell width={40}>
             <IconAndText
@@ -166,16 +169,23 @@ export class Renderer extends React.Component<Props, State> {
           <TableCell>
             <Typography color="gray" component="div" marginBottom={1}>
               <Box marginBottom={2}>
-                <FormControl variant="standard">
-                  <Select value={String(isDraft)} onChange={this.handleChangeDraftStatus(preview)}>
-                    <MenuItem value="false">
-                      <Typography variant="subtitle2">公開</Typography>
-                    </MenuItem>
-                    <MenuItem value="true">
-                      <Typography variant="subtitle2">下書き</Typography>
-                    </MenuItem>
-                  </Select>
-                </FormControl>
+                {isDraft ? (
+                  <FormControl variant="standard">
+                    <Select
+                      value={String(isDraft)}
+                      onChange={this.handleChangeDraftStatus(preview)}
+                    >
+                      <MenuItem value="false">
+                        <Typography variant="subtitle2">公開</Typography>
+                      </MenuItem>
+                      <MenuItem value="true">
+                        <Typography variant="subtitle2">下書き</Typography>
+                      </MenuItem>
+                    </Select>
+                  </FormControl>
+                ) : (
+                  <Typography fontSize={14}>公開中</Typography>
+                )}
               </Box>
 
               <Stack direction="row" spacing={1} justifyContent="space-between">
@@ -269,15 +279,11 @@ export class Renderer extends React.Component<Props, State> {
         </Typography>
 
         {showPagination && (
-          <div className={classes['pagination-wrapper']}>
-            <Pagination
-              count={totalPages}
-              page={currentPage}
-              onChange={this.handleChangePagination}
-              siblingCount={0}
-              boundaryCount={1}
-            />
-          </div>
+          <CenterPagination
+            count={totalPages}
+            page={currentPage}
+            onChange={this.handleChangePagination}
+          />
         )}
       </Stack>
     );

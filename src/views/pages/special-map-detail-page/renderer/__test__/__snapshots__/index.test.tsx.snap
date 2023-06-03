@@ -43,16 +43,16 @@ exports[`Shallow Snapshot Tests loaded (without thumbnail) 1`] = `
           "wordBreak": "break-all",
         }
       }
-      variant="h4"
+      variant="h5"
     >
       トイレマップ
     </DynamicAlignedText>
-    <ForwardRef(Typography)
+    <DynamicAlignedText
       fontSize={18}
       whiteSpace="pre-wrap"
     >
       定番から穴場まで、ディズニーのトイレマップです。
-    </ForwardRef(Typography)>
+    </DynamicAlignedText>
     <ForwardRef(Divider) />
     <IconAndText
       align="center"
@@ -113,6 +113,7 @@ exports[`Shallow Snapshot Tests loaded (without thumbnail) 1`] = `
           <DynamicAlignedText
             component="div"
             mb={1}
+            whiteSpace="pre-wrap"
           >
             アリスモチーフのトイレです。トランプ模様の扉がかわいい。
           </DynamicAlignedText>
@@ -122,7 +123,8 @@ exports[`Shallow Snapshot Tests loaded (without thumbnail) 1`] = `
             mb={1}
           >
             <Image
-              height="300px"
+              maxHeight="300px"
+              maxWidth="full"
               src="https://cdn-ak.f.st-hatena.com/images/fotolife/n/nats-co/20160323/20160323164220.jpg"
             />
           </ForwardRef(Typography)>
@@ -188,6 +190,7 @@ exports[`Shallow Snapshot Tests loaded (without thumbnail) 1`] = `
           <DynamicAlignedText
             component="div"
             mb={1}
+            whiteSpace="pre-wrap"
           >
             エントランスのトイレならここ。
           </DynamicAlignedText>
@@ -240,7 +243,7 @@ exports[`Shallow Snapshot Tests loaded 1`] = `
           "wordBreak": "break-all",
         }
       }
-      variant="h4"
+      variant="h5"
     >
       トイレマップ
     </DynamicAlignedText>
@@ -248,12 +251,12 @@ exports[`Shallow Snapshot Tests loaded 1`] = `
       src="https://www.yuu-diaryblog.com/wp-content/uploads/2017/06/disney-wc.jpg"
       width="full"
     />
-    <ForwardRef(Typography)
+    <DynamicAlignedText
       fontSize={18}
       whiteSpace="pre-wrap"
     >
       定番から穴場まで、ディズニーのトイレマップです。
-    </ForwardRef(Typography)>
+    </DynamicAlignedText>
     <ForwardRef(Divider) />
     <IconAndText
       align="center"
@@ -314,6 +317,7 @@ exports[`Shallow Snapshot Tests loaded 1`] = `
           <DynamicAlignedText
             component="div"
             mb={1}
+            whiteSpace="pre-wrap"
           >
             アリスモチーフのトイレです。トランプ模様の扉がかわいい。
           </DynamicAlignedText>
@@ -323,7 +327,8 @@ exports[`Shallow Snapshot Tests loaded 1`] = `
             mb={1}
           >
             <Image
-              height="300px"
+              maxHeight="300px"
+              maxWidth="full"
               src="https://cdn-ak.f.st-hatena.com/images/fotolife/n/nats-co/20160323/20160323164220.jpg"
             />
           </ForwardRef(Typography)>
@@ -389,6 +394,7 @@ exports[`Shallow Snapshot Tests loaded 1`] = `
           <DynamicAlignedText
             component="div"
             mb={1}
+            whiteSpace="pre-wrap"
           >
             エントランスのトイレならここ。
           </DynamicAlignedText>
@@ -441,7 +447,7 @@ exports[`Shallow Snapshot Tests loading markers 1`] = `
           "wordBreak": "break-all",
         }
       }
-      variant="h4"
+      variant="h5"
     >
       トイレマップ
     </DynamicAlignedText>
@@ -449,12 +455,12 @@ exports[`Shallow Snapshot Tests loading markers 1`] = `
       src="https://www.yuu-diaryblog.com/wp-content/uploads/2017/06/disney-wc.jpg"
       width="full"
     />
-    <ForwardRef(Typography)
+    <DynamicAlignedText
       fontSize={18}
       whiteSpace="pre-wrap"
     >
       定番から穴場まで、ディズニーのトイレマップです。
-    </ForwardRef(Typography)>
+    </DynamicAlignedText>
     <ForwardRef(Divider) />
     <IconAndText
       align="center"

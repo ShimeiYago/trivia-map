@@ -136,7 +136,9 @@ exports[`Shallow Snapshot Tests with special maps 1`] = `
             >
               トイレマップ
             </DynamicAlignedText>
-            <DynamicAlignedText>
+            <DynamicAlignedText
+              whiteSpace="pre-wrap"
+            >
               定番から穴場まで、ディズニーのトイレマップです。
             </DynamicAlignedText>
             <ForwardRef(Typography)
@@ -195,7 +197,9 @@ exports[`Shallow Snapshot Tests with special maps 1`] = `
             >
               「関係者以外立ち入り禁止」看板マップ
             </DynamicAlignedText>
-            <DynamicAlignedText>
+            <DynamicAlignedText
+              whiteSpace="pre-wrap"
+            >
               パーク中の「関係者以外立ち入り禁止」の看板のまとめです。
             </DynamicAlignedText>
             <ForwardRef(Typography)

@@ -281,10 +281,10 @@ exports[`Shallow Snapshot Tests basic 1`] = `
     }
     variant="large"
   />
-  <ForwardRef(Typography)
-    align="center"
+  <ForwardRef(Box)
     mb={5}
     mt={8}
+    textAlign="center"
   >
     <NonStyleLink
       to="/map/new"
@@ -294,7 +294,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
         width="300px"
       />
     </NonStyleLink>
-  </ForwardRef(Typography)>
+  </ForwardRef(Box)>
 </ArticleWrapper>
 `;
 
@@ -580,10 +580,10 @@ exports[`Shallow Snapshot Tests with form conditions 1`] = `
     }
     variant="large"
   />
-  <ForwardRef(Typography)
-    align="center"
+  <ForwardRef(Box)
     mb={5}
     mt={8}
+    textAlign="center"
   >
     <NonStyleLink
       to="/map/new"
@@ -593,6 +593,6 @@ exports[`Shallow Snapshot Tests with form conditions 1`] = `
         width="300px"
       />
     </NonStyleLink>
-  </ForwardRef(Typography)>
+  </ForwardRef(Box)>
 </ArticleWrapper>
 `;

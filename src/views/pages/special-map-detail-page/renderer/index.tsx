@@ -75,7 +75,7 @@ export class Renderer extends React.Component<Props, State> {
         <Stack spacing={2}>
           <DynamicAlignedText
             component="h2"
-            variant="h4"
+            variant="h5"
             sx={{
               wordBreak: 'break-all',
             }}
@@ -85,9 +85,9 @@ export class Renderer extends React.Component<Props, State> {
 
           {thumbnail && <Image src={thumbnail} width="full" />}
 
-          <Typography whiteSpace="pre-wrap" fontSize={18}>
+          <DynamicAlignedText whiteSpace="pre-wrap" fontSize={18}>
             {description}
-          </Typography>
+          </DynamicAlignedText>
 
           <Divider />
 
@@ -129,13 +129,13 @@ export class Renderer extends React.Component<Props, State> {
           </NonStyleLink>
 
           <Box p={1}>
-            <DynamicAlignedText component="div" mb={1}>
+            <DynamicAlignedText component="div" whiteSpace="pre-wrap" mb={1}>
               {marker.description}
             </DynamicAlignedText>
 
             {marker.image && (
               <Typography align="center" component="div" mb={1}>
-                <Image src={marker.image} height="300px" />
+                <Image src={marker.image} maxWidth="full" maxHeight="300px" />
               </Typography>
             )}
 

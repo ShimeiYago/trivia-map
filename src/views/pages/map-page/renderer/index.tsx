@@ -234,7 +234,7 @@ export class Renderer extends React.Component<Props, State> {
       this.replaceUrlWithParam(window.location.pathname);
     }
 
-    categoryId &&
+    categoryId !== undefined &&
       document.getElementById(CATEGORY_BUTTON_ID(categoryId))?.scrollIntoView({ inline: 'center' });
   };
 

@@ -5,7 +5,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
   textAlign="center"
 >
   <ForwardRef(ShareButton-facebook)
-    title="xxx
+    title="【xxx】
 xxx"
     url="https://xxx.com"
   >
@@ -18,7 +18,7 @@ xxx"
     />
   </ForwardRef(ShareButton-facebook)>
   <ForwardRef(ShareButton-twitter)
-    title="xxx
+    title="【xxx】
 xxx"
     url="https://xxx.com"
   >
@@ -31,7 +31,7 @@ xxx"
     />
   </ForwardRef(ShareButton-twitter)>
   <ForwardRef(ShareButton-line)
-    title="xxx
+    title="【xxx】
 xxx"
     url="https://xxx.com"
   >
@@ -51,8 +51,8 @@ exports[`Shallow Snapshot Tests long description 1`] = `
   textAlign="center"
 >
   <ForwardRef(ShareButton-facebook)
-    title="日本語付きtitle
-long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-text-long..."
+    title="【日本語付きtitle】
+long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-text-lo..."
     url="https://xxx.com"
   >
     <Icon
@@ -64,8 +64,8 @@ long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-text-
     />
   </ForwardRef(ShareButton-facebook)>
   <ForwardRef(ShareButton-twitter)
-    title="日本語付きtitle
-long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-text-long..."
+    title="【日本語付きtitle】
+long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-text-lo..."
     url="https://xxx.com"
   >
     <Icon
@@ -77,8 +77,8 @@ long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-text-
     />
   </ForwardRef(ShareButton-twitter)>
   <ForwardRef(ShareButton-line)
-    title="日本語付きtitle
-long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-text-long..."
+    title="【日本語付きtitle】
+long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-text-lo..."
     url="https://xxx.com"
   >
     <Icon

@@ -13,12 +13,14 @@ import {
 const MAX_BYTE_LENGTH = 280;
 
 export function ShareButtons(props: Props): JSX.Element {
+  const title = `【${props.title}】`;
+
   // "-3" includes
   // - breakline character between title & description
   // - blank between description & url
   // - blank surfix after url
   const descriptionMaxByteLength =
-    MAX_BYTE_LENGTH - countByteLength(props.title) - props.url.length * 2 - 3;
+    MAX_BYTE_LENGTH - countByteLength(title) - props.url.length * 2 - 3;
   let descriptionMaxLength = Math.floor(descriptionMaxByteLength / 2);
   let suffix = '';
 
@@ -28,7 +30,7 @@ export function ShareButtons(props: Props): JSX.Element {
     suffix = '...';
   }
 
-  const text = `${props.title}\n${props.description.slice(0, descriptionMaxLength)}${suffix}`;
+  const text = `${title}\n${props.description.slice(0, descriptionMaxLength)}${suffix}`;
 
   return (
     <Box textAlign="center">

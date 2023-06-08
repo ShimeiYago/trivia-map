@@ -14,7 +14,7 @@ exports[`Shallow Snapshot Tests author view 1`] = `
   >
     <ShareButtons
       description="description"
-      title="【隠れミッキー】title"
+      title="title"
       url="http://localhost/"
     />
     <ForwardRef(Divider) />
@@ -215,7 +215,7 @@ exports[`Shallow Snapshot Tests author view 1`] = `
     </ForwardRef(Grid)>
     <ShareButtons
       description="description"
-      title="【隠れミッキー】title"
+      title="title"
       url="http://localhost/"
     />
   </ForwardRef(Stack)>
@@ -662,7 +662,7 @@ exports[`Shallow Snapshot Tests have added good 1`] = `
   >
     <ShareButtons
       description="description"
-      title="【隠れミッキー】title"
+      title="title"
       url="http://localhost/"
     />
     <ForwardRef(Divider) />
@@ -839,7 +839,7 @@ exports[`Shallow Snapshot Tests have added good 1`] = `
     </ForwardRef(Grid)>
     <ShareButtons
       description="description"
-      title="【隠れミッキー】title"
+      title="title"
       url="http://localhost/"
     />
   </ForwardRef(Stack)>
@@ -874,7 +874,7 @@ exports[`Shallow Snapshot Tests have liked 1`] = `
   >
     <ShareButtons
       description="description"
-      title="【隠れミッキー】title"
+      title="title"
       url="http://localhost/"
     />
     <ForwardRef(Divider) />
@@ -1075,7 +1075,7 @@ exports[`Shallow Snapshot Tests have liked 1`] = `
     </ForwardRef(Grid)>
     <ShareButtons
       description="description"
-      title="【隠れミッキー】title"
+      title="title"
       url="http://localhost/"
     />
   </ForwardRef(Stack)>
@@ -1118,7 +1118,7 @@ exports[`Shallow Snapshot Tests with article 1`] = `
   >
     <ShareButtons
       description="description"
-      title="【隠れミッキー】title"
+      title="title"
       url="http://localhost/"
     />
     <ForwardRef(Divider) />
@@ -1293,7 +1293,7 @@ exports[`Shallow Snapshot Tests with article 1`] = `
     </ForwardRef(Grid)>
     <ShareButtons
       description="description"
-      title="【隠れミッキー】title"
+      title="title"
       url="http://localhost/"
     />
   </ForwardRef(Stack)>
@@ -1329,7 +1329,7 @@ exports[`Shallow Snapshot Tests with image 1`] = `
   >
     <ShareButtons
       description="description"
-      title="【隠れミッキー】title"
+      title="title"
       url="http://localhost/"
     />
     <ForwardRef(Divider) />
@@ -1508,7 +1508,7 @@ exports[`Shallow Snapshot Tests with image 1`] = `
     </ForwardRef(Grid)>
     <ShareButtons
       description="description"
-      title="【隠れミッキー】title"
+      title="title"
       url="http://localhost/"
     />
   </ForwardRef(Stack)>

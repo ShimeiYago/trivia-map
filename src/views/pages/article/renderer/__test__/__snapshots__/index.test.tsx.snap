@@ -405,29 +405,6 @@ exports[`Shallow Snapshot Tests draft 1`] = `
       </ParkMap>
     </NonStyleLink>
     <ForwardRef(Divider) />
-    <ForwardRef(Grid)
-      container={true}
-      justifyContent="space-between"
-      pb={5}
-    >
-      <ForwardRef(Grid)
-        item={true}
-      />
-      <ForwardRef(Grid)
-        item={true}
-      >
-        <ForwardRef(Box)
-          textAlign="right"
-        >
-          <ForwardRef(LoadingButton)
-            loading={false}
-            onClick={[Function]}
-            startIcon={<Memo />}
-            variant="outlined"
-          />
-        </ForwardRef(Box)>
-      </ForwardRef(Grid)>
-    </ForwardRef(Grid)>
   </ForwardRef(Stack)>
   <ForwardRef(Box)
     mb={5}
@@ -607,29 +584,6 @@ exports[`Shallow Snapshot Tests draft with same created & updated 1`] = `
       </ParkMap>
     </NonStyleLink>
     <ForwardRef(Divider) />
-    <ForwardRef(Grid)
-      container={true}
-      justifyContent="space-between"
-      pb={5}
-    >
-      <ForwardRef(Grid)
-        item={true}
-      />
-      <ForwardRef(Grid)
-        item={true}
-      >
-        <ForwardRef(Box)
-          textAlign="right"
-        >
-          <ForwardRef(LoadingButton)
-            loading={false}
-            onClick={[Function]}
-            startIcon={<Memo />}
-            variant="outlined"
-          />
-        </ForwardRef(Box)>
-      </ForwardRef(Grid)>
-    </ForwardRef(Grid)>
   </ForwardRef(Stack)>
   <ForwardRef(Box)
     mb={5}

@@ -155,6 +155,7 @@ export class Renderer extends React.Component<Props, State> {
       userId,
       initMapFocus,
       postIdToEdit,
+      queryCategoryId,
     } = this.props;
 
     const triviaMap = windowWidth !== 0 && windowHeight !== 0 && park && (
@@ -172,7 +173,7 @@ export class Renderer extends React.Component<Props, State> {
       />
     );
 
-    const canonical = this.props.new || !!postIdToEdit || !!userId;
+    const canonical = this.props.new || !!postIdToEdit || !!userId || !!queryCategoryId;
 
     return (
       <>

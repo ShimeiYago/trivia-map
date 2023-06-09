@@ -5,6 +5,7 @@ let wrapper: ShallowWrapper<Props, State, Renderer>;
 
 const basicProps: Props = {
   initialSearchConditions: {},
+  initialOrder: 'latest',
 };
 
 describe('Shallow Snapshot Tests', () => {

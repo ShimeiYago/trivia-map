@@ -25,6 +25,7 @@ const basicProps: Props = {
     marker: 1,
   },
   variant: 'large',
+  onChangePage: jest.fn(),
   throwError: jest.fn(),
   refreshUser: jest.fn(),
 };

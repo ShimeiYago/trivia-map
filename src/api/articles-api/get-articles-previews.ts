@@ -50,4 +50,5 @@ export type GetArticlesPreviewsParam = {
   limit?: number;
 };
 
+// Please update 'constants' as well when you update this.
 export type PreviewListOrder = 'latest' | 'oldest' | 'popular';

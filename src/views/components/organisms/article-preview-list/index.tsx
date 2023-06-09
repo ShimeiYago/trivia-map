@@ -10,8 +10,10 @@ export function ArticlePreviewList(ownProps: OwnProps) {
   const props: Props = {
     variant: ownProps.variant,
     searchConditions: ownProps.searchConditions,
+    initialPage: ownProps.initialPage,
     throwError: (status: number) => dispatch(throwError(status)),
     refreshUser: () => dispatch(updateUser(undefined)),
+    onChangePage: ownProps.onChangePage,
   };
 
   return <Renderer {...props} />;
@@ -20,4 +22,6 @@ export function ArticlePreviewList(ownProps: OwnProps) {
 type OwnProps = {
   variant: 'popup' | 'large' | 'sidebar';
   searchConditions: Omit<GetArticlesPreviewsParam, 'page'>;
+  initialPage?: number;
+  onChangePage?: (page: number) => void;
 };

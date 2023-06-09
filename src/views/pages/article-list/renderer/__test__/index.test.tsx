@@ -5,8 +5,6 @@ let wrapper: ShallowWrapper<Props, State, Renderer>;
 
 const basicProps: Props = {
   initialSearchConditions: {},
-  initialOrder: 'latest',
-  initialPage: 1,
 };
 
 describe('Shallow Snapshot Tests', () => {
@@ -23,28 +21,6 @@ describe('Shallow Snapshot Tests', () => {
       formSearchConditions: {
         category: 1,
         park: 'L',
-        keywords: ['keyword1', 'keyword2'],
-      },
-    });
-    expect(wrapper).toMatchSnapshot();
-  });
-
-  it('searched', () => {
-    wrapper.setState({
-      currentSearchConditions: {
-        category: 1,
-        park: 'L',
-        keywords: ['keyword1', 'keyword2'],
-      },
-    });
-    expect(wrapper).toMatchSnapshot();
-  });
-
-  it('searched (sea)', () => {
-    wrapper.setState({
-      currentSearchConditions: {
-        category: 1,
-        park: 'S',
         keywords: ['keyword1', 'keyword2'],
       },
     });
@@ -171,46 +147,6 @@ describe('handleClickFiltering', () => {
   });
 });
 
-describe('handleClearFiltering', () => {
-  beforeEach(() => {
-    wrapper = shallow(<Renderer {...basicProps} />);
-  });
-
-  it('should clear searchConditions', () => {
-    wrapper.setState({
-      currentSearchConditions: {
-        category: 1,
-        park: 'L',
-      },
-    });
-
-    const instance = wrapper.instance();
-    instance.headingRef = {
-      current: {
-        scrollIntoView: jest.fn(),
-      },
-    } as unknown as React.RefObject<HTMLHeadingElement>;
-
-    instance['handleClearFiltering']();
-
-    expect(instance.state.currentSearchConditions).toEqual({});
-  });
-
-  // it("should scroll", () => {
-  //   const instance = wrapper.instance();
-
-  //   instance.headingRef = {
-  //     current: {
-  //       scrollIntoView: jest.fn(),
-  //     },
-  //   } as unknown as React.RefObject<HTMLHeadingElement>;
-
-  //   instance["handleClearFiltering"]();
-
-  //   expect(instance.headingRef.current?.scrollIntoView).toBeCalled();
-  // });
-});
-
 describe('handleChangeKeyword', () => {
   beforeEach(() => {
     wrapper = shallow(<Renderer {...basicProps} />);
@@ -253,18 +189,5 @@ describe('renderOrderSelectBox', () => {
     instance['handleChangeOrder'](event as any);
 
     expect(instance.state.order).toBe('popular');
-  });
-});
-
-describe('handleChangePage', () => {
-  beforeEach(() => {
-    wrapper = shallow(<Renderer {...basicProps} />);
-  });
-
-  it('should change page state', () => {
-    const instance = wrapper.instance();
-    instance['handleChangePage'](2);
-
-    expect(instance.state.page).toBe(2);
   });
 });

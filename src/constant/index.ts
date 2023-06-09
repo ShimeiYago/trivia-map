@@ -113,9 +113,3 @@ export const ATTRIBUTION = {
   url: 'https://www.tokyodisneyresort.jp/tdl/map.html',
   text: 'tokyodisneyresort.jp',
 };
-
-export const ARTICLE_LIST_ORDERS: { [key: string]: PreviewListOrder } = {
-  latest: 'latest',
-  oldest: 'oldest',
-  popular: 'popular',
-};

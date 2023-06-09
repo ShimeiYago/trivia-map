@@ -31,7 +31,6 @@ import { PAGE_NAMES } from 'constant/page-names';
 import { NonStyleLink } from 'views/components/atoms/non-style-link';
 import recommendImage from 'images/recommend.png';
 import { Image } from 'views/components/moleculars/image';
-import { PARKS } from 'constant';
 export class Renderer extends React.Component<Props, State> {
   headingRef: React.RefObject<HTMLHeadingElement>;
 
@@ -40,26 +39,25 @@ export class Renderer extends React.Component<Props, State> {
     this.headingRef = React.createRef();
 
     this.state = {
-      formSearchConditions: props.initialSearchConditions,
-      currentSearchConditions: props.initialSearchConditions,
-      order: props.initialOrder,
-      page: props.initialPage,
-      inputtedKeyword: props.initialSearchConditions.keywords?.join(' ') ?? '',
+      formSearchConditions: {},
+      currentSearchConditions: {},
+      order: 'latest',
     };
+  }
+
+  componentDidMount() {
+    this.setState({
+      formSearchConditions: this.props.initialSearchConditions,
+      currentSearchConditions: this.props.initialSearchConditions,
+    });
   }
 
   componentDidUpdate(_: Props, prevState: State) {
     if (
       JSON.stringify(prevState.currentSearchConditions) !==
-        JSON.stringify(this.state.currentSearchConditions) ||
-      prevState.order !== this.state.order ||
-      prevState.page !== this.state.page
+      JSON.stringify(this.state.currentSearchConditions)
     ) {
-      const urlParameters = getUrlParameters({
-        ...this.state.currentSearchConditions,
-        order: this.state.order,
-        page: this.state.page,
-      });
+      const urlParameters = getUrlParameters(this.state.currentSearchConditions);
       history.replaceState('', '', `${ARTICLE_LIST_PAGE_LINK}${urlParameters}`);
     }
   }
@@ -72,7 +70,6 @@ export class Renderer extends React.Component<Props, State> {
     return (
       <>
         {this.renderConditionsForm()}
-        {this.renderCurrentConditions()}
         <Divider sx={{ my: 3 }} />
 
         <Typography
@@ -97,8 +94,6 @@ export class Renderer extends React.Component<Props, State> {
             ...this.state.currentSearchConditions,
             order: this.state.order,
           }}
-          initialPage={this.props.initialPage}
-          onChangePage={this.handleChangePage}
         />
 
         <Box textAlign="center" mt={8} mb={5}>
@@ -111,13 +106,9 @@ export class Renderer extends React.Component<Props, State> {
   };
 
   protected renderConditionsForm = () => {
-    const disabledSearchButton =
+    const disabled =
       JSON.stringify(this.state.formSearchConditions) ===
       JSON.stringify(this.state.currentSearchConditions);
-
-    const disabledClearButton =
-      JSON.stringify(this.state.formSearchConditions) === JSON.stringify({}) &&
-      JSON.stringify(this.state.currentSearchConditions) === JSON.stringify({});
 
     return (
       <Accordion>
@@ -159,44 +150,14 @@ export class Renderer extends React.Component<Props, State> {
                 {this.renderKeywordSearch()}
               </Grid>
             </Grid>
-            <Grid container>
-              <Grid item xs={6} textAlign="center">
-                <Button onClick={this.handleClearFiltering} disabled={disabledClearButton}>
-                  クリア
-                </Button>
-              </Grid>
-              <Grid item xs={6} textAlign="center">
-                <Button onClick={this.handleClickFiltering} disabled={disabledSearchButton}>
-                  この条件で絞り込む
-                </Button>
-              </Grid>
-            </Grid>
+            <Box textAlign="center">
+              <Button onClick={this.handleClickFiltering} disabled={disabled}>
+                この条件で絞り込む
+              </Button>
+            </Box>
           </Box>
         </AccordionDetails>
       </Accordion>
-    );
-  };
-
-  protected renderCurrentConditions = () => {
-    const { category, park, keywords } = this.state.currentSearchConditions;
-
-    const getCategoryName = (categoryId: number) => {
-      return CATEGORIES.find((categoryObj) => {
-        return categoryObj.categoryId === categoryId;
-      })?.categoryName;
-    };
-
-    return (
-      <Box mt={2}>
-        {category && <Box>カテゴリー：{getCategoryName(category)}</Box>}
-        {park && <Box>パーク：{park === PARKS.land ? 'ランド' : 'シー'}</Box>}
-        {keywords && (
-          <Box>
-            キーワード：
-            {keywords.join(' ')}
-          </Box>
-        )}
-      </Box>
     );
   };
 
@@ -294,17 +255,16 @@ export class Renderer extends React.Component<Props, State> {
           variant="standard"
           fullWidth
           onChange={this.handleChangeKeyword}
-          value={this.state.inputtedKeyword}
+          value={this.state.formSearchConditions.keywords?.join(',')}
         />
       </Box>
     );
   };
 
   protected handleChangeKeyword = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const keywords = event.target.value.split(/[\s,]+/).filter((v) => v);
+    const keywords = event.target.value.split(/[\s,]+/).filter((keyword) => keyword !== '');
 
     this.setState({
-      inputtedKeyword: event.target.value,
       formSearchConditions: {
         ...this.state.formSearchConditions,
         keywords: keywords,
@@ -318,35 +278,16 @@ export class Renderer extends React.Component<Props, State> {
     });
     this.headingRef.current && this.headingRef.current.scrollIntoView({ block: 'center' });
   };
-
-  protected handleClearFiltering = () => {
-    this.setState({
-      formSearchConditions: {},
-      currentSearchConditions: {},
-      inputtedKeyword: '',
-    });
-    this.headingRef.current && this.headingRef.current.scrollIntoView({ block: 'center' });
-  };
-
-  protected handleChangePage = (page: number) => {
-    this.setState({
-      page,
-    });
-  };
 }
 
 export type Props = {
   initialSearchConditions: Conditions;
-  initialOrder: PreviewListOrder;
-  initialPage: number;
 };
 
 export type State = {
   formSearchConditions: Conditions;
   currentSearchConditions: Conditions;
   order: PreviewListOrder;
-  page: number;
-  inputtedKeyword: string;
 };
 
 export type Conditions = {

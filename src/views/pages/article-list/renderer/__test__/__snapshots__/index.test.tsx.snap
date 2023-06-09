@@ -274,6 +274,8 @@ exports[`Shallow Snapshot Tests basic 1`] = `
     </ForwardRef(FormControl)>
   </ForwardRef(Box)>
   <ArticlePreviewList
+    initialPage={1}
+    onChangePage={[Function]}
     searchConditions={
       Object {
         "order": "latest",
@@ -573,6 +575,8 @@ exports[`Shallow Snapshot Tests with form conditions 1`] = `
     </ForwardRef(FormControl)>
   </ForwardRef(Box)>
   <ArticlePreviewList
+    initialPage={1}
+    onChangePage={[Function]}
     searchConditions={
       Object {
         "order": "latest",

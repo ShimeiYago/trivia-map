@@ -36,11 +36,13 @@ export function ArticleList() {
       order = ARTICLE_LIST_ORDERS.latest;
   }
 
+  const page = query.get('page') ? Number(query.get('page')) : 1;
+
   return (
     <>
       <CommonHelmet title={PAGE_NAMES.articles} description={PAGE_DESCRIPTIONS.articles} />
 
-      <Renderer initialSearchConditions={conditions} initialOrder={order} />
+      <Renderer initialSearchConditions={conditions} initialOrder={order} initialPage={page} />
     </>
   );
 }

@@ -6,6 +6,7 @@ let wrapper: ShallowWrapper<Props, State, Renderer>;
 const basicProps: Props = {
   initialSearchConditions: {},
   initialOrder: 'latest',
+  initialPage: 1,
 };
 
 describe('Shallow Snapshot Tests', () => {
@@ -190,5 +191,18 @@ describe('renderOrderSelectBox', () => {
     instance['handleChangeOrder'](event as any);
 
     expect(instance.state.order).toBe('popular');
+  });
+});
+
+describe('handleChangePage', () => {
+  beforeEach(() => {
+    wrapper = shallow(<Renderer {...basicProps} />);
+  });
+
+  it('should change page state', () => {
+    const instance = wrapper.instance();
+    instance['handleChangePage'](2);
+
+    expect(instance.state.page).toBe(2);
   });
 });

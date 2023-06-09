@@ -38,7 +38,7 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   componentDidMount() {
-    this.fetchArticlesPreviews();
+    this.fetchArticlesPreviews(this.props.initialPage);
   }
 
   componentDidUpdate(prevProps: Props) {
@@ -335,15 +335,18 @@ export class Renderer extends React.Component<Props, State> {
   protected handleChangePagination = (event: React.ChangeEvent<unknown>, page: number) => {
     this.fetchArticlesPreviews(page);
     this.topRef.current && this.topRef.current.scrollIntoView({ block: 'center' });
+    this.props.onChangePage?.(page);
   };
 }
 
 export type Props = {
   variant: 'popup' | 'large' | 'sidebar';
   searchConditions: Omit<GetArticlesPreviewsParam, 'page'>;
+  initialPage?: number;
 
   throwError: (status: number) => void;
   refreshUser: () => void;
+  onChangePage?: (page: number) => void;
 };
 
 export type State = {

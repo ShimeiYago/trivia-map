@@ -330,6 +330,8 @@ export class Renderer extends React.Component<Props, State> {
     } catch (error) {
       this.props.throwError(500);
     }
+
+    this.props.onChangePage?.(page ?? 1);
   }
 
   protected handleChangePagination = (event: React.ChangeEvent<unknown>, page: number) => {

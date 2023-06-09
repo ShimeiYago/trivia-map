@@ -14,7 +14,7 @@ exports[`Shallow Snapshot Tests author view 1`] = `
   >
     <ShareButtons
       description="description"
-      title="【隠れミッキー】title"
+      title="title"
       url="http://localhost/"
     />
     <ForwardRef(Divider) />
@@ -215,7 +215,7 @@ exports[`Shallow Snapshot Tests author view 1`] = `
     </ForwardRef(Grid)>
     <ShareButtons
       description="description"
-      title="【隠れミッキー】title"
+      title="title"
       url="http://localhost/"
     />
   </ForwardRef(Stack)>
@@ -405,29 +405,6 @@ exports[`Shallow Snapshot Tests draft 1`] = `
       </ParkMap>
     </NonStyleLink>
     <ForwardRef(Divider) />
-    <ForwardRef(Grid)
-      container={true}
-      justifyContent="space-between"
-      pb={5}
-    >
-      <ForwardRef(Grid)
-        item={true}
-      />
-      <ForwardRef(Grid)
-        item={true}
-      >
-        <ForwardRef(Box)
-          textAlign="right"
-        >
-          <ForwardRef(LoadingButton)
-            loading={false}
-            onClick={[Function]}
-            startIcon={<Memo />}
-            variant="outlined"
-          />
-        </ForwardRef(Box)>
-      </ForwardRef(Grid)>
-    </ForwardRef(Grid)>
   </ForwardRef(Stack)>
   <ForwardRef(Box)
     mb={5}
@@ -607,29 +584,6 @@ exports[`Shallow Snapshot Tests draft with same created & updated 1`] = `
       </ParkMap>
     </NonStyleLink>
     <ForwardRef(Divider) />
-    <ForwardRef(Grid)
-      container={true}
-      justifyContent="space-between"
-      pb={5}
-    >
-      <ForwardRef(Grid)
-        item={true}
-      />
-      <ForwardRef(Grid)
-        item={true}
-      >
-        <ForwardRef(Box)
-          textAlign="right"
-        >
-          <ForwardRef(LoadingButton)
-            loading={false}
-            onClick={[Function]}
-            startIcon={<Memo />}
-            variant="outlined"
-          />
-        </ForwardRef(Box)>
-      </ForwardRef(Grid)>
-    </ForwardRef(Grid)>
   </ForwardRef(Stack)>
   <ForwardRef(Box)
     mb={5}
@@ -662,7 +616,7 @@ exports[`Shallow Snapshot Tests have added good 1`] = `
   >
     <ShareButtons
       description="description"
-      title="【隠れミッキー】title"
+      title="title"
       url="http://localhost/"
     />
     <ForwardRef(Divider) />
@@ -839,7 +793,7 @@ exports[`Shallow Snapshot Tests have added good 1`] = `
     </ForwardRef(Grid)>
     <ShareButtons
       description="description"
-      title="【隠れミッキー】title"
+      title="title"
       url="http://localhost/"
     />
   </ForwardRef(Stack)>
@@ -874,7 +828,7 @@ exports[`Shallow Snapshot Tests have liked 1`] = `
   >
     <ShareButtons
       description="description"
-      title="【隠れミッキー】title"
+      title="title"
       url="http://localhost/"
     />
     <ForwardRef(Divider) />
@@ -1075,7 +1029,7 @@ exports[`Shallow Snapshot Tests have liked 1`] = `
     </ForwardRef(Grid)>
     <ShareButtons
       description="description"
-      title="【隠れミッキー】title"
+      title="title"
       url="http://localhost/"
     />
   </ForwardRef(Stack)>
@@ -1118,7 +1072,7 @@ exports[`Shallow Snapshot Tests with article 1`] = `
   >
     <ShareButtons
       description="description"
-      title="【隠れミッキー】title"
+      title="title"
       url="http://localhost/"
     />
     <ForwardRef(Divider) />
@@ -1293,7 +1247,7 @@ exports[`Shallow Snapshot Tests with article 1`] = `
     </ForwardRef(Grid)>
     <ShareButtons
       description="description"
-      title="【隠れミッキー】title"
+      title="title"
       url="http://localhost/"
     />
   </ForwardRef(Stack)>
@@ -1329,7 +1283,7 @@ exports[`Shallow Snapshot Tests with image 1`] = `
   >
     <ShareButtons
       description="description"
-      title="【隠れミッキー】title"
+      title="title"
       url="http://localhost/"
     />
     <ForwardRef(Divider) />
@@ -1508,7 +1462,7 @@ exports[`Shallow Snapshot Tests with image 1`] = `
     </ForwardRef(Grid)>
     <ShareButtons
       description="description"
-      title="【隠れミッキー】title"
+      title="title"
       url="http://localhost/"
     />
   </ForwardRef(Stack)>

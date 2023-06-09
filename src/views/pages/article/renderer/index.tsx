@@ -103,7 +103,7 @@ export class Renderer extends React.Component<Props, State> {
           )}
 
           {!isDraft && (
-            <ShareButtons title={pageTitle} url={window.location.href} description={description} />
+            <ShareButtons title={title} url={window.location.href} description={description} />
           )}
 
           <Divider />
@@ -177,13 +177,15 @@ export class Renderer extends React.Component<Props, State> {
 
           <Divider />
 
-          <Grid container pb={5} justifyContent="space-between">
-            <Grid item>{this.renderLikeButton()}</Grid>
-            <Grid item>{this.renderGoodButton()}</Grid>
-          </Grid>
+          {!isDraft && (
+            <Grid container pb={5} justifyContent="space-between">
+              <Grid item>{this.renderLikeButton()}</Grid>
+              <Grid item>{this.renderGoodButton()}</Grid>
+            </Grid>
+          )}
 
           {!isDraft && (
-            <ShareButtons title={pageTitle} url={window.location.href} description={description} />
+            <ShareButtons title={title} url={window.location.href} description={description} />
           )}
         </Stack>
 

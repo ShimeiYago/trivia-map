@@ -142,7 +142,7 @@ export const fetchArticle =
       if (apiError.status === 404 || apiError.status === 403 || apiError.status === 401) {
         dispatch(throwError(404));
       } else {
-        dispatch(throwError(500));
+        dispatch(throwError(apiError.status));
       }
     }
   };

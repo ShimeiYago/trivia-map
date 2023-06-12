@@ -11,4 +11,9 @@ describe('Shallow Snapshot Tests', () => {
   it('basic', () => {
     expect(wrapper).toMatchSnapshot();
   });
+
+  it('timeout', () => {
+    wrapper.setProps({ timeout: true });
+    expect(wrapper).toMatchSnapshot();
+  });
 });

@@ -69,6 +69,18 @@ exports[`Shallow Snapshot Tests 404 1`] = `
 </Fragment>
 `;
 
+exports[`Shallow Snapshot Tests 408 1`] = `
+<Fragment>
+  <CommonHelmet
+    noindex={true}
+    title="エラーが発生しました - トリビアマップ"
+  />
+  <InternalError
+    timeout={true}
+  />
+</Fragment>
+`;
+
 exports[`Shallow Snapshot Tests basic 1`] = `
 <Fragment>
   <CommonHelmet

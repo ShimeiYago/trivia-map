@@ -21,6 +21,7 @@ import { DynamicAlignedText } from 'views/components/atoms/dynamic-aligned-text'
 import { CenterPagination } from 'views/components/atoms/center-pagination';
 import cardClasses from 'views/common-styles/preview-card.module.css';
 import { cardStyle } from 'views/common-styles/card';
+import { ApiError } from 'api/utils/handle-axios-error';
 
 const POPUP_SCROLL_HEIGHT = '240px';
 const POPUP_SCROLL_GRADATION_HEIGHT = '50px';
@@ -328,7 +329,8 @@ export class Renderer extends React.Component<Props, State> {
         articlesPreviews: res,
       });
     } catch (error) {
-      this.props.throwError(500);
+      const apiError = error as ApiError<unknown>;
+      this.props.throwError(apiError.status);
     }
 
     this.props.onChangePage?.(page ?? 1);

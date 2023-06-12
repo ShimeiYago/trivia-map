@@ -4,6 +4,7 @@ import { CenterSpinner } from 'views/components/atoms/center-spinner';
 import { twitterAccessToken } from 'api/auths-api/twitter-access-token';
 import { User } from 'types/user';
 import { getDomain } from 'utils/get-domain.ts';
+import { ApiError } from 'api/utils/handle-axios-error';
 
 export class Renderer extends React.Component<Props> {
   componentDidMount() {
@@ -31,7 +32,8 @@ export class Renderer extends React.Component<Props> {
       window.opener.postMessage(twitterAccessTokenResponse, getDomain(window));
       window.close();
     } catch (e: unknown) {
-      this.props.throwError(500);
+      const apiError = e as ApiError<unknown>;
+      this.props.throwError(apiError.status);
     }
   };
 }

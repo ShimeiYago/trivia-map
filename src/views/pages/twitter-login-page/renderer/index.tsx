@@ -4,6 +4,7 @@ import { CenterSpinner } from 'views/components/atoms/center-spinner';
 import { getDomain } from 'utils/get-domain.ts';
 import { twitterRequestToken } from 'api/auths-api/twitter-request-token';
 import { TWITTER_CALLBACK_LINK } from 'constant/links';
+import { ApiError } from 'api/utils/handle-axios-error';
 
 export class Renderer extends React.Component<Props> {
   componentDidMount() {
@@ -30,7 +31,8 @@ export class Renderer extends React.Component<Props> {
       });
       window.location.href = twitterRequestTokenResponse.authenticateUrl;
     } catch (error: unknown) {
-      this.props.throwError(500);
+      const apiError = error as ApiError<unknown>;
+      this.props.throwError(apiError.status);
     }
   };
 }

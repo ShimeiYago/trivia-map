@@ -18,6 +18,7 @@ import { SPECIAL_MAP_PAGE_LINK } from 'constant/links';
 import { Link } from 'react-router-dom';
 import { DynamicAlignedText } from 'views/components/atoms/dynamic-aligned-text';
 import { GetSpecialMapResponse } from 'api/special-map-api/get-special-map';
+import { ApiError } from 'api/utils/handle-axios-error';
 
 export class Renderer extends React.Component<Props, State> {
   topRef: React.RefObject<HTMLDivElement>;
@@ -147,7 +148,8 @@ export class Renderer extends React.Component<Props, State> {
         specialMapsResponseWithPagination: res,
       });
     } catch (error) {
-      this.props.throwError(500);
+      const apiError = error as ApiError<unknown>;
+      this.props.throwError(apiError.status);
     }
   };
 

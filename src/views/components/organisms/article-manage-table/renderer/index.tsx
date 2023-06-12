@@ -325,7 +325,8 @@ export class Renderer extends React.Component<Props, State> {
         articlesPreviews: res,
       });
     } catch (error) {
-      this.props.throwError(500);
+      const apiError = error as ApiError<unknown>;
+      this.props.throwError(apiError.status);
     }
   }
 

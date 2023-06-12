@@ -21,11 +21,11 @@ import { DesignedHead } from 'views/components/atoms/designed-head';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import FolderIcon from '@mui/icons-material/Folder';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
-import { CATEGORIES, SITE_NAME } from 'constant';
+import { CATEGORIES } from 'constant';
 import { NonStyleLink } from 'views/components/atoms/non-style-link';
 
 const DEFAULT_LOCAL_BACK_NAVI = {
-  text: SITE_NAME,
+  text: '全体マップへ',
   link: MAP_PAGE_LINK,
 };
 

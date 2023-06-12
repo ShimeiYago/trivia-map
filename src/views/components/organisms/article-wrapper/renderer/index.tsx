@@ -35,14 +35,14 @@ export class Renderer extends React.Component<Props> {
   }
 
   render() {
-    const { isMobile, children, showSidebar, localBackNavi } = this.props;
+    const { isMobile, children, showSidebar, localBackNavi, hideLocalNavi } = this.props;
 
     return (
       <Box sx={wrapper}>
         <GlobalMenu
           topBarPosition="fixed"
           permanentLeftNavi={!isMobile}
-          localBackNavi={localBackNavi ?? DEFAULT_LOCAL_BACK_NAVI}
+          localBackNavi={hideLocalNavi ? undefined : localBackNavi ?? DEFAULT_LOCAL_BACK_NAVI}
         >
           <Box sx={contentWrapper(isMobile)}>
             <Grid container spacing={isMobile || !showSidebar ? 2 : 4}>
@@ -140,6 +140,7 @@ export type Props = {
   children: React.ReactNode;
   showSidebar: boolean;
   localBackNavi?: LocalBackNavi;
+  hideLocalNavi?: boolean;
 };
 
 export type LocalBackNavi = {

@@ -27,4 +27,9 @@ describe('Shallow Snapshot Tests', () => {
     wrapper.setProps({ showSidebar: false });
     expect(wrapper).toMatchSnapshot();
   });
+
+  it('hide local navi', () => {
+    wrapper.setProps({ hideLocalNavi: true });
+    expect(wrapper).toMatchSnapshot();
+  });
 });

@@ -37,7 +37,7 @@ export class Renderer extends React.Component<Props, State> {
 
   render() {
     return (
-      <ArticleWrapper showSidebar>
+      <ArticleWrapper showSidebar hideLocalNavi>
         <Typography component="h2" variant="h4" align="center" sx={{ mt: 3, mb: 4 }}>
           <IconAndText
             iconComponent={<StarIcon fontSize="inherit" />}

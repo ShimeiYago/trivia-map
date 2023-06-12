@@ -12,9 +12,350 @@ exports[`Shallow Snapshot Tests basic 1`] = `
     localBackNavi={
       Object {
         "link": "/",
-        "text": "トリビアマップ",
+        "text": "全体マップへ",
       }
     }
+    permanentLeftNavi={true}
+    topBarPosition="fixed"
+  >
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "marginTop": 5,
+          "marginX": 10,
+        }
+      }
+    >
+      <ForwardRef(Grid)
+        container={true}
+        spacing={4}
+      >
+        <ForwardRef(Grid)
+          item={true}
+          xs={8}
+        >
+          <ArticlePaper
+            variant="main"
+          >
+            <div />
+          </ArticlePaper>
+        </ForwardRef(Grid)>
+        <ForwardRef(Grid)
+          item={true}
+          xs={4}
+        >
+          <ArticlePaper
+            variant="side"
+          >
+            <ForwardRef(Stack)
+              spacing={3}
+            >
+              <ForwardRef(Box)>
+                <DesignedHead
+                  component="h2"
+                >
+                  <IconAndText
+                    align="left"
+                    columnGap={1}
+                    component="div"
+                    iconComponent={<Memo />}
+                    iconPosition="left"
+                    text="カテゴリー"
+                    variant="h6"
+                  />
+                </DesignedHead>
+                <ForwardRef(List)
+                  sx={
+                    Object {
+                      "m": 0,
+                      "p": 0,
+                    }
+                  }
+                >
+                  <NonStyleLink
+                    to="/categories/1"
+                  >
+                    <ForwardRef(ListItem)
+                      disablePadding={true}
+                    >
+                      <ForwardRef(ListItemButton)
+                        sx={
+                          Object {
+                            "py": 0.5,
+                          }
+                        }
+                      >
+                        <ForwardRef(ListItemIcon)
+                          sx={
+                            Object {
+                              "minWidth": "40px",
+                            }
+                          }
+                        >
+                          <Memo(ForwardRef(KeyboardArrowRightIcon)) />
+                        </ForwardRef(ListItemIcon)>
+                        <ForwardRef(ListItemText)
+                          primary="隠れミッキー"
+                        />
+                      </ForwardRef(ListItemButton)>
+                    </ForwardRef(ListItem)>
+                  </NonStyleLink>
+                  <ForwardRef(Divider)
+                    component="li"
+                  />
+                  <NonStyleLink
+                    to="/categories/2"
+                  >
+                    <ForwardRef(ListItem)
+                      disablePadding={true}
+                    >
+                      <ForwardRef(ListItemButton)
+                        sx={
+                          Object {
+                            "py": 0.5,
+                          }
+                        }
+                      >
+                        <ForwardRef(ListItemIcon)
+                          sx={
+                            Object {
+                              "minWidth": "40px",
+                            }
+                          }
+                        >
+                          <Memo(ForwardRef(KeyboardArrowRightIcon)) />
+                        </ForwardRef(ListItemIcon)>
+                        <ForwardRef(ListItemText)
+                          primary="バックグラウンドストーリー"
+                        />
+                      </ForwardRef(ListItemButton)>
+                    </ForwardRef(ListItem)>
+                  </NonStyleLink>
+                  <ForwardRef(Divider)
+                    component="li"
+                  />
+                  <NonStyleLink
+                    to="/categories/3"
+                  >
+                    <ForwardRef(ListItem)
+                      disablePadding={true}
+                    >
+                      <ForwardRef(ListItemButton)
+                        sx={
+                          Object {
+                            "py": 0.5,
+                          }
+                        }
+                      >
+                        <ForwardRef(ListItemIcon)
+                          sx={
+                            Object {
+                              "minWidth": "40px",
+                            }
+                          }
+                        >
+                          <Memo(ForwardRef(KeyboardArrowRightIcon)) />
+                        </ForwardRef(ListItemIcon)>
+                        <ForwardRef(ListItemText)
+                          primary="おすすめ写真スポット"
+                        />
+                      </ForwardRef(ListItemButton)>
+                    </ForwardRef(ListItem)>
+                  </NonStyleLink>
+                  <ForwardRef(Divider)
+                    component="li"
+                  />
+                  <NonStyleLink
+                    to="/categories/4"
+                  >
+                    <ForwardRef(ListItem)
+                      disablePadding={true}
+                    >
+                      <ForwardRef(ListItemButton)
+                        sx={
+                          Object {
+                            "py": 0.5,
+                          }
+                        }
+                      >
+                        <ForwardRef(ListItemIcon)
+                          sx={
+                            Object {
+                              "minWidth": "40px",
+                            }
+                          }
+                        >
+                          <Memo(ForwardRef(KeyboardArrowRightIcon)) />
+                        </ForwardRef(ListItemIcon)>
+                        <ForwardRef(ListItemText)
+                          primary="ショーパレ"
+                        />
+                      </ForwardRef(ListItemButton)>
+                    </ForwardRef(ListItem)>
+                  </NonStyleLink>
+                  <ForwardRef(Divider)
+                    component="li"
+                  />
+                  <NonStyleLink
+                    to="/categories/5"
+                  >
+                    <ForwardRef(ListItem)
+                      disablePadding={true}
+                    >
+                      <ForwardRef(ListItemButton)
+                        sx={
+                          Object {
+                            "py": 0.5,
+                          }
+                        }
+                      >
+                        <ForwardRef(ListItemIcon)
+                          sx={
+                            Object {
+                              "minWidth": "40px",
+                            }
+                          }
+                        >
+                          <Memo(ForwardRef(KeyboardArrowRightIcon)) />
+                        </ForwardRef(ListItemIcon)>
+                        <ForwardRef(ListItemText)
+                          primary="キャラグリ"
+                        />
+                      </ForwardRef(ListItemButton)>
+                    </ForwardRef(ListItem)>
+                  </NonStyleLink>
+                  <ForwardRef(Divider)
+                    component="li"
+                  />
+                  <NonStyleLink
+                    to="/categories/6"
+                  >
+                    <ForwardRef(ListItem)
+                      disablePadding={true}
+                    >
+                      <ForwardRef(ListItemButton)
+                        sx={
+                          Object {
+                            "py": 0.5,
+                          }
+                        }
+                      >
+                        <ForwardRef(ListItemIcon)
+                          sx={
+                            Object {
+                              "minWidth": "40px",
+                            }
+                          }
+                        >
+                          <Memo(ForwardRef(KeyboardArrowRightIcon)) />
+                        </ForwardRef(ListItemIcon)>
+                        <ForwardRef(ListItemText)
+                          primary="パーク攻略法"
+                        />
+                      </ForwardRef(ListItemButton)>
+                    </ForwardRef(ListItem)>
+                  </NonStyleLink>
+                  <ForwardRef(Divider)
+                    component="li"
+                  />
+                  <NonStyleLink
+                    to="/categories/0"
+                  >
+                    <ForwardRef(ListItem)
+                      disablePadding={true}
+                    >
+                      <ForwardRef(ListItemButton)
+                        sx={
+                          Object {
+                            "py": 0.5,
+                          }
+                        }
+                      >
+                        <ForwardRef(ListItemIcon)
+                          sx={
+                            Object {
+                              "minWidth": "40px",
+                            }
+                          }
+                        >
+                          <Memo(ForwardRef(KeyboardArrowRightIcon)) />
+                        </ForwardRef(ListItemIcon)>
+                        <ForwardRef(ListItemText)
+                          primary="その他"
+                        />
+                      </ForwardRef(ListItemButton)>
+                    </ForwardRef(ListItem)>
+                  </NonStyleLink>
+                  <ForwardRef(Divider)
+                    component="li"
+                  />
+                </ForwardRef(List)>
+              </ForwardRef(Box)>
+              <ForwardRef(Box)>
+                <DesignedHead
+                  component="h2"
+                >
+                  <IconAndText
+                    align="left"
+                    columnGap={1}
+                    component="div"
+                    iconComponent={<Memo />}
+                    iconPosition="left"
+                    text="新着記事"
+                    variant="h6"
+                  />
+                </DesignedHead>
+                <ArticlePreviewList
+                  searchConditions={
+                    Object {
+                      "limit": 5,
+                      "order": "latest",
+                    }
+                  }
+                  variant="sidebar"
+                />
+              </ForwardRef(Box)>
+              <ForwardRef(Box)>
+                <DesignedHead
+                  component="h2"
+                >
+                  <IconAndText
+                    align="left"
+                    component="div"
+                    iconComponent={<Memo />}
+                    iconPosition="left"
+                    text="人気記事"
+                    variant="h6"
+                  />
+                </DesignedHead>
+                <ArticlePreviewList
+                  searchConditions={
+                    Object {
+                      "limit": 5,
+                      "order": "popular",
+                    }
+                  }
+                  variant="sidebar"
+                />
+              </ForwardRef(Box)>
+            </ForwardRef(Stack)>
+          </ArticlePaper>
+        </ForwardRef(Grid)>
+      </ForwardRef(Grid)>
+    </ForwardRef(Box)>
+  </GlobalMenu>
+</ForwardRef(Box)>
+`;
+
+exports[`Shallow Snapshot Tests hide local navi 1`] = `
+<ForwardRef(Box)
+  sx={
+    Object {
+      "backgroundColor": "#f4f5f7",
+    }
+  }
+>
+  <GlobalMenu
     permanentLeftNavi={true}
     topBarPosition="fixed"
   >
@@ -359,7 +700,7 @@ exports[`Shallow Snapshot Tests mobile 1`] = `
     localBackNavi={
       Object {
         "link": "/",
-        "text": "トリビアマップ",
+        "text": "全体マップへ",
       }
     }
     permanentLeftNavi={false}
@@ -706,7 +1047,7 @@ exports[`Shallow Snapshot Tests with sidebar 1`] = `
     localBackNavi={
       Object {
         "link": "/",
-        "text": "トリビアマップ",
+        "text": "全体マップへ",
       }
     }
     permanentLeftNavi={true}

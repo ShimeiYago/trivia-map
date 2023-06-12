@@ -11,6 +11,7 @@ export function ArticleWrapper(ownProps: OwnProps) {
     children: ownProps.children,
     showSidebar: !!ownProps.showSidebar,
     localBackNavi: ownProps.localBackNavi,
+    hideLocalNavi: ownProps.hideLocalNavi,
   };
 
   useEffect(() => {
@@ -24,4 +25,5 @@ type OwnProps = {
   children: React.ReactNode;
   showSidebar?: boolean;
   localBackNavi?: LocalBackNavi;
+  hideLocalNavi?: boolean;
 };

@@ -2944,7 +2944,7 @@ exports[`Shallow Snapshot Tests with local navi & mobile 1`] = `
         "position": "fixed",
         "pt": "56px",
         "width": "100%",
-        "zIndex": 1000,
+        "zIndex": 1001,
       }
     }
   >
@@ -3292,7 +3292,7 @@ exports[`Shallow Snapshot Tests with local navi 1`] = `
         "position": "fixed",
         "pt": "64px",
         "width": "100%",
-        "zIndex": 1000,
+        "zIndex": 1001,
       }
     }
   >

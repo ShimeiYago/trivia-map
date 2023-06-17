@@ -12,15 +12,17 @@ import {
 // max byte length of twitter
 const MAX_BYTE_LENGTH = 280;
 
+// bytes of url is 22 always
+const URL_BYTES = 23;
+
 export function ShareButtons(props: Props): JSX.Element {
   const title = `【${props.title}】`;
 
   // "-3" includes
   // - breakline character between title & description
-  // - blank between description & url
+  // - blank character between description & url
   // - blank surfix after url
-  const descriptionMaxByteLength =
-    MAX_BYTE_LENGTH - countByteLength(title) - props.url.length * 2 - 3;
+  const descriptionMaxByteLength = MAX_BYTE_LENGTH - countByteLength(title) - URL_BYTES - 3;
   let descriptionMaxLength = Math.floor(descriptionMaxByteLength / 2);
   let suffix = '';
 

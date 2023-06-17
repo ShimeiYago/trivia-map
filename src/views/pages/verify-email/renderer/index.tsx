@@ -7,6 +7,7 @@ import { LoadingButton } from '@mui/lab';
 import { Image } from 'views/components/moleculars/image';
 import logoImage from 'images/logo-blue.png';
 import { MAP_PAGE_LINK } from 'constant/links';
+import { ApiError } from 'api/utils/handle-axios-error';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -72,7 +73,8 @@ export class Renderer extends React.Component<Props, State> {
         loadingState: 'success',
       });
     } catch (error) {
-      this.props.throwError(500);
+      const apiError = error as ApiError<unknown>;
+      this.props.throwError(apiError.status);
     }
   };
 }

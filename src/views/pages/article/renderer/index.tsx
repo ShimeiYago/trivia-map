@@ -231,7 +231,7 @@ export class Renderer extends React.Component<Props, State> {
       if (apiError.status === 404 || apiError.status === 401 || apiError.status === 403) {
         this.props.throwError(404);
       } else {
-        this.props.throwError(500);
+        this.props.throwError(apiError.status);
       }
     }
   };
@@ -311,7 +311,8 @@ export class Renderer extends React.Component<Props, State> {
         numberOfGoods: res.numberOfGoods,
       });
     } catch (error) {
-      this.props.throwError(500);
+      const apiError = error as ApiError<unknown>;
+      this.props.throwError(apiError.status);
     }
   };
 
@@ -334,7 +335,8 @@ export class Renderer extends React.Component<Props, State> {
         loadingLikeState: 'success',
       });
     } catch (error) {
-      this.props.throwError(500);
+      const apiError = error as ApiError<unknown>;
+      this.props.throwError(apiError.status);
     }
   };
 
@@ -353,7 +355,8 @@ export class Renderer extends React.Component<Props, State> {
         loadingLikeState: 'success',
       });
     } catch (error) {
-      this.props.throwError(500);
+      const apiError = error as ApiError<unknown>;
+      this.props.throwError(apiError.status);
     }
   };
 

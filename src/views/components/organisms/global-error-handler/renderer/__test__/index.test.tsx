@@ -24,6 +24,13 @@ describe('Shallow Snapshot Tests', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
+  it('redirect to 408', () => {
+    wrapper.setState({
+      redirectTo: 408,
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+
   it('redirect to 500', () => {
     wrapper.setState({
       redirectTo: 500,

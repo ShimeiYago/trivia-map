@@ -9,6 +9,12 @@ exports[`Shallow Snapshot Tests redirect to 404 1`] = `
 />
 `;
 
+exports[`Shallow Snapshot Tests redirect to 408 1`] = `
+<Navigate
+  to="/error/408"
+/>
+`;
+
 exports[`Shallow Snapshot Tests redirect to 500 1`] = `
 <Navigate
   to="/error/500"

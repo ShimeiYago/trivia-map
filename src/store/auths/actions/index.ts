@@ -9,6 +9,7 @@ import { logout as logoutApi } from 'api/auths-api/logout';
 import { selectUser } from '../selector';
 import { sleep } from 'utils/sleep';
 import { updateIsEditting } from 'store/article-form/actions';
+import { ApiError } from 'api/utils/handle-axios-error';
 
 // basic actions
 export const {
@@ -81,7 +82,8 @@ export const logout =
       await sleep(3000);
       dispatch(logoutStart());
     } catch (error) {
-      dispatch(throwError(500));
+      const apiError = error as ApiError<unknown>;
+      dispatch(throwError(apiError.status));
     }
   };
 

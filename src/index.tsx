@@ -43,6 +43,7 @@ import {
   SPECIAL_MAP_PAGE_LINK,
   SPECIAL_MAP_LIST_PAGE_LINK,
   SPECIAL_MAP_DETAIL_PAGE_LINK,
+  TIMEOUT_ERROR_LINK,
 } from 'constant/links';
 import { ChangePassword } from 'views/pages/change-password';
 import { ResetPassword } from 'views/pages/reset-password';
@@ -160,6 +161,7 @@ ReactDOM.render(
                   path={TWITTER_CALLBACK_LINK}
                   element={errorHandledElement(<TwitterCallbackPage />)}
                 />
+                <Route path={TIMEOUT_ERROR_LINK} element={<CommonErrorPage errorStatus={408} />} />
                 <Route path={INTERNAL_ERROR_LINK} element={<CommonErrorPage errorStatus={500} />} />
                 <Route path="*" element={<CommonErrorPage errorStatus={404} />} />
               </Routes>

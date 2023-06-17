@@ -13,6 +13,8 @@ export const Renderer: React.FC<Props> = (props) => {
   switch (props.errorStatus) {
     case 404:
       return render404Error();
+    case 408:
+      return render408Error();
     default:
       return render500Error();
   }
@@ -39,6 +41,16 @@ const render404Error = () => {
           </Typography>
         </Box>
       </GlobalMenu>
+    </>
+  );
+};
+
+const render408Error = () => {
+  return (
+    <>
+      <CommonHelmet title={pageTitleGenerator(PAGE_NAMES.internalError)} noindex />
+
+      <InternalError timeout />
     </>
   );
 };

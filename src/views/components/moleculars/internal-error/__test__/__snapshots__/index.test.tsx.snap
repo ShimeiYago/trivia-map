@@ -49,3 +49,53 @@ exports[`Shallow Snapshot Tests basic 1`] = `
   </ForwardRef(Typography)>
 </ForwardRef(Typography)>
 `;
+
+exports[`Shallow Snapshot Tests timeout 1`] = `
+<ForwardRef(Typography)
+  align="center"
+  component="div"
+  sx={
+    Object {
+      "mt": 3,
+    }
+  }
+>
+  <ForwardRef(Box)
+    sx={
+      Object {
+        "mb": 5,
+      }
+    }
+  >
+    <Image
+      src="logo-blue.png"
+      width="200px"
+    />
+  </ForwardRef(Box)>
+  <ForwardRef(Typography)
+    component="h1"
+    fontSize={18}
+  >
+    通信エラー発生しました。
+  </ForwardRef(Typography)>
+  <ForwardRef(Typography)
+    fontSize={18}
+  >
+    通信環境が良いところでもう一度お試しください。
+  </ForwardRef(Typography)>
+  <ForwardRef(Typography)
+    fontSize={20}
+    sx={
+      Object {
+        "mt": 3,
+      }
+    }
+  >
+    <a
+      href="/"
+    >
+      トップへ戻る
+    </a>
+  </ForwardRef(Typography)>
+</ForwardRef(Typography)>
+`;

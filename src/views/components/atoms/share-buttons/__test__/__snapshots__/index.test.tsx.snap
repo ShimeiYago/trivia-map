@@ -52,7 +52,7 @@ exports[`Shallow Snapshot Tests long description 1`] = `
 >
   <ForwardRef(ShareButton-facebook)
     title="【日本語付きtitle】
-long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-text-lo..."
+long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-t..."
     url="https://xxx.com"
   >
     <Icon
@@ -65,7 +65,7 @@ long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-text-
   </ForwardRef(ShareButton-facebook)>
   <ForwardRef(ShareButton-twitter)
     title="【日本語付きtitle】
-long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-text-lo..."
+long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-t..."
     url="https://xxx.com"
   >
     <Icon
@@ -78,7 +78,7 @@ long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-text-
   </ForwardRef(ShareButton-twitter)>
   <ForwardRef(ShareButton-line)
     title="【日本語付きtitle】
-long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-text-lo..."
+long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-text-long-t..."
     url="https://xxx.com"
   >
     <Icon

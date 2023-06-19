@@ -8,7 +8,7 @@ import {
 import { ApiError } from 'api/utils/handle-axios-error';
 
 export class Renderer extends ArticlePreviewListRenderer {
-  protected async fetchArticlesPreviews(page?: number) {
+  protected async fetchArticlesPreviews(page: number) {
     this.setState({
       loadingState: 'loading',
       articlesPreviews: undefined,
@@ -32,6 +32,8 @@ export class Renderer extends ArticlePreviewListRenderer {
           }),
         },
       });
+
+      this.updatePageParam(page);
     } catch (error) {
       // TODO: 401 handle
 

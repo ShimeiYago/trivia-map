@@ -29,6 +29,7 @@ export class Renderer extends React.Component<Props> {
         <ArticlePreviewList
           variant="large"
           searchConditions={{ category: this.props.categoryId }}
+          doesKeepPageParamInUrl
         />
       </>
     );

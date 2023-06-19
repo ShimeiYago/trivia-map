@@ -313,7 +313,7 @@ export class Renderer extends React.Component<Props, State> {
     );
   }
 
-  protected async fetchArticlesPreviews(page?: number) {
+  protected async fetchArticlesPreviews(page: number) {
     this.setState({
       loadingState: 'loading',
       articlesPreviews: undefined,

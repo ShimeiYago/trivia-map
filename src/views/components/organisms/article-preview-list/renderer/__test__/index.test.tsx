@@ -108,7 +108,7 @@ describe('fetchArticlesPreviews', () => {
 
     wrapper = shallow(<Renderer {...basicProps} />);
     const instance = wrapper.instance();
-    await instance['fetchArticlesPreviews']();
+    await instance['fetchArticlesPreviews'](1);
 
     expect(instance.state.loadingState).toBe('success');
   });
@@ -118,7 +118,7 @@ describe('fetchArticlesPreviews', () => {
 
     wrapper = shallow(<Renderer {...basicProps} />);
     const instance = wrapper.instance();
-    await instance['fetchArticlesPreviews']();
+    await instance['fetchArticlesPreviews'](1);
 
     expect(instance.props.throwError).toBeCalled();
   });

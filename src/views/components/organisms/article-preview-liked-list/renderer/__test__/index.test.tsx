@@ -1,9 +1,8 @@
 import { shallow, ShallowWrapper } from 'enzyme';
 import { Renderer, Props, State } from '..';
-// import * as GetArticlesPreviewsApiModule from 'api/articles-api/get-articles-previews';
-// import { mockGetArticlesPreviewsResponse } from 'api/mock/articles-response';
 import * as GetLikedArticlesPreviewsModule from 'api/likes-api/get-liked-articles-previews';
 import { mockGetLikedArticlesPreviewsResponse } from 'api/mock/likes-response';
+import { Location } from 'react-router-dom';
 
 let wrapper: ShallowWrapper<Props, State, Renderer>;
 let getArticlesPreviewsSpy: jest.SpyInstance;
@@ -15,6 +14,8 @@ const basicProps: Props = {
   variant: 'large',
   throwError: jest.fn(),
   refreshUser: jest.fn(),
+  page: 0,
+  location: { pathname: '/pathname', search: '?category=1' } as Location,
 };
 
 describe('Shallow Snapshot Tests', () => {

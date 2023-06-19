@@ -43,7 +43,6 @@ export class Renderer extends React.Component<Props, State> {
       formSearchConditions: props.initialSearchConditions,
       currentSearchConditions: props.initialSearchConditions,
       order: props.initialOrder,
-      page: props.initialPage,
       inputtedKeyword: props.initialSearchConditions.keywords?.join(' ') ?? '',
     };
   }
@@ -52,13 +51,11 @@ export class Renderer extends React.Component<Props, State> {
     if (
       JSON.stringify(prevState.currentSearchConditions) !==
         JSON.stringify(this.state.currentSearchConditions) ||
-      prevState.order !== this.state.order ||
-      prevState.page !== this.state.page
+      prevState.order !== this.state.order
     ) {
       const urlParameters = getUrlParameters({
         ...this.state.currentSearchConditions,
         order: this.state.order,
-        page: this.state.page,
       });
       history.replaceState('', '', `${ARTICLE_LIST_PAGE_LINK}${urlParameters}`);
     }
@@ -93,12 +90,11 @@ export class Renderer extends React.Component<Props, State> {
 
         <ArticlePreviewList
           variant="large"
+          doesKeepPageParamInUrl
           searchConditions={{
             ...this.state.currentSearchConditions,
             order: this.state.order,
           }}
-          initialPage={this.props.initialPage}
-          onChangePage={this.handleChangePage}
         />
 
         <Box textAlign="center" mt={8} mb={5}>
@@ -327,25 +323,17 @@ export class Renderer extends React.Component<Props, State> {
     });
     this.headingRef.current && this.headingRef.current.scrollIntoView({ block: 'center' });
   };
-
-  protected handleChangePage = (page: number) => {
-    this.setState({
-      page,
-    });
-  };
 }
 
 export type Props = {
   initialSearchConditions: Conditions;
   initialOrder: PreviewListOrder;
-  initialPage: number;
 };
 
 export type State = {
   formSearchConditions: Conditions;
   currentSearchConditions: Conditions;
   order: PreviewListOrder;
-  page: number;
   inputtedKeyword: string;
 };
 

@@ -22,6 +22,7 @@ import { CenterPagination } from 'views/components/atoms/center-pagination';
 import cardClasses from 'views/common-styles/preview-card.module.css';
 import { cardStyle } from 'views/common-styles/card';
 import { ApiError } from 'api/utils/handle-axios-error';
+import { Location } from 'react-router-dom';
 
 const POPUP_SCROLL_HEIGHT = '240px';
 const POPUP_SCROLL_GRADATION_HEIGHT = '50px';
@@ -39,14 +40,14 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   componentDidMount() {
-    this.fetchArticlesPreviews(this.props.initialPage);
+    this.fetchArticlesPreviews(this.props.page);
   }
 
   componentDidUpdate(prevProps: Props) {
     if (
       JSON.stringify(prevProps.searchConditions) !== JSON.stringify(this.props.searchConditions)
     ) {
-      this.fetchArticlesPreviews();
+      this.fetchArticlesPreviews(this.props.page);
     }
   }
 
@@ -332,25 +333,31 @@ export class Renderer extends React.Component<Props, State> {
       const apiError = error as ApiError<unknown>;
       this.props.throwError(apiError.status);
     }
-
-    this.props.onChangePage?.(page ?? 1);
   }
 
   protected handleChangePagination = (event: React.ChangeEvent<unknown>, page: number) => {
     this.fetchArticlesPreviews(page);
     this.topRef.current && this.topRef.current.scrollIntoView({ block: 'center' });
-    this.props.onChangePage?.(page);
+    this.props.doesKeepPageParamInUrl && this.updatePageParam(page);
   };
+
+  protected updatePageParam(page: number) {
+    const urlSearchParams = new URLSearchParams(location.search);
+    urlSearchParams.set('page', String(page));
+
+    history.replaceState('', '', `${location.pathname}?${urlSearchParams.toString()}`);
+  }
 }
 
 export type Props = {
   variant: 'popup' | 'large' | 'sidebar';
   searchConditions: Omit<GetArticlesPreviewsParam, 'page'>;
-  initialPage?: number;
+  page: number;
+  location: Location;
+  doesKeepPageParamInUrl?: boolean;
 
   throwError: (status: number) => void;
   refreshUser: () => void;
-  onChangePage?: (page: number) => void;
 };
 
 export type State = {

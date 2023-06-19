@@ -60,6 +60,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
     userId={1}
   />
   <ArticlePreviewList
+    doesKeepPageParamInUrl={true}
     searchConditions={
       Object {
         "user": 1,
@@ -131,6 +132,7 @@ exports[`Shallow Snapshot Tests no icon 1`] = `
     userId={1}
   />
   <ArticlePreviewList
+    doesKeepPageParamInUrl={true}
     searchConditions={
       Object {
         "user": 1,
@@ -201,6 +203,7 @@ exports[`Shallow Snapshot Tests twitter url 1`] = `
     userId={1}
   />
   <ArticlePreviewList
+    doesKeepPageParamInUrl={true}
     searchConditions={
       Object {
         "user": 1,

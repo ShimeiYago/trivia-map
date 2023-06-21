@@ -47,7 +47,7 @@ export class Renderer extends React.Component<Props, State> {
     if (
       JSON.stringify(prevProps.searchConditions) !== JSON.stringify(this.props.searchConditions)
     ) {
-      this.fetchArticlesPreviews(this.props.page);
+      this.fetchArticlesPreviews(1);
     }
   }
 

@@ -17,6 +17,12 @@ const basicProps: Props = {
   initializeFetchingState: jest.fn(),
   initialize: jest.fn(),
   refreshUser: jest.fn(),
+  initialSearchParam: {
+    page: undefined,
+    category: undefined,
+    park: undefined,
+    isDraft: undefined,
+  },
 };
 
 describe('Shallow Snapshot Tests', () => {

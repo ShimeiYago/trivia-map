@@ -31,7 +31,7 @@ import {
 } from 'api/articles-api/get-my-articles';
 import { CenterSpinner } from 'views/components/atoms/center-spinner';
 import { Image } from 'views/components/moleculars/image';
-import { ARTICLE_PAGE_LINK, EDIT_LINK } from 'constant/links';
+import { ARTICLE_PAGE_LINK, EDIT_LINK, MY_ARTICLES_LINK } from 'constant/links';
 import { autoRefreshApiWrapper } from 'utils/auto-refresh-api-wrapper';
 import { deleteRemoteArticle } from 'api/articles-api/delete-remote-article';
 import { ApiError } from 'api/utils/handle-axios-error';
@@ -45,6 +45,7 @@ import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import { patchRemoteArticle } from 'api/articles-api/patch-remote-article';
 import { CATEGORIES } from 'constant';
 import { CenterPagination } from 'views/components/atoms/center-pagination';
+import { getUrlParameters } from 'utils/get-url-parameters';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -53,12 +54,19 @@ export class Renderer extends React.Component<Props, State> {
       loadingState: 'waiting',
       deleting: false,
       swichingDraft: false,
-      searchParam: {},
+      searchParam: props.initialSearchParam,
     };
   }
 
   componentDidMount() {
     this.fetchArticlesPreviews();
+  }
+
+  componentDidUpdate(prevProps: Props, prevState: State) {
+    if (JSON.stringify(prevState.searchParam) !== JSON.stringify(this.state.searchParam)) {
+      const urlParameters = getUrlParameters(this.state.searchParam);
+      history.replaceState('', '', `${MY_ARTICLES_LINK}${urlParameters}`);
+    }
   }
 
   render() {
@@ -308,7 +316,7 @@ export class Renderer extends React.Component<Props, State> {
     );
   }
 
-  protected async fetchArticlesPreviews(page?: number) {
+  protected async fetchArticlesPreviews() {
     this.setState({
       loadingState: 'loading',
       articlesPreviews: undefined,
@@ -316,7 +324,7 @@ export class Renderer extends React.Component<Props, State> {
 
     try {
       const res = await autoRefreshApiWrapper(
-        () => getMyArticles({ page, ...this.state.searchParam }),
+        () => getMyArticles(this.state.searchParam),
         this.props.refreshUser,
       );
 
@@ -331,7 +339,15 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   protected handleChangePagination = (event: React.ChangeEvent<unknown>, page: number) => {
-    this.fetchArticlesPreviews(page);
+    this.setState(
+      {
+        searchParam: {
+          ...this.state.searchParam,
+          page,
+        },
+      },
+      this.fetchArticlesPreviews,
+    );
   };
 
   protected renderDeleteConfirmDialog() {
@@ -484,7 +500,7 @@ export class Renderer extends React.Component<Props, State> {
         swichingDraft: false,
         switchDraftDialog: undefined,
       });
-      this.fetchArticlesPreviews(this.state.articlesPreviews?.currentPage);
+      this.fetchArticlesPreviews();
     } catch (error) {
       const apiError = error as ApiError<unknown>;
       this.setState({
@@ -558,6 +574,7 @@ export class Renderer extends React.Component<Props, State> {
       {
         searchParam: {
           ...this.state.searchParam,
+          page: 1,
           category: event.target.value === '' ? undefined : Number(event.target.value),
         },
       },
@@ -570,6 +587,7 @@ export class Renderer extends React.Component<Props, State> {
       {
         searchParam: {
           ...this.state.searchParam,
+          page: 1,
           park: event.target.value === 'L' ? 'L' : event.target.value === 'S' ? 'S' : undefined,
         },
       },
@@ -582,6 +600,7 @@ export class Renderer extends React.Component<Props, State> {
       {
         searchParam: {
           ...this.state.searchParam,
+          page: 1,
           isDraft:
             event.target.value === 'true'
               ? 'true'
@@ -597,6 +616,7 @@ export class Renderer extends React.Component<Props, State> {
 
 export type Props = {
   isMobile: boolean;
+  initialSearchParam: GetMyArticlesParam;
   throwError: (status: number) => void;
   initializeFetchingState: () => void;
   initialize: () => void;
@@ -617,7 +637,7 @@ export type State = {
     isDraft: boolean;
   };
   articlesPreviews?: GetMyArticlesResponse;
-  searchParam: Omit<GetMyArticlesParam, 'page'>;
+  searchParam: GetMyArticlesParam;
   message?: {
     text: string;
     type: 'error' | 'success';

@@ -12,7 +12,7 @@ export function ArticlePreviewList(ownProps: OwnProps) {
   const search = location.search;
   const query = new URLSearchParams(search);
 
-  const page = query.get('page') ? Number(query.get('page')) : 1;
+  const page = ownProps.doesKeepPageParamInUrl && query.get('page') ? Number(query.get('page')) : 1;
 
   const props: Props = {
     location: location,

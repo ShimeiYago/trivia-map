@@ -16,7 +16,7 @@ import ListAltIcon from '@mui/icons-material/ListAlt';
 import { LinkList } from 'views/components/moleculars/link-list';
 import { PAGE_NAMES } from 'constant/page-names';
 import { SITE_NAME } from 'constant';
-import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import BookmarkIcon from '@mui/icons-material/Bookmark';
 import { Link } from 'react-router-dom';
 
 export class Renderer extends React.Component<Props> {
@@ -36,7 +36,7 @@ export class Renderer extends React.Component<Props> {
         link: MY_ARTICLES_LINK,
       },
       {
-        icon: <ThumbUpIcon />,
+        icon: <BookmarkIcon />,
         text: PAGE_NAMES.likedArticles,
         link: LIKED_ARTICLES_LINK,
       },

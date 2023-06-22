@@ -206,10 +206,10 @@ exports[`Shallow Snapshot Tests basic 1`] = `
           }
         }
         label="説明文"
+        minRows={6}
         multiline={true}
         onChange={[Function]}
         required={true}
-        rows={6}
         value=""
       />
       <ForwardRef(FormControlLabel)
@@ -441,10 +441,10 @@ exports[`Shallow Snapshot Tests draft mode 1`] = `
           }
         }
         label="説明文"
+        minRows={6}
         multiline={true}
         onChange={[Function]}
         required={true}
-        rows={6}
         value=""
       />
       <ForwardRef(FormControlLabel)
@@ -656,10 +656,10 @@ exports[`Shallow Snapshot Tests loading 1`] = `
           }
         }
         label="説明文"
+        minRows={6}
         multiline={true}
         onChange={[Function]}
         required={true}
-        rows={6}
         value=""
       />
       <ForwardRef(FormControlLabel)
@@ -884,10 +884,10 @@ exports[`Shallow Snapshot Tests position is not selected yet 1`] = `
           }
         }
         label="説明文"
+        minRows={6}
         multiline={true}
         onChange={[Function]}
         required={true}
-        rows={6}
         value=""
       />
       <ForwardRef(FormControlLabel)
@@ -1119,10 +1119,10 @@ exports[`Shallow Snapshot Tests with category 1`] = `
           }
         }
         label="説明文"
+        minRows={6}
         multiline={true}
         onChange={[Function]}
         required={true}
-        rows={6}
         value=""
       />
       <ForwardRef(FormControlLabel)
@@ -1369,10 +1369,10 @@ exports[`Shallow Snapshot Tests with close button 1`] = `
           }
         }
         label="説明文"
+        minRows={6}
         multiline={true}
         onChange={[Function]}
         required={true}
-        rows={6}
         value=""
       />
       <ForwardRef(FormControlLabel)
@@ -1601,10 +1601,10 @@ exports[`Shallow Snapshot Tests with image data url 1`] = `
           }
         }
         label="説明文"
+        minRows={6}
         multiline={true}
         onChange={[Function]}
         required={true}
-        rows={6}
         value=""
       />
       <ForwardRef(FormControlLabel)
@@ -1833,10 +1833,10 @@ exports[`Shallow Snapshot Tests with image url 1`] = `
           }
         }
         label="説明文"
+        minRows={6}
         multiline={true}
         onChange={[Function]}
         required={true}
-        rows={6}
         value=""
       />
       <ForwardRef(FormControlLabel)
@@ -2076,10 +2076,10 @@ exports[`Shallow Snapshot Tests with validation error 1`] = `
           }
         }
         label="説明文"
+        minRows={6}
         multiline={true}
         onChange={[Function]}
         required={true}
-        rows={6}
         value=""
       />
       <ForwardRef(FormControlLabel)

@@ -211,7 +211,6 @@ export class Renderer extends React.Component<Props> {
               disabled={disabled}
               error={!!formError?.fieldErrors?.description}
               helperText={formError?.fieldErrors?.description}
-              inputProps={{ maxLength: INPUT_FIELD_MAX_LENGTH.articleDescription }}
               required
             />
 
@@ -321,7 +320,7 @@ export class Renderer extends React.Component<Props> {
   protected renderHeaderMessage() {
     const { formError } = this.props;
 
-    if (formError) {
+    if (formError?.errorTitle) {
       return <HeaderErrorMessages errorTitle={formError.errorTitle} />;
     }
 

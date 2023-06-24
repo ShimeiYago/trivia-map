@@ -3,6 +3,8 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { FormError, initialState, SubmitSuccessInfo } from '../model';
 import { Position } from 'types/position';
 import { SelializedImageFile } from 'types/selialized-image-file';
+import { countByteLength } from 'utils/count-byte-length';
+import { INPUT_FIELD_MAX_LENGTH } from 'constant';
 
 export const articleFormSlice = createSlice({
   name: 'articleForm',
@@ -31,6 +33,20 @@ export const articleFormSlice = createSlice({
           fieldErrors: {
             ...state.formError.fieldErrors,
             description: undefined,
+          },
+        };
+      }
+
+      const byteLength = countByteLength(action.payload, 2);
+      const fullWidthLength = Math.ceil(byteLength / 2);
+      if (byteLength > INPUT_FIELD_MAX_LENGTH.articleDescription * 2) {
+        state.formError = {
+          ...state.formError,
+          fieldErrors: {
+            ...state.formError?.fieldErrors,
+            description: [
+              `文字数 ${fullWidthLength} / ${INPUT_FIELD_MAX_LENGTH.articleDescription}`,
+            ],
           },
         };
       }

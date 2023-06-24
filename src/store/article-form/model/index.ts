@@ -41,7 +41,7 @@ export const initialState: ArticleFormState = {
 };
 
 export type FormError = {
-  errorTitle: string;
+  errorTitle?: string;
   fieldErrors?: {
     title?: string[];
     description?: string[];

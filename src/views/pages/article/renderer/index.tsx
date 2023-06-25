@@ -1,5 +1,5 @@
 import React from 'react';
-import { Alert, Avatar, Box, Divider, Stack, Typography, Link, Grid } from '@mui/material';
+import { Alert, Avatar, Box, Divider, Stack, Typography, Link, Grid, Button } from '@mui/material';
 import { LoadingState } from 'types/loading-state';
 import { Image } from 'views/components/moleculars/image';
 import { createdAtBox } from '../styles';
@@ -42,6 +42,7 @@ import { DynamicAlignedText } from 'views/components/atoms/dynamic-aligned-text'
 import { ParkMap } from 'views/components/moleculars/park-map';
 import { MapMarker } from 'views/components/moleculars/map-marker';
 import { LatLng } from 'leaflet';
+import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -174,6 +175,18 @@ export class Renderer extends React.Component<Props, State> {
               <MapMarker position={new LatLng(marker.lat, marker.lng)} variant="red" />
             </ParkMap>
           </NonStyleLink>
+          <Typography align="right">
+            <NonStyleLink to={MAP_PAGE_LINK}>
+              <Button>
+                <IconAndText
+                  iconComponent={<ArrowRightIcon />}
+                  text="全体マップで確認する"
+                  component="span"
+                  iconPosition="left"
+                />
+              </Button>
+            </NonStyleLink>
+          </Typography>
 
           <Divider />
 

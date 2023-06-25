@@ -175,6 +175,22 @@ exports[`Shallow Snapshot Tests author view 1`] = `
         />
       </ParkMap>
     </NonStyleLink>
+    <ForwardRef(Typography)
+      align="right"
+    >
+      <NonStyleLink
+        to="/"
+      >
+        <ForwardRef(Button)>
+          <IconAndText
+            component="span"
+            iconComponent={<Memo />}
+            iconPosition="left"
+            text="全体マップで確認する"
+          />
+        </ForwardRef(Button)>
+      </NonStyleLink>
+    </ForwardRef(Typography)>
     <ForwardRef(Divider) />
     <ForwardRef(Grid)
       container={true}
@@ -404,6 +420,22 @@ exports[`Shallow Snapshot Tests draft 1`] = `
         />
       </ParkMap>
     </NonStyleLink>
+    <ForwardRef(Typography)
+      align="right"
+    >
+      <NonStyleLink
+        to="/"
+      >
+        <ForwardRef(Button)>
+          <IconAndText
+            component="span"
+            iconComponent={<Memo />}
+            iconPosition="left"
+            text="全体マップで確認する"
+          />
+        </ForwardRef(Button)>
+      </NonStyleLink>
+    </ForwardRef(Typography)>
     <ForwardRef(Divider) />
   </ForwardRef(Stack)>
   <ForwardRef(Box)
@@ -583,6 +615,22 @@ exports[`Shallow Snapshot Tests draft with same created & updated 1`] = `
         />
       </ParkMap>
     </NonStyleLink>
+    <ForwardRef(Typography)
+      align="right"
+    >
+      <NonStyleLink
+        to="/"
+      >
+        <ForwardRef(Button)>
+          <IconAndText
+            component="span"
+            iconComponent={<Memo />}
+            iconPosition="left"
+            text="全体マップで確認する"
+          />
+        </ForwardRef(Button)>
+      </NonStyleLink>
+    </ForwardRef(Typography)>
     <ForwardRef(Divider) />
   </ForwardRef(Stack)>
   <ForwardRef(Box)
@@ -765,6 +813,22 @@ exports[`Shallow Snapshot Tests have added good 1`] = `
         />
       </ParkMap>
     </NonStyleLink>
+    <ForwardRef(Typography)
+      align="right"
+    >
+      <NonStyleLink
+        to="/"
+      >
+        <ForwardRef(Button)>
+          <IconAndText
+            component="span"
+            iconComponent={<Memo />}
+            iconPosition="left"
+            text="全体マップで確認する"
+          />
+        </ForwardRef(Button)>
+      </NonStyleLink>
+    </ForwardRef(Typography)>
     <ForwardRef(Divider) />
     <ForwardRef(Grid)
       container={true}
@@ -989,6 +1053,22 @@ exports[`Shallow Snapshot Tests have liked 1`] = `
         />
       </ParkMap>
     </NonStyleLink>
+    <ForwardRef(Typography)
+      align="right"
+    >
+      <NonStyleLink
+        to="/"
+      >
+        <ForwardRef(Button)>
+          <IconAndText
+            component="span"
+            iconComponent={<Memo />}
+            iconPosition="left"
+            text="全体マップで確認する"
+          />
+        </ForwardRef(Button)>
+      </NonStyleLink>
+    </ForwardRef(Typography)>
     <ForwardRef(Divider) />
     <ForwardRef(Grid)
       container={true}
@@ -1221,6 +1301,22 @@ exports[`Shallow Snapshot Tests with article 1`] = `
         />
       </ParkMap>
     </NonStyleLink>
+    <ForwardRef(Typography)
+      align="right"
+    >
+      <NonStyleLink
+        to="/"
+      >
+        <ForwardRef(Button)>
+          <IconAndText
+            component="span"
+            iconComponent={<Memo />}
+            iconPosition="left"
+            text="全体マップで確認する"
+          />
+        </ForwardRef(Button)>
+      </NonStyleLink>
+    </ForwardRef(Typography)>
     <ForwardRef(Divider) />
     <ForwardRef(Grid)
       container={true}
@@ -1436,6 +1532,22 @@ exports[`Shallow Snapshot Tests with image 1`] = `
         />
       </ParkMap>
     </NonStyleLink>
+    <ForwardRef(Typography)
+      align="right"
+    >
+      <NonStyleLink
+        to="/"
+      >
+        <ForwardRef(Button)>
+          <IconAndText
+            component="span"
+            iconComponent={<Memo />}
+            iconPosition="left"
+            text="全体マップで確認する"
+          />
+        </ForwardRef(Button)>
+      </NonStyleLink>
+    </ForwardRef(Typography)>
     <ForwardRef(Divider) />
     <ForwardRef(Grid)
       container={true}

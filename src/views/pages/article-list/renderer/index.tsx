@@ -156,12 +156,12 @@ export class Renderer extends React.Component<Props, State> {
               </Grid>
             </Grid>
             <Grid container>
-              <Grid item xs={6} textAlign="center">
+              <Grid item xs={4} textAlign="center">
                 <Button onClick={this.handleClearFiltering} disabled={disabledClearButton}>
                   クリア
                 </Button>
               </Grid>
-              <Grid item xs={6} textAlign="center">
+              <Grid item xs={8} textAlign="center">
                 <Button onClick={this.handleClickFiltering} disabled={disabledSearchButton}>
                   この条件で絞り込む
                 </Button>

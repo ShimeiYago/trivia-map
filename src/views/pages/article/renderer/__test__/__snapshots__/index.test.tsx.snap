@@ -14,7 +14,7 @@ exports[`Shallow Snapshot Tests author view 1`] = `
   >
     <ShareButtons
       description="description"
-      title="【隠れミッキー】title"
+      title="title"
       url="http://localhost/"
     />
     <ForwardRef(Divider) />
@@ -175,6 +175,22 @@ exports[`Shallow Snapshot Tests author view 1`] = `
         />
       </ParkMap>
     </NonStyleLink>
+    <ForwardRef(Typography)
+      align="right"
+    >
+      <NonStyleLink
+        to="/"
+      >
+        <ForwardRef(Button)>
+          <IconAndText
+            component="span"
+            iconComponent={<Memo />}
+            iconPosition="left"
+            text="全体マップで確認する"
+          />
+        </ForwardRef(Button)>
+      </NonStyleLink>
+    </ForwardRef(Typography)>
     <ForwardRef(Divider) />
     <ForwardRef(Grid)
       container={true}
@@ -215,7 +231,7 @@ exports[`Shallow Snapshot Tests author view 1`] = `
     </ForwardRef(Grid)>
     <ShareButtons
       description="description"
-      title="【隠れミッキー】title"
+      title="title"
       url="http://localhost/"
     />
   </ForwardRef(Stack)>
@@ -404,30 +420,23 @@ exports[`Shallow Snapshot Tests draft 1`] = `
         />
       </ParkMap>
     </NonStyleLink>
-    <ForwardRef(Divider) />
-    <ForwardRef(Grid)
-      container={true}
-      justifyContent="space-between"
-      pb={5}
+    <ForwardRef(Typography)
+      align="right"
     >
-      <ForwardRef(Grid)
-        item={true}
-      />
-      <ForwardRef(Grid)
-        item={true}
+      <NonStyleLink
+        to="/"
       >
-        <ForwardRef(Box)
-          textAlign="right"
-        >
-          <ForwardRef(LoadingButton)
-            loading={false}
-            onClick={[Function]}
-            startIcon={<Memo />}
-            variant="outlined"
+        <ForwardRef(Button)>
+          <IconAndText
+            component="span"
+            iconComponent={<Memo />}
+            iconPosition="left"
+            text="全体マップで確認する"
           />
-        </ForwardRef(Box)>
-      </ForwardRef(Grid)>
-    </ForwardRef(Grid)>
+        </ForwardRef(Button)>
+      </NonStyleLink>
+    </ForwardRef(Typography)>
+    <ForwardRef(Divider) />
   </ForwardRef(Stack)>
   <ForwardRef(Box)
     mb={5}
@@ -606,30 +615,23 @@ exports[`Shallow Snapshot Tests draft with same created & updated 1`] = `
         />
       </ParkMap>
     </NonStyleLink>
-    <ForwardRef(Divider) />
-    <ForwardRef(Grid)
-      container={true}
-      justifyContent="space-between"
-      pb={5}
+    <ForwardRef(Typography)
+      align="right"
     >
-      <ForwardRef(Grid)
-        item={true}
-      />
-      <ForwardRef(Grid)
-        item={true}
+      <NonStyleLink
+        to="/"
       >
-        <ForwardRef(Box)
-          textAlign="right"
-        >
-          <ForwardRef(LoadingButton)
-            loading={false}
-            onClick={[Function]}
-            startIcon={<Memo />}
-            variant="outlined"
+        <ForwardRef(Button)>
+          <IconAndText
+            component="span"
+            iconComponent={<Memo />}
+            iconPosition="left"
+            text="全体マップで確認する"
           />
-        </ForwardRef(Box)>
-      </ForwardRef(Grid)>
-    </ForwardRef(Grid)>
+        </ForwardRef(Button)>
+      </NonStyleLink>
+    </ForwardRef(Typography)>
+    <ForwardRef(Divider) />
   </ForwardRef(Stack)>
   <ForwardRef(Box)
     mb={5}
@@ -662,7 +664,7 @@ exports[`Shallow Snapshot Tests have added good 1`] = `
   >
     <ShareButtons
       description="description"
-      title="【隠れミッキー】title"
+      title="title"
       url="http://localhost/"
     />
     <ForwardRef(Divider) />
@@ -811,6 +813,22 @@ exports[`Shallow Snapshot Tests have added good 1`] = `
         />
       </ParkMap>
     </NonStyleLink>
+    <ForwardRef(Typography)
+      align="right"
+    >
+      <NonStyleLink
+        to="/"
+      >
+        <ForwardRef(Button)>
+          <IconAndText
+            component="span"
+            iconComponent={<Memo />}
+            iconPosition="left"
+            text="全体マップで確認する"
+          />
+        </ForwardRef(Button)>
+      </NonStyleLink>
+    </ForwardRef(Typography)>
     <ForwardRef(Divider) />
     <ForwardRef(Grid)
       container={true}
@@ -839,7 +857,7 @@ exports[`Shallow Snapshot Tests have added good 1`] = `
     </ForwardRef(Grid)>
     <ShareButtons
       description="description"
-      title="【隠れミッキー】title"
+      title="title"
       url="http://localhost/"
     />
   </ForwardRef(Stack)>
@@ -874,7 +892,7 @@ exports[`Shallow Snapshot Tests have liked 1`] = `
   >
     <ShareButtons
       description="description"
-      title="【隠れミッキー】title"
+      title="title"
       url="http://localhost/"
     />
     <ForwardRef(Divider) />
@@ -1035,6 +1053,22 @@ exports[`Shallow Snapshot Tests have liked 1`] = `
         />
       </ParkMap>
     </NonStyleLink>
+    <ForwardRef(Typography)
+      align="right"
+    >
+      <NonStyleLink
+        to="/"
+      >
+        <ForwardRef(Button)>
+          <IconAndText
+            component="span"
+            iconComponent={<Memo />}
+            iconPosition="left"
+            text="全体マップで確認する"
+          />
+        </ForwardRef(Button)>
+      </NonStyleLink>
+    </ForwardRef(Typography)>
     <ForwardRef(Divider) />
     <ForwardRef(Grid)
       container={true}
@@ -1075,7 +1109,7 @@ exports[`Shallow Snapshot Tests have liked 1`] = `
     </ForwardRef(Grid)>
     <ShareButtons
       description="description"
-      title="【隠れミッキー】title"
+      title="title"
       url="http://localhost/"
     />
   </ForwardRef(Stack)>
@@ -1118,7 +1152,7 @@ exports[`Shallow Snapshot Tests with article 1`] = `
   >
     <ShareButtons
       description="description"
-      title="【隠れミッキー】title"
+      title="title"
       url="http://localhost/"
     />
     <ForwardRef(Divider) />
@@ -1267,6 +1301,22 @@ exports[`Shallow Snapshot Tests with article 1`] = `
         />
       </ParkMap>
     </NonStyleLink>
+    <ForwardRef(Typography)
+      align="right"
+    >
+      <NonStyleLink
+        to="/"
+      >
+        <ForwardRef(Button)>
+          <IconAndText
+            component="span"
+            iconComponent={<Memo />}
+            iconPosition="left"
+            text="全体マップで確認する"
+          />
+        </ForwardRef(Button)>
+      </NonStyleLink>
+    </ForwardRef(Typography)>
     <ForwardRef(Divider) />
     <ForwardRef(Grid)
       container={true}
@@ -1293,7 +1343,7 @@ exports[`Shallow Snapshot Tests with article 1`] = `
     </ForwardRef(Grid)>
     <ShareButtons
       description="description"
-      title="【隠れミッキー】title"
+      title="title"
       url="http://localhost/"
     />
   </ForwardRef(Stack)>
@@ -1329,7 +1379,7 @@ exports[`Shallow Snapshot Tests with image 1`] = `
   >
     <ShareButtons
       description="description"
-      title="【隠れミッキー】title"
+      title="title"
       url="http://localhost/"
     />
     <ForwardRef(Divider) />
@@ -1482,6 +1532,22 @@ exports[`Shallow Snapshot Tests with image 1`] = `
         />
       </ParkMap>
     </NonStyleLink>
+    <ForwardRef(Typography)
+      align="right"
+    >
+      <NonStyleLink
+        to="/"
+      >
+        <ForwardRef(Button)>
+          <IconAndText
+            component="span"
+            iconComponent={<Memo />}
+            iconPosition="left"
+            text="全体マップで確認する"
+          />
+        </ForwardRef(Button)>
+      </NonStyleLink>
+    </ForwardRef(Typography)>
     <ForwardRef(Divider) />
     <ForwardRef(Grid)
       container={true}
@@ -1508,7 +1574,7 @@ exports[`Shallow Snapshot Tests with image 1`] = `
     </ForwardRef(Grid)>
     <ShareButtons
       description="description"
-      title="【隠れミッキー】title"
+      title="title"
       url="http://localhost/"
     />
   </ForwardRef(Stack)>

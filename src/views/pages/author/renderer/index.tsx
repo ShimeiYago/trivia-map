@@ -71,7 +71,11 @@ export class Renderer extends React.Component<Props, State> {
 
         <MapLinkButton userId={this.props.userId} />
 
-        <ArticlePreviewList variant="large" searchConditions={{ user: this.props.userId }} />
+        <ArticlePreviewList
+          variant="large"
+          searchConditions={{ user: this.props.userId }}
+          doesKeepPageParamInUrl
+        />
       </>
     );
   };

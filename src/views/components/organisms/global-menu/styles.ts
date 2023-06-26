@@ -46,7 +46,7 @@ export function localNavi(
     ...contentStyle(permanentLeftNavi, mapPage, isMobile, true, true),
     position: 'fixed',
     pt: `${topPadding}px`,
-    zIndex: 1000,
+    zIndex: 1001,
   };
 }
 

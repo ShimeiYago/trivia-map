@@ -2,6 +2,7 @@ import { shallow, ShallowWrapper } from 'enzyme';
 import { Renderer, Props, State } from '..';
 import * as GetArticlesPreviewsApiModule from 'api/articles-api/get-articles-previews';
 import { mockGetArticlesPreviewsResponse } from 'api/mock/articles-response';
+import { Location } from 'react-router-dom';
 
 let wrapper: ShallowWrapper<Props, State, Renderer>;
 let getArticlesPreviewsSpy: jest.SpyInstance;
@@ -27,6 +28,9 @@ const basicProps: Props = {
   variant: 'large',
   throwError: jest.fn(),
   refreshUser: jest.fn(),
+  page: 0,
+  location: { pathname: '/pathname', search: '?category=1' } as Location,
+  doesKeepPageParamInUrl: false,
 };
 
 describe('Shallow Snapshot Tests', () => {
@@ -104,7 +108,7 @@ describe('fetchArticlesPreviews', () => {
 
     wrapper = shallow(<Renderer {...basicProps} />);
     const instance = wrapper.instance();
-    await instance['fetchArticlesPreviews']();
+    await instance['fetchArticlesPreviews'](1);
 
     expect(instance.state.loadingState).toBe('success');
   });
@@ -114,7 +118,7 @@ describe('fetchArticlesPreviews', () => {
 
     wrapper = shallow(<Renderer {...basicProps} />);
     const instance = wrapper.instance();
-    await instance['fetchArticlesPreviews']();
+    await instance['fetchArticlesPreviews'](1);
 
     expect(instance.props.throwError).toBeCalled();
   });
@@ -147,6 +151,14 @@ describe('handleChangePagination', () => {
     instance['handleChangePagination']({} as React.ChangeEvent<unknown>, 1);
 
     expect(instance.topRef.current?.scrollIntoView).toBeCalled();
+  });
+
+  it('should call replaceState if doesKeepPageParamInUrl is true', () => {
+    wrapper = shallow(<Renderer {...basicProps} doesKeepPageParamInUrl />);
+    const instance = wrapper.instance();
+    instance['handleChangePagination']({} as React.ChangeEvent<unknown>, 1);
+
+    expect(getArticlesPreviewsSpy).toBeCalled();
   });
 });
 

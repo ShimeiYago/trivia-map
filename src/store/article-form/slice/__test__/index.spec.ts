@@ -90,6 +90,11 @@ describe('articleForm reducer', () => {
     });
   });
 
+  it('updateDescription update formError if it exceed max length', () => {
+    const actual = articleFormReducer(stateWithValidation, updateDescription('x'.repeat(1001)));
+    expect(actual.formError?.fieldErrors?.description).toEqual(['文字数 501 / 500']);
+  });
+
   it('should handle updatePosition', () => {
     const actual = articleFormReducer(
       initialState,

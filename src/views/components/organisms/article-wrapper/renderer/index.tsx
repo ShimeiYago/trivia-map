@@ -21,11 +21,11 @@ import { DesignedHead } from 'views/components/atoms/designed-head';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import FolderIcon from '@mui/icons-material/Folder';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
-import { CATEGORIES, SITE_NAME } from 'constant';
+import { CATEGORIES } from 'constant';
 import { NonStyleLink } from 'views/components/atoms/non-style-link';
 
 const DEFAULT_LOCAL_BACK_NAVI = {
-  text: SITE_NAME,
+  text: '全体マップへ',
   link: MAP_PAGE_LINK,
 };
 
@@ -35,14 +35,14 @@ export class Renderer extends React.Component<Props> {
   }
 
   render() {
-    const { isMobile, children, showSidebar, localBackNavi } = this.props;
+    const { isMobile, children, showSidebar, localBackNavi, hideLocalNavi } = this.props;
 
     return (
       <Box sx={wrapper}>
         <GlobalMenu
           topBarPosition="fixed"
           permanentLeftNavi={!isMobile}
-          localBackNavi={localBackNavi ?? DEFAULT_LOCAL_BACK_NAVI}
+          localBackNavi={hideLocalNavi ? undefined : localBackNavi ?? DEFAULT_LOCAL_BACK_NAVI}
         >
           <Box sx={contentWrapper(isMobile)}>
             <Grid container spacing={isMobile || !showSidebar ? 2 : 4}>
@@ -140,6 +140,7 @@ export type Props = {
   children: React.ReactNode;
   showSidebar: boolean;
   localBackNavi?: LocalBackNavi;
+  hideLocalNavi?: boolean;
 };
 
 export type LocalBackNavi = {

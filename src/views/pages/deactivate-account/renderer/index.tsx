@@ -13,6 +13,7 @@ import { deactivate } from 'api/auths-api/deactivate';
 import { TextList } from 'views/components/atoms/text-list';
 import { Image } from 'views/components/moleculars/image';
 import logoImage from 'images/logo-blue.png';
+import { ApiError } from 'api/utils/handle-axios-error';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -134,7 +135,8 @@ export class Renderer extends React.Component<Props, State> {
       this.props.removeCookie(COOKIE_NAME.hasRefreshToken);
       this.props.updateUser();
     } catch (error) {
-      this.props.throwError(500);
+      const apiError = error as ApiError<unknown>;
+      this.props.throwError(apiError.status);
     }
   };
 }

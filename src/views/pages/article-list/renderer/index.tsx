@@ -31,6 +31,7 @@ import { PAGE_NAMES } from 'constant/page-names';
 import { NonStyleLink } from 'views/components/atoms/non-style-link';
 import recommendImage from 'images/recommend.png';
 import { Image } from 'views/components/moleculars/image';
+import { PARKS } from 'constant';
 export class Renderer extends React.Component<Props, State> {
   headingRef: React.RefObject<HTMLHeadingElement>;
 
@@ -39,25 +40,23 @@ export class Renderer extends React.Component<Props, State> {
     this.headingRef = React.createRef();
 
     this.state = {
-      formSearchConditions: {},
-      currentSearchConditions: {},
-      order: 'latest',
+      formSearchConditions: props.initialSearchConditions,
+      currentSearchConditions: props.initialSearchConditions,
+      order: props.initialOrder,
+      inputtedKeyword: props.initialSearchConditions.keywords?.join(' ') ?? '',
     };
-  }
-
-  componentDidMount() {
-    this.setState({
-      formSearchConditions: this.props.initialSearchConditions,
-      currentSearchConditions: this.props.initialSearchConditions,
-    });
   }
 
   componentDidUpdate(_: Props, prevState: State) {
     if (
       JSON.stringify(prevState.currentSearchConditions) !==
-      JSON.stringify(this.state.currentSearchConditions)
+        JSON.stringify(this.state.currentSearchConditions) ||
+      prevState.order !== this.state.order
     ) {
-      const urlParameters = getUrlParameters(this.state.currentSearchConditions);
+      const urlParameters = getUrlParameters({
+        ...this.state.currentSearchConditions,
+        order: this.state.order,
+      });
       history.replaceState('', '', `${ARTICLE_LIST_PAGE_LINK}${urlParameters}`);
     }
   }
@@ -70,6 +69,7 @@ export class Renderer extends React.Component<Props, State> {
     return (
       <>
         {this.renderConditionsForm()}
+        {this.renderCurrentConditions()}
         <Divider sx={{ my: 3 }} />
 
         <Typography
@@ -90,6 +90,7 @@ export class Renderer extends React.Component<Props, State> {
 
         <ArticlePreviewList
           variant="large"
+          doesKeepPageParamInUrl
           searchConditions={{
             ...this.state.currentSearchConditions,
             order: this.state.order,
@@ -106,9 +107,13 @@ export class Renderer extends React.Component<Props, State> {
   };
 
   protected renderConditionsForm = () => {
-    const disabled =
+    const disabledSearchButton =
       JSON.stringify(this.state.formSearchConditions) ===
       JSON.stringify(this.state.currentSearchConditions);
+
+    const disabledClearButton =
+      JSON.stringify(this.state.formSearchConditions) === JSON.stringify({}) &&
+      JSON.stringify(this.state.currentSearchConditions) === JSON.stringify({});
 
     return (
       <Accordion>
@@ -150,14 +155,44 @@ export class Renderer extends React.Component<Props, State> {
                 {this.renderKeywordSearch()}
               </Grid>
             </Grid>
-            <Box textAlign="center">
-              <Button onClick={this.handleClickFiltering} disabled={disabled}>
-                この条件で絞り込む
-              </Button>
-            </Box>
+            <Grid container>
+              <Grid item xs={4} textAlign="center">
+                <Button onClick={this.handleClearFiltering} disabled={disabledClearButton}>
+                  クリア
+                </Button>
+              </Grid>
+              <Grid item xs={8} textAlign="center">
+                <Button onClick={this.handleClickFiltering} disabled={disabledSearchButton}>
+                  この条件で絞り込む
+                </Button>
+              </Grid>
+            </Grid>
           </Box>
         </AccordionDetails>
       </Accordion>
+    );
+  };
+
+  protected renderCurrentConditions = () => {
+    const { category, park, keywords } = this.state.currentSearchConditions;
+
+    const getCategoryName = (categoryId: number) => {
+      return CATEGORIES.find((categoryObj) => {
+        return categoryObj.categoryId === categoryId;
+      })?.categoryName;
+    };
+
+    return (
+      <Box mt={2}>
+        {category && <Box>カテゴリー：{getCategoryName(category)}</Box>}
+        {park && <Box>パーク：{park === PARKS.land ? 'ランド' : 'シー'}</Box>}
+        {keywords && (
+          <Box>
+            キーワード：
+            {keywords.join(' ')}
+          </Box>
+        )}
+      </Box>
     );
   };
 
@@ -255,16 +290,17 @@ export class Renderer extends React.Component<Props, State> {
           variant="standard"
           fullWidth
           onChange={this.handleChangeKeyword}
-          value={this.state.formSearchConditions.keywords?.join(',')}
+          value={this.state.inputtedKeyword}
         />
       </Box>
     );
   };
 
   protected handleChangeKeyword = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const keywords = event.target.value.split(/[\s,]+/).filter((keyword) => keyword !== '');
+    const keywords = event.target.value.split(/[\s,]+/).filter((v) => v);
 
     this.setState({
+      inputtedKeyword: event.target.value,
       formSearchConditions: {
         ...this.state.formSearchConditions,
         keywords: keywords,
@@ -278,16 +314,27 @@ export class Renderer extends React.Component<Props, State> {
     });
     this.headingRef.current && this.headingRef.current.scrollIntoView({ block: 'center' });
   };
+
+  protected handleClearFiltering = () => {
+    this.setState({
+      formSearchConditions: {},
+      currentSearchConditions: {},
+      inputtedKeyword: '',
+    });
+    this.headingRef.current && this.headingRef.current.scrollIntoView({ block: 'center' });
+  };
 }
 
 export type Props = {
   initialSearchConditions: Conditions;
+  initialOrder: PreviewListOrder;
 };
 
 export type State = {
   formSearchConditions: Conditions;
   currentSearchConditions: Conditions;
   order: PreviewListOrder;
+  inputtedKeyword: string;
 };
 
 export type Conditions = {

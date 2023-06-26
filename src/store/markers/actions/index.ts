@@ -5,6 +5,7 @@ import { getRemoteMarkers, GetMarkersResponseWithPagination } from 'api/markers-
 import { throwError } from 'store/global-error/slice';
 import { Marker } from 'types/marker';
 import { Park } from 'types/park';
+import { ApiError } from 'api/utils/handle-axios-error';
 
 // basic actions
 export const {
@@ -53,7 +54,8 @@ export const fetchMarkers =
       }
       dispatch(fetchSuccess());
     } catch (error) {
-      dispatch(throwError(500));
+      const apiError = error as ApiError<unknown>;
+      dispatch(throwError(apiError.status));
     }
   };
 

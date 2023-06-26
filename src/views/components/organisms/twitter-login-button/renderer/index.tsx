@@ -6,6 +6,7 @@ import { getDomain } from 'utils/get-domain.ts';
 import { TwitterAccessTokenResponse } from 'api/auths-api/twitter-access-token';
 import { twitterLogin } from 'api/auths-api/twitter-login';
 import { User } from 'types/user';
+import { ApiError } from 'api/utils/handle-axios-error';
 
 export class Renderer extends React.Component<Props, State> {
   state: State = {
@@ -56,7 +57,8 @@ export class Renderer extends React.Component<Props, State> {
       this.props.loginSuccess(loginResponse.user);
       this.props.onLoginSucceed?.();
     } catch (error) {
-      this.props.throwError(500);
+      const apiError = error as ApiError<unknown>;
+      this.props.throwError(apiError.status);
     }
   };
 

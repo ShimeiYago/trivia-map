@@ -17,13 +17,15 @@ export class Renderer extends React.Component<Props, State> {
     }
   }
   render() {
+    if (!this.state.redirectTo) {
+      return this.props.children;
+    }
+
     switch (this.state.redirectTo) {
       case 404:
         return <Navigate to={NOT_FOUND_LINK} replace />;
-      case 500:
-        return <Navigate to={INTERNAL_ERROR_LINK} />;
       default:
-        return this.props.children;
+        return <Navigate to={INTERNAL_ERROR_LINK} />;
     }
   }
 }

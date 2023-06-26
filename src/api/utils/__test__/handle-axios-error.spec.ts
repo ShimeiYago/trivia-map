@@ -53,4 +53,21 @@ describe('handleAxiosError', () => {
     };
     expect(actual).toEqual(expected);
   });
+
+  it('convert axiosError when timeout error', () => {
+    const axiosError: AxiosError = {
+      message: 'API error',
+      isAxiosError: true,
+      toJSON: () => jest.fn(),
+      config: {},
+      name: '',
+      code: 'ECONNABORTED',
+    };
+    const actual = handleAxiosError(axiosError);
+    const expected = {
+      status: 408,
+      errorMsg: 'API error',
+    };
+    expect(actual).toEqual(expected);
+  });
 });

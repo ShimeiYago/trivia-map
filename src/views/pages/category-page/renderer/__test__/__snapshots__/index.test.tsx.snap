@@ -29,6 +29,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
     categoryId={1}
   />
   <ArticlePreviewList
+    doesKeepPageParamInUrl={true}
     searchConditions={
       Object {
         "category": 1,

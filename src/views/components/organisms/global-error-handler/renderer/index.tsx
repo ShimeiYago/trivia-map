@@ -1,5 +1,5 @@
 import React from 'react';
-import { INTERNAL_ERROR_LINK, NOT_FOUND_LINK, TIMEOUT_ERROR_LINK } from 'constant/links';
+import { INTERNAL_ERROR_LINK, NOT_FOUND_LINK } from 'constant/links';
 import { Navigate } from 'react-router-dom';
 
 export class Renderer extends React.Component<Props, State> {
@@ -24,8 +24,6 @@ export class Renderer extends React.Component<Props, State> {
     switch (this.state.redirectTo) {
       case 404:
         return <Navigate to={NOT_FOUND_LINK} replace />;
-      case 408:
-        return <Navigate to={TIMEOUT_ERROR_LINK} />;
       default:
         return <Navigate to={INTERNAL_ERROR_LINK} />;
     }

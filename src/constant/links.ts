@@ -43,8 +43,6 @@ export const MAP_PAGE_LINK_WITH_CATEGORY = (categoryId: number) =>
 
 export const NOT_FOUND_LINK = '/error/404';
 
-export const TIMEOUT_ERROR_LINK = '/error/408';
-
 export const INTERNAL_ERROR_LINK = '/error/500';
 
 export const INQUIRY_PAGE_LINK = '/inquiry';

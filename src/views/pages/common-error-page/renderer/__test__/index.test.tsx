@@ -16,9 +16,4 @@ describe('Shallow Snapshot Tests', () => {
     wrapper.setProps({ errorStatus: 404 });
     expect(wrapper).toMatchSnapshot();
   });
-
-  it('408', () => {
-    wrapper.setProps({ errorStatus: 408 });
-    expect(wrapper).toMatchSnapshot();
-  });
 });

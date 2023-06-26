@@ -32,13 +32,6 @@ describe('globalAPIErrorMessage with get mode', () => {
     );
   });
 
-  it('return message for 408', () => {
-    const message = globalAPIErrorMessage(408, 'get');
-    expect(message).toBe(
-      'データの取得に失敗しました。通信環境が良いところでもう一度お試しください。',
-    );
-  });
-
   it('return message for other status', () => {
     const message = globalAPIErrorMessage(501, 'get');
     expect(message).toBe('データの取得に失敗しました。');

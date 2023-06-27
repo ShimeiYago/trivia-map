@@ -7,7 +7,7 @@ export function sendGa4ExceptionEvent(param: Param) {
   if (analyticsId) {
     const apiErrorLabel = `[${param.apiStatusCode}]${param.apiEndpoint}`;
 
-    ReactGA.initialize(analyticsId);
+    !ReactGA.isInitialized && ReactGA.initialize(analyticsId);
     ReactGA.send({
       hitType: 'event',
       eventAction: 'exception',

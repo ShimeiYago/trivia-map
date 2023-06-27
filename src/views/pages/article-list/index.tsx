@@ -1,6 +1,5 @@
 import { Renderer, Conditions } from './renderer';
 import { useLocation } from 'react-router-dom';
-import usePageTracking from 'helper-components/tracker';
 import { CommonHelmet } from 'helper-components/common-helmet';
 import { PAGE_NAMES } from 'constant/page-names';
 import { PAGE_DESCRIPTIONS } from 'constant/head-tags';
@@ -10,8 +9,6 @@ import { PreviewListOrder } from 'api/articles-api/get-articles-previews';
 export function ArticleList() {
   const search = useLocation().search;
   const query = new URLSearchParams(search);
-
-  usePageTracking();
 
   const parkParam = query.get('park');
 

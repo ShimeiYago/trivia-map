@@ -1,5 +1,4 @@
 import { Renderer } from './renderer';
-import usePageTracking from 'helper-components/tracker';
 import { useParams } from 'react-router-dom';
 import { throwError } from 'store/global-error/slice';
 import { useAppDispatch } from 'store';
@@ -9,8 +8,6 @@ import { categoryMapper } from 'utils/category-mapper';
 
 export function CategoryPage() {
   const dispatch = useAppDispatch();
-
-  usePageTracking();
 
   const { categoryId } = useParams();
   const categoryIdNumber = Number(categoryId);

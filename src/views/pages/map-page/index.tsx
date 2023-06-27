@@ -8,7 +8,6 @@ import { Renderer, Props } from './renderer';
 import { isMobile } from 'react-device-detect';
 import { Navigate, useLocation, useParams } from 'react-router-dom';
 import { NOT_FOUND_LINK } from 'constant/links';
-import usePageTracking from 'helper-components/tracker';
 import {
   selectFilteringCategoryId,
   selectFocusingPark,
@@ -35,8 +34,6 @@ export function MapPage(ownProps: { new?: boolean }) {
   const dispatch = useAppDispatch();
 
   const [width, height] = useWindowSize();
-
-  usePageTracking();
 
   if ((postId && !postIdNumber) || (userId && !userIdNumber)) {
     return <Navigate to={NOT_FOUND_LINK} />;

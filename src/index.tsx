@@ -63,6 +63,7 @@ import { PrivacyPage } from 'views/pages/privacy-page';
 import { SpecialMapPage } from 'views/pages/special-map-page';
 import { SpecialMapListPage } from 'views/pages/special-map-list-page';
 import { SpecialMapDetailPage } from 'views/pages/special-map-detail-page';
+import { Tracker } from 'helper-components/tracker';
 
 // Deactivate all console.log on production
 // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -79,90 +80,101 @@ ReactDOM.render(
         <HelmetProvider>
           <Provider store={store}>
             <BrowserRouter>
-              <Routes>
-                <Route index element={errorHandledElement(<MapPage />)} />
-                <Route path={MAP_USER_LINK(':userId')} element={errorHandledElement(<MapPage />)} />
-                <Route path={NEW_LINK} element={errorHandledElement(<MapPage new />)} />
-                <Route path={EDIT_LINK(':postId')} element={errorHandledElement(<MapPage />)} />
-                <Route
-                  path={ARTICLE_PAGE_LINK(':postId')}
-                  element={errorHandledElement(<Article />)}
-                />
-                <Route
-                  path={ARTICLE_LIST_PAGE_LINK}
-                  element={errorHandledElement(<ArticleList />)}
-                />
-                <Route
-                  path={AUTHER_PAGE_LINK(':userId')}
-                  element={errorHandledElement(<AuthorPage />)}
-                />
-                <Route
-                  path={CATEGORY_PAGE_LINK(':categoryId')}
-                  element={errorHandledElement(<CategoryPage />)}
-                />
-                <Route
-                  path={SPECIAL_MAP_LIST_PAGE_LINK}
-                  element={errorHandledElement(<SpecialMapListPage />)}
-                />
-                <Route
-                  path={SPECIAL_MAP_PAGE_LINK(':mapId')}
-                  element={errorHandledElement(<SpecialMapPage />)}
-                />
-                <Route
-                  path={SPECIAL_MAP_DETAIL_PAGE_LINK(':mapId')}
-                  element={errorHandledElement(<SpecialMapDetailPage />)}
-                />
+              <Tracker>
+                <Routes>
+                  <Route index element={errorHandledElement(<MapPage />)} />
+                  <Route
+                    path={MAP_USER_LINK(':userId')}
+                    element={errorHandledElement(<MapPage />)}
+                  />
+                  <Route path={NEW_LINK} element={errorHandledElement(<MapPage new />)} />
+                  <Route path={EDIT_LINK(':postId')} element={errorHandledElement(<MapPage />)} />
+                  <Route
+                    path={ARTICLE_PAGE_LINK(':postId')}
+                    element={errorHandledElement(<Article />)}
+                  />
+                  <Route
+                    path={ARTICLE_LIST_PAGE_LINK}
+                    element={errorHandledElement(<ArticleList />)}
+                  />
+                  <Route
+                    path={AUTHER_PAGE_LINK(':userId')}
+                    element={errorHandledElement(<AuthorPage />)}
+                  />
+                  <Route
+                    path={CATEGORY_PAGE_LINK(':categoryId')}
+                    element={errorHandledElement(<CategoryPage />)}
+                  />
+                  <Route
+                    path={SPECIAL_MAP_LIST_PAGE_LINK}
+                    element={errorHandledElement(<SpecialMapListPage />)}
+                  />
+                  <Route
+                    path={SPECIAL_MAP_PAGE_LINK(':mapId')}
+                    element={errorHandledElement(<SpecialMapPage />)}
+                  />
+                  <Route
+                    path={SPECIAL_MAP_DETAIL_PAGE_LINK(':mapId')}
+                    element={errorHandledElement(<SpecialMapDetailPage />)}
+                  />
 
-                <Route path={LOGIN_LINK} element={errorHandledElement(<Login page="login" />)} />
-                <Route path={SIGNUP_LINK} element={errorHandledElement(<Login page="signup" />)} />
-                <Route path={ADMIN_LINK} element={errorHandledElement(<Admin />)} />
-                <Route path={MY_ARTICLES_LINK} element={errorHandledElement(<MyArticles />)} />
-                <Route
-                  path={LIKED_ARTICLES_LINK}
-                  element={errorHandledElement(<LikedArticles />)}
-                />
-                <Route
-                  path={ACCOUNT_SETTINGS_LINK}
-                  element={errorHandledElement(<AccountSettings />)}
-                />
-                <Route
-                  path={PROFILE_SETTINGS_LINK}
-                  element={errorHandledElement(<ProfileEdit />)}
-                />
-                <Route
-                  path={PASSWORD_CHANGE_LINK}
-                  element={errorHandledElement(<ChangePassword />)}
-                />
-                <Route
-                  path={DEACTIVATE_ACCOUNT_LINK}
-                  element={errorHandledElement(<DeactivateAccount />)}
-                />
-                <Route
-                  path={VERIFY_EMAIL_LINK(':verifyKey')}
-                  element={errorHandledElement(<VerifyEmail />)}
-                />
-                <Route
-                  path={RESET_PASSWORD_LINK(':uid', ':token')}
-                  element={errorHandledElement(<ResetPassword />)}
-                />
-                <Route path={NOT_FOUND_LINK} element={<CommonErrorPage errorStatus={404} />} />
-                <Route path={INQUIRY_PAGE_LINK} element={errorHandledElement(<InquiryPage />)} />
-                <Route path={TERMS_PAGE_LINK} element={errorHandledElement(<TermsPage />)} />
-                <Route
-                  path={PRIVACY_POLICY_PAGE_LINK}
-                  element={errorHandledElement(<PrivacyPage />)}
-                />
-                <Route
-                  path={TWITTER_LOGIN_LINK}
-                  element={errorHandledElement(<TwitterLoginPage />)}
-                />
-                <Route
-                  path={TWITTER_CALLBACK_LINK}
-                  element={errorHandledElement(<TwitterCallbackPage />)}
-                />
-                <Route path={INTERNAL_ERROR_LINK} element={<CommonErrorPage errorStatus={500} />} />
-                <Route path="*" element={<CommonErrorPage errorStatus={404} />} />
-              </Routes>
+                  <Route path={LOGIN_LINK} element={errorHandledElement(<Login page="login" />)} />
+                  <Route
+                    path={SIGNUP_LINK}
+                    element={errorHandledElement(<Login page="signup" />)}
+                  />
+                  <Route path={ADMIN_LINK} element={errorHandledElement(<Admin />)} />
+                  <Route path={MY_ARTICLES_LINK} element={errorHandledElement(<MyArticles />)} />
+                  <Route
+                    path={LIKED_ARTICLES_LINK}
+                    element={errorHandledElement(<LikedArticles />)}
+                  />
+                  <Route
+                    path={ACCOUNT_SETTINGS_LINK}
+                    element={errorHandledElement(<AccountSettings />)}
+                  />
+                  <Route
+                    path={PROFILE_SETTINGS_LINK}
+                    element={errorHandledElement(<ProfileEdit />)}
+                  />
+                  <Route
+                    path={PASSWORD_CHANGE_LINK}
+                    element={errorHandledElement(<ChangePassword />)}
+                  />
+                  <Route
+                    path={DEACTIVATE_ACCOUNT_LINK}
+                    element={errorHandledElement(<DeactivateAccount />)}
+                  />
+                  <Route
+                    path={VERIFY_EMAIL_LINK(':verifyKey')}
+                    element={errorHandledElement(<VerifyEmail />)}
+                  />
+                  <Route
+                    path={RESET_PASSWORD_LINK(':uid', ':token')}
+                    element={errorHandledElement(<ResetPassword />)}
+                  />
+                  <Route path={NOT_FOUND_LINK} element={<CommonErrorPage errorStatus={404} />} />
+                  <Route path={INQUIRY_PAGE_LINK} element={errorHandledElement(<InquiryPage />)} />
+                  <Route path={TERMS_PAGE_LINK} element={errorHandledElement(<TermsPage />)} />
+                  <Route
+                    path={PRIVACY_POLICY_PAGE_LINK}
+                    element={errorHandledElement(<PrivacyPage />)}
+                  />
+                  <Route
+                    path={TWITTER_LOGIN_LINK}
+                    element={errorHandledElement(<TwitterLoginPage />)}
+                  />
+                  <Route
+                    path={TWITTER_CALLBACK_LINK}
+                    element={errorHandledElement(<TwitterCallbackPage />)}
+                  />
+                  <Route
+                    path={INTERNAL_ERROR_LINK}
+                    element={<CommonErrorPage errorStatus={500} />}
+                  />
+                  <Route path="*" element={<CommonErrorPage errorStatus={404} />} />
+                </Routes>
+              </Tracker>
             </BrowserRouter>
           </Provider>
         </HelmetProvider>

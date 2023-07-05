@@ -42,7 +42,7 @@ export class Renderer extends React.Component {
         <Typography sx={{ mb: 3 }}>
           Cookieの使用を望まない場合、ブラウザからCookieを無効に設定できます。
         </Typography>
-        {/* {renderHead('広告の配信について')}
+        {renderHead('広告の配信について')}
         <Typography sx={{ mb: 3 }}>
           当サイトはGoogle及びGoogleのパートナー（第三者配信事業者）の提供する広告を設置しております。その広告配信にはCookieを使用し、当サイトやその他のサイトへの過去のアクセス情報に基づいて広告を配信します。
         </Typography>
@@ -57,7 +57,7 @@ export class Renderer extends React.Component {
           ）で、パーソナライズ広告を無効にできます。また
           <a href="www.aboutads.info">www.aboutads.info</a>
           のページにアクセスして頂き、パーソナライズ広告掲載に使用される第三者配信事業者のCookieを無効にできます。
-        </Typography> */}
+        </Typography>
         {renderHead('アクセス解析ツールについて')}
         <Typography sx={{ mb: 1 }}>
           当サイトでは、Googleによるアクセス解析ツール「Googleアナリティクス」を利用しています。

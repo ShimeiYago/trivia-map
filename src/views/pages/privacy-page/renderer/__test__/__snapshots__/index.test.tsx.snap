@@ -103,6 +103,51 @@ exports[`Shallow Snapshot Tests basic 1`] = `
     component="h3"
     variant="h5"
   >
+    広告の配信について
+  </DesignedHead>
+  <ForwardRef(Typography)
+    sx={
+      Object {
+        "mb": 3,
+      }
+    }
+  >
+    当サイトはGoogle及びGoogleのパートナー（第三者配信事業者）の提供する広告を設置しております。その広告配信にはCookieを使用し、当サイトやその他のサイトへの過去のアクセス情報に基づいて広告を配信します。
+  </ForwardRef(Typography)>
+  <ForwardRef(Typography)
+    sx={
+      Object {
+        "mb": 3,
+      }
+    }
+  >
+    Googleが広告Cookieを使用することにより、当サイトや他のサイトにアクセスした際の情報に基づいて、Googleやそのパートナーが適切な広告を表示しています。
+  </ForwardRef(Typography)>
+  <ForwardRef(Typography)
+    sx={
+      Object {
+        "mb": 3,
+      }
+    }
+  >
+    お客様はGoogleアカウントの広告設定ページ（
+    <a
+      href="https://adssettings.google.com/u/0/authenticated"
+    >
+      https://adssettings.google.com/u/0/authenticated
+    </a>
+    ）で、パーソナライズ広告を無効にできます。また
+    <a
+      href="www.aboutads.info"
+    >
+      www.aboutads.info
+    </a>
+    のページにアクセスして頂き、パーソナライズ広告掲載に使用される第三者配信事業者のCookieを無効にできます。
+  </ForwardRef(Typography)>
+  <DesignedHead
+    component="h3"
+    variant="h5"
+  >
     アクセス解析ツールについて
   </DesignedHead>
   <ForwardRef(Typography)

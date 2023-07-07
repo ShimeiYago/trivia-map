@@ -97,6 +97,10 @@ Google Analytics ID (G-xxx).
 
 If true, this web site is not found by crawler.
 
+### `REACT_APP_AD_CLIENT`
+
+data-ad-client for Google Adsense.
+
 ## Author
 
 [ShimeiYago](https://github.com/ShimeiYago)

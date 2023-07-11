@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shallow Snapshot Tests basic 1`] = `
+<ins
+  className="adsbygoogle"
+  data-ad-format="auto"
+  data-ad-slot="xxx"
+  style={
+    Object {
+      "display": "block",
+      "textAlign": undefined,
+    }
+  }
+/>
+`;
+
+exports[`Shallow Snapshot Tests with optional props 1`] = `
+<ins
+  className="adsbygoogle"
+  data-ad-format="auto"
+  data-ad-slot="xxx"
+  data-full-width-responsive="true"
+  style={
+    Object {
+      "display": "block",
+      "textAlign": undefined,
+    }
+  }
+/>
+`;

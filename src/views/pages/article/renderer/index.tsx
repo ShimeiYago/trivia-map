@@ -43,6 +43,7 @@ import { ParkMap } from 'views/components/moleculars/park-map';
 import { MapMarker } from 'views/components/moleculars/map-marker';
 import { LatLng } from 'leaflet';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
+import { AdsenseIns } from 'views/components/moleculars/adsense-ins';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -152,6 +153,14 @@ export class Renderer extends React.Component<Props, State> {
             {description}
           </Typography>
 
+          {!isDraft && process.env.REACT_APP_AD_SLOT_IN_ARTICLE && (
+            <AdsenseIns
+              adSlot={process.env.REACT_APP_AD_SLOT_IN_ARTICLE}
+              adFormat="fluid"
+              adLayout="in-article"
+            />
+          )}
+
           <Divider />
 
           <IconAndText
@@ -207,6 +216,14 @@ export class Renderer extends React.Component<Props, State> {
             <Image src={recommendImage} width="300px" />
           </NonStyleLink>
         </Box>
+
+        {!isDraft && process.env.REACT_APP_AD_SLOT_UNDER_ARTICLE && (
+          <AdsenseIns
+            adSlot={process.env.REACT_APP_AD_SLOT_UNDER_ARTICLE}
+            adFormat="auto"
+            fullWidthResponsive
+          />
+        )}
       </>
     );
   };

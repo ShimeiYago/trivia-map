@@ -23,6 +23,7 @@ import cardClasses from 'views/common-styles/preview-card.module.css';
 import { cardStyle } from 'views/common-styles/card';
 import { ApiError } from 'api/utils/handle-axios-error';
 import { Location } from 'react-router-dom';
+import { AdsenseIns } from 'views/components/moleculars/adsense-ins';
 
 const POPUP_SCROLL_HEIGHT = '240px';
 const POPUP_SCROLL_GRADATION_HEIGHT = '50px';
@@ -76,29 +77,31 @@ export class Renderer extends React.Component<Props, State> {
       return <Typography align="center">表示する投稿がありません。</Typography>;
     }
 
-    const previewList = articlesPreviews?.results.map((preview) => {
-      const { postId, title, image, category, createdAt, numberOfGoods } = preview;
+    const previewList = articlesPreviews
+      ? articlesPreviews.results.map((preview) => {
+          const { postId, title, image, category, createdAt, numberOfGoods } = preview;
 
-      let card = null;
-      switch (this.props.variant) {
-        case 'popup':
-          card = this.renderPopupCard(title, image, category, numberOfGoods);
-          break;
-        case 'large':
-          card = this.renderLargeCard(title, image, category, createdAt, numberOfGoods);
-          break;
-        case 'sidebar':
-          card = this.renderSidebarCard(title, image);
-      }
+          let card = null;
+          switch (this.props.variant) {
+            case 'popup':
+              card = this.renderPopupCard(title, image, category, numberOfGoods);
+              break;
+            case 'large':
+              card = this.renderLargeCard(title, image, category, createdAt, numberOfGoods);
+              break;
+            case 'sidebar':
+              card = this.renderSidebarCard(title, image);
+          }
 
-      return (
-        <Box key={`preview-list-${postId}`}>
-          <Link to={ARTICLE_PAGE_LINK(String(postId))} className={cardClasses['preview-link']}>
-            {card}
-          </Link>
-        </Box>
-      );
-    });
+          return (
+            <Box key={`preview-list-${postId}`}>
+              <Link to={ARTICLE_PAGE_LINK(String(postId))} className={cardClasses['preview-link']}>
+                {card}
+              </Link>
+            </Box>
+          );
+        })
+      : [];
 
     if (this.props.variant === 'popup') {
       return (
@@ -120,8 +123,23 @@ export class Renderer extends React.Component<Props, State> {
           />
         </Box>
       );
+    } else if (this.props.variant === 'large') {
+      if (previewList.length > 5 && process.env.REACT_APP_AD_SLOT_IN_LIST) {
+        return (
+          <Stack spacing={3}>
+            {previewList.slice(0, 5)}
+            <AdsenseIns
+              adSlot={process.env.REACT_APP_AD_SLOT_IN_LIST}
+              adFormat="fluid"
+              adLayoutKey="-71+ed+2g-1n-4q"
+            />
+            {previewList.slice(5, previewList.length)}
+          </Stack>
+        );
+      }
+      return <Stack spacing={3}>{previewList}</Stack>;
     } else {
-      return <Stack spacing={this.props.variant === 'large' ? 3 : 1}>{previewList}</Stack>;
+      return <Stack spacing={1}>{previewList}</Stack>;
     }
   }
 

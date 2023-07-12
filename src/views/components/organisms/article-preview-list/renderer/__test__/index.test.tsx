@@ -21,6 +21,22 @@ const articlesPreviewsOnePage = {
   endIndex: 2,
 };
 
+const articlesPreviews10Articles = {
+  ...mockGetArticlesPreviewsResponse,
+  totalRecords: 10,
+  totalPages: 1,
+  currentPage: 1,
+  startIndex: 1,
+  endIndex: 10,
+  results: [
+    ...mockGetArticlesPreviewsResponse.results,
+    ...mockGetArticlesPreviewsResponse.results,
+    ...mockGetArticlesPreviewsResponse.results,
+    ...mockGetArticlesPreviewsResponse.results,
+    ...mockGetArticlesPreviewsResponse.results,
+  ],
+};
+
 const basicProps: Props = {
   searchConditions: {
     marker: 1,
@@ -38,6 +54,10 @@ describe('Shallow Snapshot Tests', () => {
     jest.resetAllMocks();
     wrapper = shallow(<Renderer {...basicProps} />);
     getArticlesPreviewsSpy = jest.spyOn(GetArticlesPreviewsApiModule, 'getArticlesPreviews');
+  });
+
+  afterEach(() => {
+    process.env.REACT_APP_AD_SLOT_IN_LIST = undefined;
   });
 
   it('basic', () => {
@@ -92,6 +112,17 @@ describe('Shallow Snapshot Tests', () => {
     wrapper.setState({
       loadingState: 'success',
       articlesPreviews: articlesPreviewsOnePage,
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('with adsense', () => {
+    process.env.REACT_APP_AD_SLOT_IN_LIST = 'xxx';
+
+    wrapper.setProps({ variant: 'large' });
+    wrapper.setState({
+      loadingState: 'success',
+      articlesPreviews: articlesPreviews10Articles,
     });
     expect(wrapper).toMatchSnapshot();
   });

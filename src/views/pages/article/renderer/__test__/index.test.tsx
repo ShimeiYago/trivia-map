@@ -66,6 +66,11 @@ describe('Shallow Snapshot Tests', () => {
     wrapper = shallow(<Renderer {...basicProps} />);
   });
 
+  afterEach(() => {
+    process.env.REACT_APP_AD_SLOT_UNDER_ARTICLE = undefined;
+    process.env.REACT_APP_AD_SLOT_IN_ARTICLE = undefined;
+  });
+
   it('basic', () => {
     expect(wrapper).toMatchSnapshot();
   });
@@ -132,6 +137,14 @@ describe('Shallow Snapshot Tests', () => {
       loadingArticleState: 'success',
       article: article,
     });
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('with adsense', () => {
+    process.env.REACT_APP_AD_SLOT_UNDER_ARTICLE = 'xxx';
+    process.env.REACT_APP_AD_SLOT_IN_ARTICLE = 'xxx';
+
+    wrapper.setState({ article: article, loadingArticleState: 'success' });
     expect(wrapper).toMatchSnapshot();
   });
 });

@@ -18,6 +18,7 @@ exports[`Shallow Snapshot Tests with optional props 1`] = `
 <ins
   className="adsbygoogle"
   data-ad-format="auto"
+  data-ad-layout-key="xxx"
   data-ad-slot="xxx"
   data-full-width-responsive="true"
   style={

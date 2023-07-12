@@ -18,6 +18,7 @@ export function AdsenseIns(props: Props) {
       data-ad-format={props.adFormat}
       data-full-width-responsive={props.fullWidthResponsive ? 'true' : undefined}
       data-ad-layout={props.adLayout}
+      data-ad-layout-key={props.adLayoutKey}
     ></ins>
   );
 }
@@ -26,6 +27,7 @@ export type Props = {
   adSlot: string;
   adFormat: 'auto' | 'fluid' | 'vertical' | 'horizontal';
   adLayout?: string;
+  adLayoutKey?: string;
   fullWidthResponsive?: boolean;
   textAlign?: 'center' | 'left' | 'right';
 };

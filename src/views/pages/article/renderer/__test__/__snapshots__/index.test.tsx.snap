@@ -114,6 +114,11 @@ exports[`Shallow Snapshot Tests author view 1`] = `
     >
       description
     </ForwardRef(Typography)>
+    <AdsenseIns
+      adFormat="fluid"
+      adLayout="in-article"
+      adSlot="undefined"
+    />
     <ForwardRef(Divider) />
     <IconAndText
       component="h3"
@@ -249,6 +254,11 @@ exports[`Shallow Snapshot Tests author view 1`] = `
       />
     </NonStyleLink>
   </ForwardRef(Box)>
+  <AdsenseIns
+    adFormat="auto"
+    adSlot="undefined"
+    fullWidthResponsive={true}
+  />
 </ArticleWrapper>
 `;
 
@@ -752,6 +762,11 @@ exports[`Shallow Snapshot Tests have added good 1`] = `
     >
       description
     </ForwardRef(Typography)>
+    <AdsenseIns
+      adFormat="fluid"
+      adLayout="in-article"
+      adSlot="undefined"
+    />
     <ForwardRef(Divider) />
     <IconAndText
       component="h3"
@@ -875,6 +890,11 @@ exports[`Shallow Snapshot Tests have added good 1`] = `
       />
     </NonStyleLink>
   </ForwardRef(Box)>
+  <AdsenseIns
+    adFormat="auto"
+    adSlot="undefined"
+    fullWidthResponsive={true}
+  />
 </ArticleWrapper>
 `;
 
@@ -992,6 +1012,11 @@ exports[`Shallow Snapshot Tests have liked 1`] = `
     >
       description
     </ForwardRef(Typography)>
+    <AdsenseIns
+      adFormat="fluid"
+      adLayout="in-article"
+      adSlot="undefined"
+    />
     <ForwardRef(Divider) />
     <IconAndText
       component="h3"
@@ -1127,6 +1152,11 @@ exports[`Shallow Snapshot Tests have liked 1`] = `
       />
     </NonStyleLink>
   </ForwardRef(Box)>
+  <AdsenseIns
+    adFormat="auto"
+    adSlot="undefined"
+    fullWidthResponsive={true}
+  />
 </ArticleWrapper>
 `;
 
@@ -1138,7 +1168,7 @@ exports[`Shallow Snapshot Tests loading 1`] = `
 </ArticleWrapper>
 `;
 
-exports[`Shallow Snapshot Tests with article 1`] = `
+exports[`Shallow Snapshot Tests with adsense 1`] = `
 <ArticleWrapper
   showSidebar={true}
 >
@@ -1240,6 +1270,11 @@ exports[`Shallow Snapshot Tests with article 1`] = `
     >
       description
     </ForwardRef(Typography)>
+    <AdsenseIns
+      adFormat="fluid"
+      adLayout="in-article"
+      adSlot="xxx"
+    />
     <ForwardRef(Divider) />
     <IconAndText
       component="h3"
@@ -1361,6 +1396,247 @@ exports[`Shallow Snapshot Tests with article 1`] = `
       />
     </NonStyleLink>
   </ForwardRef(Box)>
+  <AdsenseIns
+    adFormat="auto"
+    adSlot="xxx"
+    fullWidthResponsive={true}
+  />
+</ArticleWrapper>
+`;
+
+exports[`Shallow Snapshot Tests with article 1`] = `
+<ArticleWrapper
+  showSidebar={true}
+>
+  <CommonHelmet
+    description="description"
+    ogType="article"
+    title="【隠れミッキー】title"
+  />
+  <ForwardRef(Stack)
+    spacing={2}
+  >
+    <ShareButtons
+      description="description"
+      title="title"
+      url="http://localhost/"
+    />
+    <ForwardRef(Divider) />
+    <ForwardRef(Stack)
+      alignItems="center"
+      direction="row"
+      justifyContent="flex-start"
+      spacing={1}
+    >
+      <NonStyleLink
+        to="/users/1"
+      >
+        <ForwardRef(Avatar)
+          src="no-icon.jpg"
+          sx={
+            Object {
+              "height": 30,
+              "width": 30,
+            }
+          }
+        />
+      </NonStyleLink>
+      <NonStyleLink
+        to="/users/1"
+      >
+        <ForwardRef(Typography)
+          color="gray"
+          sx={
+            Object {
+              "textDecoration": "underline",
+            }
+          }
+        >
+          Axel
+        </ForwardRef(Typography)>
+      </NonStyleLink>
+    </ForwardRef(Stack)>
+    <DynamicAlignedText
+      component="h2"
+      sx={
+        Object {
+          "wordBreak": "break-all",
+        }
+      }
+      variant="h4"
+    >
+      title
+    </DynamicAlignedText>
+    <ForwardRef(Typography)
+      color="gray"
+      component="div"
+      sx={
+        Object {
+          "textDecoration": "underline",
+        }
+      }
+    >
+      <IconAndText
+        align="left"
+        iconComponent={<Memo />}
+        iconPosition="left"
+        text="隠れミッキー"
+        to="/categories/1"
+      />
+    </ForwardRef(Typography)>
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "color": "gray",
+          "textAlign": "right",
+        }
+      }
+    >
+      <ForwardRef(Typography)>
+        投稿日 2022/4/1
+      </ForwardRef(Typography)>
+      <ForwardRef(Typography)>
+        更新日 2022/5/1
+      </ForwardRef(Typography)>
+    </ForwardRef(Box)>
+    <ForwardRef(Divider) />
+    <ForwardRef(Typography)
+      fontSize={18}
+      whiteSpace="pre-wrap"
+    >
+      description
+    </ForwardRef(Typography)>
+    <AdsenseIns
+      adFormat="fluid"
+      adLayout="in-article"
+      adSlot="undefined"
+    />
+    <ForwardRef(Divider) />
+    <IconAndText
+      component="h3"
+      iconComponent={
+        <MyIcon
+          variant="map-marker"
+        />
+      }
+      iconPosition="left"
+      text="地図"
+      variant="h5"
+    />
+    <AreaNames
+      areaNames={
+        Array [
+          "シー",
+        ]
+      }
+    />
+    <NonStyleLink
+      to="/"
+    >
+      <ParkMap
+        disabled={true}
+        height={300}
+        initCenter={
+          Object {
+            "areaNames": Array [
+              "シー",
+            ],
+            "lat": 0,
+            "lng": 0,
+            "markerId": 1,
+            "numberOfPublicArticles": Object {
+              "eachCategory": Array [
+                1,
+                2,
+                1,
+              ],
+              "total": 4,
+            },
+            "park": "S",
+          }
+        }
+        initZoom={3}
+        park="S"
+      >
+        <MapMarker
+          autoOpen={false}
+          draggable={false}
+          position={
+            Object {
+              "lat": 0,
+              "lng": 0,
+            }
+          }
+          variant="red"
+          zIndexOffset={0}
+        />
+      </ParkMap>
+    </NonStyleLink>
+    <ForwardRef(Typography)
+      align="right"
+    >
+      <NonStyleLink
+        to="/"
+      >
+        <ForwardRef(Button)>
+          <IconAndText
+            component="span"
+            iconComponent={<Memo />}
+            iconPosition="left"
+            text="全体マップで確認する"
+          />
+        </ForwardRef(Button)>
+      </NonStyleLink>
+    </ForwardRef(Typography)>
+    <ForwardRef(Divider) />
+    <ForwardRef(Grid)
+      container={true}
+      justifyContent="space-between"
+      pb={5}
+    >
+      <ForwardRef(Grid)
+        item={true}
+      />
+      <ForwardRef(Grid)
+        item={true}
+      >
+        <ForwardRef(Box)
+          textAlign="right"
+        >
+          <ForwardRef(LoadingButton)
+            loading={false}
+            onClick={[Function]}
+            startIcon={<Memo />}
+            variant="outlined"
+          />
+        </ForwardRef(Box)>
+      </ForwardRef(Grid)>
+    </ForwardRef(Grid)>
+    <ShareButtons
+      description="description"
+      title="title"
+      url="http://localhost/"
+    />
+  </ForwardRef(Stack)>
+  <ForwardRef(Box)
+    mb={5}
+    mt={8}
+    textAlign="center"
+  >
+    <NonStyleLink
+      to="/map/new"
+    >
+      <Image
+        src="recommend.png"
+        width="300px"
+      />
+    </NonStyleLink>
+  </ForwardRef(Box)>
+  <AdsenseIns
+    adFormat="auto"
+    adSlot="undefined"
+    fullWidthResponsive={true}
+  />
 </ArticleWrapper>
 `;
 
@@ -1471,6 +1747,11 @@ exports[`Shallow Snapshot Tests with image 1`] = `
     >
       description
     </ForwardRef(Typography)>
+    <AdsenseIns
+      adFormat="fluid"
+      adLayout="in-article"
+      adSlot="undefined"
+    />
     <ForwardRef(Divider) />
     <IconAndText
       component="h3"
@@ -1592,5 +1873,10 @@ exports[`Shallow Snapshot Tests with image 1`] = `
       />
     </NonStyleLink>
   </ForwardRef(Box)>
+  <AdsenseIns
+    adFormat="auto"
+    adSlot="undefined"
+    fullWidthResponsive={true}
+  />
 </ArticleWrapper>
 `;

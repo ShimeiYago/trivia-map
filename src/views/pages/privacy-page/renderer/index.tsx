@@ -55,7 +55,7 @@ export class Renderer extends React.Component {
             https://adssettings.google.com/u/0/authenticated
           </a>
           ）で、パーソナライズ広告を無効にできます。また
-          <a href="www.aboutads.info">www.aboutads.info</a>
+          <a href="http://www.aboutads.info/choices/">www.aboutads.info</a>
           のページにアクセスして頂き、パーソナライズ広告掲載に使用される第三者配信事業者のCookieを無効にできます。
         </Typography>
         {renderHead('アクセス解析ツールについて')}

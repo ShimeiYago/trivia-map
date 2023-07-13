@@ -124,20 +124,7 @@ export class Renderer extends React.Component<Props, State> {
         </Box>
       );
     } else if (this.props.variant === 'large') {
-      if (previewList.length > 5 && process.env.REACT_APP_AD_SLOT_IN_LIST) {
-        return (
-          <Stack spacing={3}>
-            {previewList.slice(0, 5)}
-            <AdsenseIns
-              adSlot={process.env.REACT_APP_AD_SLOT_IN_LIST}
-              adFormat="fluid"
-              adLayoutKey="-71+ed+2g-1n-4q"
-            />
-            {previewList.slice(5, previewList.length)}
-          </Stack>
-        );
-      }
-      return <Stack spacing={3}>{previewList}</Stack>;
+      return this.renderLargeCardListWithAd(previewList);
     } else {
       return <Stack spacing={1}>{previewList}</Stack>;
     }
@@ -364,6 +351,38 @@ export class Renderer extends React.Component<Props, State> {
 
     history.replaceState('', '', `${location.pathname}?${urlSearchParams.toString()}`);
   }
+
+  protected renderLargeCardListWithAd = (previewList: JSX.Element[]) => {
+    const adSlot = process.env.REACT_APP_AD_SLOT_IN_LIST;
+    if (previewList.length < 3 || !adSlot) {
+      return <Stack spacing={3}>{previewList}</Stack>;
+    }
+
+    const adsenseIns = (
+      <AdsenseIns adSlot={adSlot} adFormat="fluid" adLayoutKey="-71+ed+2g-1n-4q" />
+    );
+
+    if (previewList.length > 8) {
+      return (
+        <Stack spacing={3}>
+          {previewList.slice(0, 2)}
+          {adsenseIns}
+          {previewList.slice(2, 8)}
+          {adsenseIns}
+          {previewList.slice(8, previewList.length)}
+        </Stack>
+      );
+    }
+
+    // previewList.length > 2
+    return (
+      <Stack spacing={3}>
+        {previewList.slice(0, 2)}
+        {adsenseIns}
+        {previewList.slice(2, previewList.length)}
+      </Stack>
+    );
+  };
 }
 
 export type Props = {

@@ -37,6 +37,16 @@ const articlesPreviews10Articles = {
   ],
 };
 
+const articlesPreviews4Articles = {
+  ...mockGetArticlesPreviewsResponse,
+  totalRecords: 4,
+  totalPages: 1,
+  currentPage: 1,
+  startIndex: 1,
+  endIndex: 4,
+  results: [...mockGetArticlesPreviewsResponse.results, ...mockGetArticlesPreviewsResponse.results],
+};
+
 const basicProps: Props = {
   searchConditions: {
     marker: 1,
@@ -116,13 +126,24 @@ describe('Shallow Snapshot Tests', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('with adsense', () => {
+  it('with adsense (number of article is 10)', () => {
     process.env.REACT_APP_AD_SLOT_IN_LIST = 'xxx';
 
     wrapper.setProps({ variant: 'large' });
     wrapper.setState({
       loadingState: 'success',
       articlesPreviews: articlesPreviews10Articles,
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('with adsense (number of article is 4)', () => {
+    process.env.REACT_APP_AD_SLOT_IN_LIST = 'xxx';
+
+    wrapper.setProps({ variant: 'large' });
+    wrapper.setState({
+      loadingState: 'success',
+      articlesPreviews: articlesPreviews4Articles,
     });
     expect(wrapper).toMatchSnapshot();
   });

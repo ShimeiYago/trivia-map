@@ -70,9 +70,7 @@ exports[`Shallow Snapshot Tests focusing a marker 1`] = `
                 "invalidateSize": [MockFunction],
                 "on": [MockFunction],
               },
-              "popup": <ForwardRef(Box)
-                width={300}
-              >
+              "popup": <React.Fragment>
                 <ForwardRef(Typography)
                   align="center"
                   component="div"
@@ -89,7 +87,7 @@ exports[`Shallow Snapshot Tests focusing a marker 1`] = `
                 >
                   アリスモチーフのトイレです。トランプ模様の扉がかわいい。
                 </DynamicAlignedText>
-              </ForwardRef(Box)>,
+              </React.Fragment>,
             }
           }
           position={
@@ -337,9 +335,7 @@ exports[`Shallow Snapshot Tests loaded 1`] = `
                 "invalidateSize": [MockFunction],
                 "on": [MockFunction],
               },
-              "popup": <ForwardRef(Box)
-                width={300}
-              >
+              "popup": <React.Fragment>
                 <ForwardRef(Typography)
                   align="center"
                   component="div"
@@ -356,7 +352,7 @@ exports[`Shallow Snapshot Tests loaded 1`] = `
                 >
                   アリスモチーフのトイレです。トランプ模様の扉がかわいい。
                 </DynamicAlignedText>
-              </ForwardRef(Box)>,
+              </React.Fragment>,
             }
           }
           position={

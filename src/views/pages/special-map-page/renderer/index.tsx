@@ -116,14 +116,14 @@ export class Renderer extends React.Component<Props, State> {
       }
 
       const popup = (
-        <>
+        <Box width={300}>
           {marker.image && (
             <Typography align="center" component="div" mb={2}>
               <Image src={marker.image} maxWidth="full" maxHeight="200px" />
             </Typography>
           )}
           <DynamicAlignedText component="div">{marker.description}</DynamicAlignedText>
-        </>
+        </Box>
       );
 
       return (

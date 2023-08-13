@@ -43,6 +43,7 @@ import {
   SPECIAL_MAP_PAGE_LINK,
   SPECIAL_MAP_LIST_PAGE_LINK,
   SPECIAL_MAP_DETAIL_PAGE_LINK,
+  SPECIAL_MAP_EDIT_PAGE_LINK,
 } from 'constant/links';
 import { ChangePassword } from 'views/pages/change-password';
 import { ResetPassword } from 'views/pages/reset-password';
@@ -113,6 +114,11 @@ ReactDOM.render(
                     path={SPECIAL_MAP_PAGE_LINK(':mapId')}
                     element={errorHandledElement(<SpecialMapPage />)}
                   />
+                  <Route
+                    path={SPECIAL_MAP_EDIT_PAGE_LINK(':mapId')}
+                    element={errorHandledElement(<SpecialMapPage edit />)}
+                  />
+
                   <Route
                     path={SPECIAL_MAP_DETAIL_PAGE_LINK(':mapId')}
                     element={errorHandledElement(<SpecialMapDetailPage />)}

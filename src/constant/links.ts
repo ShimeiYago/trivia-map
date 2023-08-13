@@ -65,4 +65,6 @@ export const SPECIAL_MAP_PAGE_LINK = (mapId: string, param?: { marker?: number; 
   return url;
 };
 
+export const SPECIAL_MAP_EDIT_PAGE_LINK = (mapId: string) => `/special-maps/edit/${mapId}`;
+
 export const SPECIAL_MAP_DETAIL_PAGE_LINK = (mapId: string) => `/special-maps/detail/${mapId}`;

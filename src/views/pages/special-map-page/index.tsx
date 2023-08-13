@@ -6,7 +6,7 @@ import { useAppDispatch } from 'store';
 import { useWindowSize } from 'helper-components/user-window-size';
 import { throwError } from 'store/global-error/slice';
 
-export function SpecialMapPage() {
+export function SpecialMapPage({ edit }: { edit?: boolean }) {
   const { mapId } = useParams();
   const mapIdNumber = Number(mapId);
 
@@ -30,6 +30,7 @@ export function SpecialMapPage() {
     windowHeight: height,
     markerId: markerId,
     park: park ?? undefined,
+    editMode: !!edit,
 
     throwError: (errorStatus: number) => dispatch(throwError(errorStatus)),
   };

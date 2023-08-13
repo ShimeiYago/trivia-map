@@ -6,12 +6,13 @@ import { getDomain } from 'utils/get-domain.ts';
 
 export function CommonHelmet(props: Props): JSX.Element {
   const domain = getDomain(window);
+  const location = useLocation();
 
   const description = props.description ?? DEFAULT_HEAD_TAGS.description;
   const ogType = props.ogType ?? DEFAULT_HEAD_TAGS.ogType;
   const imageUrl = props.imageUrl ?? `${domain}/${DEFAULT_HEAD_TAGS.imageName}`;
-
-  const location = useLocation();
+  const currentUrl = `${domain}${location.pathname}`;
+  const canonicalUrl = props.canonicalUrlPath ? `${domain}${props.canonicalUrlPath}` : currentUrl;
 
   if (props.noindex || NO_INDEX) {
     return (
@@ -22,23 +23,15 @@ export function CommonHelmet(props: Props): JSX.Element {
     );
   }
 
-  if (props.canonicalUrlPath) {
-    return (
-      <Helmet>
-        <title>{props.title}</title>
-        <link rel="canonical" href={`${domain}${props.canonicalUrlPath}`} />
-      </Helmet>
-    );
-  }
-
   return (
     <Helmet>
       <title>{props.title}</title>
+      <link rel="canonical" href={canonicalUrl} />
       <meta name="description" content={description} />
       <meta property="og:title" content={props.title} />
       <meta property="og:description" content={description} />
       <meta property="og:type" content={ogType} />
-      <meta property="og:url" content={`${domain}${location.pathname}`} />
+      <meta property="og:url" content={currentUrl} />
       <meta property="og:image" content={imageUrl} />
       <meta property="og:site_name" content={SITE_NAME} />
       <meta property="og:locale" content={DEFAULT_HEAD_TAGS.ogLocale} />

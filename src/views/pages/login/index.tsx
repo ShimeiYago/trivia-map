@@ -12,7 +12,7 @@ export const Login = (props: Props) => {
       <CommonHelmet
         title={pageName}
         description={PAGE_DESCRIPTIONS.login}
-        canonicalUrlPath={props.page === 'login' ? undefined : LOGIN_LINK}
+        canonicalUrlPath={LOGIN_LINK}
       />
 
       <Renderer initialMode={props.page} />

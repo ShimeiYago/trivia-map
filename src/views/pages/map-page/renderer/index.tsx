@@ -154,8 +154,6 @@ export class Renderer extends React.Component<Props, State> {
       windowHeight,
       userId,
       initMapFocus,
-      postIdToEdit,
-      queryCategoryId,
     } = this.props;
 
     const triviaMap = windowWidth !== 0 && windowHeight !== 0 && park && (
@@ -173,14 +171,12 @@ export class Renderer extends React.Component<Props, State> {
       />
     );
 
-    const canonical = this.props.new || !!postIdToEdit || !!userId || !!queryCategoryId;
-
     return (
       <>
         <CommonHelmet
           title={SITE_NAME}
           description={PAGE_DESCRIPTIONS.main}
-          canonicalUrlPath={canonical ? MAP_PAGE_LINK : undefined}
+          canonicalUrlPath={MAP_PAGE_LINK}
         />
 
         <Box sx={wrapper(openFormModal && !isMobile)}>

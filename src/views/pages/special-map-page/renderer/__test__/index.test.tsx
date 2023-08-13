@@ -22,6 +22,7 @@ const props: Props = {
   windowWidth: 100,
   throwError: jest.fn(),
   mapId: 0,
+  editMode: false,
 };
 
 describe('Shallow Snapshot Tests', () => {

@@ -161,6 +161,7 @@ export class Renderer extends React.Component<Props, State> {
 
   protected fetchSpecialMap = async () => {
     try {
+      // use autoRefreshApiWrapper
       const res = await getSpecialMap(this.props.mapId);
 
       this.setState({
@@ -237,6 +238,7 @@ export type Props = {
   windowHeight: number;
   markerId?: number;
   park?: string;
+  editMode: boolean;
 
   throwError: (errorStatus: number) => void;
 };

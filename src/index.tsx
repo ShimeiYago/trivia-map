@@ -44,6 +44,7 @@ import {
   SPECIAL_MAP_LIST_PAGE_LINK,
   SPECIAL_MAP_DETAIL_PAGE_LINK,
   SPECIAL_MAP_EDIT_PAGE_LINK,
+  SPECIAL_MAP_NEW_PAGE_LINK,
 } from 'constant/links';
 import { ChangePassword } from 'views/pages/change-password';
 import { ResetPassword } from 'views/pages/reset-password';
@@ -65,6 +66,7 @@ import { SpecialMapPage } from 'views/pages/special-map-page';
 import { SpecialMapListPage } from 'views/pages/special-map-list-page';
 import { SpecialMapDetailPage } from 'views/pages/special-map-detail-page';
 import { Tracker } from 'helper-components/tracker';
+import { SpecialMapNewPage } from 'views/pages/special-map-new-page';
 
 // Deactivate all console.log on production
 // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -106,9 +108,14 @@ ReactDOM.render(
                     path={CATEGORY_PAGE_LINK(':categoryId')}
                     element={errorHandledElement(<CategoryPage />)}
                   />
+
                   <Route
                     path={SPECIAL_MAP_LIST_PAGE_LINK}
                     element={errorHandledElement(<SpecialMapListPage />)}
+                  />
+                  <Route
+                    path={SPECIAL_MAP_NEW_PAGE_LINK}
+                    element={errorHandledElement(<SpecialMapNewPage />)}
                   />
                   <Route
                     path={SPECIAL_MAP_PAGE_LINK(':mapId')}
@@ -118,7 +125,6 @@ ReactDOM.render(
                     path={SPECIAL_MAP_EDIT_PAGE_LINK(':mapId')}
                     element={errorHandledElement(<SpecialMapPage edit />)}
                   />
-
                   <Route
                     path={SPECIAL_MAP_DETAIL_PAGE_LINK(':mapId')}
                     element={errorHandledElement(<SpecialMapDetailPage />)}

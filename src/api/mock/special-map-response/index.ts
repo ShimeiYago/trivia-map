@@ -1,6 +1,7 @@
 import { GetSpecialMapResponse } from 'api/special-map-api/get-special-map';
 import { GetSpecialMapMarkersResponseWithPagination } from 'api/special-map-api/get-special-map-markers';
 import { GetSpecialMapsResponseWithPagination } from 'api/special-map-api/get-special-maps';
+import { PostSpecialMapResponse } from 'api/special-map-api/post-special-map';
 
 export const mockGetSpecialMapResponse: GetSpecialMapResponse = {
   specialMapId: 1,
@@ -63,3 +64,16 @@ export const mockGetSpecialMapMarkersResponseWithPagination: GetSpecialMapMarker
       },
     ],
   };
+
+export const mockPostSpecialMapResponse: PostSpecialMapResponse = {
+  specialMapId: 1,
+  title: '「関係者以外立ち入り禁止」看板マップ',
+  description: 'パーク中の「関係者以外立ち入り禁止」の看板のまとめです。',
+  selectablePark: 'both',
+  isPublic: true,
+  thumbnail: null,
+  minLatitude: -255,
+  maxLatitude: 0,
+  minLongitude: 0,
+  maxLongitude: 255,
+};

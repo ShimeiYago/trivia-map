@@ -3,12 +3,11 @@ import { AxiosError, AxiosResponse } from 'axios';
 import { handleAxiosError } from '../utils/handle-axios-error';
 import { getAxiosInstance } from 'api/utils/get-axios-instance';
 import { mockGetSpecialMapResponse } from 'api/mock/special-map-response';
-import { Park } from 'types/park';
-
-const BOTH_PARK = 'both';
+import { SelectablePark } from 'types/park';
+import { Author } from 'types/author';
 
 export async function getSpecialMap(mapId: number): Promise<GetSpecialMapResponse> {
-  const url = `${BASE_URL}/special-map/maps/${mapId}`;
+  const url = `${BASE_URL}/special-map/maps/${mapId}/detail`;
 
   const axiosInstance = getAxiosInstance({}, mockGetSpecialMapResponse);
 
@@ -23,9 +22,15 @@ export async function getSpecialMap(mapId: number): Promise<GetSpecialMapRespons
 
 export type GetSpecialMapResponse = {
   specialMapId: number;
+  author: Author;
   title: string;
   thumbnail: string | null;
   isPublic: boolean;
   description: string;
-  selectablePark: Park | typeof BOTH_PARK;
+  selectablePark: SelectablePark;
+  minLatitude: number;
+  maxLatitude: number;
+  minLongitude: number;
+  maxLongitude: number;
+  createdAt: string;
 };

@@ -11,7 +11,7 @@ export async function postSpecialMap(param: {
   title: string;
   description: string;
   isPublic: boolean;
-  selectablePark: SelectablePark;
+  selectablePark?: SelectablePark;
   thumbnail?: SelializedImageFile;
   minLatitude?: number;
   maxLatitude?: number;
@@ -23,12 +23,12 @@ export async function postSpecialMap(param: {
   const requestData = new FormData();
   requestData.append('title', param.title);
   requestData.append('description', param.description);
-  requestData.append('selectablePark', param.selectablePark);
+  param.selectablePark && requestData.append('selectablePark', param.selectablePark);
   requestData.append('isPublic', param.isPublic ? 'true' : 'false');
-  param.minLatitude ?? requestData.append('minLatitude', String(param.minLatitude));
-  param.maxLatitude ?? requestData.append('maxLatitude', String(param.maxLatitude));
-  param.minLongitude ?? requestData.append('minLongitude', String(param.minLongitude));
-  param.maxLongitude ?? requestData.append('maxLongitude', String(param.maxLongitude));
+  param.minLatitude && requestData.append('minLatitude', String(param.minLatitude));
+  param.maxLatitude && requestData.append('maxLatitude', String(param.maxLatitude));
+  param.minLongitude && requestData.append('minLongitude', String(param.minLongitude));
+  param.maxLongitude && requestData.append('maxLongitude', String(param.maxLongitude));
 
   if (param.thumbnail) {
     const uploadFile = await convertToFile(param.thumbnail);
@@ -67,5 +67,5 @@ export type ValidationError = {
   isPublic: string[];
   selectablePark: string[];
   thumbnail?: string[];
-  non_field_errors?: string[];
+  area?: string[];
 };

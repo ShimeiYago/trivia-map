@@ -12,6 +12,7 @@ import {
   PostSpecialMapResponse,
   ValidationError,
 } from 'api/special-map-api/post-special-map';
+import { putSpecialMap } from 'api/special-map-api/put-special-map';
 
 // basic actions
 export const {
@@ -32,50 +33,44 @@ export const {
 export const submitSpecialMap = (): AppThunk => async (dispatch, getState) => {
   dispatch(updateLoading('loading'));
 
-  const specialMapSetting = getState().specialMapSetting;
+  const { specialMapId, title, description, thumbnail, isPublic, selectablePark, area } =
+    getState().specialMapSetting;
 
   /* istanbul ignore next */
   const refreshUser = () => dispatch(updateUser(undefined));
 
   let res: PostSpecialMapResponse;
   try {
-    if (specialMapSetting.specialMapId) {
+    if (specialMapId) {
       res = await autoRefreshApiWrapper(
-        () => {
-          console.log();
-        },
-        // putSpecialMap({
-        //   specialMapId: specialMapSetting.specialMapId
-        //   title: specialMapSetting.title,
-        //   description: specialMapSetting.description,
-        //   thumbnail: typeof specialMapSetting.thumbnail === 'string' ? undefined : specialMapSetting.thumbnail,
-        //   isPublic: specialMapSetting.isPublic,
-        // selectablePark: specialMapSetting.selectablePark,
-        // minLatitude: specialMapSetting.area?.minLatitude,
-        // maxLatitude: specialMapSetting.area?.maxLatitude,
-        // minLongitude: specialMapSetting.area?.minLongitude,
-        // maxLongitude: specialMapSetting.area?.maxLongitude,
-
-        // }),
+        () =>
+          putSpecialMap({
+            specialMapId: specialMapId,
+            title: title,
+            description: description,
+            thumbnail: typeof thumbnail === 'string' ? undefined : thumbnail,
+            isPublic: isPublic,
+            selectablePark: selectablePark,
+            minLatitude: area?.minLatitude,
+            maxLatitude: area?.maxLatitude,
+            minLongitude: area?.minLongitude,
+            maxLongitude: area?.maxLongitude,
+          }),
         refreshUser,
       );
     } else {
       res = await autoRefreshApiWrapper(
         () =>
           postSpecialMap({
-            title: specialMapSetting.title,
-            description: specialMapSetting.description,
-            thumbnail:
-              typeof specialMapSetting.thumbnail === 'string' ||
-              specialMapSetting.thumbnail === null
-                ? undefined
-                : specialMapSetting.thumbnail,
-            isPublic: specialMapSetting.isPublic,
-            selectablePark: specialMapSetting.selectablePark,
-            minLatitude: specialMapSetting.area?.minLatitude,
-            maxLatitude: specialMapSetting.area?.maxLatitude,
-            minLongitude: specialMapSetting.area?.minLongitude,
-            maxLongitude: specialMapSetting.area?.maxLongitude,
+            title: title,
+            description: description,
+            thumbnail: typeof thumbnail === 'string' || thumbnail === null ? undefined : thumbnail,
+            isPublic: isPublic,
+            selectablePark: selectablePark,
+            minLatitude: area?.minLatitude,
+            maxLatitude: area?.maxLatitude,
+            minLongitude: area?.minLongitude,
+            maxLongitude: area?.maxLongitude,
           }),
 
         refreshUser,

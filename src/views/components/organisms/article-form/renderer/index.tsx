@@ -38,6 +38,7 @@ import { CATEGORIES, INPUT_FIELD_MAX_LENGTH, UPLOAD_IMAGE_MAX_LENGTH, ZOOMS } fr
 import { SelializedImageFile } from 'types/selialized-image-file';
 import { Park } from 'types/park';
 import { AreaNames } from 'views/components/atoms/area-names';
+import { getImageSrc } from 'utils/get-image-src.ts';
 
 export class Renderer extends React.Component<Props> {
   headerRef: React.RefObject<HTMLDivElement>;
@@ -92,6 +93,7 @@ export class Renderer extends React.Component<Props> {
       submittingState,
       fetchingState,
       formError,
+      image,
       handleClickSelectPosition,
     } = this.props;
 
@@ -105,7 +107,7 @@ export class Renderer extends React.Component<Props> {
       ? 'valid'
       : 'normal';
 
-    const imageSrc = this.getImageSrc();
+    const imageSrc = getImageSrc(image);
 
     const showIsDraftCheckbox = newMode || lastSavedIsDraft;
 
@@ -356,19 +358,6 @@ export class Renderer extends React.Component<Props> {
   protected handleChangeCategory = (event: SelectChangeEvent) => {
     this.props.updateFormField({ category: Number(event.target.value) });
   };
-
-  protected getImageSrc() {
-    if (typeof this.props.image === 'string') {
-      return this.props.image;
-    }
-
-    if (this.props.image === null) {
-      return undefined;
-    }
-
-    // SelializedImageFile case
-    return this.props.image.dataUrl;
-  }
 
   protected handleError = () => {
     this.props.throwError(500);

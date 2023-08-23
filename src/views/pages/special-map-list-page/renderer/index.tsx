@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  GetSpecialMapPreviewResponse,
   getSpecialMaps,
   GetSpecialMapsResponseWithPagination,
 } from 'api/special-map-api/get-special-maps';
@@ -17,7 +18,6 @@ import cardClasses from 'views/common-styles/preview-card.module.css';
 import { SPECIAL_MAP_LIST_PAGE_LINK, SPECIAL_MAP_PAGE_LINK } from 'constant/links';
 import { Link } from 'react-router-dom';
 import { DynamicAlignedText } from 'views/components/atoms/dynamic-aligned-text';
-import { GetSpecialMapResponse } from 'api/special-map-api/get-special-map';
 import { ApiError } from 'api/utils/handle-axios-error';
 import { getUrlParameters } from 'utils/get-url-parameters';
 
@@ -82,7 +82,7 @@ export class Renderer extends React.Component<Props, State> {
     );
   };
 
-  protected renderLargeCard = (specialMap: GetSpecialMapResponse) => {
+  protected renderLargeCard = (specialMap: GetSpecialMapPreviewResponse) => {
     const { specialMapId, title, thumbnail, description } = specialMap;
 
     return (

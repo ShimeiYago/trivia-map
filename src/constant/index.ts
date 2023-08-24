@@ -1,5 +1,5 @@
 import { PreviewListOrder } from 'api/articles-api/get-articles-previews';
-import { Park } from 'types/park';
+import { Park, SelectablePark } from 'types/park';
 
 export const BASE_URL = process.env.REACT_APP_API_BASE_URL ?? 'http://localhost:3001';
 
@@ -105,6 +105,7 @@ export const INPUT_FIELD_MAX_LENGTH = {
   articleDescription: 500,
   nickname: 20,
   inquiryMessage: 2000,
+  specialMapDescription: 100,
 };
 
 export const NO_INDEX = process.env.REACT_APP_NO_INDEX;
@@ -118,4 +119,10 @@ export const ARTICLE_LIST_ORDERS: { [key: string]: PreviewListOrder } = {
   latest: 'latest',
   oldest: 'oldest',
   popular: 'popular',
+};
+
+export const SELECTABLE_PARK: { [key: string]: SelectablePark } = {
+  land: 'L',
+  sea: 'S',
+  both: 'both',
 };

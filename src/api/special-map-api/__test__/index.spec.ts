@@ -124,6 +124,22 @@ describe('postSpecialMap', () => {
     expect(response.specialMapId).toBe(1);
   });
 
+  it('handle area', async () => {
+    process.env.REACT_APP_MOCK = 'normal';
+
+    const response = await postSpecialMap({
+      title: '「関係者以外立ち入り禁止」看板マップ',
+      description: 'パーク中の「関係者以外立ち入り禁止」の看板のまとめです。',
+      selectablePark: 'both',
+      isPublic: true,
+      minLatitude: 1,
+      maxLatitude: 1,
+      minLongitude: 1,
+      maxLongitude: 1,
+    });
+    expect(response.specialMapId).toBe(1);
+  });
+
   it('handle error response', async () => {
     process.env.REACT_APP_MOCK = 'error';
 

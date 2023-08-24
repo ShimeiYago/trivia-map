@@ -1,3 +1,5 @@
+/* istanbul ignore file */
+
 import { API_TIMEOUT, BASE_URL } from 'constant';
 import { AxiosError, AxiosResponse } from 'axios';
 import { handleAxiosError } from '../utils/handle-axios-error';
@@ -6,13 +8,15 @@ import { SelializedImageFile } from 'types/selialized-image-file';
 import { convertToFile } from 'utils/convert-to-file';
 import { SelectablePark } from 'types/park';
 import { mockPostSpecialMapResponse } from 'api/mock/special-map-response';
+import { PostSpecialMapResponse, ValidationError } from './post-special-map';
 
-export async function postSpecialMap(param: {
+export async function putSpecialMap(param: {
+  specialMapId: number;
   title: string;
   description: string;
   isPublic: boolean;
   selectablePark?: SelectablePark;
-  thumbnail?: SelializedImageFile;
+  thumbnail?: SelializedImageFile | null;
   minLatitude?: number;
   maxLatitude?: number;
   minLongitude?: number;
@@ -30,14 +34,20 @@ export async function postSpecialMap(param: {
   param.minLongitude && requestData.append('minLongitude', String(param.minLongitude));
   param.maxLongitude && requestData.append('maxLongitude', String(param.maxLongitude));
 
-  if (param.thumbnail) {
-    const uploadFile = await convertToFile(param.thumbnail);
-    requestData.append('thumbnail', uploadFile);
+  switch (param.thumbnail) {
+    case undefined:
+      break;
+    case null:
+      requestData.append('thumbnail', '');
+      break;
+    default:
+      const uploadFile = await convertToFile(param.thumbnail);
+      requestData.append('thumbnail', uploadFile);
   }
 
   try {
     const res: AxiosResponse<PostSpecialMapResponse> = await axiosInstance.post(
-      `${BASE_URL}/special-map/maps`,
+      `${BASE_URL}/special-map/maps/${param.specialMapId}`,
       requestData,
     );
     return res.data;
@@ -46,26 +56,3 @@ export async function postSpecialMap(param: {
     throw handleAxiosError<ValidationError>(axiosError);
   }
 }
-
-export type PostSpecialMapResponse = {
-  specialMapId: number;
-  title: string;
-  description: string;
-  isPublic: boolean;
-  selectablePark: SelectablePark;
-  thumbnail: string | null;
-  minLatitude: number;
-  maxLatitude: number;
-  minLongitude: number;
-  maxLongitude: number;
-};
-
-export type ValidationError = {
-  errorTitle?: string;
-  title?: string[];
-  description: string[];
-  isPublic: string[];
-  selectablePark: string[];
-  thumbnail?: string[];
-  area?: string[];
-};

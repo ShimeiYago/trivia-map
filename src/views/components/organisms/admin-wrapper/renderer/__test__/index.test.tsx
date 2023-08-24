@@ -14,7 +14,6 @@ const basicProps: Props = {
   },
   autoLoggingInState: 'success',
   loggedOutSuccessfully: false,
-  isMobile: false,
   children: <div />,
 };
 
@@ -24,11 +23,6 @@ describe('Shallow Snapshot Tests', () => {
   });
 
   it('basic', () => {
-    expect(wrapper).toMatchSnapshot();
-  });
-
-  it('mobile', () => {
-    wrapper.setProps({ isMobile: true });
     expect(wrapper).toMatchSnapshot();
   });
 

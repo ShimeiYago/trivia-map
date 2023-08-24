@@ -1,33 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Shallow Snapshot Tests basic 1`] = `
-<ForwardRef(Box)
-  sx={
-    Object {
-      "backgroundColor": "#f4f5f7",
-    }
-  }
->
-  <GlobalMenu
-    permanentLeftNavi={true}
-    topBarPosition="static"
-  >
-    <ForwardRef(Box)
-      sx={
-        Object {
-          "marginTop": 5,
-          "marginX": 10,
-        }
-      }
-    >
-      <ArticlePaper
-        variant="main"
-      >
-        <div />
-      </ArticlePaper>
-    </ForwardRef(Box)>
-  </GlobalMenu>
-</ForwardRef(Box)>
+<SingleRowPageWrapper>
+  <div />
+</SingleRowPageWrapper>
 `;
 
 exports[`Shallow Snapshot Tests loading 1`] = `
@@ -39,36 +15,6 @@ exports[`Shallow Snapshot Tests loading 1`] = `
   }
 >
   <CenterSpinner />
-</ForwardRef(Box)>
-`;
-
-exports[`Shallow Snapshot Tests mobile 1`] = `
-<ForwardRef(Box)
-  sx={
-    Object {
-      "backgroundColor": "#f4f5f7",
-    }
-  }
->
-  <GlobalMenu
-    permanentLeftNavi={false}
-    topBarPosition="static"
-  >
-    <ForwardRef(Box)
-      sx={
-        Object {
-          "marginTop": 1,
-          "marginX": 0,
-        }
-      }
-    >
-      <ArticlePaper
-        variant="main"
-      >
-        <div />
-      </ArticlePaper>
-    </ForwardRef(Box)>
-  </GlobalMenu>
 </ForwardRef(Box)>
 `;
 

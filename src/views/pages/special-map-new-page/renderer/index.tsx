@@ -1,9 +1,12 @@
 /* istanbul ignore file */
 
-import { SPECIAL_MAP_EDIT_PAGE_LINK } from 'constant/links';
+import { Box } from '@mui/material';
+import { SPECIAL_MAP_EDIT_PAGE_LINK, SPECIAL_MAP_LIST_PAGE_LINK } from 'constant/links';
+import { PAGE_NAMES } from 'constant/page-names';
 import React from 'react';
 import { Navigate } from 'react-router-dom';
-import { GlobalMenu } from 'views/components/organisms/global-menu';
+import { BackToNavi } from 'views/components/moleculars/back-to-navi';
+import { SingleRowPageWrapper } from 'views/components/moleculars/single-row-page-wrapper';
 import { SpecialMapSettingForm } from 'views/components/organisms/special-map-setting-form';
 
 export class Renderer extends React.Component<Props, State> {
@@ -29,9 +32,12 @@ export class Renderer extends React.Component<Props, State> {
     }
 
     return (
-      <GlobalMenu topBarPosition="static">
+      <SingleRowPageWrapper>
+        <Box>
+          <BackToNavi text={PAGE_NAMES.specialMap} link={SPECIAL_MAP_LIST_PAGE_LINK} />
+        </Box>
         <SpecialMapSettingForm />
-      </GlobalMenu>
+      </SingleRowPageWrapper>
     );
   }
 }
@@ -39,6 +45,7 @@ export class Renderer extends React.Component<Props, State> {
 export type Props = {
   specialMapId?: number;
   initializeForm: () => void;
+  isMobile: boolean;
 };
 
 export type State = {

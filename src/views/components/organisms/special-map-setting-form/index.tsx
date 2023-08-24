@@ -29,7 +29,6 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
-import { formContainer } from './styles';
 import { HeaderErrorMessages } from 'views/components/moleculars/header-error-messages';
 import { INPUT_FIELD_MAX_LENGTH, SELECTABLE_PARK, UPLOAD_IMAGE_MAX_LENGTH } from 'constant';
 import { SelectablePark } from 'types/park';
@@ -56,7 +55,7 @@ export function SpecialMapSettingForm() {
   const headerRef = useRef<HTMLDivElement>(null);
 
   return (
-    <Container maxWidth="sm" sx={formContainer}>
+    <Container maxWidth="sm" sx={{ p: 0, my: 3 }}>
       <Stack spacing={3}>
         <Typography component="h2" align="center" variant="h4" ref={headerRef}>
           {specialMapId ? 'オリジナルマップの設定' : 'オリジナルマップを作成'}
@@ -114,7 +113,7 @@ export function SpecialMapSettingForm() {
         )}
 
         <FormControl required error={!!formError?.fieldErrors?.selectablePark}>
-          <FormLabel>対象パーク</FormLabel>
+          <FormLabel>対象パーク{!specialMapId && '（後から変更できます）'}</FormLabel>
           <RadioGroup
             row
             onChange={(_, value) => dispatch(updateSelectablePark(value as SelectablePark))}
@@ -134,7 +133,7 @@ export function SpecialMapSettingForm() {
           disabled={loading}
           onClick={() => dispatch(submitSpecialMap())}
         >
-          {specialMapId ? '更新する' : 'オリジナルマップを作成する'}
+          {specialMapId ? '設定を更新する' : 'オリジナルマップを作成する'}
         </LoadingButton>
       </Stack>
     </Container>

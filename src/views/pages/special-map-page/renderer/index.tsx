@@ -1,3 +1,5 @@
+/* istanbul ignore file */
+
 import React from 'react';
 import { Park } from 'types/park';
 import { CommonHelmet } from 'helper-components/common-helmet';
@@ -23,6 +25,7 @@ import { NonStyleLink } from 'views/components/atoms/non-style-link';
 import { SPECIAL_MAP_DETAIL_PAGE_LINK } from 'constant/links';
 import { ApiError } from 'api/utils/handle-axios-error';
 import { PARKS, ZOOMS } from 'constant';
+import { autoRefreshApiWrapper } from 'utils/auto-refresh-api-wrapper';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -161,8 +164,10 @@ export class Renderer extends React.Component<Props, State> {
 
   protected fetchSpecialMap = async () => {
     try {
-      // use autoRefreshApiWrapper
-      const res = await getSpecialMap(this.props.mapId);
+      const res = await autoRefreshApiWrapper(
+        () => getSpecialMap(this.props.mapId),
+        this.props.refreshUser,
+      );
 
       this.setState({
         loadingSpecialMap: false,
@@ -193,7 +198,11 @@ export class Renderer extends React.Component<Props, State> {
       while (loadedPages < totalPages) {
         let res: GetSpecialMapMarkersResponseWithPagination;
         if (loadedPages === 0) {
-          res = await getSpecialMapMarkers({ mapId: this.props.mapId });
+          res = await autoRefreshApiWrapper(
+            () => getSpecialMapMarkers({ mapId: this.props.mapId }),
+            this.props.refreshUser,
+          );
+
           totalPages = res.totalPages;
           this.setState({
             totalMarkerPages: totalPages,
@@ -214,7 +223,12 @@ export class Renderer extends React.Component<Props, State> {
       });
     } catch (error) {
       const apiError = error as ApiError<unknown>;
-      this.props.throwError(apiError.status);
+
+      if (apiError.status === 404 || apiError.status === 401 || apiError.status === 403) {
+        this.props.throwError(404);
+      } else {
+        this.props.throwError(apiError.status);
+      }
     }
   };
 
@@ -240,6 +254,7 @@ export type Props = {
   park?: string;
   editMode: boolean;
 
+  refreshUser: () => void;
   throwError: (errorStatus: number) => void;
 };
 

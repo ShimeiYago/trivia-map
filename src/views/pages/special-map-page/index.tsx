@@ -5,6 +5,7 @@ import { NOT_FOUND_LINK } from 'constant/links';
 import { useAppDispatch } from 'store';
 import { useWindowSize } from 'helper-components/user-window-size';
 import { throwError } from 'store/global-error/slice';
+import { updateUser } from 'store/auths/actions';
 
 export function SpecialMapPage({ edit }: { edit?: boolean }) {
   const { mapId } = useParams();
@@ -23,6 +24,8 @@ export function SpecialMapPage({ edit }: { edit?: boolean }) {
     return <Navigate to={NOT_FOUND_LINK} />;
   }
 
+  const refreshUser = () => dispatch(updateUser(undefined));
+
   const props: Props = {
     isMobile: isMobile,
     mapId: mapIdNumber,
@@ -32,6 +35,7 @@ export function SpecialMapPage({ edit }: { edit?: boolean }) {
     park: park ?? undefined,
     editMode: !!edit,
 
+    refreshUser,
     throwError: (errorStatus: number) => dispatch(throwError(errorStatus)),
   };
 

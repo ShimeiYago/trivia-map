@@ -23,6 +23,7 @@ const props: Props = {
   throwError: jest.fn(),
   mapId: 0,
   editMode: false,
+  refreshUser: jest.fn(),
 };
 
 describe('Shallow Snapshot Tests', () => {

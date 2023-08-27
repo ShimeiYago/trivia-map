@@ -24,6 +24,7 @@ const props: Props = {
   mapId: 0,
   editMode: false,
   refreshUser: jest.fn(),
+  setSpecialMap: jest.fn(),
 };
 
 describe('Shallow Snapshot Tests', () => {

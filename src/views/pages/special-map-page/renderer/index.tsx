@@ -261,6 +261,10 @@ export class Renderer extends React.Component<Props, State> {
   };
 
   protected toggleSettingModal = (open: boolean) => () => {
+    if (open && this.state.specialMap) {
+      this.props.setSpecialMap(this.state.specialMap);
+    }
+
     this.setState({
       openSettingModal: open,
     });
@@ -268,7 +272,12 @@ export class Renderer extends React.Component<Props, State> {
 
   protected renderSettingModal = () => {
     return (
-      <BoxModal open={this.state.openSettingModal} onClose={this.toggleSettingModal(false)}>
+      <BoxModal
+        open={this.state.openSettingModal}
+        onClose={this.toggleSettingModal(false)}
+        showCloseButton
+        disableClickOutside
+      >
         <SpecialMapSettingForm />
       </BoxModal>
     );
@@ -285,6 +294,7 @@ export type Props = {
   editMode: boolean;
 
   refreshUser: () => void;
+  setSpecialMap: (specialMap: GetSpecialMapResponse) => void;
   throwError: (errorStatus: number) => void;
 };
 

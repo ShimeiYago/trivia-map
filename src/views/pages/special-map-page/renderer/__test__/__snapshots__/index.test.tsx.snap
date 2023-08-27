@@ -12,6 +12,12 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       <CenterSpinner />
     </ForwardRef(Box)>
   </GlobalMenu>
+  <BoxModal
+    onClose={[Function]}
+    open={false}
+  >
+    <SpecialMapSettingForm />
+  </BoxModal>
 </Fragment>
 `;
 
@@ -163,7 +169,13 @@ exports[`Shallow Snapshot Tests focusing a marker 1`] = `
             <ForwardRef(Grid)
               item={true}
               xs={1}
-            />
+            >
+              <ForwardRef(Typography)
+                align="center"
+                py={1}
+                variant="body2"
+              />
+            </ForwardRef(Grid)>
           </ForwardRef(Grid)>
         </ForwardRef(Box)>
         <ForwardRef(Box)
@@ -186,6 +198,12 @@ exports[`Shallow Snapshot Tests focusing a marker 1`] = `
       />
     </ForwardRef(Box)>
   </GlobalMenu>
+  <BoxModal
+    onClose={[Function]}
+    open={false}
+  >
+    <SpecialMapSettingForm />
+  </BoxModal>
 </Fragment>
 `;
 
@@ -275,7 +293,13 @@ exports[`Shallow Snapshot Tests loaded (pc) 1`] = `
             <ForwardRef(Grid)
               item={true}
               xs={1}
-            />
+            >
+              <ForwardRef(Typography)
+                align="center"
+                py={1}
+                variant="body2"
+              />
+            </ForwardRef(Grid)>
           </ForwardRef(Grid)>
         </ForwardRef(Box)>
         <ForwardRef(Box)
@@ -298,6 +322,12 @@ exports[`Shallow Snapshot Tests loaded (pc) 1`] = `
       />
     </ForwardRef(Box)>
   </GlobalMenu>
+  <BoxModal
+    onClose={[Function]}
+    open={false}
+  >
+    <SpecialMapSettingForm />
+  </BoxModal>
 </Fragment>
 `;
 
@@ -430,7 +460,13 @@ exports[`Shallow Snapshot Tests loaded 1`] = `
             <ForwardRef(Grid)
               item={true}
               xs={1}
-            />
+            >
+              <ForwardRef(Typography)
+                align="center"
+                py={1}
+                variant="body2"
+              />
+            </ForwardRef(Grid)>
           </ForwardRef(Grid)>
         </ForwardRef(Box)>
         <ForwardRef(Box)
@@ -453,6 +489,12 @@ exports[`Shallow Snapshot Tests loaded 1`] = `
       />
     </ForwardRef(Box)>
   </GlobalMenu>
+  <BoxModal
+    onClose={[Function]}
+    open={false}
+  >
+    <SpecialMapSettingForm />
+  </BoxModal>
 </Fragment>
 `;
 
@@ -542,7 +584,13 @@ exports[`Shallow Snapshot Tests loading markers 1`] = `
             <ForwardRef(Grid)
               item={true}
               xs={1}
-            />
+            >
+              <ForwardRef(Typography)
+                align="center"
+                py={1}
+                variant="body2"
+              />
+            </ForwardRef(Grid)>
           </ForwardRef(Grid)>
         </ForwardRef(Box)>
         <ForwardRef(Box)
@@ -565,6 +613,12 @@ exports[`Shallow Snapshot Tests loading markers 1`] = `
       />
     </ForwardRef(Box)>
   </GlobalMenu>
+  <BoxModal
+    onClose={[Function]}
+    open={false}
+  >
+    <SpecialMapSettingForm />
+  </BoxModal>
 </Fragment>
 `;
 
@@ -580,5 +634,11 @@ exports[`Shallow Snapshot Tests without height 1`] = `
       <CenterSpinner />
     </ForwardRef(Box)>
   </GlobalMenu>
+  <BoxModal
+    onClose={[Function]}
+    open={false}
+  >
+    <SpecialMapSettingForm />
+  </BoxModal>
 </Fragment>
 `;

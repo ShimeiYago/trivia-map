@@ -21,11 +21,14 @@ import { LatLng, Map as LeafletMap } from 'leaflet';
 import { Image } from 'views/components/moleculars/image';
 import { DynamicAlignedText } from 'views/components/atoms/dynamic-aligned-text';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
+import SettingsIcon from '@mui/icons-material/Settings';
 import { NonStyleLink } from 'views/components/atoms/non-style-link';
 import { SPECIAL_MAP_DETAIL_PAGE_LINK } from 'constant/links';
 import { ApiError } from 'api/utils/handle-axios-error';
 import { PARKS, ZOOMS } from 'constant';
 import { autoRefreshApiWrapper } from 'utils/auto-refresh-api-wrapper';
+import { BoxModal } from 'views/components/moleculars/box-modal';
+import { SpecialMapSettingForm } from 'views/components/organisms/special-map-setting-form';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -36,6 +39,7 @@ export class Renderer extends React.Component<Props, State> {
       park: props.park === PARKS.land || props.park === PARKS.sea ? props.park : PARKS.land,
       markers: [],
       loadedMarkerPages: 0,
+      openSettingModal: false,
     };
   }
 
@@ -50,12 +54,14 @@ export class Renderer extends React.Component<Props, State> {
         <GlobalMenu topBarPosition="static" mapPage>
           {this.renderSpecialMap()}
         </GlobalMenu>
+
+        {this.renderSettingModal()}
       </>
     );
   }
 
   protected renderSpecialMap = () => {
-    const { windowWidth, windowHeight, isMobile } = this.props;
+    const { windowWidth, windowHeight, isMobile, editMode } = this.props;
     const { specialMap } = this.state;
 
     if (!windowWidth || !windowHeight || !specialMap) {
@@ -69,7 +75,7 @@ export class Renderer extends React.Component<Props, State> {
     return (
       <>
         <CommonHelmet
-          title={specialMap.title}
+          title={editMode ? `${specialMap.title}（編集中）` : specialMap.title}
           description={specialMap.description}
           canonicalUrlPath={SPECIAL_MAP_DETAIL_PAGE_LINK(String(specialMap.specialMapId))}
         />
@@ -145,18 +151,28 @@ export class Renderer extends React.Component<Props, State> {
       <Box sx={metaInfoBox}>
         <Grid container spacing={0}>
           <Grid item xs={1} pt={0.4}>
-            <NonStyleLink to={SPECIAL_MAP_DETAIL_PAGE_LINK(String(this.props.mapId))}>
-              <IconButton color="primary">
-                <HelpOutlineIcon />
+            {this.props.editMode ? (
+              <IconButton color="primary" onClick={this.toggleSettingModal(true)}>
+                {this.props.editMode ? <SettingsIcon /> : <HelpOutlineIcon />}
               </IconButton>
-            </NonStyleLink>
+            ) : (
+              <NonStyleLink to={SPECIAL_MAP_DETAIL_PAGE_LINK(String(this.props.mapId))}>
+                <IconButton color="primary">
+                  <HelpOutlineIcon />
+                </IconButton>
+              </NonStyleLink>
+            )}
           </Grid>
           <Grid item xs={10}>
             <Typography component="h2" variant="h6" py={1} align="center">
               {specialMap.title}
             </Typography>
           </Grid>
-          <Grid item xs={1}></Grid>
+          <Grid item xs={1}>
+            <Typography py={1} variant="body2" align="center">
+              {this.props.editMode && '(編集中)'}
+            </Typography>
+          </Grid>
         </Grid>
       </Box>
     );
@@ -243,6 +259,20 @@ export class Renderer extends React.Component<Props, State> {
 
     history.replaceState('', '', pathname + params);
   };
+
+  protected toggleSettingModal = (open: boolean) => () => {
+    this.setState({
+      openSettingModal: open,
+    });
+  };
+
+  protected renderSettingModal = () => {
+    return (
+      <BoxModal open={this.state.openSettingModal} onClose={this.toggleSettingModal(false)}>
+        <SpecialMapSettingForm />
+      </BoxModal>
+    );
+  };
 }
 
 export type Props = {
@@ -267,4 +297,5 @@ export type State = {
   loadedMarkerPages: number;
   totalMarkerPages?: number;
   map?: LeafletMap;
+  openSettingModal: boolean;
 };

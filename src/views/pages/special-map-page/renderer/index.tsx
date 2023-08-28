@@ -29,6 +29,7 @@ import { PARKS, ZOOMS } from 'constant';
 import { autoRefreshApiWrapper } from 'utils/auto-refresh-api-wrapper';
 import { BoxModal } from 'views/components/moleculars/box-modal';
 import { SpecialMapSettingForm } from 'views/components/organisms/special-map-setting-form';
+import { SpecialMapSettingState } from 'store/special-map-setting/model';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -46,6 +47,18 @@ export class Renderer extends React.Component<Props, State> {
   componentDidMount(): void {
     this.fetchSpecialMap();
     this.fetchSpecialMapMarkers();
+  }
+
+  componentDidUpdate(prevProps: Readonly<Props>) {
+    if (
+      prevProps.specialMapSettingForm.loading === 'loading' &&
+      this.props.specialMapSettingForm.loading === 'success'
+    ) {
+      this.setState({
+        openSettingModal: false,
+      });
+      console.log('Success!');
+    }
   }
 
   render() {
@@ -86,7 +99,7 @@ export class Renderer extends React.Component<Props, State> {
           </ParkMap>
 
           <Box sx={mapTopArea(isMobile)}>
-            {this.renderMetaInfo(specialMap)}
+            {this.renderMetaInfo()}
 
             {this.state.specialMap?.selectablePark === 'both' && (
               <Box textAlign="right">
@@ -146,7 +159,7 @@ export class Renderer extends React.Component<Props, State> {
     });
   };
 
-  protected renderMetaInfo = (specialMap: GetSpecialMapResponse) => {
+  protected renderMetaInfo = () => {
     return (
       <Box sx={metaInfoBox}>
         <Grid container spacing={0}>
@@ -164,15 +177,9 @@ export class Renderer extends React.Component<Props, State> {
             )}
           </Grid>
           <Grid item xs={10}>
-            <Typography component="h2" variant="h6" py={1} align="center">
-              {specialMap.title}
-            </Typography>
+            {this.renderTitle()}
           </Grid>
-          <Grid item xs={1}>
-            <Typography py={1} variant="body2" align="center">
-              {this.props.editMode && '(編集中)'}
-            </Typography>
-          </Grid>
+          <Grid item xs={1}></Grid>
         </Grid>
       </Box>
     );
@@ -261,6 +268,10 @@ export class Renderer extends React.Component<Props, State> {
   };
 
   protected toggleSettingModal = (open: boolean) => () => {
+    if (this.props.specialMapSettingForm.loading === 'loading') {
+      return;
+    }
+
     if (open && this.state.specialMap) {
       this.props.setSpecialMap(this.state.specialMap);
     }
@@ -278,8 +289,42 @@ export class Renderer extends React.Component<Props, State> {
         showCloseButton
         disableClickOutside
       >
-        <SpecialMapSettingForm />
+        <Box sx={{ px: 2, overflowY: 'auto', height: '90vh' }}>
+          <SpecialMapSettingForm />
+        </Box>
       </BoxModal>
+    );
+  };
+
+  protected renderTitle = () => {
+    if (!this.props.editMode && this.state.specialMap?.isPublic) {
+      return (
+        <Typography component="h2" variant="h6" py={1} align="center">
+          {this.state.specialMap?.title}
+        </Typography>
+      );
+    }
+
+    let caption: string;
+    if (this.props.editMode && !this.state.specialMap?.isPublic) {
+      caption = '(編集中) (非公開)';
+    } else if (this.props.editMode) {
+      caption = '(編集中)';
+    } else if (!this.state.specialMap?.isPublic) {
+      caption = '(非公開)';
+    } else {
+      caption = '';
+    }
+
+    return (
+      <>
+        <Typography variant="body2" align="center" fontSize="0.75rem">
+          {caption}
+        </Typography>
+        <Typography component="h2" variant="h6" align="center">
+          {this.state.specialMap?.title}
+        </Typography>
+      </>
     );
   };
 }
@@ -292,6 +337,7 @@ export type Props = {
   markerId?: number;
   park?: string;
   editMode: boolean;
+  specialMapSettingForm: SpecialMapSettingState;
 
   refreshUser: () => void;
   setSpecialMap: (specialMap: GetSpecialMapResponse) => void;

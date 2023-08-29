@@ -12,7 +12,7 @@ import {
 import { LoadingProgressBar } from 'views/components/moleculars/loading-progress-bar';
 import { ParkMap } from 'views/components/moleculars/park-map';
 import { CenterSpinner } from 'views/components/atoms/center-spinner';
-import { Box, Grid, IconButton, Typography } from '@mui/material';
+import { Alert, AlertColor, Box, Grid, IconButton, Snackbar, Typography } from '@mui/material';
 import { GlobalMenu } from 'views/components/organisms/global-menu';
 import { mapWrapper, metaInfoBox, mapTopArea } from './styles';
 import { ParkSelectBox } from 'views/components/moleculars/park-select-box';
@@ -56,8 +56,11 @@ export class Renderer extends React.Component<Props, State> {
     ) {
       this.setState({
         openSettingModal: false,
+        notification: {
+          message: '設定を更新しました。',
+          type: 'success',
+        },
       });
-      console.log('Success!');
     }
   }
 
@@ -69,6 +72,8 @@ export class Renderer extends React.Component<Props, State> {
         </GlobalMenu>
 
         {this.renderSettingModal()}
+
+        {this.renderNotification()}
       </>
     );
   }
@@ -327,6 +332,26 @@ export class Renderer extends React.Component<Props, State> {
       </>
     );
   };
+
+  protected renderNotification = () => {
+    const handleClose = () =>
+      this.setState({
+        notification: undefined,
+      });
+
+    return (
+      <Snackbar open={!!this.state.notification} autoHideDuration={6000} onClose={handleClose}>
+        <Alert
+          onClose={handleClose}
+          severity={this.state.notification?.type}
+          sx={{ width: '100%' }}
+          variant="filled"
+        >
+          {this.state.notification?.message}
+        </Alert>
+      </Snackbar>
+    );
+  };
 }
 
 export type Props = {
@@ -354,4 +379,8 @@ export type State = {
   totalMarkerPages?: number;
   map?: LeafletMap;
   openSettingModal: boolean;
+  notification?: {
+    message: string;
+    type: AlertColor;
+  };
 };

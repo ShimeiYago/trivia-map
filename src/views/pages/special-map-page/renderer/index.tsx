@@ -50,9 +50,11 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   componentDidUpdate(prevProps: Readonly<Props>) {
+    const { specialMapSettingForm } = this.props;
     if (
       prevProps.specialMapSettingForm.loading === 'loading' &&
-      this.props.specialMapSettingForm.loading === 'success'
+      specialMapSettingForm.loading === 'success' &&
+      this.state.specialMap
     ) {
       this.setState({
         openSettingModal: false,
@@ -60,6 +62,24 @@ export class Renderer extends React.Component<Props, State> {
           message: '設定を更新しました。',
           type: 'success',
         },
+        specialMap: {
+          ...this.state.specialMap,
+          title: specialMapSettingForm.title,
+          description: specialMapSettingForm.description,
+          isPublic: specialMapSettingForm.isPublic,
+          selectablePark:
+            specialMapSettingForm.selectablePark ?? this.state.specialMap.selectablePark,
+          minLatitude: specialMapSettingForm.area?.minLatitude ?? this.state.specialMap.minLatitude,
+          maxLatitude: specialMapSettingForm.area?.maxLatitude ?? this.state.specialMap.maxLatitude,
+          minLongitude:
+            specialMapSettingForm.area?.minLongitude ?? this.state.specialMap.minLongitude,
+          maxLongitude:
+            specialMapSettingForm.area?.maxLongitude ?? this.state.specialMap.maxLongitude,
+        },
+        park:
+          specialMapSettingForm.selectablePark === 'both' || !specialMapSettingForm.selectablePark
+            ? this.state.park
+            : specialMapSettingForm.selectablePark,
       });
     }
   }

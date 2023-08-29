@@ -13,6 +13,7 @@ import {
   ValidationError,
 } from 'api/special-map-api/post-special-map';
 import { putSpecialMap } from 'api/special-map-api/put-special-map';
+import { GetSpecialMapResponse } from 'api/special-map-api/get-special-map';
 
 // basic actions
 export const {
@@ -98,3 +99,24 @@ export const submitSpecialMap = (): AppThunk => async (dispatch, getState) => {
     dispatch(updateLoading('error'));
   }
 };
+
+// setSpecialMap
+export const setSpecialMap =
+  (specialMap: GetSpecialMapResponse): AppThunk =>
+  (dispatch) => {
+    dispatch(updateSpecialMapId(specialMap.specialMapId));
+    dispatch(updateTitle(specialMap.title));
+    dispatch(updateDescription(specialMap.description));
+    dispatch(updateIsPublic(specialMap.isPublic));
+    dispatch(updateSelectablePark(specialMap.selectablePark));
+    dispatch(updateThumbnail(specialMap.thumbnail));
+    dispatch(
+      updateArea({
+        minLatitude: specialMap.minLatitude,
+        maxLatitude: specialMap.maxLatitude,
+        minLongitude: specialMap.minLongitude,
+        maxLongitude: specialMap.maxLatitude,
+      }),
+    );
+    dispatch(refreshFormError());
+  };

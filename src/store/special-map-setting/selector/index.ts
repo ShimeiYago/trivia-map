@@ -4,6 +4,9 @@ import { RootState } from 'store';
 
 type SpecialMapSettingRootState = Pick<RootState, 'specialMapSetting'>;
 
+export const selectSpecialMapSetting = (state: SpecialMapSettingRootState) =>
+  state.specialMapSetting;
+
 export const selectSpecialMapId = (state: SpecialMapSettingRootState) =>
   state.specialMapSetting.specialMapId;
 

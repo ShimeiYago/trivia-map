@@ -1,51 +1,17 @@
 import { alpha, SxProps } from '@mui/material';
 import { grey } from '@mui/material/colors';
-import { mapPageCommonStyle } from 'views/common-styles/map-page';
+import { mapPageStyleConst } from 'views/common-styles/map-page';
 
-const { appBarDefaultHeightPC, appBarDefaultHeightMobile, zIndex, floatingBackgroundColor } =
-  mapPageCommonStyle;
+const {
+  appBarDefaultHeightPC,
+  appBarDefaultHeightMobile,
+  zIndex,
+  drawerWidth,
+  floatingBackgroundColor,
+} = mapPageStyleConst;
 
-const drawerWidth = 500;
 const categoryBackgroundColor = alpha('#000', 0.5);
 const categoryBarProceedButtonWidth = '30px';
-
-export const rightDrawerStyle: SxProps = {
-  width: drawerWidth,
-  flexShrink: 0,
-  '& .MuiDrawer-paper': {
-    width: drawerWidth,
-  },
-};
-
-export function wrapper(shrink: boolean): SxProps {
-  return {
-    ...(shrink && {
-      width: `calc(100% - ${drawerWidth}px)`,
-    }),
-  };
-}
-
-export function mapWrapper(isMobile: boolean, screenWidth: number, screenHeight: number): SxProps {
-  const appBarDefaultHeight = isMobile ? appBarDefaultHeightMobile : appBarDefaultHeightPC;
-
-  return {
-    position: 'relative',
-    width: `${screenWidth}px`,
-    height: `calc(${screenHeight}px - ${appBarDefaultHeight}px)`,
-  };
-}
-
-export function parkSelectBox(shrink: boolean, isMobile: boolean): SxProps {
-  return {
-    margin: 0,
-    bottom: 'auto',
-    right: 20 + (shrink ? drawerWidth : 0),
-    top: (isMobile ? appBarDefaultHeightMobile : appBarDefaultHeightPC) + 50,
-    left: 'auto',
-    position: 'fixed',
-    zIndex: zIndex,
-  };
-}
 
 export function categoryBar(mobile: boolean, shrink: boolean): SxProps {
   const width = mobile ? '100vw' : shrink ? `calc(100% - ${drawerWidth}px)` : '100%';
@@ -100,3 +66,15 @@ export const authorMapMessage: SxProps = {
   maxWidth: 300,
   boxSizing: 'border-box',
 };
+
+export function parkSelectBox(shrink: boolean, isMobile: boolean): SxProps {
+  return {
+    margin: 0,
+    bottom: 'auto',
+    right: 20 + (shrink ? drawerWidth : 0),
+    top: (isMobile ? appBarDefaultHeightMobile : appBarDefaultHeightPC) + 50,
+    left: 'auto',
+    position: 'fixed',
+    zIndex: zIndex,
+  };
+}

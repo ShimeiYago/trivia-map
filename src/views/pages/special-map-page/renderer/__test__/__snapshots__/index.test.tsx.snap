@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Shallow Snapshot Tests basic 1`] = `
-<Fragment>
+<ForwardRef(Box)
+  sx={Object {}}
+>
   <GlobalMenu
     mapPage={true}
     topBarPosition="static"
@@ -12,11 +14,62 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       <CenterSpinner />
     </ForwardRef(Box)>
   </GlobalMenu>
-</Fragment>
+  <BoxModal
+    disableClickOutside={true}
+    onClose={[Function]}
+    open={false}
+    showCloseButton={true}
+  >
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "height": "90vh",
+          "overflowY": "auto",
+          "px": 2,
+        }
+      }
+    >
+      <SpecialMapSettingForm />
+    </ForwardRef(Box)>
+  </BoxModal>
+  <ForwardRef(Snackbar)
+    autoHideDuration={6000}
+    onClose={[Function]}
+    open={false}
+  >
+    <ForwardRef(Alert)
+      onClose={[Function]}
+      sx={
+        Object {
+          "width": "100%",
+        }
+      }
+      variant="filled"
+    />
+  </ForwardRef(Snackbar)>
+  <SwipeableEdgeDrawer
+    bleedingHeight={56}
+    edgeLabel={
+      <CloseFormButton
+        onClose={[Function]}
+      />
+    }
+    edgeLabelWhenClosed="編集中"
+    heightRatio={80}
+    onClose={[Function]}
+    onOpen={[Function]}
+    open={false}
+    show={false}
+  >
+    xxx
+  </SwipeableEdgeDrawer>
+</ForwardRef(Box)>
 `;
 
 exports[`Shallow Snapshot Tests focusing a marker 1`] = `
-<Fragment>
+<ForwardRef(Box)
+  sx={Object {}}
+>
   <GlobalMenu
     mapPage={true}
     topBarPosition="static"
@@ -105,12 +158,13 @@ exports[`Shallow Snapshot Tests focusing a marker 1`] = `
       <ForwardRef(Box)
         sx={
           Object {
-            "left": "50%",
+            "boxSizing": "border-box",
+            "left": 0,
             "margin": 0,
             "position": "fixed",
+            "px": 1,
             "top": 68,
-            "transform": "translate(-50%, 0)",
-            "width": "95%",
+            "width": "100%",
             "zIndex": 1000,
           }
         }
@@ -184,13 +238,72 @@ exports[`Shallow Snapshot Tests focusing a marker 1`] = `
         isMobile={true}
         loadedPages={0}
       />
+      <FloatingButton
+        color="error"
+        disabled={false}
+        icon="add-marker"
+        onClick={[Function]}
+        size="large"
+        text="新しい投稿を追加"
+      />
     </ForwardRef(Box)>
   </GlobalMenu>
-</Fragment>
+  <BoxModal
+    disableClickOutside={true}
+    onClose={[Function]}
+    open={false}
+    showCloseButton={true}
+  >
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "height": "90vh",
+          "overflowY": "auto",
+          "px": 2,
+        }
+      }
+    >
+      <SpecialMapSettingForm />
+    </ForwardRef(Box)>
+  </BoxModal>
+  <ForwardRef(Snackbar)
+    autoHideDuration={6000}
+    onClose={[Function]}
+    open={false}
+  >
+    <ForwardRef(Alert)
+      onClose={[Function]}
+      sx={
+        Object {
+          "width": "100%",
+        }
+      }
+      variant="filled"
+    />
+  </ForwardRef(Snackbar)>
+  <SwipeableEdgeDrawer
+    bleedingHeight={56}
+    edgeLabel={
+      <CloseFormButton
+        onClose={[Function]}
+      />
+    }
+    edgeLabelWhenClosed="編集中"
+    heightRatio={80}
+    onClose={[Function]}
+    onOpen={[Function]}
+    open={false}
+    show={false}
+  >
+    xxx
+  </SwipeableEdgeDrawer>
+</ForwardRef(Box)>
 `;
 
 exports[`Shallow Snapshot Tests loaded (pc) 1`] = `
-<Fragment>
+<ForwardRef(Box)
+  sx={Object {}}
+>
   <GlobalMenu
     mapPage={true}
     topBarPosition="static"
@@ -217,12 +330,13 @@ exports[`Shallow Snapshot Tests loaded (pc) 1`] = `
       <ForwardRef(Box)
         sx={
           Object {
-            "left": "50%",
+            "boxSizing": "border-box",
+            "left": 0,
             "margin": 0,
             "position": "fixed",
+            "px": 1,
             "top": 76,
-            "transform": "translate(-50%, 0)",
-            "width": "95%",
+            "width": "100%",
             "zIndex": 1000,
           }
         }
@@ -296,13 +410,70 @@ exports[`Shallow Snapshot Tests loaded (pc) 1`] = `
         isMobile={false}
         loadedPages={0}
       />
+      <FloatingButton
+        color="error"
+        disabled={false}
+        icon="add-marker"
+        onClick={[Function]}
+        size="large"
+        text="新しい投稿を追加"
+      />
     </ForwardRef(Box)>
   </GlobalMenu>
-</Fragment>
+  <BoxModal
+    disableClickOutside={true}
+    onClose={[Function]}
+    open={false}
+    showCloseButton={true}
+  >
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "height": "90vh",
+          "overflowY": "auto",
+          "px": 2,
+        }
+      }
+    >
+      <SpecialMapSettingForm />
+    </ForwardRef(Box)>
+  </BoxModal>
+  <ForwardRef(Snackbar)
+    autoHideDuration={6000}
+    onClose={[Function]}
+    open={false}
+  >
+    <ForwardRef(Alert)
+      onClose={[Function]}
+      sx={
+        Object {
+          "width": "100%",
+        }
+      }
+      variant="filled"
+    />
+  </ForwardRef(Snackbar)>
+  <ForwardRef(Drawer)
+    anchor="right"
+    open={false}
+    sx={
+      Object {
+        "& .MuiDrawer-paper": Object {
+          "width": 500,
+        },
+        "flexShrink": 0,
+        "width": 500,
+      }
+    }
+    variant="persistent"
+  />
+</ForwardRef(Box)>
 `;
 
 exports[`Shallow Snapshot Tests loaded 1`] = `
-<Fragment>
+<ForwardRef(Box)
+  sx={Object {}}
+>
   <GlobalMenu
     mapPage={true}
     topBarPosition="static"
@@ -372,12 +543,13 @@ exports[`Shallow Snapshot Tests loaded 1`] = `
       <ForwardRef(Box)
         sx={
           Object {
-            "left": "50%",
+            "boxSizing": "border-box",
+            "left": 0,
             "margin": 0,
             "position": "fixed",
+            "px": 1,
             "top": 68,
-            "transform": "translate(-50%, 0)",
-            "width": "95%",
+            "width": "100%",
             "zIndex": 1000,
           }
         }
@@ -451,13 +623,72 @@ exports[`Shallow Snapshot Tests loaded 1`] = `
         isMobile={true}
         loadedPages={0}
       />
+      <FloatingButton
+        color="error"
+        disabled={false}
+        icon="add-marker"
+        onClick={[Function]}
+        size="large"
+        text="新しい投稿を追加"
+      />
     </ForwardRef(Box)>
   </GlobalMenu>
-</Fragment>
+  <BoxModal
+    disableClickOutside={true}
+    onClose={[Function]}
+    open={false}
+    showCloseButton={true}
+  >
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "height": "90vh",
+          "overflowY": "auto",
+          "px": 2,
+        }
+      }
+    >
+      <SpecialMapSettingForm />
+    </ForwardRef(Box)>
+  </BoxModal>
+  <ForwardRef(Snackbar)
+    autoHideDuration={6000}
+    onClose={[Function]}
+    open={false}
+  >
+    <ForwardRef(Alert)
+      onClose={[Function]}
+      sx={
+        Object {
+          "width": "100%",
+        }
+      }
+      variant="filled"
+    />
+  </ForwardRef(Snackbar)>
+  <SwipeableEdgeDrawer
+    bleedingHeight={56}
+    edgeLabel={
+      <CloseFormButton
+        onClose={[Function]}
+      />
+    }
+    edgeLabelWhenClosed="編集中"
+    heightRatio={80}
+    onClose={[Function]}
+    onOpen={[Function]}
+    open={false}
+    show={false}
+  >
+    xxx
+  </SwipeableEdgeDrawer>
+</ForwardRef(Box)>
 `;
 
 exports[`Shallow Snapshot Tests loading markers 1`] = `
-<Fragment>
+<ForwardRef(Box)
+  sx={Object {}}
+>
   <GlobalMenu
     mapPage={true}
     topBarPosition="static"
@@ -484,12 +715,13 @@ exports[`Shallow Snapshot Tests loading markers 1`] = `
       <ForwardRef(Box)
         sx={
           Object {
-            "left": "50%",
+            "boxSizing": "border-box",
+            "left": 0,
             "margin": 0,
             "position": "fixed",
+            "px": 1,
             "top": 68,
-            "transform": "translate(-50%, 0)",
-            "width": "95%",
+            "width": "100%",
             "zIndex": 1000,
           }
         }
@@ -563,13 +795,72 @@ exports[`Shallow Snapshot Tests loading markers 1`] = `
         isMobile={true}
         loadedPages={0}
       />
+      <FloatingButton
+        color="error"
+        disabled={false}
+        icon="add-marker"
+        onClick={[Function]}
+        size="large"
+        text="新しい投稿を追加"
+      />
     </ForwardRef(Box)>
   </GlobalMenu>
-</Fragment>
+  <BoxModal
+    disableClickOutside={true}
+    onClose={[Function]}
+    open={false}
+    showCloseButton={true}
+  >
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "height": "90vh",
+          "overflowY": "auto",
+          "px": 2,
+        }
+      }
+    >
+      <SpecialMapSettingForm />
+    </ForwardRef(Box)>
+  </BoxModal>
+  <ForwardRef(Snackbar)
+    autoHideDuration={6000}
+    onClose={[Function]}
+    open={false}
+  >
+    <ForwardRef(Alert)
+      onClose={[Function]}
+      sx={
+        Object {
+          "width": "100%",
+        }
+      }
+      variant="filled"
+    />
+  </ForwardRef(Snackbar)>
+  <SwipeableEdgeDrawer
+    bleedingHeight={56}
+    edgeLabel={
+      <CloseFormButton
+        onClose={[Function]}
+      />
+    }
+    edgeLabelWhenClosed="編集中"
+    heightRatio={80}
+    onClose={[Function]}
+    onOpen={[Function]}
+    open={false}
+    show={false}
+  >
+    xxx
+  </SwipeableEdgeDrawer>
+</ForwardRef(Box)>
 `;
 
 exports[`Shallow Snapshot Tests without height 1`] = `
-<Fragment>
+<ForwardRef(Box)
+  sx={Object {}}
+>
   <GlobalMenu
     mapPage={true}
     topBarPosition="static"
@@ -580,5 +871,54 @@ exports[`Shallow Snapshot Tests without height 1`] = `
       <CenterSpinner />
     </ForwardRef(Box)>
   </GlobalMenu>
-</Fragment>
+  <BoxModal
+    disableClickOutside={true}
+    onClose={[Function]}
+    open={false}
+    showCloseButton={true}
+  >
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "height": "90vh",
+          "overflowY": "auto",
+          "px": 2,
+        }
+      }
+    >
+      <SpecialMapSettingForm />
+    </ForwardRef(Box)>
+  </BoxModal>
+  <ForwardRef(Snackbar)
+    autoHideDuration={6000}
+    onClose={[Function]}
+    open={false}
+  >
+    <ForwardRef(Alert)
+      onClose={[Function]}
+      sx={
+        Object {
+          "width": "100%",
+        }
+      }
+      variant="filled"
+    />
+  </ForwardRef(Snackbar)>
+  <SwipeableEdgeDrawer
+    bleedingHeight={56}
+    edgeLabel={
+      <CloseFormButton
+        onClose={[Function]}
+      />
+    }
+    edgeLabelWhenClosed="編集中"
+    heightRatio={80}
+    onClose={[Function]}
+    onOpen={[Function]}
+    open={false}
+    show={false}
+  >
+    xxx
+  </SwipeableEdgeDrawer>
+</ForwardRef(Box)>
 `;

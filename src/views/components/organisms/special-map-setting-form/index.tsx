@@ -6,19 +6,23 @@ import {
   selectSpecialMapDescription,
   selectSpecialMapFormError,
   selectSpecialMapId,
+  selectSpecialMapIsPublic,
   selectSpecialMapLoading,
+  selectSpecialMapSelectablePark,
   selectSpecialMapThumbnail,
   selectSpecialMapTitle,
 } from 'store/special-map-setting/selector';
 import {
   submitSpecialMap,
   updateDescription,
+  updateIsPublic,
   updateSelectablePark,
   updateThumbnail,
   updateTitle,
 } from 'store/special-map-setting/actions';
 import { throwError } from 'store/global-error/slice';
 import {
+  Box,
   Container,
   FormControl,
   FormControlLabel,
@@ -26,6 +30,7 @@ import {
   Radio,
   RadioGroup,
   Stack,
+  Switch,
   TextField,
   Typography,
 } from '@mui/material';
@@ -47,6 +52,8 @@ export function SpecialMapSettingForm() {
   const loadingState = useAppSelector(selectSpecialMapLoading);
   const description = useAppSelector(selectSpecialMapDescription);
   const thumbnail = useAppSelector(selectSpecialMapThumbnail);
+  const isPublic = useAppSelector(selectSpecialMapIsPublic);
+  const selectablePark = useAppSelector(selectSpecialMapSelectablePark);
 
   const imageSrc = getImageSrc(thumbnail);
 
@@ -62,6 +69,18 @@ export function SpecialMapSettingForm() {
         </Typography>
 
         {formError?.errorTitle && <HeaderErrorMessages errorTitle={formError.errorTitle} />}
+
+        {specialMapId && (
+          <Stack direction="row" spacing={1} alignItems="center">
+            <Typography fontSize="1rem">非公開</Typography>
+            <Switch
+              checked={isPublic}
+              onChange={() => dispatch(updateIsPublic(!isPublic))}
+              color="primary"
+            />
+            <Typography fontSize="1rem">公開</Typography>
+          </Stack>
+        )}
 
         <TextField
           label="オリジナルマップのタイトル"
@@ -91,26 +110,36 @@ export function SpecialMapSettingForm() {
           required
         />
 
-        {imageSrc ? (
-          <DeletableImage
-            src={imageSrc}
-            width="full"
-            borderRadius
-            onDelete={() => dispatch(updateThumbnail(null))}
-            errors={formError?.fieldErrors?.thumbnail}
-          />
-        ) : (
-          <ImageField
-            src={imageSrc}
-            onChange={(src) => dispatch(updateThumbnail(src))}
-            variant="photo"
-            disabled={loading}
-            error={!!formError?.fieldErrors?.thumbnail}
-            helperText={formError?.fieldErrors?.thumbnail}
-            maxLength={UPLOAD_IMAGE_MAX_LENGTH.article}
-            onCatchError={() => dispatch(throwError(500))}
-          />
-        )}
+        <Box>
+          <FormLabel>サムネイル画像</FormLabel>
+          <Typography variant="body2" color="gray" sx={{ mb: 1 }}>
+            このオリジナルマップのイメージを表す画像です。
+            <br />
+            一覧ページやSNS共有時に表示されます。
+            <br />
+            指定しない場合は共通の画像が表示されます。
+          </Typography>
+          {imageSrc ? (
+            <DeletableImage
+              src={imageSrc}
+              width="full"
+              borderRadius
+              onDelete={() => dispatch(updateThumbnail(null))}
+              errors={formError?.fieldErrors?.thumbnail}
+            />
+          ) : (
+            <ImageField
+              src={imageSrc}
+              onChange={(src) => dispatch(updateThumbnail(src))}
+              variant="photo"
+              disabled={loading}
+              error={!!formError?.fieldErrors?.thumbnail}
+              helperText={formError?.fieldErrors?.thumbnail}
+              maxLength={UPLOAD_IMAGE_MAX_LENGTH.article}
+              onCatchError={() => dispatch(throwError(500))}
+            />
+          )}
+        </Box>
 
         <FormControl required error={!!formError?.fieldErrors?.selectablePark}>
           <FormLabel>対象パーク{!specialMapId && '（後から変更できます）'}</FormLabel>
@@ -118,9 +147,21 @@ export function SpecialMapSettingForm() {
             row
             onChange={(_, value) => dispatch(updateSelectablePark(value as SelectablePark))}
           >
-            <FormControlLabel value={SELECTABLE_PARK.land} control={<Radio />} label="ランドのみ" />
-            <FormControlLabel value={SELECTABLE_PARK.sea} control={<Radio />} label="シーのみ" />
-            <FormControlLabel value={SELECTABLE_PARK.both} control={<Radio />} label="両パーク" />
+            <FormControlLabel
+              value={SELECTABLE_PARK.land}
+              control={<Radio checked={selectablePark === SELECTABLE_PARK.land} />}
+              label="ランドのみ"
+            />
+            <FormControlLabel
+              value={SELECTABLE_PARK.sea}
+              control={<Radio checked={selectablePark === SELECTABLE_PARK.sea} />}
+              label="シーのみ"
+            />
+            <FormControlLabel
+              value={SELECTABLE_PARK.both}
+              control={<Radio checked={selectablePark === SELECTABLE_PARK.both} />}
+              label="両パーク"
+            />
           </RadioGroup>
           <HelperText error={!!formError?.fieldErrors?.selectablePark}>
             {!!formError?.fieldErrors?.selectablePark}

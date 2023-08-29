@@ -2,9 +2,13 @@ import { Renderer, Props } from './renderer';
 import { isMobile } from 'react-device-detect';
 import { Navigate, useLocation, useParams } from 'react-router-dom';
 import { NOT_FOUND_LINK } from 'constant/links';
-import { useAppDispatch } from 'store';
+import { useAppDispatch, useAppSelector } from 'store';
 import { useWindowSize } from 'helper-components/user-window-size';
 import { throwError } from 'store/global-error/slice';
+import { updateUser } from 'store/auths/actions';
+import { GetSpecialMapResponse } from 'api/special-map-api/get-special-map';
+import { setSpecialMap } from 'store/special-map-setting/actions';
+import { selectSpecialMapSetting } from 'store/special-map-setting/selector';
 
 export function SpecialMapPage({ edit }: { edit?: boolean }) {
   const { mapId } = useParams();
@@ -23,6 +27,8 @@ export function SpecialMapPage({ edit }: { edit?: boolean }) {
     return <Navigate to={NOT_FOUND_LINK} />;
   }
 
+  const refreshUser = () => dispatch(updateUser(undefined));
+
   const props: Props = {
     isMobile: isMobile,
     mapId: mapIdNumber,
@@ -31,7 +37,10 @@ export function SpecialMapPage({ edit }: { edit?: boolean }) {
     markerId: markerId,
     park: park ?? undefined,
     editMode: !!edit,
+    specialMapSettingForm: useAppSelector(selectSpecialMapSetting),
 
+    refreshUser,
+    setSpecialMap: (specialMap: GetSpecialMapResponse) => dispatch(setSpecialMap(specialMap)),
     throwError: (errorStatus: number) => dispatch(throwError(errorStatus)),
   };
 

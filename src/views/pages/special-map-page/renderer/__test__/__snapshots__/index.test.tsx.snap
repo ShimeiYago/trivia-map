@@ -244,7 +244,7 @@ exports[`Shallow Snapshot Tests focusing a marker 1`] = `
         icon="add-marker"
         onClick={[Function]}
         size="large"
-        text="新しい投稿を追加"
+        text="マーカーを追加する"
       />
     </ForwardRef(Box)>
   </GlobalMenu>
@@ -416,7 +416,7 @@ exports[`Shallow Snapshot Tests loaded (pc) 1`] = `
         icon="add-marker"
         onClick={[Function]}
         size="large"
-        text="新しい投稿を追加"
+        text="マーカーを追加する"
       />
     </ForwardRef(Box)>
   </GlobalMenu>
@@ -629,7 +629,7 @@ exports[`Shallow Snapshot Tests loaded 1`] = `
         icon="add-marker"
         onClick={[Function]}
         size="large"
-        text="新しい投稿を追加"
+        text="マーカーを追加する"
       />
     </ForwardRef(Box)>
   </GlobalMenu>
@@ -801,7 +801,7 @@ exports[`Shallow Snapshot Tests loading markers 1`] = `
         icon="add-marker"
         onClick={[Function]}
         size="large"
-        text="新しい投稿を追加"
+        text="マーカーを追加する"
       />
     </ForwardRef(Box)>
   </GlobalMenu>

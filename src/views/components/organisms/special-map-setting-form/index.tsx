@@ -23,7 +23,7 @@ import {
 import { throwError } from 'store/global-error/slice';
 import {
   Box,
-  Container,
+  Divider,
   FormControl,
   FormControlLabel,
   FormLabel,
@@ -62,7 +62,7 @@ export function SpecialMapSettingForm() {
   const headerRef = useRef<HTMLDivElement>(null);
 
   return (
-    <Container maxWidth="sm" sx={{ p: 0, my: 3 }}>
+    <Box maxWidth="sm" sx={{ p: 0, my: 3, mx: 'auto' }}>
       <Stack spacing={3}>
         <Typography component="h2" align="center" variant="h4" ref={headerRef}>
           {specialMapId ? 'オリジナルマップの設定' : 'オリジナルマップを作成'}
@@ -71,15 +71,19 @@ export function SpecialMapSettingForm() {
         {formError?.errorTitle && <HeaderErrorMessages errorTitle={formError.errorTitle} />}
 
         {specialMapId && (
-          <Stack direction="row" spacing={1} alignItems="center">
-            <Typography fontSize="1rem">非公開</Typography>
-            <Switch
-              checked={isPublic}
-              onChange={() => dispatch(updateIsPublic(!isPublic))}
-              color="primary"
-            />
-            <Typography fontSize="1rem">公開</Typography>
-          </Stack>
+          <>
+            <Stack direction="row" spacing={1} alignItems="center" justifyContent="center">
+              <Typography fontSize="1rem">非公開</Typography>
+              <Switch
+                checked={isPublic}
+                onChange={() => dispatch(updateIsPublic(!isPublic))}
+                color="primary"
+              />
+              <Typography fontSize="1rem">公開</Typography>
+            </Stack>
+
+            <Divider />
+          </>
         )}
 
         <TextField
@@ -177,6 +181,6 @@ export function SpecialMapSettingForm() {
           {specialMapId ? '設定を更新する' : 'オリジナルマップを作成する'}
         </LoadingButton>
       </Stack>
-    </Container>
+    </Box>
   );
 }

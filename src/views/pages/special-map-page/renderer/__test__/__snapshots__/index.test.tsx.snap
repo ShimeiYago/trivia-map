@@ -30,6 +30,21 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       <SpecialMapSettingForm />
     </ForwardRef(Box)>
   </BoxModal>
+  <ForwardRef(Snackbar)
+    autoHideDuration={6000}
+    onClose={[Function]}
+    open={false}
+  >
+    <ForwardRef(Alert)
+      onClose={[Function]}
+      sx={
+        Object {
+          "width": "100%",
+        }
+      }
+      variant="filled"
+    />
+  </ForwardRef(Snackbar)>
 </Fragment>
 `;
 
@@ -222,6 +237,21 @@ exports[`Shallow Snapshot Tests focusing a marker 1`] = `
       <SpecialMapSettingForm />
     </ForwardRef(Box)>
   </BoxModal>
+  <ForwardRef(Snackbar)
+    autoHideDuration={6000}
+    onClose={[Function]}
+    open={false}
+  >
+    <ForwardRef(Alert)
+      onClose={[Function]}
+      sx={
+        Object {
+          "width": "100%",
+        }
+      }
+      variant="filled"
+    />
+  </ForwardRef(Snackbar)>
 </Fragment>
 `;
 
@@ -352,6 +382,21 @@ exports[`Shallow Snapshot Tests loaded (pc) 1`] = `
       <SpecialMapSettingForm />
     </ForwardRef(Box)>
   </BoxModal>
+  <ForwardRef(Snackbar)
+    autoHideDuration={6000}
+    onClose={[Function]}
+    open={false}
+  >
+    <ForwardRef(Alert)
+      onClose={[Function]}
+      sx={
+        Object {
+          "width": "100%",
+        }
+      }
+      variant="filled"
+    />
+  </ForwardRef(Snackbar)>
 </Fragment>
 `;
 
@@ -525,6 +570,21 @@ exports[`Shallow Snapshot Tests loaded 1`] = `
       <SpecialMapSettingForm />
     </ForwardRef(Box)>
   </BoxModal>
+  <ForwardRef(Snackbar)
+    autoHideDuration={6000}
+    onClose={[Function]}
+    open={false}
+  >
+    <ForwardRef(Alert)
+      onClose={[Function]}
+      sx={
+        Object {
+          "width": "100%",
+        }
+      }
+      variant="filled"
+    />
+  </ForwardRef(Snackbar)>
 </Fragment>
 `;
 
@@ -655,6 +715,21 @@ exports[`Shallow Snapshot Tests loading markers 1`] = `
       <SpecialMapSettingForm />
     </ForwardRef(Box)>
   </BoxModal>
+  <ForwardRef(Snackbar)
+    autoHideDuration={6000}
+    onClose={[Function]}
+    open={false}
+  >
+    <ForwardRef(Alert)
+      onClose={[Function]}
+      sx={
+        Object {
+          "width": "100%",
+        }
+      }
+      variant="filled"
+    />
+  </ForwardRef(Snackbar)>
 </Fragment>
 `;
 
@@ -688,5 +763,20 @@ exports[`Shallow Snapshot Tests without height 1`] = `
       <SpecialMapSettingForm />
     </ForwardRef(Box)>
   </BoxModal>
+  <ForwardRef(Snackbar)
+    autoHideDuration={6000}
+    onClose={[Function]}
+    open={false}
+  >
+    <ForwardRef(Alert)
+      onClose={[Function]}
+      sx={
+        Object {
+          "width": "100%",
+        }
+      }
+      variant="filled"
+    />
+  </ForwardRef(Snackbar)>
 </Fragment>
 `;

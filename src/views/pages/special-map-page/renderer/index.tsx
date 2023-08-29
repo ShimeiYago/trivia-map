@@ -12,9 +12,19 @@ import {
 import { LoadingProgressBar } from 'views/components/moleculars/loading-progress-bar';
 import { ParkMap } from 'views/components/moleculars/park-map';
 import { CenterSpinner } from 'views/components/atoms/center-spinner';
-import { Alert, AlertColor, Box, Grid, IconButton, Snackbar, Typography } from '@mui/material';
+import {
+  Alert,
+  AlertColor,
+  Box,
+  Drawer,
+  Grid,
+  IconButton,
+  Snackbar,
+  Typography,
+} from '@mui/material';
 import { GlobalMenu } from 'views/components/organisms/global-menu';
-import { mapWrapper, metaInfoBox, mapTopArea } from './styles';
+import { metaInfoBox, mapTopArea } from './styles';
+import { rightDrawerStyle, mapWrapper, wrapper } from 'views/common-styles/map-page';
 import { ParkSelectBox } from 'views/components/moleculars/park-select-box';
 import { MapMarker } from 'views/components/moleculars/map-marker';
 import { LatLng, Map as LeafletMap } from 'leaflet';
@@ -30,6 +40,9 @@ import { autoRefreshApiWrapper } from 'utils/auto-refresh-api-wrapper';
 import { BoxModal } from 'views/components/moleculars/box-modal';
 import { SpecialMapSettingForm } from 'views/components/organisms/special-map-setting-form';
 import { SpecialMapSettingState } from 'store/special-map-setting/model';
+import { SwipeableEdgeDrawer } from 'views/components/moleculars/swipeable-edge-drawer';
+import { CloseFormButton } from 'views/components/organisms/close-form-button';
+import { FloatingButton } from 'views/components/atoms/floating-button';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -41,6 +54,7 @@ export class Renderer extends React.Component<Props, State> {
       markers: [],
       loadedMarkerPages: 0,
       openSettingModal: false,
+      openFormModal: false,
     };
   }
 
@@ -86,7 +100,7 @@ export class Renderer extends React.Component<Props, State> {
 
   render() {
     return (
-      <>
+      <Box sx={wrapper(this.state.openFormModal && !this.props.isMobile)}>
         <GlobalMenu topBarPosition="static" mapPage>
           {this.renderSpecialMap()}
         </GlobalMenu>
@@ -94,7 +108,9 @@ export class Renderer extends React.Component<Props, State> {
         {this.renderSettingModal()}
 
         {this.renderNotification()}
-      </>
+
+        {this.renderEditForm()}
+      </Box>
     );
   }
 
@@ -110,6 +126,11 @@ export class Renderer extends React.Component<Props, State> {
       );
     }
 
+    const handleClickAddButton = () =>
+      this.setState({
+        openFormModal: true,
+      });
+
     return (
       <>
         <CommonHelmet
@@ -123,7 +144,7 @@ export class Renderer extends React.Component<Props, State> {
             {this.renderMarkers()}
           </ParkMap>
 
-          <Box sx={mapTopArea(isMobile)}>
+          <Box sx={mapTopArea(!isMobile && this.state.openFormModal, isMobile)}>
             {this.renderMetaInfo()}
 
             {this.state.specialMap?.selectablePark === 'both' && (
@@ -140,6 +161,14 @@ export class Renderer extends React.Component<Props, State> {
             totalPages={this.state.totalMarkerPages}
             fetchingState={this.state.loadingMarkers ? 'loading' : 'success'}
             isMobile={this.props.isMobile}
+          />
+
+          <FloatingButton
+            color="error"
+            icon="add-marker"
+            text="新しい投稿を追加"
+            size="large"
+            onClick={handleClickAddButton}
           />
         </Box>
       </>
@@ -372,6 +401,45 @@ export class Renderer extends React.Component<Props, State> {
       </Snackbar>
     );
   };
+
+  protected renderEditForm = () => {
+    const { openFormModal } = this.state;
+    const { isMobile } = this.props;
+    const isFormEditting = false;
+
+    const handleCloseFormModal = () =>
+      this.setState({
+        openFormModal: false,
+      });
+    const handleOpenEditForm = () =>
+      this.setState({
+        openFormModal: true,
+      });
+    const handleHideFormModal = () =>
+      this.setState({
+        openFormModal: false,
+      });
+
+    const closeButton = <CloseFormButton onClose={handleCloseFormModal} />;
+
+    return isMobile ? (
+      <SwipeableEdgeDrawer
+        show={isFormEditting || openFormModal}
+        open={openFormModal}
+        onOpen={handleOpenEditForm}
+        onClose={handleHideFormModal}
+        edgeLabel={closeButton}
+        edgeLabelWhenClosed="編集中"
+        heightRatio={80}
+      >
+        xxx
+      </SwipeableEdgeDrawer>
+    ) : (
+      <Drawer sx={rightDrawerStyle} variant="persistent" anchor="right" open={openFormModal}>
+        {openFormModal && <>xxx</>}
+      </Drawer>
+    );
+  };
 }
 
 export type Props = {
@@ -403,4 +471,5 @@ export type State = {
     message: string;
     type: AlertColor;
   };
+  openFormModal: boolean;
 };

@@ -20,15 +20,13 @@ import { GlobalMessage } from 'views/components/organisms/global-messge';
 import { TriviaMapMarkersLoadingProgressBar } from 'views/components/organisms/loading-progress-bar';
 import { TriviaMap } from 'views/components/organisms/trivia-map';
 import {
-  rightDrawerStyle,
-  mapWrapper,
-  wrapper,
-  parkSelectBox,
   verticalScroll,
   categoryBar,
   categoryBarProceedButton,
   authorMapMessage,
+  parkSelectBox,
 } from './styles';
+import { rightDrawerStyle, mapWrapper, wrapper } from 'views/common-styles/map-page';
 import { GlobalMenu } from 'views/components/organisms/global-menu';
 import { Park } from 'types/park';
 import { RoundButton } from 'views/components/atoms/round-button';

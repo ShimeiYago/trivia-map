@@ -2,6 +2,7 @@ import { GetSpecialMapResponse } from 'api/special-map-api/get-special-map';
 import { GetSpecialMapMarkersResponseWithPagination } from 'api/special-map-api/get-special-map-markers';
 import { GetSpecialMapsResponseWithPagination } from 'api/special-map-api/get-special-maps';
 import { PostSpecialMapResponse } from 'api/special-map-api/post-special-map';
+import { PostSpecialMapMarkerResponse } from 'api/special-map-api/post-special-map-marker';
 
 export const mockGetSpecialMapResponse: GetSpecialMapResponse = {
   specialMapId: 1,
@@ -86,4 +87,15 @@ export const mockPostSpecialMapResponse: PostSpecialMapResponse = {
   maxLatitude: 0,
   minLongitude: 0,
   maxLongitude: 255,
+};
+
+export const mockPostSpecialMapMarkerResponse: PostSpecialMapMarkerResponse = {
+  specialMapMarkerId: 1,
+  specialMap: 1,
+  lat: -140.46875,
+  lng: 111.0625,
+  park: 'L',
+  description: 'パーク中の「関係者以外立ち入り禁止」の看板のまとめです。',
+  variant: 'restroom',
+  image: 'https://cdn-ak.f.st-hatena.com/images/fotolife/n/nats-co/20160323/20160323164220.jpg',
 };

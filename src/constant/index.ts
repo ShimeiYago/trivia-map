@@ -105,7 +105,8 @@ export const INPUT_FIELD_MAX_LENGTH = {
   articleDescription: 500,
   nickname: 20,
   inquiryMessage: 2000,
-  specialMapDescription: 100,
+  specialMapDescription: 200,
+  specialMapMarkerDescription: 400,
 };
 
 export const NO_INDEX = process.env.REACT_APP_NO_INDEX;

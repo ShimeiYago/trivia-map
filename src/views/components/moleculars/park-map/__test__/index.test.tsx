@@ -51,6 +51,17 @@ describe('Shallow Snapshot Tests', () => {
     });
     expect(shallowWrapper).toMatchSnapshot();
   });
+
+  it('position select', () => {
+    shallowWrapper.setProps({
+      positionSelectProps: {
+        active: true,
+        onConfirm: jest.fn(),
+        onCancel: jest.fn(),
+      },
+    });
+    expect(shallowWrapper).toMatchSnapshot();
+  });
 });
 
 describe('handleMapCreated', () => {

@@ -11,6 +11,13 @@ exports[`Shallow Snapshot Tests basic 1`] = `
     }
     initZoom={1}
     park="S"
+    positionSelectProps={
+      Object {
+        "active": false,
+        "onCancel": [Function],
+        "onConfirm": [Function],
+      }
+    }
     setMap={[Function]}
   >
     <PostMarkers
@@ -81,6 +88,13 @@ exports[`Shallow Snapshot Tests disabled map 1`] = `
     }
     initZoom={1}
     park="S"
+    positionSelectProps={
+      Object {
+        "active": false,
+        "onCancel": [Function],
+        "onConfirm": [Function],
+      }
+    }
     setMap={[Function]}
   >
     <MapMarker
@@ -119,6 +133,13 @@ exports[`Shallow Snapshot Tests land map 1`] = `
     }
     initZoom={1}
     park="L"
+    positionSelectProps={
+      Object {
+        "active": false,
+        "onCancel": [Function],
+        "onConfirm": [Function],
+      }
+    }
     setMap={[Function]}
   >
     <PostMarkers
@@ -188,6 +209,13 @@ exports[`Shallow Snapshot Tests with current marker 1`] = `
     }
     initZoom={1}
     park="S"
+    positionSelectProps={
+      Object {
+        "active": false,
+        "onCancel": [Function],
+        "onConfirm": [Function],
+      }
+    }
     setMap={[Function]}
   >
     <PostMarkers
@@ -277,6 +305,13 @@ exports[`Shallow Snapshot Tests with initCenter prop 1`] = `
     }
     initZoom={1}
     park="S"
+    positionSelectProps={
+      Object {
+        "active": false,
+        "onCancel": [Function],
+        "onConfirm": [Function],
+      }
+    }
     setMap={[Function]}
   >
     <PostMarkers
@@ -377,6 +412,13 @@ exports[`Shallow Snapshot Tests with width and height props 1`] = `
     }
     initZoom={1}
     park="S"
+    positionSelectProps={
+      Object {
+        "active": false,
+        "onCancel": [Function],
+        "onConfirm": [Function],
+      }
+    }
     setMap={[Function]}
     width={100}
   >

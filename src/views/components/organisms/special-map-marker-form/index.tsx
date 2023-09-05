@@ -20,7 +20,7 @@ import {
   Typography,
 } from '@mui/material';
 import { HeaderErrorMessages } from 'views/components/moleculars/header-error-messages';
-import { MAP_MARKER_VARIANT, UPLOAD_IMAGE_MAX_LENGTH } from 'constant';
+import { MAP_MARKER_VARIANT, MINI_MAP_HEIGHT, UPLOAD_IMAGE_MAX_LENGTH, ZOOMS } from 'constant';
 import { LoadingButton } from '@mui/lab';
 import { getImageSrc } from 'utils/get-image-src.ts';
 import { DeletableImage } from 'views/components/moleculars/deletable-image';
@@ -32,6 +32,10 @@ import defaultIconUrl from 'images/marker-icons/default.png';
 import redIconUrl from 'images/marker-icons/red.png';
 import restroomIconUrl from 'images/marker-icons/restroom.png';
 import classes from './index.module.css';
+import { ParkMap } from 'views/components/moleculars/park-map';
+import { Park } from 'types/park';
+import { MapMarker } from 'views/components/moleculars/map-marker';
+import { LatLng } from 'leaflet';
 
 export function SpecialMapMarkerForm(props: Props) {
   const dispatch = useAppDispatch();
@@ -97,16 +101,19 @@ export function SpecialMapMarkerForm(props: Props) {
           helperText={formError?.fieldErrors?.coordinate}
           isSelected={!!position}
           status={mapFieldStatus}
+          onClick={props.onClickMiniMap}
         >
-          <div>xxx</div>
-          <div>xxx</div>
-          <div>xxx</div>
-          <div>xxx</div>
-          <div>xxx</div>
-          <div>xxx</div>
-          <div>xxx</div>
-          <div>xxx</div>
-          <div>xxx</div>
+          <ParkMap
+            park={position?.park ?? props.defaultPark}
+            initZoom={ZOOMS.miniMap}
+            initCenter={position}
+            height={MINI_MAP_HEIGHT}
+            disabled
+          >
+            {position && (
+              <MapMarker position={new LatLng(position.lat, position.lng)} variant={variant} />
+            )}
+          </ParkMap>
         </MapField>
 
         <FormControl sx={{ display: 'inline-block' }}>
@@ -163,6 +170,8 @@ export function SpecialMapMarkerForm(props: Props) {
 
 export type Props = {
   specialMapId: number;
+  onClickMiniMap: () => void;
+  defaultPark: Park;
 };
 
 const MARKER_OPTIONS: { value: MapMarkerVariant; name: string; imgSrc: string }[] = [

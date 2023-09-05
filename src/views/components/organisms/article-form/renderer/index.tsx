@@ -26,7 +26,13 @@ import { ImageField } from 'views/components/moleculars/image-field';
 import { DeletableImage } from 'views/components/moleculars/deletable-image';
 import { HeaderErrorMessages } from 'views/components/moleculars/header-error-messages';
 import { User } from 'types/user';
-import { CATEGORIES, INPUT_FIELD_MAX_LENGTH, UPLOAD_IMAGE_MAX_LENGTH, ZOOMS } from 'constant';
+import {
+  CATEGORIES,
+  INPUT_FIELD_MAX_LENGTH,
+  MINI_MAP_HEIGHT,
+  UPLOAD_IMAGE_MAX_LENGTH,
+  ZOOMS,
+} from 'constant';
 import { SelializedImageFile } from 'types/selialized-image-file';
 import { Park } from 'types/park';
 import { getImageSrc } from 'utils/get-image-src.ts';
@@ -139,7 +145,7 @@ export class Renderer extends React.Component<Props> {
               isSelected={!!this.props.position}
             >
               <TriviaMap
-                height={300}
+                height={MINI_MAP_HEIGHT}
                 initZoom={ZOOMS.miniMap}
                 initCenter={position}
                 disabled

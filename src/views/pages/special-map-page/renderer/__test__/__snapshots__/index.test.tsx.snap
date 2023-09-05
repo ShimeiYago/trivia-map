@@ -62,6 +62,8 @@ exports[`Shallow Snapshot Tests basic 1`] = `
     show={false}
   >
     <SpecialMapMarkerForm
+      defaultPark="L"
+      onClickMiniMap={[Function]}
       specialMapId={0}
     />
   </SwipeableEdgeDrawer>
@@ -93,6 +95,13 @@ exports[`Shallow Snapshot Tests focusing a marker 1`] = `
       <ParkMap
         initZoom={2}
         park="L"
+        positionSelectProps={
+          Object {
+            "active": false,
+            "onCancel": [Function],
+            "onConfirm": [Function],
+          }
+        }
         setMap={[Function]}
       >
         <MapMarker
@@ -298,6 +307,8 @@ exports[`Shallow Snapshot Tests focusing a marker 1`] = `
     show={false}
   >
     <SpecialMapMarkerForm
+      defaultPark="L"
+      onClickMiniMap={[Function]}
       specialMapId={0}
     />
   </SwipeableEdgeDrawer>
@@ -329,6 +340,13 @@ exports[`Shallow Snapshot Tests loaded (pc) 1`] = `
       <ParkMap
         initZoom={2}
         park="L"
+        positionSelectProps={
+          Object {
+            "active": false,
+            "onCancel": [Function],
+            "onConfirm": [Function],
+          }
+        }
         setMap={[Function]}
       />
       <ForwardRef(Box)
@@ -499,6 +517,13 @@ exports[`Shallow Snapshot Tests loaded 1`] = `
       <ParkMap
         initZoom={2}
         park="L"
+        positionSelectProps={
+          Object {
+            "active": false,
+            "onCancel": [Function],
+            "onConfirm": [Function],
+          }
+        }
         setMap={[Function]}
       >
         <MapMarker
@@ -685,6 +710,8 @@ exports[`Shallow Snapshot Tests loaded 1`] = `
     show={false}
   >
     <SpecialMapMarkerForm
+      defaultPark="L"
+      onClickMiniMap={[Function]}
       specialMapId={0}
     />
   </SwipeableEdgeDrawer>
@@ -716,6 +743,13 @@ exports[`Shallow Snapshot Tests loading markers 1`] = `
       <ParkMap
         initZoom={2}
         park="L"
+        positionSelectProps={
+          Object {
+            "active": false,
+            "onCancel": [Function],
+            "onConfirm": [Function],
+          }
+        }
         setMap={[Function]}
       />
       <ForwardRef(Box)
@@ -859,6 +893,8 @@ exports[`Shallow Snapshot Tests loading markers 1`] = `
     show={false}
   >
     <SpecialMapMarkerForm
+      defaultPark="L"
+      onClickMiniMap={[Function]}
       specialMapId={0}
     />
   </SwipeableEdgeDrawer>
@@ -927,6 +963,8 @@ exports[`Shallow Snapshot Tests without height 1`] = `
     show={false}
   >
     <SpecialMapMarkerForm
+      defaultPark="L"
+      onClickMiniMap={[Function]}
       specialMapId={0}
     />
   </SwipeableEdgeDrawer>

@@ -134,3 +134,5 @@ export const MAP_MARKER_VARIANT: { [key: string]: MapMarkerVariant } = {
   red: 'red',
   restroom: 'restroom',
 };
+
+export const MINI_MAP_HEIGHT = 300;

@@ -96,6 +96,24 @@ export function SpecialMapMarkerForm(props: Props) {
           required
         />
 
+        <FormControl sx={{ display: 'inline-block' }}>
+          <InputLabel>マーカーの種類</InputLabel>
+          <Select
+            value={variant}
+            label="マーカーの種類"
+            onChange={(event) => dispatch(updateVariant(event.target.value as MapMarkerVariant))}
+          >
+            {MARKER_OPTIONS.map((option) => {
+              return (
+                <MenuItem value={option.value} key={option.value}>
+                  {option.name}
+                  <img src={option.imgSrc} className={classes['marker-option-img']} />
+                </MenuItem>
+              );
+            })}
+          </Select>
+        </FormControl>
+
         <MapField
           disabled={loading}
           helperText={formError?.fieldErrors?.coordinate}
@@ -115,24 +133,6 @@ export function SpecialMapMarkerForm(props: Props) {
             )}
           </ParkMap>
         </MapField>
-
-        <FormControl sx={{ display: 'inline-block' }}>
-          <InputLabel>マーカーの種類</InputLabel>
-          <Select
-            value={variant}
-            label="マーカーの種類"
-            onChange={(event) => dispatch(updateVariant(event.target.value as MapMarkerVariant))}
-          >
-            {MARKER_OPTIONS.map((option) => {
-              return (
-                <MenuItem value={option.value} key={option.value}>
-                  {option.name}
-                  <img src={option.imgSrc} className={classes['marker-option-img']} />
-                </MenuItem>
-              );
-            })}
-          </Select>
-        </FormControl>
 
         {imageSrc ? (
           <DeletableImage
@@ -176,15 +176,16 @@ export type Props = {
 
 const MARKER_OPTIONS: { value: MapMarkerVariant; name: string; imgSrc: string }[] = [
   {
-    name: '赤ピン',
-    value: MAP_MARKER_VARIANT.red,
-    imgSrc: redIconUrl,
-  },
-  {
     name: '青ピン',
     value: MAP_MARKER_VARIANT.blue,
     imgSrc: defaultIconUrl,
   },
+  {
+    name: '赤ピン',
+    value: MAP_MARKER_VARIANT.red,
+    imgSrc: redIconUrl,
+  },
+
   {
     name: 'レストルーム',
     value: MAP_MARKER_VARIANT.restroom,

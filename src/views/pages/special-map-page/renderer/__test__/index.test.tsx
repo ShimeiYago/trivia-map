@@ -30,6 +30,7 @@ const props: Props = {
   specialMapSettingForm: specialMapSettingFormInitialState,
   specialMapMarkerForm: specialMapMarkerFormInitialState,
   updatePosition: jest.fn(),
+  initializeSpecialMapForm: jest.fn(),
 };
 
 describe('Shallow Snapshot Tests', () => {

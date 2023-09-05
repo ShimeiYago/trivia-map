@@ -19,7 +19,7 @@ export const initialState: SpecialMapMarkerFormState = {
   description: '',
   image: null,
   submittingState: 'waiting',
-  variant: 'red',
+  variant: 'blue',
 };
 
 export type FormError = {

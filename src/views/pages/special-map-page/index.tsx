@@ -9,7 +9,7 @@ import { updateUser } from 'store/auths/actions';
 import { GetSpecialMapResponse } from 'api/special-map-api/get-special-map';
 import { setSpecialMap } from 'store/special-map-setting/actions';
 import { selectSpecialMapSetting } from 'store/special-map-setting/selector';
-import { updatePosition } from 'store/special-map-marker-form/actions';
+import { updatePosition, initialize } from 'store/special-map-marker-form/actions';
 import { Position } from 'types/position';
 
 export function SpecialMapPage({ edit }: { edit?: boolean }) {
@@ -46,6 +46,7 @@ export function SpecialMapPage({ edit }: { edit?: boolean }) {
     setSpecialMap: (specialMap: GetSpecialMapResponse) => dispatch(setSpecialMap(specialMap)),
     throwError: (errorStatus: number) => dispatch(throwError(errorStatus)),
     updatePosition: (position: Position) => dispatch(updatePosition(position)),
+    initializeSpecialMapForm: () => dispatch(initialize()),
   };
 
   return <Renderer {...props} />;

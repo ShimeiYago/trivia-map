@@ -68,7 +68,7 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   componentDidUpdate(prevProps: Readonly<Props>) {
-    const { specialMapSettingForm } = this.props;
+    const { specialMapSettingForm, specialMapMarkerForm } = this.props;
     if (
       prevProps.specialMapSettingForm.loading === 'loading' &&
       specialMapSettingForm.loading === 'success' &&
@@ -100,6 +100,23 @@ export class Renderer extends React.Component<Props, State> {
             : specialMapSettingForm.selectablePark,
       });
     }
+
+    if (
+      prevProps.specialMapMarkerForm.submittingState === 'loading' &&
+      specialMapMarkerForm.submittingState === 'success'
+    ) {
+      this.setState({
+        openFormModal: false,
+        notification: {
+          message: specialMapMarkerForm.specialMapMarkerId
+            ? 'マーカーを更新しました。'
+            : 'マーカーを追加しました。',
+          type: 'success',
+        },
+      });
+      this.fetchSpecialMapMarkers();
+      this.props.initializeSpecialMapForm();
+    }
   }
 
   render() {
@@ -130,10 +147,12 @@ export class Renderer extends React.Component<Props, State> {
       );
     }
 
-    const handleClickAddButton = () =>
+    const handleClickAddButton = () => {
+      this.props.initializeSpecialMapForm();
       this.setState({
         openFormModal: true,
       });
+    };
 
     return (
       <>
@@ -310,6 +329,12 @@ export class Renderer extends React.Component<Props, State> {
   };
 
   protected fetchSpecialMapMarkers = async () => {
+    this.setState({
+      loadingMarkers: true,
+      markers: [],
+      loadedMarkerPages: 0,
+    });
+
     try {
       let totalPages = 1;
       let loadedPages = 0;
@@ -540,6 +565,7 @@ export type Props = {
   setSpecialMap: (specialMap: GetSpecialMapResponse) => void;
   throwError: (errorStatus: number) => void;
   updatePosition: (position: Position) => void;
+  initializeSpecialMapForm: () => void;
 };
 
 export type State = {

@@ -1,4 +1,5 @@
 import { PreviewListOrder } from 'api/articles-api/get-articles-previews';
+import { MapMarkerVariant } from 'types/marker-icon';
 import { Park, SelectablePark } from 'types/park';
 
 export const BASE_URL = process.env.REACT_APP_API_BASE_URL ?? 'http://localhost:3001';
@@ -126,4 +127,10 @@ export const SELECTABLE_PARK: { [key: string]: SelectablePark } = {
   land: 'L',
   sea: 'S',
   both: 'both',
+};
+
+export const MAP_MARKER_VARIANT: { [key: string]: MapMarkerVariant } = {
+  blue: 'blue',
+  red: 'red',
+  restroom: 'restroom',
 };

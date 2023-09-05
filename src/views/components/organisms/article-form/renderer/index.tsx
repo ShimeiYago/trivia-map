@@ -18,16 +18,8 @@ import { LoadingState } from 'types/loading-state';
 import { Position } from 'types/position';
 import { FormError } from 'store/article-form/model';
 import { LoadingButton } from '@mui/lab';
-import {
-  formContainer,
-  formHeader,
-  miniMapLayer,
-  miniMapGuideTextBox,
-  miniMapWrapper,
-  miniMapAreaTextBox,
-} from './styles';
+import { formContainer, formHeader } from './styles';
 import { TriviaMap } from '../../trivia-map';
-import { BoxField } from 'views/components/moleculars/box-field';
 import { UpdateFormFieldParam } from 'store/article-form/actions';
 import { CloseFormButton } from '../../close-form-button';
 import { ImageField } from 'views/components/moleculars/image-field';
@@ -37,8 +29,8 @@ import { User } from 'types/user';
 import { CATEGORIES, INPUT_FIELD_MAX_LENGTH, UPLOAD_IMAGE_MAX_LENGTH, ZOOMS } from 'constant';
 import { SelializedImageFile } from 'types/selialized-image-file';
 import { Park } from 'types/park';
-import { AreaNames } from 'views/components/atoms/area-names';
 import { getImageSrc } from 'utils/get-image-src.ts';
+import { MapField } from 'views/components/moleculars/map-field';
 
 export class Renderer extends React.Component<Props> {
   headerRef: React.RefObject<HTMLDivElement>;
@@ -87,7 +79,6 @@ export class Renderer extends React.Component<Props> {
       title,
       description,
       position,
-      areaNames,
       isDraft,
       lastSavedIsDraft,
       submittingState,
@@ -140,45 +131,23 @@ export class Renderer extends React.Component<Props> {
               inputProps={{ maxLength: INPUT_FIELD_MAX_LENGTH.articleTitle }}
             />
 
-            <BoxField
+            <MapField
               status={miniMapFieldStatus}
               onClick={handleClickSelectPosition}
               disabled={disabled}
               helperText={formError?.fieldErrors?.marker}
+              isSelected={!!this.props.position}
             >
-              <Box sx={miniMapWrapper}>
-                <TriviaMap
-                  height={300}
-                  initZoom={ZOOMS.miniMap}
-                  initCenter={position}
-                  disabled
-                  doNotShowPostMarkers
-                  shouldCurrentPositionAsyncWithForm
-                  park={position?.park ?? this.props.park}
-                />
-                <Box sx={miniMapLayer}></Box>
-                <Box sx={miniMapAreaTextBox}>
-                  {!disabled && areaNames && (
-                    <Typography color="white" component="div" fontSize="14" variant="inherit">
-                      <AreaNames areaNames={areaNames} variant="inherit" />
-                    </Typography>
-                  )}
-                </Box>
-                <Box sx={miniMapGuideTextBox}>
-                  {!disabled && (
-                    <Typography
-                      color="white"
-                      textAlign="center"
-                      component="div"
-                      fontSize="14"
-                      variant="inherit"
-                    >
-                      {this.getMiniMapText()}
-                    </Typography>
-                  )}
-                </Box>
-              </Box>
-            </BoxField>
+              <TriviaMap
+                height={300}
+                initZoom={ZOOMS.miniMap}
+                initCenter={position}
+                disabled
+                doNotShowPostMarkers
+                shouldCurrentPositionAsyncWithForm
+                park={position?.park ?? this.props.park}
+              />
+            </MapField>
 
             {this.renderCategorySelectField(disabled)}
 
@@ -298,26 +267,6 @@ export class Renderer extends React.Component<Props> {
   protected openAuthModal = () => {
     this.props.toggleAuthFormModal(true);
   };
-
-  protected getMiniMapText() {
-    if (this.props.position) {
-      return (
-        <>
-          この位置が選択されています。
-          <br />
-          位置を選び直す場合はここをタップしてください。
-        </>
-      );
-    }
-
-    return (
-      <>
-        位置が選択されていません。
-        <br />
-        ここをタップして位置を選択してください。
-      </>
-    );
-  }
 
   protected renderHeaderMessage() {
     const { formError } = this.props;

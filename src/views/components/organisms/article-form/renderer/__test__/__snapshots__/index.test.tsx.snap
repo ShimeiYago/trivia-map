@@ -35,103 +35,27 @@ exports[`Shallow Snapshot Tests basic 1`] = `
         value=""
         variant="standard"
       />
-      <BoxField
+      <MapField
         disabled={false}
+        isSelected={true}
         status="valid"
       >
-        <ForwardRef(Box)
-          sx={
+        <TriviaMap
+          disabled={true}
+          doNotShowPostMarkers={true}
+          height={300}
+          initCenter={
             Object {
-              "position": "relative",
+              "lat": 0,
+              "lng": 0,
+              "park": "S",
             }
           }
-        >
-          <TriviaMap
-            disabled={true}
-            doNotShowPostMarkers={true}
-            height={300}
-            initCenter={
-              Object {
-                "lat": 0,
-                "lng": 0,
-                "park": "S",
-              }
-            }
-            initZoom={3}
-            park="S"
-            shouldCurrentPositionAsyncWithForm={true}
-          />
-          <ForwardRef(Box)
-            sx={
-              Object {
-                "backgroundColor": "rgba(0,0,0,0.5)",
-                "height": "100%",
-                "left": 0,
-                "position": "absolute",
-                "top": 0,
-                "width": "100%",
-                "zIndex": 2000,
-              }
-            }
-          />
-          <ForwardRef(Box)
-            sx={
-              Object {
-                "fontWeight": "bold",
-                "left": "50%",
-                "position": "absolute",
-                "top": "10%",
-                "transform": "translate(-50%,-50%)",
-                "width": "90%",
-                "zIndex": 2000,
-              }
-            }
-          >
-            <ForwardRef(Typography)
-              color="white"
-              component="div"
-              fontSize="14"
-              variant="inherit"
-            >
-              <AreaNames
-                areaNames={
-                  Array [
-                    "シー",
-                    "メディテレーニアンハーバー",
-                    "ポルトパラディーゾ",
-                  ]
-                }
-                variant="inherit"
-              />
-            </ForwardRef(Typography)>
-          </ForwardRef(Box)>
-          <ForwardRef(Box)
-            sx={
-              Object {
-                "fontWeight": "bold",
-                "left": "50%",
-                "position": "absolute",
-                "top": "70%",
-                "transform": "translate(-50%,-50%)",
-                "width": "90%",
-                "zIndex": 2000,
-              }
-            }
-          >
-            <ForwardRef(Typography)
-              color="white"
-              component="div"
-              fontSize="14"
-              textAlign="center"
-              variant="inherit"
-            >
-              この位置が選択されています。
-              <br />
-              位置を選び直す場合はここをタップしてください。
-            </ForwardRef(Typography)>
-          </ForwardRef(Box)>
-        </ForwardRef(Box)>
-      </BoxField>
+          initZoom={3}
+          park="S"
+          shouldCurrentPositionAsyncWithForm={true}
+        />
+      </MapField>
       <ForwardRef(FormControl)
         fullWidth={true}
       >
@@ -265,103 +189,27 @@ exports[`Shallow Snapshot Tests draft mode 1`] = `
         value=""
         variant="standard"
       />
-      <BoxField
+      <MapField
         disabled={false}
+        isSelected={true}
         status="valid"
       >
-        <ForwardRef(Box)
-          sx={
+        <TriviaMap
+          disabled={true}
+          doNotShowPostMarkers={true}
+          height={300}
+          initCenter={
             Object {
-              "position": "relative",
+              "lat": 0,
+              "lng": 0,
+              "park": "S",
             }
           }
-        >
-          <TriviaMap
-            disabled={true}
-            doNotShowPostMarkers={true}
-            height={300}
-            initCenter={
-              Object {
-                "lat": 0,
-                "lng": 0,
-                "park": "S",
-              }
-            }
-            initZoom={3}
-            park="S"
-            shouldCurrentPositionAsyncWithForm={true}
-          />
-          <ForwardRef(Box)
-            sx={
-              Object {
-                "backgroundColor": "rgba(0,0,0,0.5)",
-                "height": "100%",
-                "left": 0,
-                "position": "absolute",
-                "top": 0,
-                "width": "100%",
-                "zIndex": 2000,
-              }
-            }
-          />
-          <ForwardRef(Box)
-            sx={
-              Object {
-                "fontWeight": "bold",
-                "left": "50%",
-                "position": "absolute",
-                "top": "10%",
-                "transform": "translate(-50%,-50%)",
-                "width": "90%",
-                "zIndex": 2000,
-              }
-            }
-          >
-            <ForwardRef(Typography)
-              color="white"
-              component="div"
-              fontSize="14"
-              variant="inherit"
-            >
-              <AreaNames
-                areaNames={
-                  Array [
-                    "シー",
-                    "メディテレーニアンハーバー",
-                    "ポルトパラディーゾ",
-                  ]
-                }
-                variant="inherit"
-              />
-            </ForwardRef(Typography)>
-          </ForwardRef(Box)>
-          <ForwardRef(Box)
-            sx={
-              Object {
-                "fontWeight": "bold",
-                "left": "50%",
-                "position": "absolute",
-                "top": "70%",
-                "transform": "translate(-50%,-50%)",
-                "width": "90%",
-                "zIndex": 2000,
-              }
-            }
-          >
-            <ForwardRef(Typography)
-              color="white"
-              component="div"
-              fontSize="14"
-              textAlign="center"
-              variant="inherit"
-            >
-              この位置が選択されています。
-              <br />
-              位置を選び直す場合はここをタップしてください。
-            </ForwardRef(Typography)>
-          </ForwardRef(Box)>
-        </ForwardRef(Box)>
-      </BoxField>
+          initZoom={3}
+          park="S"
+          shouldCurrentPositionAsyncWithForm={true}
+        />
+      </MapField>
       <ForwardRef(FormControl)
         fullWidth={true}
       >
@@ -505,73 +353,27 @@ exports[`Shallow Snapshot Tests loading 1`] = `
         value=""
         variant="standard"
       />
-      <BoxField
+      <MapField
         disabled={true}
+        isSelected={true}
         status="valid"
       >
-        <ForwardRef(Box)
-          sx={
+        <TriviaMap
+          disabled={true}
+          doNotShowPostMarkers={true}
+          height={300}
+          initCenter={
             Object {
-              "position": "relative",
+              "lat": 0,
+              "lng": 0,
+              "park": "S",
             }
           }
-        >
-          <TriviaMap
-            disabled={true}
-            doNotShowPostMarkers={true}
-            height={300}
-            initCenter={
-              Object {
-                "lat": 0,
-                "lng": 0,
-                "park": "S",
-              }
-            }
-            initZoom={3}
-            park="S"
-            shouldCurrentPositionAsyncWithForm={true}
-          />
-          <ForwardRef(Box)
-            sx={
-              Object {
-                "backgroundColor": "rgba(0,0,0,0.5)",
-                "height": "100%",
-                "left": 0,
-                "position": "absolute",
-                "top": 0,
-                "width": "100%",
-                "zIndex": 2000,
-              }
-            }
-          />
-          <ForwardRef(Box)
-            sx={
-              Object {
-                "fontWeight": "bold",
-                "left": "50%",
-                "position": "absolute",
-                "top": "10%",
-                "transform": "translate(-50%,-50%)",
-                "width": "90%",
-                "zIndex": 2000,
-              }
-            }
-          />
-          <ForwardRef(Box)
-            sx={
-              Object {
-                "fontWeight": "bold",
-                "left": "50%",
-                "position": "absolute",
-                "top": "70%",
-                "transform": "translate(-50%,-50%)",
-                "width": "90%",
-                "zIndex": 2000,
-              }
-            }
-          />
-        </ForwardRef(Box)>
-      </BoxField>
+          initZoom={3}
+          park="S"
+          shouldCurrentPositionAsyncWithForm={true}
+        />
+      </MapField>
       <ForwardRef(FormControl)
         fullWidth={true}
       >
@@ -705,96 +507,20 @@ exports[`Shallow Snapshot Tests position is not selected yet 1`] = `
         value=""
         variant="standard"
       />
-      <BoxField
+      <MapField
         disabled={false}
+        isSelected={false}
         status="normal"
       >
-        <ForwardRef(Box)
-          sx={
-            Object {
-              "position": "relative",
-            }
-          }
-        >
-          <TriviaMap
-            disabled={true}
-            doNotShowPostMarkers={true}
-            height={300}
-            initZoom={3}
-            park="S"
-            shouldCurrentPositionAsyncWithForm={true}
-          />
-          <ForwardRef(Box)
-            sx={
-              Object {
-                "backgroundColor": "rgba(0,0,0,0.5)",
-                "height": "100%",
-                "left": 0,
-                "position": "absolute",
-                "top": 0,
-                "width": "100%",
-                "zIndex": 2000,
-              }
-            }
-          />
-          <ForwardRef(Box)
-            sx={
-              Object {
-                "fontWeight": "bold",
-                "left": "50%",
-                "position": "absolute",
-                "top": "10%",
-                "transform": "translate(-50%,-50%)",
-                "width": "90%",
-                "zIndex": 2000,
-              }
-            }
-          >
-            <ForwardRef(Typography)
-              color="white"
-              component="div"
-              fontSize="14"
-              variant="inherit"
-            >
-              <AreaNames
-                areaNames={
-                  Array [
-                    "シー",
-                    "メディテレーニアンハーバー",
-                    "ポルトパラディーゾ",
-                  ]
-                }
-                variant="inherit"
-              />
-            </ForwardRef(Typography)>
-          </ForwardRef(Box)>
-          <ForwardRef(Box)
-            sx={
-              Object {
-                "fontWeight": "bold",
-                "left": "50%",
-                "position": "absolute",
-                "top": "70%",
-                "transform": "translate(-50%,-50%)",
-                "width": "90%",
-                "zIndex": 2000,
-              }
-            }
-          >
-            <ForwardRef(Typography)
-              color="white"
-              component="div"
-              fontSize="14"
-              textAlign="center"
-              variant="inherit"
-            >
-              位置が選択されていません。
-              <br />
-              ここをタップして位置を選択してください。
-            </ForwardRef(Typography)>
-          </ForwardRef(Box)>
-        </ForwardRef(Box)>
-      </BoxField>
+        <TriviaMap
+          disabled={true}
+          doNotShowPostMarkers={true}
+          height={300}
+          initZoom={3}
+          park="S"
+          shouldCurrentPositionAsyncWithForm={true}
+        />
+      </MapField>
       <ForwardRef(FormControl)
         fullWidth={true}
       >
@@ -928,103 +654,27 @@ exports[`Shallow Snapshot Tests with category 1`] = `
         value=""
         variant="standard"
       />
-      <BoxField
+      <MapField
         disabled={false}
+        isSelected={true}
         status="valid"
       >
-        <ForwardRef(Box)
-          sx={
+        <TriviaMap
+          disabled={true}
+          doNotShowPostMarkers={true}
+          height={300}
+          initCenter={
             Object {
-              "position": "relative",
+              "lat": 0,
+              "lng": 0,
+              "park": "S",
             }
           }
-        >
-          <TriviaMap
-            disabled={true}
-            doNotShowPostMarkers={true}
-            height={300}
-            initCenter={
-              Object {
-                "lat": 0,
-                "lng": 0,
-                "park": "S",
-              }
-            }
-            initZoom={3}
-            park="S"
-            shouldCurrentPositionAsyncWithForm={true}
-          />
-          <ForwardRef(Box)
-            sx={
-              Object {
-                "backgroundColor": "rgba(0,0,0,0.5)",
-                "height": "100%",
-                "left": 0,
-                "position": "absolute",
-                "top": 0,
-                "width": "100%",
-                "zIndex": 2000,
-              }
-            }
-          />
-          <ForwardRef(Box)
-            sx={
-              Object {
-                "fontWeight": "bold",
-                "left": "50%",
-                "position": "absolute",
-                "top": "10%",
-                "transform": "translate(-50%,-50%)",
-                "width": "90%",
-                "zIndex": 2000,
-              }
-            }
-          >
-            <ForwardRef(Typography)
-              color="white"
-              component="div"
-              fontSize="14"
-              variant="inherit"
-            >
-              <AreaNames
-                areaNames={
-                  Array [
-                    "シー",
-                    "メディテレーニアンハーバー",
-                    "ポルトパラディーゾ",
-                  ]
-                }
-                variant="inherit"
-              />
-            </ForwardRef(Typography)>
-          </ForwardRef(Box)>
-          <ForwardRef(Box)
-            sx={
-              Object {
-                "fontWeight": "bold",
-                "left": "50%",
-                "position": "absolute",
-                "top": "70%",
-                "transform": "translate(-50%,-50%)",
-                "width": "90%",
-                "zIndex": 2000,
-              }
-            }
-          >
-            <ForwardRef(Typography)
-              color="white"
-              component="div"
-              fontSize="14"
-              textAlign="center"
-              variant="inherit"
-            >
-              この位置が選択されています。
-              <br />
-              位置を選び直す場合はここをタップしてください。
-            </ForwardRef(Typography)>
-          </ForwardRef(Box)>
-        </ForwardRef(Box)>
-      </BoxField>
+          initZoom={3}
+          park="S"
+          shouldCurrentPositionAsyncWithForm={true}
+        />
+      </MapField>
       <ForwardRef(FormControl)
         fullWidth={true}
       >
@@ -1173,103 +823,27 @@ exports[`Shallow Snapshot Tests with close button 1`] = `
         value=""
         variant="standard"
       />
-      <BoxField
+      <MapField
         disabled={false}
+        isSelected={true}
         status="valid"
       >
-        <ForwardRef(Box)
-          sx={
+        <TriviaMap
+          disabled={true}
+          doNotShowPostMarkers={true}
+          height={300}
+          initCenter={
             Object {
-              "position": "relative",
+              "lat": 0,
+              "lng": 0,
+              "park": "S",
             }
           }
-        >
-          <TriviaMap
-            disabled={true}
-            doNotShowPostMarkers={true}
-            height={300}
-            initCenter={
-              Object {
-                "lat": 0,
-                "lng": 0,
-                "park": "S",
-              }
-            }
-            initZoom={3}
-            park="S"
-            shouldCurrentPositionAsyncWithForm={true}
-          />
-          <ForwardRef(Box)
-            sx={
-              Object {
-                "backgroundColor": "rgba(0,0,0,0.5)",
-                "height": "100%",
-                "left": 0,
-                "position": "absolute",
-                "top": 0,
-                "width": "100%",
-                "zIndex": 2000,
-              }
-            }
-          />
-          <ForwardRef(Box)
-            sx={
-              Object {
-                "fontWeight": "bold",
-                "left": "50%",
-                "position": "absolute",
-                "top": "10%",
-                "transform": "translate(-50%,-50%)",
-                "width": "90%",
-                "zIndex": 2000,
-              }
-            }
-          >
-            <ForwardRef(Typography)
-              color="white"
-              component="div"
-              fontSize="14"
-              variant="inherit"
-            >
-              <AreaNames
-                areaNames={
-                  Array [
-                    "シー",
-                    "メディテレーニアンハーバー",
-                    "ポルトパラディーゾ",
-                  ]
-                }
-                variant="inherit"
-              />
-            </ForwardRef(Typography)>
-          </ForwardRef(Box)>
-          <ForwardRef(Box)
-            sx={
-              Object {
-                "fontWeight": "bold",
-                "left": "50%",
-                "position": "absolute",
-                "top": "70%",
-                "transform": "translate(-50%,-50%)",
-                "width": "90%",
-                "zIndex": 2000,
-              }
-            }
-          >
-            <ForwardRef(Typography)
-              color="white"
-              component="div"
-              fontSize="14"
-              textAlign="center"
-              variant="inherit"
-            >
-              この位置が選択されています。
-              <br />
-              位置を選び直す場合はここをタップしてください。
-            </ForwardRef(Typography)>
-          </ForwardRef(Box)>
-        </ForwardRef(Box)>
-      </BoxField>
+          initZoom={3}
+          park="S"
+          shouldCurrentPositionAsyncWithForm={true}
+        />
+      </MapField>
       <ForwardRef(FormControl)
         fullWidth={true}
       >
@@ -1403,103 +977,27 @@ exports[`Shallow Snapshot Tests with image data url 1`] = `
         value=""
         variant="standard"
       />
-      <BoxField
+      <MapField
         disabled={false}
+        isSelected={true}
         status="valid"
       >
-        <ForwardRef(Box)
-          sx={
+        <TriviaMap
+          disabled={true}
+          doNotShowPostMarkers={true}
+          height={300}
+          initCenter={
             Object {
-              "position": "relative",
+              "lat": 0,
+              "lng": 0,
+              "park": "S",
             }
           }
-        >
-          <TriviaMap
-            disabled={true}
-            doNotShowPostMarkers={true}
-            height={300}
-            initCenter={
-              Object {
-                "lat": 0,
-                "lng": 0,
-                "park": "S",
-              }
-            }
-            initZoom={3}
-            park="S"
-            shouldCurrentPositionAsyncWithForm={true}
-          />
-          <ForwardRef(Box)
-            sx={
-              Object {
-                "backgroundColor": "rgba(0,0,0,0.5)",
-                "height": "100%",
-                "left": 0,
-                "position": "absolute",
-                "top": 0,
-                "width": "100%",
-                "zIndex": 2000,
-              }
-            }
-          />
-          <ForwardRef(Box)
-            sx={
-              Object {
-                "fontWeight": "bold",
-                "left": "50%",
-                "position": "absolute",
-                "top": "10%",
-                "transform": "translate(-50%,-50%)",
-                "width": "90%",
-                "zIndex": 2000,
-              }
-            }
-          >
-            <ForwardRef(Typography)
-              color="white"
-              component="div"
-              fontSize="14"
-              variant="inherit"
-            >
-              <AreaNames
-                areaNames={
-                  Array [
-                    "シー",
-                    "メディテレーニアンハーバー",
-                    "ポルトパラディーゾ",
-                  ]
-                }
-                variant="inherit"
-              />
-            </ForwardRef(Typography)>
-          </ForwardRef(Box)>
-          <ForwardRef(Box)
-            sx={
-              Object {
-                "fontWeight": "bold",
-                "left": "50%",
-                "position": "absolute",
-                "top": "70%",
-                "transform": "translate(-50%,-50%)",
-                "width": "90%",
-                "zIndex": 2000,
-              }
-            }
-          >
-            <ForwardRef(Typography)
-              color="white"
-              component="div"
-              fontSize="14"
-              textAlign="center"
-              variant="inherit"
-            >
-              この位置が選択されています。
-              <br />
-              位置を選び直す場合はここをタップしてください。
-            </ForwardRef(Typography)>
-          </ForwardRef(Box)>
-        </ForwardRef(Box)>
-      </BoxField>
+          initZoom={3}
+          park="S"
+          shouldCurrentPositionAsyncWithForm={true}
+        />
+      </MapField>
       <ForwardRef(FormControl)
         fullWidth={true}
       >
@@ -1630,103 +1128,27 @@ exports[`Shallow Snapshot Tests with image url 1`] = `
         value=""
         variant="standard"
       />
-      <BoxField
+      <MapField
         disabled={false}
+        isSelected={true}
         status="valid"
       >
-        <ForwardRef(Box)
-          sx={
+        <TriviaMap
+          disabled={true}
+          doNotShowPostMarkers={true}
+          height={300}
+          initCenter={
             Object {
-              "position": "relative",
+              "lat": 0,
+              "lng": 0,
+              "park": "S",
             }
           }
-        >
-          <TriviaMap
-            disabled={true}
-            doNotShowPostMarkers={true}
-            height={300}
-            initCenter={
-              Object {
-                "lat": 0,
-                "lng": 0,
-                "park": "S",
-              }
-            }
-            initZoom={3}
-            park="S"
-            shouldCurrentPositionAsyncWithForm={true}
-          />
-          <ForwardRef(Box)
-            sx={
-              Object {
-                "backgroundColor": "rgba(0,0,0,0.5)",
-                "height": "100%",
-                "left": 0,
-                "position": "absolute",
-                "top": 0,
-                "width": "100%",
-                "zIndex": 2000,
-              }
-            }
-          />
-          <ForwardRef(Box)
-            sx={
-              Object {
-                "fontWeight": "bold",
-                "left": "50%",
-                "position": "absolute",
-                "top": "10%",
-                "transform": "translate(-50%,-50%)",
-                "width": "90%",
-                "zIndex": 2000,
-              }
-            }
-          >
-            <ForwardRef(Typography)
-              color="white"
-              component="div"
-              fontSize="14"
-              variant="inherit"
-            >
-              <AreaNames
-                areaNames={
-                  Array [
-                    "シー",
-                    "メディテレーニアンハーバー",
-                    "ポルトパラディーゾ",
-                  ]
-                }
-                variant="inherit"
-              />
-            </ForwardRef(Typography)>
-          </ForwardRef(Box)>
-          <ForwardRef(Box)
-            sx={
-              Object {
-                "fontWeight": "bold",
-                "left": "50%",
-                "position": "absolute",
-                "top": "70%",
-                "transform": "translate(-50%,-50%)",
-                "width": "90%",
-                "zIndex": 2000,
-              }
-            }
-          >
-            <ForwardRef(Typography)
-              color="white"
-              component="div"
-              fontSize="14"
-              textAlign="center"
-              variant="inherit"
-            >
-              この位置が選択されています。
-              <br />
-              位置を選び直す場合はここをタップしてください。
-            </ForwardRef(Typography)>
-          </ForwardRef(Box)>
-        </ForwardRef(Box)>
-      </BoxField>
+          initZoom={3}
+          park="S"
+          shouldCurrentPositionAsyncWithForm={true}
+        />
+      </MapField>
       <ForwardRef(FormControl)
         fullWidth={true}
       >
@@ -1860,108 +1282,32 @@ exports[`Shallow Snapshot Tests with validation error 1`] = `
         value=""
         variant="standard"
       />
-      <BoxField
+      <MapField
         disabled={false}
         helperText={
           Array [
             "position is not selected",
           ]
         }
+        isSelected={true}
         status="error"
       >
-        <ForwardRef(Box)
-          sx={
+        <TriviaMap
+          disabled={true}
+          doNotShowPostMarkers={true}
+          height={300}
+          initCenter={
             Object {
-              "position": "relative",
+              "lat": 0,
+              "lng": 0,
+              "park": "S",
             }
           }
-        >
-          <TriviaMap
-            disabled={true}
-            doNotShowPostMarkers={true}
-            height={300}
-            initCenter={
-              Object {
-                "lat": 0,
-                "lng": 0,
-                "park": "S",
-              }
-            }
-            initZoom={3}
-            park="S"
-            shouldCurrentPositionAsyncWithForm={true}
-          />
-          <ForwardRef(Box)
-            sx={
-              Object {
-                "backgroundColor": "rgba(0,0,0,0.5)",
-                "height": "100%",
-                "left": 0,
-                "position": "absolute",
-                "top": 0,
-                "width": "100%",
-                "zIndex": 2000,
-              }
-            }
-          />
-          <ForwardRef(Box)
-            sx={
-              Object {
-                "fontWeight": "bold",
-                "left": "50%",
-                "position": "absolute",
-                "top": "10%",
-                "transform": "translate(-50%,-50%)",
-                "width": "90%",
-                "zIndex": 2000,
-              }
-            }
-          >
-            <ForwardRef(Typography)
-              color="white"
-              component="div"
-              fontSize="14"
-              variant="inherit"
-            >
-              <AreaNames
-                areaNames={
-                  Array [
-                    "シー",
-                    "メディテレーニアンハーバー",
-                    "ポルトパラディーゾ",
-                  ]
-                }
-                variant="inherit"
-              />
-            </ForwardRef(Typography)>
-          </ForwardRef(Box)>
-          <ForwardRef(Box)
-            sx={
-              Object {
-                "fontWeight": "bold",
-                "left": "50%",
-                "position": "absolute",
-                "top": "70%",
-                "transform": "translate(-50%,-50%)",
-                "width": "90%",
-                "zIndex": 2000,
-              }
-            }
-          >
-            <ForwardRef(Typography)
-              color="white"
-              component="div"
-              fontSize="14"
-              textAlign="center"
-              variant="inherit"
-            >
-              この位置が選択されています。
-              <br />
-              位置を選び直す場合はここをタップしてください。
-            </ForwardRef(Typography)>
-          </ForwardRef(Box)>
-        </ForwardRef(Box)>
-      </BoxField>
+          initZoom={3}
+          park="S"
+          shouldCurrentPositionAsyncWithForm={true}
+        />
+      </MapField>
       <ForwardRef(FormControl)
         fullWidth={true}
       >

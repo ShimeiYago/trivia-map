@@ -43,6 +43,7 @@ import { SpecialMapSettingState } from 'store/special-map-setting/model';
 import { SwipeableEdgeDrawer } from 'views/components/moleculars/swipeable-edge-drawer';
 import { CloseFormButton } from 'views/components/organisms/close-form-button';
 import { FloatingButton } from 'views/components/atoms/floating-button';
+import { SpecialMapMarkerForm } from 'views/components/organisms/special-map-marker-form';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -432,11 +433,11 @@ export class Renderer extends React.Component<Props, State> {
         edgeLabelWhenClosed="編集中"
         heightRatio={80}
       >
-        xxx
+        <SpecialMapMarkerForm specialMapId={this.props.mapId} />
       </SwipeableEdgeDrawer>
     ) : (
       <Drawer sx={rightDrawerStyle} variant="persistent" anchor="right" open={openFormModal}>
-        {openFormModal && <>xxx</>}
+        {openFormModal && <SpecialMapMarkerForm specialMapId={this.props.mapId} />}
       </Drawer>
     );
   };

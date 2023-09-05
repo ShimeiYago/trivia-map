@@ -61,7 +61,9 @@ exports[`Shallow Snapshot Tests basic 1`] = `
     open={false}
     show={false}
   >
-    xxx
+    <SpecialMapMarkerForm
+      specialMapId={0}
+    />
   </SwipeableEdgeDrawer>
 </ForwardRef(Box)>
 `;
@@ -295,7 +297,9 @@ exports[`Shallow Snapshot Tests focusing a marker 1`] = `
     open={false}
     show={false}
   >
-    xxx
+    <SpecialMapMarkerForm
+      specialMapId={0}
+    />
   </SwipeableEdgeDrawer>
 </ForwardRef(Box)>
 `;
@@ -680,7 +684,9 @@ exports[`Shallow Snapshot Tests loaded 1`] = `
     open={false}
     show={false}
   >
-    xxx
+    <SpecialMapMarkerForm
+      specialMapId={0}
+    />
   </SwipeableEdgeDrawer>
 </ForwardRef(Box)>
 `;
@@ -852,7 +858,9 @@ exports[`Shallow Snapshot Tests loading markers 1`] = `
     open={false}
     show={false}
   >
-    xxx
+    <SpecialMapMarkerForm
+      specialMapId={0}
+    />
   </SwipeableEdgeDrawer>
 </ForwardRef(Box)>
 `;
@@ -918,7 +926,9 @@ exports[`Shallow Snapshot Tests without height 1`] = `
     open={false}
     show={false}
   >
-    xxx
+    <SpecialMapMarkerForm
+      specialMapId={0}
+    />
   </SwipeableEdgeDrawer>
 </ForwardRef(Box)>
 `;

@@ -12,7 +12,16 @@ import {
 import { LoadingProgressBar } from 'views/components/moleculars/loading-progress-bar';
 import { ParkMap } from 'views/components/moleculars/park-map';
 import { CenterSpinner } from 'views/components/atoms/center-spinner';
-import { Alert, AlertColor, Box, Grid, IconButton, Snackbar, Typography } from '@mui/material';
+import {
+  Alert,
+  AlertColor,
+  Box,
+  Button,
+  Grid,
+  IconButton,
+  Snackbar,
+  Typography,
+} from '@mui/material';
 import { GlobalMenu } from 'views/components/organisms/global-menu';
 import { metaInfoBox, mapTopArea } from './styles';
 import { mapWrapper, wrapper } from 'views/common-styles/map-page';
@@ -38,6 +47,7 @@ import { SpecialMapMarkerForm } from 'views/components/organisms/special-map-mar
 import { Position } from 'types/position';
 import { SpecialMapMarkerFormState } from 'store/special-map-marker-form/model';
 import { RightDrawer } from 'views/components/atoms/right-drawer';
+import EditIcon from '@mui/icons-material/Edit';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -130,7 +140,7 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   protected renderSpecialMap = () => {
-    const { windowWidth, windowHeight, isMobile, editMode } = this.props;
+    const { windowWidth, windowHeight, isMobile, editMode, specialMapMarkerForm } = this.props;
     const { specialMap } = this.state;
 
     if (!windowWidth || !windowHeight || !specialMap) {
@@ -149,6 +159,14 @@ export class Renderer extends React.Component<Props, State> {
       });
     };
 
+    const formPosition: Omit<Position, 'park'> | undefined =
+      specialMapMarkerForm.lat && specialMapMarkerForm.lng
+        ? {
+            lat: specialMapMarkerForm.lat,
+            lng: specialMapMarkerForm.lng,
+          }
+        : undefined;
+
     return (
       <>
         <CommonHelmet
@@ -161,6 +179,7 @@ export class Renderer extends React.Component<Props, State> {
           <ParkMap
             park={this.state.park}
             setMap={this.setMap}
+            initCenter={this.state.positionSelectMode ? formPosition : undefined}
             positionSelectProps={{
               active: this.state.positionSelectMode,
               onConfirm: this.handleConfirmMarkerPosition,
@@ -216,17 +235,33 @@ export class Renderer extends React.Component<Props, State> {
         return null;
       }
 
+      if (
+        this.state.isFormEditting &&
+        this.props.specialMapMarkerForm.specialMapMarkerId === marker.specialMapMarkerId
+      ) {
+        return null;
+      }
+
       if (marker.specialMapMarkerId === this.props.markerId) {
         map.flyTo(new LatLng(marker.lat, marker.lng), ZOOMS.popupOpen, { animate: false });
       }
 
       const popup = (
         <Box width={300}>
+          {this.props.editMode && (
+            <Typography align="left" component="div" mb={1}>
+              <Button startIcon={<EditIcon />} onClick={this.handleClickMarkerEditButton(marker)}>
+                編集
+              </Button>
+            </Typography>
+          )}
+
           {marker.image && (
             <Typography align="center" component="div" mb={2}>
               <Image src={marker.image} maxWidth="full" maxHeight="200px" />
             </Typography>
           )}
+
           <DynamicAlignedText component="div">{marker.description}</DynamicAlignedText>
         </Box>
       );
@@ -259,7 +294,7 @@ export class Renderer extends React.Component<Props, State> {
       return null;
     }
 
-    const popup = <Typography color="red">編集中のマーカーです</Typography>;
+    const popup = <Typography color="red">現在編集中のマーカーです</Typography>;
 
     return (
       <MapMarker
@@ -543,6 +578,14 @@ export class Renderer extends React.Component<Props, State> {
       openFormModal: false,
     });
   };
+
+  protected handleClickMarkerEditButton = (marker: GetSpecialMapMarkersResponse) => () => {
+    this.props.setSpecialMapMarkerForm(marker);
+    this.setState({
+      openFormModal: true,
+      isFormEditting: true,
+    });
+  };
 }
 
 export type Props = {
@@ -561,6 +604,7 @@ export type Props = {
   throwError: (errorStatus: number) => void;
   updatePosition: (position: Position) => void;
   initializeSpecialMapForm: () => void;
+  setSpecialMapMarkerForm: (marker: GetSpecialMapMarkersResponse) => void;
 };
 
 export type State = {

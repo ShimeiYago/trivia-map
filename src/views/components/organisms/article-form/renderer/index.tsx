@@ -18,27 +18,24 @@ import { LoadingState } from 'types/loading-state';
 import { Position } from 'types/position';
 import { FormError } from 'store/article-form/model';
 import { LoadingButton } from '@mui/lab';
-import {
-  formContainer,
-  formHeader,
-  miniMapLayer,
-  miniMapGuideTextBox,
-  miniMapWrapper,
-  miniMapAreaTextBox,
-} from './styles';
+import { formContainer } from './styles';
 import { TriviaMap } from '../../trivia-map';
-import { BoxField } from 'views/components/moleculars/box-field';
 import { UpdateFormFieldParam } from 'store/article-form/actions';
-import { CloseFormButton } from '../../close-form-button';
 import { ImageField } from 'views/components/moleculars/image-field';
 import { DeletableImage } from 'views/components/moleculars/deletable-image';
 import { HeaderErrorMessages } from 'views/components/moleculars/header-error-messages';
 import { User } from 'types/user';
-import { CATEGORIES, INPUT_FIELD_MAX_LENGTH, UPLOAD_IMAGE_MAX_LENGTH, ZOOMS } from 'constant';
+import {
+  CATEGORIES,
+  INPUT_FIELD_MAX_LENGTH,
+  MINI_MAP_HEIGHT,
+  UPLOAD_IMAGE_MAX_LENGTH,
+  ZOOMS,
+} from 'constant';
 import { SelializedImageFile } from 'types/selialized-image-file';
 import { Park } from 'types/park';
-import { AreaNames } from 'views/components/atoms/area-names';
 import { getImageSrc } from 'utils/get-image-src.ts';
+import { MapField } from 'views/components/moleculars/map-field';
 
 export class Renderer extends React.Component<Props> {
   headerRef: React.RefObject<HTMLDivElement>;
@@ -87,7 +84,6 @@ export class Renderer extends React.Component<Props> {
       title,
       description,
       position,
-      areaNames,
       isDraft,
       lastSavedIsDraft,
       submittingState,
@@ -112,145 +108,109 @@ export class Renderer extends React.Component<Props> {
     const showIsDraftCheckbox = newMode || lastSavedIsDraft;
 
     return (
-      <>
-        {this.renderHeader()}
-        <Container maxWidth="sm" sx={formContainer}>
-          <Stack spacing={3}>
-            <Typography component="h2" align="center" variant="h4" ref={this.headerRef}>
-              {newMode ? 'トリビアを追加' : 'トリビアを編集'}
-            </Typography>
+      <Container maxWidth="sm" sx={formContainer}>
+        <Stack spacing={3}>
+          <Typography component="h2" align="center" variant="h4" ref={this.headerRef}>
+            {newMode ? 'トリビアを追加' : 'トリビアを編集'}
+          </Typography>
 
-            {fetchingState === 'loading' && (
-              <Box sx={{ display: 'flex', justifydescription: 'center' }}>
-                <CircularProgress />
-              </Box>
-            )}
+          {fetchingState === 'loading' && (
+            <Box sx={{ display: 'flex', justifydescription: 'center' }}>
+              <CircularProgress />
+            </Box>
+          )}
 
-            {this.renderHeaderMessage()}
+          {this.renderHeaderMessage()}
 
-            <TextField
-              label="タイトル"
-              variant="standard"
-              value={title}
-              onChange={this.handleChangeTitle}
-              disabled={disabled}
-              error={!!formError?.fieldErrors?.title}
-              helperText={formError?.fieldErrors?.title}
-              required
-              inputProps={{ maxLength: INPUT_FIELD_MAX_LENGTH.articleTitle }}
+          <TextField
+            label="タイトル"
+            variant="standard"
+            value={title}
+            onChange={this.handleChangeTitle}
+            disabled={disabled}
+            error={!!formError?.fieldErrors?.title}
+            helperText={formError?.fieldErrors?.title}
+            required
+            inputProps={{ maxLength: INPUT_FIELD_MAX_LENGTH.articleTitle }}
+          />
+
+          <MapField
+            status={miniMapFieldStatus}
+            onClick={handleClickSelectPosition}
+            disabled={disabled}
+            helperText={formError?.fieldErrors?.marker}
+            isSelected={!!this.props.position}
+          >
+            <TriviaMap
+              height={MINI_MAP_HEIGHT}
+              initZoom={ZOOMS.miniMap}
+              initCenter={position}
+              disabled
+              doNotShowPostMarkers
+              shouldCurrentPositionAsyncWithForm
+              park={position?.park ?? this.props.park}
             />
+          </MapField>
 
-            <BoxField
-              status={miniMapFieldStatus}
-              onClick={handleClickSelectPosition}
+          {this.renderCategorySelectField(disabled)}
+
+          {imageSrc ? (
+            <DeletableImage
+              src={imageSrc}
+              width="full"
+              borderRadius
+              onDelete={this.handleDeleteImage}
+              errors={formError?.fieldErrors?.image}
+            />
+          ) : (
+            <ImageField
+              src={imageSrc}
+              onChange={this.handleImageChange}
+              variant="photo"
               disabled={disabled}
-              helperText={formError?.fieldErrors?.marker}
-            >
-              <Box sx={miniMapWrapper}>
-                <TriviaMap
-                  height={300}
-                  initZoom={ZOOMS.miniMap}
-                  initCenter={position}
-                  disabled
-                  doNotShowPostMarkers
-                  shouldCurrentPositionAsyncWithForm
-                  park={position?.park ?? this.props.park}
+              error={!!formError?.fieldErrors?.image}
+              helperText={formError?.fieldErrors?.image}
+              maxLength={UPLOAD_IMAGE_MAX_LENGTH.article}
+              onCatchError={this.handleError}
+              cropable
+            />
+          )}
+
+          <TextField
+            label="説明文"
+            multiline
+            minRows={6}
+            value={description}
+            onChange={this.handleChangeDescription}
+            disabled={disabled}
+            error={!!formError?.fieldErrors?.description}
+            helperText={formError?.fieldErrors?.description}
+            required
+          />
+
+          {showIsDraftCheckbox && (
+            <FormControlLabel
+              control={
+                <Checkbox
+                  onChange={this.handleChangeIsDraft}
+                  checked={isDraft}
+                  disabled={disabled}
                 />
-                <Box sx={miniMapLayer}></Box>
-                <Box sx={miniMapAreaTextBox}>
-                  {!disabled && areaNames && (
-                    <Typography color="white" component="div" fontSize="14" variant="inherit">
-                      <AreaNames areaNames={areaNames} variant="inherit" />
-                    </Typography>
-                  )}
-                </Box>
-                <Box sx={miniMapGuideTextBox}>
-                  {!disabled && (
-                    <Typography
-                      color="white"
-                      textAlign="center"
-                      component="div"
-                      fontSize="14"
-                      variant="inherit"
-                    >
-                      {this.getMiniMapText()}
-                    </Typography>
-                  )}
-                </Box>
-              </Box>
-            </BoxField>
-
-            {this.renderCategorySelectField(disabled)}
-
-            {imageSrc ? (
-              <DeletableImage
-                src={imageSrc}
-                width="full"
-                borderRadius
-                onDelete={this.handleDeleteImage}
-                errors={formError?.fieldErrors?.image}
-              />
-            ) : (
-              <ImageField
-                src={imageSrc}
-                onChange={this.handleImageChange}
-                variant="photo"
-                disabled={disabled}
-                error={!!formError?.fieldErrors?.image}
-                helperText={formError?.fieldErrors?.image}
-                maxLength={UPLOAD_IMAGE_MAX_LENGTH.article}
-                onCatchError={this.handleError}
-                cropable
-              />
-            )}
-
-            <TextField
-              label="説明文"
-              multiline
-              minRows={6}
-              value={description}
-              onChange={this.handleChangeDescription}
-              disabled={disabled}
-              error={!!formError?.fieldErrors?.description}
-              helperText={formError?.fieldErrors?.description}
-              required
+              }
+              label="下書きとして保存（非公開）"
             />
+          )}
 
-            {showIsDraftCheckbox && (
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    onChange={this.handleChangeIsDraft}
-                    checked={isDraft}
-                    disabled={disabled}
-                  />
-                }
-                label="下書きとして保存（非公開）"
-              />
-            )}
-
-            <LoadingButton
-              loading={submittingState === 'loading'}
-              variant="contained"
-              disabled={disabled}
-              onClick={this.handleSubmitButton}
-            >
-              {isDraft ? '下書き保存' : '保存して公開'}
-            </LoadingButton>
-          </Stack>
-        </Container>
-      </>
-    );
-  }
-
-  protected renderHeader() {
-    if (!this.props.onClose) {
-      return null;
-    }
-    return (
-      <Box sx={formHeader}>
-        <CloseFormButton onClose={this.props.onClose} />
-      </Box>
+          <LoadingButton
+            loading={submittingState === 'loading'}
+            variant="contained"
+            disabled={disabled}
+            onClick={this.handleSubmitButton}
+          >
+            {isDraft ? '下書き保存' : '保存して公開'}
+          </LoadingButton>
+        </Stack>
+      </Container>
     );
   }
 
@@ -298,26 +258,6 @@ export class Renderer extends React.Component<Props> {
   protected openAuthModal = () => {
     this.props.toggleAuthFormModal(true);
   };
-
-  protected getMiniMapText() {
-    if (this.props.position) {
-      return (
-        <>
-          この位置が選択されています。
-          <br />
-          位置を選び直す場合はここをタップしてください。
-        </>
-      );
-    }
-
-    return (
-      <>
-        位置が選択されていません。
-        <br />
-        ここをタップして位置を選択してください。
-      </>
-    );
-  }
 
   protected renderHeaderMessage() {
     const { formError } = this.props;
@@ -387,7 +327,6 @@ export type Props = {
   initialize: () => void;
   handleClickSelectPosition?: () => void;
   updateIsEditting: (isEditting: boolean) => void;
-  onClose?: () => void;
   toggleAuthFormModal: (open: boolean) => void;
   throwError: (errorStatus: number) => void;
 };

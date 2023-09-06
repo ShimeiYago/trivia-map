@@ -9,14 +9,6 @@ export const mapPageStyleConst = {
 };
 const { appBarDefaultHeightPC, appBarDefaultHeightMobile, drawerWidth } = mapPageStyleConst;
 
-export const rightDrawerStyle: SxProps = {
-  width: drawerWidth,
-  flexShrink: 0,
-  '& .MuiDrawer-paper': {
-    width: drawerWidth,
-  },
-};
-
 export function wrapper(shrink: boolean): SxProps {
   return {
     ...(shrink && {

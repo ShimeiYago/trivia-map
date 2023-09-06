@@ -1,16 +1,11 @@
 import React from 'react';
 import { MapMarker } from 'views/components/moleculars/map-marker';
 import { LatLng, Map as LeafletMap } from 'leaflet';
-import { Box, Button, Grid, Typography } from '@mui/material';
 import { Position } from 'types/position';
-import { DialogScreen } from 'views/components/atoms/dialog-screen';
 import { LoadingState } from 'types/loading-state';
 import { PostMarkers } from './helpers/post-markers';
 import { Park } from 'types/park';
 import { MAP_MAX_COORINATE, ZOOMS } from 'constant';
-import TouchAppIcon from '@mui/icons-material/TouchApp';
-import selectionPosition from 'images/selection-position.png';
-import { blue } from '@mui/material/colors';
 import { Marker } from 'types/marker';
 import { MapFocus } from 'types/map-focus';
 import { ParkMap } from 'views/components/moleculars/park-map';
@@ -56,13 +51,6 @@ export class Renderer extends React.Component<Props, State> {
     }
 
     if (
-      this.props.initCenter &&
-      JSON.stringify(prevProps.initCenter) !== JSON.stringify(this.props.initCenter)
-    ) {
-      this.state.map?.setView(this.props.initCenter);
-    }
-
-    if (
       (!this.props.doNotShowPostMarkers && prevProps.park !== this.props.park) ||
       prevProps.userId !== this.props.userId
     ) {
@@ -85,7 +73,7 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   render() {
-    const { width, height, initZoom, initCenter, disabled, park } = this.props;
+    const { width, height, initZoom, initCenter, disabled, park, newMarkerMode } = this.props;
 
     const centerCoord = MAP_MAX_COORINATE / 2;
     const center = initCenter
@@ -94,7 +82,6 @@ export class Renderer extends React.Component<Props, State> {
 
     return (
       <>
-        {this.renderGuideDialog()}
         <ParkMap
           width={width}
           height={height}
@@ -103,6 +90,11 @@ export class Renderer extends React.Component<Props, State> {
           disabled={disabled}
           park={park}
           setMap={this.handleSetMap}
+          positionSelectProps={{
+            active: newMarkerMode,
+            onCancel: this.handleClickCancelNewMarker,
+            onConfirm: this.handleClickConfirmNewMarker,
+          }}
         >
           {this.renderPostMarkers()}
           {this.renderAdittionalMarkers()}
@@ -226,64 +218,6 @@ export class Renderer extends React.Component<Props, State> {
       openableNewMarkerPopup: false,
     });
   };
-
-  protected renderGuideDialog() {
-    if (!this.props.newMarkerMode) {
-      return null;
-    }
-
-    return (
-      <>
-        <DialogScreen theme="black" position="top" maxWidth={400}>
-          <Typography align="center" variant="inherit" sx={{ fontWeight: 'bold' }}>
-            マップを動かして
-            <br />
-            位置を確定してください。
-          </Typography>
-
-          <Typography align="center" variant="inherit" sx={{ mb: 2 }}>
-            <TouchAppIcon />
-          </Typography>
-
-          <Grid
-            container
-            spacing={2}
-            justifyContent="center"
-            sx={{ textAlign: 'center', color: blue[100] }}
-          >
-            <Grid item xs={6}>
-              <Button
-                color="inherit"
-                variant="outlined"
-                fullWidth
-                onClick={this.handleClickCancelNewMarker}
-              >
-                キャンセル
-              </Button>
-            </Grid>
-            <Grid item xs={6}>
-              <Button variant="contained" fullWidth onClick={this.handleClickConfirmNewMarker}>
-                確定
-              </Button>
-            </Grid>
-          </Grid>
-        </DialogScreen>
-
-        <Box
-          sx={{
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            display: 'inline-block',
-            transform: 'translate(-50%,-50%)',
-            zIndex: 1001,
-          }}
-        >
-          <img src={selectionPosition} />
-        </Box>
-      </>
-    );
-  }
 
   protected openFormWithTheMarker = (position: Position) => {
     this.props.updatePosition(position);

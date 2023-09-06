@@ -1,2061 +1,1214 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Shallow Snapshot Tests basic 1`] = `
-<Fragment>
-  <ForwardRef(Container)
-    maxWidth="sm"
-    sx={
-      Object {
-        "overflow": "scroll",
-        "p": 3,
-      }
+<ForwardRef(Container)
+  maxWidth="sm"
+  sx={
+    Object {
+      "p": 3,
     }
+  }
+>
+  <ForwardRef(Stack)
+    spacing={3}
   >
-    <ForwardRef(Stack)
-      spacing={3}
+    <ForwardRef(Typography)
+      align="center"
+      component="h2"
+      variant="h4"
     >
-      <ForwardRef(Typography)
-        align="center"
-        component="h2"
-        variant="h4"
-      >
-        トリビアを追加
-      </ForwardRef(Typography)>
-      <ForwardRef(TextField)
-        disabled={false}
-        error={false}
-        inputProps={
+      トリビアを追加
+    </ForwardRef(Typography)>
+    <ForwardRef(TextField)
+      disabled={false}
+      error={false}
+      inputProps={
+        Object {
+          "maxLength": 50,
+        }
+      }
+      label="タイトル"
+      onChange={[Function]}
+      required={true}
+      value=""
+      variant="standard"
+    />
+    <MapField
+      disabled={false}
+      isSelected={true}
+      status="valid"
+    >
+      <TriviaMap
+        disabled={true}
+        doNotShowPostMarkers={true}
+        height={300}
+        initCenter={
           Object {
-            "maxLength": 50,
+            "lat": 0,
+            "lng": 0,
+            "park": "S",
           }
         }
-        label="タイトル"
-        onChange={[Function]}
-        required={true}
-        value=""
-        variant="standard"
+        initZoom={3}
+        park="S"
+        shouldCurrentPositionAsyncWithForm={true}
       />
-      <BoxField
+    </MapField>
+    <ForwardRef(FormControl)
+      fullWidth={true}
+    >
+      <ForwardRef(InputLabel)>
+        カテゴリー
+      </ForwardRef(InputLabel)>
+      <ForwardRef(Select)
         disabled={false}
-        status="valid"
+        label="カテゴリー"
+        onChange={[Function]}
+        value=""
       >
-        <ForwardRef(Box)
-          sx={
-            Object {
-              "position": "relative",
-            }
-          }
+        <ForwardRef(MenuItem)
+          key="category-1"
+          value="1"
         >
-          <TriviaMap
-            disabled={true}
-            doNotShowPostMarkers={true}
-            height={300}
-            initCenter={
-              Object {
-                "lat": 0,
-                "lng": 0,
-                "park": "S",
-              }
-            }
-            initZoom={3}
-            park="S"
-            shouldCurrentPositionAsyncWithForm={true}
-          />
-          <ForwardRef(Box)
-            sx={
-              Object {
-                "backgroundColor": "rgba(0,0,0,0.5)",
-                "height": "100%",
-                "left": 0,
-                "position": "absolute",
-                "top": 0,
-                "width": "100%",
-                "zIndex": 2000,
-              }
-            }
-          />
-          <ForwardRef(Box)
-            sx={
-              Object {
-                "fontWeight": "bold",
-                "left": "50%",
-                "position": "absolute",
-                "top": "10%",
-                "transform": "translate(-50%,-50%)",
-                "width": "90%",
-                "zIndex": 2000,
-              }
-            }
-          >
-            <ForwardRef(Typography)
-              color="white"
-              component="div"
-              fontSize="14"
-              variant="inherit"
-            >
-              <AreaNames
-                areaNames={
-                  Array [
-                    "シー",
-                    "メディテレーニアンハーバー",
-                    "ポルトパラディーゾ",
-                  ]
-                }
-                variant="inherit"
-              />
-            </ForwardRef(Typography)>
-          </ForwardRef(Box)>
-          <ForwardRef(Box)
-            sx={
-              Object {
-                "fontWeight": "bold",
-                "left": "50%",
-                "position": "absolute",
-                "top": "70%",
-                "transform": "translate(-50%,-50%)",
-                "width": "90%",
-                "zIndex": 2000,
-              }
-            }
-          >
-            <ForwardRef(Typography)
-              color="white"
-              component="div"
-              fontSize="14"
-              textAlign="center"
-              variant="inherit"
-            >
-              この位置が選択されています。
-              <br />
-              位置を選び直す場合はここをタップしてください。
-            </ForwardRef(Typography)>
-          </ForwardRef(Box)>
-        </ForwardRef(Box)>
-      </BoxField>
-      <ForwardRef(FormControl)
-        fullWidth={true}
-      >
-        <ForwardRef(InputLabel)>
-          カテゴリー
-        </ForwardRef(InputLabel)>
-        <ForwardRef(Select)
+          隠れミッキー
+        </ForwardRef(MenuItem)>
+        <ForwardRef(MenuItem)
+          key="category-2"
+          value="2"
+        >
+          バックグラウンドストーリー
+        </ForwardRef(MenuItem)>
+        <ForwardRef(MenuItem)
+          key="category-3"
+          value="3"
+        >
+          おすすめ写真スポット
+        </ForwardRef(MenuItem)>
+        <ForwardRef(MenuItem)
+          key="category-4"
+          value="4"
+        >
+          ショーパレ
+        </ForwardRef(MenuItem)>
+        <ForwardRef(MenuItem)
+          key="category-5"
+          value="5"
+        >
+          キャラグリ
+        </ForwardRef(MenuItem)>
+        <ForwardRef(MenuItem)
+          key="category-6"
+          value="6"
+        >
+          パーク攻略法
+        </ForwardRef(MenuItem)>
+        <ForwardRef(MenuItem)
+          key="category-0"
+          value="0"
+        >
+          その他
+        </ForwardRef(MenuItem)>
+      </ForwardRef(Select)>
+    </ForwardRef(FormControl)>
+    <ImageField
+      cropable={true}
+      disabled={false}
+      error={false}
+      maxLength={1000}
+      onCatchError={[Function]}
+      onChange={[Function]}
+      variant="photo"
+    />
+    <ForwardRef(TextField)
+      disabled={false}
+      error={false}
+      label="説明文"
+      minRows={6}
+      multiline={true}
+      onChange={[Function]}
+      required={true}
+      value=""
+    />
+    <ForwardRef(FormControlLabel)
+      control={
+        <ForwardRef(Checkbox)
+          checked={false}
           disabled={false}
-          label="カテゴリー"
           onChange={[Function]}
-          value=""
-        >
-          <ForwardRef(MenuItem)
-            key="category-1"
-            value="1"
-          >
-            隠れミッキー
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-2"
-            value="2"
-          >
-            バックグラウンドストーリー
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-3"
-            value="3"
-          >
-            おすすめ写真スポット
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-4"
-            value="4"
-          >
-            ショーパレ
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-5"
-            value="5"
-          >
-            キャラグリ
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-6"
-            value="6"
-          >
-            パーク攻略法
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-0"
-            value="0"
-          >
-            その他
-          </ForwardRef(MenuItem)>
-        </ForwardRef(Select)>
-      </ForwardRef(FormControl)>
-      <ImageField
-        cropable={true}
-        disabled={false}
-        error={false}
-        maxLength={1000}
-        onCatchError={[Function]}
-        onChange={[Function]}
-        variant="photo"
-      />
-      <ForwardRef(TextField)
-        disabled={false}
-        error={false}
-        label="説明文"
-        minRows={6}
-        multiline={true}
-        onChange={[Function]}
-        required={true}
-        value=""
-      />
-      <ForwardRef(FormControlLabel)
-        control={
-          <ForwardRef(Checkbox)
-            checked={false}
-            disabled={false}
-            onChange={[Function]}
-          />
-        }
-        label="下書きとして保存（非公開）"
-      />
-      <ForwardRef(LoadingButton)
-        disabled={false}
-        loading={false}
-        onClick={[Function]}
-        variant="contained"
-      >
-        保存して公開
-      </ForwardRef(LoadingButton)>
-    </ForwardRef(Stack)>
-  </ForwardRef(Container)>
-</Fragment>
+        />
+      }
+      label="下書きとして保存（非公開）"
+    />
+    <ForwardRef(LoadingButton)
+      disabled={false}
+      loading={false}
+      onClick={[Function]}
+      variant="contained"
+    >
+      保存して公開
+    </ForwardRef(LoadingButton)>
+  </ForwardRef(Stack)>
+</ForwardRef(Container)>
 `;
 
 exports[`Shallow Snapshot Tests draft mode 1`] = `
-<Fragment>
-  <ForwardRef(Container)
-    maxWidth="sm"
-    sx={
-      Object {
-        "overflow": "scroll",
-        "p": 3,
-      }
+<ForwardRef(Container)
+  maxWidth="sm"
+  sx={
+    Object {
+      "p": 3,
     }
+  }
+>
+  <ForwardRef(Stack)
+    spacing={3}
   >
-    <ForwardRef(Stack)
-      spacing={3}
+    <ForwardRef(Typography)
+      align="center"
+      component="h2"
+      variant="h4"
     >
-      <ForwardRef(Typography)
-        align="center"
-        component="h2"
-        variant="h4"
-      >
-        トリビアを追加
-      </ForwardRef(Typography)>
-      <ForwardRef(TextField)
-        disabled={false}
-        error={false}
-        inputProps={
+      トリビアを追加
+    </ForwardRef(Typography)>
+    <ForwardRef(TextField)
+      disabled={false}
+      error={false}
+      inputProps={
+        Object {
+          "maxLength": 50,
+        }
+      }
+      label="タイトル"
+      onChange={[Function]}
+      required={true}
+      value=""
+      variant="standard"
+    />
+    <MapField
+      disabled={false}
+      isSelected={true}
+      status="valid"
+    >
+      <TriviaMap
+        disabled={true}
+        doNotShowPostMarkers={true}
+        height={300}
+        initCenter={
           Object {
-            "maxLength": 50,
+            "lat": 0,
+            "lng": 0,
+            "park": "S",
           }
         }
-        label="タイトル"
-        onChange={[Function]}
-        required={true}
-        value=""
-        variant="standard"
+        initZoom={3}
+        park="S"
+        shouldCurrentPositionAsyncWithForm={true}
       />
-      <BoxField
+    </MapField>
+    <ForwardRef(FormControl)
+      fullWidth={true}
+    >
+      <ForwardRef(InputLabel)>
+        カテゴリー
+      </ForwardRef(InputLabel)>
+      <ForwardRef(Select)
         disabled={false}
-        status="valid"
+        label="カテゴリー"
+        onChange={[Function]}
+        value=""
       >
-        <ForwardRef(Box)
-          sx={
-            Object {
-              "position": "relative",
-            }
-          }
+        <ForwardRef(MenuItem)
+          key="category-1"
+          value="1"
         >
-          <TriviaMap
-            disabled={true}
-            doNotShowPostMarkers={true}
-            height={300}
-            initCenter={
-              Object {
-                "lat": 0,
-                "lng": 0,
-                "park": "S",
-              }
-            }
-            initZoom={3}
-            park="S"
-            shouldCurrentPositionAsyncWithForm={true}
-          />
-          <ForwardRef(Box)
-            sx={
-              Object {
-                "backgroundColor": "rgba(0,0,0,0.5)",
-                "height": "100%",
-                "left": 0,
-                "position": "absolute",
-                "top": 0,
-                "width": "100%",
-                "zIndex": 2000,
-              }
-            }
-          />
-          <ForwardRef(Box)
-            sx={
-              Object {
-                "fontWeight": "bold",
-                "left": "50%",
-                "position": "absolute",
-                "top": "10%",
-                "transform": "translate(-50%,-50%)",
-                "width": "90%",
-                "zIndex": 2000,
-              }
-            }
-          >
-            <ForwardRef(Typography)
-              color="white"
-              component="div"
-              fontSize="14"
-              variant="inherit"
-            >
-              <AreaNames
-                areaNames={
-                  Array [
-                    "シー",
-                    "メディテレーニアンハーバー",
-                    "ポルトパラディーゾ",
-                  ]
-                }
-                variant="inherit"
-              />
-            </ForwardRef(Typography)>
-          </ForwardRef(Box)>
-          <ForwardRef(Box)
-            sx={
-              Object {
-                "fontWeight": "bold",
-                "left": "50%",
-                "position": "absolute",
-                "top": "70%",
-                "transform": "translate(-50%,-50%)",
-                "width": "90%",
-                "zIndex": 2000,
-              }
-            }
-          >
-            <ForwardRef(Typography)
-              color="white"
-              component="div"
-              fontSize="14"
-              textAlign="center"
-              variant="inherit"
-            >
-              この位置が選択されています。
-              <br />
-              位置を選び直す場合はここをタップしてください。
-            </ForwardRef(Typography)>
-          </ForwardRef(Box)>
-        </ForwardRef(Box)>
-      </BoxField>
-      <ForwardRef(FormControl)
-        fullWidth={true}
-      >
-        <ForwardRef(InputLabel)>
-          カテゴリー
-        </ForwardRef(InputLabel)>
-        <ForwardRef(Select)
+          隠れミッキー
+        </ForwardRef(MenuItem)>
+        <ForwardRef(MenuItem)
+          key="category-2"
+          value="2"
+        >
+          バックグラウンドストーリー
+        </ForwardRef(MenuItem)>
+        <ForwardRef(MenuItem)
+          key="category-3"
+          value="3"
+        >
+          おすすめ写真スポット
+        </ForwardRef(MenuItem)>
+        <ForwardRef(MenuItem)
+          key="category-4"
+          value="4"
+        >
+          ショーパレ
+        </ForwardRef(MenuItem)>
+        <ForwardRef(MenuItem)
+          key="category-5"
+          value="5"
+        >
+          キャラグリ
+        </ForwardRef(MenuItem)>
+        <ForwardRef(MenuItem)
+          key="category-6"
+          value="6"
+        >
+          パーク攻略法
+        </ForwardRef(MenuItem)>
+        <ForwardRef(MenuItem)
+          key="category-0"
+          value="0"
+        >
+          その他
+        </ForwardRef(MenuItem)>
+      </ForwardRef(Select)>
+    </ForwardRef(FormControl)>
+    <ImageField
+      cropable={true}
+      disabled={false}
+      error={false}
+      maxLength={1000}
+      onCatchError={[Function]}
+      onChange={[Function]}
+      variant="photo"
+    />
+    <ForwardRef(TextField)
+      disabled={false}
+      error={false}
+      label="説明文"
+      minRows={6}
+      multiline={true}
+      onChange={[Function]}
+      required={true}
+      value=""
+    />
+    <ForwardRef(FormControlLabel)
+      control={
+        <ForwardRef(Checkbox)
+          checked={true}
           disabled={false}
-          label="カテゴリー"
           onChange={[Function]}
-          value=""
-        >
-          <ForwardRef(MenuItem)
-            key="category-1"
-            value="1"
-          >
-            隠れミッキー
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-2"
-            value="2"
-          >
-            バックグラウンドストーリー
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-3"
-            value="3"
-          >
-            おすすめ写真スポット
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-4"
-            value="4"
-          >
-            ショーパレ
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-5"
-            value="5"
-          >
-            キャラグリ
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-6"
-            value="6"
-          >
-            パーク攻略法
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-0"
-            value="0"
-          >
-            その他
-          </ForwardRef(MenuItem)>
-        </ForwardRef(Select)>
-      </ForwardRef(FormControl)>
-      <ImageField
-        cropable={true}
-        disabled={false}
-        error={false}
-        maxLength={1000}
-        onCatchError={[Function]}
-        onChange={[Function]}
-        variant="photo"
-      />
-      <ForwardRef(TextField)
-        disabled={false}
-        error={false}
-        label="説明文"
-        minRows={6}
-        multiline={true}
-        onChange={[Function]}
-        required={true}
-        value=""
-      />
-      <ForwardRef(FormControlLabel)
-        control={
-          <ForwardRef(Checkbox)
-            checked={true}
-            disabled={false}
-            onChange={[Function]}
-          />
-        }
-        label="下書きとして保存（非公開）"
-      />
-      <ForwardRef(LoadingButton)
-        disabled={false}
-        loading={false}
-        onClick={[Function]}
-        variant="contained"
-      >
-        下書き保存
-      </ForwardRef(LoadingButton)>
-    </ForwardRef(Stack)>
-  </ForwardRef(Container)>
-</Fragment>
+        />
+      }
+      label="下書きとして保存（非公開）"
+    />
+    <ForwardRef(LoadingButton)
+      disabled={false}
+      loading={false}
+      onClick={[Function]}
+      variant="contained"
+    >
+      下書き保存
+    </ForwardRef(LoadingButton)>
+  </ForwardRef(Stack)>
+</ForwardRef(Container)>
 `;
 
 exports[`Shallow Snapshot Tests loading 1`] = `
-<Fragment>
-  <ForwardRef(Container)
-    maxWidth="sm"
-    sx={
-      Object {
-        "overflow": "scroll",
-        "p": 3,
-      }
+<ForwardRef(Container)
+  maxWidth="sm"
+  sx={
+    Object {
+      "p": 3,
     }
+  }
+>
+  <ForwardRef(Stack)
+    spacing={3}
   >
-    <ForwardRef(Stack)
-      spacing={3}
+    <ForwardRef(Typography)
+      align="center"
+      component="h2"
+      variant="h4"
     >
-      <ForwardRef(Typography)
-        align="center"
-        component="h2"
-        variant="h4"
-      >
-        トリビアを追加
-      </ForwardRef(Typography)>
-      <ForwardRef(Box)
-        sx={
-          Object {
-            "display": "flex",
-            "justifydescription": "center",
-          }
+      トリビアを追加
+    </ForwardRef(Typography)>
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "display": "flex",
+          "justifydescription": "center",
         }
-      >
-        <ForwardRef(CircularProgress) />
-      </ForwardRef(Box)>
-      <ForwardRef(TextField)
+      }
+    >
+      <ForwardRef(CircularProgress) />
+    </ForwardRef(Box)>
+    <ForwardRef(TextField)
+      disabled={true}
+      error={false}
+      inputProps={
+        Object {
+          "maxLength": 50,
+        }
+      }
+      label="タイトル"
+      onChange={[Function]}
+      required={true}
+      value=""
+      variant="standard"
+    />
+    <MapField
+      disabled={true}
+      isSelected={true}
+      status="valid"
+    >
+      <TriviaMap
         disabled={true}
-        error={false}
-        inputProps={
+        doNotShowPostMarkers={true}
+        height={300}
+        initCenter={
           Object {
-            "maxLength": 50,
+            "lat": 0,
+            "lng": 0,
+            "park": "S",
           }
         }
-        label="タイトル"
-        onChange={[Function]}
-        required={true}
-        value=""
-        variant="standard"
+        initZoom={3}
+        park="S"
+        shouldCurrentPositionAsyncWithForm={true}
       />
-      <BoxField
+    </MapField>
+    <ForwardRef(FormControl)
+      fullWidth={true}
+    >
+      <ForwardRef(InputLabel)>
+        カテゴリー
+      </ForwardRef(InputLabel)>
+      <ForwardRef(Select)
         disabled={true}
-        status="valid"
+        label="カテゴリー"
+        onChange={[Function]}
+        value=""
       >
-        <ForwardRef(Box)
-          sx={
-            Object {
-              "position": "relative",
-            }
-          }
+        <ForwardRef(MenuItem)
+          key="category-1"
+          value="1"
         >
-          <TriviaMap
-            disabled={true}
-            doNotShowPostMarkers={true}
-            height={300}
-            initCenter={
-              Object {
-                "lat": 0,
-                "lng": 0,
-                "park": "S",
-              }
-            }
-            initZoom={3}
-            park="S"
-            shouldCurrentPositionAsyncWithForm={true}
-          />
-          <ForwardRef(Box)
-            sx={
-              Object {
-                "backgroundColor": "rgba(0,0,0,0.5)",
-                "height": "100%",
-                "left": 0,
-                "position": "absolute",
-                "top": 0,
-                "width": "100%",
-                "zIndex": 2000,
-              }
-            }
-          />
-          <ForwardRef(Box)
-            sx={
-              Object {
-                "fontWeight": "bold",
-                "left": "50%",
-                "position": "absolute",
-                "top": "10%",
-                "transform": "translate(-50%,-50%)",
-                "width": "90%",
-                "zIndex": 2000,
-              }
-            }
-          />
-          <ForwardRef(Box)
-            sx={
-              Object {
-                "fontWeight": "bold",
-                "left": "50%",
-                "position": "absolute",
-                "top": "70%",
-                "transform": "translate(-50%,-50%)",
-                "width": "90%",
-                "zIndex": 2000,
-              }
-            }
-          />
-        </ForwardRef(Box)>
-      </BoxField>
-      <ForwardRef(FormControl)
-        fullWidth={true}
-      >
-        <ForwardRef(InputLabel)>
-          カテゴリー
-        </ForwardRef(InputLabel)>
-        <ForwardRef(Select)
+          隠れミッキー
+        </ForwardRef(MenuItem)>
+        <ForwardRef(MenuItem)
+          key="category-2"
+          value="2"
+        >
+          バックグラウンドストーリー
+        </ForwardRef(MenuItem)>
+        <ForwardRef(MenuItem)
+          key="category-3"
+          value="3"
+        >
+          おすすめ写真スポット
+        </ForwardRef(MenuItem)>
+        <ForwardRef(MenuItem)
+          key="category-4"
+          value="4"
+        >
+          ショーパレ
+        </ForwardRef(MenuItem)>
+        <ForwardRef(MenuItem)
+          key="category-5"
+          value="5"
+        >
+          キャラグリ
+        </ForwardRef(MenuItem)>
+        <ForwardRef(MenuItem)
+          key="category-6"
+          value="6"
+        >
+          パーク攻略法
+        </ForwardRef(MenuItem)>
+        <ForwardRef(MenuItem)
+          key="category-0"
+          value="0"
+        >
+          その他
+        </ForwardRef(MenuItem)>
+      </ForwardRef(Select)>
+    </ForwardRef(FormControl)>
+    <ImageField
+      cropable={true}
+      disabled={true}
+      error={false}
+      maxLength={1000}
+      onCatchError={[Function]}
+      onChange={[Function]}
+      variant="photo"
+    />
+    <ForwardRef(TextField)
+      disabled={true}
+      error={false}
+      label="説明文"
+      minRows={6}
+      multiline={true}
+      onChange={[Function]}
+      required={true}
+      value=""
+    />
+    <ForwardRef(FormControlLabel)
+      control={
+        <ForwardRef(Checkbox)
+          checked={false}
           disabled={true}
-          label="カテゴリー"
           onChange={[Function]}
-          value=""
-        >
-          <ForwardRef(MenuItem)
-            key="category-1"
-            value="1"
-          >
-            隠れミッキー
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-2"
-            value="2"
-          >
-            バックグラウンドストーリー
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-3"
-            value="3"
-          >
-            おすすめ写真スポット
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-4"
-            value="4"
-          >
-            ショーパレ
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-5"
-            value="5"
-          >
-            キャラグリ
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-6"
-            value="6"
-          >
-            パーク攻略法
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-0"
-            value="0"
-          >
-            その他
-          </ForwardRef(MenuItem)>
-        </ForwardRef(Select)>
-      </ForwardRef(FormControl)>
-      <ImageField
-        cropable={true}
-        disabled={true}
-        error={false}
-        maxLength={1000}
-        onCatchError={[Function]}
-        onChange={[Function]}
-        variant="photo"
-      />
-      <ForwardRef(TextField)
-        disabled={true}
-        error={false}
-        label="説明文"
-        minRows={6}
-        multiline={true}
-        onChange={[Function]}
-        required={true}
-        value=""
-      />
-      <ForwardRef(FormControlLabel)
-        control={
-          <ForwardRef(Checkbox)
-            checked={false}
-            disabled={true}
-            onChange={[Function]}
-          />
-        }
-        label="下書きとして保存（非公開）"
-      />
-      <ForwardRef(LoadingButton)
-        disabled={true}
-        loading={false}
-        onClick={[Function]}
-        variant="contained"
-      >
-        保存して公開
-      </ForwardRef(LoadingButton)>
-    </ForwardRef(Stack)>
-  </ForwardRef(Container)>
-</Fragment>
+        />
+      }
+      label="下書きとして保存（非公開）"
+    />
+    <ForwardRef(LoadingButton)
+      disabled={true}
+      loading={false}
+      onClick={[Function]}
+      variant="contained"
+    >
+      保存して公開
+    </ForwardRef(LoadingButton)>
+  </ForwardRef(Stack)>
+</ForwardRef(Container)>
 `;
 
 exports[`Shallow Snapshot Tests position is not selected yet 1`] = `
-<Fragment>
-  <ForwardRef(Container)
-    maxWidth="sm"
-    sx={
-      Object {
-        "overflow": "scroll",
-        "p": 3,
-      }
+<ForwardRef(Container)
+  maxWidth="sm"
+  sx={
+    Object {
+      "p": 3,
     }
+  }
+>
+  <ForwardRef(Stack)
+    spacing={3}
   >
-    <ForwardRef(Stack)
-      spacing={3}
+    <ForwardRef(Typography)
+      align="center"
+      component="h2"
+      variant="h4"
     >
-      <ForwardRef(Typography)
-        align="center"
-        component="h2"
-        variant="h4"
-      >
-        トリビアを追加
-      </ForwardRef(Typography)>
-      <ForwardRef(TextField)
-        disabled={false}
-        error={false}
-        inputProps={
-          Object {
-            "maxLength": 50,
-          }
+      トリビアを追加
+    </ForwardRef(Typography)>
+    <ForwardRef(TextField)
+      disabled={false}
+      error={false}
+      inputProps={
+        Object {
+          "maxLength": 50,
         }
-        label="タイトル"
-        onChange={[Function]}
-        required={true}
-        value=""
-        variant="standard"
+      }
+      label="タイトル"
+      onChange={[Function]}
+      required={true}
+      value=""
+      variant="standard"
+    />
+    <MapField
+      disabled={false}
+      isSelected={false}
+      status="normal"
+    >
+      <TriviaMap
+        disabled={true}
+        doNotShowPostMarkers={true}
+        height={300}
+        initZoom={3}
+        park="S"
+        shouldCurrentPositionAsyncWithForm={true}
       />
-      <BoxField
+    </MapField>
+    <ForwardRef(FormControl)
+      fullWidth={true}
+    >
+      <ForwardRef(InputLabel)>
+        カテゴリー
+      </ForwardRef(InputLabel)>
+      <ForwardRef(Select)
         disabled={false}
-        status="normal"
+        label="カテゴリー"
+        onChange={[Function]}
+        value=""
       >
-        <ForwardRef(Box)
-          sx={
-            Object {
-              "position": "relative",
-            }
-          }
+        <ForwardRef(MenuItem)
+          key="category-1"
+          value="1"
         >
-          <TriviaMap
-            disabled={true}
-            doNotShowPostMarkers={true}
-            height={300}
-            initZoom={3}
-            park="S"
-            shouldCurrentPositionAsyncWithForm={true}
-          />
-          <ForwardRef(Box)
-            sx={
-              Object {
-                "backgroundColor": "rgba(0,0,0,0.5)",
-                "height": "100%",
-                "left": 0,
-                "position": "absolute",
-                "top": 0,
-                "width": "100%",
-                "zIndex": 2000,
-              }
-            }
-          />
-          <ForwardRef(Box)
-            sx={
-              Object {
-                "fontWeight": "bold",
-                "left": "50%",
-                "position": "absolute",
-                "top": "10%",
-                "transform": "translate(-50%,-50%)",
-                "width": "90%",
-                "zIndex": 2000,
-              }
-            }
-          >
-            <ForwardRef(Typography)
-              color="white"
-              component="div"
-              fontSize="14"
-              variant="inherit"
-            >
-              <AreaNames
-                areaNames={
-                  Array [
-                    "シー",
-                    "メディテレーニアンハーバー",
-                    "ポルトパラディーゾ",
-                  ]
-                }
-                variant="inherit"
-              />
-            </ForwardRef(Typography)>
-          </ForwardRef(Box)>
-          <ForwardRef(Box)
-            sx={
-              Object {
-                "fontWeight": "bold",
-                "left": "50%",
-                "position": "absolute",
-                "top": "70%",
-                "transform": "translate(-50%,-50%)",
-                "width": "90%",
-                "zIndex": 2000,
-              }
-            }
-          >
-            <ForwardRef(Typography)
-              color="white"
-              component="div"
-              fontSize="14"
-              textAlign="center"
-              variant="inherit"
-            >
-              位置が選択されていません。
-              <br />
-              ここをタップして位置を選択してください。
-            </ForwardRef(Typography)>
-          </ForwardRef(Box)>
-        </ForwardRef(Box)>
-      </BoxField>
-      <ForwardRef(FormControl)
-        fullWidth={true}
-      >
-        <ForwardRef(InputLabel)>
-          カテゴリー
-        </ForwardRef(InputLabel)>
-        <ForwardRef(Select)
+          隠れミッキー
+        </ForwardRef(MenuItem)>
+        <ForwardRef(MenuItem)
+          key="category-2"
+          value="2"
+        >
+          バックグラウンドストーリー
+        </ForwardRef(MenuItem)>
+        <ForwardRef(MenuItem)
+          key="category-3"
+          value="3"
+        >
+          おすすめ写真スポット
+        </ForwardRef(MenuItem)>
+        <ForwardRef(MenuItem)
+          key="category-4"
+          value="4"
+        >
+          ショーパレ
+        </ForwardRef(MenuItem)>
+        <ForwardRef(MenuItem)
+          key="category-5"
+          value="5"
+        >
+          キャラグリ
+        </ForwardRef(MenuItem)>
+        <ForwardRef(MenuItem)
+          key="category-6"
+          value="6"
+        >
+          パーク攻略法
+        </ForwardRef(MenuItem)>
+        <ForwardRef(MenuItem)
+          key="category-0"
+          value="0"
+        >
+          その他
+        </ForwardRef(MenuItem)>
+      </ForwardRef(Select)>
+    </ForwardRef(FormControl)>
+    <ImageField
+      cropable={true}
+      disabled={false}
+      error={false}
+      maxLength={1000}
+      onCatchError={[Function]}
+      onChange={[Function]}
+      variant="photo"
+    />
+    <ForwardRef(TextField)
+      disabled={false}
+      error={false}
+      label="説明文"
+      minRows={6}
+      multiline={true}
+      onChange={[Function]}
+      required={true}
+      value=""
+    />
+    <ForwardRef(FormControlLabel)
+      control={
+        <ForwardRef(Checkbox)
+          checked={false}
           disabled={false}
-          label="カテゴリー"
           onChange={[Function]}
-          value=""
-        >
-          <ForwardRef(MenuItem)
-            key="category-1"
-            value="1"
-          >
-            隠れミッキー
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-2"
-            value="2"
-          >
-            バックグラウンドストーリー
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-3"
-            value="3"
-          >
-            おすすめ写真スポット
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-4"
-            value="4"
-          >
-            ショーパレ
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-5"
-            value="5"
-          >
-            キャラグリ
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-6"
-            value="6"
-          >
-            パーク攻略法
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-0"
-            value="0"
-          >
-            その他
-          </ForwardRef(MenuItem)>
-        </ForwardRef(Select)>
-      </ForwardRef(FormControl)>
-      <ImageField
-        cropable={true}
-        disabled={false}
-        error={false}
-        maxLength={1000}
-        onCatchError={[Function]}
-        onChange={[Function]}
-        variant="photo"
-      />
-      <ForwardRef(TextField)
-        disabled={false}
-        error={false}
-        label="説明文"
-        minRows={6}
-        multiline={true}
-        onChange={[Function]}
-        required={true}
-        value=""
-      />
-      <ForwardRef(FormControlLabel)
-        control={
-          <ForwardRef(Checkbox)
-            checked={false}
-            disabled={false}
-            onChange={[Function]}
-          />
-        }
-        label="下書きとして保存（非公開）"
-      />
-      <ForwardRef(LoadingButton)
-        disabled={false}
-        loading={false}
-        onClick={[Function]}
-        variant="contained"
-      >
-        保存して公開
-      </ForwardRef(LoadingButton)>
-    </ForwardRef(Stack)>
-  </ForwardRef(Container)>
-</Fragment>
+        />
+      }
+      label="下書きとして保存（非公開）"
+    />
+    <ForwardRef(LoadingButton)
+      disabled={false}
+      loading={false}
+      onClick={[Function]}
+      variant="contained"
+    >
+      保存して公開
+    </ForwardRef(LoadingButton)>
+  </ForwardRef(Stack)>
+</ForwardRef(Container)>
 `;
 
 exports[`Shallow Snapshot Tests with category 1`] = `
-<Fragment>
-  <ForwardRef(Container)
-    maxWidth="sm"
-    sx={
-      Object {
-        "overflow": "scroll",
-        "p": 3,
-      }
+<ForwardRef(Container)
+  maxWidth="sm"
+  sx={
+    Object {
+      "p": 3,
     }
+  }
+>
+  <ForwardRef(Stack)
+    spacing={3}
   >
-    <ForwardRef(Stack)
-      spacing={3}
+    <ForwardRef(Typography)
+      align="center"
+      component="h2"
+      variant="h4"
     >
-      <ForwardRef(Typography)
-        align="center"
-        component="h2"
-        variant="h4"
-      >
-        トリビアを追加
-      </ForwardRef(Typography)>
-      <ForwardRef(TextField)
-        disabled={false}
-        error={false}
-        inputProps={
+      トリビアを追加
+    </ForwardRef(Typography)>
+    <ForwardRef(TextField)
+      disabled={false}
+      error={false}
+      inputProps={
+        Object {
+          "maxLength": 50,
+        }
+      }
+      label="タイトル"
+      onChange={[Function]}
+      required={true}
+      value=""
+      variant="standard"
+    />
+    <MapField
+      disabled={false}
+      isSelected={true}
+      status="valid"
+    >
+      <TriviaMap
+        disabled={true}
+        doNotShowPostMarkers={true}
+        height={300}
+        initCenter={
           Object {
-            "maxLength": 50,
+            "lat": 0,
+            "lng": 0,
+            "park": "S",
           }
         }
-        label="タイトル"
-        onChange={[Function]}
-        required={true}
-        value=""
-        variant="standard"
+        initZoom={3}
+        park="S"
+        shouldCurrentPositionAsyncWithForm={true}
       />
-      <BoxField
+    </MapField>
+    <ForwardRef(FormControl)
+      fullWidth={true}
+    >
+      <ForwardRef(InputLabel)>
+        カテゴリー
+      </ForwardRef(InputLabel)>
+      <ForwardRef(Select)
         disabled={false}
-        status="valid"
+        label="カテゴリー"
+        onChange={[Function]}
+        value="1"
       >
-        <ForwardRef(Box)
-          sx={
-            Object {
-              "position": "relative",
-            }
-          }
-        >
-          <TriviaMap
-            disabled={true}
-            doNotShowPostMarkers={true}
-            height={300}
-            initCenter={
-              Object {
-                "lat": 0,
-                "lng": 0,
-                "park": "S",
-              }
-            }
-            initZoom={3}
-            park="S"
-            shouldCurrentPositionAsyncWithForm={true}
-          />
-          <ForwardRef(Box)
-            sx={
-              Object {
-                "backgroundColor": "rgba(0,0,0,0.5)",
-                "height": "100%",
-                "left": 0,
-                "position": "absolute",
-                "top": 0,
-                "width": "100%",
-                "zIndex": 2000,
-              }
-            }
-          />
-          <ForwardRef(Box)
-            sx={
-              Object {
-                "fontWeight": "bold",
-                "left": "50%",
-                "position": "absolute",
-                "top": "10%",
-                "transform": "translate(-50%,-50%)",
-                "width": "90%",
-                "zIndex": 2000,
-              }
-            }
-          >
-            <ForwardRef(Typography)
-              color="white"
-              component="div"
-              fontSize="14"
-              variant="inherit"
-            >
-              <AreaNames
-                areaNames={
-                  Array [
-                    "シー",
-                    "メディテレーニアンハーバー",
-                    "ポルトパラディーゾ",
-                  ]
-                }
-                variant="inherit"
-              />
-            </ForwardRef(Typography)>
-          </ForwardRef(Box)>
-          <ForwardRef(Box)
-            sx={
-              Object {
-                "fontWeight": "bold",
-                "left": "50%",
-                "position": "absolute",
-                "top": "70%",
-                "transform": "translate(-50%,-50%)",
-                "width": "90%",
-                "zIndex": 2000,
-              }
-            }
-          >
-            <ForwardRef(Typography)
-              color="white"
-              component="div"
-              fontSize="14"
-              textAlign="center"
-              variant="inherit"
-            >
-              この位置が選択されています。
-              <br />
-              位置を選び直す場合はここをタップしてください。
-            </ForwardRef(Typography)>
-          </ForwardRef(Box)>
-        </ForwardRef(Box)>
-      </BoxField>
-      <ForwardRef(FormControl)
-        fullWidth={true}
-      >
-        <ForwardRef(InputLabel)>
-          カテゴリー
-        </ForwardRef(InputLabel)>
-        <ForwardRef(Select)
-          disabled={false}
-          label="カテゴリー"
-          onChange={[Function]}
+        <ForwardRef(MenuItem)
+          key="category-1"
           value="1"
         >
-          <ForwardRef(MenuItem)
-            key="category-1"
-            value="1"
-          >
-            隠れミッキー
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-2"
-            value="2"
-          >
-            バックグラウンドストーリー
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-3"
-            value="3"
-          >
-            おすすめ写真スポット
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-4"
-            value="4"
-          >
-            ショーパレ
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-5"
-            value="5"
-          >
-            キャラグリ
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-6"
-            value="6"
-          >
-            パーク攻略法
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-0"
-            value="0"
-          >
-            その他
-          </ForwardRef(MenuItem)>
-        </ForwardRef(Select)>
-      </ForwardRef(FormControl)>
-      <ImageField
-        cropable={true}
-        disabled={false}
-        error={false}
-        maxLength={1000}
-        onCatchError={[Function]}
-        onChange={[Function]}
-        variant="photo"
-      />
-      <ForwardRef(TextField)
-        disabled={false}
-        error={false}
-        label="説明文"
-        minRows={6}
-        multiline={true}
-        onChange={[Function]}
-        required={true}
-        value=""
-      />
-      <ForwardRef(FormControlLabel)
-        control={
-          <ForwardRef(Checkbox)
-            checked={false}
-            disabled={false}
-            onChange={[Function]}
-          />
-        }
-        label="下書きとして保存（非公開）"
-      />
-      <ForwardRef(LoadingButton)
-        disabled={false}
-        loading={false}
-        onClick={[Function]}
-        variant="contained"
-      >
-        保存して公開
-      </ForwardRef(LoadingButton)>
-    </ForwardRef(Stack)>
-  </ForwardRef(Container)>
-</Fragment>
-`;
-
-exports[`Shallow Snapshot Tests with close button 1`] = `
-<Fragment>
-  <ForwardRef(Box)
-    sx={
-      Object {
-        "backgroundColor": "white",
-        "display": "block",
-        "pl": 1,
-        "pt": 1,
-        "width": "100%",
-      }
-    }
-  >
-    <CloseFormButton
-      onClose={[MockFunction]}
+          隠れミッキー
+        </ForwardRef(MenuItem)>
+        <ForwardRef(MenuItem)
+          key="category-2"
+          value="2"
+        >
+          バックグラウンドストーリー
+        </ForwardRef(MenuItem)>
+        <ForwardRef(MenuItem)
+          key="category-3"
+          value="3"
+        >
+          おすすめ写真スポット
+        </ForwardRef(MenuItem)>
+        <ForwardRef(MenuItem)
+          key="category-4"
+          value="4"
+        >
+          ショーパレ
+        </ForwardRef(MenuItem)>
+        <ForwardRef(MenuItem)
+          key="category-5"
+          value="5"
+        >
+          キャラグリ
+        </ForwardRef(MenuItem)>
+        <ForwardRef(MenuItem)
+          key="category-6"
+          value="6"
+        >
+          パーク攻略法
+        </ForwardRef(MenuItem)>
+        <ForwardRef(MenuItem)
+          key="category-0"
+          value="0"
+        >
+          その他
+        </ForwardRef(MenuItem)>
+      </ForwardRef(Select)>
+    </ForwardRef(FormControl)>
+    <ImageField
+      cropable={true}
+      disabled={false}
+      error={false}
+      maxLength={1000}
+      onCatchError={[Function]}
+      onChange={[Function]}
+      variant="photo"
     />
-  </ForwardRef(Box)>
-  <ForwardRef(Container)
-    maxWidth="sm"
-    sx={
-      Object {
-        "overflow": "scroll",
-        "p": 3,
-      }
-    }
-  >
-    <ForwardRef(Stack)
-      spacing={3}
-    >
-      <ForwardRef(Typography)
-        align="center"
-        component="h2"
-        variant="h4"
-      >
-        トリビアを追加
-      </ForwardRef(Typography)>
-      <ForwardRef(TextField)
-        disabled={false}
-        error={false}
-        inputProps={
-          Object {
-            "maxLength": 50,
-          }
-        }
-        label="タイトル"
-        onChange={[Function]}
-        required={true}
-        value=""
-        variant="standard"
-      />
-      <BoxField
-        disabled={false}
-        status="valid"
-      >
-        <ForwardRef(Box)
-          sx={
-            Object {
-              "position": "relative",
-            }
-          }
-        >
-          <TriviaMap
-            disabled={true}
-            doNotShowPostMarkers={true}
-            height={300}
-            initCenter={
-              Object {
-                "lat": 0,
-                "lng": 0,
-                "park": "S",
-              }
-            }
-            initZoom={3}
-            park="S"
-            shouldCurrentPositionAsyncWithForm={true}
-          />
-          <ForwardRef(Box)
-            sx={
-              Object {
-                "backgroundColor": "rgba(0,0,0,0.5)",
-                "height": "100%",
-                "left": 0,
-                "position": "absolute",
-                "top": 0,
-                "width": "100%",
-                "zIndex": 2000,
-              }
-            }
-          />
-          <ForwardRef(Box)
-            sx={
-              Object {
-                "fontWeight": "bold",
-                "left": "50%",
-                "position": "absolute",
-                "top": "10%",
-                "transform": "translate(-50%,-50%)",
-                "width": "90%",
-                "zIndex": 2000,
-              }
-            }
-          >
-            <ForwardRef(Typography)
-              color="white"
-              component="div"
-              fontSize="14"
-              variant="inherit"
-            >
-              <AreaNames
-                areaNames={
-                  Array [
-                    "シー",
-                    "メディテレーニアンハーバー",
-                    "ポルトパラディーゾ",
-                  ]
-                }
-                variant="inherit"
-              />
-            </ForwardRef(Typography)>
-          </ForwardRef(Box)>
-          <ForwardRef(Box)
-            sx={
-              Object {
-                "fontWeight": "bold",
-                "left": "50%",
-                "position": "absolute",
-                "top": "70%",
-                "transform": "translate(-50%,-50%)",
-                "width": "90%",
-                "zIndex": 2000,
-              }
-            }
-          >
-            <ForwardRef(Typography)
-              color="white"
-              component="div"
-              fontSize="14"
-              textAlign="center"
-              variant="inherit"
-            >
-              この位置が選択されています。
-              <br />
-              位置を選び直す場合はここをタップしてください。
-            </ForwardRef(Typography)>
-          </ForwardRef(Box)>
-        </ForwardRef(Box)>
-      </BoxField>
-      <ForwardRef(FormControl)
-        fullWidth={true}
-      >
-        <ForwardRef(InputLabel)>
-          カテゴリー
-        </ForwardRef(InputLabel)>
-        <ForwardRef(Select)
+    <ForwardRef(TextField)
+      disabled={false}
+      error={false}
+      label="説明文"
+      minRows={6}
+      multiline={true}
+      onChange={[Function]}
+      required={true}
+      value=""
+    />
+    <ForwardRef(FormControlLabel)
+      control={
+        <ForwardRef(Checkbox)
+          checked={false}
           disabled={false}
-          label="カテゴリー"
           onChange={[Function]}
-          value=""
-        >
-          <ForwardRef(MenuItem)
-            key="category-1"
-            value="1"
-          >
-            隠れミッキー
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-2"
-            value="2"
-          >
-            バックグラウンドストーリー
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-3"
-            value="3"
-          >
-            おすすめ写真スポット
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-4"
-            value="4"
-          >
-            ショーパレ
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-5"
-            value="5"
-          >
-            キャラグリ
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-6"
-            value="6"
-          >
-            パーク攻略法
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-0"
-            value="0"
-          >
-            その他
-          </ForwardRef(MenuItem)>
-        </ForwardRef(Select)>
-      </ForwardRef(FormControl)>
-      <ImageField
-        cropable={true}
-        disabled={false}
-        error={false}
-        maxLength={1000}
-        onCatchError={[Function]}
-        onChange={[Function]}
-        variant="photo"
-      />
-      <ForwardRef(TextField)
-        disabled={false}
-        error={false}
-        label="説明文"
-        minRows={6}
-        multiline={true}
-        onChange={[Function]}
-        required={true}
-        value=""
-      />
-      <ForwardRef(FormControlLabel)
-        control={
-          <ForwardRef(Checkbox)
-            checked={false}
-            disabled={false}
-            onChange={[Function]}
-          />
-        }
-        label="下書きとして保存（非公開）"
-      />
-      <ForwardRef(LoadingButton)
-        disabled={false}
-        loading={false}
-        onClick={[Function]}
-        variant="contained"
-      >
-        保存して公開
-      </ForwardRef(LoadingButton)>
-    </ForwardRef(Stack)>
-  </ForwardRef(Container)>
-</Fragment>
+        />
+      }
+      label="下書きとして保存（非公開）"
+    />
+    <ForwardRef(LoadingButton)
+      disabled={false}
+      loading={false}
+      onClick={[Function]}
+      variant="contained"
+    >
+      保存して公開
+    </ForwardRef(LoadingButton)>
+  </ForwardRef(Stack)>
+</ForwardRef(Container)>
 `;
 
 exports[`Shallow Snapshot Tests with image data url 1`] = `
-<Fragment>
-  <ForwardRef(Container)
-    maxWidth="sm"
-    sx={
-      Object {
-        "overflow": "scroll",
-        "p": 3,
-      }
+<ForwardRef(Container)
+  maxWidth="sm"
+  sx={
+    Object {
+      "p": 3,
     }
+  }
+>
+  <ForwardRef(Stack)
+    spacing={3}
   >
-    <ForwardRef(Stack)
-      spacing={3}
+    <ForwardRef(Typography)
+      align="center"
+      component="h2"
+      variant="h4"
     >
-      <ForwardRef(Typography)
-        align="center"
-        component="h2"
-        variant="h4"
-      >
-        トリビアを追加
-      </ForwardRef(Typography)>
-      <ForwardRef(TextField)
-        disabled={false}
-        error={false}
-        inputProps={
+      トリビアを追加
+    </ForwardRef(Typography)>
+    <ForwardRef(TextField)
+      disabled={false}
+      error={false}
+      inputProps={
+        Object {
+          "maxLength": 50,
+        }
+      }
+      label="タイトル"
+      onChange={[Function]}
+      required={true}
+      value=""
+      variant="standard"
+    />
+    <MapField
+      disabled={false}
+      isSelected={true}
+      status="valid"
+    >
+      <TriviaMap
+        disabled={true}
+        doNotShowPostMarkers={true}
+        height={300}
+        initCenter={
           Object {
-            "maxLength": 50,
+            "lat": 0,
+            "lng": 0,
+            "park": "S",
           }
         }
-        label="タイトル"
-        onChange={[Function]}
-        required={true}
-        value=""
-        variant="standard"
+        initZoom={3}
+        park="S"
+        shouldCurrentPositionAsyncWithForm={true}
       />
-      <BoxField
+    </MapField>
+    <ForwardRef(FormControl)
+      fullWidth={true}
+    >
+      <ForwardRef(InputLabel)>
+        カテゴリー
+      </ForwardRef(InputLabel)>
+      <ForwardRef(Select)
         disabled={false}
-        status="valid"
+        label="カテゴリー"
+        onChange={[Function]}
+        value=""
       >
-        <ForwardRef(Box)
-          sx={
-            Object {
-              "position": "relative",
-            }
-          }
+        <ForwardRef(MenuItem)
+          key="category-1"
+          value="1"
         >
-          <TriviaMap
-            disabled={true}
-            doNotShowPostMarkers={true}
-            height={300}
-            initCenter={
-              Object {
-                "lat": 0,
-                "lng": 0,
-                "park": "S",
-              }
-            }
-            initZoom={3}
-            park="S"
-            shouldCurrentPositionAsyncWithForm={true}
-          />
-          <ForwardRef(Box)
-            sx={
-              Object {
-                "backgroundColor": "rgba(0,0,0,0.5)",
-                "height": "100%",
-                "left": 0,
-                "position": "absolute",
-                "top": 0,
-                "width": "100%",
-                "zIndex": 2000,
-              }
-            }
-          />
-          <ForwardRef(Box)
-            sx={
-              Object {
-                "fontWeight": "bold",
-                "left": "50%",
-                "position": "absolute",
-                "top": "10%",
-                "transform": "translate(-50%,-50%)",
-                "width": "90%",
-                "zIndex": 2000,
-              }
-            }
-          >
-            <ForwardRef(Typography)
-              color="white"
-              component="div"
-              fontSize="14"
-              variant="inherit"
-            >
-              <AreaNames
-                areaNames={
-                  Array [
-                    "シー",
-                    "メディテレーニアンハーバー",
-                    "ポルトパラディーゾ",
-                  ]
-                }
-                variant="inherit"
-              />
-            </ForwardRef(Typography)>
-          </ForwardRef(Box)>
-          <ForwardRef(Box)
-            sx={
-              Object {
-                "fontWeight": "bold",
-                "left": "50%",
-                "position": "absolute",
-                "top": "70%",
-                "transform": "translate(-50%,-50%)",
-                "width": "90%",
-                "zIndex": 2000,
-              }
-            }
-          >
-            <ForwardRef(Typography)
-              color="white"
-              component="div"
-              fontSize="14"
-              textAlign="center"
-              variant="inherit"
-            >
-              この位置が選択されています。
-              <br />
-              位置を選び直す場合はここをタップしてください。
-            </ForwardRef(Typography)>
-          </ForwardRef(Box)>
-        </ForwardRef(Box)>
-      </BoxField>
-      <ForwardRef(FormControl)
-        fullWidth={true}
-      >
-        <ForwardRef(InputLabel)>
-          カテゴリー
-        </ForwardRef(InputLabel)>
-        <ForwardRef(Select)
+          隠れミッキー
+        </ForwardRef(MenuItem)>
+        <ForwardRef(MenuItem)
+          key="category-2"
+          value="2"
+        >
+          バックグラウンドストーリー
+        </ForwardRef(MenuItem)>
+        <ForwardRef(MenuItem)
+          key="category-3"
+          value="3"
+        >
+          おすすめ写真スポット
+        </ForwardRef(MenuItem)>
+        <ForwardRef(MenuItem)
+          key="category-4"
+          value="4"
+        >
+          ショーパレ
+        </ForwardRef(MenuItem)>
+        <ForwardRef(MenuItem)
+          key="category-5"
+          value="5"
+        >
+          キャラグリ
+        </ForwardRef(MenuItem)>
+        <ForwardRef(MenuItem)
+          key="category-6"
+          value="6"
+        >
+          パーク攻略法
+        </ForwardRef(MenuItem)>
+        <ForwardRef(MenuItem)
+          key="category-0"
+          value="0"
+        >
+          その他
+        </ForwardRef(MenuItem)>
+      </ForwardRef(Select)>
+    </ForwardRef(FormControl)>
+    <DeletableImage
+      borderRadius={true}
+      onDelete={[Function]}
+      src="data:image/png;base64,xxx"
+      width="full"
+    />
+    <ForwardRef(TextField)
+      disabled={false}
+      error={false}
+      label="説明文"
+      minRows={6}
+      multiline={true}
+      onChange={[Function]}
+      required={true}
+      value=""
+    />
+    <ForwardRef(FormControlLabel)
+      control={
+        <ForwardRef(Checkbox)
+          checked={false}
           disabled={false}
-          label="カテゴリー"
           onChange={[Function]}
-          value=""
-        >
-          <ForwardRef(MenuItem)
-            key="category-1"
-            value="1"
-          >
-            隠れミッキー
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-2"
-            value="2"
-          >
-            バックグラウンドストーリー
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-3"
-            value="3"
-          >
-            おすすめ写真スポット
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-4"
-            value="4"
-          >
-            ショーパレ
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-5"
-            value="5"
-          >
-            キャラグリ
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-6"
-            value="6"
-          >
-            パーク攻略法
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-0"
-            value="0"
-          >
-            その他
-          </ForwardRef(MenuItem)>
-        </ForwardRef(Select)>
-      </ForwardRef(FormControl)>
-      <DeletableImage
-        borderRadius={true}
-        onDelete={[Function]}
-        src="data:image/png;base64,xxx"
-        width="full"
-      />
-      <ForwardRef(TextField)
-        disabled={false}
-        error={false}
-        label="説明文"
-        minRows={6}
-        multiline={true}
-        onChange={[Function]}
-        required={true}
-        value=""
-      />
-      <ForwardRef(FormControlLabel)
-        control={
-          <ForwardRef(Checkbox)
-            checked={false}
-            disabled={false}
-            onChange={[Function]}
-          />
-        }
-        label="下書きとして保存（非公開）"
-      />
-      <ForwardRef(LoadingButton)
-        disabled={false}
-        loading={false}
-        onClick={[Function]}
-        variant="contained"
-      >
-        保存して公開
-      </ForwardRef(LoadingButton)>
-    </ForwardRef(Stack)>
-  </ForwardRef(Container)>
-</Fragment>
+        />
+      }
+      label="下書きとして保存（非公開）"
+    />
+    <ForwardRef(LoadingButton)
+      disabled={false}
+      loading={false}
+      onClick={[Function]}
+      variant="contained"
+    >
+      保存して公開
+    </ForwardRef(LoadingButton)>
+  </ForwardRef(Stack)>
+</ForwardRef(Container)>
 `;
 
 exports[`Shallow Snapshot Tests with image url 1`] = `
-<Fragment>
-  <ForwardRef(Container)
-    maxWidth="sm"
-    sx={
-      Object {
-        "overflow": "scroll",
-        "p": 3,
-      }
+<ForwardRef(Container)
+  maxWidth="sm"
+  sx={
+    Object {
+      "p": 3,
     }
+  }
+>
+  <ForwardRef(Stack)
+    spacing={3}
   >
-    <ForwardRef(Stack)
-      spacing={3}
+    <ForwardRef(Typography)
+      align="center"
+      component="h2"
+      variant="h4"
     >
-      <ForwardRef(Typography)
-        align="center"
-        component="h2"
-        variant="h4"
-      >
-        トリビアを追加
-      </ForwardRef(Typography)>
-      <ForwardRef(TextField)
-        disabled={false}
-        error={false}
-        inputProps={
+      トリビアを追加
+    </ForwardRef(Typography)>
+    <ForwardRef(TextField)
+      disabled={false}
+      error={false}
+      inputProps={
+        Object {
+          "maxLength": 50,
+        }
+      }
+      label="タイトル"
+      onChange={[Function]}
+      required={true}
+      value=""
+      variant="standard"
+    />
+    <MapField
+      disabled={false}
+      isSelected={true}
+      status="valid"
+    >
+      <TriviaMap
+        disabled={true}
+        doNotShowPostMarkers={true}
+        height={300}
+        initCenter={
           Object {
-            "maxLength": 50,
+            "lat": 0,
+            "lng": 0,
+            "park": "S",
           }
         }
-        label="タイトル"
-        onChange={[Function]}
-        required={true}
-        value=""
-        variant="standard"
+        initZoom={3}
+        park="S"
+        shouldCurrentPositionAsyncWithForm={true}
       />
-      <BoxField
+    </MapField>
+    <ForwardRef(FormControl)
+      fullWidth={true}
+    >
+      <ForwardRef(InputLabel)>
+        カテゴリー
+      </ForwardRef(InputLabel)>
+      <ForwardRef(Select)
         disabled={false}
-        status="valid"
+        label="カテゴリー"
+        onChange={[Function]}
+        value=""
       >
-        <ForwardRef(Box)
-          sx={
-            Object {
-              "position": "relative",
-            }
-          }
+        <ForwardRef(MenuItem)
+          key="category-1"
+          value="1"
         >
-          <TriviaMap
-            disabled={true}
-            doNotShowPostMarkers={true}
-            height={300}
-            initCenter={
-              Object {
-                "lat": 0,
-                "lng": 0,
-                "park": "S",
-              }
-            }
-            initZoom={3}
-            park="S"
-            shouldCurrentPositionAsyncWithForm={true}
-          />
-          <ForwardRef(Box)
-            sx={
-              Object {
-                "backgroundColor": "rgba(0,0,0,0.5)",
-                "height": "100%",
-                "left": 0,
-                "position": "absolute",
-                "top": 0,
-                "width": "100%",
-                "zIndex": 2000,
-              }
-            }
-          />
-          <ForwardRef(Box)
-            sx={
-              Object {
-                "fontWeight": "bold",
-                "left": "50%",
-                "position": "absolute",
-                "top": "10%",
-                "transform": "translate(-50%,-50%)",
-                "width": "90%",
-                "zIndex": 2000,
-              }
-            }
-          >
-            <ForwardRef(Typography)
-              color="white"
-              component="div"
-              fontSize="14"
-              variant="inherit"
-            >
-              <AreaNames
-                areaNames={
-                  Array [
-                    "シー",
-                    "メディテレーニアンハーバー",
-                    "ポルトパラディーゾ",
-                  ]
-                }
-                variant="inherit"
-              />
-            </ForwardRef(Typography)>
-          </ForwardRef(Box)>
-          <ForwardRef(Box)
-            sx={
-              Object {
-                "fontWeight": "bold",
-                "left": "50%",
-                "position": "absolute",
-                "top": "70%",
-                "transform": "translate(-50%,-50%)",
-                "width": "90%",
-                "zIndex": 2000,
-              }
-            }
-          >
-            <ForwardRef(Typography)
-              color="white"
-              component="div"
-              fontSize="14"
-              textAlign="center"
-              variant="inherit"
-            >
-              この位置が選択されています。
-              <br />
-              位置を選び直す場合はここをタップしてください。
-            </ForwardRef(Typography)>
-          </ForwardRef(Box)>
-        </ForwardRef(Box)>
-      </BoxField>
-      <ForwardRef(FormControl)
-        fullWidth={true}
-      >
-        <ForwardRef(InputLabel)>
-          カテゴリー
-        </ForwardRef(InputLabel)>
-        <ForwardRef(Select)
+          隠れミッキー
+        </ForwardRef(MenuItem)>
+        <ForwardRef(MenuItem)
+          key="category-2"
+          value="2"
+        >
+          バックグラウンドストーリー
+        </ForwardRef(MenuItem)>
+        <ForwardRef(MenuItem)
+          key="category-3"
+          value="3"
+        >
+          おすすめ写真スポット
+        </ForwardRef(MenuItem)>
+        <ForwardRef(MenuItem)
+          key="category-4"
+          value="4"
+        >
+          ショーパレ
+        </ForwardRef(MenuItem)>
+        <ForwardRef(MenuItem)
+          key="category-5"
+          value="5"
+        >
+          キャラグリ
+        </ForwardRef(MenuItem)>
+        <ForwardRef(MenuItem)
+          key="category-6"
+          value="6"
+        >
+          パーク攻略法
+        </ForwardRef(MenuItem)>
+        <ForwardRef(MenuItem)
+          key="category-0"
+          value="0"
+        >
+          その他
+        </ForwardRef(MenuItem)>
+      </ForwardRef(Select)>
+    </ForwardRef(FormControl)>
+    <DeletableImage
+      borderRadius={true}
+      onDelete={[Function]}
+      src="https://image-data.jpg"
+      width="full"
+    />
+    <ForwardRef(TextField)
+      disabled={false}
+      error={false}
+      label="説明文"
+      minRows={6}
+      multiline={true}
+      onChange={[Function]}
+      required={true}
+      value=""
+    />
+    <ForwardRef(FormControlLabel)
+      control={
+        <ForwardRef(Checkbox)
+          checked={false}
           disabled={false}
-          label="カテゴリー"
           onChange={[Function]}
-          value=""
-        >
-          <ForwardRef(MenuItem)
-            key="category-1"
-            value="1"
-          >
-            隠れミッキー
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-2"
-            value="2"
-          >
-            バックグラウンドストーリー
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-3"
-            value="3"
-          >
-            おすすめ写真スポット
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-4"
-            value="4"
-          >
-            ショーパレ
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-5"
-            value="5"
-          >
-            キャラグリ
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-6"
-            value="6"
-          >
-            パーク攻略法
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-0"
-            value="0"
-          >
-            その他
-          </ForwardRef(MenuItem)>
-        </ForwardRef(Select)>
-      </ForwardRef(FormControl)>
-      <DeletableImage
-        borderRadius={true}
-        onDelete={[Function]}
-        src="https://image-data.jpg"
-        width="full"
-      />
-      <ForwardRef(TextField)
-        disabled={false}
-        error={false}
-        label="説明文"
-        minRows={6}
-        multiline={true}
-        onChange={[Function]}
-        required={true}
-        value=""
-      />
-      <ForwardRef(FormControlLabel)
-        control={
-          <ForwardRef(Checkbox)
-            checked={false}
-            disabled={false}
-            onChange={[Function]}
-          />
-        }
-        label="下書きとして保存（非公開）"
-      />
-      <ForwardRef(LoadingButton)
-        disabled={false}
-        loading={false}
-        onClick={[Function]}
-        variant="contained"
-      >
-        保存して公開
-      </ForwardRef(LoadingButton)>
-    </ForwardRef(Stack)>
-  </ForwardRef(Container)>
-</Fragment>
+        />
+      }
+      label="下書きとして保存（非公開）"
+    />
+    <ForwardRef(LoadingButton)
+      disabled={false}
+      loading={false}
+      onClick={[Function]}
+      variant="contained"
+    >
+      保存して公開
+    </ForwardRef(LoadingButton)>
+  </ForwardRef(Stack)>
+</ForwardRef(Container)>
 `;
 
 exports[`Shallow Snapshot Tests with validation error 1`] = `
-<Fragment>
-  <ForwardRef(Container)
-    maxWidth="sm"
-    sx={
-      Object {
-        "overflow": "scroll",
-        "p": 3,
-      }
+<ForwardRef(Container)
+  maxWidth="sm"
+  sx={
+    Object {
+      "p": 3,
     }
+  }
+>
+  <ForwardRef(Stack)
+    spacing={3}
   >
-    <ForwardRef(Stack)
-      spacing={3}
+    <ForwardRef(Typography)
+      align="center"
+      component="h2"
+      variant="h4"
     >
-      <ForwardRef(Typography)
-        align="center"
-        component="h2"
-        variant="h4"
-      >
-        トリビアを追加
-      </ForwardRef(Typography)>
-      <HeaderErrorMessages
-        errorTitle="Inputted contents have errors."
-      />
-      <ForwardRef(TextField)
-        disabled={false}
-        error={false}
-        inputProps={
+      トリビアを追加
+    </ForwardRef(Typography)>
+    <HeaderErrorMessages
+      errorTitle="Inputted contents have errors."
+    />
+    <ForwardRef(TextField)
+      disabled={false}
+      error={false}
+      inputProps={
+        Object {
+          "maxLength": 50,
+        }
+      }
+      label="タイトル"
+      onChange={[Function]}
+      required={true}
+      value=""
+      variant="standard"
+    />
+    <MapField
+      disabled={false}
+      helperText={
+        Array [
+          "position is not selected",
+        ]
+      }
+      isSelected={true}
+      status="error"
+    >
+      <TriviaMap
+        disabled={true}
+        doNotShowPostMarkers={true}
+        height={300}
+        initCenter={
           Object {
-            "maxLength": 50,
+            "lat": 0,
+            "lng": 0,
+            "park": "S",
           }
         }
-        label="タイトル"
-        onChange={[Function]}
-        required={true}
-        value=""
-        variant="standard"
+        initZoom={3}
+        park="S"
+        shouldCurrentPositionAsyncWithForm={true}
       />
-      <BoxField
+    </MapField>
+    <ForwardRef(FormControl)
+      fullWidth={true}
+    >
+      <ForwardRef(InputLabel)>
+        カテゴリー
+      </ForwardRef(InputLabel)>
+      <ForwardRef(Select)
         disabled={false}
-        helperText={
-          Array [
-            "position is not selected",
-          ]
-        }
-        status="error"
+        label="カテゴリー"
+        onChange={[Function]}
+        value=""
       >
-        <ForwardRef(Box)
-          sx={
-            Object {
-              "position": "relative",
-            }
-          }
+        <ForwardRef(MenuItem)
+          key="category-1"
+          value="1"
         >
-          <TriviaMap
-            disabled={true}
-            doNotShowPostMarkers={true}
-            height={300}
-            initCenter={
-              Object {
-                "lat": 0,
-                "lng": 0,
-                "park": "S",
-              }
-            }
-            initZoom={3}
-            park="S"
-            shouldCurrentPositionAsyncWithForm={true}
-          />
-          <ForwardRef(Box)
-            sx={
-              Object {
-                "backgroundColor": "rgba(0,0,0,0.5)",
-                "height": "100%",
-                "left": 0,
-                "position": "absolute",
-                "top": 0,
-                "width": "100%",
-                "zIndex": 2000,
-              }
-            }
-          />
-          <ForwardRef(Box)
-            sx={
-              Object {
-                "fontWeight": "bold",
-                "left": "50%",
-                "position": "absolute",
-                "top": "10%",
-                "transform": "translate(-50%,-50%)",
-                "width": "90%",
-                "zIndex": 2000,
-              }
-            }
-          >
-            <ForwardRef(Typography)
-              color="white"
-              component="div"
-              fontSize="14"
-              variant="inherit"
-            >
-              <AreaNames
-                areaNames={
-                  Array [
-                    "シー",
-                    "メディテレーニアンハーバー",
-                    "ポルトパラディーゾ",
-                  ]
-                }
-                variant="inherit"
-              />
-            </ForwardRef(Typography)>
-          </ForwardRef(Box)>
-          <ForwardRef(Box)
-            sx={
-              Object {
-                "fontWeight": "bold",
-                "left": "50%",
-                "position": "absolute",
-                "top": "70%",
-                "transform": "translate(-50%,-50%)",
-                "width": "90%",
-                "zIndex": 2000,
-              }
-            }
-          >
-            <ForwardRef(Typography)
-              color="white"
-              component="div"
-              fontSize="14"
-              textAlign="center"
-              variant="inherit"
-            >
-              この位置が選択されています。
-              <br />
-              位置を選び直す場合はここをタップしてください。
-            </ForwardRef(Typography)>
-          </ForwardRef(Box)>
-        </ForwardRef(Box)>
-      </BoxField>
-      <ForwardRef(FormControl)
-        fullWidth={true}
-      >
-        <ForwardRef(InputLabel)>
-          カテゴリー
-        </ForwardRef(InputLabel)>
-        <ForwardRef(Select)
+          隠れミッキー
+        </ForwardRef(MenuItem)>
+        <ForwardRef(MenuItem)
+          key="category-2"
+          value="2"
+        >
+          バックグラウンドストーリー
+        </ForwardRef(MenuItem)>
+        <ForwardRef(MenuItem)
+          key="category-3"
+          value="3"
+        >
+          おすすめ写真スポット
+        </ForwardRef(MenuItem)>
+        <ForwardRef(MenuItem)
+          key="category-4"
+          value="4"
+        >
+          ショーパレ
+        </ForwardRef(MenuItem)>
+        <ForwardRef(MenuItem)
+          key="category-5"
+          value="5"
+        >
+          キャラグリ
+        </ForwardRef(MenuItem)>
+        <ForwardRef(MenuItem)
+          key="category-6"
+          value="6"
+        >
+          パーク攻略法
+        </ForwardRef(MenuItem)>
+        <ForwardRef(MenuItem)
+          key="category-0"
+          value="0"
+        >
+          その他
+        </ForwardRef(MenuItem)>
+      </ForwardRef(Select)>
+    </ForwardRef(FormControl)>
+    <ImageField
+      cropable={true}
+      disabled={false}
+      error={false}
+      maxLength={1000}
+      onCatchError={[Function]}
+      onChange={[Function]}
+      variant="photo"
+    />
+    <ForwardRef(TextField)
+      disabled={false}
+      error={false}
+      label="説明文"
+      minRows={6}
+      multiline={true}
+      onChange={[Function]}
+      required={true}
+      value=""
+    />
+    <ForwardRef(FormControlLabel)
+      control={
+        <ForwardRef(Checkbox)
+          checked={false}
           disabled={false}
-          label="カテゴリー"
           onChange={[Function]}
-          value=""
-        >
-          <ForwardRef(MenuItem)
-            key="category-1"
-            value="1"
-          >
-            隠れミッキー
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-2"
-            value="2"
-          >
-            バックグラウンドストーリー
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-3"
-            value="3"
-          >
-            おすすめ写真スポット
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-4"
-            value="4"
-          >
-            ショーパレ
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-5"
-            value="5"
-          >
-            キャラグリ
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-6"
-            value="6"
-          >
-            パーク攻略法
-          </ForwardRef(MenuItem)>
-          <ForwardRef(MenuItem)
-            key="category-0"
-            value="0"
-          >
-            その他
-          </ForwardRef(MenuItem)>
-        </ForwardRef(Select)>
-      </ForwardRef(FormControl)>
-      <ImageField
-        cropable={true}
-        disabled={false}
-        error={false}
-        maxLength={1000}
-        onCatchError={[Function]}
-        onChange={[Function]}
-        variant="photo"
-      />
-      <ForwardRef(TextField)
-        disabled={false}
-        error={false}
-        label="説明文"
-        minRows={6}
-        multiline={true}
-        onChange={[Function]}
-        required={true}
-        value=""
-      />
-      <ForwardRef(FormControlLabel)
-        control={
-          <ForwardRef(Checkbox)
-            checked={false}
-            disabled={false}
-            onChange={[Function]}
-          />
-        }
-        label="下書きとして保存（非公開）"
-      />
-      <ForwardRef(LoadingButton)
-        disabled={false}
-        loading={false}
-        onClick={[Function]}
-        variant="contained"
-      >
-        保存して公開
-      </ForwardRef(LoadingButton)>
-    </ForwardRef(Stack)>
-  </ForwardRef(Container)>
-</Fragment>
+        />
+      }
+      label="下書きとして保存（非公開）"
+    />
+    <ForwardRef(LoadingButton)
+      disabled={false}
+      loading={false}
+      onClick={[Function]}
+      variant="contained"
+    >
+      保存して公開
+    </ForwardRef(LoadingButton)>
+  </ForwardRef(Stack)>
+</ForwardRef(Container)>
 `;

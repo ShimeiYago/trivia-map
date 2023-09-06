@@ -61,7 +61,11 @@ exports[`Shallow Snapshot Tests basic 1`] = `
     open={false}
     show={false}
   >
-    xxx
+    <SpecialMapMarkerForm
+      defaultPark="L"
+      onClickMiniMap={[Function]}
+      specialMapId={0}
+    />
   </SwipeableEdgeDrawer>
 </ForwardRef(Box)>
 `;
@@ -91,6 +95,13 @@ exports[`Shallow Snapshot Tests focusing a marker 1`] = `
       <ParkMap
         initZoom={2}
         park="L"
+        positionSelectProps={
+          Object {
+            "active": false,
+            "onCancel": [Function],
+            "onConfirm": [Function],
+          }
+        }
         setMap={[Function]}
       >
         <MapMarker
@@ -238,14 +249,6 @@ exports[`Shallow Snapshot Tests focusing a marker 1`] = `
         isMobile={true}
         loadedPages={0}
       />
-      <FloatingButton
-        color="error"
-        disabled={false}
-        icon="add-marker"
-        onClick={[Function]}
-        size="large"
-        text="新しい投稿を追加"
-      />
     </ForwardRef(Box)>
   </GlobalMenu>
   <BoxModal
@@ -295,7 +298,11 @@ exports[`Shallow Snapshot Tests focusing a marker 1`] = `
     open={false}
     show={false}
   >
-    xxx
+    <SpecialMapMarkerForm
+      defaultPark="L"
+      onClickMiniMap={[Function]}
+      specialMapId={0}
+    />
   </SwipeableEdgeDrawer>
 </ForwardRef(Box)>
 `;
@@ -325,6 +332,13 @@ exports[`Shallow Snapshot Tests loaded (pc) 1`] = `
       <ParkMap
         initZoom={2}
         park="L"
+        positionSelectProps={
+          Object {
+            "active": false,
+            "onCancel": [Function],
+            "onConfirm": [Function],
+          }
+        }
         setMap={[Function]}
       />
       <ForwardRef(Box)
@@ -410,14 +424,6 @@ exports[`Shallow Snapshot Tests loaded (pc) 1`] = `
         isMobile={false}
         loadedPages={0}
       />
-      <FloatingButton
-        color="error"
-        disabled={false}
-        icon="add-marker"
-        onClick={[Function]}
-        size="large"
-        text="新しい投稿を追加"
-      />
     </ForwardRef(Box)>
   </GlobalMenu>
   <BoxModal
@@ -453,20 +459,16 @@ exports[`Shallow Snapshot Tests loaded (pc) 1`] = `
       variant="filled"
     />
   </ForwardRef(Snackbar)>
-  <ForwardRef(Drawer)
-    anchor="right"
+  <RightDrawer
+    onClose={[Function]}
     open={false}
-    sx={
-      Object {
-        "& .MuiDrawer-paper": Object {
-          "width": 500,
-        },
-        "flexShrink": 0,
-        "width": 500,
-      }
-    }
-    variant="persistent"
-  />
+  >
+    <SpecialMapMarkerForm
+      defaultPark="L"
+      onClickMiniMap={[Function]}
+      specialMapId={0}
+    />
+  </RightDrawer>
 </ForwardRef(Box)>
 `;
 
@@ -495,6 +497,13 @@ exports[`Shallow Snapshot Tests loaded 1`] = `
       <ParkMap
         initZoom={2}
         park="L"
+        positionSelectProps={
+          Object {
+            "active": false,
+            "onCancel": [Function],
+            "onConfirm": [Function],
+          }
+        }
         setMap={[Function]}
       >
         <MapMarker
@@ -623,14 +632,6 @@ exports[`Shallow Snapshot Tests loaded 1`] = `
         isMobile={true}
         loadedPages={0}
       />
-      <FloatingButton
-        color="error"
-        disabled={false}
-        icon="add-marker"
-        onClick={[Function]}
-        size="large"
-        text="新しい投稿を追加"
-      />
     </ForwardRef(Box)>
   </GlobalMenu>
   <BoxModal
@@ -680,7 +681,11 @@ exports[`Shallow Snapshot Tests loaded 1`] = `
     open={false}
     show={false}
   >
-    xxx
+    <SpecialMapMarkerForm
+      defaultPark="L"
+      onClickMiniMap={[Function]}
+      specialMapId={0}
+    />
   </SwipeableEdgeDrawer>
 </ForwardRef(Box)>
 `;
@@ -710,6 +715,13 @@ exports[`Shallow Snapshot Tests loading markers 1`] = `
       <ParkMap
         initZoom={2}
         park="L"
+        positionSelectProps={
+          Object {
+            "active": false,
+            "onCancel": [Function],
+            "onConfirm": [Function],
+          }
+        }
         setMap={[Function]}
       />
       <ForwardRef(Box)
@@ -795,14 +807,6 @@ exports[`Shallow Snapshot Tests loading markers 1`] = `
         isMobile={true}
         loadedPages={0}
       />
-      <FloatingButton
-        color="error"
-        disabled={false}
-        icon="add-marker"
-        onClick={[Function]}
-        size="large"
-        text="新しい投稿を追加"
-      />
     </ForwardRef(Box)>
   </GlobalMenu>
   <BoxModal
@@ -852,7 +856,11 @@ exports[`Shallow Snapshot Tests loading markers 1`] = `
     open={false}
     show={false}
   >
-    xxx
+    <SpecialMapMarkerForm
+      defaultPark="L"
+      onClickMiniMap={[Function]}
+      specialMapId={0}
+    />
   </SwipeableEdgeDrawer>
 </ForwardRef(Box)>
 `;
@@ -918,7 +926,11 @@ exports[`Shallow Snapshot Tests without height 1`] = `
     open={false}
     show={false}
   >
-    xxx
+    <SpecialMapMarkerForm
+      defaultPark="L"
+      onClickMiniMap={[Function]}
+      specialMapId={0}
+    />
   </SwipeableEdgeDrawer>
 </ForwardRef(Box)>
 `;

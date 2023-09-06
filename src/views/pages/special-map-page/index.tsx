@@ -2,13 +2,15 @@ import { Renderer, Props } from './renderer';
 import { isMobile } from 'react-device-detect';
 import { Navigate, useLocation, useParams } from 'react-router-dom';
 import { NOT_FOUND_LINK } from 'constant/links';
-import { useAppDispatch, useAppSelector } from 'store';
+import { RootState, useAppDispatch, useAppSelector } from 'store';
 import { useWindowSize } from 'helper-components/user-window-size';
 import { throwError } from 'store/global-error/slice';
 import { updateUser } from 'store/auths/actions';
 import { GetSpecialMapResponse } from 'api/special-map-api/get-special-map';
 import { setSpecialMap } from 'store/special-map-setting/actions';
 import { selectSpecialMapSetting } from 'store/special-map-setting/selector';
+import { updatePosition, initialize } from 'store/special-map-marker-form/actions';
+import { Position } from 'types/position';
 
 export function SpecialMapPage({ edit }: { edit?: boolean }) {
   const { mapId } = useParams();
@@ -38,10 +40,13 @@ export function SpecialMapPage({ edit }: { edit?: boolean }) {
     park: park ?? undefined,
     editMode: !!edit,
     specialMapSettingForm: useAppSelector(selectSpecialMapSetting),
+    specialMapMarkerForm: useAppSelector((state: RootState) => state.specialMapMarkerForm),
 
     refreshUser,
     setSpecialMap: (specialMap: GetSpecialMapResponse) => dispatch(setSpecialMap(specialMap)),
     throwError: (errorStatus: number) => dispatch(throwError(errorStatus)),
+    updatePosition: (position: Position) => dispatch(updatePosition(position)),
+    initializeSpecialMapForm: () => dispatch(initialize()),
   };
 
   return <Renderer {...props} />;

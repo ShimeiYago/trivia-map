@@ -1,414 +1,591 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Shallow Snapshot Tests basic 1`] = `
-<ForwardRef(Box)
-  sx={
-    Object {
-      "height": "100%",
-      "width": "100%",
-    }
-  }
->
-  <MapContainer
-    center={
+<Fragment>
+  <ForwardRef(Box)
+    sx={
       Object {
-        "lat": -127.5,
-        "lng": 127.5,
+        "height": "100%",
+        "width": "100%",
       }
     }
-    crs={
-      Object {
-        "distance": [Function],
-        "getProjectedBounds": [Function],
-        "infinite": true,
-        "latLngToPoint": [Function],
-        "pointToLatLng": [Function],
-        "project": [Function],
-        "projection": Object {
-          "bounds": Object {
-            "max": Object {
-              "x": 180,
-              "y": 90,
-            },
-            "min": Object {
-              "x": -180,
-              "y": -90,
-            },
-          },
-          "project": [Function],
-          "unproject": [Function],
-        },
-        "scale": [Function],
-        "transformation": Object {
-          "_a": 1,
-          "_b": 0,
-          "_c": -1,
-          "_d": 0,
-        },
-        "unproject": [Function],
-        "wrapLatLng": [Function],
-        "wrapLatLngBounds": [Function],
-        "zoom": [Function],
-      }
-    }
-    maxBounds={
-      Array [
-        Array [
-          50,
-          -50,
-        ],
-        Array [
-          -305,
-          305,
-        ],
-      ]
-    }
-    maxZoom={4}
-    minZoom={1}
-    tap={false}
-    whenCreated={[Function]}
-    zoom={1}
-    zoomControl={false}
   >
-    <ForwardRef(LeafComponent)
-      attribution="&copy; <a target=\\"_blank\\" href=\\"https://www.tokyodisneyresort.jp/tdl/map.html\\">tokyodisneyresort.jp</a>"
-      noWrap={true}
-      url="/s-tiles/{z}/{x}/{y}.png"
-    />
-    <ForwardRef(LeafComponent)
-      position="bottomleft"
-    />
-  </MapContainer>
-</ForwardRef(Box)>
+    <MapContainer
+      center={
+        Object {
+          "lat": -127.5,
+          "lng": 127.5,
+        }
+      }
+      crs={
+        Object {
+          "distance": [Function],
+          "getProjectedBounds": [Function],
+          "infinite": true,
+          "latLngToPoint": [Function],
+          "pointToLatLng": [Function],
+          "project": [Function],
+          "projection": Object {
+            "bounds": Object {
+              "max": Object {
+                "x": 180,
+                "y": 90,
+              },
+              "min": Object {
+                "x": -180,
+                "y": -90,
+              },
+            },
+            "project": [Function],
+            "unproject": [Function],
+          },
+          "scale": [Function],
+          "transformation": Object {
+            "_a": 1,
+            "_b": 0,
+            "_c": -1,
+            "_d": 0,
+          },
+          "unproject": [Function],
+          "wrapLatLng": [Function],
+          "wrapLatLngBounds": [Function],
+          "zoom": [Function],
+        }
+      }
+      maxBounds={
+        Array [
+          Array [
+            50,
+            -50,
+          ],
+          Array [
+            -305,
+            305,
+          ],
+        ]
+      }
+      maxZoom={4}
+      minZoom={1}
+      tap={false}
+      whenCreated={[Function]}
+      zoom={1}
+      zoomControl={false}
+    >
+      <ForwardRef(LeafComponent)
+        attribution="&copy; <a target=\\"_blank\\" href=\\"https://www.tokyodisneyresort.jp/tdl/map.html\\">tokyodisneyresort.jp</a>"
+        noWrap={true}
+        url="/s-tiles/{z}/{x}/{y}.png"
+      />
+      <ForwardRef(LeafComponent)
+        position="bottomleft"
+      />
+    </MapContainer>
+  </ForwardRef(Box)>
+</Fragment>
 `;
 
 exports[`Shallow Snapshot Tests disabled map 1`] = `
-<ForwardRef(Box)
-  sx={
-    Object {
-      "height": "100%",
-      "width": "100%",
-    }
-  }
->
-  <MapContainer
-    boxZoom={false}
-    center={
+<Fragment>
+  <ForwardRef(Box)
+    sx={
       Object {
-        "lat": -127.5,
-        "lng": 127.5,
+        "height": "100%",
+        "width": "100%",
       }
     }
-    crs={
-      Object {
-        "distance": [Function],
-        "getProjectedBounds": [Function],
-        "infinite": true,
-        "latLngToPoint": [Function],
-        "pointToLatLng": [Function],
-        "project": [Function],
-        "projection": Object {
-          "bounds": Object {
-            "max": Object {
-              "x": 180,
-              "y": 90,
-            },
-            "min": Object {
-              "x": -180,
-              "y": -90,
-            },
-          },
-          "project": [Function],
-          "unproject": [Function],
-        },
-        "scale": [Function],
-        "transformation": Object {
-          "_a": 1,
-          "_b": 0,
-          "_c": -1,
-          "_d": 0,
-        },
-        "unproject": [Function],
-        "wrapLatLng": [Function],
-        "wrapLatLngBounds": [Function],
-        "zoom": [Function],
-      }
-    }
-    doubleClickZoom={false}
-    dragging={false}
-    keyboard={false}
-    maxBounds={
-      Array [
-        Array [
-          50,
-          -50,
-        ],
-        Array [
-          -305,
-          305,
-        ],
-      ]
-    }
-    maxZoom={4}
-    minZoom={1}
-    scrollWheelZoom={false}
-    tap={false}
-    touchZoom={false}
-    whenCreated={[Function]}
-    zoom={1}
-    zoomControl={false}
   >
-    <ForwardRef(LeafComponent)
-      attribution="&copy; <a target=\\"_blank\\" href=\\"https://www.tokyodisneyresort.jp/tdl/map.html\\">tokyodisneyresort.jp</a>"
-      noWrap={true}
-      url="/s-tiles/{z}/{x}/{y}.png"
-    />
-  </MapContainer>
-</ForwardRef(Box)>
+    <MapContainer
+      boxZoom={false}
+      center={
+        Object {
+          "lat": -127.5,
+          "lng": 127.5,
+        }
+      }
+      crs={
+        Object {
+          "distance": [Function],
+          "getProjectedBounds": [Function],
+          "infinite": true,
+          "latLngToPoint": [Function],
+          "pointToLatLng": [Function],
+          "project": [Function],
+          "projection": Object {
+            "bounds": Object {
+              "max": Object {
+                "x": 180,
+                "y": 90,
+              },
+              "min": Object {
+                "x": -180,
+                "y": -90,
+              },
+            },
+            "project": [Function],
+            "unproject": [Function],
+          },
+          "scale": [Function],
+          "transformation": Object {
+            "_a": 1,
+            "_b": 0,
+            "_c": -1,
+            "_d": 0,
+          },
+          "unproject": [Function],
+          "wrapLatLng": [Function],
+          "wrapLatLngBounds": [Function],
+          "zoom": [Function],
+        }
+      }
+      doubleClickZoom={false}
+      dragging={false}
+      keyboard={false}
+      maxBounds={
+        Array [
+          Array [
+            50,
+            -50,
+          ],
+          Array [
+            -305,
+            305,
+          ],
+        ]
+      }
+      maxZoom={4}
+      minZoom={1}
+      scrollWheelZoom={false}
+      tap={false}
+      touchZoom={false}
+      whenCreated={[Function]}
+      zoom={1}
+      zoomControl={false}
+    >
+      <ForwardRef(LeafComponent)
+        attribution="&copy; <a target=\\"_blank\\" href=\\"https://www.tokyodisneyresort.jp/tdl/map.html\\">tokyodisneyresort.jp</a>"
+        noWrap={true}
+        url="/s-tiles/{z}/{x}/{y}.png"
+      />
+    </MapContainer>
+  </ForwardRef(Box)>
+</Fragment>
 `;
 
 exports[`Shallow Snapshot Tests land map 1`] = `
-<ForwardRef(Box)
-  sx={
-    Object {
-      "height": "100%",
-      "width": "100%",
-    }
-  }
->
-  <MapContainer
-    center={
+<Fragment>
+  <ForwardRef(Box)
+    sx={
       Object {
-        "lat": -127.5,
-        "lng": 127.5,
+        "height": "100%",
+        "width": "100%",
       }
     }
-    crs={
-      Object {
-        "distance": [Function],
-        "getProjectedBounds": [Function],
-        "infinite": true,
-        "latLngToPoint": [Function],
-        "pointToLatLng": [Function],
-        "project": [Function],
-        "projection": Object {
-          "bounds": Object {
-            "max": Object {
-              "x": 180,
-              "y": 90,
-            },
-            "min": Object {
-              "x": -180,
-              "y": -90,
-            },
-          },
-          "project": [Function],
-          "unproject": [Function],
-        },
-        "scale": [Function],
-        "transformation": Object {
-          "_a": 1,
-          "_b": 0,
-          "_c": -1,
-          "_d": 0,
-        },
-        "unproject": [Function],
-        "wrapLatLng": [Function],
-        "wrapLatLngBounds": [Function],
-        "zoom": [Function],
-      }
-    }
-    maxBounds={
-      Array [
-        Array [
-          50,
-          -50,
-        ],
-        Array [
-          -305,
-          305,
-        ],
-      ]
-    }
-    maxZoom={4}
-    minZoom={1}
-    tap={false}
-    whenCreated={[Function]}
-    zoom={1}
-    zoomControl={false}
   >
-    <ForwardRef(LeafComponent)
-      attribution="&copy; <a target=\\"_blank\\" href=\\"https://www.tokyodisneyresort.jp/tdl/map.html\\">tokyodisneyresort.jp</a>"
-      noWrap={true}
-      url="/l-tiles/{z}/{x}/{y}.png"
+    <MapContainer
+      center={
+        Object {
+          "lat": -127.5,
+          "lng": 127.5,
+        }
+      }
+      crs={
+        Object {
+          "distance": [Function],
+          "getProjectedBounds": [Function],
+          "infinite": true,
+          "latLngToPoint": [Function],
+          "pointToLatLng": [Function],
+          "project": [Function],
+          "projection": Object {
+            "bounds": Object {
+              "max": Object {
+                "x": 180,
+                "y": 90,
+              },
+              "min": Object {
+                "x": -180,
+                "y": -90,
+              },
+            },
+            "project": [Function],
+            "unproject": [Function],
+          },
+          "scale": [Function],
+          "transformation": Object {
+            "_a": 1,
+            "_b": 0,
+            "_c": -1,
+            "_d": 0,
+          },
+          "unproject": [Function],
+          "wrapLatLng": [Function],
+          "wrapLatLngBounds": [Function],
+          "zoom": [Function],
+        }
+      }
+      maxBounds={
+        Array [
+          Array [
+            50,
+            -50,
+          ],
+          Array [
+            -305,
+            305,
+          ],
+        ]
+      }
+      maxZoom={4}
+      minZoom={1}
+      tap={false}
+      whenCreated={[Function]}
+      zoom={1}
+      zoomControl={false}
+    >
+      <ForwardRef(LeafComponent)
+        attribution="&copy; <a target=\\"_blank\\" href=\\"https://www.tokyodisneyresort.jp/tdl/map.html\\">tokyodisneyresort.jp</a>"
+        noWrap={true}
+        url="/l-tiles/{z}/{x}/{y}.png"
+      />
+      <ForwardRef(LeafComponent)
+        position="bottomleft"
+      />
+    </MapContainer>
+  </ForwardRef(Box)>
+</Fragment>
+`;
+
+exports[`Shallow Snapshot Tests position select 1`] = `
+<Fragment>
+  <DialogScreen
+    maxWidth={400}
+    position="top"
+    theme="black"
+  >
+    <ForwardRef(Typography)
+      align="center"
+      sx={
+        Object {
+          "fontWeight": "bold",
+        }
+      }
+      variant="inherit"
+    >
+      マップを動かして
+      <br />
+      位置を確定してください。
+    </ForwardRef(Typography)>
+    <ForwardRef(Typography)
+      align="center"
+      sx={
+        Object {
+          "mb": 2,
+        }
+      }
+      variant="inherit"
+    >
+      <Memo(ForwardRef(TouchAppIcon)) />
+    </ForwardRef(Typography)>
+    <ForwardRef(Grid)
+      container={true}
+      justifyContent="center"
+      spacing={2}
+      sx={
+        Object {
+          "color": "#bbdefb",
+          "textAlign": "center",
+        }
+      }
+    >
+      <ForwardRef(Grid)
+        item={true}
+        xs={6}
+      >
+        <ForwardRef(Button)
+          color="inherit"
+          fullWidth={true}
+          onClick={[MockFunction]}
+          variant="outlined"
+        >
+          キャンセル
+        </ForwardRef(Button)>
+      </ForwardRef(Grid)>
+      <ForwardRef(Grid)
+        item={true}
+        xs={6}
+      >
+        <ForwardRef(Button)
+          fullWidth={true}
+          onClick={[MockFunction]}
+          variant="contained"
+        >
+          確定
+        </ForwardRef(Button)>
+      </ForwardRef(Grid)>
+    </ForwardRef(Grid)>
+  </DialogScreen>
+  <ForwardRef(Box)
+    sx={
+      Object {
+        "display": "inline-block",
+        "left": "50%",
+        "position": "absolute",
+        "top": "50%",
+        "transform": "translate(-50%,-50%)",
+        "zIndex": 1001,
+      }
+    }
+  >
+    <img
+      src="selection-position.png"
     />
-    <ForwardRef(LeafComponent)
-      position="bottomleft"
-    />
-  </MapContainer>
-</ForwardRef(Box)>
+  </ForwardRef(Box)>
+  <ForwardRef(Box)
+    sx={
+      Object {
+        "height": "100%",
+        "width": "100%",
+      }
+    }
+  >
+    <MapContainer
+      center={
+        Object {
+          "lat": -127.5,
+          "lng": 127.5,
+        }
+      }
+      crs={
+        Object {
+          "distance": [Function],
+          "getProjectedBounds": [Function],
+          "infinite": true,
+          "latLngToPoint": [Function],
+          "pointToLatLng": [Function],
+          "project": [Function],
+          "projection": Object {
+            "bounds": Object {
+              "max": Object {
+                "x": 180,
+                "y": 90,
+              },
+              "min": Object {
+                "x": -180,
+                "y": -90,
+              },
+            },
+            "project": [Function],
+            "unproject": [Function],
+          },
+          "scale": [Function],
+          "transformation": Object {
+            "_a": 1,
+            "_b": 0,
+            "_c": -1,
+            "_d": 0,
+          },
+          "unproject": [Function],
+          "wrapLatLng": [Function],
+          "wrapLatLngBounds": [Function],
+          "zoom": [Function],
+        }
+      }
+      maxBounds={
+        Array [
+          Array [
+            50,
+            -50,
+          ],
+          Array [
+            -305,
+            305,
+          ],
+        ]
+      }
+      maxZoom={4}
+      minZoom={1}
+      tap={false}
+      whenCreated={[Function]}
+      zoom={1}
+      zoomControl={false}
+    >
+      <ForwardRef(LeafComponent)
+        attribution="&copy; <a target=\\"_blank\\" href=\\"https://www.tokyodisneyresort.jp/tdl/map.html\\">tokyodisneyresort.jp</a>"
+        noWrap={true}
+        url="/s-tiles/{z}/{x}/{y}.png"
+      />
+      <ForwardRef(LeafComponent)
+        position="bottomleft"
+      />
+    </MapContainer>
+  </ForwardRef(Box)>
+</Fragment>
 `;
 
 exports[`Shallow Snapshot Tests with initCenter prop 1`] = `
-<ForwardRef(Box)
-  sx={
-    Object {
-      "height": "100%",
-      "width": "100%",
-    }
-  }
->
-  <MapContainer
-    center={
+<Fragment>
+  <ForwardRef(Box)
+    sx={
       Object {
-        "lat": 1,
-        "lng": 1,
+        "height": "100%",
+        "width": "100%",
       }
     }
-    crs={
-      Object {
-        "distance": [Function],
-        "getProjectedBounds": [Function],
-        "infinite": true,
-        "latLngToPoint": [Function],
-        "pointToLatLng": [Function],
-        "project": [Function],
-        "projection": Object {
-          "bounds": Object {
-            "max": Object {
-              "x": 180,
-              "y": 90,
-            },
-            "min": Object {
-              "x": -180,
-              "y": -90,
-            },
-          },
-          "project": [Function],
-          "unproject": [Function],
-        },
-        "scale": [Function],
-        "transformation": Object {
-          "_a": 1,
-          "_b": 0,
-          "_c": -1,
-          "_d": 0,
-        },
-        "unproject": [Function],
-        "wrapLatLng": [Function],
-        "wrapLatLngBounds": [Function],
-        "zoom": [Function],
-      }
-    }
-    maxBounds={
-      Array [
-        Array [
-          50,
-          -50,
-        ],
-        Array [
-          -305,
-          305,
-        ],
-      ]
-    }
-    maxZoom={4}
-    minZoom={1}
-    tap={false}
-    whenCreated={[Function]}
-    zoom={1}
-    zoomControl={false}
   >
-    <ForwardRef(LeafComponent)
-      attribution="&copy; <a target=\\"_blank\\" href=\\"https://www.tokyodisneyresort.jp/tdl/map.html\\">tokyodisneyresort.jp</a>"
-      noWrap={true}
-      url="/s-tiles/{z}/{x}/{y}.png"
-    />
-    <ForwardRef(LeafComponent)
-      position="bottomleft"
-    />
-  </MapContainer>
-</ForwardRef(Box)>
+    <MapContainer
+      center={
+        Object {
+          "lat": 1,
+          "lng": 1,
+        }
+      }
+      crs={
+        Object {
+          "distance": [Function],
+          "getProjectedBounds": [Function],
+          "infinite": true,
+          "latLngToPoint": [Function],
+          "pointToLatLng": [Function],
+          "project": [Function],
+          "projection": Object {
+            "bounds": Object {
+              "max": Object {
+                "x": 180,
+                "y": 90,
+              },
+              "min": Object {
+                "x": -180,
+                "y": -90,
+              },
+            },
+            "project": [Function],
+            "unproject": [Function],
+          },
+          "scale": [Function],
+          "transformation": Object {
+            "_a": 1,
+            "_b": 0,
+            "_c": -1,
+            "_d": 0,
+          },
+          "unproject": [Function],
+          "wrapLatLng": [Function],
+          "wrapLatLngBounds": [Function],
+          "zoom": [Function],
+        }
+      }
+      maxBounds={
+        Array [
+          Array [
+            50,
+            -50,
+          ],
+          Array [
+            -305,
+            305,
+          ],
+        ]
+      }
+      maxZoom={4}
+      minZoom={1}
+      tap={false}
+      whenCreated={[Function]}
+      zoom={1}
+      zoomControl={false}
+    >
+      <ForwardRef(LeafComponent)
+        attribution="&copy; <a target=\\"_blank\\" href=\\"https://www.tokyodisneyresort.jp/tdl/map.html\\">tokyodisneyresort.jp</a>"
+        noWrap={true}
+        url="/s-tiles/{z}/{x}/{y}.png"
+      />
+      <ForwardRef(LeafComponent)
+        position="bottomleft"
+      />
+    </MapContainer>
+  </ForwardRef(Box)>
+</Fragment>
 `;
 
 exports[`Shallow Snapshot Tests with width and height props 1`] = `
-<ForwardRef(Box)
-  sx={
-    Object {
-      "height": 100,
-      "width": 100,
-    }
-  }
->
-  <MapContainer
-    center={
+<Fragment>
+  <ForwardRef(Box)
+    sx={
       Object {
-        "lat": -127.5,
-        "lng": 127.5,
+        "height": 100,
+        "width": 100,
       }
     }
-    crs={
-      Object {
-        "distance": [Function],
-        "getProjectedBounds": [Function],
-        "infinite": true,
-        "latLngToPoint": [Function],
-        "pointToLatLng": [Function],
-        "project": [Function],
-        "projection": Object {
-          "bounds": Object {
-            "max": Object {
-              "x": 180,
-              "y": 90,
-            },
-            "min": Object {
-              "x": -180,
-              "y": -90,
-            },
-          },
-          "project": [Function],
-          "unproject": [Function],
-        },
-        "scale": [Function],
-        "transformation": Object {
-          "_a": 1,
-          "_b": 0,
-          "_c": -1,
-          "_d": 0,
-        },
-        "unproject": [Function],
-        "wrapLatLng": [Function],
-        "wrapLatLngBounds": [Function],
-        "zoom": [Function],
-      }
-    }
-    maxBounds={
-      Array [
-        Array [
-          50,
-          -50,
-        ],
-        Array [
-          -305,
-          305,
-        ],
-      ]
-    }
-    maxZoom={4}
-    minZoom={1}
-    tap={false}
-    whenCreated={[Function]}
-    zoom={1}
-    zoomControl={false}
   >
-    <ForwardRef(LeafComponent)
-      attribution="&copy; <a target=\\"_blank\\" href=\\"https://www.tokyodisneyresort.jp/tdl/map.html\\">tokyodisneyresort.jp</a>"
-      noWrap={true}
-      url="/s-tiles/{z}/{x}/{y}.png"
-    />
-    <ForwardRef(LeafComponent)
-      position="bottomleft"
-    />
-  </MapContainer>
-</ForwardRef(Box)>
+    <MapContainer
+      center={
+        Object {
+          "lat": -127.5,
+          "lng": 127.5,
+        }
+      }
+      crs={
+        Object {
+          "distance": [Function],
+          "getProjectedBounds": [Function],
+          "infinite": true,
+          "latLngToPoint": [Function],
+          "pointToLatLng": [Function],
+          "project": [Function],
+          "projection": Object {
+            "bounds": Object {
+              "max": Object {
+                "x": 180,
+                "y": 90,
+              },
+              "min": Object {
+                "x": -180,
+                "y": -90,
+              },
+            },
+            "project": [Function],
+            "unproject": [Function],
+          },
+          "scale": [Function],
+          "transformation": Object {
+            "_a": 1,
+            "_b": 0,
+            "_c": -1,
+            "_d": 0,
+          },
+          "unproject": [Function],
+          "wrapLatLng": [Function],
+          "wrapLatLngBounds": [Function],
+          "zoom": [Function],
+        }
+      }
+      maxBounds={
+        Array [
+          Array [
+            50,
+            -50,
+          ],
+          Array [
+            -305,
+            305,
+          ],
+        ]
+      }
+      maxZoom={4}
+      minZoom={1}
+      tap={false}
+      whenCreated={[Function]}
+      zoom={1}
+      zoomControl={false}
+    >
+      <ForwardRef(LeafComponent)
+        attribution="&copy; <a target=\\"_blank\\" href=\\"https://www.tokyodisneyresort.jp/tdl/map.html\\">tokyodisneyresort.jp</a>"
+        noWrap={true}
+        url="/s-tiles/{z}/{x}/{y}.png"
+      />
+      <ForwardRef(LeafComponent)
+        position="bottomleft"
+      />
+    </MapContainer>
+  </ForwardRef(Box)>
+</Fragment>
 `;

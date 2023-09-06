@@ -1,4 +1,5 @@
 import { PreviewListOrder } from 'api/articles-api/get-articles-previews';
+import { MapMarkerVariant } from 'types/marker-icon';
 import { Park, SelectablePark } from 'types/park';
 
 export const BASE_URL = process.env.REACT_APP_API_BASE_URL ?? 'http://localhost:3001';
@@ -105,7 +106,8 @@ export const INPUT_FIELD_MAX_LENGTH = {
   articleDescription: 500,
   nickname: 20,
   inquiryMessage: 2000,
-  specialMapDescription: 100,
+  specialMapDescription: 200,
+  specialMapMarkerDescription: 400,
 };
 
 export const NO_INDEX = process.env.REACT_APP_NO_INDEX;
@@ -126,3 +128,11 @@ export const SELECTABLE_PARK: { [key: string]: SelectablePark } = {
   sea: 'S',
   both: 'both',
 };
+
+export const MAP_MARKER_VARIANT: { [key: string]: MapMarkerVariant } = {
+  blue: 'blue',
+  red: 'red',
+  restroom: 'restroom',
+};
+
+export const MINI_MAP_HEIGHT = 300;

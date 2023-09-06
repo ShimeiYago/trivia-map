@@ -12,19 +12,10 @@ import {
 import { LoadingProgressBar } from 'views/components/moleculars/loading-progress-bar';
 import { ParkMap } from 'views/components/moleculars/park-map';
 import { CenterSpinner } from 'views/components/atoms/center-spinner';
-import {
-  Alert,
-  AlertColor,
-  Box,
-  Drawer,
-  Grid,
-  IconButton,
-  Snackbar,
-  Typography,
-} from '@mui/material';
+import { Alert, AlertColor, Box, Grid, IconButton, Snackbar, Typography } from '@mui/material';
 import { GlobalMenu } from 'views/components/organisms/global-menu';
 import { metaInfoBox, mapTopArea } from './styles';
-import { rightDrawerStyle, mapWrapper, wrapper } from 'views/common-styles/map-page';
+import { mapWrapper, wrapper } from 'views/common-styles/map-page';
 import { ParkSelectBox } from 'views/components/moleculars/park-select-box';
 import { MapMarker } from 'views/components/moleculars/map-marker';
 import { LatLng, Map as LeafletMap } from 'leaflet';
@@ -43,6 +34,10 @@ import { SpecialMapSettingState } from 'store/special-map-setting/model';
 import { SwipeableEdgeDrawer } from 'views/components/moleculars/swipeable-edge-drawer';
 import { CloseFormButton } from 'views/components/organisms/close-form-button';
 import { FloatingButton } from 'views/components/atoms/floating-button';
+import { SpecialMapMarkerForm } from 'views/components/organisms/special-map-marker-form';
+import { Position } from 'types/position';
+import { SpecialMapMarkerFormState } from 'store/special-map-marker-form/model';
+import { RightDrawer } from 'views/components/atoms/right-drawer';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -55,6 +50,8 @@ export class Renderer extends React.Component<Props, State> {
       loadedMarkerPages: 0,
       openSettingModal: false,
       openFormModal: false,
+      positionSelectMode: false,
+      isFormEditting: false,
     };
   }
 
@@ -64,7 +61,7 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   componentDidUpdate(prevProps: Readonly<Props>) {
-    const { specialMapSettingForm } = this.props;
+    const { specialMapSettingForm, specialMapMarkerForm } = this.props;
     if (
       prevProps.specialMapSettingForm.loading === 'loading' &&
       specialMapSettingForm.loading === 'success' &&
@@ -96,6 +93,24 @@ export class Renderer extends React.Component<Props, State> {
             : specialMapSettingForm.selectablePark,
       });
     }
+
+    if (
+      prevProps.specialMapMarkerForm.submittingState === 'loading' &&
+      specialMapMarkerForm.submittingState === 'success'
+    ) {
+      this.setState({
+        openFormModal: false,
+        isFormEditting: false,
+        notification: {
+          message: specialMapMarkerForm.specialMapMarkerId
+            ? 'マーカーを更新しました。'
+            : 'マーカーを追加しました。',
+          type: 'success',
+        },
+      });
+      this.fetchSpecialMapMarkers();
+      this.props.initializeSpecialMapForm();
+    }
   }
 
   render() {
@@ -126,10 +141,13 @@ export class Renderer extends React.Component<Props, State> {
       );
     }
 
-    const handleClickAddButton = () =>
+    const handleClickAddButton = () => {
+      this.props.initializeSpecialMapForm();
       this.setState({
         openFormModal: true,
+        isFormEditting: true,
       });
+    };
 
     return (
       <>
@@ -140,8 +158,17 @@ export class Renderer extends React.Component<Props, State> {
         />
 
         <Box sx={mapWrapper(isMobile, windowWidth, windowHeight)}>
-          <ParkMap park={this.state.park} setMap={this.setMap}>
+          <ParkMap
+            park={this.state.park}
+            setMap={this.setMap}
+            positionSelectProps={{
+              active: this.state.positionSelectMode,
+              onConfirm: this.handleConfirmMarkerPosition,
+              onCancel: this.handleCancelMarkerPosition,
+            }}
+          >
             {this.renderMarkers()}
+            {this.renderFormMarker()}
           </ParkMap>
 
           <Box sx={mapTopArea(!isMobile && this.state.openFormModal, isMobile)}>
@@ -163,13 +190,15 @@ export class Renderer extends React.Component<Props, State> {
             isMobile={this.props.isMobile}
           />
 
-          <FloatingButton
-            color="error"
-            icon="add-marker"
-            text="新しい投稿を追加"
-            size="large"
-            onClick={handleClickAddButton}
-          />
+          {!this.state.isFormEditting && this.props.editMode && (
+            <FloatingButton
+              color="error"
+              icon="add-marker"
+              text="マーカーを追加する"
+              size="large"
+              onClick={handleClickAddButton}
+            />
+          )}
         </Box>
       </>
     );
@@ -211,6 +240,34 @@ export class Renderer extends React.Component<Props, State> {
         />
       );
     });
+  };
+
+  protected renderFormMarker = () => {
+    const { map, park, positionSelectMode, isFormEditting } = this.state;
+    const { specialMapMarkerForm } = this.props;
+
+    const position: Position | undefined =
+      specialMapMarkerForm.lat && specialMapMarkerForm.lng && specialMapMarkerForm.park
+        ? {
+            lat: specialMapMarkerForm.lat,
+            lng: specialMapMarkerForm.lng,
+            park: specialMapMarkerForm.park,
+          }
+        : undefined;
+
+    if (!map || !position || position.park !== park || positionSelectMode || !isFormEditting) {
+      return null;
+    }
+
+    const popup = <Typography color="red">編集中のマーカーです</Typography>;
+
+    return (
+      <MapMarker
+        position={new LatLng(position.lat, position.lng)}
+        mapController={{ map, popup }}
+        variant={specialMapMarkerForm.variant}
+      />
+    );
   };
 
   protected renderMetaInfo = () => {
@@ -269,6 +326,12 @@ export class Renderer extends React.Component<Props, State> {
   };
 
   protected fetchSpecialMapMarkers = async () => {
+    this.setState({
+      loadingMarkers: true,
+      markers: [],
+      loadedMarkerPages: 0,
+    });
+
     try {
       let totalPages = 1;
       let loadedPages = 0;
@@ -403,13 +466,13 @@ export class Renderer extends React.Component<Props, State> {
   };
 
   protected renderEditForm = () => {
-    const { openFormModal } = this.state;
+    const { openFormModal, isFormEditting } = this.state;
     const { isMobile } = this.props;
-    const isFormEditting = false;
 
     const handleCloseFormModal = () =>
       this.setState({
         openFormModal: false,
+        isFormEditting: false,
       });
     const handleOpenEditForm = () =>
       this.setState({
@@ -432,13 +495,53 @@ export class Renderer extends React.Component<Props, State> {
         edgeLabelWhenClosed="編集中"
         heightRatio={80}
       >
-        xxx
+        <SpecialMapMarkerForm
+          specialMapId={this.props.mapId}
+          onClickMiniMap={this.activatePositionSelectMode}
+          defaultPark={this.state.park}
+        />
       </SwipeableEdgeDrawer>
     ) : (
-      <Drawer sx={rightDrawerStyle} variant="persistent" anchor="right" open={openFormModal}>
-        {openFormModal && <>xxx</>}
-      </Drawer>
+      <RightDrawer open={openFormModal} onClose={handleCloseFormModal}>
+        <SpecialMapMarkerForm
+          specialMapId={this.props.mapId}
+          onClickMiniMap={this.activatePositionSelectMode}
+          defaultPark={this.state.park}
+        />
+      </RightDrawer>
     );
+  };
+
+  protected handleConfirmMarkerPosition = () => {
+    if (!this.state.map) {
+      return;
+    }
+
+    const newPosition: Position = {
+      lat: this.state.map.getCenter().lat,
+      lng: this.state.map.getCenter().lng,
+      park: this.state.park,
+    };
+    this.props.updatePosition(newPosition);
+
+    this.setState({
+      positionSelectMode: false,
+      openFormModal: true,
+    });
+  };
+
+  protected handleCancelMarkerPosition = () => {
+    this.setState({
+      positionSelectMode: false,
+      openFormModal: true,
+    });
+  };
+
+  protected activatePositionSelectMode = () => {
+    this.setState({
+      positionSelectMode: true,
+      openFormModal: false,
+    });
   };
 }
 
@@ -451,10 +554,13 @@ export type Props = {
   park?: string;
   editMode: boolean;
   specialMapSettingForm: SpecialMapSettingState;
+  specialMapMarkerForm: SpecialMapMarkerFormState;
 
   refreshUser: () => void;
   setSpecialMap: (specialMap: GetSpecialMapResponse) => void;
   throwError: (errorStatus: number) => void;
+  updatePosition: (position: Position) => void;
+  initializeSpecialMapForm: () => void;
 };
 
 export type State = {
@@ -472,4 +578,6 @@ export type State = {
     type: AlertColor;
   };
   openFormModal: boolean;
+  positionSelectMode: boolean;
+  isFormEditting: boolean;
 };

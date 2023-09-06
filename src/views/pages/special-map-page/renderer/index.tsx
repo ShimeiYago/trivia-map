@@ -12,19 +12,10 @@ import {
 import { LoadingProgressBar } from 'views/components/moleculars/loading-progress-bar';
 import { ParkMap } from 'views/components/moleculars/park-map';
 import { CenterSpinner } from 'views/components/atoms/center-spinner';
-import {
-  Alert,
-  AlertColor,
-  Box,
-  Drawer,
-  Grid,
-  IconButton,
-  Snackbar,
-  Typography,
-} from '@mui/material';
+import { Alert, AlertColor, Box, Grid, IconButton, Snackbar, Typography } from '@mui/material';
 import { GlobalMenu } from 'views/components/organisms/global-menu';
 import { metaInfoBox, mapTopArea } from './styles';
-import { rightDrawerStyle, mapWrapper, wrapper } from 'views/common-styles/map-page';
+import { mapWrapper, wrapper } from 'views/common-styles/map-page';
 import { ParkSelectBox } from 'views/components/moleculars/park-select-box';
 import { MapMarker } from 'views/components/moleculars/map-marker';
 import { LatLng, Map as LeafletMap } from 'leaflet';
@@ -46,6 +37,7 @@ import { FloatingButton } from 'views/components/atoms/floating-button';
 import { SpecialMapMarkerForm } from 'views/components/organisms/special-map-marker-form';
 import { Position } from 'types/position';
 import { SpecialMapMarkerFormState } from 'store/special-map-marker-form/model';
+import { RightDrawer } from 'views/components/atoms/right-drawer';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -59,6 +51,7 @@ export class Renderer extends React.Component<Props, State> {
       openSettingModal: false,
       openFormModal: false,
       positionSelectMode: false,
+      isFormEditting: false,
     };
   }
 
@@ -107,6 +100,7 @@ export class Renderer extends React.Component<Props, State> {
     ) {
       this.setState({
         openFormModal: false,
+        isFormEditting: false,
         notification: {
           message: specialMapMarkerForm.specialMapMarkerId
             ? 'マーカーを更新しました。'
@@ -151,6 +145,7 @@ export class Renderer extends React.Component<Props, State> {
       this.props.initializeSpecialMapForm();
       this.setState({
         openFormModal: true,
+        isFormEditting: true,
       });
     };
 
@@ -195,13 +190,15 @@ export class Renderer extends React.Component<Props, State> {
             isMobile={this.props.isMobile}
           />
 
-          <FloatingButton
-            color="error"
-            icon="add-marker"
-            text="マーカーを追加する"
-            size="large"
-            onClick={handleClickAddButton}
-          />
+          {!this.state.isFormEditting && (
+            <FloatingButton
+              color="error"
+              icon="add-marker"
+              text="マーカーを追加する"
+              size="large"
+              onClick={handleClickAddButton}
+            />
+          )}
         </Box>
       </>
     );
@@ -246,7 +243,7 @@ export class Renderer extends React.Component<Props, State> {
   };
 
   protected renderFormMarker = () => {
-    const { map, park, positionSelectMode } = this.state;
+    const { map, park, positionSelectMode, isFormEditting } = this.state;
     const { specialMapMarkerForm } = this.props;
 
     const position: Position | undefined =
@@ -258,7 +255,7 @@ export class Renderer extends React.Component<Props, State> {
           }
         : undefined;
 
-    if (!map || !position || position.park !== park || positionSelectMode) {
+    if (!map || !position || position.park !== park || positionSelectMode || !isFormEditting) {
       return null;
     }
 
@@ -469,13 +466,13 @@ export class Renderer extends React.Component<Props, State> {
   };
 
   protected renderEditForm = () => {
-    const { openFormModal } = this.state;
+    const { openFormModal, isFormEditting } = this.state;
     const { isMobile } = this.props;
-    const isFormEditting = false;
 
     const handleCloseFormModal = () =>
       this.setState({
         openFormModal: false,
+        isFormEditting: false,
       });
     const handleOpenEditForm = () =>
       this.setState({
@@ -505,15 +502,13 @@ export class Renderer extends React.Component<Props, State> {
         />
       </SwipeableEdgeDrawer>
     ) : (
-      <Drawer sx={rightDrawerStyle} variant="persistent" anchor="right" open={openFormModal}>
-        {openFormModal && (
-          <SpecialMapMarkerForm
-            specialMapId={this.props.mapId}
-            onClickMiniMap={this.activatePositionSelectMode}
-            defaultPark={this.state.park}
-          />
-        )}
-      </Drawer>
+      <RightDrawer open={openFormModal} onClose={handleCloseFormModal}>
+        <SpecialMapMarkerForm
+          specialMapId={this.props.mapId}
+          onClickMiniMap={this.activatePositionSelectMode}
+          defaultPark={this.state.park}
+        />
+      </RightDrawer>
     );
   };
 
@@ -584,4 +579,5 @@ export type State = {
   };
   openFormModal: boolean;
   positionSelectMode: boolean;
+  isFormEditting: boolean;
 };

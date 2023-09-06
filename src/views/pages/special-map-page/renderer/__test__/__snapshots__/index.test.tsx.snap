@@ -475,20 +475,16 @@ exports[`Shallow Snapshot Tests loaded (pc) 1`] = `
       variant="filled"
     />
   </ForwardRef(Snackbar)>
-  <ForwardRef(Drawer)
-    anchor="right"
+  <RightDrawer
+    onClose={[Function]}
     open={false}
-    sx={
-      Object {
-        "& .MuiDrawer-paper": Object {
-          "width": 500,
-        },
-        "flexShrink": 0,
-        "width": 500,
-      }
-    }
-    variant="persistent"
-  />
+  >
+    <SpecialMapMarkerForm
+      defaultPark="L"
+      onClickMiniMap={[Function]}
+      specialMapId={0}
+    />
+  </RightDrawer>
 </ForwardRef(Box)>
 `;
 

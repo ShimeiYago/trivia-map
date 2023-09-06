@@ -18,10 +18,9 @@ import { LoadingState } from 'types/loading-state';
 import { Position } from 'types/position';
 import { FormError } from 'store/article-form/model';
 import { LoadingButton } from '@mui/lab';
-import { formContainer, formHeader } from './styles';
+import { formContainer } from './styles';
 import { TriviaMap } from '../../trivia-map';
 import { UpdateFormFieldParam } from 'store/article-form/actions';
-import { CloseFormButton } from '../../close-form-button';
 import { ImageField } from 'views/components/moleculars/image-field';
 import { DeletableImage } from 'views/components/moleculars/deletable-image';
 import { HeaderErrorMessages } from 'views/components/moleculars/header-error-messages';
@@ -109,123 +108,109 @@ export class Renderer extends React.Component<Props> {
     const showIsDraftCheckbox = newMode || lastSavedIsDraft;
 
     return (
-      <>
-        {this.renderHeader()}
-        <Container maxWidth="sm" sx={formContainer}>
-          <Stack spacing={3}>
-            <Typography component="h2" align="center" variant="h4" ref={this.headerRef}>
-              {newMode ? 'トリビアを追加' : 'トリビアを編集'}
-            </Typography>
+      <Container maxWidth="sm" sx={formContainer}>
+        <Stack spacing={3}>
+          <Typography component="h2" align="center" variant="h4" ref={this.headerRef}>
+            {newMode ? 'トリビアを追加' : 'トリビアを編集'}
+          </Typography>
 
-            {fetchingState === 'loading' && (
-              <Box sx={{ display: 'flex', justifydescription: 'center' }}>
-                <CircularProgress />
-              </Box>
-            )}
+          {fetchingState === 'loading' && (
+            <Box sx={{ display: 'flex', justifydescription: 'center' }}>
+              <CircularProgress />
+            </Box>
+          )}
 
-            {this.renderHeaderMessage()}
+          {this.renderHeaderMessage()}
 
-            <TextField
-              label="タイトル"
-              variant="standard"
-              value={title}
-              onChange={this.handleChangeTitle}
-              disabled={disabled}
-              error={!!formError?.fieldErrors?.title}
-              helperText={formError?.fieldErrors?.title}
-              required
-              inputProps={{ maxLength: INPUT_FIELD_MAX_LENGTH.articleTitle }}
+          <TextField
+            label="タイトル"
+            variant="standard"
+            value={title}
+            onChange={this.handleChangeTitle}
+            disabled={disabled}
+            error={!!formError?.fieldErrors?.title}
+            helperText={formError?.fieldErrors?.title}
+            required
+            inputProps={{ maxLength: INPUT_FIELD_MAX_LENGTH.articleTitle }}
+          />
+
+          <MapField
+            status={miniMapFieldStatus}
+            onClick={handleClickSelectPosition}
+            disabled={disabled}
+            helperText={formError?.fieldErrors?.marker}
+            isSelected={!!this.props.position}
+          >
+            <TriviaMap
+              height={MINI_MAP_HEIGHT}
+              initZoom={ZOOMS.miniMap}
+              initCenter={position}
+              disabled
+              doNotShowPostMarkers
+              shouldCurrentPositionAsyncWithForm
+              park={position?.park ?? this.props.park}
             />
+          </MapField>
 
-            <MapField
-              status={miniMapFieldStatus}
-              onClick={handleClickSelectPosition}
-              disabled={disabled}
-              helperText={formError?.fieldErrors?.marker}
-              isSelected={!!this.props.position}
-            >
-              <TriviaMap
-                height={MINI_MAP_HEIGHT}
-                initZoom={ZOOMS.miniMap}
-                initCenter={position}
-                disabled
-                doNotShowPostMarkers
-                shouldCurrentPositionAsyncWithForm
-                park={position?.park ?? this.props.park}
-              />
-            </MapField>
+          {this.renderCategorySelectField(disabled)}
 
-            {this.renderCategorySelectField(disabled)}
-
-            {imageSrc ? (
-              <DeletableImage
-                src={imageSrc}
-                width="full"
-                borderRadius
-                onDelete={this.handleDeleteImage}
-                errors={formError?.fieldErrors?.image}
-              />
-            ) : (
-              <ImageField
-                src={imageSrc}
-                onChange={this.handleImageChange}
-                variant="photo"
-                disabled={disabled}
-                error={!!formError?.fieldErrors?.image}
-                helperText={formError?.fieldErrors?.image}
-                maxLength={UPLOAD_IMAGE_MAX_LENGTH.article}
-                onCatchError={this.handleError}
-                cropable
-              />
-            )}
-
-            <TextField
-              label="説明文"
-              multiline
-              minRows={6}
-              value={description}
-              onChange={this.handleChangeDescription}
-              disabled={disabled}
-              error={!!formError?.fieldErrors?.description}
-              helperText={formError?.fieldErrors?.description}
-              required
+          {imageSrc ? (
+            <DeletableImage
+              src={imageSrc}
+              width="full"
+              borderRadius
+              onDelete={this.handleDeleteImage}
+              errors={formError?.fieldErrors?.image}
             />
-
-            {showIsDraftCheckbox && (
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    onChange={this.handleChangeIsDraft}
-                    checked={isDraft}
-                    disabled={disabled}
-                  />
-                }
-                label="下書きとして保存（非公開）"
-              />
-            )}
-
-            <LoadingButton
-              loading={submittingState === 'loading'}
-              variant="contained"
+          ) : (
+            <ImageField
+              src={imageSrc}
+              onChange={this.handleImageChange}
+              variant="photo"
               disabled={disabled}
-              onClick={this.handleSubmitButton}
-            >
-              {isDraft ? '下書き保存' : '保存して公開'}
-            </LoadingButton>
-          </Stack>
-        </Container>
-      </>
-    );
-  }
+              error={!!formError?.fieldErrors?.image}
+              helperText={formError?.fieldErrors?.image}
+              maxLength={UPLOAD_IMAGE_MAX_LENGTH.article}
+              onCatchError={this.handleError}
+              cropable
+            />
+          )}
 
-  protected renderHeader() {
-    if (!this.props.onClose) {
-      return null;
-    }
-    return (
-      <Box sx={formHeader}>
-        <CloseFormButton onClose={this.props.onClose} />
-      </Box>
+          <TextField
+            label="説明文"
+            multiline
+            minRows={6}
+            value={description}
+            onChange={this.handleChangeDescription}
+            disabled={disabled}
+            error={!!formError?.fieldErrors?.description}
+            helperText={formError?.fieldErrors?.description}
+            required
+          />
+
+          {showIsDraftCheckbox && (
+            <FormControlLabel
+              control={
+                <Checkbox
+                  onChange={this.handleChangeIsDraft}
+                  checked={isDraft}
+                  disabled={disabled}
+                />
+              }
+              label="下書きとして保存（非公開）"
+            />
+          )}
+
+          <LoadingButton
+            loading={submittingState === 'loading'}
+            variant="contained"
+            disabled={disabled}
+            onClick={this.handleSubmitButton}
+          >
+            {isDraft ? '下書き保存' : '保存して公開'}
+          </LoadingButton>
+        </Stack>
+      </Container>
     );
   }
 
@@ -342,7 +327,6 @@ export type Props = {
   initialize: () => void;
   handleClickSelectPosition?: () => void;
   updateIsEditting: (isEditting: boolean) => void;
-  onClose?: () => void;
   toggleAuthFormModal: (open: boolean) => void;
   throwError: (errorStatus: number) => void;
 };

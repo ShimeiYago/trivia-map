@@ -1250,26 +1250,15 @@ exports[`Shallow Snapshot Tests pc view 1`] = `
         </ForwardRef(Box)>
       </ForwardRef(Box)>
     </GlobalMenu>
-    <ForwardRef(Drawer)
-      anchor="right"
+    <RightDrawer
+      onClose={[Function]}
       open={true}
-      sx={
-        Object {
-          "& .MuiDrawer-paper": Object {
-            "width": 500,
-          },
-          "flexShrink": 0,
-          "width": 500,
-        }
-      }
-      variant="persistent"
     >
       <ArticleForm
         onClickSelectPosition={[Function]}
-        onClose={[Function]}
         park="S"
       />
-    </ForwardRef(Drawer)>
+    </RightDrawer>
     <GlobalMessage />
     <SubmitSuccessModal />
     <ForwardRef(Dialog)

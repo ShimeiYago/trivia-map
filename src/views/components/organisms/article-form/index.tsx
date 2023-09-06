@@ -53,7 +53,6 @@ export function ArticleForm(ownProps: OwnProps) {
     initialize: () => dispatch(initialize()),
     handleClickSelectPosition: ownProps.onClickSelectPosition,
     updateIsEditting: (isEditting: boolean) => dispatch(updateIsEditting(isEditting)),
-    onClose: ownProps.onClose,
     toggleAuthFormModal: (open: boolean) => dispatch(toggleFormModal(open)),
     throwError: (errorStatus: number) => dispatch(throwError(errorStatus)),
   };
@@ -65,5 +64,4 @@ type OwnProps = {
   postId?: number;
   park: Park;
   onClickSelectPosition?: () => void;
-  onClose?: () => void;
 };

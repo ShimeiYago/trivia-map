@@ -96,24 +96,6 @@ export function SpecialMapMarkerForm(props: Props) {
           required
         />
 
-        <FormControl sx={{ display: 'inline-block' }}>
-          <InputLabel>マーカーの種類</InputLabel>
-          <Select
-            value={variant}
-            label="マーカーの種類"
-            onChange={(event) => dispatch(updateVariant(event.target.value as MapMarkerVariant))}
-          >
-            {MARKER_OPTIONS.map((option) => {
-              return (
-                <MenuItem value={option.value} key={option.value}>
-                  {option.name}
-                  <img src={option.imgSrc} className={classes['marker-option-img']} />
-                </MenuItem>
-              );
-            })}
-          </Select>
-        </FormControl>
-
         <MapField
           disabled={loading}
           helperText={formError?.fieldErrors?.coordinate}
@@ -133,6 +115,24 @@ export function SpecialMapMarkerForm(props: Props) {
             )}
           </ParkMap>
         </MapField>
+
+        <FormControl sx={{ display: 'inline-block' }}>
+          <InputLabel>マーカーの種類</InputLabel>
+          <Select
+            value={variant}
+            label="マーカーの種類"
+            onChange={(event) => dispatch(updateVariant(event.target.value as MapMarkerVariant))}
+          >
+            {MARKER_OPTIONS.map((option) => {
+              return (
+                <MenuItem value={option.value} key={option.value}>
+                  {option.name}
+                  <img src={option.imgSrc} className={classes['marker-option-img']} />
+                </MenuItem>
+              );
+            })}
+          </Select>
+        </FormControl>
 
         {imageSrc ? (
           <DeletableImage

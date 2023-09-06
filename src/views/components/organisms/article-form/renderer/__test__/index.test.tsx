@@ -67,13 +67,6 @@ describe('Shallow Snapshot Tests', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('with close button', () => {
-    wrapper.setProps({
-      onClose: jest.fn(),
-    });
-    expect(wrapper).toMatchSnapshot();
-  });
-
   it('with image url', () => {
     wrapper.setProps({
       image: 'https://image-data.jpg',

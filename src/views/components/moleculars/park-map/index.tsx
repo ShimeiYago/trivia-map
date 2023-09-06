@@ -20,14 +20,32 @@ import TouchAppIcon from '@mui/icons-material/TouchApp';
 import { blue } from '@mui/material/colors';
 import selectionPosition from 'images/selection-position.png';
 
-export class ParkMap extends React.Component<Props> {
+export class ParkMap extends React.Component<Props, State> {
   static readonly defaultProps: Pick<Props, 'initZoom'> = {
     initZoom: ZOOMS.default,
   };
 
+  state: State = {};
+
   constructor(props: Props) {
     super(props);
     this.handleMapCreated = this.handleMapCreated.bind(this);
+  }
+
+  componentDidUpdate(prevProps: Readonly<Props>): void {
+    if (
+      this.props.initCenter &&
+      JSON.stringify(prevProps.initCenter) !== JSON.stringify(this.props.initCenter)
+    ) {
+      this.state.map?.flyTo(
+        {
+          lat: this.props.initCenter.lat,
+          lng: this.props.initCenter.lng,
+        },
+        this.props.initZoom,
+        { animate: false },
+      );
+    }
   }
 
   render() {
@@ -86,6 +104,9 @@ export class ParkMap extends React.Component<Props> {
 
   protected handleMapCreated(map: LeafletMap) {
     this.props.setMap?.(map);
+    this.setState({
+      map,
+    });
 
     setTimeout(() => {
       map.invalidateSize();
@@ -171,4 +192,8 @@ export type Props = {
 
   // markers
   children?: React.ReactNode;
+};
+
+export type State = {
+  map?: LeafletMap;
 };

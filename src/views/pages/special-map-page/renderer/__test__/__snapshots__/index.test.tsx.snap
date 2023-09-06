@@ -249,14 +249,6 @@ exports[`Shallow Snapshot Tests focusing a marker 1`] = `
         isMobile={true}
         loadedPages={0}
       />
-      <FloatingButton
-        color="error"
-        disabled={false}
-        icon="add-marker"
-        onClick={[Function]}
-        size="large"
-        text="マーカーを追加する"
-      />
     </ForwardRef(Box)>
   </GlobalMenu>
   <BoxModal
@@ -431,14 +423,6 @@ exports[`Shallow Snapshot Tests loaded (pc) 1`] = `
         fetchingState="success"
         isMobile={false}
         loadedPages={0}
-      />
-      <FloatingButton
-        color="error"
-        disabled={false}
-        icon="add-marker"
-        onClick={[Function]}
-        size="large"
-        text="マーカーを追加する"
       />
     </ForwardRef(Box)>
   </GlobalMenu>
@@ -648,14 +632,6 @@ exports[`Shallow Snapshot Tests loaded 1`] = `
         isMobile={true}
         loadedPages={0}
       />
-      <FloatingButton
-        color="error"
-        disabled={false}
-        icon="add-marker"
-        onClick={[Function]}
-        size="large"
-        text="マーカーを追加する"
-      />
     </ForwardRef(Box)>
   </GlobalMenu>
   <BoxModal
@@ -830,14 +806,6 @@ exports[`Shallow Snapshot Tests loading markers 1`] = `
         fetchingState="loading"
         isMobile={true}
         loadedPages={0}
-      />
-      <FloatingButton
-        color="error"
-        disabled={false}
-        icon="add-marker"
-        onClick={[Function]}
-        size="large"
-        text="マーカーを追加する"
       />
     </ForwardRef(Box)>
   </GlobalMenu>

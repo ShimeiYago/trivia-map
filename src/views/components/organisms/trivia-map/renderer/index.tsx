@@ -51,13 +51,6 @@ export class Renderer extends React.Component<Props, State> {
     }
 
     if (
-      this.props.initCenter &&
-      JSON.stringify(prevProps.initCenter) !== JSON.stringify(this.props.initCenter)
-    ) {
-      this.state.map?.setView(this.props.initCenter);
-    }
-
-    if (
       (!this.props.doNotShowPostMarkers && prevProps.park !== this.props.park) ||
       prevProps.userId !== this.props.userId
     ) {

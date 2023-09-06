@@ -190,7 +190,7 @@ export class Renderer extends React.Component<Props, State> {
             isMobile={this.props.isMobile}
           />
 
-          {!this.state.isFormEditting && (
+          {!this.state.isFormEditting && this.props.editMode && (
             <FloatingButton
               color="error"
               icon="add-marker"

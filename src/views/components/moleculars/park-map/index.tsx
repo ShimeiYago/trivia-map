@@ -32,19 +32,22 @@ export class ParkMap extends React.Component<Props, State> {
     this.handleMapCreated = this.handleMapCreated.bind(this);
   }
 
+  /* istanbul ignore next */
   componentDidUpdate(prevProps: Readonly<Props>): void {
     if (
       this.props.initCenter &&
       JSON.stringify(prevProps.initCenter) !== JSON.stringify(this.props.initCenter)
     ) {
-      this.state.map?.flyTo(
-        {
-          lat: this.props.initCenter.lat,
-          lng: this.props.initCenter.lng,
-        },
-        this.props.initZoom,
-        { animate: false },
-      );
+      this.state.map?.setView(this.props.initCenter);
+    }
+
+    if (
+      this.state.map &&
+      this.props.positionSelectProps?.active &&
+      !prevProps.positionSelectProps?.active
+    ) {
+      const zoom = this.state.map.getZoom() < ZOOMS.popupOpen ? ZOOMS.popupOpen : undefined;
+      zoom && this.state.map.setZoom(zoom);
     }
   }
 

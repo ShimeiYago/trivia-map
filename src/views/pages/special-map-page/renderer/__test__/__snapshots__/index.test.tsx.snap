@@ -67,6 +67,13 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       specialMapId={0}
     />
   </SwipeableEdgeDrawer>
+  <DeleteConfirmDialog
+    deleting={false}
+    onClose={[Function]}
+    onDelete={[Function]}
+    open={false}
+    title="マーカーを削除しますか？"
+  />
 </ForwardRef(Box)>
 `;
 
@@ -304,6 +311,13 @@ exports[`Shallow Snapshot Tests focusing a marker 1`] = `
       specialMapId={0}
     />
   </SwipeableEdgeDrawer>
+  <DeleteConfirmDialog
+    deleting={false}
+    onClose={[Function]}
+    onDelete={[Function]}
+    open={false}
+    title="マーカーを削除しますか？"
+  />
 </ForwardRef(Box)>
 `;
 
@@ -469,6 +483,13 @@ exports[`Shallow Snapshot Tests loaded (pc) 1`] = `
       specialMapId={0}
     />
   </RightDrawer>
+  <DeleteConfirmDialog
+    deleting={false}
+    onClose={[Function]}
+    onDelete={[Function]}
+    open={false}
+    title="マーカーを削除しますか？"
+  />
 </ForwardRef(Box)>
 `;
 
@@ -687,6 +708,13 @@ exports[`Shallow Snapshot Tests loaded 1`] = `
       specialMapId={0}
     />
   </SwipeableEdgeDrawer>
+  <DeleteConfirmDialog
+    deleting={false}
+    onClose={[Function]}
+    onDelete={[Function]}
+    open={false}
+    title="マーカーを削除しますか？"
+  />
 </ForwardRef(Box)>
 `;
 
@@ -862,6 +890,13 @@ exports[`Shallow Snapshot Tests loading markers 1`] = `
       specialMapId={0}
     />
   </SwipeableEdgeDrawer>
+  <DeleteConfirmDialog
+    deleting={false}
+    onClose={[Function]}
+    onDelete={[Function]}
+    open={false}
+    title="マーカーを削除しますか？"
+  />
 </ForwardRef(Box)>
 `;
 
@@ -932,5 +967,12 @@ exports[`Shallow Snapshot Tests without height 1`] = `
       specialMapId={0}
     />
   </SwipeableEdgeDrawer>
+  <DeleteConfirmDialog
+    deleting={false}
+    onClose={[Function]}
+    onDelete={[Function]}
+    open={false}
+    title="マーカーを削除しますか？"
+  />
 </ForwardRef(Box)>
 `;

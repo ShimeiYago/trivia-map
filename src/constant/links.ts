@@ -70,3 +70,5 @@ export const SPECIAL_MAP_PAGE_LINK = (mapId: string, param?: { marker?: number; 
 export const SPECIAL_MAP_EDIT_PAGE_LINK = (mapId: string) => `/special-maps/edit/${mapId}`;
 
 export const SPECIAL_MAP_DETAIL_PAGE_LINK = (mapId: string) => `/special-maps/detail/${mapId}`;
+
+export const SPECIAL_MAP_MANAGE_PAGE_LINK = '/admin/special-maps';

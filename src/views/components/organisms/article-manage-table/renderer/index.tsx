@@ -46,6 +46,7 @@ import { patchRemoteArticle } from 'api/articles-api/patch-remote-article';
 import { CATEGORIES } from 'constant';
 import { CenterPagination } from 'views/components/atoms/center-pagination';
 import { getUrlParameters } from 'utils/get-url-parameters';
+import { DeleteConfirmDialog } from 'views/components/moleculars/delete-confirm-dialog';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -352,26 +353,19 @@ export class Renderer extends React.Component<Props, State> {
 
   protected renderDeleteConfirmDialog() {
     const { deleteDialog, deleting } = this.state;
+
     if (!deleteDialog) {
       return null;
     }
 
     return (
-      <Dialog open onClose={this.closeDeleteConfirmDialog}>
-        <DialogTitle sx={{ wordBreak: 'break-all' }}>
-          投稿「{deleteDialog.title}」を削除しますか？
-        </DialogTitle>
-        <DialogActions>
-          <Button onClick={this.closeDeleteConfirmDialog}>削除しない</Button>
-          <LoadingButton
-            onClick={this.deleteArticle(deleteDialog.postId, deleteDialog.title)}
-            autoFocus
-            loading={deleting}
-          >
-            削除する
-          </LoadingButton>
-        </DialogActions>
-      </Dialog>
+      <DeleteConfirmDialog
+        open
+        onClose={this.closeDeleteConfirmDialog}
+        deleting={deleting}
+        title={deleteDialog.title}
+        onDelete={this.deleteArticle(deleteDialog.postId, deleteDialog.title)}
+      />
     );
   }
 

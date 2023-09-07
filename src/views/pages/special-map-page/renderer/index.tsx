@@ -17,9 +17,11 @@ import {
   AlertColor,
   Box,
   Button,
+  Divider,
   Grid,
   IconButton,
   Snackbar,
+  Stack,
   Typography,
 } from '@mui/material';
 import { GlobalMenu } from 'views/components/organisms/global-menu';
@@ -48,6 +50,10 @@ import { Position } from 'types/position';
 import { SpecialMapMarkerFormState } from 'store/special-map-marker-form/model';
 import { RightDrawer } from 'views/components/atoms/right-drawer';
 import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+import { deleteSpecialMapMarker } from 'api/special-map-api/delete-special-map-marker';
+import { globalAPIErrorMessage } from 'constant/global-api-error-message';
+import { DeleteConfirmDialog } from 'views/components/moleculars/delete-confirm-dialog';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -62,6 +68,7 @@ export class Renderer extends React.Component<Props, State> {
       openFormModal: false,
       positionSelectMode: false,
       isFormEditting: false,
+      isDeletingMarker: false,
     };
   }
 
@@ -135,6 +142,14 @@ export class Renderer extends React.Component<Props, State> {
         {this.renderNotification()}
 
         {this.renderEditForm()}
+
+        <DeleteConfirmDialog
+          open={!!this.state.deleteDialogMarkerId}
+          onClose={this.cancelToDeleteMarker}
+          onDelete={this.confirmToDeleteMarker}
+          title="マーカーを削除しますか？"
+          deleting={this.state.isDeletingMarker}
+        />
       </Box>
     );
   }
@@ -249,11 +264,22 @@ export class Renderer extends React.Component<Props, State> {
       const popup = (
         <Box width={300}>
           {this.props.editMode && (
-            <Typography align="left" component="div" mb={1}>
+            <Stack
+              direction="row"
+              divider={<Divider orientation="vertical" flexItem />}
+              spacing={2}
+              mb={1}
+            >
               <Button startIcon={<EditIcon />} onClick={this.handleClickMarkerEditButton(marker)}>
                 編集
               </Button>
-            </Typography>
+              <Button
+                startIcon={<DeleteIcon />}
+                onClick={this.handleClickDeleteMarkerButton(marker)}
+              >
+                削除
+              </Button>
+            </Stack>
           )}
 
           {marker.image && (
@@ -586,6 +612,54 @@ export class Renderer extends React.Component<Props, State> {
       isFormEditting: true,
     });
   };
+
+  protected handleClickDeleteMarkerButton = (marker: GetSpecialMapMarkersResponse) => () => {
+    this.setState({
+      deleteDialogMarkerId: marker.specialMapMarkerId,
+    });
+  };
+
+  protected cancelToDeleteMarker = () => {
+    this.setState({
+      deleteDialogMarkerId: undefined,
+    });
+  };
+
+  protected confirmToDeleteMarker = async () => {
+    const { deleteDialogMarkerId } = this.state;
+    if (!deleteDialogMarkerId) return;
+
+    this.setState({
+      isDeletingMarker: true,
+    });
+
+    try {
+      await autoRefreshApiWrapper(
+        () => deleteSpecialMapMarker(deleteDialogMarkerId),
+        this.props.refreshUser,
+      );
+
+      this.setState({
+        isDeletingMarker: false,
+        deleteDialogMarkerId: undefined,
+        notification: {
+          message: 'マーカーを削除しました。',
+          type: 'success',
+        },
+      });
+      this.fetchSpecialMapMarkers();
+    } catch (error) {
+      const apiError = error as ApiError<unknown>;
+      this.setState({
+        isDeletingMarker: false,
+        deleteDialogMarkerId: undefined,
+        notification: {
+          message: globalAPIErrorMessage(apiError.status, 'delete'),
+          type: 'error',
+        },
+      });
+    }
+  };
 }
 
 export type Props = {
@@ -624,4 +698,6 @@ export type State = {
   openFormModal: boolean;
   positionSelectMode: boolean;
   isFormEditting: boolean;
+  deleteDialogMarkerId?: number;
+  isDeletingMarker: boolean;
 };

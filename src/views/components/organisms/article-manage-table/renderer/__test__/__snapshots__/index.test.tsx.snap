@@ -1933,36 +1933,13 @@ exports[`Shallow Snapshot Tests with delete dialog 1`] = `
       <ForwardRef(TableBody) />
     </ForwardRef(Table)>
   </ForwardRef(Stack)>
-  <ForwardRef(Dialog)
+  <DeleteConfirmDialog
+    deleting={false}
     onClose={[Function]}
+    onDelete={[Function]}
     open={true}
-  >
-    <ForwardRef(DialogTitle)
-      sx={
-        Object {
-          "wordBreak": "break-all",
-        }
-      }
-    >
-      投稿「
-      title
-      」を削除しますか？
-    </ForwardRef(DialogTitle)>
-    <ForwardRef(DialogActions)>
-      <ForwardRef(Button)
-        onClick={[Function]}
-      >
-        削除しない
-      </ForwardRef(Button)>
-      <ForwardRef(LoadingButton)
-        autoFocus={true}
-        loading={false}
-        onClick={[Function]}
-      >
-        削除する
-      </ForwardRef(LoadingButton)>
-    </ForwardRef(DialogActions)>
-  </ForwardRef(Dialog)>
+    title="title"
+  />
 </Fragment>
 `;
 

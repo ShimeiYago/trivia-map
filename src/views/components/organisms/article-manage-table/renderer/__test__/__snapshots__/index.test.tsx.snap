@@ -465,322 +465,69 @@ exports[`Shallow Snapshot Tests one page 1`] = `
       </ForwardRef(FormControl)>
     </ForwardRef(Grid)>
   </ForwardRef(Grid)>
-  <ForwardRef(Stack)
-    spacing={1}
-  >
-    <ForwardRef(Stack)
-      spacing={1}
-    >
-      <ForwardRef(Typography)
-        align="center"
-        component="div"
-        fontSize={14}
-      >
-        1
-        〜
-        1
-        件 / 全
-        2
-        件
-      </ForwardRef(Typography)>
-    </ForwardRef(Stack)>
-    <ForwardRef(Table)>
-      <ForwardRef(TableHead)>
-        <ForwardRef(TableRow)>
-          <ForwardRef(TableCell) />
-          <ForwardRef(TableCell) />
-          <ForwardRef(TableCell) />
-          <ForwardRef(TableCell) />
-          <ForwardRef(TableCell) />
-        </ForwardRef(TableRow)>
-      </ForwardRef(TableHead)>
-      <ForwardRef(TableBody)>
-        <ForwardRef(TableRow)
-          key="preview-1"
-        >
-          <ForwardRef(TableCell)>
-            <ForwardRef(Box)
-              minHeight={80}
-            >
-              <ForwardRef(Stack)
-                justifyContent="center"
-                minHeight={55}
-              >
-                <ForwardRef(Typography)
-                  component="h3"
-                  sx={
-                    Object {
-                      "wordBreak": "break-all",
-                    }
-                  }
-                  variant="body1"
-                >
-                  ノーチラス号のエンジン
-                </ForwardRef(Typography)>
-              </ForwardRef(Stack)>
-              <ForwardRef(Box)
-                marginBottom={0}
-              >
-                <ForwardRef(Stack)
-                  direction="row"
-                  divider={
-                    <ForwardRef(Divider)
-                      flexItem={true}
-                      orientation="vertical"
-                    />
-                  }
-                  spacing={1}
-                >
-                  <NonStyleLink
-                    to="/articles/1"
-                  >
-                    <ForwardRef(Button)
-                      sx={
-                        Object {
-                          "minWidth": 0,
-                          "p": 0,
-                        }
-                      }
-                    >
-                      表示
-                    </ForwardRef(Button)>
-                  </NonStyleLink>
-                  <NonStyleLink
-                    to="/map/edit/1"
-                  >
-                    <ForwardRef(Button)
-                      onClick={[MockFunction]}
-                      sx={
-                        Object {
-                          "minWidth": 0,
-                          "p": 0,
-                        }
-                      }
-                    >
-                      編集
-                    </ForwardRef(Button)>
-                  </NonStyleLink>
-                  <ForwardRef(Button)
-                    disabled={false}
-                    onClick={[Function]}
-                    sx={
-                      Object {
-                        "minWidth": 0,
-                        "p": 0,
-                      }
-                    }
-                  >
-                    削除
-                  </ForwardRef(Button)>
-                </ForwardRef(Stack)>
-              </ForwardRef(Box)>
-            </ForwardRef(Box)>
-          </ForwardRef(TableCell)>
-          <ForwardRef(TableCell)
-            width={200}
-          >
-            <IconAndText
-              align="left"
-              fontSize={14}
-              iconComponent={
-                <Memo
-                  fontSize="inherit"
-                />
-              }
-              iconPosition="left"
-              text="隠れミッキー"
-            />
-          </ForwardRef(TableCell)>
-          <ForwardRef(TableCell)
-            width={70}
-          >
-            公開中
-          </ForwardRef(TableCell)>
-          <ForwardRef(TableCell)
-            width={40}
-          >
-            <IconAndText
-              align="left"
-              iconComponent={
-                <Memo
-                  fontSize="inherit"
-                />
-              }
-              iconPosition="left"
-              text="1"
-            />
-          </ForwardRef(TableCell)>
-          <ForwardRef(TableCell)>
-            <Image
-              height="80px"
-              objectFit="cover"
-              src="https://disneyparkstory.com/wp-content/uploads/2017/02/CIMG9800.jpg"
-              width="80px"
-            />
-          </ForwardRef(TableCell)>
-        </ForwardRef(TableRow)>
-        <ForwardRef(TableRow)
-          key="preview-2"
-        >
-          <ForwardRef(TableCell)>
-            <ForwardRef(Box)
-              minHeight={80}
-            >
-              <ForwardRef(Stack)
-                justifyContent="center"
-                minHeight={55}
-              >
-                <ForwardRef(Typography)
-                  component="h3"
-                  sx={
-                    Object {
-                      "wordBreak": "break-all",
-                    }
-                  }
-                  variant="body1"
-                >
-                  ノーチラス号の名前の由来
-                </ForwardRef(Typography)>
-              </ForwardRef(Stack)>
-              <ForwardRef(Box)
-                marginBottom={0}
-              >
-                <ForwardRef(Stack)
-                  direction="row"
-                  divider={
-                    <ForwardRef(Divider)
-                      flexItem={true}
-                      orientation="vertical"
-                    />
-                  }
-                  spacing={1}
-                >
-                  <NonStyleLink
-                    to="/articles/2"
-                  >
-                    <ForwardRef(Button)
-                      sx={
-                        Object {
-                          "minWidth": 0,
-                          "p": 0,
-                        }
-                      }
-                    >
-                      表示
-                    </ForwardRef(Button)>
-                  </NonStyleLink>
-                  <NonStyleLink
-                    to="/map/edit/2"
-                  >
-                    <ForwardRef(Button)
-                      onClick={[MockFunction]}
-                      sx={
-                        Object {
-                          "minWidth": 0,
-                          "p": 0,
-                        }
-                      }
-                    >
-                      編集
-                    </ForwardRef(Button)>
-                  </NonStyleLink>
-                  <ForwardRef(Button)
-                    disabled={false}
-                    onClick={[Function]}
-                    sx={
-                      Object {
-                        "minWidth": 0,
-                        "p": 0,
-                      }
-                    }
-                  >
-                    削除
-                  </ForwardRef(Button)>
-                </ForwardRef(Stack)>
-              </ForwardRef(Box)>
-            </ForwardRef(Box)>
-          </ForwardRef(TableCell)>
-          <ForwardRef(TableCell)
-            width={200}
-          >
-            <IconAndText
-              align="left"
-              fontSize={14}
-              iconComponent={
-                <Memo
-                  fontSize="inherit"
-                />
-              }
-              iconPosition="left"
-              text="バックグラウンドストーリー"
-            />
-          </ForwardRef(TableCell)>
-          <ForwardRef(TableCell)
-            width={70}
-          >
-            <ForwardRef(FormControl)
-              variant="standard"
-            >
-              <ForwardRef(Select)
-                onChange={[Function]}
-                value="true"
-              >
-                <ForwardRef(MenuItem)
-                  value="false"
-                >
-                  <ForwardRef(Typography)
-                    fontSize={14}
-                  >
-                    公開
-                  </ForwardRef(Typography)>
-                </ForwardRef(MenuItem)>
-                <ForwardRef(MenuItem)
-                  value="true"
-                >
-                  <ForwardRef(Typography)
-                    fontSize={14}
-                  >
-                    下書き
-                  </ForwardRef(Typography)>
-                </ForwardRef(MenuItem)>
-              </ForwardRef(Select)>
-            </ForwardRef(FormControl)>
-          </ForwardRef(TableCell)>
-          <ForwardRef(TableCell)
-            width={40}
-          >
-            <IconAndText
-              align="left"
-              iconComponent={
-                <Memo
-                  fontSize="inherit"
-                />
-              }
-              iconPosition="left"
-              text="1"
-            />
-          </ForwardRef(TableCell)>
-          <ForwardRef(TableCell) />
-        </ForwardRef(TableRow)>
-      </ForwardRef(TableBody)>
-    </ForwardRef(Table)>
-    <ForwardRef(Stack)
-      spacing={1}
-    >
-      <ForwardRef(Typography)
-        align="center"
-        component="div"
-        fontSize={14}
-      >
-        1
-        〜
-        1
-        件 / 全
-        2
-        件
-      </ForwardRef(Typography)>
-    </ForwardRef(Stack)>
-  </ForwardRef(Stack)>
+  <ManageTable
+    contents={
+      Array [
+        Object {
+          "category": "隠れミッキー",
+          "editLink": "/map/edit/1",
+          "image": "https://disneyparkstory.com/wp-content/uploads/2017/02/CIMG9800.jpg",
+          "isDraft": false,
+          "numberOfGoods": 1,
+          "onChangeDraftStatus": undefined,
+          "onClickEdit": [MockFunction],
+          "onDelete": [Function],
+          "title": "ノーチラス号のエンジン",
+          "viewLink": "/articles/1",
+        },
+        Object {
+          "category": "バックグラウンドストーリー",
+          "editLink": "/map/edit/2",
+          "image": null,
+          "isDraft": true,
+          "numberOfGoods": 1,
+          "onChangeDraftStatus": [Function],
+          "onClickEdit": [MockFunction],
+          "onDelete": [Function],
+          "title": "ノーチラス号の名前の由来",
+          "viewLink": "/articles/2",
+        },
+      ]
+    }
+    deleting={false}
+    getDraftText={[Function]}
+    isMobile={false}
+    onChangePagination={[Function]}
+    pagination={
+      Object {
+        "currentPage": 1,
+        "endIndex": 1,
+        "nextUrl": null,
+        "previousUrl": null,
+        "results": Array [
+          Object {
+            "category": 1,
+            "image": "https://disneyparkstory.com/wp-content/uploads/2017/02/CIMG9800.jpg",
+            "isDraft": false,
+            "numberOfGoods": 1,
+            "postId": 1,
+            "title": "ノーチラス号のエンジン",
+          },
+          Object {
+            "category": 2,
+            "image": null,
+            "isDraft": true,
+            "numberOfGoods": 1,
+            "postId": 2,
+            "title": "ノーチラス号の名前の由来",
+          },
+        ],
+        "startIndex": 1,
+        "totalPages": 1,
+        "totalRecords": 2,
+      }
+    }
+  />
 </Fragment>
 `;
 
@@ -935,332 +682,69 @@ exports[`Shallow Snapshot Tests with articlesPreviews 1`] = `
       </ForwardRef(FormControl)>
     </ForwardRef(Grid)>
   </ForwardRef(Grid)>
-  <ForwardRef(Stack)
-    spacing={1}
-  >
-    <ForwardRef(Stack)
-      spacing={1}
-    >
-      <ForwardRef(Typography)
-        align="center"
-        component="div"
-        fontSize={14}
-      >
-        1
-        〜
-        1
-        件 / 全
-        2
-        件
-      </ForwardRef(Typography)>
-      <CenterPagination
-        count={2}
-        onChange={[Function]}
-        page={1}
-      />
-    </ForwardRef(Stack)>
-    <ForwardRef(Table)>
-      <ForwardRef(TableHead)>
-        <ForwardRef(TableRow)>
-          <ForwardRef(TableCell) />
-          <ForwardRef(TableCell) />
-          <ForwardRef(TableCell) />
-          <ForwardRef(TableCell) />
-          <ForwardRef(TableCell) />
-        </ForwardRef(TableRow)>
-      </ForwardRef(TableHead)>
-      <ForwardRef(TableBody)>
-        <ForwardRef(TableRow)
-          key="preview-1"
-        >
-          <ForwardRef(TableCell)>
-            <ForwardRef(Box)
-              minHeight={80}
-            >
-              <ForwardRef(Stack)
-                justifyContent="center"
-                minHeight={55}
-              >
-                <ForwardRef(Typography)
-                  component="h3"
-                  sx={
-                    Object {
-                      "wordBreak": "break-all",
-                    }
-                  }
-                  variant="body1"
-                >
-                  ノーチラス号のエンジン
-                </ForwardRef(Typography)>
-              </ForwardRef(Stack)>
-              <ForwardRef(Box)
-                marginBottom={0}
-              >
-                <ForwardRef(Stack)
-                  direction="row"
-                  divider={
-                    <ForwardRef(Divider)
-                      flexItem={true}
-                      orientation="vertical"
-                    />
-                  }
-                  spacing={1}
-                >
-                  <NonStyleLink
-                    to="/articles/1"
-                  >
-                    <ForwardRef(Button)
-                      sx={
-                        Object {
-                          "minWidth": 0,
-                          "p": 0,
-                        }
-                      }
-                    >
-                      表示
-                    </ForwardRef(Button)>
-                  </NonStyleLink>
-                  <NonStyleLink
-                    to="/map/edit/1"
-                  >
-                    <ForwardRef(Button)
-                      onClick={[MockFunction]}
-                      sx={
-                        Object {
-                          "minWidth": 0,
-                          "p": 0,
-                        }
-                      }
-                    >
-                      編集
-                    </ForwardRef(Button)>
-                  </NonStyleLink>
-                  <ForwardRef(Button)
-                    disabled={false}
-                    onClick={[Function]}
-                    sx={
-                      Object {
-                        "minWidth": 0,
-                        "p": 0,
-                      }
-                    }
-                  >
-                    削除
-                  </ForwardRef(Button)>
-                </ForwardRef(Stack)>
-              </ForwardRef(Box)>
-            </ForwardRef(Box)>
-          </ForwardRef(TableCell)>
-          <ForwardRef(TableCell)
-            width={200}
-          >
-            <IconAndText
-              align="left"
-              fontSize={14}
-              iconComponent={
-                <Memo
-                  fontSize="inherit"
-                />
-              }
-              iconPosition="left"
-              text="隠れミッキー"
-            />
-          </ForwardRef(TableCell)>
-          <ForwardRef(TableCell)
-            width={70}
-          >
-            公開中
-          </ForwardRef(TableCell)>
-          <ForwardRef(TableCell)
-            width={40}
-          >
-            <IconAndText
-              align="left"
-              iconComponent={
-                <Memo
-                  fontSize="inherit"
-                />
-              }
-              iconPosition="left"
-              text="1"
-            />
-          </ForwardRef(TableCell)>
-          <ForwardRef(TableCell)>
-            <Image
-              height="80px"
-              objectFit="cover"
-              src="https://disneyparkstory.com/wp-content/uploads/2017/02/CIMG9800.jpg"
-              width="80px"
-            />
-          </ForwardRef(TableCell)>
-        </ForwardRef(TableRow)>
-        <ForwardRef(TableRow)
-          key="preview-2"
-        >
-          <ForwardRef(TableCell)>
-            <ForwardRef(Box)
-              minHeight={80}
-            >
-              <ForwardRef(Stack)
-                justifyContent="center"
-                minHeight={55}
-              >
-                <ForwardRef(Typography)
-                  component="h3"
-                  sx={
-                    Object {
-                      "wordBreak": "break-all",
-                    }
-                  }
-                  variant="body1"
-                >
-                  ノーチラス号の名前の由来
-                </ForwardRef(Typography)>
-              </ForwardRef(Stack)>
-              <ForwardRef(Box)
-                marginBottom={0}
-              >
-                <ForwardRef(Stack)
-                  direction="row"
-                  divider={
-                    <ForwardRef(Divider)
-                      flexItem={true}
-                      orientation="vertical"
-                    />
-                  }
-                  spacing={1}
-                >
-                  <NonStyleLink
-                    to="/articles/2"
-                  >
-                    <ForwardRef(Button)
-                      sx={
-                        Object {
-                          "minWidth": 0,
-                          "p": 0,
-                        }
-                      }
-                    >
-                      表示
-                    </ForwardRef(Button)>
-                  </NonStyleLink>
-                  <NonStyleLink
-                    to="/map/edit/2"
-                  >
-                    <ForwardRef(Button)
-                      onClick={[MockFunction]}
-                      sx={
-                        Object {
-                          "minWidth": 0,
-                          "p": 0,
-                        }
-                      }
-                    >
-                      編集
-                    </ForwardRef(Button)>
-                  </NonStyleLink>
-                  <ForwardRef(Button)
-                    disabled={false}
-                    onClick={[Function]}
-                    sx={
-                      Object {
-                        "minWidth": 0,
-                        "p": 0,
-                      }
-                    }
-                  >
-                    削除
-                  </ForwardRef(Button)>
-                </ForwardRef(Stack)>
-              </ForwardRef(Box)>
-            </ForwardRef(Box)>
-          </ForwardRef(TableCell)>
-          <ForwardRef(TableCell)
-            width={200}
-          >
-            <IconAndText
-              align="left"
-              fontSize={14}
-              iconComponent={
-                <Memo
-                  fontSize="inherit"
-                />
-              }
-              iconPosition="left"
-              text="バックグラウンドストーリー"
-            />
-          </ForwardRef(TableCell)>
-          <ForwardRef(TableCell)
-            width={70}
-          >
-            <ForwardRef(FormControl)
-              variant="standard"
-            >
-              <ForwardRef(Select)
-                onChange={[Function]}
-                value="true"
-              >
-                <ForwardRef(MenuItem)
-                  value="false"
-                >
-                  <ForwardRef(Typography)
-                    fontSize={14}
-                  >
-                    公開
-                  </ForwardRef(Typography)>
-                </ForwardRef(MenuItem)>
-                <ForwardRef(MenuItem)
-                  value="true"
-                >
-                  <ForwardRef(Typography)
-                    fontSize={14}
-                  >
-                    下書き
-                  </ForwardRef(Typography)>
-                </ForwardRef(MenuItem)>
-              </ForwardRef(Select)>
-            </ForwardRef(FormControl)>
-          </ForwardRef(TableCell)>
-          <ForwardRef(TableCell)
-            width={40}
-          >
-            <IconAndText
-              align="left"
-              iconComponent={
-                <Memo
-                  fontSize="inherit"
-                />
-              }
-              iconPosition="left"
-              text="1"
-            />
-          </ForwardRef(TableCell)>
-          <ForwardRef(TableCell) />
-        </ForwardRef(TableRow)>
-      </ForwardRef(TableBody)>
-    </ForwardRef(Table)>
-    <ForwardRef(Stack)
-      spacing={1}
-    >
-      <ForwardRef(Typography)
-        align="center"
-        component="div"
-        fontSize={14}
-      >
-        1
-        〜
-        1
-        件 / 全
-        2
-        件
-      </ForwardRef(Typography)>
-      <CenterPagination
-        count={2}
-        onChange={[Function]}
-        page={1}
-      />
-    </ForwardRef(Stack)>
-  </ForwardRef(Stack)>
+  <ManageTable
+    contents={
+      Array [
+        Object {
+          "category": "隠れミッキー",
+          "editLink": "/map/edit/1",
+          "image": "https://disneyparkstory.com/wp-content/uploads/2017/02/CIMG9800.jpg",
+          "isDraft": false,
+          "numberOfGoods": 1,
+          "onChangeDraftStatus": undefined,
+          "onClickEdit": [MockFunction],
+          "onDelete": [Function],
+          "title": "ノーチラス号のエンジン",
+          "viewLink": "/articles/1",
+        },
+        Object {
+          "category": "バックグラウンドストーリー",
+          "editLink": "/map/edit/2",
+          "image": null,
+          "isDraft": true,
+          "numberOfGoods": 1,
+          "onChangeDraftStatus": [Function],
+          "onClickEdit": [MockFunction],
+          "onDelete": [Function],
+          "title": "ノーチラス号の名前の由来",
+          "viewLink": "/articles/2",
+        },
+      ]
+    }
+    deleting={false}
+    getDraftText={[Function]}
+    isMobile={false}
+    onChangePagination={[Function]}
+    pagination={
+      Object {
+        "currentPage": 1,
+        "endIndex": 1,
+        "nextUrl": null,
+        "previousUrl": null,
+        "results": Array [
+          Object {
+            "category": 1,
+            "image": "https://disneyparkstory.com/wp-content/uploads/2017/02/CIMG9800.jpg",
+            "isDraft": false,
+            "numberOfGoods": 1,
+            "postId": 1,
+            "title": "ノーチラス号のエンジン",
+          },
+          Object {
+            "category": 2,
+            "image": null,
+            "isDraft": true,
+            "numberOfGoods": 1,
+            "postId": 2,
+            "title": "ノーチラス号の名前の由来",
+          },
+        ],
+        "startIndex": 1,
+        "totalPages": 2,
+        "totalRecords": 2,
+      }
+    }
+  />
 </Fragment>
 `;
 
@@ -1415,354 +899,69 @@ exports[`Shallow Snapshot Tests with articlesPreviews mobile view 1`] = `
       </ForwardRef(FormControl)>
     </ForwardRef(Grid)>
   </ForwardRef(Grid)>
-  <ForwardRef(Stack)
-    spacing={1}
-  >
-    <ForwardRef(Stack)
-      spacing={1}
-    >
-      <ForwardRef(Typography)
-        align="center"
-        component="div"
-        fontSize={14}
-      >
-        1
-        〜
-        1
-        件 / 全
-        2
-        件
-      </ForwardRef(Typography)>
-      <CenterPagination
-        count={2}
-        onChange={[Function]}
-        page={1}
-      />
-    </ForwardRef(Stack)>
-    <ForwardRef(Table)>
-      <ForwardRef(TableHead)>
-        <ForwardRef(TableRow)>
-          <ForwardRef(TableCell) />
-        </ForwardRef(TableRow)>
-      </ForwardRef(TableHead)>
-      <ForwardRef(TableBody)>
-        <ForwardRef(TableRow)
-          key="preview-1"
-        >
-          <ForwardRef(TableCell)>
-            <ForwardRef(Typography)
-              color="gray"
-              component="div"
-              marginBottom={1}
-            >
-              <ForwardRef(Box)
-                marginBottom={2}
-              >
-                <ForwardRef(Typography)
-                  fontSize={14}
-                >
-                  公開中
-                </ForwardRef(Typography)>
-              </ForwardRef(Box)>
-              <ForwardRef(Stack)
-                direction="row"
-                justifyContent="space-between"
-                spacing={1}
-              >
-                <IconAndText
-                  align="left"
-                  iconComponent={
-                    <Memo
-                      fontSize="inherit"
-                    />
-                  }
-                  iconPosition="left"
-                  text="隠れミッキー"
-                  variant="subtitle2"
-                />
-                <IconAndText
-                  align="left"
-                  iconComponent={
-                    <Memo
-                      fontSize="inherit"
-                    />
-                  }
-                  iconPosition="left"
-                  text="1"
-                  variant="subtitle2"
-                />
-              </ForwardRef(Stack)>
-            </ForwardRef(Typography)>
-            <ForwardRef(Stack)
-              direction="row"
-              justifyContent="space-between"
-              spacing={1}
-            >
-              <ForwardRef(Box)
-                minHeight={80}
-              >
-                <ForwardRef(Stack)
-                  justifyContent="center"
-                  minHeight={55}
-                >
-                  <ForwardRef(Typography)
-                    component="h3"
-                    sx={
-                      Object {
-                        "wordBreak": "break-all",
-                      }
-                    }
-                    variant="body1"
-                  >
-                    ノーチラス号のエンジン
-                  </ForwardRef(Typography)>
-                </ForwardRef(Stack)>
-                <ForwardRef(Box)
-                  marginBottom={0}
-                >
-                  <ForwardRef(Stack)
-                    direction="row"
-                    divider={
-                      <ForwardRef(Divider)
-                        flexItem={true}
-                        orientation="vertical"
-                      />
-                    }
-                    spacing={1}
-                  >
-                    <NonStyleLink
-                      to="/articles/1"
-                    >
-                      <ForwardRef(Button)
-                        sx={
-                          Object {
-                            "minWidth": 0,
-                            "p": 0,
-                          }
-                        }
-                      >
-                        表示
-                      </ForwardRef(Button)>
-                    </NonStyleLink>
-                    <NonStyleLink
-                      to="/map/edit/1"
-                    >
-                      <ForwardRef(Button)
-                        onClick={[MockFunction]}
-                        sx={
-                          Object {
-                            "minWidth": 0,
-                            "p": 0,
-                          }
-                        }
-                      >
-                        編集
-                      </ForwardRef(Button)>
-                    </NonStyleLink>
-                    <ForwardRef(Button)
-                      disabled={false}
-                      onClick={[Function]}
-                      sx={
-                        Object {
-                          "minWidth": 0,
-                          "p": 0,
-                        }
-                      }
-                    >
-                      削除
-                    </ForwardRef(Button)>
-                  </ForwardRef(Stack)>
-                </ForwardRef(Box)>
-              </ForwardRef(Box)>
-              <ForwardRef(Box)>
-                <Image
-                  height="80px"
-                  objectFit="cover"
-                  src="https://disneyparkstory.com/wp-content/uploads/2017/02/CIMG9800.jpg"
-                  width="80px"
-                />
-              </ForwardRef(Box)>
-            </ForwardRef(Stack)>
-          </ForwardRef(TableCell)>
-        </ForwardRef(TableRow)>
-        <ForwardRef(TableRow)
-          key="preview-2"
-        >
-          <ForwardRef(TableCell)>
-            <ForwardRef(Typography)
-              color="gray"
-              component="div"
-              marginBottom={1}
-            >
-              <ForwardRef(Box)
-                marginBottom={2}
-              >
-                <ForwardRef(FormControl)
-                  variant="standard"
-                >
-                  <ForwardRef(Select)
-                    onChange={[Function]}
-                    value="true"
-                  >
-                    <ForwardRef(MenuItem)
-                      value="false"
-                    >
-                      <ForwardRef(Typography)
-                        variant="subtitle2"
-                      >
-                        公開
-                      </ForwardRef(Typography)>
-                    </ForwardRef(MenuItem)>
-                    <ForwardRef(MenuItem)
-                      value="true"
-                    >
-                      <ForwardRef(Typography)
-                        variant="subtitle2"
-                      >
-                        下書き
-                      </ForwardRef(Typography)>
-                    </ForwardRef(MenuItem)>
-                  </ForwardRef(Select)>
-                </ForwardRef(FormControl)>
-              </ForwardRef(Box)>
-              <ForwardRef(Stack)
-                direction="row"
-                justifyContent="space-between"
-                spacing={1}
-              >
-                <IconAndText
-                  align="left"
-                  iconComponent={
-                    <Memo
-                      fontSize="inherit"
-                    />
-                  }
-                  iconPosition="left"
-                  text="バックグラウンドストーリー"
-                  variant="subtitle2"
-                />
-                <IconAndText
-                  align="left"
-                  iconComponent={
-                    <Memo
-                      fontSize="inherit"
-                    />
-                  }
-                  iconPosition="left"
-                  text="1"
-                  variant="subtitle2"
-                />
-              </ForwardRef(Stack)>
-            </ForwardRef(Typography)>
-            <ForwardRef(Stack)
-              direction="row"
-              justifyContent="space-between"
-              spacing={1}
-            >
-              <ForwardRef(Box)
-                minHeight={80}
-              >
-                <ForwardRef(Stack)
-                  justifyContent="center"
-                  minHeight={55}
-                >
-                  <ForwardRef(Typography)
-                    component="h3"
-                    sx={
-                      Object {
-                        "wordBreak": "break-all",
-                      }
-                    }
-                    variant="body1"
-                  >
-                    ノーチラス号の名前の由来
-                  </ForwardRef(Typography)>
-                </ForwardRef(Stack)>
-                <ForwardRef(Box)
-                  marginBottom={0}
-                >
-                  <ForwardRef(Stack)
-                    direction="row"
-                    divider={
-                      <ForwardRef(Divider)
-                        flexItem={true}
-                        orientation="vertical"
-                      />
-                    }
-                    spacing={1}
-                  >
-                    <NonStyleLink
-                      to="/articles/2"
-                    >
-                      <ForwardRef(Button)
-                        sx={
-                          Object {
-                            "minWidth": 0,
-                            "p": 0,
-                          }
-                        }
-                      >
-                        表示
-                      </ForwardRef(Button)>
-                    </NonStyleLink>
-                    <NonStyleLink
-                      to="/map/edit/2"
-                    >
-                      <ForwardRef(Button)
-                        onClick={[MockFunction]}
-                        sx={
-                          Object {
-                            "minWidth": 0,
-                            "p": 0,
-                          }
-                        }
-                      >
-                        編集
-                      </ForwardRef(Button)>
-                    </NonStyleLink>
-                    <ForwardRef(Button)
-                      disabled={false}
-                      onClick={[Function]}
-                      sx={
-                        Object {
-                          "minWidth": 0,
-                          "p": 0,
-                        }
-                      }
-                    >
-                      削除
-                    </ForwardRef(Button)>
-                  </ForwardRef(Stack)>
-                </ForwardRef(Box)>
-              </ForwardRef(Box)>
-              <ForwardRef(Box) />
-            </ForwardRef(Stack)>
-          </ForwardRef(TableCell)>
-        </ForwardRef(TableRow)>
-      </ForwardRef(TableBody)>
-    </ForwardRef(Table)>
-    <ForwardRef(Stack)
-      spacing={1}
-    >
-      <ForwardRef(Typography)
-        align="center"
-        component="div"
-        fontSize={14}
-      >
-        1
-        〜
-        1
-        件 / 全
-        2
-        件
-      </ForwardRef(Typography)>
-      <CenterPagination
-        count={2}
-        onChange={[Function]}
-        page={1}
-      />
-    </ForwardRef(Stack)>
-  </ForwardRef(Stack)>
+  <ManageTable
+    contents={
+      Array [
+        Object {
+          "category": "隠れミッキー",
+          "editLink": "/map/edit/1",
+          "image": "https://disneyparkstory.com/wp-content/uploads/2017/02/CIMG9800.jpg",
+          "isDraft": false,
+          "numberOfGoods": 1,
+          "onChangeDraftStatus": undefined,
+          "onClickEdit": [MockFunction],
+          "onDelete": [Function],
+          "title": "ノーチラス号のエンジン",
+          "viewLink": "/articles/1",
+        },
+        Object {
+          "category": "バックグラウンドストーリー",
+          "editLink": "/map/edit/2",
+          "image": null,
+          "isDraft": true,
+          "numberOfGoods": 1,
+          "onChangeDraftStatus": [Function],
+          "onClickEdit": [MockFunction],
+          "onDelete": [Function],
+          "title": "ノーチラス号の名前の由来",
+          "viewLink": "/articles/2",
+        },
+      ]
+    }
+    deleting={false}
+    getDraftText={[Function]}
+    isMobile={true}
+    onChangePagination={[Function]}
+    pagination={
+      Object {
+        "currentPage": 1,
+        "endIndex": 1,
+        "nextUrl": null,
+        "previousUrl": null,
+        "results": Array [
+          Object {
+            "category": 1,
+            "image": "https://disneyparkstory.com/wp-content/uploads/2017/02/CIMG9800.jpg",
+            "isDraft": false,
+            "numberOfGoods": 1,
+            "postId": 1,
+            "title": "ノーチラス号のエンジン",
+          },
+          Object {
+            "category": 2,
+            "image": null,
+            "isDraft": true,
+            "numberOfGoods": 1,
+            "postId": 2,
+            "title": "ノーチラス号の名前の由来",
+          },
+        ],
+        "startIndex": 1,
+        "totalPages": 2,
+        "totalRecords": 2,
+      }
+    }
+  />
 </Fragment>
 `;
 
@@ -1917,29 +1116,7 @@ exports[`Shallow Snapshot Tests with delete dialog 1`] = `
       </ForwardRef(FormControl)>
     </ForwardRef(Grid)>
   </ForwardRef(Grid)>
-  <ForwardRef(Stack)
-    spacing={1}
-  >
-    <ForwardRef(Table)>
-      <ForwardRef(TableHead)>
-        <ForwardRef(TableRow)>
-          <ForwardRef(TableCell) />
-          <ForwardRef(TableCell) />
-          <ForwardRef(TableCell) />
-          <ForwardRef(TableCell) />
-          <ForwardRef(TableCell) />
-        </ForwardRef(TableRow)>
-      </ForwardRef(TableHead)>
-      <ForwardRef(TableBody) />
-    </ForwardRef(Table)>
-  </ForwardRef(Stack)>
-  <DeleteConfirmDialog
-    deleting={false}
-    onClose={[Function]}
-    onDelete={[Function]}
-    open={true}
-    title="title"
-  />
+  <CenterSpinner />
 </Fragment>
 `;
 
@@ -2094,22 +1271,7 @@ exports[`Shallow Snapshot Tests with message 1`] = `
       </ForwardRef(FormControl)>
     </ForwardRef(Grid)>
   </ForwardRef(Grid)>
-  <ForwardRef(Stack)
-    spacing={1}
-  >
-    <ForwardRef(Table)>
-      <ForwardRef(TableHead)>
-        <ForwardRef(TableRow)>
-          <ForwardRef(TableCell) />
-          <ForwardRef(TableCell) />
-          <ForwardRef(TableCell) />
-          <ForwardRef(TableCell) />
-          <ForwardRef(TableCell) />
-        </ForwardRef(TableRow)>
-      </ForwardRef(TableHead)>
-      <ForwardRef(TableBody) />
-    </ForwardRef(Table)>
-  </ForwardRef(Stack)>
+  <CenterSpinner />
   <ForwardRef(Snackbar)
     autoHideDuration={6000}
     onClose={[Function]}
@@ -2282,22 +1444,7 @@ exports[`Shallow Snapshot Tests with switch draft dialog to switch to draft 1`] 
       </ForwardRef(FormControl)>
     </ForwardRef(Grid)>
   </ForwardRef(Grid)>
-  <ForwardRef(Stack)
-    spacing={1}
-  >
-    <ForwardRef(Table)>
-      <ForwardRef(TableHead)>
-        <ForwardRef(TableRow)>
-          <ForwardRef(TableCell) />
-          <ForwardRef(TableCell) />
-          <ForwardRef(TableCell) />
-          <ForwardRef(TableCell) />
-          <ForwardRef(TableCell) />
-        </ForwardRef(TableRow)>
-      </ForwardRef(TableHead)>
-      <ForwardRef(TableBody) />
-    </ForwardRef(Table)>
-  </ForwardRef(Stack)>
+  <CenterSpinner />
   <ForwardRef(Dialog)
     onClose={[Function]}
     open={true}
@@ -2480,22 +1627,7 @@ exports[`Shallow Snapshot Tests with switch draft dialog to switch to public 1`]
       </ForwardRef(FormControl)>
     </ForwardRef(Grid)>
   </ForwardRef(Grid)>
-  <ForwardRef(Stack)
-    spacing={1}
-  >
-    <ForwardRef(Table)>
-      <ForwardRef(TableHead)>
-        <ForwardRef(TableRow)>
-          <ForwardRef(TableCell) />
-          <ForwardRef(TableCell) />
-          <ForwardRef(TableCell) />
-          <ForwardRef(TableCell) />
-          <ForwardRef(TableCell) />
-        </ForwardRef(TableRow)>
-      </ForwardRef(TableHead)>
-      <ForwardRef(TableBody) />
-    </ForwardRef(Table)>
-  </ForwardRef(Stack)>
+  <CenterSpinner />
   <ForwardRef(Dialog)
     onClose={[Function]}
     open={true}

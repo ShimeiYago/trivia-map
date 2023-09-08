@@ -209,35 +209,6 @@ describe('handleCloseMessage', () => {
   });
 });
 
-describe('openDeleteConfirmDialog', () => {
-  it('should change deleteDialog state', () => {
-    wrapper = shallow(<Renderer {...basicProps} />);
-    const instance = wrapper.instance();
-
-    instance['openDeleteConfirmDialog'](1, 'title')();
-    expect(instance.state.deleteDialog).toEqual({
-      postId: 1,
-      title: 'title',
-    });
-  });
-});
-
-describe('closeDeleteConfirmDialog', () => {
-  it('should refresh deleteDialog state', () => {
-    wrapper = shallow(<Renderer {...basicProps} />);
-    wrapper.setState({
-      deleteDialog: {
-        postId: 1,
-        title: 'title',
-      },
-    });
-    const instance = wrapper.instance();
-
-    instance['closeDeleteConfirmDialog']();
-    expect(instance.state.deleteDialog).toBe(undefined);
-  });
-});
-
 describe('switchDraftStatus', () => {
   beforeEach(() => {
     jest.resetAllMocks();
@@ -414,6 +385,24 @@ describe('handleChangePark', () => {
 
       instance['handleChangeDraft'](event);
       expect(instance.state.searchParam.isDraft).toBe(undefined);
+    });
+  });
+
+  describe('getDraftText', () => {
+    it('should return 公開 if get false', () => {
+      wrapper = shallow(<Renderer {...basicProps} />);
+      const instance = wrapper.instance();
+
+      const text = instance['getDraftText'](false);
+      expect(text).toBe('公開');
+    });
+
+    it('should return 下書き if get false', () => {
+      wrapper = shallow(<Renderer {...basicProps} />);
+      const instance = wrapper.instance();
+
+      const text = instance['getDraftText'](true);
+      expect(text).toBe('下書き');
     });
   });
 });

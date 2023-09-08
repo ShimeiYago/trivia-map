@@ -1,3 +1,5 @@
+/* istanbul ignore file */
+
 import { PaginationResponse } from '../types/pagination-response';
 import { BASE_URL } from 'constant';
 import { AxiosError, AxiosResponse } from 'axios';
@@ -6,11 +8,14 @@ import { getAxiosInstance } from 'api/utils/get-axios-instance';
 import { mockGetSpecialMapsResponseWithPagination } from 'api/mock/special-map-response';
 import { getUrlParameters } from 'utils/get-url-parameters';
 
-export async function getSpecialMaps(param: {
-  page?: number;
-}): Promise<GetSpecialMapsResponseWithPagination> {
+export async function getSpecialMaps(
+  param: {
+    page?: number;
+  },
+  option?: { mine?: boolean },
+): Promise<GetSpecialMapsResponseWithPagination> {
   const urlParams = getUrlParameters(param);
-  const url = `${BASE_URL}/special-map/maps/public-previews${urlParams}`;
+  const url = `${BASE_URL}/special-map/maps/${option?.mine ? 'my' : 'public'}-previews${urlParams}`;
 
   const axiosInstance = getAxiosInstance({}, mockGetSpecialMapsResponseWithPagination);
 

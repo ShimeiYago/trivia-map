@@ -19,5 +19,5 @@ export const PAGE_NAMES = {
   privacy: 'プライバシーポリシー',
   specialMap: 'オリジナルマップ',
   specialMapNew: '新規オリジナルマップ作成',
-  specialMapManage: 'オリジナルマップ一覧',
+  specialMapManage: 'オリジナルマップ',
 };

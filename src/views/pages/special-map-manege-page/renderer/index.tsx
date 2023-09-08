@@ -6,6 +6,7 @@ import { AdminWrapper } from 'views/components/organisms/admin-wrapper';
 import { BackToNavi } from 'views/components/moleculars/back-to-navi';
 import { ADMIN_LINK } from 'constant/links';
 import { PAGE_NAMES } from 'constant/page-names';
+import { SpecialMapManageTable } from 'views/components/organisms/special-map-manage-table';
 
 export class Renderer extends React.Component {
   render() {
@@ -20,6 +21,8 @@ export class Renderer extends React.Component {
           <Typography align="center" component="h2" variant="h4" sx={{ mb: 3 }}>
             {PAGE_NAMES.specialMapManage}
           </Typography>
+
+          <SpecialMapManageTable />
         </Box>
       </Stack>
     );

@@ -7,6 +7,7 @@ import { CenterSpinner } from 'views/components/atoms/center-spinner';
 import {
   SPECIAL_MAP_EDIT_PAGE_LINK,
   SPECIAL_MAP_MANAGE_PAGE_LINK,
+  SPECIAL_MAP_NEW_PAGE_LINK,
   SPECIAL_MAP_PAGE_LINK,
 } from 'constant/links';
 import { autoRefreshApiWrapper } from 'utils/auto-refresh-api-wrapper';
@@ -19,6 +20,7 @@ import {
 } from 'api/special-map-api/get-special-maps';
 import { ManageTable, ManageTableContent } from 'views/components/moleculars/manage-table';
 import { deleteSpecialMap } from 'api/special-map-api/delete-special-map';
+import { Link } from 'react-router-dom';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -57,7 +59,14 @@ export class Renderer extends React.Component<Props, State> {
     }
 
     if (specialMapPreviews.results.length === 0) {
-      return <Typography align="center">まだ記事が投稿されていません。</Typography>;
+      return (
+        <Typography align="center" component="div">
+          <Typography component="div" mb={1}>
+            まだ記事が投稿されていません。
+          </Typography>
+          <Link to={SPECIAL_MAP_NEW_PAGE_LINK}>新しいオリジナルマップを作成する</Link>
+        </Typography>
+      );
     }
 
     const contents: ManageTableContent[] = specialMapPreviews.results.map((preview) => {

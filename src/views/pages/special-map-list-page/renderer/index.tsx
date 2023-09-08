@@ -6,7 +6,7 @@ import {
 } from 'api/special-map-api/get-special-maps';
 import { CenterSpinner } from 'views/components/atoms/center-spinner';
 import { ArticleWrapper } from 'views/components/organisms/article-wrapper';
-import { Box, Card, CardContent, CardMedia, Stack, Typography } from '@mui/material';
+import { Box, Button, Card, CardContent, CardMedia, Stack, Typography } from '@mui/material';
 import { IconAndText } from 'views/components/atoms/icon-and-text';
 import StarIcon from '@mui/icons-material/Star';
 import { PAGE_NAMES } from 'constant/page-names';
@@ -15,11 +15,16 @@ import notImage from 'images/no-image-16x7.jpg';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import { cardStyle } from 'views/common-styles/card';
 import cardClasses from 'views/common-styles/preview-card.module.css';
-import { SPECIAL_MAP_LIST_PAGE_LINK, SPECIAL_MAP_PAGE_LINK } from 'constant/links';
+import {
+  SPECIAL_MAP_LIST_PAGE_LINK,
+  SPECIAL_MAP_NEW_PAGE_LINK,
+  SPECIAL_MAP_PAGE_LINK,
+} from 'constant/links';
 import { Link } from 'react-router-dom';
 import { DynamicAlignedText } from 'views/components/atoms/dynamic-aligned-text';
 import { ApiError } from 'api/utils/handle-axios-error';
 import { getUrlParameters } from 'utils/get-url-parameters';
+import { NonStyleLink } from 'views/components/atoms/non-style-link';
 
 export class Renderer extends React.Component<Props, State> {
   topRef: React.RefObject<HTMLDivElement>;
@@ -48,6 +53,15 @@ export class Renderer extends React.Component<Props, State> {
             variant="inherit"
           />
         </Typography>
+
+        <Typography align="center" my={3}>
+          <NonStyleLink to={SPECIAL_MAP_NEW_PAGE_LINK}>
+            <Button color="error" variant="contained">
+              新しいオリジナルマップを作成する
+            </Button>
+          </NonStyleLink>
+        </Typography>
+
         {this.renderSpecialMapList()}
       </ArticleWrapper>
     );

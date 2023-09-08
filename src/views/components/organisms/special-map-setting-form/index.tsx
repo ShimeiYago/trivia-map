@@ -42,6 +42,8 @@ import { getImageSrc } from 'utils/get-image-src.ts';
 import { DeletableImage } from 'views/components/moleculars/deletable-image';
 import { ImageField } from 'views/components/moleculars/image-field';
 import { HelperText } from 'views/components/atoms/helper-text';
+import { toggleFormModal } from 'store/auths/actions';
+import { selectUser } from 'store/auths/selector';
 
 export function SpecialMapSettingForm() {
   const dispatch = useAppDispatch();
@@ -54,6 +56,7 @@ export function SpecialMapSettingForm() {
   const thumbnail = useAppSelector(selectSpecialMapThumbnail);
   const isPublic = useAppSelector(selectSpecialMapIsPublic);
   const selectablePark = useAppSelector(selectSpecialMapSelectablePark);
+  const userInfo = useAppSelector(selectUser);
 
   const imageSrc = getImageSrc(thumbnail);
 
@@ -176,11 +179,19 @@ export function SpecialMapSettingForm() {
           loading={loading}
           variant="contained"
           disabled={loading}
-          onClick={() => dispatch(submitSpecialMap())}
+          onClick={handleClickSubmitButton}
         >
           {specialMapId ? '設定を更新する' : 'オリジナルマップを作成する'}
         </LoadingButton>
       </Stack>
     </Box>
   );
+
+  function handleClickSubmitButton() {
+    if (userInfo) {
+      dispatch(submitSpecialMap());
+    } else {
+      dispatch(toggleFormModal(true));
+    }
+  }
 }

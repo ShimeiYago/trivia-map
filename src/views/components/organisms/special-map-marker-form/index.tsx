@@ -1,6 +1,6 @@
 /* istanbul ignore file */
 
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useAppDispatch, useAppSelector } from 'store';
 import {
   submitSpecialMapMarker,
@@ -66,6 +66,14 @@ export function SpecialMapMarkerForm(props: Props) {
   const loading = submittingState === 'loading';
 
   const headerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (formError) {
+      headerRef?.current?.scrollIntoView({
+        block: 'start',
+      });
+    }
+  }, [formError]);
 
   const mapFieldStatus = !!formError?.fieldErrors?.coordinate
     ? 'error'

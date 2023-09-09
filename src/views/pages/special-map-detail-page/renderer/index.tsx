@@ -47,7 +47,7 @@ export class Renderer extends React.Component<Props, State> {
     const { mapId } = this.props;
 
     const localBackNavi = {
-      text: '全体マップへ戻る',
+      text: this.state.specialMap ? `${this.state.specialMap.title}へ戻る` : '全体マップへ戻る',
       link: SPECIAL_MAP_PAGE_LINK(String(mapId)),
     };
 

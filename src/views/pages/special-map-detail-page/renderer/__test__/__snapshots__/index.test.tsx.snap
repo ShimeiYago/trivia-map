@@ -23,7 +23,7 @@ exports[`Shallow Snapshot Tests loaded (without thumbnail) 1`] = `
   localBackNavi={
     Object {
       "link": "/special-maps/0",
-      "text": "全体マップへ戻る",
+      "text": "トイレマップへ戻る",
     }
   }
   showSidebar={true}
@@ -238,7 +238,7 @@ exports[`Shallow Snapshot Tests loaded 1`] = `
   localBackNavi={
     Object {
       "link": "/special-maps/0",
-      "text": "全体マップへ戻る",
+      "text": "トイレマップへ戻る",
     }
   }
   showSidebar={true}
@@ -458,7 +458,7 @@ exports[`Shallow Snapshot Tests loading markers 1`] = `
   localBackNavi={
     Object {
       "link": "/special-maps/0",
-      "text": "全体マップへ戻る",
+      "text": "トイレマップへ戻る",
     }
   }
   showSidebar={true}

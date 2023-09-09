@@ -234,8 +234,16 @@ exports[`Shallow Snapshot Tests focusing a marker 1`] = `
             </ForwardRef(Grid)>
             <ForwardRef(Grid)
               item={true}
+              pt={0.4}
               xs={1}
-            />
+            >
+              <ForwardRef(IconButton)
+                color="primary"
+                onClick={[Function]}
+              >
+                <Memo(ForwardRef(ShareIcon)) />
+              </ForwardRef(IconButton)>
+            </ForwardRef(Grid)>
           </ForwardRef(Grid)>
         </ForwardRef(Box)>
         <ForwardRef(Box)
@@ -318,6 +326,27 @@ exports[`Shallow Snapshot Tests focusing a marker 1`] = `
     open={false}
     title="マーカーを削除しますか？"
   />
+  <BoxModal
+    onClose={[Function]}
+    open={false}
+  >
+    <ForwardRef(Box)
+      p={3}
+    >
+      <ForwardRef(Typography)
+        align="center"
+        mb={1}
+        variant="h6"
+      >
+        SNSでこのマップをシェア
+      </ForwardRef(Typography)>
+      <ShareButtons
+        description="定番から穴場まで、ディズニーのトイレマップです。"
+        title="トイレマップ"
+        url="http://localhost/special-maps/1"
+      />
+    </ForwardRef(Box)>
+  </BoxModal>
 </ForwardRef(Box)>
 `;
 
@@ -416,8 +445,16 @@ exports[`Shallow Snapshot Tests loaded (pc) 1`] = `
             </ForwardRef(Grid)>
             <ForwardRef(Grid)
               item={true}
+              pt={0.4}
               xs={1}
-            />
+            >
+              <ForwardRef(IconButton)
+                color="primary"
+                onClick={[Function]}
+              >
+                <Memo(ForwardRef(ShareIcon)) />
+              </ForwardRef(IconButton)>
+            </ForwardRef(Grid)>
           </ForwardRef(Grid)>
         </ForwardRef(Box)>
         <ForwardRef(Box)
@@ -490,6 +527,27 @@ exports[`Shallow Snapshot Tests loaded (pc) 1`] = `
     open={false}
     title="マーカーを削除しますか？"
   />
+  <BoxModal
+    onClose={[Function]}
+    open={false}
+  >
+    <ForwardRef(Box)
+      p={3}
+    >
+      <ForwardRef(Typography)
+        align="center"
+        mb={1}
+        variant="h6"
+      >
+        SNSでこのマップをシェア
+      </ForwardRef(Typography)>
+      <ShareButtons
+        description="定番から穴場まで、ディズニーのトイレマップです。"
+        title="トイレマップ"
+        url="http://localhost/special-maps/1"
+      />
+    </ForwardRef(Box)>
+  </BoxModal>
 </ForwardRef(Box)>
 `;
 
@@ -631,8 +689,16 @@ exports[`Shallow Snapshot Tests loaded 1`] = `
             </ForwardRef(Grid)>
             <ForwardRef(Grid)
               item={true}
+              pt={0.4}
               xs={1}
-            />
+            >
+              <ForwardRef(IconButton)
+                color="primary"
+                onClick={[Function]}
+              >
+                <Memo(ForwardRef(ShareIcon)) />
+              </ForwardRef(IconButton)>
+            </ForwardRef(Grid)>
           </ForwardRef(Grid)>
         </ForwardRef(Box)>
         <ForwardRef(Box)
@@ -715,6 +781,27 @@ exports[`Shallow Snapshot Tests loaded 1`] = `
     open={false}
     title="マーカーを削除しますか？"
   />
+  <BoxModal
+    onClose={[Function]}
+    open={false}
+  >
+    <ForwardRef(Box)
+      p={3}
+    >
+      <ForwardRef(Typography)
+        align="center"
+        mb={1}
+        variant="h6"
+      >
+        SNSでこのマップをシェア
+      </ForwardRef(Typography)>
+      <ShareButtons
+        description="定番から穴場まで、ディズニーのトイレマップです。"
+        title="トイレマップ"
+        url="http://localhost/special-maps/1"
+      />
+    </ForwardRef(Box)>
+  </BoxModal>
 </ForwardRef(Box)>
 `;
 
@@ -813,8 +900,16 @@ exports[`Shallow Snapshot Tests loading markers 1`] = `
             </ForwardRef(Grid)>
             <ForwardRef(Grid)
               item={true}
+              pt={0.4}
               xs={1}
-            />
+            >
+              <ForwardRef(IconButton)
+                color="primary"
+                onClick={[Function]}
+              >
+                <Memo(ForwardRef(ShareIcon)) />
+              </ForwardRef(IconButton)>
+            </ForwardRef(Grid)>
           </ForwardRef(Grid)>
         </ForwardRef(Box)>
         <ForwardRef(Box)
@@ -897,6 +992,27 @@ exports[`Shallow Snapshot Tests loading markers 1`] = `
     open={false}
     title="マーカーを削除しますか？"
   />
+  <BoxModal
+    onClose={[Function]}
+    open={false}
+  >
+    <ForwardRef(Box)
+      p={3}
+    >
+      <ForwardRef(Typography)
+        align="center"
+        mb={1}
+        variant="h6"
+      >
+        SNSでこのマップをシェア
+      </ForwardRef(Typography)>
+      <ShareButtons
+        description="定番から穴場まで、ディズニーのトイレマップです。"
+        title="トイレマップ"
+        url="http://localhost/special-maps/1"
+      />
+    </ForwardRef(Box)>
+  </BoxModal>
 </ForwardRef(Box)>
 `;
 

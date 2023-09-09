@@ -35,7 +35,7 @@ import { DynamicAlignedText } from 'views/components/atoms/dynamic-aligned-text'
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import SettingsIcon from '@mui/icons-material/Settings';
 import { NonStyleLink } from 'views/components/atoms/non-style-link';
-import { SPECIAL_MAP_DETAIL_PAGE_LINK } from 'constant/links';
+import { SPECIAL_MAP_DETAIL_PAGE_LINK, SPECIAL_MAP_PAGE_LINK } from 'constant/links';
 import { ApiError } from 'api/utils/handle-axios-error';
 import { PARKS, ZOOMS } from 'constant';
 import { autoRefreshApiWrapper } from 'utils/auto-refresh-api-wrapper';
@@ -55,6 +55,9 @@ import { deleteSpecialMapMarker } from 'api/special-map-api/delete-special-map-m
 import { globalAPIErrorMessage } from 'constant/global-api-error-message';
 import { DeleteConfirmDialog } from 'views/components/moleculars/delete-confirm-dialog';
 import { pageTitleGenerator } from 'utils/page-title-generator';
+import ShareIcon from '@mui/icons-material/Share';
+import { ShareButtons } from 'views/components/atoms/share-buttons';
+import { getDomain } from 'utils/get-domain.ts';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -70,6 +73,7 @@ export class Renderer extends React.Component<Props, State> {
       positionSelectMode: false,
       isFormEditting: false,
       isDeletingMarker: false,
+      openShareModal: false,
     };
   }
 
@@ -155,6 +159,8 @@ export class Renderer extends React.Component<Props, State> {
           title="マーカーを削除しますか？"
           deleting={this.state.isDeletingMarker}
         />
+
+        {this.renderShareModal()}
       </Box>
     );
   }
@@ -337,10 +343,11 @@ export class Renderer extends React.Component<Props, State> {
   };
 
   protected renderMetaInfo = () => {
+    const pt = 0.4;
     return (
       <Box sx={metaInfoBox}>
         <Grid container spacing={0}>
-          <Grid item xs={1} pt={0.4}>
+          <Grid item xs={1} pt={pt}>
             {this.props.editMode ? (
               <IconButton color="primary" onClick={this.toggleSettingModal(true)}>
                 {this.props.editMode ? <SettingsIcon /> : <HelpOutlineIcon />}
@@ -356,9 +363,40 @@ export class Renderer extends React.Component<Props, State> {
           <Grid item xs={10}>
             {this.renderTitle()}
           </Grid>
-          <Grid item xs={1}></Grid>
+          <Grid item xs={1} pt={pt}>
+            {this.state.specialMap?.isPublic && (
+              <IconButton color="primary" onClick={() => this.setState({ openShareModal: true })}>
+                <ShareIcon />
+              </IconButton>
+            )}
+          </Grid>
         </Grid>
       </Box>
+    );
+  };
+
+  protected renderShareModal = () => {
+    if (!this.state.specialMap) {
+      return null;
+    }
+
+    const { specialMapId, title, description } = this.state.specialMap;
+    const domain = getDomain(window);
+    const path = SPECIAL_MAP_PAGE_LINK(String(specialMapId));
+
+    return (
+      <BoxModal
+        open={this.state.openShareModal}
+        onClose={() => this.setState({ openShareModal: false })}
+      >
+        <Box p={3}>
+          <Typography variant="h6" align="center" mb={1}>
+            SNSでこのマップをシェア
+          </Typography>
+
+          <ShareButtons title={title} description={description} url={`${domain}${path}`} />
+        </Box>
+      </BoxModal>
     );
   };
 
@@ -705,4 +743,5 @@ export type State = {
   isFormEditting: boolean;
   deleteDialogMarkerId?: number;
   isDeletingMarker: boolean;
+  openShareModal: boolean;
 };

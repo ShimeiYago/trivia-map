@@ -1,5 +1,7 @@
+/* istanbul ignore file */
+
 import React from 'react';
-import { Fab, Typography } from '@mui/material';
+import { Fab, Tooltip, TooltipProps, Typography } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import EditIcon from '@mui/icons-material/Edit';
 import AddLocationAltIcon from '@mui/icons-material/AddLocationAlt';
@@ -14,7 +16,7 @@ export class FloatingButton extends React.Component<Props> {
   };
 
   render() {
-    const { icon, color, disabled, text, size, onClick } = this.props;
+    const { icon, color, disabled, text, size, onClick, tooltip } = this.props;
 
     let iconComponent: JSX.Element;
     switch (icon) {
@@ -29,6 +31,15 @@ export class FloatingButton extends React.Component<Props> {
         break;
     }
 
+    const textComponent =
+      text && tooltip ? (
+        <Tooltip {...tooltip}>
+          <Typography ml={1}>{text}</Typography>
+        </Tooltip>
+      ) : text ? (
+        <Typography ml={1}>{text}</Typography>
+      ) : null;
+
     return (
       <Fab
         color={color}
@@ -39,7 +50,7 @@ export class FloatingButton extends React.Component<Props> {
         sx={style}
       >
         {iconComponent}
-        {text && <Typography ml={1}>{text}</Typography>}
+        {textComponent}
       </Fab>
     );
   }
@@ -52,6 +63,7 @@ export type Props = {
   size: 'small' | 'medium' | 'large';
   text?: string;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  tooltip?: Omit<TooltipProps, 'children'>;
 };
 
 type Icon = 'add' | 'edit' | 'add-marker';

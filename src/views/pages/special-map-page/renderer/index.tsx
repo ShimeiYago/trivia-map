@@ -82,6 +82,7 @@ export class Renderer extends React.Component<Props, State> {
       isFormEditting: false,
       isDeletingMarker: false,
       openShareModal: false,
+      openTooltipToGuideCreatingMarker: false,
     };
   }
 
@@ -199,6 +200,7 @@ export class Renderer extends React.Component<Props, State> {
       this.setState({
         openFormModal: true,
         isFormEditting: true,
+        openTooltipToGuideCreatingMarker: false,
       });
     };
 
@@ -259,6 +261,12 @@ export class Renderer extends React.Component<Props, State> {
               text="マーカーを追加する"
               size="large"
               onClick={handleClickAddButton}
+              tooltip={{
+                open: this.state.openTooltipToGuideCreatingMarker,
+                title: <Typography fontSize={16}>まずはマーカーを追加してみましょう！</Typography>,
+                placement: 'top-start',
+                arrow: true,
+              }}
             />
           )}
         </Box>
@@ -487,6 +495,7 @@ export class Renderer extends React.Component<Props, State> {
       }
       this.setState({
         loadingMarkers: false,
+        openTooltipToGuideCreatingMarker: this.state.markers.length === 0 ? true : false,
       });
     } catch (error) {
       const apiError = error as ApiError<unknown>;
@@ -781,4 +790,5 @@ export type State = {
   deleteDialogMarkerId?: number;
   isDeletingMarker: boolean;
   openShareModal: boolean;
+  openTooltipToGuideCreatingMarker: boolean;
 };

@@ -27,8 +27,8 @@ export async function putSpecialMapMarker(param: {
 
   const requestData = new FormData();
   requestData.append('description', param.description);
-  param.lat && requestData.append('lat', String(param.lat));
-  param.lng && requestData.append('lng', String(param.lng));
+  param.lat !== undefined && requestData.append('lat', String(param.lat));
+  param.lng !== undefined && requestData.append('lng', String(param.lng));
   param.park && requestData.append('park', param.park);
   requestData.append('variant', param.variant);
 
@@ -44,7 +44,7 @@ export async function putSpecialMapMarker(param: {
   }
 
   try {
-    const res: AxiosResponse<PostSpecialMapMarkerResponse> = await axiosInstance.post(
+    const res: AxiosResponse<PostSpecialMapMarkerResponse> = await axiosInstance.put(
       `${BASE_URL}/special-map/markers/${param.specialMapMarkerId}`,
       requestData,
     );

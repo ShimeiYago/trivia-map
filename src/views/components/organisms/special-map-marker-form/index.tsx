@@ -82,20 +82,6 @@ export function SpecialMapMarkerForm(props: Props) {
 
         {formError?.errorTitle && <HeaderErrorMessages errorTitle={formError.errorTitle} />}
 
-        <TextField
-          label="説明文"
-          multiline
-          minRows={6}
-          value={description}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            dispatch(updateDescription(e.target.value))
-          }
-          disabled={loading}
-          error={!!formError?.fieldErrors?.description}
-          helperText={formError?.fieldErrors?.description}
-          required
-        />
-
         <MapField
           disabled={loading}
           helperText={formError?.fieldErrors?.coordinate}
@@ -154,6 +140,20 @@ export function SpecialMapMarkerForm(props: Props) {
             onCatchError={() => dispatch(throwError(500))}
           />
         )}
+
+        <TextField
+          label="説明文"
+          multiline
+          minRows={6}
+          value={description}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            dispatch(updateDescription(e.target.value))
+          }
+          disabled={loading}
+          error={!!formError?.fieldErrors?.description}
+          helperText={formError?.fieldErrors?.description}
+          required
+        />
 
         <LoadingButton
           loading={loading}

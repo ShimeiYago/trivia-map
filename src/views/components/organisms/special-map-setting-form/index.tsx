@@ -196,10 +196,11 @@ export function SpecialMapSettingForm() {
   );
 
   function handleClickSubmitButton() {
-    if (userInfo) {
-      dispatch(submitSpecialMap());
-    } else {
+    if (!userInfo) {
       dispatch(toggleFormModal(true));
+      return;
     }
+
+    dispatch(submitSpecialMap());
   }
 }

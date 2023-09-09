@@ -88,7 +88,7 @@ exports[`Shallow Snapshot Tests focusing a marker 1`] = `
     <CommonHelmet
       canonicalUrlPath="/special-maps/detail/1"
       description="定番から穴場まで、ディズニーのトイレマップです。"
-      title="トイレマップ"
+      title="トイレマップ - トリビアマップ"
     />
     <ForwardRef(Box)
       sx={
@@ -332,7 +332,7 @@ exports[`Shallow Snapshot Tests loaded (pc) 1`] = `
     <CommonHelmet
       canonicalUrlPath="/special-maps/detail/1"
       description="定番から穴場まで、ディズニーのトイレマップです。"
-      title="トイレマップ"
+      title="トイレマップ - トリビアマップ"
     />
     <ForwardRef(Box)
       sx={
@@ -504,7 +504,7 @@ exports[`Shallow Snapshot Tests loaded 1`] = `
     <CommonHelmet
       canonicalUrlPath="/special-maps/detail/1"
       description="定番から穴場まで、ディズニーのトイレマップです。"
-      title="トイレマップ"
+      title="トイレマップ - トリビアマップ"
     />
     <ForwardRef(Box)
       sx={
@@ -729,7 +729,7 @@ exports[`Shallow Snapshot Tests loading markers 1`] = `
     <CommonHelmet
       canonicalUrlPath="/special-maps/detail/1"
       description="定番から穴場まで、ディズニーのトイレマップです。"
-      title="トイレマップ"
+      title="トイレマップ - トリビアマップ"
     />
     <ForwardRef(Box)
       sx={

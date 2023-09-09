@@ -54,6 +54,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { deleteSpecialMapMarker } from 'api/special-map-api/delete-special-map-marker';
 import { globalAPIErrorMessage } from 'constant/global-api-error-message';
 import { DeleteConfirmDialog } from 'views/components/moleculars/delete-confirm-dialog';
+import { pageTitleGenerator } from 'utils/page-title-generator';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -95,6 +96,10 @@ export class Renderer extends React.Component<Props, State> {
           title: specialMapSettingForm.title,
           description: specialMapSettingForm.description,
           isPublic: specialMapSettingForm.isPublic,
+          thumbnail:
+            typeof specialMapSettingForm.thumbnail === 'string'
+              ? specialMapSettingForm.thumbnail
+              : null,
           selectablePark:
             specialMapSettingForm.selectablePark ?? this.state.specialMap.selectablePark,
           minLatitude: specialMapSettingForm.area?.minLatitude ?? this.state.specialMap.minLatitude,
@@ -185,7 +190,7 @@ export class Renderer extends React.Component<Props, State> {
     return (
       <>
         <CommonHelmet
-          title={editMode ? `${specialMap.title}（編集中）` : specialMap.title}
+          title={editMode ? `（編集中）${specialMap.title}` : pageTitleGenerator(specialMap.title)}
           description={specialMap.description}
           canonicalUrlPath={SPECIAL_MAP_DETAIL_PAGE_LINK(String(specialMap.specialMapId))}
         />

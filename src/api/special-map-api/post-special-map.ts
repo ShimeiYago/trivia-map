@@ -25,10 +25,12 @@ export async function postSpecialMap(param: {
   requestData.append('description', param.description);
   param.selectablePark && requestData.append('selectablePark', param.selectablePark);
   requestData.append('isPublic', param.isPublic ? 'true' : 'false');
-  param.minLatitude && requestData.append('minLatitude', String(param.minLatitude));
-  param.maxLatitude && requestData.append('maxLatitude', String(param.maxLatitude));
-  param.minLongitude && requestData.append('minLongitude', String(param.minLongitude));
-  param.maxLongitude && requestData.append('maxLongitude', String(param.maxLongitude));
+  param.minLatitude !== undefined && requestData.append('minLatitude', String(param.minLatitude));
+  param.maxLatitude !== undefined && requestData.append('maxLatitude', String(param.maxLatitude));
+  param.minLongitude !== undefined &&
+    requestData.append('minLongitude', String(param.minLongitude));
+  param.maxLongitude !== undefined &&
+    requestData.append('maxLongitude', String(param.maxLongitude));
 
   if (param.thumbnail) {
     const uploadFile = await convertToFile(param.thumbnail);

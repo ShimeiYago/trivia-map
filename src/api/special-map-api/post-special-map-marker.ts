@@ -26,8 +26,8 @@ export async function postSpecialMapMarker(param: {
 
   const requestData = new FormData();
   requestData.append('description', param.description);
-  param.lat && requestData.append('lat', String(param.lat));
-  param.lng && requestData.append('lng', String(param.lng));
+  param.lat !== undefined && requestData.append('lat', String(param.lat));
+  param.lng !== undefined && requestData.append('lng', String(param.lng));
   param.park && requestData.append('park', param.park);
   requestData.append('variant', param.variant);
 

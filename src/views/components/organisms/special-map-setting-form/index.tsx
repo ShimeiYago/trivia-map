@@ -1,6 +1,6 @@
 /* istanbul ignore file */
 
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useAppDispatch, useAppSelector } from 'store';
 import {
   selectSpecialMapDescription,
@@ -63,6 +63,14 @@ export function SpecialMapSettingForm() {
   const loading = loadingState === 'loading';
 
   const headerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (formError) {
+      headerRef?.current?.scrollIntoView({
+        block: 'start',
+      });
+    }
+  }, [formError]);
 
   return (
     <Box maxWidth="sm" sx={{ p: 0, my: 3, mx: 'auto' }}>
@@ -171,7 +179,7 @@ export function SpecialMapSettingForm() {
             />
           </RadioGroup>
           <HelperText error={!!formError?.fieldErrors?.selectablePark}>
-            {!!formError?.fieldErrors?.selectablePark}
+            {formError?.fieldErrors?.selectablePark}
           </HelperText>
         </FormControl>
 

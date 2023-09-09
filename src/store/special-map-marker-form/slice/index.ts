@@ -48,7 +48,7 @@ export const specialMapMarkerFormSlice = createSlice({
 
       const byteLength = countByteLength(action.payload, 2);
       const fullWidthLength = Math.ceil(byteLength / 2);
-      if (byteLength > INPUT_FIELD_MAX_LENGTH.specialMapDescription * 2) {
+      if (byteLength > INPUT_FIELD_MAX_LENGTH.specialMapMarkerDescription * 2) {
         state.formError = {
           ...state.formError,
           fieldErrors: {

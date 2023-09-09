@@ -59,7 +59,6 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { deleteSpecialMapMarker } from 'api/special-map-api/delete-special-map-marker';
 import { globalAPIErrorMessage } from 'constant/global-api-error-message';
 import { DeleteConfirmDialog } from 'views/components/moleculars/delete-confirm-dialog';
-import { pageTitleGenerator } from 'utils/page-title-generator';
 import ShareIcon from '@mui/icons-material/Share';
 import { ShareButtons } from 'views/components/atoms/share-buttons';
 import { getDomain } from 'utils/get-domain.ts';
@@ -214,7 +213,7 @@ export class Renderer extends React.Component<Props, State> {
     return (
       <>
         <CommonHelmet
-          title={editMode ? `（編集中）${specialMap.title}` : pageTitleGenerator(specialMap.title)}
+          title={editMode ? `（編集中）${specialMap.title}` : specialMap.title}
           description={specialMap.description}
           canonicalUrlPath={SPECIAL_MAP_DETAIL_PAGE_LINK(String(specialMap.specialMapId))}
         />

@@ -30,40 +30,16 @@ exports[`Shallow Snapshot Tests author view 1`] = `
         to="/map/edit/1"
       />
     </ForwardRef(Link)>
-    <ForwardRef(Stack)
-      alignItems="center"
-      direction="row"
-      justifyContent="flex-start"
-      spacing={1}
-    >
-      <NonStyleLink
-        to="/users/1"
-      >
-        <ForwardRef(Avatar)
-          src="no-icon.jpg"
-          sx={
-            Object {
-              "height": 30,
-              "width": 30,
-            }
-          }
-        />
-      </NonStyleLink>
-      <NonStyleLink
-        to="/users/1"
-      >
-        <ForwardRef(Typography)
-          color="gray"
-          sx={
-            Object {
-              "textDecoration": "underline",
-            }
-          }
-        >
-          Axel
-        </ForwardRef(Typography)>
-      </NonStyleLink>
-    </ForwardRef(Stack)>
+    <AuthorLink
+      author={
+        Object {
+          "icon": null,
+          "nickname": "Axel",
+          "url": null,
+          "userId": 1,
+        }
+      }
+    />
     <DynamicAlignedText
       component="h2"
       sx={
@@ -288,40 +264,16 @@ exports[`Shallow Snapshot Tests draft 1`] = `
       この記事は下書きです。あなただけが閲覧できます。
     </ForwardRef(Alert)>
     <ForwardRef(Divider) />
-    <ForwardRef(Stack)
-      alignItems="center"
-      direction="row"
-      justifyContent="flex-start"
-      spacing={1}
-    >
-      <NonStyleLink
-        to="/users/1"
-      >
-        <ForwardRef(Avatar)
-          src="no-icon.jpg"
-          sx={
-            Object {
-              "height": 30,
-              "width": 30,
-            }
-          }
-        />
-      </NonStyleLink>
-      <NonStyleLink
-        to="/users/1"
-      >
-        <ForwardRef(Typography)
-          color="gray"
-          sx={
-            Object {
-              "textDecoration": "underline",
-            }
-          }
-        >
-          Axel
-        </ForwardRef(Typography)>
-      </NonStyleLink>
-    </ForwardRef(Stack)>
+    <AuthorLink
+      author={
+        Object {
+          "icon": null,
+          "nickname": "Axel",
+          "url": null,
+          "userId": 1,
+        }
+      }
+    />
     <DynamicAlignedText
       component="h2"
       sx={
@@ -483,40 +435,16 @@ exports[`Shallow Snapshot Tests draft with same created & updated 1`] = `
       この記事は下書きです。あなただけが閲覧できます。
     </ForwardRef(Alert)>
     <ForwardRef(Divider) />
-    <ForwardRef(Stack)
-      alignItems="center"
-      direction="row"
-      justifyContent="flex-start"
-      spacing={1}
-    >
-      <NonStyleLink
-        to="/users/1"
-      >
-        <ForwardRef(Avatar)
-          src="no-icon.jpg"
-          sx={
-            Object {
-              "height": 30,
-              "width": 30,
-            }
-          }
-        />
-      </NonStyleLink>
-      <NonStyleLink
-        to="/users/1"
-      >
-        <ForwardRef(Typography)
-          color="gray"
-          sx={
-            Object {
-              "textDecoration": "underline",
-            }
-          }
-        >
-          Axel
-        </ForwardRef(Typography)>
-      </NonStyleLink>
-    </ForwardRef(Stack)>
+    <AuthorLink
+      author={
+        Object {
+          "icon": null,
+          "nickname": "Axel",
+          "url": null,
+          "userId": 1,
+        }
+      }
+    />
     <DynamicAlignedText
       component="h2"
       sx={
@@ -678,40 +606,16 @@ exports[`Shallow Snapshot Tests have added good 1`] = `
       url="http://localhost/"
     />
     <ForwardRef(Divider) />
-    <ForwardRef(Stack)
-      alignItems="center"
-      direction="row"
-      justifyContent="flex-start"
-      spacing={1}
-    >
-      <NonStyleLink
-        to="/users/1"
-      >
-        <ForwardRef(Avatar)
-          src="no-icon.jpg"
-          sx={
-            Object {
-              "height": 30,
-              "width": 30,
-            }
-          }
-        />
-      </NonStyleLink>
-      <NonStyleLink
-        to="/users/1"
-      >
-        <ForwardRef(Typography)
-          color="gray"
-          sx={
-            Object {
-              "textDecoration": "underline",
-            }
-          }
-        >
-          Axel
-        </ForwardRef(Typography)>
-      </NonStyleLink>
-    </ForwardRef(Stack)>
+    <AuthorLink
+      author={
+        Object {
+          "icon": null,
+          "nickname": "Axel",
+          "url": null,
+          "userId": 1,
+        }
+      }
+    />
     <DynamicAlignedText
       component="h2"
       sx={
@@ -928,40 +832,16 @@ exports[`Shallow Snapshot Tests have liked 1`] = `
         to="/map/edit/1"
       />
     </ForwardRef(Link)>
-    <ForwardRef(Stack)
-      alignItems="center"
-      direction="row"
-      justifyContent="flex-start"
-      spacing={1}
-    >
-      <NonStyleLink
-        to="/users/1"
-      >
-        <ForwardRef(Avatar)
-          src="no-icon.jpg"
-          sx={
-            Object {
-              "height": 30,
-              "width": 30,
-            }
-          }
-        />
-      </NonStyleLink>
-      <NonStyleLink
-        to="/users/1"
-      >
-        <ForwardRef(Typography)
-          color="gray"
-          sx={
-            Object {
-              "textDecoration": "underline",
-            }
-          }
-        >
-          Axel
-        </ForwardRef(Typography)>
-      </NonStyleLink>
-    </ForwardRef(Stack)>
+    <AuthorLink
+      author={
+        Object {
+          "icon": null,
+          "nickname": "Axel",
+          "url": null,
+          "userId": 1,
+        }
+      }
+    />
     <DynamicAlignedText
       component="h2"
       sx={
@@ -1186,40 +1066,16 @@ exports[`Shallow Snapshot Tests with adsense 1`] = `
       url="http://localhost/"
     />
     <ForwardRef(Divider) />
-    <ForwardRef(Stack)
-      alignItems="center"
-      direction="row"
-      justifyContent="flex-start"
-      spacing={1}
-    >
-      <NonStyleLink
-        to="/users/1"
-      >
-        <ForwardRef(Avatar)
-          src="no-icon.jpg"
-          sx={
-            Object {
-              "height": 30,
-              "width": 30,
-            }
-          }
-        />
-      </NonStyleLink>
-      <NonStyleLink
-        to="/users/1"
-      >
-        <ForwardRef(Typography)
-          color="gray"
-          sx={
-            Object {
-              "textDecoration": "underline",
-            }
-          }
-        >
-          Axel
-        </ForwardRef(Typography)>
-      </NonStyleLink>
-    </ForwardRef(Stack)>
+    <AuthorLink
+      author={
+        Object {
+          "icon": null,
+          "nickname": "Axel",
+          "url": null,
+          "userId": 1,
+        }
+      }
+    />
     <DynamicAlignedText
       component="h2"
       sx={
@@ -1422,40 +1278,16 @@ exports[`Shallow Snapshot Tests with article 1`] = `
       url="http://localhost/"
     />
     <ForwardRef(Divider) />
-    <ForwardRef(Stack)
-      alignItems="center"
-      direction="row"
-      justifyContent="flex-start"
-      spacing={1}
-    >
-      <NonStyleLink
-        to="/users/1"
-      >
-        <ForwardRef(Avatar)
-          src="no-icon.jpg"
-          sx={
-            Object {
-              "height": 30,
-              "width": 30,
-            }
-          }
-        />
-      </NonStyleLink>
-      <NonStyleLink
-        to="/users/1"
-      >
-        <ForwardRef(Typography)
-          color="gray"
-          sx={
-            Object {
-              "textDecoration": "underline",
-            }
-          }
-        >
-          Axel
-        </ForwardRef(Typography)>
-      </NonStyleLink>
-    </ForwardRef(Stack)>
+    <AuthorLink
+      author={
+        Object {
+          "icon": null,
+          "nickname": "Axel",
+          "url": null,
+          "userId": 1,
+        }
+      }
+    />
     <DynamicAlignedText
       component="h2"
       sx={
@@ -1659,40 +1491,16 @@ exports[`Shallow Snapshot Tests with image 1`] = `
       url="http://localhost/"
     />
     <ForwardRef(Divider) />
-    <ForwardRef(Stack)
-      alignItems="center"
-      direction="row"
-      justifyContent="flex-start"
-      spacing={1}
-    >
-      <NonStyleLink
-        to="/users/1"
-      >
-        <ForwardRef(Avatar)
-          src="no-icon.jpg"
-          sx={
-            Object {
-              "height": 30,
-              "width": 30,
-            }
-          }
-        />
-      </NonStyleLink>
-      <NonStyleLink
-        to="/users/1"
-      >
-        <ForwardRef(Typography)
-          color="gray"
-          sx={
-            Object {
-              "textDecoration": "underline",
-            }
-          }
-        >
-          Axel
-        </ForwardRef(Typography)>
-      </NonStyleLink>
-    </ForwardRef(Stack)>
+    <AuthorLink
+      author={
+        Object {
+          "icon": null,
+          "nickname": "Axel",
+          "url": null,
+          "userId": 1,
+        }
+      }
+    />
     <DynamicAlignedText
       component="h2"
       sx={

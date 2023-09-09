@@ -36,6 +36,22 @@ exports[`Shallow Snapshot Tests loaded (without thumbnail) 1`] = `
   <ForwardRef(Stack)
     spacing={2}
   >
+    <ShareButtons
+      description="定番から穴場まで、ディズニーのトイレマップです。"
+      title="トイレマップ"
+      url="http://localhost/special-maps/1"
+    />
+    <ForwardRef(Divider) />
+    <AuthorLink
+      author={
+        Object {
+          "icon": "https://disneyparkstory.com/wp-content/uploads/2017/09/apple-touch-icon.png",
+          "nickname": "Axel",
+          "url": "https://disneyparkstory.com",
+          "userId": 1,
+        }
+      }
+    />
     <DynamicAlignedText
       component="h2"
       sx={
@@ -236,6 +252,22 @@ exports[`Shallow Snapshot Tests loaded 1`] = `
   <ForwardRef(Stack)
     spacing={2}
   >
+    <ShareButtons
+      description="定番から穴場まで、ディズニーのトイレマップです。"
+      title="トイレマップ"
+      url="http://localhost/special-maps/1"
+    />
+    <ForwardRef(Divider) />
+    <AuthorLink
+      author={
+        Object {
+          "icon": "https://disneyparkstory.com/wp-content/uploads/2017/09/apple-touch-icon.png",
+          "nickname": "Axel",
+          "url": "https://disneyparkstory.com",
+          "userId": 1,
+        }
+      }
+    />
     <DynamicAlignedText
       component="h2"
       sx={
@@ -440,6 +472,22 @@ exports[`Shallow Snapshot Tests loading markers 1`] = `
   <ForwardRef(Stack)
     spacing={2}
   >
+    <ShareButtons
+      description="定番から穴場まで、ディズニーのトイレマップです。"
+      title="トイレマップ"
+      url="http://localhost/special-maps/1"
+    />
+    <ForwardRef(Divider) />
+    <AuthorLink
+      author={
+        Object {
+          "icon": "https://disneyparkstory.com/wp-content/uploads/2017/09/apple-touch-icon.png",
+          "nickname": "Axel",
+          "url": "https://disneyparkstory.com",
+          "userId": 1,
+        }
+      }
+    />
     <DynamicAlignedText
       component="h2"
       sx={

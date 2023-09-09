@@ -6,7 +6,6 @@ import { useAppDispatch, useAppSelector } from 'store';
 import { initialize } from 'store/special-map-setting/actions';
 import { selectSpecialMapId } from 'store/special-map-setting/selector';
 import { isMobile } from 'react-device-detect';
-import { pageTitleGenerator } from 'utils/page-title-generator';
 
 export const SpecialMapNewPage = () => {
   const dispatch = useAppDispatch();
@@ -14,7 +13,7 @@ export const SpecialMapNewPage = () => {
   return (
     <>
       <CommonHelmet
-        title={pageTitleGenerator(PAGE_NAMES.specialMapNew)}
+        title={PAGE_NAMES.specialMapNew}
         description={PAGE_DESCRIPTIONS.specialMapNew}
       />
 

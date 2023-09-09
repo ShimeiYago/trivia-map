@@ -126,7 +126,7 @@ export function SpecialMapSettingForm() {
         />
 
         <Box>
-          <FormLabel>サムネイル画像</FormLabel>
+          <FormLabel>アイキャッチ画像</FormLabel>
           <Typography variant="body2" color="gray" sx={{ mb: 1 }}>
             このオリジナルマップのイメージを表す画像です。
             <br />

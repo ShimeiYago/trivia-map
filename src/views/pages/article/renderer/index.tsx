@@ -1,5 +1,5 @@
 import React from 'react';
-import { Alert, Avatar, Box, Divider, Stack, Typography, Link, Grid, Button } from '@mui/material';
+import { Alert, Box, Divider, Stack, Typography, Link, Grid, Button } from '@mui/material';
 import { LoadingState } from 'types/loading-state';
 import { Image } from 'views/components/moleculars/image';
 import { createdAtBox } from '../styles';
@@ -11,15 +11,8 @@ import { ArticleWrapper } from 'views/components/organisms/article-wrapper';
 import { autoRefreshApiWrapper } from 'utils/auto-refresh-api-wrapper';
 import { AreaNames } from 'views/components/atoms/area-names';
 import { ZOOMS } from 'constant';
-import noIcon from 'images/no-icon.jpg';
 import recommendImage from 'images/recommend.png';
-import {
-  AUTHER_PAGE_LINK,
-  CATEGORY_PAGE_LINK,
-  EDIT_LINK,
-  MAP_PAGE_LINK,
-  NEW_LINK,
-} from 'constant/links';
+import { CATEGORY_PAGE_LINK, EDIT_LINK, MAP_PAGE_LINK, NEW_LINK } from 'constant/links';
 import { categoryMapper } from 'utils/category-mapper';
 import FolderIcon from '@mui/icons-material/Folder';
 import { User } from 'types/user';
@@ -44,6 +37,7 @@ import { MapMarker } from 'views/components/moleculars/map-marker';
 import { LatLng } from 'leaflet';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import { AdsenseIns } from 'views/components/moleculars/adsense-ins';
+import { AuthorLink } from 'views/components/atoms/author-link';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -112,16 +106,7 @@ export class Renderer extends React.Component<Props, State> {
 
           {this.renderEditLink()}
 
-          <Stack direction="row" justifyContent="flex-start" alignItems="center" spacing={1}>
-            <NonStyleLink to={AUTHER_PAGE_LINK(author.userId.toString())}>
-              <Avatar sx={{ width: 30, height: 30 }} src={author.icon ?? noIcon} />
-            </NonStyleLink>
-            <NonStyleLink to={AUTHER_PAGE_LINK(author.userId.toString())}>
-              <Typography color="gray" sx={{ textDecoration: 'underline' }}>
-                {author.nickname}
-              </Typography>
-            </NonStyleLink>
-          </Stack>
+          <AuthorLink author={author} />
 
           <DynamicAlignedText
             component="h2"

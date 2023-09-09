@@ -235,6 +235,7 @@ exports[`Shallow Snapshot Tests focusing a marker 1`] = `
             <ForwardRef(Grid)
               item={true}
               pt={0.4}
+              textAlign="center"
               xs={1}
             >
               <ForwardRef(IconButton)
@@ -338,7 +339,7 @@ exports[`Shallow Snapshot Tests focusing a marker 1`] = `
         mb={1}
         variant="h6"
       >
-        SNSでこのマップをシェア
+        SNSでこのマップをシェアする
       </ForwardRef(Typography)>
       <ShareButtons
         description="定番から穴場まで、ディズニーのトイレマップです。"
@@ -446,6 +447,7 @@ exports[`Shallow Snapshot Tests loaded (pc) 1`] = `
             <ForwardRef(Grid)
               item={true}
               pt={0.4}
+              textAlign="center"
               xs={1}
             >
               <ForwardRef(IconButton)
@@ -539,7 +541,7 @@ exports[`Shallow Snapshot Tests loaded (pc) 1`] = `
         mb={1}
         variant="h6"
       >
-        SNSでこのマップをシェア
+        SNSでこのマップをシェアする
       </ForwardRef(Typography)>
       <ShareButtons
         description="定番から穴場まで、ディズニーのトイレマップです。"
@@ -690,6 +692,7 @@ exports[`Shallow Snapshot Tests loaded 1`] = `
             <ForwardRef(Grid)
               item={true}
               pt={0.4}
+              textAlign="center"
               xs={1}
             >
               <ForwardRef(IconButton)
@@ -793,7 +796,7 @@ exports[`Shallow Snapshot Tests loaded 1`] = `
         mb={1}
         variant="h6"
       >
-        SNSでこのマップをシェア
+        SNSでこのマップをシェアする
       </ForwardRef(Typography)>
       <ShareButtons
         description="定番から穴場まで、ディズニーのトイレマップです。"
@@ -901,6 +904,7 @@ exports[`Shallow Snapshot Tests loading markers 1`] = `
             <ForwardRef(Grid)
               item={true}
               pt={0.4}
+              textAlign="center"
               xs={1}
             >
               <ForwardRef(IconButton)
@@ -1004,7 +1008,7 @@ exports[`Shallow Snapshot Tests loading markers 1`] = `
         mb={1}
         variant="h6"
       >
-        SNSでこのマップをシェア
+        SNSでこのマップをシェアする
       </ForwardRef(Typography)>
       <ShareButtons
         description="定番から穴場まで、ディズニーのトイレマップです。"

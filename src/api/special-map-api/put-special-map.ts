@@ -29,10 +29,12 @@ export async function putSpecialMap(param: {
   requestData.append('description', param.description);
   param.selectablePark && requestData.append('selectablePark', param.selectablePark);
   requestData.append('isPublic', param.isPublic ? 'true' : 'false');
-  param.minLatitude && requestData.append('minLatitude', String(param.minLatitude));
-  param.maxLatitude && requestData.append('maxLatitude', String(param.maxLatitude));
-  param.minLongitude && requestData.append('minLongitude', String(param.minLongitude));
-  param.maxLongitude && requestData.append('maxLongitude', String(param.maxLongitude));
+  param.minLatitude !== undefined && requestData.append('minLatitude', String(param.minLatitude));
+  param.maxLatitude !== undefined && requestData.append('maxLatitude', String(param.maxLatitude));
+  param.minLongitude !== undefined &&
+    requestData.append('minLongitude', String(param.minLongitude));
+  param.maxLongitude !== undefined &&
+    requestData.append('maxLongitude', String(param.maxLongitude));
 
   switch (param.thumbnail) {
     case undefined:
@@ -46,7 +48,7 @@ export async function putSpecialMap(param: {
   }
 
   try {
-    const res: AxiosResponse<PostSpecialMapResponse> = await axiosInstance.post(
+    const res: AxiosResponse<PostSpecialMapResponse> = await axiosInstance.put(
       `${BASE_URL}/special-map/maps/${param.specialMapId}`,
       requestData,
     );

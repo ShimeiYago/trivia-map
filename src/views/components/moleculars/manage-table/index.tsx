@@ -123,9 +123,9 @@ export function ManageTable(props: Props) {
         <TableHead>
           <TableRow>
             <TableCell></TableCell>
+            {!props.hideCategory && <TableCell></TableCell>}
             <TableCell></TableCell>
-            <TableCell></TableCell>
-            <TableCell></TableCell>
+            {!props.hideNumberOfGoods && <TableCell></TableCell>}
             <TableCell></TableCell>
           </TableRow>
         </TableHead>

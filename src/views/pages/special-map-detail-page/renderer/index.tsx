@@ -1,3 +1,5 @@
+/* istanbul ignore file */
+
 import React from 'react';
 import { CommonHelmet } from 'helper-components/common-helmet';
 import { GetSpecialMapResponse, getSpecialMap } from 'api/special-map-api/get-special-map';
@@ -8,7 +10,7 @@ import {
 } from 'api/special-map-api/get-special-map-markers';
 import { ParkMap } from 'views/components/moleculars/park-map';
 import { CenterSpinner } from 'views/components/atoms/center-spinner';
-import { Box, Button, Divider, Stack, Typography } from '@mui/material';
+import { Alert, Box, Button, Divider, Link, Stack, Typography } from '@mui/material';
 import { MapMarker } from 'views/components/moleculars/map-marker';
 import { LatLng } from 'leaflet';
 import { Image } from 'views/components/moleculars/image';
@@ -16,10 +18,15 @@ import { DynamicAlignedText } from 'views/components/atoms/dynamic-aligned-text'
 import { ArticleWrapper } from 'views/components/organisms/article-wrapper';
 import { IconAndText } from 'views/components/atoms/icon-and-text';
 import { MyIcon } from 'views/components/atoms/my-icon';
-import { SPECIAL_MAP_PAGE_LINK } from 'constant/links';
+import { SPECIAL_MAP_EDIT_PAGE_LINK, SPECIAL_MAP_PAGE_LINK } from 'constant/links';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import { NonStyleLink } from 'views/components/atoms/non-style-link';
 import { ApiError } from 'api/utils/handle-axios-error';
+import { ShareButtons } from 'views/components/atoms/share-buttons';
+import { getDomain } from 'utils/get-domain.ts';
+import EditIcon from '@mui/icons-material/Edit';
+import { User } from 'types/user';
+import { AuthorLink } from 'views/components/atoms/author-link';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -40,7 +47,7 @@ export class Renderer extends React.Component<Props, State> {
     const { mapId } = this.props;
 
     const localBackNavi = {
-      text: '全体マップへ戻る',
+      text: this.state.specialMap ? `${this.state.specialMap.title}へ戻る` : '全体マップへ戻る',
       link: SPECIAL_MAP_PAGE_LINK(String(mapId)),
     };
 
@@ -62,7 +69,9 @@ export class Renderer extends React.Component<Props, State> {
       );
     }
 
-    const { title, thumbnail, description } = specialMap;
+    const { title, thumbnail, description, isPublic, specialMapId, author } = specialMap;
+    const domain = getDomain(window);
+    const path = SPECIAL_MAP_PAGE_LINK(String(specialMapId));
 
     return (
       <>
@@ -73,6 +82,20 @@ export class Renderer extends React.Component<Props, State> {
           ogType="article"
         />
         <Stack spacing={2}>
+          {!isPublic && (
+            <Alert severity="info">このマップは非公開です。あなただけが閲覧できます。</Alert>
+          )}
+
+          {isPublic && (
+            <ShareButtons title={title} url={`${domain}${path}`} description={description} />
+          )}
+
+          <Divider />
+
+          {this.renderEditLink()}
+
+          <AuthorLink author={author} />
+
           <DynamicAlignedText
             component="h2"
             variant="h5"
@@ -169,6 +192,28 @@ export class Renderer extends React.Component<Props, State> {
     );
   };
 
+  protected renderEditLink = () => {
+    if (
+      !this.props.user ||
+      !this.state.specialMap ||
+      this.props.user.userId !== this.state.specialMap.author.userId
+    ) {
+      return null;
+    }
+
+    return (
+      <Link component="div">
+        <IconAndText
+          iconComponent={<EditIcon />}
+          text="編集"
+          iconPosition="left"
+          align="right"
+          to={SPECIAL_MAP_EDIT_PAGE_LINK(this.props.mapId.toString())}
+        />
+      </Link>
+    );
+  };
+
   protected fetchSpecialMap = async () => {
     try {
       // use autoRefreshApiWrapper
@@ -220,6 +265,7 @@ export class Renderer extends React.Component<Props, State> {
 
 export type Props = {
   mapId: number;
+  user?: User;
 
   throwError: (errorStatus: number) => void;
 };

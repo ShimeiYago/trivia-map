@@ -22,6 +22,7 @@ import {
   IconButton,
   Snackbar,
   Stack,
+  Tooltip,
   Typography,
 } from '@mui/material';
 import { GlobalMenu } from 'views/components/organisms/global-menu';
@@ -35,7 +36,11 @@ import { DynamicAlignedText } from 'views/components/atoms/dynamic-aligned-text'
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import SettingsIcon from '@mui/icons-material/Settings';
 import { NonStyleLink } from 'views/components/atoms/non-style-link';
-import { SPECIAL_MAP_DETAIL_PAGE_LINK } from 'constant/links';
+import {
+  SPECIAL_MAP_DETAIL_PAGE_LINK,
+  SPECIAL_MAP_EDIT_PAGE_LINK,
+  SPECIAL_MAP_PAGE_LINK,
+} from 'constant/links';
 import { ApiError } from 'api/utils/handle-axios-error';
 import { PARKS, ZOOMS } from 'constant';
 import { autoRefreshApiWrapper } from 'utils/auto-refresh-api-wrapper';
@@ -54,6 +59,13 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { deleteSpecialMapMarker } from 'api/special-map-api/delete-special-map-marker';
 import { globalAPIErrorMessage } from 'constant/global-api-error-message';
 import { DeleteConfirmDialog } from 'views/components/moleculars/delete-confirm-dialog';
+import ShareIcon from '@mui/icons-material/Share';
+import { ShareButtons } from 'views/components/atoms/share-buttons';
+import { getDomain } from 'utils/get-domain.ts';
+import { Link, Navigate } from 'react-router-dom';
+import { LoadingState } from 'types/loading-state';
+import { User } from 'types/user';
+import LockIcon from '@mui/icons-material/Lock';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -69,6 +81,8 @@ export class Renderer extends React.Component<Props, State> {
       positionSelectMode: false,
       isFormEditting: false,
       isDeletingMarker: false,
+      openShareModal: false,
+      openTooltipToGuideCreatingMarker: false,
     };
   }
 
@@ -95,6 +109,10 @@ export class Renderer extends React.Component<Props, State> {
           title: specialMapSettingForm.title,
           description: specialMapSettingForm.description,
           isPublic: specialMapSettingForm.isPublic,
+          thumbnail:
+            typeof specialMapSettingForm.thumbnail === 'string'
+              ? specialMapSettingForm.thumbnail
+              : null,
           selectablePark:
             specialMapSettingForm.selectablePark ?? this.state.specialMap.selectablePark,
           minLatitude: specialMapSettingForm.area?.minLatitude ?? this.state.specialMap.minLatitude,
@@ -150,6 +168,8 @@ export class Renderer extends React.Component<Props, State> {
           title="マーカーを削除しますか？"
           deleting={this.state.isDeletingMarker}
         />
+
+        {this.renderShareModal()}
       </Box>
     );
   }
@@ -166,11 +186,21 @@ export class Renderer extends React.Component<Props, State> {
       );
     }
 
+    // if edit mode & user is not author, redirect
+    if (
+      editMode &&
+      (this.props.autoLoggingInState === 'success' || this.props.autoLoggingInState === 'error') &&
+      specialMap.author.userId !== this.props.user?.userId
+    ) {
+      return <Navigate to={SPECIAL_MAP_PAGE_LINK(String(specialMap.specialMapId))} />;
+    }
+
     const handleClickAddButton = () => {
       this.props.initializeSpecialMapForm();
       this.setState({
         openFormModal: true,
         isFormEditting: true,
+        openTooltipToGuideCreatingMarker: false,
       });
     };
 
@@ -185,7 +215,7 @@ export class Renderer extends React.Component<Props, State> {
     return (
       <>
         <CommonHelmet
-          title={editMode ? `${specialMap.title}（編集中）` : specialMap.title}
+          title={editMode ? `（編集中）${specialMap.title}` : specialMap.title}
           description={specialMap.description}
           canonicalUrlPath={SPECIAL_MAP_DETAIL_PAGE_LINK(String(specialMap.specialMapId))}
         />
@@ -231,6 +261,12 @@ export class Renderer extends React.Component<Props, State> {
               text="マーカーを追加する"
               size="large"
               onClick={handleClickAddButton}
+              tooltip={{
+                open: this.state.openTooltipToGuideCreatingMarker,
+                title: <Typography fontSize={16}>まずはマーカーを追加してみましょう！</Typography>,
+                placement: 'top-start',
+                arrow: true,
+              }}
             />
           )}
         </Box>
@@ -262,7 +298,7 @@ export class Renderer extends React.Component<Props, State> {
       }
 
       const popup = (
-        <Box width={300}>
+        <Box width={300} sx={{ overflowY: 'scroll', maxHeight: 330 }}>
           {this.props.editMode && (
             <Stack
               direction="row"
@@ -332,10 +368,11 @@ export class Renderer extends React.Component<Props, State> {
   };
 
   protected renderMetaInfo = () => {
+    const pt = 0.4;
     return (
       <Box sx={metaInfoBox}>
         <Grid container spacing={0}>
-          <Grid item xs={1} pt={0.4}>
+          <Grid item xs={1} pt={pt}>
             {this.props.editMode ? (
               <IconButton color="primary" onClick={this.toggleSettingModal(true)}>
                 {this.props.editMode ? <SettingsIcon /> : <HelpOutlineIcon />}
@@ -351,9 +388,46 @@ export class Renderer extends React.Component<Props, State> {
           <Grid item xs={10}>
             {this.renderTitle()}
           </Grid>
-          <Grid item xs={1}></Grid>
+          <Grid item xs={1} pt={pt} textAlign="center">
+            {this.state.specialMap?.isPublic ? (
+              <IconButton color="primary" onClick={() => this.setState({ openShareModal: true })}>
+                <ShareIcon />
+              </IconButton>
+            ) : (
+              <Tooltip title="非公開" arrow enterTouchDelay={0}>
+                <Box pt={1}>
+                  <LockIcon />
+                </Box>
+              </Tooltip>
+            )}
+          </Grid>
         </Grid>
       </Box>
+    );
+  };
+
+  protected renderShareModal = () => {
+    if (!this.state.specialMap) {
+      return null;
+    }
+
+    const { specialMapId, title, description } = this.state.specialMap;
+    const domain = getDomain(window);
+    const path = SPECIAL_MAP_PAGE_LINK(String(specialMapId));
+
+    return (
+      <BoxModal
+        open={this.state.openShareModal}
+        onClose={() => this.setState({ openShareModal: false })}
+      >
+        <Box p={3}>
+          <Typography variant="h6" align="center" mb={1}>
+            SNSでこのマップをシェアする
+          </Typography>
+
+          <ShareButtons title={title} description={description} url={`${domain}${path}`} />
+        </Box>
+      </BoxModal>
     );
   };
 
@@ -421,6 +495,7 @@ export class Renderer extends React.Component<Props, State> {
       }
       this.setState({
         loadingMarkers: false,
+        openTooltipToGuideCreatingMarker: this.state.markers.length === 0 ? true : false,
       });
     } catch (error) {
       const apiError = error as ApiError<unknown>;
@@ -475,7 +550,12 @@ export class Renderer extends React.Component<Props, State> {
   };
 
   protected renderTitle = () => {
-    if (!this.props.editMode && this.state.specialMap?.isPublic) {
+    const isAuthor =
+      this.state.specialMap && this.props.user
+        ? this.state.specialMap.author.userId === this.props.user.userId
+        : false;
+
+    if (!this.props.editMode && !isAuthor && this.state.specialMap?.isPublic) {
       return (
         <Typography component="h2" variant="h6" py={1} align="center">
           {this.state.specialMap?.title}
@@ -483,15 +563,16 @@ export class Renderer extends React.Component<Props, State> {
       );
     }
 
-    let caption: string;
-    if (this.props.editMode && !this.state.specialMap?.isPublic) {
-      caption = '(編集中) (非公開)';
-    } else if (this.props.editMode) {
+    let caption: React.ReactNode = '';
+    if (!this.props.editMode && isAuthor) {
+      caption = (
+        <Link to={SPECIAL_MAP_EDIT_PAGE_LINK(String(this.state.specialMap?.specialMapId))}>
+          （編集画面へ）
+        </Link>
+      );
+    }
+    if (this.props.editMode) {
       caption = '(編集中)';
-    } else if (!this.state.specialMap?.isPublic) {
-      caption = '(非公開)';
-    } else {
-      caption = '';
     }
 
     return (
@@ -500,7 +581,13 @@ export class Renderer extends React.Component<Props, State> {
           {caption}
         </Typography>
         <Typography component="h2" variant="h6" align="center">
-          {this.state.specialMap?.title}
+          {this.props.editMode ? (
+            <Link to={SPECIAL_MAP_PAGE_LINK(String(this.state.specialMap?.specialMapId))}>
+              {this.state.specialMap?.title}
+            </Link>
+          ) : (
+            this.state.specialMap?.title
+          )}
         </Typography>
       </>
     );
@@ -672,6 +759,8 @@ export type Props = {
   editMode: boolean;
   specialMapSettingForm: SpecialMapSettingState;
   specialMapMarkerForm: SpecialMapMarkerFormState;
+  user?: User;
+  autoLoggingInState: LoadingState;
 
   refreshUser: () => void;
   setSpecialMap: (specialMap: GetSpecialMapResponse) => void;
@@ -700,4 +789,6 @@ export type State = {
   isFormEditting: boolean;
   deleteDialogMarkerId?: number;
   isDeletingMarker: boolean;
+  openShareModal: boolean;
+  openTooltipToGuideCreatingMarker: boolean;
 };

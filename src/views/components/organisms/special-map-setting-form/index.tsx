@@ -1,6 +1,6 @@
 /* istanbul ignore file */
 
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useAppDispatch, useAppSelector } from 'store';
 import {
   selectSpecialMapDescription,
@@ -64,6 +64,14 @@ export function SpecialMapSettingForm() {
 
   const headerRef = useRef<HTMLDivElement>(null);
 
+  useEffect(() => {
+    if (formError) {
+      headerRef?.current?.scrollIntoView({
+        block: 'start',
+      });
+    }
+  }, [formError]);
+
   return (
     <Box maxWidth="sm" sx={{ p: 0, my: 3, mx: 'auto' }}>
       <Stack spacing={3}>
@@ -118,7 +126,7 @@ export function SpecialMapSettingForm() {
         />
 
         <Box>
-          <FormLabel>サムネイル画像</FormLabel>
+          <FormLabel>アイキャッチ画像</FormLabel>
           <Typography variant="body2" color="gray" sx={{ mb: 1 }}>
             このオリジナルマップのイメージを表す画像です。
             <br />
@@ -171,7 +179,7 @@ export function SpecialMapSettingForm() {
             />
           </RadioGroup>
           <HelperText error={!!formError?.fieldErrors?.selectablePark}>
-            {!!formError?.fieldErrors?.selectablePark}
+            {formError?.fieldErrors?.selectablePark}
           </HelperText>
         </FormControl>
 
@@ -188,10 +196,11 @@ export function SpecialMapSettingForm() {
   );
 
   function handleClickSubmitButton() {
-    if (userInfo) {
-      dispatch(submitSpecialMap());
-    } else {
+    if (!userInfo) {
       dispatch(toggleFormModal(true));
+      return;
     }
+
+    dispatch(submitSpecialMap());
   }
 }

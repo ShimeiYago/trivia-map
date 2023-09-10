@@ -32,6 +32,7 @@ const props: Props = {
   updatePosition: jest.fn(),
   initializeSpecialMapForm: jest.fn(),
   setSpecialMapMarkerForm: jest.fn(),
+  autoLoggingInState: 'waiting',
 };
 
 describe('Shallow Snapshot Tests', () => {

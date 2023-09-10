@@ -1,6 +1,6 @@
 /* istanbul ignore file */
 
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useAppDispatch, useAppSelector } from 'store';
 import {
   submitSpecialMapMarker,
@@ -67,6 +67,14 @@ export function SpecialMapMarkerForm(props: Props) {
 
   const headerRef = useRef<HTMLDivElement>(null);
 
+  useEffect(() => {
+    if (formError) {
+      headerRef?.current?.scrollIntoView({
+        block: 'start',
+      });
+    }
+  }, [formError]);
+
   const mapFieldStatus = !!formError?.fieldErrors?.coordinate
     ? 'error'
     : position
@@ -81,20 +89,6 @@ export function SpecialMapMarkerForm(props: Props) {
         </Typography>
 
         {formError?.errorTitle && <HeaderErrorMessages errorTitle={formError.errorTitle} />}
-
-        <TextField
-          label="説明文"
-          multiline
-          minRows={6}
-          value={description}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            dispatch(updateDescription(e.target.value))
-          }
-          disabled={loading}
-          error={!!formError?.fieldErrors?.description}
-          helperText={formError?.fieldErrors?.description}
-          required
-        />
 
         <MapField
           disabled={loading}
@@ -154,6 +148,20 @@ export function SpecialMapMarkerForm(props: Props) {
             onCatchError={() => dispatch(throwError(500))}
           />
         )}
+
+        <TextField
+          label="説明文"
+          multiline
+          minRows={6}
+          value={description}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            dispatch(updateDescription(e.target.value))
+          }
+          disabled={loading}
+          error={!!formError?.fieldErrors?.description}
+          helperText={formError?.fieldErrors?.description}
+          required
+        />
 
         <LoadingButton
           loading={loading}

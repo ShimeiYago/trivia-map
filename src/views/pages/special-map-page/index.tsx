@@ -16,6 +16,7 @@ import {
 } from 'store/special-map-marker-form/actions';
 import { Position } from 'types/position';
 import { GetSpecialMapMarkersResponse } from 'api/special-map-api/get-special-map-markers';
+import { selectAutoLoggingInState, selectUser } from 'store/auths/selector';
 
 export function SpecialMapPage({ edit }: { edit?: boolean }) {
   const { mapId } = useParams();
@@ -46,6 +47,8 @@ export function SpecialMapPage({ edit }: { edit?: boolean }) {
     editMode: !!edit,
     specialMapSettingForm: useAppSelector(selectSpecialMapSetting),
     specialMapMarkerForm: useAppSelector((state: RootState) => state.specialMapMarkerForm),
+    user: useAppSelector(selectUser),
+    autoLoggingInState: useAppSelector(selectAutoLoggingInState),
 
     refreshUser,
     setSpecialMap: (specialMap: GetSpecialMapResponse) => dispatch(setSpecialMap(specialMap)),

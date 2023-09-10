@@ -40,6 +40,8 @@ export const submitSpecialMap = (): AppThunk => async (dispatch, getState) => {
   /* istanbul ignore next */
   const refreshUser = () => dispatch(updateUser(undefined));
 
+  console.log(area);
+
   let res: PostSpecialMapResponse;
   try {
     if (specialMapId) {
@@ -77,8 +79,9 @@ export const submitSpecialMap = (): AppThunk => async (dispatch, getState) => {
         refreshUser,
       );
     }
-    dispatch(updateLoading('success'));
     dispatch(updateSpecialMapId(res.specialMapId));
+    dispatch(updateThumbnail(res.thumbnail));
+    dispatch(updateLoading('success'));
   } catch (error) {
     const apiError = error as ApiError<ValidationError>;
     const errorTitle = globalAPIErrorMessage(apiError.status, 'submit');
@@ -115,7 +118,7 @@ export const setSpecialMap =
         minLatitude: specialMap.minLatitude,
         maxLatitude: specialMap.maxLatitude,
         minLongitude: specialMap.minLongitude,
-        maxLongitude: specialMap.maxLatitude,
+        maxLongitude: specialMap.maxLongitude,
       }),
     );
     dispatch(refreshFormError());

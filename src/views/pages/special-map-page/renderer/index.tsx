@@ -298,7 +298,7 @@ export class Renderer extends React.Component<Props, State> {
       }
 
       const popup = (
-        <Box width={300}>
+        <Box width={300} sx={{ overflowY: 'scroll', maxHeight: 330 }}>
           {this.props.editMode && (
             <Stack
               direction="row"

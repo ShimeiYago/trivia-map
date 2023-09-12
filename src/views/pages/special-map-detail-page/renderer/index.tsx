@@ -185,7 +185,7 @@ export class Renderer extends React.Component<Props, State> {
     });
 
     return (
-      <Stack spacing={2}>
+      <Stack spacing={5}>
         {markerComponents}
         {loadingMarkers && <CenterSpinner />}
       </Stack>

@@ -203,21 +203,23 @@ export function SpecialMapSettingForm() {
           </HelperText>
         </FormControl>
 
-        <Accordion expanded={expandedAccordion} onChange={handleChangeExpanded}>
-          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-            <Typography>詳細設定</Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <FormLabel>表示範囲の指定</FormLabel>
-            <Typography variant="body2" color="gray" sx={{ mb: 1 }}>
-              マップの表示エリアを特定の範囲に絞ることができます。
-              <br />
-              パーク全体ではなく、特定のエリアにフォーカスしたマップを作成したい時に便利です。
-            </Typography>
+        {specialMapId && (
+          <Accordion expanded={expandedAccordion} onChange={handleChangeExpanded}>
+            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+              <Typography>詳細設定</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <FormLabel>表示範囲の指定</FormLabel>
+              <Typography variant="body2" color="gray" sx={{ mb: 1 }}>
+                マップの表示エリアを特定の範囲に絞ることができます。
+                <br />
+                パーク全体ではなく、特定のエリアにフォーカスしたマップを作成したい時に便利です。
+              </Typography>
 
-            <AreaSelection />
-          </AccordionDetails>
-        </Accordion>
+              <AreaSelection />
+            </AccordionDetails>
+          </Accordion>
+        )}
 
         <LoadingButton
           loading={loading}

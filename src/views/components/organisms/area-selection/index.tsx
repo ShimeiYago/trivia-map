@@ -30,6 +30,7 @@ const initCrop: PercentCrop = {
 export function AreaSelection() {
   const [activeSelection, setActiveSelection] = useState(false);
   const [crop, setCrop] = useState<PercentCrop>(initCrop);
+  const [mounted, setMounted] = useState<boolean>(false);
 
   const dispatch = useAppDispatch();
 
@@ -45,6 +46,7 @@ export function AreaSelection() {
       setActiveSelection(true);
       area && setCrop(areaToCrop(area));
     }
+    setMounted(true);
   }, []);
 
   useEffect(() => {
@@ -53,6 +55,8 @@ export function AreaSelection() {
       dispatch(updateArea(DEFAULT_AREA));
     }
   }, [selectablePark]);
+
+  if (!mounted) return null;
 
   return (
     <>

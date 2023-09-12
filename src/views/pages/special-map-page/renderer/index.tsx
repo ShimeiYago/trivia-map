@@ -30,7 +30,13 @@ import { metaInfoBox, mapTopArea } from './styles';
 import { mapWrapper, wrapper } from 'views/common-styles/map-page';
 import { ParkSelectBox } from 'views/components/moleculars/park-select-box';
 import { MapMarker } from 'views/components/moleculars/map-marker';
-import { LatLng, LatLngBoundsExpression, Map as LeafletMap } from 'leaflet';
+import {
+  LatLng,
+  LatLngBoundsExpression,
+  LatLngTuple,
+  Map as LeafletMap,
+  PathOptions,
+} from 'leaflet';
 import { Image } from 'views/components/moleculars/image';
 import { DynamicAlignedText } from 'views/components/atoms/dynamic-aligned-text';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
@@ -66,6 +72,7 @@ import { Link, Navigate } from 'react-router-dom';
 import { LoadingState } from 'types/loading-state';
 import { User } from 'types/user';
 import LockIcon from '@mui/icons-material/Lock';
+import { Rectangle } from 'react-leaflet';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -263,6 +270,8 @@ export class Renderer extends React.Component<Props, State> {
           >
             {this.renderMarkers()}
             {this.renderFormMarker()}
+
+            {this.renderRectangle()}
           </ParkMap>
 
           <Box sx={mapTopArea(!isMobile && this.state.openFormModal, isMobile)}>
@@ -394,6 +403,60 @@ export class Renderer extends React.Component<Props, State> {
         mapController={{ map, popup }}
         variant={specialMapMarkerForm.variant}
       />
+    );
+  };
+
+  protected renderRectangle = () => {
+    const { specialMap } = this.state;
+
+    if (
+      !specialMap ||
+      specialMap.minLatitude === undefined ||
+      specialMap.maxLatitude === undefined ||
+      specialMap.minLongitude === undefined ||
+      specialMap.maxLongitude === undefined
+    ) {
+      return null;
+    }
+
+    const blackOptions: PathOptions = { color: 'black', stroke: false, fillOpacity: 0.8 };
+
+    const leftRectangle: LatLngTuple[] | undefined =
+      specialMap.minLongitude > 0
+        ? [
+            [-MAP_MAX_COORINATE, 0],
+            [0, specialMap.minLongitude],
+          ]
+        : undefined;
+    const rightRectangle: LatLngTuple[] | undefined =
+      specialMap.maxLongitude < MAP_MAX_COORINATE
+        ? [
+            [-MAP_MAX_COORINATE, specialMap.maxLongitude],
+            [0, MAP_MAX_COORINATE],
+          ]
+        : undefined;
+    const topRectangle: LatLngTuple[] | undefined =
+      specialMap.maxLatitude < 0
+        ? [
+            [specialMap.maxLatitude, specialMap.minLongitude],
+            [0, specialMap.maxLongitude],
+          ]
+        : undefined;
+    const bottomRectangle: LatLngTuple[] | undefined =
+      specialMap.minLatitude > -MAP_MAX_COORINATE
+        ? [
+            [-MAP_MAX_COORINATE, specialMap.minLongitude],
+            [specialMap.minLatitude, specialMap.maxLongitude],
+          ]
+        : undefined;
+
+    return (
+      <>
+        {leftRectangle && <Rectangle bounds={leftRectangle} pathOptions={blackOptions} />}
+        {rightRectangle && <Rectangle bounds={rightRectangle} pathOptions={blackOptions} />}
+        {topRectangle && <Rectangle bounds={topRectangle} pathOptions={blackOptions} />}
+        {bottomRectangle && <Rectangle bounds={bottomRectangle} pathOptions={blackOptions} />}
+      </>
     );
   };
 

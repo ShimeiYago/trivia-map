@@ -40,8 +40,6 @@ export const submitSpecialMap = (): AppThunk => async (dispatch, getState) => {
   /* istanbul ignore next */
   const refreshUser = () => dispatch(updateUser(undefined));
 
-  console.log(area);
-
   let res: PostSpecialMapResponse;
   try {
     if (specialMapId) {

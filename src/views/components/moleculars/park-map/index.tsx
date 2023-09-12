@@ -1,6 +1,6 @@
 import React from 'react';
 import { MapContainer, MapContainerProps, TileLayer, ZoomControl } from 'react-leaflet';
-import { LatLng, Map as LeafletMap } from 'leaflet';
+import { LatLng, LatLngBoundsExpression, Map as LeafletMap } from 'leaflet';
 import { Box, Button, Grid, SxProps, Typography } from '@mui/material';
 import { Position } from 'types/position';
 import { Park } from 'types/park';
@@ -20,25 +20,36 @@ import TouchAppIcon from '@mui/icons-material/TouchApp';
 import { blue } from '@mui/material/colors';
 import selectionPosition from 'images/selection-position.png';
 
+/* istanbul ignore file */
+
 export class ParkMap extends React.Component<Props, State> {
   static readonly defaultProps: Pick<Props, 'initZoom'> = {
     initZoom: ZOOMS.default,
   };
 
-  state: State = {};
+  state: State = {
+    resetting: false,
+  };
 
   constructor(props: Props) {
     super(props);
     this.handleMapCreated = this.handleMapCreated.bind(this);
   }
 
-  /* istanbul ignore next */
   componentDidUpdate(prevProps: Readonly<Props>): void {
     if (
       this.props.initCenter &&
       JSON.stringify(prevProps.initCenter) !== JSON.stringify(this.props.initCenter)
     ) {
       this.state.map?.setView(this.props.initCenter);
+    }
+
+    if (JSON.stringify(prevProps.maxBounds) !== JSON.stringify(this.props.maxBounds)) {
+      this.resetView();
+    }
+
+    if (prevProps.minZoom !== this.props.minZoom) {
+      this.resetView();
     }
 
     if (
@@ -53,6 +64,10 @@ export class ParkMap extends React.Component<Props, State> {
 
   render() {
     const { width, height, initZoom, initCenter, disabled, park, children } = this.props;
+
+    if (this.state.resetting) {
+      return null;
+    }
 
     const mapWrapper: SxProps = {
       width: width ?? '100%',
@@ -75,6 +90,11 @@ export class ParkMap extends React.Component<Props, State> {
 
     const attribution = `&copy; <a target="_blank" href="${ATTRIBUTION.url}">${ATTRIBUTION.text}</a>`;
 
+    const maxBounds: LatLngBoundsExpression = this.props.maxBounds ?? [
+      [MAP_MARGIN, -MAP_MARGIN],
+      [-MAP_MAX_COORINATE - MAP_MARGIN, MAP_MAX_COORINATE + MAP_MARGIN],
+    ];
+
     return (
       <>
         {this.renderGuideDialog()}
@@ -84,13 +104,10 @@ export class ParkMap extends React.Component<Props, State> {
             center={center}
             zoom={initZoom}
             zoomControl={false}
-            minZoom={ZOOMS.min}
+            minZoom={this.props.minZoom ?? ZOOMS.min}
             maxZoom={ZOOMS.max}
             crs={CRS.Simple}
-            maxBounds={[
-              [MAP_MARGIN, -MAP_MARGIN],
-              [-MAP_MAX_COORINATE - MAP_MARGIN, MAP_MAX_COORINATE + MAP_MARGIN],
-            ]}
+            maxBounds={maxBounds}
             whenCreated={this.handleMapCreated}
             tap={false}
             {...(disabled ? disabledProps : {})}
@@ -177,6 +194,18 @@ export class ParkMap extends React.Component<Props, State> {
       </>
     );
   }
+
+  protected resetView = () => {
+    this.setState(
+      {
+        resetting: true,
+      },
+      () =>
+        this.setState({
+          resetting: false,
+        }),
+    );
+  };
 }
 
 export type Props = {
@@ -186,6 +215,8 @@ export type Props = {
   initCenter?: Omit<Position, 'park'>;
   disabled?: boolean;
   park: Park;
+  maxBounds?: LatLngBoundsExpression;
+  minZoom?: number;
   positionSelectProps?: {
     active: boolean;
     onCancel: () => void;
@@ -199,4 +230,5 @@ export type Props = {
 
 export type State = {
   map?: LeafletMap;
+  resetting: boolean;
 };

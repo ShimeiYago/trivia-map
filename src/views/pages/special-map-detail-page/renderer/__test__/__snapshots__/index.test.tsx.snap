@@ -83,7 +83,7 @@ exports[`Shallow Snapshot Tests loaded (without thumbnail) 1`] = `
       variant="h6"
     />
     <ForwardRef(Stack)
-      spacing={2}
+      spacing={5}
     >
       <ForwardRef(Box)
         bgcolor="#f5f8fa"
@@ -303,7 +303,7 @@ exports[`Shallow Snapshot Tests loaded 1`] = `
       variant="h6"
     />
     <ForwardRef(Stack)
-      spacing={2}
+      spacing={5}
     >
       <ForwardRef(Box)
         bgcolor="#f5f8fa"
@@ -523,7 +523,7 @@ exports[`Shallow Snapshot Tests loading markers 1`] = `
       variant="h6"
     />
     <ForwardRef(Stack)
-      spacing={2}
+      spacing={5}
     >
       <CenterSpinner />
     </ForwardRef(Stack)>

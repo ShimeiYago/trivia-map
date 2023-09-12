@@ -1,4 +1,5 @@
 import { PreviewListOrder } from 'api/articles-api/get-articles-previews';
+import { Area } from 'types/area';
 import { MapMarkerVariant } from 'types/marker-icon';
 import { Park, SelectablePark } from 'types/park';
 
@@ -136,3 +137,10 @@ export const MAP_MARKER_VARIANT: { [key: string]: MapMarkerVariant } = {
 };
 
 export const MINI_MAP_HEIGHT = 300;
+
+export const DEFAULT_AREA: Area = {
+  minLatitude: -MAP_MAX_COORINATE,
+  maxLatitude: 0.0,
+  minLongitude: 0.0,
+  maxLongitude: MAP_MAX_COORINATE,
+};

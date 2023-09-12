@@ -30,7 +30,13 @@ import { metaInfoBox, mapTopArea } from './styles';
 import { mapWrapper, wrapper } from 'views/common-styles/map-page';
 import { ParkSelectBox } from 'views/components/moleculars/park-select-box';
 import { MapMarker } from 'views/components/moleculars/map-marker';
-import { LatLng, Map as LeafletMap } from 'leaflet';
+import {
+  LatLng,
+  LatLngBoundsExpression,
+  LatLngTuple,
+  Map as LeafletMap,
+  PathOptions,
+} from 'leaflet';
 import { Image } from 'views/components/moleculars/image';
 import { DynamicAlignedText } from 'views/components/atoms/dynamic-aligned-text';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
@@ -42,7 +48,7 @@ import {
   SPECIAL_MAP_PAGE_LINK,
 } from 'constant/links';
 import { ApiError } from 'api/utils/handle-axios-error';
-import { PARKS, ZOOMS } from 'constant';
+import { MAP_MARGIN, MAP_MAX_COORINATE, PARKS, ZOOMS } from 'constant';
 import { autoRefreshApiWrapper } from 'utils/auto-refresh-api-wrapper';
 import { BoxModal } from 'views/components/moleculars/box-modal';
 import { SpecialMapSettingForm } from 'views/components/organisms/special-map-setting-form';
@@ -66,6 +72,7 @@ import { Link, Navigate } from 'react-router-dom';
 import { LoadingState } from 'types/loading-state';
 import { User } from 'types/user';
 import LockIcon from '@mui/icons-material/Lock';
+import { Rectangle } from 'react-leaflet';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -91,42 +98,47 @@ export class Renderer extends React.Component<Props, State> {
     this.fetchSpecialMapMarkers();
   }
 
-  componentDidUpdate(prevProps: Readonly<Props>) {
+  componentDidUpdate(prevProps: Readonly<Props>, prevState: Readonly<State>) {
     const { specialMapSettingForm, specialMapMarkerForm } = this.props;
     if (
       prevProps.specialMapSettingForm.loading === 'loading' &&
       specialMapSettingForm.loading === 'success' &&
       this.state.specialMap
     ) {
-      this.setState({
-        openSettingModal: false,
-        notification: {
-          message: '設定を更新しました。',
-          type: 'success',
+      this.setState(
+        {
+          openSettingModal: false,
+          notification: {
+            message: '設定を更新しました。',
+            type: 'success',
+          },
+          specialMap: {
+            ...this.state.specialMap,
+            title: specialMapSettingForm.title,
+            description: specialMapSettingForm.description,
+            isPublic: specialMapSettingForm.isPublic,
+            thumbnail:
+              typeof specialMapSettingForm.thumbnail === 'string'
+                ? specialMapSettingForm.thumbnail
+                : null,
+            selectablePark:
+              specialMapSettingForm.selectablePark ?? this.state.specialMap.selectablePark,
+            minLatitude:
+              specialMapSettingForm.area?.minLatitude ?? this.state.specialMap.minLatitude,
+            maxLatitude:
+              specialMapSettingForm.area?.maxLatitude ?? this.state.specialMap.maxLatitude,
+            minLongitude:
+              specialMapSettingForm.area?.minLongitude ?? this.state.specialMap.minLongitude,
+            maxLongitude:
+              specialMapSettingForm.area?.maxLongitude ?? this.state.specialMap.maxLongitude,
+          },
+          park:
+            specialMapSettingForm.selectablePark === 'both' || !specialMapSettingForm.selectablePark
+              ? this.state.park
+              : specialMapSettingForm.selectablePark,
         },
-        specialMap: {
-          ...this.state.specialMap,
-          title: specialMapSettingForm.title,
-          description: specialMapSettingForm.description,
-          isPublic: specialMapSettingForm.isPublic,
-          thumbnail:
-            typeof specialMapSettingForm.thumbnail === 'string'
-              ? specialMapSettingForm.thumbnail
-              : null,
-          selectablePark:
-            specialMapSettingForm.selectablePark ?? this.state.specialMap.selectablePark,
-          minLatitude: specialMapSettingForm.area?.minLatitude ?? this.state.specialMap.minLatitude,
-          maxLatitude: specialMapSettingForm.area?.maxLatitude ?? this.state.specialMap.maxLatitude,
-          minLongitude:
-            specialMapSettingForm.area?.minLongitude ?? this.state.specialMap.minLongitude,
-          maxLongitude:
-            specialMapSettingForm.area?.maxLongitude ?? this.state.specialMap.maxLongitude,
-        },
-        park:
-          specialMapSettingForm.selectablePark === 'both' || !specialMapSettingForm.selectablePark
-            ? this.state.park
-            : specialMapSettingForm.selectablePark,
-      });
+        this.setInitialCenter,
+      );
     }
 
     if (
@@ -145,6 +157,20 @@ export class Renderer extends React.Component<Props, State> {
       });
       this.fetchSpecialMapMarkers();
       this.props.initializeSpecialMapForm();
+    }
+
+    if (
+      this.state.positionSelectMode &&
+      !prevState.positionSelectMode &&
+      this.props.specialMapMarkerForm.lat &&
+      this.props.specialMapMarkerForm.lng
+    ) {
+      this.setState({
+        initCenter: {
+          lat: this.props.specialMapMarkerForm.lat,
+          lng: this.props.specialMapMarkerForm.lng,
+        },
+      });
     }
   }
 
@@ -175,10 +201,10 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   protected renderSpecialMap = () => {
-    const { windowWidth, windowHeight, isMobile, editMode, specialMapMarkerForm } = this.props;
-    const { specialMap } = this.state;
+    const { windowWidth, windowHeight, isMobile, editMode } = this.props;
+    const { specialMap, initCenter } = this.state;
 
-    if (!windowWidth || !windowHeight || !specialMap) {
+    if (!windowWidth || !windowHeight || !specialMap || !initCenter) {
       return (
         <Box my={1}>
           <CenterSpinner />
@@ -204,13 +230,22 @@ export class Renderer extends React.Component<Props, State> {
       });
     };
 
-    const formPosition: Omit<Position, 'park'> | undefined =
-      specialMapMarkerForm.lat && specialMapMarkerForm.lng
-        ? {
-            lat: specialMapMarkerForm.lat,
-            lng: specialMapMarkerForm.lng,
-          }
-        : undefined;
+    let maxBounds: LatLngBoundsExpression | undefined = undefined;
+    let minZoom: number | undefined = undefined;
+    if (
+      specialMap.minLatitude &&
+      specialMap.maxLatitude &&
+      specialMap.minLongitude &&
+      specialMap.maxLongitude
+    ) {
+      const width = specialMap.maxLatitude - specialMap.minLatitude;
+      maxBounds = [
+        [specialMap.maxLatitude + MAP_MARGIN, specialMap.minLongitude - MAP_MARGIN],
+        [specialMap.minLatitude - MAP_MARGIN, specialMap.maxLongitude + MAP_MARGIN],
+      ];
+      const div = Math.ceil(MAP_MAX_COORINATE / width);
+      minZoom = div < ZOOMS.min ? ZOOMS.min : div > ZOOMS.max ? ZOOMS.max : div;
+    }
 
     return (
       <>
@@ -224,7 +259,9 @@ export class Renderer extends React.Component<Props, State> {
           <ParkMap
             park={this.state.park}
             setMap={this.setMap}
-            initCenter={this.state.positionSelectMode ? formPosition : undefined}
+            initCenter={this.state.initCenter}
+            minZoom={minZoom}
+            maxBounds={maxBounds}
             positionSelectProps={{
               active: this.state.positionSelectMode,
               onConfirm: this.handleConfirmMarkerPosition,
@@ -233,6 +270,8 @@ export class Renderer extends React.Component<Props, State> {
           >
             {this.renderMarkers()}
             {this.renderFormMarker()}
+
+            {this.renderRectangle()}
           </ParkMap>
 
           <Box sx={mapTopArea(!isMobile && this.state.openFormModal, isMobile)}>
@@ -367,6 +406,60 @@ export class Renderer extends React.Component<Props, State> {
     );
   };
 
+  protected renderRectangle = () => {
+    const { specialMap } = this.state;
+
+    if (
+      !specialMap ||
+      specialMap.minLatitude === undefined ||
+      specialMap.maxLatitude === undefined ||
+      specialMap.minLongitude === undefined ||
+      specialMap.maxLongitude === undefined
+    ) {
+      return null;
+    }
+
+    const blackOptions: PathOptions = { color: 'black', stroke: false, fillOpacity: 0.8 };
+
+    const leftRectangle: LatLngTuple[] | undefined =
+      specialMap.minLongitude > 0
+        ? [
+            [-MAP_MAX_COORINATE, 0],
+            [0, specialMap.minLongitude],
+          ]
+        : undefined;
+    const rightRectangle: LatLngTuple[] | undefined =
+      specialMap.maxLongitude < MAP_MAX_COORINATE
+        ? [
+            [-MAP_MAX_COORINATE, specialMap.maxLongitude],
+            [0, MAP_MAX_COORINATE],
+          ]
+        : undefined;
+    const topRectangle: LatLngTuple[] | undefined =
+      specialMap.maxLatitude < 0
+        ? [
+            [specialMap.maxLatitude, specialMap.minLongitude],
+            [0, specialMap.maxLongitude],
+          ]
+        : undefined;
+    const bottomRectangle: LatLngTuple[] | undefined =
+      specialMap.minLatitude > -MAP_MAX_COORINATE
+        ? [
+            [-MAP_MAX_COORINATE, specialMap.minLongitude],
+            [specialMap.minLatitude, specialMap.maxLongitude],
+          ]
+        : undefined;
+
+    return (
+      <>
+        {leftRectangle && <Rectangle bounds={leftRectangle} pathOptions={blackOptions} />}
+        {rightRectangle && <Rectangle bounds={rightRectangle} pathOptions={blackOptions} />}
+        {topRectangle && <Rectangle bounds={topRectangle} pathOptions={blackOptions} />}
+        {bottomRectangle && <Rectangle bounds={bottomRectangle} pathOptions={blackOptions} />}
+      </>
+    );
+  };
+
   protected renderMetaInfo = () => {
     const pt = 0.4;
     return (
@@ -438,11 +531,14 @@ export class Renderer extends React.Component<Props, State> {
         this.props.refreshUser,
       );
 
-      this.setState({
-        loadingSpecialMap: false,
-        specialMap: res,
-        park: res.selectablePark !== 'both' ? res.selectablePark : this.state.park,
-      });
+      this.setState(
+        {
+          loadingSpecialMap: false,
+          specialMap: res,
+          park: res.selectablePark !== 'both' ? res.selectablePark : this.state.park,
+        },
+        this.setInitialCenter,
+      );
     } catch (error) {
       const apiError = error as ApiError<unknown>;
 
@@ -451,6 +547,25 @@ export class Renderer extends React.Component<Props, State> {
       } else {
         this.props.throwError(apiError.status);
       }
+    }
+  };
+
+  protected setInitialCenter = () => {
+    const { specialMap } = this.state;
+
+    if (
+      specialMap &&
+      specialMap.minLatitude !== undefined &&
+      specialMap.maxLatitude !== undefined &&
+      specialMap.minLongitude !== undefined &&
+      specialMap.maxLongitude !== undefined
+    ) {
+      this.setState({
+        initCenter: {
+          lat: (specialMap.maxLatitude + specialMap.minLatitude) / 2,
+          lng: (specialMap.maxLongitude + specialMap.minLongitude) / 2,
+        },
+      });
     }
   };
 
@@ -791,4 +906,5 @@ export type State = {
   isDeletingMarker: boolean;
   openShareModal: boolean;
   openTooltipToGuideCreatingMarker: boolean;
+  initCenter?: Omit<Position, 'park'>;
 };

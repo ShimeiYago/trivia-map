@@ -1,8 +1,9 @@
 /* istanbul ignore file */
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useAppDispatch, useAppSelector } from 'store';
 import {
+  selectSpecialMapArea,
   selectSpecialMapDescription,
   selectSpecialMapFormError,
   selectSpecialMapId,
@@ -22,6 +23,9 @@ import {
 } from 'store/special-map-setting/actions';
 import { throwError } from 'store/global-error/slice';
 import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
   Box,
   Divider,
   FormControl,
@@ -35,7 +39,12 @@ import {
   Typography,
 } from '@mui/material';
 import { HeaderErrorMessages } from 'views/components/moleculars/header-error-messages';
-import { INPUT_FIELD_MAX_LENGTH, SELECTABLE_PARK, UPLOAD_IMAGE_MAX_LENGTH } from 'constant';
+import {
+  DEFAULT_AREA,
+  INPUT_FIELD_MAX_LENGTH,
+  SELECTABLE_PARK,
+  UPLOAD_IMAGE_MAX_LENGTH,
+} from 'constant';
 import { SelectablePark } from 'types/park';
 import { LoadingButton } from '@mui/lab';
 import { getImageSrc } from 'utils/get-image-src.ts';
@@ -44,8 +53,12 @@ import { ImageField } from 'views/components/moleculars/image-field';
 import { HelperText } from 'views/components/atoms/helper-text';
 import { toggleFormModal } from 'store/auths/actions';
 import { selectUser } from 'store/auths/selector';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { AreaSelection } from '../area-selection';
 
 export function SpecialMapSettingForm() {
+  const [expandedAccordion, setExpandedAccordion] = useState(false);
+
   const dispatch = useAppDispatch();
 
   const specialMapId = useAppSelector(selectSpecialMapId);
@@ -57,6 +70,7 @@ export function SpecialMapSettingForm() {
   const isPublic = useAppSelector(selectSpecialMapIsPublic);
   const selectablePark = useAppSelector(selectSpecialMapSelectablePark);
   const userInfo = useAppSelector(selectUser);
+  const area = useAppSelector(selectSpecialMapArea);
 
   const imageSrc = getImageSrc(thumbnail);
 
@@ -71,6 +85,12 @@ export function SpecialMapSettingForm() {
       });
     }
   }, [formError]);
+
+  useEffect(() => {
+    if (JSON.stringify(area) !== JSON.stringify(DEFAULT_AREA)) {
+      setExpandedAccordion(true);
+    }
+  }, []);
 
   return (
     <Box maxWidth="sm" sx={{ p: 0, my: 3, mx: 'auto' }}>
@@ -183,6 +203,24 @@ export function SpecialMapSettingForm() {
           </HelperText>
         </FormControl>
 
+        {specialMapId && (
+          <Accordion expanded={expandedAccordion} onChange={handleChangeExpanded}>
+            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+              <Typography>詳細設定</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <FormLabel>表示範囲の指定</FormLabel>
+              <Typography variant="body2" color="gray" sx={{ mb: 1 }}>
+                マップの表示エリアを特定の範囲に絞ることができます。
+                <br />
+                パーク全体ではなく、特定のエリアにフォーカスしたマップを作成したい時に便利です。
+              </Typography>
+
+              <AreaSelection />
+            </AccordionDetails>
+          </Accordion>
+        )}
+
         <LoadingButton
           loading={loading}
           variant="contained"
@@ -202,5 +240,9 @@ export function SpecialMapSettingForm() {
     }
 
     dispatch(submitSpecialMap());
+  }
+
+  function handleChangeExpanded(_: unknown, expanded: boolean) {
+    setExpandedAccordion(expanded);
   }
 }

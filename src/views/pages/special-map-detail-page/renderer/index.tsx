@@ -27,6 +27,7 @@ import { getDomain } from 'utils/get-domain.ts';
 import EditIcon from '@mui/icons-material/Edit';
 import { User } from 'types/user';
 import { AuthorLink } from 'views/components/atoms/author-link';
+import { maxLengthSlice } from 'utils/max-length-slice.ts';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -46,8 +47,13 @@ export class Renderer extends React.Component<Props, State> {
   render() {
     const { mapId } = this.props;
 
+    let mapName = this.state.specialMap ? `${this.state.specialMap.title}` : '全体マップ';
+    if (this.props.isMobile) {
+      mapName = maxLengthSlice(mapName, 14);
+    }
+
     const localBackNavi = {
-      text: this.state.specialMap ? `${this.state.specialMap.title}へ戻る` : '全体マップへ戻る',
+      text: `${mapName}へ戻る`,
       link: SPECIAL_MAP_PAGE_LINK(String(mapId)),
     };
 
@@ -266,6 +272,7 @@ export class Renderer extends React.Component<Props, State> {
 export type Props = {
   mapId: number;
   user?: User;
+  isMobile: boolean;
 
   throwError: (errorStatus: number) => void;
 };

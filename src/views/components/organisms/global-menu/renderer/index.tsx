@@ -34,6 +34,7 @@ import noIcon from 'images/no-icon.jpg';
 import { TwitterLoginButton } from '../../twitter-login-button';
 import EmailIcon from '@mui/icons-material/Email';
 import { Footer } from 'views/components/moleculars/footer';
+import { maxLengthSlice } from 'utils/max-length-slice.ts';
 export class Renderer extends React.Component<Props, State> {
   static readonly defaultProps: Pick<Props, 'topBarPosition'> = {
     topBarPosition: 'fixed',
@@ -179,8 +180,9 @@ export class Renderer extends React.Component<Props, State> {
 
   protected renderAuthMenu = () => {
     let nickname = `${this.props.userInfo?.nickname ?? 'ゲストさん'}`;
-    if (this.props.isMobile && nickname.length > 8) {
-      nickname = nickname.slice(0, 8) + '...';
+
+    if (this.props.isMobile) {
+      nickname = maxLengthSlice(nickname, 8);
     }
 
     return (

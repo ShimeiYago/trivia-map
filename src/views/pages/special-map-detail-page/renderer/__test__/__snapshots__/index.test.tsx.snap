@@ -91,7 +91,7 @@ exports[`Shallow Snapshot Tests loaded (without thumbnail) 1`] = `
         key="special-map-marker--67.6875-140.75"
       >
         <NonStyleLink
-          to="/special-maps/0"
+          to="/special-maps/0?marker=1&park=L"
         >
           <ForwardRef(Box)
             height={200}
@@ -168,7 +168,7 @@ exports[`Shallow Snapshot Tests loaded (without thumbnail) 1`] = `
         key="special-map-marker--140.46875-111.0625"
       >
         <NonStyleLink
-          to="/special-maps/0"
+          to="/special-maps/0?marker=2&park=S"
         >
           <ForwardRef(Box)
             height={200}
@@ -311,7 +311,7 @@ exports[`Shallow Snapshot Tests loaded 1`] = `
         key="special-map-marker--67.6875-140.75"
       >
         <NonStyleLink
-          to="/special-maps/0"
+          to="/special-maps/0?marker=1&park=L"
         >
           <ForwardRef(Box)
             height={200}
@@ -388,7 +388,7 @@ exports[`Shallow Snapshot Tests loaded 1`] = `
         key="special-map-marker--140.46875-111.0625"
       >
         <NonStyleLink
-          to="/special-maps/0"
+          to="/special-maps/0?marker=2&park=S"
         >
           <ForwardRef(Box)
             height={200}

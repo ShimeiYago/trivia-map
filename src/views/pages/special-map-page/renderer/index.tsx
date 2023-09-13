@@ -461,18 +461,17 @@ export class Renderer extends React.Component<Props, State> {
   };
 
   protected renderMetaInfo = () => {
-    const pt = 0.4;
     return (
       <Box sx={metaInfoBox}>
         <Grid container spacing={0}>
-          <Grid item xs={1} pt={pt}>
+          <Grid item xs={1} textAlign="center">
             {this.props.editMode ? (
-              <IconButton color="primary" onClick={this.toggleSettingModal(true)}>
+              <IconButton color="primary" onClick={this.toggleSettingModal(true)} sx={{ p: 0 }}>
                 {this.props.editMode ? <SettingsIcon /> : <HelpOutlineIcon />}
               </IconButton>
             ) : (
               <NonStyleLink to={SPECIAL_MAP_DETAIL_PAGE_LINK(String(this.props.mapId))}>
-                <IconButton color="primary">
+                <IconButton color="primary" sx={{ p: 0 }}>
                   <HelpOutlineIcon />
                 </IconButton>
               </NonStyleLink>
@@ -481,14 +480,18 @@ export class Renderer extends React.Component<Props, State> {
           <Grid item xs={10}>
             {this.renderTitle()}
           </Grid>
-          <Grid item xs={1} pt={pt} textAlign="center">
+          <Grid item xs={1} textAlign="center">
             {this.state.specialMap?.isPublic ? (
-              <IconButton color="primary" onClick={() => this.setState({ openShareModal: true })}>
+              <IconButton
+                color="primary"
+                sx={{ p: 0 }}
+                onClick={() => this.setState({ openShareModal: true })}
+              >
                 <ShareIcon />
               </IconButton>
             ) : (
               <Tooltip title="非公開" arrow enterTouchDelay={0}>
-                <Box pt={1}>
+                <Box>
                   <LockIcon />
                 </Box>
               </Tooltip>
@@ -695,7 +698,7 @@ export class Renderer extends React.Component<Props, State> {
         <Typography variant="body2" align="center" fontSize="0.75rem">
           {caption}
         </Typography>
-        <Typography component="h2" variant="h6" align="center">
+        <DynamicAlignedText component="h2" variant="h6">
           {this.props.editMode ? (
             <Link to={SPECIAL_MAP_PAGE_LINK(String(this.state.specialMap?.specialMapId))}>
               {this.state.specialMap?.title}
@@ -703,7 +706,7 @@ export class Renderer extends React.Component<Props, State> {
           ) : (
             this.state.specialMap?.title
           )}
-        </Typography>
+        </DynamicAlignedText>
       </>
     );
   };

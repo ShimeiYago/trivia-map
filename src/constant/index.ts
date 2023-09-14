@@ -134,6 +134,14 @@ export const MAP_MARKER_VARIANT: { [key: string]: MapMarkerVariant } = {
   blue: 'blue',
   red: 'red',
   restroom: 'restroom',
+  signboard: 'signboard',
+  food: 'food',
+  drink: 'drink',
+  hightower: 'hightower',
+  nemo: 'nemo',
+  popcoon: 'popcoon',
+  sea: 'sea',
+  star: 'star',
 };
 
 export const MINI_MAP_HEIGHT = 300;

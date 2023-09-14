@@ -109,11 +109,11 @@ exports[`Shallow Snapshot Tests variant restroom 1`] = `
       "options": Object {
         "iconAnchor": Array [
           30,
-          35,
+          25,
         ],
         "iconSize": Array [
           60,
-          70,
+          57,
         ],
         "iconUrl": "restroom.png",
         "popupAnchor": Array [

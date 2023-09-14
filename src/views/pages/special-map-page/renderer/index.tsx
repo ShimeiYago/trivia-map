@@ -679,9 +679,9 @@ export class Renderer extends React.Component<Props, State> {
 
     if (!this.props.editMode && !isAuthor && this.state.specialMap?.isPublic) {
       return (
-        <Typography component="h2" variant="h6" py={1} align="center">
+        <DynamicAlignedText component="h2" variant="h6" py={1}>
           {this.state.specialMap?.title}
-        </Typography>
+        </DynamicAlignedText>
       );
     }
 

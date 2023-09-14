@@ -28,14 +28,23 @@ import { ImageField } from 'views/components/moleculars/image-field';
 import { MapField } from 'views/components/moleculars/map-field';
 import { Position } from 'types/position';
 import { MapMarkerVariant } from 'types/marker-icon';
-import defaultIconUrl from 'images/marker-icons/default.png';
-import redIconUrl from 'images/marker-icons/red.png';
-import restroomIconUrl from 'images/marker-icons/restroom.png';
 import classes from './index.module.css';
 import { ParkMap } from 'views/components/moleculars/park-map';
 import { Park } from 'types/park';
 import { MapMarker } from 'views/components/moleculars/map-marker';
 import { LatLng } from 'leaflet';
+
+import defaultIconUrl from 'images/marker-icons/default.png';
+import redIconUrl from 'images/marker-icons/red.png';
+import restroomIconUrl from 'images/marker-icons/restroom.png';
+import foodIconUrl from 'images/marker-icons/food.png';
+import signboardIconUrl from 'images/marker-icons/signboard.png';
+import drinkIconUrl from 'images/marker-icons/drink.png';
+import hightowerIconUrl from 'images/marker-icons/hightower.png';
+import nemoIconUrl from 'images/marker-icons/nemo.png';
+import popcoonIconUrl from 'images/marker-icons/popcoon.png';
+import seaIconUrl from 'images/marker-icons/sea.png';
+import starIconUrl from 'images/marker-icons/star.png';
 
 export function SpecialMapMarkerForm(props: Props) {
   const dispatch = useAppDispatch();
@@ -193,10 +202,49 @@ const MARKER_OPTIONS: { value: MapMarkerVariant; name: string; imgSrc: string }[
     value: MAP_MARKER_VARIANT.red,
     imgSrc: redIconUrl,
   },
-
+  {
+    name: 'スター',
+    value: MAP_MARKER_VARIANT.star,
+    imgSrc: starIconUrl,
+  },
+  {
+    name: 'フード',
+    value: MAP_MARKER_VARIANT.food,
+    imgSrc: foodIconUrl,
+  },
+  {
+    name: 'ドリンク',
+    value: MAP_MARKER_VARIANT.drink,
+    imgSrc: drinkIconUrl,
+  },
+  {
+    name: 'ポップコーン',
+    value: MAP_MARKER_VARIANT.popcoon,
+    imgSrc: popcoonIconUrl,
+  },
   {
     name: 'レストルーム',
     value: MAP_MARKER_VARIANT.restroom,
     imgSrc: restroomIconUrl,
+  },
+  {
+    name: '看板',
+    value: MAP_MARKER_VARIANT.signboard,
+    imgSrc: signboardIconUrl,
+  },
+  {
+    name: 'ネモ',
+    value: MAP_MARKER_VARIANT.nemo,
+    imgSrc: nemoIconUrl,
+  },
+  {
+    name: 'ハイタワー',
+    value: MAP_MARKER_VARIANT.hightower,
+    imgSrc: hightowerIconUrl,
+  },
+  {
+    name: 'S.E.A.',
+    value: MAP_MARKER_VARIANT.sea,
+    imgSrc: seaIconUrl,
   },
 ];

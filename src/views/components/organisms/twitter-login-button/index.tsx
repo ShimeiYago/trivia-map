@@ -15,9 +15,9 @@ export function TwitterLoginButton(ownProps: OwnProps) {
     userInfo: useAppSelector(selectUser),
     loginSuccess: (user: User) => dispatch(loginSuccess(user)),
     setAccessTokenExpiration: (expirationDate: Date) =>
-      setCookie(COOKIE_NAME.hasAccessToken, 'true', { expires: expirationDate }),
+      setCookie(COOKIE_NAME.hasAccessToken, 'true', { expires: expirationDate, path: '/' }),
     setRefreshTokenExpiration: (expirationDate: Date) =>
-      setCookie(COOKIE_NAME.hasRefreshToken, 'true', { expires: expirationDate }),
+      setCookie(COOKIE_NAME.hasRefreshToken, 'true', { expires: expirationDate, path: '/' }),
     onLoginSucceed: ownProps.onLoginSucceed,
     throwError: (errorStatus: number) => dispatch(throwError(errorStatus)),
   };

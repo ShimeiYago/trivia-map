@@ -172,6 +172,13 @@ export class Renderer extends React.Component<Props, State> {
         },
       });
     }
+
+    if (
+      prevState.specialMap &&
+      prevState.specialMap?.selectablePark !== this.state.specialMap?.selectablePark
+    ) {
+      this.fetchSpecialMapMarkers();
+    }
   }
 
   render() {

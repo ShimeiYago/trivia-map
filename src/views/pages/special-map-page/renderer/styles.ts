@@ -35,3 +35,10 @@ export const metaInfoBox: SxProps = {
   boxSizing: 'border-box',
   maxWidth: '800px',
 };
+
+export const centralizeBox: SxProps = {
+  display: 'flex',
+  justifyContent: 'center',
+  justifyItems: 'center',
+  height: '100%',
+};

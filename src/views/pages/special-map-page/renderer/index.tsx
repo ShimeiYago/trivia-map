@@ -26,7 +26,7 @@ import {
   Typography,
 } from '@mui/material';
 import { GlobalMenu } from 'views/components/organisms/global-menu';
-import { metaInfoBox, mapTopArea } from './styles';
+import { metaInfoBox, mapTopArea, centralizeBox } from './styles';
 import { mapWrapper, wrapper } from 'views/common-styles/map-page';
 import { ParkSelectBox } from 'views/components/moleculars/park-select-box';
 import { MapMarker } from 'views/components/moleculars/map-marker';
@@ -464,37 +464,41 @@ export class Renderer extends React.Component<Props, State> {
     return (
       <Box sx={metaInfoBox}>
         <Grid container spacing={0}>
-          <Grid item xs={1} textAlign="center">
+          <Grid item xs={1}>
             {this.props.editMode ? (
-              <IconButton color="primary" onClick={this.toggleSettingModal(true)} sx={{ p: 0 }}>
-                {this.props.editMode ? <SettingsIcon /> : <HelpOutlineIcon />}
-              </IconButton>
+              <Box sx={centralizeBox} onClick={this.toggleSettingModal(true)}>
+                <IconButton color="primary" sx={{ p: 0 }}>
+                  {this.props.editMode ? <SettingsIcon /> : <HelpOutlineIcon />}
+                </IconButton>
+              </Box>
             ) : (
               <NonStyleLink to={SPECIAL_MAP_DETAIL_PAGE_LINK(String(this.props.mapId))}>
-                <IconButton color="primary" sx={{ p: 0 }}>
-                  <HelpOutlineIcon />
-                </IconButton>
+                <Box sx={centralizeBox}>
+                  <IconButton color="primary" sx={{ p: 0 }}>
+                    <HelpOutlineIcon />
+                  </IconButton>
+                </Box>
               </NonStyleLink>
             )}
           </Grid>
           <Grid item xs={10}>
             {this.renderTitle()}
           </Grid>
-          <Grid item xs={1} textAlign="center">
+          <Grid item xs={1}>
             {this.state.specialMap?.isPublic ? (
-              <IconButton
-                color="primary"
-                sx={{ p: 0 }}
-                onClick={() => this.setState({ openShareModal: true })}
-              >
-                <ShareIcon />
-              </IconButton>
+              <Box sx={centralizeBox} onClick={() => this.setState({ openShareModal: true })}>
+                <IconButton color="primary" sx={{ p: 0 }}>
+                  <ShareIcon />
+                </IconButton>
+              </Box>
             ) : (
-              <Tooltip title="非公開" arrow enterTouchDelay={0}>
-                <Box>
-                  <LockIcon />
-                </Box>
-              </Tooltip>
+              <Box sx={centralizeBox}>
+                <Tooltip title="非公開" arrow enterTouchDelay={0}>
+                  <IconButton sx={{ p: 0, cursor: 'default' }}>
+                    <LockIcon />
+                  </IconButton>
+                </Tooltip>
+              </Box>
             )}
           </Grid>
         </Grid>

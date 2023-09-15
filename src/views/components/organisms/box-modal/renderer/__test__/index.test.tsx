@@ -1,17 +1,18 @@
 import { shallow, ShallowWrapper } from 'enzyme';
-import { BoxModal, Props } from '..';
+import { Renderer, Props } from '..';
 
-let wrapper: ShallowWrapper<Props, unknown, BoxModal>;
+let wrapper: ShallowWrapper<Props, unknown, Renderer>;
 
 const basicProps: Props = {
   open: true,
   onClose: jest.fn(),
   children: 'Test',
+  windowHeight: 500,
 };
 
 describe('Shallow Snapshot Tests', () => {
   beforeEach(() => {
-    wrapper = shallow(<BoxModal {...basicProps} />);
+    wrapper = shallow(<Renderer {...basicProps} />);
   });
 
   it('basic', () => {

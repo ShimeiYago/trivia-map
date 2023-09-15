@@ -3,7 +3,7 @@ import { Modal, Box, Typography, IconButton } from '@mui/material';
 import { boxStyle } from './styles';
 import CloseIcon from '@mui/icons-material/Close';
 
-export class BoxModal extends React.Component<Props> {
+export class Renderer extends React.Component<Props> {
   render() {
     const closeButton = (
       <Typography align="right" color="gray">
@@ -22,7 +22,7 @@ export class BoxModal extends React.Component<Props> {
             : this.props.onClose
         }
       >
-        <Box sx={boxStyle}>
+        <Box sx={boxStyle} maxHeight={this.props.windowHeight}>
           {this.props.showCloseButton && closeButton}
           {this.props.children}
         </Box>
@@ -37,4 +37,5 @@ export type Props = {
   children: ReactNode;
   showCloseButton?: boolean;
   disableClickOutside?: boolean;
+  windowHeight: number;
 };

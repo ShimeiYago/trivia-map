@@ -687,9 +687,9 @@ export class Renderer extends React.Component<Props, State> {
 
     if (!this.props.editMode && !isAuthor && this.state.specialMap?.isPublic) {
       return (
-        <DynamicAlignedText component="h2" variant="h6" py={1}>
+        <Typography component="h2" variant="body1" align="center" py={1} fontSize={18}>
           {this.state.specialMap?.title}
-        </DynamicAlignedText>
+        </Typography>
       );
     }
 
@@ -710,15 +710,9 @@ export class Renderer extends React.Component<Props, State> {
         <Typography variant="body2" align="center" fontSize="0.75rem">
           {caption}
         </Typography>
-        <DynamicAlignedText component="h2" variant="h6">
-          {this.props.editMode ? (
-            <Link to={SPECIAL_MAP_PAGE_LINK(String(this.state.specialMap?.specialMapId))}>
-              {this.state.specialMap?.title}
-            </Link>
-          ) : (
-            this.state.specialMap?.title
-          )}
-        </DynamicAlignedText>
+        <Typography component="h2" variant="body1" align="center" fontSize={18}>
+          {this.state.specialMap?.title}
+        </Typography>
       </>
     );
   };

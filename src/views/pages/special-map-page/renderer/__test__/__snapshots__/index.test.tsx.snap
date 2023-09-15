@@ -18,13 +18,12 @@ exports[`Shallow Snapshot Tests basic 1`] = `
     disableClickOutside={true}
     onClose={[Function]}
     open={false}
+    scroll={true}
     showCloseButton={true}
   >
     <ForwardRef(Box)
       sx={
         Object {
-          "height": "90vh",
-          "overflowY": "auto",
           "px": 2,
         }
       }
@@ -95,13 +94,12 @@ exports[`Shallow Snapshot Tests focusing a marker 1`] = `
     disableClickOutside={true}
     onClose={[Function]}
     open={false}
+    scroll={true}
     showCloseButton={true}
   >
     <ForwardRef(Box)
       sx={
         Object {
-          "height": "90vh",
-          "overflowY": "auto",
           "px": 2,
         }
       }
@@ -193,13 +191,12 @@ exports[`Shallow Snapshot Tests loaded (pc) 1`] = `
     disableClickOutside={true}
     onClose={[Function]}
     open={false}
+    scroll={true}
     showCloseButton={true}
   >
     <ForwardRef(Box)
       sx={
         Object {
-          "height": "90vh",
-          "overflowY": "auto",
           "px": 2,
         }
       }
@@ -281,13 +278,12 @@ exports[`Shallow Snapshot Tests loaded 1`] = `
     disableClickOutside={true}
     onClose={[Function]}
     open={false}
+    scroll={true}
     showCloseButton={true}
   >
     <ForwardRef(Box)
       sx={
         Object {
-          "height": "90vh",
-          "overflowY": "auto",
           "px": 2,
         }
       }
@@ -379,13 +375,12 @@ exports[`Shallow Snapshot Tests loading markers 1`] = `
     disableClickOutside={true}
     onClose={[Function]}
     open={false}
+    scroll={true}
     showCloseButton={true}
   >
     <ForwardRef(Box)
       sx={
         Object {
-          "height": "90vh",
-          "overflowY": "auto",
           "px": 2,
         }
       }
@@ -477,13 +472,12 @@ exports[`Shallow Snapshot Tests without height 1`] = `
     disableClickOutside={true}
     onClose={[Function]}
     open={false}
+    scroll={true}
     showCloseButton={true}
   >
     <ForwardRef(Box)
       sx={
         Object {
-          "height": "90vh",
-          "overflowY": "auto",
           "px": 2,
         }
       }

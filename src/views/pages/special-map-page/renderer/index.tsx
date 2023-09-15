@@ -670,8 +670,9 @@ export class Renderer extends React.Component<Props, State> {
         onClose={this.toggleSettingModal(false)}
         showCloseButton
         disableClickOutside
+        scroll
       >
-        <Box sx={{ px: 2, overflowY: 'auto', height: '90vh' }}>
+        <Box sx={{ px: 2 }}>
           <SpecialMapSettingForm />
         </Box>
       </BoxModal>

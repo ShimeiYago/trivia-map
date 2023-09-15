@@ -20,7 +20,16 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       }
     }
   >
-    Test
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "height": undefined,
+          "overflowY": "auto",
+        }
+      }
+    >
+      Test
+    </ForwardRef(Box)>
   </ForwardRef(Box)>
 </ForwardRef(Modal)>
 `;
@@ -56,7 +65,16 @@ exports[`Shallow Snapshot Tests disable click out of modal 1`] = `
         <Memo(ForwardRef(CloseIcon)) />
       </ForwardRef(IconButton)>
     </ForwardRef(Typography)>
-    Test
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "height": undefined,
+          "overflowY": "auto",
+        }
+      }
+    >
+      Test
+    </ForwardRef(Box)>
   </ForwardRef(Box)>
 </ForwardRef(Modal)>
 `;
@@ -93,7 +111,16 @@ exports[`Shallow Snapshot Tests show close button 1`] = `
         <Memo(ForwardRef(CloseIcon)) />
       </ForwardRef(IconButton)>
     </ForwardRef(Typography)>
-    Test
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "height": undefined,
+          "overflowY": "auto",
+        }
+      }
+    >
+      Test
+    </ForwardRef(Box)>
   </ForwardRef(Box)>
 </ForwardRef(Modal)>
 `;

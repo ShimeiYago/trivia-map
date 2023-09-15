@@ -13,6 +13,13 @@ export class Renderer extends React.Component<Props> {
       </Typography>
     );
 
+    /* istanbul ignore next */
+    const childrenHeight = this.props.scroll
+      ? this.props.showCloseButton
+        ? this.props.windowHeight - 50
+        : this.props.windowHeight
+      : undefined;
+
     return (
       <Modal
         open={this.props.open}
@@ -24,7 +31,7 @@ export class Renderer extends React.Component<Props> {
       >
         <Box sx={boxStyle} maxHeight={this.props.windowHeight}>
           {this.props.showCloseButton && closeButton}
-          {this.props.children}
+          <Box sx={{ overflowY: 'auto', height: childrenHeight }}>{this.props.children}</Box>
         </Box>
       </Modal>
     );
@@ -38,4 +45,5 @@ export type Props = {
   showCloseButton?: boolean;
   disableClickOutside?: boolean;
   windowHeight: number;
+  scroll?: boolean;
 };

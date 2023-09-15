@@ -4,6 +4,8 @@ import { markersReducer } from './markers/slice';
 import { articleFormReducer } from './article-form/slice';
 import { authsReducer } from './auths/slice/index';
 import { globalErrorReducer } from './global-error/slice';
+import { specialMapSettingReducer } from './special-map-setting/slice';
+import { specialMapMarkerFormReducer } from './special-map-marker-form/slice';
 
 // store
 export const store = configureStore({
@@ -12,6 +14,8 @@ export const store = configureStore({
     articleForm: articleFormReducer,
     auths: authsReducer,
     globalError: globalErrorReducer,
+    specialMapSetting: specialMapSettingReducer,
+    specialMapMarkerForm: specialMapMarkerFormReducer,
   },
 });
 

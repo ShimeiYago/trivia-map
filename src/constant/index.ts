@@ -1,5 +1,7 @@
 import { PreviewListOrder } from 'api/articles-api/get-articles-previews';
-import { Park } from 'types/park';
+import { Area } from 'types/area';
+import { MapMarkerVariant } from 'types/marker-icon';
+import { Park, SelectablePark } from 'types/park';
 
 export const BASE_URL = process.env.REACT_APP_API_BASE_URL ?? 'http://localhost:3001';
 
@@ -105,6 +107,8 @@ export const INPUT_FIELD_MAX_LENGTH = {
   articleDescription: 500,
   nickname: 20,
   inquiryMessage: 2000,
+  specialMapDescription: 200,
+  specialMapMarkerDescription: 200,
 };
 
 export const NO_INDEX = process.env.REACT_APP_NO_INDEX;
@@ -118,4 +122,33 @@ export const ARTICLE_LIST_ORDERS: { [key: string]: PreviewListOrder } = {
   latest: 'latest',
   oldest: 'oldest',
   popular: 'popular',
+};
+
+export const SELECTABLE_PARK: { [key: string]: SelectablePark } = {
+  land: 'L',
+  sea: 'S',
+  both: 'both',
+};
+
+export const MAP_MARKER_VARIANT: { [key: string]: MapMarkerVariant } = {
+  blue: 'blue',
+  red: 'red',
+  restroom: 'restroom',
+  signboard: 'signboard',
+  food: 'food',
+  drink: 'drink',
+  hightower: 'hightower',
+  nemo: 'nemo',
+  popcoon: 'popcoon',
+  sea: 'sea',
+  star: 'star',
+};
+
+export const MINI_MAP_HEIGHT = 300;
+
+export const DEFAULT_AREA: Area = {
+  minLatitude: -MAP_MAX_COORINATE,
+  maxLatitude: 0.0,
+  minLongitude: 0.0,
+  maxLongitude: MAP_MAX_COORINATE,
 };

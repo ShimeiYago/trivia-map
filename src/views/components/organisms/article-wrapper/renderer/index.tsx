@@ -25,7 +25,7 @@ import { CATEGORIES } from 'constant';
 import { NonStyleLink } from 'views/components/atoms/non-style-link';
 
 const DEFAULT_LOCAL_BACK_NAVI = {
-  text: '全体マップへ',
+  text: 'トリビアマップへ',
   link: MAP_PAGE_LINK,
 };
 

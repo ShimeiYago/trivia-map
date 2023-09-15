@@ -1,8 +1,23 @@
+/* istanbul ignore file */
+
 import React, { ReactNode } from 'react';
 import { Marker } from 'react-leaflet';
 import { LatLng, LeafletEventHandlerFnMap, Marker as MarkerType, Map as LeafletMap } from 'leaflet';
 
-import { defaultIcon, redIcon, redIconWithNumber, restroomIcon } from './icons';
+import {
+  defaultIcon,
+  foodIcon,
+  redIcon,
+  redIconWithNumber,
+  restroomIcon,
+  signboardIcon,
+  drinkIcon,
+  hightowerIcon,
+  nemoIcon,
+  popcoonIcon,
+  seaIcon,
+  starIcon,
+} from './icons';
 import { CustomMarker } from './helpers/custom-marker';
 import { ZOOMS } from 'constant';
 import { MapMarkerVariant } from 'types/marker-icon';
@@ -38,6 +53,30 @@ export class MapMarker extends React.Component<Props, State> {
         break;
       case 'restroom':
         icon = restroomIcon;
+        break;
+      case 'food':
+        icon = foodIcon;
+        break;
+      case 'signboard':
+        icon = signboardIcon;
+        break;
+      case 'drink':
+        icon = drinkIcon;
+        break;
+      case 'hightower':
+        icon = hightowerIcon;
+        break;
+      case 'nemo':
+        icon = nemoIcon;
+        break;
+      case 'sea':
+        icon = seaIcon;
+        break;
+      case 'star':
+        icon = starIcon;
+        break;
+      case 'popcoon':
+        icon = popcoonIcon;
         break;
     }
 

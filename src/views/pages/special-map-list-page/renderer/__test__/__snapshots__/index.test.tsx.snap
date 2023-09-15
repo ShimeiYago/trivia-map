@@ -27,6 +27,21 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       variant="inherit"
     />
   </ForwardRef(Typography)>
+  <ForwardRef(Typography)
+    align="center"
+    my={3}
+  >
+    <NonStyleLink
+      to="/special-maps/new"
+    >
+      <ForwardRef(Button)
+        color="error"
+        variant="contained"
+      >
+        新しいオリジナルマップを作成する
+      </ForwardRef(Button)>
+    </NonStyleLink>
+  </ForwardRef(Typography)>
   <CenterSpinner />
 </ArticleWrapper>
 `;
@@ -57,6 +72,21 @@ exports[`Shallow Snapshot Tests with no special maps 1`] = `
       text="オリジナルマップ"
       variant="inherit"
     />
+  </ForwardRef(Typography)>
+  <ForwardRef(Typography)
+    align="center"
+    my={3}
+  >
+    <NonStyleLink
+      to="/special-maps/new"
+    >
+      <ForwardRef(Button)
+        color="error"
+        variant="contained"
+      >
+        新しいオリジナルマップを作成する
+      </ForwardRef(Button)>
+    </NonStyleLink>
   </ForwardRef(Typography)>
   <ForwardRef(Typography)
     align="center"
@@ -92,6 +122,21 @@ exports[`Shallow Snapshot Tests with special maps 1`] = `
       text="オリジナルマップ"
       variant="inherit"
     />
+  </ForwardRef(Typography)>
+  <ForwardRef(Typography)
+    align="center"
+    my={3}
+  >
+    <NonStyleLink
+      to="/special-maps/new"
+    >
+      <ForwardRef(Button)
+        color="error"
+        variant="contained"
+      >
+        新しいオリジナルマップを作成する
+      </ForwardRef(Button)>
+    </NonStyleLink>
   </ForwardRef(Typography)>
   <div />
   <ForwardRef(Stack)

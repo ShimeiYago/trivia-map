@@ -18,4 +18,6 @@ export const PAGE_NAMES = {
   terms: '利用規約',
   privacy: 'プライバシーポリシー',
   specialMap: 'オリジナルマップ',
+  specialMapNew: '新規オリジナルマップ作成',
+  specialMapManage: 'オリジナルマップ一覧',
 };

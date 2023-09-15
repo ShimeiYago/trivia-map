@@ -8,7 +8,7 @@ import { UploadedImage } from 'types/uploaded-image';
 import ReactCrop, { PercentCrop, PixelCrop } from 'react-image-crop';
 import 'react-image-crop/dist/ReactCrop.css';
 import { getImageSize } from 'utils/get-image-size.ts';
-import { BoxModal } from '../box-modal';
+import { BoxModal } from 'views/components/organisms/box-modal';
 import { sendGa4ExceptionEvent } from 'utils/send-ga4-exception-event';
 import { HelperText } from 'views/components/atoms/helper-text';
 import CropIcon from '@mui/icons-material/Crop';

@@ -253,6 +253,7 @@ exports[`Shallow Snapshot Tests author map 1`] = `
 exports[`Shallow Snapshot Tests basic 1`] = `
 <Fragment>
   <CommonHelmet
+    canonicalUrlPath="/"
     description="隠れミッキー、バックグラウンドストーリーなど、ディズニーのマニアックな知識をが地図上で共有できるサイト"
     title="トリビアマップ"
   />
@@ -470,6 +471,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
 exports[`Shallow Snapshot Tests before render map 1`] = `
 <Fragment>
   <CommonHelmet
+    canonicalUrlPath="/"
     description="隠れミッキー、バックグラウンドストーリーなど、ディズニーのマニアックな知識をが地図上で共有できるサイト"
     title="トリビアマップ"
   />
@@ -672,6 +674,7 @@ exports[`Shallow Snapshot Tests before render map 1`] = `
 exports[`Shallow Snapshot Tests land mode 1`] = `
 <Fragment>
   <CommonHelmet
+    canonicalUrlPath="/"
     description="隠れミッキー、バックグラウンドストーリーなど、ディズニーのマニアックな知識をが地図上で共有できるサイト"
     title="トリビアマップ"
   />
@@ -889,6 +892,7 @@ exports[`Shallow Snapshot Tests land mode 1`] = `
 exports[`Shallow Snapshot Tests park is undefined 1`] = `
 <Fragment>
   <CommonHelmet
+    canonicalUrlPath="/"
     description="隠れミッキー、バックグラウンドストーリーなど、ディズニーのマニアックな知識をが地図上で共有できるサイト"
     title="トリビアマップ"
   />
@@ -1073,6 +1077,7 @@ exports[`Shallow Snapshot Tests park is undefined 1`] = `
 exports[`Shallow Snapshot Tests pc view 1`] = `
 <Fragment>
   <CommonHelmet
+    canonicalUrlPath="/"
     description="隠れミッキー、バックグラウンドストーリーなど、ディズニーのマニアックな知識をが地図上で共有できるサイト"
     title="トリビアマップ"
   />
@@ -1245,26 +1250,15 @@ exports[`Shallow Snapshot Tests pc view 1`] = `
         </ForwardRef(Box)>
       </ForwardRef(Box)>
     </GlobalMenu>
-    <ForwardRef(Drawer)
-      anchor="right"
+    <RightDrawer
+      onClose={[Function]}
       open={true}
-      sx={
-        Object {
-          "& .MuiDrawer-paper": Object {
-            "width": 500,
-          },
-          "flexShrink": 0,
-          "width": 500,
-        }
-      }
-      variant="persistent"
     >
       <ArticleForm
         onClickSelectPosition={[Function]}
-        onClose={[Function]}
         park="S"
       />
-    </ForwardRef(Drawer)>
+    </RightDrawer>
     <GlobalMessage />
     <SubmitSuccessModal />
     <ForwardRef(Dialog)

@@ -5,6 +5,8 @@ import * as GetSpecialMapMarkersApiModule from 'api/special-map-api/get-special-
 import { mockGetSpecialMapResponse } from 'api/mock/special-map-response';
 import { mockGetSpecialMapMarkersResponseWithPagination } from 'api/mock/special-map-response';
 import { Map as LeafletMap } from 'leaflet';
+import { initialState as specialMapSettingFormInitialState } from 'store/special-map-setting/model';
+import { initialState as specialMapMarkerFormInitialState } from 'store/special-map-marker-form/model';
 
 let shallowWrapper: ShallowWrapper<Props, State, Renderer>;
 let getSpecialMapSpy: jest.SpyInstance;
@@ -22,6 +24,15 @@ const props: Props = {
   windowWidth: 100,
   throwError: jest.fn(),
   mapId: 0,
+  editMode: false,
+  refreshUser: jest.fn(),
+  setSpecialMap: jest.fn(),
+  specialMapSettingForm: specialMapSettingFormInitialState,
+  specialMapMarkerForm: specialMapMarkerFormInitialState,
+  updatePosition: jest.fn(),
+  initializeSpecialMapForm: jest.fn(),
+  setSpecialMapMarkerForm: jest.fn(),
+  autoLoggingInState: 'waiting',
 };
 
 describe('Shallow Snapshot Tests', () => {

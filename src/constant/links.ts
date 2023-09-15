@@ -57,6 +57,8 @@ export const TWITTER_LOGIN_LINK = '/twitter-login';
 
 export const SPECIAL_MAP_LIST_PAGE_LINK = '/special-maps';
 
+export const SPECIAL_MAP_NEW_PAGE_LINK = '/special-maps/new';
+
 export const SPECIAL_MAP_PAGE_LINK = (mapId: string, param?: { marker?: number; park?: Park }) => {
   let url = `/special-maps/${mapId}`;
   if (param) {
@@ -65,4 +67,8 @@ export const SPECIAL_MAP_PAGE_LINK = (mapId: string, param?: { marker?: number; 
   return url;
 };
 
+export const SPECIAL_MAP_EDIT_PAGE_LINK = (mapId: string) => `/special-maps/edit/${mapId}`;
+
 export const SPECIAL_MAP_DETAIL_PAGE_LINK = (mapId: string) => `/special-maps/detail/${mapId}`;
+
+export const SPECIAL_MAP_MANAGE_PAGE_LINK = '/admin/special-maps';

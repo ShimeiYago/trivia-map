@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Shallow Snapshot Tests basic 1`] = `
-<Fragment>
+<ForwardRef(Box)
+  sx={Object {}}
+>
   <GlobalMenu
     mapPage={true}
     topBarPosition="static"
@@ -12,560 +14,72 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       <CenterSpinner />
     </ForwardRef(Box)>
   </GlobalMenu>
-</Fragment>
+  <BoxModal
+    disableClickOutside={true}
+    onClose={[Function]}
+    open={false}
+    scroll={true}
+    showCloseButton={true}
+  >
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "px": 2,
+        }
+      }
+    >
+      <SpecialMapSettingForm />
+    </ForwardRef(Box)>
+  </BoxModal>
+  <ForwardRef(Snackbar)
+    autoHideDuration={6000}
+    onClose={[Function]}
+    open={false}
+  >
+    <ForwardRef(Alert)
+      onClose={[Function]}
+      sx={
+        Object {
+          "width": "100%",
+        }
+      }
+      variant="filled"
+    />
+  </ForwardRef(Snackbar)>
+  <SwipeableEdgeDrawer
+    bleedingHeight={56}
+    edgeLabel={
+      <CloseFormButton
+        onClose={[Function]}
+      />
+    }
+    edgeLabelWhenClosed="編集中"
+    heightRatio={80}
+    onClose={[Function]}
+    onOpen={[Function]}
+    open={false}
+    show={false}
+  >
+    <SpecialMapMarkerForm
+      defaultPark="L"
+      onClickMiniMap={[Function]}
+      specialMapId={0}
+    />
+  </SwipeableEdgeDrawer>
+  <DeleteConfirmDialog
+    deleting={false}
+    onClose={[Function]}
+    onDelete={[Function]}
+    open={false}
+    title="マーカーを削除しますか？"
+  />
+</ForwardRef(Box)>
 `;
 
 exports[`Shallow Snapshot Tests focusing a marker 1`] = `
-<Fragment>
-  <GlobalMenu
-    mapPage={true}
-    topBarPosition="static"
-  >
-    <CommonHelmet
-      canonicalUrlPath="/special-maps/detail/1"
-      description="定番から穴場まで、ディズニーのトイレマップです。"
-      title="トイレマップ"
-    />
-    <ForwardRef(Box)
-      sx={
-        Object {
-          "height": "calc(100px - 58px)",
-          "position": "relative",
-          "width": "100px",
-        }
-      }
-    >
-      <ParkMap
-        initZoom={2}
-        park="L"
-        setMap={[Function]}
-      >
-        <MapMarker
-          autoOpen={false}
-          draggable={false}
-          key="special-map--67.6875-140.75"
-          mapController={
-            Object {
-              "map": Object {
-                "flyTo": [MockFunction] {
-                  "calls": Array [
-                    Array [
-                      Object {
-                        "lat": -67.6875,
-                        "lng": 140.75,
-                      },
-                      3,
-                      Object {
-                        "animate": false,
-                      },
-                    ],
-                  ],
-                  "results": Array [
-                    Object {
-                      "type": "return",
-                      "value": undefined,
-                    },
-                  ],
-                },
-                "invalidateSize": [MockFunction],
-                "on": [MockFunction],
-              },
-              "popup": <React.Fragment>
-                <ForwardRef(Typography)
-                  align="center"
-                  component="div"
-                  mb={2}
-                >
-                  <Image
-                    maxHeight="200px"
-                    maxWidth="full"
-                    src="https://cdn-ak.f.st-hatena.com/images/fotolife/n/nats-co/20160323/20160323164220.jpg"
-                  />
-                </ForwardRef(Typography)>
-                <DynamicAlignedText
-                  component="div"
-                >
-                  アリスモチーフのトイレです。トランプ模様の扉がかわいい。
-                </DynamicAlignedText>
-              </React.Fragment>,
-            }
-          }
-          position={
-            Object {
-              "lat": -67.6875,
-              "lng": 140.75,
-            }
-          }
-          variant="restroom"
-          zIndexOffset={0}
-        />
-      </ParkMap>
-      <ForwardRef(Box)
-        sx={
-          Object {
-            "left": "50%",
-            "margin": 0,
-            "position": "fixed",
-            "top": 68,
-            "transform": "translate(-50%, 0)",
-            "width": "95%",
-            "zIndex": 1000,
-          }
-        }
-      >
-        <ForwardRef(Box)
-          sx={
-            Object {
-              "backgroundColor": "rgba(255, 255, 255, 0.9)",
-              "borderRadius": 1,
-              "boxSizing": "border-box",
-              "maxWidth": "800px",
-              "mb": 1,
-              "mx": "auto",
-              "p": 1,
-            }
-          }
-        >
-          <ForwardRef(Grid)
-            container={true}
-            spacing={0}
-          >
-            <ForwardRef(Grid)
-              item={true}
-              pt={0.4}
-              xs={1}
-            >
-              <NonStyleLink
-                to="/special-maps/detail/0"
-              >
-                <ForwardRef(IconButton)
-                  color="primary"
-                >
-                  <Memo(ForwardRef(HelpOutlineIcon)) />
-                </ForwardRef(IconButton)>
-              </NonStyleLink>
-            </ForwardRef(Grid)>
-            <ForwardRef(Grid)
-              item={true}
-              xs={10}
-            >
-              <ForwardRef(Typography)
-                align="center"
-                component="h2"
-                py={1}
-                variant="h6"
-              >
-                トイレマップ
-              </ForwardRef(Typography)>
-            </ForwardRef(Grid)>
-            <ForwardRef(Grid)
-              item={true}
-              xs={1}
-            />
-          </ForwardRef(Grid)>
-        </ForwardRef(Box)>
-        <ForwardRef(Box)
-          textAlign="right"
-        >
-          <ForwardRef(Box)
-            display="inline-block"
-          >
-            <ParkSelectBox
-              onChangePark={[Function]}
-              park="L"
-            />
-          </ForwardRef(Box)>
-        </ForwardRef(Box)>
-      </ForwardRef(Box)>
-      <LoadingProgressBar
-        fetchingState="success"
-        isMobile={true}
-        loadedPages={0}
-      />
-    </ForwardRef(Box)>
-  </GlobalMenu>
-</Fragment>
-`;
-
-exports[`Shallow Snapshot Tests loaded (pc) 1`] = `
-<Fragment>
-  <GlobalMenu
-    mapPage={true}
-    topBarPosition="static"
-  >
-    <CommonHelmet
-      canonicalUrlPath="/special-maps/detail/1"
-      description="定番から穴場まで、ディズニーのトイレマップです。"
-      title="トイレマップ"
-    />
-    <ForwardRef(Box)
-      sx={
-        Object {
-          "height": "calc(100px - 66px)",
-          "position": "relative",
-          "width": "100px",
-        }
-      }
-    >
-      <ParkMap
-        initZoom={2}
-        park="L"
-        setMap={[Function]}
-      />
-      <ForwardRef(Box)
-        sx={
-          Object {
-            "left": "50%",
-            "margin": 0,
-            "position": "fixed",
-            "top": 76,
-            "transform": "translate(-50%, 0)",
-            "width": "95%",
-            "zIndex": 1000,
-          }
-        }
-      >
-        <ForwardRef(Box)
-          sx={
-            Object {
-              "backgroundColor": "rgba(255, 255, 255, 0.9)",
-              "borderRadius": 1,
-              "boxSizing": "border-box",
-              "maxWidth": "800px",
-              "mb": 1,
-              "mx": "auto",
-              "p": 1,
-            }
-          }
-        >
-          <ForwardRef(Grid)
-            container={true}
-            spacing={0}
-          >
-            <ForwardRef(Grid)
-              item={true}
-              pt={0.4}
-              xs={1}
-            >
-              <NonStyleLink
-                to="/special-maps/detail/0"
-              >
-                <ForwardRef(IconButton)
-                  color="primary"
-                >
-                  <Memo(ForwardRef(HelpOutlineIcon)) />
-                </ForwardRef(IconButton)>
-              </NonStyleLink>
-            </ForwardRef(Grid)>
-            <ForwardRef(Grid)
-              item={true}
-              xs={10}
-            >
-              <ForwardRef(Typography)
-                align="center"
-                component="h2"
-                py={1}
-                variant="h6"
-              >
-                トイレマップ
-              </ForwardRef(Typography)>
-            </ForwardRef(Grid)>
-            <ForwardRef(Grid)
-              item={true}
-              xs={1}
-            />
-          </ForwardRef(Grid)>
-        </ForwardRef(Box)>
-        <ForwardRef(Box)
-          textAlign="right"
-        >
-          <ForwardRef(Box)
-            display="inline-block"
-          >
-            <ParkSelectBox
-              onChangePark={[Function]}
-              park="L"
-            />
-          </ForwardRef(Box)>
-        </ForwardRef(Box)>
-      </ForwardRef(Box)>
-      <LoadingProgressBar
-        fetchingState="success"
-        isMobile={false}
-        loadedPages={0}
-      />
-    </ForwardRef(Box)>
-  </GlobalMenu>
-</Fragment>
-`;
-
-exports[`Shallow Snapshot Tests loaded 1`] = `
-<Fragment>
-  <GlobalMenu
-    mapPage={true}
-    topBarPosition="static"
-  >
-    <CommonHelmet
-      canonicalUrlPath="/special-maps/detail/1"
-      description="定番から穴場まで、ディズニーのトイレマップです。"
-      title="トイレマップ"
-    />
-    <ForwardRef(Box)
-      sx={
-        Object {
-          "height": "calc(100px - 58px)",
-          "position": "relative",
-          "width": "100px",
-        }
-      }
-    >
-      <ParkMap
-        initZoom={2}
-        park="L"
-        setMap={[Function]}
-      >
-        <MapMarker
-          autoOpen={false}
-          draggable={false}
-          key="special-map--67.6875-140.75"
-          mapController={
-            Object {
-              "map": Object {
-                "flyTo": [MockFunction],
-                "invalidateSize": [MockFunction],
-                "on": [MockFunction],
-              },
-              "popup": <React.Fragment>
-                <ForwardRef(Typography)
-                  align="center"
-                  component="div"
-                  mb={2}
-                >
-                  <Image
-                    maxHeight="200px"
-                    maxWidth="full"
-                    src="https://cdn-ak.f.st-hatena.com/images/fotolife/n/nats-co/20160323/20160323164220.jpg"
-                  />
-                </ForwardRef(Typography)>
-                <DynamicAlignedText
-                  component="div"
-                >
-                  アリスモチーフのトイレです。トランプ模様の扉がかわいい。
-                </DynamicAlignedText>
-              </React.Fragment>,
-            }
-          }
-          position={
-            Object {
-              "lat": -67.6875,
-              "lng": 140.75,
-            }
-          }
-          variant="restroom"
-          zIndexOffset={0}
-        />
-      </ParkMap>
-      <ForwardRef(Box)
-        sx={
-          Object {
-            "left": "50%",
-            "margin": 0,
-            "position": "fixed",
-            "top": 68,
-            "transform": "translate(-50%, 0)",
-            "width": "95%",
-            "zIndex": 1000,
-          }
-        }
-      >
-        <ForwardRef(Box)
-          sx={
-            Object {
-              "backgroundColor": "rgba(255, 255, 255, 0.9)",
-              "borderRadius": 1,
-              "boxSizing": "border-box",
-              "maxWidth": "800px",
-              "mb": 1,
-              "mx": "auto",
-              "p": 1,
-            }
-          }
-        >
-          <ForwardRef(Grid)
-            container={true}
-            spacing={0}
-          >
-            <ForwardRef(Grid)
-              item={true}
-              pt={0.4}
-              xs={1}
-            >
-              <NonStyleLink
-                to="/special-maps/detail/0"
-              >
-                <ForwardRef(IconButton)
-                  color="primary"
-                >
-                  <Memo(ForwardRef(HelpOutlineIcon)) />
-                </ForwardRef(IconButton)>
-              </NonStyleLink>
-            </ForwardRef(Grid)>
-            <ForwardRef(Grid)
-              item={true}
-              xs={10}
-            >
-              <ForwardRef(Typography)
-                align="center"
-                component="h2"
-                py={1}
-                variant="h6"
-              >
-                トイレマップ
-              </ForwardRef(Typography)>
-            </ForwardRef(Grid)>
-            <ForwardRef(Grid)
-              item={true}
-              xs={1}
-            />
-          </ForwardRef(Grid)>
-        </ForwardRef(Box)>
-        <ForwardRef(Box)
-          textAlign="right"
-        >
-          <ForwardRef(Box)
-            display="inline-block"
-          >
-            <ParkSelectBox
-              onChangePark={[Function]}
-              park="L"
-            />
-          </ForwardRef(Box)>
-        </ForwardRef(Box)>
-      </ForwardRef(Box)>
-      <LoadingProgressBar
-        fetchingState="success"
-        isMobile={true}
-        loadedPages={0}
-      />
-    </ForwardRef(Box)>
-  </GlobalMenu>
-</Fragment>
-`;
-
-exports[`Shallow Snapshot Tests loading markers 1`] = `
-<Fragment>
-  <GlobalMenu
-    mapPage={true}
-    topBarPosition="static"
-  >
-    <CommonHelmet
-      canonicalUrlPath="/special-maps/detail/1"
-      description="定番から穴場まで、ディズニーのトイレマップです。"
-      title="トイレマップ"
-    />
-    <ForwardRef(Box)
-      sx={
-        Object {
-          "height": "calc(100px - 58px)",
-          "position": "relative",
-          "width": "100px",
-        }
-      }
-    >
-      <ParkMap
-        initZoom={2}
-        park="L"
-        setMap={[Function]}
-      />
-      <ForwardRef(Box)
-        sx={
-          Object {
-            "left": "50%",
-            "margin": 0,
-            "position": "fixed",
-            "top": 68,
-            "transform": "translate(-50%, 0)",
-            "width": "95%",
-            "zIndex": 1000,
-          }
-        }
-      >
-        <ForwardRef(Box)
-          sx={
-            Object {
-              "backgroundColor": "rgba(255, 255, 255, 0.9)",
-              "borderRadius": 1,
-              "boxSizing": "border-box",
-              "maxWidth": "800px",
-              "mb": 1,
-              "mx": "auto",
-              "p": 1,
-            }
-          }
-        >
-          <ForwardRef(Grid)
-            container={true}
-            spacing={0}
-          >
-            <ForwardRef(Grid)
-              item={true}
-              pt={0.4}
-              xs={1}
-            >
-              <NonStyleLink
-                to="/special-maps/detail/0"
-              >
-                <ForwardRef(IconButton)
-                  color="primary"
-                >
-                  <Memo(ForwardRef(HelpOutlineIcon)) />
-                </ForwardRef(IconButton)>
-              </NonStyleLink>
-            </ForwardRef(Grid)>
-            <ForwardRef(Grid)
-              item={true}
-              xs={10}
-            >
-              <ForwardRef(Typography)
-                align="center"
-                component="h2"
-                py={1}
-                variant="h6"
-              >
-                トイレマップ
-              </ForwardRef(Typography)>
-            </ForwardRef(Grid)>
-            <ForwardRef(Grid)
-              item={true}
-              xs={1}
-            />
-          </ForwardRef(Grid)>
-        </ForwardRef(Box)>
-        <ForwardRef(Box)
-          textAlign="right"
-        >
-          <ForwardRef(Box)
-            display="inline-block"
-          >
-            <ParkSelectBox
-              onChangePark={[Function]}
-              park="L"
-            />
-          </ForwardRef(Box)>
-        </ForwardRef(Box)>
-      </ForwardRef(Box)>
-      <LoadingProgressBar
-        fetchingState="loading"
-        isMobile={true}
-        loadedPages={0}
-      />
-    </ForwardRef(Box)>
-  </GlobalMenu>
-</Fragment>
-`;
-
-exports[`Shallow Snapshot Tests without height 1`] = `
-<Fragment>
+<ForwardRef(Box)
+  sx={Object {}}
+>
   <GlobalMenu
     mapPage={true}
     topBarPosition="static"
@@ -576,5 +90,442 @@ exports[`Shallow Snapshot Tests without height 1`] = `
       <CenterSpinner />
     </ForwardRef(Box)>
   </GlobalMenu>
-</Fragment>
+  <BoxModal
+    disableClickOutside={true}
+    onClose={[Function]}
+    open={false}
+    scroll={true}
+    showCloseButton={true}
+  >
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "px": 2,
+        }
+      }
+    >
+      <SpecialMapSettingForm />
+    </ForwardRef(Box)>
+  </BoxModal>
+  <ForwardRef(Snackbar)
+    autoHideDuration={6000}
+    onClose={[Function]}
+    open={false}
+  >
+    <ForwardRef(Alert)
+      onClose={[Function]}
+      sx={
+        Object {
+          "width": "100%",
+        }
+      }
+      variant="filled"
+    />
+  </ForwardRef(Snackbar)>
+  <SwipeableEdgeDrawer
+    bleedingHeight={56}
+    edgeLabel={
+      <CloseFormButton
+        onClose={[Function]}
+      />
+    }
+    edgeLabelWhenClosed="編集中"
+    heightRatio={80}
+    onClose={[Function]}
+    onOpen={[Function]}
+    open={false}
+    show={false}
+  >
+    <SpecialMapMarkerForm
+      defaultPark="L"
+      onClickMiniMap={[Function]}
+      specialMapId={0}
+    />
+  </SwipeableEdgeDrawer>
+  <DeleteConfirmDialog
+    deleting={false}
+    onClose={[Function]}
+    onDelete={[Function]}
+    open={false}
+    title="マーカーを削除しますか？"
+  />
+  <BoxModal
+    onClose={[Function]}
+    open={false}
+  >
+    <ForwardRef(Box)
+      p={3}
+    >
+      <ForwardRef(Typography)
+        align="center"
+        mb={1}
+        variant="h6"
+      >
+        SNSでこのマップをシェアする
+      </ForwardRef(Typography)>
+      <ShareButtons
+        description="定番から穴場まで、ディズニーのトイレマップです。"
+        title="トイレマップ"
+        url="http://localhost/special-maps/1"
+      />
+    </ForwardRef(Box)>
+  </BoxModal>
+</ForwardRef(Box)>
+`;
+
+exports[`Shallow Snapshot Tests loaded (pc) 1`] = `
+<ForwardRef(Box)
+  sx={Object {}}
+>
+  <GlobalMenu
+    mapPage={true}
+    topBarPosition="static"
+  >
+    <ForwardRef(Box)
+      my={1}
+    >
+      <CenterSpinner />
+    </ForwardRef(Box)>
+  </GlobalMenu>
+  <BoxModal
+    disableClickOutside={true}
+    onClose={[Function]}
+    open={false}
+    scroll={true}
+    showCloseButton={true}
+  >
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "px": 2,
+        }
+      }
+    >
+      <SpecialMapSettingForm />
+    </ForwardRef(Box)>
+  </BoxModal>
+  <ForwardRef(Snackbar)
+    autoHideDuration={6000}
+    onClose={[Function]}
+    open={false}
+  >
+    <ForwardRef(Alert)
+      onClose={[Function]}
+      sx={
+        Object {
+          "width": "100%",
+        }
+      }
+      variant="filled"
+    />
+  </ForwardRef(Snackbar)>
+  <RightDrawer
+    onClose={[Function]}
+    open={false}
+  >
+    <SpecialMapMarkerForm
+      defaultPark="L"
+      onClickMiniMap={[Function]}
+      specialMapId={0}
+    />
+  </RightDrawer>
+  <DeleteConfirmDialog
+    deleting={false}
+    onClose={[Function]}
+    onDelete={[Function]}
+    open={false}
+    title="マーカーを削除しますか？"
+  />
+  <BoxModal
+    onClose={[Function]}
+    open={false}
+  >
+    <ForwardRef(Box)
+      p={3}
+    >
+      <ForwardRef(Typography)
+        align="center"
+        mb={1}
+        variant="h6"
+      >
+        SNSでこのマップをシェアする
+      </ForwardRef(Typography)>
+      <ShareButtons
+        description="定番から穴場まで、ディズニーのトイレマップです。"
+        title="トイレマップ"
+        url="http://localhost/special-maps/1"
+      />
+    </ForwardRef(Box)>
+  </BoxModal>
+</ForwardRef(Box)>
+`;
+
+exports[`Shallow Snapshot Tests loaded 1`] = `
+<ForwardRef(Box)
+  sx={Object {}}
+>
+  <GlobalMenu
+    mapPage={true}
+    topBarPosition="static"
+  >
+    <ForwardRef(Box)
+      my={1}
+    >
+      <CenterSpinner />
+    </ForwardRef(Box)>
+  </GlobalMenu>
+  <BoxModal
+    disableClickOutside={true}
+    onClose={[Function]}
+    open={false}
+    scroll={true}
+    showCloseButton={true}
+  >
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "px": 2,
+        }
+      }
+    >
+      <SpecialMapSettingForm />
+    </ForwardRef(Box)>
+  </BoxModal>
+  <ForwardRef(Snackbar)
+    autoHideDuration={6000}
+    onClose={[Function]}
+    open={false}
+  >
+    <ForwardRef(Alert)
+      onClose={[Function]}
+      sx={
+        Object {
+          "width": "100%",
+        }
+      }
+      variant="filled"
+    />
+  </ForwardRef(Snackbar)>
+  <SwipeableEdgeDrawer
+    bleedingHeight={56}
+    edgeLabel={
+      <CloseFormButton
+        onClose={[Function]}
+      />
+    }
+    edgeLabelWhenClosed="編集中"
+    heightRatio={80}
+    onClose={[Function]}
+    onOpen={[Function]}
+    open={false}
+    show={false}
+  >
+    <SpecialMapMarkerForm
+      defaultPark="L"
+      onClickMiniMap={[Function]}
+      specialMapId={0}
+    />
+  </SwipeableEdgeDrawer>
+  <DeleteConfirmDialog
+    deleting={false}
+    onClose={[Function]}
+    onDelete={[Function]}
+    open={false}
+    title="マーカーを削除しますか？"
+  />
+  <BoxModal
+    onClose={[Function]}
+    open={false}
+  >
+    <ForwardRef(Box)
+      p={3}
+    >
+      <ForwardRef(Typography)
+        align="center"
+        mb={1}
+        variant="h6"
+      >
+        SNSでこのマップをシェアする
+      </ForwardRef(Typography)>
+      <ShareButtons
+        description="定番から穴場まで、ディズニーのトイレマップです。"
+        title="トイレマップ"
+        url="http://localhost/special-maps/1"
+      />
+    </ForwardRef(Box)>
+  </BoxModal>
+</ForwardRef(Box)>
+`;
+
+exports[`Shallow Snapshot Tests loading markers 1`] = `
+<ForwardRef(Box)
+  sx={Object {}}
+>
+  <GlobalMenu
+    mapPage={true}
+    topBarPosition="static"
+  >
+    <ForwardRef(Box)
+      my={1}
+    >
+      <CenterSpinner />
+    </ForwardRef(Box)>
+  </GlobalMenu>
+  <BoxModal
+    disableClickOutside={true}
+    onClose={[Function]}
+    open={false}
+    scroll={true}
+    showCloseButton={true}
+  >
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "px": 2,
+        }
+      }
+    >
+      <SpecialMapSettingForm />
+    </ForwardRef(Box)>
+  </BoxModal>
+  <ForwardRef(Snackbar)
+    autoHideDuration={6000}
+    onClose={[Function]}
+    open={false}
+  >
+    <ForwardRef(Alert)
+      onClose={[Function]}
+      sx={
+        Object {
+          "width": "100%",
+        }
+      }
+      variant="filled"
+    />
+  </ForwardRef(Snackbar)>
+  <SwipeableEdgeDrawer
+    bleedingHeight={56}
+    edgeLabel={
+      <CloseFormButton
+        onClose={[Function]}
+      />
+    }
+    edgeLabelWhenClosed="編集中"
+    heightRatio={80}
+    onClose={[Function]}
+    onOpen={[Function]}
+    open={false}
+    show={false}
+  >
+    <SpecialMapMarkerForm
+      defaultPark="L"
+      onClickMiniMap={[Function]}
+      specialMapId={0}
+    />
+  </SwipeableEdgeDrawer>
+  <DeleteConfirmDialog
+    deleting={false}
+    onClose={[Function]}
+    onDelete={[Function]}
+    open={false}
+    title="マーカーを削除しますか？"
+  />
+  <BoxModal
+    onClose={[Function]}
+    open={false}
+  >
+    <ForwardRef(Box)
+      p={3}
+    >
+      <ForwardRef(Typography)
+        align="center"
+        mb={1}
+        variant="h6"
+      >
+        SNSでこのマップをシェアする
+      </ForwardRef(Typography)>
+      <ShareButtons
+        description="定番から穴場まで、ディズニーのトイレマップです。"
+        title="トイレマップ"
+        url="http://localhost/special-maps/1"
+      />
+    </ForwardRef(Box)>
+  </BoxModal>
+</ForwardRef(Box)>
+`;
+
+exports[`Shallow Snapshot Tests without height 1`] = `
+<ForwardRef(Box)
+  sx={Object {}}
+>
+  <GlobalMenu
+    mapPage={true}
+    topBarPosition="static"
+  >
+    <ForwardRef(Box)
+      my={1}
+    >
+      <CenterSpinner />
+    </ForwardRef(Box)>
+  </GlobalMenu>
+  <BoxModal
+    disableClickOutside={true}
+    onClose={[Function]}
+    open={false}
+    scroll={true}
+    showCloseButton={true}
+  >
+    <ForwardRef(Box)
+      sx={
+        Object {
+          "px": 2,
+        }
+      }
+    >
+      <SpecialMapSettingForm />
+    </ForwardRef(Box)>
+  </BoxModal>
+  <ForwardRef(Snackbar)
+    autoHideDuration={6000}
+    onClose={[Function]}
+    open={false}
+  >
+    <ForwardRef(Alert)
+      onClose={[Function]}
+      sx={
+        Object {
+          "width": "100%",
+        }
+      }
+      variant="filled"
+    />
+  </ForwardRef(Snackbar)>
+  <SwipeableEdgeDrawer
+    bleedingHeight={56}
+    edgeLabel={
+      <CloseFormButton
+        onClose={[Function]}
+      />
+    }
+    edgeLabelWhenClosed="編集中"
+    heightRatio={80}
+    onClose={[Function]}
+    onOpen={[Function]}
+    open={false}
+    show={false}
+  >
+    <SpecialMapMarkerForm
+      defaultPark="L"
+      onClickMiniMap={[Function]}
+      specialMapId={0}
+    />
+  </SwipeableEdgeDrawer>
+  <DeleteConfirmDialog
+    deleting={false}
+    onClose={[Function]}
+    onDelete={[Function]}
+    open={false}
+    title="マーカーを削除しますか？"
+  />
+</ForwardRef(Box)>
 `;

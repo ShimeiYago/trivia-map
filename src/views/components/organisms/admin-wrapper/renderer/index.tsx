@@ -1,13 +1,11 @@
 import React from 'react';
 import { Box } from '@mui/material';
 import { LoadingState } from 'types/loading-state';
-import { GlobalMenu } from 'views/components/organisms/global-menu';
-import { ArticlePaper } from 'views/components/atoms/article-paper';
-import { wrapper, contentWrapper } from '../styles';
 import { CenterSpinner } from 'views/components/atoms/center-spinner';
 import { User } from 'types/user';
 import { Navigate } from 'react-router-dom';
 import { LOGIN_LINK, MAP_PAGE_LINK } from 'constant/links';
+import { SingleRowPageWrapper } from 'views/components/moleculars/single-row-page-wrapper';
 
 export class Renderer extends React.Component<Props> {
   render() {
@@ -28,17 +26,9 @@ export class Renderer extends React.Component<Props> {
       return <Navigate to={LOGIN_LINK} />;
     }
 
-    const { isMobile, children } = this.props;
+    const { children } = this.props;
 
-    return (
-      <Box sx={wrapper}>
-        <GlobalMenu topBarPosition="static" permanentLeftNavi={!isMobile}>
-          <Box sx={contentWrapper(isMobile)}>
-            <ArticlePaper variant="main">{children}</ArticlePaper>
-          </Box>
-        </GlobalMenu>
-      </Box>
-    );
+    return <SingleRowPageWrapper>{children}</SingleRowPageWrapper>;
   }
 }
 
@@ -46,6 +36,5 @@ export type Props = {
   user?: User;
   autoLoggingInState: LoadingState;
   loggedOutSuccessfully: boolean;
-  isMobile: boolean;
   children: React.ReactNode;
 };

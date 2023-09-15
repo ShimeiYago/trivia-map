@@ -1,11 +1,12 @@
 import React from 'react';
 import {
+  GetSpecialMapPreviewResponse,
   getSpecialMaps,
   GetSpecialMapsResponseWithPagination,
 } from 'api/special-map-api/get-special-maps';
 import { CenterSpinner } from 'views/components/atoms/center-spinner';
 import { ArticleWrapper } from 'views/components/organisms/article-wrapper';
-import { Box, Card, CardContent, CardMedia, Stack, Typography } from '@mui/material';
+import { Box, Button, Card, CardContent, CardMedia, Stack, Typography } from '@mui/material';
 import { IconAndText } from 'views/components/atoms/icon-and-text';
 import StarIcon from '@mui/icons-material/Star';
 import { PAGE_NAMES } from 'constant/page-names';
@@ -14,11 +15,16 @@ import notImage from 'images/no-image-16x7.jpg';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import { cardStyle } from 'views/common-styles/card';
 import cardClasses from 'views/common-styles/preview-card.module.css';
-import { SPECIAL_MAP_PAGE_LINK } from 'constant/links';
+import {
+  SPECIAL_MAP_LIST_PAGE_LINK,
+  SPECIAL_MAP_NEW_PAGE_LINK,
+  SPECIAL_MAP_PAGE_LINK,
+} from 'constant/links';
 import { Link } from 'react-router-dom';
 import { DynamicAlignedText } from 'views/components/atoms/dynamic-aligned-text';
-import { GetSpecialMapResponse } from 'api/special-map-api/get-special-map';
 import { ApiError } from 'api/utils/handle-axios-error';
+import { getUrlParameters } from 'utils/get-url-parameters';
+import { NonStyleLink } from 'views/components/atoms/non-style-link';
 
 export class Renderer extends React.Component<Props, State> {
   topRef: React.RefObject<HTMLDivElement>;
@@ -33,7 +39,7 @@ export class Renderer extends React.Component<Props, State> {
   }
 
   componentDidMount(): void {
-    this.fetchSpecialMaps();
+    this.fetchSpecialMaps(this.props.initialPage);
   }
 
   render() {
@@ -47,6 +53,15 @@ export class Renderer extends React.Component<Props, State> {
             variant="inherit"
           />
         </Typography>
+
+        <Typography align="center" my={3}>
+          <NonStyleLink to={SPECIAL_MAP_NEW_PAGE_LINK}>
+            <Button color="error" variant="contained">
+              新しいオリジナルマップを作成する
+            </Button>
+          </NonStyleLink>
+        </Typography>
+
         {this.renderSpecialMapList()}
       </ArticleWrapper>
     );
@@ -81,7 +96,7 @@ export class Renderer extends React.Component<Props, State> {
     );
   };
 
-  protected renderLargeCard = (specialMap: GetSpecialMapResponse) => {
+  protected renderLargeCard = (specialMap: GetSpecialMapPreviewResponse) => {
     const { specialMapId, title, thumbnail, description } = specialMap;
 
     return (
@@ -156,11 +171,17 @@ export class Renderer extends React.Component<Props, State> {
   protected handleChangePagination = (event: React.ChangeEvent<unknown>, page: number) => {
     this.fetchSpecialMaps(page);
     this.topRef.current && this.topRef.current.scrollIntoView({ block: 'center' });
+
+    const urlParameters = getUrlParameters({
+      page,
+    });
+    history.replaceState('', '', `${SPECIAL_MAP_LIST_PAGE_LINK}${urlParameters}`);
   };
 }
 
 export type Props = {
   isMobile: boolean;
+  initialPage?: number;
 
   navigate: (to: string) => void;
   throwError: (errorStatus: number) => void;

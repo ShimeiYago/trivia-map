@@ -1,6 +1,8 @@
 import { GetSpecialMapResponse } from 'api/special-map-api/get-special-map';
 import { GetSpecialMapMarkersResponseWithPagination } from 'api/special-map-api/get-special-map-markers';
 import { GetSpecialMapsResponseWithPagination } from 'api/special-map-api/get-special-maps';
+import { PostSpecialMapResponse } from 'api/special-map-api/post-special-map';
+import { PostSpecialMapMarkerResponse } from 'api/special-map-api/post-special-map-marker';
 
 export const mockGetSpecialMapResponse: GetSpecialMapResponse = {
   specialMapId: 1,
@@ -9,6 +11,17 @@ export const mockGetSpecialMapResponse: GetSpecialMapResponse = {
   isPublic: true,
   description: '定番から穴場まで、ディズニーのトイレマップです。',
   selectablePark: 'both',
+  author: {
+    userId: 1,
+    nickname: 'Axel',
+    icon: 'https://disneyparkstory.com/wp-content/uploads/2017/09/apple-touch-icon.png',
+    url: 'https://disneyparkstory.com',
+  },
+  minLatitude: -255.0,
+  maxLatitude: 0.0,
+  minLongitude: 0.0,
+  maxLongitude: 255.0,
+  createdAt: '2023/1/1 12:00',
 };
 
 export const mockGetSpecialMapsResponseWithPagination: GetSpecialMapsResponseWithPagination = {
@@ -27,7 +40,6 @@ export const mockGetSpecialMapsResponseWithPagination: GetSpecialMapsResponseWit
       thumbnail: null,
       isPublic: true,
       description: 'パーク中の「関係者以外立ち入り禁止」の看板のまとめです。',
-      selectablePark: 'L',
     },
   ],
 };
@@ -63,3 +75,27 @@ export const mockGetSpecialMapMarkersResponseWithPagination: GetSpecialMapMarker
       },
     ],
   };
+
+export const mockPostSpecialMapResponse: PostSpecialMapResponse = {
+  specialMapId: 1,
+  title: '「関係者以外立ち入り禁止」看板マップ',
+  description: 'パーク中の「関係者以外立ち入り禁止」の看板のまとめです。',
+  selectablePark: 'both',
+  isPublic: true,
+  thumbnail: null,
+  minLatitude: -255,
+  maxLatitude: 0,
+  minLongitude: 0,
+  maxLongitude: 255,
+};
+
+export const mockPostSpecialMapMarkerResponse: PostSpecialMapMarkerResponse = {
+  specialMapMarkerId: 1,
+  specialMap: 1,
+  lat: -140.46875,
+  lng: 111.0625,
+  park: 'L',
+  description: 'パーク中の「関係者以外立ち入り禁止」の看板のまとめです。',
+  variant: 'restroom',
+  image: 'https://cdn-ak.f.st-hatena.com/images/fotolife/n/nats-co/20160323/20160323164220.jpg',
+};

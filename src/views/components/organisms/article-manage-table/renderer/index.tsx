@@ -1,20 +1,12 @@
 import React from 'react';
 import {
-  Stack,
   Typography,
-  Table,
-  TableHead,
-  TableRow,
-  TableCell,
-  TableBody,
   Snackbar,
   Alert,
   Dialog,
   DialogTitle,
   DialogActions,
   Button,
-  Box,
-  Divider,
   Select,
   MenuItem,
   FormControl,
@@ -30,22 +22,17 @@ import {
   GetMyArticlesResponseEachItem,
 } from 'api/articles-api/get-my-articles';
 import { CenterSpinner } from 'views/components/atoms/center-spinner';
-import { Image } from 'views/components/moleculars/image';
 import { ARTICLE_PAGE_LINK, EDIT_LINK, MY_ARTICLES_LINK } from 'constant/links';
 import { autoRefreshApiWrapper } from 'utils/auto-refresh-api-wrapper';
 import { deleteRemoteArticle } from 'api/articles-api/delete-remote-article';
 import { ApiError } from 'api/utils/handle-axios-error';
 import { globalAPIErrorMessage } from 'constant/global-api-error-message';
-import { NonStyleLink } from 'views/components/atoms/non-style-link';
 import { categoryMapper } from 'utils/category-mapper';
-import { IconAndText } from 'views/components/atoms/icon-and-text';
-import FolderIcon from '@mui/icons-material/Folder';
 import { LoadingButton } from '@mui/lab';
-import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import { patchRemoteArticle } from 'api/articles-api/patch-remote-article';
 import { CATEGORIES } from 'constant';
-import { CenterPagination } from 'views/components/atoms/center-pagination';
 import { getUrlParameters } from 'utils/get-url-parameters';
+import { ManageTable, ManageTableContent } from 'views/components/moleculars/manage-table';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -75,7 +62,6 @@ export class Renderer extends React.Component<Props, State> {
         {this.renderSearchOptions()}
 
         {this.renderTable()}
-        {this.renderDeleteConfirmDialog()}
         {this.renderSwitchDraftStatusConfirmMessage()}
         {this.renderMessage()}
       </>
@@ -84,7 +70,7 @@ export class Renderer extends React.Component<Props, State> {
 
   renderTable() {
     const { loadingState, articlesPreviews } = this.state;
-    if (loadingState === 'waiting' || loadingState === 'loading') {
+    if (loadingState === 'waiting' || loadingState === 'loading' || !articlesPreviews) {
       return <CenterSpinner />;
     }
 
@@ -92,209 +78,35 @@ export class Renderer extends React.Component<Props, State> {
       return <Typography align="center">まだ記事が投稿されていません。</Typography>;
     }
 
-    return (
-      <Stack spacing={1}>
-        {this.renderPagination()}
-        {this.props.isMobile ? this.renderMobileTable() : this.renderDesktopTable()}
-        {this.renderPagination()}
-      </Stack>
-    );
-  }
-
-  protected renderDesktopTable() {
-    const { articlesPreviews } = this.state;
-
-    const tableRows = articlesPreviews?.results.map((preview) => {
-      const { postId, isDraft, category, image, numberOfGoods } = preview;
-
-      return (
-        <TableRow key={`preview-${postId}`}>
-          <TableCell>{this.renderTitleAndButtons(preview)}</TableCell>
-          <TableCell width={200}>
-            <IconAndText
-              iconComponent={<FolderIcon fontSize="inherit" />}
-              iconPosition="left"
-              text={categoryMapper(category)}
-              align="left"
-              fontSize={14}
-            />
-          </TableCell>
-          <TableCell width={70}>
-            {isDraft ? (
-              <FormControl variant="standard">
-                <Select value={String(isDraft)} onChange={this.handleChangeDraftStatus(preview)}>
-                  <MenuItem value="false">
-                    <Typography fontSize={14}>公開</Typography>
-                  </MenuItem>
-                  <MenuItem value="true">
-                    <Typography fontSize={14}>下書き</Typography>
-                  </MenuItem>
-                </Select>
-              </FormControl>
-            ) : (
-              '公開中'
-            )}
-          </TableCell>
-          <TableCell width={40}>
-            <IconAndText
-              iconComponent={<ThumbUpIcon fontSize="inherit" />}
-              iconPosition="left"
-              text={String(numberOfGoods)}
-              align="left"
-            />
-          </TableCell>
-          <TableCell>
-            {image && <Image src={image} objectFit="cover" width="80px" height="80px" />}
-          </TableCell>
-        </TableRow>
-      );
+    const contents: ManageTableContent[] = articlesPreviews.results.map((preview) => {
+      return {
+        title: preview.title,
+        isDraft: preview.isDraft,
+        onChangeDraftStatus: preview.isDraft ? this.handleChangeDraftStatus(preview) : undefined,
+        category: categoryMapper(preview.category),
+        image: preview.image,
+        numberOfGoods: preview.numberOfGoods,
+        viewLink: ARTICLE_PAGE_LINK(String(preview.postId)),
+        editLink: EDIT_LINK(String(preview.postId)),
+        onClickEdit: this.props.initialize,
+        onDelete: this.deleteArticle(preview.postId, preview.title),
+      };
     });
 
     return (
-      <Table>
-        <TableHead>
-          <TableRow>
-            <TableCell></TableCell>
-            <TableCell></TableCell>
-            <TableCell></TableCell>
-            <TableCell></TableCell>
-            <TableCell></TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>{tableRows}</TableBody>
-      </Table>
+      <ManageTable
+        isMobile={this.props.isMobile}
+        pagination={articlesPreviews}
+        onChangePagination={this.handleChangePagination}
+        contents={contents}
+        getDraftText={this.getDraftText}
+        deleting={this.state.deleting}
+      />
     );
   }
 
-  protected renderMobileTable() {
-    const { articlesPreviews } = this.state;
-
-    const tableRows = articlesPreviews?.results.map((preview) => {
-      const { postId, isDraft, category, image, numberOfGoods } = preview;
-
-      return (
-        <TableRow key={`preview-${postId}`}>
-          <TableCell>
-            <Typography color="gray" component="div" marginBottom={1}>
-              <Box marginBottom={2}>
-                {isDraft ? (
-                  <FormControl variant="standard">
-                    <Select
-                      value={String(isDraft)}
-                      onChange={this.handleChangeDraftStatus(preview)}
-                    >
-                      <MenuItem value="false">
-                        <Typography variant="subtitle2">公開</Typography>
-                      </MenuItem>
-                      <MenuItem value="true">
-                        <Typography variant="subtitle2">下書き</Typography>
-                      </MenuItem>
-                    </Select>
-                  </FormControl>
-                ) : (
-                  <Typography fontSize={14}>公開中</Typography>
-                )}
-              </Box>
-
-              <Stack direction="row" spacing={1} justifyContent="space-between">
-                <IconAndText
-                  iconComponent={<FolderIcon fontSize="inherit" />}
-                  iconPosition="left"
-                  text={categoryMapper(category)}
-                  variant="subtitle2"
-                  align="left"
-                />
-                <IconAndText
-                  iconComponent={<ThumbUpIcon fontSize="inherit" />}
-                  iconPosition="left"
-                  text={String(numberOfGoods)}
-                  variant="subtitle2"
-                  align="left"
-                />
-              </Stack>
-            </Typography>
-            <Stack direction="row" spacing={1} justifyContent="space-between">
-              {this.renderTitleAndButtons(preview)}
-              <Box>
-                {image && <Image src={image} objectFit="cover" width="80px" height="80px" />}
-              </Box>
-            </Stack>
-          </TableCell>
-        </TableRow>
-      );
-    });
-
-    return (
-      <Table>
-        <TableHead>
-          <TableRow>
-            <TableCell />
-          </TableRow>
-        </TableHead>
-        <TableBody>{tableRows}</TableBody>
-      </Table>
-    );
-  }
-
-  protected renderTitleAndButtons(preview: GetMyArticlesResponseEachItem) {
-    const { postId, title } = preview;
-
-    return (
-      <Box minHeight={80}>
-        <Stack minHeight={55} justifyContent="center">
-          <Typography component="h3" variant="body1" sx={{ wordBreak: 'break-all' }}>
-            {title}
-          </Typography>
-        </Stack>
-
-        <Box marginBottom={0}>
-          <Stack direction="row" divider={<Divider orientation="vertical" flexItem />} spacing={1}>
-            <NonStyleLink to={ARTICLE_PAGE_LINK(String(postId))}>
-              <Button sx={{ p: 0, minWidth: 0 }}>表示</Button>
-            </NonStyleLink>
-            <NonStyleLink to={EDIT_LINK(String(postId))}>
-              <Button sx={{ p: 0, minWidth: 0 }} onClick={this.props.initialize}>
-                編集
-              </Button>
-            </NonStyleLink>
-            <Button
-              onClick={this.openDeleteConfirmDialog(postId, title)}
-              disabled={this.state.deleting}
-              sx={{ p: 0, minWidth: 0 }}
-            >
-              削除
-            </Button>
-          </Stack>
-        </Box>
-      </Box>
-    );
-  }
-
-  protected renderPagination() {
-    if (!this.state.articlesPreviews) {
-      return null;
-    }
-
-    const { totalPages, totalRecords, currentPage, startIndex, endIndex } =
-      this.state.articlesPreviews;
-
-    const showPagination = totalPages <= 1 ? false : true;
-
-    return (
-      <Stack spacing={1}>
-        <Typography align="center" fontSize={14} component="div">
-          {startIndex}〜{endIndex}件 / 全{totalRecords}件
-        </Typography>
-
-        {showPagination && (
-          <CenterPagination
-            count={totalPages}
-            page={currentPage}
-            onChange={this.handleChangePagination}
-          />
-        )}
-      </Stack>
-    );
+  protected getDraftText(isDraft: boolean) {
+    return isDraft ? '下書き' : '公開';
   }
 
   protected renderMessage() {
@@ -350,31 +162,6 @@ export class Renderer extends React.Component<Props, State> {
     );
   };
 
-  protected renderDeleteConfirmDialog() {
-    const { deleteDialog, deleting } = this.state;
-    if (!deleteDialog) {
-      return null;
-    }
-
-    return (
-      <Dialog open onClose={this.closeDeleteConfirmDialog}>
-        <DialogTitle sx={{ wordBreak: 'break-all' }}>
-          投稿「{deleteDialog.title}」を削除しますか？
-        </DialogTitle>
-        <DialogActions>
-          <Button onClick={this.closeDeleteConfirmDialog}>削除しない</Button>
-          <LoadingButton
-            onClick={this.deleteArticle(deleteDialog.postId, deleteDialog.title)}
-            autoFocus
-            loading={deleting}
-          >
-            削除する
-          </LoadingButton>
-        </DialogActions>
-      </Dialog>
-    );
-  }
-
   protected renderSwitchDraftStatusConfirmMessage() {
     const { switchDraftDialog, swichingDraft } = this.state;
     if (!switchDraftDialog) {
@@ -403,21 +190,6 @@ export class Renderer extends React.Component<Props, State> {
     );
   }
 
-  protected openDeleteConfirmDialog = (postId: number, title: string) => () => {
-    this.setState({
-      deleteDialog: {
-        postId: postId,
-        title: title,
-      },
-    });
-  };
-
-  protected closeDeleteConfirmDialog = () => {
-    this.setState({
-      deleteDialog: undefined,
-    });
-  };
-
   protected closeSwitchDraftConfirmDialog = () => {
     this.setState({
       switchDraftDialog: undefined,
@@ -442,7 +214,6 @@ export class Renderer extends React.Component<Props, State> {
           type: 'success',
         },
         deleting: false,
-        deleteDialog: undefined,
       });
       this.fetchArticlesPreviews();
     } catch (error) {
@@ -453,7 +224,6 @@ export class Renderer extends React.Component<Props, State> {
           type: 'error',
         },
         deleting: false,
-        deleteDialog: undefined,
       });
     }
   };

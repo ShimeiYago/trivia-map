@@ -7,7 +7,6 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
-  Drawer,
   IconButton,
   Stack,
   Typography,
@@ -20,15 +19,13 @@ import { GlobalMessage } from 'views/components/organisms/global-messge';
 import { TriviaMapMarkersLoadingProgressBar } from 'views/components/organisms/loading-progress-bar';
 import { TriviaMap } from 'views/components/organisms/trivia-map';
 import {
-  rightDrawerStyle,
-  mapWrapper,
-  wrapper,
-  parkSelectBox,
   verticalScroll,
   categoryBar,
   categoryBarProceedButton,
   authorMapMessage,
+  parkSelectBox,
 } from './styles';
+import { mapWrapper, wrapper } from 'views/common-styles/map-page';
 import { GlobalMenu } from 'views/components/organisms/global-menu';
 import { Park } from 'types/park';
 import { RoundButton } from 'views/components/atoms/round-button';
@@ -45,6 +42,7 @@ import { CommonHelmet } from 'helper-components/common-helmet';
 import { PAGE_DESCRIPTIONS } from 'constant/head-tags';
 import { ParkSelectBox } from 'views/components/moleculars/park-select-box';
 import { SubmitSuccessModal } from 'views/components/organisms/submit-success-modal';
+import { RightDrawer } from 'views/components/atoms/right-drawer';
 
 const CATEGORY_BUTTON_ID = (categoryId: number) => `category-button-${categoryId}`;
 const INITIAL_PARK = PARKS.sea;
@@ -154,8 +152,6 @@ export class Renderer extends React.Component<Props, State> {
       windowHeight,
       userId,
       initMapFocus,
-      postIdToEdit,
-      queryCategoryId,
     } = this.props;
 
     const triviaMap = windowWidth !== 0 && windowHeight !== 0 && park && (
@@ -173,14 +169,12 @@ export class Renderer extends React.Component<Props, State> {
       />
     );
 
-    const canonical = this.props.new || !!postIdToEdit || !!userId || !!queryCategoryId;
-
     return (
       <>
         <CommonHelmet
           title={SITE_NAME}
           description={PAGE_DESCRIPTIONS.main}
-          canonicalUrlPath={canonical ? MAP_PAGE_LINK : undefined}
+          canonicalUrlPath={MAP_PAGE_LINK}
         />
 
         <Box sx={wrapper(openFormModal && !isMobile)}>
@@ -431,16 +425,13 @@ export class Renderer extends React.Component<Props, State> {
         />
       </SwipeableEdgeDrawer>
     ) : (
-      <Drawer sx={rightDrawerStyle} variant="persistent" anchor="right" open={openFormModal}>
-        {openFormModal && (
-          <ArticleForm
-            postId={edittingPostId}
-            onClickSelectPosition={this.startToSelectPosition}
-            onClose={this.handleCloseFormModal}
-            park={formPark}
-          />
-        )}
-      </Drawer>
+      <RightDrawer open={openFormModal} onClose={this.handleCloseFormModal}>
+        <ArticleForm
+          postId={edittingPostId}
+          onClickSelectPosition={this.startToSelectPosition}
+          park={formPark}
+        />
+      </RightDrawer>
     );
   };
 

@@ -12,6 +12,7 @@ let getSpecialMapMarkersSpy: jest.SpyInstance;
 const props: Props = {
   throwError: jest.fn(),
   mapId: 0,
+  isMobile: false,
 };
 
 describe('Shallow Snapshot Tests', () => {

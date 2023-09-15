@@ -23,7 +23,7 @@ exports[`Shallow Snapshot Tests loaded (without thumbnail) 1`] = `
   localBackNavi={
     Object {
       "link": "/special-maps/0",
-      "text": "全体マップへ戻る",
+      "text": "トイレマップへ戻る",
     }
   }
   showSidebar={true}
@@ -36,6 +36,22 @@ exports[`Shallow Snapshot Tests loaded (without thumbnail) 1`] = `
   <ForwardRef(Stack)
     spacing={2}
   >
+    <ShareButtons
+      description="定番から穴場まで、ディズニーのトイレマップです。"
+      title="トイレマップ"
+      url="http://localhost/special-maps/1"
+    />
+    <ForwardRef(Divider) />
+    <AuthorLink
+      author={
+        Object {
+          "icon": "https://disneyparkstory.com/wp-content/uploads/2017/09/apple-touch-icon.png",
+          "nickname": "Axel",
+          "url": "https://disneyparkstory.com",
+          "userId": 1,
+        }
+      }
+    />
     <DynamicAlignedText
       component="h2"
       sx={
@@ -67,7 +83,7 @@ exports[`Shallow Snapshot Tests loaded (without thumbnail) 1`] = `
       variant="h6"
     />
     <ForwardRef(Stack)
-      spacing={2}
+      spacing={5}
     >
       <ForwardRef(Box)
         bgcolor="#f5f8fa"
@@ -75,7 +91,7 @@ exports[`Shallow Snapshot Tests loaded (without thumbnail) 1`] = `
         key="special-map-marker--67.6875-140.75"
       >
         <NonStyleLink
-          to="/special-maps/0"
+          to="/special-maps/0?marker=1&park=L"
         >
           <ForwardRef(Box)
             height={200}
@@ -152,7 +168,7 @@ exports[`Shallow Snapshot Tests loaded (without thumbnail) 1`] = `
         key="special-map-marker--140.46875-111.0625"
       >
         <NonStyleLink
-          to="/special-maps/0"
+          to="/special-maps/0?marker=2&park=S"
         >
           <ForwardRef(Box)
             height={200}
@@ -222,7 +238,7 @@ exports[`Shallow Snapshot Tests loaded 1`] = `
   localBackNavi={
     Object {
       "link": "/special-maps/0",
-      "text": "全体マップへ戻る",
+      "text": "トイレマップへ戻る",
     }
   }
   showSidebar={true}
@@ -236,6 +252,22 @@ exports[`Shallow Snapshot Tests loaded 1`] = `
   <ForwardRef(Stack)
     spacing={2}
   >
+    <ShareButtons
+      description="定番から穴場まで、ディズニーのトイレマップです。"
+      title="トイレマップ"
+      url="http://localhost/special-maps/1"
+    />
+    <ForwardRef(Divider) />
+    <AuthorLink
+      author={
+        Object {
+          "icon": "https://disneyparkstory.com/wp-content/uploads/2017/09/apple-touch-icon.png",
+          "nickname": "Axel",
+          "url": "https://disneyparkstory.com",
+          "userId": 1,
+        }
+      }
+    />
     <DynamicAlignedText
       component="h2"
       sx={
@@ -271,7 +303,7 @@ exports[`Shallow Snapshot Tests loaded 1`] = `
       variant="h6"
     />
     <ForwardRef(Stack)
-      spacing={2}
+      spacing={5}
     >
       <ForwardRef(Box)
         bgcolor="#f5f8fa"
@@ -279,7 +311,7 @@ exports[`Shallow Snapshot Tests loaded 1`] = `
         key="special-map-marker--67.6875-140.75"
       >
         <NonStyleLink
-          to="/special-maps/0"
+          to="/special-maps/0?marker=1&park=L"
         >
           <ForwardRef(Box)
             height={200}
@@ -356,7 +388,7 @@ exports[`Shallow Snapshot Tests loaded 1`] = `
         key="special-map-marker--140.46875-111.0625"
       >
         <NonStyleLink
-          to="/special-maps/0"
+          to="/special-maps/0?marker=2&park=S"
         >
           <ForwardRef(Box)
             height={200}
@@ -426,7 +458,7 @@ exports[`Shallow Snapshot Tests loading markers 1`] = `
   localBackNavi={
     Object {
       "link": "/special-maps/0",
-      "text": "全体マップへ戻る",
+      "text": "トイレマップへ戻る",
     }
   }
   showSidebar={true}
@@ -440,6 +472,22 @@ exports[`Shallow Snapshot Tests loading markers 1`] = `
   <ForwardRef(Stack)
     spacing={2}
   >
+    <ShareButtons
+      description="定番から穴場まで、ディズニーのトイレマップです。"
+      title="トイレマップ"
+      url="http://localhost/special-maps/1"
+    />
+    <ForwardRef(Divider) />
+    <AuthorLink
+      author={
+        Object {
+          "icon": "https://disneyparkstory.com/wp-content/uploads/2017/09/apple-touch-icon.png",
+          "nickname": "Axel",
+          "url": "https://disneyparkstory.com",
+          "userId": 1,
+        }
+      }
+    />
     <DynamicAlignedText
       component="h2"
       sx={
@@ -475,7 +523,7 @@ exports[`Shallow Snapshot Tests loading markers 1`] = `
       variant="h6"
     />
     <ForwardRef(Stack)
-      spacing={2}
+      spacing={5}
     >
       <CenterSpinner />
     </ForwardRef(Stack)>

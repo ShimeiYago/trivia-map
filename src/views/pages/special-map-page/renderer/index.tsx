@@ -225,7 +225,7 @@ export class Renderer extends React.Component<Props, State> {
       (this.props.autoLoggingInState === 'success' || this.props.autoLoggingInState === 'error') &&
       specialMap.author.userId !== this.props.user?.userId
     ) {
-      return <Navigate to={SPECIAL_MAP_PAGE_LINK(String(specialMap.specialMapId))} />;
+      return <Navigate to={SPECIAL_MAP_PAGE_LINK(String(specialMap.specialMapId))} replace />;
     }
 
     const handleClickAddButton = () => {
@@ -688,15 +688,7 @@ export class Renderer extends React.Component<Props, State> {
         ? this.state.specialMap.author.userId === this.props.user.userId
         : false;
 
-    if (!this.props.editMode && !isAuthor && this.state.specialMap?.isPublic) {
-      return (
-        <Typography component="h2" variant="body1" align="center" py={1} fontSize={18}>
-          {this.state.specialMap?.title}
-        </Typography>
-      );
-    }
-
-    let caption: React.ReactNode = '';
+    let caption: React.ReactNode | undefined;
     if (!this.props.editMode && isAuthor) {
       caption = (
         <Link to={SPECIAL_MAP_EDIT_PAGE_LINK(String(this.state.specialMap?.specialMapId))}>
@@ -710,10 +702,18 @@ export class Renderer extends React.Component<Props, State> {
 
     return (
       <>
-        <Typography variant="body2" align="center" fontSize="0.75rem">
-          {caption}
-        </Typography>
-        <Typography component="h2" variant="body1" align="center" fontSize={18}>
+        {caption && (
+          <Typography variant="body2" align="center" fontSize="0.75rem">
+            {caption}
+          </Typography>
+        )}
+        <Typography
+          component="h2"
+          variant="body1"
+          align="center"
+          fontWeight="bold"
+          py={caption ? undefined : 1}
+        >
           {this.state.specialMap?.title}
         </Typography>
       </>

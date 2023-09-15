@@ -50,7 +50,7 @@ import {
 import { ApiError } from 'api/utils/handle-axios-error';
 import { MAP_MARGIN, MAP_MAX_COORINATE, PARKS, ZOOMS } from 'constant';
 import { autoRefreshApiWrapper } from 'utils/auto-refresh-api-wrapper';
-import { BoxModal } from 'views/components/moleculars/box-modal';
+import { BoxModal } from 'views/components/organisms/box-modal';
 import { SpecialMapSettingForm } from 'views/components/organisms/special-map-setting-form';
 import { SpecialMapSettingState } from 'store/special-map-setting/model';
 import { SwipeableEdgeDrawer } from 'views/components/moleculars/swipeable-edge-drawer';

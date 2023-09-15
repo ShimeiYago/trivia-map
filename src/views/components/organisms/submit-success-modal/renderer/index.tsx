@@ -6,7 +6,7 @@ import { SubmitSuccessInfo } from 'store/article-form/model';
 import { LoadingState } from 'types/loading-state';
 import { getDomain } from 'utils/get-domain.ts';
 import { ShareButtons } from 'views/components/atoms/share-buttons';
-import { BoxModal } from 'views/components/moleculars/box-modal';
+import { BoxModal } from 'views/components/organisms/box-modal';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {

@@ -6,6 +6,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
   open={true}
 >
   <ForwardRef(Box)
+    maxHeight={500}
     sx={
       Object {
         "bgcolor": "background.paper",
@@ -29,6 +30,7 @@ exports[`Shallow Snapshot Tests disable click out of modal 1`] = `
   open={true}
 >
   <ForwardRef(Box)
+    maxHeight={500}
     sx={
       Object {
         "bgcolor": "background.paper",
@@ -65,6 +67,7 @@ exports[`Shallow Snapshot Tests show close button 1`] = `
   open={true}
 >
   <ForwardRef(Box)
+    maxHeight={500}
     sx={
       Object {
         "bgcolor": "background.paper",

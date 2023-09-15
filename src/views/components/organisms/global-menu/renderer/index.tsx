@@ -20,7 +20,7 @@ import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import { IconAndText } from 'views/components/atoms/icon-and-text';
 import { Link, Navigate } from 'react-router-dom';
 import { authMenuLinks } from '../constants';
-import { BoxModal } from 'views/components/moleculars/box-modal';
+import { BoxModal } from 'views/components/organisms/box-modal';
 import { AuthForms } from '../../auth-forms';
 import { sleep } from 'utils/sleep';
 import { MAP_PAGE_LINK } from 'constant/links';

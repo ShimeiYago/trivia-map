@@ -379,7 +379,7 @@ export class Renderer extends React.Component<Props, State> {
           position={new LatLng(marker.lat, marker.lng)}
           mapController={{ map, popup }}
           variant={marker.variant}
-          key={`special-map-${marker.lat}-${marker.lng}`}
+          key={`special-map-marker-${marker.specialMapMarkerId}`}
         />
       );
     });

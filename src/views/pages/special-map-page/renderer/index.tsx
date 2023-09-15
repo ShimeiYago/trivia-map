@@ -308,7 +308,10 @@ export class Renderer extends React.Component<Props, State> {
               size="large"
               onClick={handleClickAddButton}
               tooltip={{
-                open: this.state.openTooltipToGuideCreatingMarker,
+                open:
+                  this.state.openTooltipToGuideCreatingMarker &&
+                  !this.state.openShareModal &&
+                  !this.state.openSettingModal,
                 title: <Typography fontSize={16}>まずはマーカーを追加してみましょう！</Typography>,
                 placement: 'top-start',
                 arrow: true,

@@ -373,7 +373,9 @@ export class Renderer extends React.Component<Props, State> {
             </Typography>
           )}
 
-          <DynamicAlignedText component="div">{marker.description}</DynamicAlignedText>
+          <DynamicAlignedText component="div" whiteSpace="pre-wrap">
+            {marker.description}
+          </DynamicAlignedText>
         </Box>
       );
 

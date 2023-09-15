@@ -28,6 +28,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import { User } from 'types/user';
 import { AuthorLink } from 'views/components/atoms/author-link';
 import { maxLengthSlice } from 'utils/max-length-slice.ts';
+import { AdsenseIns } from 'views/components/moleculars/adsense-ins';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -88,6 +89,14 @@ export class Renderer extends React.Component<Props, State> {
           ogType="article"
         />
         <Stack spacing={2}>
+          {process.env.REACT_APP_AD_SLOT_TOP_ARTICLE && (
+            <AdsenseIns
+              adSlot={process.env.REACT_APP_AD_SLOT_TOP_ARTICLE}
+              adFormat="auto"
+              fullWidthResponsive
+            />
+          )}
+
           {!isPublic && (
             <Alert severity="info">このマップは非公開です。あなただけが閲覧できます。</Alert>
           )}
@@ -137,61 +146,71 @@ export class Renderer extends React.Component<Props, State> {
 
   protected renderMarkers = () => {
     const { markers, loadingMarkers } = this.state;
+    const adSlot = process.env.REACT_APP_AD_SLOT_IN_LIST;
 
-    const markerComponents = markers.map((marker) => {
+    const markerComponents = markers.map((marker, i) => {
       return (
-        <Box
-          border="3px solid #424242"
-          bgcolor="#f5f8fa"
-          key={`special-map-marker-${marker.lat}-${marker.lng}`}
-        >
-          <NonStyleLink
-            to={SPECIAL_MAP_PAGE_LINK(String(this.props.mapId), {
-              marker: marker.specialMapMarkerId,
-              park: marker.park,
-            })}
+        <>
+          <Box
+            border="3px solid #424242"
+            bgcolor="#f5f8fa"
+            key={`special-map-marker-${marker.lat}-${marker.lng}`}
           >
-            <Box height={200} mx="auto">
-              <ParkMap
-                park={marker.park}
-                initCenter={{ lat: marker.lat, lng: marker.lng }}
-                disabled
-              >
-                <MapMarker position={new LatLng(marker.lat, marker.lng)} variant={marker.variant} />
-              </ParkMap>
-            </Box>
-          </NonStyleLink>
-
-          <Box p={1}>
-            <DynamicAlignedText component="div" whiteSpace="pre-wrap" mb={1}>
-              {marker.description}
-            </DynamicAlignedText>
-
-            {marker.image && (
-              <Typography align="center" component="div" mb={1}>
-                <Image src={marker.image} maxWidth="full" maxHeight="300px" />
-              </Typography>
-            )}
-
             <NonStyleLink
               to={SPECIAL_MAP_PAGE_LINK(String(this.props.mapId), {
                 marker: marker.specialMapMarkerId,
                 park: marker.park,
               })}
             >
-              <Typography align="right">
-                <Button>
-                  <IconAndText
-                    iconComponent={<ArrowRightIcon />}
-                    text="地図上で確認する"
-                    component="span"
-                    iconPosition="left"
+              <Box height={200} mx="auto">
+                <ParkMap
+                  park={marker.park}
+                  initCenter={{ lat: marker.lat, lng: marker.lng }}
+                  disabled
+                >
+                  <MapMarker
+                    position={new LatLng(marker.lat, marker.lng)}
+                    variant={marker.variant}
                   />
-                </Button>
-              </Typography>
+                </ParkMap>
+              </Box>
             </NonStyleLink>
+
+            <Box p={1}>
+              <DynamicAlignedText component="div" whiteSpace="pre-wrap" mb={1}>
+                {marker.description}
+              </DynamicAlignedText>
+
+              {marker.image && (
+                <Typography align="center" component="div" mb={1}>
+                  <Image src={marker.image} maxWidth="full" maxHeight="300px" />
+                </Typography>
+              )}
+
+              <NonStyleLink
+                to={SPECIAL_MAP_PAGE_LINK(String(this.props.mapId), {
+                  marker: marker.specialMapMarkerId,
+                  park: marker.park,
+                })}
+              >
+                <Typography align="right">
+                  <Button>
+                    <IconAndText
+                      iconComponent={<ArrowRightIcon />}
+                      text="地図上で確認する"
+                      component="span"
+                      iconPosition="left"
+                    />
+                  </Button>
+                </Typography>
+              </NonStyleLink>
+            </Box>
           </Box>
-        </Box>
+
+          {(i + 1) % 4 === 0 && adSlot && (
+            <AdsenseIns adSlot={adSlot} adFormat="fluid" adLayoutKey="-71+ed+2g-1n-4q" />
+          )}
+        </>
       );
     });
 

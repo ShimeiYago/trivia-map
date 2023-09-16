@@ -90,20 +90,20 @@ export class Renderer extends React.Component<Props, State> {
           ogType="article"
         />
         <Stack spacing={2}>
-          {process.env.REACT_APP_AD_SLOT_TOP_ARTICLE && (
-            <AdsenseIns
-              adSlot={process.env.REACT_APP_AD_SLOT_TOP_ARTICLE}
-              adFormat="auto"
-              fullWidthResponsive
-            />
-          )}
-
           {!isPublic && (
             <Alert severity="info">このマップは非公開です。あなただけが閲覧できます。</Alert>
           )}
 
           {isPublic && (
             <ShareButtons title={title} url={`${domain}${path}`} description={description} />
+          )}
+
+          {process.env.REACT_APP_AD_SLOT_IN_ARTICLE && (
+            <AdsenseIns
+              adSlot={process.env.REACT_APP_AD_SLOT_IN_ARTICLE}
+              adFormat="fluid"
+              adLayout="in-article"
+            />
           )}
 
           <Divider />
@@ -208,7 +208,7 @@ export class Renderer extends React.Component<Props, State> {
             </Box>
           </Box>
 
-          {(i + 1) % 4 === 0 && adSlot && (
+          {(i + 1) % 5 === 0 && adSlot && (
             <AdsenseIns adSlot={adSlot} adFormat="fluid" adLayoutKey="-71+ed+2g-1n-4q" />
           )}
         </>

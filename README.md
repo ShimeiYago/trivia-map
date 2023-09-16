@@ -113,10 +113,6 @@ data-ad-slot for Google Adsense (infeed list).
 
 data-ad-slot for Google Adsense (under article).
 
-### `REACT_APP_AD_SLOT_TOP_ARTICLE`
-
-data-ad-slot for Google Adsense (top article of special map).
-
 ## Author
 
 [ShimeiYago](https://github.com/ShimeiYago)

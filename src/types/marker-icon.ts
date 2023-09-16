@@ -9,4 +9,6 @@ export type MapMarkerVariant =
   | 'nemo'
   | 'popcoon'
   | 'sea'
-  | 'star';
+  | 'star'
+  | 'light'
+  | 'plant';

@@ -92,6 +92,8 @@ export function SpecialMapSettingForm() {
     }
   }, []);
 
+  const disabledPublicSetting = loading || !specialMapId;
+
   return (
     <Box maxWidth="sm" sx={{ p: 0, my: 3, mx: 'auto' }}>
       <Stack spacing={3}>
@@ -101,21 +103,30 @@ export function SpecialMapSettingForm() {
 
         {formError?.errorTitle && <HeaderErrorMessages errorTitle={formError.errorTitle} />}
 
-        {specialMapId && (
-          <>
-            <Stack direction="row" spacing={1} alignItems="center" justifyContent="center">
-              <Typography fontSize="1rem">非公開</Typography>
-              <Switch
-                checked={isPublic}
-                onChange={() => dispatch(updateIsPublic(!isPublic))}
-                color="primary"
-              />
-              <Typography fontSize="1rem">公開</Typography>
-            </Stack>
+        <Box>
+          <Stack direction="row" spacing={1} alignItems="center" justifyContent="center">
+            <Typography fontSize="1rem" color={disabledPublicSetting ? 'gray' : undefined}>
+              非公開
+            </Typography>
+            <Switch
+              checked={isPublic}
+              onChange={() => dispatch(updateIsPublic(!isPublic))}
+              color="primary"
+              disabled={disabledPublicSetting}
+            />
+            <Typography fontSize="1rem" color={disabledPublicSetting ? 'gray' : undefined}>
+              公開
+            </Typography>
+          </Stack>
 
-            <Divider />
-          </>
-        )}
+          {!specialMapId && (
+            <Typography variant="body2" color="gray">
+              オリジナルマップは非公開で作成されますが、その後好きなタイミングで公開へ切り替えることができます。
+            </Typography>
+          )}
+        </Box>
+
+        <Divider />
 
         <TextField
           label="オリジナルマップのタイトル"
@@ -176,7 +187,7 @@ export function SpecialMapSettingForm() {
           )}
         </Box>
 
-        <FormControl required error={!!formError?.fieldErrors?.selectablePark}>
+        <FormControl required error={!!formError?.fieldErrors?.selectablePark} disabled={loading}>
           <FormLabel>対象パーク{!specialMapId && '（後から変更できます）'}</FormLabel>
           <RadioGroup
             row

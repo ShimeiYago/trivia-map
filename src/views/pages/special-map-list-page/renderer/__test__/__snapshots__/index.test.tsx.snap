@@ -18,8 +18,9 @@ exports[`Shallow Snapshot Tests basic 1`] = `
   >
     <IconAndText
       iconComponent={
-        <Memo
+        <MyIcon
           fontSize="inherit"
+          variant="special-map"
         />
       }
       iconPosition="left"
@@ -64,8 +65,9 @@ exports[`Shallow Snapshot Tests with no special maps 1`] = `
   >
     <IconAndText
       iconComponent={
-        <Memo
+        <MyIcon
           fontSize="inherit"
+          variant="special-map"
         />
       }
       iconPosition="left"
@@ -114,8 +116,9 @@ exports[`Shallow Snapshot Tests with special maps 1`] = `
   >
     <IconAndText
       iconComponent={
-        <Memo
+        <MyIcon
           fontSize="inherit"
+          variant="special-map"
         />
       }
       iconPosition="left"

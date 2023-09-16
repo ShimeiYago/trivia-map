@@ -8,7 +8,6 @@ import { CenterSpinner } from 'views/components/atoms/center-spinner';
 import { ArticleWrapper } from 'views/components/organisms/article-wrapper';
 import { Box, Button, Card, CardContent, CardMedia, Stack, Typography } from '@mui/material';
 import { IconAndText } from 'views/components/atoms/icon-and-text';
-import StarIcon from '@mui/icons-material/Star';
 import { PAGE_NAMES } from 'constant/page-names';
 import { CenterPagination } from 'views/components/atoms/center-pagination';
 import notImage from 'images/no-image-16x7.jpg';
@@ -25,6 +24,7 @@ import { DynamicAlignedText } from 'views/components/atoms/dynamic-aligned-text'
 import { ApiError } from 'api/utils/handle-axios-error';
 import { getUrlParameters } from 'utils/get-url-parameters';
 import { NonStyleLink } from 'views/components/atoms/non-style-link';
+import { MyIcon } from 'views/components/atoms/my-icon';
 
 export class Renderer extends React.Component<Props, State> {
   topRef: React.RefObject<HTMLDivElement>;
@@ -47,7 +47,7 @@ export class Renderer extends React.Component<Props, State> {
       <ArticleWrapper showSidebar hideLocalNavi>
         <Typography component="h2" variant="h4" align="center" sx={{ mt: 3, mb: 4 }}>
           <IconAndText
-            iconComponent={<StarIcon fontSize="inherit" />}
+            iconComponent={<MyIcon variant="special-map" fontSize="inherit" />}
             text={PAGE_NAMES.specialMap}
             iconPosition="left"
             variant="inherit"

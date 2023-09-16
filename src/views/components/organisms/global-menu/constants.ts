@@ -3,6 +3,7 @@ import {
   MY_ARTICLES_LINK,
   ACCOUNT_SETTINGS_LINK,
   LIKED_ARTICLES_LINK,
+  SPECIAL_MAP_MANAGE_PAGE_LINK,
 } from 'constant/links';
 import { PAGE_NAMES } from 'constant/page-names';
 
@@ -11,4 +12,5 @@ export const authMenuLinks = [
   { path: MY_ARTICLES_LINK, text: PAGE_NAMES.myArticles },
   { path: LIKED_ARTICLES_LINK, text: PAGE_NAMES.likedArticles },
   { path: ACCOUNT_SETTINGS_LINK, text: PAGE_NAMES.accountSettings },
+  { path: SPECIAL_MAP_MANAGE_PAGE_LINK, text: PAGE_NAMES.specialMapManage },
 ];

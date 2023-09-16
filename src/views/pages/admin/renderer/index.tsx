@@ -10,6 +10,7 @@ import {
   LIKED_ARTICLES_LINK,
   MAP_PAGE_LINK,
   MY_ARTICLES_LINK,
+  SPECIAL_MAP_MANAGE_PAGE_LINK,
 } from 'constant/links';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import ListAltIcon from '@mui/icons-material/ListAlt';
@@ -18,6 +19,7 @@ import { PAGE_NAMES } from 'constant/page-names';
 import { SITE_NAME } from 'constant';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import { Link } from 'react-router-dom';
+import { MyIcon } from 'views/components/atoms/my-icon';
 
 export class Renderer extends React.Component<Props> {
   render() {
@@ -44,6 +46,11 @@ export class Renderer extends React.Component<Props> {
         icon: <ManageAccountsIcon />,
         text: PAGE_NAMES.accountSettings,
         link: ACCOUNT_SETTINGS_LINK,
+      },
+      {
+        icon: <MyIcon variant="special-list" />,
+        text: PAGE_NAMES.specialMapManage,
+        link: SPECIAL_MAP_MANAGE_PAGE_LINK,
       },
     ];
 

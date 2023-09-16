@@ -14,7 +14,9 @@ import {
   TERMS_PAGE_LINK,
   SIGNUP_LINK,
   PRIVACY_POLICY_PAGE_LINK,
-  // SPECIAL_MAP_LIST_PAGE_LINK,
+  SPECIAL_MAP_LIST_PAGE_LINK,
+  SPECIAL_MAP_NEW_PAGE_LINK,
+  SPECIAL_MAP_MANAGE_PAGE_LINK,
 } from 'constant/links';
 import ArticleIcon from '@mui/icons-material/Article';
 import { NonStyleLink } from 'views/components/atoms/non-style-link';
@@ -31,7 +33,6 @@ import AddLocationAltIcon from '@mui/icons-material/AddLocationAlt';
 import { MyIcon } from 'views/components/atoms/my-icon';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import PrivacyTipIcon from '@mui/icons-material/PrivacyTip';
-// import StarIcon from '@mui/icons-material/Star';
 
 const listItemsForMap: ListItem[] = [
   {
@@ -85,15 +86,25 @@ const listItemsForAdmin: ListItem[] = [
     icon: <ManageAccountsIcon />,
     link: ACCOUNT_SETTINGS_LINK,
   },
+  {
+    text: PAGE_NAMES.specialMapManage,
+    icon: <MyIcon variant="special-list" />,
+    link: SPECIAL_MAP_MANAGE_PAGE_LINK,
+  },
 ];
 
-// const listItemsSpecialMap: ListItem[] = [
-//   {
-//     text: PAGE_NAMES.specialMap,
-//     icon: <StarIcon />,
-//     link: SPECIAL_MAP_LIST_PAGE_LINK,
-//   },
-// ];
+const listItemsSpecialMap: ListItem[] = [
+  {
+    text: PAGE_NAMES.specialMap,
+    icon: <MyIcon variant="special-map" />,
+    link: SPECIAL_MAP_LIST_PAGE_LINK,
+  },
+  {
+    text: PAGE_NAMES.specialMapNew,
+    icon: <MyIcon variant="add-special-map" />,
+    link: SPECIAL_MAP_NEW_PAGE_LINK,
+  },
+];
 
 const listItemsOthers: ListItem[] = [
   {
@@ -149,6 +160,8 @@ export const leftNaviContents = (
   <>
     <List>{listItemMapping(listItemsForMap, pathName, isFormEditting, onClose)}</List>
     <Divider />
+    <List>{listItemMapping(listItemsSpecialMap, pathName, isFormEditting, onClose)}</List>
+    <Divider />
     <List>
       {listItemMapping(
         login ? listItemsForAdmin : listItemsForLogin,
@@ -157,8 +170,6 @@ export const leftNaviContents = (
         onClose,
       )}
     </List>
-    {/* <Divider />
-    <List>{listItemMapping(listItemsSpecialMap, pathName, isFormEditting, onClose)}</List> */}
     <Divider />
     <List>{listItemMapping(listItemsOthers, pathName, isFormEditting, onClose)}</List>
   </>

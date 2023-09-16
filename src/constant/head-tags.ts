@@ -7,6 +7,12 @@ export const DEFAULT_HEAD_TAGS = {
   twitterSite: '@Axel_1864',
 };
 
+export const SUB_SITE_IMAGES = {
+  articles: 'site-image-articles.png',
+  inquiry: 'site-image-inquiry.png',
+  specialMap: 'site-image-special-map.png',
+};
+
 export const PAGE_DESCRIPTIONS = {
   main: '隠れミッキー、バックグラウンドストーリーなど、ディズニーのマニアックな知識をが地図上で共有できるサイト',
   articles: '全ての投稿を一覧で確認、または記事の検索ができます。',

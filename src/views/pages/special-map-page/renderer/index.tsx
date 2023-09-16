@@ -73,6 +73,7 @@ import { LoadingState } from 'types/loading-state';
 import { User } from 'types/user';
 import LockIcon from '@mui/icons-material/Lock';
 import { Rectangle } from 'react-leaflet';
+import { SUB_SITE_IMAGES } from 'constant/head-tags';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -254,12 +255,15 @@ export class Renderer extends React.Component<Props, State> {
       minZoom = div < ZOOMS.min ? ZOOMS.min : div > ZOOMS.max ? ZOOMS.max : div;
     }
 
+    const domain = getDomain(window);
+
     return (
       <>
         <CommonHelmet
           title={editMode ? `（編集中）${specialMap.title}` : specialMap.title}
           description={specialMap.description}
           canonicalUrlPath={SPECIAL_MAP_DETAIL_PAGE_LINK(String(specialMap.specialMapId))}
+          imageUrl={specialMap.thumbnail ?? `${domain}/${SUB_SITE_IMAGES.specialMap}`}
         />
 
         <Box sx={mapWrapper(isMobile, windowWidth, windowHeight)}>

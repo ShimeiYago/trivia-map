@@ -29,6 +29,7 @@ import { User } from 'types/user';
 import { AuthorLink } from 'views/components/atoms/author-link';
 import { maxLengthSlice } from 'utils/max-length-slice.ts';
 import { AdsenseIns } from 'views/components/moleculars/adsense-ins';
+import { SUB_SITE_IMAGES } from 'constant/head-tags';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -85,7 +86,7 @@ export class Renderer extends React.Component<Props, State> {
         <CommonHelmet
           title={title}
           description={description}
-          imageUrl={thumbnail ?? undefined}
+          imageUrl={thumbnail ?? `${domain}/${SUB_SITE_IMAGES.specialMap}`}
           ogType="article"
         />
         <Stack spacing={2}>

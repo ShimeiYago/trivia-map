@@ -5,7 +5,8 @@ import { throwError } from 'store/global-error/slice';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { CommonHelmet } from 'helper-components/common-helmet';
 import { PAGE_NAMES } from 'constant/page-names';
-import { PAGE_DESCRIPTIONS } from 'constant/head-tags';
+import { PAGE_DESCRIPTIONS, SUB_SITE_IMAGES } from 'constant/head-tags';
+import { getDomain } from 'utils/get-domain.ts';
 
 export function SpecialMapListPage() {
   const navigate = useNavigate();
@@ -25,9 +26,15 @@ export function SpecialMapListPage() {
     throwError: (errorStatus: number) => dispatch(throwError(errorStatus)),
   };
 
+  const domain = getDomain(window);
+
   return (
     <>
-      <CommonHelmet title={PAGE_NAMES.specialMap} description={PAGE_DESCRIPTIONS.specialMaps} />
+      <CommonHelmet
+        title={PAGE_NAMES.specialMap}
+        description={PAGE_DESCRIPTIONS.specialMaps}
+        imageUrl={`${domain}/${SUB_SITE_IMAGES.specialMap}`}
+      />
       <Renderer {...props} />
     </>
   );

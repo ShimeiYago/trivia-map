@@ -45,6 +45,8 @@ import nemoIconUrl from 'images/marker-icons/nemo.png';
 import popcoonIconUrl from 'images/marker-icons/popcoon.png';
 import seaIconUrl from 'images/marker-icons/sea.png';
 import starIconUrl from 'images/marker-icons/star.png';
+import lightIconUrl from 'images/marker-icons/light.png';
+import plantIconUrl from 'images/marker-icons/plant.png';
 
 export function SpecialMapMarkerForm(props: Props) {
   const dispatch = useAppDispatch();
@@ -231,6 +233,16 @@ const MARKER_OPTIONS: { value: MapMarkerVariant; name: string; imgSrc: string }[
     name: '看板',
     value: MAP_MARKER_VARIANT.signboard,
     imgSrc: signboardIconUrl,
+  },
+  {
+    name: '照明',
+    value: MAP_MARKER_VARIANT.light,
+    imgSrc: lightIconUrl,
+  },
+  {
+    name: '植物',
+    value: MAP_MARKER_VARIANT.plant,
+    imgSrc: plantIconUrl,
   },
   {
     name: 'ネモ',

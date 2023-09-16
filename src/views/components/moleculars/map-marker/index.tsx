@@ -17,6 +17,8 @@ import {
   popcoonIcon,
   seaIcon,
   starIcon,
+  lightIcon,
+  plantIcon,
 } from './icons';
 import { CustomMarker } from './helpers/custom-marker';
 import { ZOOMS } from 'constant';
@@ -77,6 +79,12 @@ export class MapMarker extends React.Component<Props, State> {
         break;
       case 'popcoon':
         icon = popcoonIcon;
+        break;
+      case 'light':
+        icon = lightIcon;
+        break;
+      case 'plant':
+        icon = plantIcon;
         break;
     }
 

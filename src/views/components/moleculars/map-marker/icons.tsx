@@ -17,6 +17,8 @@ import nemoIconUrl from 'images/marker-icons/nemo.png';
 import popcoonIconUrl from 'images/marker-icons/popcoon.png';
 import seaIconUrl from 'images/marker-icons/sea.png';
 import starIconUrl from 'images/marker-icons/star.png';
+import lightIconUrl from 'images/marker-icons/light.png';
+import plantIconUrl from 'images/marker-icons/plant.png';
 
 const singleIconSize = {
   width: 25,
@@ -71,6 +73,16 @@ const starIconSize = {
   height: 52,
   centerHeight: 28,
 };
+const lightIconSize = {
+  width: 55,
+  height: 58,
+  centerHeight: 25,
+};
+const plantIconSize = {
+  width: 55,
+  height: 52,
+  centerHeight: 25,
+};
 
 const singleIconOptions: L.IconOptions = {
   iconUrl: presetIconUrl,
@@ -104,6 +116,8 @@ export const nemoIcon = getSpecialIcon(nemoIconUrl, nemoIconSize);
 export const popcoonIcon = getSpecialIcon(popcoonIconUrl, popcoonIconSize);
 export const seaIcon = getSpecialIcon(seaIconUrl, seaIconSize);
 export const starIcon = getSpecialIcon(starIconUrl, starIconSize);
+export const lightIcon = getSpecialIcon(lightIconUrl, lightIconSize);
+export const plantIcon = getSpecialIcon(plantIconUrl, plantIconSize);
 
 // marker with number
 export const redIconWithNumber = (num: string) =>

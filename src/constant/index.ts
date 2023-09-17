@@ -142,6 +142,8 @@ export const MAP_MARKER_VARIANT: { [key: string]: MapMarkerVariant } = {
   popcoon: 'popcoon',
   sea: 'sea',
   star: 'star',
+  plant: 'plant',
+  light: 'light',
 };
 
 export const MINI_MAP_HEIGHT = 300;

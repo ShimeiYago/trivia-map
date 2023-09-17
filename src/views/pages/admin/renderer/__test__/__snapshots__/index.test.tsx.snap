@@ -57,6 +57,13 @@ exports[`Shallow Snapshot Tests basic 1`] = `
             "link": "/admin/account",
             "text": "アカウント設定",
           },
+          Object {
+            "icon": <MyIcon
+              variant="special-list"
+            />,
+            "link": "/admin/special-maps",
+            "text": "マイオリジナルマップ一覧",
+          },
         ]
       }
     />
@@ -120,6 +127,13 @@ exports[`Shallow Snapshot Tests no icon 1`] = `
             "icon": <Memo />,
             "link": "/admin/account",
             "text": "アカウント設定",
+          },
+          Object {
+            "icon": <MyIcon
+              variant="special-list"
+            />,
+            "link": "/admin/special-maps",
+            "text": "マイオリジナルマップ一覧",
           },
         ]
       }

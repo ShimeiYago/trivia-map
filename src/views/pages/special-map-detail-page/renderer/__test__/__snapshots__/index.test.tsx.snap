@@ -30,6 +30,7 @@ exports[`Shallow Snapshot Tests loaded (without thumbnail) 1`] = `
 >
   <CommonHelmet
     description="定番から穴場まで、ディズニーのトイレマップです。"
+    imageUrl="http://localhost/site-image-special-map.png"
     ogType="article"
     title="トイレマップ"
   />

@@ -212,6 +212,45 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       <ForwardRef(List)>
         <NonStyleLink
           key="0"
+          to="/special-maps"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <MyIcon
+                variant="special-map"
+              />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="オリジナルマップ"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+        <NonStyleLink
+          key="1"
+          to="/special-maps/new"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <MyIcon
+                variant="add-special-map"
+              />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="新規オリジナルマップ作成"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+      </ForwardRef(List)>
+      <ForwardRef(Divider) />
+      <ForwardRef(List)>
+        <NonStyleLink
+          key="0"
           to="/login"
         >
           <ForwardRef(ListItem)
@@ -540,6 +579,45 @@ exports[`Shallow Snapshot Tests edit page 1`] = `
       <ForwardRef(List)>
         <NonStyleLink
           key="0"
+          to="/special-maps"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <MyIcon
+                variant="special-map"
+              />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="オリジナルマップ"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+        <NonStyleLink
+          key="1"
+          to="/special-maps/new"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <MyIcon
+                variant="add-special-map"
+              />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="新規オリジナルマップ作成"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+      </ForwardRef(List)>
+      <ForwardRef(Divider) />
+      <ForwardRef(List)>
+        <NonStyleLink
+          key="0"
           to="/login"
         >
           <ForwardRef(ListItem)
@@ -804,6 +882,17 @@ exports[`Shallow Snapshot Tests long name with mobile 1`] = `
                   text="アカウント設定"
                 />
               </Link>
+              <Link
+                key="authmenu-4"
+                to="/admin/special-maps"
+              >
+                <IconAndText
+                  align="left"
+                  iconComponent={<Memo />}
+                  iconPosition="left"
+                  text="マイオリジナルマップ一覧"
+                />
+              </Link>
               <ForwardRef(Button)
                 onClick={[Function]}
                 variant="outlined"
@@ -880,6 +969,45 @@ exports[`Shallow Snapshot Tests long name with mobile 1`] = `
       <ForwardRef(List)>
         <NonStyleLink
           key="0"
+          to="/special-maps"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <MyIcon
+                variant="special-map"
+              />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="オリジナルマップ"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+        <NonStyleLink
+          key="1"
+          to="/special-maps/new"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <MyIcon
+                variant="add-special-map"
+              />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="新規オリジナルマップ作成"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+      </ForwardRef(List)>
+      <ForwardRef(Divider) />
+      <ForwardRef(List)>
+        <NonStyleLink
+          key="0"
           to="/admin"
         >
           <ForwardRef(ListItem)
@@ -939,6 +1067,24 @@ exports[`Shallow Snapshot Tests long name with mobile 1`] = `
             </ForwardRef(ListItemIcon)>
             <ForwardRef(ListItemText)
               primary="アカウント設定"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+        <NonStyleLink
+          key="4"
+          to="/admin/special-maps"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <MyIcon
+                variant="special-list"
+              />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="マイオリジナルマップ一覧"
             />
           </ForwardRef(ListItem)>
         </NonStyleLink>
@@ -1232,6 +1378,45 @@ exports[`Shallow Snapshot Tests map page 1`] = `
             </ForwardRef(ListItemIcon)>
             <ForwardRef(ListItemText)
               primary="投稿一覧＆検索"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+      </ForwardRef(List)>
+      <ForwardRef(Divider) />
+      <ForwardRef(List)>
+        <NonStyleLink
+          key="0"
+          to="/special-maps"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <MyIcon
+                variant="special-map"
+              />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="オリジナルマップ"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+        <NonStyleLink
+          key="1"
+          to="/special-maps/new"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <MyIcon
+                variant="add-special-map"
+              />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="新規オリジナルマップ作成"
             />
           </ForwardRef(ListItem)>
         </NonStyleLink>
@@ -1556,6 +1741,45 @@ exports[`Shallow Snapshot Tests new page 1`] = `
       <ForwardRef(List)>
         <NonStyleLink
           key="0"
+          to="/special-maps"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <MyIcon
+                variant="special-map"
+              />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="オリジナルマップ"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+        <NonStyleLink
+          key="1"
+          to="/special-maps/new"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <MyIcon
+                variant="add-special-map"
+              />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="新規オリジナルマップ作成"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+      </ForwardRef(List)>
+      <ForwardRef(Divider) />
+      <ForwardRef(List)>
+        <NonStyleLink
+          key="0"
           to="/login"
         >
           <ForwardRef(ListItem)
@@ -1861,6 +2085,45 @@ exports[`Shallow Snapshot Tests permanent left navi 1`] = `
             </ForwardRef(ListItemIcon)>
             <ForwardRef(ListItemText)
               primary="投稿一覧＆検索"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+      </ForwardRef(List)>
+      <ForwardRef(Divider) />
+      <ForwardRef(List)>
+        <NonStyleLink
+          key="0"
+          to="/special-maps"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <MyIcon
+                variant="special-map"
+              />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="オリジナルマップ"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+        <NonStyleLink
+          key="1"
+          to="/special-maps/new"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <MyIcon
+                variant="add-special-map"
+              />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="新規オリジナルマップ作成"
             />
           </ForwardRef(ListItem)>
         </NonStyleLink>
@@ -2197,6 +2460,45 @@ exports[`Shallow Snapshot Tests redirect to top page 1`] = `
       <ForwardRef(List)>
         <NonStyleLink
           key="0"
+          to="/special-maps"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <MyIcon
+                variant="special-map"
+              />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="オリジナルマップ"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+        <NonStyleLink
+          key="1"
+          to="/special-maps/new"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <MyIcon
+                variant="add-special-map"
+              />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="新規オリジナルマップ作成"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+      </ForwardRef(List)>
+      <ForwardRef(Divider) />
+      <ForwardRef(List)>
+        <NonStyleLink
+          key="0"
           to="/login"
         >
           <ForwardRef(ListItem)
@@ -2525,6 +2827,45 @@ exports[`Shallow Snapshot Tests static position 1`] = `
       <ForwardRef(List)>
         <NonStyleLink
           key="0"
+          to="/special-maps"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <MyIcon
+                variant="special-map"
+              />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="オリジナルマップ"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+        <NonStyleLink
+          key="1"
+          to="/special-maps/new"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <MyIcon
+                variant="add-special-map"
+              />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="新規オリジナルマップ作成"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+      </ForwardRef(List)>
+      <ForwardRef(Divider) />
+      <ForwardRef(List)>
+        <NonStyleLink
+          key="0"
           to="/login"
         >
           <ForwardRef(ListItem)
@@ -2845,6 +3186,45 @@ exports[`Shallow Snapshot Tests with local navi & mobile 1`] = `
             </ForwardRef(ListItemIcon)>
             <ForwardRef(ListItemText)
               primary="投稿一覧＆検索"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+      </ForwardRef(List)>
+      <ForwardRef(Divider) />
+      <ForwardRef(List)>
+        <NonStyleLink
+          key="0"
+          to="/special-maps"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <MyIcon
+                variant="special-map"
+              />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="オリジナルマップ"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+        <NonStyleLink
+          key="1"
+          to="/special-maps/new"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <MyIcon
+                variant="add-special-map"
+              />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="新規オリジナルマップ作成"
             />
           </ForwardRef(ListItem)>
         </NonStyleLink>
@@ -3201,6 +3581,45 @@ exports[`Shallow Snapshot Tests with local navi 1`] = `
       <ForwardRef(List)>
         <NonStyleLink
           key="0"
+          to="/special-maps"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <MyIcon
+                variant="special-map"
+              />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="オリジナルマップ"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+        <NonStyleLink
+          key="1"
+          to="/special-maps/new"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <MyIcon
+                variant="add-special-map"
+              />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="新規オリジナルマップ作成"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+      </ForwardRef(List)>
+      <ForwardRef(Divider) />
+      <ForwardRef(List)>
+        <NonStyleLink
+          key="0"
           to="/login"
         >
           <ForwardRef(ListItem)
@@ -3485,6 +3904,17 @@ exports[`Shallow Snapshot Tests with userInfo 1`] = `
                   text="アカウント設定"
                 />
               </Link>
+              <Link
+                key="authmenu-4"
+                to="/admin/special-maps"
+              >
+                <IconAndText
+                  align="left"
+                  iconComponent={<Memo />}
+                  iconPosition="left"
+                  text="マイオリジナルマップ一覧"
+                />
+              </Link>
               <ForwardRef(Button)
                 onClick={[Function]}
                 variant="outlined"
@@ -3561,6 +3991,45 @@ exports[`Shallow Snapshot Tests with userInfo 1`] = `
       <ForwardRef(List)>
         <NonStyleLink
           key="0"
+          to="/special-maps"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <MyIcon
+                variant="special-map"
+              />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="オリジナルマップ"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+        <NonStyleLink
+          key="1"
+          to="/special-maps/new"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <MyIcon
+                variant="add-special-map"
+              />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="新規オリジナルマップ作成"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+      </ForwardRef(List)>
+      <ForwardRef(Divider) />
+      <ForwardRef(List)>
+        <NonStyleLink
+          key="0"
           to="/admin"
         >
           <ForwardRef(ListItem)
@@ -3620,6 +4089,24 @@ exports[`Shallow Snapshot Tests with userInfo 1`] = `
             </ForwardRef(ListItemIcon)>
             <ForwardRef(ListItemText)
               primary="アカウント設定"
+            />
+          </ForwardRef(ListItem)>
+        </NonStyleLink>
+        <NonStyleLink
+          key="4"
+          to="/admin/special-maps"
+        >
+          <ForwardRef(ListItem)
+            button={true}
+            onClick={[Function]}
+          >
+            <ForwardRef(ListItemIcon)>
+              <MyIcon
+                variant="special-list"
+              />
+            </ForwardRef(ListItemIcon)>
+            <ForwardRef(ListItemText)
+              primary="マイオリジナルマップ一覧"
             />
           </ForwardRef(ListItem)>
         </NonStyleLink>

@@ -4,7 +4,7 @@ exports[`Shallow Snapshot Tests author map 1`] = `
 <Fragment>
   <CommonHelmet
     canonicalUrlPath="/"
-    description="隠れミッキー、バックグラウンドストーリーなど、ディズニーのマニアックな知識をが地図上で共有できるサイト"
+    description="隠れミッキー、バックグラウンドストーリーなど、ディズニーのマニアックな知識を地図上で共有できるサイト"
     title="トリビアマップ"
   />
   <ForwardRef(Box)
@@ -254,7 +254,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
 <Fragment>
   <CommonHelmet
     canonicalUrlPath="/"
-    description="隠れミッキー、バックグラウンドストーリーなど、ディズニーのマニアックな知識をが地図上で共有できるサイト"
+    description="隠れミッキー、バックグラウンドストーリーなど、ディズニーのマニアックな知識を地図上で共有できるサイト"
     title="トリビアマップ"
   />
   <ForwardRef(Box)
@@ -472,7 +472,7 @@ exports[`Shallow Snapshot Tests before render map 1`] = `
 <Fragment>
   <CommonHelmet
     canonicalUrlPath="/"
-    description="隠れミッキー、バックグラウンドストーリーなど、ディズニーのマニアックな知識をが地図上で共有できるサイト"
+    description="隠れミッキー、バックグラウンドストーリーなど、ディズニーのマニアックな知識を地図上で共有できるサイト"
     title="トリビアマップ"
   />
   <ForwardRef(Box)
@@ -675,7 +675,7 @@ exports[`Shallow Snapshot Tests land mode 1`] = `
 <Fragment>
   <CommonHelmet
     canonicalUrlPath="/"
-    description="隠れミッキー、バックグラウンドストーリーなど、ディズニーのマニアックな知識をが地図上で共有できるサイト"
+    description="隠れミッキー、バックグラウンドストーリーなど、ディズニーのマニアックな知識を地図上で共有できるサイト"
     title="トリビアマップ"
   />
   <ForwardRef(Box)
@@ -893,7 +893,7 @@ exports[`Shallow Snapshot Tests park is undefined 1`] = `
 <Fragment>
   <CommonHelmet
     canonicalUrlPath="/"
-    description="隠れミッキー、バックグラウンドストーリーなど、ディズニーのマニアックな知識をが地図上で共有できるサイト"
+    description="隠れミッキー、バックグラウンドストーリーなど、ディズニーのマニアックな知識を地図上で共有できるサイト"
     title="トリビアマップ"
   />
   <ForwardRef(Box)
@@ -1078,7 +1078,7 @@ exports[`Shallow Snapshot Tests pc view 1`] = `
 <Fragment>
   <CommonHelmet
     canonicalUrlPath="/"
-    description="隠れミッキー、バックグラウンドストーリーなど、ディズニーのマニアックな知識をが地図上で共有できるサイト"
+    description="隠れミッキー、バックグラウンドストーリーなど、ディズニーのマニアックな知識を地図上で共有できるサイト"
     title="トリビアマップ"
   />
   <ForwardRef(Box)

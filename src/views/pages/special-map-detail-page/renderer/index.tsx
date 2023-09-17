@@ -29,6 +29,7 @@ import { User } from 'types/user';
 import { AuthorLink } from 'views/components/atoms/author-link';
 import { maxLengthSlice } from 'utils/max-length-slice.ts';
 import { AdsenseIns } from 'views/components/moleculars/adsense-ins';
+import { SUB_SITE_IMAGES } from 'constant/head-tags';
 
 export class Renderer extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -85,24 +86,24 @@ export class Renderer extends React.Component<Props, State> {
         <CommonHelmet
           title={title}
           description={description}
-          imageUrl={thumbnail ?? undefined}
+          imageUrl={thumbnail ?? `${domain}/${SUB_SITE_IMAGES.specialMap}`}
           ogType="article"
         />
         <Stack spacing={2}>
-          {process.env.REACT_APP_AD_SLOT_TOP_ARTICLE && (
-            <AdsenseIns
-              adSlot={process.env.REACT_APP_AD_SLOT_TOP_ARTICLE}
-              adFormat="auto"
-              fullWidthResponsive
-            />
-          )}
-
           {!isPublic && (
             <Alert severity="info">このマップは非公開です。あなただけが閲覧できます。</Alert>
           )}
 
           {isPublic && (
             <ShareButtons title={title} url={`${domain}${path}`} description={description} />
+          )}
+
+          {process.env.REACT_APP_AD_SLOT_IN_ARTICLE && (
+            <AdsenseIns
+              adSlot={process.env.REACT_APP_AD_SLOT_IN_ARTICLE}
+              adFormat="fluid"
+              adLayout="in-article"
+            />
           )}
 
           <Divider />
@@ -207,7 +208,7 @@ export class Renderer extends React.Component<Props, State> {
             </Box>
           </Box>
 
-          {(i + 1) % 4 === 0 && adSlot && (
+          {(i + 1) % 5 === 0 && adSlot && (
             <AdsenseIns adSlot={adSlot} adFormat="fluid" adLayoutKey="-71+ed+2g-1n-4q" />
           )}
         </>

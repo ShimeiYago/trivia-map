@@ -11,4 +11,6 @@ export type MapMarkerVariant =
   | 'sea'
   | 'star'
   | 'light'
-  | 'plant';
+  | 'plant'
+  | 'weathercock'
+  | 'hydrant';

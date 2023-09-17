@@ -47,6 +47,8 @@ import seaIconUrl from 'images/marker-icons/sea.png';
 import starIconUrl from 'images/marker-icons/star.png';
 import lightIconUrl from 'images/marker-icons/light.png';
 import plantIconUrl from 'images/marker-icons/plant.png';
+import weathercockIconUrl from 'images/marker-icons/weathercock.png';
+import hydrantIconUrl from 'images/marker-icons/hydrant.png';
 
 export function SpecialMapMarkerForm(props: Props) {
   const dispatch = useAppDispatch();
@@ -243,6 +245,16 @@ const MARKER_OPTIONS: { value: MapMarkerVariant; name: string; imgSrc: string }[
     name: '植物',
     value: MAP_MARKER_VARIANT.plant,
     imgSrc: plantIconUrl,
+  },
+  {
+    name: '消火栓',
+    value: MAP_MARKER_VARIANT.hydrant,
+    imgSrc: hydrantIconUrl,
+  },
+  {
+    name: '風見鶏',
+    value: MAP_MARKER_VARIANT.weathercock,
+    imgSrc: weathercockIconUrl,
   },
   {
     name: 'ネモ',

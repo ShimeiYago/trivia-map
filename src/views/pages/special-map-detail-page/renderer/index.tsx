@@ -98,14 +98,6 @@ export class Renderer extends React.Component<Props, State> {
             <ShareButtons title={title} url={`${domain}${path}`} description={description} />
           )}
 
-          {process.env.REACT_APP_AD_SLOT_IN_ARTICLE && (
-            <AdsenseIns
-              adSlot={process.env.REACT_APP_AD_SLOT_IN_ARTICLE}
-              adFormat="fluid"
-              adLayout="in-article"
-            />
-          )}
-
           <Divider />
 
           {this.renderEditLink()}
@@ -127,6 +119,14 @@ export class Renderer extends React.Component<Props, State> {
           <DynamicAlignedText whiteSpace="pre-wrap" fontSize={18}>
             {description}
           </DynamicAlignedText>
+
+          {process.env.REACT_APP_AD_SLOT_IN_ARTICLE && (
+            <AdsenseIns
+              adSlot={process.env.REACT_APP_AD_SLOT_IN_ARTICLE}
+              adFormat="fluid"
+              adLayout="in-article"
+            />
+          )}
 
           <Divider />
 

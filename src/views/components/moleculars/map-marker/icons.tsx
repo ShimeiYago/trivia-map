@@ -19,6 +19,8 @@ import seaIconUrl from 'images/marker-icons/sea.png';
 import starIconUrl from 'images/marker-icons/star.png';
 import lightIconUrl from 'images/marker-icons/light.png';
 import plantIconUrl from 'images/marker-icons/plant.png';
+import weathercockIconUrl from 'images/marker-icons/weathercock.png';
+import hydrantIconUrl from 'images/marker-icons/hydrant.png';
 
 const singleIconSize = {
   width: 25,
@@ -83,6 +85,16 @@ const plantIconSize = {
   height: 52,
   centerHeight: 25,
 };
+const weathercockIconSize = {
+  width: 55,
+  height: 55,
+  centerHeight: 24,
+};
+const hydrantIconSize = {
+  width: 55,
+  height: 56,
+  centerHeight: 26,
+};
 
 const singleIconOptions: L.IconOptions = {
   iconUrl: presetIconUrl,
@@ -118,6 +130,8 @@ export const seaIcon = getSpecialIcon(seaIconUrl, seaIconSize);
 export const starIcon = getSpecialIcon(starIconUrl, starIconSize);
 export const lightIcon = getSpecialIcon(lightIconUrl, lightIconSize);
 export const plantIcon = getSpecialIcon(plantIconUrl, plantIconSize);
+export const weathercockIcon = getSpecialIcon(weathercockIconUrl, weathercockIconSize);
+export const hydrantIcon = getSpecialIcon(hydrantIconUrl, hydrantIconSize);
 
 // marker with number
 export const redIconWithNumber = (num: string) =>

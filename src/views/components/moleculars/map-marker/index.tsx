@@ -19,6 +19,8 @@ import {
   starIcon,
   lightIcon,
   plantIcon,
+  weathercockIcon,
+  hydrantIcon,
 } from './icons';
 import { CustomMarker } from './helpers/custom-marker';
 import { ZOOMS } from 'constant';
@@ -85,6 +87,12 @@ export class MapMarker extends React.Component<Props, State> {
         break;
       case 'plant':
         icon = plantIcon;
+        break;
+      case 'hydrant':
+        icon = hydrantIcon;
+        break;
+      case 'weathercock':
+        icon = weathercockIcon;
         break;
     }
 

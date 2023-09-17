@@ -144,6 +144,8 @@ export const MAP_MARKER_VARIANT: { [key: string]: MapMarkerVariant } = {
   star: 'star',
   plant: 'plant',
   light: 'light',
+  hydrant: 'hydrant',
+  weathercock: 'weathercock',
 };
 
 export const MINI_MAP_HEIGHT = 300;

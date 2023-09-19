@@ -154,6 +154,7 @@ export function SpecialMapMarkerForm(props: Props) {
             src={imageSrc}
             onChange={(src) => dispatch(updateImage(src))}
             variant="photo"
+            cropable
             disabled={loading}
             error={!!formError?.fieldErrors?.image}
             helperText={formError?.fieldErrors?.image}

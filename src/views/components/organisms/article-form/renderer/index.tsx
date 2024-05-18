@@ -90,6 +90,7 @@ export class Renderer extends React.Component<Props> {
       fetchingState,
       formError,
       image,
+      areaNames,
       handleClickSelectPosition,
     } = this.props;
 
@@ -140,6 +141,7 @@ export class Renderer extends React.Component<Props> {
             disabled={disabled}
             helperText={formError?.fieldErrors?.marker}
             isSelected={!!this.props.position}
+            areaNames={areaNames}
           >
             <TriviaMap
               height={MINI_MAP_HEIGHT}

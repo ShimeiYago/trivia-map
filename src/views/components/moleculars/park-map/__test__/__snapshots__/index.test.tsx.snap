@@ -74,7 +74,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       <ForwardRef(LeafComponent)
         attribution="&copy; <a target=\\"_blank\\" href=\\"https://www.tokyodisneyresort.jp/tdl/map.html\\">tokyodisneyresort.jp</a>"
         noWrap={true}
-        url="/s-tiles/{z}/{x}/{y}.png"
+        url="/s-tiles-v2/{z}/{x}/{y}.png"
       />
       <ForwardRef(LeafComponent)
         position="bottomleft"
@@ -164,7 +164,7 @@ exports[`Shallow Snapshot Tests disabled map 1`] = `
       <ForwardRef(LeafComponent)
         attribution="&copy; <a target=\\"_blank\\" href=\\"https://www.tokyodisneyresort.jp/tdl/map.html\\">tokyodisneyresort.jp</a>"
         noWrap={true}
-        url="/s-tiles/{z}/{x}/{y}.png"
+        url="/s-tiles-v2/{z}/{x}/{y}.png"
       />
     </MapContainer>
   </ForwardRef(Box)>
@@ -412,7 +412,7 @@ exports[`Shallow Snapshot Tests position select 1`] = `
       <ForwardRef(LeafComponent)
         attribution="&copy; <a target=\\"_blank\\" href=\\"https://www.tokyodisneyresort.jp/tdl/map.html\\">tokyodisneyresort.jp</a>"
         noWrap={true}
-        url="/s-tiles/{z}/{x}/{y}.png"
+        url="/s-tiles-v2/{z}/{x}/{y}.png"
       />
       <ForwardRef(LeafComponent)
         position="bottomleft"
@@ -496,7 +496,7 @@ exports[`Shallow Snapshot Tests with initCenter prop 1`] = `
       <ForwardRef(LeafComponent)
         attribution="&copy; <a target=\\"_blank\\" href=\\"https://www.tokyodisneyresort.jp/tdl/map.html\\">tokyodisneyresort.jp</a>"
         noWrap={true}
-        url="/s-tiles/{z}/{x}/{y}.png"
+        url="/s-tiles-v2/{z}/{x}/{y}.png"
       />
       <ForwardRef(LeafComponent)
         position="bottomleft"
@@ -580,7 +580,7 @@ exports[`Shallow Snapshot Tests with width and height props 1`] = `
       <ForwardRef(LeafComponent)
         attribution="&copy; <a target=\\"_blank\\" href=\\"https://www.tokyodisneyresort.jp/tdl/map.html\\">tokyodisneyresort.jp</a>"
         noWrap={true}
-        url="/s-tiles/{z}/{x}/{y}.png"
+        url="/s-tiles-v2/{z}/{x}/{y}.png"
       />
       <ForwardRef(LeafComponent)
         position="bottomleft"

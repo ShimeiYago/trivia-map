@@ -34,6 +34,13 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       variant="standard"
     />
     <MapField
+      areaNames={
+        Array [
+          "シー",
+          "メディテレーニアンハーバー",
+          "ポルトパラディーゾ",
+        ]
+      }
       disabled={false}
       isSelected={true}
       status="valid"
@@ -185,6 +192,13 @@ exports[`Shallow Snapshot Tests draft mode 1`] = `
       variant="standard"
     />
     <MapField
+      areaNames={
+        Array [
+          "シー",
+          "メディテレーニアンハーバー",
+          "ポルトパラディーゾ",
+        ]
+      }
       disabled={false}
       isSelected={true}
       status="valid"
@@ -346,6 +360,13 @@ exports[`Shallow Snapshot Tests loading 1`] = `
       variant="standard"
     />
     <MapField
+      areaNames={
+        Array [
+          "シー",
+          "メディテレーニアンハーバー",
+          "ポルトパラディーゾ",
+        ]
+      }
       disabled={true}
       isSelected={true}
       status="valid"
@@ -497,6 +518,13 @@ exports[`Shallow Snapshot Tests position is not selected yet 1`] = `
       variant="standard"
     />
     <MapField
+      areaNames={
+        Array [
+          "シー",
+          "メディテレーニアンハーバー",
+          "ポルトパラディーゾ",
+        ]
+      }
       disabled={false}
       isSelected={false}
       status="normal"
@@ -641,6 +669,13 @@ exports[`Shallow Snapshot Tests with category 1`] = `
       variant="standard"
     />
     <MapField
+      areaNames={
+        Array [
+          "シー",
+          "メディテレーニアンハーバー",
+          "ポルトパラディーゾ",
+        ]
+      }
       disabled={false}
       isSelected={true}
       status="valid"
@@ -792,6 +827,13 @@ exports[`Shallow Snapshot Tests with image data url 1`] = `
       variant="standard"
     />
     <MapField
+      areaNames={
+        Array [
+          "シー",
+          "メディテレーニアンハーバー",
+          "ポルトパラディーゾ",
+        ]
+      }
       disabled={false}
       isSelected={true}
       status="valid"
@@ -940,6 +982,13 @@ exports[`Shallow Snapshot Tests with image url 1`] = `
       variant="standard"
     />
     <MapField
+      areaNames={
+        Array [
+          "シー",
+          "メディテレーニアンハーバー",
+          "ポルトパラディーゾ",
+        ]
+      }
       disabled={false}
       isSelected={true}
       status="valid"
@@ -1091,6 +1140,13 @@ exports[`Shallow Snapshot Tests with validation error 1`] = `
       variant="standard"
     />
     <MapField
+      areaNames={
+        Array [
+          "シー",
+          "メディテレーニアンハーバー",
+          "ポルトパラディーゾ",
+        ]
+      }
       disabled={false}
       helperText={
         Array [

@@ -16,7 +16,7 @@ export class Renderer extends React.Component<Props> {
       <Box sx={{ mt: 3 }}>
         <CenterSpinner />
         <Typography align="center" sx={{ mt: 3 }}>
-          Twitterでログイン中
+          X(Twitter)でログイン中
         </Typography>
       </Box>
     );

@@ -6,7 +6,11 @@ exports[`Shallow Snapshot Tests basic 1`] = `
   fullWidth={true}
   loading={false}
   onClick={[Function]}
-  startIcon={<Memo />}
+  startIcon={
+    <MyIcon
+      variant="x-twitter"
+    />
+  }
   sx={
     Object {
       "textTransform": "none",
@@ -14,6 +18,6 @@ exports[`Shallow Snapshot Tests basic 1`] = `
   }
   variant="outlined"
 >
-  Twitterで簡単ログイン
+  (Twitter)で簡単ログイン
 </ForwardRef(LoadingButton)>
 `;

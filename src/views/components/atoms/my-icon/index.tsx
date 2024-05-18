@@ -8,6 +8,7 @@ import { ReactComponent as MapMarkerIcon } from 'images/svg/map-marker.svg';
 import { ReactComponent as SpecialMapIcon } from 'images/svg/special-map.svg';
 import { ReactComponent as AddSpecialMapIcon } from 'images/svg/add-special-map.svg';
 import { ReactComponent as SpecialListIcon } from 'images/svg/special-list.svg';
+import { ReactComponent as XTwitterIcon } from 'images/svg/x-twitter.svg';
 
 export function MyIcon(props: Props): JSX.Element {
   let icon: React.FunctionComponent;
@@ -23,11 +24,15 @@ export function MyIcon(props: Props): JSX.Element {
       break;
     case 'special-list':
       icon = SpecialListIcon;
+      break;
+    case 'x-twitter':
+      icon = XTwitterIcon;
+      break;
   }
 
   return <SvgIcon inheritViewBox component={icon} {...props} />;
 }
 
 export type Props = SvgIconProps & {
-  variant: 'map-marker' | 'special-map' | 'add-special-map' | 'special-list';
+  variant: 'map-marker' | 'special-map' | 'add-special-map' | 'special-list' | 'x-twitter';
 };

@@ -82,7 +82,7 @@ export const UPLOAD_IMAGE_MAX_LENGTH = {
 };
 
 export const TDL_TILE_URL = '/l-tiles/{z}/{x}/{y}.png';
-export const TDS_TILE_URL = '/s-tiles/{z}/{x}/{y}.png';
+export const TDS_TILE_URL = '/s-tiles-v2/{z}/{x}/{y}.png';
 
 export const ZOOMS = {
   min: 1,

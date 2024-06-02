@@ -1,12 +1,12 @@
 import React from 'react';
 import { TWITTER_LOGIN_LINK } from 'constant/links';
-import TwitterIcon from '@mui/icons-material/Twitter';
 import { LoadingButton } from '@mui/lab';
 import { getDomain } from 'utils/get-domain.ts';
 import { TwitterAccessTokenResponse } from 'api/auths-api/twitter-access-token';
 import { twitterLogin } from 'api/auths-api/twitter-login';
 import { User } from 'types/user';
 import { ApiError } from 'api/utils/handle-axios-error';
+import { MyIcon } from 'views/components/atoms/my-icon';
 
 export class Renderer extends React.Component<Props, State> {
   state: State = {
@@ -25,14 +25,14 @@ export class Renderer extends React.Component<Props, State> {
     return (
       <LoadingButton
         variant="outlined"
-        startIcon={<TwitterIcon />}
+        startIcon={<MyIcon variant="x-twitter" />}
         onClick={this.handleClick}
         loading={this.state.loading}
         fullWidth={true}
         disabled={!!this.props.userInfo}
         sx={{ textTransform: 'none' }}
       >
-        Twitterで簡単ログイン
+        (Twitter)で簡単ログイン
       </LoadingButton>
     );
   }

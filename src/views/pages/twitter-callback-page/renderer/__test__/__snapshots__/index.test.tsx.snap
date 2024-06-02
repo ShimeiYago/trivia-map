@@ -17,7 +17,7 @@ exports[`Shallow Snapshot Tests basic 1`] = `
       }
     }
   >
-    Twitterでログイン中
+    X(Twitter)でログイン中
   </ForwardRef(Typography)>
 </ForwardRef(Box)>
 `;

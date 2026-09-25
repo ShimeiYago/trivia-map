@@ -1,100 +1,65 @@
 import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
 import { DeleteCommand, DynamoDBDocumentClient, GetCommand, PutCommand, ScanCommand } from '@aws-sdk/lib-dynamodb';
-import { SecretsManagerClient, GetSecretValueCommand } from '@aws-sdk/client-secrets-manager';
-import { createHmac, pbkdf2Sync, randomBytes, timingSafeEqual } from 'node:crypto';
+import { createHmac, randomBytes, timingSafeEqual } from 'node:crypto';
 import { Hono } from 'hono';
 import { cors } from 'hono/cors';
 
+type Item = Record<string, unknown> & { id: string };
 export type Health = { ok: true; service: 'triviamap-api' };
 const ddb = DynamoDBDocumentClient.from(new DynamoDBClient({}));
-const secrets = new SecretsManagerClient({});
-const table = (name: string) => process.env[`TABLE_${name}`] ?? `TriviaMap-stg-${name[0]}${name.slice(1).toLowerCase()}`;
-const scan = async (name: string) => (await ddb.send(new ScanCommand({ TableName: table(name) }))).Items ?? [];
-const get = async (name: string, id: string) => (await ddb.send(new GetCommand({ TableName: table(name), Key: { id } }))).Item;
-const date = (value: unknown) => value ? new Date(String(value)).toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hour12: false }).replaceAll('-', '/').replace(',', '') : null;
-const visitor = (header: string | undefined) => header?.split(',')[0]?.trim() || 'anonymous';
-let signingSecret: Promise<string> | undefined;
-const jwtSecret = () => signingSecret ??= secrets.send(new GetSecretValueCommand({ SecretId: process.env.BACKEND_SECRET_ARN })).then((value) => JSON.parse(value.SecretString ?? '{}').jwtSecret as string);
-const token = async (userId: string, seconds: number) => { const payload = Buffer.from(JSON.stringify({ userId, exp: Math.floor(Date.now() / 1000) + seconds })).toString('base64url'); return `${payload}.${createHmac('sha256', await jwtSecret()).update(payload).digest('base64url')}`; };
-const readToken = async (raw?: string) => { if (!raw) return undefined; const [payload, signature] = raw.split('.'); const expected = createHmac('sha256', await jwtSecret()).update(payload).digest('base64url'); if (!signature || !timingSafeEqual(Buffer.from(signature), Buffer.from(expected))) return undefined; const parsed = JSON.parse(Buffer.from(payload, 'base64').toString()) as { userId: string; exp: number }; return parsed.exp > Date.now() / 1000 ? parsed : undefined; };
+const tableNames: Record<string, string> = { USERS: 'TABLE_USERS', ARTICLES: 'TABLE_ARTICLES', MARKERS: 'TABLE_MARKERS', LIKES: 'TABLE_LIKES', GOODS: 'TABLE_GOODS', SPECIALMAPS: 'TABLE_SPECIALMAPS', SPECIALMAPMARKERS: 'TABLE_SPECIALMAPMARKERS', SESSIONS: 'TABLE_SESSIONS', AUTHTOKENS: 'TABLE_AUTHTOKENS' };
+const table = (name: keyof typeof tableNames) => process.env[tableNames[name]] ?? `TriviaMap-stg-v2-${name === 'SPECIALMAPS' ? 'SpecialMaps' : name === 'SPECIALMAPMARKERS' ? 'SpecialMapMarkers' : name[0]}${name.slice(1).toLowerCase()}`;
+const all = async (name: keyof typeof tableNames) => { const output: Item[] = []; let key: Record<string, unknown> | undefined; do { const page = await ddb.send(new ScanCommand({ TableName: table(name), ExclusiveStartKey: key })); output.push(...(page.Items as Item[] ?? [])); key = page.LastEvaluatedKey; } while (key); return output; };
+const get = async (name: keyof typeof tableNames, id: string) => (await ddb.send(new GetCommand({ TableName: table(name), Key: { id } }))).Item as Item | undefined;
+const put = async (name: keyof typeof tableNames, item: Item) => ddb.send(new PutCommand({ TableName: table(name), Item: item }));
+const remove = async (name: keyof typeof tableNames, id: string) => ddb.send(new DeleteCommand({ TableName: table(name), Key: { id } }));
+const text = (value: unknown) => String(value ?? '');
+const num = (value: unknown) => Number(value);
+const bool = (value: unknown) => value === true || value === 1 || value === '1' || value === 'true';
+const date = (value: unknown) => value ? new Date(text(value)).toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hour12: false }).replaceAll('-', '/').replace(',', '') : null;
+const media = (value: unknown) => { const key = text(value); return key ? key.startsWith('uploads/') ? `${process.env.FRONTEND_ORIGIN}/images/${key}` : key : null; };
+const pagination = <T>(list: T[], page: number, limit: number) => ({ nextUrl: page * limit < list.length ? `?page=${page + 1}` : null, previousUrl: page > 1 ? `?page=${page - 1}` : null, totalRecords: list.length, totalPages: Math.ceil(list.length / limit), currentPage: page, startIndex: list.length ? (page - 1) * limit + 1 : 0, endIndex: Math.min(page * limit, list.length), results: list.slice((page - 1) * limit, page * limit) });
+const pageOf = (value: string | undefined) => Math.max(1, Number(value ?? 1));
+const limitOf = (value: string | undefined) => Math.min(100, Math.max(1, Number(value ?? 10)));
 const cookie = (header: string | undefined, name: string) => header?.split(';').map((part) => part.trim().split('=')).find(([key]) => key === name)?.[1];
-const verifyDjangoPassword = (password: string, stored: unknown) => { const [algorithm, iterations, salt, encoded] = String(stored).split('$'); if (algorithm !== 'pbkdf2_sha256' || !iterations || !salt || !encoded) return false; const derived = pbkdf2Sync(password, salt, Number(iterations), 32, 'sha256').toString('base64'); return timingSafeEqual(Buffer.from(derived), Buffer.from(encoded)); };
-const hashDjangoPassword = (password: string) => { const salt = randomBytes(18).toString('base64url'); return `pbkdf2_sha256$260000$${salt}$${pbkdf2Sync(password, salt, 260000, 32, 'sha256').toString('base64')}`; };
+const sign = (payload: object) => { const body = Buffer.from(JSON.stringify(payload)).toString('base64url'); const key = process.env.JWT_SECRET ?? 'local-test-secret'; return `${body}.${createHmac('sha256', key).update(body).digest('base64url')}`; };
+const session = (raw: string | undefined) => { if (!raw) return undefined; const [body, signature] = raw.split('.'); const key = process.env.JWT_SECRET ?? 'local-test-secret'; const expected = createHmac('sha256', key).update(body).digest('base64url'); if (!signature || !timingSafeEqual(Buffer.from(signature), Buffer.from(expected))) return undefined; const result = JSON.parse(Buffer.from(body, 'base64url').toString()) as { userId: string; exp: number }; return result.exp > Date.now() / 1000 ? result : undefined; };
+const csrf = (c: { req: { header: (name: string) => string | undefined } }) => { const value = cookie(c.req.header('cookie'), 'trivia-map-csrf'); return !!value && value === c.req.header('x-csrf-token'); };
+const userView = (user: Item, includeEmail = false) => ({ userId: num(user.userId), ...(includeEmail ? { email: text(user.email) } : {}), nickname: text(user.nickname), icon: media(user.socialIcon || user.icon), isSocialAccount: !text(user.email), url: user.url ? text(user.url) : null });
+const publicMarker = (marker: Item, articles: Item[]) => { const related = articles.filter((article) => !bool(article.isDraft) && text(article.markerId) === text(marker.markerId)); return { markerId: num(marker.markerId), lat: num(marker.lat), lng: num(marker.lng), park: text(marker.park), numberOfPublicArticles: { total: related.length, eachCategory: Array.from({ length: 7 }, (_, category) => related.filter((article) => num(article.category) === category).length) } }; };
+const articleView = (article: Item, author?: Item, marker?: Item, goods: Item[] = []) => ({ postId: num(article.postId), title: text(article.title), description: text(article.description), marker: marker ? { ...publicMarker(marker, []), areaNames: [] } : num(article.markerId), category: num(article.category), image: media(article.image), isDraft: bool(article.isDraft), author: author ? userView(author) : num(article.authorId), createdAt: date(article.createdAt), updatedAt: date(article.updatedAt), numberOfGoods: goods.filter((good) => text(good.postId) === text(article.postId)).length });
+const nextId = (items: Item[], field: string) => String(Math.max(0, ...items.map((item) => num(item[field]))) + 1);
 
 export const createApp = () => {
   const app = new Hono();
-  app.use('*', cors({
-    origin: process.env.FRONTEND_ORIGIN ?? '',
-    allowMethods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
-    allowHeaders: ['Content-Type', 'Authorization', 'X-CSRF-Token'],
-    credentials: true,
-  }));
+  app.use('*', cors({ origin: process.env.FRONTEND_ORIGIN ?? '', allowMethods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'], allowHeaders: ['Content-Type', 'Authorization', 'X-CSRF-Token'], credentials: true }));
+  app.use('*', async (c, next) => { if (process.env.ORIGIN_VERIFY_TOKEN && c.req.header('x-triviamap-origin') !== process.env.ORIGIN_VERIFY_TOKEN) return c.json({ detail: 'Not found' }, 404); await next(); });
+  const currentUser = async (c: { req: { header: (name: string) => string | undefined } }) => { const state = session(cookie(c.req.header('cookie'), 'trivia-map-auth')); return state && await get('USERS', state.userId); };
+
   app.get('/health', (c) => c.json<Health>({ ok: true, service: 'triviamap-api' }));
-  app.post('/auths/login/', async (c) => {
-    const body = await c.req.json<{ email?: string; password?: string }>(); const users = await scan('USERS'); const user = users.find((item) => item.email === body.email);
-    if (!user || !body.password || !verifyDjangoPassword(body.password, user.password)) return c.json({ non_field_errors: ['メールアドレスまたはパスワードが正しくありません。'] }, 400);
-    const access = await token(String(user.id), 900); const refresh = await token(String(user.id), 60 * 60 * 24 * 14); const expires = new Date(Date.now() + 900000).toISOString(); const refreshExpires = new Date(Date.now() + 1209600000).toISOString();
-    c.header('Set-Cookie', `trivia-map-auth=${access}; HttpOnly; Secure; SameSite=None; Path=/; Max-Age=900`); c.header('Set-Cookie', `trivia-map-refresh-auth=${refresh}; HttpOnly; Secure; SameSite=None; Path=/; Max-Age=1209600`, { append: true });
-    return c.json({ access_token: access, refresh_token: refresh, user: { userId: user.id, email: user.email, nickname: user.nickname, icon: user.socialIcon ?? user.icon ?? null, isSocialAccount: !user.email, url: user.url ?? null }, access_token_expiration: expires, refresh_token_expiration: refreshExpires });
-  });
-  app.post('/auths/registration/', async (c) => {
-    const body = await c.req.json<{ email?: string; nickname?: string; password1?: string; password2?: string }>(); const errors: Record<string, string[]> = {};
-    if (!body.email || !/^\S+@\S+\.\S+$/.test(body.email)) errors.email = ['有効なメールアドレスを入力してください。']; if (!body.nickname || body.nickname.length > 20) errors.nickname = ['ニックネームは1〜20文字で入力してください。']; if (!body.password1 || body.password1.length < 8) errors.password1 = ['パスワードは8文字以上で入力してください。']; if (body.password1 !== body.password2) errors.password2 = ['パスワードが一致しません。'];
-    const users = await scan('USERS'); if (body.email && users.some((user) => user.email === body.email)) errors.email = ['このメールアドレスは既に登録されています。']; if (Object.keys(errors).length) return c.json(errors, 400);
-    const id = Math.max(0, ...users.map((user) => Number(user.id))) + 1; const now = new Date().toISOString(); await ddb.send(new PutCommand({ TableName: table('USERS'), Item: { id: String(id), entity: 'User', username: body.email, email: body.email, nickname: body.nickname, password: hashDjangoPassword(body.password1!), is_active: false, date_joined: now, last_login: null } }));
-    return c.json({}, 201);
-  });
-  app.get('/auths/user/', async (c) => { const session = await readToken(cookie(c.req.header('cookie'), 'trivia-map-auth')); const user = session && await get('USERS', session.userId); return user ? c.json({ userId: user.id, email: user.email, nickname: user.nickname, icon: user.socialIcon ?? user.icon ?? null, isSocialAccount: !user.email, url: user.url ?? null }) : c.json({ detail: 'Authentication credentials were not provided.' }, 401); });
-  app.post('/auths/token/refresh/', async (c) => { const session = await readToken(cookie(c.req.header('cookie'), 'trivia-map-refresh-auth')); if (!session) return c.json({ detail: 'Invalid refresh token' }, 401); const access = await token(session.userId, 900); c.header('Set-Cookie', `trivia-map-auth=${access}; HttpOnly; Secure; SameSite=None; Path=/; Max-Age=900`); return c.json({ access, access_token_expiration: new Date(Date.now() + 900000).toISOString() }); });
-  app.post('/auths/logout/', (c) => { c.header('Set-Cookie', 'trivia-map-auth=; HttpOnly; Secure; SameSite=None; Path=/; Max-Age=0'); c.header('Set-Cookie', 'trivia-map-refresh-auth=; HttpOnly; Secure; SameSite=None; Path=/; Max-Age=0'); return c.json({}); });
-  app.get('/articles/public/previews', async (c) => {
-    const page = Math.max(1, Number(c.req.query('page') ?? 1)); const limit = Math.min(100, Number(c.req.query('limit') ?? 10));
-    const category = c.req.query('category'); const marker = c.req.query('marker'); const user = c.req.query('user');
-    const articles = (await scan('ARTICLES')).filter((a) => !a.isDraft && (!category || String(a.category) === category) && (!marker || String(a.marker_id) === marker) && (!user || String(a.author_id) === user)).sort((a, b) => String(b.createdAt).localeCompare(String(a.createdAt)));
-    const goods = await scan('GOODS'); const total = articles.length; const results = articles.slice((page - 1) * limit, page * limit).map((a) => ({ postId: a.postId, title: a.title, image: a.image ?? null, category: a.category, createdAt: date(a.createdAt), numberOfGoods: goods.filter((g) => String(g.article_id) === String(a.postId)).length }));
-    return c.json({ nextUrl: page * limit < total ? `?page=${page + 1}` : null, previousUrl: page > 1 ? `?page=${page - 1}` : null, totalRecords: total, totalPages: Math.ceil(total / limit), currentPage: page, startIndex: total ? (page - 1) * limit + 1 : 0, endIndex: Math.min(page * limit, total), results });
-  });
-  app.get('/articles/detail/:id', async (c) => {
-    const article = await get('ARTICLES', c.req.param('id')); if (!article || article.isDraft) return c.json({ detail: 'Not found' }, 404);
-    const [author, marker, goods] = await Promise.all([get('USERS', String(article.author_id)), get('MARKERS', String(article.marker_id)), scan('GOODS')]);
-    return c.json({ ...article, marker: marker && { markerId: marker.markerId, lat: marker.latitude, lng: marker.longitude, park: marker.park }, author: author && { userId: author.id, nickname: author.nickname, icon: author.socialIcon ?? author.icon ?? null, url: author.url ?? null }, createdAt: date(article.createdAt), updatedAt: date(article.updatedAt), numberOfGoods: goods.filter((g) => String(g.article_id) === String(article.postId)).length });
-  });
-  app.get('/markers/:park', async (c) => {
-    const park = c.req.param('park'); const [markers, articles] = await Promise.all([scan('MARKERS'), scan('ARTICLES')]);
-    return c.json(markers.filter((marker) => marker.park === park).map((marker) => {
-      const related = articles.filter((article) => !article.isDraft && String(article.marker_id) === String(marker.markerId));
-      return { markerId: marker.markerId, lat: marker.latitude, lng: marker.longitude, park: marker.park, numberOfPublicArticles: { total: related.length, eachCategory: Array.from({ length: 7 }, (_, category) => related.filter((article) => article.category === category).length) } };
-    }));
-  });
+  app.get('/auths/csrf/', (c) => { const token = randomBytes(24).toString('base64url'); c.header('Set-Cookie', `trivia-map-csrf=${token}; Secure; SameSite=Lax; Path=/; Max-Age=86400`); return c.json({ csrfToken: token }); });
+  app.post('/auths/login/', async (c) => { const body = await c.req.json<{ email?: string; password?: string }>(); const users = await all('USERS'); const user = users.find((item) => text(item.email).toLowerCase() === text(body.email).toLowerCase() && text(item.password) === text(body.password)); if (!user || !bool(user.isActive)) return c.json({ non_field_errors: ['メールアドレスまたはパスワードが正しくありません。'] }, 400); const access = sign({ userId: text(user.id), exp: Math.floor(Date.now() / 1000) + 900 }); const refresh = sign({ userId: text(user.id), exp: Math.floor(Date.now() / 1000) + 1209600 }); c.header('Set-Cookie', `trivia-map-auth=${access}; HttpOnly; Secure; SameSite=Lax; Path=/; Max-Age=900`); c.header('Set-Cookie', `trivia-map-refresh-auth=${refresh}; HttpOnly; Secure; SameSite=Lax; Path=/; Max-Age=1209600`, { append: true }); return c.json({ access_token: access, refresh_token: refresh, user: userView(user, true), access_token_expiration: new Date(Date.now() + 900000).toISOString(), refresh_token_expiration: new Date(Date.now() + 1209600000).toISOString() }); });
+  app.get('/auths/user/', async (c) => { const user = await currentUser(c); return user ? c.json(userView(user, true)) : c.json({ detail: 'Authentication credentials were not provided.' }, 401); });
+  app.post('/auths/token/refresh/', async (c) => { const value = session(cookie(c.req.header('cookie'), 'trivia-map-refresh-auth')); if (!value) return c.json({ detail: 'Invalid refresh token' }, 401); const access = sign({ userId: value.userId, exp: Math.floor(Date.now() / 1000) + 900 }); c.header('Set-Cookie', `trivia-map-auth=${access}; HttpOnly; Secure; SameSite=Lax; Path=/; Max-Age=900`); return c.json({ access, access_token_expiration: new Date(Date.now() + 900000).toISOString() }); });
+  app.post('/auths/logout/', (c) => { c.header('Set-Cookie', 'trivia-map-auth=; HttpOnly; Secure; SameSite=Lax; Path=/; Max-Age=0'); c.header('Set-Cookie', 'trivia-map-refresh-auth=; HttpOnly; Secure; SameSite=Lax; Path=/; Max-Age=0', { append: true }); return c.json({}); });
+
+  app.get('/articles/public/previews', async (c) => { const [articles, goods] = await Promise.all([all('ARTICLES'), all('GOODS')]); const query = c.req.query('keyword')?.toLowerCase(); const filtered = articles.filter((article) => !bool(article.isDraft) && (!c.req.query('category') || text(article.category) === c.req.query('category')) && (!c.req.query('marker') || text(article.markerId) === c.req.query('marker')) && (!c.req.query('user') || text(article.authorId) === c.req.query('user')) && (!query || `${text(article.title)} ${text(article.description)}`.toLowerCase().includes(query))).sort((a, b) => text(b.createdAt).localeCompare(text(a.createdAt))).map((article) => ({ postId: num(article.postId), title: text(article.title), image: media(article.image), category: num(article.category), createdAt: date(article.createdAt), numberOfGoods: goods.filter((good) => text(good.postId) === text(article.postId)).length })); return c.json(pagination(filtered, pageOf(c.req.query('page')), limitOf(c.req.query('limit')))); });
+  app.get('/articles/detail/:id', async (c) => { const article = await get('ARTICLES', c.req.param('id')); if (!article || bool(article.isDraft)) return c.json({ detail: 'Not found' }, 404); const [author, marker, goods] = await Promise.all([get('USERS', text(article.authorId)), get('MARKERS', text(article.markerId)), all('GOODS')]); return c.json(articleView(article, author, marker, goods)); });
   app.get('/articles/categories', (c) => c.json([{ categoryId: 0, categoryName: 'その他' }, { categoryId: 1, categoryName: '隠れミッキー' }, { categoryId: 2, categoryName: 'バックグラウンドストーリー' }, { categoryId: 3, categoryName: 'おすすめ写真スポット' }, { categoryId: 4, categoryName: 'ショーパレ' }, { categoryId: 5, categoryName: 'キャラグリ' }, { categoryId: 6, categoryName: 'パーク攻略法' }]));
-  app.get('/users/:id', async (c) => {
-    const user = await get('USERS', c.req.param('id')); if (!user) return c.json({ detail: 'Not found' }, 404);
-    return c.json({ userId: user.id, nickname: user.nickname, icon: user.socialIcon ?? user.icon ?? null, url: user.url ?? null });
-  });
-  app.get('/special-map/maps/public-previews', async (c) => {
-    const maps = (await scan('SPECIALMAPS')).filter((map) => map.isPublic);
-    return c.json({ nextUrl: null, previousUrl: null, totalRecords: maps.length, totalPages: 1, currentPage: 1, startIndex: maps.length ? 1 : 0, endIndex: maps.length, results: maps.map((map) => ({ specialMapId: map.specialMapId, title: map.title, thumbnail: map.thumbnail ?? null, description: map.description, isPublic: map.isPublic })) });
-  });
-  app.get('/special-map/maps/:id/detail', async (c) => {
-    const map = await get('SPECIALMAPS', c.req.param('id')); if (!map || !map.isPublic) return c.json({ detail: 'Not found' }, 404);
-    const author = await get('USERS', String(map.author_id));
-    return c.json({ ...map, author: author && { userId: author.id, nickname: author.nickname, icon: author.socialIcon ?? author.icon ?? null, url: author.url ?? null }, createdAt: date(map.createdAt) });
-  });
-  app.get('/special-map/maps/:id/markers', async (c) => {
-    const id = c.req.param('id'); const markers = (await scan('SPECIALMAPMARKERS')).filter((marker) => String(marker.specialMap_id) === id);
-    return c.json({ nextUrl: null, previousUrl: null, totalRecords: markers.length, totalPages: 1, currentPage: 1, startIndex: markers.length ? 1 : 0, endIndex: markers.length, results: markers.map((marker) => ({ ...marker, specialMap: marker.specialMap_id, lat: marker.latitude, lng: marker.longitude })) });
-  });
-  app.get('/goods/check/:id', async (c) => {
-    const ipAddress = visitor(c.req.header('x-forwarded-for')); const articleId = c.req.param('id');
-    return c.json({ haveAddedGood: (await scan('GOODS')).some((good) => String(good.ipAddress) === ipAddress && String(good.article_id) === articleId) });
-  });
-  app.post('/goods/toggle/:id', async (c) => {
-    const articleId = c.req.param('id'); const ipAddress = visitor(c.req.header('x-forwarded-for')); const id = `${ipAddress}:${articleId}`;
-    const existing = (await scan('GOODS')).find((good) => String(good.ipAddress) === ipAddress && String(good.article_id) === articleId);
-    if (existing) { await ddb.send(new DeleteCommand({ TableName: table('GOODS'), Key: { id: existing.id } })); return c.json({ haveAddedGood: false }); }
-    await ddb.send(new PutCommand({ TableName: table('GOODS'), Item: { id, entity: 'Good', goodId: id, ipAddress, article_id: Number(articleId) }, ConditionExpression: 'attribute_not_exists(id)' }));
-    return c.json({ haveAddedGood: true });
-  });
+  app.get('/articles/sitemap', async (c) => c.json((await all('ARTICLES')).filter((article) => !bool(article.isDraft)).map((article) => ({ postId: num(article.postId), updatedAt: text(article.updatedAt).slice(0, 10) }))));
+  app.get('/markers/:park', async (c) => { const [markers, articles] = await Promise.all([all('MARKERS'), all('ARTICLES')]); const output = markers.filter((marker) => text(marker.park) === c.req.param('park')).filter((marker) => !c.req.query('category') || articles.some((article) => text(article.markerId) === text(marker.markerId) && num(article.category) === num(c.req.query('category')))).map((marker) => publicMarker(marker, articles)); return c.json(pagination(output, pageOf(c.req.query('page')), limitOf(c.req.query('limit')))); });
+  app.get('/guess-area', (c) => c.json({ areaNames: [] }));
+  app.get('/users/:id', async (c) => { const user = await get('USERS', c.req.param('id')); return user ? c.json(userView(user)) : c.json({ detail: 'Not found' }, 404); });
+  app.get('/goods/check/:id', async (c) => { const ip = createHmac('sha256', process.env.GOOD_SALT ?? 'local').update(c.req.header('x-forwarded-for')?.split(',')[0] ?? 'anonymous').digest('hex'); return c.json({ haveAddedGood: !!await get('GOODS', `${ip}#${c.req.param('id')}`) }); });
+  app.post('/goods/toggle/:id', async (c) => { const ip = createHmac('sha256', process.env.GOOD_SALT ?? 'local').update(c.req.header('x-forwarded-for')?.split(',')[0] ?? 'anonymous').digest('hex'); const id = `${ip}#${c.req.param('id')}`; if (await get('GOODS', id)) { await remove('GOODS', id); return c.json({ haveAddedGood: false }); } await put('GOODS', { id, entity: 'Good', goodId: id, ipHash: ip, postId: c.req.param('id') }); return c.json({ haveAddedGood: true }); });
+  app.get('/likes/check/:id', async (c) => { const user = await currentUser(c); return user ? c.json({ haveLiked: !!await get('LIKES', `${user.id}#${c.req.param('id')}`) }) : c.json({ detail: 'Authentication credentials were not provided.' }, 401); });
+  app.post('/likes/toggle/:id', async (c) => { const user = await currentUser(c); if (!user) return c.json({ detail: 'Authentication credentials were not provided.' }, 401); const id = `${user.id}#${c.req.param('id')}`; if (await get('LIKES', id)) { await remove('LIKES', id); return c.json({ haveLiked: false }); } await put('LIKES', { id, entity: 'Like', likeId: id, userId: text(user.id), postId: c.req.param('id') }); return c.json({ haveLiked: true }); });
+  app.get('/likes/mine', async (c) => { const user = await currentUser(c); if (!user) return c.json({ detail: 'Authentication credentials were not provided.' }, 401); const [likes, articles, goods] = await Promise.all([all('LIKES'), all('ARTICLES'), all('GOODS')]); const result = likes.filter((like) => text(like.userId) === text(user.id)).flatMap((like) => { const article = articles.find((item) => text(item.postId) === text(like.postId)); return article ? [{ article: { postId: num(article.postId), title: text(article.title), image: media(article.image), category: num(article.category), createdAt: date(article.createdAt), numberOfGoods: goods.filter((good) => text(good.postId) === text(article.postId)).length } }] : []; }); return c.json(pagination(result, pageOf(c.req.query('page')), limitOf(c.req.query('limit')))); });
+
+  app.get('/special-map/maps/public-previews', async (c) => { const maps = (await all('SPECIALMAPS')).filter((map) => bool(map.isPublic)).map((map) => ({ specialMapId: num(map.specialMapId), title: text(map.title), thumbnail: media(map.thumbnail), description: text(map.description), isPublic: true })); return c.json(pagination(maps, pageOf(c.req.query('page')), limitOf(c.req.query('limit')))); });
+  app.get('/special-map/maps/sitemap', async (c) => c.json((await all('SPECIALMAPS')).filter((map) => bool(map.isPublic)).map((map) => ({ specialMapId: num(map.specialMapId) }))));
+  app.get('/special-map/maps/:id/detail', async (c) => { const map = await get('SPECIALMAPS', c.req.param('id')); if (!map || !bool(map.isPublic)) return c.json({ detail: 'Not found' }, 404); const author = await get('USERS', text(map.authorId)); return c.json({ specialMapId: num(map.specialMapId), author: author ? userView(author) : num(map.authorId), title: text(map.title), thumbnail: media(map.thumbnail), isPublic: true, description: text(map.description), selectablePark: text(map.selectablePark), minLatitude: num(map.minLatitude), maxLatitude: num(map.maxLatitude), minLongitude: num(map.minLongitude), maxLongitude: num(map.maxLongitude), createdAt: date(map.createdAt) }); });
+  app.get('/special-map/maps/:id/markers', async (c) => { const markers = (await all('SPECIALMAPMARKERS')).filter((marker) => text(marker.specialMapId) === c.req.param('id')).map((marker) => ({ specialMapMarkerId: num(marker.specialMapMarkerId), specialMap: num(marker.specialMapId), lat: num(marker.lat), lng: num(marker.lng), park: text(marker.park), image: media(marker.image), description: text(marker.description), variant: text(marker.variant) })); return c.json(pagination(markers, pageOf(c.req.query('page')), limitOf(c.req.query('limit')))); });
   app.notFound((c) => c.json({ detail: 'Not found' }, 404));
   return app;
 };

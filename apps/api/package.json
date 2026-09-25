@@ -1,0 +1,15 @@
+{
+  "name": "@triviamap/api",
+  "version": "3.0.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.750.0",
+    "@aws-sdk/lib-dynamodb": "^3.750.0",
+    "@triviamap/contracts": "*",
+    "hono": "^4.7.4",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": { "@types/aws-lambda": "^8.10.147", "typescript": "^5.7.3", "vitest": "^3.0.8" },
+  "scripts": { "build": "tsc", "typecheck": "tsc --noEmit", "test": "vitest run", "test:ci": "vitest run" }
+}

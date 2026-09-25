@@ -9,8 +9,9 @@
     "@aws-sdk/lib-dynamodb": "^3.750.0",
     "@triviamap/contracts": "*",
     "hono": "^4.7.4",
+    "nodemailer": "^6.10.0",
     "zod": "^3.24.2"
   },
-  "devDependencies": { "@types/aws-lambda": "^8.10.147", "@types/node": "^22.13.4", "typescript": "^5.7.3", "vitest": "^3.0.8" },
+  "devDependencies": { "@types/aws-lambda": "^8.10.147", "@types/node": "^22.13.4", "@types/nodemailer": "^6.4.17", "typescript": "^5.7.3", "vitest": "^3.0.8" },
   "scripts": { "build": "tsc", "typecheck": "tsc --noEmit", "test": "vitest run", "test:ci": "vitest run" }
 }

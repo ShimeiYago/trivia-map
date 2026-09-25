@@ -2,6 +2,7 @@ import * as path from 'node:path';
 import * as cdk from 'aws-cdk-lib';
 import { Duration, RemovalPolicy, Tags } from 'aws-cdk-lib';
 import * as apigwv2 from 'aws-cdk-lib/aws-apigatewayv2';
+import * as acm from 'aws-cdk-lib/aws-certificatemanager';
 import * as integrations from 'aws-cdk-lib/aws-apigatewayv2-integrations';
 import * as cloudfront from 'aws-cdk-lib/aws-cloudfront';
 import * as origins from 'aws-cdk-lib/aws-cloudfront-origins';
@@ -10,6 +11,8 @@ import * as lambda from 'aws-cdk-lib/aws-lambda';
 import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import * as s3 from 'aws-cdk-lib/aws-s3';
 import * as secretsmanager from 'aws-cdk-lib/aws-secretsmanager';
+import * as route53 from 'aws-cdk-lib/aws-route53';
+import * as targets from 'aws-cdk-lib/aws-route53-targets';
 import { Construct } from 'constructs';
 
 const retain = RemovalPolicy.RETAIN;
@@ -44,7 +47,10 @@ export class TriviaMapStagingV2Stack extends cdk.Stack {
     const httpApi = new apigwv2.HttpApi(this, 'HttpApi', { apiName: 'triviamap-stg-v2-api' });
     httpApi.addRoutes({ path: '/{proxy+}', methods: [apigwv2.HttpMethod.ANY], integration: new integrations.HttpLambdaIntegration('ApiIntegration', api) });
     const basic = new cloudfront.Function(this, 'BasicAuth', { code: cloudfront.FunctionCode.fromInline(`var crypto = require('crypto'); function handler(event) { var request = event.request; var value = request.headers.authorization && request.headers.authorization.value; if (value && crypto.createHash('sha256').update(value).digest('hex') === '${basicAuthorizationHash.valueAsString}') return request; return { statusCode: 401, statusDescription: 'Unauthorized', headers: { 'www-authenticate': { value: 'Basic realm="TriviaMap staging"' } } }; }`), runtime: cloudfront.FunctionRuntime.JS_2_0 });
-    const distribution = new cloudfront.Distribution(this, 'FrontendDistribution', { defaultRootObject: 'index.html', defaultBehavior: { origin: origins.S3BucketOrigin.withOriginAccessControl(frontend), viewerProtocolPolicy: cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS, functionAssociations: [{ eventType: cloudfront.FunctionEventType.VIEWER_REQUEST, function: basic }] }, additionalBehaviors: { '/images/*': { origin: origins.S3BucketOrigin.withOriginAccessControl(images), viewerProtocolPolicy: cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS, functionAssociations: [{ eventType: cloudfront.FunctionEventType.VIEWER_REQUEST, function: basic }] }, '/api/*': { origin: new origins.HttpOrigin(cdk.Fn.select(2, cdk.Fn.split('/', httpApi.apiEndpoint)), { protocolPolicy: cloudfront.OriginProtocolPolicy.HTTPS_ONLY, customHeaders: { 'x-triviamap-origin': originToken.valueAsString } }), viewerProtocolPolicy: cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS, cachePolicy: cloudfront.CachePolicy.CACHING_DISABLED, originRequestPolicy: cloudfront.OriginRequestPolicy.ALL_VIEWER_EXCEPT_HOST_HEADER, allowedMethods: cloudfront.AllowedMethods.ALLOW_ALL, functionAssociations: [{ eventType: cloudfront.FunctionEventType.VIEWER_REQUEST, function: basic }] } }, errorResponses: [{ httpStatus: 403, responseHttpStatus: 200, responsePagePath: '/index.html', ttl: Duration.seconds(0) }, { httpStatus: 404, responseHttpStatus: 200, responsePagePath: '/index.html', ttl: Duration.seconds(0) }] });
+    const certificate = acm.Certificate.fromCertificateArn(this, 'StagingCertificate', 'arn:aws:acm:us-east-1:614299612633:certificate/97c2098f-5178-4c79-9c6d-c5e74e1e758d');
+    const distribution = new cloudfront.Distribution(this, 'FrontendDistribution', { domainNames: ['stg.triviamap.jp'], certificate, defaultRootObject: 'index.html', defaultBehavior: { origin: origins.S3BucketOrigin.withOriginAccessControl(frontend), viewerProtocolPolicy: cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS, functionAssociations: [{ eventType: cloudfront.FunctionEventType.VIEWER_REQUEST, function: basic }] }, additionalBehaviors: { '/images/*': { origin: origins.S3BucketOrigin.withOriginAccessControl(images), viewerProtocolPolicy: cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS, functionAssociations: [{ eventType: cloudfront.FunctionEventType.VIEWER_REQUEST, function: basic }] }, '/api/*': { origin: new origins.HttpOrigin(cdk.Fn.select(2, cdk.Fn.split('/', httpApi.apiEndpoint)), { protocolPolicy: cloudfront.OriginProtocolPolicy.HTTPS_ONLY, customHeaders: { 'x-triviamap-origin': originToken.valueAsString } }), viewerProtocolPolicy: cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS, cachePolicy: cloudfront.CachePolicy.CACHING_DISABLED, originRequestPolicy: cloudfront.OriginRequestPolicy.ALL_VIEWER_EXCEPT_HOST_HEADER, allowedMethods: cloudfront.AllowedMethods.ALLOW_ALL, functionAssociations: [{ eventType: cloudfront.FunctionEventType.VIEWER_REQUEST, function: basic }] } }, errorResponses: [{ httpStatus: 403, responseHttpStatus: 200, responsePagePath: '/index.html', ttl: Duration.seconds(0) }, { httpStatus: 404, responseHttpStatus: 200, responsePagePath: '/index.html', ttl: Duration.seconds(0) }] });
+    const zone = route53.HostedZone.fromHostedZoneAttributes(this, 'TriviaMapZone', { hostedZoneId: 'Z02164532FSOYFWRLF2MO', zoneName: 'triviamap.jp' });
+    new route53.ARecord(this, 'StagingAlias', { zone, recordName: 'stg', target: route53.RecordTarget.fromAlias(new targets.CloudFrontTarget(distribution)) });
     new cdk.CfnOutput(this, 'ApiUrl', { value: httpApi.apiEndpoint }); new cdk.CfnOutput(this, 'ImageBucket', { value: images.bucketName }); new cdk.CfnOutput(this, 'FrontendBucket', { value: frontend.bucketName }); new cdk.CfnOutput(this, 'FrontendDistributionId', { value: distribution.distributionId }); new cdk.CfnOutput(this, 'FrontendUrl', { value: `https://${distribution.distributionDomainName}` });
   }
 }

@@ -52,7 +52,7 @@ export class Renderer extends React.Component<Props, State> {
   componentDidUpdate(prevProps: Props, prevState: State) {
     if (JSON.stringify(prevState.searchParam) !== JSON.stringify(this.state.searchParam)) {
       const urlParameters = getUrlParameters(this.state.searchParam);
-      history.replaceState('', '', `${MY_ARTICLES_LINK}${urlParameters}`);
+      window.history.replaceState('', '', `${MY_ARTICLES_LINK}${urlParameters}`);
     }
   }
 

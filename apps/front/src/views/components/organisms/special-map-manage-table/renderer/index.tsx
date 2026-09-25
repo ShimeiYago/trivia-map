@@ -39,7 +39,7 @@ export class Renderer extends React.Component<Props, State> {
   componentDidUpdate(prevProps: Props, prevState: State) {
     if (JSON.stringify(prevState.searchParam) !== JSON.stringify(this.state.searchParam)) {
       const urlParameters = getUrlParameters(this.state.searchParam);
-      history.replaceState('', '', `${SPECIAL_MAP_MANAGE_PAGE_LINK}${urlParameters}`);
+      window.history.replaceState('', '', `${SPECIAL_MAP_MANAGE_PAGE_LINK}${urlParameters}`);
     }
   }
 

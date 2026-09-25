@@ -22,7 +22,7 @@ export const CustomMarker = React.forwardRef((props: Props, ref) => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       (map as any).openPopup(popupRef, position);
     }
-  }, [autoOpen, refReady, map]);
+  }, [autoOpen, refReady, map, position]);
 
   return (
     <Marker

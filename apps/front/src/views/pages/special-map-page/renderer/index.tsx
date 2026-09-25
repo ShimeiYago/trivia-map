@@ -655,7 +655,7 @@ export class Renderer extends React.Component<Props, State> {
     const pathname = window.location.pathname;
     const params = `?park=${park}`;
 
-    history.replaceState('', '', pathname + params);
+    window.history.replaceState('', '', pathname + params);
   };
 
   protected toggleSettingModal = (open: boolean) => () => {

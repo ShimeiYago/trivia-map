@@ -9,5 +9,5 @@ export const UseAutoLogin = () => {
 
   useEffect(() => {
     dispatch(autoLogin(cookies, setCookie, removeCookie));
-  }, []);
+  }, [cookies, dispatch, removeCookie, setCookie]);
 };

@@ -54,7 +54,9 @@ exports[`Shallow Snapshot Tests basic 1`] = `
         keepSelection={true}
         onChange={[Function]}
       >
-        <img />
+        <img
+          alt="アップロード画像"
+        />
       </u>
     </ForwardRef(Box)>
     <ForwardRef(Grid)
@@ -140,7 +142,9 @@ exports[`Shallow Snapshot Tests disabled 1`] = `
         keepSelection={true}
         onChange={[Function]}
       >
-        <img />
+        <img
+          alt="アップロード画像"
+        />
       </u>
     </ForwardRef(Box)>
     <ForwardRef(Grid)
@@ -243,7 +247,9 @@ exports[`Shallow Snapshot Tests icon 1`] = `
         keepSelection={true}
         onChange={[Function]}
       >
-        <img />
+        <img
+          alt="アップロード画像"
+        />
       </u>
     </ForwardRef(Box)>
     <ForwardRef(Grid)
@@ -333,7 +339,9 @@ exports[`Shallow Snapshot Tests open modal 1`] = `
         keepSelection={true}
         onChange={[Function]}
       >
-        <img />
+        <img
+          alt="アップロード画像"
+        />
       </u>
     </ForwardRef(Box)>
     <ForwardRef(Grid)
@@ -447,7 +455,9 @@ exports[`Shallow Snapshot Tests with error & helperText 1`] = `
         keepSelection={true}
         onChange={[Function]}
       >
-        <img />
+        <img
+          alt="アップロード画像"
+        />
       </u>
     </ForwardRef(Box)>
     <ForwardRef(Grid)
@@ -552,7 +562,9 @@ exports[`Shallow Snapshot Tests with error 1`] = `
         keepSelection={true}
         onChange={[Function]}
       >
-        <img />
+        <img
+          alt="アップロード画像"
+        />
       </u>
     </ForwardRef(Box)>
     <ForwardRef(Grid)
@@ -662,7 +674,9 @@ exports[`Shallow Snapshot Tests with helperText & icon variant 1`] = `
         keepSelection={true}
         onChange={[Function]}
       >
-        <img />
+        <img
+          alt="アップロード画像"
+        />
       </u>
     </ForwardRef(Box)>
     <ForwardRef(Grid)
@@ -759,7 +773,9 @@ exports[`Shallow Snapshot Tests with helperText 1`] = `
         keepSelection={true}
         onChange={[Function]}
       >
-        <img />
+        <img
+          alt="アップロード画像"
+        />
       </u>
     </ForwardRef(Box)>
     <ForwardRef(Grid)
@@ -822,6 +838,7 @@ exports[`Shallow Snapshot Tests with src 1`] = `
       type="file"
     />
     <img
+      alt=""
       className="img variant-photo"
       src="https://xxx.image.png"
     />
@@ -868,7 +885,9 @@ exports[`Shallow Snapshot Tests with src 1`] = `
         keepSelection={true}
         onChange={[Function]}
       >
-        <img />
+        <img
+          alt="アップロード画像"
+        />
       </u>
     </ForwardRef(Box)>
     <ForwardRef(Grid)

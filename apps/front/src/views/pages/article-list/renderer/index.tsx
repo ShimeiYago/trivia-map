@@ -57,7 +57,7 @@ export class Renderer extends React.Component<Props, State> {
         ...this.state.currentSearchConditions,
         order: this.state.order,
       });
-      history.replaceState('', '', `${ARTICLE_LIST_PAGE_LINK}${urlParameters}`);
+      window.history.replaceState('', '', `${ARTICLE_LIST_PAGE_LINK}${urlParameters}`);
     }
   }
 

@@ -34,7 +34,7 @@ import { MyIcon } from 'views/components/atoms/my-icon';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import PrivacyTipIcon from '@mui/icons-material/PrivacyTip';
 
-const listItemsForMap: ListItem[] = [
+const listItemsForMap: NavigationItem[] = [
   {
     text: SITE_NAME,
     icon: <MyIcon variant="map-marker" />,
@@ -52,7 +52,7 @@ const listItemsForMap: ListItem[] = [
   },
 ];
 
-const listItemsForLogin: ListItem[] = [
+const listItemsForLogin: NavigationItem[] = [
   {
     text: PAGE_NAMES.login,
     icon: <LoginIcon />,
@@ -65,7 +65,7 @@ const listItemsForLogin: ListItem[] = [
   },
 ];
 
-const listItemsForAdmin: ListItem[] = [
+const listItemsForAdmin: NavigationItem[] = [
   {
     text: PAGE_NAMES.admin,
     icon: <AccountCircleIcon />,
@@ -93,7 +93,7 @@ const listItemsForAdmin: ListItem[] = [
   },
 ];
 
-const listItemsSpecialMap: ListItem[] = [
+const listItemsSpecialMap: NavigationItem[] = [
   {
     text: PAGE_NAMES.specialMap,
     icon: <MyIcon variant="special-map" />,
@@ -106,7 +106,7 @@ const listItemsSpecialMap: ListItem[] = [
   },
 ];
 
-const listItemsOthers: ListItem[] = [
+const listItemsOthers: NavigationItem[] = [
   {
     text: PAGE_NAMES.inquiry,
     icon: <EmailIcon />,
@@ -125,7 +125,7 @@ const listItemsOthers: ListItem[] = [
 ];
 
 const listItemMapping = (
-  items: ListItem[],
+  items: NavigationItem[],
   pathName: string,
   isFormEditting: boolean,
   onClose: () => void,
@@ -187,7 +187,7 @@ function isMapPage(pathName: string) {
   return !pathName.indexOf(MAP_ROUTE) || pathName === MAP_PAGE_LINK;
 }
 
-type ListItem = {
+type NavigationItem = {
   text: string;
   icon: React.ReactNode;
   link: string;

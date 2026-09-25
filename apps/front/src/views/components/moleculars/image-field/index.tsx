@@ -41,7 +41,7 @@ export class ImageField extends React.Component<Props, State> {
             />
           )}
 
-          {src && <img src={src} className={imgClassNames.join(' ')} />}
+          {src && <img src={src} alt="" className={imgClassNames.join(' ')} />}
 
           {!disabled && (
             <div className={contentClassNames.join(' ')}>
@@ -126,7 +126,7 @@ export class ImageField extends React.Component<Props, State> {
             className={styles['crop']}
             disabled={!enableCrop}
           >
-            <img src={uploadedImage?.objectUrl} />
+            <img src={uploadedImage?.objectUrl} alt="アップロード画像" />
           </ReactCrop>
         </Box>
         <Grid container sx={{ p: 2 }}>

@@ -153,7 +153,7 @@ exports[`Shallow Snapshot Tests with numberOfContents 1`] = `
       "_initHooksCalled": true,
       "options": Object {
         "className": "duplicated-marker-wrapper",
-        "html": "<img src=\\"marker-shadow.png\\" class=\\"duplicated-marker-shadow\\" data-reactroot=\\"\\"/><img src=\\"red-with-number.png\\" class=\\"duplicated-marker-icon\\" data-reactroot=\\"\\"/><div class=\\"duplicated-marker-text\\" data-reactroot=\\"\\">1</div>",
+        "html": "<img src=\\"marker-shadow.png\\" alt=\\"\\" class=\\"duplicated-marker-shadow\\" data-reactroot=\\"\\"/><img src=\\"red-with-number.png\\" alt=\\"\\" class=\\"duplicated-marker-icon\\" data-reactroot=\\"\\"/><div class=\\"duplicated-marker-text\\" data-reactroot=\\"\\">1</div>",
         "iconAnchor": Array [
           20.5,
           46,

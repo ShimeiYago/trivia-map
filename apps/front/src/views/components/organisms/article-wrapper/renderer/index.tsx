@@ -30,10 +30,6 @@ const DEFAULT_LOCAL_BACK_NAVI = {
 };
 
 export class Renderer extends React.Component<Props> {
-  constructor(props: Props) {
-    super(props);
-  }
-
   render() {
     const { isMobile, children, showSidebar, localBackNavi, hideLocalNavi } = this.props;
 

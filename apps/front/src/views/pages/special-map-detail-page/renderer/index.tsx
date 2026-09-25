@@ -151,7 +151,7 @@ export class Renderer extends React.Component<Props, State> {
 
     const markerComponents = markers.map((marker, i) => {
       return (
-        <>
+        <React.Fragment key={marker.specialMapMarkerId}>
           <Box
             border="3px solid #424242"
             bgcolor="#f5f8fa"
@@ -211,7 +211,7 @@ export class Renderer extends React.Component<Props, State> {
           {(i + 1) % 5 === 0 && adSlot && (
             <AdsenseIns adSlot={adSlot} adFormat="fluid" adLayoutKey="-71+ed+2g-1n-4q" />
           )}
-        </>
+        </React.Fragment>
       );
     });
 

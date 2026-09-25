@@ -97,7 +97,7 @@ describe('handleClickAddButton', () => {
     const instance = shallowWrapper.instance();
 
     instance['handleClickAddButton']();
-    expect(instance.state.openFormModal).toBeTruthy;
+    expect(instance.state.openFormModal).toBeTruthy();
     expect(instance.state.readingArticleId).toBe(undefined);
   });
 });
@@ -270,7 +270,7 @@ describe('handleClickPostEdit', () => {
     const instance = shallowWrapper.instance();
 
     instance['handleClickPostEdit']();
-    expect(instance.state.openDoubleEditAlartDialog).toBeTruthy;
+    expect(instance.state.openDoubleEditAlartDialog).toBeTruthy();
   });
 
   it('should set openingModal and edittingPostId states', () => {
@@ -281,7 +281,7 @@ describe('handleClickPostEdit', () => {
     });
 
     instance['handleClickPostEdit']();
-    expect(instance.state.openFormModal).toBeTruthy;
+    expect(instance.state.openFormModal).toBeTruthy();
     expect(instance.state.edittingPostId).toBe(100);
   });
 });
@@ -316,7 +316,7 @@ describe('handleOpenEditForm', () => {
     const instance = shallowWrapper.instance();
 
     instance['handleOpenEditForm']();
-    expect(instance.state.openFormModal).toBeTruthy;
+    expect(instance.state.openFormModal).toBeTruthy();
   });
 });
 
@@ -332,7 +332,7 @@ describe('handleCloseFormModal', () => {
       openFormModal: true,
     });
     instance['handleCloseFormModal']();
-    expect(instance.state.openFormModal).toBeFalsy;
+    expect(instance.state.openFormModal).toBeFalsy();
   });
 });
 
@@ -348,7 +348,7 @@ describe('handleHideFormModal', () => {
       openFormModal: true,
     });
     instance['handleHideFormModal']();
-    expect(instance.state.openFormModal).toBeFalsy;
+    expect(instance.state.openFormModal).toBeFalsy();
   });
 });
 
@@ -357,7 +357,7 @@ describe('startToSelectPosition', () => {
     shallowWrapper = shallow(<Renderer {...props} />);
     const instance = shallowWrapper.instance();
     instance['startToSelectPosition']();
-    expect(instance.state.openFormModal).toBeFalsy;
+    expect(instance.state.openFormModal).toBeFalsy();
     expect(instance.state.newMarkerMode).toBe(true);
   });
 });
@@ -367,7 +367,7 @@ describe('endToSelectPosition', () => {
     shallowWrapper = shallow(<Renderer {...props} />);
     const instance = shallowWrapper.instance();
     instance['endToSelectPosition']();
-    expect(instance.state.openFormModal).toBeTruthy;
+    expect(instance.state.openFormModal).toBeTruthy();
     expect(instance.state.newMarkerMode).toBe(false);
   });
 });

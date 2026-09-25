@@ -56,6 +56,6 @@
     "lint": "eslint 'src/**/*.{js,ts,tsx}'",
     "typecheck": "tsc --noEmit"
   },
-  "eslintConfig": { "extends": "react-app", "rules": { "@typescript-eslint/no-unused-expressions": "warn", "no-restricted-globals": "warn", "react-hooks/rules-of-hooks": "error" } },
+  "eslintConfig": { "extends": "react-app", "rules": { "@typescript-eslint/no-unused-expressions": "error", "no-restricted-globals": "error", "react-hooks/rules-of-hooks": "error" } },
   "browserslist": { "production": [">0.2%", "not dead", "not op_mini all"], "development": ["last 1 chrome version", "last 1 firefox version", "last 1 safari version"] }
 }

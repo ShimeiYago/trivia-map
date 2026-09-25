@@ -175,7 +175,7 @@ export class Renderer extends React.Component<Props, State> {
     const urlParameters = getUrlParameters({
       page,
     });
-    history.replaceState('', '', `${SPECIAL_MAP_LIST_PAGE_LINK}${urlParameters}`);
+    window.history.replaceState('', '', `${SPECIAL_MAP_LIST_PAGE_LINK}${urlParameters}`);
   };
 }
 

@@ -189,7 +189,7 @@ export class ParkMap extends React.Component<Props, State> {
             zIndex: 1001,
           }}
         >
-          <img src={selectionPosition} />
+          <img src={selectionPosition} alt="選択位置" />
         </Box>
       </>
     );

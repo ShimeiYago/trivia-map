@@ -145,8 +145,8 @@ export const redIconWithNumber = (num: string) =>
     className: styles['duplicated-marker-wrapper'],
     html: ReactDOMServer.renderToString(
       <>
-        <img src={iconShadow} className={styles['duplicated-marker-shadow']} />
-        <img src={redIconWithNumberUrl} className={styles['duplicated-marker-icon']} />
+        <img src={iconShadow} alt="" className={styles['duplicated-marker-shadow']} />
+        <img src={redIconWithNumberUrl} alt="" className={styles['duplicated-marker-icon']} />
         <div className={styles['duplicated-marker-text']}>{num}</div>
       </>,
     ),

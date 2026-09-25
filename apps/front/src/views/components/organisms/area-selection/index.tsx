@@ -47,14 +47,14 @@ export function AreaSelection() {
       area && setCrop(areaToCrop(area));
     }
     setMounted(true);
-  }, []);
+  }, [area]);
 
   useEffect(() => {
     if (selectablePark === 'both') {
       setActiveSelection(false);
       dispatch(updateArea(DEFAULT_AREA));
     }
-  }, [selectablePark]);
+  }, [selectablePark, dispatch]);
 
   if (!mounted) return null;
 
@@ -88,7 +88,7 @@ export function AreaSelection() {
           disabled={loading}
           onComplete={handleCompleteCrop}
         >
-          <img src={selectablePark === 'L' ? landImage : seaImage} />
+          <img src={selectablePark === 'L' ? landImage : seaImage} alt="選択範囲" />
         </ReactCrop>
       ) : (
         selectablePark !== 'both' && (

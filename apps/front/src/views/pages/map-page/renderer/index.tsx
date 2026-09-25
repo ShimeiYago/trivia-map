@@ -68,7 +68,7 @@ export class Renderer extends React.Component<Props, State> {
       this.setState({
         openFormModal: true,
       });
-      history.replaceState('', '', EDIT_LINK(`${this.props.postIdToEdit}`));
+      window.history.replaceState('', '', EDIT_LINK(`${this.props.postIdToEdit}`));
     } else {
       !this.props.park && this.props.updateFoocusingPark(INITIAL_PARK);
     }
@@ -80,7 +80,7 @@ export class Renderer extends React.Component<Props, State> {
     }
 
     if (!this.props.postIdToEdit && this.props.isFormEditting) {
-      history.replaceState('', '', NEW_LINK);
+      window.history.replaceState('', '', NEW_LINK);
     }
 
     if (this.props.isFormChangedFromLastSaved) {
@@ -338,7 +338,7 @@ export class Renderer extends React.Component<Props, State> {
       edittingPostId: undefined,
     });
 
-    history.replaceState('', '', NEW_LINK);
+    window.history.replaceState('', '', NEW_LINK);
   };
 
   protected handleClickPostEdit = () => {
@@ -468,7 +468,7 @@ export class Renderer extends React.Component<Props, State> {
       params = `?category=${this.props.filteringCategoryId}`;
     }
 
-    history.replaceState('', '', url + params);
+    window.history.replaceState('', '', url + params);
   };
 }
 

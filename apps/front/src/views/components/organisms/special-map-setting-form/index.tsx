@@ -90,7 +90,7 @@ export function SpecialMapSettingForm() {
     if (JSON.stringify(area) !== JSON.stringify(DEFAULT_AREA)) {
       setExpandedAccordion(true);
     }
-  }, []);
+  }, [area]);
 
   const disabledPublicSetting = loading || !specialMapId;
 

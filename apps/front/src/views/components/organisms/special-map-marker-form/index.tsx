@@ -134,7 +134,7 @@ export function SpecialMapMarkerForm(props: Props) {
               return (
                 <MenuItem value={option.value} key={option.value}>
                   {option.name}
-                  <img src={option.imgSrc} className={classes['marker-option-img']} />
+                  <img src={option.imgSrc} alt="" className={classes['marker-option-img']} />
                 </MenuItem>
               );
             })}

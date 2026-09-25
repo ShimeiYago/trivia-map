@@ -234,7 +234,7 @@ describe('articleForm reducer', () => {
 
   it('should handle updateIsFormChangedFromLastSaved', () => {
     const actual = articleFormReducer(initialState, updateIsFormChangedFromLastSaved());
-    expect(actual.isFormChangedFromLastSaved).toBeFalsy;
+    expect(actual.isFormChangedFromLastSaved).toBeFalsy();
   });
 
   it('should handle updateAreaNames', () => {

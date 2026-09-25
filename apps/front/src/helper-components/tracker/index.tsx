@@ -10,7 +10,7 @@ export function Tracker(props: { children: React.ReactNode }): JSX.Element {
       !ReactGA.isInitialized && ReactGA.initialize(analyticsId);
       ReactGA.send('pageview');
     }
-  }, []);
+  }, [analyticsId]);
 
   return <>{props.children}</>;
 }

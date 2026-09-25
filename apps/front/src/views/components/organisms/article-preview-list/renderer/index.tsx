@@ -346,10 +346,10 @@ export class Renderer extends React.Component<Props, State> {
   };
 
   protected updatePageParam(page: number) {
-    const urlSearchParams = new URLSearchParams(location.search);
+    const urlSearchParams = new URLSearchParams(window.location.search);
     urlSearchParams.set('page', String(page));
 
-    history.replaceState('', '', `${location.pathname}?${urlSearchParams.toString()}`);
+    window.history.replaceState('', '', `${window.location.pathname}?${urlSearchParams.toString()}`);
   }
 
   protected renderLargeCardListWithAd = (previewList: JSX.Element[]) => {

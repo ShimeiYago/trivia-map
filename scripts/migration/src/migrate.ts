@@ -30,13 +30,16 @@ export const transform = (entity: Entity, row: Record<string, unknown>): RecordI
 const imageKeys = (item: RecordItem) => [item.image, item.thumbnail].filter((key): key is string => typeof key === 'string' && key.startsWith('uploads/'));
 const checksum = async (s3: S3Client, bucket: string, key: string) => createHash('sha256').update(await (await s3.send(new GetObjectCommand({ Bucket: bucket, Key: key }))).Body!.transformToByteArray()).digest('hex');
 
-async function main() {
-  const mysqlUrl = process.env.MYSQL_URL; if (!mysqlUrl) throw new Error('MYSQL_URL is required');
-  const dryRun = arg('--dry-run'); const copyImages = arg('--copy-images'); const validate = arg('--validate');
-  const prefix = process.env.DYNAMODB_TABLE_PREFIX ?? 'TriviaMap-stg-v2-'; const sourceBucket = process.env.SOURCE_IMAGE_BUCKET ?? 'trivia-map-prod'; const destinationBucket = process.env.STAGING_IMAGE_BUCKET;
+export type MigrationOptions = { mysqlUrl: string; dryRun?: boolean; copyImages?: boolean; validate?: boolean; prefix?: string; sourceBucket?: string; destinationBucket?: string; ddb?: DynamoDBDocumentClient; s3?: S3Client };
+export type MigrationReport = Record<string, { source: number; written: number; skipped: number; images: number; validated: number }>;
+
+export async function runMigration(options: MigrationOptions): Promise<MigrationReport> {
+  const { mysqlUrl } = options;
+  const dryRun = options.dryRun ?? false; const copyImages = options.copyImages ?? false; const validate = options.validate ?? false;
+  const prefix = options.prefix ?? process.env.DYNAMODB_TABLE_PREFIX ?? 'TriviaMap-stg-v2-'; const sourceBucket = options.sourceBucket ?? process.env.SOURCE_IMAGE_BUCKET ?? 'trivia-map-prod'; const destinationBucket = options.destinationBucket ?? process.env.STAGING_IMAGE_BUCKET;
   if (copyImages && !destinationBucket) throw new Error('STAGING_IMAGE_BUCKET is required with --copy-images');
-  const connection = await mysql.createConnection(mysqlUrl); const ddb = DynamoDBDocumentClient.from(new DynamoDBClient({})); const s3 = new S3Client({});
-  const report: Record<string, { source: number; written: number; skipped: number; images: number; validated: number }> = {};
+  const connection = await mysql.createConnection(mysqlUrl); const ddb = options.ddb ?? DynamoDBDocumentClient.from(new DynamoDBClient({ region: process.env.AWS_REGION ?? 'ap-northeast-1', ...(process.env.DYNAMODB_LOCAL_ENDPOINT ? { endpoint: process.env.DYNAMODB_LOCAL_ENDPOINT, credentials: { accessKeyId: 'local', secretAccessKey: 'local' } } : {}) })); const s3 = options.s3 ?? new S3Client({});
+  const report: MigrationReport = {};
   try {
     for (const [entity, sourceTable, primaryKey] of sources) {
       const [rows] = await connection.query<RowDataPacket[]>(`SELECT * FROM \`${sourceTable}\` ORDER BY \`${primaryKey}\``); let written = 0; let skipped = 0; let images = 0; let validated = 0;
@@ -44,7 +47,7 @@ async function main() {
         const item = transform(entity, row as Record<string, unknown>);
         if (!dryRun) {
           const existing = await ddb.send(new GetCommand({ TableName: `${prefix}${entity}`, Key: { id: item.id } }));
-          if (existing.Item) { const prior = { ...existing.Item }; delete prior.migratedAt; const expected = { ...item }; delete expected.migratedAt; if (stable(prior) !== stable(expected)) throw new Error(`conflicting existing ${entity}:${item.id}`); skipped += 1; } else { await ddb.send(new PutCommand({ TableName: `${prefix}${entity}`, Item: item, ConditionExpression: 'attribute_not_exists(id)' })); written += 1; }
+          if (existing.Item) { const prior = { ...existing.Item }; delete prior.migratedAt; if (entity === 'Users') { delete prior.socialProvider; delete prior.socialId; } const expected = { ...item }; delete expected.migratedAt; if (stable(prior) !== stable(expected)) throw new Error(`conflicting existing ${entity}:${item.id}`); skipped += 1; } else { await ddb.send(new PutCommand({ TableName: `${prefix}${entity}`, Item: item, ConditionExpression: 'attribute_not_exists(id)' })); written += 1; }
           if (copyImages) for (const key of imageKeys(item)) { await s3.send(new CopyObjectCommand({ Bucket: destinationBucket, Key: key, CopySource: `${sourceBucket}/${encodeURIComponent(key).replaceAll('%2F', '/')}` })); images += 1; if (validate) { if ((await checksum(s3, sourceBucket, key)) !== (await checksum(s3, destinationBucket!, key))) throw new Error(`image checksum mismatch: ${key}`); validated += 1; } }
         }
       }
@@ -66,6 +69,7 @@ async function main() {
     }
     report.SocialAccounts = { source: socialRows.length, written: linked, skipped: 0, images: 0, validated: 0 };
   } finally { await connection.end(); }
-  console.log(JSON.stringify({ dryRun, copyImages, validate, report }, null, 2));
+  return report;
 }
+async function main() { const mysqlUrl = process.env.MYSQL_URL; if (!mysqlUrl) throw new Error('MYSQL_URL is required'); const report = await runMigration({ mysqlUrl, dryRun: arg('--dry-run'), copyImages: arg('--copy-images'), validate: arg('--validate') }); console.log(JSON.stringify({ dryRun: arg('--dry-run'), copyImages: arg('--copy-images'), validate: arg('--validate'), report }, null, 2)); }
 if (process.argv[1]?.endsWith('migrate.ts')) main().catch((error: unknown) => { console.error(error); process.exitCode = 1; });

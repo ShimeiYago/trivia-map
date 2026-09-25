@@ -3,7 +3,7 @@ import { DeleteCommand, GetCommand, PutCommand, ScanCommand } from '@aws-sdk/lib
 import { GetSecretValueCommand, SecretsManagerClient } from '@aws-sdk/client-secrets-manager';
 import { describe, expect, it } from 'vitest';
 import { createApp } from './app.js';
-import { apiInventory } from '@triviamap/contracts';
+import { apiContracts, apiInventory } from '@triviamap/contracts';
 
 describe('API health endpoint', () => {
   it('returns service status', async () => {
@@ -29,6 +29,16 @@ describe('legacy API inventory', () => {
     const routes = createApp().routes.map((route) => `${route.method.toUpperCase()} ${normalize(route.path)}`);
     for (const [method, path] of apiInventory) {
       expect(routes).toContain(`${method} ${normalize(path)}`);
+    }
+  });
+
+  it('has a Zod request and status-response contract for every inventory route', () => {
+    expect(apiContracts).toHaveLength(apiInventory.length);
+    for (const contract of apiContracts) {
+      expect(contract.request).toHaveProperty('safeParse');
+      expect(contract.responses[200]).toHaveProperty('safeParse');
+      expect(contract.responses[400]).toHaveProperty('safeParse');
+      expect(contract.responses[404]).toHaveProperty('safeParse');
     }
   });
 });

@@ -3,7 +3,7 @@ import { DynamoDBDocumentClient, GetCommand, PutCommand, QueryCommand } from '@a
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
 const endpoint = process.env.DYNAMODB_LOCAL_ENDPOINT;
-const tableName = 'TriviaMapIntegrationLikes';
+const tableName = `TriviaMapIntegrationLikes-${Date.now()}`;
 const client = new DynamoDBClient({ region: 'ap-northeast-1', endpoint, credentials: { accessKeyId: 'local', secretAccessKey: 'local' } });
 const ddb = DynamoDBDocumentClient.from(client);
 

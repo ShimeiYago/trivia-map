@@ -26,6 +26,34 @@ export const apiInventory = [
   ['GET', '/articles/mine'], ['POST', '/articles'], ['PATCH', '/articles/:postId'], ['DELETE', '/articles/:postId'], ['GET', '/likes/mine'], ['POST', '/likes/toggle/:postId'], ['GET', '/likes/check/:postId'], ['GET', '/special-map/maps/my-previews'], ['POST', '/special-map/maps'], ['PATCH', '/special-map/maps/:mapId'], ['DELETE', '/special-map/maps/:mapId'], ['POST', '/special-map/maps/:mapId/post-marker'], ['GET', '/special-map/markers/:markerId'], ['PATCH', '/special-map/markers/:markerId'], ['DELETE', '/special-map/markers/:markerId'],
   ['POST', '/auths/registration/'], ['POST', '/auths/registration/verify-email/'], ['POST', '/auths/registration/resend-email/'], ['POST', '/auths/login/'], ['POST', '/auths/logout/'], ['GET', '/auths/user/'], ['PUT', '/auths/user/update/'], ['PATCH', '/auths/user/update/'], ['POST', '/auths/password/change/'], ['POST', '/auths/password/reset/'], ['POST', '/auths/password/reset/confirm/'], ['POST', '/auths/token/refresh/'], ['POST', '/auths/token/verify/'], ['PUT', '/auths/deactivate/'], ['POST', '/auths/twitter/request-token'], ['POST', '/auths/twitter/access-token'], ['POST', '/auths/twitter/login'],
 ] as const;
+export type ApiContract = {
+  method: (typeof apiInventory)[number][0];
+  path: (typeof apiInventory)[number][1];
+  request: z.ZodTypeAny;
+  responses: Readonly<Record<number, z.ZodTypeAny>>;
+  pagination: boolean;
+};
+const routeParamsSchema = z.object({ params: z.record(z.string()), query: z.record(z.string().optional()) });
+const mutationRequestSchema = z.object({ params: z.record(z.string()), body: z.record(z.unknown()) });
+const emptyResponseSchema = z.object({}).passthrough();
+const paginatedPaths = new Set(['/articles/public/previews', '/markers/:park', '/likes/mine', '/articles/mine', '/special-map/maps/public-previews', '/special-map/maps/:mapId/markers', '/special-map/maps/my-previews']);
+const schemaForPath = (path: string) => {
+  if (path === '/articles/detail/:postId') return articleSchema;
+  if (path === '/users/:userId') return publicUserSchema;
+  if (path === '/guess-area') return z.object({ areaNames: z.array(z.string()) });
+  if (path === '/auths/user/') return userSchema;
+  if (path === '/auths/csrf/') return z.object({ csrfToken: z.string() });
+  return paginatedPaths.has(path) ? paginationSchema(z.unknown()) : emptyResponseSchema;
+};
+// Every legacy frontend call has a machine-readable method/path/request/response contract.
+// Route-specific handlers narrow these shared shapes further before persisting data.
+export const apiContracts: readonly ApiContract[] = apiInventory.map(([method, path]) => ({
+  method,
+  path,
+  request: method === 'GET' ? routeParamsSchema : mutationRequestSchema,
+  responses: { 200: schemaForPath(path), 201: emptyResponseSchema, 204: z.undefined(), 400: errorSchema, 401: errorSchema, 403: errorSchema, 404: errorSchema, 502: errorSchema },
+  pagination: paginatedPaths.has(path),
+}));
 export type User = z.infer<typeof userSchema>;
 export type Article = z.infer<typeof articleSchema>;
 export type Marker = z.infer<typeof markerSchema>;

@@ -4,6 +4,8 @@
 
 このガイドは staging リリース後に人手で行う受入れテストです。production を操作しないでください。Basic 認証情報は安全な共有経路で取得し、記録・スクリーンショットへ含めないでください。
 
+進捗は [stg-manual-test-tracker.xlsx](stg-manual-test-tracker.xlsx) で管理する。Excel の `状態` 列をクリックし、`未着手`、`実施中`、`PASS`、`FAIL`、`BLOCKED` から選択する。FAIL のときだけ `証跡 / メモ` に詳細を記入する。
+
 ## 実施方法
 
 - 原則として上から順に実施する。

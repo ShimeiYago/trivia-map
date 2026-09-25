@@ -250,6 +250,10 @@ FAIL時に記録してほしい情報
 
 # Manual Staging Test Cases
 
+人手受入れの実施用ドキュメントは、読みやすいよう
+[stg-manual-test-guide.md](stg-manual-test-guide.md) に分離した。以降の本文は
+計画書内の原本として残すが、テスト実施時は分離版を使用すること。
+
 Codexはstaging deploy後、最低限以下の全ケースを案内する。
 
 実際の既存仕様を調査後、必要なケースを追加すること。

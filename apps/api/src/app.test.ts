@@ -10,6 +10,16 @@ describe('API health endpoint', () => {
   });
 });
 
+describe('guess area compatibility', () => {
+  it('preserves the legacy park root and validates the request body', async () => {
+    const app = createApp();
+    const response = await app.request('/guess-area', { method: 'POST', body: JSON.stringify({ lat: 0, lng: 0, park: 'L' }), headers: { 'content-type': 'application/json' } });
+    expect(response.status).toBe(200);
+    await expect(response.json()).resolves.toEqual({ areaNames: ['ランド'] });
+    expect((await app.request('/guess-area', { method: 'POST', body: '{}', headers: { 'content-type': 'application/json' } })).status).toBe(400);
+  });
+});
+
 describe('legacy API inventory', () => {
   it('registers every frontend contract route and method', () => {
     const normalize = (path: string) => path.replace(/:[^/]+/g, ':param').replace(/\/$/, '');

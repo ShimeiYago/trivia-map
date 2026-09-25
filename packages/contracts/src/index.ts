@@ -19,6 +19,13 @@ export const specialMapMarkerWriteSchema = specialMapMarkerSchema.omit({ special
 export const registrationSchema = z.object({ email: z.string().email(), nickname: z.string().min(1).max(20), password1: z.string().min(8), password2: z.string().min(8) }).refine((value) => value.password1 === value.password2, { path: ['password2'], message: 'パスワードが一致しません。' });
 export const loginSchema = z.object({ email: z.string().email(), password: z.string().min(1) });
 export const inquirySchema = z.object({ email: z.string().email(), tag: z.string().max(100), name: z.string().min(1).max(20), message: z.string().min(1).max(5000) });
+// Compatibility inventory shared by API contract tests and deployment checks.
+// Paths intentionally preserve the legacy trailing-slash boundary.
+export const apiInventory = [
+  ['GET', '/articles/detail/:postId'], ['GET', '/articles/public/previews'], ['GET', '/markers/:park'], ['GET', '/articles/categories'], ['GET', '/guess-area'], ['GET', '/articles/sitemap'], ['GET', '/users/:userId'], ['GET', '/special-map/maps/public-previews'], ['GET', '/special-map/maps/:mapId/detail'], ['GET', '/special-map/maps/:mapId/markers'], ['GET', '/special-map/maps/sitemap'], ['POST', '/goods/toggle/:postId'], ['GET', '/goods/check/:postId'], ['POST', '/inquiry/'],
+  ['GET', '/articles/mine'], ['POST', '/articles'], ['PATCH', '/articles/:postId'], ['DELETE', '/articles/:postId'], ['GET', '/likes/mine'], ['POST', '/likes/toggle/:postId'], ['GET', '/likes/check/:postId'], ['GET', '/special-map/maps/my-previews'], ['POST', '/special-map/maps'], ['PATCH', '/special-map/maps/:mapId'], ['DELETE', '/special-map/maps/:mapId'], ['POST', '/special-map/maps/:mapId/post-marker'], ['GET', '/special-map/markers/:markerId'], ['PATCH', '/special-map/markers/:markerId'], ['DELETE', '/special-map/markers/:markerId'],
+  ['POST', '/auths/registration/'], ['POST', '/auths/registration/verify-email/'], ['POST', '/auths/registration/resend-email/'], ['POST', '/auths/login/'], ['POST', '/auths/logout/'], ['GET', '/auths/user/'], ['PUT', '/auths/user/update/'], ['PATCH', '/auths/user/update/'], ['POST', '/auths/password/change/'], ['POST', '/auths/password/reset/'], ['POST', '/auths/password/reset/confirm/'], ['POST', '/auths/token/refresh/'], ['POST', '/auths/token/verify/'], ['PUT', '/auths/deactivate/'], ['POST', '/auths/twitter/request-token'], ['POST', '/auths/twitter/access-token'], ['POST', '/auths/twitter/login'],
+] as const;
 export type User = z.infer<typeof userSchema>;
 export type Article = z.infer<typeof articleSchema>;
 export type Marker = z.infer<typeof markerSchema>;

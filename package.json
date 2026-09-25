@@ -2,7 +2,7 @@
   "name": "trivia-map",
   "version": "3.0.0",
   "private": true,
-  "workspaces": ["apps/*", "packages/*", "infra"],
+  "workspaces": ["apps/*", "packages/*", "infra", "scripts/*"],
   "engines": { "node": "24.21.0", "npm": ">=11" },
   "scripts": {
     "build": "npm run build --workspace=@triviamap/front && npm run build --workspace=@triviamap/api && npm run build --workspace=@triviamap/infra",

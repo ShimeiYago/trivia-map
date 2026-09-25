@@ -24,6 +24,31 @@ export const createApp = () => {
     const [author, marker, goods] = await Promise.all([get('USERS', String(article.author_id)), get('MARKERS', String(article.marker_id)), scan('GOODS')]);
     return c.json({ ...article, marker: marker && { markerId: marker.markerId, lat: marker.latitude, lng: marker.longitude, park: marker.park }, author: author && { userId: author.id, nickname: author.nickname, icon: author.socialIcon ?? author.icon ?? null, url: author.url ?? null }, createdAt: date(article.createdAt), updatedAt: date(article.updatedAt), numberOfGoods: goods.filter((g) => String(g.article_id) === String(article.postId)).length });
   });
+  app.get('/markers/:park', async (c) => {
+    const park = c.req.param('park'); const [markers, articles] = await Promise.all([scan('MARKERS'), scan('ARTICLES')]);
+    return c.json(markers.filter((marker) => marker.park === park).map((marker) => {
+      const related = articles.filter((article) => !article.isDraft && String(article.marker_id) === String(marker.markerId));
+      return { markerId: marker.markerId, lat: marker.latitude, lng: marker.longitude, park: marker.park, numberOfPublicArticles: { total: related.length, eachCategory: Array.from({ length: 7 }, (_, category) => related.filter((article) => article.category === category).length) } };
+    }));
+  });
+  app.get('/articles/categories', (c) => c.json([{ categoryId: 0, categoryName: 'その他' }, { categoryId: 1, categoryName: '隠れミッキー' }, { categoryId: 2, categoryName: 'バックグラウンドストーリー' }, { categoryId: 3, categoryName: 'おすすめ写真スポット' }, { categoryId: 4, categoryName: 'ショーパレ' }, { categoryId: 5, categoryName: 'キャラグリ' }, { categoryId: 6, categoryName: 'パーク攻略法' }]));
+  app.get('/users/:id', async (c) => {
+    const user = await get('USERS', c.req.param('id')); if (!user) return c.json({ detail: 'Not found' }, 404);
+    return c.json({ userId: user.id, nickname: user.nickname, icon: user.socialIcon ?? user.icon ?? null, url: user.url ?? null });
+  });
+  app.get('/special-map/maps/public-previews', async (c) => {
+    const maps = (await scan('SPECIALMAPS')).filter((map) => map.isPublic);
+    return c.json({ nextUrl: null, previousUrl: null, totalRecords: maps.length, totalPages: 1, currentPage: 1, startIndex: maps.length ? 1 : 0, endIndex: maps.length, results: maps.map((map) => ({ specialMapId: map.specialMapId, title: map.title, thumbnail: map.thumbnail ?? null, description: map.description, isPublic: map.isPublic })) });
+  });
+  app.get('/special-map/maps/:id/detail', async (c) => {
+    const map = await get('SPECIALMAPS', c.req.param('id')); if (!map || !map.isPublic) return c.json({ detail: 'Not found' }, 404);
+    const author = await get('USERS', String(map.author_id));
+    return c.json({ ...map, author: author && { userId: author.id, nickname: author.nickname, icon: author.socialIcon ?? author.icon ?? null, url: author.url ?? null }, createdAt: date(map.createdAt) });
+  });
+  app.get('/special-map/maps/:id/markers', async (c) => {
+    const id = c.req.param('id'); const markers = (await scan('SPECIALMAPMARKERS')).filter((marker) => String(marker.specialMap_id) === id);
+    return c.json({ nextUrl: null, previousUrl: null, totalRecords: markers.length, totalPages: 1, currentPage: 1, startIndex: markers.length ? 1 : 0, endIndex: markers.length, results: markers.map((marker) => ({ ...marker, specialMap: marker.specialMap_id, lat: marker.latitude, lng: marker.longitude })) });
+  });
   app.notFound((c) => c.json({ detail: 'Not found' }, 404));
   return app;
 };

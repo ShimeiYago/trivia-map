@@ -34,8 +34,8 @@ export class TriviaMapStagingV2Stack extends cdk.Stack {
     const maps = makeTable(this, 'SpecialMaps', [{ name: 'author-index', partition: 'authorId', sort: 'specialMapId' }, { name: 'public-index', partition: 'publicKey', sort: 'specialMapId' }]);
     const mapMarkers = makeTable(this, 'SpecialMapMarkers', [{ name: 'map-index', partition: 'specialMapId', sort: 'specialMapMarkerId' }]);
     // GSI sort keys are strings; keep the numeric TTL in a distinct attribute.
-    const sessions = makeTable(this, 'Sessions', [{ name: 'user-index', partition: 'userId', sort: 'expiresAt' }], 'expiresAt');
-    const tokens = makeTable(this, 'AuthTokens', [{ name: 'user-index', partition: 'userId', sort: 'expiresAt' }], 'expiresAt');
+    const sessions = makeTable(this, 'Sessions', [{ name: 'user-index', partition: 'userId', sort: 'expiresAt' }], 'ttl');
+    const tokens = makeTable(this, 'AuthTokens', [{ name: 'user-index', partition: 'userId', sort: 'expiresAt' }], 'ttl');
     const images = new s3.Bucket(this, 'Images', { encryption: s3.BucketEncryption.S3_MANAGED, blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL, enforceSSL: true, removalPolicy: retain });
     const frontend = new s3.Bucket(this, 'Frontend', { encryption: s3.BucketEncryption.S3_MANAGED, blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL, enforceSSL: true, removalPolicy: retain });
     const basicAuthorizationHash = new cdk.CfnParameter(this, 'BasicAuthorizationHash', { type: 'String', noEcho: true, description: 'SHA-256 hex digest of the expected Basic authorization header from triviamap/stg/access.' });

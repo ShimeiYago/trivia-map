@@ -1,0 +1,10 @@
+name: Production deployment placeholder
+
+on:
+  workflow_dispatch:
+
+jobs:
+  blocked:
+    runs-on: ubuntu-latest
+    steps:
+      - run: exit 1

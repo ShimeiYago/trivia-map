@@ -13,6 +13,7 @@ import * as s3 from 'aws-cdk-lib/aws-s3';
 import * as secretsmanager from 'aws-cdk-lib/aws-secretsmanager';
 import * as route53 from 'aws-cdk-lib/aws-route53';
 import * as targets from 'aws-cdk-lib/aws-route53-targets';
+import * as iam from 'aws-cdk-lib/aws-iam';
 import { Construct } from 'constructs';
 
 const retain = RemovalPolicy.RETAIN;
@@ -52,6 +53,22 @@ export class TriviaMapStagingV2Stack extends cdk.Stack {
     const distribution = new cloudfront.Distribution(this, 'FrontendDistribution', { domainNames: ['stg.triviamap.jp'], certificate, defaultRootObject: 'index.html', defaultBehavior: { origin: origins.S3BucketOrigin.withOriginAccessControl(frontend), viewerProtocolPolicy: cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS, functionAssociations: [{ eventType: cloudfront.FunctionEventType.VIEWER_REQUEST, function: basic }] }, additionalBehaviors: { '/images/*': { origin: origins.S3BucketOrigin.withOriginAccessControl(images), viewerProtocolPolicy: cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS, functionAssociations: [{ eventType: cloudfront.FunctionEventType.VIEWER_REQUEST, function: basic }, { eventType: cloudfront.FunctionEventType.VIEWER_RESPONSE, function: imageNotFound }] }, '/api/*': { origin: new origins.HttpOrigin(cdk.Fn.select(2, cdk.Fn.split('/', httpApi.apiEndpoint)), { protocolPolicy: cloudfront.OriginProtocolPolicy.HTTPS_ONLY, customHeaders: { 'x-triviamap-origin': originToken.valueAsString } }), viewerProtocolPolicy: cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS, cachePolicy: cloudfront.CachePolicy.CACHING_DISABLED, originRequestPolicy: cloudfront.OriginRequestPolicy.ALL_VIEWER_EXCEPT_HOST_HEADER, allowedMethods: cloudfront.AllowedMethods.ALLOW_ALL, functionAssociations: [{ eventType: cloudfront.FunctionEventType.VIEWER_REQUEST, function: basic }] } } });
     const zone = route53.HostedZone.fromHostedZoneAttributes(this, 'TriviaMapZone', { hostedZoneId: 'Z02164532FSOYFWRLF2MO', zoneName: 'triviamap.jp' });
     new route53.ARecord(this, 'StagingAlias', { zone, recordName: 'stg', target: route53.RecordTarget.fromAlias(new targets.CloudFrontTarget(distribution)) });
-    new cdk.CfnOutput(this, 'ApiUrl', { value: httpApi.apiEndpoint }); new cdk.CfnOutput(this, 'ImageBucket', { value: images.bucketName }); new cdk.CfnOutput(this, 'FrontendBucket', { value: frontend.bucketName }); new cdk.CfnOutput(this, 'FrontendDistributionId', { value: distribution.distributionId }); new cdk.CfnOutput(this, 'FrontendUrl', { value: `https://${distribution.distributionDomainName}` });
+    const githubOidc = new iam.OpenIdConnectProvider(this, 'GithubActionsOidc', { url: 'https://token.actions.githubusercontent.com', clientIds: ['sts.amazonaws.com'] });
+    const githubDeployRole = new iam.Role(this, 'GithubStagingDeployRole', {
+      roleName: 'TriviaMapStagingGithubDeployRole',
+      assumedBy: new iam.WebIdentityPrincipal(githubOidc.openIdConnectProviderArn, {
+        StringEquals: { 'token.actions.githubusercontent.com:aud': 'sts.amazonaws.com', 'token.actions.githubusercontent.com:sub': 'repo:ShimeiYago/trivia-map:ref:refs/heads/develop' },
+      }),
+      description: 'GitHub Actions deploy role restricted to the TriviaMap v2 staging stack.',
+    });
+    const account = cdk.Aws.ACCOUNT_ID;
+    const region = cdk.Aws.REGION;
+    githubDeployRole.addToPolicy(new iam.PolicyStatement({ actions: ['cloudformation:CreateChangeSet', 'cloudformation:DeleteChangeSet', 'cloudformation:DescribeChangeSet', 'cloudformation:DescribeStacks', 'cloudformation:DescribeStackEvents', 'cloudformation:ExecuteChangeSet', 'cloudformation:GetTemplate', 'cloudformation:UpdateStack'], resources: [`arn:aws:cloudformation:${region}:${account}:stack/TriviaMapStagingV2/*`] }));
+    githubDeployRole.addToPolicy(new iam.PolicyStatement({ actions: ['cloudformation:DescribeStacks', 'cloudformation:DescribeStackResources', 'cloudformation:DescribeStackEvents'], resources: ['*'] }));
+    githubDeployRole.addToPolicy(new iam.PolicyStatement({ actions: ['s3:GetObject', 's3:PutObject', 's3:DeleteObject', 's3:ListBucket'], resources: [frontend.bucketArn, `${frontend.bucketArn}/*`, images.bucketArn, `${images.bucketArn}/*`, `arn:aws:s3:::cdk-hnb659fds-assets-${account}-${region}`, `arn:aws:s3:::cdk-hnb659fds-assets-${account}-${region}/*`] }));
+    githubDeployRole.addToPolicy(new iam.PolicyStatement({ actions: ['cloudfront:CreateInvalidation', 'cloudfront:GetDistribution', 'cloudfront:GetDistributionConfig'], resources: [`arn:aws:cloudfront::${account}:distribution/${distribution.distributionId}`] }));
+    githubDeployRole.addToPolicy(new iam.PolicyStatement({ actions: ['secretsmanager:GetSecretValue'], resources: [`arn:aws:secretsmanager:${region}:${account}:secret:triviamap/stg/access-*`] }));
+    githubDeployRole.addToPolicy(new iam.PolicyStatement({ actions: ['iam:PassRole', 'sts:AssumeRole'], resources: [`arn:aws:iam::${account}:role/cdk-hnb659fds-cfn-exec-role-${account}-${region}`, `arn:aws:iam::${account}:role/cdk-hnb659fds-deploy-role-${account}-${region}`, `arn:aws:iam::${account}:role/cdk-hnb659fds-file-publishing-role-${account}-${region}`, `arn:aws:iam::${account}:role/cdk-hnb659fds-lookup-role-${account}-${region}`] }));
+    new cdk.CfnOutput(this, 'ApiUrl', { value: httpApi.apiEndpoint }); new cdk.CfnOutput(this, 'ImageBucket', { value: images.bucketName }); new cdk.CfnOutput(this, 'FrontendBucket', { value: frontend.bucketName }); new cdk.CfnOutput(this, 'FrontendDistributionId', { value: distribution.distributionId }); new cdk.CfnOutput(this, 'FrontendUrl', { value: `https://${distribution.distributionDomainName}` }); new cdk.CfnOutput(this, 'GithubStagingDeployRoleArn', { value: githubDeployRole.roleArn });
   }
 }

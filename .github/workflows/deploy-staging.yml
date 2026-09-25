@@ -1,0 +1,49 @@
+name: Deploy staging
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  deploy:
+    if: github.ref == 'refs/heads/develop'
+    runs-on: ubuntu-latest
+    environment: staging
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.21.0
+          cache: npm
+      - run: npm ci
+      - run: npm run lint && npm run typecheck && npm run test:ci && npm run build && npm run synth
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::614299612633:role/TriviaMapStagingGithubDeployRole
+          aws-region: ap-northeast-1
+      - name: Deploy stack and frontend without emitting credentials
+        shell: bash
+        run: |
+          set -euo pipefail
+          access_json="$(aws secretsmanager get-secret-value --secret-id triviamap/stg/access --query SecretString --output text)"
+          basic_hash="$(node -e 'const crypto=require("crypto");const value=JSON.parse(process.argv[1]);process.stdout.write(crypto.createHash("sha256").update(`Basic ${Buffer.from(`${value.username}:${value.password}`).toString("base64")}`).digest("hex"))' "$access_json")"
+          origin_token="$(node -e 'process.stdout.write(JSON.parse(process.argv[1]).originToken)' "$access_json")"
+          cd infra
+          npx cdk deploy TriviaMapStagingV2 --require-approval never --parameters BasicAuthorizationHash="$basic_hash" --parameters OriginToken="$origin_token"
+          cd ..
+          bucket="$(aws cloudformation describe-stacks --stack-name TriviaMapStagingV2 --query 'Stacks[0].Outputs[?OutputKey==`FrontendBucket`].OutputValue' --output text)"
+          distribution="$(aws cloudformation describe-stacks --stack-name TriviaMapStagingV2 --query 'Stacks[0].Outputs[?OutputKey==`FrontendDistributionId`].OutputValue' --output text)"
+          aws s3 sync apps/front/build/ "s3://$bucket" --delete
+          aws cloudfront create-invalidation --distribution-id "$distribution" --paths '/*' >/dev/null
+      - name: Same-origin smoke test
+        shell: bash
+        run: |
+          set -euo pipefail
+          access_json="$(aws secretsmanager get-secret-value --secret-id triviamap/stg/access --query SecretString --output text)"
+          auth="$(node -e 'const value=JSON.parse(process.argv[1]);process.stdout.write(`Basic ${Buffer.from(`${value.username}:${value.password}`).toString("base64")}`)' "$access_json")"
+          test "$(curl -sS -o /dev/null -w '%{http_code}' https://stg.triviamap.jp/)" = 401
+          test "$(curl -sS -o /dev/null -w '%{http_code}' -H "Authorization: $auth" https://stg.triviamap.jp/api/health)" = 200
+

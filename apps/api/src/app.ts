@@ -17,7 +17,12 @@ const tableNames: Record<string, string> = { USERS: 'TABLE_USERS', ARTICLES: 'TA
 const table = (name: keyof typeof tableNames) => process.env[tableNames[name]] ?? `TriviaMap-stg-v2-${name === 'SPECIALMAPS' ? 'SpecialMaps' : name === 'SPECIALMAPMARKERS' ? 'SpecialMapMarkers' : name[0]}${name.slice(1).toLowerCase()}`;
 const all = async (name: keyof typeof tableNames) => { const output: Item[] = []; let key: Record<string, unknown> | undefined; do { const page = await ddb.send(new ScanCommand({ TableName: table(name), ExclusiveStartKey: key })); output.push(...(page.Items as Item[] ?? [])); key = page.LastEvaluatedKey; } while (key); return output; };
 const get = async (name: keyof typeof tableNames, id: string) => (await ddb.send(new GetCommand({ TableName: table(name), Key: { id } }))).Item as Item | undefined;
-const put = async (name: keyof typeof tableNames, item: Item) => ddb.send(new PutCommand({ TableName: table(name), Item: item }));
+const put = async (name: keyof typeof tableNames, item: Item) => {
+  const normalized = (name === 'SESSIONS' || name === 'AUTHTOKENS') && typeof item.expiresAt === 'number'
+    ? { ...item, ttl: item.expiresAt, expiresAt: String(item.expiresAt) }
+    : item;
+  return ddb.send(new PutCommand({ TableName: table(name), Item: normalized }));
+};
 const remove = async (name: keyof typeof tableNames, id: string) => ddb.send(new DeleteCommand({ TableName: table(name), Key: { id } }));
 const text = (value: unknown) => String(value ?? '');
 const num = (value: unknown) => Number(value);

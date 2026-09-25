@@ -40,7 +40,15 @@ export function getAxiosInstance(
     }
   }
 
-  return axios.create(axiosRequestConfig);
+  const instance = axios.create(axiosRequestConfig);
+  instance.interceptors.request.use((config) => {
+    const csrf = document.cookie.split('; ').find((item) => item.startsWith('trivia-map-csrf='))?.split('=')[1];
+    if (csrf && config.method && !['get', 'head', 'options'].includes(config.method.toLowerCase())) {
+      config.headers = { ...config.headers, 'X-CSRF-Token': csrf };
+    }
+    return config;
+  });
+  return instance;
 }
 
 const defaultConfig: AxiosRequestConfig = {

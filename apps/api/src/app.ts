@@ -1,5 +1,5 @@
 import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
-import { DynamoDBDocumentClient, GetCommand, ScanCommand } from '@aws-sdk/lib-dynamodb';
+import { DeleteCommand, DynamoDBDocumentClient, GetCommand, PutCommand, ScanCommand } from '@aws-sdk/lib-dynamodb';
 import { Hono } from 'hono';
 
 export type Health = { ok: true; service: 'triviamap-api' };
@@ -8,6 +8,7 @@ const table = (name: string) => process.env[`TABLE_${name}`] ?? `TriviaMap-stg-$
 const scan = async (name: string) => (await ddb.send(new ScanCommand({ TableName: table(name) }))).Items ?? [];
 const get = async (name: string, id: string) => (await ddb.send(new GetCommand({ TableName: table(name), Key: { id } }))).Item;
 const date = (value: unknown) => value ? new Date(String(value)).toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hour12: false }).replaceAll('-', '/').replace(',', '') : null;
+const visitor = (header: string | undefined) => header?.split(',')[0]?.trim() || 'anonymous';
 
 export const createApp = () => {
   const app = new Hono();
@@ -48,6 +49,17 @@ export const createApp = () => {
   app.get('/special-map/maps/:id/markers', async (c) => {
     const id = c.req.param('id'); const markers = (await scan('SPECIALMAPMARKERS')).filter((marker) => String(marker.specialMap_id) === id);
     return c.json({ nextUrl: null, previousUrl: null, totalRecords: markers.length, totalPages: 1, currentPage: 1, startIndex: markers.length ? 1 : 0, endIndex: markers.length, results: markers.map((marker) => ({ ...marker, specialMap: marker.specialMap_id, lat: marker.latitude, lng: marker.longitude })) });
+  });
+  app.get('/goods/check/:id', async (c) => {
+    const ipAddress = visitor(c.req.header('x-forwarded-for')); const articleId = c.req.param('id');
+    return c.json({ haveAddedGood: (await scan('GOODS')).some((good) => String(good.ipAddress) === ipAddress && String(good.article_id) === articleId) });
+  });
+  app.post('/goods/toggle/:id', async (c) => {
+    const articleId = c.req.param('id'); const ipAddress = visitor(c.req.header('x-forwarded-for')); const id = `${ipAddress}:${articleId}`;
+    const existing = (await scan('GOODS')).find((good) => String(good.ipAddress) === ipAddress && String(good.article_id) === articleId);
+    if (existing) { await ddb.send(new DeleteCommand({ TableName: table('GOODS'), Key: { id: existing.id } })); return c.json({ haveAddedGood: false }); }
+    await ddb.send(new PutCommand({ TableName: table('GOODS'), Item: { id, entity: 'Good', goodId: id, ipAddress, article_id: Number(articleId) }, ConditionExpression: 'attribute_not_exists(id)' }));
+    return c.json({ haveAddedGood: true });
   });
   app.notFound((c) => c.json({ detail: 'Not found' }, 404));
   return app;

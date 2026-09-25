@@ -50,6 +50,21 @@ async function main() {
       }
       report[entity] = { source: rows.length, written, skipped, images, validated };
     }
+    // allauth keeps the Twitter identity separately from the Django user row.
+    // Preserve it on the same v2 user item so social login continues to select
+    // the legacy account instead of creating a second account.
+    const [socialRows] = await connection.query<RowDataPacket[]>('SELECT user_id, uid FROM `socialaccount_socialaccount` WHERE provider = \'twitter\'');
+    let linked = 0;
+    for (const social of socialRows) {
+      if (dryRun) continue;
+      const user = await ddb.send(new GetCommand({ TableName: `${prefix}Users`, Key: { id: str(social.user_id) } }));
+      if (!user.Item) throw new Error(`missing social user:${str(social.user_id)}`);
+      if (str(user.Item.socialProvider) === 'twitter' && str(user.Item.socialId) === str(social.uid)) { linked += 1; continue; }
+      if (user.Item.socialProvider || user.Item.socialId) throw new Error(`conflicting social identity:${str(social.user_id)}`);
+      await ddb.send(new PutCommand({ TableName: `${prefix}Users`, Item: { ...user.Item, socialProvider: 'twitter', socialId: str(social.uid) } }));
+      linked += 1;
+    }
+    report.SocialAccounts = { source: socialRows.length, written: linked, skipped: 0, images: 0, validated: 0 };
   } finally { await connection.end(); }
   console.log(JSON.stringify({ dryRun, copyImages, validate, report }, null, 2));
 }

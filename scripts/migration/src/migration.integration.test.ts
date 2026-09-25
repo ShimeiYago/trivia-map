@@ -5,7 +5,7 @@ import { CreateTableCommand, DynamoDBClient, ResourceInUseException } from '@aws
 import { DynamoDBDocumentClient, ScanCommand } from '@aws-sdk/lib-dynamodb';
 import mysql from 'mysql2/promise';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
-import { runMigration } from './migrate.js';
+import { runMigration, validateExistingMigration } from './migrate.js';
 
 const endpoint = process.env.DYNAMODB_LOCAL_ENDPOINT;
 const mysqlUrl = process.env.MYSQL_URL;
@@ -52,5 +52,10 @@ describe.skipIf(!endpoint || !mysqlUrl)('fixture MySQL to DynamoDB Local migrati
     expect(likes.Items).toEqual([expect.objectContaining({ id: '1#1', userId: '1', postId: '1' })]);
     const resumed = await runMigration({ ...options, copyImages: true, validate: true });
     expect(Object.values(resumed).filter((entry) => 'skipped' in entry).some((entry) => entry.skipped > 0)).toBe(true);
+    await expect(validateExistingMigration(options)).resolves.toMatchObject({
+      entities: { Users: { source: 1, destination: 1, missingIds: 0, mismatched: 0 }, Articles: { source: 1, destination: 1, missingIds: 0, mismatched: 0 } },
+      relations: { articleAuthor: 0, articleMarker: 0, likeUserOrArticle: 0, goodArticle: 0, mapAuthor: 0, mapMarkerMap: 0 },
+      twitterIdentities: { source: 1, missing: 0, mismatched: 0 }, images: { referenced: 3, missing: 0, checksumMismatched: 0 },
+    });
   });
 });

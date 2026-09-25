@@ -1,6 +1,6 @@
 import { createHash } from 'node:crypto';
 import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
-import { DynamoDBDocumentClient, GetCommand, PutCommand } from '@aws-sdk/lib-dynamodb';
+import { DynamoDBDocumentClient, GetCommand, PutCommand, ScanCommand } from '@aws-sdk/lib-dynamodb';
 import { CopyObjectCommand, GetObjectCommand, S3Client } from '@aws-sdk/client-s3';
 import mysql, { RowDataPacket } from 'mysql2/promise';
 
@@ -32,6 +32,7 @@ const checksum = async (s3: S3Client, bucket: string, key: string) => createHash
 
 export type MigrationOptions = { mysqlUrl: string; dryRun?: boolean; copyImages?: boolean; validate?: boolean; prefix?: string; sourceBucket?: string; destinationBucket?: string; ddb?: DynamoDBDocumentClient; s3?: S3Client };
 export type MigrationReport = Record<string, { source: number; written: number; skipped: number; images: number; validated: number }>;
+export type ValidationReport = { entities: Record<string, { source: number; destination: number; missingIds: number; mismatched: number }>; relations: Record<string, number>; twitterIdentities: { source: number; missing: number; mismatched: number }; images: { referenced: number; missing: number; checksumMismatched: number } };
 
 export async function runMigration(options: MigrationOptions): Promise<MigrationReport> {
   const { mysqlUrl } = options;
@@ -71,5 +72,36 @@ export async function runMigration(options: MigrationOptions): Promise<Migration
   } finally { await connection.end(); }
   return report;
 }
-async function main() { const mysqlUrl = process.env.MYSQL_URL; if (!mysqlUrl) throw new Error('MYSQL_URL is required'); const report = await runMigration({ mysqlUrl, dryRun: arg('--dry-run'), copyImages: arg('--copy-images'), validate: arg('--validate') }); console.log(JSON.stringify({ dryRun: arg('--dry-run'), copyImages: arg('--copy-images'), validate: arg('--validate'), report }, null, 2)); }
+const scanAll = async (ddb: DynamoDBDocumentClient, tableName: string) => { const items: RecordItem[] = []; let key: Record<string, unknown> | undefined; do { const page = await ddb.send(new ScanCommand({ TableName: tableName, ExclusiveStartKey: key })); items.push(...(page.Items as RecordItem[] ?? [])); key = page.LastEvaluatedKey; } while (key); return items; };
+const comparable = (entity: Entity, item: RecordItem) => { const output = { ...item }; delete output.migratedAt; if (entity === 'Users') { delete output.socialProvider; delete output.socialId; } return output; };
+
+/** Reads legacy and staging data without mutating either side. */
+export async function validateExistingMigration(options: Omit<MigrationOptions, 'dryRun' | 'copyImages' | 'validate'>): Promise<ValidationReport> {
+  const prefix = options.prefix ?? process.env.DYNAMODB_TABLE_PREFIX ?? 'TriviaMap-stg-v2-'; const sourceBucket = options.sourceBucket ?? process.env.SOURCE_IMAGE_BUCKET ?? 'trivia-map-prod'; const destinationBucket = options.destinationBucket ?? process.env.STAGING_IMAGE_BUCKET;
+  if (!destinationBucket) throw new Error('STAGING_IMAGE_BUCKET is required');
+  const connection = await mysql.createConnection(options.mysqlUrl); const ddb = options.ddb ?? DynamoDBDocumentClient.from(new DynamoDBClient({ region: process.env.AWS_REGION ?? 'ap-northeast-1' })); const s3 = options.s3 ?? new S3Client({});
+  const entities: ValidationReport['entities'] = {}; const sourceItems = new Map<Entity, RecordItem[]>(); const destinationItems = new Map<Entity, RecordItem[]>();
+  try {
+    for (const [entity, sourceTable, primaryKey] of sources) {
+      const [rows] = await connection.query<RowDataPacket[]>(`SELECT * FROM \`${sourceTable}\` ORDER BY \`${primaryKey}\``); const expected = rows.map((row) => transform(entity, row as Record<string, unknown>)); const destination = await scanAll(ddb, `${prefix}${entity}`); const byId = new Map(destination.map((item) => [item.id, item])); let missingIds = 0; let mismatched = 0;
+      for (const item of expected) { const existing = byId.get(item.id); if (!existing) missingIds += 1; else if (stable(comparable(entity, existing)) !== stable(comparable(entity, item))) mismatched += 1; }
+      entities[entity] = { source: expected.length, destination: destination.length, missingIds, mismatched }; sourceItems.set(entity, expected); destinationItems.set(entity, destination);
+    }
+    const ids = (entity: Entity) => new Set((destinationItems.get(entity) ?? []).map((item) => item.id));
+    const relations = {
+      articleAuthor: (sourceItems.get('Articles') ?? []).filter((item) => !ids('Users').has(str(item.authorId))).length,
+      articleMarker: (sourceItems.get('Articles') ?? []).filter((item) => !ids('Markers').has(str(item.markerId))).length,
+      likeUserOrArticle: (sourceItems.get('Likes') ?? []).filter((item) => !ids('Users').has(str(item.userId)) || !ids('Articles').has(str(item.postId))).length,
+      goodArticle: (sourceItems.get('Goods') ?? []).filter((item) => !ids('Articles').has(str(item.postId))).length,
+      mapAuthor: (sourceItems.get('SpecialMaps') ?? []).filter((item) => !ids('Users').has(str(item.authorId))).length,
+      mapMarkerMap: (sourceItems.get('SpecialMapMarkers') ?? []).filter((item) => !ids('SpecialMaps').has(str(item.specialMapId))).length,
+    };
+    const [socialRows] = await connection.query<RowDataPacket[]>('SELECT user_id, uid FROM `socialaccount_socialaccount` WHERE provider = \'twitter\''); const users = new Map((destinationItems.get('Users') ?? []).map((item) => [item.id, item])); let twitterMissing = 0; let twitterMismatched = 0;
+    for (const row of socialRows) { const user = users.get(str(row.user_id)); if (!user) twitterMissing += 1; else if (str(user.socialProvider) !== 'twitter' || str(user.socialId) !== str(row.uid)) twitterMismatched += 1; }
+    const keys = [...sourceItems.values()].flatMap((items) => items.flatMap(imageKeys)); let imageMissing = 0; let checksumMismatched = 0;
+    for (const key of keys) { try { if ((await checksum(s3, sourceBucket, key)) !== (await checksum(s3, destinationBucket, key))) checksumMismatched += 1; } catch { imageMissing += 1; } }
+    return { entities, relations, twitterIdentities: { source: socialRows.length, missing: twitterMissing, mismatched: twitterMismatched }, images: { referenced: keys.length, missing: imageMissing, checksumMismatched } };
+  } finally { await connection.end(); }
+}
+async function main() { const mysqlUrl = process.env.MYSQL_URL; if (!mysqlUrl) throw new Error('MYSQL_URL is required'); if (arg('--validate-existing')) { console.log(JSON.stringify(await validateExistingMigration({ mysqlUrl }), null, 2)); return; } const report = await runMigration({ mysqlUrl, dryRun: arg('--dry-run'), copyImages: arg('--copy-images'), validate: arg('--validate') }); console.log(JSON.stringify({ dryRun: arg('--dry-run'), copyImages: arg('--copy-images'), validate: arg('--validate'), report }, null, 2)); }
 if (process.argv[1]?.endsWith('migrate.ts')) main().catch((error: unknown) => { console.error(error); process.exitCode = 1; });

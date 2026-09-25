@@ -84,6 +84,7 @@ jobs:
           cache: npm
       - run: npm ci
       - run: node -e "const wait=async()=>{for(let i=0;i<30;i++){try{await fetch('http://127.0.0.1:8000');return}catch{await new Promise(r=>setTimeout(r,1000))}}throw new Error('DynamoDB Local did not start')};wait()"
+      - run: npm run test:integration --workspace=@triviamap/api
       - run: npm run test:integration --workspace=@triviamap/migration
   build:
     runs-on: ubuntu-latest

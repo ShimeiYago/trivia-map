@@ -25,6 +25,7 @@
     "build": "tsc",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
-    "test:ci": "vitest run"
+    "test:ci": "vitest run",
+    "test:integration": "DYNAMODB_LOCAL_ENDPOINT=http://127.0.0.1:8000 vitest run src/dynamodb-local.integration.test.ts"
   }
 }

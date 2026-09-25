@@ -23,7 +23,7 @@ async function main() {
       const [rows] = await connection.query<RowDataPacket[]>(`SELECT * FROM \`${sourceTable}\` ORDER BY \`${primaryKey}\``);
       let written = 0; let skipped = 0;
       for (const row of rows) {
-        const item = { id: String(row[primaryKey]), ...(normalise(row) as Record<string, unknown>), entity };
+        const item = { ...(normalise(row) as Record<string, unknown>), entity, id: String(row[primaryKey]) };
         if (!dryRun) {
           const tableName = `${prefix}${entity}`;
           const existing = await ddb.send(new GetCommand({ TableName: tableName, Key: { id: item.id } }));

@@ -13,8 +13,8 @@ import * as secretsmanager from 'aws-cdk-lib/aws-secretsmanager';
 import { Construct } from 'constructs';
 
 const retain = RemovalPolicy.RETAIN;
-const makeTable = (scope: Construct, name: string, indexes: Array<{ name: string; partition: string; sort?: string }> = [], ttlAttribute?: string) => {
-  const resource = new dynamodb.Table(scope, name, { tableName: `TriviaMap-stg-v2-${name}`, partitionKey: { name: 'id', type: dynamodb.AttributeType.STRING }, billingMode: dynamodb.BillingMode.PAY_PER_REQUEST, pointInTimeRecoverySpecification: { pointInTimeRecoveryEnabled: true }, removalPolicy: retain, ...(ttlAttribute ? { timeToLiveAttribute: ttlAttribute } : {}) });
+const makeTable = (scope: Construct, name: string, indexes: Array<{ name: string; partition: string; sort?: string }> = [], ttlAttribute?: string, physicalName = name) => {
+  const resource = new dynamodb.Table(scope, name, { tableName: `TriviaMap-stg-v2-${physicalName}`, partitionKey: { name: 'id', type: dynamodb.AttributeType.STRING }, billingMode: dynamodb.BillingMode.PAY_PER_REQUEST, pointInTimeRecoverySpecification: { pointInTimeRecoveryEnabled: true }, removalPolicy: retain, ...(ttlAttribute ? { timeToLiveAttribute: ttlAttribute } : {}) });
   indexes.forEach(({ name: indexName, partition, sort }) => resource.addGlobalSecondaryIndex({ indexName, partitionKey: { name: partition, type: dynamodb.AttributeType.STRING }, ...(sort ? { sortKey: { name: sort, type: dynamodb.AttributeType.STRING } } : {}), projectionType: dynamodb.ProjectionType.ALL }));
   return resource;
 };
@@ -32,8 +32,8 @@ export class TriviaMapStagingV2Stack extends cdk.Stack {
     const mapMarkers = makeTable(this, 'SpecialMapMarkers', [{ name: 'map-index', partition: 'specialMapId', sort: 'specialMapMarkerId' }]);
     // DynamoDB TTL values must be Numbers, while this index deliberately uses a
     // separate sortable string to avoid an attribute-type conflict.
-    const sessions = makeTable(this, 'Sessions', [{ name: 'user-index', partition: 'userId', sort: 'expiryKey' }], 'expiresAt');
-    const tokens = makeTable(this, 'AuthTokens', [{ name: 'user-index', partition: 'userId', sort: 'expiryKey' }], 'expiresAt');
+    const sessions = makeTable(this, 'SessionsV2', [{ name: 'user-index', partition: 'userId', sort: 'expiryKey' }], 'expiresAt', 'Sessions');
+    const tokens = makeTable(this, 'AuthTokensV2', [{ name: 'user-index', partition: 'userId', sort: 'expiryKey' }], 'expiresAt', 'AuthTokens');
     const images = new s3.Bucket(this, 'Images', { encryption: s3.BucketEncryption.S3_MANAGED, blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL, enforceSSL: true, removalPolicy: retain });
     const frontend = new s3.Bucket(this, 'Frontend', { encryption: s3.BucketEncryption.S3_MANAGED, blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL, enforceSSL: true, removalPolicy: retain });
     const basicAuthorizationHash = new cdk.CfnParameter(this, 'BasicAuthorizationHash', { type: 'String', noEcho: true, description: 'SHA-256 hex digest of the expected Basic authorization header from triviamap/stg/access.' });

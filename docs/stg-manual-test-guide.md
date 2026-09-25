@@ -18,6 +18,77 @@
 - メール系テストは staging mail allowlist の検証用アドレスだけを使うこと。
 - 既存移行データを閲覧するケースでは、編集・削除しないこと。
 
+## 開始前の記録シート
+
+テスト開始時に、以下をこのファイルとは別の作業メモに記入する。認証情報、Cookie の値、メール本文の token は記録しない。
+
+| 項目 | 記録する値 |
+| --- | --- |
+| 実施日時・実施者 | 例: YYYY-MM-DD JST / 氏名 |
+| browser / OS / viewport | browser version、desktop または mobile viewport |
+| テストユーザー | 表示名だけ。メールアドレス・password は書かない |
+| 既存閲覧用記事・map | 変更しない legacy ID または URL |
+| 作成/削除用テスト記事・map | この受入れ用に作成した ID または URL |
+| Console / Network 保存先 | HAR、スクリーンショット、Console export の保存先 |
+
+## 共通の判定・証跡ルール
+
+以下は全 `STG-*` に共通して適用する。後続の各ケース本文の「目的」「操作」「期待結果」に加え、下の判定表の「個別事前条件」「PASS条件」を満たしたときだけ PASS とする。
+
+- **Console**: テスト操作前に Console を clear し、再現する error/warning は message、stack、時刻を記録する。既知の browser extension error は extension 名も記録する。
+- **Network**: API 系の FAIL は request URL、method、status、response body（秘密情報を除く）、request ID があればその ID を記録する。Cookie/Authorization header、reset/verification token、Basic credential は絶対に貼らない。
+- **認可**: 「別所有者で拒否」は、既存移行データを変更せず、テスト用リソースを別テストユーザーで操作して確認する。
+- **メール**: allowlist 外の実在アドレスは使用しない。配送を確認するのは allowlist 内の検証用アドレスだけとする。
+- **データ cleanup**: Create/Edit/Delete 系の PASS 後、公開したテスト記事・Special Map・marker を削除する。削除自体をテストするケースでは、その URL/ID と cleanup 結果を記録する。
+- **停止基準**: データ破損、意図しないメール配送、認可漏れ、Basic 認証の回避、機密情報露出を見つけたら、そのケース以降の破壊的操作を止めて直ちに FAIL として報告する。
+
+## 個別判定表
+
+| Test ID | 個別事前条件 | PASS条件 | FAIL時に追加で記録する情報 |
+| --- | --- | --- | --- |
+| STG-PUBLIC-001 | Basic 認証済み、通常 browser | 地図・marker・asset を含むトップが表示され、致命的 error がない | 失敗 asset URL、Console、画面全体 |
+| STG-PUBLIC-002 | 既存公開 article ID を控える | 直接 URL が 200 相当で対象記事を表示する | 開いた URL、response status、CloudFront error page |
+| STG-PUBLIC-003 | 公開記事が2ページ以上ある場合は両ページ | sort/pagination の件数と表示順が安定する | query、前後ページの ID 一覧 |
+| STG-PUBLIC-004 | 変更しない既存記事を3件選ぶ | 各 article の主要属性と画像が source 相当である | article ID、差異 field、画像 URL |
+| STG-PUBLIC-005 | 各 category と0件条件を選ぶ | 絞り込み・0件・pagination が正しい | category URL、表示 article ID |
+| STG-PUBLIC-006 | 日本語を含む検索語を3種以上選ぶ | title/description/部分一致/0件が仕様どおり | keyword、検索 URL、期待・実際の ID |
+| STG-PUBLIC-007 | Land と Sea の既存 marker を選ぶ | position、count、遷移先が正しい | marker ID、座標、遷移 URL |
+| STG-PUBLIC-008 | 既存公開 Special Map を選ぶ | map、marker、画像、park が表示される | map/marker ID、壊れた画像 URL |
+| STG-PUBLIC-009 | 既存公開 user を選ぶ | 公開 profile と記事一覧が正しい | user ID、差異 field |
+| STG-AUTH-001 | allowlist 内の未登録検証用アドレス | 正常登録し、allowlist 外では account/配送を作らない | 入力項目、汎用応答、Network status |
+| STG-AUTH-002 | STG-AUTH-001 の未検証 user | link で verified となり、期限切れは安全に失敗する | link を除く時刻・画面・status |
+| STG-AUTH-003 | テスト user と誤 password | 正常 login、失敗時の汎用エラー、Cookie 属性が正しい | response status、Set-Cookie の属性名のみ |
+| STG-AUTH-004 | STG-AUTH-003 の login 状態 | reload 後も session と表示が維持される | reload URL、失敗 request |
+| STG-AUTH-005 | login 状態 | logout 後に protected 操作が拒否される | logout 後 request status、画面 |
+| STG-AUTH-006 | login 状態、可能なら expiry 再現手段 | refresh 後も安全に継続し、失敗時は保護される | 時刻、refresh request の status（token除外） |
+| STG-AUTH-007 | allowlist 内のテスト user | new password のみで login でき、allowlist 外へ配送しない | request 時刻、画面、status。メール token は除外 |
+| STG-AUTH-008 | X 側の staging callback 設定と既存 identity | 固定 staging callback で既存 account に戻る | provider error code、callback origin（query は伏せる） |
+| STG-ARTICLE-001 | 記事作成可能なテスト user、cleanup 用 marker | draft が保存され公開一覧に出ない | 作成 article ID、validation message |
+| STG-ARTICLE-002 | STG-ARTICLE-001 の draft | publish 後、全公開表示へ一貫して反映される | article ID、反映しない画面 |
+| STG-ARTICLE-003 | サイズ内画像とサイズ超過/非対応 file | 有効画像だけが表示・保持され、無効 file は拒否される | file の種別/サイズ、upload status、画像 URL |
+| STG-ARTICLE-004 | 自分のテスト記事と別 user | owner の更新だけ反映され、別 user は拒否される | before/after、403/404 response |
+| STG-ARTICLE-005 | 削除してよいテスト記事 | 削除後に全関連表示から消える | article ID、削除後の各 URL |
+| STG-GOOD-001 | 匿名 browser profile | add/remove が一貫し重複 count がない | 操作順、count の推移 |
+| STG-LIKE-001 | login user と対象記事 | add/remove が user 状態・count と一致する | 操作順、count、request status |
+| STG-MAP-001 | map 作成可能なテスト user | 各入力と public/private が保存される | map ID、before/after |
+| STG-MAP-002 | STG-MAP-001 のテスト map | marker の座標・属性・画像が正しい | marker ID、座標、画像 URL |
+| STG-MAP-003 | 自分のテスト marker と別 user | owner 更新のみが表示に反映される | before/after、拒否 response |
+| STG-MAP-004 | 削除してよいテスト marker | 削除 marker のみ地図から消える | marker ID、削除後画面 |
+| STG-MAP-005 | 自分のテスト map と別 user | owner 更新だけ保存される | before/after、拒否 response |
+| STG-MAP-006 | 削除してよいテスト map | map と関連 marker の扱いが仕様どおり | map ID、関連 marker ID、削除後画面 |
+| STG-MIGRATION-001 | validation report を参照可能 | 表示/API と report の件数が矛盾しない | entity、期待/実際 count |
+| STG-MIGRATION-002 | 変更しない legacy ID を複数選ぶ | URL/API が legacy ID を維持する | ID、期待/実際 |
+| STG-MIGRATION-003 | 既存画像の URL を複数選ぶ | 全画像が表示され壊れていない | resource URL、status |
+| STG-MIGRATION-004 | relation ごとに複数 sample | 表示される relation が source と一致する | source/target ID、差異 |
+| STG-INFRA-001 | DevTools Network を開く | `/api/*` が same-origin、CORS error/誤 cache なし | request URL/method/status/cache header |
+| STG-INFRA-002 | hard reload 可能な browser | HTML と hashed asset が現 revision になる | asset URL、cache header、画面 |
+| STG-INFRA-003 | STG-INFRA-002 を実施 | old `index.html` を取得しない | response header、表示 revision |
+| STG-UI-001 | desktop browser | 主要画面が崩れず操作できる | browser/version、viewport、画面 |
+| STG-UI-002 | mobile viewport または実機 | responsive layout と主要操作が正常 | device/viewport、画面 |
+| STG-UI-003 | 各主要フローの前に Console clear | 新規の致命的 error がない | message、stack、再現手順 |
+| STG-SEO-001 | 記事詳細 URL | title/description/canonical/OGP と noindex 方針が正しい | page source または DevTools Elements |
+| STG-SEO-002 | sitemap URL が公開されている場合 | XML と URL structure が正しく production を参照しない | sitemap URL、validation error |
+
 ## Public
 
 ### STG-PUBLIC-001 — トップページ

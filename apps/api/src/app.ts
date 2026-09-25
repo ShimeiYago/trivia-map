@@ -1,18 +1,37 @@
 import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
 import { DeleteCommand, DynamoDBDocumentClient, GetCommand, PutCommand, ScanCommand } from '@aws-sdk/lib-dynamodb';
+import { SecretsManagerClient, GetSecretValueCommand } from '@aws-sdk/client-secrets-manager';
+import { createHmac, pbkdf2Sync, timingSafeEqual } from 'node:crypto';
 import { Hono } from 'hono';
 
 export type Health = { ok: true; service: 'triviamap-api' };
 const ddb = DynamoDBDocumentClient.from(new DynamoDBClient({}));
+const secrets = new SecretsManagerClient({});
 const table = (name: string) => process.env[`TABLE_${name}`] ?? `TriviaMap-stg-${name[0]}${name.slice(1).toLowerCase()}`;
 const scan = async (name: string) => (await ddb.send(new ScanCommand({ TableName: table(name) }))).Items ?? [];
 const get = async (name: string, id: string) => (await ddb.send(new GetCommand({ TableName: table(name), Key: { id } }))).Item;
 const date = (value: unknown) => value ? new Date(String(value)).toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hour12: false }).replaceAll('-', '/').replace(',', '') : null;
 const visitor = (header: string | undefined) => header?.split(',')[0]?.trim() || 'anonymous';
+let signingSecret: Promise<string> | undefined;
+const jwtSecret = () => signingSecret ??= secrets.send(new GetSecretValueCommand({ SecretId: process.env.BACKEND_SECRET_ARN })).then((value) => JSON.parse(value.SecretString ?? '{}').jwtSecret as string);
+const token = async (userId: string, seconds: number) => { const payload = Buffer.from(JSON.stringify({ userId, exp: Math.floor(Date.now() / 1000) + seconds })).toString('base64url'); return `${payload}.${createHmac('sha256', await jwtSecret()).update(payload).digest('base64url')}`; };
+const readToken = async (raw?: string) => { if (!raw) return undefined; const [payload, signature] = raw.split('.'); const expected = createHmac('sha256', await jwtSecret()).update(payload).digest('base64url'); if (!signature || !timingSafeEqual(Buffer.from(signature), Buffer.from(expected))) return undefined; const parsed = JSON.parse(Buffer.from(payload, 'base64').toString()) as { userId: string; exp: number }; return parsed.exp > Date.now() / 1000 ? parsed : undefined; };
+const cookie = (header: string | undefined, name: string) => header?.split(';').map((part) => part.trim().split('=')).find(([key]) => key === name)?.[1];
+const verifyDjangoPassword = (password: string, stored: unknown) => { const [algorithm, iterations, salt, encoded] = String(stored).split('$'); if (algorithm !== 'pbkdf2_sha256' || !iterations || !salt || !encoded) return false; const derived = pbkdf2Sync(password, salt, Number(iterations), 32, 'sha256').toString('base64'); return timingSafeEqual(Buffer.from(derived), Buffer.from(encoded)); };
 
 export const createApp = () => {
   const app = new Hono();
   app.get('/health', (c) => c.json<Health>({ ok: true, service: 'triviamap-api' }));
+  app.post('/auths/login/', async (c) => {
+    const body = await c.req.json<{ email?: string; password?: string }>(); const users = await scan('USERS'); const user = users.find((item) => item.email === body.email);
+    if (!user || !body.password || !verifyDjangoPassword(body.password, user.password)) return c.json({ non_field_errors: ['メールアドレスまたはパスワードが正しくありません。'] }, 400);
+    const access = await token(String(user.id), 900); const refresh = await token(String(user.id), 60 * 60 * 24 * 14); const expires = new Date(Date.now() + 900000).toISOString(); const refreshExpires = new Date(Date.now() + 1209600000).toISOString();
+    c.header('Set-Cookie', `trivia-map-auth=${access}; HttpOnly; Secure; SameSite=None; Path=/; Max-Age=900`); c.header('Set-Cookie', `trivia-map-refresh-auth=${refresh}; HttpOnly; Secure; SameSite=None; Path=/; Max-Age=1209600`);
+    return c.json({ access_token: access, refresh_token: refresh, user: { userId: user.id, email: user.email, nickname: user.nickname, icon: user.socialIcon ?? user.icon ?? null, isSocialAccount: !user.email, url: user.url ?? null }, access_token_expiration: expires, refresh_token_expiration: refreshExpires });
+  });
+  app.get('/auths/user/', async (c) => { const session = await readToken(cookie(c.req.header('cookie'), 'trivia-map-auth')); const user = session && await get('USERS', session.userId); return user ? c.json({ userId: user.id, email: user.email, nickname: user.nickname, icon: user.socialIcon ?? user.icon ?? null, isSocialAccount: !user.email, url: user.url ?? null }) : c.json({ detail: 'Authentication credentials were not provided.' }, 401); });
+  app.post('/auths/token/refresh/', async (c) => { const session = await readToken(cookie(c.req.header('cookie'), 'trivia-map-refresh-auth')); if (!session) return c.json({ detail: 'Invalid refresh token' }, 401); const access = await token(session.userId, 900); c.header('Set-Cookie', `trivia-map-auth=${access}; HttpOnly; Secure; SameSite=None; Path=/; Max-Age=900`); return c.json({ access, access_token_expiration: new Date(Date.now() + 900000).toISOString() }); });
+  app.post('/auths/logout/', (c) => { c.header('Set-Cookie', 'trivia-map-auth=; HttpOnly; Secure; SameSite=None; Path=/; Max-Age=0'); c.header('Set-Cookie', 'trivia-map-refresh-auth=; HttpOnly; Secure; SameSite=None; Path=/; Max-Age=0'); return c.json({}); });
   app.get('/articles/public/previews', async (c) => {
     const page = Math.max(1, Number(c.req.query('page') ?? 1)); const limit = Math.min(100, Number(c.req.query('limit') ?? 10));
     const category = c.req.query('category'); const marker = c.req.query('marker'); const user = c.req.query('user');

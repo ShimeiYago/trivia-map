@@ -11,7 +11,6 @@ jobs:
   deploy:
     if: github.ref == 'refs/heads/develop'
     runs-on: ubuntu-latest
-    environment: staging
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -46,4 +45,3 @@ jobs:
           auth="$(node -e 'const value=JSON.parse(process.argv[1]);process.stdout.write(`Basic ${Buffer.from(`${value.username}:${value.password}`).toString("base64")}`)' "$access_json")"
           test "$(curl -sS -o /dev/null -w '%{http_code}' https://stg.triviamap.jp/)" = 401
           test "$(curl -sS -o /dev/null -w '%{http_code}' -H "Authorization: $auth" https://stg.triviamap.jp/api/health)" = 200
-

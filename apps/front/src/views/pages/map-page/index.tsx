@@ -35,10 +35,6 @@ export function MapPage(ownProps: { new?: boolean }) {
 
   const [width, height] = useWindowSize();
 
-  if ((postId && !postIdNumber) || (userId && !userIdNumber)) {
-    return <Navigate to={NOT_FOUND_LINK} />;
-  }
-
   const articleFormId = useAppSelector(selectArticleFormId);
 
   const postIdToEdit = !!postIdNumber ? postIdNumber : articleFormId;
@@ -68,6 +64,10 @@ export function MapPage(ownProps: { new?: boolean }) {
       ...props,
       postIdToEdit: postIdToEdit,
     };
+  }
+
+  if ((postId && !postIdNumber) || (userId && !userIdNumber)) {
+    return <Navigate to={NOT_FOUND_LINK} />;
   }
 
   return <Renderer {...props} />;

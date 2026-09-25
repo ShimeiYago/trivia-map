@@ -53,9 +53,9 @@
     "build": "DISABLE_ESLINT_PLUGIN=true react-scripts build",
     "test": "react-scripts test --watchAll",
     "test:ci": "react-scripts test --watchAll=false",
-    "lint": "eslint 'src/**/*.{js,ts,tsx}' --quiet",
+    "lint": "eslint 'src/**/*.{js,ts,tsx}'",
     "typecheck": "tsc --noEmit"
   },
-  "eslintConfig": { "extends": "react-app", "rules": { "@typescript-eslint/no-unused-expressions": "off", "no-restricted-globals": "off", "react-hooks/rules-of-hooks": "off" } },
+  "eslintConfig": { "extends": "react-app", "rules": { "@typescript-eslint/no-unused-expressions": "warn", "no-restricted-globals": "warn", "react-hooks/rules-of-hooks": "error" } },
   "browserslist": { "production": [">0.2%", "not dead", "not op_mini all"], "development": ["last 1 chrome version", "last 1 firefox version", "last 1 safari version"] }
 }

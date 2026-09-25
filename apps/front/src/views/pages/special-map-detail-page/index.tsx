@@ -11,6 +11,7 @@ export function SpecialMapDetailPage() {
   const mapIdNumber = Number(mapId);
 
   const dispatch = useAppDispatch();
+  const user = useAppSelector(selectUser);
 
   if (mapId && !mapIdNumber) {
     return <Navigate to={NOT_FOUND_LINK} />;
@@ -18,7 +19,7 @@ export function SpecialMapDetailPage() {
 
   const props: Props = {
     mapId: mapIdNumber,
-    user: useAppSelector(selectUser),
+    user,
     isMobile: isMobile,
 
     throwError: (errorStatus: number) => dispatch(throwError(errorStatus)),

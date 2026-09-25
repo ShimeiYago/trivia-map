@@ -31,10 +31,6 @@ export function SpecialMapPage({ edit }: { edit?: boolean }) {
 
   const [width, height] = useWindowSize();
 
-  if (mapId && !mapIdNumber) {
-    return <Navigate to={NOT_FOUND_LINK} />;
-  }
-
   const refreshUser = () => dispatch(updateUser(undefined));
 
   const props: Props = {
@@ -58,6 +54,10 @@ export function SpecialMapPage({ edit }: { edit?: boolean }) {
     setSpecialMapMarkerForm: (marker: GetSpecialMapMarkersResponse) =>
       dispatch(setSpecialMapMarkerForm(marker)),
   };
+
+  if (mapId && !mapIdNumber) {
+    return <Navigate to={NOT_FOUND_LINK} />;
+  }
 
   return <Renderer {...props} />;
 }

@@ -15,6 +15,7 @@ jobs:
       REACT_APP_API_BASE_URL: /api
       REACT_APP_SITE_URL: https://stg.triviamap.jp
       REACT_APP_NO_INDEX: 'true'
+      REACT_APP_AD_CLIENT: ''
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -27,6 +28,7 @@ jobs:
         run: |
           test "$REACT_APP_API_BASE_URL" = /api
           grep -F -q '/api' apps/front/build/static/js/*.js
+          ! grep -F -q 'pagead2.googlesyndication.com' apps/front/build/index.html
       - uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: arn:aws:iam::614299612633:role/TriviaMapStagingGithubDeployRole

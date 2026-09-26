@@ -361,6 +361,7 @@ export class TriviaMapStagingV2Stack extends cdk.Stack {
       new iam.PolicyStatement({
         actions: [
           "cloudfront:CreateInvalidation",
+          "cloudfront:GetInvalidation",
           "cloudfront:GetDistribution",
           "cloudfront:GetDistributionConfig",
         ],

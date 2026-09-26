@@ -101,4 +101,14 @@ describe('injected API dependencies', () => {
     expect(response.status).toBe(502);
     await expect(response.json()).resolves.toEqual({ detail: 'Twitter authorization could not be started.' });
   });
+
+  it('returns same-origin API pagination URLs while preserving filters', async () => {
+    const markers = ddb.tables.get('TriviaMap-stg-v2-Markers') ?? new Map();
+    markers.set('pagination-1', { id: 'pagination-1', entity: 'Marker', markerId: 'pagination-1', park: 'S', lat: 35.6, lng: 139.8 });
+    markers.set('pagination-2', { id: 'pagination-2', entity: 'Marker', markerId: 'pagination-2', park: 'S', lat: 35.7, lng: 139.9 });
+    ddb.tables.set('TriviaMap-stg-v2-Markers', markers);
+    const response = await request('/markers/S?limit=1');
+    expect(response.status).toBe(200);
+    await expect(response.json()).resolves.toMatchObject({ nextUrl: '/api/markers/S?limit=1&page=2', previousUrl: null });
+  });
 });

@@ -1,5 +1,6 @@
 import { shallow, ShallowWrapper } from 'enzyme';
 import { Map as LeafletMap } from 'leaflet';
+import { TileLayer } from 'react-leaflet';
 import { ParkMap, Props } from '..';
 
 jest.useFakeTimers();
@@ -61,6 +62,13 @@ describe('Shallow Snapshot Tests', () => {
       },
     });
     expect(shallowWrapper).toMatchSnapshot();
+  });
+
+  it('does not load background tiles outside the finite map image', () => {
+    expect(shallowWrapper.find(TileLayer).prop('bounds')).toEqual([
+      [-255, 0],
+      [0, 255],
+    ]);
   });
 });
 

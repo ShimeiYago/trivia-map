@@ -94,6 +94,12 @@ export class ParkMap extends React.Component<Props, State> {
       [MAP_MARGIN, -MAP_MARGIN],
       [-MAP_MAX_COORINATE - MAP_MARGIN, MAP_MAX_COORINATE + MAP_MARGIN],
     ];
+    // Keep the draggable margin, but do not ask S3 for tiles outside the
+    // finite 256 × 256 map image pyramid.
+    const tileBounds: LatLngBoundsExpression = [
+      [-MAP_MAX_COORINATE, 0],
+      [0, MAP_MAX_COORINATE],
+    ];
 
     return (
       <>
@@ -112,8 +118,8 @@ export class ParkMap extends React.Component<Props, State> {
             tap={false}
             {...(disabled ? disabledProps : {})}
           >
-            {park === 'L' && <TileLayer url={TDL_TILE_URL} noWrap attribution={attribution} />}
-            {park === 'S' && <TileLayer url={TDS_TILE_URL} noWrap attribution={attribution} />}
+            {park === 'L' && <TileLayer url={TDL_TILE_URL} bounds={tileBounds} noWrap attribution={attribution} />}
+            {park === 'S' && <TileLayer url={TDS_TILE_URL} bounds={tileBounds} noWrap attribution={attribution} />}
             {children}
             {!disabled && <ZoomControl position="bottomleft" />}
           </MapContainer>

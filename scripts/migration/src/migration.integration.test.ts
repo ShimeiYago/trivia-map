@@ -16,7 +16,7 @@ const ddb = DynamoDBDocumentClient.from(client);
 
 class ImageStore {
   private readonly objects = new Map<string, Uint8Array>([
-    ['source/uploads/fixture/article.jpg', new TextEncoder().encode('article')], ['source/uploads/fixture/map.jpg', new TextEncoder().encode('map')], ['source/uploads/fixture/marker.jpg', new TextEncoder().encode('marker')],
+    ['source/uploads/fixture/article.jpg', new TextEncoder().encode('article')], ['source/uploads/fixture/map.jpg', new TextEncoder().encode('map')], ['source/uploads/fixture/marker.jpg', new TextEncoder().encode('marker')], ['source/uploads/fixture/icon.jpg', new TextEncoder().encode('icon')],
   ]);
   async send(command: CopyObjectCommand | GetObjectCommand) {
     if (command instanceof CopyObjectCommand) { const input = command.input; const source = decodeURIComponent(input.CopySource!); this.objects.set(`${input.Bucket}/${input.Key}`, this.objects.get(source)!); return {}; }
@@ -43,7 +43,7 @@ describe.skipIf(!endpoint || !mysqlUrl)('fixture MySQL to DynamoDB Local migrati
     const dryRun = await runMigration({ ...options, dryRun: true });
     expect(dryRun.Users).toMatchObject({ source: 1, written: 0 });
     const first = await runMigration({ ...options, copyImages: true, validate: true });
-    expect(first).toMatchObject({ Users: { source: 1, written: 1 }, Articles: { source: 1, images: 1, validated: 1 }, SpecialMaps: { source: 1, images: 1, validated: 1 }, SpecialMapMarkers: { source: 1, images: 1, validated: 1 } });
+    expect(first).toMatchObject({ Users: { source: 1, written: 1, images: 1, validated: 1 }, Articles: { source: 1, images: 1, validated: 1 }, SpecialMaps: { source: 1, images: 1, validated: 1 }, SpecialMapMarkers: { source: 1, images: 1, validated: 1 } });
     const users = await ddb.send(new ScanCommand({ TableName: `${prefix}Users` }));
     const articles = await ddb.send(new ScanCommand({ TableName: `${prefix}Articles` }));
     const likes = await ddb.send(new ScanCommand({ TableName: `${prefix}Likes` }));
@@ -55,7 +55,7 @@ describe.skipIf(!endpoint || !mysqlUrl)('fixture MySQL to DynamoDB Local migrati
     await expect(validateExistingMigration(options)).resolves.toMatchObject({
       entities: { Users: { source: 1, destination: 1, missingIds: 0, mismatched: 0 }, Articles: { source: 1, destination: 1, missingIds: 0, mismatched: 0 } },
       relations: { articleAuthor: 0, articleMarker: 0, likeUserOrArticle: 0, goodArticle: 0, mapAuthor: 0, mapMarkerMap: 0 },
-      twitterIdentities: { source: 1, missing: 0, mismatched: 0 }, images: { referenced: 3, missing: 0, checksumMismatched: 0 },
+      twitterIdentities: { source: 1, missing: 0, mismatched: 0 }, images: { referenced: 4, missing: 0, checksumMismatched: 0 },
     });
   });
 });

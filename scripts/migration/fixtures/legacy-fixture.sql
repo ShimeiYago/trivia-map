@@ -6,7 +6,7 @@ CREATE TABLE articles_goodmodel (goodId INT PRIMARY KEY, ipAddress VARCHAR(255),
 CREATE TABLE special_map_specialmapmodel (specialMapId INT PRIMARY KEY, author_id INT, title VARCHAR(255), thumbnail VARCHAR(255), isPublic BOOLEAN, description TEXT, selectablePark VARCHAR(8), minLatitude DOUBLE, maxLatitude DOUBLE, minLongitude DOUBLE, maxLongitude DOUBLE, createdAt DATETIME);
 CREATE TABLE special_map_specialmapmarkermodel (specialMapMarkerId INT PRIMARY KEY, specialMap_id INT, latitude DOUBLE, longitude DOUBLE, park VARCHAR(2), image VARCHAR(255), description TEXT, variant VARCHAR(20));
 CREATE TABLE socialaccount_socialaccount (user_id INT, uid VARCHAR(255), provider VARCHAR(32));
-INSERT INTO users_customuser VALUES (1, 'fixture@example.test', 'fixture', 'fixture user', 'pbkdf2_sha256$1$salt$hash', 1, 0, 0, NULL, NULL, NULL, '2025-01-01 00:00:00', NULL);
+INSERT INTO users_customuser VALUES (1, 'fixture@example.test', 'fixture', 'fixture user', 'pbkdf2_sha256$1$salt$hash', 1, 0, 0, 'uploads/fixture/icon.jpg', 'https://example.test/remote-social-icon.jpg', NULL, '2025-01-01 00:00:00', NULL);
 INSERT INTO articles_markermodel VALUES (1, 35.6329, 139.8804, 'L');
 INSERT INTO articles_articlemodel VALUES (1, 1, 1, 'fixture article', 'fixture body', 1, 'uploads/fixture/article.jpg', 0, '2025-01-01 00:00:00', '2025-01-02 00:00:00');
 INSERT INTO articles_likemodel VALUES (1, 1, 1);

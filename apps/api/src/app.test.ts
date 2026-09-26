@@ -86,6 +86,21 @@ describe('injected API dependencies', () => {
     expect(sent).toEqual([]);
   });
 
+  it('rolls back a new account when verification mail delivery fails', async () => {
+    process.env.JWT_SECRET = 'test-signing-key'; process.env.FRONTEND_ORIGIN = 'https://stg.triviamap.jp'; process.env.MAIL_SECRET_ARN = 'mail';
+    const failureDdb = new MemoryDynamo();
+    const app = createApp({
+      ddb: failureDdb as unknown as import('@aws-sdk/lib-dynamodb').DynamoDBDocumentClient,
+      secrets: { send: async () => ({ SecretString: JSON.stringify({ allowedRecipients: 'allowed@example.test', smtpHost: 'example.test', smtpUser: 'mailer@example.test', smtpPassword: 'not-used' }) }) } as unknown as SecretsManagerClient,
+      sendMail: async () => { throw new Error('SMTP failure'); },
+    });
+    const response = await app.request('/auths/registration/', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ email: 'allowed@example.test', nickname: 'new-user', password1: 'password123', password2: 'password123' }) });
+    expect(response.status).toBe(502);
+    await expect(response.json()).resolves.toEqual({ detail: 'Registration could not be completed.' });
+    expect(failureDdb.tables.get('TriviaMap-stg-v2-Users')?.size ?? 0).toBe(0);
+    expect(failureDdb.tables.get('TriviaMap-stg-v2-AuthTokens')?.size ?? 0).toBe(0);
+  });
+
   it('rehashes a Django password after login and requires a matching CSRF origin for refresh', async () => {
     const login = await request('/auths/login/', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ email: 'blocked@example.test', password: 'password' }) });
     expect(login.status).toBe(200);

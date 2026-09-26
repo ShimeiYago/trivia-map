@@ -6,10 +6,10 @@ describe('getApiBaseUrl', () => {
   });
 
   it('defaults production builds to the same-origin API path', () => {
-    expect(getApiBaseUrl(undefined, 'production')).toBe('/api');
+    expect(getApiBaseUrl('', 'production')).toBe('/api');
   });
 
   it('keeps the localhost API only for the development server', () => {
-    expect(getApiBaseUrl(undefined, 'development')).toBe('http://localhost:3001');
+    expect(getApiBaseUrl('', 'development')).toBe('http://localhost:3001');
   });
 });

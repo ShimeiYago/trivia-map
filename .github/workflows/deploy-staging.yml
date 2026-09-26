@@ -15,7 +15,6 @@ jobs:
       REACT_APP_API_BASE_URL: /api
       REACT_APP_SITE_URL: https://stg.triviamap.jp
       REACT_APP_NO_INDEX: 'true'
-      REACT_APP_AD_CLIENT: ''
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

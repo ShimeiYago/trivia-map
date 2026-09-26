@@ -70,12 +70,14 @@ import { Tracker } from 'helper-components/tracker';
 import { SpecialMapNewPage } from 'views/pages/special-map-new-page';
 import { SpecialMapManagePage } from 'views/pages/special-map-manege-page';
 import { loadAdsenseScript } from 'utils/load-adsense-script';
+import { loadWebAppManifest } from 'utils/load-web-app-manifest';
 
 // Initialise the same-origin CSRF cookie before a user can submit a mutation.
 // A failed bootstrap is harmless for local mock-only development; the API will
 // still reject a mutation until a valid cookie is present.
 void fetch('/api/auths/csrf/', { credentials: 'include' }).catch(() => undefined);
 loadAdsenseScript();
+loadWebAppManifest();
 
 // Deactivate all console.log on production
 // eslint-disable-next-line @typescript-eslint/no-empty-function

@@ -70,6 +70,7 @@
 | STG-ARTICLE-003 | サイズ内画像とサイズ超過/非対応 file | 有効画像だけが表示・保持され、無効 file は拒否される | file の種別/サイズ、upload status、画像 URL |
 | STG-ARTICLE-004 | 自分のテスト記事と別 user | owner の更新だけ反映され、別 user は拒否される | before/after、403/404 response |
 | STG-ARTICLE-005 | 削除してよいテスト記事 | 削除後に全関連表示から消える | article ID、削除後の各 URL |
+| STG-ARTICLE-006 | STG-ARTICLE-001 の draft、owner/別 user/未ログイン状態 | 非公開記事が URL・API・公開導線から漏れず、owner だけが管理できる | article ID、確認した URL、response status、表示された導線 |
 | STG-GOOD-001 | 匿名 browser profile | add/remove が一貫し重複 count がない | 操作順、count の推移 |
 | STG-LIKE-001 | login user と対象記事 | add/remove が user 状態・count と一致する | 操作順、count、request status |
 | STG-MAP-001 | map 作成可能なテスト user | 各入力と public/private が保存される | map ID、before/after |
@@ -78,6 +79,7 @@
 | STG-MAP-004 | 削除してよいテスト marker | 削除 marker のみ地図から消える | marker ID、削除後画面 |
 | STG-MAP-005 | 自分のテスト map と別 user | owner 更新だけ保存される | before/after、拒否 response |
 | STG-MAP-006 | 削除してよいテスト map | map と関連 marker の扱いが仕様どおり | map ID、関連 marker ID、削除後画面 |
+| STG-MAP-007 | marker/画像を持つ非公開テスト map、owner/別 user/未ログイン状態 | 非公開 map と配下データが URL・API・公開導線から漏れず、公開状態の変更が即時反映される | map/marker ID、確認した URL、response status、公開状態変更時刻 |
 | STG-MIGRATION-001 | validation report を参照可能 | 表示/API と report の件数が矛盾しない | entity、期待/実際 count |
 | STG-MIGRATION-002 | 変更しない legacy ID を複数選ぶ | URL/API が legacy ID を維持する | ID、期待/実際 |
 | STG-MIGRATION-003 | 既存画像の URL を複数選ぶ | 全画像が表示され壊れていない | resource URL、status |
@@ -263,6 +265,23 @@
 
 期待結果: detail、list、marker counter、category、user page から消える。
 
+### STG-ARTICLE-006 — Draft Access Control
+
+事前条件: STG-ARTICLE-001 で作成した draft の article ID と、owner とは別のログインユーザーを用意する。
+
+操作:
+
+1. draft が公開一覧、対象 marker、category、owner の公開 user page、sitemap に出ないことを確認する。
+2. 未ログイン状態で記事詳細 URL と `/api/articles/detail/{articleId}` に直接アクセスする。
+3. 別ユーザーで同じ URL と API に直接アクセスする。
+4. owner で編集画面を開き、draft を閲覧・更新できることを確認する。
+
+期待結果: 未ログインと別ユーザーには記事の title、description、画像その他の内容が表示・返却されず、404 相当になる。公開導線と sitemap にも存在せず、owner だけが管理できる。
+
+PASS 条件: 非所有者への情報漏洩がなく、owner の編集機能だけが正常に利用できる。
+
+FAIL 時の記録: article ID、ユーザー状態、アクセス URL、HTTP status、表示または返却された非公開 field を記録する。Cookie、token、Basic 認証情報は記録しない。
+
 ### STG-GOOD-001 — Good
 
 操作: 匿名状態で add、再操作、remove/toggle を試す。
@@ -312,6 +331,24 @@
 操作: テスト map を削除する。
 
 期待結果: map が表示されなくなり、関連 marker の扱いが仕様どおりである。
+
+### STG-MAP-007 — Private Map Access Control
+
+事前条件: marker と画像を1件以上持つ非公開 Special Map と、owner とは別のログインユーザーを用意する。
+
+操作:
+
+1. 非公開 map が公開 Special Map 一覧、owner の公開ページ、sitemap に出ないことを確認する。
+2. 未ログイン状態で map 詳細 URL、詳細 API、marker 一覧 API に直接アクセスする。
+3. 別ユーザーで同じ URL と API に直接アクセスし、管理・編集 URL も試す。
+4. marker ID や画像 URL から description、座標、画像などの非公開情報を取得できないことを確認する。
+5. owner で管理・編集できることを確認し、非公開から公開、公開から非公開へ切り替えて各 URL と公開導線を再確認する。
+
+期待結果: 非公開中は非所有者へ map と配下 marker の情報が表示・返却されず、404 相当になる。owner だけが管理でき、公開状態の変更が一覧・詳細・API・sitemap に一貫して反映される。
+
+PASS 条件: 非公開 map と配下データの漏洩がなく、所有者認可および公開状態の切替がすべて正常に機能する。
+
+FAIL 時の記録: map/marker ID、ユーザー状態、アクセス URL、HTTP status、漏洩した field、公開状態変更時刻を記録する。Cookie、token、Basic 認証情報は記録しない。
 
 ## Migration and infrastructure
 

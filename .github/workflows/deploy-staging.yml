@@ -8,7 +8,42 @@ permissions:
   id-token: write
 
 jobs:
+  verify:
+    if: github.ref == 'refs/heads/develop'
+    runs-on: ubuntu-latest
+    env:
+      MYSQL_URL: mysql://root:fixture-only-password@127.0.0.1:3306/fixture
+      DYNAMODB_LOCAL_ENDPOINT: http://127.0.0.1:8000
+    services:
+      dynamodb:
+        image: amazon/dynamodb-local:latest
+        ports: ["8000:8000"]
+      mysql:
+        image: mysql:8.4
+        env:
+          MYSQL_ROOT_PASSWORD: fixture-only-password
+          MYSQL_DATABASE: fixture
+        ports: ["3306:3306"]
+        options: >-
+          --health-cmd="mysqladmin ping -h 127.0.0.1 -uroot -pfixture-only-password"
+          --health-interval=10s --health-timeout=5s --health-retries=10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.21.0
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm run test:ci
+      - run: npm run test:integration --workspace=@triviamap/api
+      - run: npm run test:integration --workspace=@triviamap/migration
+      - run: npm run build
+      - run: npm run synth
+
   deploy:
+    needs: verify
     if: github.ref == 'refs/heads/develop'
     runs-on: ubuntu-latest
     env:
@@ -23,7 +58,7 @@ jobs:
           node-version: 24.21.0
           cache: npm
       - run: npm ci
-      - run: npm run lint && npm run typecheck && npm run test:ci && npm run build && npm run synth
+      - run: npm run build && npm run synth
       - name: Verify staging frontend API origin
         run: |
           test "$REACT_APP_API_BASE_URL" = /api
@@ -47,7 +82,8 @@ jobs:
           bucket="$(aws cloudformation describe-stacks --stack-name TriviaMapStagingV2 --query 'Stacks[0].Outputs[?OutputKey==`FrontendBucket`].OutputValue' --output text)"
           distribution="$(aws cloudformation describe-stacks --stack-name TriviaMapStagingV2 --query 'Stacks[0].Outputs[?OutputKey==`FrontendDistributionId`].OutputValue' --output text)"
           aws s3 sync apps/front/build/ "s3://$bucket" --delete
-          aws cloudfront create-invalidation --distribution-id "$distribution" --paths '/*' >/dev/null
+          invalidation="$(aws cloudfront create-invalidation --distribution-id "$distribution" --paths '/*' --query 'Invalidation.Id' --output text)"
+          aws cloudfront wait invalidation-completed --distribution-id "$distribution" --id "$invalidation"
       - name: Same-origin smoke test
         shell: bash
         run: |
@@ -55,4 +91,18 @@ jobs:
           access_json="$(aws secretsmanager get-secret-value --secret-id triviamap/stg/access --query SecretString --output text)"
           auth="$(node -e 'const value=JSON.parse(process.argv[1]);process.stdout.write(`Basic ${Buffer.from(`${value.username}:${value.password}`).toString("base64")}`)' "$access_json")"
           test "$(curl -sS -o /dev/null -w '%{http_code}' https://stg.triviamap.jp/)" = 401
+          test "$(curl -sS -o /dev/null -w '%{http_code}' -H "Authorization: $auth" https://stg.triviamap.jp/)" = 200
+          test "$(curl -sS -o /dev/null -w '%{http_code}' -H "Authorization: $auth" https://stg.triviamap.jp/articles/17)" = 200
           test "$(curl -sS -o /dev/null -w '%{http_code}' -H "Authorization: $auth" https://stg.triviamap.jp/api/health)" = 200
+          test "$(curl -sS -H "Authorization: $auth" 'https://stg.triviamap.jp/api/articles/public/previews?keywords=codex-smoke-no-result-7f4d' | jq -r .totalRecords)" = 0
+          land="$(curl -sS -H "Authorization: $auth" 'https://stg.triviamap.jp/api/markers/L?limit=1' | jq -r .totalRecords)"
+          sea="$(curl -sS -H "Authorization: $auth" 'https://stg.triviamap.jp/api/markers/S?limit=1' | jq -r .totalRecords)"
+          test "$land" -gt 0
+          test "$sea" -gt 0
+          test "$(curl -sS -o /dev/null -w '%{http_code}' -H "Authorization: $auth" https://stg.triviamap.jp/api/special-map/maps/36/markers)" = 404
+          image_path="$(curl -sS -H "Authorization: $auth" 'https://stg.triviamap.jp/api/articles/public/previews?limit=100' | jq -r '[.results[] | select(.image != null) | .image][0] // empty')"
+          test -n "$image_path"
+          test "$(curl -sS -o /dev/null -w '%{http_code}' -H "Authorization: $auth" "https://stg.triviamap.jp$image_path")" = 200
+          test "$(curl -sS -o /dev/null -w '%{http_code}' -H "Authorization: $auth" https://stg.triviamap.jp/images/uploads/codex-smoke-missing.png)" = 404
+          api_url="$(aws cloudformation describe-stacks --stack-name TriviaMapStagingV2 --query 'Stacks[0].Outputs[?OutputKey==`ApiUrl`].OutputValue' --output text)"
+          test "$(curl -sS -o /dev/null -w '%{http_code}' "$api_url/health")" = 404

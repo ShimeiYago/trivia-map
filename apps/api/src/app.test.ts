@@ -60,14 +60,14 @@ class MemoryDynamo {
 
 describe('injected API dependencies', () => {
   const ddb = new MemoryDynamo();
-  const sent: Array<{ to: string }> = [];
+  const sent: Array<{ to: string; subject: string; text: string }> = [];
   const userPassword = `pbkdf2_sha256$1000$salt$${pbkdf2Sync('password', 'salt', 1000, 32, 'sha256').toString('base64')}`;
   const request = async (path: string, init: RequestInit = {}) => {
-    process.env.JWT_SECRET = 'test-signing-key'; process.env.GOOD_SALT = 'test-good-salt'; process.env.FRONTEND_ORIGIN = 'https://stg.triviamap.jp'; process.env.MAIL_SECRET_ARN = 'mail';
+    process.env.JWT_SECRET = 'test-signing-key'; process.env.GOOD_SALT = 'test-good-salt'; process.env.FRONTEND_ORIGIN = 'https://stg.triviamap.jp'; process.env.MAIL_SECRET_ARN = 'mail'; process.env.STAGE = 'stg-v2';
     const app = createApp({
       ddb: ddb as unknown as import('@aws-sdk/lib-dynamodb').DynamoDBDocumentClient,
       secrets: { send: async (command: GetSecretValueCommand) => command.input.SecretId === 'mail' ? { SecretString: JSON.stringify({ allowedRecipients: 'allowed@example.test', smtpHost: 'example.test', smtpUser: 'mailer@example.test', smtpPassword: 'not-used', inquiryRecipient: 'allowed@example.test' }) } : { SecretString: '{}' } } as unknown as SecretsManagerClient,
-      sendMail: async (message) => { sent.push({ to: message.to }); },
+      sendMail: async (message) => { sent.push({ to: message.to, subject: message.subject, text: message.text }); },
       twitterRequest: async () => { throw new Error('upstream detail must not escape'); },
     });
     return app.request(path, init);
@@ -99,6 +99,26 @@ describe('injected API dependencies', () => {
     await expect(response.json()).resolves.toEqual({ detail: 'Registration could not be completed.' });
     expect(failureDdb.tables.get('TriviaMap-stg-v2-Users')?.size ?? 0).toBe(0);
     expect(failureDdb.tables.get('TriviaMap-stg-v2-AuthTokens')?.size ?? 0).toBe(0);
+  });
+
+  it('sends informative verification, resend and password reset messages', async () => {
+    const start = sent.length;
+    const registration = await request('/auths/registration/', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ email: 'allowed@example.test', nickname: 'mail-user', password1: 'password123', password2: 'password123' }) });
+    expect(registration.status).toBe(201);
+    const verification = sent[start];
+    expect(verification.subject).toBe('【TriviaMap（staging）】メールアドレスの確認');
+    expect(verification.text).toContain('ユーザー登録をお申し込みいただき、ありがとうございます。');
+    expect(verification.text).toContain('https://stg.triviamap.jp/verify-email/');
+    expect(verification.text).toContain('心当たりがない場合');
+
+    expect((await request('/auths/registration/resend-email/', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ email: 'allowed@example.test' }) })).status).toBe(200);
+    expect(sent[start + 1].subject).toBe(verification.subject);
+    expect(sent[start + 1].text).toContain('有効期限は24時間');
+
+    expect((await request('/auths/password/reset/', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ email: 'allowed@example.test' }) })).status).toBe(200);
+    expect(sent[start + 2].subject).toBe('【TriviaMap（staging）】パスワード再設定');
+    expect(sent[start + 2].text).toContain('https://stg.triviamap.jp/reset-password/');
+    expect(sent[start + 2].text).toContain('再設定を依頼していない場合');
   });
 
   it('rehashes a Django password after login and requires a matching CSRF origin for refresh', async () => {

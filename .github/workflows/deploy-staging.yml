@@ -26,7 +26,7 @@ jobs:
       - name: Verify staging frontend API origin
         run: |
           test "$REACT_APP_API_BASE_URL" = /api
-          rg -F -q '/api' apps/front/build/static/js/*.js
+          grep -F -q '/api' apps/front/build/static/js/*.js
       - uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: arn:aws:iam::614299612633:role/TriviaMapStagingGithubDeployRole

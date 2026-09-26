@@ -11,6 +11,10 @@ jobs:
   deploy:
     if: github.ref == 'refs/heads/develop'
     runs-on: ubuntu-latest
+    env:
+      REACT_APP_API_BASE_URL: /api
+      REACT_APP_SITE_URL: https://stg.triviamap.jp
+      REACT_APP_NO_INDEX: 'true'
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -19,6 +23,10 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run lint && npm run typecheck && npm run test:ci && npm run build && npm run synth
+      - name: Verify staging frontend API origin
+        run: |
+          test "$REACT_APP_API_BASE_URL" = /api
+          rg -F -q '/api' apps/front/build/static/js/*.js
       - uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: arn:aws:iam::614299612633:role/TriviaMapStagingGithubDeployRole

@@ -3,7 +3,12 @@ import { Area } from 'types/area';
 import { MapMarkerVariant } from 'types/marker-icon';
 import { Park, SelectablePark } from 'types/park';
 
-export const BASE_URL = process.env.REACT_APP_API_BASE_URL ?? 'http://localhost:3001';
+export const getApiBaseUrl = (
+  apiBaseUrl = process.env.REACT_APP_API_BASE_URL,
+  nodeEnv = process.env.NODE_ENV,
+) => apiBaseUrl || (nodeEnv === 'development' ? 'http://localhost:3001' : '/api');
+
+export const BASE_URL = getApiBaseUrl();
 
 export const SITE_NAME = 'トリビアマップ';
 

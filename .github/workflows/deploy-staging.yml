@@ -103,6 +103,7 @@ jobs:
           image_path="$(curl -sS -H "Authorization: $auth" 'https://stg.triviamap.jp/api/articles/public/previews?limit=100' | jq -r '[.results[] | select(.image != null) | .image][0] // empty')"
           test -n "$image_path"
           test "$(curl -sS -o /dev/null -w '%{http_code}' -H "Authorization: $auth" "https://stg.triviamap.jp$image_path")" = 200
-          test "$(curl -sS -o /dev/null -w '%{http_code}' -H "Authorization: $auth" https://stg.triviamap.jp/images/uploads/codex-smoke-missing.png)" = 404
+          # A private S3 origin deliberately conceals object existence with 403.
+          test "$(curl -sS -o /dev/null -w '%{http_code}' -H "Authorization: $auth" https://stg.triviamap.jp/images/uploads/codex-smoke-missing.png)" = 403
           api_url="$(aws cloudformation describe-stacks --stack-name TriviaMapStagingV2 --query 'Stacks[0].Outputs[?OutputKey==`ApiUrl`].OutputValue' --output text)"
           test "$(curl -sS -o /dev/null -w '%{http_code}' "$api_url/health")" = 404

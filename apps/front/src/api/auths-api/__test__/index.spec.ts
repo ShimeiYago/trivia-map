@@ -195,7 +195,7 @@ describe('refreshToken', () => {
     process.env.REACT_APP_MOCK = 'normal';
 
     const response = await refreshToken();
-    expect(response.access).toBe('xxx');
+    expect(response.access_token_expiration).toBe('2023-10-05T01:31:10.861050+09:00');
   });
 
   it('handle error response', async () => {

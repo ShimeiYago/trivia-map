@@ -7,7 +7,7 @@ import { createApp } from './app.js';
 
 const endpoint = process.env.DYNAMODB_LOCAL_ENDPOINT;
 const suffix = `${Date.now()}`;
-const tables = Object.fromEntries(['USERS', 'ARTICLES', 'MARKERS', 'LIKES', 'GOODS', 'SPECIALMAPS', 'SPECIALMAPMARKERS', 'SESSIONS', 'AUTHTOKENS'].map((key) => [key, `TriviaMapApiIntegration-${suffix}-${key}`]));
+const tables = Object.fromEntries(['USERS', 'ARTICLES', 'MARKERS', 'LIKES', 'GOODS', 'SPECIALMAPS', 'SPECIALMAPMARKERS', 'SESSIONS', 'AUTHTOKENS', 'SEQUENCES', 'RATELIMITS'].map((key) => [key, `TriviaMapApiIntegration-${suffix}-${key}`]));
 const client = new DynamoDBClient({ region: 'ap-northeast-1', endpoint, credentials: { accessKeyId: 'local', secretAccessKey: 'local' } });
 const ddb = DynamoDBDocumentClient.from(client);
 const djangoPassword = `pbkdf2_sha256$1000$salt$${pbkdf2Sync('password', 'salt', 1000, 32, 'sha256').toString('base64')}`;
@@ -35,8 +35,11 @@ describe.skipIf(!endpoint)('DynamoDB Local API integration', () => {
   });
   it('enforces CSRF and rotates a DynamoDB-backed refresh session', async () => {
     const server = app(); const csrfResponse = await server.request('/auths/csrf/'); const csrfToken = (await csrfResponse.json() as { csrfToken: string }).csrfToken;
-    const login = await server.request('/auths/login/', { method: 'POST', ...json({ email: 'allowed@example.test', password: 'password' }) }); const session = await login.json() as { access_token: string; refresh_token: string };
-    const cookie = `trivia-map-auth=${session.access_token}; trivia-map-refresh-auth=${session.refresh_token}; trivia-map-csrf=${csrfToken}`; const headers = { cookie, origin: 'https://stg.triviamap.jp', 'x-csrf-token': csrfToken };
+    const login = await server.request('/auths/login/', { method: 'POST', ...json({ email: 'allowed@example.test', password: 'password' }) });
+    const setCookies = (login.headers as Headers & { getSetCookie(): string[] }).getSetCookie();
+    const authCookies = setCookies.map((value) => value.split(';')[0]).join('; ');
+    expect(await login.json()).not.toHaveProperty('access_token');
+    const cookie = `${authCookies}; trivia-map-csrf=${csrfToken}`; const headers = { cookie, origin: 'https://stg.triviamap.jp', 'x-csrf-token': csrfToken };
     expect((await server.request('/auths/user/', { headers: { cookie } })).status).toBe(200);
     expect((await server.request('/likes/toggle/1', { method: 'POST', headers })).status).toBe(200);
     expect((await server.request('/likes/toggle/1', { method: 'POST', headers: { ...headers, origin: 'https://attacker.invalid' } })).status).toBe(401);

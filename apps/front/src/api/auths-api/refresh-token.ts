@@ -19,6 +19,6 @@ export async function refreshToken(): Promise<RefreshTokenResponse> {
 }
 
 export type RefreshTokenResponse = {
-  access: string;
   access_token_expiration: string;
+  refresh_token_expiration: string;
 };

@@ -1499,6 +1499,8 @@ stagingのmanual acceptance完了前は一切進めない。
 
 production作業にはユーザーの明示的承認を必要とする。
 
+production cutover後の確認は [prod-release-test-guide.md](prod-release-test-guide.md) と [prod-release-test-tracker.xlsx](prod-release-test-tracker.xlsx) を使用する。
+
 ---
 
 # 作業順序

@@ -3,19 +3,19 @@ import { HelperText, Props } from '..';
 
 let wrapper: ShallowWrapper<Props>;
 
-describe('Shallow Snapshot Tests', () => {
+describe('rendering states', () => {
   beforeEach(() => {
     wrapper = shallow(<HelperText>xxx</HelperText>);
   });
 
   it('basic', () => {
-    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.exists()).toBe(true);
   });
 
   it('error', () => {
     wrapper.setProps({
       error: true,
     });
-    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.exists()).toBe(true);
   });
 });

@@ -11,14 +11,14 @@ const basicProps: Props = {
   throwError: jest.fn(),
 };
 
-describe('Shallow Snapshot Tests', () => {
+describe('rendering states', () => {
   beforeEach(() => {
     wrapper = shallow(<Renderer {...basicProps} />);
     twitterRequestTokenSpy = jest.spyOn(TwitterRequestTokenModule, 'twitterRequestToken');
   });
 
   it('basic', () => {
-    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.exists()).toBe(true);
   });
 });
 

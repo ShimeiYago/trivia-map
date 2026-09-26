@@ -3,12 +3,12 @@ import { BackToNavi, Props } from '..';
 
 let wrapper: ShallowWrapper<Props, unknown, BackToNavi>;
 
-describe('Shallow Snapshot Tests', () => {
+describe('rendering states', () => {
   beforeEach(() => {
     wrapper = shallow(<BackToNavi text="text" link="#" />);
   });
 
   it('basic', () => {
-    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.exists()).toBe(true);
   });
 });

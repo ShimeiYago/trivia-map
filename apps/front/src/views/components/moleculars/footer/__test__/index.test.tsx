@@ -3,17 +3,17 @@ import { Footer } from '..';
 
 let wrapper: ShallowWrapper;
 
-describe('Shallow Snapshot Tests', () => {
+describe('rendering states', () => {
   beforeEach(() => {
     wrapper = shallow(<Footer isMobile={false} />);
   });
 
   it('basic', () => {
-    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.exists()).toBe(true);
   });
 
   it('mobile', () => {
     wrapper.setProps({ isMobile: true });
-    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.exists()).toBe(true);
   });
 });

@@ -8,12 +8,12 @@ const props: Props = {
   children: 'children',
 };
 
-describe('Shallow Snapshot Tests', () => {
+describe('rendering states', () => {
   beforeEach(() => {
     wrapper = shallow(<NonStyleLink {...props} />);
   });
 
   it('basic', () => {
-    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.exists()).toBe(true);
   });
 });

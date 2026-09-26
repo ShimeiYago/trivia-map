@@ -3,6 +3,7 @@ import {
   DeleteCommand,
   GetCommand,
   PutCommand,
+  QueryCommand,
   ScanCommand,
   UpdateCommand,
 } from "@aws-sdk/lib-dynamodb";
@@ -80,6 +81,7 @@ class MemoryDynamo {
     command:
       | GetCommand
       | PutCommand
+      | QueryCommand
       | DeleteCommand
       | ScanCommand
       | UpdateCommand
@@ -93,6 +95,21 @@ class MemoryDynamo {
     };
     const table = this.table(input.TableName);
     if (command instanceof ScanCommand) return { Items: [...table.values()] };
+    if (command instanceof QueryCommand) {
+      const names = command.input.ExpressionAttributeNames ?? {};
+      const values = command.input.ExpressionAttributeValues ?? {};
+      const partition = names["#partition"]!;
+      return {
+        Items: [...table.values()].filter((item) => {
+          const actual =
+            item[partition] ??
+            (partition === "publicKey" && item.isDraft === false
+              ? "public"
+              : undefined);
+          return actual === values[":value"];
+        }),
+      };
+    }
     if (command instanceof GetCommand)
       return { Item: table.get(input.Key!.id) };
     if (command instanceof DeleteCommand) {

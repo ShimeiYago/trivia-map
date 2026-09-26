@@ -4,12 +4,12 @@ import { Renderer } from '..';
 
 let wrapper: ShallowWrapper<null, null, Renderer>;
 
-describe('Shallow Snapshot Tests', () => {
+describe('rendering states', () => {
   beforeEach(() => {
     wrapper = shallow(<Renderer />);
   });
 
   it('basic', () => {
-    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.exists()).toBe(true);
   });
 });

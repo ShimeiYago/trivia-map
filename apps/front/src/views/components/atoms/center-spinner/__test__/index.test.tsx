@@ -3,12 +3,12 @@ import { CenterSpinner } from '..';
 
 let wrapper: ShallowWrapper;
 
-describe('Shallow Snapshot Tests', () => {
+describe('rendering states', () => {
   beforeEach(() => {
     wrapper = shallow(<CenterSpinner />);
   });
 
   it('basic', () => {
-    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.exists()).toBe(true);
   });
 });

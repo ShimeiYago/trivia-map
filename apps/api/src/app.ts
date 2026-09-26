@@ -4,6 +4,7 @@ import {
   DynamoDBDocumentClient,
   GetCommand,
   PutCommand,
+  QueryCommand,
   ScanCommand,
   UpdateCommand,
 } from "@aws-sdk/lib-dynamodb";
@@ -98,6 +99,30 @@ const get = async (name: keyof typeof tableNames, id: string) =>
       new GetCommand({ TableName: table(name), Key: { id } })
     )
   ).Item as Item | undefined;
+const queryAll = async (
+  name: keyof typeof tableNames,
+  indexName: string,
+  partition: string,
+  value: string
+) => {
+  const output: Item[] = [];
+  let key: Record<string, unknown> | undefined;
+  do {
+    const page = await dependencies().ddb.send(
+      new QueryCommand({
+        TableName: table(name),
+        IndexName: indexName,
+        KeyConditionExpression: "#partition = :value",
+        ExpressionAttributeNames: { "#partition": partition },
+        ExpressionAttributeValues: { ":value": value },
+        ExclusiveStartKey: key,
+      })
+    );
+    output.push(...((page.Items as Item[]) ?? []));
+    key = page.LastEvaluatedKey;
+  } while (key);
+  return output;
+};
 const put = async (
   name: keyof typeof tableNames,
   item: Item,
@@ -284,6 +309,23 @@ const allowed = async (email: string) =>
     .map((item) => item.trim().toLowerCase())
     .filter(Boolean)
     .includes(email.toLowerCase());
+const metric = (name: string) =>
+  console.log(
+    JSON.stringify({
+      _aws: {
+        Timestamp: Date.now(),
+        CloudWatchMetrics: [
+          {
+            Namespace: "TriviaMap/Staging",
+            Dimensions: [["Stage"]],
+            Metrics: [{ Name: name, Unit: "Count" }],
+          },
+        ],
+      },
+      Stage: process.env.STAGE ?? "unknown",
+      [name]: 1,
+    })
+  );
 const siteName = () =>
   process.env.STAGE?.startsWith("stg") ? "TriviaMap（staging）" : "TriviaMap";
 const verificationEmail = (url: string) => ({
@@ -335,7 +377,10 @@ const passwordMatches = (password: string, stored: unknown) => {
   return false;
 };
 const mail = async (recipient: string, subject: string, content: string) => {
-  if (!(await allowed(recipient))) return false;
+  if (!(await allowed(recipient))) {
+    metric("MailSuppressed");
+    return false;
+  }
   const config = await secretJson(process.env.MAIL_SECRET_ARN);
   const message = {
     from: config.from ?? config.smtpUser,
@@ -458,7 +503,7 @@ const deleteImage = async (key: unknown) => {
     );
 };
 const revokeSessions = async (userId: string) => {
-  const sessions = await all("SESSIONS");
+  const sessions = await queryAll("SESSIONS", "user-index", "userId", userId);
   await Promise.all(
     sessions
       .filter((record) => text(record.userId) === userId)
@@ -631,7 +676,12 @@ export const createApp = (overrides: Partial<ApiDependencies> = {}) => {
     const body = await c.req.json<{ email?: string; password?: string }>();
     if (!(await rateLimit("login", viewerIp(c), text(body.email), 900, 10)))
       return c.json({ detail: "しばらく待ってから再度お試しください。" }, 429);
-    const users = await all("USERS");
+    const users = await queryAll(
+      "USERS",
+      "email-index",
+      "email",
+      text(body.email).toLowerCase()
+    );
     const user = users.find(
       (item) =>
         text(item.email).toLowerCase() === text(body.email).toLowerCase() &&
@@ -766,11 +816,13 @@ export const createApp = (overrides: Partial<ApiDependencies> = {}) => {
     const body = await c.req.json<{ email?: string }>();
     if (!(await rateLimit("resend", viewerIp(c), text(body.email), 3600, 5)))
       return c.json({});
-    const users = await all("USERS");
-    const user = users.find(
-      (item) =>
-        text(item.email).toLowerCase() === text(body.email).toLowerCase()
+    const users = await queryAll(
+      "USERS",
+      "email-index",
+      "email",
+      text(body.email).toLowerCase()
     );
+    const user = users[0];
     if (user && (await allowed(text(user.email)))) {
       const key = randomBytes(32).toString("base64url");
       const expiresAt = Math.floor(Date.now() / 1000) + 86400;
@@ -793,10 +845,14 @@ export const createApp = (overrides: Partial<ApiDependencies> = {}) => {
     const body = await c.req.json<{ email?: string }>();
     if (!(await rateLimit("reset", viewerIp(c), text(body.email), 3600, 5)))
       return c.json({});
-    const user = (await all("USERS")).find(
-      (item) =>
-        text(item.email).toLowerCase() === text(body.email).toLowerCase()
-    );
+    const user = (
+      await queryAll(
+        "USERS",
+        "email-index",
+        "email",
+        text(body.email).toLowerCase()
+      )
+    )[0];
     if (user && (await allowed(text(user.email)))) {
       const token = randomBytes(32).toString("base64url");
       const expiresAt = Math.floor(Date.now() / 1000) + 3600;
@@ -1149,7 +1205,7 @@ export const createApp = (overrides: Partial<ApiDependencies> = {}) => {
 
   app.get("/articles/public/previews", async (c) => {
     const [articles, goods, users, markers] = await Promise.all([
-      all("ARTICLES"),
+      queryAll("ARTICLES", "public-index", "publicKey", "public"),
       all("GOODS"),
       all("USERS"),
       all("MARKERS"),
@@ -1231,7 +1287,7 @@ export const createApp = (overrides: Partial<ApiDependencies> = {}) => {
   );
   app.get("/articles/sitemap", async (c) => {
     const [articles, users] = await Promise.all([
-      all("ARTICLES"),
+      queryAll("ARTICLES", "public-index", "publicKey", "public"),
       all("USERS"),
     ]);
     const active = new Set(
@@ -1251,8 +1307,8 @@ export const createApp = (overrides: Partial<ApiDependencies> = {}) => {
   });
   app.get("/markers/:park", async (c) => {
     const [markers, articles, users] = await Promise.all([
-      all("MARKERS"),
-      all("ARTICLES"),
+      queryAll("MARKERS", "park-index", "park", c.req.param("park")),
+      queryAll("ARTICLES", "public-index", "publicKey", "public"),
       all("USERS"),
     ]);
     const active = new Set(
@@ -1346,7 +1402,7 @@ export const createApp = (overrides: Partial<ApiDependencies> = {}) => {
       ipHash: ip,
       postId: c.req.param("id"),
     });
-    return c.json({ haveAddedGood: created });
+    return c.json({ haveAddedGood: created || !!(await get("GOODS", id)) });
   });
   app.get("/likes/check/:id", async (c) => {
     const user = await currentUser(c);
@@ -1384,7 +1440,7 @@ export const createApp = (overrides: Partial<ApiDependencies> = {}) => {
       userId: text(user.id),
       postId: c.req.param("id"),
     });
-    return c.json({ haveLiked: created });
+    return c.json({ haveLiked: created || !!(await get("LIKES", id)) });
   });
   app.get("/likes/mine", async (c) => {
     const user = await currentUser(c);
@@ -1394,7 +1450,7 @@ export const createApp = (overrides: Partial<ApiDependencies> = {}) => {
         401
       );
     const [likes, articles, goods] = await Promise.all([
-      all("LIKES"),
+      queryAll("LIKES", "user-index", "userId", text(user.id)),
       all("ARTICLES"),
       all("GOODS"),
     ]);
@@ -1438,7 +1494,7 @@ export const createApp = (overrides: Partial<ApiDependencies> = {}) => {
         401
       );
     const [articles, goods, markers] = await Promise.all([
-      all("ARTICLES"),
+      queryAll("ARTICLES", "author-index", "authorId", text(user.id)),
       all("GOODS"),
       all("MARKERS"),
     ]);
@@ -1511,7 +1567,9 @@ export const createApp = (overrides: Partial<ApiDependencies> = {}) => {
     markerId: string,
     excludingArticleId?: string
   ) => {
-    const used = (await all("ARTICLES")).some(
+    const used = (
+      await queryAll("ARTICLES", "marker-index", "markerId", markerId)
+    ).some(
       (article) =>
         text(article.markerId) === markerId &&
         text(article.id) !== excludingArticleId
@@ -1635,7 +1693,10 @@ export const createApp = (overrides: Partial<ApiDependencies> = {}) => {
       !csrf(c)
     )
       return c.json({ detail: "Not found" }, 404);
-    const [likes, goods] = await Promise.all([all("LIKES"), all("GOODS")]);
+    const [likes, goods] = await Promise.all([
+      queryAll("LIKES", "article-index", "postId", text(article.id)),
+      queryAll("GOODS", "article-index", "postId", text(article.id)),
+    ]);
     await Promise.all([
       ...likes
         .filter((item) => text(item.postId) === text(article.id))
@@ -1651,7 +1712,10 @@ export const createApp = (overrides: Partial<ApiDependencies> = {}) => {
   });
 
   app.get("/special-map/maps/public-previews", async (c) => {
-    const [maps, users] = await Promise.all([all("SPECIALMAPS"), all("USERS")]);
+    const [maps, users] = await Promise.all([
+      queryAll("SPECIALMAPS", "public-index", "publicKey", "public"),
+      all("USERS"),
+    ]);
     const active = new Set(
       users.filter((user) => bool(user.isActive)).map((user) => text(user.id))
     );
@@ -1674,7 +1738,10 @@ export const createApp = (overrides: Partial<ApiDependencies> = {}) => {
     );
   });
   app.get("/special-map/maps/sitemap", async (c) => {
-    const [maps, users] = await Promise.all([all("SPECIALMAPS"), all("USERS")]);
+    const [maps, users] = await Promise.all([
+      queryAll("SPECIALMAPS", "public-index", "publicKey", "public"),
+      all("USERS"),
+    ]);
     const active = new Set(
       users.filter((user) => bool(user.isActive)).map((user) => text(user.id))
     );
@@ -1714,18 +1781,23 @@ export const createApp = (overrides: Partial<ApiDependencies> = {}) => {
     ]);
     if (!(await visibleMap(map, user)))
       return c.json({ detail: "Not found" }, 404);
-    const markers = (await all("SPECIALMAPMARKERS"))
-      .filter((marker) => text(marker.specialMapId) === c.req.param("id"))
-      .map((marker) => ({
-        specialMapMarkerId: num(marker.specialMapMarkerId),
-        specialMap: num(marker.specialMapId),
-        lat: num(marker.lat),
-        lng: num(marker.lng),
-        park: text(marker.park),
-        image: media(marker.image),
-        description: text(marker.description),
-        variant: text(marker.variant),
-      }));
+    const markers = (
+      await queryAll(
+        "SPECIALMAPMARKERS",
+        "map-index",
+        "specialMapId",
+        c.req.param("id")
+      )
+    ).map((marker) => ({
+      specialMapMarkerId: num(marker.specialMapMarkerId),
+      specialMap: num(marker.specialMapId),
+      lat: num(marker.lat),
+      lng: num(marker.lng),
+      park: text(marker.park),
+      image: media(marker.image),
+      description: text(marker.description),
+      variant: text(marker.variant),
+    }));
     return c.json(
       pagination(
         markers,
@@ -1742,15 +1814,15 @@ export const createApp = (overrides: Partial<ApiDependencies> = {}) => {
         { detail: "Authentication credentials were not provided." },
         401
       );
-    const maps = (await all("SPECIALMAPS"))
-      .filter((map) => text(map.authorId) === text(user.id))
-      .map((map) => ({
-        specialMapId: num(map.specialMapId),
-        title: text(map.title),
-        thumbnail: media(map.thumbnail),
-        description: text(map.description),
-        isPublic: bool(map.isPublic),
-      }));
+    const maps = (
+      await queryAll("SPECIALMAPS", "author-index", "authorId", text(user.id))
+    ).map((map) => ({
+      specialMapId: num(map.specialMapId),
+      title: text(map.title),
+      thumbnail: media(map.thumbnail),
+      description: text(map.description),
+      isPublic: bool(map.isPublic),
+    }));
     return c.json(
       pagination(
         maps,

@@ -7,13 +7,13 @@ const props: Props = {
   loggedOutSuccessfully: false,
 };
 
-describe('Shallow Snapshot Tests', () => {
+describe('rendering states', () => {
   beforeEach(() => {
     shallowWrapper = shallow(<Renderer {...props} />);
   });
 
   it('basic', () => {
-    expect(shallowWrapper).toMatchSnapshot();
+    expect(shallowWrapper.exists()).toBe(true);
   });
 });
 

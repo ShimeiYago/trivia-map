@@ -146,4 +146,22 @@ describe('injected API dependencies', () => {
     expect(response.status).toBe(200);
     await expect(response.json()).resolves.toMatchObject({ nextUrl: '/api/markers/S?limit=1&page=2', previousUrl: null });
   });
+
+  it('sorts public article previews by newest, oldest, and legacy popularity rank', async () => {
+    const sortingDdb = new MemoryDynamo();
+    const articles = sortingDdb.tables.get('TriviaMap-stg-v2-Articles') ?? new Map();
+    articles.set('101', { id: '101', entity: 'Article', postId: '101', title: 'old popular', description: '', category: 1, isDraft: false, createdAt: '2024-01-01T00:00:00.000Z', popularityRank: 1 });
+    articles.set('102', { id: '102', entity: 'Article', postId: '102', title: 'new unranked', description: '', category: 1, isDraft: false, createdAt: '2026-01-01T00:00:00.000Z' });
+    articles.set('103', { id: '103', entity: 'Article', postId: '103', title: 'middle popular', description: '', category: 1, isDraft: false, createdAt: '2025-01-01T00:00:00.000Z', popularityRank: 2 });
+    sortingDdb.tables.set('TriviaMap-stg-v2-Articles', articles);
+    const app = createApp({ ddb: sortingDdb as unknown as import('@aws-sdk/lib-dynamodb').DynamoDBDocumentClient });
+    const ids = async (order: string) => {
+      const response = await app.request(`/articles/public/previews?order=${order}`);
+      expect(response.status).toBe(200);
+      return ((await response.json()) as { results: Array<{ postId: number }> }).results.map((article) => article.postId);
+    };
+    await expect(ids('latest')).resolves.toEqual([102, 103, 101]);
+    await expect(ids('oldest')).resolves.toEqual([101, 103, 102]);
+    await expect(ids('popular')).resolves.toEqual([101, 103, 102]);
+  });
 });

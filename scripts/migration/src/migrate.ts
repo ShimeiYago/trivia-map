@@ -48,7 +48,7 @@ export async function runMigration(options: MigrationOptions): Promise<Migration
         const item = transform(entity, row as Record<string, unknown>);
         if (!dryRun) {
           const existing = await ddb.send(new GetCommand({ TableName: `${prefix}${entity}`, Key: { id: item.id } }));
-          if (existing.Item) { const prior = { ...existing.Item }; delete prior.migratedAt; if (entity === 'Users') { delete prior.socialProvider; delete prior.socialId; } const expected = { ...item }; delete expected.migratedAt; if (stable(prior) !== stable(expected)) throw new Error(`conflicting existing ${entity}:${item.id}`); skipped += 1; } else { await ddb.send(new PutCommand({ TableName: `${prefix}${entity}`, Item: item, ConditionExpression: 'attribute_not_exists(id)' })); written += 1; }
+          if (existing.Item) { const prior = { ...existing.Item }; delete prior.migratedAt; if (entity === 'Users') { delete prior.socialProvider; delete prior.socialId; } if (entity === 'Articles') delete prior.popularityRank; const expected = { ...item }; delete expected.migratedAt; if (stable(prior) !== stable(expected)) throw new Error(`conflicting existing ${entity}:${item.id}`); skipped += 1; } else { await ddb.send(new PutCommand({ TableName: `${prefix}${entity}`, Item: item, ConditionExpression: 'attribute_not_exists(id)' })); written += 1; }
           if (copyImages) for (const key of imageKeys(item)) { await s3.send(new CopyObjectCommand({ Bucket: destinationBucket, Key: key, CopySource: `${sourceBucket}/${encodeURIComponent(key).replaceAll('%2F', '/')}` })); images += 1; if (validate) { if ((await checksum(s3, sourceBucket, key)) !== (await checksum(s3, destinationBucket!, key))) throw new Error(`image checksum mismatch: ${key}`); validated += 1; } }
         }
       }
@@ -73,7 +73,7 @@ export async function runMigration(options: MigrationOptions): Promise<Migration
   return report;
 }
 const scanAll = async (ddb: DynamoDBDocumentClient, tableName: string) => { const items: RecordItem[] = []; let key: Record<string, unknown> | undefined; do { const page = await ddb.send(new ScanCommand({ TableName: tableName, ExclusiveStartKey: key })); items.push(...(page.Items as RecordItem[] ?? [])); key = page.LastEvaluatedKey; } while (key); return items; };
-const comparable = (entity: Entity, item: RecordItem) => { const output = { ...item }; delete output.migratedAt; if (entity === 'Users') { delete output.socialProvider; delete output.socialId; } return output; };
+const comparable = (entity: Entity, item: RecordItem) => { const output = { ...item }; delete output.migratedAt; if (entity === 'Users') { delete output.socialProvider; delete output.socialId; } if (entity === 'Articles') delete output.popularityRank; return output; };
 
 /** Reads legacy and staging data without mutating either side. */
 export async function validateExistingMigration(options: Omit<MigrationOptions, 'dryRun' | 'copyImages' | 'validate'>): Promise<ValidationReport> {

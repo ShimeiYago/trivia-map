@@ -4,6 +4,17 @@ export const parkSchema = z.enum(['L', 'S']);
 export const mapParkSchema = z.enum(['L', 'S', 'both']);
 export const imageKeySchema = z.string().min(1).nullable();
 export const pageSchema = z.coerce.number().int().positive().default(1);
+export const articlePreviewOrderSchema = z.enum(['latest', 'oldest', 'popular']);
+export const articlePreviewQuerySchema = z.object({
+  page: pageSchema.optional(),
+  limit: z.coerce.number().int().positive().max(100).optional(),
+  marker: z.coerce.number().int().positive().optional(),
+  user: z.coerce.number().int().positive().optional(),
+  category: z.coerce.number().int().min(0).max(6).optional(),
+  park: parkSchema.optional(),
+  keywords: z.string().optional(),
+  order: articlePreviewOrderSchema.optional(),
+});
 export const paginationSchema = <T extends z.ZodTypeAny>(item: T) => z.object({ nextUrl: z.string().nullable(), previousUrl: z.string().nullable(), totalRecords: z.number().int().nonnegative(), totalPages: z.number().int().nonnegative(), currentPage: z.number().int().positive(), startIndex: z.number().int().nonnegative(), endIndex: z.number().int().nonnegative(), results: z.array(item) });
 export const errorSchema = z.object({ detail: z.string().optional(), non_field_errors: z.array(z.string()).optional() }).passthrough();
 export const userSchema = z.object({ userId: z.number().int().positive(), email: z.string().email().optional(), nickname: z.string().min(1).max(20), icon: z.string().nullable(), isSocialAccount: z.boolean().optional(), url: z.string().nullable() });
@@ -50,7 +61,9 @@ const schemaForPath = (path: string) => {
 export const apiContracts: readonly ApiContract[] = apiInventory.map(([method, path]) => ({
   method,
   path,
-  request: method === 'GET' ? routeParamsSchema : mutationRequestSchema,
+  request: path === '/articles/public/previews'
+    ? z.object({ params: z.record(z.string()), query: articlePreviewQuerySchema })
+    : method === 'GET' ? routeParamsSchema : mutationRequestSchema,
   responses: { 200: schemaForPath(path), 201: emptyResponseSchema, 204: z.undefined(), 400: errorSchema, 401: errorSchema, 403: errorSchema, 404: errorSchema, 502: errorSchema },
   pagination: paginatedPaths.has(path),
 }));
